@@ -43,7 +43,6 @@ class BinaryFileWrite final : public AbstractFileHandle {
   
 //--- 
   public: void appendData (const U8Data & inData) ;
-  public: void appendData (const std::vector <uint8_t> & inData) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

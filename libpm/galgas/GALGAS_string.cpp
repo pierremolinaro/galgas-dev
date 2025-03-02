@@ -854,8 +854,8 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_string::class_method_removeDirectoryRecursively (GGS_string inDirectoryPath,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
     if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
@@ -874,10 +874,10 @@ void GGS_string::class_method_removeDirectoryRecursively (GGS_string inDirectory
 
 //--------------------------------------------------------------------------------------------------
 
-static bool writeU8DataFile (const String & inMessage,
-                             const String & inFullPathName,
-                             const U8Data & inCurrentData,
-                             Compiler * inCompiler) {
+static bool writeFile (const String & inMessage,
+                       const String & inFullPathName,
+                       const U8Data & inCurrentData,
+                       Compiler * inCompiler) {
   bool ok = true ;
   if (inCompiler->performGeneration ()) {
     const bool verboseOptionOn = verboseOutput () ;
@@ -907,39 +907,6 @@ static bool writeU8DataFile (const String & inMessage,
 
 //--------------------------------------------------------------------------------------------------
 
-//static bool writeFile (const String & inMessage,
-//                       const String & inFullPathName,
-//                       const std::vector <uint8_t> & inCurrentData,
-//                       Compiler * inCompiler) {
-//  bool ok = true ;
-//  if (inCompiler->performGeneration ()) {
-//    const bool verboseOptionOn = verboseOutput () ;
-//    const String directory = inFullPathName.stringByDeletingLastPathComponent () ;
-//    FileManager::makeDirectoryIfDoesNotExist (directory) ;
-//    BinaryFileWrite binaryFile (inFullPathName) ;
-//    ok = binaryFile.isOpened () ;
-//    if (! ok) {
-//      String message = "Cannot open '" ;
-//      message.appendString (inFullPathName) ;
-//      message.appendCString ("' file in write mode.") ;
-//      inCompiler->onTheFlySemanticError (message COMMA_HERE) ;
-//    }
-//    binaryFile.appendData (inCurrentData) ;
-//  //--- Close file
-//    if (ok) {
-//      ok = binaryFile.close () ;
-//    }
-//    if (ok && verboseOptionOn) {
-//      ggs_printFileOperationSuccess (inMessage + " '" + inFullPathName + "'.\n") ;
-//    }
-//  }else{
-//    ggs_printWarning (inCompiler, SourceTextInString(), IssueWithFixIt (), String ("Need to write '") + inFullPathName + "'." COMMA_HERE) ;
-//  }
-//  return ok ;
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 static bool updateFile (const String & inFullPathName,
                         const String & inContents,
                         Compiler * inCompiler) {
@@ -958,37 +925,10 @@ static bool updateFile (const String & inFullPathName,
   }
 //--- File needs to be updated
   if (ok && needsToWriteFile) {
-    ok = writeU8DataFile ("Updated", inFullPathName, currentData, inCompiler) ;
+    ok = writeFile ("Updated", inFullPathName, currentData, inCompiler) ;
   }
   return ok ;
 }
-
-//static bool updateFile (const String & inFullPathName,
-//                        const String & inContents,
-//                        Compiler * inCompiler) {
-//  std::vector <uint8_t> currentData ;
-//  if (inContents.length () > 0) {
-//    const uint8_t * ptr = (const uint8_t *) inContents.cString () ;
-//    currentData = std::vector <uint8_t> (&ptr [0], &ptr [inContents.length ()]) ;
-//  }
-////--- Compare file length
-//  const uint64_t fileSize = FileManager::fileSize (inFullPathName) ;
-//  bool needsToWriteFile = fileSize != currentData.size () ;
-//  bool ok = true ;
-////--- Read file
-//  if (!needsToWriteFile) {
-//    std::vector <uint8_t> fileData ;
-//    ok = FileManager::binaryDataWithContentOfFile (inFullPathName, fileData) ;
-//    if (ok) {
-//      needsToWriteFile = fileData != currentData ;
-//    }
-//  }
-////--- File needs to be updated
-//  if (ok && needsToWriteFile) {
-//    ok = writeFile ("Updated", inFullPathName, currentData, inCompiler) ;
-//  }
-//  return ok ;
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1003,7 +943,7 @@ static void generateFile (const String & inStartPath,
   const String fullPathName = FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
   if (fullPathName.length () == 0) { // No, does not exist
     U8Data currentData ; currentData.appendString (inContents) ;
-    ok = writeU8DataFile ("Created", inStartPath + "/" + inFileName, currentData, inCompiler) ;
+    ok = writeFile ("Created", inStartPath + "/" + inFileName, currentData, inCompiler) ;
   }else{ //--- File exists: read it
     ok = updateFile (fullPathName, inContents, inCompiler) ;
   }

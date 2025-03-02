@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2025 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -190,7 +190,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_filewrapper::getter_allFilePathesWithExtension (const GGS_string & inExtension
-                                                                   COMMA_LOCATION_ARGS) const {
+                                                                         COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inExtension.isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
@@ -230,7 +230,7 @@ static void enumerateWrapper (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_filewrapper::description (String & ioString,
-                                   const int32_t inIndentation) const {
+                                      const int32_t inIndentation) const {
   ioString.appendCString ("<@filewrapper") ;
   if (isValid ()) {
     enumerateWrapper (ioString, mRootDirectoryPtr, "", inIndentation + 2) ;
@@ -316,8 +316,8 @@ static const cDirectoryWrapper * getDirectory (const String & inDirectory,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_filewrapper::getter_directoryExistsAtPath (const GGS_string & inPath,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inPath.isValid ()) {
     const GGS_string dir = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -331,8 +331,8 @@ GGS_bool GGS_filewrapper::getter_directoryExistsAtPath (const GGS_string & inPat
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_filewrapper::getter_fileExistsAtPath (const GGS_string & inPath,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -349,8 +349,8 @@ GGS_bool GGS_filewrapper::getter_fileExistsAtPath (const GGS_string & inPath,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapper::getter_textFileContentsAtPath (const GGS_string & inPath,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -381,8 +381,8 @@ GGS_string GGS_filewrapper::getter_textFileContentsAtPath (const GGS_string & in
 //--------------------------------------------------------------------------------------------------
 
 GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & inPath,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
   GGS_data result ;
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -396,12 +396,10 @@ GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & in
         errorMessage.appendCString ("' path does not exist") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        std::vector <uint8_t> data ;
-        const size_t sourceLength = file->mFileLength ;
-        if (sourceLength > 0) {
-          const uint8_t * sourcePtr = (uint8_t *) file->mContents ;
-          data = std::vector <uint8_t> (&sourcePtr [0], &sourcePtr[sourceLength]) ;
-        }
+        const uint8_t * sourcePtr = (const uint8_t *) file->mContents ;
+        const uint32_t sourceLength = file->mFileLength ;
+        U8Data data ;
+        data.appendDataFromPointer (sourcePtr, (int32_t) sourceLength) ;
         result = GGS_data (data) ;
       }
     }
@@ -412,8 +410,8 @@ GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & in
 //--------------------------------------------------------------------------------------------------
 
 void GGS_filewrapper::setter_setCurrentDirectory (const GGS_string inNewDirectory,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
   if ((mRootDirectoryPtr != nullptr) && inNewDirectory.isValid ()) {
     GGS_string absolutePath = getter_absolutePathForPath (inNewDirectory, inCompiler COMMA_THERE) ;
     if (absolutePath.isValid ()) {
@@ -433,8 +431,8 @@ void GGS_filewrapper::setter_setCurrentDirectory (const GGS_string inNewDirector
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPath,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inPath.isValid ()) {
     const String path = inPath.stringValue () ;
@@ -494,8 +492,8 @@ GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPat
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_filewrapper::getter_directoriesAtPath (const GGS_string & inPath,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -517,8 +515,8 @@ GGS_stringlist GGS_filewrapper::getter_directoriesAtPath (const GGS_string & inP
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_filewrapper::getter_textFilesAtPath (const GGS_string & inPath,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -542,8 +540,8 @@ GGS_stringlist GGS_filewrapper::getter_textFilesAtPath (const GGS_string & inPat
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_filewrapper::getter_binaryFilesAtPath (const GGS_string & inPath,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;

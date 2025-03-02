@@ -6696,7 +6696,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclar
 
 class DownEnumerator__5B_associatedValue_5D_ final {
 //--- Constructor
-  public: DownEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inEnumeratedRange) ;
+  public: DownEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inOperand) ;
 
 //--- No copy
   private: DownEnumerator__5B_associatedValue_5D_ (const DownEnumerator__5B_associatedValue_5D_ &) = delete ;
@@ -6704,12 +6704,12 @@ class DownEnumerator__5B_associatedValue_5D_ final {
 
 //--- 
   public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
+    return mCurrent >= 0 ;
   }
 
 //--- 
   public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
+    mCurrent -= 1 ;
   }
 
 //--- Current element access
@@ -6718,14 +6718,13 @@ class DownEnumerator__5B_associatedValue_5D_ final {
 //---- Properties
   private: const TC_Array <GGS_associatedValue> mSharedArray ;
   private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator__5B_associatedValue_5D_ final {
 //--- Constructor
-  public: UpEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inEnumeratedRange) ;
+  public: UpEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inOperand) ;
 
 //--- No copy
   private: UpEnumerator__5B_associatedValue_5D_ (const UpEnumerator__5B_associatedValue_5D_ &) = delete ;
@@ -6747,7 +6746,6 @@ class UpEnumerator__5B_associatedValue_5D_ final {
 //---- Properties
   private: const TC_Array <GGS_associatedValue> mSharedArray ;
   private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

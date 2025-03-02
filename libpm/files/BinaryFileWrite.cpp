@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1999, ..., 2025 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -32,12 +32,6 @@ AbstractFileHandle (inFileName, "wb") {
 
 void BinaryFileWrite::appendData (const U8Data & inData) {
   appendBinaryData (size_t (inData.count ()), inData.unsafeDataPointer ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void BinaryFileWrite::appendData (const std::vector <uint8_t> & inData) {
-  appendBinaryData (inData) ;
 }
 
 //--------------------------------------------------------------------------------------------------

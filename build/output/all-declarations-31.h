@@ -1259,5 +1259,4 @@ extern const cDirectoryWrapper gWrapperDirectory_34_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_35_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_36_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_37_libpmFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_38_libpmFileWrapper ;
 

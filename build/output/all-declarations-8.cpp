@@ -15051,56 +15051,31 @@ GGS_string GGS__5B_string_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
 // Down Enumerator for @_5B_string_5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator__5B_string_5D_::DownEnumerator__5B_string_5D_ (const GGS__5B_string_5D_ & inEnumeratedObject) :
-mSharedArray (inEnumeratedObject.mSharedArray),
-mCurrent (0),
-mEnumerationOrder (EnumerationOrder::Down) {
+DownEnumerator__5B_string_5D_::DownEnumerator__5B_string_5D_ (const GGS__5B_string_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator__5B_string_5D_::current (LOCATION_ARGS) const {
-  GGS_string result ;
-  if (mCurrent < mSharedArray.count ()) {
-    switch (mEnumerationOrder) {
-    case EnumerationOrder::Up :
-      result = mSharedArray (mCurrent COMMA_THERE) ;
-      break ;
-    case EnumerationOrder::Down :
-      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
-      break ;
-    }
-  }
-  return result ;
+  return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 // Up Enumerator for @_5B_string_5D_
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator__5B_string_5D_::UpEnumerator__5B_string_5D_ (const GGS__5B_string_5D_ & inEnumeratedObject) :
-mSharedArray (inEnumeratedObject.mSharedArray),
-mCurrent (0),
-mEnumerationOrder (EnumerationOrder::Up) {
+UpEnumerator__5B_string_5D_::UpEnumerator__5B_string_5D_ (const GGS__5B_string_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator__5B_string_5D_::current (LOCATION_ARGS) const {
-  GGS_string result ;
-  if (mCurrent < mSharedArray.count ()) {
-    switch (mEnumerationOrder) {
-    case EnumerationOrder::Up :
-      result = mSharedArray (mCurrent COMMA_THERE) ;
-      break ;
-    case EnumerationOrder::Down :
-      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
-      break ;
-    }
-  }
-  return result ;
+  return mSharedArray (mCurrent COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 //     @[string] generic code implementation

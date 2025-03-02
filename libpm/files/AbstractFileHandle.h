@@ -51,7 +51,6 @@ class AbstractFileHandle {
 
 //---
   public: void appendBinaryData (const size_t inByteCount, const uint8_t * inByteArray) ;
-  public: void appendBinaryData (const std::vector <uint8_t> & inByteArray) ;
   public: void appendUTF8String (const int inByteCount, const char * inByteArray) ;
 } ;
 

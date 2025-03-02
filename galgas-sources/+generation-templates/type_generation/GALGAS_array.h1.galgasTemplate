@@ -4,7 +4,7 @@
 
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
-  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
 
 //--- No copy
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -12,12 +12,12 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
 //--- 
   public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
+    return mCurrent >= 0 ;
   }
 
 //--- 
   public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
+    mCurrent -= 1 ;
   }
 
 //--- Current element access
@@ -26,14 +26,13 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 //---- Properties
   private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
   private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
-  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
 
 //--- No copy
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -55,7 +54,6 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //---- Properties
   private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
   private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

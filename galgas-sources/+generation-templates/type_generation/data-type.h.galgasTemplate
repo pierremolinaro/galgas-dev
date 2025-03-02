@@ -5,17 +5,17 @@
 class UpEnumerator_data final {
   public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mArray.end () ; }
+  public: bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: void gotoNextObject (void) { mIterator++ ; }
+  public: void gotoNextObject (void) { mIndex += 1 ; }
 
 //--- Current element access
   public: class GGS_uint current_data (LOCATION_ARGS) const ;
   public: class GGS_uint current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: std::vector <uint8_t> mArray ;
-  private: std::vector <uint8_t>::iterator mIterator ;
+  private: U8Data mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_data (const UpEnumerator_data &) = delete ;
@@ -28,17 +28,17 @@ class DownEnumerator_data final {
 
   public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mArray.rend () ; }
+  public: bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-  public: void gotoNextObject (void) { mIterator++ ; }
+  public: void gotoNextObject (void) { mIndex -= 1 ; }
 
 //--- Current element access
   public: class GGS_uint current_data (LOCATION_ARGS) const ;
   public: class GGS_uint current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: std::vector <uint8_t> mArray ;
-  private: std::vector <uint8_t>::reverse_iterator mIterator ;
+  private: U8Data mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_data (const DownEnumerator_data &) = delete ;
@@ -52,16 +52,18 @@ class DownEnumerator_data final {
 class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: std::vector <uint8_t> mData ;
+  private: U8Data mData ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline std::vector <uint8_t> dataValue (void) const { return mData ; }
+  public: inline U8Data dataValue (void) const { return mData ; }
 
 //--------------------------------- Default constructor
   public: GGS_data (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_data (const std::vector <uint8_t> & inData) ;
+  public: GGS_data (const U8Data & inData) ;
+
+%
 
