@@ -6622,56 +6622,7 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  result.appendString (" \n} ; // End of GGS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" class\n\n") ;
-  const GalgasBool test_67 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 436)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-  switch (test_67) {
-  case GalgasBool::boolTrue : {
-    result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Enumerator declaration                                                                      \n//--------------------------------------------------------------------------------------------------\n\n#ifndef AZERTY\nclass cEnumerator_") ;
-    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-    result.appendString (" final\n#ifndef NEW_ITERATOR\n  : public cGenericAbstractEnumerator\n#endif\n{\n  public: cEnumerator_") ;
-    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-    result.appendString (" (") ;
-    columnMarker = result.currentColumn () ;
-    result.appendString ("const GGS_") ;
-    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-    result.appendString (" & inEnumeratedObject,\n     ") ;
-    result.appendSpacesUntilColumn (columnMarker) ;
-    result.appendString ("const EnumerationOrder inOrder) ;\n\n//--- Current element access\n  #ifdef NEW_ITERATOR\n    public: bool hasCurrentObject (void) const ;\n    public: void gotoNextObject (void) ;\n    public: void rewind (void) ;\n  #endif\n") ;
-    GGS_uint index_21645_ (0) ;
-    if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_21645 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, EnumerationOrder::up) ;
-      while (enumerator_21645.hasCurrentObject ()) {
-        result.appendString ("  public: class GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_21645.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 458)).stringValue ()) ;
-        result.appendString (" current_") ;
-        result.appendString (enumerator_21645.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 458)).stringValue ()) ;
-        result.appendString (" (LOCATION_ARGS) const ;\n") ;
-        index_21645_.increment () ;
-        enumerator_21645.gotoNextObject () ;
-      }
-    }
-    const GalgasBool test_68 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 460)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 460)).boolEnum () ;
-    switch (test_68) {
-    case GalgasBool::boolTrue : {
-      result.appendString ("//--- Current element access\n  public: class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 462)).stringValue ()) ;
-      result.appendString (" current (LOCATION_ARGS) const ;\n") ;
-      } break ;
-    case GalgasBool::boolFalse : {
-      } break ;
-    case GalgasBool::boolNotValid :
-      break ;
-    }
-    result.appendString ("} ;\n\n#endif") ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nextern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_") ;
+  result.appendString (" \n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nextern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" ;\n\n") ;
   return GGS_string (result) ;

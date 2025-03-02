@@ -548,8 +548,7 @@ class GGS_templateInstructionStringForGeneration : public GGS_templateInstructio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionStringForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -688,8 +687,7 @@ class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateIn
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionStringForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -778,8 +776,7 @@ class GGS_lexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_lexiqueComponentAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

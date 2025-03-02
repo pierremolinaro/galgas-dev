@@ -91,8 +91,7 @@ class GGS_moduloExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_moduloExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -153,8 +152,7 @@ class GGS_notExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_notExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -302,8 +300,7 @@ class GGS_notExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_notExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -364,8 +361,7 @@ class GGS_notExpressionForGeneration : public GGS_semanticExpressionForGeneratio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_notExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -508,8 +504,7 @@ class GGS_notExpressionForGeneration_2E_weak : public GGS_semanticExpressionForG
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_notExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -574,8 +569,7 @@ class GGS_orExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -726,8 +720,7 @@ class GGS_orExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -792,8 +785,7 @@ class GGS_orShortExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orShortExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -944,8 +936,7 @@ class GGS_orShortExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_wea
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orShortExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1010,8 +1001,7 @@ class GGS_xorExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_xorExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1162,8 +1152,7 @@ class GGS_xorExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_xorExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1228,8 +1217,7 @@ class GGS_closedSliceExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_closedSliceExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1380,8 +1368,7 @@ class GGS_closedSliceExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_closedSliceExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1446,8 +1433,7 @@ class GGS_openedSliceExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_openedSliceExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1598,8 +1584,7 @@ class GGS_openedSliceExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_openedSliceExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1664,8 +1649,7 @@ class GGS_orShortExpressionForGeneration : public GGS_semanticExpressionForGener
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orShortExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1811,8 +1795,7 @@ class GGS_orShortExpressionForGeneration_2E_weak : public GGS_semanticExpression
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_orShortExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1877,8 +1860,7 @@ class GGS_openedSliceExpressionForGeneration : public GGS_semanticExpressionForG
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_openedSliceExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2024,8 +2006,7 @@ class GGS_openedSliceExpressionForGeneration_2E_weak : public GGS_semanticExpres
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_openedSliceExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2090,8 +2071,7 @@ class GGS_closedSliceExpressionForGeneration : public GGS_semanticExpressionForG
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_closedSliceExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2237,8 +2217,7 @@ class GGS_closedSliceExpressionForGeneration_2E_weak : public GGS_semanticExpres
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_closedSliceExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2330,8 +2309,7 @@ class GGS_tildeExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_tildeExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2479,8 +2457,7 @@ class GGS_tildeExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_tildeExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2541,8 +2518,7 @@ class GGS_tildeExpressionForGeneration : public GGS_semanticExpressionForGenerat
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_tildeExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2685,8 +2661,7 @@ class GGS_tildeExpressionForGeneration_2E_weak : public GGS_semanticExpressionFo
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_tildeExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2747,8 +2722,7 @@ class GGS_unaryMinusExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryMinusExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2896,8 +2870,7 @@ class GGS_unaryMinusExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryMinusExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2958,8 +2931,7 @@ class GGS_unaryMinusExpressionForGeneration : public GGS_semanticExpressionForGe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryMinusExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3102,8 +3074,7 @@ class GGS_unaryMinusExpressionForGeneration_2E_weak : public GGS_semanticExpress
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryMinusExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3164,8 +3135,7 @@ class GGS_unaryPlusExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryPlusExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3313,8 +3283,7 @@ class GGS_unaryPlusExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_w
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryPlusExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3375,8 +3344,7 @@ class GGS_unaryWrappingMinusExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryWrappingMinusExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3524,8 +3492,7 @@ class GGS_unaryWrappingMinusExpressionAST_2E_weak : public GGS_semanticExpressio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryWrappingMinusExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3586,8 +3553,7 @@ class GGS_unaryWrappingMinusExpressionForGeneration : public GGS_semanticExpress
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryWrappingMinusExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3730,8 +3696,7 @@ class GGS_unaryWrappingMinusExpressionForGeneration_2E_weak : public GGS_semanti
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unaryWrappingMinusExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3819,8 +3784,7 @@ class GGS_selfMutability : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfMutability class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3920,8 +3884,7 @@ class GGS_selfAvailability_2E_available : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfAvailability_2E_available class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4001,8 +3964,7 @@ class GGS_selfAvailability_2E_available_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfAvailability_2E_available_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4086,8 +4048,7 @@ class GGS_assignmentInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_assignmentInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4239,8 +4200,7 @@ class GGS_assignmentInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_assignmentInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4307,8 +4267,7 @@ class GGS_selfPropertyAssignmentInstructionAST : public GGS_semanticInstructionA
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfPropertyAssignmentInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4460,8 +4419,7 @@ class GGS_selfPropertyAssignmentInstructionAST_2E_weak : public GGS_semanticInst
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfPropertyAssignmentInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4542,8 +4500,7 @@ class GGS_assignmentInstructionForGeneration : public GGS_semanticInstructionFor
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_assignmentInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4700,8 +4657,7 @@ class GGS_assignmentInstructionForGeneration_2E_weak : public GGS_semanticInstru
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_assignmentInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4711,21 +4667,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructi
 // Phase 1: @castInstructionBranchListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_castInstructionBranchListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_castInstructionBranchListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_castInstructionBranchListAST (const class GGS_castInstructionBranchListAST & inEnumeratedObject,
                                                     const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_lstring current_mTypeName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mConstantVarName (LOCATION_ARGS) const ;
   public: class GGS_semanticInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
@@ -4734,8 +4683,6 @@ class cEnumerator_castInstructionBranchListAST final
 //--- Current element access
   public: class GGS_castInstructionBranchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @castInstructionBranchListAST list
@@ -4934,37 +4881,8 @@ class GGS_castInstructionBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_castInstructionBranchListAST ;
  
-} ; // End of GGS_castInstructionBranchListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_castInstructionBranchListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_castInstructionBranchListAST (const GGS_castInstructionBranchListAST & inEnumeratedObject,
-                                                    const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_lstring current_mTypeName (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mConstantVarName (LOCATION_ARGS) const ;
-  public: class GGS_semanticInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
-  public: class GGS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
-  public: class GGS_location current_mEndOfInstructions (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_castInstructionBranchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST ;
@@ -5087,8 +5005,7 @@ class GGS_castInstructionBranchListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_castInstructionBranchListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5159,8 +5076,7 @@ class GGS_structuredCastInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structuredCastInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5315,8 +5231,7 @@ class GGS_structuredCastInstructionAST_2E_weak : public GGS_semanticInstructionA
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structuredCastInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5326,21 +5241,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstr
 // Phase 1: @castInstructionBranchListForGeneration list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_castInstructionBranchListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_castInstructionBranchListForGeneration final : public cGenericAbstractEnumerator {
   public: cEnumerator_castInstructionBranchListForGeneration (const class GGS_castInstructionBranchListForGeneration & inEnumeratedObject,
                                                               const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
   public: class GGS_string current_mCastedVarCppName (LOCATION_ARGS) const ;
@@ -5348,8 +5256,6 @@ class cEnumerator_castInstructionBranchListForGeneration final
 //--- Current element access
   public: class GGS_castInstructionBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @castInstructionBranchListForGeneration list
@@ -5529,36 +5435,8 @@ class GGS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_castInstructionBranchListForGeneration ;
  
-} ; // End of GGS_castInstructionBranchListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_castInstructionBranchListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_castInstructionBranchListForGeneration (const GGS_castInstructionBranchListForGeneration & inEnumeratedObject,
-                                                              const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
-  public: class GGS_string current_mCastedVarCppName (LOCATION_ARGS) const ;
-  public: class GGS_semanticInstructionListForGeneration current_mInstructionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_castInstructionBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ;
@@ -5669,8 +5547,7 @@ class GGS_castInstructionBranchListForGeneration_2E_element : public AC_GALGAS_r
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_castInstructionBranchListForGeneration_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5735,8 +5612,7 @@ class GGS_structuredCastInstructionForGeneration : public GGS_semanticInstructio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structuredCastInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5881,8 +5757,7 @@ class GGS_structuredCastInstructionForGeneration_2E_weak : public GGS_semanticIn
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structuredCastInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5983,8 +5858,7 @@ class GGS_opAssignmentOperator : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_opAssignmentOperator class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6079,8 +5953,7 @@ class GGS_opAssignExpressionInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_opAssignExpressionInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6238,8 +6111,7 @@ class GGS_opAssignExpressionInstructionAST_2E_weak : public GGS_semanticInstruct
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_opAssignExpressionInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6310,8 +6182,7 @@ class GGS_plusEqualElementsInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_plusEqualElementsInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6466,8 +6337,7 @@ class GGS_plusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstructi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_plusEqualElementsInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6544,8 +6414,7 @@ class GGS_plusEqualnstructionForGeneration : public GGS_semanticInstructionForGe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_plusEqualnstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6699,8 +6568,7 @@ class GGS_plusEqualnstructionForGeneration_2E_weak : public GGS_semanticInstruct
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_plusEqualnstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6781,8 +6649,7 @@ class GGS_opAssignInstructionForGeneration : public GGS_semanticInstructionForGe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_opAssignInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6939,8 +6806,7 @@ class GGS_opAssignInstructionForGeneration_2E_weak : public GGS_semanticInstruct
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_opAssignInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6999,8 +6865,7 @@ class GGS_dropInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_dropInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7146,8 +7011,7 @@ class GGS_dropInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_dropInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7268,8 +7132,7 @@ class GGS_fixitElementAST : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7357,8 +7220,7 @@ class GGS_fixitElementAST_2E_fixItInsertAfter : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItInsertAfter class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7436,8 +7298,7 @@ class GGS_fixitElementAST_2E_fixItInsertAfter_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItInsertAfter_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7525,8 +7386,7 @@ class GGS_fixitElementAST_2E_fixItInsertBefore : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItInsertBefore class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7604,8 +7464,7 @@ class GGS_fixitElementAST_2E_fixItInsertBefore_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItInsertBefore_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7693,8 +7552,7 @@ class GGS_fixitElementAST_2E_fixItReplace : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItReplace class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7772,8 +7630,7 @@ class GGS_fixitElementAST_2E_fixItReplace_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementAST_2E_fixItReplace_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7783,27 +7640,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_
 // Phase 1: @fixitListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_fixitListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_fixitListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_fixitListAST (const class GGS_fixitListAST & inEnumeratedObject,
                                     const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_fixitElementAST current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_fixitListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @fixitListAST list
@@ -7926,33 +7774,8 @@ class GGS_fixitListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_fixitListAST ;
  
-} ; // End of GGS_fixitListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_fixitListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_fixitListAST (const GGS_fixitListAST & inEnumeratedObject,
-                                    const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_fixitElementAST current_mElement (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_fixitListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ;
@@ -8027,8 +7850,7 @@ class GGS_fixitListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8099,8 +7921,7 @@ class GGS_errorInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_errorInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8255,8 +8076,7 @@ class GGS_errorInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_wea
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_errorInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8379,8 +8199,7 @@ class GGS_fixitElementForGeneration : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8456,8 +8275,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter : public AC_GALGAS_root 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItInsertAfter class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8535,8 +8353,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ : public AC_GALGAS_r
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8612,8 +8429,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore : public AC_GALGAS_root
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItInsertBefore class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8691,8 +8507,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ : public AC_GALGAS_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8768,8 +8583,7 @@ class GGS_fixitElementForGeneration_2E_fixItReplace : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItReplace class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8847,8 +8661,7 @@ class GGS_fixitElementForGeneration_2E_fixItReplace_3F_ : public AC_GALGAS_root 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitElementForGeneration_2E_fixItReplace_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8858,27 +8671,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGene
 // Phase 1: @fixitListForGeneration list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_fixitListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_fixitListForGeneration final : public cGenericAbstractEnumerator {
   public: cEnumerator_fixitListForGeneration (const class GGS_fixitListForGeneration & inEnumeratedObject,
                                               const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_fixitElementForGeneration current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_fixitListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @fixitListForGeneration list
@@ -9001,33 +8805,8 @@ class GGS_fixitListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_fixitListForGeneration ;
  
-} ; // End of GGS_fixitListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_fixitListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_fixitListForGeneration (const GGS_fixitListForGeneration & inEnumeratedObject,
-                                              const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_fixitElementForGeneration current_mElement (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_fixitListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGeneration ;
@@ -9102,8 +8881,7 @@ class GGS_fixitListForGeneration_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_fixitListForGeneration_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9207,8 +8985,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_errorInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9359,8 +9136,7 @@ class GGS_errorInstructionForGeneration_2E_weak : public GGS_semanticInstruction
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_errorInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9370,29 +9146,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionFor
 // Phase 1: @forInstructionEnumeratedObjectElementListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectElementListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_forInstructionEnumeratedObjectElementListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectElementListAST (const class GGS_forInstructionEnumeratedObjectElementListAST & inEnumeratedObject,
                                                                     const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
   public: class GGS_bool current_mDeclaredAsUnused (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_forInstructionEnumeratedObjectElementListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @forInstructionEnumeratedObjectElementListAST list
@@ -9553,35 +9320,8 @@ class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_forInstructionEnumeratedObjectElementListAST ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectElementListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectElementListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST & inEnumeratedObject,
-                                                                    const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mDeclaredAsUnused (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectElementListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ;
@@ -9680,8 +9420,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectElementListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9730,8 +9469,7 @@ class GGS_abstractEnumeratedCollectionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_abstractEnumeratedCollectionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9869,8 +9607,7 @@ class GGS_abstractEnumeratedCollectionAST_2E_weak : public AC_GALGAS_weak_refere
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_abstractEnumeratedCollectionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9935,8 +9672,7 @@ class GGS_enumeratedCollectionImplicitVarInExpAST : public GGS_abstractEnumerate
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionImplicitVarInExpAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10088,8 +9824,7 @@ class GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak : public GGS_abstractE
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10158,8 +9893,7 @@ class GGS_enumeratedCollectionVarInExpAST : public GGS_abstractEnumeratedCollect
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionVarInExpAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10314,8 +10048,7 @@ class GGS_enumeratedCollectionVarInExpAST_2E_weak : public GGS_abstractEnumerate
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionVarInExpAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10384,8 +10117,7 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionCstListInExpAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10540,8 +10272,7 @@ class GGS_enumeratedCollectionCstListInExpAST_2E_weak : public GGS_abstractEnume
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_enumeratedCollectionCstListInExpAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10551,28 +10282,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 // Phase 1: @forInstructionEnumeratedObjectListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_forInstructionEnumeratedObjectListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectListAST (const class GGS_forInstructionEnumeratedObjectListAST & inEnumeratedObject,
                                                              const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_bool current_mAscending (LOCATION_ARGS) const ;
   public: class GGS_abstractEnumeratedCollectionAST current_mEnumeratedCollection (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_forInstructionEnumeratedObjectListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @forInstructionEnumeratedObjectListAST list
@@ -10714,34 +10436,8 @@ class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_forInstructionEnumeratedObjectListAST ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST & inEnumeratedObject,
-                                                             const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_bool current_mAscending (LOCATION_ARGS) const ;
-  public: class GGS_abstractEnumeratedCollectionAST current_mEnumeratedCollection (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ;
@@ -10828,8 +10524,7 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10936,8 +10631,7 @@ class GGS_forInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11119,8 +10813,7 @@ class GGS_forInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11159,29 +10852,20 @@ void callExtensionMethod_analyzeEnumeration (class cPtr_abstractEnumeratedCollec
 // Phase 1: @forInstructionEnumeratedObjectListForGeneration list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_forInstructionEnumeratedObjectListForGeneration final : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectListForGeneration (const class GGS_forInstructionEnumeratedObjectListForGeneration & inEnumeratedObject,
                                                                        const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_string current_mEnumerationOrder (LOCATION_ARGS) const ;
   public: class GGS_semanticExpressionForGeneration current_mEnumeratedExpression (LOCATION_ARGS) const ;
   public: class GGS_string current_mEnumeratorCppName (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @forInstructionEnumeratedObjectListForGeneration list
@@ -11342,35 +11026,8 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_lis
 //--------------------------------- Friend
   friend class cEnumerator_forInstructionEnumeratedObjectListForGeneration ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_forInstructionEnumeratedObjectListForGeneration final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration & inEnumeratedObject,
-                                                                       const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_string current_mEnumerationOrder (LOCATION_ARGS) const ;
-  public: class GGS_semanticExpressionForGeneration current_mEnumeratedExpression (LOCATION_ARGS) const ;
-  public: class GGS_string current_mEnumeratorCppName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ;
@@ -11469,8 +11126,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionEnumeratedObjectListForGeneration_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11555,8 +11211,7 @@ class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGenerat
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11716,8 +11371,7 @@ class GGS_forInstructionForGeneration_2E_weak : public GGS_semanticInstructionFo
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_forInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11806,8 +11460,7 @@ class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak : pu
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11860,8 +11513,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone : public GGS_abs
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultNone class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12010,8 +11662,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak : public
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12068,8 +11719,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult : public GGS_abs
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationDropResult class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12223,8 +11873,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak : public
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12281,8 +11930,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GGS_ab
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInVar class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12436,8 +12084,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak : publi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12498,8 +12145,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12656,8 +12302,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12718,8 +12363,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pub
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12876,8 +12520,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_we
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12956,8 +12599,7 @@ class GGS_grammarInFileInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInFileInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13118,8 +12760,7 @@ class GGS_grammarInFileInstructionAST_2E_weak : public GGS_semanticInstructionAS
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInFileInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13206,8 +12847,7 @@ class GGS_grammarInStringInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInStringInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13374,8 +13014,7 @@ class GGS_grammarInStringInstructionAST_2E_weak : public GGS_semanticInstruction
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInStringInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13460,8 +13099,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticIns
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionWithSourceFileForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13621,8 +13259,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration_2E_weak : public GGS_sem
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionWithSourceFileForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13711,8 +13348,7 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_seman
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionWithSourceExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13875,8 +13511,7 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak : public G
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13952,8 +13587,7 @@ class GGS_incDecKind : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecKind class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14024,8 +13658,7 @@ class GGS_incDecInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14180,8 +13813,7 @@ class GGS_incDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_we
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14252,8 +13884,7 @@ class GGS_incDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecNoOVFInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14408,8 +14039,7 @@ class GGS_incDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstructionAST_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecNoOVFInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14468,8 +14098,7 @@ class GGS_selfIncDecInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfIncDecInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14615,8 +14244,7 @@ class GGS_selfIncDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfIncDecInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14675,8 +14303,7 @@ class GGS_selfIncDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfIncDecNoOVFInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14822,8 +14449,7 @@ class GGS_selfIncDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstruction
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_selfIncDecNoOVFInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14896,8 +14522,7 @@ class GGS_incDecInstructionForGeneration : public GGS_semanticInstructionForGene
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15048,8 +14673,7 @@ class GGS_incDecInstructionForGeneration_2E_weak : public GGS_semanticInstructio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15122,8 +14746,7 @@ class GGS_incDecNoOVFInstructionForGeneration : public GGS_semanticInstructionFo
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecNoOVFInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15274,8 +14897,7 @@ class GGS_incDecNoOVFInstructionForGeneration_2E_weak : public GGS_semanticInstr
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_incDecNoOVFInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15381,8 +15003,7 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionKind class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15494,8 +15115,7 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionKind_2E_letExp class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15573,8 +15193,7 @@ class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionKind_2E_letExp_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15662,8 +15281,7 @@ class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionKind_2E_regularExp class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15741,8 +15359,7 @@ class GGS_ifExpressionKind_2E_regularExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionKind_2E_regularExp_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15752,27 +15369,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E
 // Phase 1: @ifExpressionList list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_ifExpressionList final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_ifExpressionList final : public cGenericAbstractEnumerator {
   public: cEnumerator_ifExpressionList (const class GGS_ifExpressionList & inEnumeratedObject,
                                         const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_ifExpressionKind current_mExpression (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_ifExpressionList_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @ifExpressionList list
@@ -15895,33 +15503,8 @@ class GGS_ifExpressionList : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_ifExpressionList ;
  
-} ; // End of GGS_ifExpressionList class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_ifExpressionList final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_ifExpressionList (const GGS_ifExpressionList & inEnumeratedObject,
-                                        const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_ifExpressionKind current_mExpression (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_ifExpressionList_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList ;
@@ -15996,8 +15579,7 @@ class GGS_ifExpressionList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_ifExpressionList_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

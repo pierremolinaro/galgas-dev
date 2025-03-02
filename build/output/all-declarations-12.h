@@ -1464,8 +1464,7 @@ class GGS_lexiqueComponentAST : public GGS_semanticDeclarationAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_lexiqueComponentAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

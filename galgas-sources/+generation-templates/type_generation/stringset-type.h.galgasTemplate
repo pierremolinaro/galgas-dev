@@ -2,26 +2,17 @@
 // Phase 1: @stringset enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_stringset final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_stringset final : public cGenericAbstractEnumerator {
   public: cEnumerator_stringset (%?^%const class GGS_stringset & inEnumeratedObject,
      %!^%const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
 //--- Current element access
   public: class GGS_string current_key (LOCATION_ARGS) const ;
   public: class GGS_string current (LOCATION_ARGS) const ;
-} ;\n
-#endif
+} ;
 
 //--------------------------------------------------------------------------------------------------
 //   @stringset type

@@ -79,8 +79,7 @@ class GGS_extensionInitializerForGeneration : public GGS_semanticDeclarationWith
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_extensionInitializerForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -236,8 +235,7 @@ class GGS_extensionInitializerForGeneration_2E_weak : public GGS_semanticDeclara
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_extensionInitializerForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -326,8 +324,7 @@ class GGS_overrideExtensionGetterForGeneration : public GGS_semanticDeclarationW
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overrideExtensionGetterForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -492,8 +489,7 @@ class GGS_overrideExtensionGetterForGeneration_2E_weak : public GGS_semanticDecl
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overrideExtensionGetterForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -574,8 +570,7 @@ class GGS_overridingExtensionMethodForGeneration : public GGS_semanticDeclaratio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overridingExtensionMethodForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -734,8 +729,7 @@ class GGS_overridingExtensionMethodForGeneration_2E_weak : public GGS_semanticDe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overridingExtensionMethodForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -816,8 +810,7 @@ class GGS_overridingExtensionSetterForGeneration : public GGS_semanticDeclaratio
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overridingExtensionSetterForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -976,8 +969,7 @@ class GGS_overridingExtensionSetterForGeneration_2E_weak : public GGS_semanticDe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_overridingExtensionSetterForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1422,8 +1414,7 @@ class GGS_routinePrototypeDeclarationForGeneration : public GGS_semanticDeclarat
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_routinePrototypeDeclarationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1569,8 +1560,7 @@ class GGS_routinePrototypeDeclarationForGeneration_2E_weak : public GGS_semantic
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_routinePrototypeDeclarationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1639,8 +1629,7 @@ class GGS_routineImplementationForGeneration : public GGS_routinePrototypeDeclar
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_routineImplementationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1788,8 +1777,7 @@ class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototy
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_routineImplementationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1931,8 +1919,7 @@ class GGS_lexiqueDeclarationForGeneration : public GGS_semanticDeclarationWithHe
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_lexiqueDeclarationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2106,8 +2093,7 @@ class GGS_lexiqueDeclarationForGeneration_2E_weak : public GGS_semanticDeclarati
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_lexiqueDeclarationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2176,8 +2162,7 @@ class GGS_functionPrototypeDeclarationForGeneration : public GGS_semanticDeclara
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_functionPrototypeDeclarationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2326,8 +2311,7 @@ class GGS_functionPrototypeDeclarationForGeneration_2E_weak : public GGS_semanti
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_functionPrototypeDeclarationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2398,8 +2382,7 @@ class GGS_functionImplementationForGeneration : public GGS_functionPrototypeDecl
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_functionImplementationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2549,8 +2532,7 @@ class GGS_functionImplementationForGeneration_2E_weak : public GGS_functionProto
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_functionImplementationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2623,8 +2605,7 @@ class GGS_onceFunctionDeclarationForGeneration : public GGS_semanticDeclarationW
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_onceFunctionDeclarationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2782,8 +2763,7 @@ class GGS_onceFunctionDeclarationForGeneration_2E_weak : public GGS_semanticDecl
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_onceFunctionDeclarationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2860,8 +2840,7 @@ class GGS_filewrapperDeclarationForGeneration : public GGS_semanticDeclarationWi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_filewrapperDeclarationForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3022,8 +3001,7 @@ class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDecla
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_filewrapperDeclarationForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3088,8 +3066,7 @@ class GGS_programComponentForGeneration : public GGS_semanticDeclarationWithHead
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_programComponentForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3236,8 +3213,7 @@ class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclaration
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_programComponentForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3342,8 +3318,7 @@ class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGene
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

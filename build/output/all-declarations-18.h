@@ -91,8 +91,7 @@ class GGS_grammarForGeneration_2E_weak : public GGS_semanticDeclarationWithHeade
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_grammarForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -159,8 +158,7 @@ class GGS_primitiveTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_primitiveTypeForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -306,8 +304,7 @@ class GGS_primitiveTypeForGeneration_2E_weak : public GGS_semanticTypeForGenerat
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_primitiveTypeForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

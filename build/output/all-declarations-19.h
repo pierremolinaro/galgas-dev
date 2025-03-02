@@ -65,8 +65,7 @@ class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstr
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_terminalInstructionForGrammarAnalysis class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -157,8 +156,7 @@ class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyn
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_terminalInstructionForGrammarAnalysis_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

@@ -11,28 +11,19 @@
 // Phase 1: @_32_lstringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator__32_lstringlist final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator__32_lstringlist final : public cGenericAbstractEnumerator {
   public: cEnumerator__32_lstringlist (const class GGS__32_lstringlist & inEnumeratedObject,
                                        const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_lstring current_mValue_30_ (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mValue_31_ (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS__32_lstringlist_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @2lstringlist list
@@ -174,34 +165,8 @@ class GGS__32_lstringlist : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator__32_lstringlist ;
  
-} ; // End of GGS__32_lstringlist class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator__32_lstringlist final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator__32_lstringlist (const GGS__32_lstringlist & inEnumeratedObject,
-                                       const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_lstring current_mValue_30_ (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mValue_31_ (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS__32_lstringlist_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist ;
@@ -288,8 +253,7 @@ class GGS__32_lstringlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS__32_lstringlist_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -708,8 +672,7 @@ class GGS_templateInstructionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -840,8 +803,7 @@ class GGS_templateInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -851,27 +813,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateInstructionListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_templateInstructionListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_templateInstructionListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_templateInstructionListAST (const class GGS_templateInstructionListAST & inEnumeratedObject,
                                                   const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_templateInstructionAST current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_templateInstructionListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionListAST list
@@ -994,33 +947,8 @@ class GGS_templateInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_templateInstructionListAST ;
  
-} ; // End of GGS_templateInstructionListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_templateInstructionListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_templateInstructionListAST (const GGS_templateInstructionListAST & inEnumeratedObject,
-                                                  const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_templateInstructionAST current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListAST ;
@@ -1095,8 +1023,7 @@ class GGS_templateInstructionListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1145,8 +1072,7 @@ class GGS_templateExpressionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1277,8 +1203,7 @@ class GGS_templateExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1288,29 +1213,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionA
 // Phase 1: @templateExpressionListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_templateExpressionListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_templateExpressionListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_templateExpressionListAST (const class GGS_templateExpressionListAST & inEnumeratedObject,
                                                  const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_lstring current_mActualSelector (LOCATION_ARGS) const ;
   public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfExpressionLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_templateExpressionListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @templateExpressionListAST list
@@ -1471,35 +1387,8 @@ class GGS_templateExpressionListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_templateExpressionListAST ;
  
-} ; // End of GGS_templateExpressionListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_templateExpressionListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_templateExpressionListAST (const GGS_templateExpressionListAST & inEnumeratedObject,
-                                                 const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_lstring current_mActualSelector (LOCATION_ARGS) const ;
-  public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
-  public: class GGS_location current_mEndOfExpressionLocation (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateExpressionListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionListAST ;
@@ -1598,8 +1487,7 @@ class GGS_templateExpressionListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateExpressionListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1664,8 +1552,7 @@ class GGS_templateClassFunctionAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateClassFunctionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1810,8 +1697,7 @@ class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateClassFunctionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1876,8 +1762,7 @@ class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFileWrapperTemplateCallAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2022,8 +1907,7 @@ class GGS_templateFileWrapperTemplateCallAST_2E_weak : public GGS_templateExpres
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFileWrapperTemplateCallAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2088,8 +1972,7 @@ class GGS_templateExtensionTemplateCallAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateExtensionTemplateCallAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2234,8 +2117,7 @@ class GGS_templateExtensionTemplateCallAST_2E_weak : public GGS_templateExpressi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateExtensionTemplateCallAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2300,8 +2182,7 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateAndOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2446,8 +2327,7 @@ class GGS_templateAndOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateAndOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2512,8 +2392,7 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateOrOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2658,8 +2537,7 @@ class GGS_templateOrOperationAST_2E_weak : public GGS_templateExpressionAST_2E_w
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateOrOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2724,8 +2602,7 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateXorOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2870,8 +2747,7 @@ class GGS_templateXorOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateXorOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2928,8 +2804,7 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateTrueBoolAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3068,8 +2943,7 @@ class GGS_templateTrueBoolAST_2E_weak : public GGS_templateExpressionAST_2E_weak
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateTrueBoolAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3126,8 +3000,7 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFalseBoolAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3266,8 +3139,7 @@ class GGS_templateFalseBoolAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFalseBoolAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3328,8 +3200,7 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralStringExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3471,8 +3342,7 @@ class GGS_templateLiteralStringExpressionAST_2E_weak : public GGS_templateExpres
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralStringExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3529,8 +3399,7 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralUIntExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3669,8 +3538,7 @@ class GGS_templateLiteralUIntExpressionAST_2E_weak : public GGS_templateExpressi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralUIntExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3727,8 +3595,7 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralCharExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3867,8 +3734,7 @@ class GGS_templateLiteralCharExpressionAST_2E_weak : public GGS_templateExpressi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralCharExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3925,8 +3791,7 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralDoubleExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4065,8 +3930,7 @@ class GGS_templateLiteralDoubleExpressionAST_2E_weak : public GGS_templateExpres
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLiteralDoubleExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4131,8 +3995,7 @@ class GGS_structFieldAccessTemplateExpressionAST : public GGS_templateExpression
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structFieldAccessTemplateExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4277,8 +4140,7 @@ class GGS_structFieldAccessTemplateExpressionAST_2E_weak : public GGS_templateEx
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_structFieldAccessTemplateExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4339,8 +4201,7 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateNotOperatorAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4482,8 +4343,7 @@ class GGS_templateNotOperatorAST_2E_weak : public GGS_templateExpressionAST_2E_w
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateNotOperatorAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4544,8 +4404,7 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLogicalNegateAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4687,8 +4546,7 @@ class GGS_templateLogicalNegateAST_2E_weak : public GGS_templateExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLogicalNegateAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4753,8 +4611,7 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateOptionAccessAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4899,8 +4756,7 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateOptionAccessAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4981,8 +4837,7 @@ class GGS_dynamicTypeComparisonKind : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_dynamicTypeComparisonKind class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5051,8 +4906,7 @@ class GGS_templateTestDynamicClassAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateTestDynamicClassAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5200,8 +5054,7 @@ class GGS_templateTestDynamicClassAST_2E_weak : public GGS_templateExpressionAST
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateTestDynamicClassAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5262,8 +5115,7 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFunctionCallAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5405,8 +5257,7 @@ class GGS_templateFunctionCallAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateFunctionCallAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5463,8 +5314,7 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateVarInExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5603,8 +5453,7 @@ class GGS_templateVarInExpressionAST_2E_weak : public GGS_templateExpressionAST_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateVarInExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5669,8 +5518,7 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateAddOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5815,8 +5663,7 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateAddOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5881,8 +5728,7 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateSubOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6027,8 +5873,7 @@ class GGS_templateSubOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateSubOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6093,8 +5938,7 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateMultiplyOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6239,8 +6083,7 @@ class GGS_templateMultiplyOperationAST_2E_weak : public GGS_templateExpressionAS
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateMultiplyOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6305,8 +6148,7 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateDivideOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6451,8 +6293,7 @@ class GGS_templateDivideOperationAST_2E_weak : public GGS_templateExpressionAST_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateDivideOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6517,8 +6358,7 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateModuloOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6663,8 +6503,7 @@ class GGS_templateModuloOperationAST_2E_weak : public GGS_templateExpressionAST_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateModuloOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6725,8 +6564,7 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateUnaryMinusOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6868,8 +6706,7 @@ class GGS_templateUnaryMinusOperationAST_2E_weak : public GGS_templateExpression
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateUnaryMinusOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6934,8 +6771,7 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateEqualTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7080,8 +6916,7 @@ class GGS_templateEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateEqualTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7146,8 +6981,7 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateNonEqualTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7292,8 +7126,7 @@ class GGS_templateNonEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateNonEqualTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7358,8 +7191,7 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateStrictInfTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7504,8 +7336,7 @@ class GGS_templateStrictInfTestAST_2E_weak : public GGS_templateExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateStrictInfTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7570,8 +7401,7 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInfOrEqualTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7716,8 +7546,7 @@ class GGS_templateInfOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInfOrEqualTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7782,8 +7611,7 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateStrictSupTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7928,8 +7756,7 @@ class GGS_templateStrictSupTestAST_2E_weak : public GGS_templateExpressionAST_2E
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateStrictSupTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7994,8 +7821,7 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateSupOrEqualTestAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8140,8 +7966,7 @@ class GGS_templateSupOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateSupOrEqualTestAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8206,8 +8031,7 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLeftShiftOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8352,8 +8176,7 @@ class GGS_templateLeftShiftOperationAST_2E_weak : public GGS_templateExpressionA
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateLeftShiftOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8418,8 +8241,7 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateRightShiftOperationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8564,8 +8386,7 @@ class GGS_templateRightShiftOperationAST_2E_weak : public GGS_templateExpression
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateRightShiftOperationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8622,8 +8443,7 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionStringAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8762,8 +8582,7 @@ class GGS_templateInstructionStringAST_2E_weak : public GGS_templateInstructionA
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionStringAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8824,8 +8643,7 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionExpressionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8967,8 +8785,7 @@ class GGS_templateInstructionExpressionAST_2E_weak : public GGS_templateInstruct
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionExpressionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9033,8 +8850,7 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateBlockInstructionAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9179,8 +8995,7 @@ class GGS_templateBlockInstructionAST_2E_weak : public GGS_templateInstructionAS
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateBlockInstructionAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9233,8 +9048,7 @@ class GGS_templateInstructionGetColumnLocationAST : public GGS_templateInstructi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionGetColumnLocationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9368,8 +9182,7 @@ class GGS_templateInstructionGetColumnLocationAST_2E_weak : public GGS_templateI
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionGetColumnLocationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9422,8 +9235,7 @@ class GGS_templateInstructionGotoColumnLocationAST : public GGS_templateInstruct
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionGotoColumnLocationAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9557,8 +9369,7 @@ class GGS_templateInstructionGotoColumnLocationAST_2E_weak : public GGS_template
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionGotoColumnLocationAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9568,28 +9379,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateInstructionIfBranchListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_templateInstructionIfBranchListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_templateInstructionIfBranchListAST final : public cGenericAbstractEnumerator {
   public: cEnumerator_templateInstructionIfBranchListAST (const class GGS_templateInstructionIfBranchListAST & inEnumeratedObject,
                                                           const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
   public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
   public: class GGS_templateInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_templateInstructionIfBranchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
-
-#endif
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionIfBranchListAST list
@@ -9731,34 +9533,8 @@ class GGS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
   friend class cEnumerator_templateInstructionIfBranchListAST ;
  
-} ; // End of GGS_templateInstructionIfBranchListAST class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef AZERTY
-class cEnumerator_templateInstructionIfBranchListAST final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
-  public: cEnumerator_templateInstructionIfBranchListAST (const GGS_templateInstructionIfBranchListAST & inEnumeratedObject,
-                                                          const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
-  public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
-  public: class GGS_templateInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionIfBranchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
-#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST ;
@@ -9845,8 +9621,7 @@ class GGS_templateInstructionIfBranchListAST_2E_element : public AC_GALGAS_root 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionIfBranchListAST_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9907,8 +9682,7 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionIfAST class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10050,8 +9824,7 @@ class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionIfAST_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10100,8 +9873,7 @@ class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10232,8 +10004,7 @@ class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10288,8 +10059,7 @@ class GGS_semanticExpressionForGeneration : public AC_GALGAS_reference_class {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_semanticExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10377,8 +10147,7 @@ class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_unifiedTypeMapEntry class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10488,8 +10257,7 @@ class GGS_templateInstructionExpressionForGeneration : public GGS_templateInstru
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionExpressionForGeneration class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10628,8 +10396,7 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_templateInstructionExpressionForGeneration_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

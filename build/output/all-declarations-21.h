@@ -306,8 +306,7 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_XcodeProjectDescriptor class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

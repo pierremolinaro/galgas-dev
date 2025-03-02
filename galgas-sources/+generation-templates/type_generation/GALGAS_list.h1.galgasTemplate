@@ -2,21 +2,14 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " list enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-#ifdef AZERTY
-class cEnumerator_%!TYPE_IDENTIFIER% final
-#ifndef NEW_ITERATOR
-  : public cGenericAbstractEnumerator
-#endif
-{
+class cEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
   public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const EnumerationOrder inOrder) ;
 
-//--- Current element access
-  #ifdef NEW_ITERATOR
-    public: bool hasCurrentObject (void) const ;
-    public: void gotoNextObject (void) ;
-    public: void rewind (void) ;
-  #endif
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
@@ -25,8 +18,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% final
 %//--- Current element access\n%
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
-%} ;\n
-#endif
+%} ;
 
 //--------------------------------------------------------------------------------------------------
 //%!" Phase 1: @" + TYPE_NAME + " list"%
