@@ -726,6 +726,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_templateInstructionListAST_2E_element & GGS_templateInstructionListAST_2E_element::operator = (const GGS_templateInstructionListAST_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_templateInstructionListAST_2E_element::~ GGS_templateInstructionListAST_2E_element (void) {
 }
 
@@ -832,6 +839,14 @@ GGS_templateInstructionListAST_2E_element GGS_templateInstructionListAST_2E_elem
 GGS_templateInstructionIfBranchListAST_2E_element::GGS_templateInstructionIfBranchListAST_2E_element (void) :
 mProperty_mExpression (),
 mProperty_mInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchListAST_2E_element & GGS_templateInstructionIfBranchListAST_2E_element::operator = (const GGS_templateInstructionIfBranchListAST_2E_element & inSource) {
+  mProperty_mExpression = inSource.mProperty_mExpression ;
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -951,6 +966,14 @@ GGS_templateInstructionIfBranchListAST_2E_element GGS_templateInstructionIfBranc
 GGS_templateInstructionForEnumerationAST_2E_implicit::GGS_templateInstructionForEnumerationAST_2E_implicit (void) :
 mProperty_prefix (),
 mProperty_remplacementRange () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForEnumerationAST_2E_implicit & GGS_templateInstructionForEnumerationAST_2E_implicit::operator = (const GGS_templateInstructionForEnumerationAST_2E_implicit & inSource) {
+  mProperty_prefix = inSource.mProperty_prefix ;
+  mProperty_remplacementRange = inSource.mProperty_remplacementRange ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1190,6 +1213,14 @@ GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ GGS_templateInstruction
 GGS_templateInstructionForEnumerationAST_2E_explicit::GGS_templateInstructionForEnumerationAST_2E_explicit (void) :
 mProperty_enumeration (),
 mProperty_endOfProperties () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForEnumerationAST_2E_explicit & GGS_templateInstructionForEnumerationAST_2E_explicit::operator = (const GGS_templateInstructionForEnumerationAST_2E_explicit & inSource) {
+  mProperty_enumeration = inSource.mProperty_enumeration ;
+  mProperty_endOfProperties = inSource.mProperty_endOfProperties ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1435,6 +1466,16 @@ mProperty_endOfBranch () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_templateInstructionSwitchBranchListAST_2E_element & GGS_templateInstructionSwitchBranchListAST_2E_element::operator = (const GGS_templateInstructionSwitchBranchListAST_2E_element & inSource) {
+  mProperty_constantList = inSource.mProperty_constantList ;
+  mProperty_associatedValuesExtraction = inSource.mProperty_associatedValuesExtraction ;
+  mProperty_instructionList = inSource.mProperty_instructionList ;
+  mProperty_endOfBranch = inSource.mProperty_endOfBranch ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_templateInstructionSwitchBranchListAST_2E_element::~ GGS_templateInstructionSwitchBranchListAST_2E_element (void) {
 }
 
@@ -1570,6 +1611,16 @@ mProperty_mConstantList (),
 mProperty_mExtractedAssociatedValuesForGeneration (),
 mProperty_mEndOfBranchLocationIndex (),
 mProperty_mInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchListForGeneration_2E_element & GGS_templateInstructionSwitchBranchListForGeneration_2E_element::operator = (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inSource) {
+  mProperty_mConstantList = inSource.mProperty_mConstantList ;
+  mProperty_mExtractedAssociatedValuesForGeneration = inSource.mProperty_mExtractedAssociatedValuesForGeneration ;
+  mProperty_mEndOfBranchLocationIndex = inSource.mProperty_mEndOfBranchLocationIndex ;
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1710,6 +1761,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalInstructionListAST_2E_element & GGS_lexicalInstructionListAST_2E_element::operator = (const GGS_lexicalInstructionListAST_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalInstructionListAST_2E_element::~ GGS_lexicalInstructionListAST_2E_element (void) {
 }
 
@@ -1815,6 +1873,13 @@ GGS_lexicalInstructionListAST_2E_element GGS_lexicalInstructionListAST_2E_elemen
 
 GGS_lexicalRuleListAST_2E_element::GGS_lexicalRuleListAST_2E_element (void) :
 mProperty_mLexicalRule () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRuleListAST_2E_element & GGS_lexicalRuleListAST_2E_element::operator = (const GGS_lexicalRuleListAST_2E_element & inSource) {
+  mProperty_mLexicalRule = inSource.mProperty_mLexicalRule ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1925,6 +1990,14 @@ GGS_lexicalRuleListAST_2E_element GGS_lexicalRuleListAST_2E_element::extractObje
 GGS_lexicalWhileBranchListAST_2E_element::GGS_lexicalWhileBranchListAST_2E_element (void) :
 mProperty_mWhileExpression (),
 mProperty_mWhileInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWhileBranchListAST_2E_element & GGS_lexicalWhileBranchListAST_2E_element::operator = (const GGS_lexicalWhileBranchListAST_2E_element & inSource) {
+  mProperty_mWhileExpression = inSource.mProperty_mWhileExpression ;
+  mProperty_mWhileInstructionList = inSource.mProperty_mWhileInstructionList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2048,6 +2121,14 @@ mProperty_mSelectInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalSelectBranchListAST_2E_element & GGS_lexicalSelectBranchListAST_2E_element::operator = (const GGS_lexicalSelectBranchListAST_2E_element & inSource) {
+  mProperty_mSelectExpression = inSource.mProperty_mSelectExpression ;
+  mProperty_mSelectInstructionList = inSource.mProperty_mSelectInstructionList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalSelectBranchListAST_2E_element::~ GGS_lexicalSelectBranchListAST_2E_element (void) {
 }
 
@@ -2166,6 +2247,13 @@ mProperty_mLexicalActualInputArgument () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalFunctionCallActualArgumentListAST_2E_element & GGS_lexicalFunctionCallActualArgumentListAST_2E_element::operator = (const GGS_lexicalFunctionCallActualArgumentListAST_2E_element & inSource) {
+  mProperty_mLexicalActualInputArgument = inSource.mProperty_mLexicalActualInputArgument ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalFunctionCallActualArgumentListAST_2E_element::~ GGS_lexicalFunctionCallActualArgumentListAST_2E_element (void) {
 }
 
@@ -2273,6 +2361,15 @@ GGS_tokenSortedlist_2E_element::GGS_tokenSortedlist_2E_element (void) :
 mProperty_mLength (),
 mProperty_mName (),
 mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_tokenSortedlist_2E_element & GGS_tokenSortedlist_2E_element::operator = (const GGS_tokenSortedlist_2E_element & inSource) {
+  mProperty_mLength = inSource.mProperty_mLength ;
+  mProperty_mName = inSource.mProperty_mName ;
+  mProperty_mTerminalName = inSource.mProperty_mTerminalName ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2406,6 +2503,15 @@ mProperty_mArgumentNameForComment () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalRoutineFormalArgumentList_2E_element & GGS_lexicalRoutineFormalArgumentList_2E_element::operator = (const GGS_lexicalRoutineFormalArgumentList_2E_element & inSource) {
+  mProperty_mLexicalFormalArgumentMode = inSource.mProperty_mLexicalFormalArgumentMode ;
+  mProperty_mLexicalFormalArgumentType = inSource.mProperty_mLexicalFormalArgumentType ;
+  mProperty_mArgumentNameForComment = inSource.mProperty_mArgumentNameForComment ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalRoutineFormalArgumentList_2E_element::~ GGS_lexicalRoutineFormalArgumentList_2E_element (void) {
 }
 
@@ -2534,6 +2640,14 @@ mProperty_mArgumentNameForComment () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalFunctionFormalArgumentList_2E_element & GGS_lexicalFunctionFormalArgumentList_2E_element::operator = (const GGS_lexicalFunctionFormalArgumentList_2E_element & inSource) {
+  mProperty_mLexicalType = inSource.mProperty_mLexicalType ;
+  mProperty_mArgumentNameForComment = inSource.mProperty_mArgumentNameForComment ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalFunctionFormalArgumentList_2E_element::~ GGS_lexicalFunctionFormalArgumentList_2E_element (void) {
 }
 
@@ -2652,6 +2766,13 @@ mProperty_mLexicalRoutineActualArgument () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalRoutineCallActualArgumentListAST_2E_element & GGS_lexicalRoutineCallActualArgumentListAST_2E_element::operator = (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inSource) {
+  mProperty_mLexicalRoutineActualArgument = inSource.mProperty_mLexicalRoutineActualArgument ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lexicalRoutineCallActualArgumentListAST_2E_element::~ GGS_lexicalRoutineCallActualArgumentListAST_2E_element (void) {
 }
 
@@ -2761,6 +2882,17 @@ mProperty_mOptionChar (),
 mProperty_mOptionString (),
 mProperty_mComment (),
 mProperty_mDefaultValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionSortedList_2E_element & GGS_commandLineOptionSortedList_2E_element::operator = (const GGS_commandLineOptionSortedList_2E_element & inSource) {
+  mProperty_mOptionIdentifier = inSource.mProperty_mOptionIdentifier ;
+  mProperty_mOptionChar = inSource.mProperty_mOptionChar ;
+  mProperty_mOptionString = inSource.mProperty_mOptionString ;
+  mProperty_mComment = inSource.mProperty_mComment ;
+  mProperty_mDefaultValue = inSource.mProperty_mDefaultValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2912,6 +3044,15 @@ mProperty_mLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_guiLabelListAST_2E_element & GGS_guiLabelListAST_2E_element::operator = (const GGS_guiLabelListAST_2E_element & inSource) {
+  mProperty_mLeadingCharacterStrippedCount = inSource.mProperty_mLeadingCharacterStrippedCount ;
+  mProperty_mTerminalList = inSource.mProperty_mTerminalList ;
+  mProperty_mLocation = inSource.mProperty_mLocation ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_guiLabelListAST_2E_element::~ GGS_guiLabelListAST_2E_element (void) {
 }
 
@@ -3039,6 +3180,17 @@ mProperty_mOptionIdentifier (),
 mProperty_mOptionChar (),
 mProperty_mOptionString (),
 mProperty_mComment () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_guiCommandLineOptionList_2E_element & GGS_guiCommandLineOptionList_2E_element::operator = (const GGS_guiCommandLineOptionList_2E_element & inSource) {
+  mProperty_mOptionComponent = inSource.mProperty_mOptionComponent ;
+  mProperty_mOptionIdentifier = inSource.mProperty_mOptionIdentifier ;
+  mProperty_mOptionChar = inSource.mProperty_mOptionChar ;
+  mProperty_mOptionString = inSource.mProperty_mOptionString ;
+  mProperty_mComment = inSource.mProperty_mComment ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3189,6 +3341,14 @@ mProperty_mContents () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_textMacroList_2E_element & GGS_textMacroList_2E_element::operator = (const GGS_textMacroList_2E_element & inSource) {
+  mProperty_mKey = inSource.mProperty_mKey ;
+  mProperty_mContents = inSource.mProperty_mContents ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_textMacroList_2E_element::~ GGS_textMacroList_2E_element (void) {
 }
 
@@ -3309,6 +3469,19 @@ mProperty_mTitle (),
 mProperty_mTextMacroList (),
 mProperty_mLabels (),
 mProperty_mLexicalStyleList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_importedLexiqueList_2E_element & GGS_importedLexiqueList_2E_element::operator = (const GGS_importedLexiqueList_2E_element & inSource) {
+  mProperty_mLexiqueClassName = inSource.mProperty_mLexiqueClassName ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mBlockComment = inSource.mProperty_mBlockComment ;
+  mProperty_mTitle = inSource.mProperty_mTitle ;
+  mProperty_mTextMacroList = inSource.mProperty_mTextMacroList ;
+  mProperty_mLabels = inSource.mProperty_mLabels ;
+  mProperty_mLexicalStyleList = inSource.mProperty_mLexicalStyleList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3476,6 +3649,13 @@ mProperty_initializer () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_initializerSignatureList_2E_element & GGS_initializerSignatureList_2E_element::operator = (const GGS_initializerSignatureList_2E_element & inSource) {
+  mProperty_initializer = inSource.mProperty_initializer ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_initializerSignatureList_2E_element::~ GGS_initializerSignatureList_2E_element (void) {
 }
 
@@ -3581,6 +3761,13 @@ GGS_initializerSignatureList_2E_element GGS_initializerSignatureList_2E_element:
 
 GGS_propertyInCollectionInitializationAST_2E_some::GGS_propertyInCollectionInitializationAST_2E_some (void) :
 mProperty_expression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionInitializationAST_2E_some & GGS_propertyInCollectionInitializationAST_2E_some::operator = (const GGS_propertyInCollectionInitializationAST_2E_some & inSource) {
+  mProperty_expression = inSource.mProperty_expression ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3842,6 +4029,14 @@ mProperty_associatedValueTypeList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_enumConstantListForGeneration_2E_element & GGS_enumConstantListForGeneration_2E_element::operator = (const GGS_enumConstantListForGeneration_2E_element & inSource) {
+  mProperty_name = inSource.mProperty_name ;
+  mProperty_associatedValueTypeList = inSource.mProperty_associatedValueTypeList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_enumConstantListForGeneration_2E_element::~ GGS_enumConstantListForGeneration_2E_element (void) {
 }
 
@@ -3960,6 +4155,13 @@ mProperty_mParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_externTypeConstructorList_2E_element & GGS_externTypeConstructorList_2E_element::operator = (const GGS_externTypeConstructorList_2E_element & inSource) {
+  mProperty_mParameterList = inSource.mProperty_mParameterList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_externTypeConstructorList_2E_element::~ GGS_externTypeConstructorList_2E_element (void) {
 }
 
@@ -4065,6 +4267,13 @@ GGS_externTypeConstructorList_2E_element GGS_externTypeConstructorList_2E_elemen
 
 GGS_insertOrReplaceDeclarationListAST_2E_element::GGS_insertOrReplaceDeclarationListAST_2E_element (void) :
 mProperty_mInsertOrReplaceDeclarationLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_insertOrReplaceDeclarationListAST_2E_element & GGS_insertOrReplaceDeclarationListAST_2E_element::operator = (const GGS_insertOrReplaceDeclarationListAST_2E_element & inSource) {
+  mProperty_mInsertOrReplaceDeclarationLocation = inSource.mProperty_mInsertOrReplaceDeclarationLocation ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4176,6 +4385,15 @@ GGS_sortDescriptorListForGeneration_2E_element::GGS_sortDescriptorListForGenerat
 mProperty_mAttributeTypeIndex (),
 mProperty_mAttributeName (),
 mProperty_mAscendingOrder () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortDescriptorListForGeneration_2E_element & GGS_sortDescriptorListForGeneration_2E_element::operator = (const GGS_sortDescriptorListForGeneration_2E_element & inSource) {
+  mProperty_mAttributeTypeIndex = inSource.mProperty_mAttributeTypeIndex ;
+  mProperty_mAttributeName = inSource.mProperty_mAttributeName ;
+  mProperty_mAscendingOrder = inSource.mProperty_mAscendingOrder ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4303,6 +4521,13 @@ GGS_sortDescriptorListForGeneration_2E_element GGS_sortDescriptorListForGenerati
 
 GGS_typeKindEnum_2E_classType::GGS_typeKindEnum_2E_classType (void) :
 mProperty_isReference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeKindEnum_2E_classType & GGS_typeKindEnum_2E_classType::operator = (const GGS_typeKindEnum_2E_classType & inSource) {
+  mProperty_isReference = inSource.mProperty_isReference ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4563,6 +4788,13 @@ mProperty_referenceType () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_typeKindEnum_2E_weakReferenceType & GGS_typeKindEnum_2E_weakReferenceType::operator = (const GGS_typeKindEnum_2E_weakReferenceType & inSource) {
+  mProperty_referenceType = inSource.mProperty_referenceType ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_typeKindEnum_2E_weakReferenceType::~ GGS_typeKindEnum_2E_weakReferenceType (void) {
 }
 
@@ -4815,6 +5047,13 @@ GGS_typeKindEnum_2E_weakReferenceType_3F_ GGS_typeKindEnum_2E_weakReferenceType_
 
 GGS_typeKindEnum_2E_enumType::GGS_typeKindEnum_2E_enumType (void) :
 mProperty_constantMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeKindEnum_2E_enumType & GGS_typeKindEnum_2E_enumType::operator = (const GGS_typeKindEnum_2E_enumType & inSource) {
+  mProperty_constantMap = inSource.mProperty_constantMap ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5075,6 +5314,13 @@ mProperty_usedInSubscope () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_localVarValuation_2E_declared & GGS_localVarValuation_2E_declared::operator = (const GGS_localVarValuation_2E_declared & inSource) {
+  mProperty_usedInSubscope = inSource.mProperty_usedInSubscope ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_localVarValuation_2E_declared::~ GGS_localVarValuation_2E_declared (void) {
 }
 
@@ -5331,6 +5577,13 @@ mProperty_mMap () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_localVarMapListForLLVM_2E_element & GGS_localVarMapListForLLVM_2E_element::operator = (const GGS_localVarMapListForLLVM_2E_element & inSource) {
+  mProperty_mMap = inSource.mProperty_mMap ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_localVarMapListForLLVM_2E_element::~ GGS_localVarMapListForLLVM_2E_element (void) {
 }
 
@@ -5436,6 +5689,13 @@ GGS_localVarMapListForLLVM_2E_element GGS_localVarMapListForLLVM_2E_element::ext
 
 GGS_overrideKind_2E_selectOverrideFirstBranch::GGS_overrideKind_2E_selectOverrideFirstBranch (void) :
 mProperty_savedManager () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_overrideKind_2E_selectOverrideFirstBranch & GGS_overrideKind_2E_selectOverrideFirstBranch::operator = (const GGS_overrideKind_2E_selectOverrideFirstBranch & inSource) {
+  mProperty_savedManager = inSource.mProperty_savedManager ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5666,6 +5926,14 @@ GGS_overrideKind_2E_selectOverrideFirstBranch_3F_ GGS_overrideKind_2E_selectOver
 GGS_overrideKind_2E_selectOverrideNextBranches::GGS_overrideKind_2E_selectOverrideNextBranches (void) :
 mProperty_savedManager (),
 mProperty_referenceManager () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_overrideKind_2E_selectOverrideNextBranches & GGS_overrideKind_2E_selectOverrideNextBranches::operator = (const GGS_overrideKind_2E_selectOverrideNextBranches & inSource) {
+  mProperty_savedManager = inSource.mProperty_savedManager ;
+  mProperty_referenceManager = inSource.mProperty_referenceManager ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5908,6 +6176,13 @@ mProperty_mOverrideKind () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_openedOverrideList_2E_element & GGS_openedOverrideList_2E_element::operator = (const GGS_openedOverrideList_2E_element & inSource) {
+  mProperty_mOverrideKind = inSource.mProperty_mOverrideKind ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_openedOverrideList_2E_element::~ GGS_openedOverrideList_2E_element (void) {
 }
 
@@ -6013,6 +6288,13 @@ GGS_openedOverrideList_2E_element GGS_openedOverrideList_2E_element::extractObje
 
 GGS_unifiedTypeMapEntry_2E_element::GGS_unifiedTypeMapEntry_2E_element (void) :
 mProperty_weakElement () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry_2E_element & GGS_unifiedTypeMapEntry_2E_element::operator = (const GGS_unifiedTypeMapEntry_2E_element & inSource) {
+  mProperty_weakElement = inSource.mProperty_weakElement ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6273,6 +6555,13 @@ mProperty_mActualParameter () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_actualParameterListAST_2E_element & GGS_actualParameterListAST_2E_element::operator = (const GGS_actualParameterListAST_2E_element & inSource) {
+  mProperty_mActualParameter = inSource.mProperty_mActualParameter ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_actualParameterListAST_2E_element::~ GGS_actualParameterListAST_2E_element (void) {
 }
 
@@ -6369,125 +6658,6 @@ GGS_actualParameterListAST_2E_element GGS_actualParameterListAST_2E_element::ext
       result = *p ;
     }else{
       inCompiler->castError ("actualParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element::GGS_syntaxExtensionsDictionary_2E_element (void) :
-mProperty_key (),
-mProperty_extensionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element::~ GGS_syntaxExtensionsDictionary_2E_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element GGS_syntaxExtensionsDictionary_2E_element::init_21__21_ (const GGS_string & in_key,
-                                                                                                   const GGS_galgas_33_SyntaxExtensionListAST & in_extensionList,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_extensionList = in_extensionList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element::GGS_syntaxExtensionsDictionary_2E_element (const GGS_string & inOperand0,
-                                                                                      const GGS_galgas_33_SyntaxExtensionListAST & inOperand1) :
-mProperty_key (inOperand0),
-mProperty_extensionList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element GGS_syntaxExtensionsDictionary_2E_element::class_func_new (const GGS_string & in_key,
-                                                                                                     const GGS_galgas_33_SyntaxExtensionListAST & in_extensionList,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_extensionList = in_extensionList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxExtensionsDictionary_2E_element::isValid (void) const {
-  return mProperty_key.isValid () && mProperty_extensionList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary_2E_element::drop (void) {
-  mProperty_key.drop () ;
-  mProperty_extensionList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary_2E_element::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxExtensionsDictionary.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_key.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_extensionList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxExtensionsDictionary.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ("syntaxExtensionsDictionary.element",
-                                                                                             nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_syntaxExtensionsDictionary_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_syntaxExtensionsDictionary_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_syntaxExtensionsDictionary_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element GGS_syntaxExtensionsDictionary_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary_2E_element result ;
-  const GGS_syntaxExtensionsDictionary_2E_element * p = (const GGS_syntaxExtensionsDictionary_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_syntaxExtensionsDictionary_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxExtensionsDictionary.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6621,6 +6791,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticInstructionListAST_2E_element & GGS_semanticInstructionListAST_2E_element::operator = (const GGS_semanticInstructionListAST_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticInstructionListAST_2E_element::~ GGS_semanticInstructionListAST_2E_element (void) {
 }
 
@@ -6726,6 +6903,13 @@ GGS_semanticInstructionListAST_2E_element GGS_semanticInstructionListAST_2E_elem
 
 GGS_semanticDeclarationListAST_2E_element::GGS_semanticDeclarationListAST_2E_element (void) :
 mProperty_mSemanticDeclaration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListAST_2E_element & GGS_semanticDeclarationListAST_2E_element::operator = (const GGS_semanticDeclarationListAST_2E_element & inSource) {
+  mProperty_mSemanticDeclaration = inSource.mProperty_mSemanticDeclaration ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6839,6 +7023,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_syntaxInstructionList_2E_element & GGS_syntaxInstructionList_2E_element::operator = (const GGS_syntaxInstructionList_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_syntaxInstructionList_2E_element::~ GGS_syntaxInstructionList_2E_element (void) {
 }
 
@@ -6945,6 +7136,14 @@ GGS_syntaxInstructionList_2E_element GGS_syntaxInstructionList_2E_element::extra
 GGS_listOfSyntaxInstructionList_2E_element::GGS_listOfSyntaxInstructionList_2E_element (void) :
 mProperty_mSyntaxInstructionList (),
 mProperty_mEndOf_5F_instructions () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_listOfSyntaxInstructionList_2E_element & GGS_listOfSyntaxInstructionList_2E_element::operator = (const GGS_listOfSyntaxInstructionList_2E_element & inSource) {
+  mProperty_mSyntaxInstructionList = inSource.mProperty_mSyntaxInstructionList ;
+  mProperty_mEndOf_5F_instructions = inSource.mProperty_mEndOf_5F_instructions ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7068,6 +7267,14 @@ mProperty_mEndOfInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_prologueEpilogueList_2E_element & GGS_prologueEpilogueList_2E_element::operator = (const GGS_prologueEpilogueList_2E_element & inSource) {
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  mProperty_mEndOfInstructionList = inSource.mProperty_mEndOfInstructionList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_prologueEpilogueList_2E_element::~ GGS_prologueEpilogueList_2E_element (void) {
 }
 
@@ -7187,6 +7394,14 @@ mProperty_mEnumerationName () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_enumerationDescriptorList_2E_element & GGS_enumerationDescriptorList_2E_element::operator = (const GGS_enumerationDescriptorList_2E_element & inSource) {
+  mProperty_mEnumeratedType = inSource.mProperty_mEnumeratedType ;
+  mProperty_mEnumerationName = inSource.mProperty_mEnumerationName ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_enumerationDescriptorList_2E_element::~ GGS_enumerationDescriptorList_2E_element (void) {
 }
 
@@ -7302,6 +7517,14 @@ GGS_enumerationDescriptorList_2E_element GGS_enumerationDescriptorList_2E_elemen
 GGS_associatedValueDescriptorList_2E_element::GGS_associatedValueDescriptorList_2E_element (void) :
 mProperty_type (),
 mProperty_name () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValueDescriptorList_2E_element & GGS_associatedValueDescriptorList_2E_element::operator = (const GGS_associatedValueDescriptorList_2E_element & inSource) {
+  mProperty_type = inSource.mProperty_type ;
+  mProperty_name = inSource.mProperty_name ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7438,6 +7661,14 @@ mProperty_mIsFilePrivate () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_acceptableParameterList_2E_element & GGS_acceptableParameterList_2E_element::operator = (const GGS_acceptableParameterList_2E_element & inSource) {
+  mProperty_mRoutineSignature = inSource.mProperty_mRoutineSignature ;
+  mProperty_mIsFilePrivate = inSource.mProperty_mIsFilePrivate ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_acceptableParameterList_2E_element::~ GGS_acceptableParameterList_2E_element (void) {
 }
 
@@ -7556,6 +7787,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_templateInstructionListForGeneration_2E_element & GGS_templateInstructionListForGeneration_2E_element::operator = (const GGS_templateInstructionListForGeneration_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_templateInstructionListForGeneration_2E_element::~ GGS_templateInstructionListForGeneration_2E_element (void) {
 }
 
@@ -7661,6 +7899,13 @@ GGS_templateInstructionListForGeneration_2E_element GGS_templateInstructionListF
 
 GGS_actualParameterListForGeneration_2E_element::GGS_actualParameterListForGeneration_2E_element (void) :
 mProperty_mActualParameter () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualParameterListForGeneration_2E_element & GGS_actualParameterListForGeneration_2E_element::operator = (const GGS_actualParameterListForGeneration_2E_element & inSource) {
+  mProperty_mActualParameter = inSource.mProperty_mActualParameter ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7774,6 +8019,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticInstructionListForGeneration_2E_element & GGS_semanticInstructionListForGeneration_2E_element::operator = (const GGS_semanticInstructionListForGeneration_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticInstructionListForGeneration_2E_element::~ GGS_semanticInstructionListForGeneration_2E_element (void) {
 }
 
@@ -7880,6 +8132,14 @@ GGS_semanticInstructionListForGeneration_2E_element GGS_semanticInstructionListF
 GGS_listOfSemanticInstructionListForGeneration_2E_element::GGS_listOfSemanticInstructionListForGeneration_2E_element (void) :
 mProperty_mInstructionList (),
 mProperty_mEndOfInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_listOfSemanticInstructionListForGeneration_2E_element & GGS_listOfSemanticInstructionListForGeneration_2E_element::operator = (const GGS_listOfSemanticInstructionListForGeneration_2E_element & inSource) {
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  mProperty_mEndOfInstructionList = inSource.mProperty_mEndOfInstructionList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8003,6 +8263,14 @@ mProperty_mDeclaration () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticDeclarationListForGeneration_2E_element & GGS_semanticDeclarationListForGeneration_2E_element::operator = (const GGS_semanticDeclarationListForGeneration_2E_element & inSource) {
+  mProperty_infoMessage = inSource.mProperty_infoMessage ;
+  mProperty_mDeclaration = inSource.mProperty_mDeclaration ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticDeclarationListForGeneration_2E_element::~ GGS_semanticDeclarationListForGeneration_2E_element (void) {
 }
 
@@ -8118,6 +8386,14 @@ GGS_semanticDeclarationListForGeneration_2E_element GGS_semanticDeclarationListF
 GGS_nonTerminalToAddList_2E_element::GGS_nonTerminalToAddList_2E_element (void) :
 mProperty_mSyntaxComponentName (),
 mProperty_mNonTerminalToAddCount () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalToAddList_2E_element & GGS_nonTerminalToAddList_2E_element::operator = (const GGS_nonTerminalToAddList_2E_element & inSource) {
+  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
+  mProperty_mNonTerminalToAddCount = inSource.mProperty_mNonTerminalToAddCount ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8238,6 +8514,15 @@ GGS_terminalCheckAssignementList_2E_element::GGS_terminalCheckAssignementList_2E
 mProperty_mTypeName (),
 mProperty_mTargetVarCppName (),
 mProperty_mSourceLexicalAttributeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_terminalCheckAssignementList_2E_element & GGS_terminalCheckAssignementList_2E_element::operator = (const GGS_terminalCheckAssignementList_2E_element & inSource) {
+  mProperty_mTypeName = inSource.mProperty_mTypeName ;
+  mProperty_mTargetVarCppName = inSource.mProperty_mTargetVarCppName ;
+  mProperty_mSourceLexicalAttributeName = inSource.mProperty_mSourceLexicalAttributeName ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8371,6 +8656,15 @@ mProperty_mTemplateInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_filewrapperTemplateListForGeneration_2E_element & GGS_filewrapperTemplateListForGeneration_2E_element::operator = (const GGS_filewrapperTemplateListForGeneration_2E_element & inSource) {
+  mProperty_mFilewrapperTemplateName = inSource.mProperty_mFilewrapperTemplateName ;
+  mProperty_mFilewrapperTemplateFormalInputParameters = inSource.mProperty_mFilewrapperTemplateFormalInputParameters ;
+  mProperty_mTemplateInstructionListForGeneration = inSource.mProperty_mTemplateInstructionListForGeneration ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_filewrapperTemplateListForGeneration_2E_element::~ GGS_filewrapperTemplateListForGeneration_2E_element (void) {
 }
 
@@ -8496,6 +8790,15 @@ GGS_ruleDeclarationList_2E_element::GGS_ruleDeclarationList_2E_element (void) :
 mProperty_mNonterminalName (),
 mProperty_mRuleIndex (),
 mProperty_mLabelImplementationList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationList_2E_element & GGS_ruleDeclarationList_2E_element::operator = (const GGS_ruleDeclarationList_2E_element & inSource) {
+  mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
+  mProperty_mRuleIndex = inSource.mProperty_mRuleIndex ;
+  mProperty_mLabelImplementationList = inSource.mProperty_mLabelImplementationList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8628,6 +8931,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_collectionValueElementList_2E_element & GGS_collectionValueElementList_2E_element::operator = (const GGS_collectionValueElementList_2E_element & inSource) {
+  mProperty_mExpression = inSource.mProperty_mExpression ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_collectionValueElementList_2E_element::~ GGS_collectionValueElementList_2E_element (void) {
 }
 
@@ -8743,6 +9054,14 @@ GGS_collectionValueElementList_2E_element GGS_collectionValueElementList_2E_elem
 GGS_selfAvailability_2E_available::GGS_selfAvailability_2E_available (void) :
 mProperty_type (),
 mProperty_selfMutability () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_selfAvailability_2E_available & GGS_selfAvailability_2E_available::operator = (const GGS_selfAvailability_2E_available & inSource) {
+  mProperty_type = inSource.mProperty_type ;
+  mProperty_selfMutability = inSource.mProperty_selfMutability ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9018,6 +9337,16 @@ mProperty_mInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_castInstructionBranchListForGeneration_2E_element & GGS_castInstructionBranchListForGeneration_2E_element::operator = (const GGS_castInstructionBranchListForGeneration_2E_element & inSource) {
+  mProperty_mTypeComparisonKind = inSource.mProperty_mTypeComparisonKind ;
+  mProperty_mType = inSource.mProperty_mType ;
+  mProperty_mCastedVarCppName = inSource.mProperty_mCastedVarCppName ;
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_castInstructionBranchListForGeneration_2E_element::~ GGS_castInstructionBranchListForGeneration_2E_element (void) {
 }
 
@@ -9151,6 +9480,14 @@ GGS_castInstructionBranchListForGeneration_2E_element GGS_castInstructionBranchL
 GGS_fixitElementAST_2E_fixItReplace::GGS_fixitElementAST_2E_fixItReplace (void) :
 mProperty_exp (),
 mProperty_errorLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementAST_2E_fixItReplace & GGS_fixitElementAST_2E_fixItReplace::operator = (const GGS_fixitElementAST_2E_fixItReplace & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_errorLocation = inSource.mProperty_errorLocation ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9394,6 +9731,14 @@ mProperty_errorLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_fixitElementAST_2E_fixItInsertAfter & GGS_fixitElementAST_2E_fixItInsertAfter::operator = (const GGS_fixitElementAST_2E_fixItInsertAfter & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_errorLocation = inSource.mProperty_errorLocation ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_fixitElementAST_2E_fixItInsertAfter::~ GGS_fixitElementAST_2E_fixItInsertAfter (void) {
 }
 
@@ -9629,6 +9974,14 @@ GGS_fixitElementAST_2E_fixItInsertAfter_3F_ GGS_fixitElementAST_2E_fixItInsertAf
 GGS_fixitElementAST_2E_fixItInsertBefore::GGS_fixitElementAST_2E_fixItInsertBefore (void) :
 mProperty_exp (),
 mProperty_errorLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitElementAST_2E_fixItInsertBefore & GGS_fixitElementAST_2E_fixItInsertBefore::operator = (const GGS_fixitElementAST_2E_fixItInsertBefore & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_errorLocation = inSource.mProperty_errorLocation ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9871,6 +10224,13 @@ mProperty_mElement () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_fixitListAST_2E_element & GGS_fixitListAST_2E_element::operator = (const GGS_fixitListAST_2E_element & inSource) {
+  mProperty_mElement = inSource.mProperty_mElement ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_fixitListAST_2E_element::~ GGS_fixitListAST_2E_element (void) {
 }
 
@@ -9976,6 +10336,13 @@ GGS_fixitListAST_2E_element GGS_fixitListAST_2E_element::extractObject (const GG
 
 GGS_fixitListForGeneration_2E_element::GGS_fixitListForGeneration_2E_element (void) :
 mProperty_mElement () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_fixitListForGeneration_2E_element & GGS_fixitListForGeneration_2E_element::operator = (const GGS_fixitListForGeneration_2E_element & inSource) {
+  mProperty_mElement = inSource.mProperty_mElement ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10086,6 +10453,14 @@ GGS_fixitListForGeneration_2E_element GGS_fixitListForGeneration_2E_element::ext
 GGS_forInstructionEnumeratedObjectListAST_2E_element::GGS_forInstructionEnumeratedObjectListAST_2E_element (void) :
 mProperty_mAscending (),
 mProperty_mEnumeratedCollection () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_forInstructionEnumeratedObjectListAST_2E_element & GGS_forInstructionEnumeratedObjectListAST_2E_element::operator = (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inSource) {
+  mProperty_mAscending = inSource.mProperty_mAscending ;
+  mProperty_mEnumeratedCollection = inSource.mProperty_mEnumeratedCollection ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10205,6 +10580,14 @@ GGS_forInstructionEnumeratedObjectListAST_2E_element GGS_forInstructionEnumerate
 GGS_ifExpressionKind_2E_regularExp::GGS_ifExpressionKind_2E_regularExp (void) :
 mProperty_exp (),
 mProperty_endOfExp () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_regularExp & GGS_ifExpressionKind_2E_regularExp::operator = (const GGS_ifExpressionKind_2E_regularExp & inSource) {
+  mProperty_exp = inSource.mProperty_exp ;
+  mProperty_endOfExp = inSource.mProperty_endOfExp ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10447,6 +10830,13 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_ifExpressionList_2E_element & GGS_ifExpressionList_2E_element::operator = (const GGS_ifExpressionList_2E_element & inSource) {
+  mProperty_mExpression = inSource.mProperty_mExpression ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_ifExpressionList_2E_element::~ GGS_ifExpressionList_2E_element (void) {
 }
 
@@ -10552,6 +10942,13 @@ GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::extractObject (
 
 GGS_ifTestListForGeneration_2E_element::GGS_ifTestListForGeneration_2E_element (void) :
 mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifTestListForGeneration_2E_element & GGS_ifTestListForGeneration_2E_element::operator = (const GGS_ifTestListForGeneration_2E_element & inSource) {
+  mProperty_mExpression = inSource.mProperty_mExpression ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10664,6 +11061,16 @@ mProperty_mSwitchConstantList (),
 mProperty_mAssociatedValuesExtraction (),
 mProperty_mInstructions (),
 mProperty_mEndOfBranch () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchesAST_2E_element & GGS_switchBranchesAST_2E_element::operator = (const GGS_switchBranchesAST_2E_element & inSource) {
+  mProperty_mSwitchConstantList = inSource.mProperty_mSwitchConstantList ;
+  mProperty_mAssociatedValuesExtraction = inSource.mProperty_mAssociatedValuesExtraction ;
+  mProperty_mInstructions = inSource.mProperty_mInstructions ;
+  mProperty_mEndOfBranch = inSource.mProperty_mEndOfBranch ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10806,6 +11213,15 @@ mProperty_name () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_extractedAssociatedValuesForGeneration_2E_element & GGS_extractedAssociatedValuesForGeneration_2E_element::operator = (const GGS_extractedAssociatedValuesForGeneration_2E_element & inSource) {
+  mProperty_mType = inSource.mProperty_mType ;
+  mProperty_mCppName = inSource.mProperty_mCppName ;
+  mProperty_name = inSource.mProperty_name ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_extractedAssociatedValuesForGeneration_2E_element::~ GGS_extractedAssociatedValuesForGeneration_2E_element (void) {
 }
 
@@ -10932,6 +11348,16 @@ mProperty_mSwitchConstantList (),
 mProperty_mExtractedAssociatedValuesForGeneration (),
 mProperty_mEndOfBranchLocationIndex (),
 mProperty_mInstructions () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchesForGeneration_2E_element & GGS_switchBranchesForGeneration_2E_element::operator = (const GGS_switchBranchesForGeneration_2E_element & inSource) {
+  mProperty_mSwitchConstantList = inSource.mProperty_mSwitchConstantList ;
+  mProperty_mExtractedAssociatedValuesForGeneration = inSource.mProperty_mExtractedAssociatedValuesForGeneration ;
+  mProperty_mEndOfBranchLocationIndex = inSource.mProperty_mEndOfBranchLocationIndex ;
+  mProperty_mInstructions = inSource.mProperty_mInstructions ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11072,6 +11498,13 @@ mProperty_mInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_syntaxInstructionListForGrammarAnalysis_2E_element & GGS_syntaxInstructionListForGrammarAnalysis_2E_element::operator = (const GGS_syntaxInstructionListForGrammarAnalysis_2E_element & inSource) {
+  mProperty_mInstruction = inSource.mProperty_mInstruction ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_syntaxInstructionListForGrammarAnalysis_2E_element::~ GGS_syntaxInstructionListForGrammarAnalysis_2E_element (void) {
 }
 
@@ -11177,6 +11610,13 @@ GGS_syntaxInstructionListForGrammarAnalysis_2E_element GGS_syntaxInstructionList
 
 GGS_branchListForGrammarAnalysis_2E_element::GGS_branchListForGrammarAnalysis_2E_element (void) :
 mProperty_mSyntaxInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_branchListForGrammarAnalysis_2E_element & GGS_branchListForGrammarAnalysis_2E_element::operator = (const GGS_branchListForGrammarAnalysis_2E_element & inSource) {
+  mProperty_mSyntaxInstructionList = inSource.mProperty_mSyntaxInstructionList ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11290,6 +11730,13 @@ mProperty_columns () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_rowList_2E_element & GGS_rowList_2E_element::operator = (const GGS_rowList_2E_element & inSource) {
+  mProperty_columns = inSource.mProperty_columns ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_rowList_2E_element::~ GGS_rowList_2E_element (void) {
 }
 
@@ -11399,6 +11846,13 @@ mProperty_mDeclaration () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_programListForGeneration_2E_element & GGS_programListForGeneration_2E_element::operator = (const GGS_programListForGeneration_2E_element & inSource) {
+  mProperty_mDeclaration = inSource.mProperty_mDeclaration ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_programListForGeneration_2E_element::~ GGS_programListForGeneration_2E_element (void) {
 }
 
@@ -11495,125 +11949,6 @@ GGS_programListForGeneration_2E_element GGS_programListForGeneration_2E_element:
       result = *p ;
     }else{
       inCompiler->castError ("programListForGeneration.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element::GGS_genericExtensionMethodListMapDictionary_2E_element (void) :
-mProperty_key (),
-mProperty_mList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element::~ GGS_genericExtensionMethodListMapDictionary_2E_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element GGS_genericExtensionMethodListMapDictionary_2E_element::init_21__21_ (const GGS_string & in_key,
-                                                                                                                             const GGS_lstringlist & in_mList,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_mList = in_mList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element::GGS_genericExtensionMethodListMapDictionary_2E_element (const GGS_string & inOperand0,
-                                                                                                                const GGS_lstringlist & inOperand1) :
-mProperty_key (inOperand0),
-mProperty_mList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element GGS_genericExtensionMethodListMapDictionary_2E_element::class_func_new (const GGS_string & in_key,
-                                                                                                                               const GGS_lstringlist & in_mList,
-                                                                                                                               Compiler * inCompiler
-                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_mList = in_mList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_genericExtensionMethodListMapDictionary_2E_element::isValid (void) const {
-  return mProperty_key.isValid () && mProperty_mList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary_2E_element::drop (void) {
-  mProperty_key.drop () ;
-  mProperty_mList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary_2E_element::description (String & ioString,
-                                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @genericExtensionMethodListMapDictionary.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_key.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @genericExtensionMethodListMapDictionary.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary_2E_element ("genericExtensionMethodListMapDictionary.element",
-                                                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_genericExtensionMethodListMapDictionary_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_genericExtensionMethodListMapDictionary_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_genericExtensionMethodListMapDictionary_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element GGS_genericExtensionMethodListMapDictionary_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                              Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary_2E_element result ;
-  const GGS_genericExtensionMethodListMapDictionary_2E_element * p = (const GGS_genericExtensionMethodListMapDictionary_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_genericExtensionMethodListMapDictionary_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("genericExtensionMethodListMapDictionary.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11747,6 +12082,13 @@ mProperty_mEntry () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_unifiedTypeMapEntryList_2E_element & GGS_unifiedTypeMapEntryList_2E_element::operator = (const GGS_unifiedTypeMapEntryList_2E_element & inSource) {
+  mProperty_mEntry = inSource.mProperty_mEntry ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_unifiedTypeMapEntryList_2E_element::~ GGS_unifiedTypeMapEntryList_2E_element (void) {
 }
 
@@ -11853,125 +12195,6 @@ GGS_unifiedTypeMapEntryList_2E_element GGS_unifiedTypeMapEntryList_2E_element::e
       result = *p ;
     }else{
       inCompiler->castError ("unifiedTypeMapEntryList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element::GGS_descendantClassListMapDictionary_2E_element (void) :
-mProperty_key (),
-mProperty_typeList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element::~ GGS_descendantClassListMapDictionary_2E_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element GGS_descendantClassListMapDictionary_2E_element::init_21__21_ (const GGS_string & in_key,
-                                                                                                               const GGS_unifiedTypeMapEntryList & in_typeList,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_typeList = in_typeList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element::GGS_descendantClassListMapDictionary_2E_element (const GGS_string & inOperand0,
-                                                                                                  const GGS_unifiedTypeMapEntryList & inOperand1) :
-mProperty_key (inOperand0),
-mProperty_typeList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element GGS_descendantClassListMapDictionary_2E_element::class_func_new (const GGS_string & in_key,
-                                                                                                                 const GGS_unifiedTypeMapEntryList & in_typeList,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_key = in_key ;
-  result.mProperty_typeList = in_typeList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_descendantClassListMapDictionary_2E_element::isValid (void) const {
-  return mProperty_key.isValid () && mProperty_typeList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary_2E_element::drop (void) {
-  mProperty_key.drop () ;
-  mProperty_typeList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary_2E_element::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @descendantClassListMapDictionary.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_key.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_typeList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @descendantClassListMapDictionary.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMapDictionary_2E_element ("descendantClassListMapDictionary.element",
-                                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_descendantClassListMapDictionary_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_descendantClassListMapDictionary_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_descendantClassListMapDictionary_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_descendantClassListMapDictionary_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element GGS_descendantClassListMapDictionary_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary_2E_element result ;
-  const GGS_descendantClassListMapDictionary_2E_element * p = (const GGS_descendantClassListMapDictionary_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_descendantClassListMapDictionary_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("descendantClassListMapDictionary.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12101,6 +12324,13 @@ GGS_descendantClassListMapDictionary_2E_element_3F_ GGS_descendantClassListMapDi
 
 GGS_AccessControlAST_2E_fileprivateAccess::GGS_AccessControlAST_2E_fileprivateAccess (void) :
 mProperty_declarationLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControlAST_2E_fileprivateAccess & GGS_AccessControlAST_2E_fileprivateAccess::operator = (const GGS_AccessControlAST_2E_fileprivateAccess & inSource) {
+  mProperty_declarationLocation = inSource.mProperty_declarationLocation ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12334,6 +12564,13 @@ mProperty_declarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_AccessControlAST_2E_fileprivateSetAccess & GGS_AccessControlAST_2E_fileprivateSetAccess::operator = (const GGS_AccessControlAST_2E_fileprivateSetAccess & inSource) {
+  mProperty_declarationLocation = inSource.mProperty_declarationLocation ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_AccessControlAST_2E_fileprivateSetAccess::~ GGS_AccessControlAST_2E_fileprivateSetAccess (void) {
 }
 
@@ -12559,6 +12796,13 @@ GGS_AccessControlAST_2E_fileprivateSetAccess_3F_ GGS_AccessControlAST_2E_filepri
 
 GGS_AccessControl_2E_protectedAccess::GGS_AccessControl_2E_protectedAccess (void) :
 mProperty_declaringType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_protectedAccess & GGS_AccessControl_2E_protectedAccess::operator = (const GGS_AccessControl_2E_protectedAccess & inSource) {
+  mProperty_declaringType = inSource.mProperty_declaringType ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12792,6 +13036,13 @@ mProperty_declaringType () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_AccessControl_2E_protectedSetAccess & GGS_AccessControl_2E_protectedSetAccess::operator = (const GGS_AccessControl_2E_protectedSetAccess & inSource) {
+  mProperty_declaringType = inSource.mProperty_declaringType ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_AccessControl_2E_protectedSetAccess::~ GGS_AccessControl_2E_protectedSetAccess (void) {
 }
 
@@ -13017,6 +13268,13 @@ GGS_AccessControl_2E_protectedSetAccess_3F_ GGS_AccessControl_2E_protectedSetAcc
 
 GGS_AccessControl_2E_privateAccess::GGS_AccessControl_2E_privateAccess (void) :
 mProperty_declaringType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_privateAccess & GGS_AccessControl_2E_privateAccess::operator = (const GGS_AccessControl_2E_privateAccess & inSource) {
+  mProperty_declaringType = inSource.mProperty_declaringType ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13250,6 +13508,13 @@ mProperty_declaringType () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_AccessControl_2E_privateSetAccess & GGS_AccessControl_2E_privateSetAccess::operator = (const GGS_AccessControl_2E_privateSetAccess & inSource) {
+  mProperty_declaringType = inSource.mProperty_declaringType ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_AccessControl_2E_privateSetAccess::~ GGS_AccessControl_2E_privateSetAccess (void) {
 }
 
@@ -13479,6 +13744,13 @@ mProperty_declarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_AccessControl_2E_fileprivateAccess & GGS_AccessControl_2E_fileprivateAccess::operator = (const GGS_AccessControl_2E_fileprivateAccess & inSource) {
+  mProperty_declarationLocation = inSource.mProperty_declarationLocation ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_AccessControl_2E_fileprivateAccess::~ GGS_AccessControl_2E_fileprivateAccess (void) {
 }
 
@@ -13704,6 +13976,13 @@ GGS_AccessControl_2E_fileprivateAccess_3F_ GGS_AccessControl_2E_fileprivateAcces
 
 GGS_AccessControl_2E_fileprivateSetAccess::GGS_AccessControl_2E_fileprivateSetAccess (void) :
 mProperty_declarationLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateSetAccess & GGS_AccessControl_2E_fileprivateSetAccess::operator = (const GGS_AccessControl_2E_fileprivateSetAccess & inSource) {
+  mProperty_declarationLocation = inSource.mProperty_declarationLocation ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13940,6 +14219,16 @@ mProperty_mChildrenRefs () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_XCodeGroupList_2E_element & GGS_XCodeGroupList_2E_element::operator = (const GGS_XCodeGroupList_2E_element & inSource) {
+  mProperty_mGroupReference = inSource.mProperty_mGroupReference ;
+  mProperty_mGroupName = inSource.mProperty_mGroupName ;
+  mProperty_mGroupPath = inSource.mProperty_mGroupPath ;
+  mProperty_mChildrenRefs = inSource.mProperty_mChildrenRefs ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_XCodeGroupList_2E_element::~ GGS_XCodeGroupList_2E_element (void) {
 }
 
@@ -14082,6 +14371,23 @@ mProperty_mBuildConfigurationSettingList (),
 mProperty_mBuildConfigurationRef (),
 mProperty_mFrameworksFileRefList (),
 mProperty_mFrameworkBuildPhaseRef () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_XCodeToolTargetList_2E_element & GGS_XCodeToolTargetList_2E_element::operator = (const GGS_XCodeToolTargetList_2E_element & inSource) {
+  mProperty_mTargetRef = inSource.mProperty_mTargetRef ;
+  mProperty_mTargetName = inSource.mProperty_mTargetName ;
+  mProperty_mProductFileReference = inSource.mProperty_mProductFileReference ;
+  mProperty_mProductFileName = inSource.mProperty_mProductFileName ;
+  mProperty_mBuildPhaseRefList = inSource.mProperty_mBuildPhaseRefList ;
+  mProperty_mBuildPhaseRef = inSource.mProperty_mBuildPhaseRef ;
+  mProperty_mBuildConfigurationListRef = inSource.mProperty_mBuildConfigurationListRef ;
+  mProperty_mBuildConfigurationSettingList = inSource.mProperty_mBuildConfigurationSettingList ;
+  mProperty_mBuildConfigurationRef = inSource.mProperty_mBuildConfigurationRef ;
+  mProperty_mFrameworksFileRefList = inSource.mProperty_mFrameworksFileRefList ;
+  mProperty_mFrameworkBuildPhaseRef = inSource.mProperty_mFrameworkBuildPhaseRef ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14294,6 +14600,26 @@ mProperty_mFrameworkBuildPhaseRef (),
 mProperty_mDependentTargets (),
 mProperty_mResourceBuildRef (),
 mProperty_mResourceFileBuildRefs () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_XCodeAppTargetList_2E_element & GGS_XCodeAppTargetList_2E_element::operator = (const GGS_XCodeAppTargetList_2E_element & inSource) {
+  mProperty_mTargetRef = inSource.mProperty_mTargetRef ;
+  mProperty_mTargetName = inSource.mProperty_mTargetName ;
+  mProperty_mProductFileReference = inSource.mProperty_mProductFileReference ;
+  mProperty_mProductFileName = inSource.mProperty_mProductFileName ;
+  mProperty_mBuildPhaseRefList = inSource.mProperty_mBuildPhaseRefList ;
+  mProperty_mBuildPhaseRef = inSource.mProperty_mBuildPhaseRef ;
+  mProperty_mBuildConfigurationListRef = inSource.mProperty_mBuildConfigurationListRef ;
+  mProperty_mBuildConfigurationSettingList = inSource.mProperty_mBuildConfigurationSettingList ;
+  mProperty_mBuildConfigurationRef = inSource.mProperty_mBuildConfigurationRef ;
+  mProperty_mFrameworksFileRefList = inSource.mProperty_mFrameworksFileRefList ;
+  mProperty_mFrameworkBuildPhaseRef = inSource.mProperty_mFrameworkBuildPhaseRef ;
+  mProperty_mDependentTargets = inSource.mProperty_mDependentTargets ;
+  mProperty_mResourceBuildRef = inSource.mProperty_mResourceBuildRef ;
+  mProperty_mResourceFileBuildRefs = inSource.mProperty_mResourceFileBuildRefs ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14522,6 +14848,15 @@ GGS_BuildFileList_2E_element::GGS_BuildFileList_2E_element (void) :
 mProperty_mFileReference (),
 mProperty_mFileName (),
 mProperty_mBuildReference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_BuildFileList_2E_element & GGS_BuildFileList_2E_element::operator = (const GGS_BuildFileList_2E_element & inSource) {
+  mProperty_mFileReference = inSource.mProperty_mFileReference ;
+  mProperty_mFileName = inSource.mProperty_mFileName ;
+  mProperty_mBuildReference = inSource.mProperty_mBuildReference ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15843,195 +16178,6 @@ GGS_templateExtensionTemplateCallAST GGS_templateExtensionTemplateCallAST::extra
       result = *p ;
     }else{
       inCompiler->castError ("templateExtensionTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateLiteralStringExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateLiteralStringExpressionAST::objectCompare (const GGS_templateLiteralStringExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLiteralStringExpressionAST::GGS_templateLiteralStringExpressionAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateLiteralStringExpressionAST GGS_templateLiteralStringExpressionAST::
-init_21__21_ (const GGS_stringlist & in_mLiteralStringList,
-              const GGS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_templateLiteralStringExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateLiteralStringExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateLiteralStringExpressionAST_init_21__21_ (in_mLiteralStringList, in_mLocation, inCompiler) ;
-  const GGS_templateLiteralStringExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateLiteralStringExpressionAST::
-templateLiteralStringExpressionAST_init_21__21_ (const GGS_stringlist & in_mLiteralStringList,
-                                                 const GGS_location & in_mLocation,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mLiteralStringList = in_mLiteralStringList ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLiteralStringExpressionAST::GGS_templateLiteralStringExpressionAST (const cPtr_templateLiteralStringExpressionAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLiteralStringExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLiteralStringExpressionAST GGS_templateLiteralStringExpressionAST::class_func_new (const GGS_stringlist & in_mLiteralStringList,
-                                                                                               const GGS_location & in_mLocation,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) {
-  GGS_templateLiteralStringExpressionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateLiteralStringExpressionAST (in_mLiteralStringList, in_mLocation,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
-  }else{
-    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
-    return p->mProperty_mLiteralStringList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateLiteralStringExpressionAST::readProperty_mLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
-    return p->mProperty_mLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateLiteralStringExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mLiteralStringList (),
-mProperty_mLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (const GGS_stringlist & in_mLiteralStringList,
-                                                                                  const GGS_location & in_mLocation,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mLiteralStringList (),
-mProperty_mLocation () {
-  mProperty_mLiteralStringList = in_mLiteralStringList ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateLiteralStringExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
-}
-
-void cPtr_templateLiteralStringExpressionAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateLiteralStringExpressionAST:") ;
-  mProperty_mLiteralStringList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateLiteralStringExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateLiteralStringExpressionAST (mProperty_mLiteralStringList, mProperty_mLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateLiteralStringExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLiteralStringList.printNonNullClassInstanceProperties ("mLiteralStringList") ;
-    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateLiteralStringExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ("templateLiteralStringExpressionAST",
-                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_templateLiteralStringExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_templateLiteralStringExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_templateLiteralStringExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLiteralStringExpressionAST GGS_templateLiteralStringExpressionAST::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_templateLiteralStringExpressionAST result ;
-  const GGS_templateLiteralStringExpressionAST * p = (const GGS_templateLiteralStringExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_templateLiteralStringExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateLiteralStringExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -2,30 +2,25 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " dictionary enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-%
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-  end
-  if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
-%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end
-%} ;
+class KeyComparator_%!TYPE_IDENTIFIER% final {
+  public: constexpr bool operator () (const GGS_%!KEY_TYPE_IDENTIFIER% & inLeft,
+                                      const GGS_%!KEY_TYPE_IDENTIFIER% & inRight) const {
+    return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
+  }
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+typedef std::map <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%, KeyComparator_%!TYPE_IDENTIFIER%> MapFor_%!TYPE_IDENTIFIER% ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_%!TYPE_IDENTIFIER% final {
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+
+  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  
+  public: void gotoNextObject (void) { mIterator ++ ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
@@ -34,32 +29,63 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator 
 %//--- Current element access\n%
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
-%} ;
+%
+//--- Private properties
+  private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
+  private: MapFor_%!TYPE_IDENTIFIER%::reverse_iterator mIterator ;
+
+//--- No copy
+  private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_%!TYPE_IDENTIFIER% final {
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+
+  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+
+  public: void gotoNextObject (void) { mIterator ++ ; }
+%
+  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  end
+  if not [ENUMERATED_OBJECT_TYPE isNull] then
+%//--- Current element access\n%
+%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+  end
+%
+//--- Private properties
+  private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
+  private: MapFor_%!TYPE_IDENTIFIER%::iterator mIterator ;
+
+//--- No copy
+  private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
 //%!" Phase 1: @" + TYPE_NAME + " dict"%
 //--------------------------------------------------------------------------------------------------
 
-class cSharedDictRoot_%!TYPE_IDENTIFIER% ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
-//--------------------------------- Attributes
-  private: cSharedDictRoot_%!TYPE_IDENTIFIER% * mSharedDict ;
+//--------------------------------- Private properties
+  private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Destructor
-  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
+//  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
   public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
   public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedDict != nullptr ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
 
 //--- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -67,13 +93,4 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
-
-//--- Insulate
-  private: void insulate (LOCATION_ARGS) ;
-
-//--- Object compare
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;
-
-//--- Enumeration
-  public: void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 

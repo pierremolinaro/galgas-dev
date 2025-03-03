@@ -167,12 +167,15 @@ override method @dictDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  {
-  let dictionary = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
+  let key = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
   for (* typeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + typeName !typeName}]
   end
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
+  let elementKey = @lstring {!"@" + elementTypeName !self.mDictTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !elementKey]
 }
 
 //------------------------------------------------------------------------------------------------
@@ -566,7 +569,9 @@ override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused io
     !self.mTypedAttributeList
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
-  ]
+    ![self.mKeyTypeName identifierRepresentation]
+    ![self.mElementTypeEntry identifierRepresentation]
+ ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
@@ -594,7 +599,7 @@ override method @dictTypeForGeneration appendSpecificImplementation
                                         !@string outImplementation {
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper dictGenerationTemplate.dictTypeSpecificImplementation
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
@@ -620,6 +625,8 @@ private filewrapper dictGenerationTemplate in "+generation-templates/type_genera
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
+    ?@string KEY_TYPE_IDENTIFIER
+    ?@string ELEMENT_TYPE_IDENTIFIER
 
   template dictTypeSpecificImplementation "GALGAS_dict.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER

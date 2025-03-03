@@ -55,6 +55,10 @@
             argument = "/Volumes/dev-git/galgas-dev/+galgas.galgasProject"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--no-color"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
    <ProfileAction

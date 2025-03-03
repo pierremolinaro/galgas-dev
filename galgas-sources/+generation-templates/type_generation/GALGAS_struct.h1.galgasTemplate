@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " struct"%
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
@@ -39,3 +37,6 @@ for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
   between %,\n%!^
 end%) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;

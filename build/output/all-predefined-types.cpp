@@ -1197,6 +1197,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lbool & GGS_lbool::operator = (const GGS_lbool & inSource) {
+  mProperty_bool = inSource.mProperty_bool ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lbool::~ GGS_lbool (void) {
 }
 
@@ -3212,6 +3220,14 @@ GGS_luint GGS_luint::extractObject (const GGS_object & inObject,
 GGS_luint::GGS_luint (void) :
 mProperty_uint (),
 mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint & GGS_luint::operator = (const GGS_luint & inSource) {
+  mProperty_uint = inSource.mProperty_uint ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6018,6 +6034,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lsint & GGS_lsint::operator = (const GGS_lsint & inSource) {
+  mProperty_sint = inSource.mProperty_sint ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lsint::~ GGS_lsint (void) {
 }
 
@@ -6146,6 +6170,14 @@ GGS_lsint_36__34_ GGS_lsint_36__34_::extractObject (const GGS_object & inObject,
 GGS_lsint_36__34_::GGS_lsint_36__34_ (void) :
 mProperty_sint_36__34_ (),
 mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lsint_36__34_ & GGS_lsint_36__34_::operator = (const GGS_lsint_36__34_ & inSource) {
+  mProperty_sint_36__34_ = inSource.mProperty_sint_36__34_ ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6282,6 +6314,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_luint_36__34_ & GGS_luint_36__34_::operator = (const GGS_luint_36__34_ & inSource) {
+  mProperty_uint_36__34_ = inSource.mProperty_uint_36__34_ ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_luint_36__34_::~ GGS_luint_36__34_ (void) {
 }
 
@@ -6410,6 +6450,14 @@ GGS_range GGS_range::extractObject (const GGS_object & inObject,
 GGS_range::GGS_range (void) :
 mProperty_start (),
 mProperty_length () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range & GGS_range::operator = (const GGS_range & inSource) {
+  mProperty_start = inSource.mProperty_start ;
+  mProperty_length = inSource.mProperty_length ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6682,6 +6730,13 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_functionlist_2E_element & GGS_functionlist_2E_element::operator = (const GGS_functionlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_functionlist_2E_element::~ GGS_functionlist_2E_element (void) {
 }
 
@@ -6797,6 +6852,13 @@ GGS_luintlist_2E_element GGS_luintlist_2E_element::extractObject (const GGS_obje
 
 GGS_luintlist_2E_element::GGS_luintlist_2E_element (void) :
 mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist_2E_element & GGS_luintlist_2E_element::operator = (const GGS_luintlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6920,6 +6982,13 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_objectlist_2E_element & GGS_objectlist_2E_element::operator = (const GGS_objectlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_objectlist_2E_element::~ GGS_objectlist_2E_element (void) {
 }
 
@@ -7035,6 +7104,13 @@ GGS_stringlist_2E_element GGS_stringlist_2E_element::extractObject (const GGS_ob
 
 GGS_stringlist_2E_element::GGS_stringlist_2E_element (void) :
 mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist_2E_element & GGS_stringlist_2E_element::operator = (const GGS_stringlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7158,6 +7234,13 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_typelist_2E_element & GGS_typelist_2E_element::operator = (const GGS_typelist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_typelist_2E_element::~ GGS_typelist_2E_element (void) {
 }
 
@@ -7273,6 +7356,13 @@ GGS_uintlist_2E_element GGS_uintlist_2E_element::extractObject (const GGS_object
 
 GGS_uintlist_2E_element::GGS_uintlist_2E_element (void) :
 mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist_2E_element & GGS_uintlist_2E_element::operator = (const GGS_uintlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7396,6 +7486,13 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint_36__34_list_2E_element & GGS_uint_36__34_list_2E_element::operator = (const GGS_uint_36__34_list_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_uint_36__34_list_2E_element::~ GGS_uint_36__34_list_2E_element (void) {
 }
 
@@ -7511,6 +7608,13 @@ GGS_bigintlist_2E_element GGS_bigintlist_2E_element::extractObject (const GGS_ob
 
 GGS_bigintlist_2E_element::GGS_bigintlist_2E_element (void) :
 mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist_2E_element & GGS_bigintlist_2E_element::operator = (const GGS_bigintlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7631,6 +7735,14 @@ GGS__32_stringlist_2E_element GGS__32_stringlist_2E_element::extractObject (cons
 GGS__32_stringlist_2E_element::GGS__32_stringlist_2E_element (void) :
 mProperty_mValue_30_ (),
 mProperty_mValue_31_ () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist_2E_element & GGS__32_stringlist_2E_element::operator = (const GGS__32_stringlist_2E_element & inSource) {
+  mProperty_mValue_30_ = inSource.mProperty_mValue_30_ ;
+  mProperty_mValue_31_ = inSource.mProperty_mValue_31_ ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7767,6 +7879,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lstring & GGS_lstring::operator = (const GGS_lstring & inSource) {
+  mProperty_string = inSource.mProperty_string ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lstring::~ GGS_lstring (void) {
 }
 
@@ -7895,6 +8015,14 @@ GGS_lbigint GGS_lbigint::extractObject (const GGS_object & inObject,
 GGS_lbigint::GGS_lbigint (void) :
 mProperty_bigint (),
 mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint & GGS_lbigint::operator = (const GGS_lbigint & inSource) {
+  mProperty_bigint = inSource.mProperty_bigint ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8031,6 +8159,14 @@ mProperty_location () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lchar & GGS_lchar::operator = (const GGS_lchar & inSource) {
+  mProperty_char = inSource.mProperty_char ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lchar::~ GGS_lchar (void) {
 }
 
@@ -8159,6 +8295,14 @@ GGS_ldouble GGS_ldouble::extractObject (const GGS_object & inObject,
 GGS_ldouble::GGS_ldouble (void) :
 mProperty_double (),
 mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ldouble & GGS_ldouble::operator = (const GGS_ldouble & inSource) {
+  mProperty_double = inSource.mProperty_double ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8294,6 +8438,13 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lstringlist_2E_element & GGS_lstringlist_2E_element::operator = (const GGS_lstringlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_lstringlist_2E_element::~ GGS_lstringlist_2E_element (void) {
 }
 
@@ -8409,6 +8560,13 @@ GGS_lbigintlist_2E_element GGS_lbigintlist_2E_element::extractObject (const GGS_
 
 GGS_lbigintlist_2E_element::GGS_lbigintlist_2E_element (void) :
 mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist_2E_element & GGS_lbigintlist_2E_element::operator = (const GGS_lbigintlist_2E_element & inSource) {
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------

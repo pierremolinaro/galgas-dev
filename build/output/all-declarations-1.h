@@ -559,9 +559,7 @@ class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionListForGeneration_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_root {
@@ -592,6 +590,9 @@ class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_roo
 //--------------------------------- Native constructor
   public: GGS_templateInstructionListForGeneration_2E_element (const GGS_templateInstructionForGeneration & in_mInstruction) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionListForGeneration_2E_element & operator = (const GGS_templateInstructionListForGeneration_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1398,9 +1399,7 @@ class GGS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionIfBranchListForGeneration_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionIfBranchListForGeneration_2E_element : public AC_GALGAS_root {
@@ -1441,6 +1440,9 @@ class GGS_templateInstructionIfBranchListForGeneration_2E_element : public AC_GA
   public: GGS_templateInstructionIfBranchListForGeneration_2E_element (const GGS_semanticExpressionForGeneration & in_mExpression,
                                                                        const GGS_templateInstructionListForGeneration & in_mInstructionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionIfBranchListForGeneration_2E_element & operator = (const GGS_templateInstructionIfBranchListForGeneration_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1875,9 +1877,7 @@ class cMapElement_templateVariableMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateVariableMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateVariableMap_2E_element : public AC_GALGAS_root {
@@ -1928,6 +1928,9 @@ class GGS_templateVariableMap_2E_element : public AC_GALGAS_root {
                                               const GGS_unifiedTypeMapEntry & in_mType,
                                               const GGS_string & in_mCppName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateVariableMap_2E_element & operator = (const GGS_templateVariableMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2331,9 +2334,7 @@ class GGS_unifiedTypeMapElementClass_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @unifiedTypeMapEntry_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMapEntry_2E_element : public AC_GALGAS_root {
@@ -2364,6 +2365,9 @@ class GGS_unifiedTypeMapEntry_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_unifiedTypeMapEntry_2E_element (const GGS_unifiedTypeMapElementClass_2E_weak & in_weakElement) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_unifiedTypeMapEntry_2E_element & operator = (const GGS_unifiedTypeMapEntry_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2489,9 +2493,7 @@ class GGS_unifiedTypeMapEntry_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @predefinedTypes struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_predefinedTypes : public AC_GALGAS_root {
@@ -2732,6 +2734,9 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
                                const GGS_unifiedTypeMapEntry & in_mStringSetType,
                                const GGS_unifiedTypeMapEntry & in_mLStringListType) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_predefinedTypes & operator = (const GGS_predefinedTypes & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4376,9 +4381,7 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_internalRoutineMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @routineMap struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_routineMap : public AC_GALGAS_root {
@@ -4409,6 +4412,9 @@ class GGS_routineMap : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_routineMap (const GGS_internalRoutineMap & in_mInternalRoutineMap) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_routineMap & operator = (const GGS_routineMap & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4450,9 +4456,7 @@ class GGS_routineMap : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticContext struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticContext : public AC_GALGAS_root {
@@ -4553,6 +4557,9 @@ class GGS_semanticContext : public AC_GALGAS_root {
                                const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis,
                                const GGS_bool & in_galgas_34_) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_semanticContext & operator = (const GGS_semanticContext & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4596,9 +4603,7 @@ class GGS_semanticContext : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateAnalysisContext struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateAnalysisContext : public AC_GALGAS_root {
@@ -4649,6 +4654,9 @@ class GGS_templateAnalysisContext : public AC_GALGAS_root {
                                        const GGS_predefinedTypes & in_mPredefinedTypes,
                                        const GGS_templateVariableMap & in_mTemplateVariableMap) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateAnalysisContext & operator = (const GGS_templateAnalysisContext & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5211,9 +5219,7 @@ class GGS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForEnumerationAST_2E_explicit struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForEnumerationAST_2E_explicit : public AC_GALGAS_root {
@@ -5254,6 +5260,9 @@ class GGS_templateInstructionForEnumerationAST_2E_explicit : public AC_GALGAS_ro
   public: GGS_templateInstructionForEnumerationAST_2E_explicit (const GGS_lstringlist & in_enumeration,
                                                                 const GGS_location & in_endOfProperties) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionForEnumerationAST_2E_explicit & operator = (const GGS_templateInstructionForEnumerationAST_2E_explicit & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5377,9 +5386,7 @@ class GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ : public AC_GALGA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_explicit_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForEnumerationAST_2E_implicit struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForEnumerationAST_2E_implicit : public AC_GALGAS_root {
@@ -5420,6 +5427,9 @@ class GGS_templateInstructionForEnumerationAST_2E_implicit : public AC_GALGAS_ro
   public: GGS_templateInstructionForEnumerationAST_2E_implicit (const GGS_string & in_prefix,
                                                                 const GGS_location & in_remplacementRange) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionForEnumerationAST_2E_implicit & operator = (const GGS_templateInstructionForEnumerationAST_2E_implicit & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6622,9 +6632,7 @@ class GGS_switchExtractedValuesListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchBranchListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchBranchListAST_2E_element : public AC_GALGAS_root {
@@ -6685,6 +6693,9 @@ class GGS_templateInstructionSwitchBranchListAST_2E_element : public AC_GALGAS_r
                                                                  const GGS_templateInstructionListAST & in_instructionList,
                                                                  const GGS_location & in_endOfBranch) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionSwitchBranchListAST_2E_element & operator = (const GGS_templateInstructionSwitchBranchListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6734,9 +6745,7 @@ class GGS_templateInstructionSwitchBranchListAST_2E_element : public AC_GALGAS_r
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @switchExtractedValuesListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
@@ -6787,6 +6796,9 @@ class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
                                                        const GGS_lstring & in_mExtractedValueName,
                                                        const GGS_bool & in_mMarkedAsUnused) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_switchExtractedValuesListAST_2E_element & operator = (const GGS_switchExtractedValuesListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7465,9 +7477,7 @@ class GGS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchBranchListForGeneration_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchBranchListForGeneration_2E_element : public AC_GALGAS_root {
@@ -7528,6 +7538,9 @@ class GGS_templateInstructionSwitchBranchListForGeneration_2E_element : public A
                                                                            const GGS_uint & in_mEndOfBranchLocationIndex,
                                                                            const GGS_templateInstructionListForGeneration & in_mInstructionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionSwitchBranchListForGeneration_2E_element & operator = (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7577,9 +7590,7 @@ class GGS_templateInstructionSwitchBranchListForGeneration_2E_element : public A
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @extractedAssociatedValuesForGeneration_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extractedAssociatedValuesForGeneration_2E_element : public AC_GALGAS_root {
@@ -7630,6 +7641,9 @@ class GGS_extractedAssociatedValuesForGeneration_2E_element : public AC_GALGAS_r
                                                                  const GGS_string & in_mCppName,
                                                                  const GGS_string & in_name) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_extractedAssociatedValuesForGeneration_2E_element & operator = (const GGS_extractedAssociatedValuesForGeneration_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8272,9 +8286,7 @@ class GGS_templateDelimitorListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateDelimitorListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateDelimitorListAST_2E_element : public AC_GALGAS_root {
@@ -8345,6 +8357,9 @@ class GGS_templateDelimitorListAST_2E_element : public AC_GALGAS_root {
                                                    const GGS_bool & in_mPreserved,
                                                    const GGS_lstring & in_mEndString) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateDelimitorListAST_2E_element & operator = (const GGS_templateDelimitorListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8596,9 +8611,7 @@ class GGS_templateReplacementListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacementListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateReplacementListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateReplacementListAST_2E_element : public AC_GALGAS_root {
@@ -8649,6 +8662,9 @@ class GGS_templateReplacementListAST_2E_element : public AC_GALGAS_root {
                                                      const GGS_lstring & in_mReplacementString,
                                                      const GGS_lstring & in_mReplacementFunction) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_templateReplacementListAST_2E_element & operator = (const GGS_templateReplacementListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8875,9 +8891,7 @@ class GGS_lexicalAttributeListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalAttributeListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeListAST_2E_element : public AC_GALGAS_root {
@@ -8918,6 +8932,9 @@ class GGS_lexicalAttributeListAST_2E_element : public AC_GALGAS_root {
   public: GGS_lexicalAttributeListAST_2E_element (const GGS_lstring & in_mTypeName,
                                                   const GGS_lstring & in_mName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalAttributeListAST_2E_element & operator = (const GGS_lexicalAttributeListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9142,9 +9159,7 @@ class GGS_lexicalStyleListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStyleListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStyleListAST_2E_element : public AC_GALGAS_root {
@@ -9185,6 +9200,9 @@ class GGS_lexicalStyleListAST_2E_element : public AC_GALGAS_root {
   public: GGS_lexicalStyleListAST_2E_element (const GGS_lstring & in_mName,
                                               const GGS_lstring & in_mComment) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalStyleListAST_2E_element & operator = (const GGS_lexicalStyleListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9672,9 +9690,7 @@ class GGS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttributeListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @terminalDeclarationListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalDeclarationListAST_2E_element : public AC_GALGAS_root {
@@ -9755,6 +9771,9 @@ class GGS_terminalDeclarationListAST_2E_element : public AC_GALGAS_root {
                                                      const GGS_bool & in_nonAtomicSelection,
                                                      const GGS_bool & in_isEndOfTemplateMark) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_terminalDeclarationListAST_2E_element & operator = (const GGS_terminalDeclarationListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9987,9 +10006,7 @@ class GGS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalMessageDeclarationListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalMessageDeclarationListAST_2E_element : public AC_GALGAS_root {
@@ -10030,6 +10047,9 @@ class GGS_lexicalMessageDeclarationListAST_2E_element : public AC_GALGAS_root {
   public: GGS_lexicalMessageDeclarationListAST_2E_element (const GGS_lstring & in_mMessageName,
                                                            const GGS_lstring & in_mMessageValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalMessageDeclarationListAST_2E_element & operator = (const GGS_lexicalMessageDeclarationListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10538,9 +10558,7 @@ class GGS_lexicalListEntryListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListEntryListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalListDeclarationListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalListDeclarationListAST_2E_element : public AC_GALGAS_root {
@@ -10611,6 +10629,9 @@ class GGS_lexicalListDeclarationListAST_2E_element : public AC_GALGAS_root {
                                                         const GGS_sentLexicalAttributeListAST & in_mSentAttributeList,
                                                         const GGS_lexicalListEntryListAST & in_mEntryList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalListDeclarationListAST_2E_element & operator = (const GGS_lexicalListDeclarationListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10925,9 +10946,7 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRuleListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRuleListAST_2E_element : public AC_GALGAS_root {
@@ -10958,6 +10977,9 @@ class GGS_lexicalRuleListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_lexicalRuleListAST_2E_element (const GGS_abstractLexicalRuleAST & in_mLexicalRule) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalRuleListAST_2E_element & operator = (const GGS_lexicalRuleListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11180,9 +11202,7 @@ class GGS_indexingListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @indexingListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_indexingListAST_2E_element : public AC_GALGAS_root {
@@ -11223,6 +11243,9 @@ class GGS_indexingListAST_2E_element : public AC_GALGAS_root {
   public: GGS_indexingListAST_2E_element (const GGS_lstring & in_mIndexName,
                                           const GGS_lstring & in_mIndexComment) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_indexingListAST_2E_element & operator = (const GGS_indexingListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12144,9 +12167,7 @@ class GGS_lexicalInstructionListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalInstructionListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
@@ -12177,6 +12198,9 @@ class GGS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_lexicalInstructionListAST_2E_element (const GGS_lexicalInstructionAST & in_mInstruction) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalInstructionListAST_2E_element & operator = (const GGS_lexicalInstructionListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12756,9 +12780,7 @@ class GGS_lexicalExplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRuleAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @sentLexicalAttributeListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sentLexicalAttributeListAST_2E_element : public AC_GALGAS_root {
@@ -12799,6 +12821,9 @@ class GGS_sentLexicalAttributeListAST_2E_element : public AC_GALGAS_root {
   public: GGS_sentLexicalAttributeListAST_2E_element (const GGS_lstring & in_mFormalSelector,
                                                       const GGS_lstring & in_mAttributeName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_sentLexicalAttributeListAST_2E_element & operator = (const GGS_sentLexicalAttributeListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12844,9 +12869,7 @@ class GGS_sentLexicalAttributeListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttributeListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalListEntryListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalListEntryListAST_2E_element : public AC_GALGAS_root {
@@ -12907,6 +12930,9 @@ class GGS_lexicalListEntryListAST_2E_element : public AC_GALGAS_root {
                                                   const GGS_bool & in_nonAtomicSelection,
                                                   const GGS_bool & in_isEndOfTemplateMark) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalListEntryListAST_2E_element & operator = (const GGS_lexicalListEntryListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers

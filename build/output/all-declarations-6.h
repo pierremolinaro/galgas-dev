@@ -33,9 +33,7 @@ void extensionSetter_combineManagerWith (class GGS_currentVarManager & ioObject,
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @unifiedTypeMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMap_2E_element : public AC_GALGAS_root {
@@ -76,6 +74,9 @@ class GGS_unifiedTypeMap_2E_element : public AC_GALGAS_root {
   public: GGS_unifiedTypeMap_2E_element (const GGS_lstring & in_lkey,
                                          const GGS_unifiedTypeMapElementClass & in_mElement) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_unifiedTypeMap_2E_element & operator = (const GGS_unifiedTypeMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -257,9 +258,7 @@ void extensionSetter_insertType (class GGS_unifiedTypeMap & ioObject,
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @unifiedTypeDefinition struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
@@ -530,6 +529,9 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                      const GGS_string & in_headerFileName,
                                      const GGS_headerKind & in_headerKind) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_unifiedTypeDefinition & operator = (const GGS_unifiedTypeDefinition & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -632,9 +634,7 @@ class GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const class GGS_
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @typeDefinition_2E_solved struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeDefinition_2E_solved : public AC_GALGAS_root {
@@ -665,6 +665,9 @@ class GGS_typeDefinition_2E_solved : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_typeDefinition_2E_solved (const GGS_unifiedTypeDefinition & in_definition) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_typeDefinition_2E_solved & operator = (const GGS_typeDefinition_2E_solved & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1116,9 +1119,7 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualParameterListAST_2E_element : public AC_GALGAS_root {
@@ -1149,6 +1150,9 @@ class GGS_actualParameterListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_actualParameterListAST_2E_element (const GGS_actualParameterAST & in_mActualParameter) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_actualParameterListAST_2E_element & operator = (const GGS_actualParameterListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1696,9 +1700,7 @@ class GGS_selfAvailability : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @analysisContext struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_analysisContext : public AC_GALGAS_root {
@@ -1779,6 +1781,9 @@ class GGS_analysisContext : public AC_GALGAS_root {
                                const GGS_string & in_selfObjectCppPrefixForAccessingProperty,
                                const GGS_bool & in_requiresSelfForAccessingProperty) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_analysisContext & operator = (const GGS_analysisContext & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1832,9 +1837,7 @@ class GGS_analysisContext : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_analysisContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVarManager struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVarManager : public AC_GALGAS_root {
@@ -1875,6 +1878,9 @@ class GGS_localVarManager : public AC_GALGAS_root {
   public: GGS_localVarManager (const GGS_currentVarManager & in_mCurrentManager,
                                const GGS_openedOverrideList & in_mOverridenManagers) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_localVarManager & operator = (const GGS_localVarManager & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5039,160 +5045,6 @@ class GGS_procDeclarationAST_2E_weak : public GGS_externProcedureDeclarationAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxExtensionsDictionary dictionary enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_syntaxExtensionsDictionary final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_syntaxExtensionsDictionary final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxExtensionsDictionary dict
-//--------------------------------------------------------------------------------------------------
-
-class cSharedDictRoot_syntaxExtensionsDictionary ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxExtensionsDictionary : public AC_GALGAS_root {
-//--------------------------------- Attributes
-  private: cSharedDictRoot_syntaxExtensionsDictionary * mSharedDict ;
-
-//--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary (void) ;
-
-//--------------------------------- Destructor
-  public: virtual ~ GGS_syntaxExtensionsDictionary (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inSource) ;
-  public: GGS_syntaxExtensionsDictionary & operator = (const GGS_syntaxExtensionsDictionary & inSource) ;
-
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedDict != nullptr ; }
-
-//--- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--- Implementation of reader 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--- Insulate
-  private: void insulate (LOCATION_ARGS) ;
-
-//--- Object compare
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GGS_syntaxExtensionsDictionary & inOperand) const ;
-
-//--- Enumeration
-  public: void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_syntaxExtensionsDictionary init (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_syntaxExtensionsDictionary extractObject (const GGS_object & inObject,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_syntaxExtensionsDictionary class_func_emptyDict (LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_galgas_33_SyntaxExtensionListAST & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insert (class GGS_string constinArgument0,
-                                               class GGS_galgas_33_SyntaxExtensionListAST constinArgument1,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeKey (class GGS_string constinArgument0,
-                                                  class GGS_galgas_33_SyntaxExtensionListAST & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setExtensionListForKey (class GGS_galgas_33_SyntaxExtensionListAST constinArgument0,
-                                                               class GGS_string constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GGS_string constinArgument0,
-                                                  class GGS_galgas_33_SyntaxExtensionListAST & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_galgas_33_SyntaxExtensionListAST getter_extensionListForKey (const class GGS_string & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                                         COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GGS_syntaxExtensionsDictionary_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_syntaxExtensionsDictionary_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator_syntaxExtensionsDictionary ;
-  friend class DownEnumerator_syntaxExtensionsDictionary ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @galgas_33_SyntaxExtensionListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
@@ -5391,172 +5243,6 @@ class GGS_galgas_33_SyntaxExtensionListAST : public AC_GALGAS_list {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @syntaxExtensionsDictionary_2E_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxExtensionsDictionary_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_string mProperty_key ;
-  public: inline GGS_string readProperty_key (void) const {
-    return mProperty_key ;
-  }
-
-  public: GGS_galgas_33_SyntaxExtensionListAST mProperty_extensionList ;
-  public: inline GGS_galgas_33_SyntaxExtensionListAST readProperty_extensionList (void) const {
-    return mProperty_extensionList ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setKey (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_key = inValue ;
-  }
-
-  public: inline void setter_setExtensionList (const GGS_galgas_33_SyntaxExtensionListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_extensionList = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_syntaxExtensionsDictionary_2E_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element (const GGS_string & in_key,
-                                                     const GGS_galgas_33_SyntaxExtensionListAST & in_extensionList) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_syntaxExtensionsDictionary_2E_element init_21__21_ (const class GGS_string & inOperand0,
-                                                                         const class GGS_galgas_33_SyntaxExtensionListAST & inOperand1,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_syntaxExtensionsDictionary_2E_element extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_syntaxExtensionsDictionary_2E_element class_func_new (const class GGS_string & inOperand0,
-                                                                                 const class GGS_galgas_33_SyntaxExtensionListAST & inOperand1,
-                                                                                 class Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: syntaxExtensionsDictionary.element? optional
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxExtensionsDictionary_2E_element_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_syntaxExtensionsDictionary_2E_element mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_syntaxExtensionsDictionary_2E_element_3F_ (const GGS_syntaxExtensionsDictionary_2E_element & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_syntaxExtensionsDictionary_2E_element_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_syntaxExtensionsDictionary_2E_element unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_syntaxExtensionsDictionary_2E_element_3F_ extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @nonterminalDeclarationListAST list enumerator
@@ -5917,9 +5603,7 @@ class GGS_syntaxRuleListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_SyntaxExtensionListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_SyntaxExtensionListAST_2E_element : public AC_GALGAS_root {
@@ -5970,6 +5654,9 @@ class GGS_galgas_33_SyntaxExtensionListAST_2E_element : public AC_GALGAS_root {
                                                            const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                            const GGS_syntaxRuleListAST & in_mRuleList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_galgas_33_SyntaxExtensionListAST_2E_element & operator = (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6017,16 +5704,19 @@ class GGS_galgas_33_SyntaxExtensionListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @syntaxExtensions struct
-//
+// Phase 1: @syntaxExtensionsDictionary_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxExtensions : public AC_GALGAS_root {
+class GGS_syntaxExtensionsDictionary_2E_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_syntaxExtensionsDictionary mProperty_dictionary ;
-  public: inline GGS_syntaxExtensionsDictionary readProperty_dictionary (void) const {
-    return mProperty_dictionary ;
+  public: GGS_string mProperty_key ;
+  public: inline GGS_string readProperty_key (void) const {
+    return mProperty_key ;
+  }
+
+  public: GGS_galgas_33_SyntaxExtensionListAST mProperty_extensionList ;
+  public: inline GGS_galgas_33_SyntaxExtensionListAST readProperty_extensionList (void) const {
+    return mProperty_extensionList ;
   }
 
 //--------------------------------- Accessors
@@ -6034,39 +5724,51 @@ class GGS_syntaxExtensions : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_syntaxExtensions (void) ;
+  public: GGS_syntaxExtensionsDictionary_2E_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setDictionary (const GGS_syntaxExtensionsDictionary & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_dictionary = inValue ;
+  public: inline void setter_setKey (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_key = inValue ;
+  }
+
+  public: inline void setter_setExtensionList (const GGS_galgas_33_SyntaxExtensionListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_extensionList = inValue ;
   }
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_syntaxExtensions (void) ;
+  public: virtual ~ GGS_syntaxExtensionsDictionary_2E_element (void) ;
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_syntaxExtensions (const GGS_syntaxExtensionsDictionary & in_dictionary) ;
+  public: GGS_syntaxExtensionsDictionary_2E_element (const GGS_string & in_key,
+                                                     const GGS_galgas_33_SyntaxExtensionListAST & in_extensionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_syntaxExtensionsDictionary_2E_element & operator = (const GGS_syntaxExtensionsDictionary_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_syntaxExtensions init (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS_syntaxExtensionsDictionary_2E_element init_21__21_ (const class GGS_string & inOperand0,
+                                                                         const class GGS_galgas_33_SyntaxExtensionListAST & inOperand1,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_syntaxExtensions extractObject (const GGS_object & inObject,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public: static GGS_syntaxExtensionsDictionary_2E_element extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_syntaxExtensions class_func_new (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+  public: static class GGS_syntaxExtensionsDictionary_2E_element class_func_new (const class GGS_string & inOperand0,
+                                                                                 const class GGS_galgas_33_SyntaxExtensionListAST & inOperand1,
+                                                                                 class Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6088,18 +5790,7 @@ class GGS_syntaxExtensions : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@syntaxExtensions listForKey' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_galgas_33_SyntaxExtensionListAST extensionGetter_listForKey (const class GGS_syntaxExtensions & inObject,
-                                                                       const class GGS_string & constinArgument0,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7384,9 +7075,7 @@ class GGS_actualInputParameterListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualInputParameterListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualInputParameterListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualInputParameterListAST_2E_element : public AC_GALGAS_root {
@@ -7427,6 +7116,9 @@ class GGS_actualInputParameterListAST_2E_element : public AC_GALGAS_root {
   public: GGS_actualInputParameterListAST_2E_element (const GGS_lstring & in_mActualSelector,
                                                       const GGS_abstractInputParameter & in_mInputParameter) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_actualInputParameterListAST_2E_element & operator = (const GGS_actualInputParameterListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7808,9 +7500,7 @@ class GGS_semanticDeclarationListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationListAST_2E_element : public AC_GALGAS_root {
@@ -7841,6 +7531,9 @@ class GGS_semanticDeclarationListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_semanticDeclarationListAST_2E_element (const GGS_semanticDeclarationAST & in_mSemanticDeclaration) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_semanticDeclarationListAST_2E_element & operator = (const GGS_semanticDeclarationListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8857,9 +8550,7 @@ class GGS_formalTemplateInputParameterListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @formalTemplateInputParameterListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_formalTemplateInputParameterListAST_2E_element : public AC_GALGAS_root {
@@ -8920,6 +8611,9 @@ class GGS_formalTemplateInputParameterListAST_2E_element : public AC_GALGAS_root
                                                               const GGS_lstring & in_mFormalArgumentName,
                                                               const GGS_bool & in_mIsUnused) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_formalTemplateInputParameterListAST_2E_element & operator = (const GGS_formalTemplateInputParameterListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9169,9 +8863,7 @@ class GGS_filewrapperTemplateListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @filewrapperTemplateListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperTemplateListAST_2E_element : public AC_GALGAS_root {
@@ -9222,6 +8914,9 @@ class GGS_filewrapperTemplateListAST_2E_element : public AC_GALGAS_root {
                                                      const GGS_lstring & in_mFilewrapperTemplatePath,
                                                      const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_filewrapperTemplateListAST_2E_element & operator = (const GGS_filewrapperTemplateListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9694,9 +9389,7 @@ class GGS_syntaxInstructionList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxInstructionList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxInstructionList_2E_element : public AC_GALGAS_root {
@@ -9727,6 +9420,9 @@ class GGS_syntaxInstructionList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_syntaxInstructionList_2E_element (const GGS_syntaxInstructionAST & in_mInstruction) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_syntaxInstructionList_2E_element & operator = (const GGS_syntaxInstructionList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9970,9 +9666,7 @@ class GGS_nonTerminalLabelListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @nonTerminalLabelListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
@@ -10023,6 +9717,9 @@ class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
                                                   const GGS_formalParameterListAST & in_mFormalArgumentList,
                                                   const GGS_location & in_mEndOfArgumentLocation) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_nonTerminalLabelListAST_2E_element & operator = (const GGS_nonTerminalLabelListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10070,9 +9767,7 @@ class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @nonterminalDeclarationListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonterminalDeclarationListAST_2E_element : public AC_GALGAS_root {
@@ -10113,6 +9808,9 @@ class GGS_nonterminalDeclarationListAST_2E_element : public AC_GALGAS_root {
   public: GGS_nonterminalDeclarationListAST_2E_element (const GGS_lstring & in_mNonterminalName,
                                                         const GGS_nonTerminalLabelListAST & in_mLabels) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_nonterminalDeclarationListAST_2E_element & operator = (const GGS_nonterminalDeclarationListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10400,9 +10098,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxRuleLabelListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
@@ -10473,6 +10169,9 @@ class GGS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
                                                  const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
                                                  const GGS_location & in_mEndOfInstructionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_syntaxRuleLabelListAST_2E_element & operator = (const GGS_syntaxRuleLabelListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10524,9 +10223,7 @@ class GGS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxRuleListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxRuleListAST_2E_element : public AC_GALGAS_root {
@@ -10567,6 +10264,9 @@ class GGS_syntaxRuleListAST_2E_element : public AC_GALGAS_root {
   public: GGS_syntaxRuleListAST_2E_element (const GGS_lstring & in_mNonterminalName,
                                             const GGS_syntaxRuleLabelListAST & in_mLabelList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_syntaxRuleListAST_2E_element & operator = (const GGS_syntaxRuleListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10791,9 +10491,7 @@ class GGS_listOfSyntaxInstructionList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSyntaxInstructionList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @listOfSyntaxInstructionList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_listOfSyntaxInstructionList_2E_element : public AC_GALGAS_root {
@@ -10834,6 +10532,9 @@ class GGS_listOfSyntaxInstructionList_2E_element : public AC_GALGAS_root {
   public: GGS_listOfSyntaxInstructionList_2E_element (const GGS_syntaxInstructionList & in_mSyntaxInstructionList,
                                                       const GGS_location & in_mEndOf_5F_instructions) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_listOfSyntaxInstructionList_2E_element & operator = (const GGS_listOfSyntaxInstructionList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11648,9 +11349,7 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_SyntaxComponentListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_SyntaxComponentListAST_2E_element : public AC_GALGAS_root {
@@ -11721,6 +11420,9 @@ class GGS_galgas_33_SyntaxComponentListAST_2E_element : public AC_GALGAS_root {
                                                            const GGS_syntaxRuleListAST & in_mRuleList,
                                                            const GGS_bool & in_mHasTranslateFeature) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_galgas_33_SyntaxComponentListAST_2E_element & operator = (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11951,9 +11653,7 @@ class GGS_prologueEpilogueList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @prologueEpilogueList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_prologueEpilogueList_2E_element : public AC_GALGAS_root {
@@ -11994,6 +11694,9 @@ class GGS_prologueEpilogueList_2E_element : public AC_GALGAS_root {
   public: GGS_prologueEpilogueList_2E_element (const GGS_semanticInstructionListAST & in_mInstructionList,
                                                const GGS_location & in_mEndOfInstructionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_prologueEpilogueList_2E_element & operator = (const GGS_prologueEpilogueList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12323,9 +12026,7 @@ class GGS_programRuleList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @programRuleList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_programRuleList_2E_element : public AC_GALGAS_root {
@@ -12416,6 +12117,9 @@ class GGS_programRuleList_2E_element : public AC_GALGAS_root {
                                           const GGS_semanticInstructionListAST & in_mInstructionList,
                                           const GGS_location & in_mEndOfInstructionList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_programRuleList_2E_element & operator = (const GGS_programRuleList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12469,150 +12173,6 @@ class GGS_programRuleList_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @galgasDeclarationAST struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_galgasDeclarationAST : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_semanticDeclarationListAST mProperty_mDeclarationList ;
-  public: inline GGS_semanticDeclarationListAST readProperty_mDeclarationList (void) const {
-    return mProperty_mDeclarationList ;
-  }
-
-  public: GGS_stringset mProperty_implicitTypeDeclarationSet ;
-  public: inline GGS_stringset readProperty_implicitTypeDeclarationSet (void) const {
-    return mProperty_implicitTypeDeclarationSet ;
-  }
-
-  public: GGS_galgas_33_SyntaxComponentListAST mProperty_mSyntaxComponentList ;
-  public: inline GGS_galgas_33_SyntaxComponentListAST readProperty_mSyntaxComponentList (void) const {
-    return mProperty_mSyntaxComponentList ;
-  }
-
-  public: GGS_syntaxExtensions mProperty_mSyntaxExtensions ;
-  public: inline GGS_syntaxExtensions readProperty_mSyntaxExtensions (void) const {
-    return mProperty_mSyntaxExtensions ;
-  }
-
-  public: GGS_galgasGUIComponentListAST mProperty_mGUIComponentList ;
-  public: inline GGS_galgasGUIComponentListAST readProperty_mGUIComponentList (void) const {
-    return mProperty_mGUIComponentList ;
-  }
-
-  public: GGS_prologueEpilogueList mProperty_mPrologueDeclarationList ;
-  public: inline GGS_prologueEpilogueList readProperty_mPrologueDeclarationList (void) const {
-    return mProperty_mPrologueDeclarationList ;
-  }
-
-  public: GGS_programRuleList mProperty_mSourceRuleList ;
-  public: inline GGS_programRuleList readProperty_mSourceRuleList (void) const {
-    return mProperty_mSourceRuleList ;
-  }
-
-  public: GGS_prologueEpilogueList mProperty_mEpilogueDeclarationList ;
-  public: inline GGS_prologueEpilogueList readProperty_mEpilogueDeclarationList (void) const {
-    return mProperty_mEpilogueDeclarationList ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_galgasDeclarationAST (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMDeclarationList (const GGS_semanticDeclarationListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDeclarationList = inValue ;
-  }
-
-  public: inline void setter_setImplicitTypeDeclarationSet (const GGS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_implicitTypeDeclarationSet = inValue ;
-  }
-
-  public: inline void setter_setMSyntaxComponentList (const GGS_galgas_33_SyntaxComponentListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSyntaxComponentList = inValue ;
-  }
-
-  public: inline void setter_setMSyntaxExtensions (const GGS_syntaxExtensions & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSyntaxExtensions = inValue ;
-  }
-
-  public: inline void setter_setMGUIComponentList (const GGS_galgasGUIComponentListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGUIComponentList = inValue ;
-  }
-
-  public: inline void setter_setMPrologueDeclarationList (const GGS_prologueEpilogueList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPrologueDeclarationList = inValue ;
-  }
-
-  public: inline void setter_setMSourceRuleList (const GGS_programRuleList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSourceRuleList = inValue ;
-  }
-
-  public: inline void setter_setMEpilogueDeclarationList (const GGS_prologueEpilogueList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEpilogueDeclarationList = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_galgasDeclarationAST (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_galgasDeclarationAST (const GGS_semanticDeclarationListAST & in_mDeclarationList,
-                                    const GGS_stringset & in_implicitTypeDeclarationSet,
-                                    const GGS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
-                                    const GGS_syntaxExtensions & in_mSyntaxExtensions,
-                                    const GGS_galgasGUIComponentListAST & in_mGUIComponentList,
-                                    const GGS_prologueEpilogueList & in_mPrologueDeclarationList,
-                                    const GGS_programRuleList & in_mSourceRuleList,
-                                    const GGS_prologueEpilogueList & in_mEpilogueDeclarationList) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_galgasDeclarationAST init (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_galgasDeclarationAST extractObject (const GGS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_galgasDeclarationAST class_func_new (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgasDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12856,9 +12416,7 @@ class GGS_optionalMethodSignature : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodSignature ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionalMethodSignature_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionalMethodSignature_2E_element : public AC_GALGAS_root {
@@ -12919,6 +12477,9 @@ class GGS_optionalMethodSignature_2E_element : public AC_GALGAS_root {
                                                   const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                   const GGS_string & in_mFormalArgumentName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_optionalMethodSignature_2E_element & operator = (const GGS_optionalMethodSignature_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12966,4 +12527,117 @@ class GGS_optionalMethodSignature_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @formalParameterSignature_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_formalParameterSignature_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mFormalSelector ;
+  public: inline GGS_lstring readProperty_mFormalSelector (void) const {
+    return mProperty_mFormalSelector ;
+  }
+
+  public: GGS_unifiedTypeMapEntry mProperty_mFormalArgumentType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_mFormalArgumentType (void) const {
+    return mProperty_mFormalArgumentType ;
+  }
+
+  public: GGS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
+  public: inline GGS_formalArgumentPassingModeAST readProperty_mFormalArgumentPassingMode (void) const {
+    return mProperty_mFormalArgumentPassingMode ;
+  }
+
+  public: GGS_string mProperty_mFormalArgumentName ;
+  public: inline GGS_string readProperty_mFormalArgumentName (void) const {
+    return mProperty_mFormalArgumentName ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_formalParameterSignature_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMFormalSelector (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalSelector = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentType = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentPassingMode (const GGS_formalArgumentPassingModeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentPassingMode = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentName = inValue ;
+  }
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_formalParameterSignature_2E_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_formalParameterSignature_2E_element (const GGS_lstring & in_mFormalSelector,
+                                                   const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                   const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                                   const GGS_string & in_mFormalArgumentName) ;
+
+
+//--------------------------------- Assignment operator
+  public: GGS_formalParameterSignature_2E_element & operator = (const GGS_formalParameterSignature_2E_element & inSource) ;
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_formalParameterSignature_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                               const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                               const class GGS_formalArgumentPassingModeAST & inOperand2,
+                                                                               const class GGS_string & inOperand3,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_formalParameterSignature_2E_element extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_formalParameterSignature_2E_element class_func_new (const class GGS_lstring & inOperand0,
+                                                                               const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                               const class GGS_formalArgumentPassingModeAST & inOperand2,
+                                                                               const class GGS_string & inOperand3,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ;
 

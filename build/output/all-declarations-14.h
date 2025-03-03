@@ -2083,9 +2083,7 @@ class cMapElement_headerCompositionMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @headerCompositionMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
@@ -2136,6 +2134,9 @@ class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
                                                const GGS_stringset & in_mInclusion,
                                                const GGS_string & in_mHeaderString) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_headerCompositionMap_2E_element & operator = (const GGS_headerCompositionMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2431,9 +2432,7 @@ class cMapElement_headerRepartitionMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @headerRepartitionMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
@@ -2474,6 +2473,9 @@ class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
   public: GGS_headerRepartitionMap_2E_element (const GGS_lstring & in_lkey,
                                                const GGS_string & in_mHeaderFileName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_headerRepartitionMap_2E_element & operator = (const GGS_headerRepartitionMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2767,9 +2769,7 @@ class cMapElement_projectQualifiedFeatureMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @projectQualifiedFeatureMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
@@ -2810,6 +2810,9 @@ class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
   public: GGS_projectQualifiedFeatureMap_2E_element (const GGS_lstring & in_lkey,
                                                      const GGS_lstring & in_mFeatureValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_projectQualifiedFeatureMap_2E_element & operator = (const GGS_projectQualifiedFeatureMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3154,9 +3157,7 @@ class GGS_XCodeGroupList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @XCodeGroupList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_XCodeGroupList_2E_element : public AC_GALGAS_root {
@@ -3217,6 +3218,9 @@ class GGS_XCodeGroupList_2E_element : public AC_GALGAS_root {
                                          const GGS_string & in_mGroupPath,
                                          const GGS_stringlist & in_mChildrenRefs) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_XCodeGroupList_2E_element & operator = (const GGS_XCodeGroupList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3634,9 +3638,7 @@ class GGS_XCodeToolTargetList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @XCodeToolTargetList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_XCodeToolTargetList_2E_element : public AC_GALGAS_root {
@@ -3767,6 +3769,9 @@ class GGS_XCodeToolTargetList_2E_element : public AC_GALGAS_root {
                                               const GGS_stringlist & in_mFrameworksFileRefList,
                                               const GGS_string & in_mFrameworkBuildPhaseRef) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_XCodeToolTargetList_2E_element & operator = (const GGS_XCodeToolTargetList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4261,9 +4266,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @XCodeAppTargetList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
@@ -4424,6 +4427,9 @@ class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
                                              const GGS_string & in_mResourceBuildRef,
                                              const GGS_stringlist & in_mResourceFileBuildRefs) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_XCodeAppTargetList_2E_element & operator = (const GGS_XCodeAppTargetList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers

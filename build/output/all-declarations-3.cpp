@@ -8986,6 +8986,21 @@ mProperty_mProjectIndexingDescriptorList () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_guiAnalysisContext & GGS_guiAnalysisContext::operator = (const GGS_guiAnalysisContext & inSource) {
+  mProperty_mImportedOptionComponentList = inSource.mProperty_mImportedOptionComponentList ;
+  mProperty_mBoolOptionList = inSource.mProperty_mBoolOptionList ;
+  mProperty_mUIntOptionList = inSource.mProperty_mUIntOptionList ;
+  mProperty_mStringOptionList = inSource.mProperty_mStringOptionList ;
+  mProperty_mNibAndClassList = inSource.mProperty_mNibAndClassList ;
+  mProperty_mExtensionMap = inSource.mProperty_mExtensionMap ;
+  mProperty_mWithLexiqueList = inSource.mProperty_mWithLexiqueList ;
+  mProperty_mBuildRunOption = inSource.mProperty_mBuildRunOption ;
+  mProperty_mProjectIndexingDescriptorList = inSource.mProperty_mProjectIndexingDescriptorList ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_guiAnalysisContext::~ GGS_guiAnalysisContext (void) {
 }
 

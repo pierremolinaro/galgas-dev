@@ -9,9 +9,7 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @XcodeProjectDescriptor struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
@@ -272,6 +270,9 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                       const GGS_string & in_mApplicationBundleName,
                                       const GGS_string & in_mProjectName) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_XcodeProjectDescriptor & operator = (const GGS_XcodeProjectDescriptor & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers

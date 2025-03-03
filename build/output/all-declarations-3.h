@@ -1009,9 +1009,7 @@ class GGS_commandLineOptionListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @commandLineOptionListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
@@ -1102,6 +1100,9 @@ class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
                                                    const GGS_lstring & in_mOptionDefaultValue,
                                                    const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_commandLineOptionListAST_2E_element & operator = (const GGS_commandLineOptionListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1537,9 +1538,7 @@ class GGS_commandLineOptionSortedList : public AC_GALGAS_sortedlist {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionSortedList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @commandLineOptionSortedList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
@@ -1610,6 +1609,9 @@ class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
                                                       const GGS_string & in_mComment,
                                                       const GGS_string & in_mDefaultValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_commandLineOptionSortedList_2E_element & operator = (const GGS_commandLineOptionSortedList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1879,9 +1881,7 @@ class cMapElement_commandLineOptionMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @commandLineOptionMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
@@ -1952,6 +1952,9 @@ class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
                                                const GGS_string & in_mComment,
                                                const GGS_string & in_mDefaultValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_commandLineOptionMap_2E_element & operator = (const GGS_commandLineOptionMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2260,9 +2263,7 @@ class GGS_guiSimpleAttributeListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @guiSimpleAttributeListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
@@ -2303,6 +2304,9 @@ class GGS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
   public: GGS_guiSimpleAttributeListAST_2E_element (const GGS_lstring & in_mKey,
                                                     const GGS_lstring & in_mValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_guiSimpleAttributeListAST_2E_element & operator = (const GGS_guiSimpleAttributeListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2548,9 +2552,7 @@ class GGS_guiCompoundAttributeListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @guiCompoundAttributeListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
@@ -2601,6 +2603,9 @@ class GGS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
                                                       const GGS_lstring & in_mAttributeName,
                                                       const GGS_lstring & in_mValue) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_guiCompoundAttributeListAST_2E_element & operator = (const GGS_guiCompoundAttributeListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2827,9 +2832,7 @@ class GGS_terminalLabelListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @terminalLabelListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
@@ -2870,6 +2873,9 @@ class GGS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
   public: GGS_terminalLabelListAST_2E_element (const GGS_lstring & in_mTerminal,
                                                const GGS_uint & in_mDisplayFlags) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_terminalLabelListAST_2E_element & operator = (const GGS_terminalLabelListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3115,9 +3121,7 @@ class GGS_guiLabelListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @guiLabelListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiLabelListAST_2E_element : public AC_GALGAS_root {
@@ -3168,6 +3172,9 @@ class GGS_guiLabelListAST_2E_element : public AC_GALGAS_root {
                                           const GGS_terminalLabelListAST & in_mTerminalList,
                                           const GGS_location & in_mLocation) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_guiLabelListAST_2E_element & operator = (const GGS_guiLabelListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3436,9 +3443,7 @@ class GGS_withLexiqueListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @withLexiqueListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
@@ -3499,6 +3504,9 @@ class GGS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
                                              const GGS_guiSimpleAttributeListAST & in_mSimpleAttributes,
                                              const GGS_guiCompoundAttributeListAST & in_mCompoundAttributes) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_withLexiqueListAST_2E_element & operator = (const GGS_withLexiqueListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3790,9 +3798,7 @@ class GGS_guiCommandLineOptionList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCommandLineOptionList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @guiCommandLineOptionList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiCommandLineOptionList_2E_element : public AC_GALGAS_root {
@@ -3863,6 +3869,9 @@ class GGS_guiCommandLineOptionList_2E_element : public AC_GALGAS_root {
                                                    const GGS_string & in_mOptionString,
                                                    const GGS_string & in_mComment) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_guiCommandLineOptionList_2E_element & operator = (const GGS_guiCommandLineOptionList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4090,9 +4099,7 @@ class cMapElement_extensionMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @extensionMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionMap_2E_element : public AC_GALGAS_root {
@@ -4143,6 +4150,9 @@ class GGS_extensionMap_2E_element : public AC_GALGAS_root {
                                        const GGS_string & in_mLexiqueName,
                                        const GGS_uint & in_mIndex) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_extensionMap_2E_element & operator = (const GGS_extensionMap_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4447,9 +4457,7 @@ class GGS_textMacroList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @textMacroList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_textMacroList_2E_element : public AC_GALGAS_root {
@@ -4490,6 +4498,9 @@ class GGS_textMacroList_2E_element : public AC_GALGAS_root {
   public: GGS_textMacroList_2E_element (const GGS_string & in_mKey,
                                         const GGS_string & in_mContents) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_textMacroList_2E_element & operator = (const GGS_textMacroList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4819,9 +4830,7 @@ class GGS_importedLexiqueList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @importedLexiqueList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_importedLexiqueList_2E_element : public AC_GALGAS_root {
@@ -4912,6 +4921,9 @@ class GGS_importedLexiqueList_2E_element : public AC_GALGAS_root {
                                               const GGS_guiLabelListAST & in_mLabels,
                                               const GGS_lexicalStyleListAST & in_mLexicalStyleList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_importedLexiqueList_2E_element & operator = (const GGS_importedLexiqueList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5146,9 +5158,7 @@ class GGS_projectIndexingDescriptorList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectIndexingDescriptorList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @projectIndexingDescriptorList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_projectIndexingDescriptorList_2E_element : public AC_GALGAS_root {
@@ -5189,6 +5199,9 @@ class GGS_projectIndexingDescriptorList_2E_element : public AC_GALGAS_root {
   public: GGS_projectIndexingDescriptorList_2E_element (const GGS_lstring & in_mProjectFileExtension,
                                                         const GGS_lstring & in_indexingPathSuffix) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_projectIndexingDescriptorList_2E_element & operator = (const GGS_projectIndexingDescriptorList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5476,9 +5489,7 @@ class GGS_galgasGUIComponentListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgasGUIComponentListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgasGUIComponentListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
@@ -5549,6 +5560,9 @@ class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
                                                     const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                     const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_galgasGUIComponentListAST_2E_element & operator = (const GGS_galgasGUIComponentListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5600,9 +5614,7 @@ class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgasGUIComponentListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @guiAnalysisContext struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiAnalysisContext : public AC_GALGAS_root {
@@ -5713,6 +5725,9 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
                                   const GGS_string & in_mBuildRunOption,
                                   const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_guiAnalysisContext & operator = (const GGS_guiAnalysisContext & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5915,9 +5930,7 @@ class cMapElement_optionComponentMapForGeneration : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionComponentMapForGeneration_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
@@ -5958,6 +5971,9 @@ class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
   public: GGS_optionComponentMapForGeneration_2E_element (const GGS_lstring & in_lkey,
                                                           const GGS_guiAnalysisContext & in_mGuiComponentContext) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_optionComponentMapForGeneration_2E_element & operator = (const GGS_optionComponentMapForGeneration_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6850,9 +6866,7 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @initializerSignatureList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerSignatureList_2E_element : public AC_GALGAS_root {
@@ -6883,6 +6897,9 @@ class GGS_initializerSignatureList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_initializerSignatureList_2E_element (const GGS_formalInputParameterListAST & in_initializer) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_initializerSignatureList_2E_element & operator = (const GGS_initializerSignatureList_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6926,9 +6943,7 @@ class GGS_initializerSignatureList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerSignatureList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @formalInputParameterListAST_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_formalInputParameterListAST_2E_element : public AC_GALGAS_root {
@@ -6999,6 +7014,9 @@ class GGS_formalInputParameterListAST_2E_element : public AC_GALGAS_root {
                                                       const GGS_bool & in_mIsUnused,
                                                       const GGS_bool & in_mIsConstant) ;
 
+
+//--------------------------------- Assignment operator
+  public: GGS_formalInputParameterListAST_2E_element & operator = (const GGS_formalInputParameterListAST_2E_element & inSource) ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
