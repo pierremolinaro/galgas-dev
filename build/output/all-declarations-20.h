@@ -200,15 +200,17 @@ class GGS_lstringlist extensionGetter_listForKey (const class GGS_genericExtensi
 //--------------------------------------------------------------------------------------------------
 
 class KeyComparator_descendantClassListMapDictionary final {
-  public: constexpr bool operator () (const GGS_string & inLeft,
-                                      const GGS_string & inRight) const {
+  public: bool operator () (const GGS_string & inLeft,
+                            const GGS_string & inRight) const {
     return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
   }
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-typedef std::map <GGS_string, GGS_descendantClassListMapDictionary_2E_element, KeyComparator_descendantClassListMapDictionary> MapFor_descendantClassListMapDictionary ;
+typedef std::map <GGS_string,
+                  GGS_descendantClassListMapDictionary_2E_element,
+                  KeyComparator_descendantClassListMapDictionary> MapFor_descendantClassListMapDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -389,18 +391,18 @@ class GGS_descendantClassListMap : public AC_GALGAS_root {
     mProperty_dictionary = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_descendantClassListMap (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_descendantClassListMap (const GGS_descendantClassListMapDictionary & in_dictionary) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_descendantClassListMap (const GGS_descendantClassListMap & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_descendantClassListMap & operator = (const GGS_descendantClassListMap & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers

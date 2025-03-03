@@ -9,6 +9,23 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (GGS_instanceMethodMap & ioArgument_ioInstanceMethodMap,
+                                                                       const GGS_string constinArgument_inInstanceMethodName,
+                                                                       const GGS_bool constinArgument_inHasCompilerArgument,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  ioArgument_ioInstanceMethodMap.setter_insertKey (constinArgument_inInstanceMethodName.getter_nowhere (SOURCE_FILE ("semanticsInstanceMethods.galgas", 31)), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("semanticsInstanceMethods.galgas", 32)), GGS_formalParameterSignature::init (inCompiler COMMA_HERE), GGS_location::class_func_nowhere (SOURCE_FILE ("semanticsInstanceMethods.galgas", 34)), constinArgument_inHasCompilerArgument, GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("semanticsInstanceMethods.galgas", 36)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 30)) ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'enterInstanceMethodWithInputArgument&&?inputArgTypeName?inputArgName?methodName?'
 //
 //--------------------------------------------------------------------------------------------------

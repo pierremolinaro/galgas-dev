@@ -9,6 +9,25 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Overriding extension getter '@lexicalStringNotMatchAST generateObjcCocoaConditionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalStringNotMatchAST::getter_generateObjcCocoaConditionCode (const GGS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_outGeneratedCode ; // Returned variable
+  result_outGeneratedCode = GGS_string ("[self notTestForInputString:@") ;
+  const GGS_lexicalStringNotMatchAST temp_0 = this ;
+  result_outGeneratedCode.plusAssign_operation(temp_0.readProperty_mString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 70)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 70)) ;
+  result_outGeneratedCode.plusAssign_operation(GGS_string (" error:& scanningOk]"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 71)) ;
+//---
+  return result_outGeneratedCode ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Overriding extension getter '@lexicalCharacterMatchAST generateObjcCocoaConditionCode'
 //
 //--------------------------------------------------------------------------------------------------

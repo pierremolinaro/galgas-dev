@@ -8,6 +8,203 @@
 #include "all-declarations-20.h"
 
 //--------------------------------------------------------------------------------------------------
+// @procCallInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_procCallInstructionAST::objectCompare (const GGS_procCallInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_procCallInstructionAST::GGS_procCallInstructionAST (void) :
+GGS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_procCallInstructionAST GGS_procCallInstructionAST::
+init_21__21__21_ (const GGS_location & in_mInstructionLocation,
+                  const GGS_lstring & in_mRoutineName,
+                  const GGS_actualParameterListAST & in_mActualParameterList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_procCallInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_procCallInstructionAST (inCompiler COMMA_THERE)) ;
+  object->procCallInstructionAST_init_21__21__21_ (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList, inCompiler) ;
+  const GGS_procCallInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_procCallInstructionAST::
+procCallInstructionAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                         const GGS_lstring & in_mRoutineName,
+                                         const GGS_actualParameterListAST & in_mActualParameterList,
+                                         Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mRoutineName = in_mRoutineName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_procCallInstructionAST::GGS_procCallInstructionAST (const cPtr_procCallInstructionAST * inSourcePtr) :
+GGS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_procCallInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_procCallInstructionAST GGS_procCallInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
+                                                                       const GGS_lstring & in_mRoutineName,
+                                                                       const GGS_actualParameterListAST & in_mActualParameterList,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  GGS_procCallInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_procCallInstructionAST (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList,  inCompiler COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_procCallInstructionAST::readProperty_mRoutineName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
+    return p->mProperty_mRoutineName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_actualParameterListAST GGS_procCallInstructionAST::readProperty_mActualParameterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_actualParameterListAST () ;
+  }else{
+    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
+    return p->mProperty_mActualParameterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @procCallInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mRoutineName (),
+mProperty_mActualParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                          const GGS_lstring & in_mRoutineName,
+                                                          const GGS_actualParameterListAST & in_mActualParameterList,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
+mProperty_mRoutineName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mRoutineName = in_mRoutineName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_procCallInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
+}
+
+void cPtr_procCallInstructionAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@procCallInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mRoutineName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_procCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_procCallInstructionAST (mProperty_mInstructionLocation, mProperty_mRoutineName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_procCallInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
+    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @procCallInstructionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionAST ("procCallInstructionAST",
+                                                                              & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_procCallInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_procCallInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_procCallInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_procCallInstructionAST GGS_procCallInstructionAST::extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GGS_procCallInstructionAST result ;
+  const GGS_procCallInstructionAST * p = (const GGS_procCallInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_procCallInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("procCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @procCallInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -6043,17 +6240,21 @@ mProperty_mProductionIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_productionRuleListForGrammarAnalysis_2E_element::GGS_productionRuleListForGrammarAnalysis_2E_element (const GGS_productionRuleListForGrammarAnalysis_2E_element & inSource) :
+mProperty_mLeftNonterminalSymbol (inSource.mProperty_mLeftNonterminalSymbol),
+mProperty_mLeftNonterminalSymbolIndex (inSource.mProperty_mLeftNonterminalSymbolIndex),
+mProperty_mInstructionList (inSource.mProperty_mInstructionList),
+mProperty_mProductionIndex (inSource.mProperty_mProductionIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_productionRuleListForGrammarAnalysis_2E_element & GGS_productionRuleListForGrammarAnalysis_2E_element::operator = (const GGS_productionRuleListForGrammarAnalysis_2E_element & inSource) {
   mProperty_mLeftNonterminalSymbol = inSource.mProperty_mLeftNonterminalSymbol ;
   mProperty_mLeftNonterminalSymbolIndex = inSource.mProperty_mLeftNonterminalSymbolIndex ;
   mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
   mProperty_mProductionIndex = inSource.mProperty_mProductionIndex ;
   return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_productionRuleListForGrammarAnalysis_2E_element::~ GGS_productionRuleListForGrammarAnalysis_2E_element (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -6575,14 +6776,15 @@ mProperty_dictionary () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMap & GGS_genericExtensionMethodListMap::operator = (const GGS_genericExtensionMethodListMap & inSource) {
-  mProperty_dictionary = inSource.mProperty_dictionary ;
-  return *this ;
+GGS_genericExtensionMethodListMap::GGS_genericExtensionMethodListMap (const GGS_genericExtensionMethodListMap & inSource) :
+mProperty_dictionary (inSource.mProperty_dictionary) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMap::~ GGS_genericExtensionMethodListMap (void) {
+GGS_genericExtensionMethodListMap & GGS_genericExtensionMethodListMap::operator = (const GGS_genericExtensionMethodListMap & inSource) {
+  mProperty_dictionary = inSource.mProperty_dictionary ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -7031,14 +7233,15 @@ mProperty_dictionary () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMap & GGS_descendantClassListMap::operator = (const GGS_descendantClassListMap & inSource) {
-  mProperty_dictionary = inSource.mProperty_dictionary ;
-  return *this ;
+GGS_descendantClassListMap::GGS_descendantClassListMap (const GGS_descendantClassListMap & inSource) :
+mProperty_dictionary (inSource.mProperty_dictionary) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMap::~ GGS_descendantClassListMap (void) {
+GGS_descendantClassListMap & GGS_descendantClassListMap::operator = (const GGS_descendantClassListMap & inSource) {
+  mProperty_dictionary = inSource.mProperty_dictionary ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -7179,6 +7382,19 @@ mProperty_mEndOfSourceFile () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_galgas_33_ProjectComponentAST::GGS_galgas_33_ProjectComponentAST (const GGS_galgas_33_ProjectComponentAST & inSource) :
+mProperty_mProjectSourceList (inSource.mProperty_mProjectSourceList),
+mProperty_mMajorVersion (inSource.mProperty_mMajorVersion),
+mProperty_mMinorVersion (inSource.mProperty_mMinorVersion),
+mProperty_mRevisionVersion (inSource.mProperty_mRevisionVersion),
+mProperty_mGenerationFeatureList (inSource.mProperty_mGenerationFeatureList),
+mProperty_mQualifiedFeatureList (inSource.mProperty_mQualifiedFeatureList),
+mProperty_mTargetName (inSource.mProperty_mTargetName),
+mProperty_mEndOfSourceFile (inSource.mProperty_mEndOfSourceFile) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_galgas_33_ProjectComponentAST & GGS_galgas_33_ProjectComponentAST::operator = (const GGS_galgas_33_ProjectComponentAST & inSource) {
   mProperty_mProjectSourceList = inSource.mProperty_mProjectSourceList ;
   mProperty_mMajorVersion = inSource.mProperty_mMajorVersion ;
@@ -7189,11 +7405,6 @@ GGS_galgas_33_ProjectComponentAST & GGS_galgas_33_ProjectComponentAST::operator 
   mProperty_mTargetName = inSource.mProperty_mTargetName ;
   mProperty_mEndOfSourceFile = inSource.mProperty_mEndOfSourceFile ;
   return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_galgas_33_ProjectComponentAST::~ GGS_galgas_33_ProjectComponentAST (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------

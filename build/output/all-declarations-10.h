@@ -243,18 +243,18 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter : public AC_GALGAS_root 
     mProperty_exp = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_fixitElementForGeneration_2E_fixItInsertAfter (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_fixitElementForGeneration_2E_fixItInsertAfter (const GGS_semanticExpressionForGeneration & in_exp) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_fixitElementForGeneration_2E_fixItInsertAfter (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_fixitElementForGeneration_2E_fixItInsertAfter & operator = (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -398,18 +398,18 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore : public AC_GALGAS_root
     mProperty_exp = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_fixitElementForGeneration_2E_fixItInsertBefore (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_fixitElementForGeneration_2E_fixItInsertBefore (const GGS_semanticExpressionForGeneration & in_exp) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_fixitElementForGeneration_2E_fixItInsertBefore (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_fixitElementForGeneration_2E_fixItInsertBefore & operator = (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -553,18 +553,18 @@ class GGS_fixitElementForGeneration_2E_fixItReplace : public AC_GALGAS_root {
     mProperty_exp = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_fixitElementForGeneration_2E_fixItReplace (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_fixitElementForGeneration_2E_fixItReplace (const GGS_semanticExpressionForGeneration & in_exp) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_fixitElementForGeneration_2E_fixItReplace (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_fixitElementForGeneration_2E_fixItReplace & operator = (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -866,18 +866,18 @@ class GGS_fixitListForGeneration_2E_element : public AC_GALGAS_root {
     mProperty_mElement = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_fixitListForGeneration_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_fixitListForGeneration_2E_element (const GGS_fixitElementForGeneration & in_mElement) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_fixitListForGeneration_2E_element (const GGS_fixitListForGeneration_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_fixitListForGeneration_2E_element & operator = (const GGS_fixitListForGeneration_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1416,9 +1416,6 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
     mProperty_mOptionalConstantName = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectElementListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -1427,9 +1424,12 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
                                                                        const GGS_bool & in_mDeclaredAsUnused,
                                                                        const GGS_lstring & in_mOptionalConstantName) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element & operator = (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2539,9 +2539,6 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
     mProperty_mEnumeratedCollection = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2549,9 +2546,12 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
   public: GGS_forInstructionEnumeratedObjectListAST_2E_element (const GGS_bool & in_mAscending,
                                                                 const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_forInstructionEnumeratedObjectListAST_2E_element (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_forInstructionEnumeratedObjectListAST_2E_element & operator = (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3155,9 +3155,6 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
     mProperty_mEnumeratorCppName = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3166,9 +3163,12 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
                                                                           const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
                                                                           const GGS_string & in_mEnumeratorCppName) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & operator = (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7142,9 +7142,6 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
     mProperty_typeName = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifExpressionKind_2E_letExp (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -7154,9 +7151,12 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
                                           const GGS_location & in_endOfExp,
                                           const GGS_lstring & in_typeName) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifExpressionKind_2E_letExp (const GGS_ifExpressionKind_2E_letExp & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifExpressionKind_2E_letExp & operator = (const GGS_ifExpressionKind_2E_letExp & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7315,9 +7315,6 @@ class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
     mProperty_endOfExp = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifExpressionKind_2E_regularExp (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -7325,9 +7322,12 @@ class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
   public: GGS_ifExpressionKind_2E_regularExp (const GGS_semanticExpressionAST & in_exp,
                                               const GGS_location & in_endOfExp) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifExpressionKind_2E_regularExp (const GGS_ifExpressionKind_2E_regularExp & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifExpressionKind_2E_regularExp & operator = (const GGS_ifExpressionKind_2E_regularExp & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7631,18 +7631,18 @@ class GGS_ifExpressionList_2E_element : public AC_GALGAS_root {
     mProperty_mExpression = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifExpressionList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_ifExpressionList_2E_element (const GGS_ifExpressionKind & in_mExpression) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifExpressionList_2E_element (const GGS_ifExpressionList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifExpressionList_2E_element & operator = (const GGS_ifExpressionList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8090,9 +8090,6 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
     mProperty_testType = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifTestForGeneration_2E_letExp (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -8102,9 +8099,12 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
                                              const GGS_unifiedTypeMapEntry & in_targetType,
                                              const GGS_unifiedTypeMapEntry & in_testType) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifTestForGeneration_2E_letExp (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifTestForGeneration_2E_letExp & operator = (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8272,9 +8272,6 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
     mProperty_targetType = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifTestForGeneration_2E_optionalExp (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -8283,9 +8280,12 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
                                                   const GGS_semanticExpressionForGeneration & in_exp,
                                                   const GGS_unifiedTypeMapEntry & in_targetType) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifTestForGeneration_2E_optionalExp (const GGS_ifTestForGeneration_2E_optionalExp & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifTestForGeneration_2E_optionalExp & operator = (const GGS_ifTestForGeneration_2E_optionalExp & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8433,18 +8433,18 @@ class GGS_ifTestForGeneration_2E_regular : public AC_GALGAS_root {
     mProperty_exp = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifTestForGeneration_2E_regular (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_ifTestForGeneration_2E_regular (const GGS_semanticExpressionForGeneration & in_exp) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifTestForGeneration_2E_regular (const GGS_ifTestForGeneration_2E_regular & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifTestForGeneration_2E_regular & operator = (const GGS_ifTestForGeneration_2E_regular & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8746,18 +8746,18 @@ class GGS_ifTestListForGeneration_2E_element : public AC_GALGAS_root {
     mProperty_mExpression = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_ifTestListForGeneration_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_ifTestListForGeneration_2E_element (const GGS_ifTestForGeneration & in_mExpression) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_ifTestListForGeneration_2E_element (const GGS_ifTestListForGeneration_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_ifTestListForGeneration_2E_element & operator = (const GGS_ifTestListForGeneration_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10298,9 +10298,6 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
     mProperty_mLogExpression = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_logListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -10308,9 +10305,12 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
   public: GGS_logListAST_2E_element (const GGS_lstring & in_mLogMessage,
                                      const GGS_semanticExpressionAST & in_mLogExpression) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_logListAST_2E_element (const GGS_logListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_logListAST_2E_element & operator = (const GGS_logListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -15871,9 +15871,6 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
     mProperty_mEndOfBranch = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_switchBranchesAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -15883,9 +15880,12 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
                                             const GGS_semanticInstructionListAST & in_mInstructions,
                                             const GGS_location & in_mEndOfBranch) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_switchBranchesAST_2E_element (const GGS_switchBranchesAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_switchBranchesAST_2E_element & operator = (const GGS_switchBranchesAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers

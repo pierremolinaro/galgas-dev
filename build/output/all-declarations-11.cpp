@@ -11919,15 +11919,17 @@ mProperty_mList () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary_2E_element & GGS_genericExtensionMethodListMapDictionary_2E_element::operator = (const GGS_genericExtensionMethodListMapDictionary_2E_element & inSource) {
-  mProperty_key = inSource.mProperty_key ;
-  mProperty_mList = inSource.mProperty_mList ;
-  return *this ;
+GGS_genericExtensionMethodListMapDictionary_2E_element::GGS_genericExtensionMethodListMapDictionary_2E_element (const GGS_genericExtensionMethodListMapDictionary_2E_element & inSource) :
+mProperty_key (inSource.mProperty_key),
+mProperty_mList (inSource.mProperty_mList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary_2E_element::~ GGS_genericExtensionMethodListMapDictionary_2E_element (void) {
+GGS_genericExtensionMethodListMapDictionary_2E_element & GGS_genericExtensionMethodListMapDictionary_2E_element::operator = (const GGS_genericExtensionMethodListMapDictionary_2E_element & inSource) {
+  mProperty_key = inSource.mProperty_key ;
+  mProperty_mList = inSource.mProperty_mList ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -12090,15 +12092,17 @@ mProperty_typeList () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary_2E_element & GGS_descendantClassListMapDictionary_2E_element::operator = (const GGS_descendantClassListMapDictionary_2E_element & inSource) {
-  mProperty_key = inSource.mProperty_key ;
-  mProperty_typeList = inSource.mProperty_typeList ;
-  return *this ;
+GGS_descendantClassListMapDictionary_2E_element::GGS_descendantClassListMapDictionary_2E_element (const GGS_descendantClassListMapDictionary_2E_element & inSource) :
+mProperty_key (inSource.mProperty_key),
+mProperty_typeList (inSource.mProperty_typeList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary_2E_element::~ GGS_descendantClassListMapDictionary_2E_element (void) {
+GGS_descendantClassListMapDictionary_2E_element & GGS_descendantClassListMapDictionary_2E_element::operator = (const GGS_descendantClassListMapDictionary_2E_element & inSource) {
+  mProperty_key = inSource.mProperty_key ;
+  mProperty_typeList = inSource.mProperty_typeList ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------

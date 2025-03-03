@@ -238,9 +238,6 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     mProperty_mProjectName = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_XcodeProjectDescriptor (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -270,9 +267,12 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                       const GGS_string & in_mApplicationBundleName,
                                       const GGS_string & in_mProjectName) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_XcodeProjectDescriptor (const GGS_XcodeProjectDescriptor & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_XcodeProjectDescriptor & operator = (const GGS_XcodeProjectDescriptor & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers

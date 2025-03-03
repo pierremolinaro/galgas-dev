@@ -188,6 +188,19 @@ mProperty_galgas_34_ () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticContext::GGS_semanticContext (const GGS_semanticContext & inSource) :
+mProperty_routineMap (inSource.mProperty_routineMap),
+mProperty_mFunctionMap (inSource.mProperty_mFunctionMap),
+mProperty_mFilewrapperMap (inSource.mProperty_mFilewrapperMap),
+mProperty_grammarMap (inSource.mProperty_grammarMap),
+mProperty_mOptionComponentMapForSemanticAnalysis (inSource.mProperty_mOptionComponentMapForSemanticAnalysis),
+mProperty_mLexiqueComponentMapForSemanticAnalysis (inSource.mProperty_mLexiqueComponentMapForSemanticAnalysis),
+mProperty_mSyntaxComponentMapForSemanticAnalysis (inSource.mProperty_mSyntaxComponentMapForSemanticAnalysis),
+mProperty_galgas_34_ (inSource.mProperty_galgas_34_) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticContext & GGS_semanticContext::operator = (const GGS_semanticContext & inSource) {
   mProperty_routineMap = inSource.mProperty_routineMap ;
   mProperty_mFunctionMap = inSource.mProperty_mFunctionMap ;
@@ -198,11 +211,6 @@ GGS_semanticContext & GGS_semanticContext::operator = (const GGS_semanticContext
   mProperty_mSyntaxComponentMapForSemanticAnalysis = inSource.mProperty_mSyntaxComponentMapForSemanticAnalysis ;
   mProperty_galgas_34_ = inSource.mProperty_galgas_34_ ;
   return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticContext::~ GGS_semanticContext (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1172,6 +1180,17 @@ mProperty_requiresSelfForAccessingProperty () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_analysisContext::GGS_analysisContext (const GGS_analysisContext & inSource) :
+mProperty_semanticContext (inSource.mProperty_semanticContext),
+mProperty_predefinedTypes (inSource.mProperty_predefinedTypes),
+mProperty_selfObjectCppName (inSource.mProperty_selfObjectCppName),
+mProperty_selfAvailability (inSource.mProperty_selfAvailability),
+mProperty_selfObjectCppPrefixForAccessingProperty (inSource.mProperty_selfObjectCppPrefixForAccessingProperty),
+mProperty_requiresSelfForAccessingProperty (inSource.mProperty_requiresSelfForAccessingProperty) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_analysisContext & GGS_analysisContext::operator = (const GGS_analysisContext & inSource) {
   mProperty_semanticContext = inSource.mProperty_semanticContext ;
   mProperty_predefinedTypes = inSource.mProperty_predefinedTypes ;
@@ -1180,11 +1199,6 @@ GGS_analysisContext & GGS_analysisContext::operator = (const GGS_analysisContext
   mProperty_selfObjectCppPrefixForAccessingProperty = inSource.mProperty_selfObjectCppPrefixForAccessingProperty ;
   mProperty_requiresSelfForAccessingProperty = inSource.mProperty_requiresSelfForAccessingProperty ;
   return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_analysisContext::~ GGS_analysisContext (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1486,16 +1500,19 @@ mProperty_mTemplateVariableMap () {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_templateAnalysisContext::GGS_templateAnalysisContext (const GGS_templateAnalysisContext & inSource) :
+mProperty_mSemanticContext (inSource.mProperty_mSemanticContext),
+mProperty_mPredefinedTypes (inSource.mProperty_mPredefinedTypes),
+mProperty_mTemplateVariableMap (inSource.mProperty_mTemplateVariableMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_templateAnalysisContext & GGS_templateAnalysisContext::operator = (const GGS_templateAnalysisContext & inSource) {
   mProperty_mSemanticContext = inSource.mProperty_mSemanticContext ;
   mProperty_mPredefinedTypes = inSource.mProperty_mPredefinedTypes ;
   mProperty_mTemplateVariableMap = inSource.mProperty_mTemplateVariableMap ;
   return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateAnalysisContext::~ GGS_templateAnalysisContext (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -8786,25 +8803,6 @@ GGS_string cPtr_lexicalStringMatchAST::getter_generateObjcCocoaConditionCode (co
   const GGS_lexicalStringMatchAST temp_0 = this ;
   result_outGeneratedCode = GGS_string ("[self testForInputString:@").add_operation (temp_0.readProperty_mString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 60)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 60)) ;
   result_outGeneratedCode.plusAssign_operation(GGS_string (" advance:YES]"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 61)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension getter '@lexicalStringNotMatchAST generateObjcCocoaConditionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cPtr_lexicalStringNotMatchAST::getter_generateObjcCocoaConditionCode (const GGS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_string result_outGeneratedCode ; // Returned variable
-  result_outGeneratedCode = GGS_string ("[self notTestForInputString:@") ;
-  const GGS_lexicalStringNotMatchAST temp_0 = this ;
-  result_outGeneratedCode.plusAssign_operation(temp_0.readProperty_mString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 70)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 70)) ;
-  result_outGeneratedCode.plusAssign_operation(GGS_string (" error:& scanningOk]"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 71)) ;
 //---
   return result_outGeneratedCode ;
 }

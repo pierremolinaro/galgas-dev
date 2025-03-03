@@ -14619,15 +14619,17 @@ mProperty_mSubMaps () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_currentVarManager & GGS_currentVarManager::operator = (const GGS_currentVarManager & inSource) {
-  mProperty_mLocalVarMap = inSource.mProperty_mLocalVarMap ;
-  mProperty_mSubMaps = inSource.mProperty_mSubMaps ;
-  return *this ;
+GGS_currentVarManager::GGS_currentVarManager (const GGS_currentVarManager & inSource) :
+mProperty_mLocalVarMap (inSource.mProperty_mLocalVarMap),
+mProperty_mSubMaps (inSource.mProperty_mSubMaps) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_currentVarManager::~ GGS_currentVarManager (void) {
+GGS_currentVarManager & GGS_currentVarManager::operator = (const GGS_currentVarManager & inSource) {
+  mProperty_mLocalVarMap = inSource.mProperty_mLocalVarMap ;
+  mProperty_mSubMaps = inSource.mProperty_mSubMaps ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------

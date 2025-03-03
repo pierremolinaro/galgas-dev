@@ -1085,9 +1085,6 @@ class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
     mProperty_mOptionDefaultValueKind = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_commandLineOptionListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -1100,9 +1097,12 @@ class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
                                                    const GGS_lstring & in_mOptionDefaultValue,
                                                    const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_commandLineOptionListAST_2E_element (const GGS_commandLineOptionListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_commandLineOptionListAST_2E_element & operator = (const GGS_commandLineOptionListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1596,9 +1596,6 @@ class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
     mProperty_mDefaultValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_commandLineOptionSortedList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -1609,9 +1606,12 @@ class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
                                                       const GGS_string & in_mComment,
                                                       const GGS_string & in_mDefaultValue) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_commandLineOptionSortedList_2E_element (const GGS_commandLineOptionSortedList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_commandLineOptionSortedList_2E_element & operator = (const GGS_commandLineOptionSortedList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1939,9 +1939,6 @@ class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
     mProperty_mDefaultValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_commandLineOptionMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -1952,9 +1949,12 @@ class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
                                                const GGS_string & in_mComment,
                                                const GGS_string & in_mDefaultValue) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_commandLineOptionMap_2E_element (const GGS_commandLineOptionMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_commandLineOptionMap_2E_element & operator = (const GGS_commandLineOptionMap_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2294,9 +2294,6 @@ class GGS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
     mProperty_mValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_guiSimpleAttributeListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2304,9 +2301,12 @@ class GGS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
   public: GGS_guiSimpleAttributeListAST_2E_element (const GGS_lstring & in_mKey,
                                                     const GGS_lstring & in_mValue) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_guiSimpleAttributeListAST_2E_element (const GGS_guiSimpleAttributeListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_guiSimpleAttributeListAST_2E_element & operator = (const GGS_guiSimpleAttributeListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2592,9 +2592,6 @@ class GGS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
     mProperty_mValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_guiCompoundAttributeListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2603,9 +2600,12 @@ class GGS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
                                                       const GGS_lstring & in_mAttributeName,
                                                       const GGS_lstring & in_mValue) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_guiCompoundAttributeListAST_2E_element (const GGS_guiCompoundAttributeListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_guiCompoundAttributeListAST_2E_element & operator = (const GGS_guiCompoundAttributeListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2863,9 +2863,6 @@ class GGS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
     mProperty_mDisplayFlags = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_terminalLabelListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2873,9 +2870,12 @@ class GGS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
   public: GGS_terminalLabelListAST_2E_element (const GGS_lstring & in_mTerminal,
                                                const GGS_uint & in_mDisplayFlags) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_terminalLabelListAST_2E_element (const GGS_terminalLabelListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_terminalLabelListAST_2E_element & operator = (const GGS_terminalLabelListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3161,9 +3161,6 @@ class GGS_guiLabelListAST_2E_element : public AC_GALGAS_root {
     mProperty_mLocation = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_guiLabelListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3172,9 +3169,12 @@ class GGS_guiLabelListAST_2E_element : public AC_GALGAS_root {
                                           const GGS_terminalLabelListAST & in_mTerminalList,
                                           const GGS_location & in_mLocation) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_guiLabelListAST_2E_element (const GGS_guiLabelListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_guiLabelListAST_2E_element & operator = (const GGS_guiLabelListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3492,9 +3492,6 @@ class GGS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
     mProperty_mCompoundAttributes = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_withLexiqueListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3504,9 +3501,12 @@ class GGS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
                                              const GGS_guiSimpleAttributeListAST & in_mSimpleAttributes,
                                              const GGS_guiCompoundAttributeListAST & in_mCompoundAttributes) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_withLexiqueListAST_2E_element (const GGS_withLexiqueListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_withLexiqueListAST_2E_element & operator = (const GGS_withLexiqueListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3856,9 +3856,6 @@ class GGS_guiCommandLineOptionList_2E_element : public AC_GALGAS_root {
     mProperty_mComment = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_guiCommandLineOptionList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3869,9 +3866,12 @@ class GGS_guiCommandLineOptionList_2E_element : public AC_GALGAS_root {
                                                    const GGS_string & in_mOptionString,
                                                    const GGS_string & in_mComment) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_guiCommandLineOptionList_2E_element (const GGS_guiCommandLineOptionList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_guiCommandLineOptionList_2E_element & operator = (const GGS_guiCommandLineOptionList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4139,9 +4139,6 @@ class GGS_extensionMap_2E_element : public AC_GALGAS_root {
     mProperty_mIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_extensionMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -4150,9 +4147,12 @@ class GGS_extensionMap_2E_element : public AC_GALGAS_root {
                                        const GGS_string & in_mLexiqueName,
                                        const GGS_uint & in_mIndex) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_extensionMap_2E_element (const GGS_extensionMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_extensionMap_2E_element & operator = (const GGS_extensionMap_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4488,9 +4488,6 @@ class GGS_textMacroList_2E_element : public AC_GALGAS_root {
     mProperty_mContents = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_textMacroList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -4498,9 +4495,12 @@ class GGS_textMacroList_2E_element : public AC_GALGAS_root {
   public: GGS_textMacroList_2E_element (const GGS_string & in_mKey,
                                         const GGS_string & in_mContents) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_textMacroList_2E_element (const GGS_textMacroList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_textMacroList_2E_element & operator = (const GGS_textMacroList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4906,9 +4906,6 @@ class GGS_importedLexiqueList_2E_element : public AC_GALGAS_root {
     mProperty_mLexicalStyleList = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_importedLexiqueList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -4921,9 +4918,12 @@ class GGS_importedLexiqueList_2E_element : public AC_GALGAS_root {
                                               const GGS_guiLabelListAST & in_mLabels,
                                               const GGS_lexicalStyleListAST & in_mLexicalStyleList) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_importedLexiqueList_2E_element (const GGS_importedLexiqueList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_importedLexiqueList_2E_element & operator = (const GGS_importedLexiqueList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5189,9 +5189,6 @@ class GGS_projectIndexingDescriptorList_2E_element : public AC_GALGAS_root {
     mProperty_indexingPathSuffix = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_projectIndexingDescriptorList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -5199,9 +5196,12 @@ class GGS_projectIndexingDescriptorList_2E_element : public AC_GALGAS_root {
   public: GGS_projectIndexingDescriptorList_2E_element (const GGS_lstring & in_mProjectFileExtension,
                                                         const GGS_lstring & in_indexingPathSuffix) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_projectIndexingDescriptorList_2E_element (const GGS_projectIndexingDescriptorList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_projectIndexingDescriptorList_2E_element & operator = (const GGS_projectIndexingDescriptorList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5547,9 +5547,6 @@ class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
     mProperty_mProjectIndexingDescriptorList = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_galgasGUIComponentListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -5560,9 +5557,12 @@ class GGS_galgasGUIComponentListAST_2E_element : public AC_GALGAS_root {
                                                     const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                     const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_galgasGUIComponentListAST_2E_element (const GGS_galgasGUIComponentListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_galgasGUIComponentListAST_2E_element & operator = (const GGS_galgasGUIComponentListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5708,9 +5708,6 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
     mProperty_mProjectIndexingDescriptorList = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_guiAnalysisContext (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -5725,9 +5722,12 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
                                   const GGS_string & in_mBuildRunOption,
                                   const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_guiAnalysisContext (const GGS_guiAnalysisContext & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_guiAnalysisContext & operator = (const GGS_guiAnalysisContext & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5961,9 +5961,6 @@ class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
     mProperty_mGuiComponentContext = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_optionComponentMapForGeneration_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -5971,9 +5968,12 @@ class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
   public: GGS_optionComponentMapForGeneration_2E_element (const GGS_lstring & in_lkey,
                                                           const GGS_guiAnalysisContext & in_mGuiComponentContext) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_optionComponentMapForGeneration_2E_element (const GGS_optionComponentMapForGeneration_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_optionComponentMapForGeneration_2E_element & operator = (const GGS_optionComponentMapForGeneration_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6888,18 +6888,18 @@ class GGS_initializerSignatureList_2E_element : public AC_GALGAS_root {
     mProperty_initializer = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_initializerSignatureList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_initializerSignatureList_2E_element (const GGS_formalInputParameterListAST & in_initializer) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_initializerSignatureList_2E_element (const GGS_initializerSignatureList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_initializerSignatureList_2E_element & operator = (const GGS_initializerSignatureList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7001,9 +7001,6 @@ class GGS_formalInputParameterListAST_2E_element : public AC_GALGAS_root {
     mProperty_mIsConstant = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_formalInputParameterListAST_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -7014,9 +7011,12 @@ class GGS_formalInputParameterListAST_2E_element : public AC_GALGAS_root {
                                                       const GGS_bool & in_mIsUnused,
                                                       const GGS_bool & in_mIsConstant) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_formalInputParameterListAST_2E_element (const GGS_formalInputParameterListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_formalInputParameterListAST_2E_element & operator = (const GGS_formalInputParameterListAST_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9735,93 +9735,4 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @applicationPredefinedTypeAST_2E_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_applicationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_applicationPredefinedTypeAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_applicationPredefinedTypeAST_2E_weak (const class GGS_applicationPredefinedTypeAST & inSource) ;
-
-  public: GGS_applicationPredefinedTypeAST_2E_weak & operator = (const class GGS_applicationPredefinedTypeAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_applicationPredefinedTypeAST_2E_weak init_nil (void) {
-    GGS_applicationPredefinedTypeAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_applicationPredefinedTypeAST bang_applicationPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_applicationPredefinedTypeAST unwrappedValue (void) const {
-    GGS_applicationPredefinedTypeAST result ;
-    if (isValid ()) {
-      const cPtr_applicationPredefinedTypeAST * p = (cPtr_applicationPredefinedTypeAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_applicationPredefinedTypeAST (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_applicationPredefinedTypeAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_applicationPredefinedTypeAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_applicationPredefinedTypeAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
 

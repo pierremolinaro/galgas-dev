@@ -10,17 +10,23 @@ end% {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
+%
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
+  do %mProperty_%![mPropertyName identifierRepresentation]% (inSource.mProperty_%![mPropertyName identifierRepresentation]%)%
+  between %,\n%
+end
+% {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
 %
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
   do %  mProperty_%![mPropertyName identifierRepresentation]% = inSource.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
 end
 %  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER%::~ GGS_%!TYPE_IDENTIFIER% (void) {
 }
 
 %

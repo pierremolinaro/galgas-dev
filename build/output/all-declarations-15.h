@@ -249,9 +249,6 @@ class GGS_BuildFileList_2E_element : public AC_GALGAS_root {
     mProperty_mBuildReference = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_BuildFileList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -260,9 +257,12 @@ class GGS_BuildFileList_2E_element : public AC_GALGAS_root {
                                         const GGS_string & in_mFileName,
                                         const GGS_string & in_mBuildReference) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_BuildFileList_2E_element (const GGS_BuildFileList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_BuildFileList_2E_element & operator = (const GGS_BuildFileList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers

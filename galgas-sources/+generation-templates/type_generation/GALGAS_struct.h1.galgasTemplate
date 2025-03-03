@@ -24,10 +24,7 @@ for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
   %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
-end%//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
-
-//--------------------------------- Set initialized properties
+end%//--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
@@ -37,6 +34,9 @@ for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
   between %,\n%!^
 end%) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+

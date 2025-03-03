@@ -2123,9 +2123,6 @@ class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
     mProperty_mHeaderString = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_headerCompositionMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2134,9 +2131,12 @@ class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
                                                const GGS_stringset & in_mInclusion,
                                                const GGS_string & in_mHeaderString) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_headerCompositionMap_2E_element (const GGS_headerCompositionMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_headerCompositionMap_2E_element & operator = (const GGS_headerCompositionMap_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2463,9 +2463,6 @@ class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
     mProperty_mHeaderFileName = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_headerRepartitionMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2473,9 +2470,12 @@ class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
   public: GGS_headerRepartitionMap_2E_element (const GGS_lstring & in_lkey,
                                                const GGS_string & in_mHeaderFileName) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_headerRepartitionMap_2E_element (const GGS_headerRepartitionMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_headerRepartitionMap_2E_element & operator = (const GGS_headerRepartitionMap_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2800,9 +2800,6 @@ class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
     mProperty_mFeatureValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_projectQualifiedFeatureMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -2810,9 +2807,12 @@ class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
   public: GGS_projectQualifiedFeatureMap_2E_element (const GGS_lstring & in_lkey,
                                                      const GGS_lstring & in_mFeatureValue) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_projectQualifiedFeatureMap_2E_element (const GGS_projectQualifiedFeatureMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_projectQualifiedFeatureMap_2E_element & operator = (const GGS_projectQualifiedFeatureMap_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3206,9 +3206,6 @@ class GGS_XCodeGroupList_2E_element : public AC_GALGAS_root {
     mProperty_mChildrenRefs = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_XCodeGroupList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3218,9 +3215,12 @@ class GGS_XCodeGroupList_2E_element : public AC_GALGAS_root {
                                          const GGS_string & in_mGroupPath,
                                          const GGS_stringlist & in_mChildrenRefs) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_XCodeGroupList_2E_element (const GGS_XCodeGroupList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_XCodeGroupList_2E_element & operator = (const GGS_XCodeGroupList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3750,9 +3750,6 @@ class GGS_XCodeToolTargetList_2E_element : public AC_GALGAS_root {
     mProperty_mFrameworkBuildPhaseRef = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_XCodeToolTargetList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3769,9 +3766,12 @@ class GGS_XCodeToolTargetList_2E_element : public AC_GALGAS_root {
                                               const GGS_stringlist & in_mFrameworksFileRefList,
                                               const GGS_string & in_mFrameworkBuildPhaseRef) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_XCodeToolTargetList_2E_element (const GGS_XCodeToolTargetList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_XCodeToolTargetList_2E_element & operator = (const GGS_XCodeToolTargetList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4405,9 +4405,6 @@ class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
     mProperty_mResourceFileBuildRefs = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_XCodeAppTargetList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -4427,9 +4424,12 @@ class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
                                              const GGS_string & in_mResourceBuildRef,
                                              const GGS_stringlist & in_mResourceFileBuildRefs) ;
 
+//--------------------------------- Copy constructor
+  public: GGS_XCodeAppTargetList_2E_element (const GGS_XCodeAppTargetList_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
   public: GGS_XCodeAppTargetList_2E_element & operator = (const GGS_XCodeAppTargetList_2E_element & inSource) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers

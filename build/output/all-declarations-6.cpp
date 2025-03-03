@@ -4142,15 +4142,17 @@ mProperty_extensionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary_2E_element & GGS_syntaxExtensionsDictionary_2E_element::operator = (const GGS_syntaxExtensionsDictionary_2E_element & inSource) {
-  mProperty_key = inSource.mProperty_key ;
-  mProperty_extensionList = inSource.mProperty_extensionList ;
-  return *this ;
+GGS_syntaxExtensionsDictionary_2E_element::GGS_syntaxExtensionsDictionary_2E_element (const GGS_syntaxExtensionsDictionary_2E_element & inSource) :
+mProperty_key (inSource.mProperty_key),
+mProperty_extensionList (inSource.mProperty_extensionList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary_2E_element::~ GGS_syntaxExtensionsDictionary_2E_element (void) {
+GGS_syntaxExtensionsDictionary_2E_element & GGS_syntaxExtensionsDictionary_2E_element::operator = (const GGS_syntaxExtensionsDictionary_2E_element & inSource) {
+  mProperty_key = inSource.mProperty_key ;
+  mProperty_extensionList = inSource.mProperty_extensionList ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------

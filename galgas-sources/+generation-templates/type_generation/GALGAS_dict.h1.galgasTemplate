@@ -3,15 +3,17 @@
 //--------------------------------------------------------------------------------------------------
 
 class KeyComparator_%!TYPE_IDENTIFIER% final {
-  public: constexpr bool operator () (const GGS_%!KEY_TYPE_IDENTIFIER% & inLeft,
-                                      const GGS_%!KEY_TYPE_IDENTIFIER% & inRight) const {
+  public: bool operator () (const GGS_%!KEY_TYPE_IDENTIFIER% & inLeft,
+                            const GGS_%!KEY_TYPE_IDENTIFIER% & inRight) const {
     return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
   }
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-typedef std::map <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%, KeyComparator_%!TYPE_IDENTIFIER%> MapFor_%!TYPE_IDENTIFIER% ;
+typedef std::map <GGS_%!KEY_TYPE_IDENTIFIER%,
+                  GGS_%!ELEMENT_TYPE_IDENTIFIER%,
+                  KeyComparator_%!TYPE_IDENTIFIER%> MapFor_%!TYPE_IDENTIFIER% ;
 
 //--------------------------------------------------------------------------------------------------
 
