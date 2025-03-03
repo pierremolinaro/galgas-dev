@@ -109,7 +109,7 @@ class GGS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_semanticDeclarationListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_semanticDeclarationListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -376,7 +376,7 @@ class GGS_signatureForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_signatureForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_signatureForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -1343,7 +1343,7 @@ class GGS_nonTerminalToAddList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_nonTerminalToAddList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_nonTerminalToAddList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -1612,7 +1612,7 @@ class GGS_terminalCheckAssignementList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_terminalCheckAssignementList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_terminalCheckAssignementList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2092,7 +2092,7 @@ class GGS_filewrapperTemplateListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_filewrapperTemplateListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_filewrapperTemplateListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2472,7 +2472,7 @@ class GGS_localConstantList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_localConstantList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_localConstantList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2803,7 +2803,7 @@ class GGS_localInitializedVariableList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_localInitializedVariableList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_localInitializedVariableList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -4338,7 +4338,7 @@ class GGS_ruleLabelImplementationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_ruleLabelImplementationList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_ruleLabelImplementationList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -4700,7 +4700,7 @@ class GGS_ruleDeclarationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_ruleDeclarationList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_ruleDeclarationList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

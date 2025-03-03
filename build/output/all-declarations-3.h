@@ -774,7 +774,7 @@ class GGS_commandLineOptionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_commandLineOptionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_commandLineOptionListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2120,7 +2120,7 @@ class GGS_guiSimpleAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_guiSimpleAttributeListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_guiSimpleAttributeListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2389,7 +2389,7 @@ class GGS_guiCompoundAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_guiCompoundAttributeListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_guiCompoundAttributeListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2687,7 +2687,7 @@ class GGS_terminalLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_terminalLabelListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_terminalLabelListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2956,7 +2956,7 @@ class GGS_guiLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_guiLabelListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_guiLabelListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -3258,7 +3258,7 @@ class GGS_withLexiqueListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_withLexiqueListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_withLexiqueListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -3593,7 +3593,7 @@ class GGS_guiCommandLineOptionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_guiCommandLineOptionList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_guiCommandLineOptionList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -4307,7 +4307,7 @@ class GGS_textMacroList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_textMacroList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_textMacroList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -4584,7 +4584,7 @@ class GGS_importedLexiqueList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_importedLexiqueList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_importedLexiqueList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -5006,7 +5006,7 @@ class GGS_projectIndexingDescriptorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_projectIndexingDescriptorList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_projectIndexingDescriptorList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -5279,7 +5279,7 @@ class GGS_galgasGUIComponentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_galgasGUIComponentListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_galgasGUIComponentListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -6487,7 +6487,7 @@ class GGS_initializerSignatureList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_initializerSignatureList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_initializerSignatureList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -6653,7 +6653,7 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_formalInputParameterListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_formalInputParameterListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -7303,7 +7303,7 @@ class GGS_functionSignature : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_functionSignature (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_functionSignature (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8213,7 +8213,7 @@ class GGS_formalParameterSignature : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_formalParameterSignature (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_formalParameterSignature (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9371,7 +9371,7 @@ class GGS_enumerationDescriptorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_enumerationDescriptorList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_enumerationDescriptorList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

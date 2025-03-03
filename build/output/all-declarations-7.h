@@ -1836,7 +1836,7 @@ class GGS_acceptableParameterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_acceptableParameterList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_acceptableParameterList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8384,7 +8384,7 @@ class GGS_semanticExpressionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_semanticExpressionListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_semanticExpressionListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9267,7 +9267,7 @@ class GGS_unifiedTypeMapEntryList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_unifiedTypeMapEntryList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_unifiedTypeMapEntryList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -10530,7 +10530,7 @@ class GGS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_listOfSemanticInstructionListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_listOfSemanticInstructionListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

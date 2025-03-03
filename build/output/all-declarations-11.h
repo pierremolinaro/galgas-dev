@@ -1295,7 +1295,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_switchBranchesAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_switchBranchesAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -1854,7 +1854,7 @@ class GGS_switchBranchesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_switchBranchesForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_switchBranchesForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8747,7 +8747,7 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_syntaxInstructionListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_syntaxInstructionListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8987,7 +8987,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_productionRuleListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_productionRuleListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -10025,7 +10025,7 @@ class GGS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_branchListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_branchListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -10569,7 +10569,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_syntaxComponentListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_syntaxComponentListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11202,7 +11202,7 @@ class GGS_rowList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_rowList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_rowList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11488,7 +11488,7 @@ class GGS_programListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_programListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_programListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

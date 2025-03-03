@@ -5740,23 +5740,23 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (Compil
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" : public AC_GALGAS_list {\n//--------------------------------- Default constructor\n  public: GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" (void) ;\n\n//--------------------------------- List constructor used by listmap\n  public: GGS_") ;
+  result.appendString (" (void) ;\n\n//--------------------------------- List constructor by graph\n  public: GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (const capCollectionElementArray & inSharedArray) ;\n\n//--------------------------------- Element constructor\n  public: static void makeAttributesFromObjects (") ;
   columnMarker = result.currentColumn () ;
   result.appendString ("capCollectionElement & outAttributes") ;
-  GGS_uint index_2627_ (0) ;
+  GGS_uint index_2620_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_2627 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_2627.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_2620 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_2620.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("const class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_2627.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 55)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_2620.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 55)).stringValue ()) ;
       result.appendString (" & in_") ;
-      result.appendString (enumerator_2627.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 55)).stringValue ()) ;
-      enumerator_2627.gotoNextObject () ;
-      index_2627_.increment () ;
+      result.appendString (enumerator_2620.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 55)).stringValue ()) ;
+      enumerator_2620.gotoNextObject () ;
+      index_2620_.increment () ;
     }
   }
   result.appendString ("\n") ;

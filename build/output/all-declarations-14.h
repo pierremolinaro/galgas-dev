@@ -2976,7 +2976,7 @@ class GGS_XCodeGroupList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_XCodeGroupList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_XCodeGroupList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -3323,7 +3323,7 @@ class GGS_XCodeToolTargetList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_XCodeToolTargetList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_XCodeToolTargetList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -3893,7 +3893,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_XCodeAppTargetList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_XCodeAppTargetList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

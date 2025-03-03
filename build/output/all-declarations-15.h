@@ -50,7 +50,7 @@ class GGS_BuildFileList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_BuildFileList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_BuildFileList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

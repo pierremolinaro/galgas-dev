@@ -754,7 +754,7 @@ class GGS_fixitListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_fixitListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_fixitListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -1799,7 +1799,7 @@ class GGS_fixitListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_fixitListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_fixitListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -2292,7 +2292,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_forInstructionEnumeratedObjectElementListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_forInstructionEnumeratedObjectElementListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -3442,7 +3442,7 @@ class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_forInstructionEnumeratedObjectListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_forInstructionEnumeratedObjectListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -4029,7 +4029,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_lis
 //--------------------------------- Default constructor
   public: GGS_forInstructionEnumeratedObjectListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_forInstructionEnumeratedObjectListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8558,7 +8558,7 @@ class GGS_ifExpressionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_ifExpressionList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_ifExpressionList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9669,7 +9669,7 @@ class GGS_ifTestListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_ifTestListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_ifTestListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11192,7 +11192,7 @@ class GGS_logListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_logListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_logListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

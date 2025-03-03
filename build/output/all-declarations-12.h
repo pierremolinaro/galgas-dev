@@ -1033,7 +1033,7 @@ class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_galgas_33_QualifiedFeatureList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_galgas_33_QualifiedFeatureList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

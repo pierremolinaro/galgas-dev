@@ -4208,7 +4208,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_propertyInCollectionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_propertyInCollectionListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -5788,7 +5788,7 @@ class GGS_typedPropertyList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_typedPropertyList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_typedPropertyList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -6998,7 +6998,7 @@ class GGS_enumConstantList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_enumConstantList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_enumConstantList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -7589,7 +7589,7 @@ class GGS_enumConstantListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_enumConstantListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_enumConstantListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -7768,7 +7768,7 @@ class GGS_associatedValueDescriptorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_associatedValueDescriptorList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_associatedValueDescriptorList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8127,7 +8127,7 @@ class GGS_typeNameFormalParameterNameList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_typeNameFormalParameterNameList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_typeNameFormalParameterNameList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8423,7 +8423,7 @@ class GGS_externTypeConstructorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_externTypeConstructorList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8661,7 +8661,7 @@ class GGS_externTypeGetterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_externTypeGetterList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_externTypeGetterList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -8959,7 +8959,7 @@ class GGS_externTypeSetterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_externTypeSetterList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_externTypeSetterList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9144,7 +9144,7 @@ class GGS_formalParameterListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_formalParameterListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_formalParameterListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9682,7 +9682,7 @@ class GGS_externTypeMethodList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_externTypeMethodList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_externTypeMethodList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -10247,7 +10247,7 @@ class GGS_graphInsertModifierList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_graphInsertModifierList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_graphInsertModifierList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11255,7 +11255,7 @@ class GGS_insertMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_insertMethodListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_insertMethodListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11553,7 +11553,7 @@ class GGS_mapSearchMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_mapSearchMethodListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_mapSearchMethodListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -11820,7 +11820,7 @@ class GGS_mapRemoveMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_mapRemoveMethodListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_mapRemoveMethodListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -12085,7 +12085,7 @@ class GGS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_insertOrReplaceDeclarationListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_insertOrReplaceDeclarationListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

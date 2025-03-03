@@ -468,7 +468,7 @@ class GGS_collectionValueElementList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_collectionValueElementList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_collectionValueElementList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -951,7 +951,7 @@ class GGS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_collectionValueElementListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_collectionValueElementListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -15169,7 +15169,7 @@ class GGS_castInstructionBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_castInstructionBranchListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_castInstructionBranchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -15759,7 +15759,7 @@ class GGS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_castInstructionBranchListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_castInstructionBranchListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor

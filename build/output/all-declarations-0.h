@@ -47,7 +47,7 @@ class GGS__32_lstringlist : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS__32_lstringlist (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS__32_lstringlist (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -862,7 +862,7 @@ class GGS_templateInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_templateInstructionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_templateInstructionListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -1280,7 +1280,7 @@ class GGS_templateExpressionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_templateExpressionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_templateExpressionListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -9460,7 +9460,7 @@ class GGS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_templateInstructionIfBranchListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_templateInstructionIfBranchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
