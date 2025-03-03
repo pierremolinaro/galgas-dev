@@ -482,16 +482,6 @@ void extensionSetter_insertDeclaredLocalVariable (class GGS_localVarManager & io
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'makeOptionalTypeLName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & constinArgument0,
-                                                  class Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@routineMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
@@ -514,30 +504,6 @@ void extensionMethod_displayRule (const class GGS_productionRuleListForGrammarAn
                                   class GGS_string & io_ioGeneratedCode,
                                   class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@genericExtensionMethodListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObject,
-                                const class GGS_string constin_inKey,
-                                const class GGS_lstring constin_inValue,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@descendantClassListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
-                                const class GGS_string constin_inKey,
-                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

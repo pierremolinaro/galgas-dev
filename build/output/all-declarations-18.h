@@ -438,14 +438,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@syntaxExtensions listForKey' (as function)
+//Function 'makeOptionalTypeLName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_galgas_33_SyntaxExtensionListAST extensionGetter_listForKey (const class GGS_syntaxExtensions & inObject,
-                                                                       const class GGS_string & constinArgument0,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & constinArgument0,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
