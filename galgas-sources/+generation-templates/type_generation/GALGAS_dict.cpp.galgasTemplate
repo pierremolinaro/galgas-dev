@@ -257,25 +257,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!KEY_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-%for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![propertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  return mIterator->second.mProperty_%![propertyName identifierRepresentation]% ;\n%
-  %}\n\n%
-end 
-%
-//--------------------------------------------------------------------------------------------------
 // Down Enumerator for @%!KEY_TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
@@ -286,20 +267,3 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!KEY_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-%for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![propertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  return mIterator->second.mProperty_%![propertyName identifierRepresentation]% ;\n%
-  %}\n\n%
-end 

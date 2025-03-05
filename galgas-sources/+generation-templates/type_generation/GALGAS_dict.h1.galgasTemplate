@@ -18,18 +18,25 @@ typedef std::map <GGS_%!KEY_TYPE_IDENTIFIER%,
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
-  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
   
-  public: void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+%  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_%![mEnumerationName identifierRepresentation]% ;
+  }
+
+%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
-%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+%  public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const  {
+     return mIterator->second ;
+  }
+%
   end
 %
 //--- Private properties
@@ -44,19 +51,26 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
-  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand)  ;
+  
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
 
-  public: void gotoNextObject (void) { mIterator ++ ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+%  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_%![mEnumerationName identifierRepresentation]% ;
+ }
+ 
+%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
-%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end
+%//--- Current element access
+  public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second ;
+  }
+%  end
 %
 //--- Private properties
   private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;

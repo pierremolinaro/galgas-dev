@@ -5431,15 +5431,23 @@ typedef std::map <GGS_string,
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_syntaxExtensionsDictionary final {
-  public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject) ;
+  public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
   
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+  }
+
+  public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_extensionList ;
+  }
+
 //--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
+     return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_syntaxExtensionsDictionary mDictionary ;
@@ -5453,15 +5461,24 @@ class DownEnumerator_syntaxExtensionsDictionary final {
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_syntaxExtensionsDictionary final {
-  public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject) ;
+  public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand)  ;
+  
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
 
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+ }
+ 
+  public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_extensionList ;
+ }
+ 
 //--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_syntaxExtensionsDictionary mDictionary ;

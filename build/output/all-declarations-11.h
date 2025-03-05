@@ -11882,15 +11882,23 @@ typedef std::map <GGS_string,
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_genericExtensionMethodListMapDictionary final {
-  public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inEnumeratedObject) ;
+  public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
   
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mList (LOCATION_ARGS) const ;
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+  }
+
+  public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_mList ;
+  }
+
 //--- Current element access
-  public: class GGS_genericExtensionMethodListMapDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
+     return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
@@ -11904,15 +11912,24 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_genericExtensionMethodListMapDictionary final {
-  public: UpEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inEnumeratedObject) ;
+  public: UpEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand)  ;
+  
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
 
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mList (LOCATION_ARGS) const ;
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+ }
+ 
+  public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_mList ;
+ }
+ 
 //--- Current element access
-  public: class GGS_genericExtensionMethodListMapDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
@@ -12330,15 +12347,23 @@ typedef std::map <GGS_string,
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_descendantClassListMapDictionary final {
-  public: DownEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inEnumeratedObject) ;
+  public: DownEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
   
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntryList current_typeList (LOCATION_ARGS) const ;
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+  }
+
+  public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_typeList ;
+  }
+
 //--- Current element access
-  public: class GGS_descendantClassListMapDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
+     return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_descendantClassListMapDictionary mDictionary ;
@@ -12352,15 +12377,24 @@ class DownEnumerator_descendantClassListMapDictionary final {
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_descendantClassListMapDictionary final {
-  public: UpEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inEnumeratedObject) ;
+  public: UpEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand)  ;
+  
+  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
 
-  public: bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline void gotoNextObject (void) { mIterator ++ ; }
 
-  public: void gotoNextObject (void) { mIterator ++ ; }
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntryList current_typeList (LOCATION_ARGS) const ;
+  public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_key ;
+ }
+ 
+  public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second.mProperty_typeList ;
+ }
+ 
 //--- Current element access
-  public: class GGS_descendantClassListMapDictionary_2E_element current (LOCATION_ARGS) const ;
+  public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
+    return mIterator->second ;
+  }
 
 //--- Private properties
   private: MapFor_descendantClassListMapDictionary mDictionary ;

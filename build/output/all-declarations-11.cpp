@@ -13619,25 +13619,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element UpEnumerator_genericExtensionMethodListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_genericExtensionMethodListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist UpEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_mList ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Down Enumerator for @string
 //--------------------------------------------------------------------------------------------------
 
@@ -13648,23 +13629,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element DownEnumerator_genericExtensionMethodListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_genericExtensionMethodListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist DownEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_mList ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //     @genericExtensionMethodListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
@@ -14120,25 +14084,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element UpEnumerator_descendantClassListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_descendantClassListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntryList UpEnumerator_descendantClassListMapDictionary::current_typeList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_typeList ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Down Enumerator for @string
 //--------------------------------------------------------------------------------------------------
 
@@ -14149,23 +14094,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element DownEnumerator_descendantClassListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_descendantClassListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntryList DownEnumerator_descendantClassListMapDictionary::current_typeList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_typeList ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //     @descendantClassListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------

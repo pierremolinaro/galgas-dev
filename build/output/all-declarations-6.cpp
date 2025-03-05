@@ -3782,25 +3782,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element UpEnumerator_syntaxExtensionsDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_syntaxExtensionsDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_galgas_33_SyntaxExtensionListAST UpEnumerator_syntaxExtensionsDictionary::current_extensionList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_extensionList ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Down Enumerator for @string
 //--------------------------------------------------------------------------------------------------
 
@@ -3811,23 +3792,6 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element DownEnumerator_syntaxExtensionsDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_syntaxExtensionsDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_galgas_33_SyntaxExtensionListAST DownEnumerator_syntaxExtensionsDictionary::current_extensionList (UNUSED_LOCATION_ARGS) const {
-  return mIterator->second.mProperty_extensionList ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //     @syntaxExtensionsDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
