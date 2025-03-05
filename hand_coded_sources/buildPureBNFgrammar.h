@@ -37,6 +37,8 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
                      GrammarVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void
 printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const GrammarVocabulary & inVocabulary,

@@ -44,8 +44,8 @@ class cIndexingDictionary final {
   public: ~ cIndexingDictionary (void) ;
 
 //--- No copy
-  private: cIndexingDictionary (const cIndexingDictionary &) ;
-  private: cIndexingDictionary & operator = (const cIndexingDictionary &) ;
+  private: cIndexingDictionary (const cIndexingDictionary &) = delete ;
+  private: cIndexingDictionary & operator = (const cIndexingDictionary &) = delete ;
 
 //--- Add indexed entry
   public: void addIndexedKey (const uint32_t inIndexingKind,

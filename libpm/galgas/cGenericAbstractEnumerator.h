@@ -44,8 +44,8 @@ class cGenericAbstractEnumerator {
   protected: virtual ~ cGenericAbstractEnumerator (void) ;
 
 //--- No copy
-  private: cGenericAbstractEnumerator (const cGenericAbstractEnumerator &) ;
-  private: cGenericAbstractEnumerator & operator = (const cGenericAbstractEnumerator &) ;
+  private: cGenericAbstractEnumerator (const cGenericAbstractEnumerator &) = delete ;
+  private: cGenericAbstractEnumerator & operator = (const cGenericAbstractEnumerator &) = delete ;
 
 //--- 
   public: inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }

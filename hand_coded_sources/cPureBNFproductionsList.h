@@ -80,9 +80,8 @@ class cProduction {
                                           const String & inSyntaxDirectedTranslationVarName) const ;
 
 //--- No copy
-  private: cProduction (const cProduction &) ;
-  private: cProduction & operator = (const cProduction &) ;
-
+  private: cProduction (const cProduction &) = delete ;
+  private: cProduction & operator = (const cProduction &) = delete ;
 
   friend void swap (cProduction & ioProduction1, cProduction & ioProduction2) ;
 } ;

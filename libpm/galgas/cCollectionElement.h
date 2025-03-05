@@ -36,8 +36,8 @@ class cCollectionElement : public SharedObject {
   public: cCollectionElement (LOCATION_ARGS) ;
 
 //--- No copy
-  private: cCollectionElement (const cCollectionElement &) ;
-  private: cCollectionElement & operator = (const cCollectionElement &) ;
+  private: cCollectionElement (const cCollectionElement &) = delete ;
+  private: cCollectionElement & operator = (const cCollectionElement &) = delete ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const = 0 ;

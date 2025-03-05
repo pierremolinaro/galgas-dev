@@ -47,8 +47,8 @@ class C_galgas_type_descriptor final {
   public: static void typeListRoot (TC_UniqueArray <C_galgas_type_descriptor *> & outTypeList) ;
   
 //--- No copy
-  private: C_galgas_type_descriptor (const C_galgas_type_descriptor &) ;
-  private: C_galgas_type_descriptor & operator = (const C_galgas_type_descriptor &) ;
+  private: C_galgas_type_descriptor (const C_galgas_type_descriptor &) = delete ;
+  private: C_galgas_type_descriptor & operator = (const C_galgas_type_descriptor &) = delete ;
 
 //--- Internal methods
   private: static void recursiveInsert (C_galgas_type_descriptor * & ioRoot,

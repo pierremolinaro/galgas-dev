@@ -103,8 +103,8 @@ class cToken {
   public: virtual ~cToken (void) ;
 
 //--- No copy
-  private: cToken (const cToken &) ;
-  private: cToken & operator = (const cToken &) ;
+  private: cToken (const cToken &) = delete ;
+  private: cToken & operator = (const cToken &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

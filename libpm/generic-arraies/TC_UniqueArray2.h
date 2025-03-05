@@ -55,8 +55,8 @@ template <typename TYPE> class TC_UniqueArray2 {
   public: virtual ~TC_UniqueArray2 (void) ;
 
 //--- No copy
-  private: TC_UniqueArray2 (TC_UniqueArray2 <TYPE> & inSource) ;
-  private: TC_UniqueArray2 <TYPE> & operator = (TC_UniqueArray2 <TYPE> & inSource) ;
+  private: TC_UniqueArray2 (TC_UniqueArray2 <TYPE> & inSource) = delete ;
+  private: TC_UniqueArray2 <TYPE> & operator = (TC_UniqueArray2 <TYPE> & inSource) = delete ;
 
 //--- Get Row and Column count
   public: inline int32_t rowCount (void) const { return mCurrentRowCount ; }

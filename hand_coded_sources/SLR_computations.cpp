@@ -330,8 +330,8 @@ class cLR0_items_sets_AVL_tree {
                           bool & outExtension) ;
 
 //--- No copy
-  private: cLR0_items_sets_AVL_tree (cLR0_items_sets_AVL_tree &) ;
-  private: cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
+  private: cLR0_items_sets_AVL_tree (cLR0_items_sets_AVL_tree &) = delete ;
+  private: cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

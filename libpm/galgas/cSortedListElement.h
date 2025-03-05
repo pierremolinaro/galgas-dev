@@ -31,8 +31,8 @@ class cSortedListElement : public cCollectionElement {
   public: cSortedListElement (LOCATION_ARGS) ;
 
 //--- No copy
-  private: cSortedListElement (const cSortedListElement &) ;
-  private: cSortedListElement & operator = (const cSortedListElement &) ;
+  private: cSortedListElement (const cSortedListElement &) = delete ;
+  private: cSortedListElement & operator = (const cSortedListElement &) = delete ;
 
 //--- Virtual method that comparing element for sorting
   public: virtual ComparisonResult compareForSorting (const cSortedListElement * inOperand) const = 0 ;

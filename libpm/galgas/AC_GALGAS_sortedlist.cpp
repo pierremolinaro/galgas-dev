@@ -45,8 +45,8 @@ class cSortedListNode {
   public: cSortedListNode (cSortedListNode * inNode) ;
 
 //--- No copy
-  private: cSortedListNode (const cSortedListNode &) ;
-  private: cSortedListNode & operator = (const cSortedListNode &) ;
+  private: cSortedListNode (const cSortedListNode &) = delete ;
+  private: cSortedListNode & operator = (const cSortedListNode &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -116,8 +116,8 @@ class cSharedSortedListRoot : public SharedObject {
   protected: virtual ~ cSharedSortedListRoot (void) ;
 
 //--------------------------------- No copy
-  private: cSharedSortedListRoot (const cSharedSortedListRoot &) ;
-  private: cSharedSortedListRoot & operator = (const cSharedSortedListRoot &) ;
+  private: cSharedSortedListRoot (const cSharedSortedListRoot &) = delete ;
+  private: cSharedSortedListRoot & operator = (const cSharedSortedListRoot &) = delete ;
 
 //--------------------------------- Accessor
   protected: inline uint32_t count (void) const { return mCount ; }

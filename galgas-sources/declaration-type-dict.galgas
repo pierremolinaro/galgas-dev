@@ -173,9 +173,6 @@ override method @dictDeclarationAST enterDeclarationInGraph
   for (* typeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + typeName !typeName}]
   end
-//  let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
-//  let elementKey = @lstring {!"@" + elementTypeName !self.mDictTypeName.location}
-//  [!?ioSemanticTypePrecedenceGraph addEdge !key !elementKey]
 }
 
 //------------------------------------------------------------------------------------------------
@@ -594,12 +591,12 @@ class @dictTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method  appendSpecificImplementation
+  override method appendSpecificImplementation
                                           ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
                                           !@string outImplementation {
-    [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
-    [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
+//    [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+//    [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     outImplementation = [filewrapper dictGenerationTemplate.dictTypeSpecificImplementation
       ![self.mSelfTypeEntry identifierRepresentation]

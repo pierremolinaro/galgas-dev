@@ -171,8 +171,8 @@ class cMapNode final {
   public: virtual ~ cMapNode (void) ;
 
 //--- No copy
-  private: cMapNode (const cMapNode &) ;
-  private: cMapNode & operator = (const cMapNode &) ;
+  private: cMapNode (const cMapNode &) = delete ;
+  private: cMapNode & operator = (const cMapNode &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

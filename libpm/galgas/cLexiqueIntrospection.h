@@ -48,8 +48,8 @@ class cLexiqueIntrospection final {
   public: static void handleGetKeywordListOption (class Compiler * inCompiler) ;
 
 //--- No copy
-  private: cLexiqueIntrospection (const cLexiqueIntrospection &) ;
-  private: cLexiqueIntrospection & operator = (const cLexiqueIntrospection &) ;
+  private: cLexiqueIntrospection (const cLexiqueIntrospection &) = delete ;
+  private: cLexiqueIntrospection & operator = (const cLexiqueIntrospection &) = delete ;
 
 //--- Private member
   private: cLexiqueIntrospection * mNext ;

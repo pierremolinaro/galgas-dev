@@ -387,8 +387,8 @@ class cCollectionElement_data : public cCollectionElement {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- No copy
-  private: cCollectionElement_data (const cCollectionElement_data &) ;
-  private: cCollectionElement_data & operator = (const cCollectionElement_data &) ;
+  private: cCollectionElement_data (const cCollectionElement_data &) = delete ;
+  private: cCollectionElement_data & operator = (const cCollectionElement_data &) = delete ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

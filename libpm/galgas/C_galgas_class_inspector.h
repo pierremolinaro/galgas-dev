@@ -42,8 +42,8 @@ class C_galgas_class_inspector {
                                      const char * inClassMessage) ;
 
 //--- No copy
-  private: C_galgas_class_inspector (const C_galgas_class_inspector &) ;
-  private: C_galgas_class_inspector & operator = (const C_galgas_class_inspector &) ;
+  private: C_galgas_class_inspector (const C_galgas_class_inspector &) = delete ;
+  private: C_galgas_class_inspector & operator = (const C_galgas_class_inspector &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

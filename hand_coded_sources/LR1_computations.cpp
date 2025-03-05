@@ -118,8 +118,8 @@ class cLR1_items_AVL_tree {
                                   bool & outExtension) ;
 
 //--- No copy
-  private: cLR1_items_AVL_tree (cLR1_items_AVL_tree &) ;
-  private: cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) ;
+  private: cLR1_items_AVL_tree (cLR1_items_AVL_tree &) = delete ;
+  private: cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -496,8 +496,8 @@ class c_LR1_items_set final {
   public: ~c_LR1_items_set (void) ;
 
 //--- No copy
-  private: c_LR1_items_set (const c_LR1_items_set &) ;
-  private: c_LR1_items_set & operator = (const c_LR1_items_set &) ;
+  private: c_LR1_items_set (const c_LR1_items_set &) = delete ;
+  private: c_LR1_items_set & operator = (const c_LR1_items_set &) = delete ;
 
 //--- Add a new LR1 item (returns false if already present)
   public: void add_LR1_item (const int32_t inProductionRuleIndex,
@@ -801,8 +801,8 @@ class cLR1_items_sets_AVL_tree {
                            bool & outExtension) ;
 
 //--- No copy
-  private: cLR1_items_sets_AVL_tree (cLR1_items_sets_AVL_tree &) ;
-  private: cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) ;
+  private: cLR1_items_sets_AVL_tree (cLR1_items_sets_AVL_tree &) = delete ;
+  private: cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -966,8 +966,8 @@ class c_LR1_items_sets_collection {
   public: virtual ~c_LR1_items_sets_collection (void) ;
 
 //--- No copy
-  private: c_LR1_items_sets_collection (c_LR1_items_sets_collection &) ;
-  private: c_LR1_items_sets_collection & operator = (c_LR1_items_sets_collection &) ;
+  private: c_LR1_items_sets_collection (c_LR1_items_sets_collection &) = delete ;
+  private: c_LR1_items_sets_collection & operator = (c_LR1_items_sets_collection &) = delete ;
 
 //--- Search or insert a LR1 items set (return set index)
   public: int32_t searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) ;
