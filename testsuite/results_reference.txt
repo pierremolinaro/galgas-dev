@@ -202,6 +202,9 @@ LOGGING v: <@uint:11>
 LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:56>>
+LOGGING levelCount: <@uint:1>
+LOGGING hasKeyAtLevel: <@bool:true>
+LOGGING hasKeyAtLevel: <@bool:false>
 LOGGING loc: <@location:nowhere:1:1>
   key 'A', value: 1
   key 'B', value: 2

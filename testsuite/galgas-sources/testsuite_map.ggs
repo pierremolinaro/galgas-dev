@@ -25,6 +25,9 @@ proc testsuite_map() {
   log v // Displays 11
   m = mm.overriddenMap
   log m
+  log "levelCount": m.levels
+  log "hasKeyAtLevel": m.hasKeyAtLevel ("g", 0)
+  log "hasKeyAtLevel": m.hasKeyAtLevel ("h", 0)
   let @location loc = m.locationForKey (!"g")
   log loc
 //---
