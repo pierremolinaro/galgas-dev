@@ -942,17 +942,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 class UpEnumerator_stringset final {
   public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mSet.end () ; }
+  public: bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: void gotoNextObject (void) { mIterator++ ; }
+  public: void gotoNextObject (void) { mIndex += 1 ; }
 
 //--- Current element access
   public: class GGS_string current_key (LOCATION_ARGS) const ;
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const std::set <String> mSet ;
-  private: std::set <String>::iterator mIterator ;
+  private: const TC_Array <String> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_stringset (const UpEnumerator_stringset &) = delete ;
@@ -965,17 +965,17 @@ class DownEnumerator_stringset final {
 
   public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIterator != mSet.rend () ; }
+  public: bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-  public: void gotoNextObject (void) { mIterator++ ; }
+  public: void gotoNextObject (void) { mIndex -= 1 ; }
 
 //--- Current element access
   public: class GGS_string current_key (LOCATION_ARGS) const ;
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const std::set <String> mSet ;
-  private: std::set <String>::reverse_iterator mIterator ;
+  private: const TC_Array <String> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_stringset (const DownEnumerator_stringset &) = delete ;
@@ -988,15 +988,21 @@ class DownEnumerator_stringset final {
 
 class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: std::set <String> mStringSet ;
-  private: bool mIsValid ;
+  private: class AVLTreeRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != nullptr ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_stringset (void) ;
+
+//--------------------------------- Insulate
+  private: void insulate (LOCATION_ARGS) ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
