@@ -121,8 +121,15 @@ class AVLTreeRoot final : public SharedObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // No copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void copyTo (AVLTreeRoot * inNewRoot COMMA_UNUSED_LOCATION_ARGS) {
+  private: AVLTreeRoot (const AVLTreeRoot &) = delete ;
+  private: AVLTreeRoot & operator = (const AVLTreeRoot &) = delete ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void duplicateTo (AVLTreeRoot * inNewRoot COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode != nullptr) {
       macroMyNew (inNewRoot->mRootNode, AVLTreeNode (mRootNode)) ;
       inNewRoot->mCount = mCount ;
@@ -454,25 +461,13 @@ void GGS_stringset::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
     AVLTreeRoot * p = nullptr ;
     macroMyNew (p, AVLTreeRoot (THERE)) ;
-    mSharedRoot->copyTo (p COMMA_THERE) ;
+    mSharedRoot->duplicateTo (p COMMA_THERE) ;
     macroAssignSharedObject (mSharedRoot, p) ;
     macroDetachSharedObject (p) ;
 //    #ifndef DO_NOT_GENERATE_CHECKINGS
 //      checkStringset (HERE) ;
 //    #endif
   }
-
-//  if (ioRoot != nullptr) {
-//    if (ioRoot->isUniquelyReferenced ()) {
-////        ioRoot->mCacheArray.removeAllKeepingCapacity () ;
-//    }else{
-//      AVLTreeRoot * newRoot = nullptr ;
-//      macroMyNew (newRoot, AVLTreeRoot (THERE))
-//      ioRoot->copyTo (newRoot COMMA_THERE) ;
-//      macroAssignSharedObject (ioRoot, newRoot)
-//      macroDetachSharedObject (newRoot)
-//    }
-//  }
 }
 
 //--------------------------------------------------------------------------------------------------

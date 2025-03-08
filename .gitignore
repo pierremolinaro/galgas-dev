@@ -313,3 +313,6 @@ galgas-3-documentation-latex-sources/temp.galgas.tex
 *.dot
 project-codeblocks-linux64/galgas
 project-codeblocks-linux64/galgas-debug
+makefile-macosx/arm64/galgas-lto
+makefile-macosx/universal/galgas-lto
+makefile-macosx/x86_64/galgas-lto
