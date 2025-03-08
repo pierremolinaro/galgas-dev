@@ -3772,7 +3772,7 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @string
+// Up Enumerator for @syntaxExtensionsDictionary
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_syntaxExtensionsDictionary::UpEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
@@ -3782,7 +3782,7 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @string
+// Down Enumerator for @syntaxExtensionsDictionary
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_syntaxExtensionsDictionary::DownEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :

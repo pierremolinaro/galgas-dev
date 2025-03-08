@@ -7753,7 +7753,7 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementa
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n// Up Enumerator for @") ;
-  result.appendString (in_KEY_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nUpEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::UpEnumerator_") ;
@@ -7763,7 +7763,7 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementa
   result.appendString (" & inOperand) :\nmDictionary (inOperand.mIsValid \? inOperand.mDictionary : MapFor_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" ()),\nmIterator () {\n  mIterator = mDictionary.begin () ;\n}\n\n//--------------------------------------------------------------------------------------------------\n// Down Enumerator for @") ;
-  result.appendString (in_KEY_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nDownEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::DownEnumerator_") ;

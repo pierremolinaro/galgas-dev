@@ -146,7 +146,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
 
   //······························································································
 
-  override getter keyRepresentation ->@string result {
+  override getter keyRepresentation -> @string result {
     result = "struct @" + self.structTypeName
   }
 

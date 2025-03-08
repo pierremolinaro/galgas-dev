@@ -13609,7 +13609,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @string
+// Up Enumerator for @genericExtensionMethodListMapDictionary
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_genericExtensionMethodListMapDictionary::UpEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
@@ -13619,7 +13619,7 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @string
+// Down Enumerator for @genericExtensionMethodListMapDictionary
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_genericExtensionMethodListMapDictionary::DownEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
@@ -14074,7 +14074,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @string
+// Up Enumerator for @descendantClassListMapDictionary
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_descendantClassListMapDictionary::UpEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
@@ -14084,7 +14084,7 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @string
+// Down Enumerator for @descendantClassListMapDictionary
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_descendantClassListMapDictionary::DownEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :

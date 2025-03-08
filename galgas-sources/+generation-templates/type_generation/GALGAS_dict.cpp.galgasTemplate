@@ -247,7 +247,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
 end 
 
 %//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @%!KEY_TYPE_IDENTIFIER%
+// Up Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
@@ -257,7 +257,7 @@ mIterator () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @%!KEY_TYPE_IDENTIFIER%
+// Down Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
