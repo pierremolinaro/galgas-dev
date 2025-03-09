@@ -17,6 +17,7 @@
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"
+#include "SharedAVLStringKeyTree.h"
 #include "AC_GALGAS_sortedlist.h"
 #include "AC_GALGAS_map.h"
 #include "AC_GALGAS_reference_class.h"
@@ -988,7 +989,7 @@ class DownEnumerator_stringset final {
 
 class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: class AVLTreeRoot * mSharedRoot ;
+  private: class AVLStringSetTreeRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != nullptr ; }

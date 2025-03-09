@@ -24,19 +24,19 @@
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
-//  AVLTreeNode
+//  AVLStringSetTreeNode
 //--------------------------------------------------------------------------------------------------
 
-class AVLTreeNode final {
+class AVLStringSetTreeNode final {
 
-  public: AVLTreeNode * mInfPtr ;
-  public: AVLTreeNode * mSupPtr ;
+  public: AVLStringSetTreeNode * mInfPtr ;
+  public: AVLStringSetTreeNode * mSupPtr ;
   public: int32_t mBalance ;
   public: const String mKey ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeNode (const String & inKey) :
+  public: AVLStringSetTreeNode (const String & inKey) :
   mInfPtr (nullptr),
   mSupPtr (nullptr),
   mBalance (0),
@@ -45,23 +45,23 @@ class AVLTreeNode final {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~AVLTreeNode (void) {
+  public: ~AVLStringSetTreeNode (void) {
     macroMyDelete (mInfPtr) ;
     macroMyDelete (mSupPtr) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeNode (const AVLTreeNode * inNodePtr) :
+  public: AVLStringSetTreeNode (const AVLStringSetTreeNode * inNodePtr) :
   mInfPtr (nullptr),
   mSupPtr (nullptr),
   mBalance (inNodePtr->mBalance),
   mKey (inNodePtr->mKey) {
     if (inNodePtr->mInfPtr != nullptr) {
-      macroMyNew (mInfPtr, AVLTreeNode (inNodePtr->mInfPtr))
+      macroMyNew (mInfPtr, AVLStringSetTreeNode (inNodePtr->mInfPtr))
     }
     if (inNodePtr->mSupPtr != nullptr) {
-      macroMyNew (mSupPtr, AVLTreeNode (inNodePtr->mSupPtr))
+      macroMyNew (mSupPtr, AVLStringSetTreeNode (inNodePtr->mSupPtr))
     }
   }
 
@@ -69,12 +69,12 @@ class AVLTreeNode final {
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeNode (const AVLTreeNode &) = delete ;
-  private: AVLTreeNode & operator = (const AVLTreeNode &) = delete ;
+  private: AVLStringSetTreeNode (const AVLStringSetTreeNode &) = delete ;
+  private: AVLStringSetTreeNode & operator = (const AVLStringSetTreeNode &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: static void populateCacheArray (const AVLTreeNode * inNode,
+  public: static void populateCacheArray (const AVLStringSetTreeNode * inNode,
                                           TC_Array <String> & ioCacheArray) {
     if (inNode != nullptr) {
       populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
@@ -89,14 +89,14 @@ class AVLTreeNode final {
 
 //--------------------------------------------------------------------------------------------------
 
-class AVLTreeRoot final : public SharedObject {
+class AVLStringSetTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: TC_Array <String> mCacheArray ;
-  private: AVLTreeNode * mRootNode ;
+  private: AVLStringSetTreeNode * mRootNode ;
   private: int32_t mCount ;
   private: bool mCacheArrayIsBuilt ;
 
@@ -104,7 +104,7 @@ class AVLTreeRoot final : public SharedObject {
   // Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeRoot (LOCATION_ARGS) :
+  public: AVLStringSetTreeRoot (LOCATION_ARGS) :
   SharedObject (THERE),
   mCacheArray (),
   mRootNode (nullptr),
@@ -116,7 +116,7 @@ class AVLTreeRoot final : public SharedObject {
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~ AVLTreeRoot (void) {
+  public: ~ AVLStringSetTreeRoot (void) {
     macroMyDelete (mRootNode) ;
   }
 
@@ -124,14 +124,14 @@ class AVLTreeRoot final : public SharedObject {
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeRoot (const AVLTreeRoot &) = delete ;
-  private: AVLTreeRoot & operator = (const AVLTreeRoot &) = delete ;
+  private: AVLStringSetTreeRoot (const AVLStringSetTreeRoot &) = delete ;
+  private: AVLStringSetTreeRoot & operator = (const AVLStringSetTreeRoot &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void duplicateTo (AVLTreeRoot * inNewRoot COMMA_UNUSED_LOCATION_ARGS) {
+  public: void duplicateTo (AVLStringSetTreeRoot * inNewRoot COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode != nullptr) {
-      macroMyNew (inNewRoot->mRootNode, AVLTreeNode (mRootNode)) ;
+      macroMyNew (inNewRoot->mRootNode, AVLStringSetTreeNode (mRootNode)) ;
       inNewRoot->mCount = mCount ;
     }
   }
@@ -152,7 +152,7 @@ class AVLTreeRoot final : public SharedObject {
       return mCacheArray ;
     }else{
       mCacheArrayIsBuilt = true ;
-      AVLTreeNode::populateCacheArray (mRootNode, mCacheArray) ;
+      AVLStringSetTreeNode::populateCacheArray (mRootNode, mCacheArray) ;
       return mCacheArray ;
     }
   }
@@ -172,8 +172,8 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (AVLTreeNode * & ioRootPtr) {
-    AVLTreeNode * b = ioRootPtr->mSupPtr ;
+  private: static void rotateLeft (AVLStringSetTreeNode * & ioRootPtr) {
+    AVLStringSetTreeNode * b = ioRootPtr->mSupPtr ;
     ioRootPtr->mSupPtr = b->mInfPtr ;
     b->mInfPtr = ioRootPtr;
 
@@ -193,8 +193,8 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (AVLTreeNode * & ioRootPtr) {
-    AVLTreeNode * b = ioRootPtr->mInfPtr ;
+  private: static void rotateRight (AVLStringSetTreeNode * & ioRootPtr) {
+    AVLStringSetTreeNode * b = ioRootPtr->mInfPtr ;
     ioRootPtr->mInfPtr = b->mSupPtr ;
     b->mSupPtr = ioRootPtr ;
 
@@ -213,11 +213,11 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (AVLTreeNode * & ioRootPtr,
+  private: bool internalRecursiveInsert (AVLStringSetTreeNode * & ioRootPtr,
                                          const String & inKey) {
     bool extension = false ;
     if (ioRootPtr == nullptr) {
-      macroMyNew (ioRootPtr, AVLTreeNode (inKey)) ;
+      macroMyNew (ioRootPtr, AVLStringSetTreeNode (inKey)) ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -268,7 +268,7 @@ class AVLTreeRoot final : public SharedObject {
       mCacheArray.removeAllKeepingCapacity () ;
     }
     bool ioBranchHasBeenRemoved ;
-    AVLTreeNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    AVLStringSetTreeNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
     if (removedNode != nullptr) {
       macroMyDelete (removedNode) ;
       mCount -= 1 ;
@@ -277,7 +277,7 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (AVLTreeNode * & ioRoot,
+  private: static void supBranchDecreased (AVLStringSetTreeNode * & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -306,7 +306,7 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (AVLTreeNode * & ioRoot,
+  private: static void infBranchDecreased (AVLStringSetTreeNode * & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -- ;
     switch (ioRoot->mBalance) {
@@ -335,8 +335,8 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (AVLTreeNode * & ioRoot,
-                                           AVLTreeNode * & ioElement,
+  private: static void getPreviousElement (AVLStringSetTreeNode * & ioRoot,
+                                           AVLStringSetTreeNode * & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr == nullptr) {
       ioElement = ioRoot ;
@@ -352,10 +352,10 @@ class AVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static AVLTreeNode * internalRemoveEntry (const String & inKeyToRemove,
-                                                     AVLTreeNode * & ioRoot,
+  private: static AVLStringSetTreeNode * internalRemoveEntry (const String & inKeyToRemove,
+                                                     AVLStringSetTreeNode * & ioRoot,
                                                      bool & ioBranchHasBeenRemoved) {
-    AVLTreeNode * removedNode = nullptr ;
+    AVLStringSetTreeNode * removedNode = nullptr ;
     if (ioRoot != nullptr) {
       const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
       if (comparaison > 0) {
@@ -370,7 +370,7 @@ class AVLTreeRoot final : public SharedObject {
         }
       }else{ // Found
         removedNode = ioRoot ;
-        AVLTreeNode * p = ioRoot ;
+        AVLStringSetTreeNode * p = ioRoot ;
         if (p->mInfPtr == nullptr) {
           ioRoot = p->mSupPtr;
           p->mSupPtr = nullptr;
@@ -399,7 +399,7 @@ class AVLTreeRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: bool contains (const String & inKey) {
-    AVLTreeNode * nodePtr = mRootNode ;
+    AVLStringSetTreeNode * nodePtr = mRootNode ;
     while (nodePtr != nullptr) {
       const int32_t comparaison = nodePtr->mKey.compare (inKey) ;
       if (comparaison > 0) {
@@ -459,8 +459,8 @@ GGS_stringset & GGS_stringset::operator = (const GGS_stringset & inSource) {
 
 void GGS_stringset::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
-    AVLTreeRoot * p = nullptr ;
-    macroMyNew (p, AVLTreeRoot (THERE)) ;
+    AVLStringSetTreeRoot * p = nullptr ;
+    macroMyNew (p, AVLStringSetTreeRoot (THERE)) ;
     mSharedRoot->duplicateTo (p COMMA_THERE) ;
     macroAssignSharedObject (mSharedRoot, p) ;
     macroDetachSharedObject (p) ;
@@ -684,7 +684,7 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
 
 GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, AVLTreeRoot (THERE)) ;
+  macroMyNew (result.mSharedRoot, AVLStringSetTreeRoot (THERE)) ;
   return result ;
 }
 
@@ -692,7 +692,7 @@ GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
 
 GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, AVLTreeRoot (THERE)) ;
+  macroMyNew (result.mSharedRoot, AVLStringSetTreeRoot (THERE)) ;
   return result ;
 }
 
