@@ -156,7 +156,7 @@
        "cLexiqueIntrospection.cpp",
        "AC_GALGAS_root.cpp",
        "AC_GALGAS_list.cpp",
-       "SharedAVLStringKeyTree.cpp",
+       "SharedStringMap.cpp",
        "AC_GALGAS_sortedlist.cpp",
        "AC_GALGAS_map.cpp",
        "AC_GALGAS_reference_class.cpp",

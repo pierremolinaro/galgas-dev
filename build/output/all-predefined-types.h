@@ -17,7 +17,7 @@
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"
-#include "SharedAVLStringKeyTree.h"
+#include "SharedStringMap.h"
 #include "AC_GALGAS_sortedlist.h"
 #include "AC_GALGAS_map.h"
 #include "AC_GALGAS_reference_class.h"
@@ -943,7 +943,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 class UpEnumerator_stringset final {
   public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+  public: bool hasCurrentObject (void) const { return mIndex < mUnsecureArray.count () ; }
 
   public: void gotoNextObject (void) { mIndex += 1 ; }
 
@@ -952,7 +952,7 @@ class UpEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <String> mArray ;
+  private: const TC_Array <SharedStringMapNode *> mUnsecureArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -975,7 +975,7 @@ class DownEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <String> mArray ;
+  private: const TC_Array <SharedStringMapNode *> mUnsecureArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -989,20 +989,14 @@ class DownEnumerator_stringset final {
 
 class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: class AVLStringSetTreeRoot * mSharedRoot ;
+  private: SharedStringMap mSharedMap ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != nullptr ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedMap.isValid () ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) override { mSharedMap.drop () ; }
 
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_stringset (void) ;
-
-//--------------------------------- Insulate
-  private: void insulate (LOCATION_ARGS) ;
 
 //-- Start of type generic part
 

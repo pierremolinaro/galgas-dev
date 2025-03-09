@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  SharedAVLStringKeyTree
+//  SharedStringMap
 //
 //  This file is part of libpm library
 //
@@ -26,60 +26,60 @@
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
-//  AVLTreeStringKeyNode
+//  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-class AVLTreeStringKeyNode {
+class SharedStringMapNode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeStringKeyNode * mInfPtr ;
-  private: AVLTreeStringKeyNode * mSupPtr ;
+  private: SharedStringMapNode * mInfPtr ;
+  private: SharedStringMapNode * mSupPtr ;
   private: int32_t mBalance ;
   public: const String mKey ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeStringKeyNode (const String & inKey) ;
+  public: SharedStringMapNode (const String & inKey) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~AVLTreeStringKeyNode (void) ;
+  public: virtual ~SharedStringMapNode (void) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeStringKeyNode (const AVLTreeStringKeyNode * inNodePtr) ;
+  private: SharedStringMapNode (const SharedStringMapNode * inNodePtr) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeStringKeyNode (const AVLTreeStringKeyNode &) = delete ;
-  private: AVLTreeStringKeyNode & operator = (const AVLTreeStringKeyNode &) = delete ;
+  private: SharedStringMapNode (const SharedStringMapNode &) = delete ;
+  private: SharedStringMapNode & operator = (const SharedStringMapNode &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateCacheArray (const AVLTreeStringKeyNode * inNode,
-                                          TC_Array <String> & ioCacheArray) ;
+  private: static void populateCacheArray (SharedStringMapNode * inNode,
+                                           TC_Array <SharedStringMapNode *> & ioCacheArray) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class SharedAVLTreeRoot ;
+  friend class SharedStringMapRoot ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//  SharedAVLStringKeyTree
+//  SharedStringMap
 //--------------------------------------------------------------------------------------------------
 
-class SharedAVLStringKeyTree final {
+class SharedStringMap final {
 //--------------------------------- Private data members
-  private: class SharedAVLTreeRoot * mSharedRoot ;
+  private: class SharedStringMapRoot * mSharedRoot ;
 
 //--------------------------------- Build
-  public: static SharedAVLStringKeyTree build (LOCATION_ARGS) ;
+  public: static SharedStringMap build (LOCATION_ARGS) ;
 
 //--------------------------------- Accessors
   public: inline bool isValid (void) const { return mSharedRoot != nullptr ; }
@@ -88,29 +88,32 @@ class SharedAVLStringKeyTree final {
   public: void drop (void) ;
 
 //--------------------------------- Default constructor
-  public: SharedAVLStringKeyTree () ;
+  public: SharedStringMap () ;
 
 //--------------------------------- Virtual destructor
-  public: ~ SharedAVLStringKeyTree (void) ;
+  public: ~ SharedStringMap (void) ;
 
 //--------------------------------- Insulate
   private: void insulate (LOCATION_ARGS) ;
 
 //--------------------------------- Handle copy
-  public: SharedAVLStringKeyTree (const SharedAVLStringKeyTree & inSource) ;
-  public: SharedAVLStringKeyTree & operator = (const SharedAVLStringKeyTree & inSource) ;
+  public: SharedStringMap (const SharedStringMap & inSource) ;
+  public: SharedStringMap & operator = (const SharedStringMap & inSource) ;
 
 //--------------------------------- Insert
-  public: void insert (const String & inKey,
-                       AVLTreeStringKeyNode * & ioObject
+  public: void insert (SharedStringMapNode * & ioObject
                        COMMA_LOCATION_ARGS) ;
 
-  public: AVLTreeStringKeyNode * remove (const String & inKey
-                                         COMMA_LOCATION_ARGS) ;
+  public: SharedStringMapNode * remove (const String & inKey
+                                        COMMA_LOCATION_ARGS) ;
 
-  public: AVLTreeStringKeyNode * nodeForKey (const String & inKey) const ;
+  public: SharedStringMapNode * nodeForKey (const String & inKey) const ;
 
   public: int32_t count (void) const ;
+
+  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) const ;
+
+  public: String rootNodeKey (void) const ;
 
 } ;
 

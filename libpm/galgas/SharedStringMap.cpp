@@ -1,19 +1,19 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  SharedAVLStringKeyTree.cpp
+//  SharedStringMap.cpp
 //  galgas-ide
 //
 //  Created by Pierre Molinaro on 08/03/2025.
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedAVLStringKeyTree.h"
+#include "SharedStringMap.h"
 
 //--------------------------------------------------------------------------------------------------
-//MARK:  AVLTreeStringKeyNode
+//MARK:  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-AVLTreeStringKeyNode::AVLTreeStringKeyNode (const String & inKey) :
+SharedStringMapNode::SharedStringMapNode (const String & inKey) :
 mInfPtr (nullptr),
 mSupPtr (nullptr),
 mBalance (0),
@@ -22,49 +22,49 @@ mKey (inKey) {
 
 //--------------------------------------------------------------------------------------------------
 
-AVLTreeStringKeyNode::~AVLTreeStringKeyNode (void) {
+SharedStringMapNode::~SharedStringMapNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AVLTreeStringKeyNode::AVLTreeStringKeyNode (const AVLTreeStringKeyNode * inNodePtr) :
+SharedStringMapNode::SharedStringMapNode (const SharedStringMapNode * inNodePtr) :
 mInfPtr (nullptr),
 mSupPtr (nullptr),
 mBalance (inNodePtr->mBalance),
 mKey (inNodePtr->mKey) {
   if (inNodePtr->mInfPtr != nullptr) {
-    macroMyNew (mInfPtr, AVLTreeStringKeyNode (inNodePtr->mInfPtr))
+    macroMyNew (mInfPtr, SharedStringMapNode (inNodePtr->mInfPtr))
   }
   if (inNodePtr->mSupPtr != nullptr) {
-    macroMyNew (mSupPtr, AVLTreeStringKeyNode (inNodePtr->mSupPtr))
+    macroMyNew (mSupPtr, SharedStringMapNode (inNodePtr->mSupPtr))
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AVLTreeStringKeyNode::populateCacheArray (const AVLTreeStringKeyNode * inNode,
-                                               TC_Array <String> & ioCacheArray) {
+void SharedStringMapNode::populateCacheArray (SharedStringMapNode * inNode,
+                                               TC_Array <SharedStringMapNode *> & ioCacheArray) {
   if (inNode != nullptr) {
     populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
-    ioCacheArray.appendObject (inNode->mKey) ;
+    ioCacheArray.appendObject (inNode) ;
     populateCacheArray (inNode->mSupPtr, ioCacheArray) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//MARK:  SharedAVLTreeRoot
+//MARK:  SharedStringMapRoot
 //--------------------------------------------------------------------------------------------------
 
-class SharedAVLTreeRoot final : public SharedObject {
+class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: TC_Array <String> mCacheArray ;
-  private: AVLTreeStringKeyNode * mRootNode ;
+  private: TC_Array <SharedStringMapNode *> mCacheArray ;
+  private: SharedStringMapNode * mRootNode ;
   private: int32_t mCount ;
   private: bool mCacheArrayIsBuilt ;
 
@@ -72,7 +72,7 @@ class SharedAVLTreeRoot final : public SharedObject {
   // Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedAVLTreeRoot (LOCATION_ARGS) :
+  public: SharedStringMapRoot (LOCATION_ARGS) :
   SharedObject (THERE),
   mCacheArray (),
   mRootNode (nullptr),
@@ -84,7 +84,7 @@ class SharedAVLTreeRoot final : public SharedObject {
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~ SharedAVLTreeRoot (void) {
+  public: ~ SharedStringMapRoot (void) {
     macroMyDelete (mRootNode) ;
   }
 
@@ -92,15 +92,15 @@ class SharedAVLTreeRoot final : public SharedObject {
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: SharedAVLTreeRoot (const SharedAVLTreeRoot &) = delete ;
-  private: SharedAVLTreeRoot & operator = (const SharedAVLTreeRoot &) = delete ;
+  private: SharedStringMapRoot (const SharedStringMapRoot &) = delete ;
+  private: SharedStringMapRoot & operator = (const SharedStringMapRoot &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void duplicateTo (SharedAVLTreeRoot * inNewRoot
+  public: void duplicateTo (SharedStringMapRoot * inNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode != nullptr) {
-      macroMyNew (inNewRoot->mRootNode, AVLTreeStringKeyNode (mRootNode)) ;
+      macroMyNew (inNewRoot->mRootNode, SharedStringMapNode (mRootNode)) ;
       inNewRoot->mCount = mCount ;
     }
   }
@@ -113,15 +113,15 @@ class SharedAVLTreeRoot final : public SharedObject {
   public: inline String rootNodeKey (void) const { return mRootNode->mKey ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Get chache array
+  // Get cache array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <String> cacheArray (void) {
+  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) {
     if (mCacheArrayIsBuilt) {
       return mCacheArray ;
     }else{
       mCacheArrayIsBuilt = true ;
-      AVLTreeStringKeyNode::populateCacheArray (mRootNode, mCacheArray) ;
+      SharedStringMapNode::populateCacheArray (mRootNode, mCacheArray) ;
       return mCacheArray ;
     }
   }
@@ -131,7 +131,7 @@ class SharedAVLTreeRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void insertObject (const String & inKey,
-                             AVLTreeStringKeyNode * & ioObject
+                             SharedStringMapNode * & ioObject
                              COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
     if (mCacheArrayIsBuilt) {
@@ -143,8 +143,8 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (AVLTreeStringKeyNode * & ioRootPtr) {
-    AVLTreeStringKeyNode * b = ioRootPtr->mSupPtr ;
+  private: static void rotateLeft (SharedStringMapNode * & ioRootPtr) {
+    SharedStringMapNode * b = ioRootPtr->mSupPtr ;
     ioRootPtr->mSupPtr = b->mInfPtr ;
     b->mInfPtr = ioRootPtr;
 
@@ -164,8 +164,8 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (AVLTreeStringKeyNode * & ioRootPtr) {
-    AVLTreeStringKeyNode * b = ioRootPtr->mInfPtr ;
+  private: static void rotateRight (SharedStringMapNode * & ioRootPtr) {
+    SharedStringMapNode * b = ioRootPtr->mInfPtr ;
     ioRootPtr->mInfPtr = b->mSupPtr ;
     b->mSupPtr = ioRootPtr ;
 
@@ -184,9 +184,9 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (AVLTreeStringKeyNode * & ioRootPtr,
+  private: bool internalRecursiveInsert (SharedStringMapNode * & ioRootPtr,
                                          const String & inKey,
-                                         AVLTreeStringKeyNode * & ioObjectToInsert) {
+                                         SharedStringMapNode * & ioObjectToInsert) {
     bool extension = false ;
     if (ioRootPtr == nullptr) {
       ioRootPtr = ioObjectToInsert ;
@@ -234,20 +234,20 @@ class SharedAVLTreeRoot final : public SharedObject {
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeStringKeyNode * removeObject (const String & inKey) {
+  public: SharedStringMapNode * removeObject (const String & inKey) {
     macroUniqueSharedObject (this) ;
     if (mCacheArrayIsBuilt) {
       mCacheArrayIsBuilt = false ;
       mCacheArray.removeAllKeepingCapacity () ;
     }
     bool ioBranchHasBeenRemoved ;
-    AVLTreeStringKeyNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    SharedStringMapNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
     return removedNode ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (AVLTreeStringKeyNode * & ioRoot,
+  private: static void supBranchDecreased (SharedStringMapNode * & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -276,7 +276,7 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (AVLTreeStringKeyNode * & ioRoot,
+  private: static void infBranchDecreased (SharedStringMapNode * & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -- ;
     switch (ioRoot->mBalance) {
@@ -305,8 +305,8 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (AVLTreeStringKeyNode * & ioRoot,
-                                           AVLTreeStringKeyNode * & ioElement,
+  private: static void getPreviousElement (SharedStringMapNode * & ioRoot,
+                                           SharedStringMapNode * & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr == nullptr) {
       ioElement = ioRoot ;
@@ -322,10 +322,10 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: AVLTreeStringKeyNode * internalRemoveEntry (const String & inKeyToRemove,
-                                              AVLTreeStringKeyNode * & ioRoot,
+  private: SharedStringMapNode * internalRemoveEntry (const String & inKeyToRemove,
+                                              SharedStringMapNode * & ioRoot,
                                               bool & ioBranchHasBeenRemoved) {
-    AVLTreeStringKeyNode * removedNode = nullptr ;
+    SharedStringMapNode * removedNode = nullptr ;
     if (ioRoot != nullptr) {
       const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
       if (comparaison > 0) {
@@ -341,7 +341,7 @@ class SharedAVLTreeRoot final : public SharedObject {
       }else{ // Found
         removedNode = ioRoot ;
         mCount -= 1 ;
-        AVLTreeStringKeyNode * p = ioRoot ;
+        SharedStringMapNode * p = ioRoot ;
         if (p->mInfPtr == nullptr) {
           ioRoot = p->mSupPtr;
           p->mSupPtr = nullptr;
@@ -369,8 +369,8 @@ class SharedAVLTreeRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: AVLTreeStringKeyNode * nodeForKey (const String & inKey) const {
-    AVLTreeStringKeyNode * nodePtr = mRootNode ;
+  public: SharedStringMapNode * nodeForKey (const String & inKey) const {
+    SharedStringMapNode * nodePtr = mRootNode ;
     while (nodePtr != nullptr) {
       const int32_t comparaison = nodePtr->mKey.compare (inKey) ;
       if (comparaison > 0) {
@@ -389,57 +389,65 @@ class SharedAVLTreeRoot final : public SharedObject {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//  SharedAVLStringKeyTree
+//  SharedStringMap
 //--------------------------------------------------------------------------------------------------
 
-SharedAVLStringKeyTree::SharedAVLStringKeyTree (void) :
+SharedStringMap::SharedStringMap (void) :
 mSharedRoot (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedAVLStringKeyTree::drop (void) {
+void SharedStringMap::drop (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-SharedAVLStringKeyTree::~ SharedAVLStringKeyTree (void) {
+SharedStringMap::~ SharedStringMap (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-SharedAVLStringKeyTree::SharedAVLStringKeyTree (const SharedAVLStringKeyTree & inSource) :
+SharedStringMap::SharedStringMap (const SharedStringMap & inSource) :
 mSharedRoot (nullptr) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-SharedAVLStringKeyTree & SharedAVLStringKeyTree::operator = (const SharedAVLStringKeyTree & inSource) {
+SharedStringMap & SharedStringMap::operator = (const SharedStringMap & inSource) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
   return * this ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//MARK: Build
+
+SharedStringMap SharedStringMap::build (LOCATION_ARGS) {
+  SharedStringMap result ;
+  macroMyNew (result.mSharedRoot, SharedStringMapRoot (THERE)) ;
+  return result ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
-SharedAVLStringKeyTree SharedAVLStringKeyTree::build (LOCATION_ARGS) {
-  SharedAVLStringKeyTree result ;
-  macroMyNew (result.mSharedRoot, SharedAVLTreeRoot (THERE)) ;
-  return result ;
+TC_Array <SharedStringMapNode *> SharedStringMap::unsecureOrderedPointerArray (void) const {
+  if (mSharedRoot != nullptr) {
+    return mSharedRoot->unsecureOrderedPointerArray () ;
+  }else{
+    return TC_Array <SharedStringMapNode *> () ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 // Insulate
 //--------------------------------------------------------------------------------------------------
 
-void SharedAVLStringKeyTree::insulate (LOCATION_ARGS) {
+void SharedStringMap::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
-    SharedAVLTreeRoot * p = nullptr ;
-    macroMyNew (p, SharedAVLTreeRoot (THERE)) ;
+    SharedStringMapRoot * p = nullptr ;
+    macroMyNew (p, SharedStringMapRoot (THERE)) ;
     mSharedRoot->duplicateTo (p COMMA_THERE) ;
     macroAssignSharedObject (mSharedRoot, p) ;
     macroDetachSharedObject (p) ;
@@ -448,20 +456,20 @@ void SharedAVLStringKeyTree::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedAVLStringKeyTree::insert (const String & inKey,
-                            AVLTreeStringKeyNode * & ioObject
-                            COMMA_LOCATION_ARGS) {
-  if (mSharedRoot != nullptr) {
+void SharedStringMap::insert (SharedStringMapNode * & ioObject
+                                     COMMA_LOCATION_ARGS) {
+  if ((mSharedRoot != nullptr) && (ioObject != nullptr)) {
     insulate (THERE) ;
-    mSharedRoot->insertObject (inKey, ioObject COMMA_THERE) ;
+    const String key = ioObject->mKey ;
+    mSharedRoot->insertObject (key, ioObject COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AVLTreeStringKeyNode * SharedAVLStringKeyTree::remove (const String & inKey
-                                     COMMA_LOCATION_ARGS) {
-  AVLTreeStringKeyNode * removedNode = nullptr ;
+SharedStringMapNode * SharedStringMap::remove (const String & inKey
+                                                COMMA_LOCATION_ARGS) {
+  SharedStringMapNode * removedNode = nullptr ;
   if (mSharedRoot != nullptr) {
     insulate (THERE) ;
     removedNode = mSharedRoot->removeObject (inKey) ;
@@ -471,22 +479,15 @@ AVLTreeStringKeyNode * SharedAVLStringKeyTree::remove (const String & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-//GGS_stringlist SharedAVLStringKeyTree::getter_stringList (LOCATION_ARGS) const {
-//  GGS_stringlist result ;
-//  if (isValid ()) {
-//    result = GGS_stringlist::class_func_emptyList (THERE) ;
-//    const TC_Array <String> array = mSharedRoot->cacheArray () ;
-//    for (int32_t i=0 ; i<array.count () ; i++) {
-//      result.addAssign_operation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
-//    }
-//  }
-//  return result ;
-//}
+String SharedStringMap::rootNodeKey (void) const {
+  macroValidPointer (mSharedRoot) ;
+  return mSharedRoot->rootNodeKey () ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
-AVLTreeStringKeyNode * SharedAVLStringKeyTree::nodeForKey (const String & inKey) const {
-  AVLTreeStringKeyNode * result = nullptr ;
+SharedStringMapNode * SharedStringMap::nodeForKey (const String & inKey) const {
+  SharedStringMapNode * result = nullptr ;
   if (mSharedRoot != nullptr) {
     result = mSharedRoot->nodeForKey (inKey) ;
   }
@@ -495,7 +496,7 @@ AVLTreeStringKeyNode * SharedAVLStringKeyTree::nodeForKey (const String & inKey)
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t SharedAVLStringKeyTree::count (void) const {
+int32_t SharedStringMap::count (void) const {
   if (mSharedRoot == nullptr) {
     return 0 ;
   }else{
@@ -507,7 +508,7 @@ int32_t SharedAVLStringKeyTree::count (void) const {
 //    C O M P A R I S O N
 //--------------------------------------------------------------------------------------------------
 
-//ComparisonResult SharedAVLStringKeyTree::objectCompare (const SharedAVLStringKeyTree & inOperand) const {
+//ComparisonResult SharedStringMap::objectCompare (const SharedStringMap & inOperand) const {
 //  ComparisonResult result = ComparisonResult::invalid ;
 //  if (isValid () && inOperand.isValid ()) {
 //    const TC_Array <String> array1 = mSharedRoot->cacheArray () ;

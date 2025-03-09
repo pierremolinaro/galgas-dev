@@ -13,7 +13,7 @@
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"
-#include "SharedAVLStringKeyTree.h"
+#include "SharedStringMap.h"
 #include "AC_GALGAS_sortedlist.h"
 #include "AC_GALGAS_map.h"
 #include "AC_GALGAS_reference_class.h"

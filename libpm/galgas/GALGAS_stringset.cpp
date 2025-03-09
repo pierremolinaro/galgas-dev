@@ -144,10 +144,10 @@ class AVLStringSetTreeRoot final : public SharedObject {
   public: inline String rootNodeKey (void) const { return mRootNode->mKey ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Get chache array
+  // Get cache array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <String> cacheArray (void) {
+  public: TC_Array <String> unsecureOrderedPointerArray (void) {
     if (mCacheArrayIsBuilt) {
       return mCacheArray ;
     }else{
@@ -423,51 +423,21 @@ class AVLStringSetTreeRoot final : public SharedObject {
 
 GGS_stringset::GGS_stringset (void) :
 AC_GALGAS_root (),
-mSharedRoot (nullptr) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_stringset::drop (void) {
-  macroDetachSharedObject (mSharedRoot) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset::~ GGS_stringset (void) {
-  macroDetachSharedObject (mSharedRoot) ;
+mSharedMap () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset::GGS_stringset (const GGS_stringset & inSource) :
 AC_GALGAS_root (),
-mSharedRoot (nullptr) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+mSharedMap (inSource.mSharedMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset & GGS_stringset::operator = (const GGS_stringset & inSource) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+  mSharedMap = inSource.mSharedMap ;
   return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Insulate
-//--------------------------------------------------------------------------------------------------
-
-void GGS_stringset::insulate (LOCATION_ARGS) {
-  if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
-    AVLStringSetTreeRoot * p = nullptr ;
-    macroMyNew (p, AVLStringSetTreeRoot (THERE)) ;
-    mSharedRoot->duplicateTo (p COMMA_THERE) ;
-    macroAssignSharedObject (mSharedRoot, p) ;
-    macroDetachSharedObject (p) ;
-//    #ifndef DO_NOT_GENERATE_CHECKINGS
-//      checkStringset (HERE) ;
-//    #endif
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -475,10 +445,10 @@ void GGS_stringset::insulate (LOCATION_ARGS) {
 void GGS_stringset::description (String & ioString,
                                  const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@stringset: ") ;
-  if (mSharedRoot == nullptr) {
+  if (!mSharedMap.isValid ()) {
     ioString.appendCString ("not built") ;
   }else{
-    const int32_t n = mSharedRoot->count () ;
+    const int32_t n = mSharedMap.count () ;
     ioString.appendSigned (n) ;
     ioString.appendCString ((n > 1) ? " values" : " value") ;
   }
@@ -489,10 +459,12 @@ void GGS_stringset::description (String & ioString,
 
 void GGS_stringset::setter_insert (const GGS_string inKey,
                                    Compiler * /* inCompiler */
-                                   COMMA_LOCATION_ARGS) {
+                                   COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    insulate (THERE) ;
-    mSharedRoot->insert (inKey.stringValue () COMMA_HERE) ;
+    SharedStringMapNode * newNode = nullptr ;
+    macroMyNew (newNode, SharedStringMapNode (inKey.stringValue ())) ;
+    mSharedMap.insert (newNode COMMA_HERE) ;
+    macroMyDelete (newNode)
   }
 }
 
@@ -501,8 +473,10 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 void GGS_stringset::addAssign_operation (const GGS_string & inKey
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    insulate (THERE) ;
-    mSharedRoot->insert (inKey.stringValue () COMMA_HERE) ;
+    SharedStringMapNode * newNode = nullptr ;
+    macroMyNew (newNode, SharedStringMapNode (inKey.stringValue ())) ;
+    mSharedMap.insert (newNode COMMA_THERE) ;
+    macroMyDelete (newNode)
   }
 }
 
@@ -511,8 +485,8 @@ void GGS_stringset::addAssign_operation (const GGS_string & inKey
 void GGS_stringset::setter_removeKey (GGS_string inKey
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    insulate (THERE) ;
-    mSharedRoot->remove (inKey.stringValue ()) ;
+    SharedStringMapNode * removedNode = mSharedMap.remove (inKey.stringValue () COMMA_THERE) ;
+    macroMyDelete (removedNode)
   }
 }
 
@@ -525,17 +499,18 @@ GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_stringset::class_func_emptySet (THERE) ;
-    const TC_Array <String> array1 = mSharedRoot->cacheArray () ;
-    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array1 = mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
     int32_t idx1 = 0 ;
     int32_t idx2 = 0 ;
     while ((idx1 < array1.count ()) && (idx2 < array2.count ())) {
-      if (array1 (idx1 COMMA_HERE) < array2 (idx2 COMMA_HERE)) {
+      const int32_t comparaison = array1 (idx1 COMMA_HERE)->mKey.compare (array2 (idx2 COMMA_HERE)->mKey) ;
+      if (comparaison < 0) {
         idx1 += 1 ;
-      }else if (array1 (idx1 COMMA_HERE) > array2 (idx2 COMMA_HERE)) {
+      }else if (comparaison > 0) {
         idx2 += 1 ;
       }else{
-        result.addAssign_operation (GGS_string (array1 (idx1 COMMA_HERE)) COMMA_HERE) ;
+        result.addAssign_operation (GGS_string (array1 (idx1 COMMA_HERE)->mKey) COMMA_HERE) ;
         idx1 += 1 ;
         idx2 += 1 ;
       }
@@ -553,10 +528,10 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      result.addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)->mKey) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -569,10 +544,10 @@ void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
                                           Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
+      addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)->mKey) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -588,10 +563,9 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.insulate (THERE) ;
-    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
     for (int32_t i=0 ; i<array2.count () ; i++) {
-      result.mSharedRoot->remove (array2 (i COMMA_HERE)) ;
+      result.mSharedMap.remove (array2 (i COMMA_HERE)->mKey COMMA_THERE) ;
     }
   }
   return result ;
@@ -603,9 +577,9 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
-    const TC_Array <String> array = mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array = mSharedMap.unsecureOrderedPointerArray () ;
     for (int32_t i=0 ; i<array.count () ; i++) {
-      result.addAssign_operation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (array (i COMMA_HERE)->mKey) COMMA_HERE) ;
     }
   }
   return result ;
@@ -617,7 +591,8 @@ GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->contains (inKey.stringValue ())) ;
+    const auto node = mSharedMap.nodeForKey (inKey.stringValue ()) ;
+    result = GGS_bool (node != nullptr) ;
   }
   return result ;
 }
@@ -627,7 +602,7 @@ GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
 GGS_uint GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_uint (uint32_t (mSharedMap.count ())) ;
   }
   return result ;
 }
@@ -638,11 +613,11 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
-    if (mSharedRoot->count () == 0) {
+    if (mSharedMap.count () == 0) {
       String message = "@stringset anyString: receiver is empty" ;
       inCompiler->onTheFlySemanticError(message COMMA_THERE) ;
     }else{
-      result = GGS_string (mSharedRoot->rootNodeKey ()) ;
+      result = GGS_string (mSharedMap.rootNodeKey ()) ;
     }
   }
   return result ;
@@ -655,8 +630,8 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <String> array1 = mSharedRoot->cacheArray () ;
-    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
+    const TC_Array <SharedStringMapNode *> array1 = mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
     if (array1.count () < array2.count ()) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (array1.count () > array2.count ()) {
@@ -665,7 +640,7 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
       result = ComparisonResult::operandEqual ;
       int32_t idx = 0 ;
       while ((idx < array1.count ()) && (result == ComparisonResult::operandEqual)) {
-        const int32_t comp = array1 (idx COMMA_HERE).compare (array2 (idx COMMA_HERE)) ;
+        const int32_t comp = array1 (idx COMMA_HERE)->mKey.compare (array2 (idx COMMA_HERE)->mKey) ;
         if (comp < 0) {
           result = ComparisonResult::firstOperandLowerThanSecond ;
         }else if (comp > 0) {
@@ -684,7 +659,7 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
 
 GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, AVLStringSetTreeRoot (THERE)) ;
+  result.mSharedMap = SharedStringMap::build (THERE) ;
   return result ;
 }
 
@@ -692,7 +667,7 @@ GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
 
 GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, AVLStringSetTreeRoot (THERE)) ;
+  result.mSharedMap = SharedStringMap::build (THERE) ;
   return result ;
 }
 
@@ -751,40 +726,40 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inOperand) :
-mArray ((inOperand.mSharedRoot != nullptr) ? inOperand.mSharedRoot->cacheArray () : TC_Array <String> ()),
+mUnsecureArray (inOperand.mSharedMap.unsecureOrderedPointerArray ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mArray (mIndex COMMA_HERE)) ;
+  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mArray (mIndex COMMA_HERE)) ;
+  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inOperand) :
-mArray ((inOperand.mSharedRoot != nullptr) ? inOperand.mSharedRoot->cacheArray () : TC_Array <String> ()),
+mUnsecureArray (inOperand.mSharedMap.unsecureOrderedPointerArray ()),
 mIndex (0) {
-  mIndex = mArray.count () - 1 ;
+  mIndex = mUnsecureArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mArray (mIndex COMMA_HERE)) ;
+  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mArray (mIndex COMMA_HERE)) ;
+  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
 }
 
 //--------------------------------------------------------------------------------------------------
