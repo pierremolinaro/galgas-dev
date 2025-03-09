@@ -350,7 +350,7 @@ void Compiler::semanticErrorWith_K_message (const GGS_lstring & inKey,
 //--- Add nearest keys, if any
   TC_Array <FixItDescription> fixItArray ;
   for (int32_t i=0 ; i<ioNearestKeyArray.count () ; i++) {
-    fixItArray.appendObject (FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
+    fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
   }
 //--- Emit error message
   const GGS_location key_location = inKey.mProperty_location ;

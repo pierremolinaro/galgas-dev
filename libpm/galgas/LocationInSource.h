@@ -31,9 +31,7 @@
 class String ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 Class for referencing a location in source text                               
-//
+//                 Class for referencing a location in source text
 //--------------------------------------------------------------------------------------------------
 
 class LocationInSource final {

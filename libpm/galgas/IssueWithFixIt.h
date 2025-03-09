@@ -35,12 +35,12 @@ class GGS_stringset ;
 
 //--------------------------------------------------------------------------------------------------
 
-typedef enum {
-  kFixItRemove,
-  kFixItReplace,
-  kFixItInsertBefore,
-  kFixItInsertAfter
-} EnumFixItKind ;
+enum class EnumFixItKind {
+  fixItRemove,
+  fixItReplace,
+  fixItInsertBefore,
+  fixItInsertAfter
+} ;
 
 //--------------------------------------------------------------------------------------------------
 

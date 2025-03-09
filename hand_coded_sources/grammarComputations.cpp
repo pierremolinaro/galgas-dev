@@ -328,9 +328,9 @@ analyzeGrammar (Compiler * inCompiler,
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
     TC_Array <FixItDescription> fixItArray ;
-    fixItArray.appendObject (FixItDescription (kFixItReplace, "LL1")) ;
-    fixItArray.appendObject (FixItDescription (kFixItReplace, "SLR")) ;
-    fixItArray.appendObject (FixItDescription (kFixItReplace, "LR1")) ;
+    fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "LL1")) ;
+    fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "SLR")) ;
+    fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "LR1")) ;
     inCompiler->semanticErrorAtLocation (inGrammarClass.mProperty_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 

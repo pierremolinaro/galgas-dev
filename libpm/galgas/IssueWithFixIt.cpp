@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 FixItDescription::FixItDescription (void) :
-mKind (kFixItRemove),
+mKind (EnumFixItKind::fixItRemove),
 mActionString ("") {
 }
 

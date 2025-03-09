@@ -197,7 +197,7 @@
 		CF305FFA2D0D8A2E000A5F79 /* analyzeCommandLineOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBC2D0D8A2E000A5F79 /* analyzeCommandLineOptions.cpp */; };
 		CF305FFB2D0D8A2E000A5F79 /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E622D0D8A2E000A5F79 /* BigSigned-subtract.cpp */; };
 		CF305FFC2D0D8A2E000A5F79 /* UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC82D0D8A2E000A5F79 /* UIntCommandLineOption.cpp */; };
-		CF305FFD2D0D8A2E000A5F79 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* cIndexingDictionary.cpp */; };
+		CF305FFD2D0D8A2E000A5F79 /* IndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */; };
 		CF305FFE2D0D8A2E000A5F79 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */; };
 		CF305FFF2D0D8A2E000A5F79 /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED32D0D8A2E000A5F79 /* TextFileWrite.cpp */; };
 		CF3060002D0D8A2E000A5F79 /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5B2D0D8A2E000A5F79 /* BigSigned-constructors.cpp */; };
@@ -363,7 +363,7 @@
 		CF8F81332D0D91490095170B /* analyzeCommandLineOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBC2D0D8A2E000A5F79 /* analyzeCommandLineOptions.cpp */; };
 		CF8F81342D0D91490095170B /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E622D0D8A2E000A5F79 /* BigSigned-subtract.cpp */; };
 		CF8F81352D0D91490095170B /* UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC82D0D8A2E000A5F79 /* UIntCommandLineOption.cpp */; };
-		CF8F81362D0D91490095170B /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* cIndexingDictionary.cpp */; };
+		CF8F81362D0D91490095170B /* IndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */; };
 		CF8F81372D0D91490095170B /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */; };
 		CF8F81382D0D91490095170B /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED32D0D8A2E000A5F79 /* TextFileWrite.cpp */; };
 		CF8F81392D0D91490095170B /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5B2D0D8A2E000A5F79 /* BigSigned-constructors.cpp */; };
@@ -754,8 +754,8 @@
 		CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Enumerator_range.cpp; sourceTree = "<group>"; };
 		CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cGenericAbstractEnumerator.h; sourceTree = "<group>"; };
 		CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cGenericAbstractEnumerator.cpp; sourceTree = "<group>"; };
-		CF305F032D0D8A2E000A5F79 /* cIndexingDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cIndexingDictionary.h; sourceTree = "<group>"; };
-		CF305F042D0D8A2E000A5F79 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
+		CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexingDictionary.h; sourceTree = "<group>"; };
+		CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexingDictionary.cpp; sourceTree = "<group>"; };
 		CF305F052D0D8A2E000A5F79 /* IssueDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueDescriptor.h; sourceTree = "<group>"; };
 		CF305F062D0D8A2E000A5F79 /* IssueDescriptor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IssueDescriptor.cpp; sourceTree = "<group>"; };
 		CF305F072D0D8A2E000A5F79 /* cLexiqueIntrospection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cLexiqueIntrospection.h; sourceTree = "<group>"; };
@@ -1443,8 +1443,6 @@
 		CF305F3A2D0D8A2E000A5F79 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
-				CF1AA8B82D7CE936002F512E /* SharedStringMap.cpp */,
-				CF1AA8B72D7CE918002F512E /* SharedStringMap.h */,
 				CF305ED52D0D8A2E000A5F79 /* AC_GALGAS_enumAssociatedValues.h */,
 				CF305ED62D0D8A2E000A5F79 /* AC_GALGAS_enumAssociatedValues.cpp */,
 				CF305ED72D0D8A2E000A5F79 /* AC_GALGAS_graph.h */,
@@ -1487,8 +1485,6 @@
 				CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */,
 				CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */,
 				CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */,
-				CF305F032D0D8A2E000A5F79 /* cIndexingDictionary.h */,
-				CF305F042D0D8A2E000A5F79 /* cIndexingDictionary.cpp */,
 				CF305F072D0D8A2E000A5F79 /* cLexiqueIntrospection.h */,
 				CF305F082D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp */,
 				CF305F092D0D8A2E000A5F79 /* cObjectArray.h */,
@@ -1529,6 +1525,8 @@
 				CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp */,
 				CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */,
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
+				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
+				CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */,
 				CF305F052D0D8A2E000A5F79 /* IssueDescriptor.h */,
 				CF305F062D0D8A2E000A5F79 /* IssueDescriptor.cpp */,
 				CF305F2D2D0D8A2E000A5F79 /* IssueWithFixIt.h */,
@@ -1541,6 +1539,8 @@
 				CF305F342D0D8A2E000A5F79 /* ProductionNameDescriptor.h */,
 				CF305F352D0D8A2E000A5F79 /* scanner_actions.h */,
 				CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */,
+				CF1AA8B72D7CE918002F512E /* SharedStringMap.h */,
+				CF1AA8B82D7CE936002F512E /* SharedStringMap.cpp */,
 				CF305F372D0D8A2E000A5F79 /* SourceTextInString.h */,
 				CF305F382D0D8A2E000A5F79 /* SourceTextInString.cpp */,
 				CF305F392D0D8A2E000A5F79 /* TemplateDelimiter.h */,
@@ -2027,7 +2027,7 @@
 				CF8F81332D0D91490095170B /* analyzeCommandLineOptions.cpp in Sources */,
 				CF8F81342D0D91490095170B /* BigSigned-subtract.cpp in Sources */,
 				CF8F81352D0D91490095170B /* UIntCommandLineOption.cpp in Sources */,
-				CF8F81362D0D91490095170B /* cIndexingDictionary.cpp in Sources */,
+				CF8F81362D0D91490095170B /* IndexingDictionary.cpp in Sources */,
 				CF8F81372D0D91490095170B /* cSortedListElement.cpp in Sources */,
 				CF8F81382D0D91490095170B /* TextFileWrite.cpp in Sources */,
 				CF8F81392D0D91490095170B /* BigSigned-constructors.cpp in Sources */,
@@ -2344,7 +2344,7 @@
 				CF305FFA2D0D8A2E000A5F79 /* analyzeCommandLineOptions.cpp in Sources */,
 				CF305FFB2D0D8A2E000A5F79 /* BigSigned-subtract.cpp in Sources */,
 				CF305FFC2D0D8A2E000A5F79 /* UIntCommandLineOption.cpp in Sources */,
-				CF305FFD2D0D8A2E000A5F79 /* cIndexingDictionary.cpp in Sources */,
+				CF305FFD2D0D8A2E000A5F79 /* IndexingDictionary.cpp in Sources */,
 				CF305FFE2D0D8A2E000A5F79 /* cSortedListElement.cpp in Sources */,
 				CF305FFF2D0D8A2E000A5F79 /* TextFileWrite.cpp in Sources */,
 				CF3060002D0D8A2E000A5F79 /* BigSigned-constructors.cpp in Sources */,

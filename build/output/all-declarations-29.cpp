@@ -2845,7 +2845,7 @@ void cPtr_functionCallExpressionAST::method_analyzeSemanticExpression (const GGS
           }
           GGS_string var_s_7106 = GGS_string ("!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("expression-function-call.galgas", 167)) ;
           TC_Array <FixItDescription> fixItArray18 ;
-          appendFixItActions (fixItArray18, kFixItReplace, var_s_7106) ;
+          appendFixItActions (fixItArray18, EnumFixItKind::fixItReplace, var_s_7106) ;
           inCompiler->emitSemanticError (enumerator_6451.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_7106, inCompiler COMMA_SOURCE_FILE ("expression-function-call.galgas", 171)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-function-call.galgas", 171)), fixItArray18  COMMA_SOURCE_FILE ("expression-function-call.galgas", 171)) ;
         }
       }
@@ -2958,7 +2958,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
         if (GalgasBool::boolTrue == test_6) {
           const GGS_getterCallExpressionAST temp_8 = this ;
           TC_Array <FixItDescription> fixItArray9 ;
-          appendFixItActions (fixItArray9, kFixItReplace, var_aGetter_4457.readProperty_mGetterNameThatObsoletesInvokationName ()) ;
+          appendFixItActions (fixItArray9, EnumFixItKind::fixItReplace, var_aGetter_4457.readProperty_mGetterNameThatObsoletesInvokationName ()) ;
           inCompiler->emitSemanticError (temp_8.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray9  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 95)) ;
         }
       }
@@ -3016,7 +3016,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
               }
               GGS_string var_s_6264 = GGS_string ("!").add_operation (temp_26, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 124)) ;
               TC_Array <FixItDescription> fixItArray28 ;
-              appendFixItActions (fixItArray28, kFixItReplace, var_s_6264) ;
+              appendFixItActions (fixItArray28, EnumFixItKind::fixItReplace, var_s_6264) ;
               inCompiler->emitSemanticError (enumerator_5685.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_6264, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 125)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 125)), fixItArray28  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 125)) ;
             }
           }
@@ -3052,7 +3052,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
           if (GalgasBool::boolTrue == test_33) {
             const GGS_getterCallExpressionAST temp_37 = this ;
             TC_Array <FixItDescription> fixItArray38 ;
-            fixItArray38.appendObject (FixItDescription (kFixItRemove, "")) ;
+            fixItArray38.appendObject (FixItDescription (EnumFixItKind::fixItRemove, "")) ;
             inCompiler->emitSemanticError (temp_37.readProperty_mExpressionLocation (), GGS_string ("getter with no argument, remove parenthesis"), fixItArray38  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 143)) ;
           }
         }
@@ -3199,7 +3199,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
                   }
                   GGS_string var_s_11732 = GGS_string ("!").add_operation (temp_69, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 224)) ;
                   TC_Array <FixItDescription> fixItArray71 ;
-                  appendFixItActions (fixItArray71, kFixItReplace, var_s_11732) ;
+                  appendFixItActions (fixItArray71, EnumFixItKind::fixItReplace, var_s_11732) ;
                   inCompiler->emitSemanticError (enumerator_11126.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_11732, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 225)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 225)), fixItArray71  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 225)) ;
                 }
               }
@@ -3220,7 +3220,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
               if (GalgasBool::boolTrue == test_72) {
                 const GGS_getterCallExpressionAST temp_74 = this ;
                 TC_Array <FixItDescription> fixItArray75 ;
-                appendFixItActions (fixItArray75, kFixItReplace, var_obsoletedByGetter_8604) ;
+                appendFixItActions (fixItArray75, EnumFixItKind::fixItReplace, var_obsoletedByGetter_8604) ;
                 inCompiler->emitSemanticError (temp_74.readProperty_mGetterName ().readProperty_location (), GGS_string ("obsolete getter"), fixItArray75  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 231)) ;
               }
             }
@@ -3252,7 +3252,7 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
           const GGS_getterCallExpressionAST temp_83 = this ;
           const GGS_getterCallExpressionAST temp_84 = this ;
           TC_Array <FixItDescription> fixItArray85 ;
-          appendFixItActions (fixItArray85, kFixItReplace, extensionGetter_definition (var_receiverType_4343, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 252)).readProperty_getterMap ().getter_keyList (SOURCE_FILE ("expression-getter-call.galgas", 252))) ;
+          appendFixItActions (fixItArray85, EnumFixItKind::fixItReplace, extensionGetter_definition (var_receiverType_4343, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 252)).readProperty_getterMap ().getter_keyList (SOURCE_FILE ("expression-getter-call.galgas", 252))) ;
           inCompiler->emitSemanticError (temp_83.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (var_receiverType_4343, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 250)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 250)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 250)).add_operation (temp_84.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 250)).add_operation (GGS_string ("' getter "), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 250)), fixItArray85  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 249)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
@@ -3587,7 +3587,7 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
             }
             GGS_string var_s_12735 = GGS_string ("!").add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 321)) ;
             TC_Array <FixItDescription> fixItArray11 ;
-            appendFixItActions (fixItArray11, kFixItReplace, var_s_12735) ;
+            appendFixItActions (fixItArray11, EnumFixItKind::fixItReplace, var_s_12735) ;
             inCompiler->emitSemanticError (enumerator_11941.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_12735, inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 326)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 326)), fixItArray11  COMMA_SOURCE_FILE ("expression-initializer.galgas", 325)) ;
           }
         }
@@ -3845,7 +3845,7 @@ void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (co
             }
             GGS_string var_s_12349 = GGS_string ("!").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 311)) ;
             TC_Array <FixItDescription> fixItArray7 ;
-            appendFixItActions (fixItArray7, kFixItReplace, var_s_12349) ;
+            appendFixItActions (fixItArray7, EnumFixItKind::fixItReplace, var_s_12349) ;
             inCompiler->emitSemanticError (enumerator_11657.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_12349, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)), fixItArray7  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)) ;
           }
         }
@@ -4064,7 +4064,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
       }
       if (GalgasBool::boolFalse == test_7) {
         TC_Array <FixItDescription> fixItArray9 ;
-        appendFixItActions (fixItArray9, kFixItReplace, var_classFunctionMap_8816.getter_keyList (SOURCE_FILE ("expression-class-func.galgas", 245))) ;
+        appendFixItActions (fixItArray9, EnumFixItKind::fixItReplace, var_classFunctionMap_8816.getter_keyList (SOURCE_FILE ("expression-class-func.galgas", 245))) ;
         inCompiler->emitSemanticError (constinArgument_inConstructorName.readProperty_location (), GGS_string ("the '@").add_operation (extensionGetter_definition (outArgument_outConstructorType, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 242)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 242)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 242)).add_operation (constinArgument_inConstructorName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 243)).add_operation (GGS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 243)), fixItArray9  COMMA_SOURCE_FILE ("expression-class-func.galgas", 241)) ;
         var_constructorFormalArgumentTypeList_9488.drop () ; // Release error dropped variable
         outArgument_outHasCompilerArgument.drop () ; // Release error dropped variable
@@ -4105,7 +4105,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
           }
           GGS_string var_s_11801 = GGS_string ("!").add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 277)) ;
           TC_Array <FixItDescription> fixItArray15 ;
-          appendFixItActions (fixItArray15, kFixItReplace, var_s_11801) ;
+          appendFixItActions (fixItArray15, EnumFixItKind::fixItReplace, var_s_11801) ;
           inCompiler->emitSemanticError (enumerator_10941.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_11801, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 282)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 282)), fixItArray15  COMMA_SOURCE_FILE ("expression-class-func.galgas", 281)) ;
         }
       }
@@ -4132,7 +4132,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
         test_19 = var_oldCollectionInitializers_12237.getter_hasKey (constinArgument_inConstructorName.readProperty_string () COMMA_SOURCE_FILE ("expression-class-func.galgas", 290)).boolEnum () ;
         if (GalgasBool::boolTrue == test_19) {
           TC_Array <FixItDescription> fixItArray20 ;
-          appendFixItActions (fixItArray20, kFixItReplace, GGS_string (" ()")) ;
+          appendFixItActions (fixItArray20, EnumFixItKind::fixItReplace, GGS_string (" ()")) ;
           inCompiler->emitSemanticError (constinArgument_inLocationForOldStyleCollectionInitializerError, GGS_string ("old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"), fixItArray20  COMMA_SOURCE_FILE ("expression-class-func.galgas", 291)) ;
         }
       }
@@ -4613,7 +4613,7 @@ void cPtr_filewrapperTemplateInExpressionAST::method_analyzeSemanticExpression (
           }
           GGS_string var_s_9043 = GGS_string ("!").add_operation (temp_19, inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 217)) ;
           TC_Array <FixItDescription> fixItArray21 ;
-          appendFixItActions (fixItArray21, kFixItReplace, var_s_9043) ;
+          appendFixItActions (fixItArray21, EnumFixItKind::fixItReplace, var_s_9043) ;
           inCompiler->emitSemanticError (enumerator_8847.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_9043, inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 218)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 218)), fixItArray21  COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 218)) ;
         }
       }
@@ -5674,7 +5674,7 @@ void cPtr_optionExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
     const GGS_optionExpressionAST temp_33 = this ;
     const GGS_optionExpressionAST temp_34 = this ;
     TC_Array <FixItDescription> fixItArray35 ;
-    appendFixItActions (fixItArray35, kFixItReplace, var_s_7474) ;
+    appendFixItActions (fixItArray35, EnumFixItKind::fixItReplace, var_s_7474) ;
     inCompiler->emitSemanticError (temp_32.readProperty_mOptionEntryName ().readProperty_location (), GGS_string ("the '").add_operation (temp_33.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 190)).add_operation (GGS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 190)).add_operation (temp_34.readProperty_mOptionEntryName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 190)).add_operation (GGS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 190)), fixItArray35  COMMA_SOURCE_FILE ("expression-primary-option.galgas", 189)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
@@ -8144,7 +8144,7 @@ void cPtr_plusEqualElementsInstructionAST::method_analyzeSemanticInstruction (co
             }
             GGS_string var_s_22966 = GGS_string ("!").add_operation (temp_27, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 583)) ;
             TC_Array <FixItDescription> fixItArray29 ;
-            appendFixItActions (fixItArray29, kFixItReplace, var_s_22966) ;
+            appendFixItActions (fixItArray29, EnumFixItKind::fixItReplace, var_s_22966) ;
             inCompiler->emitSemanticError (enumerator_22420.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_22966, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 584)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 584)), fixItArray29  COMMA_SOURCE_FILE ("instruction-concat.galgas", 584)) ;
           }
         }

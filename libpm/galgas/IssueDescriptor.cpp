@@ -120,16 +120,16 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
     const FixItDescription fixit = inFixit.mFixItArray (i COMMA_HERE) ;
     result.appendString ("{\"kind\":\"") ;
     switch (fixit.kind ()) {
-    case kFixItRemove :
+    case EnumFixItKind::fixItRemove :
       result.appendString ("remove") ;
       break ;
-    case kFixItReplace :
+    case EnumFixItKind::fixItReplace :
       result.appendString ("replace") ;
       break ;
-    case kFixItInsertAfter :
+    case EnumFixItKind::fixItInsertAfter :
       result.appendString ("insertAfter") ;
       break ;
-    case kFixItInsertBefore :
+    case EnumFixItKind::fixItInsertBefore :
       result.appendString ("insertBefore") ;
       break ;
     }

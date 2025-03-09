@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'cIndexingDictionary': dictionary for indexing soures
+//  'IndexingDictionary': dictionary for indexing soures
 //
 //  This file is part of libpm library
 //
@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "cIndexingDictionary.h"
+#include "IndexingDictionary.h"
 #include "String-class.h"
 #include "FileManager.h"
 
@@ -110,7 +110,7 @@ static void rotateRight (cIndexEntryNode * & ioRootPtr) {
 
 //--------------------------------------------------------------------------------------------------
 
-cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRootPtr,
+cIndexEntryNode * IndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRootPtr,
                                                        const String & inKey,
                                                        bool & ioExtension) {
   cIndexEntryNode * result = nullptr ;
@@ -160,26 +160,26 @@ cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRoo
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cIndexingDictionary
+  #pragma mark IndexingDictionary
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//                 cIndexingDictionary
+//                 IndexingDictionary
 //--------------------------------------------------------------------------------------------------
 
-cIndexingDictionary::cIndexingDictionary (void) :
+IndexingDictionary::IndexingDictionary (void) :
 mEntryRoot (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cIndexingDictionary::~ cIndexingDictionary (void) {
+IndexingDictionary::~ IndexingDictionary (void) {
   macroMyDelete (mEntryRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
+void IndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
                                          const String & inIndexedString,
                                          const String & inSourceFilePath,
                                          const uint32_t inTokenLineInSource,
@@ -224,7 +224,7 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePath) const {
+void IndexingDictionary::generateIndexFile (const String & inOutputIndexFilePath) const {
   String contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                     "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
                     "<plist version=\"1.0\">" ;

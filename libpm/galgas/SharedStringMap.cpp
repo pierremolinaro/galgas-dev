@@ -74,10 +74,10 @@ class SharedStringMapRoot final : public SharedObject {
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: TC_Array <SharedStringMapNode *> mCacheArray ;
+//  private: TC_Array <SharedStringMapNode *> mCacheArray ;
+//  private: bool mCacheArrayIsBuilt ;
   private: SharedStringMapNode * mRootNode ;
   private: int32_t mCount ;
-  private: bool mCacheArrayIsBuilt ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Default constructor
@@ -85,17 +85,17 @@ class SharedStringMapRoot final : public SharedObject {
 
   public: SharedStringMapRoot (LOCATION_ARGS) :
   SharedObject (THERE),
-  mCacheArray (),
+//  mCacheArray (),
+//  mCacheArrayIsBuilt (false),
   mRootNode (nullptr),
-  mCount (0),
-  mCacheArrayIsBuilt (false) {
+  mCount (0) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~ SharedStringMapRoot (void) {
+  public: virtual ~ SharedStringMapRoot (void) {
     macroMyDelete (mRootNode) ;
   }
 
@@ -155,10 +155,10 @@ class SharedStringMapRoot final : public SharedObject {
                              SharedStringMapNode * & ioObject
                              COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
-    if (mCacheArrayIsBuilt) {
-      mCacheArrayIsBuilt = false ;
-      mCacheArray.removeAllKeepingCapacity () ;
-    }
+//    if (mCacheArrayIsBuilt) {
+//      mCacheArrayIsBuilt = false ;
+//      mCacheArray.removeAllKeepingCapacity () ;
+//    }
     internalRecursiveInsert (mRootNode, inKey, ioObject) ;
   }
 
@@ -257,10 +257,10 @@ class SharedStringMapRoot final : public SharedObject {
 
   public: SharedStringMapNode * removeObject (const String & inKey) {
     macroUniqueSharedObject (this) ;
-    if (mCacheArrayIsBuilt) {
-      mCacheArrayIsBuilt = false ;
-      mCacheArray.removeAllKeepingCapacity () ;
-    }
+//    if (mCacheArrayIsBuilt) {
+//      mCacheArrayIsBuilt = false ;
+//      mCacheArray.removeAllKeepingCapacity () ;
+//    }
     bool ioBranchHasBeenRemoved ;
     SharedStringMapNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
     return removedNode ;
@@ -491,7 +491,7 @@ TC_Array <String> SharedStringMap::sortedKeyArray (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void SharedStringMap::insert (SharedStringMapNode * & ioObject
-                                     COMMA_LOCATION_ARGS) {
+                              COMMA_LOCATION_ARGS) {
   if ((mSharedRoot != nullptr) && (ioObject != nullptr)) {
     insulate (THERE) ;
     const String key = ioObject->mKey ;
@@ -501,8 +501,8 @@ void SharedStringMap::insert (SharedStringMapNode * & ioObject
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode * SharedStringMap::remove (const String & inKey
-                                                COMMA_LOCATION_ARGS) {
+SharedStringMapNode * SharedStringMap::removeAndReturnRemovedNode (const String & inKey
+                                                                   COMMA_LOCATION_ARGS) {
   SharedStringMapNode * removedNode = nullptr ;
   if (mSharedRoot != nullptr) {
     insulate (THERE) ;

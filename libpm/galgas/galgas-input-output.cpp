@@ -167,22 +167,22 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
-        case kFixItRemove :
+        case EnumFixItKind::fixItRemove :
           result.appendCString ("Fix-it, remove\n") ;
           break ;
-        case kFixItReplace :
+        case EnumFixItKind::fixItReplace :
           result.appendCString ("Fix-it, replace with ") ;
           result.appendString (ZeroWidthSpace) ;
           result.appendString (d.actionString()) ;
           result.appendCString ("\n") ;
           break ;
-        case kFixItInsertBefore :
+        case EnumFixItKind::fixItInsertBefore :
           result.appendCString ("Fix-it, insert before: ") ;
           result.appendString (ZeroWidthSpace) ;
           result.appendString (d.actionString()) ;
           result.appendCString ("\n") ;
           break ;
-        case kFixItInsertAfter :
+        case EnumFixItKind::fixItInsertAfter :
           result.appendCString ("Fix-it, insert after: ") ;
           result.appendString (ZeroWidthSpace) ;
           result.appendString (d.actionString()) ;

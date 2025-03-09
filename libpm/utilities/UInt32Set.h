@@ -66,7 +66,6 @@ class UInt32Set final {
 //--- Attributes
   private: TC_Array <uint64_t> mDefinition ;
 
-
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: void check (void) const ;
   #endif

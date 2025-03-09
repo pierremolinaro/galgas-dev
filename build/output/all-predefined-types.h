@@ -998,7 +998,7 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
 
-//--------------------------------- Virtual destructor
+//--------------------------------- Virtual constructor
   public: virtual ~ GGS_stringset (void) ;
 
 

@@ -24,7 +24,7 @@
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
 #include "C_galgas_CLI_Options.h"
-#include "cIndexingDictionary.h"
+#include "IndexingDictionary.h"
 #include "FileManager.h"
 #include "F_verbose_output.h"
 
@@ -689,7 +689,7 @@ void Lexique::enterIndexedValue (const uint32_t inIndexingKind,
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::enableIndexing (void) {
-  macroMyNew (mIndexingDictionary, cIndexingDictionary) ;
+  macroMyNew (mIndexingDictionary, IndexingDictionary) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -30,7 +30,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cIndexingDictionary ;
+class IndexingDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 //                 Top Down parsing utilities
@@ -84,7 +84,7 @@ class Lexique : public Compiler {
                                   const GGS_lstring & inValue) ;
   public: void enableIndexing (void) ;
   public: void generateIndexFile (void) ;
-  protected: cIndexingDictionary * mIndexingDictionary ;
+  protected: IndexingDictionary * mIndexingDictionary ;
 
 //--- Template String
   protected: int32_t findTemplateDelimiterIndex (const TemplateDelimiter * inTemplateDelimiterArray,

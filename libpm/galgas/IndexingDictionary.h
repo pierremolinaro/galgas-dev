@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'cIndexingDictionary': dictionary for indexing soures                                        
+//  'IndexingDictionary': dictionary for indexing soures                                        
 //
 //  This file is part of libpm library                                                           
 //
@@ -30,22 +30,20 @@ class String ;
 class cIndexEntryNode ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 cIndexingDictionary                                                           
-//
+//                 IndexingDictionary
 //--------------------------------------------------------------------------------------------------
 
-class cIndexingDictionary final {
+class IndexingDictionary final {
 
 //--- Constructor
-  public: cIndexingDictionary (void) ;
+  public: IndexingDictionary (void) ;
 
 //--- Destructor
-  public: ~ cIndexingDictionary (void) ;
+  public: ~ IndexingDictionary (void) ;
 
 //--- No copy
-  private: cIndexingDictionary (const cIndexingDictionary &) = delete ;
-  private: cIndexingDictionary & operator = (const cIndexingDictionary &) = delete ;
+  private: IndexingDictionary (const IndexingDictionary &) = delete ;
+  private: IndexingDictionary & operator = (const IndexingDictionary &) = delete ;
 
 //--- Add indexed entry
   public: void addIndexedKey (const uint32_t inIndexingKind,

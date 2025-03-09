@@ -3702,7 +3702,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
     GGS_lstring var_prefixString_4499 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)) ;
     TC_Array <FixItDescription> fixItArray1 ;
-    appendFixItActions (fixItArray1, kFixItReplace, GGS_string::makeEmptyString ()) ;
+    appendFixItActions (fixItArray1, EnumFixItKind::fixItReplace, GGS_string::makeEmptyString ()) ;
     inCompiler->emitSemanticError (var_prefixString_4499.readProperty_location ().getter_union (var_startLocation_4435, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 116)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 116)) ;
   } break ;
   default:

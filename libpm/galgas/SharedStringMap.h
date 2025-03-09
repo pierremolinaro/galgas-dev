@@ -107,8 +107,8 @@ class SharedStringMap final {
   public: void insert (SharedStringMapNode * & ioObject
                        COMMA_LOCATION_ARGS) ;
 
-  public: SharedStringMapNode * remove (const String & inKey
-                                        COMMA_LOCATION_ARGS) ;
+  public: SharedStringMapNode * removeAndReturnRemovedNode (const String & inKey
+                                                            COMMA_LOCATION_ARGS) ;
 
   public: SharedStringMapNode * nodeForKey (const String & inKey) const ;
 

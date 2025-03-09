@@ -419,7 +419,7 @@ method @fixitListForGeneration generateFixIt
   for (element) in self do
     switch (element)
     case fixItRemove :
-      ioGeneratedCode += outFixItArrayCppName + ".appendObject (FixItDescription (kFixItRemove, \"\")) ;\n"
+      ioGeneratedCode += outFixItArrayCppName + ".appendObject (FixItDescription (EnumFixItKind::fixItRemove, \"\")) ;\n"
     case fixItReplace (@semanticExpressionForGeneration exp) :
       [exp generateExpression
         !?ioGeneratedCode
@@ -428,7 +428,7 @@ method @fixitListForGeneration generateFixIt
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
       ]
-      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItReplace, " + receiverCppVarName + ") ;\n"
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItReplace, " + receiverCppVarName + ") ;\n"
     case fixItInsertBefore (@semanticExpressionForGeneration exp) :
       [exp generateExpression
         !?ioGeneratedCode
@@ -437,7 +437,7 @@ method @fixitListForGeneration generateFixIt
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
       ]
-      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItInsertBefore, " + receiverCppVarName + ") ;\n"
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItInsertBefore, " + receiverCppVarName + ") ;\n"
     case fixItInsertAfter (@semanticExpressionForGeneration exp) :
       [exp generateExpression
         !?ioGeneratedCode
@@ -446,7 +446,7 @@ method @fixitListForGeneration generateFixIt
         !?ioUnusedVariableCppNameSet
         ?let receiverCppVarName
       ]
-      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItInsertAfter, " + receiverCppVarName + ") ;\n"
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", EnumFixItKind::fixItInsertAfter, " + receiverCppVarName + ") ;\n"
     end
   end
 }

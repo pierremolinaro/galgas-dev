@@ -111,7 +111,7 @@ end
        "capSortedListElement.cpp",
        "cGenericAbstractEnumerator.cpp",
        "Enumerator_range.cpp",
-       "cIndexingDictionary.cpp",
+       "IndexingDictionary.cpp",
        "IssueDescriptor.cpp",
        "cLexiqueIntrospection.cpp",
        "AC_GALGAS_root.cpp",

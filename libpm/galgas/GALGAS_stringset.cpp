@@ -96,8 +96,8 @@ void GGS_stringset::addAssign_operation (const GGS_string & inKey
 void GGS_stringset::setter_removeKey (GGS_string inKey
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    SharedStringMapNode * removedNode = mSharedMap.remove (inKey.stringValue () COMMA_THERE) ;
-    macroMyDelete (removedNode)
+    SharedStringMapNode * removedNode = mSharedMap.removeAndReturnRemovedNode (inKey.stringValue () COMMA_THERE) ;
+    macroMyDelete (removedNode) ;
   }
 }
 
@@ -176,7 +176,8 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
     result = *this ;
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array2.count () ; i++) {
-      result.mSharedMap.remove (array2 (i COMMA_HERE) COMMA_THERE) ;
+      SharedStringMapNode * removedNode = result.mSharedMap.removeAndReturnRemovedNode (array2 (i COMMA_HERE) COMMA_THERE) ;
+      macroMyDelete (removedNode) ;
     }
   }
   return result ;
