@@ -943,7 +943,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 class UpEnumerator_stringset final {
   public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
 
-  public: bool hasCurrentObject (void) const { return mIndex < mUnsecureArray.count () ; }
+  public: bool hasCurrentObject (void) const { return mIndex < mStringArray.count () ; }
 
   public: void gotoNextObject (void) { mIndex += 1 ; }
 
@@ -952,7 +952,7 @@ class UpEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <SharedStringMapNode *> mUnsecureArray ;
+  private: const TC_Array <String> mStringArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -975,7 +975,7 @@ class DownEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <SharedStringMapNode *> mUnsecureArray ;
+  private: const TC_Array <String> mStringArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -997,6 +997,10 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_stringset (void) ;
+
 
 //-- Start of type generic part
 

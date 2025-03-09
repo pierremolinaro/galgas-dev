@@ -44,12 +44,23 @@ mKey (inNodePtr->mKey) {
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedStringMapNode::populateCacheArray (SharedStringMapNode * inNode,
-                                               TC_Array <SharedStringMapNode *> & ioCacheArray) {
+//void SharedStringMapNode::populateCacheArray (SharedStringMapNode * inNode,
+//                                              TC_Array <SharedStringMapNode *> & ioCacheArray) {
+//  if (inNode != nullptr) {
+//    populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
+//    ioCacheArray.appendObject (inNode) ;
+//    populateCacheArray (inNode->mSupPtr, ioCacheArray) ;
+//  }
+//}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedStringMapNode::populateStringArray (SharedStringMapNode * inNode,
+                                               TC_Array <String> & ioStringArray) {
   if (inNode != nullptr) {
-    populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
-    ioCacheArray.appendObject (inNode) ;
-    populateCacheArray (inNode->mSupPtr, ioCacheArray) ;
+    populateStringArray (inNode->mInfPtr, ioStringArray) ;
+    ioStringArray.appendObject (inNode->mKey) ;
+    populateStringArray (inNode->mSupPtr, ioStringArray) ;
   }
 }
 
@@ -116,14 +127,24 @@ class SharedStringMapRoot final : public SharedObject {
   // Get cache array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) {
-    if (mCacheArrayIsBuilt) {
-      return mCacheArray ;
-    }else{
-      mCacheArrayIsBuilt = true ;
-      SharedStringMapNode::populateCacheArray (mRootNode, mCacheArray) ;
-      return mCacheArray ;
-    }
+//  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) {
+//    if (mCacheArrayIsBuilt) {
+//      return mCacheArray ;
+//    }else{
+//      mCacheArrayIsBuilt = true ;
+//      SharedStringMapNode::populateCacheArray (mRootNode, mCacheArray) ;
+//      return mCacheArray ;
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Get sorted key array
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: TC_Array <String> sortedKeyArray (void) const {
+    TC_Array <String> array ;
+    SharedStringMapNode::populateStringArray (mRootNode, array) ;
+    return array ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -389,7 +410,7 @@ class SharedStringMapRoot final : public SharedObject {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//  SharedStringMap
+//MARK:  SharedStringMap
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMap::SharedStringMap (void) :
@@ -426,18 +447,11 @@ SharedStringMap & SharedStringMap::operator = (const SharedStringMap & inSource)
 
 SharedStringMap SharedStringMap::build (LOCATION_ARGS) {
   SharedStringMap result ;
-  macroMyNew (result.mSharedRoot, SharedStringMapRoot (THERE)) ;
+  SharedStringMapRoot * p = nullptr ;
+  macroMyNew (p, SharedStringMapRoot (THERE)) ;
+  macroAssignSharedObject (result.mSharedRoot, p) ;
+  macroDetachSharedObject (p) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-TC_Array <SharedStringMapNode *> SharedStringMap::unsecureOrderedPointerArray (void) const {
-  if (mSharedRoot != nullptr) {
-    return mSharedRoot->unsecureOrderedPointerArray () ;
-  }else{
-    return TC_Array <SharedStringMapNode *> () ;
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -451,6 +465,26 @@ void SharedStringMap::insulate (LOCATION_ARGS) {
     mSharedRoot->duplicateTo (p COMMA_THERE) ;
     macroAssignSharedObject (mSharedRoot, p) ;
     macroDetachSharedObject (p) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//TC_Array <SharedStringMapNode *> SharedStringMap::unsecureOrderedPointerArray (void) const {
+//  if (mSharedRoot != nullptr) {
+//    return mSharedRoot->unsecureOrderedPointerArray () ;
+//  }else{
+//    return TC_Array <SharedStringMapNode *> () ;
+//  }
+//}
+
+//--------------------------------------------------------------------------------------------------
+
+TC_Array <String> SharedStringMap::sortedKeyArray (void) const {
+  if (mSharedRoot != nullptr) {
+    return mSharedRoot->sortedKeyArray () ;
+  }else{
+    return TC_Array <String> () ;
   }
 }
 

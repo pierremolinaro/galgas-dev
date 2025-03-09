@@ -24,400 +24,6 @@
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
-//  AVLStringSetTreeNode
-//--------------------------------------------------------------------------------------------------
-
-class AVLStringSetTreeNode final {
-
-  public: AVLStringSetTreeNode * mInfPtr ;
-  public: AVLStringSetTreeNode * mSupPtr ;
-  public: int32_t mBalance ;
-  public: const String mKey ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: AVLStringSetTreeNode (const String & inKey) :
-  mInfPtr (nullptr),
-  mSupPtr (nullptr),
-  mBalance (0),
-  mKey (inKey) {
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: ~AVLStringSetTreeNode (void) {
-    macroMyDelete (mInfPtr) ;
-    macroMyDelete (mSupPtr) ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: AVLStringSetTreeNode (const AVLStringSetTreeNode * inNodePtr) :
-  mInfPtr (nullptr),
-  mSupPtr (nullptr),
-  mBalance (inNodePtr->mBalance),
-  mKey (inNodePtr->mKey) {
-    if (inNodePtr->mInfPtr != nullptr) {
-      macroMyNew (mInfPtr, AVLStringSetTreeNode (inNodePtr->mInfPtr))
-    }
-    if (inNodePtr->mSupPtr != nullptr) {
-      macroMyNew (mSupPtr, AVLStringSetTreeNode (inNodePtr->mSupPtr))
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // No copy
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: AVLStringSetTreeNode (const AVLStringSetTreeNode &) = delete ;
-  private: AVLStringSetTreeNode & operator = (const AVLStringSetTreeNode &) = delete ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: static void populateCacheArray (const AVLStringSetTreeNode * inNode,
-                                          TC_Array <String> & ioCacheArray) {
-    if (inNode != nullptr) {
-      populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
-      ioCacheArray.appendObject (inNode->mKey) ;
-      populateCacheArray (inNode->mSupPtr, ioCacheArray) ;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class AVLStringSetTreeRoot final : public SharedObject {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Private members
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: TC_Array <String> mCacheArray ;
-  private: AVLStringSetTreeNode * mRootNode ;
-  private: int32_t mCount ;
-  private: bool mCacheArrayIsBuilt ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Default constructor
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: AVLStringSetTreeRoot (LOCATION_ARGS) :
-  SharedObject (THERE),
-  mCacheArray (),
-  mRootNode (nullptr),
-  mCount (0),
-  mCacheArrayIsBuilt (false) {
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Destructor
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: ~ AVLStringSetTreeRoot (void) {
-    macroMyDelete (mRootNode) ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // No copy
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: AVLStringSetTreeRoot (const AVLStringSetTreeRoot &) = delete ;
-  private: AVLStringSetTreeRoot & operator = (const AVLStringSetTreeRoot &) = delete ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: void duplicateTo (AVLStringSetTreeRoot * inNewRoot COMMA_UNUSED_LOCATION_ARGS) {
-    if (mRootNode != nullptr) {
-      macroMyNew (inNewRoot->mRootNode, AVLStringSetTreeNode (mRootNode)) ;
-      inNewRoot->mCount = mCount ;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Accessors
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: inline int32_t count (void) const { return mCount ; }
-  public: inline String rootNodeKey (void) const { return mRootNode->mKey ; }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Get cache array
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: TC_Array <String> unsecureOrderedPointerArray (void) {
-    if (mCacheArrayIsBuilt) {
-      return mCacheArray ;
-    }else{
-      mCacheArrayIsBuilt = true ;
-      AVLStringSetTreeNode::populateCacheArray (mRootNode, mCacheArray) ;
-      return mCacheArray ;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Insertion
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: void insert (const String & inKey COMMA_LOCATION_ARGS) {
-    macroUniqueSharedObjectThere (this) ;
-    if (mCacheArrayIsBuilt) {
-      mCacheArrayIsBuilt = false ;
-      mCacheArray.removeAllKeepingCapacity () ;
-    }
-    internalRecursiveInsert (mRootNode, inKey) ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static void rotateLeft (AVLStringSetTreeNode * & ioRootPtr) {
-    AVLStringSetTreeNode * b = ioRootPtr->mSupPtr ;
-    ioRootPtr->mSupPtr = b->mInfPtr ;
-    b->mInfPtr = ioRootPtr;
-
-    if (b->mBalance >= 0) {
-      ioRootPtr->mBalance++ ;
-    }else{
-      ioRootPtr->mBalance += 1 - b->mBalance ;
-    }
-
-    if (ioRootPtr->mBalance > 0) {
-      b->mBalance += ioRootPtr->mBalance + 1 ;
-    }else{
-      b->mBalance++ ;
-    }
-    ioRootPtr = b ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static void rotateRight (AVLStringSetTreeNode * & ioRootPtr) {
-    AVLStringSetTreeNode * b = ioRootPtr->mInfPtr ;
-    ioRootPtr->mInfPtr = b->mSupPtr ;
-    b->mSupPtr = ioRootPtr ;
-
-    if (b->mBalance > 0) {
-      ioRootPtr->mBalance -= b->mBalance + 1 ;
-    }else{
-      ioRootPtr->mBalance -= 1 ;
-    }
-    if (ioRootPtr->mBalance >= 0) {
-      b->mBalance -= 1 ;
-    }else{
-      b->mBalance += ioRootPtr->mBalance - 1 ;
-    }
-    ioRootPtr = b ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: bool internalRecursiveInsert (AVLStringSetTreeNode * & ioRootPtr,
-                                         const String & inKey) {
-    bool extension = false ;
-    if (ioRootPtr == nullptr) {
-      macroMyNew (ioRootPtr, AVLStringSetTreeNode (inKey)) ;
-      mCount += 1 ;
-      extension = true ;
-    }else{
-      const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
-      if (comparaison > 0) {
-        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey) ;
-        if (extension) {
-          ioRootPtr->mBalance += 1 ;
-          if (ioRootPtr->mBalance == 0) {
-            extension = false ;
-          }else if (ioRootPtr->mBalance == 2) {
-            if (ioRootPtr->mInfPtr->mBalance == -1) {
-              rotateLeft (ioRootPtr->mInfPtr) ;
-            }
-            rotateRight (ioRootPtr) ;
-            extension = false ;
-          }
-        }
-      }else if (comparaison < 0) {
-        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey) ;
-        if (extension) {
-          ioRootPtr->mBalance -= 1 ;
-          if (ioRootPtr->mBalance == 0) {
-            extension = false ;
-          }else if (ioRootPtr->mBalance == -2) {
-            if (ioRootPtr->mSupPtr->mBalance == 1) {
-              rotateRight (ioRootPtr->mSupPtr) ;
-            }
-            rotateLeft (ioRootPtr) ;
-            extension = false ;
-          }
-        }
-      }else{
-        extension = false ; // Found : perform replacement
-      }
-    }
-    return extension ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Removing
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: void remove (const String & inKey) {
-    macroUniqueSharedObject (this) ;
-    if (mCacheArrayIsBuilt) {
-      mCacheArrayIsBuilt = false ;
-      mCacheArray.removeAllKeepingCapacity () ;
-    }
-    bool ioBranchHasBeenRemoved ;
-    AVLStringSetTreeNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
-    if (removedNode != nullptr) {
-      macroMyDelete (removedNode) ;
-      mCount -= 1 ;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static void supBranchDecreased (AVLStringSetTreeNode * & ioRoot,
-                                           bool & ioBranchHasBeenRemoved) {
-    ioRoot->mBalance += 1 ;
-    switch (ioRoot->mBalance) {
-    case 0:
-      break;
-    case 1:
-      ioBranchHasBeenRemoved = false;
-      break;
-    case 2:
-      switch (ioRoot->mInfPtr->mBalance) {
-      case -1:
-        rotateLeft (ioRoot->mInfPtr) ;
-        rotateRight (ioRoot) ;
-        break;
-      case 0:
-        rotateRight (ioRoot) ;
-        ioBranchHasBeenRemoved = false;
-        break;
-      case 1:
-        rotateRight (ioRoot) ;
-        break;
-      }
-      break;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static void infBranchDecreased (AVLStringSetTreeNode * & ioRoot,
-                                           bool & ioBranchHasBeenRemoved) {
-    ioRoot->mBalance -- ;
-    switch (ioRoot->mBalance) {
-    case 0:
-      break;
-    case -1:
-      ioBranchHasBeenRemoved = false;
-      break;
-    case -2:
-      switch (ioRoot->mSupPtr->mBalance) {
-      case 1:
-        rotateRight (ioRoot->mSupPtr) ;
-        rotateLeft (ioRoot) ;
-        break;
-      case 0:
-        rotateLeft (ioRoot) ;
-        ioBranchHasBeenRemoved = false;
-        break;
-      case -1:
-        rotateLeft (ioRoot) ;
-        break;
-      }
-      break;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static void getPreviousElement (AVLStringSetTreeNode * & ioRoot,
-                                           AVLStringSetTreeNode * & ioElement,
-                                           bool & ioBranchHasBeenRemoved) {
-    if (ioRoot->mSupPtr == nullptr) {
-      ioElement = ioRoot ;
-      ioRoot = ioRoot->mInfPtr ;
-      ioBranchHasBeenRemoved = true ;
-    }else{
-      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;
-      if (ioBranchHasBeenRemoved) {
-        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: static AVLStringSetTreeNode * internalRemoveEntry (const String & inKeyToRemove,
-                                                     AVLStringSetTreeNode * & ioRoot,
-                                                     bool & ioBranchHasBeenRemoved) {
-    AVLStringSetTreeNode * removedNode = nullptr ;
-    if (ioRoot != nullptr) {
-      const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
-      if (comparaison > 0) {
-        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);
-        if (ioBranchHasBeenRemoved) {
-          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-        }
-      }else if (comparaison < 0) {
-        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);
-        if (ioBranchHasBeenRemoved) {
-          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
-        }
-      }else{ // Found
-        removedNode = ioRoot ;
-        AVLStringSetTreeNode * p = ioRoot ;
-        if (p->mInfPtr == nullptr) {
-          ioRoot = p->mSupPtr;
-          p->mSupPtr = nullptr;
-          ioBranchHasBeenRemoved = true;
-        }else if (p->mSupPtr == nullptr) {
-          ioRoot = p->mInfPtr;
-          p->mInfPtr = nullptr;
-          ioBranchHasBeenRemoved = true;
-        }else{
-          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
-          ioRoot->mSupPtr = p->mSupPtr;
-          p->mSupPtr = nullptr;
-          ioRoot->mInfPtr = p->mInfPtr;
-          p->mInfPtr = nullptr;
-          ioRoot->mBalance = p->mBalance;
-          p->mBalance = 0;
-          if (ioBranchHasBeenRemoved) {
-            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-          }
-        }
-      }
-    }
-    return removedNode ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: bool contains (const String & inKey) {
-    AVLStringSetTreeNode * nodePtr = mRootNode ;
-    while (nodePtr != nullptr) {
-      const int32_t comparaison = nodePtr->mKey.compare (inKey) ;
-      if (comparaison > 0) {
-        nodePtr = nodePtr->mInfPtr ;
-      }else if (comparaison < 0) {
-        nodePtr = nodePtr->mSupPtr ;
-      }else{ // Found
-        return true ;
-      }
-    }
-    return false ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
 //  GGS_stringset
 //--------------------------------------------------------------------------------------------------
 
@@ -438,6 +44,11 @@ mSharedMap (inSource.mSharedMap) {
 GGS_stringset & GGS_stringset::operator = (const GGS_stringset & inSource) {
   mSharedMap = inSource.mSharedMap ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset::~GGS_stringset (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -499,18 +110,18 @@ GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_stringset::class_func_emptySet (THERE) ;
-    const TC_Array <SharedStringMapNode *> array1 = mSharedMap.unsecureOrderedPointerArray () ;
-    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array1 = mSharedMap.sortedKeyArray () ;
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx1 = 0 ;
     int32_t idx2 = 0 ;
     while ((idx1 < array1.count ()) && (idx2 < array2.count ())) {
-      const int32_t comparaison = array1 (idx1 COMMA_HERE)->mKey.compare (array2 (idx2 COMMA_HERE)->mKey) ;
+      const int32_t comparaison = array1 (idx1 COMMA_HERE).compare (array2 (idx2 COMMA_HERE)) ;
       if (comparaison < 0) {
         idx1 += 1 ;
       }else if (comparaison > 0) {
         idx2 += 1 ;
       }else{
-        result.addAssign_operation (GGS_string (array1 (idx1 COMMA_HERE)->mKey) COMMA_HERE) ;
+        result.addAssign_operation (GGS_string (array1 (idx1 COMMA_HERE)) COMMA_HERE) ;
         idx1 += 1 ;
         idx2 += 1 ;
       }
@@ -528,10 +139,10 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      result.addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)->mKey) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -544,10 +155,10 @@ void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
                                           Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)->mKey) COMMA_HERE) ;
+      addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -563,9 +174,9 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array2.count () ; i++) {
-      result.mSharedMap.remove (array2 (i COMMA_HERE)->mKey COMMA_THERE) ;
+      result.mSharedMap.remove (array2 (i COMMA_HERE) COMMA_THERE) ;
     }
   }
   return result ;
@@ -577,9 +188,9 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
-    const TC_Array <SharedStringMapNode *> array = mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array = mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array.count () ; i++) {
-      result.addAssign_operation (GGS_string (array (i COMMA_HERE)->mKey) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -630,8 +241,8 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <SharedStringMapNode *> array1 = mSharedMap.unsecureOrderedPointerArray () ;
-    const TC_Array <SharedStringMapNode *> array2 = inOperand.mSharedMap.unsecureOrderedPointerArray () ;
+    const TC_Array <String> array1 = mSharedMap.sortedKeyArray () ;
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     if (array1.count () < array2.count ()) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (array1.count () > array2.count ()) {
@@ -640,7 +251,7 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
       result = ComparisonResult::operandEqual ;
       int32_t idx = 0 ;
       while ((idx < array1.count ()) && (result == ComparisonResult::operandEqual)) {
-        const int32_t comp = array1 (idx COMMA_HERE)->mKey.compare (array2 (idx COMMA_HERE)->mKey) ;
+        const int32_t comp = array1 (idx COMMA_HERE).compare (array2 (idx COMMA_HERE)) ;
         if (comp < 0) {
           result = ComparisonResult::firstOperandLowerThanSecond ;
         }else if (comp > 0) {
@@ -726,40 +337,40 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inOperand) :
-mUnsecureArray (inOperand.mSharedMap.unsecureOrderedPointerArray ()),
+mStringArray (inOperand.mSharedMap.sortedKeyArray ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
+  return GGS_string (mStringArray (mIndex COMMA_HERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
+  return GGS_string (mStringArray (mIndex COMMA_HERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inOperand) :
-mUnsecureArray (inOperand.mSharedMap.unsecureOrderedPointerArray ()),
+mStringArray (inOperand.mSharedMap.sortedKeyArray ()),
 mIndex (0) {
-  mIndex = mUnsecureArray.count () - 1 ;
+  mIndex = mStringArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
+  return GGS_string (mStringArray (mIndex COMMA_HERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mUnsecureArray (mIndex COMMA_HERE)->mKey) ;
+  return GGS_string (mStringArray (mIndex COMMA_HERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1441,7 +1441,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  5B84F584974E92D025A75D1F /* SharedAVLStringKeyTree.cpp */ = {
+  5B84F584974E92D025A75D1F /* SharedStringMap.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 166DD424A57127423D276BBE ;
     settings = {ATTRIBUTES = (); };
@@ -3575,12 +3575,12 @@
     sourceTree = "<group>";
   };
 
-  166DD424A57127423D276BBE /* SharedAVLStringKeyTree.cpp */ = {
+  166DD424A57127423D276BBE /* SharedStringMap.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "SharedAVLStringKeyTree.cpp";
-    path = "SharedAVLStringKeyTree.cpp";
+    name = "SharedStringMap.cpp";
+    path = "SharedStringMap.cpp";
     sourceTree = "<group>";
   };
 
@@ -6068,12 +6068,12 @@
     sourceTree = "<group>";
   };
 
-  726A60554BC78518D5F9B32C /* SharedAVLStringKeyTree.h */ = {
+  726A60554BC78518D5F9B32C /* SharedStringMap.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "SharedAVLStringKeyTree.h";
-    path = "SharedAVLStringKeyTree.h";
+    name = "SharedStringMap.h";
+    path = "SharedStringMap.h";
     sourceTree = "<group>";
   };
 

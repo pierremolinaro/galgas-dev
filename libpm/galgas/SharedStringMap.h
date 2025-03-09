@@ -59,8 +59,11 @@ class SharedStringMapNode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateCacheArray (SharedStringMapNode * inNode,
-                                           TC_Array <SharedStringMapNode *> & ioCacheArray) ;
+//  private: static void populateCacheArray (SharedStringMapNode * inNode,
+//                                           TC_Array <SharedStringMapNode *> & ioCacheArray) ;
+
+  private: static void populateStringArray (SharedStringMapNode * inNode,
+                                            TC_Array <String> & ioStringArray) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -90,7 +93,7 @@ class SharedStringMap final {
 //--------------------------------- Default constructor
   public: SharedStringMap () ;
 
-//--------------------------------- Virtual destructor
+//--------------------------------- Destructor
   public: ~ SharedStringMap (void) ;
 
 //--------------------------------- Insulate
@@ -111,9 +114,11 @@ class SharedStringMap final {
 
   public: int32_t count (void) const ;
 
-  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) const ;
-
   public: String rootNodeKey (void) const ;
+
+//  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) const ;
+
+  public: TC_Array <String> sortedKeyArray (void) const ;
 
 } ;
 
