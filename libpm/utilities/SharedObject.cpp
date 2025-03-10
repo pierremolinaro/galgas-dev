@@ -151,3 +151,20 @@ void SharedObject::retainRelease (const SharedObject * inObjectToRetain,
 #endif
 
 //--------------------------------------------------------------------------------------------------
+//MARK: class SharedHeader
+//--------------------------------------------------------------------------------------------------
+
+SharedHeader::SharedHeader (LOCATION_ARGS) :
+SharedObject (THERE),
+mProxyPtr (nullptr) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+SharedHeader::~SharedHeader (void) {
+  if (mProxyPtr != nullptr) {
+    mProxyPtr->mObjectPtr = nullptr ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------

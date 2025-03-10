@@ -13,9 +13,10 @@
 //MARK:  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode::SharedStringMapNode (const String & inKey) :
-mInfPtr (nullptr),
-mSupPtr (nullptr),
+SharedStringMapNode::SharedStringMapNode (const String & inKey COMMA_LOCATION_ARGS) :
+SharedHeader (THERE),
+mInfPtr (),
+mSupPtr (),
 mBalance (0),
 mKey (inKey) {
 }
@@ -23,22 +24,22 @@ mKey (inKey) {
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMapNode::~SharedStringMapNode (void) {
-  macroMyDelete (mInfPtr) ;
-  macroMyDelete (mSupPtr) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode::SharedStringMapNode (const SharedStringMapNode * inNodePtr) :
-mInfPtr (nullptr),
-mSupPtr (nullptr),
+SharedStringMapNode::SharedStringMapNode (const OptionalSharedRef <SharedStringMapNode> & inNodePtr
+                                          COMMA_LOCATION_ARGS) :
+SharedHeader (THERE),
+mInfPtr (),
+mSupPtr (),
 mBalance (inNodePtr->mBalance),
 mKey (inNodePtr->mKey) {
-  if (inNodePtr->mInfPtr != nullptr) {
-    macroMyNew (mInfPtr, SharedStringMapNode (inNodePtr->mInfPtr))
+  if (inNodePtr->mInfPtr.isNotNil ()) {
+    mInfPtr = OptionalSharedRef <SharedStringMapNode>::make (inNodePtr->mInfPtr COMMA_THERE) ;
   }
-  if (inNodePtr->mSupPtr != nullptr) {
-    macroMyNew (mSupPtr, SharedStringMapNode (inNodePtr->mSupPtr))
+  if (inNodePtr->mSupPtr.isNotNil ()) {
+    mSupPtr = OptionalSharedRef <SharedStringMapNode>::make (inNodePtr->mSupPtr COMMA_THERE) ;
   }
 }
 
@@ -55,9 +56,9 @@ mKey (inNodePtr->mKey) {
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedStringMapNode::populateStringArray (SharedStringMapNode * inNode,
+void SharedStringMapNode::populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
                                                TC_Array <String> & ioStringArray) {
-  if (inNode != nullptr) {
+  if (inNode.isNotNil ()) {
     populateStringArray (inNode->mInfPtr, ioStringArray) ;
     ioStringArray.appendObject (inNode->mKey) ;
     populateStringArray (inNode->mSupPtr, ioStringArray) ;
@@ -76,7 +77,7 @@ class SharedStringMapRoot final : public SharedObject {
 
 //  private: TC_Array <SharedStringMapNode *> mCacheArray ;
 //  private: bool mCacheArrayIsBuilt ;
-  private: SharedStringMapNode * mRootNode ;
+  private: OptionalSharedRef <SharedStringMapNode> mRootNode ;
   private: int32_t mCount ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,7 +88,7 @@ class SharedStringMapRoot final : public SharedObject {
   SharedObject (THERE),
 //  mCacheArray (),
 //  mCacheArrayIsBuilt (false),
-  mRootNode (nullptr),
+  mRootNode (),
   mCount (0) {
   }
 
@@ -96,7 +97,7 @@ class SharedStringMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: virtual ~ SharedStringMapRoot (void) {
-    macroMyDelete (mRootNode) ;
+//    macroMyDelete (mRootNode) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -108,10 +109,10 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void duplicateTo (SharedStringMapRoot * inNewRoot
+  public: void duplicateTo (OptionalSharedRef <SharedStringMapRoot> & inNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
-    if (mRootNode != nullptr) {
-      macroMyNew (inNewRoot->mRootNode, SharedStringMapNode (mRootNode)) ;
+    if (mRootNode.isNotNil ()) {
+      inNewRoot->mRootNode = OptionalSharedRef <SharedStringMapNode>::make (mRootNode COMMA_HERE) ;
       inNewRoot->mCount = mCount ;
     }
   }
@@ -152,7 +153,7 @@ class SharedStringMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void insertObject (const String & inKey,
-                             SharedStringMapNode * & ioObject
+                             OptionalSharedRef <SharedStringMapNode> & ioObject
                              COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
 //    if (mCacheArrayIsBuilt) {
@@ -164,8 +165,8 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (SharedStringMapNode * & ioRootPtr) {
-    SharedStringMapNode * b = ioRootPtr->mSupPtr ;
+  private: static void rotateLeft (OptionalSharedRef <SharedStringMapNode> & ioRootPtr) {
+    OptionalSharedRef <SharedStringMapNode> b = ioRootPtr->mSupPtr ;
     ioRootPtr->mSupPtr = b->mInfPtr ;
     b->mInfPtr = ioRootPtr;
 
@@ -185,8 +186,8 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (SharedStringMapNode * & ioRootPtr) {
-    SharedStringMapNode * b = ioRootPtr->mInfPtr ;
+  private: static void rotateRight (OptionalSharedRef <SharedStringMapNode> & ioRootPtr) {
+    OptionalSharedRef <SharedStringMapNode> b = ioRootPtr->mInfPtr ;
     ioRootPtr->mInfPtr = b->mSupPtr ;
     b->mSupPtr = ioRootPtr ;
 
@@ -205,13 +206,13 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (SharedStringMapNode * & ioRootPtr,
+  private: bool internalRecursiveInsert (OptionalSharedRef <SharedStringMapNode> & ioRootPtr,
                                          const String & inKey,
-                                         SharedStringMapNode * & ioObjectToInsert) {
+                                         OptionalSharedRef <SharedStringMapNode> & ioObjectToInsert) {
     bool extension = false ;
-    if (ioRootPtr == nullptr) {
+    if (ioRootPtr.isNil ()) {
       ioRootPtr = ioObjectToInsert ;
-      ioObjectToInsert = nullptr ;
+      ioObjectToInsert.setToNil () ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -255,20 +256,20 @@ class SharedStringMapRoot final : public SharedObject {
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedStringMapNode * removeObject (const String & inKey) {
+  public: OptionalSharedRef <SharedStringMapNode> removeObject (const String & inKey) {
     macroUniqueSharedObject (this) ;
 //    if (mCacheArrayIsBuilt) {
 //      mCacheArrayIsBuilt = false ;
 //      mCacheArray.removeAllKeepingCapacity () ;
 //    }
     bool ioBranchHasBeenRemoved ;
-    SharedStringMapNode * removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    OptionalSharedRef <SharedStringMapNode> removedNode = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
     return removedNode ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (SharedStringMapNode * & ioRoot,
+  private: static void supBranchDecreased (OptionalSharedRef <SharedStringMapNode> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -297,7 +298,7 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (SharedStringMapNode * & ioRoot,
+  private: static void infBranchDecreased (OptionalSharedRef <SharedStringMapNode> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -- ;
     switch (ioRoot->mBalance) {
@@ -326,10 +327,10 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (SharedStringMapNode * & ioRoot,
-                                           SharedStringMapNode * & ioElement,
+  private: static void getPreviousElement (OptionalSharedRef <SharedStringMapNode> & ioRoot,
+                                           OptionalSharedRef <SharedStringMapNode> & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
-    if (ioRoot->mSupPtr == nullptr) {
+    if (ioRoot->mSupPtr.isNil ()) {
       ioElement = ioRoot ;
       ioRoot = ioRoot->mInfPtr ;
       ioBranchHasBeenRemoved = true ;
@@ -343,11 +344,11 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: SharedStringMapNode * internalRemoveEntry (const String & inKeyToRemove,
-                                              SharedStringMapNode * & ioRoot,
+  private: OptionalSharedRef <SharedStringMapNode> internalRemoveEntry (const String & inKeyToRemove,
+                                              OptionalSharedRef <SharedStringMapNode> & ioRoot,
                                               bool & ioBranchHasBeenRemoved) {
-    SharedStringMapNode * removedNode = nullptr ;
-    if (ioRoot != nullptr) {
+    OptionalSharedRef <SharedStringMapNode> removedNode ;
+    if (ioRoot.isNotNil ()) {
       const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
       if (comparaison > 0) {
         removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);
@@ -362,21 +363,21 @@ class SharedStringMapRoot final : public SharedObject {
       }else{ // Found
         removedNode = ioRoot ;
         mCount -= 1 ;
-        SharedStringMapNode * p = ioRoot ;
-        if (p->mInfPtr == nullptr) {
+        OptionalSharedRef <SharedStringMapNode> p = ioRoot ;
+        if (p->mInfPtr.isNil ()) {
           ioRoot = p->mSupPtr;
-          p->mSupPtr = nullptr;
+          p->mSupPtr.setToNil () ;
           ioBranchHasBeenRemoved = true;
-        }else if (p->mSupPtr == nullptr) {
+        }else if (p->mSupPtr.isNil ()) {
           ioRoot = p->mInfPtr;
-          p->mInfPtr = nullptr;
+          p->mInfPtr.setToNil () ;
           ioBranchHasBeenRemoved = true;
         }else{
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
-          p->mSupPtr = nullptr;
+          p->mSupPtr.setToNil () ;
           ioRoot->mInfPtr = p->mInfPtr;
-          p->mInfPtr = nullptr;
+          p->mInfPtr.setToNil () ;
           ioRoot->mBalance = p->mBalance;
           p->mBalance = 0;
           if (ioBranchHasBeenRemoved) {
@@ -390,9 +391,9 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedStringMapNode * nodeForKey (const String & inKey) const {
-    SharedStringMapNode * nodePtr = mRootNode ;
-    while (nodePtr != nullptr) {
+  public: OptionalSharedRef <SharedStringMapNode> nodeForKey (const String & inKey) const {
+    OptionalSharedRef <SharedStringMapNode> nodePtr = mRootNode ;
+    while (nodePtr.isNotNil ()) {
       const int32_t comparaison = nodePtr->mKey.compare (inKey) ;
       if (comparaison > 0) {
         nodePtr = nodePtr->mInfPtr ;
@@ -402,7 +403,7 @@ class SharedStringMapRoot final : public SharedObject {
         return nodePtr ;
       }
     }
-    return nullptr ;
+    return OptionalSharedRef <SharedStringMapNode> () ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -414,32 +415,30 @@ class SharedStringMapRoot final : public SharedObject {
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMap::SharedStringMap (void) :
-mSharedRoot (nullptr) {
+mSharedRoot () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void SharedStringMap::drop (void) {
-  macroDetachSharedObject (mSharedRoot) ;
+  mSharedRoot.setToNil () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMap::~ SharedStringMap (void) {
-  macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMap::SharedStringMap (const SharedStringMap & inSource) :
-mSharedRoot (nullptr) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+mSharedRoot (inSource.mSharedRoot) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMap & SharedStringMap::operator = (const SharedStringMap & inSource) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+  mSharedRoot =  inSource.mSharedRoot ;
   return * this ;
 }
 
@@ -447,10 +446,11 @@ SharedStringMap & SharedStringMap::operator = (const SharedStringMap & inSource)
 
 SharedStringMap SharedStringMap::build (LOCATION_ARGS) {
   SharedStringMap result ;
-  SharedStringMapRoot * p = nullptr ;
-  macroMyNew (p, SharedStringMapRoot (THERE)) ;
-  macroAssignSharedObject (result.mSharedRoot, p) ;
-  macroDetachSharedObject (p) ;
+  result.mSharedRoot = OptionalSharedRef <SharedStringMapRoot>::make (THERE) ;
+//  SharedStringMapRoot * p = nullptr ;
+//  macroMyNew (p, SharedStringMapRoot (THERE)) ;
+//  macroAssignSharedObject (result.mSharedRoot, p) ;
+//  macroDetachSharedObject (p) ;
   return result ;
 }
 
@@ -459,12 +459,15 @@ SharedStringMap SharedStringMap::build (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void SharedStringMap::insulate (LOCATION_ARGS) {
-  if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
-    SharedStringMapRoot * p = nullptr ;
-    macroMyNew (p, SharedStringMapRoot (THERE)) ;
+  if (mSharedRoot.isNotNil () && !mSharedRoot->isUniquelyReferenced ()) {
+    auto p = OptionalSharedRef <SharedStringMapRoot>::make (THERE) ;
     mSharedRoot->duplicateTo (p COMMA_THERE) ;
-    macroAssignSharedObject (mSharedRoot, p) ;
-    macroDetachSharedObject (p) ;
+    mSharedRoot = p ;
+//    SharedStringMapRoot * p = nullptr ;
+//    macroMyNew (p, SharedStringMapRoot (THERE)) ;
+//    mSharedRoot->duplicateTo (p COMMA_THERE) ;
+//    macroAssignSharedObject (mSharedRoot, p) ;
+//    macroDetachSharedObject (p) ;
   }
 }
 
@@ -481,7 +484,7 @@ void SharedStringMap::insulate (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 TC_Array <String> SharedStringMap::sortedKeyArray (void) const {
-  if (mSharedRoot != nullptr) {
+  if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedKeyArray () ;
   }else{
     return TC_Array <String> () ;
@@ -490,9 +493,9 @@ TC_Array <String> SharedStringMap::sortedKeyArray (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedStringMap::insert (SharedStringMapNode * & ioObject
+void SharedStringMap::insert (OptionalSharedRef <SharedStringMapNode> & ioObject
                               COMMA_LOCATION_ARGS) {
-  if ((mSharedRoot != nullptr) && (ioObject != nullptr)) {
+  if (mSharedRoot.isNotNil () && ioObject.isNotNil ()) {
     insulate (THERE) ;
     const String key = ioObject->mKey ;
     mSharedRoot->insertObject (key, ioObject COMMA_THERE) ;
@@ -501,10 +504,10 @@ void SharedStringMap::insert (SharedStringMapNode * & ioObject
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode * SharedStringMap::removeAndReturnRemovedNode (const String & inKey
+OptionalSharedRef <SharedStringMapNode> SharedStringMap::removeAndReturnRemovedNode (const String & inKey
                                                                    COMMA_LOCATION_ARGS) {
-  SharedStringMapNode * removedNode = nullptr ;
-  if (mSharedRoot != nullptr) {
+  OptionalSharedRef <SharedStringMapNode> removedNode ;
+  if (mSharedRoot.isNotNil ()) {
     insulate (THERE) ;
     removedNode = mSharedRoot->removeObject (inKey) ;
   }
@@ -514,15 +517,15 @@ SharedStringMapNode * SharedStringMap::removeAndReturnRemovedNode (const String 
 //--------------------------------------------------------------------------------------------------
 
 String SharedStringMap::rootNodeKey (void) const {
-  macroValidPointer (mSharedRoot) ;
+//  macroValidPointer (mSharedRoot) ;
   return mSharedRoot->rootNodeKey () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode * SharedStringMap::nodeForKey (const String & inKey) const {
-  SharedStringMapNode * result = nullptr ;
-  if (mSharedRoot != nullptr) {
+OptionalSharedRef <SharedStringMapNode> SharedStringMap::nodeForKey (const String & inKey) const {
+  OptionalSharedRef <SharedStringMapNode> result ;
+  if (mSharedRoot.isNotNil ()) {
     result = mSharedRoot->nodeForKey (inKey) ;
   }
   return result ;
@@ -531,7 +534,7 @@ SharedStringMapNode * SharedStringMap::nodeForKey (const String & inKey) const {
 //--------------------------------------------------------------------------------------------------
 
 int32_t SharedStringMap::count (void) const {
-  if (mSharedRoot == nullptr) {
+  if (mSharedRoot.isNil ()) {
     return 0 ;
   }else{
     return mSharedRoot->count () ;

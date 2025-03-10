@@ -22,6 +22,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
+#include <type_traits>
+#include <utility>
+
+//--------------------------------------------------------------------------------------------------
+
 #include "macroAssert.h"
 #include "MF_MemoryControl.h"
 
@@ -68,6 +73,730 @@ class SharedObject {
     public: static void checkAllObjectsHaveBeenReleased (void) ;
   #endif
 } ;
+
+//--------------------------------------------------------------------------------------------------
+//MARK: Predeclarations
+//--------------------------------------------------------------------------------------------------
+
+//template <typename TYPE> class StrongSharedRef ;
+
+template <typename TYPE> class OptionalSharedRef ;
+
+//template <typename TYPE> class WeakSharedRef ;
+
+//template <typename TYPE> class OptionalSharedValue ;
+
+class ProxyHeader ;
+
+//--------------------------------------------------------------------------------------------------
+//MARK: class SharedHeader
+//--------------------------------------------------------------------------------------------------
+
+class SharedHeader : public SharedObject {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Default constructor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: SharedHeader (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Virtual destructor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: virtual ~ SharedHeader (void) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   No copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: SharedHeader (const SharedHeader &) = delete ;
+  private: SharedHeader & operator = (const SharedHeader &) = delete ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Private property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: ProxyHeader * mProxyPtr ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Friends
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  template <typename TYPE> friend class OptionalSharedRef ;
+  template <typename TYPE> friend class StrongSharedRef ;
+  template <typename TYPE> friend class WeakSharedRef ;
+//  template <typename TYPE> friend class OptionalSharedValue ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//MARK: ProxyHeader
+//--------------------------------------------------------------------------------------------------
+
+class ProxyHeader : public SharedHeader {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Constructor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: ProxyHeader (SharedHeader * inObjectPtr COMMA_LOCATION_ARGS) :
+  SharedHeader (THERE),
+  mObjectPtr (inObjectPtr) {
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Private property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: SharedHeader * mObjectPtr ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   No copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: ProxyHeader (const ProxyHeader &) = delete ;
+  private: ProxyHeader & operator = (const ProxyHeader &) = delete ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Friends
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  template <typename TYPE> friend class WeakSharedRef ;
+  template <typename TYPE> friend class OptionalSharedRef ;
+  template <typename TYPE> friend class StrongSharedRef ;
+  friend class SharedHeader ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//MARK: OptionalSharedRef
+//--------------------------------------------------------------------------------------------------
+
+template <typename TYPE> class OptionalSharedRef {
+
+//  static_assert (std::is_base_of <SharedHeader, TYPE>::value, "TYPE doit dériver de SharedHeader");
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Private property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: TYPE * mSharedPtr ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Default constructor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: OptionalSharedRef (void) : mSharedPtr (nullptr) { }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Virtual destructor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: virtual ~ OptionalSharedRef (void) { setToNil () ; }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Set to nil
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void setToNil (void) {
+    SharedObject::release (mSharedPtr COMMA_HERE) ;
+    mSharedPtr = nullptr ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Make
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: template <class... _Args> static OptionalSharedRef <TYPE> make (_Args&&... __args) {
+    OptionalSharedRef <TYPE> result ;
+    macroMyNew (result.mSharedPtr, TYPE (std::forward<_Args>(__args)...)) ;
+    return result ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Accessors
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: inline bool isNotNil (void) const { return mSharedPtr != nullptr ; }
+  public: inline bool isNil (void) const { return mSharedPtr == nullptr ; }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: TYPE * operator -> (void) const { return mSharedPtr ; }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from OptionalSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: OptionalSharedRef (const OptionalSharedRef <TYPE> & inSource) :
+  mSharedPtr (inSource.mSharedPtr) {
+    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from OptionalSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: template <typename SOURCE>
+  OptionalSharedRef (const OptionalSharedRef <SOURCE> & inSource) :
+  mSharedPtr (inSource.mSharedPtr) {
+    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from StrongSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: OptionalSharedRef (const StrongSharedRef <TYPE> & inSource) :
+//  mSharedPtr (inSource.mSharedPtr) {
+//    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from StrongSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: template <typename SOURCE> OptionalSharedRef (const StrongSharedRef <SOURCE> & inSource) :
+//  mSharedPtr (inSource.mSharedPtr) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from WeakSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: OptionalSharedRef (const WeakSharedRef <TYPE> & inSource) :
+//  mSharedPtr (nullptr) {
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      TYPE * object = (TYPE *) inSource.mSharedProxyHeader->mObjectPtr ;
+//      if (nullptr != object) {
+//        mSharedPtr = object ;
+//        object->mRetainCount += 1 ;
+//      }
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Copy constructor from WeakSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: template <typename SOURCE> OptionalSharedRef (const WeakSharedRef <SOURCE> & inSource) :
+//  mSharedPtr (nullptr) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      TYPE * object = (TYPE *) inSource.mSharedProxyHeader->mObjectPtr ;
+//      if (nullptr != object) {
+//        mSharedPtr = object ;
+//        object->mRetainCount += 1 ;
+//      }
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from StrongSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: OptionalSharedRef <TYPE> & operator = (const StrongSharedRef <TYPE> & inSource) {
+//  //--- Retain source
+//    inSource.mSharedPtr->mRetainCount += 1 ;
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = inSource.mSharedPtr ;
+//  //---
+//    return *this ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from StrongSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: template <typename SOURCE>
+//  OptionalSharedRef <TYPE> & operator = (const StrongSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//  //--- Retain source
+//    inSource.mSharedPtr->mRetainCount += 1 ;
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = inSource.mSharedPtr ;
+//  //---
+//    return *this ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from OptionalSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: OptionalSharedRef <TYPE> & operator = (const OptionalSharedRef <TYPE> & inSource) {
+    SharedObject::retainRelease (inSource.mSharedPtr, mSharedPtr COMMA_HERE) ;
+    mSharedPtr = inSource.mSharedPtr ;
+    return *this ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from OptionalSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: template <typename SOURCE>
+  OptionalSharedRef <TYPE> & operator = (const OptionalSharedRef <SOURCE> & inSource) {
+    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+    SharedObject::retainRelease (inSource.mSharedPtr, mSharedPtr COMMA_HERE) ;
+    mSharedPtr = inSource.mSharedPtr ;
+    return *this ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from WeakSharedRef <TYPE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: OptionalSharedRef <TYPE> & operator = (const WeakSharedRef <TYPE> & inSource) {
+//    TYPE * ptr = nullptr ;
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      ptr = (TYPE *) inSource.mSharedProxyHeader->mObjectPtr ;
+//    }
+//  //--- Retain source
+//    if (ptr != nullptr) {
+//      ptr->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = ptr ;
+//  //---
+//    return *this ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Assignment from WeakSharedRef <SOURCE>
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  public: template <typename SOURCE>
+//  OptionalSharedRef <TYPE> & operator = (const WeakSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    TYPE * ptr = nullptr ;
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      ptr = (TYPE *) inSource.mSharedProxyHeader->mObjectPtr ;
+//    }
+//  //--- Retain source
+//    if (ptr != nullptr) {
+//      ptr->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = ptr ;
+//  //---
+//    return *this ;
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Friends
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  template <typename SOURCE> friend class OptionalSharedRef ;
+  template <typename SOURCE> friend class WeakSharedRef ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//MARK: WeakSharedRef
+//--------------------------------------------------------------------------------------------------
+
+//template <typename TYPE> class WeakSharedRef {
+//
+//  static_assert (std::is_base_of <SharedHeader, TYPE>::value, "TYPE doit dériver de SharedHeader");
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Private property
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: ProxyHeader * mSharedProxyHeader ;
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Default constructor
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef (void) : mSharedProxyHeader (nullptr) { }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Virtual destructor
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: virtual ~ WeakSharedRef (void) { setToNil () ; }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Set to nil
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: void setToNil (void) {
+//    if (mSharedProxyHeader != nullptr) {
+//      if (mSharedProxyHeader->isUniquelyReferenced ()) {
+//        if (mSharedProxyHeader->mObjectPtr != nullptr) {
+//          mSharedProxyHeader->mObjectPtr->mProxyPtr = nullptr ;
+//        }
+//        macroMyDelete (mSharedProxyHeader) ;
+//      }else{
+//        SharedObject::release (mSharedProxyHeader COMMA_HERE) ;
+//      }
+//      mSharedProxyHeader = nullptr ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from WeakSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef (const WeakSharedRef <TYPE> & inSource) :
+//  mSharedProxyHeader (inSource.mSharedProxyHeader) {
+//    if (mSharedProxyHeader != nullptr) {
+//      SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from WeakSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE>
+//  WeakSharedRef (const WeakSharedRef <SOURCE> & inSource) :
+//  mSharedProxyHeader (inSource.mSharedProxyHeader) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    if (mSharedProxyHeader != nullptr) {
+//      SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from StrongSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef (const StrongSharedRef <TYPE> & inSource) :
+//  mSharedProxyHeader (nullptr) {
+//    mSharedProxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//    if (mSharedProxyHeader == nullptr) {
+//      macroMyNew (mSharedProxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//      inSource.mSharedPtr->mProxyPtr = mSharedProxyHeader ;
+//    }else{
+//      SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from StrongSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE> WeakSharedRef (const StrongSharedRef <SOURCE> & inSource) :
+//  mSharedProxyHeader (nullptr) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    mSharedProxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//    if (mSharedProxyHeader == nullptr) {
+//      macroMyNew (mSharedProxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//      inSource.mSharedPtr->mProxyPtr = mSharedProxyHeader ;
+//    }else{
+//      SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from OptionalSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef (const OptionalSharedRef <TYPE> & inSource) :
+//  mSharedProxyHeader (nullptr) {
+//    if (inSource.mSharedPtr != nullptr) {
+//      mSharedProxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//      if (mSharedProxyHeader == nullptr) {
+//        macroMyNew (mSharedProxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//        inSource.mSharedPtr->mProxyPtr = mSharedProxyHeader ;
+//      }else{
+//      SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//      }
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from OptionalSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE> WeakSharedRef (const OptionalSharedRef <SOURCE> & inSource) :
+//  mSharedProxyHeader (nullptr) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    if (inSource.mSharedPtr != nullptr) {
+//      mSharedProxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//      if (mSharedProxyHeader == nullptr) {
+//        macroMyNew (mSharedProxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//        inSource.mSharedPtr->mProxyPtr = mSharedProxyHeader ;
+//      }else{
+//        SharedObject::retain (mSharedProxyHeader COMMA_HERE) ;
+//      }
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator WeakSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef <TYPE> & operator = (const WeakSharedRef <TYPE> & inSource) {
+//  //--- Retain source
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      inSource.mSharedProxyHeader->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = inSource.mSharedProxyHeader ;
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator WeakSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE>
+//  WeakSharedRef <TYPE> & operator = (const WeakSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//  //--- Retain source
+//    if (inSource.mSharedProxyHeader != nullptr) {
+//      inSource.mSharedProxyHeader->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = inSource.mSharedProxyHeader ;
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator StrongSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef <TYPE> & operator = (const StrongSharedRef <TYPE> & inSource) {
+//  //--- Get and retain proxy header
+//    ProxyHeader * proxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//    if (proxyHeader == nullptr) {
+//      proxyHeader = new ProxyHeader (inSource.mSharedPtr) ;
+//      inSource.mSharedPtr->mProxyPtr = proxyHeader ;
+//    }else{
+//      SharedObject::retain (proxyHeader COMMA_HERE) ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = proxyHeader ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator StrongSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE>
+//  WeakSharedRef <TYPE> & operator = (const StrongSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//  //--- Get and retain proxy header
+//    ProxyHeader * proxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//    if (proxyHeader == nullptr) {
+//      macroMyNew (proxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//      inSource.mSharedPtr->mProxyPtr = proxyHeader ;
+//    }else{
+//      SharedObject::retain (proxyHeader COMMA_HERE) ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = proxyHeader ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator OptionalSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: WeakSharedRef <TYPE> & operator = (const OptionalSharedRef <TYPE> & inSource) {
+//  //--- Get and retain proxy header
+//    ProxyHeader * proxyHeader = nullptr ;
+//    if (inSource.mSharedPtr != nullptr) {
+//      proxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//      if (proxyHeader == nullptr) {
+//        macroMyNew (proxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//        inSource.mSharedPtr->mProxyPtr = proxyHeader ;
+//      }else{
+//        SharedObject::retain (proxyHeader COMMA_HERE) ;
+//      }
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = proxyHeader ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment operator OptionalSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE> WeakSharedRef <TYPE> & operator = (const OptionalSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//  //--- Get and retain proxy header
+//    ProxyHeader * proxyHeader = nullptr ;
+//    if (inSource.mSharedPtr != nullptr) {
+//      proxyHeader = inSource.mSharedPtr->mProxyPtr ;
+//      if (proxyHeader == nullptr) {
+//        macroMyNew (proxyHeader, ProxyHeader (inSource.mSharedPtr COMMA_HERE)) ;
+//        inSource.mSharedPtr->mProxyPtr = proxyHeader ;
+//      }else{
+//        SharedObject::retain (proxyHeader COMMA_HERE) ;
+//      }
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedProxyHeader = proxyHeader ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Friends
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  template <typename SOURCE> friend class WeakSharedRef ;
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//} ;
+
+//--------------------------------------------------------------------------------------------------
+
+//template <typename TYPE> class StrongSharedRef {
+//
+//  static_assert (std::is_base_of <SharedHeader, TYPE>::value, "TYPE doit dériver de SharedHeader");
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Private property
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private: TYPE * mSharedPtr ;
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Default constructor
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private: StrongSharedRef (void) = delete ;
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Private constructor
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private: StrongSharedRef (TYPE * inObject) : mSharedPtr (inObject) { }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Virtual destructor
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: virtual ~ StrongSharedRef (void) { setToNil () ; }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Set to nil
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private: void setToNil (void) {
+//    if (mSharedPtr != nullptr) {
+//      if (mSharedPtr->mRetainCount == 0) {
+//        if (mSharedPtr->mProxyPtr != nullptr) {
+//          mSharedPtr->mProxyPtr->mObjectPtr = nullptr ;
+//        }
+//        macroMyDelete (mSharedPtr) ;
+//      }else{
+//        mSharedPtr->mRetainCount -= 1 ; // Release
+//      }
+//      mSharedPtr = nullptr ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Make
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <class... _Args> static StrongSharedRef <TYPE> make (_Args&&... __args) {
+//    TYPE * ptr = new TYPE (std::forward<_Args>(__args)...) ;
+//    StrongSharedRef <TYPE> result (ptr) ;
+//    return result ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from StrongSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: StrongSharedRef (const StrongSharedRef <TYPE> & inSource) :
+//  mSharedPtr (inSource.mSharedPtr) {
+//    if (mSharedPtr != nullptr) {
+//      mSharedPtr->mRetainCount += 1 ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Copy constructor from StrongSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE>
+//  StrongSharedRef (const StrongSharedRef <SOURCE> & inSource) :
+//  mSharedPtr (inSource.mSharedPtr) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//    if (mSharedPtr != nullptr) {
+//      mSharedPtr->mRetainCount += 1 ;
+//    }
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment from StrongSharedRef <TYPE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: StrongSharedRef <TYPE> & operator = (const StrongSharedRef <TYPE> & inSource) {
+//  //--- Retain source
+//    if (inSource.mSharedPtr != nullptr) {
+//      inSource.mSharedPtr->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = inSource.mSharedPtr ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //   Assignment from StrongSharedRef <SOURCE>
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  public: template <typename SOURCE>
+//  StrongSharedRef <TYPE> & operator = (const StrongSharedRef <SOURCE> & inSource) {
+//    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
+//  //--- Retain source
+//    if (inSource.mSharedPtr != nullptr) {
+//      inSource.mSharedPtr->mRetainCount += 1 ;
+//    }
+//  //--- Release target
+//    setToNil () ;
+//  //--- Make assigmnent
+//    mSharedPtr = inSource.mSharedPtr ;
+//  //---
+//    return *this ;
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//} ;
 
 //--------------------------------------------------------------------------------------------------
 //   macroValidSharedObject                                                                      

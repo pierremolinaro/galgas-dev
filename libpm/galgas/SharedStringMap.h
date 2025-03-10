@@ -29,18 +29,19 @@
 //  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-class SharedStringMapNode {
+class SharedStringMapNode : public SharedHeader {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: SharedStringMapNode * mInfPtr ;
-  private: SharedStringMapNode * mSupPtr ;
+  private: OptionalSharedRef <SharedStringMapNode> mInfPtr ;
+  private: OptionalSharedRef <SharedStringMapNode> mSupPtr ;
   private: int32_t mBalance ;
   public: const String mKey ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedStringMapNode (const String & inKey) ;
+  public: SharedStringMapNode (const String & inKey
+                               COMMA_LOCATION_ARGS) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,7 +49,8 @@ class SharedStringMapNode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: SharedStringMapNode (const SharedStringMapNode * inNodePtr) ;
+  public: SharedStringMapNode (const OptionalSharedRef <SharedStringMapNode> & inNodePtr
+                               COMMA_LOCATION_ARGS) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // No copy
@@ -62,7 +64,7 @@ class SharedStringMapNode {
 //  private: static void populateCacheArray (SharedStringMapNode * inNode,
 //                                           TC_Array <SharedStringMapNode *> & ioCacheArray) ;
 
-  private: static void populateStringArray (SharedStringMapNode * inNode,
+  private: static void populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
                                             TC_Array <String> & ioStringArray) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,13 +81,13 @@ class SharedStringMapNode {
 
 class SharedStringMap final {
 //--------------------------------- Private data members
-  private: class SharedStringMapRoot * mSharedRoot ;
+  private: OptionalSharedRef <class SharedStringMapRoot> mSharedRoot ;
 
 //--------------------------------- Build
   public: static SharedStringMap build (LOCATION_ARGS) ;
 
 //--------------------------------- Accessors
-  public: inline bool isValid (void) const { return mSharedRoot != nullptr ; }
+  public: inline bool isValid (void) const { return mSharedRoot.isNotNil () ; }
 
 //--------------------------------- Drop
   public: void drop (void) ;
@@ -104,13 +106,13 @@ class SharedStringMap final {
   public: SharedStringMap & operator = (const SharedStringMap & inSource) ;
 
 //--------------------------------- Insert
-  public: void insert (SharedStringMapNode * & ioObject
+  public: void insert (OptionalSharedRef <SharedStringMapNode> & ioObject
                        COMMA_LOCATION_ARGS) ;
 
-  public: SharedStringMapNode * removeAndReturnRemovedNode (const String & inKey
+  public: OptionalSharedRef <SharedStringMapNode> removeAndReturnRemovedNode (const String & inKey
                                                             COMMA_LOCATION_ARGS) ;
 
-  public: SharedStringMapNode * nodeForKey (const String & inKey) const ;
+  public: OptionalSharedRef <SharedStringMapNode> nodeForKey (const String & inKey) const ;
 
   public: int32_t count (void) const ;
 

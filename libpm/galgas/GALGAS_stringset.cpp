@@ -72,10 +72,8 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
                                    Compiler * /* inCompiler */
                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    SharedStringMapNode * newNode = nullptr ;
-    macroMyNew (newNode, SharedStringMapNode (inKey.stringValue ())) ;
+    auto newNode = OptionalSharedRef <SharedStringMapNode>::make (inKey.stringValue () COMMA_HERE) ;
     mSharedMap.insert (newNode COMMA_HERE) ;
-    macroMyDelete (newNode)
   }
 }
 
@@ -84,10 +82,8 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 void GGS_stringset::addAssign_operation (const GGS_string & inKey
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    SharedStringMapNode * newNode = nullptr ;
-    macroMyNew (newNode, SharedStringMapNode (inKey.stringValue ())) ;
+    auto newNode = OptionalSharedRef <SharedStringMapNode>::make (inKey.stringValue () COMMA_HERE) ;
     mSharedMap.insert (newNode COMMA_THERE) ;
-    macroMyDelete (newNode)
   }
 }
 
@@ -96,8 +92,7 @@ void GGS_stringset::addAssign_operation (const GGS_string & inKey
 void GGS_stringset::setter_removeKey (GGS_string inKey
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    SharedStringMapNode * removedNode = mSharedMap.removeAndReturnRemovedNode (inKey.stringValue () COMMA_THERE) ;
-    macroMyDelete (removedNode) ;
+    OptionalSharedRef <SharedStringMapNode> removedNode = mSharedMap.removeAndReturnRemovedNode (inKey.stringValue () COMMA_THERE) ;
   }
 }
 
@@ -176,8 +171,7 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
     result = *this ;
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array2.count () ; i++) {
-      SharedStringMapNode * removedNode = result.mSharedMap.removeAndReturnRemovedNode (array2 (i COMMA_HERE) COMMA_THERE) ;
-      macroMyDelete (removedNode) ;
+      OptionalSharedRef <SharedStringMapNode> removedNode = result.mSharedMap.removeAndReturnRemovedNode (array2 (i COMMA_HERE) COMMA_THERE) ;
     }
   }
   return result ;
@@ -204,7 +198,7 @@ GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const auto node = mSharedMap.nodeForKey (inKey.stringValue ()) ;
-    result = GGS_bool (node != nullptr) ;
+    result = GGS_bool (node.isNotNil ()) ;
   }
   return result ;
 }
