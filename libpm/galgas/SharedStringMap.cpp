@@ -14,7 +14,7 @@
 //--------------------------------------------------------------------------------------------------
 
 SharedStringMapNode::SharedStringMapNode (const String & inKey COMMA_LOCATION_ARGS) :
-SharedHeader (THERE),
+SharedObject (THERE),
 mInfPtr (),
 mSupPtr (),
 mBalance (0),
@@ -23,14 +23,9 @@ mKey (inKey) {
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMapNode::~SharedStringMapNode (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 SharedStringMapNode::SharedStringMapNode (const OptionalSharedRef <SharedStringMapNode> & inNodePtr
                                           COMMA_LOCATION_ARGS) :
-SharedHeader (THERE),
+SharedObject (THERE),
 mInfPtr (),
 mSupPtr (),
 mBalance (inNodePtr->mBalance),
@@ -426,7 +421,7 @@ void SharedStringMap::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-SharedStringMap::~ SharedStringMap (void) {
+SharedStringMap::~SharedStringMap (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -517,7 +512,6 @@ OptionalSharedRef <SharedStringMapNode> SharedStringMap::removeAndReturnRemovedN
 //--------------------------------------------------------------------------------------------------
 
 String SharedStringMap::rootNodeKey (void) const {
-//  macroValidPointer (mSharedRoot) ;
   return mSharedRoot->rootNodeKey () ;
 }
 

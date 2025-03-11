@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2021 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -41,17 +41,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-SharedObject::SharedObject (LOCATION_ARGS) :
 #ifndef DO_NOT_GENERATE_CHECKINGS
+  SharedObject::SharedObject (LOCATION_ARGS) :
   mObjectIndex (gCreationIndex),
   mCreationFile (IN_SOURCE_FILE),
   mCreationLine (IN_SOURCE_LINE),
   mPtrToPreviousObject (nullptr),
   mPtrToNextObject (nullptr),
-#endif
-mRetainCount (1) {
-//--- Enter current object in instance list
-  #ifndef DO_NOT_GENERATE_CHECKINGS
+  mRetainCount (0) {
+  //--- Enter current object in instance list
     gCreationIndex ++ ;
     gObjectCurrentCount ++ ;
     mPtrToNextObject = nullptr ;
@@ -63,14 +61,14 @@ mRetainCount (1) {
       mPtrToPreviousObject = gLastObject ;
     }
     gLastObject = this ;
-  #endif
-}
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-SharedObject::~ SharedObject (void) {
-//--- Remove object from instance list
-  #ifndef DO_NOT_GENERATE_CHECKINGS
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  SharedObject::~ SharedObject (void) {
+  //--- Remove object from instance list
     SharedObject * previousObject = mPtrToPreviousObject ;
     SharedObject * nextObject = mPtrToNextObject ;
     if (previousObject == nullptr) {
@@ -85,46 +83,11 @@ SharedObject::~ SharedObject (void) {
     }
   //--- Decrement object count
     gObjectCurrentCount -- ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void SharedObject::retain (const SharedObject * inObject COMMA_LOCATION_ARGS) {
-  if (inObject != nullptr) {
-    macroValidSharedObjectThere (inObject, SharedObject) ;
-    inObject->mRetainCount ++ ;
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void SharedObject::release (const SharedObject * inObject COMMA_LOCATION_ARGS) {
-  if (inObject != nullptr) {
-    macroValidSharedObjectThere (inObject, SharedObject) ;
-    macroAssertThere (inObject->mRetainCount > 0, "mRetainCount should be > 0)", 0, 0) ;
-    inObject->mRetainCount -- ;
-    if (inObject->mRetainCount == 0) {
-      macroMyDelete (inObject) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void SharedObject::retainRelease (const SharedObject * inObjectToRetain,
-                                    const SharedObject * inObjectToRelease
-                                    COMMA_LOCATION_ARGS) {
-  retain (inObjectToRetain COMMA_THERE) ;
-  release (inObjectToRelease COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Collect unused Objects
 #endif
 
+//--------------------------------------------------------------------------------------------------
+//MARK: Collect unused Objects
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -142,7 +105,7 @@ void SharedObject::retainRelease (const SharedObject * inObjectToRetain,
         gCout.appendCString ("', line ") ;
         gCout.appendSigned (p->mCreationLine) ;
         gCout.appendCString (" (retain count: ") ;
-        gCout.appendSigned (p->mRetainCount) ;
+        gCout.appendUnsigned (p->mRetainCount) ;
         gCout.appendCString (")\n") ;
         p = p->mPtrToNextObject ;
       }

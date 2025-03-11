@@ -29,7 +29,7 @@
 //  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-class SharedStringMapNode : public SharedHeader {
+class SharedStringMapNode : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -45,7 +45,7 @@ class SharedStringMapNode : public SharedHeader {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~SharedStringMapNode (void) ;
+  public: virtual ~SharedStringMapNode (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -79,9 +79,13 @@ class SharedStringMapNode : public SharedHeader {
 //  SharedStringMap
 //--------------------------------------------------------------------------------------------------
 
+class SharedStringMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
 class SharedStringMap final {
 //--------------------------------- Private data members
-  private: OptionalSharedRef <class SharedStringMapRoot> mSharedRoot ;
+  private: OptionalSharedRef <SharedStringMapRoot> mSharedRoot ;
 
 //--------------------------------- Build
   public: static SharedStringMap build (LOCATION_ARGS) ;
@@ -110,7 +114,7 @@ class SharedStringMap final {
                        COMMA_LOCATION_ARGS) ;
 
   public: OptionalSharedRef <SharedStringMapNode> removeAndReturnRemovedNode (const String & inKey
-                                                            COMMA_LOCATION_ARGS) ;
+                                                                              COMMA_LOCATION_ARGS) ;
 
   public: OptionalSharedRef <SharedStringMapNode> nodeForKey (const String & inKey) const ;
 

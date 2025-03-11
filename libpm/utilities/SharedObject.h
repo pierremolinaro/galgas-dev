@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -33,7 +33,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class SharedObject {
-//--- Attributes for debug
+//--- Properties for debug
   #ifndef DO_NOT_GENERATE_CHECKINGS
   //--- Object index
     public: const uint32_t mObjectIndex ;
@@ -46,29 +46,45 @@ class SharedObject {
   #endif
 
 //--- Retain count
-  private: mutable int32_t mRetainCount ;
+  private: mutable uint64_t mRetainCount = 0 ;
 
-  public: inline bool isUniquelyReferenced (void) const { return mRetainCount == 1 ; }
-  
-  public: static void retain (const SharedObject * inObject COMMA_LOCATION_ARGS) ;
+  public: inline bool isUniquelyReferenced (void) const { return mRetainCount == 0 ; }
 
-  public: static void release (const SharedObject * inObject COMMA_LOCATION_ARGS) ;
+  public: static inline void retain (const SharedObject * inObject) {
+    if (inObject != nullptr) {
+      inObject->mRetainCount += 1 ;
+    }
+  }
 
-  public: static void retainRelease (const SharedObject * inObjectToRetain,
-                                     const SharedObject * inObjectToRelease
-                                     COMMA_LOCATION_ARGS) ;
+  public: static inline void release (const SharedObject * inObject) {
+    if (inObject != nullptr) {
+      if (inObject->mRetainCount == 0) {
+        macroMyDelete (inObject) ;
+      }else{
+        inObject->mRetainCount -= 1 ;
+      }
+    }
+  }
 
 //--- Default Constructor
-  protected: SharedObject (LOCATION_ARGS) ;
-  
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected: SharedObject (LOCATION_ARGS) ;
+  #else
+    protected: SharedObject (LOCATION_ARGS) = default ;
+  #endif
+
 //--- Virtual Destructor
-  protected: virtual ~ SharedObject (void) ;
-  
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected: virtual ~SharedObject (void) ;
+  #else
+    protected: virtual ~SharedObject (void) = default ;
+  #endif
+
 //--- No copy
   private: SharedObject (const SharedObject &) = delete ;
   private: SharedObject & operator = (const SharedObject &) = delete ;
 
-//------------------------------------------------------------- Handling Pointer checking
+//--- Handling Pointer checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: static void checkAllObjectsHaveBeenReleased (void) ;
   #endif
@@ -76,6 +92,10 @@ class SharedObject {
 
 //--------------------------------------------------------------------------------------------------
 //MARK: Predeclarations
+//--------------------------------------------------------------------------------------------------
+
+//template <typename T> concept DeriveFromSharedObject = std::is_base_of<SharedObject, T>::value ;
+
 //--------------------------------------------------------------------------------------------------
 
 //template <typename TYPE> class StrongSharedRef ;
@@ -175,8 +195,7 @@ class ProxyHeader : public SharedHeader {
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class OptionalSharedRef {
-
-//  static_assert (std::is_base_of <SharedHeader, TYPE>::value, "TYPE doit dériver de SharedHeader");
+//  static_assert (std::is_base_of <SharedObject, TYPE>::value, "TYPE doit dériver de SharedObject");
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Private property
@@ -194,14 +213,16 @@ template <typename TYPE> class OptionalSharedRef {
   //   Virtual destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ OptionalSharedRef (void) { setToNil () ; }
+  public: virtual ~ OptionalSharedRef (void) {
+    SharedObject::release (mSharedPtr) ;
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Set to nil
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void setToNil (void) {
-    SharedObject::release (mSharedPtr COMMA_HERE) ;
+    SharedObject::release (mSharedPtr) ;
     mSharedPtr = nullptr ;
   }
 
@@ -232,7 +253,7 @@ template <typename TYPE> class OptionalSharedRef {
 
   public: OptionalSharedRef (const OptionalSharedRef <TYPE> & inSource) :
   mSharedPtr (inSource.mSharedPtr) {
-    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+    SharedObject::retain (mSharedPtr) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -243,7 +264,7 @@ template <typename TYPE> class OptionalSharedRef {
   OptionalSharedRef (const OptionalSharedRef <SOURCE> & inSource) :
   mSharedPtr (inSource.mSharedPtr) {
     static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
-    SharedObject::retain (mSharedPtr COMMA_HERE) ;
+    SharedObject::retain (mSharedPtr) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -333,7 +354,8 @@ template <typename TYPE> class OptionalSharedRef {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: OptionalSharedRef <TYPE> & operator = (const OptionalSharedRef <TYPE> & inSource) {
-    SharedObject::retainRelease (inSource.mSharedPtr, mSharedPtr COMMA_HERE) ;
+    SharedObject::retain (inSource.mSharedPtr) ;
+    SharedObject::release (mSharedPtr) ;
     mSharedPtr = inSource.mSharedPtr ;
     return *this ;
   }
@@ -345,7 +367,8 @@ template <typename TYPE> class OptionalSharedRef {
   public: template <typename SOURCE>
   OptionalSharedRef <TYPE> & operator = (const OptionalSharedRef <SOURCE> & inSource) {
     static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
-    SharedObject::retainRelease (inSource.mSharedPtr, mSharedPtr COMMA_HERE) ;
+    SharedObject::retain (inSource.mSharedPtr) ;
+    SharedObject::release (mSharedPtr) ;
     mSharedPtr = inSource.mSharedPtr ;
     return *this ;
   }
@@ -857,28 +880,28 @@ template <typename TYPE> class OptionalSharedRef {
 //--------------------------------------------------------------------------------------------------
 
 #define macroAssignSharedObject(TARGET_PTR,SOURCE_PTR) \
-  { SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_HERE) ; TARGET_PTR = SOURCE_PTR ; }
+  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroAssignSharedObjectThere                                                                
 //--------------------------------------------------------------------------------------------------
 
 #define macroAssignSharedObjectThere(TARGET_PTR,SOURCE_PTR) \
-  { SharedObject::retainRelease (SOURCE_PTR, TARGET_PTR COMMA_THERE) ; TARGET_PTR = SOURCE_PTR ; }
+  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroDetachSharedObject                                                                     
 //--------------------------------------------------------------------------------------------------
 
 #define macroDetachSharedObject(PTR) \
-  { SharedObject::release (PTR COMMA_HERE) ; PTR = nullptr ; }
+  { SharedObject::release (PTR) ; PTR = nullptr ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroDetachSharedObjectThere                                                                
 //--------------------------------------------------------------------------------------------------
 
 #define macroDetachSharedObjectThere(PTR) \
-  { SharedObject::release (PTR COMMA_THERE) ; PTR = nullptr ; }
+  { SharedObject::release (PTR) ; PTR = nullptr ; }
 
 //--------------------------------------------------------------------------------------------------
 //   macroUniqueSharedObject                                                                     
