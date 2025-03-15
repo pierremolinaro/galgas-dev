@@ -1344,6 +1344,8 @@ proc updateGalgasTargets
         "TF_Swap.h",
         "SharedStringMap.h",
         "SharedStringMap.cpp",
+        "SharedObjectWithValueSemantics.h",
+        "SharedObjectWithValueSemantics.cpp",
         "galgas-random.cpp",
         "galgas-random.h"
       ]

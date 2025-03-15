@@ -22,14 +22,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedObject.h"
+#include "SharedObjectWithValueSemantics.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 //  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
-class SharedStringMapNode : public SharedObject {
+class SharedStringMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -37,6 +37,7 @@ class SharedStringMapNode : public SharedObject {
   private: OptionalSharedRef <SharedStringMapNode> mSupPtr ;
   private: int32_t mBalance ;
   public: const String mKey ;
+  public: SharedPtrWithValueSemantics <SharedObjectWithValueSemantics> mValue ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
