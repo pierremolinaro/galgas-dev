@@ -135,7 +135,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //---
     self.appendTab (document: inDocument, selectedRange: NSRange ())
   //--- Open other tabs ?
-    self.openTabsFromUserDefaults (forDocument:  inDocument)
+    self.openTabsFromUserDefaults (forDocument: inDocument)
   //--- Select first tab
     self.selectTab (atIndex: 0)
   //--- Configuring recent search menu
@@ -166,6 +166,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     cellMenu.insertItem (item, at: 3)
     _ = self.mSearchTextField.setSearchMenuTemplate (cellMenu: cellMenu)
       .setAction { [weak self] in self?.performSearchInFiles () }
+    DispatchQueue.main.async {
+      self.makeKeyAndOrderFront (nil)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

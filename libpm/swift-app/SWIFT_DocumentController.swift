@@ -22,10 +22,7 @@ class SWIFT_DocumentController : NSDocumentController {
     super.openDocument (withContentsOf: inURL, display: false) { (inDocument : NSDocument?, alreadyOpened : Bool, error : Error?) in
       if inDisplay, let document = inDocument as? SWIFT_SingleDocument {
         self.noteNewRecentDocumentURL (inURL) // Ajout explicite au menu 'Open Recent'
-        let window = SWIFT_SingleWindow (withDocument: document)
-        DispatchQueue.main.async {
-          window.makeKeyAndOrderFront (nil)
-        }
+        _ = SWIFT_SingleWindow (withDocument: document)
       }
       inCompletionHandler (inDocument, alreadyOpened, error)
     }

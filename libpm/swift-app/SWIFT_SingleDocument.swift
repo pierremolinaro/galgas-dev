@@ -16,8 +16,12 @@ import AppKit
   private let mLineHeightObserver = EBOutletEvent ()
   var mDisplayDescriptors = [SWIFT_WeakElement <SWIFT_DisplayDescriptor>] ()
   var mTokenRangeArray = [SWIFT_Token] ()
-  let mTextStorage = NSTextStorage (string: "")
+  public let mTextStorage = NSTextStorage (string: "")
   private(set) var mIssueArray = [SWIFT_Issue] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public var string : String { self.mTextStorage.string }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

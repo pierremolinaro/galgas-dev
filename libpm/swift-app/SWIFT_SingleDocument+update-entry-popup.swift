@@ -38,7 +38,7 @@ extension SWIFT_SingleDocument {
           let displayFlags = popUpData [0]
           while idx < popUpData.count {
             let r = self.mTokenRangeArray [testedTokenRangeIndex].range
-            let s = (self.mTextStorage.string as NSString).substring (with: r)
+            let s = (self.string as NSString).substring (with: r)
             title += " " + s
             idx += 2
             testedTokenRangeIndex += 1
