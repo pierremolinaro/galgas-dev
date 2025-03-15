@@ -248,6 +248,30 @@ template <typename TYPE> class OptionalSharedRef {
   public: TYPE * operator -> (void) const { return mSharedPtr ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Swap
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void swap (OptionalSharedRef <TYPE> & ioOperand) {
+    TYPE * temp = mSharedPtr ;
+    mSharedPtr = ioOperand.mSharedPtr ;
+    ioOperand.mSharedPtr = temp ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Rotate Left
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void rotateOwnershipLeft (OptionalSharedRef <TYPE> & ioOperand1,
+                                    OptionalSharedRef <TYPE> & ioOperand2) {
+    TYPE * temp0 = mSharedPtr ;
+    TYPE * temp1 = ioOperand1.mSharedPtr ;
+    TYPE * temp2 = ioOperand2.mSharedPtr ;
+    mSharedPtr = temp1 ;
+    ioOperand1.mSharedPtr = temp2 ;
+    ioOperand2.mSharedPtr = temp0 ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Copy constructor from OptionalSharedRef <TYPE>
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1172,8 +1172,6 @@ proc updateGalgasTargets
         "Lexique.h",
         "LocationInSource.cpp",
         "LocationInSource.h",
-        "SharedStringMap.h",
-        "SharedStringMap.cpp",
         "SourceTextInString.cpp",
         "SourceTextInString.h",
         "capCollectionElement.cpp",
@@ -1344,6 +1342,8 @@ proc updateGalgasTargets
         "MF_MemoryControl.h",
         "switch-fallthrough.h",
         "TF_Swap.h",
+        "SharedStringMap.h",
+        "SharedStringMap.cpp",
         "galgas-random.cpp",
         "galgas-random.h"
       ]

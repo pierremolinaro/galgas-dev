@@ -501,7 +501,7 @@ constructor @application verboseOutput -> @bool
 
 Ce constructeur permet de savoir si l'indicateur de sortie verbeuse est activé ou non.
 
-La sortie verbeuse est controllée par les options de la ligne de commande \emph{quiet} et \emph{verbose} (\refSectionPage{optionsQuietVerbose}) ; leur présence dans le compilateur engendré dépend de la présence de la déclaration \ggst!%quietOutputByDefault!\index{\%quietOutputByDefault} parmi les déclarations du fichier projet (\refSectionPage{projetDeclarationQuietOutputByDefault}).
+La sortie verbeuse est controllée par les options de la ligne de commande \emph{quiet} et \emph{verbose} (\refSubsectionPage{optionsQuietVerbose}) ; leur présence dans le compilateur engendré dépend de la présence de la déclaration \ggst!%quietOutputByDefault!\index{\%quietOutputByDefault} parmi les déclarations du fichier projet (\refSectionPage{projetDeclarationQuietOutputByDefault}).
 
 Les deux options de la ligne de commande \emph{quiet} et \emph{verbose} s'excluent et ne peuvent pas être appelées par la construction \ggst+[option nom_composant_option.nom_option nom_info]+ (voir \refSubsectionPage{appelOption}) : c'est ce constructeur, qui s'adapte à la configuration du compilateur, qu'il faut appeler.
 

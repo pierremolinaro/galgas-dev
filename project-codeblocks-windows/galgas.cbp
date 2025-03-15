@@ -196,6 +196,7 @@
    <Unit filename="../libpm/utilities/md5.cpp" />
    <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
+   <Unit filename="../libpm/utilities/SharedStringMap.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_CLI_Options.cpp" />
    <Unit filename="../libpm/galgas/Compiler.cpp" />
    <Unit filename="../libpm/galgas/Lexique.cpp" />
@@ -220,7 +221,6 @@
    <Unit filename="../libpm/galgas/cLexiqueIntrospection.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_root.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_list.cpp" />
-   <Unit filename="../libpm/galgas/SharedStringMap.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_sortedlist.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_map.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_reference_class.cpp" />

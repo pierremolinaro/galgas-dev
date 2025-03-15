@@ -113,10 +113,11 @@ class SharedStringMap final {
   public: void insert (OptionalSharedRef <SharedStringMapNode> & ioObject
                        COMMA_LOCATION_ARGS) ;
 
-  public: OptionalSharedRef <SharedStringMapNode> removeAndReturnRemovedNode (const String & inKey
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: void removeAndReturnRemovedNode (const String & inKey,
+                           OptionalSharedRef <SharedStringMapNode> & outRemovedNode
+                           COMMA_LOCATION_ARGS) ;
 
-  public: OptionalSharedRef <SharedStringMapNode> nodeForKey (const String & inKey) const ;
+  public: bool hasKey (const String & inKey) const ;
 
   public: int32_t count (void) const ;
 
