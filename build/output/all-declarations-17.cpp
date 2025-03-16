@@ -12717,22 +12717,37 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
     const GGS_actualParameterListAST temp_1 = inObject ;
     test_0 = GGS_bool (ComparisonKind::notEqual, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 38)).objectCompare (temp_1.getter_count (SOURCE_FILE ("actual-parameters.galgas", 38)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      const GGS_actualParameterListAST temp_2 = inObject ;
-      TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" formal argument(s), but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (temp_2.getter_count (SOURCE_FILE ("actual-parameters.galgas", 42)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (GGS_string (" argument(s)"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 42)), fixItArray3  COMMA_SOURCE_FILE ("actual-parameters.galgas", 39)) ;
+      GGS_string temp_2 ;
+      const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 41)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_3) {
+        temp_2 = GGS_string ("s") ;
+      }else if (GalgasBool::boolFalse == test_3) {
+        temp_2 = GGS_string::makeEmptyString () ;
+      }
+      const GGS_actualParameterListAST temp_4 = inObject ;
+      const GGS_actualParameterListAST temp_5 = inObject ;
+      GGS_string temp_6 ;
+      const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, temp_5.getter_count (SOURCE_FILE ("actual-parameters.galgas", 43)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_7) {
+        temp_6 = GGS_string ("s") ;
+      }else if (GalgasBool::boolFalse == test_7) {
+        temp_6 = GGS_string::makeEmptyString () ;
+      }
+      TC_Array <FixItDescription> fixItArray8 ;
+      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" formal argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (GGS_string (" but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (temp_4.getter_count (SOURCE_FILE ("actual-parameters.galgas", 43)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 42)).add_operation (GGS_string (" argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 43)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 43)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 39)) ;
       outArgument_outActualParameterListForGeneration.drop () ; // Release error dropped variable
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     outArgument_outActualParameterListForGeneration = GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-    GGS_stringset var_exclusiveVariableSet_2703 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-    const GGS_actualParameterListAST temp_4 = inObject ;
-    UpEnumerator_formalParameterSignature enumerator_2758 (constinArgument_inRoutineSignature) ;
-    UpEnumerator_actualParameterListAST enumerator_2779 (temp_4) ;
-    while (enumerator_2758.hasCurrentObject () && enumerator_2779.hasCurrentObject ()) {
-      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2779.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2758.current (HERE).readProperty_mFormalSelector (), enumerator_2758.current (HERE).readProperty_mFormalArgumentType (), enumerator_2758.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2703, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 48)) ;
-      enumerator_2758.gotoNextObject () ;
-      enumerator_2779.gotoNextObject () ;
+    GGS_stringset var_exclusiveVariableSet_2789 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+    const GGS_actualParameterListAST temp_9 = inObject ;
+    UpEnumerator_formalParameterSignature enumerator_2844 (constinArgument_inRoutineSignature) ;
+    UpEnumerator_actualParameterListAST enumerator_2865 (temp_9) ;
+    while (enumerator_2844.hasCurrentObject () && enumerator_2865.hasCurrentObject ()) {
+      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2865.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2844.current (HERE).readProperty_mFormalSelector (), enumerator_2844.current (HERE).readProperty_mFormalArgumentType (), enumerator_2844.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2789, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 49)) ;
+      enumerator_2844.gotoNextObject () ;
+      enumerator_2865.gotoNextObject () ;
     }
   }
 }

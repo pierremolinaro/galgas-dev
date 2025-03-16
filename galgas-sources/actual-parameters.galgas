@@ -37,9 +37,10 @@ list @actualParameterListAST {
                                 !@actualParameterListForGeneration outActualParameterListForGeneration {
     if [inRoutineSignature count] != [self count] then
       error inRoutineName
-      : "the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string]
-      + " formal argument(s), but this invocation names "
-      + [[self count] string] + " argument(s)"
+      : "the " + inInvokedEntityName + " defines " + [inRoutineSignature count]
+      + " formal argument" + if [inRoutineSignature count] > 1 then "s" else "" end
+      + " but this invocation names "
+      + [self count] + " argument" + if [self count] > 1 then "s" else "" end
       : outActualParameterListForGeneration
     else
       outActualParameterListForGeneration = @()

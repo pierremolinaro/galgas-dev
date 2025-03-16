@@ -135,14 +135,14 @@ class Compiler : public SharedObject {
 
 //--- Print semantic error
   public: void semanticErrorAtLocation (const GGS_location & inErrorLocation,
-                                         const String & inErrorMessage,
-                                         const TC_Array <FixItDescription> & inFixItArray
-                                         COMMA_LOCATION_ARGS) ;
+                                        const String & inErrorMessage,
+                                        const TC_Array <FixItDescription> & inFixItArray
+                                        COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic warning
   public: void semanticWarningAtLocation (const GGS_location & inErrorLocation,
-                                           const String & inWarningMessage
-                                           COMMA_LOCATION_ARGS) ;
+                                          const String & inWarningMessage
+                                          COMMA_LOCATION_ARGS) ;
 
 //--- Signal a run-time error
   public: void onTheFlyRunTimeError (const String & inRunTimeErrorMessage COMMA_LOCATION_ARGS) ;

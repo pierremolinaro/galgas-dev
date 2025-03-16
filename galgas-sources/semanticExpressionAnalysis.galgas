@@ -227,12 +227,12 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
     end
     if not ok then
       error inErrorLocation
-       : "target object type is '@" + targetTypeDef.typeName.string
-       + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string
-       + "' object; this type have no '"
-       + targetTypeDef.typeName.string
-       + "' getter without argument that returns a '@"
-       + targetTypeDef.typeName.string + "' object"
+       : "target object type is @" + targetTypeDef.typeName.string
+       + " and cannot be assigned from an @" + [inSourceType definition].typeName.string
+       + " object; this type have no "
+       + targetTypeDef.typeName
+       + " getter without argument that returns a @"
+       + targetTypeDef.typeName.string + " object"
     end
   end
 }

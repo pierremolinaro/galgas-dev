@@ -113,8 +113,16 @@ class AbstractOutputStream {
 
 //--- Methods for writing C and C++ code
   public: void appendStringAsCLiteralStringConstant (const String & inCstring) ;
+
+  public: void appendStringAsCLiteralStringConstant (const String & inCstring,
+                                                     const int32_t inLineMaxLength) ;
+
   public: void appendStringAsCLiteralCharConstant (const utf32 c) ;
+
   public: void appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inCstring) ;
+
+  public: void appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inCstring,
+                                                                      const int32_t inLineMaxLength) ;
 
 //--- Writing C++ Comments (// ...)
   public: void appendCppTitleComment (const String & inCommentString) ;

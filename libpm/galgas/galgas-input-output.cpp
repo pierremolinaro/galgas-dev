@@ -387,13 +387,14 @@ void signalSemanticError (Compiler * inCompiler,
                           COMMA_LOCATION_ARGS) {
   const LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Print error
   errorMessage.appendCString ("semantic error #") ;
   errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
+  String s = inErrorMessage.stringByReplacingStringByString (String ("\n"), String ("\\n")) ;
   errorMessage.appendString (inErrorMessage) ;
   errorMessage.appendCString ("\n") ;
 //--- Print
@@ -495,7 +496,7 @@ void ggs_printError (Compiler * inCompiler,
       gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (errorMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.appendNewLine () ; ;
+      gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :

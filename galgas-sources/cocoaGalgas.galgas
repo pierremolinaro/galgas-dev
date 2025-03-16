@@ -126,6 +126,56 @@ gui cocoa {
     blockComment : "//"
     title: "Source GALGAS 4"
 
+    label $before$, ${$
+    label $after$, ${$
+    label $map$, $@type$
+    label $boolset$, $@type$
+    label $list$, $@type$
+    label $sortedlist$, $@type$
+    label $enum$, $@type$
+    label $class$, $@type$
+    label $extern$, $@type$
+    label $struct$, $@type$
+    label $rule$, $<non_terminal>$
+    label $proc$, $identifier$
+    label $func$, $identifier$
+    label $func$, $%once$, $identifier$
+    label $func$, $%once$, $%usefull$, $identifier$
+    label $func$, $%usefull$, $identifier$
+    label $func$, $%usefull$, $%once$, $identifier$
+    label $filewrapper$, $identifier$, $in$
+
+    label $abstract$, $proc$, $@type$, $identifier$
+    label $override$, $proc$, $@type$, $identifier$
+    label $proc$, $@type$, $identifier$
+
+    label $abstract$, $proc$, $identifier$
+    label $override$, $proc$, $identifier$
+    label $proc$, $identifier$
+
+    label $abstract$, $func$, $@type$, $identifier$
+    label $override$,  $func$, $@type$, $identifier$
+    label $func$, $@type$, $identifier$
+
+    label $abstract$, $func$, $identifier$
+    label $override$,  $func$, $identifier$
+    label $func$, $identifier$
+
+    label $abstract$, $mutating$, $proc$, $@type$, $identifier$
+    label $override$,  $mutating$, $proc$, $@type$, $identifier$
+    label $mutating$, $proc$, $@type$, $identifier$
+
+    label $abstract$, $mutating$, $proc$, $identifier$
+    label $override$,  $mutating$, $proc$, $identifier$
+    label $mutating$, $proc$, $identifier$
+
+    label $syntax$, $extension$, $identifier$
+
+    label $case$, $.$, $"string"$
+    label * $commentMark$ (2, 0)
+    label $\$terminal\$$, $!selector:$ -
+    label $\$terminal\$$, $error$ -
+
 //    textMacro "Map" :
 //      "map @type {\n"
 //      "  public let @aType mProperty\n"
@@ -140,6 +190,7 @@ gui cocoa {
     fileExtension : "galgasTemplate"
     fileExtension : "ggsTemplate"
     title: "Template"
+
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

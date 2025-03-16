@@ -468,13 +468,27 @@ static void internalWriteCstringConstant (AbstractOutputStream & ioStream,
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendStringAsCLiteralStringConstant (const String & inString) {
-  internalWriteCstringConstant (*this, inString, inString.length (), 150) ;
+  internalWriteCstringConstant (*this, inString, inString.length (), INT32_MAX) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AbstractOutputStream::appendStringAsCLiteralStringConstant (const String & inString,
+                                                                 const int32_t inLineMaxLength) {
+  internalWriteCstringConstant (*this, inString, inString.length (), inLineMaxLength) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inString) {
-  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), 150) ;
+  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), INT32_MAX) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inString,
+                                                                                  const int32_t inLineMaxLength) {
+  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), inLineMaxLength) ;
 }
 
 //--------------------------------------------------------------------------------------------------

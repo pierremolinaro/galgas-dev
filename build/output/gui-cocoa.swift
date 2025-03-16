@@ -319,7 +319,205 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let gPopUpData_1_galgasScanner_34_ : [[UInt16]] = [
-
+  [0, // Leading character count to strip
+    galgasScanner4_1_before, 0,
+    galgasScanner4_1__7B_, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_after, 0,
+    galgasScanner4_1__7B_, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_map, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_boolset, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_list, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_sortedlist, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_enum, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_class, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_extern, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_struct, 0,
+    galgasScanner4_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_rule, 0,
+    galgasScanner4_1__3C_non_5F_terminal_3E_, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__25_once, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__25_once, 0,
+    galgasScanner4_1__25_usefull, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__25_usefull, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__25_usefull, 0,
+    galgasScanner4_1__25_once, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_filewrapper, 0,
+    galgasScanner4_1_identifier, 0,
+    galgasScanner4_1_in, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_func, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1__40_type, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_abstract, 0,
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_override, 0,
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_mutating, 0,
+    galgasScanner4_1_proc, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_syntax, 0,
+    galgasScanner4_1_extension, 0,
+    galgasScanner4_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_case, 0,
+    galgasScanner4_1__2E_, 0,
+    galgasScanner4_1__22_string_22_, 0
+  ],
+  [1, // Leading character count to strip
+    galgasScanner4_1_commentMark, 32
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1__24_terminal_24_, 0,
+    galgasScanner4_1__21_selector_3A_, 65535
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1__24_terminal_24_, 0,
+    galgasScanner4_1_error, 65535
+  ]
 ]
 
 //--------------------------------------------------------------------------------------------------

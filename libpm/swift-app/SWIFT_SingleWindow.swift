@@ -955,7 +955,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     let (command, arguments) = commandLineForBuildProcess ()
     process.executableURL = URL (fileURLWithPath: command)
     let sourceFile = self.mTabArray [0].fileURL!.path
-    process.arguments = arguments + [sourceFile, "--swift-app-json-output"] // "--cocoa"]
+    process.arguments = arguments + [sourceFile, "--swift-app-json-output"]
   //--- Set standard output notification
     let pipe = Pipe ()
     self.mProcessOutputPipe = pipe

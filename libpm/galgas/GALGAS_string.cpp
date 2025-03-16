@@ -194,7 +194,7 @@ GGS_string GGS_string::class_func_CppSpaceComment (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::class_func_CppString (const GGS_string & inString
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result ;
   if (inString.isValid ()) {
     String s ;
