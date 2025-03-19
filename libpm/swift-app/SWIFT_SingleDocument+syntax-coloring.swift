@@ -48,7 +48,7 @@ extension SWIFT_SingleDocument {
         var foundRangeToMove = false
         while !foundRangeToMove && (tokenRangeInsertionIndex < self.mTokenRangeArray.count) {
           let r = self.mTokenRangeArray [tokenRangeInsertionIndex]
-          foundRangeToMove = r.range.location > (lineRange.location + lineRange.length)
+          foundRangeToMove = r.range.location > (inEditedRange.location + inEditedRange.length - inChangeInLength)
           if !foundRangeToMove {
             self.mTokenRangeArray.remove (at: tokenRangeInsertionIndex)
             DEBUG_PRINT ("  REMOVED at \(tokenRangeInsertionIndex) : \(r)")
@@ -60,8 +60,9 @@ extension SWIFT_SingleDocument {
           var idx = tokenRangeInsertionIndex
           while idx < self.mTokenRangeArray.count {
             let r = self.mTokenRangeArray [idx]
+            let newLocation = r.range.location + inChangeInLength
             self.mTokenRangeArray [idx] = SWIFT_Token (
-              range: NSRange (location: r.range.location + inChangeInLength, length: r.range.length),
+              range: NSRange (location: newLocation, length: r.range.length),
               tokenCode: r.tokenCode,
               templateDelimiterIndex: r.templateDelimiterIndex
             )
@@ -81,13 +82,15 @@ extension SWIFT_SingleDocument {
       )
       var loop = true
       var attributesArray = [([NSAttributedString.Key : Any], NSRange)] ()
-      while loop && (tokenizer.currentLocation < (self.mTextStorage.string as NSString).length) {
+      while loop, tokenizer.currentLocation < (self.mTextStorage.string as NSString).length {
         let s : SWIFT_Token = tokenizer.parseLexicalTokenForLexicalColoring ()
         if s.tokenCode > 0 {
-          while tokenRangeInsertionIndex < self.mTokenRangeArray.count, (s.range.location + s.range.length) < NSMaxRange (self.mTokenRangeArray [tokenRangeInsertionIndex].range) {
+          while tokenRangeInsertionIndex < self.mTokenRangeArray.count,
+                (s.range.location + s.range.length) < NSMaxRange (self.mTokenRangeArray [tokenRangeInsertionIndex].range) {
             self.mTokenRangeArray.remove (at: tokenRangeInsertionIndex)
           }
-          if tokenRangeInsertionIndex < self.mTokenRangeArray.count, s == self.mTokenRangeArray [tokenRangeInsertionIndex] {
+          if tokenRangeInsertionIndex < self.mTokenRangeArray.count,
+             s == self.mTokenRangeArray [tokenRangeInsertionIndex] {
             loop = false
           }else{
             self.mTokenRangeArray.insert (s, at: tokenRangeInsertionIndex)

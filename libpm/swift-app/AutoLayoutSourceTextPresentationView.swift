@@ -28,7 +28,6 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       minHeight: 400
     )
     .setUsesFindBar ()
-    self.mSourceTextView.mCocoaTextView.useAllLigatures (nil)
     self.mSourceTextView.mCocoaTextView.isAutomaticQuoteSubstitutionEnabled = false
     self.mSourceTextView.mCocoaTextView.smartInsertDeleteEnabled = false
     self.mSourceTextView.mCocoaTextView.isAutomaticDashSubstitutionEnabled = false

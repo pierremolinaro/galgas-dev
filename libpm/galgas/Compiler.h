@@ -42,15 +42,14 @@ class GGS_lstring ;
 class C_galgas_type_descriptor ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //                 Compiler class
-//
 //--------------------------------------------------------------------------------------------------
 
 class Compiler : public SharedObject {
 //--- Constructor and destructor
   public: Compiler (Compiler * inCallerCompiler
-                      COMMA_LOCATION_ARGS) ;
+                    COMMA_LOCATION_ARGS) ;
+
   public: virtual ~ Compiler (void) ;
 
 //--- No copy
@@ -198,30 +197,30 @@ class Compiler : public SharedObject {
 
 //--- Generate file in directory
   public: void generateFile (const String & inLineCommentPrefix,
-                              const TC_UniqueArray <String> & inDirectoriesToExclude,
-                              const String & inFileName,
-                              const String & inHeader,
-                              const String & inDefaultUserZone1,
-                              const String & inGeneratedZone2,
-                              const String & inDefaultUserZone2,
-                              const String & inGeneratedZone3,
-                              const bool inMakeExecutable) ;
+                             const TC_UniqueArray <String> & inDirectoriesToExclude,
+                             const String & inFileName,
+                             const String & inHeader,
+                             const String & inDefaultUserZone1,
+                             const String & inGeneratedZone2,
+                             const String & inDefaultUserZone2,
+                             const String & inGeneratedZone3,
+                             const bool inMakeExecutable) ;
 
   public: void generateFileWithPatternFromPathes (const String & inStartPath,
-                                                   const TC_UniqueArray <String> & inDirectoriesToExclude,
-                                                   const String & inLineCommentPrefix,
-                                                   const String & inFileName,
-                                                   const String & inHeader,
-                                                   const String & inDefaultUserZone1,
-                                                   const String & inGeneratedZone2,
-                                                   const String & inDefaultUserZone2,
-                                                   const String & inGeneratedZone3,
-                                                   const bool inMakeExecutable) ;
+                                                  const TC_UniqueArray <String> & inDirectoriesToExclude,
+                                                  const String & inLineCommentPrefix,
+                                                  const String & inFileName,
+                                                  const String & inHeader,
+                                                  const String & inDefaultUserZone1,
+                                                  const String & inGeneratedZone2,
+                                                  const String & inDefaultUserZone2,
+                                                  const String & inGeneratedZone3,
+                                                  const bool inMakeExecutable) ;
 
   public: void generateFileFromPathes (const String & inStartPath,
-                                        const TC_UniqueArray <String> & inDirectoriesToExclude,
-                                        const String & inFileName,
-                                        const String & inContents) ;
+                                       const TC_UniqueArray <String> & inDirectoriesToExclude,
+                                       const String & inFileName,
+                                       const String & inContents) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

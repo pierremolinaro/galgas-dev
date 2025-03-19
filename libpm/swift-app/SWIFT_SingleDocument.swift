@@ -229,7 +229,7 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   NSTextStorageDelegate method
+  //MARK:   NSTextStorageDelegate method
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func textStorage (_ inTextStorage : NSTextStorage,
@@ -380,8 +380,6 @@ import AppKit
       let blockCommentString = tokenizer.blockComment ()
       let blockCommentLength = (blockCommentString as NSString).length
     //--- Get source string
-//      NSMutableAttributedString * mutableSourceString = mTextStorage ;
-//      NSString * sourceString = [mutableSourceString string] ;
       let sourceString = self.mTextStorage.string as NSString
     //--- Final selection range
       finalSelectedRange = initialSelectedRange
