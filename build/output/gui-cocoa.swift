@@ -142,6 +142,10 @@ fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
     galgasScanner3_1_in, 0
   ],
   [0, // Leading character count to strip
+    galgasScanner3_1_dict, 0,
+    galgasScanner3_1__40_type, 0
+  ],
+  [0, // Leading character count to strip
     galgasScanner3_1_abstract, 0,
     galgasScanner3_1_method, 0,
     galgasScanner3_1__40_type, 0,
@@ -326,6 +330,10 @@ fileprivate let gPopUpData_1_galgasScanner_34_ : [[UInt16]] = [
   [0, // Leading character count to strip
     galgasScanner4_1_after, 0,
     galgasScanner4_1__7B_, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner4_1_dict, 0,
+    galgasScanner4_1__40_type, 0
   ],
   [0, // Leading character count to strip
     galgasScanner4_1_map, 0,

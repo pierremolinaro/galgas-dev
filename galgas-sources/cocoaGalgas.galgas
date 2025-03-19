@@ -2,7 +2,7 @@
 //
 //  Cocoa component for GALGAS
 //
-//  Copyright (C) 2004, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2004, ..., 2025 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -61,6 +61,8 @@ gui cocoa {
     label $func$, $%usefull$, $identifier$
     label $func$, $%usefull$, $%once$, $identifier$
     label $filewrapper$, $identifier$, $in$
+
+    label $dict$, $@type$
 
     label $abstract$, $method$, $@type$, $identifier$
     label $override$, $method$, $@type$, $identifier$
@@ -128,6 +130,7 @@ gui cocoa {
 
     label $before$, ${$
     label $after$, ${$
+    label $dict$, $@type$
     label $map$, $@type$
     label $boolset$, $@type$
     label $list$, $@type$
