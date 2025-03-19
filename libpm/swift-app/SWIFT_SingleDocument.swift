@@ -387,7 +387,7 @@ import AppKit
       let lineRange = sourceString.lineRange (for: initialSelectedRange)
       var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
       repeat {
-        let lineString = sourceString.substring (with: currentLineRange) as NSString
+        let lineString = self.mTextStorage.string.nsSubstring (with: currentLineRange) as NSString
         if lineString.compare (blockCommentString, options: .literal, range: NSRange (location: 0, length: blockCommentLength)) == .orderedSame {
           self.mTextStorage.replaceCharacters (in: NSRange (location: currentLineRange.location, length: blockCommentLength), with: "")
         //--- Examen du nombre de caractères à l'intérieur de la sélection

@@ -85,9 +85,8 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var selectedString : String {
-    let str = self.mSourceTextView.string as NSString
     let range = self.mSourceTextView.selectedRange
-    return str.substring (with: range)
+    return self.mSourceTextView.string.nsSubstring (with: range)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -328,7 +327,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       if char == "\t", alignment > 0 { // A Tab Character, without shift ?
         outCallSuperOnReturn = false
         let selectedRange = inCocoaTextWiew.selectedRange
-        let selectedString = nsString.substring (with: selectedRange)
+        let selectedString = inCocoaTextWiew.string.nsSubstring (with: selectedRange)
         if selectedString.contains ("\n") {
           self.shiftRightRange (inCocoaTextWiew)
         }else{
@@ -410,7 +409,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     ]
   //--- Indexing dictionary
     let dictionaryArray = self.buildIndexingDictionaryArray ()
-    let tokenString = (self.mSourceTextView.string as NSString).substring (with: inSelectedRange)
+    let tokenString = self.mSourceTextView.string.nsSubstring (with: inSelectedRange)
   //--- Build array of all references of given token
     var allReferences = [String] ()
     for currentIndexDictionary in dictionaryArray {
@@ -489,7 +488,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     let sourceString = inCocoaTextWiew.string as NSString
   //--- Line range contains all lines
     let lineRange = sourceString.lineRange (for: inCocoaTextWiew.selectedRange)
-    let lineRangeString = sourceString.substring (with: lineRange)
+    let lineRangeString = inCocoaTextWiew.string.nsSubstring (with: lineRange)
     let lines = lineRangeString.split (separator: "\n")
     let indentedLines = lines.map { spaceString + $0 }
     let newLineRangeString = indentedLines.joined (separator: "\n") + "\n"
@@ -507,7 +506,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     let sourceString = inCocoaTextWiew.string as NSString
   //--- Line range contains all lines
     let lineRange = sourceString.lineRange (for: inCocoaTextWiew.selectedRange)
-    let lineRangeString = sourceString.substring (with: lineRange)
+    let lineRangeString = inCocoaTextWiew.string.nsSubstring (with: lineRange)
     let lines = lineRangeString.split (separator: "\n")
     let modifiedLines = lines.map {
       var result = $0
