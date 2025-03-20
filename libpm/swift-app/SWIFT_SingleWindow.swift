@@ -826,6 +826,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       var globalDict = [String : Any] ()
       globalDict ["tabs"] = fileArray
       globalDict ["range"] = NSStringFromRange (self.mTabArray [0].selectedRange)
+      globalDict ["selectedIndex"] = self.mSelectedTabIndex
       UserDefaults.standard.set (globalDict, forKey: self.userDefaultKey)
     }
   }
@@ -835,6 +836,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   private func openTabsFromUserDefaults (forDocument inDocument : SWIFT_SingleDocument) {
     if let globalDict = UserDefaults.standard.object (forKey: self.userDefaultKey) as? [String : Any],
        let tabFilePathArray = globalDict ["tabs"] as? [[String : String]],
+       let selectedTabIndex = globalDict ["selectedIndex"] as? Int,
        let tab0RangeString = globalDict ["range"] as? String {
       DispatchQueue.main.async {
         self.mTabArray [0].setSelectedRange (NSRangeFromString (tab0RangeString))
@@ -846,6 +848,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
               self.appendTab (document: document, selectedRange: NSRangeFromString (rangeString))
             }
           }
+        }
+      }
+      DispatchQueue.main.async {
+        if selectedTabIndex >= 0, selectedTabIndex < self.mTabArray.count {
+          self.selectTab (atIndex: selectedTabIndex)
         }
       }
     }

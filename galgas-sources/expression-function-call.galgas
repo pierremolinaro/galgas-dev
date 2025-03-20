@@ -16,15 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //------------------------------------------------------------------------------------------------
-//!   AST
-//------------------------------------------------------------------------------------------------
-
-class @functionCallExpressionAST : @semanticExpressionAST {
-  private let @lstring mFunctionName
-  private let @actualOutputArgumentList mExpressionList
-}
-
-//------------------------------------------------------------------------------------------------
 //! SYNTAX
 //------------------------------------------------------------------------------------------------
 
@@ -100,86 +91,96 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //------------------------------------------------------------------------------------------------
-//! SEMANTICS
+//!   @functionCallExpressionAST
 //------------------------------------------------------------------------------------------------
 
-override method @functionCallExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  for expression in self.mExpressionList do
-    [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-  end
-}
+class @functionCallExpressionAST : @semanticExpressionAST {
+  private let @lstring mFunctionName
+  private let @actualOutputArgumentList mExpressionList
 
-//································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @functionCallExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-//--- Retrieve function features
-  [inAnalysisContext.semanticContext.mFunctionMap searchKey
-    !self.mFunctionName
-    ?let @functionSignature functionSignature
-    ?let @unifiedTypeMapEntry resultType
-    ?let @bool isInternal
-  ]
-//--- Check internal
-  if isInternal then
-    let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
-    if [self.mFunctionName.location file] != [procDeclarationLocation file] then
-      error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+  override method enterExpressionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap
+  {
+    for expression in self.mExpressionList do
+      [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
     end
-  end
-//--- Analyze effective parameters
-  if [functionSignature count] != [self.mExpressionList count] then
-    error self.mFunctionName
-    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
-      + " formal parameter(s), but this function call names " + [[self.mExpressionList count] string]
-      + " effective argument(s)"
-    : outExpression
-  else
-    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
-    for formalArg in functionSignature, actualArg in self.mExpressionList do
-      [actualArg.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: formalArg.mFormalArgumentType
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration expression
-      ]
-      checkAssignmentTypeWithImplicitGetterCall (
-        !formalArg.mFormalArgumentType
-        !expression.mResultType
-        !actualArg.mEndOfExpressionLocation
-        !?expression
-      )
-      if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
-        let @string s = "!" + if formalArg.mFormalSelector.string != ""
-          then formalArg.mFormalSelector.string + ":"
-          else ""
-        end
-        error actualArg.mActualSelector : "the selector should be '" + s + "'"
-        fixit { replace s }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticExpression
+    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?inferenceType: let @unifiedTypeMapEntry unused inType
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?!@localVarManager ioVariableMap
+    !@semanticExpressionForGeneration outExpression
+  {
+    let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  //--- Retrieve function features
+    [inAnalysisContext.semanticContext.mFunctionMap searchKey
+      !self.mFunctionName
+      ?let @functionSignature functionSignature
+      ?let @unifiedTypeMapEntry resultType
+      ?let @bool isInternal
+    ]
+  //--- Check internal
+    if isInternal then
+      let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
+      if [self.mFunctionName.location file] != [procDeclarationLocation file] then
+        error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
       end
-      semanticExpressionListForGeneration += !expression
     end
-    outExpression = @functionCallExpressionForGeneration {
-      !resultType
-      !self.mFunctionName.location
-      !self.mFunctionName.string
-      !semanticExpressionListForGeneration
-    }
-  end
+  //--- Analyze effective parameters
+    if [functionSignature count] != [self.mExpressionList count] then
+      error self.mFunctionName
+      :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
+        + " formal parameter(s), but this function call names " + [[self.mExpressionList count] string]
+        + " effective argument(s)"
+      : outExpression
+    else
+      var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
+      for formalArg in functionSignature, actualArg in self.mExpressionList do
+        [actualArg.mExpression analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: formalArg.mFormalArgumentType
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration expression
+        ]
+        checkAssignmentTypeWithImplicitGetterCall (
+          !formalArg.mFormalArgumentType
+          !expression.mResultType
+          !actualArg.mEndOfExpressionLocation
+          !?expression
+        )
+        if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
+          let @string s = "!" + if formalArg.mFormalSelector.string != ""
+            then formalArg.mFormalSelector.string + ":"
+            else ""
+          end
+          error actualArg.mActualSelector : "the selector should be '" + s + "'"
+          fixit { replace s }
+        end
+        semanticExpressionListForGeneration += !expression
+      end
+      outExpression = @functionCallExpressionForGeneration {
+        !resultType
+        !self.mFunctionName.location
+        !self.mFunctionName.string
+        !semanticExpressionListForGeneration
+      }
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //------------------------------------------------------------------------------------------------

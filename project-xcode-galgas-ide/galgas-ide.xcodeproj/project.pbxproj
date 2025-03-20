@@ -1785,7 +1785,6 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
-				CF1B8C2F2D8AE52C0093FD81 /* SWIFT_String+extension.swift */,
 				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CF08BB882D55316A000DE9C4 /* Base.lproj */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
@@ -1800,6 +1799,7 @@
 				CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */,
 				CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */,
 				CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */,
+				CF1B8C2F2D8AE52C0093FD81 /* SWIFT_String+extension.swift */,
 				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
 				CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */,
 				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,

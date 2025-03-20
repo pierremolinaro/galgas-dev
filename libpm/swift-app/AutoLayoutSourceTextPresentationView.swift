@@ -99,9 +99,6 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       if array.count > 0 {
         array.removeFirst () // First is '/'
       }
-      if array.count > 0 {
-        array.removeLast () // Last is file name
-      }
       var title = ""
       for pathComponent in array {
         title += "/" + pathComponent
@@ -120,7 +117,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   @objc private func revealInFinder (_ inSender : Any?) {
     if let menuItem = inSender as? NSMenuItem,
        let path = menuItem.representedObject as? String {
-      NSWorkspace.shared.open (URL (fileURLWithPath: path))
+      NSWorkspace.shared.activateFileViewerSelecting ([URL (fileURLWithPath: path)])
     }
   }
 

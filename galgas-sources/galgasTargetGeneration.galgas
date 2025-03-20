@@ -935,6 +935,7 @@ proc updateGalgasTargets
           "SWIFT_SingleDocument+update-entry-popup.swift",
           "SWIFT_SingleDocument.swift",
           "SWIFT_SingleWindow.swift",
+          "SWIFT_String+extension.swift",
           "SWIFT_TemplateDelimiter.swift",
           "SWIFT_TextViewRulerView.swift",
           "SWIFT_Token.swift",
