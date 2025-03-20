@@ -208,7 +208,7 @@ class @initializerAST : @semanticDeclarationAST {
     var isReferenceClass = false
     if let classType = [[selfType definition].typeKind getClassType] then
       isReferenceClass = classType.isReference
-      selfObjectNameString = "<< this >>"
+      selfObjectNameString = "this"
       selfObjectAccessorString = ""
     else
       selfObjectNameString = "result"
