@@ -11987,78 +11987,78 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
 
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i16_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                           Lexique_galgasScanner_33_ * inCompiler) {
-  GGS_bool var_isAbstract_1523 ;
-  GGS_bool var_clonable_1548 ;
+  GGS_bool var_isAbstract_1524 ;
+  GGS_bool var_clonable_1549 ;
   switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
   case 1: {
-    var_isAbstract_1523 = GGS_bool (false) ;
-    var_clonable_1548 = GGS_bool (false) ;
+    var_isAbstract_1524 = GGS_bool (false) ;
+    var_clonable_1549 = GGS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_abstract COMMA_SOURCE_FILE ("declaration-type-class.galgas", 33)) ;
-    var_isAbstract_1523 = GGS_bool (true) ;
-    var_clonable_1548 = GGS_bool (false) ;
+    var_isAbstract_1524 = GGS_bool (true) ;
+    var_clonable_1549 = GGS_bool (false) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_clonable COMMA_SOURCE_FILE ("declaration-type-class.galgas", 37)) ;
-    var_isAbstract_1523 = GGS_bool (false) ;
-    var_clonable_1548 = GGS_bool (true) ;
+    var_isAbstract_1524 = GGS_bool (false) ;
+    var_clonable_1549 = GGS_bool (true) ;
   } break ;
   default:
     break ;
   }
-  GGS_bool var_isReference_1781 ;
+  GGS_bool var_isReference_1782 ;
   switch (select_galgas_33_DeclarationsSyntax_19 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_class COMMA_SOURCE_FILE ("declaration-type-class.galgas", 43)) ;
-    var_isReference_1781 = GGS_bool (true) ;
+    var_isReference_1782 = GGS_bool (true) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_valueclass COMMA_SOURCE_FILE ("declaration-type-class.galgas", 46)) ;
-    var_isReference_1781 = GGS_bool (false) ;
+    var_isReference_1782 = GGS_bool (false) ;
   } break ;
   default:
     break ;
   }
-  GGS_lstring var_className_1929 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_className_1930 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_classDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-class.galgas", 49)) ;
-  GGS_lstring var_superClassName_1981 ;
+  GGS_lstring var_superClassName_1982 ;
   switch (select_galgas_33_DeclarationsSyntax_20 (inCompiler)) {
   case 1: {
-    var_superClassName_1981 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-class.galgas", 52)) ;
+    var_superClassName_1982 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-class.galgas", 52)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-class.galgas", 54)) ;
-    var_superClassName_1981 = inCompiler->synthetizedAttribute_tokenString () ;
+    var_superClassName_1982 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_classReferencedAsSuperClass, "") ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-class.galgas", 55)) ;
   } break ;
   default:
     break ;
   }
-  GGS_bool var_generateInSeparateFile_2177 ;
+  GGS_bool var_generateInSeparateFile_2178 ;
   switch (select_galgas_33_DeclarationsSyntax_21 (inCompiler)) {
   case 1: {
-    var_generateInSeparateFile_2177 = GGS_bool (false) ;
+    var_generateInSeparateFile_2178 = GGS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_generatedInSeparateFile COMMA_SOURCE_FILE ("declaration-type-class.galgas", 61)) ;
-    var_generateInSeparateFile_2177 = GGS_bool (true) ;
+    var_generateInSeparateFile_2178 = GGS_bool (true) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("declaration-type-class.galgas", 64)) ;
-  GGS_propertyInCollectionListAST var_propertyList_2402 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_propertyInCollectionListAST var_propertyList_2403 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_DeclarationsSyntax_22 (inCompiler)) {
     case 2: {
-      nt_property_5F_declaration_5F_ggs_33__ (ioArgument_ioDeclarations, var_propertyList_2402, inCompiler) ;
+      nt_property_5F_declaration_5F_ggs_33__ (ioArgument_ioDeclarations, var_propertyList_2403, inCompiler) ;
     } break ;
     case 3: {
-      nt_method_5F_declaration_5F_ggs_33__ (var_className_1929, ioArgument_ioDeclarations, inCompiler) ;
+      nt_method_5F_declaration_5F_ggs_33__ (var_className_1930, ioArgument_ioDeclarations, inCompiler) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12066,19 +12066,19 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("declaration-type-class.galgas", 73)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_classDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), var_isAbstract_1523, var_isReference_1781, var_className_1929, var_superClassName_1981, var_generateInSeparateFile_2177, var_propertyList_2402, var_clonable_1548, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 74)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_classDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), var_isAbstract_1524, var_isReference_1782, var_className_1930, var_superClassName_1982, var_generateInSeparateFile_2178, var_propertyList_2403, var_clonable_1549, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 74)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = var_isReference_1781.boolEnum () ;
+    test_1 = var_isReference_1782.boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       GGS_lstring temp_2 ;
-      const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, var_superClassName_1981.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, var_superClassName_1982.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       if (GalgasBool::boolTrue == test_3) {
-        temp_2 = var_superClassName_1981 ;
+        temp_2 = var_superClassName_1982 ;
       }else if (GalgasBool::boolFalse == test_3) {
-        temp_2 = function_makeWeakTypeLName (var_superClassName_1981, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 91)) ;
+        temp_2 = function_makeWeakTypeLName (var_superClassName_1982, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 91)) ;
       }
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_weakReferenceDeclarationAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_className_1929, function_makeWeakTypeLName (var_className_1929, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 88)), temp_2, var_generateInSeparateFile_2177, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 85)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_weakReferenceDeclarationAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_className_1930, function_makeWeakTypeLName (var_className_1930, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 88)), temp_2, var_generateInSeparateFile_2178, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 85)) ;
     }
   }
 }

@@ -170,14 +170,15 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 //--- Assignment to optional from strong ?
   if not handled, not [[inTargetType definition].unwrappedType isNull] then // Target is optional
-    handled = [[inTargetType definition].unwrappedType typeName] == [inSourceType typeName]
+    let targetUnwrappedTypeName = [[inTargetType definition].unwrappedType typeName]
+    handled = targetUnwrappedTypeName == [inSourceType typeName]
     var sourceType = inSourceType
     loop (@uint.max) while (not handled) & (not [[sourceType definition].superType isNull]) do
       sourceType = [sourceType definition].superType
-      handled = [[inTargetType definition].unwrappedType typeName] == [sourceType typeName]
+      handled = targetUnwrappedTypeName == [sourceType typeName]
     end
   end
-//---
+//--- Polymorphic assignment ?
   if not handled then
     var sourceType = inSourceType
     var ok = [inTargetType typeName] == [inSourceType typeName]

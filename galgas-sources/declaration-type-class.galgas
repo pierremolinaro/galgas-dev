@@ -16,7 +16,7 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //------------------------------------------------------------------------------------------------
-//   SYNTAX
+//!   SYNTAX
 //------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
@@ -174,7 +174,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //------------------------------------------------------------------------------------------------
-//   AST
+//! @classDeclarationAST
 //------------------------------------------------------------------------------------------------
 
 class @classDeclarationAST : @semanticDeclarationAST {
@@ -211,12 +211,14 @@ class @classDeclarationAST : @semanticDeclarationAST {
         !@{!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
-  //--- Add edge from property types
-    for (* propertyTypeName 4*) in self.mPropertyList do
-      [!?ioSemanticTypePrecedenceGraph addEdge
-        !key
-        !@lstring {!"@" + propertyTypeName !self.mSuperClassName.location}
-      ]
+  //--- Add edge from property types, note type if optional type
+    for property in self.mPropertyList do
+      let propertyKey = @lstring {!"@" + property.typeName !self.mSuperClassName.location}
+      if [property.typeName lastCharacter] == '?' then
+        [!?ioSemanticTypePrecedenceGraph noteNode !propertyKey]
+      else
+        [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+      end
     end
   }
 
@@ -601,7 +603,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
 }
 
 //------------------------------------------------------------------------------------------------
-//   CODE GENERATION
+//! @classTypeForGeneration
 //------------------------------------------------------------------------------------------------
 
 class @classTypeForGeneration : @semanticTypeForGeneration {
@@ -728,59 +730,57 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
           !self.synthetizedInitializerArgumentList
         ]
       end
+    elsif self.generateHeaderInSeparateFile then
+      let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
+        !selfTypeDefinition.typeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mCurrentTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+        ![self.mSelfTypeEntry definition].getterMap
+        ![self.mSelfTypeEntry definition].instanceMethodMap
+      ]
+      let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
+        !selfTypeDefinition.typeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mCurrentTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+      [@string generateFileWithPattern
+        !startPath:inOutputDirectory + "/../user-headers"
+        !fileName:headerFileName
+        !lineComment:"//"
+        !header:"" // Header
+        !defaultUserZone1:"\n\n" // Defaut user zone1
+        !generatedZone2:part1
+        !defaultUserZone2:"\n\n" // Defaut user zone2
+        !generatedZone3:part2
+        !makeExecutable:false
+      ]
+      outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
-      if self.generateHeaderInSeparateFile then
-        let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-          !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-          !self.mCurrentTypedAttributeList
-          !self.mAllTypedAttributeList
-          !self.mIsAbstract
-          ![self.mSelfTypeEntry definition].getterMap
-          ![self.mSelfTypeEntry definition].instanceMethodMap
-        ]
-        let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-          !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-          !self.mCurrentTypedAttributeList
-          !self.mAllTypedAttributeList
-          !self.mIsAbstract
-        ]
-        let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
-        [@string generateFileWithPattern
-          !startPath:inOutputDirectory + "/../user-headers"
-          !fileName:headerFileName
-          !lineComment:"//"
-          !header:"" // Header
-          !defaultUserZone1:"\n\n" // Defaut user zone1
-          !generatedZone2:part1
-          !defaultUserZone2:"\n\n" // Defaut user zone2
-          !generatedZone3:part2
-          !makeExecutable:false
-        ]
-        outHeader = "#include \"" + headerFileName + "\"\n\n"
-      else
-        outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-          !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-          !self.mCurrentTypedAttributeList
-          !self.mAllTypedAttributeList
-          !self.mIsAbstract
-          ![self.mSelfTypeEntry definition].getterMap
-          ![self.mSelfTypeEntry definition].instanceMethodMap
-        ]
-        outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-          !selfTypeDefinition.typeName.string
-          ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-          !self.mCurrentTypedAttributeList
-          !self.mAllTypedAttributeList
-          !self.mIsAbstract
-        ]
-      end
+      outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
+        !selfTypeDefinition.typeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mCurrentTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+        ![self.mSelfTypeEntry definition].getterMap
+        ![self.mSelfTypeEntry definition].instanceMethodMap
+      ]
+      outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
+        !selfTypeDefinition.typeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mCurrentTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
     end
   }
 
