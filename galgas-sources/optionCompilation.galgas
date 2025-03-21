@@ -52,7 +52,7 @@ class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
 syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $option$
@@ -71,7 +71,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -107,7 +107,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       !optionDefaultValueKind
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //------------------------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
 syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $option$
@@ -134,7 +134,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -170,7 +170,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       !optionDefaultValueKind
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //------------------------------------------------------------------------------------------------

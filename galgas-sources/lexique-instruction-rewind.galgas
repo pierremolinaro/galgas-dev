@@ -31,7 +31,7 @@ class @lexicalRewindInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $rewind$
@@ -41,7 +41,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -49,7 +49,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $rewind$
@@ -59,7 +59,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

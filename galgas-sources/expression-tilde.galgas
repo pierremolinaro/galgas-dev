@@ -19,7 +19,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -47,7 +47,7 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -59,14 +59,14 @@ class @tildeExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
     ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -110,7 +110,7 @@ class @tildeExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

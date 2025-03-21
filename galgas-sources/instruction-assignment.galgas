@@ -40,7 +40,7 @@ class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -63,7 +63,7 @@ syntax extension galgas3InstructionsSyntax {
      }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -88,7 +88,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -96,7 +96,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -126,7 +126,7 @@ syntax extension galgas4InstructionsSyntax {
      }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -158,7 +158,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -328,7 +328,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mSourceExpression
   private let @location mSourceLocation
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -367,7 +367,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

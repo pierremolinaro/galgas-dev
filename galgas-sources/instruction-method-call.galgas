@@ -21,7 +21,7 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -47,7 +47,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 //    $[$
@@ -63,7 +63,7 @@ syntax extension galgas4InstructionsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 //    $($
@@ -81,7 +81,7 @@ syntax extension galgas4InstructionsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -92,7 +92,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mMethodName
   private let @actualParameterListAST mActualParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -101,7 +101,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction
     ?let @lstring inUsefulnessCallerEntityName
@@ -180,7 +180,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

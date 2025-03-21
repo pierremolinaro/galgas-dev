@@ -21,7 +21,7 @@
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -65,7 +65,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -112,7 +112,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -125,7 +125,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
   public let @lstring mAbstractExtensionMethodName
   public let @formalParameterListAST mAbstractExtensionMethodFormalParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -157,13 +157,13 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation -> @string {
     result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -175,7 +175,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@semanticContext unused ioSemanticContext {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method semanticAnalysis
     ?!@lstringlist unused ioUsefulnessRootEntities
@@ -219,7 +219,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
       }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method buildExtensionListMaps
     ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -243,7 +243,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -256,7 +256,7 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
   public let @string mAbstractExtensionMethodName
   public let @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1
     ?!@stringset unused ioInclusionSet
@@ -268,13 +268,13 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter headerKind -> @headerKind {
     result = @headerKind.oneHeader
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -293,7 +293,7 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

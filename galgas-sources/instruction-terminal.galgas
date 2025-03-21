@@ -19,7 +19,7 @@
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -47,7 +47,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = @()
@@ -70,7 +70,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -78,7 +78,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -106,7 +106,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = @()
@@ -130,7 +130,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -145,7 +145,7 @@ class @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method transformInstructionForGrammarAnalysis
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -166,7 +166,7 @@ class @terminalCheckInstructionAST : @syntaxInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSyntaxInstruction
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -239,7 +239,7 @@ class @terminalCheckInstructionAST : @syntaxInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -251,7 +251,7 @@ class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGram
   public let @lstring mTerminalSymbolName
   public let @uint mTerminalSymbolIndex
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method tikzNodeForSyntaxInstruction ?!@rowList ioRowList
                                                 ?fromRow:let @uint inRow
@@ -273,13 +273,13 @@ class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGram
     ioColumn += 1
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter isLinear -> @bool {
     result = true
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

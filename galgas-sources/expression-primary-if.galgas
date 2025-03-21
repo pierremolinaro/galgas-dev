@@ -32,7 +32,7 @@ class @ifExpressionAST : @semanticExpressionAST {
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -52,7 +52,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -60,7 +60,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -80,7 +80,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <primary> !@semanticExpressionAST outExpression {
 //    $if$
@@ -101,7 +101,7 @@ syntax extension galgas4ExpressionSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

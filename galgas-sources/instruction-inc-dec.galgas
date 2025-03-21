@@ -61,7 +61,7 @@ class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -77,7 +77,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_inc_dec> ?!@galgasDeclarationAST unused ioDeclarations
                                       ?prefixedBySelf: let @bool inPrefixedBySelf
@@ -129,7 +129,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -162,7 +162,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

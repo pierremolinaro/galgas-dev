@@ -19,7 +19,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -39,7 +39,7 @@ syntax extension galgas3ExpressionSyntax {
     $]$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -47,7 +47,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -67,7 +67,7 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
@@ -87,7 +87,7 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -105,7 +105,7 @@ class @collectionValueAST : @semanticExpressionAST {
   public let @collectionValueElementList mExpressionList
   public let @location mEndOfCollectionValue
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (expression *) in self.mExpressionList do
@@ -113,7 +113,7 @@ class @collectionValueAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
         ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -182,7 +182,7 @@ class @collectionValueAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -198,7 +198,7 @@ list @collectionValueElementListForGeneration {
 class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   public let @collectionValueElementListForGeneration expressionList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -230,7 +230,7 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -34,7 +34,7 @@ class @parseLoopInstruction : @syntaxInstructionAST {
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -61,7 +61,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -69,7 +69,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -95,7 +95,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfInstructionList}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

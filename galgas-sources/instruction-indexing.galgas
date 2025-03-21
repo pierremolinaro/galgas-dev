@@ -21,7 +21,7 @@
 
 //syntax extension galgas3SyntaxComponentSyntax {
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
 //                                 !@syntaxInstructionAST outInstruction {
@@ -38,7 +38,7 @@
 //    }
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 //
@@ -46,7 +46,7 @@
 //
 //syntax extension galgas4SyntaxComponentSyntax {
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
 //                            !@syntaxInstructionAST outInstruction {
@@ -63,7 +63,7 @@
 //    }
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 //
@@ -71,12 +71,12 @@
 //
 //class @IndexingSyntaxInstruction : @syntaxInstructionAST {
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  private let @lstring mIndexName
 //  private let @semanticExpressionAST mExpression
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method transformInstructionForGrammarAnalysis
 //    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -85,7 +85,7 @@
 //    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method analyzeSyntaxInstruction
 //    ?let @lstring inUsefulnessCallerEntityName
@@ -126,7 +126,7 @@
 //    }
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 //
@@ -139,7 +139,7 @@
 //  private let @semanticExpressionForGeneration mExpression
 //  private let @string mLexiqueIdentifier
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method appendSyntaxSignature
 //    ?let @string unused inPosfix
@@ -154,7 +154,7 @@
 ////    }
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override getter compareInstructionSyntaxSignature
 //    ?let @semanticInstructionForGeneration inTestedInstruction
@@ -183,7 +183,7 @@
 ////    end
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method generateInstruction
 //    ?!@stringset ioInclusionSet
@@ -247,7 +247,7 @@
 ////    end
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 

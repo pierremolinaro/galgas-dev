@@ -21,7 +21,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @nilExpressionAST {!.here}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -45,7 +45,7 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @nilExpressionAST {!.here}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -54,12 +54,12 @@ syntax extension galgas4ExpressionSyntax {
 class @nilExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
                     ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
@@ -82,7 +82,7 @@ class @nilExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -92,7 +92,7 @@ class @nilExpressionAST : @semanticExpressionAST {
 
 class @nilExpressionForGeneration : @semanticExpressionForGeneration {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string unused ioGeneratedCode
                                       ?!@stringset unused ioInclusionSet
@@ -102,7 +102,7 @@ class @nilExpressionForGeneration : @semanticExpressionForGeneration {
     outCppExpression = "GGS_" + [self.mResultType identifierRepresentation] + "::init_nil ()"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

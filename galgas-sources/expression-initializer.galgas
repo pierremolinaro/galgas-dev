@@ -23,7 +23,7 @@
 
 syntax extension galgas3ExpressionSyntax {
  
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -38,7 +38,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -53,7 +53,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -73,7 +73,7 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -81,9 +81,9 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Primary beginning with a type
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -101,7 +101,7 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_followed_by_dot_type> ?let @lstring inTypeName 
                                           ?!@galgasDeclarationAST ioDeclarations
@@ -122,9 +122,9 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Primary beginning with @(
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -140,9 +140,9 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Primary beginning with a dot
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -150,7 +150,7 @@ syntax extension galgas4ExpressionSyntax {
     <primary_beginning_by_dot> !?ioDeclarations ?outExpression
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
@@ -166,7 +166,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -180,7 +180,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -191,7 +191,7 @@ class @initializerCallAST : @semanticExpressionAST {
   private let @actualOutputArgumentList mExpressions
   private let @location mEndOfExpressions
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     if self.mTypeName.string != "" then
@@ -200,7 +200,7 @@ class @initializerCallAST : @semanticExpressionAST {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
             ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -236,7 +236,7 @@ class @initializerCallAST : @semanticExpressionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -338,7 +338,7 @@ class @initializerCallForGeneration : @semanticExpressionForGeneration {
   private let @string initializerName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string ioGeneratedCode
                                     ?!@stringset ioInclusionSet
@@ -368,7 +368,7 @@ class @initializerCallForGeneration : @semanticExpressionForGeneration {
     outCppExpression += " COMMA_HERE)"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

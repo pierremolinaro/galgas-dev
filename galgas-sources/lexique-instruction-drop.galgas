@@ -30,7 +30,7 @@ class @lexicalDropInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
@@ -38,7 +38,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -46,7 +46,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
@@ -54,7 +54,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

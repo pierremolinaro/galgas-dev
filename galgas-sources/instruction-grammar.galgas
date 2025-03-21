@@ -22,27 +22,27 @@
   abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInstructionSyntaxDirectedTranslationResultNone :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInstructionSyntaxDirectedTranslationDropResult :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @location mLocation
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInstructionSyntaxDirectedTranslationResultInVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @lstring mActualParameterName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -50,7 +50,7 @@
     private let @lstring mActualParameterName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -58,7 +58,7 @@
     private let @lstring mActualParameterName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInFileInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -69,7 +69,7 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class @grammarInStringInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -88,9 +88,9 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -110,7 +110,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -140,7 +140,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -175,9 +175,9 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction { //obsolete
@@ -194,7 +194,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core_obsolete> !?ioDeclarations !instructionLocation !grammarComponentName !labelName ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
                                            ?let @location inInstructionLocation
@@ -224,7 +224,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
                                            ?let @location inInstructionLocation
@@ -261,7 +261,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -269,7 +269,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -287,7 +287,7 @@ syntax extension galgas4InstructionsSyntax {
     <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -317,7 +317,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -352,7 +352,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -369,7 +369,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method @grammarInStringInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -568,7 +568,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method @grammarInstructionWithSourceFileForGeneration generateInstruction
     ?!@stringset ioInclusionSet
@@ -640,7 +640,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
     ?!@stringset ioInclusionSet

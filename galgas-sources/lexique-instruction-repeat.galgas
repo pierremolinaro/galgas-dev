@@ -32,7 +32,7 @@ class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
@@ -55,7 +55,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -63,7 +63,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
@@ -86,7 +86,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

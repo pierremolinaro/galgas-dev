@@ -21,7 +21,7 @@
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
   }
 
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -50,7 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -62,13 +62,13 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @bool isUsefull %initArgLabel
   private let @bool equatable %initArgLabel
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation->@string {
     result = "array [@" + self.arrayTypeName + "]"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -83,7 +83,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.elementTypeName !self.elementTypeName}]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -285,7 +285,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method addAssociatedElement
     ?!@galgasDeclarationAST unused ioDeclarations {
@@ -308,7 +308,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 //    }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
@@ -367,7 +367,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -378,7 +378,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 class @arrayTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry elementType
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
@@ -407,7 +407,7 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
@@ -423,7 +423,7 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -21,7 +21,7 @@
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
@@ -95,7 +95,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -103,7 +103,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
@@ -169,7 +169,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -186,13 +186,13 @@ class @classDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mPropertyList
   private let @bool clonable
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation -> @string {
     result = "class @" + self.mClassTypeName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
             ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -222,7 +222,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -452,7 +452,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -598,7 +598,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -620,7 +620,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @initializerMap initializerMap
   private let @bool clonable
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -664,7 +664,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration2 ?let @string inOutputDirectory
                                      ?!@stringset ioInclusionSet
@@ -784,7 +784,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
@@ -824,7 +824,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

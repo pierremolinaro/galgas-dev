@@ -21,7 +21,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -44,7 +44,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -57,14 +57,14 @@ class @getterCallExpressionAST : @semanticExpressionAST {
   private let @actualOutputArgumentList mActualArgumentList
   private let @location mExpressionLocation
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
     [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -254,7 +254,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -270,7 +270,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionListForGeneration mActualArgumentList
   public let @bool mHasCompilerArgument
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression
     ?!@string ioGeneratedCode
@@ -353,7 +353,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
     outCppExpression += [self.mLocation sourceFile] + ")"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -63,7 +63,7 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
 struct @routineMap {
   private var @internalRoutineMap mInternalRoutineMap = @()
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   setter insertKey ?let @lstring inRoutineName
                    ?let @formalParameterSignature inRoutineSignature
@@ -87,7 +87,7 @@ struct @routineMap {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method searchKey ?let @lstring inRoutineName
                    ?actualParameters: @actualParameterListAST inActualParameterList
@@ -137,13 +137,13 @@ struct @routineMap {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   getter locationForKey ?let @string inKey -> @location {
     result = [self.mInternalRoutineMap locationForKey !inKey]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

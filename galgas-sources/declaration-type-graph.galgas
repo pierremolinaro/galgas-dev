@@ -38,7 +38,7 @@ class @graphDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
@@ -65,7 +65,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
@@ -100,7 +100,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -21,7 +21,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -65,7 +65,7 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -73,7 +73,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -117,7 +117,7 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -130,12 +130,12 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mExpression
   private let @lstring propertyName
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
                       ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -211,7 +211,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -221,7 +221,7 @@ class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration 
   private let @semanticExpressionForGeneration expression
   private let @string structFieldName
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -242,7 +242,7 @@ class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration 
     outCppExpression += [self.structFieldName identifierRepresentation] + " ()"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -255,7 +255,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
   private let @actualOutputArgumentList actualArgumentList
   private let @location endOfArgsLocation
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for expression in self.actualArgumentList do
@@ -263,7 +263,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
                                   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -330,7 +330,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -341,7 +341,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
   private let @string subscriptInvocationName
   private let @semanticExpressionListForGeneration actualExpressionList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -380,7 +380,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
     outCppExpression += compilerCppName () + " COMMA_HERE)"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -42,7 +42,7 @@ class @structuredCastInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <cast_instruction_branch> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@castInstructionBranchListAST ioCastInstructionBranchList {
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
       !@location.here
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionListAST outElseOrDefault {
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -126,7 +126,7 @@ syntax extension galgas3InstructionsSyntax {
       !endOfInstructionLocation}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -40,7 +40,7 @@ class @templateInstructionSwitchAST : @templateInstructionAST {
 
 syntax extension templateSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $switch$
@@ -73,7 +73,7 @@ syntax extension templateSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <switch_case> ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
@@ -121,7 +121,7 @@ syntax extension templateSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

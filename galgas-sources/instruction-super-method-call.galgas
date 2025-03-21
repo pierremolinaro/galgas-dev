@@ -21,7 +21,7 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
 //                                   !@semanticInstructionAST outInstruction {
@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -55,7 +55,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -63,7 +63,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -81,7 +81,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -91,7 +91,7 @@ class @superMethodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mMethodName
   private let @actualParameterListAST mActualParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (mActualParameter) in self.mActualParameterList do
@@ -99,7 +99,7 @@ class @superMethodCallInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -172,7 +172,7 @@ class @superMethodCallInstructionAST : @semanticInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -188,7 +188,7 @@ class @superMethodCallInstructionForGeneration : @semanticInstructionForGenerati
   private let @bool mHasCompilerArgument
   private let @unifiedTypeMapEntry mBaseType
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -256,7 +256,7 @@ class @superMethodCallInstructionForGeneration : @semanticInstructionForGenerati
 //    ioGeneratedCode += compilerCppName () + ") ; \n" 
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

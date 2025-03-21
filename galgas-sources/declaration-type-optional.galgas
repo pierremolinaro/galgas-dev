@@ -22,13 +22,13 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring unwrappedTypeName %initArgLabel
   private let @bool isUsefull %initArgLabel
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation -> @string {
     result = "optional @" + self.optionalTypeName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -44,7 +44,7 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addEdge !selfKey !unwrappedKey]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -135,12 +135,12 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
@@ -169,7 +169,7 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull)
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -181,7 +181,7 @@ class @optionalTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry unwrappedType
   private let @unifiedTypeMapEntry weakType // is null if no weak type
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -212,7 +212,7 @@ class @optionalTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
@@ -232,7 +232,7 @@ class @optionalTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

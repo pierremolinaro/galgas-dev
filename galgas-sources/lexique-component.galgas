@@ -39,7 +39,7 @@ class @lexiqueComponentAST : @semanticDeclarationAST {
 
 syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $lexique$
@@ -152,7 +152,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_indexing_declaration_ggs3> ?!@indexingListAST ioIndexingListAST {
     $indexing$
@@ -162,7 +162,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioIndexingListAST += !indexName !indexComment
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_message_declaration_ggs3>
     ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
@@ -173,7 +173,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalMessageDeclarationList += !messageName !messageValue
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_implicit_rule_ggs3> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
     $rule$
@@ -182,7 +182,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST {!listName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_explicit_rule_ggs3> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
     $rule$
@@ -197,7 +197,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST {!lexicalRuleExpression !instructionList}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $send$
@@ -205,7 +205,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioInstructionList += !instruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
     $while$
@@ -219,21 +219,21 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $'char'$ ?let @lchar character
     outEffectiveArgument = @lexicalCharacterInputArgumentAST {!character}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $literalInt$ ?let unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST {!unsignedValue}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     let currentLocation = @location.here
@@ -241,7 +241,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST {!currentLocation}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $identifier$ ?let idf
@@ -261,13 +261,13 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_expression> !@lexicalExpressionAST outExpression {
     <lexical_term> ?outExpression
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_term> !@lexicalExpressionAST outExpression {
     <lexical_factor> ?outExpression
@@ -279,14 +279,14 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor>!@lexicalExpressionAST outExpression {
     $"string"$ ?let string
     outExpression = @lexicalStringMatchAST {!string}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $~$
@@ -296,7 +296,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     outExpression = @lexicalStringNotMatchAST {!string !errorMessage}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $'char'$ ?let @lchar character
@@ -309,14 +309,14 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $identifier$ ?let @lstring characterSet
     outExpression = @lexicalCharacterSetMatchAST {!characterSet}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_declaration_ggs3> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
     $list$
@@ -348,7 +348,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
     $"string"$ ?let @lstring entrySpelling
@@ -376,7 +376,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       !isEndOfTemplateMark: isTemplateEndMark
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_attribute_declaration_ggs3> ?!@lexicalAttributeListAST ioLexicalAttributeList {
     $@type$ ?let @lstring typeName
@@ -384,7 +384,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalAttributeList += !typeName !name
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration_ggs3> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
@@ -424,7 +424,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       !isEndOfTemplateMark: templateEndMark
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <style_declaration_ggs3> ?!@lexicalStyleListAST ioLexicalStyleList {
     $style$
@@ -440,7 +440,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     ioLexicalStyleList += !styleIdentifier !comment
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -448,7 +448,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
 syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $lexique$
@@ -504,7 +504,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
     $indexing$
@@ -514,7 +514,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioIndexingListAST += !indexName !indexComment
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_message_declaration>
     ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
@@ -525,7 +525,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalMessageDeclarationList += !messageName !messageValue
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
     $rule$
@@ -534,7 +534,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST {!listName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
     $rule$
@@ -549,7 +549,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST {!lexicalRuleExpression !instructionList}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $send$
@@ -557,7 +557,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioInstructionList += !instruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
     $while$
@@ -571,21 +571,21 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $'char'$ ?let @lchar character
     outEffectiveArgument = @lexicalCharacterInputArgumentAST {!character}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $literalInt$ ?let unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST {!unsignedValue}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     let currentLocation = @location.here
@@ -593,7 +593,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST {!currentLocation}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
     $identifier$ ?let idf
@@ -613,13 +613,13 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_expression> !@lexicalExpressionAST outExpression {
     <lexical_term> ?outExpression
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_term> !@lexicalExpressionAST outExpression {
     <lexical_factor> ?outExpression
@@ -631,14 +631,14 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor>!@lexicalExpressionAST outExpression {
     $"string"$ ?let string
     outExpression = @lexicalStringMatchAST {!string}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $~$
@@ -648,7 +648,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     outExpression = @lexicalStringNotMatchAST {!string !errorMessage}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $'char'$ ?let @lchar character
@@ -661,14 +661,14 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_factor> !@lexicalExpressionAST outExpression {
     $identifier$ ?let @lstring characterSet
     outExpression = @lexicalCharacterSetMatchAST {!characterSet}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
     $list$
@@ -705,7 +705,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
     $"string"$ ?let @lstring entrySpelling
@@ -733,7 +733,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       !isEndOfTemplateMark: isTemplateEndMark
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
     $@type$ ?let @lstring typeName
@@ -741,7 +741,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalAttributeList += !typeName !name
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
@@ -785,7 +785,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       !isEndOfTemplateMark: templateEndMark
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
     $style$
@@ -801,7 +801,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     ioLexicalStyleList += !styleIdentifier !comment
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

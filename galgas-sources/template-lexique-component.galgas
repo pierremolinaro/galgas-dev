@@ -61,7 +61,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -99,7 +99,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       !endString
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
@@ -119,7 +119,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -127,7 +127,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $template$
@@ -156,7 +156,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -194,7 +194,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       !endString
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
     $%templateReplacement$
@@ -214,7 +214,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

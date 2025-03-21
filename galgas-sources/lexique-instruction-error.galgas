@@ -30,7 +30,7 @@ class @lexicalErrorInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $error$
@@ -38,7 +38,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalErrorInstructionAST {!errorMessageName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -46,7 +46,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $error$
@@ -54,7 +54,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalErrorInstructionAST {!errorMessageName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

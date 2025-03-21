@@ -115,7 +115,7 @@ list @galgasGUIComponentListAST {
 
 syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
@@ -150,7 +150,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       !projectExtensionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
@@ -219,7 +219,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
@@ -228,7 +228,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioImportedOptionList += !optionReference
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
@@ -242,7 +242,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioSimpleGlobalAttributes += !mKey !mValue
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -250,7 +250,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
 syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
@@ -285,7 +285,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       !projectExtensionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
@@ -354,7 +354,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
@@ -363,7 +363,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioImportedOptionList += !optionReference
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
@@ -377,7 +377,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioSimpleGlobalAttributes += !mKey !mValue
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

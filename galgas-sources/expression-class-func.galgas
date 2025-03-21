@@ -22,7 +22,7 @@
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <optional_type_ggs3> !@lstring outTypeName {
     select
@@ -32,7 +32,7 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -60,7 +60,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -68,7 +68,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
                                   !@semanticExpressionAST outExpression {
@@ -93,7 +93,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type_dot_name> ?let @lstring inTypeName
                                        ?let @lstring inClassFunctionName
@@ -118,7 +118,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -130,7 +130,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
   private let @actualOutputArgumentList expressions
   private let @location locationForOldStyleCollectionInitializerError
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     if self.typeName.string != "" then
@@ -139,7 +139,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
     [self.expressions enterInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -182,7 +182,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -312,7 +312,7 @@ class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mHasCompilerArgument
   private let [@unifiedTypeMapEntry] requiredTypes
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -357,7 +357,7 @@ class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

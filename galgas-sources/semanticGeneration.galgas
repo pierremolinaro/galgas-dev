@@ -34,7 +34,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mHasTranslateFeature
   public let @string mCppFileContents
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -52,7 +52,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
      ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -73,31 +73,31 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
     outImplementation = self.mCppFileContents
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getImplementationCppFileName -> @string {
     result = "grammar-" + [self.mGrammarName fileNameRepresentation]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter hasCppHeaderFile -> @bool {
     result = false
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter headerKind -> @headerKind {
     result = @headerKind.oneHeader
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter isPredefined -> @bool {
     result = false
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -112,31 +112,31 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getImplementationCppFileName -> @string {
     result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter hasCppHeaderFile -> @bool {
     result = false
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter headerKind -> @headerKind {
     result = .oneHeader
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter isPredefined -> @bool {
     result = false
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -159,7 +159,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
     ]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                               ?!@stringset ioInclusionSet
@@ -240,7 +240,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

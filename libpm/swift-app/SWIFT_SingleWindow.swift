@@ -827,6 +827,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       globalDict ["tabs"] = fileArray
       globalDict ["range"] = NSStringFromRange (self.mTabArray [0].selectedRange)
       globalDict ["selectedIndex"] = self.mSelectedTabIndex
+      globalDict ["windowRect"] = NSStringFromRect (self.frame)
       UserDefaults.standard.set (globalDict, forKey: self.userDefaultKey)
     }
   }
@@ -840,6 +841,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
        let tab0RangeString = globalDict ["range"] as? String {
       DispatchQueue.main.async {
         self.mTabArray [0].setSelectedRange (NSRangeFromString (tab0RangeString))
+        if let str = globalDict ["windowRect"] as? String {
+          let r = NSRectFromString (str)
+          self.setFrame (r, display: true, animate: false)
+        }
       }
       for tabDict in tabFilePathArray {
         if let filePath = tabDict ["file"], let rangeString = tabDict ["range"] {

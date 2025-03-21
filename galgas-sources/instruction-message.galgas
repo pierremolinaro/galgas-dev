@@ -29,7 +29,7 @@ class @messageInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
     outInstruction = @messageInstructionAST {!instructionLocation !expression}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -47,9 +47,9 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Replaced by print (...)
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 //    $message$
@@ -58,7 +58,7 @@ syntax extension galgas4InstructionsSyntax {
 //    outInstruction = @messageInstructionAST {!instructionLocation !expression}
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

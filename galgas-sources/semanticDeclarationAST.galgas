@@ -22,7 +22,7 @@
 abstract class @semanticDeclarationAST {
   protected let @bool isPredefined %initArgLabel
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -33,7 +33,7 @@ abstract class @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -44,7 +44,7 @@ abstract class @semanticDeclarationAST {
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext unused ioSemanticContext
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract method semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
@@ -56,7 +56,7 @@ abstract class @semanticDeclarationAST {
     ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

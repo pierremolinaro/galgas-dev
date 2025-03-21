@@ -22,9 +22,9 @@
 
 syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          Start symbol
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <start_symbol_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     repeat
@@ -33,9 +33,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          Rules prototypes
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
@@ -52,9 +52,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! Filewrapper Declaration
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
@@ -75,7 +75,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !filewrapperTemplateList
     }
   }
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -98,7 +98,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = @()
@@ -115,7 +115,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = @()
@@ -132,7 +132,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
@@ -179,7 +179,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -187,9 +187,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
 syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          Start symbol
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
@@ -198,9 +198,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          Rules prototypes
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                !@formalParameterListAST outFormalParameterList
@@ -217,9 +217,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! Filewrapper Declaration
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
@@ -240,7 +240,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !filewrapperTemplateList
     }
   }
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -263,7 +263,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = @()
@@ -280,7 +280,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = @()
@@ -297,7 +297,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
@@ -346,7 +346,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

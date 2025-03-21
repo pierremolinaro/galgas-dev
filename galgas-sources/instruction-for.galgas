@@ -87,7 +87,7 @@ class @forInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -103,7 +103,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -129,7 +129,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -163,7 +163,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -190,7 +190,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -213,7 +213,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -296,7 +296,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -304,7 +304,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -320,7 +320,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -346,7 +346,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -369,7 +369,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -396,7 +396,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -419,7 +419,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -502,7 +502,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

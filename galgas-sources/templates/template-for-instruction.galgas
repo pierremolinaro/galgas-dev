@@ -44,7 +44,7 @@ class @templateInstructionForeachAST : @templateInstructionAST {
 
 syntax extension templateSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $literalInt$ ?let count
@@ -59,21 +59,21 @@ syntax extension templateSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $*$
     ioElementList += !["" nowhere]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $identifier$ ?let constantName
     ioElementList += !constantName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
                                            !@templateExpressionAST outExpression {
@@ -94,7 +94,7 @@ syntax extension templateSyntax {
     outEnumeratedObject = .implicit {!prefix: foreachPrefix !remplacementRange: [start union !endLocation]}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
                                            !@templateExpressionAST outExpression {
@@ -119,7 +119,7 @@ syntax extension templateSyntax {
     outEnumeratedObject = .explicit {!enumeration: enumeration !endOfProperties: endOfProperties}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $for$
@@ -197,7 +197,7 @@ syntax extension templateSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

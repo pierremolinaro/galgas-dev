@@ -95,7 +95,7 @@ func makeWeakTypeLName ?let @lstring inTypeName -> @lstring {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
 //    $typealias$
@@ -109,9 +109,9 @@ syntax extension galgas3DeclarationsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SIMPLE ALIAS
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                               !@lstring outTypeName {
@@ -124,7 +124,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -136,7 +136,7 @@ syntax extension galgas3DeclarationsSyntax {
     $]$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -151,7 +151,7 @@ syntax extension galgas3DeclarationsSyntax {
     $>$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -161,7 +161,7 @@ syntax extension galgas3DeclarationsSyntax {
     [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -175,7 +175,7 @@ syntax extension galgas3DeclarationsSyntax {
     $)$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -183,7 +183,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-   //······························································································
+   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
 //    $typealias$
@@ -197,7 +197,7 @@ syntax extension galgas4DeclarationsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName {
@@ -226,14 +226,14 @@ syntax extension galgas4DeclarationsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
                                 !@lstring outTypeName {
     $@type$ ?outTypeName
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outTypeName {
@@ -260,7 +260,7 @@ syntax extension galgas4DeclarationsSyntax {
     $]$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outTypeName {
@@ -274,7 +274,7 @@ syntax extension galgas4DeclarationsSyntax {
     $)$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -286,18 +286,18 @@ syntax extension galgas4DeclarationsSyntax {
 //  private let @lstring mAliasTypeName
 //  private let @lstring mDefinedTypeName
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override getter keyRepresentation -> @string {
 //    result = "typealias @" + self.mAliasTypeName
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method enterDeclarationInGraph
 //    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -312,7 +312,7 @@ syntax extension galgas4DeclarationsSyntax {
 //    [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method enterDeclarationInSemanticContext
 //    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
@@ -361,7 +361,7 @@ syntax extension galgas4DeclarationsSyntax {
 //    end
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities
 //                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -382,7 +382,7 @@ syntax extension galgas4DeclarationsSyntax {
 //      !@aliasTypeForGeneration {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 //
@@ -394,7 +394,7 @@ syntax extension galgas4DeclarationsSyntax {
 //  private let @string mAliasTypeName
 //  private let @unifiedTypeMapEntry mReferencedType
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method appendDeclaration1 ?!@stringset ioInclusionSet
 //                                     !@string outHeader {
@@ -405,7 +405,7 @@ syntax extension galgas4DeclarationsSyntax {
 //    ]
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
 //                                                ?!@stringset unused ioInclusionSet
@@ -413,13 +413,13 @@ syntax extension galgas4DeclarationsSyntax {
 //    outImplementation = ""
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  override getter appendTypeGenericImplementation -> @string {
 //    result = ""
 //  }
 //
-//  //······························································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 

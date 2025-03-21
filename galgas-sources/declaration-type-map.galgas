@@ -69,7 +69,7 @@ override getter @mapDeclarationAST keyRepresentation ->@string result {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $map$
@@ -114,7 +114,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
@@ -124,7 +124,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapSearchMethodListAST += !methodName !errorMessage // !locationAttribute
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $remove$
@@ -135,7 +135,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
     $insert$
@@ -144,7 +144,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioInsertOrReplaceDeclarationListAST += !@location.here
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
@@ -165,7 +165,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mShadowErrorMessage
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -173,7 +173,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
@@ -218,7 +218,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $%searchMethod$
@@ -228,7 +228,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioMapSearchMethodListAST += !methodName !errorMessage // !locationAttribute
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $%removeSetter$
@@ -238,14 +238,14 @@ syntax extension galgas4DeclarationsSyntax {
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
     $%insertOrReplaceSetter$
     ioInsertOrReplaceDeclarationListAST += !@location.here
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $%insertSetter$
@@ -265,7 +265,7 @@ syntax extension galgas4DeclarationsSyntax {
       !mShadowErrorMessage
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

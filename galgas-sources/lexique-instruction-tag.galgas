@@ -30,7 +30,7 @@ class @lexicalTagInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $tag$
@@ -38,7 +38,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -46,7 +46,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $tag$
@@ -54,7 +54,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

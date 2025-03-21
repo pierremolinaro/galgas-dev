@@ -22,9 +22,9 @@
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    PROPERTY IN COLLECTION
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -64,7 +64,7 @@ syntax extension galgas3DeclarationsSyntax {
       !initialization: initialization
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -107,7 +107,7 @@ syntax extension galgas3DeclarationsSyntax {
       !initialization: initialization
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -127,7 +127,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -150,9 +150,9 @@ enum @propertyInCollectionInitializationAST %equatable {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    PROPERTY DECLARATION
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -191,7 +191,7 @@ syntax extension galgas4DeclarationsSyntax {
       !initialization: initialization
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -233,7 +233,7 @@ syntax extension galgas4DeclarationsSyntax {
       !initialization: initialization
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

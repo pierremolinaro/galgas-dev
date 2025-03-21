@@ -19,7 +19,7 @@
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -32,7 +32,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -40,7 +40,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -53,7 +53,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -64,7 +64,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 class @syntaxSendInstructionAST : @syntaxInstructionAST {
   private let @semanticExpressionAST mExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method transformInstructionForGrammarAnalysis
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -73,7 +73,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
     ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSyntaxInstruction
                                   ?let @lstring inUsefulnessCallerEntityName
@@ -114,7 +114,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -125,7 +125,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
 class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -147,7 +147,7 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
     ioGeneratedCode += "}\n"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

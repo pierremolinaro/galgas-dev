@@ -427,7 +427,7 @@ struct @galgasDeclarationAST {
   public var @programRuleList mSourceRuleList = @()
   public var @prologueEpilogueList mEpilogueDeclarationList =  @()
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   setter getOptionalTypeName !@lstring outOptionalTypeName
                              ?forTypeNamed: @lstring inTypeName
@@ -444,7 +444,7 @@ struct @galgasDeclarationAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

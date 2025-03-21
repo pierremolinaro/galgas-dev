@@ -29,7 +29,7 @@ class @dropInstructionAST : @semanticInstructionAST {
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -45,7 +45,7 @@ syntax extension galgas3InstructionsSyntax {
     outInstruction = @dropInstructionAST {!instructionLocation !dropList}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -53,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -69,7 +69,7 @@ syntax extension galgas4InstructionsSyntax {
     outInstruction = @dropInstructionAST {!instructionLocation !dropList}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

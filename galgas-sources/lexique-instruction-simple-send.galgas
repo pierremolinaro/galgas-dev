@@ -30,14 +30,14 @@ class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring sentTerminal
     outInstruction = @lexicalSimpleSendInstructionAST {!sentTerminal}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -45,14 +45,14 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring sentTerminal
     outInstruction = @lexicalSimpleSendInstructionAST {!sentTerminal}
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

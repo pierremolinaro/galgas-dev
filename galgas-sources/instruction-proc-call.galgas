@@ -21,7 +21,7 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 //    $identifier$ ?let mRoutineName indexing routineCall
@@ -56,7 +56,7 @@ syntax extension galgas4InstructionsSyntax {
 //    }
 //  }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -68,7 +68,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
   private let @lstring mRoutineName
   private let @actualParameterListAST mActualParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (mActualParameter) in self.mActualParameterList do
@@ -76,7 +76,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction  ?let @lstring inUsefulnessCallerEntityName
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -122,7 +122,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -134,7 +134,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring routineMangledName %initArgLabel
   private let @actualParameterListForGeneration mActualParameterList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -176,7 +176,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

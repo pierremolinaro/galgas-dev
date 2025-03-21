@@ -21,7 +21,7 @@
 
 syntax extension galgas3DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_cpp_predeclaration> !@string outCppPredeclarationCode {
     ${$
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
     ${$
@@ -82,7 +82,7 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_constructor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      ?!@externTypeConstructorList ioExternTypeConstructorList {
@@ -106,7 +106,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeConstructorList += !argumentTypeList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_getter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeGetterList ioExternTypeGetterList {
@@ -131,7 +131,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_setter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeSetterList ioExternTypeSetterList {
@@ -141,7 +141,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_method_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeMethodList ioExternTypeMethodList {
@@ -151,7 +151,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -159,7 +159,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 syntax extension galgas4DeclarationsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -194,7 +194,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_cpp_predeclaration>  !@string outCppPredeclarationCode {
     ${$
@@ -207,7 +207,7 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
     ${$
@@ -220,7 +220,7 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
@@ -250,7 +250,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeConstructorList += !argumentTypeList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
                            ?!@externTypeGetterList ioExternTypeGetterList {
@@ -275,7 +275,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeSetterList ioExternTypeSetterList {
@@ -286,7 +286,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
                            ?!@externTypeMethodList ioExternTypeMethodList {
@@ -296,7 +296,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -355,7 +355,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
   private let @externTypeSetterList mExternTypeSetterList
   private let @externTypeMethodList mExternTypeMethodList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -369,13 +369,13 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter keyRepresentation ->@string {
     result = "extern @" + self.mExternTypeName
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -505,7 +505,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

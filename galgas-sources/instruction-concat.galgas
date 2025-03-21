@@ -21,14 +21,14 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
                                                         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -142,7 +142,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                                !@actualOutputArgumentList outExpressionList {
@@ -167,14 +167,14 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
                                                         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -321,7 +321,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -336,7 +336,7 @@ enum @opAssignmentOperator {
   case mulAssign // *=
   case divAssign // /=
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   getter features -> @typeFeatures {
     switch self
@@ -350,7 +350,7 @@ enum @opAssignmentOperator {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   getter string -> @string {
     switch self
@@ -364,7 +364,7 @@ enum @opAssignmentOperator {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   getter cppFunctionName -> @string {
     switch self
@@ -378,7 +378,7 @@ enum @opAssignmentOperator {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -391,13 +391,13 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @opAssignmentOperator mOperator
   private let @semanticExpressionAST mExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction
                     ?let @lstring inUsefulnessCallerEntityName
@@ -480,7 +480,7 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     }
 }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -492,13 +492,13 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @lstringlist mStructAttributeList
   private let @actualOutputArgumentList mExpressions
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -599,7 +599,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -615,7 +615,7 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstringlist mStructAttributeList
   private let @semanticExpressionListForGeneration mExpressionList
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction
     ?!@stringset ioInclusionSet
@@ -656,7 +656,7 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -671,7 +671,7 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mSourceExpression
   private let @string mGeneratedMethod
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction
     ?!@stringset ioInclusionSet
@@ -699,7 +699,7 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

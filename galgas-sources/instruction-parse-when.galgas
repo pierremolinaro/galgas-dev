@@ -34,7 +34,7 @@ class @parseWhenInstruction : @syntaxInstructionAST {
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        !@syntaxInstructionList outElseInstructionList {
@@ -42,7 +42,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <syntax_instruction_list_ggs3> !?ioDeclarations ?outElseInstructionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        !@syntaxInstructionList outElseInstructionList {
@@ -68,7 +68,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -95,7 +95,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -103,7 +103,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        !@syntaxInstructionList outElseInstructionList {
@@ -111,7 +111,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <syntax_instruction_list> !?ioDeclarations ? outElseInstructionList
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
                                        !@syntaxInstructionList outElseInstructionList {
@@ -137,7 +137,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -164,7 +164,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

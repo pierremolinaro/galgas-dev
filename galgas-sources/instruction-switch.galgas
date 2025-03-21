@@ -21,7 +21,7 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -109,7 +109,7 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -140,7 +140,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
@@ -190,7 +190,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -221,7 +221,7 @@ class @switchInstructionAST : @semanticInstructionAST {
   private let @switchBranchesAST mBranches
   private let @location mEndOf_switch_instruction
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap {
@@ -231,7 +231,7 @@ class @switchInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -363,7 +363,7 @@ class @switchInstructionAST : @semanticInstructionAST {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -394,7 +394,7 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mSwitchExpression
   private let @switchBranchesForGeneration mBranches
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -455,7 +455,7 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += "}\n"
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

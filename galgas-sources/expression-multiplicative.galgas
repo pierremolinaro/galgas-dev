@@ -63,7 +63,7 @@ class @moduloExpressionAST : @semanticExpressionAST {
 
 syntax extension galgas3ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <term_ggs3> ?!@galgasDeclarationAST ioDeclarations
                    !@semanticExpressionAST outExpression {
@@ -102,7 +102,7 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -110,7 +110,7 @@ syntax extension galgas3ExpressionSyntax {
 
 syntax extension galgas4ExpressionSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <term> ?!@galgasDeclarationAST ioDeclarations
               !@semanticExpressionAST outExpression {
@@ -149,7 +149,7 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

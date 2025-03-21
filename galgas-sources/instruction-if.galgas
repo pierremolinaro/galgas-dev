@@ -21,12 +21,12 @@
 
 syntax extension galgas3InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@semanticExpressionAST outExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                              !@semanticInstructionAST outInstruction {
@@ -56,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -65,7 +65,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@ifExpressionList outExpressionList {
@@ -109,7 +109,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -117,12 +117,12 @@ syntax extension galgas3InstructionsSyntax {
 
 syntax extension galgas4InstructionsSyntax {
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
                        !@semanticExpressionAST outExpression
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                              !@semanticInstructionAST outInstruction {
@@ -152,7 +152,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -161,7 +161,7 @@ syntax extension galgas4InstructionsSyntax {
     $end$
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
                        !@ifExpressionList outExpressionList {
@@ -205,7 +205,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -233,7 +233,7 @@ class @ifInstructionAST : @semanticInstructionAST {
   public let @semanticInstructionListAST m_else_instructionList
   public let @location mEndOf_if_instruction
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (expression) in self.mExpressions do
@@ -249,9 +249,9 @@ class @ifInstructionAST : @semanticInstructionAST {
     [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! SEMANTICS
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // l'expression a peut être de la forme let varA = exp as @T ; idem pour b
   //
   // L'instruction : IF a, b THEN X ELSE Y END est analysée par :
@@ -273,7 +273,7 @@ class @ifInstructionAST : @semanticInstructionAST {
   //    closeBranch
   //  closeOverride
   //
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method analyzeSemanticInstruction
                           ?let @lstring inUsefulnessCallerEntityName
@@ -478,7 +478,7 @@ class @ifInstructionAST : @semanticInstructionAST {
     }
   }
 
-  //······························································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
