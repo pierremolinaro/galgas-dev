@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //%!"Extension method '@" + CLASS_NAME + " " + METHOD_NAME + "'"%
-//
 //--------------------------------------------------------------------------------------------------
 
 %!METHOD_IMPLEMENTATION%
@@ -31,7 +29,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
   end
 %  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
-    inObject->method_%![METHOD_NAME identifierRepresentation]%  (%
+    inObject->method_%![METHOD_NAME identifierRepresentation]% (%
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %constin_%![mFormalArgumentName identifierRepresentation]
@@ -47,3 +45,4 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
     %inCompiler COMMA_THERE) ;
   }
 }
+

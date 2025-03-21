@@ -15706,9 +15706,7 @@ GGS_initializerSignatureList callExtensionGetter_initializers (const cPtr_predef
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15728,13 +15726,12 @@ void callExtensionMethod_getClassFunctionMap (cPtr_predefinedTypeAST * inObject,
   out_outClassFunctionMap.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getClassFunctionMap  (io_ioUnifiedTypeMap, out_outClassFunctionMap, inCompiler COMMA_THERE) ;
+    inObject->method_getClassFunctionMap (io_ioUnifiedTypeMap, out_outClassFunctionMap, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15754,13 +15751,12 @@ void callExtensionMethod_getGetterMap (cPtr_predefinedTypeAST * inObject,
   out_outGetterMap.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getGetterMap  (io_ioUnifiedTypeMap, out_outGetterMap, inCompiler COMMA_THERE) ;
+    inObject->method_getGetterMap (io_ioUnifiedTypeMap, out_outGetterMap, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15780,13 +15776,12 @@ void callExtensionMethod_getSetterMap (cPtr_predefinedTypeAST * inObject,
   out_outSetterMap.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getSetterMap  (io_ioUnifiedTypeMap, out_outSetterMap, inCompiler COMMA_THERE) ;
+    inObject->method_getSetterMap (io_ioUnifiedTypeMap, out_outSetterMap, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getInstanceMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15806,13 +15801,12 @@ void callExtensionMethod_getInstanceMethodMap (cPtr_predefinedTypeAST * inObject
   out_outInstanceMethodMap.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getInstanceMethodMap  (io_ioUnifiedTypeMap, out_outInstanceMethodMap, inCompiler COMMA_THERE) ;
+    inObject->method_getInstanceMethodMap (io_ioUnifiedTypeMap, out_outInstanceMethodMap, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getClassMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15832,9 +15826,10 @@ void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
   out_outClassMethodMap.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getClassMethodMap  (io_ioUnifiedTypeMap, out_outClassMethodMap, inCompiler COMMA_THERE) ;
+    inObject->method_getClassMethodMap (io_ioUnifiedTypeMap, out_outClassMethodMap, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Extension getter '@predefinedTypeAST getSupportedOperatorFlags'
@@ -15892,9 +15887,7 @@ GGS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefinedTypeA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getAddAssignArgumentList'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15914,13 +15907,12 @@ void callExtensionMethod_getAddAssignArgumentList (cPtr_predefinedTypeAST * inOb
   out_outAddAssignArgumentList.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getAddAssignArgumentList  (io_ioUnifiedTypeMap, out_outAddAssignArgumentList, inCompiler COMMA_THERE) ;
+    inObject->method_getAddAssignArgumentList (io_ioUnifiedTypeMap, out_outAddAssignArgumentList, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@predefinedTypeAST getEnumerationList'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getEnumerationList (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -15944,9 +15936,10 @@ void callExtensionMethod_getEnumerationList (cPtr_predefinedTypeAST * inObject,
   out_outEnumeratedType.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    inObject->method_getEnumerationList  (io_ioUnifiedTypeMap, out_outEnumerationList, out_outEnumeratedType, inCompiler COMMA_THERE) ;
+    inObject->method_getEnumerationList (io_ioUnifiedTypeMap, out_outEnumerationList, out_outEnumeratedType, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_predefinedTypeAST_2E_weak::objectCompare (const GGS_predefinedTypeAST_2E_weak & inOperand) const {

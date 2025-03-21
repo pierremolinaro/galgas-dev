@@ -437,9 +437,7 @@ GGS_string cPtr_lexicalExplicitRuleAST::getter_generateSwiftCocoaCode (const GGS
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalSendTerminalByDefaultAST checkLexicalDefaultAction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSendTerminalByDefaultAST::method_checkLexicalDefaultAction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -449,10 +447,9 @@ void cPtr_lexicalSendTerminalByDefaultAST::method_checkLexicalDefaultAction (GGS
   GGS_lexicalSentValueList joker_8207 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.readProperty_mTerminalMap ().method_searchKey (temp_0.readProperty_mDefaultSentTerminal (), joker_8207, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 200)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalErrorByDefaultAST checkLexicalDefaultAction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalErrorByDefaultAST::method_checkLexicalDefaultAction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -463,10 +460,9 @@ void cPtr_lexicalErrorByDefaultAST::method_checkLexicalDefaultAction (GGS_lexiqu
   ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GGS_bool (true), temp_0.readProperty_mDefaultErrorMessageName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 208)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalOrExpressionAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalOrExpressionAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -477,20 +473,18 @@ void cPtr_lexicalOrExpressionAST::method_checkLexicalExpression (GGS_lexiqueAnal
   const GGS_lexicalOrExpressionAST temp_1 = this ;
   callExtensionMethod_checkLexicalExpression ((cPtr_lexicalExpressionAST *) temp_1.readProperty_mRightOperand ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 223)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCharacterMatchAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterMatchAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                    Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCharacterSetMatchAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterSetMatchAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -508,20 +502,18 @@ void cPtr_lexicalCharacterSetMatchAST::method_checkLexicalExpression (GGS_lexiqu
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCharacterIntervalMatchAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterIntervalMatchAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
                                                                            Compiler * /* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalStringMatchAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringMatchAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -530,10 +522,9 @@ void cPtr_lexicalStringMatchAST::method_checkLexicalExpression (GGS_lexiqueAnaly
   const GGS_lexicalStringMatchAST temp_0 = this ;
   ioArgument_ioLexiqueAnalysisContext.mProperty_mUnicodeStringToGenerate.addAssign_operation (temp_0.readProperty_mString ().readProperty_string ()  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 252)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalStringNotMatchAST checkLexicalExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringNotMatchAST::method_checkLexicalExpression (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -546,10 +537,9 @@ void cPtr_lexicalStringNotMatchAST::method_checkLexicalExpression (GGS_lexiqueAn
   ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GGS_bool (true), temp_1.readProperty_mErrorMessage ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 260)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalFunctionCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -569,10 +559,9 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalFunctionCallArgum
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalFunctionCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -589,10 +578,9 @@ void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalFunctionCallArgum
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalFunctionCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -609,10 +597,9 @@ void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalFunctionCallArgume
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalFunctionCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -629,10 +616,9 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalFunctionCa
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalFunctionCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -683,10 +669,9 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalFunctionCallArgume
     enumerator_15588.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -706,10 +691,9 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgume
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -726,10 +710,9 @@ void cPtr_lexicalCharacterInputArgumentAST::method_checkLexicalRoutineCallArgume
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -746,10 +729,9 @@ void cPtr_lexicalUnsignedInputArgumentAST::method_checkLexicalRoutineCallArgumen
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -766,10 +748,9 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::method_checkLexicalRoutineCal
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -820,10 +801,9 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgumen
     enumerator_20454.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalImplicitRuleAST checkLexicalRule'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -835,10 +815,9 @@ void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisCo
   GGS_bool joker_21717 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_21711, joker_21714, joker_21717, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 504)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalExplicitRuleAST checkLexicalRule'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -854,10 +833,9 @@ void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisCo
     enumerator_22059.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalStructuredSendInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStructuredSendInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -877,6 +855,7 @@ void cPtr_lexicalStructuredSendInstructionAST::method_checkLexicalInstruction (G
   const GGS_lexicalStructuredSendInstructionAST temp_1 = this ;
   callExtensionMethod_checkLexicalDefaultAction ((cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas", 115)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode'
@@ -983,9 +962,7 @@ GGS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateLexicalInstr
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalDropInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalDropInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -996,6 +973,7 @@ void cPtr_lexicalDropInstructionAST::method_checkLexicalInstruction (GGS_lexique
   GGS_lexicalSentValueList joker_3069 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.readProperty_mTerminalMap ().method_searchKey (temp_0.readProperty_mTerminalName (), joker_3069, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-drop.galgas", 68)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalDropInstructionAST generateObjcCocoaInstructionCode'
@@ -1066,9 +1044,7 @@ GGS_string cPtr_lexicalDropInstructionAST::getter_generateLexicalInstructionCode
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalErrorInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalErrorInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1080,6 +1056,7 @@ void cPtr_lexicalErrorInstructionAST::method_checkLexicalInstruction (GGS_lexiqu
   ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GGS_bool (true), temp_0.readProperty_mErrorMessageName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-error.galgas", 69)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalErrorInstructionAST generateObjcCocoaInstructionCode'
@@ -1148,9 +1125,7 @@ GGS_string cPtr_lexicalErrorInstructionAST::getter_generateLexicalInstructionCod
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalLogInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalLogInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -1158,6 +1133,7 @@ void cPtr_lexicalLogInstructionAST::method_checkLexicalInstruction (GGS_lexiqueA
                                                                     Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalLogInstructionAST generateObjcCocoaInstructionCode'
@@ -1225,9 +1201,7 @@ GGS_string cPtr_lexicalLogInstructionAST::getter_generateLexicalInstructionCode 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalRepeatInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalRepeatInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1254,6 +1228,7 @@ void cPtr_lexicalRepeatInstructionAST::method_checkLexicalInstruction (GGS_lexiq
     enumerator_4304.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalRepeatInstructionAST generateObjcCocoaInstructionCode'
@@ -1432,9 +1407,7 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateLexicalInstructionCo
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalRewindInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalRewindInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1447,6 +1420,7 @@ void cPtr_lexicalRewindInstructionAST::method_checkLexicalInstruction (GGS_lexiq
   GGS_lexicalSentValueList joker_3257 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.readProperty_mTerminalMap ().method_searchKey (temp_1.readProperty_mTerminalName (), joker_3257, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-rewind.galgas", 74)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalRewindInstructionAST generateObjcCocoaInstructionCode'
@@ -1607,9 +1581,7 @@ GGS_string cPtr_lexicalFormalInputArgumentAST::getter_generateSwiftCocoaRoutineA
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1639,10 +1611,9 @@ void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCall
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFormalInputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1662,10 +1633,9 @@ void cPtr_lexicalFormalInputArgumentAST::method_checkLexicalRoutineCallArgument 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalRoutineCallInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1718,6 +1688,7 @@ void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_
     enumerator_11925.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode'
@@ -1847,9 +1818,7 @@ GGS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateLexicalInstruct
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalSelectInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSelectInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -1876,6 +1845,7 @@ void cPtr_lexicalSelectInstructionAST::method_checkLexicalInstruction (GGS_lexiq
     enumerator_4737.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalSelectInstructionAST generateObjcCocoaInstructionCode'
@@ -2106,9 +2076,7 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructionCo
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalSimpleSendInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSimpleSendInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -2119,6 +2087,7 @@ void cPtr_lexicalSimpleSendInstructionAST::method_checkLexicalInstruction (GGS_l
   GGS_lexicalSentValueList joker_3072 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.readProperty_mTerminalMap ().method_searchKey (temp_0.readProperty_mSentTerminal (), joker_3072, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-simple-send.galgas", 66)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalSimpleSendInstructionAST generateObjcCocoaInstructionCode'
@@ -2190,9 +2159,7 @@ GGS_string cPtr_lexicalSimpleSendInstructionAST::getter_generateLexicalInstructi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalTagInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalTagInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & /* ioArgument_ioLexiqueAnalysisContext */,
@@ -2204,6 +2171,7 @@ void cPtr_lexicalTagInstructionAST::method_checkLexicalInstruction (GGS_lexiqueA
   ioArgument_ioTagMap.setter_insertKey (temp_0.readProperty_mLexicalTagName (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-tag.galgas", 68)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalTagInstructionAST generateObjcCocoaInstructionCode'
@@ -2278,9 +2246,7 @@ GGS_string cPtr_lexicalTagInstructionAST::getter_generateLexicalInstructionCode 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexicalWarningInstructionAST checkLexicalInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalWarningInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
@@ -2292,6 +2258,7 @@ void cPtr_lexicalWarningInstructionAST::method_checkLexicalInstruction (GGS_lexi
   ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GGS_bool (true), temp_0.readProperty_mWarningMessageName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-warning.galgas", 68)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexicalWarningInstructionAST generateObjcCocoaInstructionCode'
@@ -2360,9 +2327,7 @@ GGS_string cPtr_lexicalWarningInstructionAST::getter_generateLexicalInstructionC
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & /* ioArgument_ioSemanticTypePrecedenceGraph */,
@@ -2377,10 +2342,9 @@ void cPtr_optionComponentDeclarationAST::method_enterDeclarationInGraph (GGS_sem
   const GGS_optionComponentDeclarationAST temp_0 = this ;
   ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("optionCompilation.galgas", 189)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
@@ -2504,10 +2468,9 @@ void cPtr_optionComponentDeclarationAST::method_enterDeclarationInSemanticContex
   ioArgument_ioSemanticContext.mProperty_mOptionComponentMapForSemanticAnalysis.setter_insertKey (temp_18.readProperty_mOptionComponentName (), temp_19.readProperty_isPredefined (), var_boolOptionMap_7953, var_uintOptionMap_8001, var_stringOptionMap_8049, var_stringListOptionMap_8099, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 263)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GGS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
@@ -2560,6 +2523,7 @@ void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GGS_lstringlis
   const GGS_optionComponentDeclarationAST temp_4 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("option ").add_operation (temp_2.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 337)), GGS_optionComponentForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (GGS_bool (true), GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 340)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 340)), var_optionIsPredefined_11740, temp_4.readProperty_mOptionComponentName ().readProperty_string (), var_boolOptionSortedList_12005, var_uintOptionSortedList_12277, var_stringOptionSortedList_12549, var_stringListOptionSortedList_12827, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("optionCompilation.galgas", 336)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@optionComponentForGeneration isPredefined'
@@ -2600,9 +2564,7 @@ GGS_headerKind cPtr_optionComponentForGeneration::getter_headerKind (Compiler */
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -2626,10 +2588,9 @@ void cPtr_optionComponentForGeneration::method_appendDeclaration_31_ (GGS_string
     outArgument_outHeader = GGS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (inCompiler, temp_2.readProperty_mOptionComponentName (), temp_3.readProperty_mBoolOptionSortedList (), temp_4.readProperty_mUIntOptionSortedList (), temp_5.readProperty_mStringOptionSortedList (), temp_6.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 384))) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -2656,10 +2617,9 @@ void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (con
     outArgument_outImplementation = GGS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (inCompiler, temp_3.readProperty_mOptionComponentName (), temp_4.readProperty_mBoolOptionSortedList (), temp_5.readProperty_mUIntOptionSortedList (), temp_6.readProperty_mStringOptionSortedList (), temp_7.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 405))) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionComponentForGeneration appendSpecificFiles'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_string constinArgument_inProductDirectory,
@@ -2716,6 +2676,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_st
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'optionGenerationTemplates'
@@ -4078,9 +4039,7 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@predefinedTypeAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -4099,10 +4058,9 @@ void cPtr_predefinedTypeAST::method_enterDeclarationInGraph (GGS_semanticTypePre
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_3065, temp_1, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 65)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@predefinedTypeAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
@@ -4183,10 +4141,9 @@ void cPtr_predefinedTypeAST::method_enterDeclarationInSemanticContext (GGS_equat
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_5838.readProperty_typeName (), var_typeDefinition_5838, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 153)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@predefinedTypeAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -4222,6 +4179,7 @@ void cPtr_predefinedTypeAST::method_semanticAnalysis (GGS_lstringlist & ioArgume
   const GGS_predefinedTypeAST temp_6 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("Predefined type ").add_operation (temp_3.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 182)), GGS_primitiveTypeForGeneration::init_21__21__21__21_isPackage (var_selfType_7503, temp_4.readProperty_mPredefinedTypeName (), callExtensionGetter_cppDeclarationString ((const cPtr_predefinedTypeAST *) temp_5.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 186)), GGS_bool (ComparisonKind::equal, callExtensionGetter_typeKind ((const cPtr_predefinedTypeAST *) temp_6.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 187)).objectCompare (GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("declaration-predefined-type.galgas", 187)))), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 181)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'appendPredefinedListTypeAST&?&'
@@ -4836,9 +4794,7 @@ GGS_typeFeatures cPtr_applicationPredefinedTypeAST::getter_getSupportedOperatorF
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@applicationPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_applicationPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -4916,10 +4872,9 @@ void cPtr_applicationPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedT
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("keywordListForIdentifier"), GGS_string ("string"), GGS_string ("inIdentifier"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-application.galgas", 258)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@applicationPredefinedTypeAST getClassMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_applicationPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -4940,6 +4895,7 @@ void cPtr_applicationPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTyp
   routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (outArgument_outClassMethodMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setStringOptionValue"), GGS_string ("string"), GGS_string ("inDomain"), GGS_string ("string"), GGS_string ("inIdentifier"), GGS_string ("string"), GGS_string ("inValue"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-application.galgas", 306)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@bigintPredefinedTypeAST cppDeclarationString'
@@ -4956,9 +4912,7 @@ GGS_string cPtr_bigintPredefinedTypeAST::getter_cppDeclarationString (Compiler *
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bigintPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bigintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -4970,10 +4924,9 @@ void cPtr_bigintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMa
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("zero"), GGS_string ("bigint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 39)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bigintPredefinedTypeAST getInstanceMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bigintPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -4993,10 +4946,9 @@ void cPtr_bigintPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeM
   outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("divideBy"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 61)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 62)), var_argList_2450, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 64)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 66)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 60)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bigintPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bigintPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5011,10 +4963,9 @@ void cPtr_bigintPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioA
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("uint"), GGS_string ("inIndex"), GGS_string ("complementBitAtIndex"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 88)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bigintPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bigintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5100,6 +5051,7 @@ void cPtr_bigintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioA
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("extract64ForSignedRepresentation"), GGS_string::makeEmptyString (), GGS_string ("uint64list"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 299)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@bigintPredefinedTypeAST getSupportedOperatorFlags'
@@ -5163,9 +5115,7 @@ GGS_string cPtr_binarysetPredefinedTypeAST::getter_cppDeclarationString (Compile
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@binarysetPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_binarysetPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5222,10 +5172,9 @@ void cPtr_binarysetPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTyp
   routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_argTypeName_33__3F_argName_33__3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("binarySetWithGreaterOrEqualToConstant"), GGS_string ("uint"), GGS_string ("inBitIndex"), GGS_string ("uint"), GGS_string ("inBitCount"), GGS_string ("uint64"), GGS_string ("inConstant"), GGS_string ("binaryset"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 227)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@binarysetPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_binarysetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5356,10 +5305,9 @@ void cPtr_binarysetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & 
   routine_enterBaseFinalGetterWith_32_Arguments_26__26__3F_getterName_3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("existsOnBitRange"), GGS_string ("uint"), GGS_string ("inFirstBit"), GGS_string ("uint"), GGS_string ("inBitCount"), GGS_string ("binaryset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 538)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@binarysetPredefinedTypeAST getClassMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_binarysetPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5374,6 +5322,7 @@ void cPtr_binarysetPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeM
   routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (outArgument_outClassMethodMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setAndTableSize"), GGS_string ("uint"), GGS_string ("inTableSize"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 560)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@boolPredefinedTypeAST getSupportedOperatorFlags'
@@ -5405,9 +5354,7 @@ GGS_string cPtr_boolPredefinedTypeAST::getter_cppDeclarationString (Compiler * i
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -5416,10 +5363,9 @@ void cPtr_boolPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GGS_classFunctionMap::init (inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5451,6 +5397,7 @@ void cPtr_boolPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("bigint"), GGS_string::makeEmptyString (), GGS_string ("bigint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bool.galgas", 100)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@charPredefinedTypeAST getSupportedOperatorFlags'
@@ -5467,9 +5414,7 @@ GGS_typeFeatures cPtr_charPredefinedTypeAST::getter_getSupportedOperatorFlags (C
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@charPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_charPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5543,10 +5488,9 @@ void cPtr_charPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("unicodeToUpper"), GGS_string::makeEmptyString (), GGS_string ("char"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-char.galgas", 198)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@charPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_charPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5564,6 +5508,7 @@ void cPtr_charPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("unicodeCharacterFromRawKeyboard"), GGS_string ("char"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-char.galgas", 229)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@charPredefinedTypeAST cppDeclarationString'
@@ -5597,9 +5542,7 @@ GGS_initializerSignatureList cPtr_dataPredefinedTypeAST::getter_initializers (Co
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dataPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dataPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5614,6 +5557,7 @@ void cPtr_dataPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("dataWithContentsOfFile"), GGS_string ("string"), GGS_string ("inFilePath"), GGS_string ("data"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 45)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@dataPredefinedTypeAST getSupportedOperatorFlags'
@@ -5630,9 +5574,7 @@ GGS_typeFeatures cPtr_dataPredefinedTypeAST::getter_getSupportedOperatorFlags (C
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dataPredefinedTypeAST getEnumerationList'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dataPredefinedTypeAST::method_getEnumerationList (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5648,10 +5590,9 @@ void cPtr_dataPredefinedTypeAST::method_getEnumerationList (GGS_unifiedTypeMap &
   outArgument_outEnumerationList.addAssign_operation (var_uintTypeIndex_2915, GGS_string ("data")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 69)) ;
   outArgument_outEnumeratedType = GGS_string ("uint") ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dataPredefinedTypeAST getInstanceMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dataPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5679,10 +5620,9 @@ void cPtr_dataPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap
   outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 100)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-data.galgas", 101)), var_argList_3807, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 103)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-data.galgas", 105)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 99)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dataPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dataPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5699,10 +5639,9 @@ void cPtr_dataPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("cStringRepresentation"), GGS_string::makeEmptyString (), GGS_string ("string"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 123)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dataPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dataPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5732,6 +5671,7 @@ void cPtr_dataPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("data"), GGS_string ("inValue"), GGS_string ("appendData"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 186)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@dataPredefinedTypeAST cppDeclarationString'
@@ -5763,9 +5703,7 @@ GGS_typeFeatures cPtr_doublePredefinedTypeAST::getter_getSupportedOperatorFlags 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@doublePredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_doublePredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5830,10 +5768,9 @@ void cPtr_doublePredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioA
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("binaryImage"), GGS_string::makeEmptyString (), GGS_string ("uint64"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-double.galgas", 177)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@doublePredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_doublePredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5848,6 +5785,7 @@ void cPtr_doublePredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMa
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("doubleWithBinaryImage"), GGS_string ("uint64"), GGS_string ("inBinaryImage"), GGS_string ("double"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-double.galgas", 199)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@doublePredefinedTypeAST cppDeclarationString'
@@ -5894,9 +5832,7 @@ GGS_string cPtr_filewrapperPredefinedTypeAST::getter_cppDeclarationString (Compi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5908,10 +5844,9 @@ void cPtr_filewrapperPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap 
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("string"), GGS_string ("inDirectoryPath"), GGS_string ("setCurrentDirectory"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-filewrapper.galgas", 44)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5961,6 +5896,7 @@ void cPtr_filewrapperPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap 
   routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("textFilesAtPath"), GGS_string ("string"), GGS_string ("inPath"), GGS_string ("stringlist"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-filewrapper.galgas", 147)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@functionPredefinedTypeAST getSupportedOperatorFlags'
@@ -5977,9 +5913,7 @@ GGS_typeFeatures cPtr_functionPredefinedTypeAST::getter_getSupportedOperatorFlag
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -5997,10 +5931,9 @@ void cPtr_functionPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedType
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("isFunctionDefined"), GGS_string ("string"), GGS_string ("inFunctionName"), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-function.galgas", 54)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6023,6 +5956,7 @@ void cPtr_functionPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & i
   routine_enterBaseFinalGetterWith_32_Arguments_26__26__3F_getterName_3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("invoke"), GGS_string ("objectlist"), GGS_string ("inParameters"), GGS_string ("location"), GGS_string ("inErrorLocation"), GGS_string ("object"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-function.galgas", 94)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@functionPredefinedTypeAST cppDeclarationString'
@@ -6054,9 +5988,7 @@ GGS_typeFeatures cPtr_locationPredefinedTypeAST::getter_getSupportedOperatorFlag
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@locationPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_locationPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6077,10 +6009,9 @@ void cPtr_locationPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedType
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("separator"), GGS_string ("location"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-location.galgas", 59)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@locationPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_locationPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6124,6 +6055,7 @@ void cPtr_locationPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & i
   routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F_argType_3F_argName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("union"), GGS_string::makeEmptyString (), GGS_string ("location"), GGS_string ("inOtherLocation"), GGS_string ("location"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-location.galgas", 153)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@locationPredefinedTypeAST cppDeclarationString'
@@ -6170,9 +6102,7 @@ GGS_string cPtr_objectPredefinedTypeAST::getter_cppDeclarationString (Compiler *
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@objectPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_objectPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6189,6 +6119,7 @@ void cPtr_objectPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioA
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("objectDynamicType"), GGS_string::makeEmptyString (), GGS_string ("type"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-object.galgas", 52)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@stringsetPredefinedTypeAST supportsCollectionValue'
@@ -6252,9 +6183,7 @@ GGS_typeFeatures cPtr_stringsetPredefinedTypeAST::getter_getSupportedOperatorFla
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringsetPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6275,10 +6204,9 @@ void cPtr_stringsetPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTyp
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setWithLStringList"), GGS_string ("lstringlist"), GGS_string ("inLStringList"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 85)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringsetPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6297,10 +6225,9 @@ void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & 
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("string"), GGS_string ("inValue"), GGS_string ("insert"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 110)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringsetPredefinedTypeAST getEnumerationList'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6316,10 +6243,9 @@ void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GGS_unifiedType
   outArgument_outEnumerationList.addAssign_operation (var_stringTypeIndex_4834, GGS_string ("key")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 127)) ;
   outArgument_outEnumeratedType = GGS_string ("string") ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringsetPredefinedTypeAST getAddAssignArgumentList'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6334,10 +6260,9 @@ void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GGS_unifi
   temp_0.enterElement (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)), var_stringTypeIndex_5316, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringsetPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6360,6 +6285,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & 
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("stringList"), GGS_string::makeEmptyString (), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 167)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@sintPredefinedTypeAST cppDeclarationString'
@@ -6391,9 +6317,7 @@ GGS_typeFeatures cPtr_sintPredefinedTypeAST::getter_getSupportedOperatorFlags (C
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@sintPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6408,10 +6332,9 @@ void cPtr_sintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("min"), GGS_string ("sint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-sint.galgas", 59)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@sintPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6461,6 +6384,7 @@ void cPtr_sintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("canDivide"), GGS_string ("sint"), GGS_string ("inOperand"), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-sint.galgas", 170)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@sint64PredefinedTypeAST getSupportedOperatorFlags'
@@ -6477,9 +6401,7 @@ GGS_typeFeatures cPtr_sint_36__34_PredefinedTypeAST::getter_getSupportedOperator
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@sint64PredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sint_36__34_PredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6494,10 +6416,9 @@ void cPtr_sint_36__34_PredefinedTypeAST::method_getClassFunctionMap (GGS_unified
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("min"), GGS_string ("sint64"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-sint64.galgas", 52)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@sint64PredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sint_36__34_PredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6547,6 +6468,7 @@ void cPtr_sint_36__34_PredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap
   routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("canDivide"), GGS_string ("sint64"), GGS_string ("inOperand"), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-sint64.galgas", 163)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@sint64PredefinedTypeAST cppDeclarationString'
@@ -6563,9 +6485,7 @@ GGS_string cPtr_sint_36__34_PredefinedTypeAST::getter_cppDeclarationString (Comp
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
@@ -6576,10 +6496,9 @@ void cPtr_stringPredefinedTypeAST::method_addAssociatedElement (GGS_galgasDeclar
   extensionSetter_getOptionalTypeName (ioArgument_ioDeclarations, joker_1648, GGS_lstring::init_21__21_ (GGS_string ("bigint"), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 30)), inCompiler COMMA_HERE), GGS_bool (true), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 30)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6645,10 +6564,9 @@ void cPtr_stringPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMa
   routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("stringWithSequenceOfCharacters"), GGS_string ("char"), GGS_string ("inChar"), GGS_string ("uint"), GGS_string ("inCount"), GGS_string ("string"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 186)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST getClassMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6697,10 +6615,9 @@ void cPtr_stringPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap 
   outArgument_outClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("generateFileWithPattern"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 256)), inCompiler COMMA_HERE), var_argList_7390, GGS_bool (true) COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 255)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST getInstanceMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6743,10 +6660,9 @@ void cPtr_stringPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeM
   outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToExecutableFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 328)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-string.galgas", 329)), var_argList_10513, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 331)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-string.galgas", 333)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 327)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -6776,10 +6692,9 @@ void cPtr_stringPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & ioA
   routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeName_3F_outputArgName_3F_inputArgTypeName_3F_inputArgName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("char"), GGS_string ("outChar"), GGS_string ("uint"), GGS_string ("inIndex"), GGS_string ("removeCharacterAtIndex"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 395)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@stringPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7021,6 +6936,7 @@ void cPtr_stringPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioA
   routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Selector_3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_Selector_3F_arg_32_TypeName_3F_arg_32_Name_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("regularFilesWithExtensions"), GGS_string::makeEmptyString (), GGS_string ("bool"), GGS_string ("inRecursiveSearch"), GGS_string::makeEmptyString (), GGS_string ("stringlist"), GGS_string ("inExtensionList"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 1047)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@stringPredefinedTypeAST getSupportedOperatorFlags'
@@ -7084,9 +7000,7 @@ GGS_typeFeatures cPtr_timerPredefinedTypeAST::getter_getSupportedOperatorFlags (
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@timerPredefinedTypeAST getSetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_timerPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
@@ -7101,10 +7015,9 @@ void cPtr_timerPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & /* i
   routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (outArgument_outSetterMap, GGS_string ("resume"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 49)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@timerPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_timerPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7124,10 +7037,9 @@ void cPtr_timerPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioAr
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("isRunning"), GGS_string::makeEmptyString (), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 77)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@timerPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_timerPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7139,6 +7051,7 @@ void cPtr_timerPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("start"), GGS_string ("timer"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 92)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@timerPredefinedTypeAST cppDeclarationString'
@@ -7155,9 +7068,7 @@ GGS_string cPtr_timerPredefinedTypeAST::getter_cppDeclarationString (Compiler * 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@typePredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typePredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7169,10 +7080,9 @@ void cPtr_typePredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("typeList"), GGS_string ("typelist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-type.galgas", 32)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@typePredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typePredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7192,6 +7102,7 @@ void cPtr_typePredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("superclass"), GGS_string::makeEmptyString (), GGS_string ("type"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-type.galgas", 62)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@typePredefinedTypeAST getSupportedOperatorFlags'
@@ -7253,9 +7164,7 @@ GGS_typeFeatures cPtr_uintPredefinedTypeAST::getter_getSupportedOperatorFlags (C
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@uintPredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7282,10 +7191,9 @@ void cPtr_uintPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
   routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_31__3F_argName_31__3F_argTypeName_32__3F_argName_32__3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("valueWithMask"), GGS_string ("uint"), GGS_string ("inLowerIndex"), GGS_string ("uint"), GGS_string ("inUpperIndex"), GGS_string ("uint"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-uint.galgas", 85)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@uintPredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7353,10 +7261,9 @@ void cPtr_uintPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArg
   routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("canDivide"), GGS_string ("uint"), GGS_string ("inOperand"), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-uint.galgas", 247)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@uintPredefinedTypeAST getClassMethodMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uintPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7368,6 +7275,7 @@ void cPtr_uintPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap & 
   routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (outArgument_outClassMethodMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setRandomSeed"), GGS_string ("uint"), GGS_string ("inSeed"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-uint.galgas", 261)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@uint64PredefinedTypeAST cppDeclarationString'
@@ -7399,9 +7307,7 @@ GGS_typeFeatures cPtr_uint_36__34_PredefinedTypeAST::getter_getSupportedOperator
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@uint64PredefinedTypeAST getClassFunctionMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uint_36__34_PredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7422,10 +7328,9 @@ void cPtr_uint_36__34_PredefinedTypeAST::method_getClassFunctionMap (GGS_unified
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("uint64WithBitString"), GGS_string ("string"), GGS_string ("inBitString"), GGS_string ("uint64"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-uint64.galgas", 73)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@uint64PredefinedTypeAST getGetterMap'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uint_36__34_PredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -7481,6 +7386,7 @@ void cPtr_uint_36__34_PredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap
   routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("canDivide"), GGS_string ("uint64"), GGS_string ("inOperand"), GGS_string ("bool"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-uint64.galgas", 201)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Function 'makeEmbeddedTypeLName'
@@ -7981,9 +7887,7 @@ GGS_string cPtr_arrayTypeDeclarationAST::getter_keyRepresentation (Compiler * in
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -8008,10 +7912,9 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semanticT
   ioArgument_ioSemanticTypePrecedenceGraph.setter_noteNode (GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_3.readProperty_elementTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 83)), temp_4.readProperty_elementTypeName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 83)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -8110,20 +8013,18 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GGS
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_9700.readProperty_typeName (), var_typeDefinition_9700, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 285)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & /* ioArgument_ioDeclarations */,
                                                                 Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -8195,10 +8096,9 @@ void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & io
   const GGS_arrayTypeDeclarationAST temp_17 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("array type ").add_operation (temp_16.readProperty_arrayTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 363)), GGS_arrayTypeForGeneration::init_21__21_ (var_selfType_14101, extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_17.readProperty_elementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 366)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 362)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -8212,10 +8112,9 @@ void cPtr_arrayTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & 
   const GGS_arrayTypeForGeneration temp_2 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_15062.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 393)), var_selfTypeDefinition_15062.readProperty_isConcrete (), var_selfTypeDefinition_15062.readProperty_initializerMap (), var_selfTypeDefinition_15062.readProperty_classFunctionMap (), var_selfTypeDefinition_15062.readProperty_getterMap (), var_selfTypeDefinition_15062.readProperty_setterMap (), var_selfTypeDefinition_15062.readProperty_instanceMethodMap (), var_selfTypeDefinition_15062.readProperty_classMethodMap (), var_selfTypeDefinition_15062.readProperty_readSubscriptMap (), var_selfTypeDefinition_15062.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_15062.readProperty_features (), var_selfTypeDefinition_15062.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_15062.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_15062.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@arrayTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_arrayTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -8232,6 +8131,7 @@ void cPtr_arrayTypeForGeneration::method_appendSpecificImplementation (const GGS
   const GGS_arrayTypeForGeneration temp_3 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_16569.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 420)), extensionGetter_identifierRepresentation (var_selfTypeDefinition_16569.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 421)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_16569.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 422)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 418))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'arrayTypeGenerationTemplate'

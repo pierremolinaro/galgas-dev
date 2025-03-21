@@ -8,9 +8,7 @@
 #include "all-declarations-30.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@plusEqualnstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_plusEqualnstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -70,10 +68,9 @@ void cPtr_plusEqualnstructionForGeneration::method_generateInstruction (GGS_stri
   const GGS_plusEqualnstructionForGeneration temp_8 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (" ").add_operation (extensionGetter_commaSourceFile (temp_8.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 656)), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 656)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 656)), inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 656)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@opAssignInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_opAssignInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -113,20 +110,18 @@ void cPtr_opAssignInstructionForGeneration::method_generateInstruction (GGS_stri
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_7.readProperty_mTargetVariableCppName () COMMA_SOURCE_FILE ("instruction-concat.galgas", 699)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dropInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dropInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                         Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dropInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dropInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -146,10 +141,9 @@ void cPtr_dropInstructionAST::method_analyzeSemanticInstruction (const GGS_lstri
     enumerator_4091.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@errorInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_errorInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -162,6 +156,7 @@ void cPtr_errorInstructionAST::method_enterInstructionInSemanticContext (GGS_uni
   const GGS_errorInstructionAST temp_2 = this ;
   extensionMethod_enterFixItListInSemanticContext (temp_2.readProperty_mFixitListAST (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 212)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'analyzeErrorOrWarningInstruction?&?&?????&!!!'
@@ -307,9 +302,7 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@errorInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_errorInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -346,10 +339,9 @@ void cPtr_errorInstructionAST::method_analyzeSemanticInstruction (const GGS_lstr
   const GGS_errorInstructionAST temp_5 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_errorInstructionForGeneration::init_21__21__21__21__21_ (temp_5.readProperty_mInstructionLocation (), var_locationExpression_14934, var_messageExpression_14962, var_builtVariableCppNameList_15053, var_fixitListForGeneration_14989, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-error.galgas", 395)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@errorInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_errorInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -383,10 +375,9 @@ void cPtr_errorInstructionForGeneration::method_generateInstruction (GGS_strings
     enumerator_19444.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@forInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_forInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -409,10 +400,9 @@ void cPtr_forInstructionAST::method_enterInstructionInSemanticContext (GGS_unifi
     enumerator_17944.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionImplicitVarInExpAST enterInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionImplicitVarInExpAST::method_enterInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -421,10 +411,9 @@ void cPtr_enumeratedCollectionImplicitVarInExpAST::method_enterInSemanticContext
   const GGS_enumeratedCollectionImplicitVarInExpAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mEnumeratedExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 531)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionCstListInExpAST enterInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionCstListInExpAST::method_enterInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -433,10 +422,9 @@ void cPtr_enumeratedCollectionCstListInExpAST::method_enterInSemanticContext (GG
   const GGS_enumeratedCollectionCstListInExpAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mEnumeratedExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 537)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionVarInExpAST enterInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionVarInExpAST::method_enterInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -445,10 +433,9 @@ void cPtr_enumeratedCollectionVarInExpAST::method_enterInSemanticContext (GGS_un
   const GGS_enumeratedCollectionVarInExpAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mEnumeratedExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 543)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionImplicitVarInExpAST analyzeEnumeration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionImplicitVarInExpAST::method_analyzeEnumeration (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -500,10 +487,9 @@ void cPtr_enumeratedCollectionImplicitVarInExpAST::method_analyzeEnumeration (co
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionCstListInExpAST analyzeEnumeration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionCstListInExpAST::method_analyzeEnumeration (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -647,10 +633,9 @@ void cPtr_enumeratedCollectionCstListInExpAST::method_analyzeEnumeration (const 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumeratedCollectionVarInExpAST analyzeEnumeration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumeratedCollectionVarInExpAST::method_analyzeEnumeration (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -707,10 +692,9 @@ void cPtr_enumeratedCollectionVarInExpAST::method_analyzeEnumeration (const GGS_
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@forInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_forInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -849,10 +833,9 @@ void cPtr_forInstructionAST::method_analyzeSemanticInstruction (const GGS_lstrin
   const GGS_forInstructionAST temp_25 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_forInstructionForGeneration::init_21__21__21__21__21__21__21__21_ (temp_25.readProperty_mInstructionLocation (), var_enumerationList_30521, var_indexCppName_32142, var_whileExpression_31910, var_before_5F_instructionList_29191, var_between_5F_instructionList_29722, var_do_5F_instructionList_32886, var_after_5F_instructionList_30287, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-for.galgas", 869)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@forInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_forInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -1089,10 +1072,9 @@ void cPtr_forInstructionForGeneration::method_generateInstruction (GGS_stringset
     ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 1080)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInFileInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInFileInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1107,10 +1089,9 @@ void cPtr_grammarInFileInstructionAST::method_enterInstructionInSemanticContext 
     enumerator_16673.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInStringInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInStringInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1125,10 +1106,9 @@ void cPtr_grammarInStringInstructionAST::method_enterInstructionInSemanticContex
     enumerator_17107.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInFileInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInFileInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1179,10 +1159,9 @@ void cPtr_grammarInFileInstructionAST::method_analyzeSemanticInstruction (const 
   const GGS_grammarInFileInstructionAST temp_14 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_grammarInstructionWithSourceFileForGeneration::init_21__21__21__21__21__21__21__21_ (temp_12.readProperty_mInstructionLocation (), temp_13.readProperty_mGrammarComponentName ().readProperty_string (), temp_14.readProperty_mLabelName ().readProperty_string (), var_sourceExpression_19114, var_actualParameterListForGeneration_18758, var_hasTranslateFeature_18187, var_assignementList_19726, var_syntaxDirectedTranslationResultVarName_19585, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 450)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInStringInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInStringInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1245,10 +1224,9 @@ void cPtr_grammarInStringInstructionAST::method_analyzeSemanticInstruction (cons
   const GGS_grammarInStringInstructionAST temp_18 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_grammarInstructionWithSourceExpressionForGeneration::init_21__21__21__21__21__21__21__21__21_ (temp_16.readProperty_mInstructionLocation (), temp_17.readProperty_mGrammarComponentName ().readProperty_string (), temp_18.readProperty_mLabelName ().readProperty_string (), var_sourceExpression_22157, var_nameExpression_22831, var_actualParameterListForGeneration_21801, var_hasTranslateFeature_21230, var_assignementList_23384, var_syntaxDirectedTranslationResultVarName_23243, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 543)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInstructionWithSourceFileForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInstructionWithSourceFileForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -1319,10 +1297,9 @@ void cPtr_grammarInstructionWithSourceFileForGeneration::method_generateInstruct
     enumerator_27024.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@grammarInstructionWithSourceExpressionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_grammarInstructionWithSourceExpressionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -1396,50 +1373,45 @@ void cPtr_grammarInstructionWithSourceExpressionForGeneration::method_generateIn
     enumerator_30392.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                           Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecNoOVFInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecNoOVFInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfIncDecInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfIncDecInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                               Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfIncDecNoOVFInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                    Compiler * /* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -1548,10 +1520,9 @@ void cPtr_incDecInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
   const GGS_incDecInstructionAST temp_25 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_incDecInstructionForGeneration::init_21__21__21__21__21_ (temp_23.readProperty_mInstructionLocation (), var_targetVariableCppName_7345, var_targetType_7320, temp_24.readProperty_mStructAttributeList (), temp_25.readProperty_mKind (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 253)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecNoOVFInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecNoOVFInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -1601,10 +1572,9 @@ void cPtr_incDecNoOVFInstructionAST::method_analyzeSemanticInstruction (const GG
   const GGS_incDecNoOVFInstructionAST temp_9 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_incDecNoOVFInstructionForGeneration::init_21__21__21__21__21_ (temp_7.readProperty_mInstructionLocation (), var_targetVariableCppName_10397, var_targetType_10305, temp_8.readProperty_mStructAttributeList (), temp_9.readProperty_mKind (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 292)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfIncDecNoOVFInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfIncDecNoOVFInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -1651,10 +1621,9 @@ void cPtr_selfIncDecNoOVFInstructionAST::method_analyzeSemanticInstruction (cons
     inCompiler->emitSemanticError (temp_9.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray10  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 329)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfIncDecInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfIncDecInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -1701,10 +1670,9 @@ void cPtr_selfIncDecInstructionAST::method_analyzeSemanticInstruction (const GGS
     inCompiler->emitSemanticError (temp_9.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray10  COMMA_SOURCE_FILE ("instruction-inc-dec.galgas", 361)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecInstructionForGeneration::method_generateInstruction (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -1750,10 +1718,9 @@ void cPtr_incDecInstructionForGeneration::method_generateInstruction (GGS_string
     break ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@incDecNoOVFInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_incDecNoOVFInstructionForGeneration::method_generateInstruction (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -1791,10 +1758,9 @@ void cPtr_incDecNoOVFInstructionForGeneration::method_generateInstruction (GGS_s
     break ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1836,10 +1802,9 @@ void cPtr_ifInstructionAST::method_enterInstructionInSemanticContext (GGS_unifie
   const GGS_ifInstructionAST temp_2 = this ;
   extensionMethod_enterInstructionListInSemanticContext (temp_2.readProperty_m_5F_else_5F_instructionList (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 249)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2131,10 +2096,9 @@ void cPtr_ifInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring
   const GGS_ifInstructionAST temp_27 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_ifInstructionForGeneration::init_21__21__21__21_ (temp_27.readProperty_mEndOf_5F_then_5F_branch (), var_testListForGeneration_10547, var_then_5F_instructionList_17258, var_else_5F_instructionList_17993, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 473)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2234,20 +2198,18 @@ void cPtr_ifInstructionForGeneration::method_generateInstruction (GGS_stringset 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_undefinedLocalConstantDeclarationAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                           Compiler * /* inCompiler */
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localConstantDeclarationWithAssignmentAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2256,10 +2218,9 @@ void cPtr_localConstantDeclarationWithAssignmentAST::method_enterInstructionInSe
   const GGS_localConstantDeclarationWithAssignmentAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 155)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2280,10 +2241,9 @@ void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::method_enterInstr
   const GGS_localVariableOrConstantDeclarationWithAssignmentAST temp_3 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_3.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 165)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@undefinedLocalConstantDeclarationAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_undefinedLocalConstantDeclarationAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2305,10 +2265,9 @@ void cPtr_undefinedLocalConstantDeclarationAST::method_analyzeSemanticInstructio
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_undefinedLocalConstantDeclarationForGeneration::init_21__21_ (var_targetType_7251, var_targetVariableCppName_7326, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-let.galgas", 189)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localConstantDeclarationWithAssignmentAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2331,10 +2290,9 @@ void cPtr_localConstantDeclarationWithAssignmentAST::method_analyzeSemanticInstr
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::init_21__21__21__21_ (var_expression_8717.readProperty_mResultType (), GGS_bool (true), var_targetVariableCppName_8766, var_expression_8717, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-let.galgas", 224)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2377,10 +2335,9 @@ void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::method_analyzeSem
   const GGS_localVariableOrConstantDeclarationWithAssignmentAST temp_9 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::init_21__21__21__21_ (var_targetType_9956, temp_9.readProperty_mIsConstant (), var_targetVariableCppName_10376, var_expression_10327, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-let.galgas", 273)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@undefinedLocalConstantDeclarationForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_undefinedLocalConstantDeclarationForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2396,10 +2353,9 @@ void cPtr_undefinedLocalConstantDeclarationForGeneration::method_generateInstruc
   const GGS_undefinedLocalConstantDeclarationForGeneration temp_2 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_1.readProperty_mTargetType (), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 309)), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 309)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 309)).add_operation (temp_2.readProperty_mCppVariableName (), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 309)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 309)), inCompiler  COMMA_SOURCE_FILE ("instruction-let.galgas", 309)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2418,10 +2374,9 @@ void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::m
   const GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration temp_3 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_2.readProperty_mTargetType (), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)).add_operation (temp_3.readProperty_mCppVariableName (), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)).add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)).add_operation (var_sourceVar_13568, inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-let.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("instruction-let.galgas", 328)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@logInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_logInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2434,10 +2389,9 @@ void cPtr_logInstructionAST::method_enterInstructionInSemanticContext (GGS_unifi
     enumerator_4577.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@logInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_logInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2457,10 +2411,9 @@ void cPtr_logInstructionAST::method_analyzeSemanticInstruction (const GGS_lstrin
     enumerator_5286.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@logInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_logInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2478,10 +2431,9 @@ void cPtr_logInstructionForGeneration::method_generateInstruction (GGS_stringset
   const GGS_logInstructionForGeneration temp_2 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (" ").add_operation (extensionGetter_commaSourceFile (temp_2.readProperty_mLogMessage ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-log.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("instruction-log.galgas", 186)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-log.galgas", 186)), inCompiler  COMMA_SOURCE_FILE ("instruction-log.galgas", 186)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithVariantAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithVariantAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2496,10 +2448,9 @@ void cPtr_loopInstructionWithVariantAST::method_enterInstructionInSemanticContex
   const GGS_loopInstructionWithVariantAST temp_3 = this ;
   extensionMethod_enterInstructionListInSemanticContext (temp_3.readProperty_mSecondInstructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 134)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithVariantAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithVariantAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2550,10 +2501,9 @@ void cPtr_loopInstructionWithVariantAST::method_analyzeSemanticInstruction (cons
   const GGS_loopInstructionWithVariantAST temp_10 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_loopInstructionWithVariantForGeneration::init_21__21__21__21__21_ (temp_10.readProperty_mInstructionLocation (), var_variantExpression_6567, var_first_5F_instructionList_7990, var_loopExpression_7101, var_second_5F_instructionList_8408, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 213)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithVariantForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithVariantForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2607,10 +2557,9 @@ void cPtr_loopInstructionWithVariantForGeneration::method_generateInstruction (G
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-loop-with-variant.galgas", 290)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithoutVariantAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithoutVariantAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2623,10 +2572,9 @@ void cPtr_loopInstructionWithoutVariantAST::method_enterInstructionInSemanticCon
   const GGS_loopInstructionWithoutVariantAST temp_2 = this ;
   extensionMethod_enterInstructionListInSemanticContext (temp_2.readProperty_mSecondInstructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 115)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithoutVariantAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithoutVariantAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2671,10 +2619,9 @@ void cPtr_loopInstructionWithoutVariantAST::method_analyzeSemanticInstruction (c
   const GGS_loopInstructionWithoutVariantAST temp_9 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_loopInstructionWithoutVariantForGeneration::init_21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_first_5F_instructionList_6839, var_loopExpression_5950, var_second_5F_instructionList_7257, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 177)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@loopInstructionWithoutVariantForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_loopInstructionWithoutVariantForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2710,10 +2657,9 @@ void cPtr_loopInstructionWithoutVariantForGeneration::method_generateInstruction
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-loop-without-variant.galgas", 237)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@messageInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_messageInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2722,10 +2668,9 @@ void cPtr_messageInstructionAST::method_enterInstructionInSemanticContext (GGS_u
   const GGS_messageInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 72)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@messageInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_messageInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2751,10 +2696,9 @@ void cPtr_messageInstructionAST::method_analyzeSemanticInstruction (const GGS_ls
   const GGS_messageInstructionAST temp_4 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_messageInstructionForGeneration::init_21__21_ (var_expression_4242, temp_4.readProperty_mInstructionLocation (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-message.galgas", 102)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@messageInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_messageInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2774,10 +2718,9 @@ void cPtr_messageInstructionForGeneration::method_generateInstruction (GGS_strin
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-message.galgas", 136)) COMMA_SOURCE_FILE ("instruction-message.galgas", 136)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@methodCallInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_methodCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2792,10 +2735,9 @@ void cPtr_methodCallInstructionAST::method_enterInstructionInSemanticContext (GG
     enumerator_4188.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@methodCallInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_methodCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2815,69 +2757,69 @@ void cPtr_methodCallInstructionAST::method_analyzeSemanticInstruction (const GGS
       extensionMethod_checkSelfObjectIsFullyInitialized (ioArgument_ioVariableMap, temp_2.readProperty_mMethodName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 116)) ;
     }
   }
-  GGS_semanticExpressionForGeneration var_receiverExpression_5318 ;
+  GGS_semanticExpressionForGeneration var_receiverExpression_5319 ;
   const GGS_methodCallInstructionAST temp_3 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_3.readProperty_mReceiverExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("instruction-method-call.galgas", 122)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_receiverExpression_5318, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 119)) ;
-  GGS_methodKind var_kind_5489 ;
-  GGS_formalParameterSignature var_routineSignature_5505 ;
-  GGS_bool var_hasCompilerArgument_5542 ;
-  GGS_string var_errorMessage_5582 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_3.readProperty_mReceiverExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("instruction-method-call.galgas", 122)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_receiverExpression_5319, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 119)) ;
+  GGS_methodKind var_kind_5490 ;
+  GGS_formalParameterSignature var_routineSignature_5506 ;
+  GGS_bool var_hasCompilerArgument_5543 ;
+  GGS_string var_errorMessage_5583 ;
   const GGS_methodCallInstructionAST temp_4 = this ;
-  GGS_location joker_5528 ; // Joker input parameter
-  GGS_methodQualifier joker_5568 ; // Joker input parameter
-  extensionGetter_definition (var_receiverExpression_5318.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 129)).readProperty_instanceMethodMap ().method_searchKey (temp_4.readProperty_mMethodName (), var_kind_5489, var_routineSignature_5505, joker_5528, var_hasCompilerArgument_5542, joker_5568, var_errorMessage_5582, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 129)) ;
+  GGS_location joker_5529 ; // Joker input parameter
+  GGS_methodQualifier joker_5569 ; // Joker input parameter
+  extensionGetter_definition (var_receiverExpression_5319.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 129)).readProperty_instanceMethodMap ().method_searchKey (temp_4.readProperty_mMethodName (), var_kind_5490, var_routineSignature_5506, joker_5529, var_hasCompilerArgument_5543, joker_5569, var_errorMessage_5583, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 129)) ;
   GalgasBool test_5 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_5) {
-    test_5 = GGS_bool (ComparisonKind::notEqual, var_errorMessage_5582.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_5 = GGS_bool (ComparisonKind::notEqual, var_errorMessage_5583.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_5) {
       const GGS_methodCallInstructionAST temp_6 = this ;
       TC_Array <FixItDescription> fixItArray7 ;
-      inCompiler->emitSemanticError (temp_6.readProperty_mMethodName ().readProperty_location (), var_errorMessage_5582, fixItArray7  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 139)) ;
+      inCompiler->emitSemanticError (temp_6.readProperty_mMethodName ().readProperty_location (), var_errorMessage_5583, fixItArray7  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 139)) ;
     }
   }
-  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_6132 ;
+  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_6133 ;
   const GGS_methodCallInstructionAST temp_8 = this ;
   const GGS_methodCallInstructionAST temp_9 = this ;
   const GGS_methodCallInstructionAST temp_10 = this ;
-  extensionMethod_analyzeRoutineArguments (temp_8.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_9.readProperty_mMethodName (), GGS_string ("'").add_operation (temp_10.readProperty_mMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 148)).add_operation (GGS_string ("' instance method header"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 148)), var_routineSignature_5505, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_6132, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 142)) ;
-  GGS_unifiedTypeMapEntry var_baseType_6229 = var_receiverExpression_5318.readProperty_mResultType () ;
-  GGS_bool var_searching_6279 = GGS_bool (true) ;
+  extensionMethod_analyzeRoutineArguments (temp_8.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_9.readProperty_mMethodName (), GGS_string ("'").add_operation (temp_10.readProperty_mMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 148)).add_operation (GGS_string ("' instance method header"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 148)), var_routineSignature_5506, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_6133, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 142)) ;
+  GGS_unifiedTypeMapEntry var_baseType_6230 = var_receiverExpression_5319.readProperty_mResultType () ;
+  GGS_bool var_searching_6280 = GGS_bool (true) ;
   GalgasBool test_11 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_11) {
     test_11 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("instruction-method-call.galgas", 157)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_11) {
       if (GGS_uint::class_func_max (SOURCE_FILE ("instruction-method-call.galgas", 158)).isValid ()) {
-        uint32_t variant_6336 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-method-call.galgas", 158)).uintValue () ;
-        bool loop_6336 = true ;
-        while (loop_6336) {
-          loop_6336 = var_searching_6279.isValid () ;
-          if (loop_6336) {
-            loop_6336 = var_searching_6279.boolValue () ;
+        uint32_t variant_6337 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-method-call.galgas", 158)).uintValue () ;
+        bool loop_6337 = true ;
+        while (loop_6337) {
+          loop_6337 = var_searching_6280.isValid () ;
+          if (loop_6337) {
+            loop_6337 = var_searching_6280.boolValue () ;
           }
-          if (loop_6336 && (0 == variant_6336)) {
-            loop_6336 = false ;
+          if (loop_6337 && (0 == variant_6337)) {
+            loop_6337 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-method-call.galgas", 158)) ;
           }
-          if (loop_6336) {
-            variant_6336 -- ;
+          if (loop_6337) {
+            variant_6337 -- ;
             GalgasBool test_12 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_12) {
-              test_12 = extensionGetter_definition (var_baseType_6229, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 159)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-method-call.galgas", 159)).boolEnum () ;
+              test_12 = extensionGetter_definition (var_baseType_6230, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 159)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-method-call.galgas", 159)).boolEnum () ;
               if (GalgasBool::boolTrue == test_12) {
-                var_searching_6279 = GGS_bool (false) ;
+                var_searching_6280 = GGS_bool (false) ;
               }
             }
             if (GalgasBool::boolFalse == test_12) {
               GalgasBool test_13 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_13) {
                 const GGS_methodCallInstructionAST temp_14 = this ;
-                test_13 = extensionGetter_definition (extensionGetter_definition (var_baseType_6229, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).readProperty_instanceMethodMap ().getter_hasKey (temp_14.readProperty_mMethodName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).boolEnum () ;
+                test_13 = extensionGetter_definition (extensionGetter_definition (var_baseType_6230, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).readProperty_instanceMethodMap ().getter_hasKey (temp_14.readProperty_mMethodName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-method-call.galgas", 162)).boolEnum () ;
                 if (GalgasBool::boolTrue == test_13) {
-                  var_baseType_6229 = extensionGetter_definition (var_baseType_6229, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 163)).readProperty_superType () ;
+                  var_baseType_6230 = extensionGetter_definition (var_baseType_6230, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 163)).readProperty_superType () ;
                 }
               }
               if (GalgasBool::boolFalse == test_13) {
-                var_searching_6279 = GGS_bool (false) ;
+                var_searching_6280 = GGS_bool (false) ;
               }
             }
           }
@@ -2887,12 +2829,11 @@ void cPtr_methodCallInstructionAST::method_analyzeSemanticInstruction (const GGS
   }
   const GGS_methodCallInstructionAST temp_15 = this ;
   const GGS_methodCallInstructionAST temp_16 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_methodCallInstructionForGeneration::init_21__21__21__21__21__21__21__21_ (temp_15.readProperty_mInstructionLocation (), var_receiverExpression_5318.readProperty_mResultType (), var_receiverExpression_5318, temp_16.readProperty_mMethodName ().readProperty_string (), var_kind_5489, var_actualParameterListForGeneration_6132, var_hasCompilerArgument_5542, var_baseType_6229, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 171)) ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_methodCallInstructionForGeneration::init_21__21__21__21__21__21__21__21_ (temp_15.readProperty_mInstructionLocation (), var_receiverExpression_5319.readProperty_mResultType (), var_receiverExpression_5319, temp_16.readProperty_mMethodName ().readProperty_string (), var_kind_5490, var_actualParameterListForGeneration_6133, var_hasCompilerArgument_5543, var_baseType_6230, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 171)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@methodCallInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_methodCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -2902,22 +2843,22 @@ void cPtr_methodCallInstructionForGeneration::method_generateInstruction (GGS_st
                                                                           GGS_string & ioArgument_ioGeneratedCode,
                                                                           Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_receiverCppName_8407 ;
+  GGS_string var_receiverCppName_8408 ;
   const GGS_methodCallInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppName_8407, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 211)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppName_8408, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 211)) ;
   {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (var_receiverCppName_8407 COMMA_SOURCE_FILE ("instruction-method-call.galgas", 212)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (var_receiverCppName_8408 COMMA_SOURCE_FILE ("instruction-method-call.galgas", 212)) ;
   }
-  GGS_stringlist var_parameterCppNameList_8496 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_jokerParametersToReleaseList_8540 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  GGS_stringlist var_inputVariableList_8592 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_parameterCppNameList_8497 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_jokerParametersToReleaseList_8541 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_inputVariableList_8593 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_methodCallInstructionForGeneration temp_1 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_8634 (temp_1.readProperty_mActualParameterList ()) ;
-  while (enumerator_8634.hasCurrentObject ()) {
-    GGS_string var_parameterCppName_8877 ;
-    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_8634.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_8540, var_inputVariableList_8592, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_8877, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 218)) ;
-    var_parameterCppNameList_8496.addAssign_operation (var_parameterCppName_8877  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 219)) ;
-    enumerator_8634.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_8635 (temp_1.readProperty_mActualParameterList ()) ;
+  while (enumerator_8635.hasCurrentObject ()) {
+    GGS_string var_parameterCppName_8878 ;
+    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_8635.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_8541, var_inputVariableList_8593, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_8878, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 218)) ;
+    var_parameterCppNameList_8497.addAssign_operation (var_parameterCppName_8878  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 219)) ;
+    enumerator_8635.gotoNextObject () ;
   }
   const GGS_methodCallInstructionForGeneration temp_2 = this ;
   switch (temp_2.readProperty_mKind ().enumValue ()) {
@@ -2935,33 +2876,33 @@ void cPtr_methodCallInstructionForGeneration::method_generateInstruction (GGS_st
         if (GalgasBool::boolTrue == test_5) {
           const GGS_methodCallInstructionForGeneration temp_7 = this ;
           const GGS_methodCallInstructionForGeneration temp_8 = this ;
-          ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("callExtensionMethod_").add_operation (temp_7.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 226)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)).add_operation (GGS_string (" ((cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)).add_operation (extensionGetter_identifierRepresentation (temp_8.readProperty_mReceiverExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)).add_operation (var_receiverCppName_8407, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 228)).add_operation (GGS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 228)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)) ;
+          ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("callExtensionMethod_").add_operation (temp_7.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 226)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)).add_operation (GGS_string (" ((cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)).add_operation (extensionGetter_identifierRepresentation (temp_8.readProperty_mReceiverExpression ().readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)).add_operation (GGS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 227)).add_operation (var_receiverCppName_8408, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 228)).add_operation (GGS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 228)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 226)) ;
         }
       }
       if (GalgasBool::boolFalse == test_5) {
         const GGS_methodCallInstructionForGeneration temp_9 = this ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("extensionMethod_").add_operation (temp_9.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 230)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)).add_operation (var_receiverCppName_8407, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 231)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 231)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("extensionMethod_").add_operation (temp_9.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 230)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)).add_operation (var_receiverCppName_8408, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 231)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 231)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 230)) ;
       }
     }
     break ;
   case GGS_methodKind::Enumeration::enum_definedAsMember:
     {
       const GGS_methodCallInstructionForGeneration temp_10 = this ;
-      ioArgument_ioGeneratedCode.plusAssign_operation(var_receiverCppName_8407.add_operation (GGS_string (".method_"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)).add_operation (temp_10.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)) ;
+      ioArgument_ioGeneratedCode.plusAssign_operation(var_receiverCppName_8408.add_operation (GGS_string (".method_"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)).add_operation (temp_10.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-method-call.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 234)) ;
     }
     break ;
   }
-  UpEnumerator_stringlist enumerator_9811 (var_parameterCppNameList_8496) ;
-  while (enumerator_9811.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssign_operation(enumerator_9811.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 237)) ;
-    enumerator_9811.gotoNextObject () ;
-    if (enumerator_9811.hasCurrentObject ()) {
+  UpEnumerator_stringlist enumerator_9812 (var_parameterCppNameList_8497) ;
+  while (enumerator_9812.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssign_operation(enumerator_9812.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 237)) ;
+    enumerator_9812.gotoNextObject () ;
+    if (enumerator_9812.hasCurrentObject ()) {
       ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 238)) ;
     }
   }
   GalgasBool test_11 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_11) {
-    test_11 = GGS_bool (ComparisonKind::equal, var_parameterCppNameList_8496.getter_count (SOURCE_FILE ("instruction-method-call.galgas", 240)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_11 = GGS_bool (ComparisonKind::equal, var_parameterCppNameList_8497.getter_count (SOURCE_FILE ("instruction-method-call.galgas", 240)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_11) {
       GalgasBool test_12 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_12) {
@@ -2997,16 +2938,15 @@ void cPtr_methodCallInstructionForGeneration::method_generateInstruction (GGS_st
   const GGS_methodCallInstructionForGeneration temp_16 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (temp_16.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 253)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 253)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 253)) ;
   const GGS_methodCallInstructionForGeneration temp_17 = this ;
-  UpEnumerator_actualParameterListForGeneration enumerator_10497 (temp_17.readProperty_mActualParameterList ()) ;
-  while (enumerator_10497.hasCurrentObject ()) {
-    callExtensionMethod_generatePoisonedVariables ((cPtr_actualParameterForGeneration *) enumerator_10497.current_mActualParameter (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioUnusedVariableCppNameSet, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 256)) ;
-    enumerator_10497.gotoNextObject () ;
+  UpEnumerator_actualParameterListForGeneration enumerator_10498 (temp_17.readProperty_mActualParameterList ()) ;
+  while (enumerator_10498.hasCurrentObject ()) {
+    callExtensionMethod_generatePoisonedVariables ((cPtr_actualParameterForGeneration *) enumerator_10498.current_mActualParameter (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioUnusedVariableCppNameSet, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 256)) ;
+    enumerator_10498.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@superInitInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_superInitInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3019,10 +2959,9 @@ void cPtr_superInitInstructionAST::method_enterInstructionInSemanticContext (GGS
     enumerator_3723.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@superInitInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_superInitInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3130,10 +3069,9 @@ void cPtr_superInitInstructionAST::method_analyzeSemanticInstruction (const GGS_
     inCompiler->emitSemanticError (temp_14.readProperty_mInstructionLocation (), GGS_string ("superinit  should be call in a class initializer"), fixItArray15  COMMA_SOURCE_FILE ("instruction-super-init.galgas", 169)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@superInitInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_superInitInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -3167,10 +3105,220 @@ void cPtr_superInitInstructionForGeneration::method_generateInstruction (GGS_str
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-super-init.galgas", 212)).add_operation (GGS_string (") ; \n"), inCompiler COMMA_SOURCE_FILE ("instruction-super-init.galgas", 212)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-init.galgas", 212)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
+//Overriding extension method '@superMethodCallInstructionAST enterInstructionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_superMethodCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_superMethodCallInstructionAST temp_0 = this ;
+  UpEnumerator_actualParameterListAST enumerator_3910 (temp_0.readProperty_mActualParameterList ()) ;
+  while (enumerator_3910.hasCurrentObject ()) {
+    callExtensionMethod_enterParameterInSemanticContext ((cPtr_actualParameterAST *) enumerator_3910.current_mActualParameter (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 98)) ;
+    enumerator_3910.gotoNextObject () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@superMethodCallInstructionAST analyzeSemanticInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_superMethodCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                            GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                            const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                            GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                            GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                            GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry var_selfType_4630 ;
+  switch (constinArgument_inAnalysisContext.readProperty_selfAvailability ().enumValue ()) {
+  case GGS_selfAvailability::Enumeration::invalid:
+    break ;
+  case GGS_selfAvailability::Enumeration::enum_none:
+    {
+      const GGS_superMethodCallInstructionAST temp_0 = this ;
+      TC_Array <FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (temp_0.readProperty_mMethodName ().readProperty_location (), GGS_string ("'super' is not available in this context"), fixItArray1  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 114)) ;
+      var_selfType_4630.drop () ; // Release error dropped variable
+    }
+    break ;
+  case GGS_selfAvailability::Enumeration::enum_available:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_4827_type_0 ;
+      GGS_selfMutability extractedValue_4855_selfMutability_1 ;
+      constinArgument_inAnalysisContext.readProperty_selfAvailability ().getAssociatedValuesFor_available (extractedValue_4827_type_0, extractedValue_4855_selfMutability_1) ;
+      var_selfType_4630 = extractedValue_4827_type_0 ;
+    }
+    break ;
+  }
+  GalgasBool test_2 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_2) {
+    test_2 = extensionGetter_definition (var_selfType_4630, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 119)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("instruction-super-method-call.galgas", 119)).operator_not (SOURCE_FILE ("instruction-super-method-call.galgas", 119)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_2) {
+      const GGS_superMethodCallInstructionAST temp_3 = this ;
+      TC_Array <FixItDescription> fixItArray4 ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mMethodName ().readProperty_location (), GGS_string ("self type is not a class"), fixItArray4  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 120)) ;
+    }
+  }
+  GGS_formalParameterSignature var_routineSignature_5210 ;
+  GGS_bool var_hasCompilerArgument_5247 ;
+  GGS_string var_errorMessage_5287 ;
+  const GGS_superMethodCallInstructionAST temp_5 = this ;
+  GGS_methodKind joker_5184 ; // Joker input parameter
+  GGS_location joker_5233 ; // Joker input parameter
+  GGS_methodQualifier joker_5273 ; // Joker input parameter
+  extensionGetter_definition (var_selfType_4630, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 123)).readProperty_instanceMethodMap ().method_searchKey (temp_5.readProperty_mMethodName (), joker_5184, var_routineSignature_5210, joker_5233, var_hasCompilerArgument_5247, joker_5273, var_errorMessage_5287, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 123)) ;
+  GalgasBool test_6 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_6) {
+    test_6 = GGS_bool (ComparisonKind::notEqual, var_errorMessage_5287.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_6) {
+      const GGS_superMethodCallInstructionAST temp_7 = this ;
+      TC_Array <FixItDescription> fixItArray8 ;
+      inCompiler->emitSemanticError (temp_7.readProperty_mMethodName ().readProperty_location (), var_errorMessage_5287, fixItArray8  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 133)) ;
+    }
+  }
+  GGS_actualParameterListForGeneration var_actualParameterListForGeneration_5837 ;
+  const GGS_superMethodCallInstructionAST temp_9 = this ;
+  const GGS_superMethodCallInstructionAST temp_10 = this ;
+  const GGS_superMethodCallInstructionAST temp_11 = this ;
+  extensionMethod_analyzeRoutineArguments (temp_9.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_10.readProperty_mMethodName (), GGS_string ("'").add_operation (temp_11.readProperty_mMethodName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 142)).add_operation (GGS_string ("' instance method header"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 142)), var_routineSignature_5210, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_5837, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 136)) ;
+  GGS_unifiedTypeMapEntry var_baseType_5934 = var_selfType_4630 ;
+  GGS_bool var_searching_5962 = GGS_bool (true) ;
+  GalgasBool test_12 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_12) {
+    test_12 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("instruction-super-method-call.galgas", 151)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_12) {
+      if (GGS_uint::class_func_max (SOURCE_FILE ("instruction-super-method-call.galgas", 152)).isValid ()) {
+        uint32_t variant_6019 = GGS_uint::class_func_max (SOURCE_FILE ("instruction-super-method-call.galgas", 152)).uintValue () ;
+        bool loop_6019 = true ;
+        while (loop_6019) {
+          loop_6019 = var_searching_5962.isValid () ;
+          if (loop_6019) {
+            loop_6019 = var_searching_5962.boolValue () ;
+          }
+          if (loop_6019 && (0 == variant_6019)) {
+            loop_6019 = false ;
+            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-super-method-call.galgas", 152)) ;
+          }
+          if (loop_6019) {
+            variant_6019 -- ;
+            GalgasBool test_13 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_13) {
+              test_13 = extensionGetter_definition (var_baseType_5934, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 153)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-super-method-call.galgas", 153)).boolEnum () ;
+              if (GalgasBool::boolTrue == test_13) {
+                var_searching_5962 = GGS_bool (false) ;
+              }
+            }
+            if (GalgasBool::boolFalse == test_13) {
+              GalgasBool test_14 = GalgasBool::boolTrue ;
+              if (GalgasBool::boolTrue == test_14) {
+                const GGS_superMethodCallInstructionAST temp_15 = this ;
+                test_14 = extensionGetter_definition (extensionGetter_definition (var_baseType_5934, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 156)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 156)).readProperty_instanceMethodMap ().getter_hasKey (temp_15.readProperty_mMethodName ().readProperty_string () COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 156)).boolEnum () ;
+                if (GalgasBool::boolTrue == test_14) {
+                  var_baseType_5934 = extensionGetter_definition (var_baseType_5934, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 157)).readProperty_superType () ;
+                }
+              }
+              if (GalgasBool::boolFalse == test_14) {
+                var_searching_5962 = GGS_bool (false) ;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  const GGS_superMethodCallInstructionAST temp_16 = this ;
+  const GGS_superMethodCallInstructionAST temp_17 = this ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_superMethodCallInstructionForGeneration::init_21__21__21__21__21_ (temp_16.readProperty_mInstructionLocation (), temp_17.readProperty_mMethodName ().readProperty_string (), var_actualParameterListForGeneration_5837, var_hasCompilerArgument_5247, var_baseType_5934, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 165)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@superMethodCallInstructionForGeneration generateInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_superMethodCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
+                                                                               GGS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                               GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                               const GGS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
+                                                                               GGS_string & ioArgument_ioGeneratedCode,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_stringlist var_parameterCppNameList_7862 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_jokerParametersToReleaseList_7908 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_inputVariableList_7962 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  const GGS_superMethodCallInstructionForGeneration temp_0 = this ;
+  UpEnumerator_actualParameterListForGeneration enumerator_8006 (temp_0.readProperty_mActualParameterList ()) ;
+  while (enumerator_8006.hasCurrentObject ()) {
+    GGS_string var_parameterCppName_8251 ;
+    callExtensionMethod_generateActualParameter ((cPtr_actualParameterForGeneration *) enumerator_8006.current_mActualParameter (HERE).ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioGeneratedCode, var_jokerParametersToReleaseList_7908, var_inputVariableList_7962, ioArgument_ioUnusedVariableCppNameSet, var_parameterCppName_8251, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 203)) ;
+    var_parameterCppNameList_7862.addAssign_operation (var_parameterCppName_8251  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 204)) ;
+    enumerator_8006.gotoNextObject () ;
+  }
+  const GGS_superMethodCallInstructionForGeneration temp_1 = this ;
+  const GGS_superMethodCallInstructionForGeneration temp_2 = this ;
+  ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("method-").add_operation (extensionGetter_definition (temp_1.readProperty_mBaseType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 207)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas", 207)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 207)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 207)).add_operation (temp_2.readProperty_mMethodName ().getter_fileNameRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas", 207)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 207))  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 207)) ;
+  const GGS_superMethodCallInstructionForGeneration temp_3 = this ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("cPtr_").add_operation (extensionGetter_definition (temp_3.readProperty_mBaseType (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 208)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas", 208)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 208)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 208)) ;
+  const GGS_superMethodCallInstructionForGeneration temp_4 = this ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("::method_").add_operation (temp_4.readProperty_mMethodName ().getter_identifierRepresentation (SOURCE_FILE ("instruction-super-method-call.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 209)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 209)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 209)) ;
+  UpEnumerator_stringlist enumerator_8702 (var_parameterCppNameList_7862) ;
+  while (enumerator_8702.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssign_operation(enumerator_8702.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 211)) ;
+    enumerator_8702.gotoNextObject () ;
+    if (enumerator_8702.hasCurrentObject ()) {
+      ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 212)) ;
+    }
+  }
+  GalgasBool test_5 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_5) {
+    test_5 = GGS_bool (ComparisonKind::equal, var_parameterCppNameList_7862.getter_count (SOURCE_FILE ("instruction-super-method-call.galgas", 214)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_5) {
+      GalgasBool test_6 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_6) {
+        const GGS_superMethodCallInstructionForGeneration temp_7 = this ;
+        test_6 = temp_7.readProperty_mHasCompilerArgument ().boolEnum () ;
+        if (GalgasBool::boolTrue == test_6) {
+          {
+          ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 216)) COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 216)) ;
+          }
+          ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 217)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 217)) ;
+          ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 218)) ;
+        }
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_5) {
+    GalgasBool test_8 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_8) {
+      const GGS_superMethodCallInstructionForGeneration temp_9 = this ;
+      test_8 = temp_9.readProperty_mHasCompilerArgument ().boolEnum () ;
+      if (GalgasBool::boolTrue == test_8) {
+        {
+        ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 221)) COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 221)) ;
+        }
+        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (", ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 222)), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 222)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 222)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 223)) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_8) {
+      ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 225)) ;
+    }
+  }
+  const GGS_superMethodCallInstructionForGeneration temp_10 = this ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (temp_10.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 227)).add_operation (GGS_string (") ; // §§\n"), inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 227)), inCompiler  COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 227)) ;
+  const GGS_superMethodCallInstructionForGeneration temp_11 = this ;
+  UpEnumerator_actualParameterListForGeneration enumerator_9432 (temp_11.readProperty_mActualParameterList ()) ;
+  while (enumerator_9432.hasCurrentObject ()) {
+    callExtensionMethod_generatePoisonedVariables ((cPtr_actualParameterForGeneration *) enumerator_9432.current_mActualParameter (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioUnusedVariableCppNameSet, inCompiler COMMA_SOURCE_FILE ("instruction-super-method-call.galgas", 230)) ;
+    enumerator_9432.gotoNextObject () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@procCallInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_procCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3183,10 +3331,9 @@ void cPtr_procCallInstructionAST::method_enterInstructionInSemanticContext (GGS_
     enumerator_3279.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@procCallInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_procCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3231,10 +3378,9 @@ void cPtr_procCallInstructionAST::method_analyzeSemanticInstruction (const GGS_l
   extensionMethod_analyzeRoutineArguments (temp_8.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_9.readProperty_mRoutineName (), GGS_string ("'").add_operation (var_routineMangledName_4353.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 112)).add_operation (GGS_string ("' routine header"), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 112)), var_routineSignature_4257, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_5388, inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 106)) ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_procCallInstructionForGeneration::init_21_routineMangledName_21_ (var_routineMangledName_4353, var_actualParameterListForGeneration_5388, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 119)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@procCallInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_procCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -3278,10 +3424,9 @@ void cPtr_procCallInstructionForGeneration::method_generateInstruction (GGS_stri
     enumerator_7785.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfAssignmentInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfAssignmentInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3290,10 +3435,9 @@ void cPtr_selfAssignmentInstructionAST::method_enterInstructionInSemanticContext
   const GGS_selfAssignmentInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 79)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfAssignmentInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfAssignmentInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3337,10 +3481,9 @@ void cPtr_selfAssignmentInstructionAST::method_analyzeSemanticInstruction (const
     inCompiler->emitSemanticError (temp_7.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray8  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas", 121)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPlusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3349,10 +3492,9 @@ void cPtr_selfPlusEqualExpressionInstructionAST::method_enterInstructionInSemant
   const GGS_selfPlusEqualExpressionInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 214)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfMinusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3361,10 +3503,9 @@ void cPtr_selfMinusEqualExpressionInstructionAST::method_enterInstructionInSeman
   const GGS_selfMinusEqualExpressionInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 220)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfMulEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3373,10 +3514,9 @@ void cPtr_selfMulEqualExpressionInstructionAST::method_enterInstructionInSemanti
   const GGS_selfMulEqualExpressionInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 226)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfDivEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3385,10 +3525,9 @@ void cPtr_selfDivEqualExpressionInstructionAST::method_enterInstructionInSemanti
   const GGS_selfDivEqualExpressionInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 232)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPlusEqualElementsInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3397,10 +3536,9 @@ void cPtr_selfPlusEqualElementsInstructionAST::method_enterInstructionInSemantic
   const GGS_selfPlusEqualElementsInstructionAST temp_0 = this ;
   extensionMethod_enterInSemanticContext (temp_0.readProperty_mExpressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 238)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPlusEqualElementsInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3493,10 +3631,9 @@ void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction
     inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray19  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 298)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPlusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3549,10 +3686,9 @@ void cPtr_selfPlusEqualExpressionInstructionAST::method_analyzeSemanticInstructi
     inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 346)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfMinusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3605,10 +3741,9 @@ void cPtr_selfMinusEqualExpressionInstructionAST::method_analyzeSemanticInstruct
     inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 392)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfMulEqualExpressionInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfMulEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3661,10 +3796,9 @@ void cPtr_selfMulEqualExpressionInstructionAST::method_analyzeSemanticInstructio
     inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 438)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfDivEqualExpressionInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfDivEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3717,10 +3851,9 @@ void cPtr_selfDivEqualExpressionInstructionAST::method_analyzeSemanticInstructio
     inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 484)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@setterCallInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setterCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3733,10 +3866,9 @@ void cPtr_setterCallInstructionAST::method_enterInstructionInSemanticContext (GG
     enumerator_7312.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfSetterCallInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfSetterCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3749,10 +3881,9 @@ void cPtr_selfSetterCallInstructionAST::method_enterInstructionInSemanticContext
     enumerator_7658.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@setterCallInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setterCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3963,10 +4094,9 @@ void cPtr_setterCallInstructionAST::method_analyzeSemanticInstruction (const GGS
   const GGS_setterCallInstructionAST temp_39 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_setterCallInstructionForGeneration::init_21__21__21__21__21__21__21__21__21__21__21_ (temp_37.readProperty_mReceiverName ().readProperty_location (), var_targetVariableCppName_8526, var_nameForCheckingFormalParameterUsing_8562, temp_38.readProperty_mReceiverStructProperties (), var_castType_10659, var_receiverType_8499, temp_39.readProperty_mSetterName (), var_kind_11019, var_actualParameterListForGeneration_11622, var_hasCompilerArgument_11059, var_baseType_11713, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 336)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfSetterCallInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfSetterCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4017,10 +4147,9 @@ void cPtr_selfSetterCallInstructionAST::method_analyzeSemanticInstruction (const
     inCompiler->emitSemanticError (temp_10.readProperty_mSetterName ().readProperty_location (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 392)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@setterCallInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setterCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4165,10 +4294,9 @@ void cPtr_setterCallInstructionForGeneration::method_generateInstruction (GGS_st
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (temp_30.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 501)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 501)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 501)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 502)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfSetterCallInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4280,10 +4408,9 @@ void cPtr_selfSetterCallInstructionForGeneration::method_generateInstruction (GG
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (temp_21.readProperty_mSetterName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 560)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 560)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 560)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 561)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@switchInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_switchInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4298,10 +4425,9 @@ void cPtr_switchInstructionAST::method_enterInstructionInSemanticContext (GGS_un
     enumerator_8007.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@switchInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4480,10 +4606,9 @@ void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
     inCompiler->emitSemanticError (temp_24.readProperty_mEndOfSwitchExpression (), GGS_string ("the switch expression type should be an instance of an enumeration type (the '@").add_operation (extensionGetter_definition (var_switchExpression_8965.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 361)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 360)).add_operation (GGS_string ("' type is not an enumeration type)"), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 361)), fixItArray25  COMMA_SOURCE_FILE ("instruction-switch.galgas", 359)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@switchInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_switchInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4561,10 +4686,9 @@ void cPtr_switchInstructionForGeneration::method_generateInstruction (GGS_string
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 455)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@typeMethodCallInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typeMethodCallInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4577,10 +4701,9 @@ void cPtr_typeMethodCallInstructionAST::method_enterInstructionInSemanticContext
     enumerator_3776.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@typeMethodCallInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typeMethodCallInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4606,10 +4729,9 @@ void cPtr_typeMethodCallInstructionAST::method_analyzeSemanticInstruction (const
   const GGS_typeMethodCallInstructionAST temp_6 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_typeMethodCallInstructionForGeneration::init_21__21__21__21_ (temp_5.readProperty_mTypeName (), temp_6.readProperty_mMethodName (), var_actualParameterListForGeneration_5160, var_hasCompilerArgument_4721, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 120)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@typeMethodCallInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typeMethodCallInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4672,10 +4794,9 @@ void cPtr_typeMethodCallInstructionForGeneration::method_generateInstruction (GG
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (temp_8.readProperty_mMethodName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 179)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 179)), inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 179)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 180)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableDeclarationWithAssignmentAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4684,10 +4805,9 @@ void cPtr_localVariableDeclarationWithAssignmentAST::method_enterInstructionInSe
   const GGS_localVariableDeclarationWithAssignmentAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 172)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableDeclarationWithAssignmentAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4710,10 +4830,9 @@ void cPtr_localVariableDeclarationWithAssignmentAST::method_analyzeSemanticInstr
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::init_21__21__21__21_ (var_expression_7916.readProperty_mResultType (), GGS_bool (false), var_targetVariableCppName_7965, var_expression_7916, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 207)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableDeclarationNoAssignmentAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4725,10 +4844,9 @@ void cPtr_localVariableDeclarationNoAssignmentAST::method_enterInstructionInSema
   extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), joker_8897, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 220)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableDeclarationNoAssignmentAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableDeclarationNoAssignmentAST::method_analyzeSemanticInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -4750,10 +4868,9 @@ void cPtr_localVariableDeclarationNoAssignmentAST::method_analyzeSemanticInstruc
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_localVariableDeclarationForGeneration::init_21__21_ (var_targetType_9569, var_targetVariableCppName_9636, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 245)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@localVariableDeclarationForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_localVariableDeclarationForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4769,10 +4886,9 @@ void cPtr_localVariableDeclarationForGeneration::method_generateInstruction (GGS
   const GGS_localVariableDeclarationForGeneration temp_2 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_1.readProperty_mVariableType (), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)).add_operation (temp_2.readProperty_mCppVariableName (), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)), inCompiler  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 270)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@warningInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_warningInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4785,10 +4901,9 @@ void cPtr_warningInstructionAST::method_enterInstructionInSemanticContext (GGS_u
   const GGS_warningInstructionAST temp_2 = this ;
   extensionMethod_enterFixItListInSemanticContext (temp_2.readProperty_mFixitListAST (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 89)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@warningInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_warningInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4812,10 +4927,9 @@ void cPtr_warningInstructionAST::method_analyzeSemanticInstruction (const GGS_ls
   const GGS_warningInstructionAST temp_4 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_warningInstructionForGeneration::init_21__21__21__21_ (temp_4.readProperty_mInstructionLocation (), var_locationExpression_4938, var_messageExpression_4966, var_fixitListForGeneration_4993, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-warning.galgas", 120)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@warningInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_warningInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -4840,10 +4954,9 @@ void cPtr_warningInstructionForGeneration::method_generateInstruction (GGS_strin
   const GGS_warningInstructionForGeneration temp_3 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 169)).add_operation (GGS_string ("->emitSemanticWarning ("), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 169)).add_operation (var_receiverCppVarName_6294, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 169)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 170)).add_operation (var_messageCppVarName_6502, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 170)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 171)).add_operation (var_fixItArrayCppName_6752, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 171)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 172)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 172)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 173)), inCompiler  COMMA_SOURCE_FILE ("instruction-warning.galgas", 169)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readAccessWithInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readAccessWithInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4858,10 +4971,9 @@ void cPtr_readAccessWithInstructionAST::method_enterInstructionInSemanticContext
   const GGS_readAccessWithInstructionAST temp_3 = this ;
   extensionMethod_enterInstructionListInSemanticContext (temp_3.readProperty_mElseBranchInstructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 366)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readWriteAccessWithInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readWriteAccessWithInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4874,10 +4986,9 @@ void cPtr_readWriteAccessWithInstructionAST::method_enterInstructionInSemanticCo
   const GGS_readWriteAccessWithInstructionAST temp_2 = this ;
   extensionMethod_enterInstructionListInSemanticContext (temp_2.readProperty_m_5F_else_5F_Instructions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 376)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readAccessWithInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readAccessWithInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4997,10 +5108,9 @@ void cPtr_readAccessWithInstructionAST::method_analyzeSemanticInstruction (const
   const GGS_readAccessWithInstructionAST temp_32 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_readOnlyWithInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_31.readProperty_mInstructionLocation (), var_receiverExpression_15088, var_objectArrayCppName_16680, var_keyExpression_16041, temp_32.readProperty_mSearchMethodNameForErrorSignaling ().readProperty_string (), var_do_5F_instructionList_18284, var_else_5F_instructionList_18739, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-with.galgas", 486)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readWriteAccessWithInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readWriteAccessWithInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5207,10 +5317,9 @@ void cPtr_readWriteAccessWithInstructionAST::method_analyzeSemanticInstruction (
   const GGS_readWriteAccessWithInstructionAST temp_52 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_readWriteWithInstructionForGeneration::init_21__21__21__21__21__21__21__21__21_ (temp_50.readProperty_mInstructionLocation (), var_receiverVariableCppName_20912, var_targetType_20887, temp_51.readProperty_mFieldList (), var_objectArrayCppName_20730, var_keyExpression_20091, temp_52.readProperty_mSearchMethodNameForErrorSignaling ().readProperty_string (), var_do_5F_instructionList_24512, var_else_5F_instructionList_24925, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-with.galgas", 625)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readOnlyWithInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readOnlyWithInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -5267,10 +5376,9 @@ void cPtr_readOnlyWithInstructionForGeneration::method_generateInstruction (GGS_
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 730)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@readWriteWithInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_readWriteWithInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -5341,10 +5449,9 @@ void cPtr_readWriteWithInstructionForGeneration::method_generateInstruction (GGS
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 789)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nonterminalCallInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonterminalCallInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument_ioActuallyUsedTerminalSymbolMap */,
@@ -5361,10 +5468,9 @@ void cPtr_nonterminalCallInstruction::method_transformInstructionForGrammarAnaly
   const GGS_nonterminalCallInstruction temp_2 = this ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GGS_nonTerminalInstructionForGrammarAnalysis::init_21__21__21_ (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_5419, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 118)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nonterminalCallInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonterminalCallInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5413,10 +5519,9 @@ void cPtr_nonterminalCallInstruction::method_analyzeSyntaxInstruction (const GGS
   const GGS_nonterminalCallInstruction temp_11 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_8.readProperty_mInstructionLocation (), temp_9.readProperty_mNonterminalName ().readProperty_string (), temp_10.readProperty_mLabelName ().readProperty_string (), var_actualParameterListForGeneration_7531, temp_11.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 168)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nonterminalInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonterminalInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -5427,6 +5532,7 @@ void cPtr_nonterminalInstructionForGeneration::method_appendSyntaxSignature (con
   const GGS_nonterminalInstructionForGeneration temp_1 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_nonterminalInstructionForGeneration::init_21__21__21__21__21_ (temp_0.readProperty_mInstructionLocation (), temp_1.readProperty_mNonterminalName (), constinArgument_inPosfix, GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 200)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@nonterminalInstructionForGeneration compareInstructionSyntaxSignature'
@@ -5493,9 +5599,7 @@ GGS_bool cPtr_nonterminalInstructionForGeneration::getter_compareInstructionSynt
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nonterminalInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonterminalInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -5552,10 +5656,9 @@ void cPtr_nonterminalInstructionForGeneration::method_generateInstruction (GGS_s
     enumerator_12586.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@repeatInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -5585,10 +5688,9 @@ void cPtr_repeatInstruction::method_transformInstructionForGrammarAnalysis (GGS_
   const GGS_repeatInstruction temp_2 = this ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GGS_repeatInstructionForGrammarAnalysis::init_21__21__21_ (temp_2.readProperty_mInstructionLocation (), var_repeatBranchList_5212, var_addedNonTerminalIndex_4782, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 133)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@repeatInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5636,10 +5738,9 @@ void cPtr_repeatInstruction::method_analyzeSyntaxInstruction (const GGS_lstring 
   const GGS_repeatInstruction temp_5 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_repeatInstructionForGeneration::init_21__21__21__21__21__21_ (temp_4.readProperty_mInstructionLocation (), constinArgument_inComponentName, var_choiceIndex_6744, var_repeated_5F_instructionList_7296, temp_5.readProperty_mEndOf_5F_repeat_5F_instruction (), var_listOfSemanticInstructionListForGeneration_7396, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 206)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@repeatInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -5661,6 +5762,7 @@ void cPtr_repeatInstructionForGeneration::method_appendSyntaxSignature (const GG
   const GGS_repeatInstructionForGeneration temp_5 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_repeatInstructionForGeneration::init_21__21__21__21__21__21_ (temp_2.readProperty_mInstructionLocation (), temp_3.readProperty_mSyntaxComponentName (), temp_4.readProperty_mChoiceIndex (), var_repeated_5F_instructionList_9392, temp_5.readProperty_mEndOfRepeatedInstructions (), var_listOfSemanticInstructionListForGeneration_9503, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 244)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@repeatInstructionForGeneration compareInstructionSyntaxSignature'
@@ -5742,9 +5844,7 @@ GGS_bool cPtr_repeatInstructionForGeneration::getter_compareInstructionSyntaxSig
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@repeatInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -5811,10 +5911,9 @@ void cPtr_repeatInstructionForGeneration::method_generateInstruction (GGS_string
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 350)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selectInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -5839,10 +5938,9 @@ void cPtr_selectInstruction::method_transformInstructionForGrammarAnalysis (GGS_
   const GGS_selectInstruction temp_1 = this ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GGS_selectInstructionForGrammarAnalysis::init_21__21__21_ (temp_1.readProperty_mInstructionLocation (), var_selectBranchList_4539, var_addedNonTerminalIndex_4453, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-select.galgas", 118)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selectInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5883,10 +5981,9 @@ void cPtr_selectInstruction::method_analyzeSyntaxInstruction (const GGS_lstring 
   const GGS_selectInstruction temp_2 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_selectInstructionForGeneration::init_21__21__21__21_ (temp_2.readProperty_mInstructionLocation (), constinArgument_inComponentName, var_choiceIndex_6034, var_listOfSemanticInstructionListForGeneration_6184, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-select.galgas", 171)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selectInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -5905,6 +6002,7 @@ void cPtr_selectInstructionForGeneration::method_appendSyntaxSignature (const GG
   const GGS_selectInstructionForGeneration temp_3 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_selectInstructionForGeneration::init_21__21__21__21_ (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mSyntaxComponentName (), temp_3.readProperty_mChoiceIndex (), var_listOfSemanticInstructionListForGeneration_8018, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-select.galgas", 202)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@selectInstructionForGeneration compareInstructionSyntaxSignature'
@@ -5985,9 +6083,7 @@ GGS_bool cPtr_selectInstructionForGeneration::getter_compareInstructionSyntaxSig
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selectInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -6020,10 +6116,9 @@ void cPtr_selectInstructionForGeneration::method_generateInstruction (GGS_string
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("  break ;\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas", 272)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-select.galgas", 273)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@terminalCheckInstructionAST transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalCheckInstructionAST::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -6049,10 +6144,9 @@ void cPtr_terminalCheckInstructionAST::method_transformInstructionForGrammarAnal
   const GGS_terminalCheckInstructionAST temp_3 = this ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GGS_terminalInstructionForGrammarAnalysis::init_21__21__21_ (temp_2.readProperty_mInstructionLocation (), temp_3.readProperty_mTerminalName (), var_terminalSymbolIndex_7249, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-terminal.galgas", 162)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@terminalCheckInstructionAST analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalCheckInstructionAST::method_analyzeSyntaxInstruction (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -6151,10 +6245,9 @@ void cPtr_terminalCheckInstructionAST::method_analyzeSyntaxInstruction (const GG
   const GGS_terminalCheckInstructionAST temp_27 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_terminalCheckInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_23.readProperty_mInstructionLocation (), temp_24.readProperty_mTerminalName (), constinArgument_inLexiqueName, var_terminalCheckAssignementList_9095, temp_25.readProperty_mIndexingKeyList (), temp_26.readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (), temp_27.readProperty_mGrammarInstructionSyntaxDirectedTranslationToken (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-terminal.galgas", 231)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::method_tikzNodeForSyntaxInstruction (GGS_rowList & ioArgument_ioRowList,
@@ -6177,6 +6270,7 @@ void cPtr_terminalInstructionForGrammarAnalysis::method_tikzNodeForSyntaxInstruc
   ioArgument_ioArrowShape = GGS_string ("--") ;
   ioArgument_ioColumn.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas", 273)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@terminalInstructionForGrammarAnalysis isLinear'
@@ -6193,9 +6287,7 @@ GGS_bool cPtr_terminalInstructionForGrammarAnalysis::getter_isLinear (Compiler *
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@terminalCheckInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalCheckInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument_inPosfix */,
@@ -6208,6 +6300,7 @@ void cPtr_terminalCheckInstructionForGeneration::method_appendSyntaxSignature (c
   const GGS_terminalCheckInstructionForGeneration temp_3 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_terminalCheckInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_0.readProperty_mInstructionLocation (), temp_1.readProperty_mTerminalName (), temp_2.readProperty_mLexiqueIdentifier (), GGS_terminalCheckAssignementList::init (inCompiler COMMA_HERE), temp_3.readProperty_mIndexingKeyList (), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), GGS_grammarInstructionSyntaxDirectedTranslationResultNone::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-terminal.galgas", 307)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@terminalCheckInstructionForGeneration compareInstructionSyntaxSignature'
@@ -6274,9 +6367,7 @@ GGS_bool cPtr_terminalCheckInstructionForGeneration::getter_compareInstructionSy
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@terminalCheckInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalCheckInstructionForGeneration::method_generateInstruction (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -6325,10 +6416,9 @@ void cPtr_terminalCheckInstructionForGeneration::method_generateInstruction (GGS
   const GGS_terminalCheckInstructionForGeneration temp_8 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_commaSourceFile (temp_8.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas", 388)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-terminal.galgas", 388)), inCompiler  COMMA_SOURCE_FILE ("instruction-terminal.galgas", 388)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseLoopInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseLoopInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -6342,10 +6432,9 @@ void cPtr_parseLoopInstruction::method_transformInstructionForGrammarAnalysis (G
   routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (temp_0.readProperty_mDoInstructionList (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 111)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseLoopInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseLoopInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6403,10 +6492,9 @@ void cPtr_parseLoopInstruction::method_analyzeSyntaxInstruction (const GGS_lstri
   const GGS_parseLoopInstruction temp_11 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_parseLoopInstructionForGeneration::init_21__21__21__21_ (temp_11.readProperty_mInstructionLocation (), var_variant_5F_expression_6169, var_while_5F_expression_6823, var_instructionList_7678, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 192)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseLoopInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseLoopInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -6416,10 +6504,9 @@ void cPtr_parseLoopInstructionForGeneration::method_appendSyntaxSignature (const
   const GGS_parseLoopInstructionForGeneration temp_0 = this ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, temp_0.readProperty_mInstructionList (), inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 217)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 217)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseLoopInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseLoopInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -6484,10 +6571,9 @@ void cPtr_parseLoopInstructionForGeneration::method_generateInstruction (GGS_str
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 278)).add_operation (GGS_string ("->resetTemplateString () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 278)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 278)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseRewindInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -6504,10 +6590,9 @@ void cPtr_parseRewindInstruction::method_transformInstructionForGrammarAnalysis 
   routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (var_syntaxInstructionList_4482, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 108)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseRewindInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6562,10 +6647,9 @@ void cPtr_parseRewindInstruction::method_analyzeSyntaxInstruction (const GGS_lst
   const GGS_parseRewindInstruction temp_2 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_parseRewindInstructionForGeneration::init_21__21_ (temp_2.readProperty_mInstructionLocation (), var_listOfSemanticInstructionListForGeneration_5615, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 174)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseRewindInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -6578,10 +6662,9 @@ void cPtr_parseRewindInstructionForGeneration::method_appendSyntaxSignature (con
   temp_0.readProperty_mListOfSemanticInstructionListForGeneration ().method_first (var_instructionList_8190, joker_8206, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 196)) ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, var_instructionList_8190, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 197)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 197)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseRewindInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -6609,10 +6692,9 @@ void cPtr_parseRewindInstructionForGeneration::method_generateInstruction (GGS_s
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseWhenInstruction transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseWhenInstruction::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
@@ -6626,10 +6708,9 @@ void cPtr_parseWhenInstruction::method_transformInstructionForGrammarAnalysis (G
   routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (temp_0.readProperty_mElseInstructionList (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 181)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseWhenInstruction analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseWhenInstruction::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6681,10 +6762,9 @@ void cPtr_parseWhenInstruction::method_analyzeSyntaxInstruction (const GGS_lstri
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseWhenInstructionForGeneration appendSyntaxSignature'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseWhenInstructionForGeneration::method_appendSyntaxSignature (const GGS_string constinArgument_inPosfix,
@@ -6694,10 +6774,9 @@ void cPtr_parseWhenInstructionForGeneration::method_appendSyntaxSignature (const
   const GGS_parseWhenInstructionForGeneration temp_0 = this ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, temp_0.readProperty_mInstructionList (), inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 292)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 292)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@parseWhenInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseWhenInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -6722,10 +6801,9 @@ void cPtr_parseWhenInstructionForGeneration::method_generateInstruction (GGS_str
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 325)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@syntaxSendInstructionAST transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_syntaxSendInstructionAST::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument_ioActuallyUsedTerminalSymbolMap */,
@@ -6735,10 +6813,9 @@ void cPtr_syntaxSendInstructionAST::method_transformInstructionForGrammarAnalysi
                                                                                    Compiler * /* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@syntaxSendInstructionAST analyzeSyntaxInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_syntaxSendInstructionAST::method_analyzeSyntaxInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6780,10 +6857,9 @@ void cPtr_syntaxSendInstructionAST::method_analyzeSyntaxInstruction (const GGS_l
   const GGS_syntaxSendInstructionAST temp_7 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_syntaxSendInstructionForGeneration::init_21__21_ (temp_7.readProperty_mInstructionLocation (), var_expression_4992, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 111)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@syntaxSendInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_syntaxSendInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -6804,6 +6880,7 @@ void cPtr_syntaxSendInstructionForGeneration::method_generateInstruction (GGS_st
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string (".appendString (").add_operation (var_sourceVar_6503, inCompiler COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 146)).add_operation (GGS_string (".stringValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 146)), inCompiler  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 146)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-syntax-send.galgas", 147)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Function 'syntaxSignatureOfInstructionList'
@@ -7231,9 +7308,7 @@ void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (GGS_nonTerminalS
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@semanticInstructionAST transformInstructionForGrammarAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticInstructionAST::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument_ioActuallyUsedTerminalSymbolMap */,
@@ -7243,6 +7318,7 @@ void cPtr_semanticInstructionAST::method_transformInstructionForGrammarAnalysis 
                                                                                  Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'transformInstructionListForGrammarAnalysis?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'

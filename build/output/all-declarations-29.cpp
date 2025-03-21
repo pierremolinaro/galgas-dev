@@ -23,9 +23,7 @@ GGS_headerKind cPtr_functionPrototypeDeclarationForGeneration::getter_headerKind
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionPrototypeDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionPrototypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -37,6 +35,7 @@ void cPtr_functionPrototypeDeclarationForGeneration::method_appendDeclaration_31
   const GGS_functionPrototypeDeclarationForGeneration temp_2 = this ;
   outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (inCompiler, temp_0.readProperty_mFunctionName (), temp_1.readProperty_mFormalArgumentList (), extensionGetter_identifierRepresentation (temp_2.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 975)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 972))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@onceFunctionDeclarationForGeneration headerKind'
@@ -53,9 +52,7 @@ GGS_headerKind cPtr_onceFunctionDeclarationForGeneration::getter_headerKind (Com
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@onceFunctionDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_onceFunctionDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -66,6 +63,7 @@ void cPtr_onceFunctionDeclarationForGeneration::method_appendDeclaration_31_ (GG
   const GGS_onceFunctionDeclarationForGeneration temp_1 = this ;
   outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (inCompiler, temp_0.readProperty_mFunctionName (), GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE), extensionGetter_identifierRepresentation (temp_1.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 993)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 990))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@semanticTypeForGeneration appendTypeGenericImplementation'
@@ -94,9 +92,7 @@ GGS_string cPtr_semanticTypeForGeneration::getter_appendTypeGenericImplementatio
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionImplementationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionImplementationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -120,10 +116,9 @@ void cPtr_functionImplementationForGeneration::method_appendSpecificImplementati
   const GGS_functionImplementationForGeneration temp_8 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (inCompiler, temp_6.readProperty_mFunctionName (), var_code_41839, temp_7.readProperty_mFormalArgumentList (), extensionGetter_identifierRepresentation (temp_8.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1039)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1035))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@onceFunctionDeclarationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_onceFunctionDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -145,6 +140,7 @@ void cPtr_onceFunctionDeclarationForGeneration::method_appendSpecificImplementat
   const GGS_onceFunctionDeclarationForGeneration temp_6 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (inCompiler, temp_5.readProperty_mFunctionName (), var_code_42751, GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE), extensionGetter_identifierRepresentation (temp_6.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1067)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1063))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexiqueDeclarationForGeneration headerKind'
@@ -161,9 +157,7 @@ GGS_headerKind cPtr_lexiqueDeclarationForGeneration::getter_headerKind (Compiler
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
@@ -182,10 +176,9 @@ void cPtr_lexiqueDeclarationForGeneration::method_appendDeclaration_31_ (GGS_str
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueDeclarationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -198,10 +191,9 @@ void cPtr_lexiqueDeclarationForGeneration::method_appendSpecificImplementation (
   const GGS_lexiqueDeclarationForGeneration temp_1 = this ;
   outArgument_outHeader = temp_1.readProperty_mCppContents () ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueDeclarationForGeneration appendSpecificFiles'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueDeclarationForGeneration::method_appendSpecificFiles (const GGS_string constinArgument_inProductDirectory,
@@ -236,6 +228,7 @@ void cPtr_lexiqueDeclarationForGeneration::method_appendSpecificFiles (const GGS
   GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("lexique-").add_operation (temp_9.readProperty_mLexiqueName ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 1139)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1139)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1139)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), temp_10.readProperty_mSwiftCocoaImplementation (), GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1137)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@programComponentForGeneration headerKind'
@@ -252,9 +245,7 @@ GGS_headerKind cPtr_programComponentForGeneration::getter_headerKind (Compiler *
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@programComponentForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_programComponentForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -267,6 +258,7 @@ void cPtr_programComponentForGeneration::method_appendSpecificImplementation (co
   const GGS_programComponentForGeneration temp_1 = this ;
   outArgument_outImplementation = temp_1.readProperty_mImplementationString () ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@filewrapperDeclarationForGeneration headerKind'
@@ -323,9 +315,7 @@ void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const GGS_w
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -351,6 +341,7 @@ void cPtr_filewrapperDeclarationForGeneration::method_appendDeclaration_31_ (GGS
     enumerator_49546.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'generateWrapperContents?????&'
@@ -458,9 +449,7 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const GGS_string c
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperDeclarationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -500,10 +489,9 @@ void cPtr_filewrapperDeclarationForGeneration::method_appendSpecificImplementati
     enumerator_56256.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@primitiveTypeForGeneration appendPrimitiveTypePreDeclaration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_primitiveTypeForGeneration::method_appendPrimitiveTypePreDeclaration (GGS_string & ioArgument_ioHeader,
@@ -512,6 +500,7 @@ void cPtr_primitiveTypeForGeneration::method_appendPrimitiveTypePreDeclaration (
   const GGS_primitiveTypeForGeneration temp_0 = this ;
   ioArgument_ioHeader.plusAssign_operation(GGS_string ("class GGS_").add_operation (temp_0.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1415)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1415)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1415)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@primitiveTypeForGeneration appendPrimitiveTypeDeclaration'
@@ -1637,9 +1626,7 @@ C_galgas_function_descriptor functionDescriptor_rootRuleNameForUsefulEntitiesGra
                                                                                     functionArgs_rootRuleNameForUsefulEntitiesGraph) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@rightShiftExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_rightShiftExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1650,10 +1637,9 @@ void cPtr_rightShiftExpressionAST::method_enterExpressionInSemanticContext (GGS_
   const GGS_rightShiftExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 184)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@rightShiftExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_rightShiftExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1725,10 +1711,9 @@ void cPtr_rightShiftExpressionAST::method_analyzeSemanticExpression (const GGS_l
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@leftShiftExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_leftShiftExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1739,10 +1724,9 @@ void cPtr_leftShiftExpressionAST::method_enterExpressionInSemanticContext (GGS_u
   const GGS_leftShiftExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 256)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@leftShiftExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_leftShiftExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1814,10 +1798,9 @@ void cPtr_leftShiftExpressionAST::method_analyzeSemanticExpression (const GGS_ls
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@addExpressionNoOverflowAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionNoOverflowAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1828,10 +1811,9 @@ void cPtr_addExpressionNoOverflowAST::method_enterExpressionInSemanticContext (G
   const GGS_addExpressionNoOverflowAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 328)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@addExpressionNoOverflowAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionNoOverflowAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1875,10 +1857,9 @@ void cPtr_addExpressionNoOverflowAST::method_analyzeSemanticExpression (const GG
     outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_14182.readProperty_mResultType (), temp_5.readProperty_mOperatorLocation (), var_leftExpression_14182, GGS_binaryOperator::class_func_addNoOverflow (SOURCE_FILE ("expression-additive.galgas", 383)), var_rightExpression_14518, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@addExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1889,10 +1870,9 @@ void cPtr_addExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
   const GGS_addExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 395)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@addExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1936,10 +1916,9 @@ void cPtr_addExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
     outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_16568.readProperty_mResultType (), temp_5.readProperty_mOperatorLocation (), var_leftExpression_16568, GGS_binaryOperator::class_func_add (SOURCE_FILE ("expression-additive.galgas", 449)), var_rightExpression_16904, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subExpressionNoOverflowAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionNoOverflowAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -1950,10 +1929,9 @@ void cPtr_subExpressionNoOverflowAST::method_enterExpressionInSemanticContext (G
   const GGS_subExpressionNoOverflowAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 461)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subExpressionNoOverflowAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionNoOverflowAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -1997,10 +1975,9 @@ void cPtr_subExpressionNoOverflowAST::method_analyzeSemanticExpression (const GG
     outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_18958.readProperty_mResultType (), temp_5.readProperty_mOperatorLocation (), var_leftExpression_18958, GGS_binaryOperator::class_func_subNoOverflow (SOURCE_FILE ("expression-additive.galgas", 516)), var_rightExpression_19294, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2011,10 +1988,9 @@ void cPtr_subExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
   const GGS_subExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 528)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2058,10 +2034,9 @@ void cPtr_subExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
     outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_21344.readProperty_mResultType (), temp_5.readProperty_mOperatorLocation (), var_leftExpression_21344, GGS_binaryOperator::class_func_sub (SOURCE_FILE ("expression-additive.galgas", 582)), var_rightExpression_21680, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@binaryOperatorExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_binaryOperatorExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2185,10 +2160,9 @@ void cPtr_binaryOperatorExpressionForGeneration::method_generateExpression (GGS_
   const GGS_binaryOperatorExpressionForGeneration temp_5 = this ;
   outArgument_outCppExpression.plusAssign_operation(extensionGetter_commaSourceFile (temp_5.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 683)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-additive.galgas", 683)), inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 683)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@andExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_andExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2199,10 +2173,9 @@ void cPtr_andExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
   const GGS_andExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 104)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@andExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_andExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2227,10 +2200,9 @@ void cPtr_andExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
   const GGS_andExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_5428.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_5428, GGS_binaryOperator::class_func_operator_5F_and (SOURCE_FILE ("expression-and.galgas", 150)), var_rightExpression_5764, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@andShortExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_andShortExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2241,10 +2213,9 @@ void cPtr_andShortExpressionAST::method_enterExpressionInSemanticContext (GGS_un
   const GGS_andShortExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 161)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@andShortExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_andShortExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2269,10 +2240,9 @@ void cPtr_andShortExpressionAST::method_analyzeSemanticExpression (const GGS_lst
   const GGS_andShortExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_andShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_7430.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_7430, var_rightExpression_7766, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@andShortExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_andShortExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2304,10 +2274,9 @@ void cPtr_andShortExpressionForGeneration::method_generateExpression (GGS_string
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 251)) ;
   outArgument_outCppExpression = var_testVar_9286 ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@testDynamicClassInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_testDynamicClassInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2316,10 +2285,9 @@ void cPtr_testDynamicClassInExpressionAST::method_enterExpressionInSemanticConte
   const GGS_testDynamicClassInExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-is-as.galgas", 144)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@testDynamicClassInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_testDynamicClassInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2381,10 +2349,9 @@ void cPtr_testDynamicClassInExpressionAST::method_analyzeSemanticExpression (con
   const GGS_testDynamicClassInExpressionAST temp_9 = this ;
   outArgument_outExpression = GGS_testDynamicClassInExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_8.readProperty_mTypeName ().readProperty_location (), var_expression_5948, temp_9.readProperty_mTypeComparisonKind (), var_castType_5997, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@castInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_castInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2393,10 +2360,9 @@ void cPtr_castInExpressionAST::method_enterExpressionInSemanticContext (GGS_unif
   const GGS_castInExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mReceiverExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-is-as.galgas", 202)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@castInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_castInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2475,10 +2441,9 @@ void cPtr_castInExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
     outArgument_outExpression = GGS_castInExpressionForGeneration::init_21__21__21__21__21_ (var_type_8294, temp_12.readProperty_mTypeName ().readProperty_location (), var_expression_8244, temp_13.readProperty_mTypeName ().readProperty_string (), var_type_8294, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@testDynamicClassInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_testDynamicClassInExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2516,10 +2481,9 @@ void cPtr_testDynamicClassInExpressionForGeneration::method_generateExpression (
     break ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@castInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_castInExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2562,10 +2526,9 @@ void cPtr_castInExpressionForGeneration::method_generateExpression (GGS_string &
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-is-as.galgas", 356)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@extractObjectInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_extractObjectInExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2587,10 +2550,9 @@ void cPtr_extractObjectInExpressionForGeneration::method_generateExpression (GGS
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-is-as.galgas", 389)) COMMA_SOURCE_FILE ("expression-is-as.galgas", 389)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@comparisonExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_comparisonExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2601,10 +2563,9 @@ void cPtr_comparisonExpressionAST::method_enterExpressionInSemanticContext (GGS_
   const GGS_comparisonExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@comparisonExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_comparisonExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2688,10 +2649,9 @@ void cPtr_comparisonExpressionAST::method_analyzeSemanticExpression (const GGS_l
   const GGS_comparisonExpressionAST temp_5 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_4.readProperty_mOperatorLocation (), var_leftExpression_8777, temp_5.readProperty_mComparison (), var_rightExpression_9117, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@comparisonExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_comparisonExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2749,10 +2709,9 @@ void cPtr_comparisonExpressionForGeneration::method_generateExpression (GGS_stri
   }
   outArgument_outCppExpression = GGS_string ("GGS_bool (").add_operation (var_operatorName_11973, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)).add_operation (var_leftTemporaryOperand_11707, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)).add_operation (GGS_string (".objectCompare ("), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)).add_operation (var_rightTemporaryOperand_11913, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 313)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionCallExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionCallExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2765,10 +2724,9 @@ void cPtr_functionCallExpressionAST::method_enterExpressionInSemanticContext (GG
     enumerator_4400.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionCallExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionCallExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2858,10 +2816,9 @@ void cPtr_functionCallExpressionAST::method_analyzeSemanticExpression (const GGS
     outArgument_outExpression = GGS_functionCallExpressionForGeneration::init_21__21__21__21_ (var_resultType_5405, temp_19.readProperty_mFunctionName ().readProperty_location (), temp_20.readProperty_mFunctionName ().readProperty_string (), var_semanticExpressionListForGeneration_6255, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@functionCallExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_functionCallExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -2898,10 +2855,9 @@ void cPtr_functionCallExpressionForGeneration::method_generateExpression (GGS_st
   const GGS_functionCallExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression.plusAssign_operation(extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-function-call.galgas", 217)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-function-call.galgas", 217)), inCompiler  COMMA_SOURCE_FILE ("expression-function-call.galgas", 217)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@getterCallExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_getterCallExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -2912,10 +2868,9 @@ void cPtr_getterCallExpressionAST::method_enterExpressionInSemanticContext (GGS_
   const GGS_getterCallExpressionAST temp_1 = this ;
   extensionMethod_enterInSemanticContext (temp_1.readProperty_mActualArgumentList (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 64)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@getterCallExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3260,10 +3215,9 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@getterCallExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -3417,10 +3371,9 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
   const GGS_getterCallExpressionForGeneration temp_23 = this ;
   outArgument_outCppExpression.plusAssign_operation(extensionGetter_sourceFile (temp_23.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 353)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 353)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 353)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@initializerCallAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_initializerCallAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3441,10 +3394,9 @@ void cPtr_initializerCallAST::method_enterExpressionInSemanticContext (GGS_unifi
   const GGS_initializerCallAST temp_3 = this ;
   extensionMethod_enterInSemanticContext (temp_3.readProperty_mExpressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 200)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@initializerCallAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_initializerCallAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3472,6 +3424,7 @@ void cPtr_initializerCallAST::method_analyzeSemanticExpression (const GGS_lstrin
   const GGS_initializerCallAST temp_3 = this ;
   outArgument_outExpression = GGS_initializerCallForGeneration::init_21__21__21__21_ (var_instanciedType_8593, temp_3.readProperty_mEndOfExpressions (), var_initializerName_8628.readProperty_string (), var_constructorEffectiveParameterList_8692, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'analyzeInitializerInvocation?&??&&???!!!'
@@ -3600,9 +3553,7 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@initializerCallForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_initializerCallForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -3637,20 +3588,18 @@ void cPtr_initializerCallForGeneration::method_generateExpression (GGS_string & 
   outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 367)), inCompiler  COMMA_SOURCE_FILE ("expression-initializer.galgas", 367)) ;
   outArgument_outCppExpression.plusAssign_operation(GGS_string (" COMMA_HERE)"), inCompiler  COMMA_SOURCE_FILE ("expression-initializer.galgas", 368)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structPropertyAccessExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structPropertyAccessExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                       Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structPropertyAccessExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structPropertyAccessExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3755,10 +3704,9 @@ void cPtr_structPropertyAccessExpressionAST::method_analyzeSemanticExpression (c
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@propertyAccessExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_propertyAccessExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -3777,10 +3725,9 @@ void cPtr_propertyAccessExpressionForGeneration::method_generateExpression (GGS_
   const GGS_propertyAccessExpressionForGeneration temp_2 = this ;
   outArgument_outCppExpression.plusAssign_operation(temp_2.readProperty_structFieldName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)).add_operation (GGS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subscriptReadAccessExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subscriptReadAccessExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3793,10 +3740,9 @@ void cPtr_subscriptReadAccessExpressionAST::method_enterExpressionInSemanticCont
     enumerator_9969.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subscriptReadAccessExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3864,10 +3810,9 @@ void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (co
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@subscriptReadAccessExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subscriptReadAccessExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -3907,10 +3852,9 @@ void cPtr_subscriptReadAccessExpressionForGeneration::method_generateExpression 
   }
   outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)).add_operation (GGS_string (" COMMA_HERE)"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classFuncExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classFuncExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -3931,10 +3875,9 @@ void cPtr_classFuncExpressionAST::method_enterExpressionInSemanticContext (GGS_u
   const GGS_classFuncExpressionAST temp_3 = this ;
   extensionMethod_enterInSemanticContext (temp_3.readProperty_expressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 139)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classFuncExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classFuncExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3972,6 +3915,7 @@ void cPtr_classFuncExpressionAST::method_analyzeSemanticExpression (const GGS_ls
   const GGS_classFuncExpressionAST temp_7 = this ;
   outArgument_outExpression = GGS_classFuncExpressionForGeneration::init_21__21__21__21__21__21__21_ (var_returnedType_6224, temp_6.readProperty_classFuncName ().readProperty_location (), var_classFuncType_6269, temp_7.readProperty_classFuncName ().readProperty_string (), var_constructorEffectiveParameterList_6331, var_hasCompilerArgument_6382, var_requiredTypes_6436, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'analyzeConstructorInvocation?&??&&????!!!!!'
@@ -4160,9 +4104,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classFuncExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classFuncExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -4235,10 +4177,9 @@ void cPtr_classFuncExpressionForGeneration::method_generateExpression (GGS_strin
     outArgument_outCppExpression.plusAssign_operation(extensionGetter_sourceFile (temp_10.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 356)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-class-func.galgas", 356)), inCompiler  COMMA_SOURCE_FILE ("expression-class-func.galgas", 356)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bangExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bangExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4247,10 +4188,9 @@ void cPtr_bangExpressionAST::method_enterExpressionInSemanticContext (GGS_unifie
   const GGS_bangExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 73)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bangExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bangExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4284,10 +4224,9 @@ void cPtr_bangExpressionAST::method_analyzeSemanticExpression (const GGS_lstring
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@bangExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_bangExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -4310,10 +4249,9 @@ void cPtr_bangExpressionForGeneration::method_generateExpression (GGS_string & i
   const GGS_bangExpressionForGeneration temp_3 = this ;
   outArgument_outCppExpression.plusAssign_operation(GGS_string (" (").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)), inCompiler  COMMA_SOURCE_FILE ("expression-primary-bang.galgas", 141)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@collectionValueAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_collectionValueAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4326,10 +4264,9 @@ void cPtr_collectionValueAST::method_enterExpressionInSemanticContext (GGS_unifi
     enumerator_4206.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@collectionValueAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_collectionValueAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4414,10 +4351,9 @@ void cPtr_collectionValueAST::method_analyzeSemanticExpression (const GGS_lstrin
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@expressionCollectionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_expressionCollectionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -4451,20 +4387,18 @@ void cPtr_expressionCollectionForGeneration::method_generateExpression (GGS_stri
     enumerator_8886.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperObjectInstanciationInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                                   Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperObjectInstanciationInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4512,10 +4446,9 @@ void cPtr_filewrapperObjectInstanciationInExpressionAST::method_analyzeSemanticE
   const GGS_filewrapperObjectInstanciationInExpressionAST temp_10 = this ;
   outArgument_outExpression = GGS_filewrapperInExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("filewrapper"), temp_8.readProperty_mFilewrapperName ().readProperty_location (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 160)), temp_9.readProperty_mFilewrapperName ().readProperty_location (), temp_10.readProperty_mFilewrapperName ().readProperty_string (), var_filewrapperPath_5745.readProperty_string (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperTemplateInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperTemplateInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4528,10 +4461,9 @@ void cPtr_filewrapperTemplateInExpressionAST::method_enterExpressionInSemanticCo
     enumerator_6707.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperTemplateInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperTemplateInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4632,20 +4564,18 @@ void cPtr_filewrapperTemplateInExpressionAST::method_analyzeSemanticExpression (
   const GGS_filewrapperTemplateInExpressionAST temp_24 = this ;
   outArgument_outExpression = GGS_filewrapperTemplateInExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType (), temp_22.readProperty_mFilewrapperName ().readProperty_location (), temp_23.readProperty_mFilewrapperName ().readProperty_string (), temp_24.readProperty_mFilewrapperTemplateName ().readProperty_string (), var_effectiveParameterList_8347, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4792,10 +4722,9 @@ void cPtr_filewrapperInExpressionAST::method_analyzeSemanticExpression (const GG
   const GGS_filewrapperInExpressionAST temp_28 = this ;
   outArgument_outExpression = GGS_filewrapperStaticPathInExpressionForGeneration::init_21__21__21__21__21_ (temp_25, temp_27.readProperty_mFilewrapperName ().readProperty_location (), temp_28.readProperty_mFilewrapperName ().readProperty_string (), var_fileIndex_12784, var_isTextFile_12806, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperInExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -4810,10 +4739,9 @@ void cPtr_filewrapperInExpressionForGeneration::method_generateExpression (GGS_s
   const GGS_filewrapperInExpressionForGeneration temp_1 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_filewrapper (gWrapperDirectory_0_").add_operation (temp_1.readProperty_mFilewrapperName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-filewrapper.galgas", 347)), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 347)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 347)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperTemplateInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperTemplateInExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -4848,10 +4776,9 @@ void cPtr_filewrapperTemplateInExpressionForGeneration::method_generateExpressio
   const GGS_filewrapperTemplateInExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression.plusAssign_operation(extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 385)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 385)), inCompiler  COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 385)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@filewrapperStaticPathInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperStaticPathInExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -4876,10 +4803,9 @@ void cPtr_filewrapperStaticPathInExpressionForGeneration::method_generateExpress
   const GGS_filewrapperStaticPathInExpressionForGeneration temp_5 = this ;
   outArgument_outCppExpression.plusAssign_operation(GGS_string (" (gWrapperFileContent_").add_operation (temp_4.readProperty_mFilewrapperFileIndex ().getter_string (SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)).add_operation (temp_5.readProperty_mFilewrapperName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)), inCompiler  COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 407)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -4892,10 +4818,9 @@ void cPtr_ifExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedT
   const GGS_ifExpressionAST temp_2 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_2.readProperty_mElseExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas", 117)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4943,10 +4868,9 @@ void cPtr_ifExpressionAST::method_analyzeSemanticExpression (const GGS_lstring c
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@ifExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -4990,20 +4914,18 @@ void cPtr_ifExpressionForGeneration::method_generateExpression (GGS_string & ioA
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-primary-if.galgas", 240)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueIntrospectionExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                       Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueIntrospectionExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueIntrospectionExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5044,10 +4966,9 @@ void cPtr_lexiqueIntrospectionExpressionAST::method_analyzeSemanticExpression (c
   const GGS_lexiqueIntrospectionExpressionAST temp_8 = this ;
   outArgument_outExpression = GGS_lexiqueIntrospectionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_string ("stringlist").getter_nowhere (SOURCE_FILE ("expression-primary-lexique.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 104)), temp_6.readProperty_mLexiqueComponentName ().readProperty_location (), temp_7.readProperty_mLexiqueComponentName ().readProperty_string (), temp_8.readProperty_mLexiqueGetterName ().readProperty_string (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueIntrospectionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueIntrospectionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5064,20 +4985,18 @@ void cPtr_lexiqueIntrospectionForGeneration::method_generateExpression (GGS_stri
   const GGS_lexiqueIntrospectionForGeneration temp_3 = this ;
   outArgument_outCppExpression = GGS_string ("Lexique_").add_operation (temp_1.readProperty_mLexiqueComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-lexique.galgas", 129)), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 129)).add_operation (GGS_string ("::"), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 129)).add_operation (temp_2.readProperty_mLexiqueGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-lexique.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 129)).add_operation (GGS_string ("("), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 130)).add_operation (extensionGetter_sourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 131)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-lexique.galgas", 131)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalCharExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalCharExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                              Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalCharExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalCharExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5093,10 +5012,9 @@ void cPtr_literalCharExpressionAST::method_analyzeSemanticExpression (const GGS_
   const GGS_literalCharExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalCharExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mCharType (), temp_0.readProperty_mCharacter ().readProperty_location (), temp_1.readProperty_mCharacter ().readProperty_char (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalCharExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalCharExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5109,20 +5027,18 @@ void cPtr_literalCharExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_literalCharExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_char (TO_UNICODE (").add_operation (temp_0.readProperty_mCharacter ().getter_uint (SOURCE_FILE ("expression-primary-literal-char.galgas", 103)).getter_string (SOURCE_FILE ("expression-primary-literal-char.galgas", 103)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-char.galgas", 103)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-char.galgas", 103)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalDoubleExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalDoubleExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalDoubleExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalDoubleExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5138,10 +5054,9 @@ void cPtr_literalDoubleExpressionAST::method_analyzeSemanticExpression (const GG
   const GGS_literalDoubleExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalDoubleExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mValue ().readProperty_location (), temp_1.readProperty_mValue ().readProperty_double (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalDoubleExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalDoubleExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5154,20 +5069,18 @@ void cPtr_literalDoubleExpressionForGeneration::method_generateExpression (GGS_s
   const GGS_literalDoubleExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_double (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-double.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas", 105)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas", 105)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalBigIntExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalBigIntExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalBigIntExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalBigIntExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5183,10 +5096,9 @@ void cPtr_literalBigIntExpressionAST::method_analyzeSemanticExpression (const GG
   const GGS_literalBigIntExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBigIntType (), temp_0.readProperty_mValue ().readProperty_location (), temp_1.readProperty_mValue ().readProperty_bigint (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalUIntExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalUIntExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5199,10 +5111,9 @@ void cPtr_literalUIntExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_literalUIntExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_uint (uint32_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas", 195)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 195)).add_operation (GGS_string ("U))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 195)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalUInt64ExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalUInt_36__34_ExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5215,10 +5126,9 @@ void cPtr_literalUInt_36__34_ExpressionForGeneration::method_generateExpression 
   const GGS_literalUInt_36__34_ExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_uint_36__34_ (uint64_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas", 212)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 212)).add_operation (GGS_string ("ULL))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 212)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalSIntExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalSIntExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5231,10 +5141,9 @@ void cPtr_literalSIntExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_literalSIntExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_sint (int32_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas", 229)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 229)).add_operation (GGS_string ("L))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 229)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalSInt64ExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalSInt_36__34_ExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5247,10 +5156,9 @@ void cPtr_literalSInt_36__34_ExpressionForGeneration::method_generateExpression 
   const GGS_literalSInt_36__34_ExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_sint_36__34_ (int64_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas", 246)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 246)).add_operation (GGS_string ("LL))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 246)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalBigIntExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalBigIntExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5269,20 +5177,18 @@ void cPtr_literalBigIntExpressionForGeneration::method_generateExpression (GGS_s
   const GGS_literalBigIntExpressionForGeneration temp_1 = this ;
   outArgument_outCppExpression.plusAssign_operation(GGS_string (" ").add_operation (extensionGetter_commaSourceFile (temp_1.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 266)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 266)), inCompiler  COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas", 266)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalStringExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalStringExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                                Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalStringExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalStringExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5304,10 +5210,9 @@ void cPtr_literalStringExpressionAST::method_analyzeSemanticExpression (const GG
   const GGS_literalStringExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalStringExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mStringType (), temp_1.readProperty_mLocation (), var_s_3894, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalStringExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalStringExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5330,10 +5235,9 @@ void cPtr_literalStringExpressionForGeneration::method_generateExpression (GGS_s
     outArgument_outCppExpression = GGS_string ("GGS_string (").add_operation (temp_2.readProperty_mString ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("expression-primary-literal-string.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-string.galgas", 117)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-string.galgas", 117)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalTypeInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalTypeInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -5345,10 +5249,9 @@ void cPtr_literalTypeInExpressionAST::method_enterExpressionInSemanticContext (G
   extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_mLiteralTypeName (), joker_3111, inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 69)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalTypeInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalTypeInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5370,10 +5273,9 @@ void cPtr_literalTypeInExpressionAST::method_analyzeSemanticExpression (const GG
   const GGS_literalTypeInExpressionAST temp_2 = this ;
   outArgument_outExpression = GGS_literalTypeInExpressionForGeneration::init_21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("type"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 88)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 88)), temp_2.readProperty_mLiteralTypeName ().readProperty_location (), var_type_3841, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@literalTypeInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalTypeInExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5388,20 +5290,18 @@ void cPtr_literalTypeInExpressionForGeneration::method_generateExpression (GGS_s
   const GGS_literalTypeInExpressionForGeneration temp_1 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_type (& kTypeDescriptor_GALGAS_").add_operation (extensionGetter_definition (temp_1.readProperty_mLiteralType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 113)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-literal-type.galgas", 113)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 112)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-type.galgas", 113)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                         Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5432,10 +5332,9 @@ void cPtr_selfInExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfInExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -5455,20 +5354,18 @@ void cPtr_selfInExpressionForGeneration::method_generateExpression (GGS_string &
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mSelfCppName () COMMA_SOURCE_FILE ("expression-primary-self.galgas", 107)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nilExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nilExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                      Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nilExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nilExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5508,10 +5405,9 @@ void cPtr_nilExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@nilExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nilExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5524,20 +5420,18 @@ void cPtr_nilExpressionForGeneration::method_generateExpression (GGS_string & /*
   const GGS_nilExpressionForGeneration temp_0 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_0.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-nil.galgas", 102)), inCompiler COMMA_SOURCE_FILE ("expression-primary-nil.galgas", 102)).add_operation (GGS_string ("::init_nil ()"), inCompiler COMMA_SOURCE_FILE ("expression-primary-nil.galgas", 102)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                         Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5679,10 +5573,9 @@ void cPtr_optionExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionValueExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionValueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5706,10 +5599,9 @@ void cPtr_optionValueExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_optionValueExpressionForGeneration temp_5 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_3.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 217)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 217)).add_operation (GGS_string (" (gOption_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 217)).add_operation (temp_4.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 217)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 217)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 217)).add_operation (temp_5.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 218)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 218)).add_operation (GGS_string (".readProperty_value ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 218)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionCharExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionCharExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5732,10 +5624,9 @@ void cPtr_optionCharExpressionForGeneration::method_generateExpression (GGS_stri
   const GGS_optionCharExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_char (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 240)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 240)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 240)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 241)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 241)).add_operation (GGS_string (".readProperty_char ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 241)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionStringExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionStringExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5758,10 +5649,9 @@ void cPtr_optionStringExpressionForGeneration::method_generateExpression (GGS_st
   const GGS_optionStringExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_string (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 263)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 263)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 263)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 264)).add_operation (GGS_string (".readProperty_string ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 264)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionCommentExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionCommentExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5784,20 +5674,18 @@ void cPtr_optionCommentExpressionForGeneration::method_generateExpression (GGS_s
   const GGS_optionCommentExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression = GGS_string ("gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 278)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 278)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas", 279)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 279)).add_operation (GGS_string (".readProperty_comment ()"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas", 279)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@trueExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_trueExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                       Compiler * /* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@trueExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_trueExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5812,20 +5700,18 @@ void cPtr_trueExpressionAST::method_analyzeSemanticExpression (const GGS_lstring
   const GGS_trueExpressionAST temp_0 = this ;
   outArgument_outExpression = GGS_trueExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@falseExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_falseExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                        Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@falseExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5840,10 +5726,9 @@ void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstrin
   const GGS_falseExpressionAST temp_0 = this ;
   outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@trueExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5855,10 +5740,9 @@ void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outCppExpression = GGS_string ("GGS_bool (true)") ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@falseExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_falseExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5870,6 +5754,7 @@ void cPtr_falseExpressionForGeneration::method_generateExpression (GGS_string & 
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outCppExpression = GGS_string ("GGS_bool (false)") ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@trueExpressionForGeneration isTrueExpression'
@@ -5886,19 +5771,16 @@ GGS_bool cPtr_trueExpressionForGeneration::getter_isTrueExpression (Compiler */*
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@varInExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_varInExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
                                                                        Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@varInExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_varInExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -5920,10 +5802,9 @@ void cPtr_varInExpressionAST::method_analyzeSemanticExpression (const GGS_lstrin
   const GGS_varInExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_varInExpressionForGeneration::init_21__21__21__21_ (var_type_3345, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3369, var_nameForCheckingFormalParameterUsing_3410, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@varInExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_varInExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument_ioGeneratedCode */,
@@ -5942,10 +5823,9 @@ void cPtr_varInExpressionForGeneration::method_generateExpression (GGS_string & 
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mNameForCheckingFormalParameterUsing () COMMA_SOURCE_FILE ("expression-primary-var.galgas", 108)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionNoOverflowAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -5956,10 +5836,9 @@ void cPtr_multiplicationExpressionNoOverflowAST::method_enterExpressionInSemanti
   const GGS_multiplicationExpressionNoOverflowAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 164)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@multiplicationExpressionNoOverflowAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionNoOverflowAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -5984,10 +5863,9 @@ void cPtr_multiplicationExpressionNoOverflowAST::method_analyzeSemanticExpressio
   const GGS_multiplicationExpressionNoOverflowAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_7879.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_7879, GGS_binaryOperator::class_func_multiply_5F_operation_5F_no_5F_ovf (SOURCE_FILE ("expression-multiplicative.galgas", 210)), var_rightExpression_8215, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@multiplicationExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -5998,10 +5876,9 @@ void cPtr_multiplicationExpressionAST::method_enterExpressionInSemanticContext (
   const GGS_multiplicationExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 222)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@multiplicationExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6026,10 +5903,9 @@ void cPtr_multiplicationExpressionAST::method_analyzeSemanticExpression (const G
   const GGS_multiplicationExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_9914.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_9914, GGS_binaryOperator::class_func_multiply_5F_operation (SOURCE_FILE ("expression-multiplicative.galgas", 268)), var_rightExpression_10250, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@divisionExpressionNoOverflowAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionNoOverflowAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6040,10 +5916,9 @@ void cPtr_divisionExpressionNoOverflowAST::method_enterExpressionInSemanticConte
   const GGS_divisionExpressionNoOverflowAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 279)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@divisionExpressionNoOverflowAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionNoOverflowAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6068,10 +5943,9 @@ void cPtr_divisionExpressionNoOverflowAST::method_analyzeSemanticExpression (con
   const GGS_divisionExpressionNoOverflowAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_11942.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_11942, GGS_binaryOperator::class_func_divide_5F_operation_5F_no_5F_ovf (SOURCE_FILE ("expression-multiplicative.galgas", 325)), var_rightExpression_12278, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@divisionExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6082,10 +5956,9 @@ void cPtr_divisionExpressionAST::method_enterExpressionInSemanticContext (GGS_un
   const GGS_divisionExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 336)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@divisionExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6110,10 +5983,9 @@ void cPtr_divisionExpressionAST::method_analyzeSemanticExpression (const GGS_lst
   const GGS_divisionExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_13961.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_13961, GGS_binaryOperator::class_func_divide_5F_operation (SOURCE_FILE ("expression-multiplicative.galgas", 382)), var_rightExpression_14297, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@moduloExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_moduloExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6124,10 +5996,9 @@ void cPtr_moduloExpressionAST::method_enterExpressionInSemanticContext (GGS_unif
   const GGS_moduloExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 393)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@moduloExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_moduloExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6152,10 +6023,9 @@ void cPtr_moduloExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
   const GGS_moduloExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_15963.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_15963, GGS_binaryOperator::class_func_modulo_5F_operation (SOURCE_FILE ("expression-multiplicative.galgas", 439)), var_rightExpression_16299, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@notExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_notExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6164,10 +6034,9 @@ void cPtr_notExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
   const GGS_notExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-not.galgas", 72)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@notExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_notExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6218,10 +6087,9 @@ void cPtr_notExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@notExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_notExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6239,10 +6107,9 @@ void cPtr_notExpressionForGeneration::method_generateExpression (GGS_string & io
   const GGS_notExpressionForGeneration temp_2 = this ;
   outArgument_outCppExpression = var_operand_5769.add_operation (GGS_string (".operator_not ("), inCompiler COMMA_SOURCE_FILE ("expression-not.galgas", 135)).add_operation (extensionGetter_sourceFile (temp_2.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-not.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("expression-not.galgas", 135)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-not.galgas", 135)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@orExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_orExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6253,10 +6120,9 @@ void cPtr_orExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedT
   const GGS_orExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 164)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@orExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_orExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6281,10 +6147,9 @@ void cPtr_orExpressionAST::method_analyzeSemanticExpression (const GGS_lstring c
   const GGS_orExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_7787.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_7787, GGS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("expression-or.galgas", 209)), var_rightExpression_8124, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@orShortExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_orShortExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6295,10 +6160,9 @@ void cPtr_orShortExpressionAST::method_enterExpressionInSemanticContext (GGS_uni
   const GGS_orShortExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 220)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@orShortExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_orShortExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6323,10 +6187,9 @@ void cPtr_orShortExpressionAST::method_analyzeSemanticExpression (const GGS_lstr
   const GGS_orShortExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_orShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_9761.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_9761, var_rightExpression_10098, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_xorExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6337,10 +6200,9 @@ void cPtr_xorExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
   const GGS_xorExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 275)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@xorExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_xorExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6365,10 +6227,9 @@ void cPtr_xorExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
   const GGS_xorExpressionAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_11725.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_11725, GGS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("expression-or.galgas", 321)), var_rightExpression_12062, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@closedSliceExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_closedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6379,10 +6240,9 @@ void cPtr_closedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS
   const GGS_closedSliceExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 332)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@closedSliceExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_closedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6421,10 +6281,9 @@ void cPtr_closedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_
   const GGS_closedSliceExpressionAST temp_6 = this ;
   outArgument_outExpression = GGS_closedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_13770.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 377)), temp_6.readProperty_mOperatorLocation (), var_leftExpression_13770, var_rightExpression_14128, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@openedSliceExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_openedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6435,10 +6294,9 @@ void cPtr_openedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS
   const GGS_openedSliceExpressionAST temp_1 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@openedSliceExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_openedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6465,10 +6323,9 @@ void cPtr_openedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_
   const GGS_openedSliceExpressionAST temp_2 = this ;
   outArgument_outExpression = GGS_openedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_16360.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 446)), temp_2.readProperty_mOperatorLocation (), var_leftExpression_16360, var_rightExpression_16718, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@orShortExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_orShortExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6500,10 +6357,9 @@ void cPtr_orShortExpressionForGeneration::method_generateExpression (GGS_string 
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 509)) ;
   outArgument_outCppExpression = var_testVar_19529 ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@closedSliceExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_closedSliceExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6525,10 +6381,9 @@ void cPtr_closedSliceExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_closedSliceExpressionForGeneration temp_4 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_20791, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (var_rightTemporaryOperand_20996, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (GGS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (var_leftTemporaryOperand_20791, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GGS_string (").add_operation (GGS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@openedSliceExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_openedSliceExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6552,10 +6407,9 @@ void cPtr_openedSliceExpressionForGeneration::method_generateExpression (GGS_str
   const GGS_openedSliceExpressionForGeneration temp_3 = this ;
   outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_21945, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (var_rightTemporaryOperand_22150, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (GGS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (var_leftTemporaryOperand_21945, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 575)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 575)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@tildeExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_tildeExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6564,10 +6418,9 @@ void cPtr_tildeExpressionAST::method_enterExpressionInSemanticContext (GGS_unifi
   const GGS_tildeExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 66)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@tildeExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_tildeExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6610,10 +6463,9 @@ void cPtr_tildeExpressionAST::method_analyzeSemanticExpression (const GGS_lstrin
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@tildeExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_tildeExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6631,10 +6483,9 @@ void cPtr_tildeExpressionForGeneration::method_generateExpression (GGS_string & 
   const GGS_tildeExpressionForGeneration temp_2 = this ;
   outArgument_outCppExpression = var_operand_5566.add_operation (GGS_string (".operator_tilde ("), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 137)).add_operation (extensionGetter_sourceFile (temp_2.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 137)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 137)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryMinusExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryMinusExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6643,10 +6494,9 @@ void cPtr_unaryMinusExpressionAST::method_enterExpressionInSemanticContext (GGS_
   const GGS_unaryMinusExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 72)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryMinusExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryMinusExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6689,10 +6539,9 @@ void cPtr_unaryMinusExpressionAST::method_analyzeSemanticExpression (const GGS_l
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryMinusExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryMinusExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6713,10 +6562,9 @@ void cPtr_unaryMinusExpressionForGeneration::method_generateExpression (GGS_stri
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 144)) COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 144)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryPlusExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryPlusExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6725,10 +6573,9 @@ void cPtr_unaryPlusExpressionAST::method_enterExpressionInSemanticContext (GGS_u
   const GGS_unaryPlusExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 72)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryPlusExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryPlusExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6754,10 +6601,9 @@ void cPtr_unaryPlusExpressionAST::method_analyzeSemanticExpression (const GGS_ls
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryWrappingMinusExpressionAST enterExpressionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryWrappingMinusExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -6766,10 +6612,9 @@ void cPtr_unaryWrappingMinusExpressionAST::method_enterExpressionInSemanticConte
   const GGS_unaryWrappingMinusExpressionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 72)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryWrappingMinusExpressionAST analyzeSemanticExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryWrappingMinusExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -6800,10 +6645,9 @@ void cPtr_unaryWrappingMinusExpressionAST::method_analyzeSemanticExpression (con
     outArgument_outExpression = GGS_unaryWrappingMinusExpressionForGeneration::init_21__21__21_ (var_type_4162, temp_4.readProperty_mOperatorLocation (), var_expression_4086, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@unaryWrappingMinusExpressionForGeneration generateExpression'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryWrappingMinusExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
@@ -6820,6 +6664,7 @@ void cPtr_unaryWrappingMinusExpressionForGeneration::method_generateExpression (
   callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_5569, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 128)) ;
   outArgument_outCppExpression = var_operand_5569.add_operation (GGS_string (".operator_unary_minus_no_ovf ()"), inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 136)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'checkAssignmentTypes???'
@@ -7426,9 +7271,7 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const GGS
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@assignmentInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_assignmentInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -7437,10 +7280,9 @@ void cPtr_assignmentInstructionAST::method_enterInstructionInSemanticContext (GG
   const GGS_assignmentInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 172)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPropertyAssignmentInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPropertyAssignmentInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -7449,10 +7291,9 @@ void cPtr_selfPropertyAssignmentInstructionAST::method_enterInstructionInSemanti
   const GGS_selfPropertyAssignmentInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mSourceExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 180)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@assignmentInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_assignmentInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -7526,10 +7367,9 @@ void cPtr_assignmentInstructionAST::method_analyzeSemanticInstruction (const GGS
   const GGS_assignmentInstructionAST temp_15 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_assignmentInstructionForGeneration::init_21__21__21__21__21__21__21_ (var_receiverType_7239, var_targetType_7276, var_targetVariableCppName_8256, var_nameForCheckingFormalParameterUsing_8292, temp_14.readProperty_mOptionalProperty ().readProperty_string (), var_expression_8017, temp_15.readProperty_mTargetVariableName ().readProperty_location (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 247)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPropertyAssignmentInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selfPropertyAssignmentInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -7622,10 +7462,9 @@ void cPtr_selfPropertyAssignmentInstructionAST::method_analyzeSemanticInstructio
     inCompiler->emitSemanticError (temp_22.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray23  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 314)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@assignmentInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_assignmentInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -7698,10 +7537,9 @@ void cPtr_assignmentInstructionForGeneration::method_generateInstruction (GGS_st
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_16.readProperty_mTargetCppName () COMMA_SOURCE_FILE ("instruction-assignment.galgas", 367)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structuredCastInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structuredCastInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -7718,10 +7556,9 @@ void cPtr_structuredCastInstructionAST::method_enterInstructionInSemanticContext
     enumerator_5743.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structuredCastInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structuredCastInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -7804,10 +7641,9 @@ void cPtr_structuredCastInstructionAST::method_analyzeSemanticInstruction (const
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_structuredCastInstructionForGeneration::init_21__21__21_ (var_castExpression_6727, var_castBranchList_6869, var_else_5F_instructionList_9076, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-cast.galgas", 232)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structuredCastInstructionForGeneration generateInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structuredCastInstructionForGeneration::method_generateInstruction (GGS_stringset & ioArgument_ioInclusionSet,
@@ -7880,10 +7716,9 @@ void cPtr_structuredCastInstructionForGeneration::method_generateInstruction (GG
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 327)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@opAssignExpressionInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_opAssignExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -7892,10 +7727,9 @@ void cPtr_opAssignExpressionInstructionAST::method_enterInstructionInSemanticCon
   const GGS_opAssignExpressionInstructionAST temp_0 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 397)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@opAssignExpressionInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_opAssignExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -8016,10 +7850,9 @@ void cPtr_opAssignExpressionInstructionAST::method_analyzeSemanticInstruction (c
   const GGS_opAssignExpressionInstructionAST temp_30 = this ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_28.readProperty_mInstructionLocation (), var_targetType_14727, var_targetVariableCppName_14754, var_nameForCheckingFormalParameterUsing_14792, temp_29.readProperty_mStructAttributeList (), var_expression_17458, extensionGetter_cppFunctionName (temp_30.readProperty_mOperator (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 479)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-concat.galgas", 472)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@plusEqualElementsInstructionAST enterInstructionInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_plusEqualElementsInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
@@ -8028,10 +7861,9 @@ void cPtr_plusEqualElementsInstructionAST::method_enterInstructionInSemanticCont
   const GGS_plusEqualElementsInstructionAST temp_0 = this ;
   extensionMethod_enterInSemanticContext (temp_0.readProperty_mExpressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 498)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@plusEqualElementsInstructionAST analyzeSemanticInstruction'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_plusEqualElementsInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -8179,3 +8011,4 @@ void cPtr_plusEqualElementsInstructionAST::method_analyzeSemanticInstruction (co
     }
   }
 }
+

@@ -8,9 +8,7 @@
 #include "all-declarations-26.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolsetDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -30,6 +28,7 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTyp
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_4765, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 128)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@boolsetDeclarationAST keyRepresentation'
@@ -47,9 +46,7 @@ GGS_string cPtr_boolsetDeclarationAST::getter_keyRepresentation (Compiler * inCo
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolsetDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -137,10 +134,9 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInSemanticContext (GGS_e
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_8337.readProperty_typeName (), var_typeDefinition_8337, inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 251)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolsetDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -196,6 +192,7 @@ void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioAr
   const GGS_boolsetDeclarationAST temp_14 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("boolset ").add_operation (temp_11.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 290)), GGS_boolsetTypeForGeneration::init_21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_12.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 292)), temp_13.readProperty_mFlagList (), temp_14.readProperty_isEquatable (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 289)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'structGenerationTemplate'
@@ -457,9 +454,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolsetTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -472,10 +467,9 @@ void cPtr_boolsetTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset 
   outArgument_outHeader = GGS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (inCompiler, var_typeDefinition_12315.readProperty_typeName ().readProperty_string (), var_typeDefinition_12315.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-boolset.galgas", 334)), temp_1.readProperty_mFlagList () COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 332))) ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typeDefinition_12315.readProperty_typeName ().readProperty_string (), var_typeDefinition_12315.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-boolset.galgas", 339)), var_typeDefinition_12315.readProperty_isConcrete (), var_typeDefinition_12315.readProperty_initializerMap (), var_typeDefinition_12315.readProperty_classFunctionMap (), var_typeDefinition_12315.readProperty_getterMap (), var_typeDefinition_12315.readProperty_setterMap (), var_typeDefinition_12315.readProperty_instanceMethodMap (), var_typeDefinition_12315.readProperty_classMethodMap (), var_typeDefinition_12315.readProperty_readSubscriptMap (), var_typeDefinition_12315.readProperty_enumerationDescriptorList (), var_typeDefinition_12315.readProperty_features (), var_typeDefinition_12315.readProperty_addAssignOperatorArguments (), var_typeDefinition_12315.readProperty_typeForEnumeratedElement (), var_typeDefinition_12315.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 337))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 337)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@boolsetTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -492,6 +486,7 @@ void cPtr_boolsetTypeForGeneration::method_appendSpecificImplementation (const G
   const GGS_boolsetTypeForGeneration temp_5 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (inCompiler, extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 365)).readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 366)), temp_3.readProperty_mFlagList (), GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 368)).left_shift_operation (temp_4.readProperty_mFlagList ().getter_count (SOURCE_FILE ("declaration-type-boolset.galgas", 368)), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 368)).substract_operation (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 368)), inCompiler COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 368)), temp_5.readProperty_equatable () COMMA_SOURCE_FILE ("declaration-type-boolset.galgas", 364))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@classDeclarationAST keyRepresentation'
@@ -509,9 +504,7 @@ GGS_string cPtr_classDeclarationAST::getter_keyRepresentation (Compiler * inComp
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -564,10 +557,9 @@ void cPtr_classDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypeP
     enumerator_7391.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -814,10 +806,9 @@ void cPtr_classDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equ
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_15373.readProperty_typeName (), var_typeDefinition_15373, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 452)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -1026,10 +1017,9 @@ void cPtr_classDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgu
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
@@ -1085,10 +1075,9 @@ void cPtr_classTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & 
   const GGS_classTypeForGeneration temp_20 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_24470.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_20.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 650)), var_selfTypeDefinition_24470.readProperty_isConcrete (), var_selfTypeDefinition_24470.readProperty_initializerMap (), var_selfTypeDefinition_24470.readProperty_classFunctionMap (), var_selfTypeDefinition_24470.readProperty_getterMap (), var_selfTypeDefinition_24470.readProperty_setterMap (), var_selfTypeDefinition_24470.readProperty_instanceMethodMap (), var_selfTypeDefinition_24470.readProperty_classMethodMap (), var_selfTypeDefinition_24470.readProperty_readSubscriptMap (), var_selfTypeDefinition_24470.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_24470.readProperty_features (), var_selfTypeDefinition_24470.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_24470.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_24470.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-class.galgas", 648))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas", 648)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classTypeForGeneration appendDeclaration2'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classTypeForGeneration::method_appendDeclaration_32_ (const GGS_string constinArgument_inOutputDirectory,
@@ -1268,10 +1257,9 @@ void cPtr_classTypeForGeneration::method_appendDeclaration_32_ (const GGS_string
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@classTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -1330,6 +1318,7 @@ void cPtr_classTypeForGeneration::method_appendSpecificImplementation (const GGS
     outArgument_outImplementation = GGS_string (filewrapperTemplate_classGenerationTemplate_valueClassTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_32070.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_20.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas", 817)), temp_22, temp_25.readProperty_mCurrentTypedAttributeList (), temp_26.readProperty_mAllTypedAttributeList (), var_at_32132, temp_27.readProperty_mIsAbstract () COMMA_SOURCE_FILE ("declaration-type-class.galgas", 815))) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Function 'generateClassGetterDeclaration'
@@ -3240,9 +3229,7 @@ GGS_string cPtr_weakReferenceDeclarationAST::getter_keyRepresentation (Compiler 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@weakReferenceDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -3274,10 +3261,9 @@ void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInGraph (GGS_seman
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@weakReferenceDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -3364,10 +3350,9 @@ void cPtr_weakReferenceDeclarationAST::method_enterDeclarationInSemanticContext 
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_6188.readProperty_typeName (), var_typeDefinition_6188, inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 165)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@weakReferenceDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceDeclarationAST::method_semanticAnalysis (GGS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
@@ -3415,10 +3400,9 @@ void cPtr_weakReferenceDeclarationAST::method_semanticAnalysis (GGS_lstringlist 
   const GGS_weakReferenceDeclarationAST temp_11 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("weak reference ").add_operation (temp_11.readProperty_mWeakReferenceTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 204)), GGS_weakReferenceTypeForGeneration::init_21__21__21__21__21_ (var_selfType_8417, var_referenceClassType_8766, var_superClassEntry_8539, extensionGetter_definition (var_selfType_8417, inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 209)).readProperty_generateHeaderInSeparateFile (), var_optionalClassTypeOrNull_8900, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 203)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@weakReferenceTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
@@ -3471,10 +3455,9 @@ void cPtr_weakReferenceTypeForGeneration::method_appendDeclaration_31_ (GGS_stri
   outArgument_outHeader = GGS_string (filewrapperTemplate_weakClassGenerationTemplate_weakReferenceClassTypeHeader_31_ (inCompiler, extensionGetter_identifierRepresentation (temp_7.readProperty_mReferenceClassType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 242)), extensionGetter_identifierRepresentation (temp_8.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 243)), temp_10, var_optionalClassTypeNameRepresentation_10424 COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 241))) ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typeDefinition_10360.readProperty_typeName ().readProperty_string (), var_typeDefinition_10360.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-weak-reference.galgas", 249)), var_typeDefinition_10360.readProperty_isConcrete (), var_typeDefinition_10360.readProperty_initializerMap (), var_typeDefinition_10360.readProperty_classFunctionMap (), var_typeDefinition_10360.readProperty_getterMap (), var_typeDefinition_10360.readProperty_setterMap (), var_typeDefinition_10360.readProperty_instanceMethodMap (), var_typeDefinition_10360.readProperty_classMethodMap (), var_typeDefinition_10360.readProperty_readSubscriptMap (), var_typeDefinition_10360.readProperty_enumerationDescriptorList (), var_typeDefinition_10360.readProperty_features (), var_typeDefinition_10360.readProperty_addAssignOperatorArguments (), var_typeDefinition_10360.readProperty_typeForEnumeratedElement (), var_typeDefinition_10360.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 247))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 247)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@weakReferenceTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -3519,6 +3502,7 @@ void cPtr_weakReferenceTypeForGeneration::method_appendSpecificImplementation (c
   }
   outArgument_outImplementation = GGS_string (filewrapperTemplate_weakClassGenerationTemplate_weakReferenceClassTypeSpecificImplementation (inCompiler, extensionGetter_identifierRepresentation (temp_5.readProperty_mReferenceClassType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 284)), var_typeDefinition_12024.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-weak-reference.galgas", 285)), temp_7, var_optionalClassTypeNameRepresentation_12088 COMMA_SOURCE_FILE ("declaration-type-weak-reference.galgas", 283))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'weakClassGenerationTemplate'
@@ -3780,9 +3764,7 @@ GGS_string cPtr_enumDeclarationAST::getter_keyRepresentation (Compiler * inCompi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
@@ -3823,10 +3805,9 @@ void cPtr_enumDeclarationAST::method_addAssociatedElement (GGS_galgasDeclaration
     enumerator_6937.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -3909,10 +3890,9 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePr
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -4049,10 +4029,9 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equa
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_14890.readProperty_typeName (), var_typeDefinition_14890, inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 432)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -4163,10 +4142,9 @@ void cPtr_enumDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgum
   const GGS_enumDeclarationAST temp_14 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("enum ").add_operation (temp_14.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 498)), GGS_enumTypeForGeneration::init_21__21__21_ (var_selfType_19370, var_enumConstantListForGeneration_17026, var_associatedValuesTypes_16921, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 497)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -4192,10 +4170,9 @@ void cPtr_enumTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /
   outArgument_outHeader = GGS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, var_selfTypeDefinition_20827.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_20827.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-enum.galgas", 536)), temp_3.readProperty_constantList (), var_hasAssociatedValues_20639 COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 534))) ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_20827.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_20827.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-enum.galgas", 542)), var_selfTypeDefinition_20827.readProperty_isConcrete (), var_selfTypeDefinition_20827.readProperty_initializerMap (), var_selfTypeDefinition_20827.readProperty_classFunctionMap (), var_selfTypeDefinition_20827.readProperty_getterMap (), var_selfTypeDefinition_20827.readProperty_setterMap (), var_selfTypeDefinition_20827.readProperty_instanceMethodMap (), var_selfTypeDefinition_20827.readProperty_classMethodMap (), var_selfTypeDefinition_20827.readProperty_readSubscriptMap (), var_selfTypeDefinition_20827.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_20827.readProperty_features (), var_selfTypeDefinition_20827.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_20827.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_20827.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 540))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 540)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@enumTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -4229,6 +4206,7 @@ void cPtr_enumTypeForGeneration::method_appendSpecificImplementation (const GGS_
   const GGS_enumTypeForGeneration temp_5 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_22581.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_22581.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-enum.galgas", 575)), temp_5.readProperty_constantList (), var_hasAssociatedValues_22332, extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_22581.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 578)) COMMA_SOURCE_FILE ("declaration-type-enum.galgas", 573))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'enumGenerationTemplate'
@@ -4731,9 +4709,7 @@ GGS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementa
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@externTypeDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_externTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -4753,6 +4729,7 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semantic
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_14081, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 369)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@externTypeDeclarationAST keyRepresentation'
@@ -4770,9 +4747,7 @@ GGS_string cPtr_externTypeDeclarationAST::getter_keyRepresentation (Compiler * i
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@externTypeDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_externTypeDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -4882,10 +4857,9 @@ void cPtr_externTypeDeclarationAST::method_enterDeclarationInSemanticContext (GG
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_18764.readProperty_typeName (), var_typeDefinition_18764, inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 505)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@externTypeDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_externTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -4930,10 +4904,9 @@ void cPtr_externTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & i
   const GGS_externTypeDeclarationAST temp_9 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("extern type ").add_operation (temp_5.readProperty_mExternTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 542)), GGS_externTypeDeclarationForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_6.readProperty_mExternTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 544)), temp_7.readProperty_mExternTypeName ().readProperty_string (), temp_8.readProperty_mCppPreDeclarationCode (), temp_9.readProperty_mCppClassCode (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 541)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@externTypeDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_externTypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -4949,10 +4922,9 @@ void cPtr_externTypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_
   const GGS_externTypeDeclarationForGeneration temp_4 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_22278.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 575)), var_selfTypeDefinition_22278.readProperty_isConcrete (), var_selfTypeDefinition_22278.readProperty_initializerMap (), var_selfTypeDefinition_22278.readProperty_classFunctionMap (), var_selfTypeDefinition_22278.readProperty_getterMap (), var_selfTypeDefinition_22278.readProperty_setterMap (), var_selfTypeDefinition_22278.readProperty_instanceMethodMap (), var_selfTypeDefinition_22278.readProperty_classMethodMap (), var_selfTypeDefinition_22278.readProperty_readSubscriptMap (), var_selfTypeDefinition_22278.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_22278.readProperty_features (), var_selfTypeDefinition_22278.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_22278.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_22278.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 573)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@graphDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -4977,10 +4949,9 @@ void cPtr_graphDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypeP
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_4813, GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_3.readProperty_mAssociatedListTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 122)), temp_4.readProperty_mAssociatedListTypeName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 122)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@graphDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -5146,10 +5117,9 @@ void cPtr_graphDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equ
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_16294.readProperty_typeName (), var_typeDefinition_16294, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 509)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@graphDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -5240,10 +5210,9 @@ void cPtr_graphDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgu
   const GGS_graphDeclarationAST temp_21 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("graph ").add_operation (temp_20.readProperty_mGraphTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 564)), GGS_graphDeclarationForGeneration::init_21__21__21__21_ (var_graphTypeEntry_19026, var_associatedListTypeEntry_19102, var_associatedListElementTypeEntry_19196, temp_21.readProperty_mInsertModifierList (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 563)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@graphDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -5257,10 +5226,9 @@ void cPtr_graphDeclarationForGeneration::method_appendDeclaration_31_ (GGS_strin
   const GGS_graphDeclarationForGeneration temp_2 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_20912.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 595)), var_selfTypeDefinition_20912.readProperty_isConcrete (), var_selfTypeDefinition_20912.readProperty_initializerMap (), var_selfTypeDefinition_20912.readProperty_classFunctionMap (), var_selfTypeDefinition_20912.readProperty_getterMap (), var_selfTypeDefinition_20912.readProperty_setterMap (), var_selfTypeDefinition_20912.readProperty_instanceMethodMap (), var_selfTypeDefinition_20912.readProperty_classMethodMap (), var_selfTypeDefinition_20912.readProperty_readSubscriptMap (), var_selfTypeDefinition_20912.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_20912.readProperty_features (), var_selfTypeDefinition_20912.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_20912.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_20912.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 593))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 593)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@graphDeclarationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -5280,6 +5248,7 @@ void cPtr_graphDeclarationForGeneration::method_appendSpecificImplementation (co
   const GGS_graphDeclarationForGeneration temp_6 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (inCompiler, temp_3.readProperty_mSelfTypeEntry (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 623)), temp_5.readProperty_mAssociatedListTypeEntry (), temp_6.readProperty_mInsertModifierList () COMMA_SOURCE_FILE ("declaration-type-graph.galgas", 621))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@listDeclarationAST keyRepresentation'
@@ -5297,9 +5266,7 @@ GGS_string cPtr_listDeclarationAST::getter_keyRepresentation (Compiler * inCompi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -5327,10 +5294,9 @@ void cPtr_listDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePr
     enumerator_5632.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -5506,10 +5472,9 @@ void cPtr_listDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equa
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_13950.readProperty_typeName (), var_typeDefinition_13950, inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 421)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
@@ -5534,10 +5499,9 @@ void cPtr_listDeclarationAST::method_addAssociatedElement (GGS_galgasDeclaration
   }
   ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (temp_1.readProperty_isPredefined (), function_makeEmbeddedElementTypeLName (temp_2.readProperty_mListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 440)), var_structAttributeList_15238, GGS_string::makeEmptyString (), temp_4, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-list.galgas", 438)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -5636,6 +5600,7 @@ void cPtr_listDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgum
   const GGS_listDeclarationAST temp_20 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("list type ").add_operation (temp_19.readProperty_mListTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 506)), GGS_listTypeForGeneration::init_21__21__21_ (var_selfType_18501, extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeEmbeddedElementTypeLName (temp_20.readProperty_mListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 509)), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 509)), var_typedAttributeList_17740, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-list.galgas", 505)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'listGenerationTemplate'
@@ -6679,9 +6644,7 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementa
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -6696,10 +6659,9 @@ void cPtr_listTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /
   const GGS_listTypeForGeneration temp_3 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_20132.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 559)), var_selfTypeDefinition_20132.readProperty_isConcrete (), var_selfTypeDefinition_20132.readProperty_initializerMap (), var_selfTypeDefinition_20132.readProperty_classFunctionMap (), var_selfTypeDefinition_20132.readProperty_getterMap (), var_selfTypeDefinition_20132.readProperty_setterMap (), var_selfTypeDefinition_20132.readProperty_instanceMethodMap (), var_selfTypeDefinition_20132.readProperty_classMethodMap (), var_selfTypeDefinition_20132.readProperty_readSubscriptMap (), var_selfTypeDefinition_20132.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_20132.readProperty_features (), var_selfTypeDefinition_20132.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_20132.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_20132.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-list.galgas", 557))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-list.galgas", 557)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@listTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_listTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -6723,6 +6685,7 @@ void cPtr_listTypeForGeneration::method_appendSpecificImplementation (const GGS_
   const GGS_listTypeForGeneration temp_5 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_21793.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 590)), temp_5.readProperty_mTypedAttributeList (), extensionGetter_identifierRepresentation (var_selfTypeDefinition_21793.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 592)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_21793.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-list.galgas", 593)) COMMA_SOURCE_FILE ("declaration-type-list.galgas", 588))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@dictDeclarationAST keyRepresentation'
@@ -6740,9 +6703,7 @@ GGS_string cPtr_dictDeclarationAST::getter_keyRepresentation (Compiler * inCompi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
@@ -6774,10 +6735,9 @@ void cPtr_dictDeclarationAST::method_addAssociatedElement (GGS_galgasDeclaration
   extensionSetter_getOptionalTypeName (ioArgument_ioDeclarations, joker_5479, var_elementTypeName_5066, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 154)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -6810,10 +6770,9 @@ void cPtr_dictDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePr
     enumerator_6623.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -6970,6 +6929,7 @@ void cPtr_dictDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equa
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_14364.readProperty_typeName (), var_typeDefinition_14364, inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 419)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'check_K_escapeCharacters?'
@@ -7124,9 +7084,7 @@ C_galgas_function_descriptor functionDescriptor_forbiddenKeysForMapAndDict ("for
                                                                             functionArgs_forbiddenKeysForMapAndDict) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -7231,10 +7189,9 @@ void cPtr_dictDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgum
   const GGS_dictDeclarationAST temp_21 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("dict ").add_operation (temp_18.readProperty_mDictTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 535)), GGS_dictTypeForGeneration::init_21__21__21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_19.readProperty_mDictTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 537)), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, var_elementTypeName_20058, inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 538)), temp_20.readProperty_mDictTypeName (), var_typedAttributeList_19118, temp_21.readProperty_mKeyTypeName (), var_optionalElementTypeEntry_20220, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 534)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
@@ -7255,10 +7212,9 @@ void cPtr_dictTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & i
   const GGS_dictTypeForGeneration temp_7 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_21578.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_7.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 575)), var_selfTypeDefinition_21578.readProperty_isConcrete (), var_selfTypeDefinition_21578.readProperty_initializerMap (), var_selfTypeDefinition_21578.readProperty_classFunctionMap (), var_selfTypeDefinition_21578.readProperty_getterMap (), var_selfTypeDefinition_21578.readProperty_setterMap (), var_selfTypeDefinition_21578.readProperty_instanceMethodMap (), var_selfTypeDefinition_21578.readProperty_classMethodMap (), var_selfTypeDefinition_21578.readProperty_readSubscriptMap (), var_selfTypeDefinition_21578.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_21578.readProperty_features (), var_selfTypeDefinition_21578.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_21578.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_21578.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 573))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 573)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@dictTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dictTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -7276,6 +7232,7 @@ void cPtr_dictTypeForGeneration::method_appendSpecificImplementation (const GGS_
   const GGS_dictTypeForGeneration temp_6 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementation (inCompiler, extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 602)), temp_2.readProperty_mTypedAttributeList (), temp_3.readProperty_mKeyTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-dict.galgas", 604)), extensionGetter_generateCppObjectComparison (extensionGetter_definition (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 605)).readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 605)), extensionGetter_identifierRepresentation (temp_5.readProperty_mElementTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 606)), extensionGetter_identifierRepresentation (temp_6.readProperty_mOptionalElementTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 607)) COMMA_SOURCE_FILE ("declaration-type-dict.galgas", 601))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'dictGenerationTemplate'
@@ -7805,9 +7762,7 @@ GGS_string cPtr_mapDeclarationAST::getter_keyRepresentation (Compiler * inCompil
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
@@ -7838,10 +7793,9 @@ void cPtr_mapDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationA
   extensionSetter_getOptionalTypeName (ioArgument_ioDeclarations, joker_10863, var_elementTypeName_10451, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 304)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -7869,10 +7823,9 @@ void cPtr_mapDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePre
     enumerator_11910.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -8129,10 +8082,9 @@ void cPtr_mapDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equat
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_22394.readProperty_typeName (), var_typeDefinition_22394, inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 664)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -8289,10 +8241,9 @@ void cPtr_mapDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgume
   const GGS_mapDeclarationAST temp_26 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("map ").add_operation (temp_21.readProperty_mMapTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 773)), GGS_mapTypeForGeneration::init_21__21__21__21__21__21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_22.readProperty_mMapTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 775)), var_elementTypeEntry_28208, temp_23.readProperty_mMapTypeName (), var_typedAttributeList_25677, temp_24.readProperty_mInsertMethodList (), temp_25.readProperty_mSearchMethodList (), temp_26.readProperty_mRemoveMethodList (), var_hasInsertOrReplaceModifier_27659, var_optionalElementTypeEntry_28369, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-map.galgas", 772)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -8308,10 +8259,9 @@ void cPtr_mapTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & /*
   const GGS_mapTypeForGeneration temp_4 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_29890.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 818)), var_selfTypeDefinition_29890.readProperty_isConcrete (), var_selfTypeDefinition_29890.readProperty_initializerMap (), var_selfTypeDefinition_29890.readProperty_classFunctionMap (), var_selfTypeDefinition_29890.readProperty_getterMap (), var_selfTypeDefinition_29890.readProperty_setterMap (), var_selfTypeDefinition_29890.readProperty_instanceMethodMap (), var_selfTypeDefinition_29890.readProperty_classMethodMap (), var_selfTypeDefinition_29890.readProperty_readSubscriptMap (), var_selfTypeDefinition_29890.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_29890.readProperty_features (), var_selfTypeDefinition_29890.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_29890.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_29890.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-map.galgas", 816))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-map.galgas", 816)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapTypeForGeneration appendDeclaration2'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapTypeForGeneration::method_appendDeclaration_32_ (const GGS_string /* constinArgument_inOutputDirectory */,
@@ -8332,10 +8282,9 @@ void cPtr_mapTypeForGeneration::method_appendDeclaration_32_ (const GGS_string /
   const GGS_mapTypeForGeneration temp_4 = this ;
   outArgument_outHeader = GGS_string (filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_32_ (inCompiler, var_selfTypeDefinition_31320.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 847)), temp_3.readProperty_mTypedAttributeList (), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_31320.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 849)), extensionGetter_identifierRepresentation (temp_4.readProperty_mElementTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 850)) COMMA_SOURCE_FILE ("declaration-type-map.galgas", 845))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@mapTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -8360,6 +8309,7 @@ void cPtr_mapTypeForGeneration::method_appendSpecificImplementation (const GGS_u
   const GGS_mapTypeForGeneration temp_10 = this ;
   outArgument_outImplementation = GGS_string (filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_32272.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-map.galgas", 865)), temp_4.readProperty_mTypedAttributeList (), extensionGetter_identifierRepresentation (temp_5.readProperty_mElementTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 867)), temp_6.readProperty_mInsertMethodList (), extensionGetter_identifierRepresentation (temp_7.readProperty_mOptionalElementTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 869)), temp_8.readProperty_mSearchMethodList (), temp_9.readProperty_mRemoveMethodList (), temp_10.readProperty_mHasInsertOrReplaceModifier (), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_32272.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas", 873)) COMMA_SOURCE_FILE ("declaration-type-map.galgas", 864))) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'mapGenerationTemplate'
@@ -9385,9 +9335,7 @@ GGS_string cPtr_optionalTypeDeclarationAST::getter_keyRepresentation (Compiler *
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeDeclarationAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -9413,10 +9361,9 @@ void cPtr_optionalTypeDeclarationAST::method_enterDeclarationInGraph (GGS_semant
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_selfKey_2321, var_unwrappedKey_2472 COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 44)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeDeclarationAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & ioArgument_ioEquatableExtensionMap,
@@ -9477,20 +9424,18 @@ void cPtr_optionalTypeDeclarationAST::method_enterDeclarationInSemanticContext (
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_4831.readProperty_typeName (), var_typeDefinition_4831, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 135)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & /* ioArgument_ioDeclarations */,
                                                                    Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeDeclarationAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
@@ -9529,10 +9474,9 @@ void cPtr_optionalTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist &
   const GGS_optionalTypeDeclarationAST temp_6 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("optional type ").add_operation (temp_6.readProperty_optionalTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 168)), GGS_optionalTypeForGeneration::init_21__21__21_ (var_optionalType_7049, var_unwrappedType_7127, var_correspondingWeakTypeOrNull_7302, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 167)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
@@ -9558,10 +9502,9 @@ void cPtr_optionalTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset
   const GGS_optionalTypeForGeneration temp_8 = this ;
   outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_8402.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_8.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 198)), var_selfTypeDefinition_8402.readProperty_isConcrete (), var_selfTypeDefinition_8402.readProperty_initializerMap (), var_selfTypeDefinition_8402.readProperty_classFunctionMap (), var_selfTypeDefinition_8402.readProperty_getterMap (), var_selfTypeDefinition_8402.readProperty_setterMap (), var_selfTypeDefinition_8402.readProperty_instanceMethodMap (), var_selfTypeDefinition_8402.readProperty_classMethodMap (), var_selfTypeDefinition_8402.readProperty_readSubscriptMap (), var_selfTypeDefinition_8402.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_8402.readProperty_features (), var_selfTypeDefinition_8402.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_8402.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_8402.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 196))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 196)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@optionalTypeForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
@@ -9597,3 +9540,4 @@ void cPtr_optionalTypeForGeneration::method_appendSpecificImplementation (const 
   }
   outArgument_outImplementation = GGS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_10087.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_6.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 228)), extensionGetter_identifierRepresentation (temp_7.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 229)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_10087.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 230)), temp_9 COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 226))) ;
 }
+

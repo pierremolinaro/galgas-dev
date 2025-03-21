@@ -11238,9 +11238,7 @@ GGS_semanticTypePrecedenceGraph GGS_semanticTypePrecedenceGraph::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationAST addAssociatedElement'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & /* ioArgument_ioDeclarations */,
@@ -11256,9 +11254,10 @@ void callExtensionMethod_addAssociatedElement (cPtr_semanticDeclarationAST * inO
                                                COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_addAssociatedElement  (io_ioDeclarations, inCompiler COMMA_THERE) ;
+    inObject->method_addAssociatedElement (io_ioDeclarations, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_semanticExpressionForGeneration_2E_weak::objectCompare (const GGS_semanticExpressionForGeneration_2E_weak & inOperand) const {

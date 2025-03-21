@@ -111,7 +111,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
     ?!@localVarManager ioVariableMap
   {
-  //--- Check self is not inkoed before full initialization
+  //--- Check self is not inkoved before full initialization
     if self.mReceiverExpression is @selfInExpressionAST then
       [ioVariableMap checkSelfObjectIsFullyInitialized !self.mMethodName.location]
     end

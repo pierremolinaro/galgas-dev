@@ -14188,10 +14188,10 @@ GGS_methodCallInstructionForGeneration GGS_methodCallInstructionForGeneration::e
 }
 
 //--------------------------------------------------------------------------------------------------
-// @procCallInstructionAST reference class
+// @superMethodCallInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_procCallInstructionAST::objectCompare (const GGS_procCallInstructionAST & inOperand) const {
+ComparisonResult GGS_superMethodCallInstructionAST::objectCompare (const GGS_superMethodCallInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -14209,117 +14209,117 @@ ComparisonResult GGS_procCallInstructionAST::objectCompare (const GGS_procCallIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST::GGS_procCallInstructionAST (void) :
+GGS_superMethodCallInstructionAST::GGS_superMethodCallInstructionAST (void) :
 GGS_semanticInstructionAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_procCallInstructionAST GGS_procCallInstructionAST::
+GGS_superMethodCallInstructionAST GGS_superMethodCallInstructionAST::
 init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                  const GGS_lstring & in_mRoutineName,
+                  const GGS_lstring & in_mMethodName,
                   const GGS_actualParameterListAST & in_mActualParameterList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
-  cPtr_procCallInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_procCallInstructionAST (inCompiler COMMA_THERE)) ;
-  object->procCallInstructionAST_init_21__21__21_ (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList, inCompiler) ;
-  const GGS_procCallInstructionAST result (object) ;
+  cPtr_superMethodCallInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_superMethodCallInstructionAST (inCompiler COMMA_THERE)) ;
+  object->superMethodCallInstructionAST_init_21__21__21_ (in_mInstructionLocation, in_mMethodName, in_mActualParameterList, inCompiler) ;
+  const GGS_superMethodCallInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_procCallInstructionAST::
-procCallInstructionAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
-                                         const GGS_lstring & in_mRoutineName,
-                                         const GGS_actualParameterListAST & in_mActualParameterList,
-                                         Compiler * /* inCompiler */) {
+void cPtr_superMethodCallInstructionAST::
+superMethodCallInstructionAST_init_21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                                const GGS_lstring & in_mMethodName,
+                                                const GGS_actualParameterListAST & in_mActualParameterList,
+                                                Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRoutineName = in_mRoutineName ;
+  mProperty_mMethodName = in_mMethodName ;
   mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST::GGS_procCallInstructionAST (const cPtr_procCallInstructionAST * inSourcePtr) :
+GGS_superMethodCallInstructionAST::GGS_superMethodCallInstructionAST (const cPtr_superMethodCallInstructionAST * inSourcePtr) :
 GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_procCallInstructionAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_superMethodCallInstructionAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST GGS_procCallInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
-                                                                       const GGS_lstring & in_mRoutineName,
-                                                                       const GGS_actualParameterListAST & in_mActualParameterList,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_procCallInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_procCallInstructionAST (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList,  inCompiler COMMA_THERE)) ;
+GGS_superMethodCallInstructionAST GGS_superMethodCallInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
+                                                                                     const GGS_lstring & in_mMethodName,
+                                                                                     const GGS_actualParameterListAST & in_mActualParameterList,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
+  GGS_superMethodCallInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_superMethodCallInstructionAST (in_mInstructionLocation, in_mMethodName, in_mActualParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_procCallInstructionAST::readProperty_mRoutineName (void) const {
+GGS_lstring GGS_superMethodCallInstructionAST::readProperty_mMethodName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
   }else{
-    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
-    return p->mProperty_mRoutineName ;
+    cPtr_superMethodCallInstructionAST * p = (cPtr_superMethodCallInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_superMethodCallInstructionAST) ;
+    return p->mProperty_mMethodName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualParameterListAST GGS_procCallInstructionAST::readProperty_mActualParameterList (void) const {
+GGS_actualParameterListAST GGS_superMethodCallInstructionAST::readProperty_mActualParameterList (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_actualParameterListAST () ;
   }else{
-    cPtr_procCallInstructionAST * p = (cPtr_procCallInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_procCallInstructionAST) ;
+    cPtr_superMethodCallInstructionAST * p = (cPtr_superMethodCallInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_superMethodCallInstructionAST) ;
     return p->mProperty_mActualParameterList ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @procCallInstructionAST class
+//Pointer class for @superMethodCallInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_superMethodCallInstructionAST::cPtr_superMethodCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mRoutineName (),
+mProperty_mMethodName (),
 mProperty_mActualParameterList () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                          const GGS_lstring & in_mRoutineName,
-                                                          const GGS_actualParameterListAST & in_mActualParameterList,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) :
+cPtr_superMethodCallInstructionAST::cPtr_superMethodCallInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                                        const GGS_lstring & in_mMethodName,
+                                                                        const GGS_actualParameterListAST & in_mActualParameterList,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mRoutineName (),
+mProperty_mMethodName (),
 mProperty_mActualParameterList () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mRoutineName = in_mRoutineName ;
+  mProperty_mMethodName = in_mMethodName ;
   mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_procCallInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
+const C_galgas_type_descriptor * cPtr_superMethodCallInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_superMethodCallInstructionAST ;
 }
 
-void cPtr_procCallInstructionAST::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendCString ("[@procCallInstructionAST:") ;
+void cPtr_superMethodCallInstructionAST::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@superMethodCallInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mRoutineName.description (ioString, inIndentation+1) ;
+  mProperty_mMethodName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
@@ -14327,9 +14327,9 @@ void cPtr_procCallInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_procCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+acPtr_class * cPtr_superMethodCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_procCallInstructionAST (mProperty_mInstructionLocation, mProperty_mRoutineName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_superMethodCallInstructionAST (mProperty_mInstructionLocation, mProperty_mMethodName, mProperty_mActualParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14337,48 +14337,48 @@ acPtr_class * cPtr_procCallInstructionAST::duplicate (Compiler * inCompiler COMM
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_procCallInstructionAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_superMethodCallInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
+    mProperty_mMethodName.printNonNullClassInstanceProperties ("mMethodName") ;
     mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @procCallInstructionAST generic code implementation
+//     @superMethodCallInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionAST ("procCallInstructionAST",
-                                                                              & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superMethodCallInstructionAST ("superMethodCallInstructionAST",
+                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_procCallInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
+const C_galgas_type_descriptor * GGS_superMethodCallInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_superMethodCallInstructionAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_procCallInstructionAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_superMethodCallInstructionAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_procCallInstructionAST (*this)) ;
+    macroMyNew (result, GGS_superMethodCallInstructionAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_procCallInstructionAST GGS_procCallInstructionAST::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_procCallInstructionAST result ;
-  const GGS_procCallInstructionAST * p = (const GGS_procCallInstructionAST *) inObject.embeddedObject () ;
+GGS_superMethodCallInstructionAST GGS_superMethodCallInstructionAST::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_superMethodCallInstructionAST result ;
+  const GGS_superMethodCallInstructionAST * p = (const GGS_superMethodCallInstructionAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_procCallInstructionAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_superMethodCallInstructionAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("procCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("superMethodCallInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

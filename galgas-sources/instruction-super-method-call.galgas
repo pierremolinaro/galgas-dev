@@ -1,0 +1,263 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//------------------------------------------------------------------------------------------------
+//! SYNTAX
+//------------------------------------------------------------------------------------------------
+
+syntax extension galgas3InstructionsSyntax {
+
+  //······························································································
+
+//  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+//                                   !@semanticInstructionAST outInstruction {
+//    $[$
+//    let instructionLocation = @location.here
+//    $super$
+//    $init$
+//    <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
+//    $]$
+//    outInstruction = @superMethodCallInstructionAST {
+//      !instructionLocation
+//      !actualParameterList
+//    }
+//  }
+
+  //······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    $super$
+    let instructionLocation = @location.here
+    $.$
+    $identifier$ ?let methodName
+    $($
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+    $)$
+    outInstruction = @superMethodCallInstructionAST {
+      !instructionLocation
+      !methodName
+      !actualParameterList
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+
+syntax extension galgas4InstructionsSyntax {
+
+  //······························································································
+
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionAST outInstruction {
+    $super$
+    $.$
+    $identifier$ ?let methodName
+    let instructionLocation = @location.here
+//    $($
+    <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
+//    $)$
+    outInstruction = @superMethodCallInstructionAST {
+      !instructionLocation
+      !methodName
+      !actualParameterList
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+
+class @superMethodCallInstructionAST : @semanticInstructionAST {
+  private let @lstring mMethodName
+  private let @actualParameterListAST mActualParameterList
+
+  //······························································································
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for (mActualParameter) in self.mActualParameterList do
+      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+    end
+  }
+
+  //······························································································
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                          ?let @analysisContext inAnalysisContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                          ?!@localVarManager ioVariableMap {
+  //--- Get self type
+    let @unifiedTypeMapEntry selfType
+    switch inAnalysisContext.selfAvailability
+    case none :
+      error self.mMethodName : "'super' is not available in this context" : selfType
+    case available (@unifiedTypeMapEntry type @selfMutability unused selfMutability) :
+      selfType = type
+    end
+  //--- Check self type is a class
+    if not [[selfType definition].typeKind isClassType] then
+      error self.mMethodName : "self type is not a class"
+    end
+  //--- Get type method signature
+    [[selfType definition].instanceMethodMap searchKey
+      !self.mMethodName
+      ?* // let kind
+      ?let routineSignature
+      ?*
+      ?let hasCompilerArgument
+      ?*
+      ?let errorMessage
+    ]
+    if errorMessage != "" then
+      error self.mMethodName : errorMessage
+    end
+  //--- Check effective parameters
+    [self.mActualParameterList analyzeRoutineArguments
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !?ioTypeMap
+      !self.mMethodName
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
+      !routineSignature
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    ]
+  //--- Search base type that declares the method
+    var baseType = selfType
+    var searching = true
+    if @uint.errorCount == 0 then
+      loop (@uint.max) while searching do
+        if [[baseType definition].superType isNull] then
+          searching = false
+        else
+          if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
+            baseType = [baseType definition].superType
+          else
+            searching = false
+          end
+        end
+      end
+    end
+  //--- Generate instructions
+    ioInstructionListForGeneration += !@superMethodCallInstructionForGeneration {
+      !self.mInstructionLocation
+      !self.mMethodName.string
+//      !kind
+      !actualParameterListForGeneration
+      !hasCompilerArgument
+      !baseType
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+//! GENERATION
+//------------------------------------------------------------------------------------------------
+
+class @superMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
+  private let @location mInstructionLocation
+  private let @string mMethodName
+//  private let @methodKind mKind
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @bool mHasCompilerArgument
+  private let @unifiedTypeMapEntry mBaseType
+
+  //······························································································
+
+  override method generateInstruction ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
+                                      ?!@string ioGeneratedCode {
+  //---
+    var parameterCppNameList = @stringlist ()
+    var jokerParametersToReleaseList = @stringlist ()
+    var inputVariableList = @stringlist ()
+    for (mActualParameter) in self.mActualParameterList do
+      [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
+      parameterCppNameList += !parameterCppName
+    end
+  //--- Generate method call
+    ioInclusionSet += !"method-" + [[self.mBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    ioGeneratedCode += "cPtr_" + [[self.mBaseType definition].typeName identifierRepresentation]
+    ioGeneratedCode += "::method_" + [self.mMethodName identifierRepresentation] + " ("
+    for (mValue) in parameterCppNameList
+      do ioGeneratedCode += mValue
+      between ioGeneratedCode += ", "
+    end
+    if [parameterCppNameList count] == 0 then
+      if self.mHasCompilerArgument then
+        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        ioGeneratedCode += compilerCppName ()
+        ioGeneratedCode += " COMMA_"
+      end
+    elsif self.mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      ioGeneratedCode += ", " + compilerCppName ()
+      ioGeneratedCode += " COMMA_"
+    else
+      ioGeneratedCode += " COMMA_"
+    end
+    ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ; // §§\n"
+  //--- Generate poisoned variables
+    for (actualParameter) in self.mActualParameterList do
+      [actualParameter generatePoisonedVariables
+        !?ioGeneratedCode
+        !?ioUnusedVariableCppNameSet
+      ]
+    end
+
+
+
+//    var @stringlist getterArgumentCppNameList = @()
+//    for (mExpression) in self.mActualParameterList do
+//      [mExpression generateExpression
+//        !?ioGeneratedCode
+//        !?ioInclusionSet
+//        !?ioTemporaryVariableIndex
+//        !?ioUnusedVariableCppNameSet
+//        ?let argumentCppName
+//      ]
+//      getterArgumentCppNameList += !argumentCppName
+//    end
+//    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_"
+//    ioGeneratedCode += [self.mSuperInitializerSignature identifierRepresentation]
+//    ioGeneratedCode += " (" 
+//    for (mValue) in getterArgumentCppNameList do
+//      ioGeneratedCode += mValue + ", "
+//    end
+//    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+//    ioGeneratedCode += compilerCppName () + ") ; \n" 
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------

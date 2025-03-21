@@ -36,9 +36,7 @@ GGS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semant
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendPrimitiveTypePreDeclaration (GGS_string & /* ioArgument_ioHeader */,
@@ -54,9 +52,10 @@ void callExtensionMethod_appendPrimitiveTypePreDeclaration (cPtr_semanticDeclara
                                                             COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendPrimitiveTypePreDeclaration  (io_ioHeader, inCompiler COMMA_THERE) ;
+    inObject->method_appendPrimitiveTypePreDeclaration (io_ioHeader, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Abstract extension getter '@semanticDeclarationForGeneration getImplementationCppFileName'
@@ -3772,9 +3771,7 @@ GGS_filewrapperTemplateListForGeneration GGS_filewrapperTemplateListForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationForGeneration appendDeclaration1'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
@@ -3794,13 +3791,12 @@ void callExtensionMethod_appendDeclaration_31_ (cPtr_semanticDeclarationForGener
   out_outHeader.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendDeclaration_31_  (io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
+    inObject->method_appendDeclaration_31_ (io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationForGeneration appendDeclaration2'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_32_ (const GGS_string /* constinArgument_inOutputDirectory */,
@@ -3822,9 +3818,10 @@ void callExtensionMethod_appendDeclaration_32_ (cPtr_semanticDeclarationForGener
   out_outHeader.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendDeclaration_32_  (constin_inOutputDirectory, io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
+    inObject->method_appendDeclaration_32_ (constin_inOutputDirectory, io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Extension getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'
@@ -3854,9 +3851,7 @@ GGS_string callExtensionGetter_appendTypeGenericImplementation (const cPtr_seman
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationForGeneration appendSpecificImplementation'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inUnifiedTypeMap */,
@@ -3878,13 +3873,12 @@ void callExtensionMethod_appendSpecificImplementation (cPtr_semanticDeclarationF
   out_outImplementation.drop () ;
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendSpecificImplementation  (constin_inUnifiedTypeMap, io_ioInclusionSet, out_outImplementation, inCompiler COMMA_THERE) ;
+    inObject->method_appendSpecificImplementation (constin_inUnifiedTypeMap, io_ioInclusionSet, out_outImplementation, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Extension method '@semanticDeclarationForGeneration appendSpecificFiles'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationForGeneration::method_appendSpecificFiles (const GGS_string /* constinArgument_inProductDirectory */,
@@ -3906,9 +3900,10 @@ void callExtensionMethod_appendSpecificFiles (cPtr_semanticDeclarationForGenerat
                                               COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendSpecificFiles  (constin_inProductDirectory, io_ioAllProductFileSet, io_ioObjcAppProductFileList, io_ioSwiftAppProductFileList, inCompiler COMMA_THERE) ;
+    inObject->method_appendSpecificFiles (constin_inProductDirectory, io_ioAllProductFileSet, io_ioObjcAppProductFileList, io_ioSwiftAppProductFileList, inCompiler COMMA_THERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@semanticInstructionAST analyzeSemanticInstruction'

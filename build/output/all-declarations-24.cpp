@@ -1986,9 +1986,7 @@ void routine_enterTemplateString_26_ (GGS_templateInstructionListAST & ioArgumen
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateGetterCallInExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2242,10 +2240,9 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateClassFunctionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateClassFunctionAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2349,10 +2346,9 @@ void cPtr_templateClassFunctionAST::method_templateExpressionAnalysis (const GGS
   const GGS_templateClassFunctionAST temp_22 = this ;
   outArgument_outExpression = GGS_classFuncExpressionForGeneration::init_21__21__21__21__21__21__21_ (var_returnedType_10639, temp_21.readProperty_mClassFunctionName ().readProperty_location (), var_constructorType_10386, temp_22.readProperty_mClassFunctionName ().readProperty_string (), var_classFunctionEffectiveParameterList_11587, var_hasCompilerArgument_10664, var_requiredTypes_11524, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateFileWrapperTemplateCallAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateFileWrapperTemplateCallAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2367,10 +2363,9 @@ void cPtr_templateFileWrapperTemplateCallAST::method_templateExpressionAnalysis 
   inCompiler->emitSemanticError (temp_0.readProperty_mFileWrapperName ().readProperty_location (), GGS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 299)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateAndOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateAndOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2393,10 +2388,9 @@ void cPtr_templateAndOperationAST::method_templateExpressionAnalysis (const GGS_
   const GGS_templateAndOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_14785.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_14785, GGS_binaryOperator::class_func_operator_5F_and (SOURCE_FILE ("templateAnalysis.galgas", 342)), var_rightExpression_15027, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateOrOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateOrOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2419,10 +2413,9 @@ void cPtr_templateOrOperationAST::method_templateExpressionAnalysis (const GGS_l
   const GGS_templateOrOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_16121.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_16121, GGS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("templateAnalysis.galgas", 385)), var_rightExpression_16363, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateXorOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateXorOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2445,10 +2438,9 @@ void cPtr_templateXorOperationAST::method_templateExpressionAnalysis (const GGS_
   const GGS_templateXorOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_17456.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_17456, GGS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("templateAnalysis.galgas", 428)), var_rightExpression_17698, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateTrueBoolAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateTrueBoolAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2461,10 +2453,9 @@ void cPtr_templateTrueBoolAST::method_templateExpressionAnalysis (const GGS_lstr
   const GGS_templateTrueBoolAST temp_0 = this ;
   outArgument_outExpression = GGS_trueExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateFalseBoolAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateFalseBoolAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2477,10 +2468,9 @@ void cPtr_templateFalseBoolAST::method_templateExpressionAnalysis (const GGS_lst
   const GGS_templateFalseBoolAST temp_0 = this ;
   outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLiteralStringExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralStringExpressionAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2500,10 +2490,9 @@ void cPtr_templateLiteralStringExpressionAST::method_templateExpressionAnalysis 
   const GGS_templateLiteralStringExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalStringExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType (), temp_1.readProperty_mLocation (), var_s_19662, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLiteralUIntExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralUIntExpressionAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2517,10 +2506,9 @@ void cPtr_templateLiteralUIntExpressionAST::method_templateExpressionAnalysis (c
   const GGS_templateLiteralUIntExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalBigIntExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBigIntType (), temp_0.readProperty_mLiteralInt ().readProperty_location (), temp_1.readProperty_mLiteralInt ().readProperty_bigint (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLiteralCharExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralCharExpressionAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2534,10 +2522,9 @@ void cPtr_templateLiteralCharExpressionAST::method_templateExpressionAnalysis (c
   const GGS_templateLiteralCharExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalCharExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mCharType (), temp_0.readProperty_mLiteralChar ().readProperty_location (), temp_1.readProperty_mLiteralChar ().readProperty_char (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLiteralDoubleExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralDoubleExpressionAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2551,10 +2538,9 @@ void cPtr_templateLiteralDoubleExpressionAST::method_templateExpressionAnalysis 
   const GGS_templateLiteralDoubleExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_literalDoubleExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mLiteralDouble ().readProperty_location (), temp_1.readProperty_mLiteralDouble ().readProperty_double (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateNotOperatorAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateNotOperatorAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2583,10 +2569,9 @@ void cPtr_templateNotOperatorAST::method_templateExpressionAnalysis (const GGS_l
     outArgument_outExpression = GGS_notExpressionForGeneration::init_21__21__21_ (var_type_22312, temp_4.readProperty_mOperatorLocation (), var_expression_22236, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLogicalNegateAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLogicalNegateAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2615,10 +2600,9 @@ void cPtr_templateLogicalNegateAST::method_templateExpressionAnalysis (const GGS
     outArgument_outExpression = GGS_tildeExpressionForGeneration::init_21__21__21_ (var_type_23387, temp_4.readProperty_mOperatorLocation (), var_expression_23311, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateTestDynamicClassAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateTestDynamicClassAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2678,10 +2662,9 @@ void cPtr_templateTestDynamicClassAST::method_templateExpressionAnalysis (const 
   const GGS_templateTestDynamicClassAST temp_9 = this ;
   outArgument_outExpression = GGS_testDynamicClassInExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_8.readProperty_mTypeName ().readProperty_location (), var_expression_24433, temp_9.readProperty_mTypeComparisonKind (), var_castType_24482, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateOptionAccessAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2821,10 +2804,9 @@ void cPtr_templateOptionAccessAST::method_templateExpressionAnalysis (const GGS_
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateFunctionCallAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateFunctionCallAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2912,10 +2894,9 @@ void cPtr_templateFunctionCallAST::method_templateExpressionAnalysis (const GGS_
     outArgument_outExpression = GGS_functionCallExpressionForGeneration::init_21__21__21__21_ (var_resultType_29895, temp_19.readProperty_mFunctionName ().readProperty_location (), temp_20.readProperty_mFunctionName ().readProperty_string (), var_semanticExpressionListForGeneration_30710, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateExtensionTemplateCallAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateExtensionTemplateCallAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2930,10 +2911,9 @@ void cPtr_templateExtensionTemplateCallAST::method_templateExpressionAnalysis (c
   inCompiler->emitSemanticError (temp_0.readProperty_mTemplateName ().readProperty_location (), GGS_string ("INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 787)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateVarInExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateVarInExpressionAST::method_templateExpressionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -2950,10 +2930,9 @@ void cPtr_templateVarInExpressionAST::method_templateExpressionAnalysis (const G
   const GGS_templateVarInExpressionAST temp_1 = this ;
   outArgument_outExpression = GGS_varInExpressionForGeneration::init_21__21__21__21_ (var_type_33174, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_33184, var_sourceVariableCppName_33184, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateAddOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateAddOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -2976,10 +2955,9 @@ void cPtr_templateAddOperationAST::method_templateExpressionAnalysis (const GGS_
   const GGS_templateAddOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_34111.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_34111, GGS_binaryOperator::class_func_add (SOURCE_FILE ("templateAnalysis.galgas", 851)), var_rightExpression_34353, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateSubOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateSubOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3002,10 +2980,9 @@ void cPtr_templateSubOperationAST::method_templateExpressionAnalysis (const GGS_
   const GGS_templateSubOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_35588.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_35588, GGS_binaryOperator::class_func_sub (SOURCE_FILE ("templateAnalysis.galgas", 896)), var_rightExpression_35830, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateMultiplyOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateMultiplyOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3028,10 +3005,9 @@ void cPtr_templateMultiplyOperationAST::method_templateExpressionAnalysis (const
   const GGS_templateMultiplyOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_37074.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_37074, GGS_binaryOperator::class_func_multiply_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 941)), var_rightExpression_37316, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateDivideOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateDivideOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3054,10 +3030,9 @@ void cPtr_templateDivideOperationAST::method_templateExpressionAnalysis (const G
   const GGS_templateDivideOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_38561.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_38561, GGS_binaryOperator::class_func_divide_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 986)), var_rightExpression_38803, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateModuloOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateModuloOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3080,10 +3055,9 @@ void cPtr_templateModuloOperationAST::method_templateExpressionAnalysis (const G
   const GGS_templateModuloOperationAST temp_3 = this ;
   outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_40042.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_40042, GGS_binaryOperator::class_func_modulo_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 1031)), var_rightExpression_40284, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateUnaryMinusOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateUnaryMinusOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3112,10 +3086,9 @@ void cPtr_templateUnaryMinusOperationAST::method_templateExpressionAnalysis (con
     outArgument_outExpression = GGS_unaryMinusExpressionForGeneration::init_21__21__21_ (var_type_41565, temp_4.readProperty_mOperatorLocation (), var_expression_41489, inCompiler COMMA_HERE) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structFieldAccessTemplateExpressionAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structFieldAccessTemplateExpressionAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3153,10 +3126,9 @@ void cPtr_structFieldAccessTemplateExpressionAST::method_templateExpressionAnaly
   const GGS_structFieldAccessTemplateExpressionAST temp_8 = this ;
   outArgument_outExpression = GGS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_type_42867, temp_7.readProperty_mOperatorLocation (), var_expression_42787, temp_8.readProperty_mStructFieldName ().readProperty_string (), inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateEqualTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateEqualTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3179,10 +3151,9 @@ void cPtr_templateEqualTestAST::method_templateExpressionAnalysis (const GGS_lst
   const GGS_templateEqualTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_44215, GGS_comparison::class_func_equal (SOURCE_FILE ("templateAnalysis.galgas", 1146)), var_rightExpression_44461, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateNonEqualTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateNonEqualTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3205,10 +3176,9 @@ void cPtr_templateNonEqualTestAST::method_templateExpressionAnalysis (const GGS_
   const GGS_templateNonEqualTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_45632, GGS_comparison::class_func_notEqual (SOURCE_FILE ("templateAnalysis.galgas", 1189)), var_rightExpression_45878, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateStrictInfTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateStrictInfTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3231,10 +3201,9 @@ void cPtr_templateStrictInfTestAST::method_templateExpressionAnalysis (const GGS
   const GGS_templateStrictInfTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_47053, GGS_comparison::class_func_lowerThan (SOURCE_FILE ("templateAnalysis.galgas", 1232)), var_rightExpression_47299, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInfOrEqualTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInfOrEqualTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3257,10 +3226,9 @@ void cPtr_templateInfOrEqualTestAST::method_templateExpressionAnalysis (const GG
   const GGS_templateInfOrEqualTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_48401, GGS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1275)), var_rightExpression_48647, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateStrictSupTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateStrictSupTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3283,10 +3251,9 @@ void cPtr_templateStrictSupTestAST::method_templateExpressionAnalysis (const GGS
   const GGS_templateStrictSupTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_49752, GGS_comparison::class_func_greaterThan (SOURCE_FILE ("templateAnalysis.galgas", 1318)), var_rightExpression_49998, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateSupOrEqualTestAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateSupOrEqualTestAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3309,10 +3276,9 @@ void cPtr_templateSupOrEqualTestAST::method_templateExpressionAnalysis (const GG
   const GGS_templateSupOrEqualTestAST temp_3 = this ;
   outArgument_outExpression = GGS_comparisonExpressionForGeneration::init_21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mBoolType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_51102, GGS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1361)), var_rightExpression_51348, inCompiler COMMA_HERE) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLeftShiftOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLeftShiftOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3357,10 +3323,9 @@ void cPtr_templateLeftShiftOperationAST::method_templateExpressionAnalysis (cons
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateRightShiftOperationAST templateExpressionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateRightShiftOperationAST::method_templateExpressionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3405,6 +3370,7 @@ void cPtr_templateRightShiftOperationAST::method_templateExpressionAnalysis (con
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'templateInstructionListAnalysis?&?&?&'
@@ -3428,9 +3394,7 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const GGS_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionStringAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionStringAST::method_templateInstructionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -3443,10 +3407,9 @@ void cPtr_templateInstructionStringAST::method_templateInstructionAnalysis (cons
   const GGS_templateInstructionStringAST temp_0 = this ;
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionStringForGeneration::init_21_ (temp_0.readProperty_mTemplateString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1505)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionExpressionAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionExpressionAST::method_templateInstructionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3470,10 +3433,9 @@ void cPtr_templateInstructionExpressionAST::method_templateInstructionAnalysis (
   }
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionExpressionForGeneration::init_21_ (var_expression_57654, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1527)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateBlockInstructionAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateBlockInstructionAST::method_templateInstructionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3513,10 +3475,9 @@ void cPtr_templateBlockInstructionAST::method_templateInstructionAnalysis (const
   const GGS_templateBlockInstructionAST temp_6 = this ;
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateBlockInstructionForGeneration::init_21__21__21_ (var_expression_58532, temp_6.readProperty_mLocation (), var_blockInstructionList_59100, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1570)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionGetColumnLocationAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGetColumnLocationAST::method_templateInstructionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -3528,10 +3489,9 @@ void cPtr_templateInstructionGetColumnLocationAST::method_templateInstructionAna
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionGetColumnLocationForGeneration::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1582)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionGotoColumnLocationAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGotoColumnLocationAST::method_templateInstructionAnalysis (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
@@ -3543,10 +3503,9 @@ void cPtr_templateInstructionGotoColumnLocationAST::method_templateInstructionAn
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionGotoColumnLocationForGeneration::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1594)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionIfAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionIfAST::method_templateInstructionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3584,6 +3543,7 @@ void cPtr_templateInstructionIfAST::method_templateInstructionAnalysis (const GG
   }
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionIfForGeneration::init_21__21_ (var_templateInstructionIfBranchList_60951, var_elseInstructionList_61879, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1641)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Routine 'templateCodeGenerationForListInstruction?&&&&&'
@@ -3607,9 +3567,7 @@ void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (c
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionStringForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionStringForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3622,10 +3580,9 @@ void cPtr_templateInstructionStringForGeneration::method_templateCodeGeneration 
   const GGS_templateInstructionStringForGeneration temp_0 = this ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("result.appendString (").add_operation (temp_0.readProperty_mTemplateString ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("templateCodeGeneration.galgas", 60)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 60)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 60)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 60)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionExpressionForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionExpressionForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3640,10 +3597,9 @@ void cPtr_templateInstructionExpressionForGeneration::method_templateCodeGenerat
   callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName_3491, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 72)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("result.appendString (").add_operation (var_cppName_3491, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 73)).add_operation (GGS_string (".stringValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 73)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 73)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateBlockInstructionForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateBlockInstructionForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3667,10 +3623,9 @@ void cPtr_templateBlockInstructionForGeneration::method_templateCodeGeneration (
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("  result.incIndentation (- int32_t (").add_operation (var_indendationVarCppName_4078, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)).add_operation (GGS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 98)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 99)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionGetColumnLocationForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGetColumnLocationForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3683,10 +3638,9 @@ void cPtr_templateInstructionGetColumnLocationForGeneration::method_templateCode
   ioArgument_ioUseColumnMarker = GGS_bool (true) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("columnMarker = result.currentColumn () ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 111)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionGotoColumnLocationForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGotoColumnLocationForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3699,10 +3653,9 @@ void cPtr_templateInstructionGotoColumnLocationForGeneration::method_templateCod
   ioArgument_ioUseColumnMarker = GGS_bool (true) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("result.appendSpacesUntilColumn (columnMarker) ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 123)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionIfForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -3755,10 +3708,9 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GGS
     enumerator_7565.gotoNextObject () ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionForeachAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionForeachAST::method_templateInstructionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -3887,10 +3839,9 @@ void cPtr_templateInstructionForeachAST::method_templateInstructionAnalysis (con
   const GGS_templateInstructionForeachAST temp_19 = this ;
   ioArgument_ioInstructionList.addAssign_operation (GGS_templateInstructionForeachForGeneration::init_21__21__21__21__21__21__21__21_ (temp_19.readProperty_mIsAscending (), var_expression_7479, var_enumeratorCppName_8198, var_beforeInstructionList_7903, var_doInstructionList_10390, var_cppIndexVarName_8362, var_betweenInstructionList_10678, var_afterInstructionList_10979, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 318)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionForeachForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionForeachForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -4029,10 +3980,9 @@ void cPtr_templateInstructionForeachForGeneration::method_templateCodeGeneration
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 434)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionSwitchAST templateInstructionAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
@@ -4186,10 +4136,9 @@ void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (cons
     inCompiler->emitSemanticError (var_switchExpression_5522.readProperty_mLocation (), GGS_string ("'switch' expression type should be an enumeration (it is a ").add_operation (extensionGetter_string (extensionGetter_definition (var_switchExpression_5522.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 232)).readProperty_typeKind (), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 231)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 231)).add_operation (GGS_string (" type)"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 232)), fixItArray22  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 231)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateInstructionSwitchForGeneration templateCodeGeneration'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchForGeneration::method_templateCodeGeneration (GGS_string & ioArgument_ioGeneratedCode,
@@ -4272,6 +4221,7 @@ void cPtr_templateInstructionSwitchForGeneration::method_templateCodeGeneration 
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 319)) ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@lexiqueComponentAST keyRepresentation'
@@ -4289,9 +4239,7 @@ GGS_string cPtr_lexiqueComponentAST::getter_keyRepresentation (Compiler * inComp
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueComponentAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueComponentAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -4311,10 +4259,9 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInGraph (GGS_semanticTypeP
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_29651, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 825)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueComponentAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
@@ -4380,10 +4327,9 @@ void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (GGS_equ
   ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), temp_4.readProperty_mIsTemplate (), var_terminalMap_30837, temp_5.readProperty_mIndexingListAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 868)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@lexiqueComponentAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueComponentAST::method_semanticAnalysis (GGS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
@@ -4593,6 +4539,7 @@ void cPtr_lexiqueComponentAST::method_semanticAnalysis (GGS_lstringlist & /* ioA
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'lexiqueGenerationTemplates'
@@ -6658,9 +6605,7 @@ GGS_string cPtr_templateLexiqueComponentAST::getter_keyRepresentation (Compiler 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLexiqueComponentAST enterDeclarationInGraph'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLexiqueComponentAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
@@ -6686,10 +6631,9 @@ void cPtr_templateLexiqueComponentAST::method_enterDeclarationInGraph (GGS_seman
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_8292, var_superKey_8448 COMMA_SOURCE_FILE ("template-lexique-component.galgas", 240)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLexiqueComponentAST enterDeclarationInSemanticContext'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLexiqueComponentAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
@@ -6724,10 +6668,9 @@ void cPtr_templateLexiqueComponentAST::method_enterDeclarationInSemanticContext 
   ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_4.readProperty_mLexiqueComponentName (), GGS_bool (true), var_terminalMap_9521, var_indexingListAST_9543, var_terminalListAST_9569, var_lexicalAttributeListAST_9595, var_lexicalStyleListAST_9629, var_lexicalListDeclarationListAST_9659, inCompiler COMMA_SOURCE_FILE ("template-lexique-component.galgas", 268)) ;
   }
 }
+
 //--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@templateLexiqueComponentAST semanticAnalysis'
-//
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLexiqueComponentAST::method_semanticAnalysis (GGS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
@@ -6882,6 +6825,7 @@ void cPtr_templateLexiqueComponentAST::method_semanticAnalysis (GGS_lstringlist 
     }
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'templateLexiqueGenerationTemplates'
