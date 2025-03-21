@@ -16,9 +16,9 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @assignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetVariableName
@@ -26,7 +26,7 @@ class @assignmentInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSourceExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetSelfPropertyName
@@ -34,9 +34,9 @@ class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSourceExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -92,7 +92,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -162,9 +162,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @assignmentInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -172,7 +172,7 @@ override method @assignmentInstructionAST enterInstructionInSemanticContext
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPropertyAssignmentInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -180,9 +180,9 @@ override method @selfPropertyAssignmentInstructionAST enterInstructionInSemantic
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @assignmentInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -255,7 +255,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
                         ?let @lstring inUsefulnessCallerEntityName
@@ -315,9 +315,9 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -371,4 +371,4 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

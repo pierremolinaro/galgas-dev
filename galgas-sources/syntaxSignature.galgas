@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Syntax component semantic analysis
 //
@@ -20,18 +20,18 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    S Y N T A X    S I G N A T U R E
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticInstructionForGeneration appendSyntaxSignature // Capture all semantic instructions
   ?let @string unused inPosfix
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func syntaxSignatureOfInstructionList
   ?let @string inPosfix
@@ -44,11 +44,11 @@ func syntaxSignatureOfInstructionList
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    S Y N T A X    S I G N A T U R E    C O M P A R I S O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration unused inTestedInstruction
@@ -57,7 +57,7 @@ getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
   result = true
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func compareSyntaxSignature
   ?let @semanticInstructionListForGeneration inReferenceSignature
@@ -92,5 +92,5 @@ func compareSyntaxSignature
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

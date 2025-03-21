@@ -127,9 +127,7 @@ class GGS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionGetterMapForGlobalCheckings' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionGetterMapForGlobalCheckings : public cMapElement {
@@ -232,9 +230,7 @@ class GGS_extensionGetterMapForGlobalCheckings_2E_element : public AC_GALGAS_roo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionGetterMapForGlobalCheckings.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ : public AC_GALGAS_root {

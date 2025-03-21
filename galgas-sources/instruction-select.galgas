@@ -15,18 +15,18 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @selectInstruction : @syntaxInstructionAST {
   public let @listOfSyntaxInstructionList mSelectBranchList
   public let @location mEndOf_select_instruction
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3SyntaxComponentSyntax {
 
@@ -58,7 +58,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4SyntaxComponentSyntax {
 
@@ -90,9 +90,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! TRANSFORM
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selectInstruction transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -122,9 +122,9 @@ override method @selectInstruction transformInstructionForGrammarAnalysis
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selectInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -176,9 +176,9 @@ override method @selectInstruction analyzeSyntaxInstruction
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @string mSyntaxComponentName
@@ -186,9 +186,9 @@ class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX SIGNATURE
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -207,9 +207,9 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! COMPARE SYNTAX SIGNATURE
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @selectInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
@@ -243,9 +243,9 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selectInstructionForGeneration generateInstruction
                           ?!@stringset ioInclusionSet
@@ -273,4 +273,4 @@ override method @selectInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3SyntaxComponentSyntax {
 
@@ -36,7 +36,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4SyntaxComponentSyntax {
 
@@ -57,9 +57,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @syntaxSendInstructionAST : @syntaxInstructionAST {
   private let @semanticExpressionAST mExpression
@@ -118,9 +118,9 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! @syntaxSendInstructionForGeneration
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -151,4 +151,4 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

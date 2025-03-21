@@ -678,6 +678,37 @@ void ggs_printFileOperationSuccess (const String & inMessage) {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void ggs_printFileDeletionSuccess (const String & inMessage) {
+  if (! executionModeIsIndexing ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("magenta:") ;
+      gCout.appendString (inMessage) ;
+      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+        gCout.appendNewLine () ;
+      }
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
+      gCout.setForeColor (kMagentaForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.appendString (inMessage) ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::regular :
+      gCout.setForeColor (kGreenForeColor) ;
+      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.appendString (inMessage) ;
+      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.flush () ;
+      break ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //    Method called for printing a file creation success
 //

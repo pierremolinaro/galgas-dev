@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @fixitElementAST {
   case fixItRemove
@@ -26,13 +26,13 @@ enum @fixitElementAST {
   case fixItInsertBefore (@semanticExpressionAST exp @location errorLocation)
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @fixitListAST {
   public let @fixitElementAST mElement
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @errorInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mLocationExpression
@@ -41,9 +41,9 @@ class @errorInstructionAST : @semanticInstructionAST {
   private let @fixitListAST mFixitListAST
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -120,7 +120,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -202,9 +202,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -212,7 +212,7 @@ override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifie
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (element) in self do
@@ -228,9 +228,9 @@ method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @fixitElementForGeneration {
   case fixItRemove
@@ -239,13 +239,13 @@ enum @fixitElementForGeneration {
   case fixItInsertAfter (@semanticExpressionForGeneration exp)
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @fixitListForGeneration {
   private let @fixitElementForGeneration mElement
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc analyzeErrorOrWarningInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -401,9 +401,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @fixitListForGeneration generateFixIt
   ?!@stringset ioInclusionSet
@@ -451,7 +451,7 @@ method @fixitListForGeneration generateFixIt
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -509,4 +509,4 @@ override method @errorInstructionForGeneration generateInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

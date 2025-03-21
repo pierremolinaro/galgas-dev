@@ -58,9 +58,7 @@ class GGS_timer ;
 class GGS_type ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @location type
-//
 //--------------------------------------------------------------------------------------------------
 
 #include "LocationInSource.h"
@@ -177,9 +175,7 @@ class GGS_location : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @string type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string : public AC_GALGAS_root {
@@ -609,9 +605,7 @@ class GGS_string : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//@bool type
-//
+//  @bool type
 //--------------------------------------------------------------------------------------------------
 
 enum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;
@@ -709,9 +703,7 @@ class GGS_bool : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @uint type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uint : public AC_GALGAS_root {
@@ -1104,9 +1096,7 @@ class GGS_stringset : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @char type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_char : public AC_GALGAS_root {
@@ -1213,9 +1203,7 @@ class GGS_char : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //  @double type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_double : public AC_GALGAS_root {
@@ -1375,9 +1363,7 @@ class GGS_double : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //  @uint64 type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uint_36__34_ : public AC_GALGAS_root {
@@ -1592,9 +1578,7 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @sint type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sint : public AC_GALGAS_root {
@@ -1798,9 +1782,7 @@ class GGS_sint : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @sint64 type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sint_36__34_ : public AC_GALGAS_root {
@@ -2005,9 +1987,7 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @bigint type
-//
 //--------------------------------------------------------------------------------------------------
  
 class GGS_bigint : public AC_GALGAS_root {
@@ -2230,9 +2210,7 @@ class GGS_bigint : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //@application package
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_application final {
@@ -2336,9 +2314,7 @@ class GGS_application final {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // @binaryset type
-//
 //--------------------------------------------------------------------------------------------------
 
 #include "BinaryDecisionDiagram.h"
@@ -2816,9 +2792,7 @@ class GGS_data : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @filewrapper type
-//
 //--------------------------------------------------------------------------------------------------
 
 class cRegularFileWrapper {
@@ -2964,9 +2938,7 @@ class GGS_filewrapper : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @function type
-//
 //--------------------------------------------------------------------------------------------------
 
 class C_galgas_function_descriptor ;
@@ -3052,9 +3024,7 @@ class GGS_function : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @object type
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_object ;
@@ -3127,9 +3097,7 @@ class GGS_object : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @timer type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_timer : public AC_GALGAS_root {
@@ -3194,9 +3162,7 @@ class GGS_timer : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @type type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_type : public AC_GALGAS_root {
@@ -5573,9 +5539,7 @@ class GGS_range : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: bigint? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bigint_3F_ : public AC_GALGAS_root {

@@ -779,7 +779,7 @@ void GGS_string::class_method_deleteFile (GGS_string inFilePath,
     }else{
       const String errorMessage = FileManager::deleteFile (inFilePath.mString) ;
       if (errorMessage.length () == 0) {
-        ggs_printFileOperationSuccess (String ("Deleted '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileDeletionSuccess (String ("Deleted '") + inFilePath.mString + "'.\n") ;
       }else{
         String message = "cannot perform delete '" ;
         message.appendString (inFilePath.mString) ;

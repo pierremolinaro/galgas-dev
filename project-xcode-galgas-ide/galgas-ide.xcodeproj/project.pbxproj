@@ -142,7 +142,7 @@
 		CF305FB52D0D8A2E000A5F79 /* BigUnsigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E672D0D8A2E000A5F79 /* BigUnsigned-chunk-operations.cpp */; };
 		CF305FB62D0D8A2E000A5F79 /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E572D0D8A2E000A5F79 /* BigSigned.cpp */; };
 		CF305FB72D0D8A2E000A5F79 /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5D2D0D8A2E000A5F79 /* BigSigned-divide.cpp */; };
-		CF305FB82D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp */; };
+		CF305FB82D0D8A2E000A5F79 /* GALGAS_sint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GALGAS_sint64.cpp */; };
 		CF305FB92D0D8A2E000A5F79 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* cObjectArray.cpp */; };
 		CF305FBB2D0D8A2E000A5F79 /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5F2D0D8A2E000A5F79 /* BigSigned-multiply.cpp */; };
 		CF305FBC2D0D8A2E000A5F79 /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E662D0D8A2E000A5F79 /* BigUnsigned-bit.cpp */; };
@@ -165,7 +165,7 @@
 		CF305FD12D0D8A2E000A5F79 /* BigUnsigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6D2D0D8A2E000A5F79 /* BigUnsigned-multiply.cpp */; };
 		CF305FD22D0D8A2E000A5F79 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F172D0D8A2E000A5F79 /* GALGAS_application.cpp */; };
 		CF305FD32D0D8A2E000A5F79 /* String-class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F682D0D8A2E000A5F79 /* String-class.cpp */; };
-		CF305FD42D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp */; };
+		CF305FD42D0D8A2E000A5F79 /* GALGAS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint64.cpp */; };
 		CF305FD52D0D8A2E000A5F79 /* GALGAS_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F282D0D8A2E000A5F79 /* GALGAS_type.cpp */; };
 		CF305FD72D0D8A2E000A5F79 /* BigUnsigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6C2D0D8A2E000A5F79 /* BigUnsigned-logic-operations.cpp */; };
 		CF305FD82D0D8A2E000A5F79 /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E652D0D8A2E000A5F79 /* BigUnsigned-add.cpp */; };
@@ -310,7 +310,7 @@
 		CF8F80FB2D0D91490095170B /* BigUnsigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E672D0D8A2E000A5F79 /* BigUnsigned-chunk-operations.cpp */; };
 		CF8F80FC2D0D91490095170B /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E572D0D8A2E000A5F79 /* BigSigned.cpp */; };
 		CF8F80FD2D0D91490095170B /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5D2D0D8A2E000A5F79 /* BigSigned-divide.cpp */; };
-		CF8F80FE2D0D91490095170B /* GALGAS_sint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp */; };
+		CF8F80FE2D0D91490095170B /* GALGAS_sint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F232D0D8A2E000A5F79 /* GALGAS_sint64.cpp */; };
 		CF8F80FF2D0D91490095170B /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F0A2D0D8A2E000A5F79 /* cObjectArray.cpp */; };
 		CF8F81002D0D91490095170B /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5F2D0D8A2E000A5F79 /* BigSigned-multiply.cpp */; };
 		CF8F81012D0D91490095170B /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E662D0D8A2E000A5F79 /* BigUnsigned-bit.cpp */; };
@@ -333,7 +333,7 @@
 		CF8F81122D0D91490095170B /* BigUnsigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6D2D0D8A2E000A5F79 /* BigUnsigned-multiply.cpp */; };
 		CF8F81132D0D91490095170B /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F172D0D8A2E000A5F79 /* GALGAS_application.cpp */; };
 		CF8F81142D0D91490095170B /* String-class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F682D0D8A2E000A5F79 /* String-class.cpp */; };
-		CF8F81152D0D91490095170B /* GALGAS_uint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp */; };
+		CF8F81152D0D91490095170B /* GALGAS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint64.cpp */; };
 		CF8F81162D0D91490095170B /* GALGAS_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F282D0D8A2E000A5F79 /* GALGAS_type.cpp */; };
 		CF8F81172D0D91490095170B /* BigUnsigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6C2D0D8A2E000A5F79 /* BigUnsigned-logic-operations.cpp */; };
 		CF8F81182D0D91490095170B /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E652D0D8A2E000A5F79 /* BigUnsigned-add.cpp */; };
@@ -790,14 +790,14 @@
 		CF305F202D0D8A2E000A5F79 /* GALGAS_location.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_location.cpp; sourceTree = "<group>"; };
 		CF305F212D0D8A2E000A5F79 /* GALGAS_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_object.cpp; sourceTree = "<group>"; };
 		CF305F222D0D8A2E000A5F79 /* GALGAS_sint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sint.cpp; sourceTree = "<group>"; };
-		CF305F232D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sint_36__34_.cpp; sourceTree = "<group>"; };
+		CF305F232D0D8A2E000A5F79 /* GALGAS_sint64.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sint64.cpp; sourceTree = "<group>"; };
 		CF305F242D0D8A2E000A5F79 /* GALGAS_string.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_string.cpp; sourceTree = "<group>"; };
 		CF305F252D0D8A2E000A5F79 /* GALGAS_string-getters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "GALGAS_string-getters.cpp"; sourceTree = "<group>"; };
 		CF305F262D0D8A2E000A5F79 /* GALGAS_stringset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_stringset.cpp; sourceTree = "<group>"; };
 		CF305F272D0D8A2E000A5F79 /* GALGAS_timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_timer.cpp; sourceTree = "<group>"; };
 		CF305F282D0D8A2E000A5F79 /* GALGAS_type.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_type.cpp; sourceTree = "<group>"; };
 		CF305F292D0D8A2E000A5F79 /* GALGAS_uint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_uint.cpp; sourceTree = "<group>"; };
-		CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_uint_36__34_.cpp; sourceTree = "<group>"; };
+		CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint64.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_uint64.cpp; sourceTree = "<group>"; };
 		CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "galgas-input-output.h"; sourceTree = "<group>"; };
 		CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "galgas-input-output.cpp"; sourceTree = "<group>"; };
 		CF305F2D2D0D8A2E000A5F79 /* IssueWithFixIt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueWithFixIt.h; sourceTree = "<group>"; };
@@ -1521,14 +1521,14 @@
 				CF305F202D0D8A2E000A5F79 /* GALGAS_location.cpp */,
 				CF305F212D0D8A2E000A5F79 /* GALGAS_object.cpp */,
 				CF305F222D0D8A2E000A5F79 /* GALGAS_sint.cpp */,
-				CF305F232D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp */,
+				CF305F232D0D8A2E000A5F79 /* GALGAS_sint64.cpp */,
 				CF305F242D0D8A2E000A5F79 /* GALGAS_string.cpp */,
 				CF305F252D0D8A2E000A5F79 /* GALGAS_string-getters.cpp */,
 				CF305F262D0D8A2E000A5F79 /* GALGAS_stringset.cpp */,
 				CF305F272D0D8A2E000A5F79 /* GALGAS_timer.cpp */,
 				CF305F282D0D8A2E000A5F79 /* GALGAS_type.cpp */,
 				CF305F292D0D8A2E000A5F79 /* GALGAS_uint.cpp */,
-				CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp */,
+				CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint64.cpp */,
 				CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */,
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
 				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
@@ -1979,7 +1979,7 @@
 				CF8F80FB2D0D91490095170B /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF8F80FC2D0D91490095170B /* BigSigned.cpp in Sources */,
 				CF8F80FD2D0D91490095170B /* BigSigned-divide.cpp in Sources */,
-				CF8F80FE2D0D91490095170B /* GALGAS_sint_36__34_.cpp in Sources */,
+				CF8F80FE2D0D91490095170B /* GALGAS_sint64.cpp in Sources */,
 				CF8F80FF2D0D91490095170B /* cObjectArray.cpp in Sources */,
 				CF8F81002D0D91490095170B /* BigSigned-multiply.cpp in Sources */,
 				CF8F81012D0D91490095170B /* BigUnsigned-bit.cpp in Sources */,
@@ -2002,7 +2002,7 @@
 				CF8F81122D0D91490095170B /* BigUnsigned-multiply.cpp in Sources */,
 				CF8F81132D0D91490095170B /* GALGAS_application.cpp in Sources */,
 				CF8F81142D0D91490095170B /* String-class.cpp in Sources */,
-				CF8F81152D0D91490095170B /* GALGAS_uint_36__34_.cpp in Sources */,
+				CF8F81152D0D91490095170B /* GALGAS_uint64.cpp in Sources */,
 				CF8F81162D0D91490095170B /* GALGAS_type.cpp in Sources */,
 				CF8F81172D0D91490095170B /* BigUnsigned-logic-operations.cpp in Sources */,
 				CF8F81182D0D91490095170B /* BigUnsigned-add.cpp in Sources */,
@@ -2298,7 +2298,7 @@
 				CF305FB52D0D8A2E000A5F79 /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF305FB62D0D8A2E000A5F79 /* BigSigned.cpp in Sources */,
 				CF305FB72D0D8A2E000A5F79 /* BigSigned-divide.cpp in Sources */,
-				CF305FB82D0D8A2E000A5F79 /* GALGAS_sint_36__34_.cpp in Sources */,
+				CF305FB82D0D8A2E000A5F79 /* GALGAS_sint64.cpp in Sources */,
 				CF305FB92D0D8A2E000A5F79 /* cObjectArray.cpp in Sources */,
 				CF305FBB2D0D8A2E000A5F79 /* BigSigned-multiply.cpp in Sources */,
 				CF305FBC2D0D8A2E000A5F79 /* BigUnsigned-bit.cpp in Sources */,
@@ -2321,7 +2321,7 @@
 				CF305FD12D0D8A2E000A5F79 /* BigUnsigned-multiply.cpp in Sources */,
 				CF305FD22D0D8A2E000A5F79 /* GALGAS_application.cpp in Sources */,
 				CF305FD32D0D8A2E000A5F79 /* String-class.cpp in Sources */,
-				CF305FD42D0D8A2E000A5F79 /* GALGAS_uint_36__34_.cpp in Sources */,
+				CF305FD42D0D8A2E000A5F79 /* GALGAS_uint64.cpp in Sources */,
 				CF305FD52D0D8A2E000A5F79 /* GALGAS_type.cpp in Sources */,
 				CF305FD72D0D8A2E000A5F79 /* BigUnsigned-logic-operations.cpp in Sources */,
 				CF305FD82D0D8A2E000A5F79 /* BigUnsigned-add.cpp in Sources */,

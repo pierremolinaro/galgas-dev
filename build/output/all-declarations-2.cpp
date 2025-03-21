@@ -851,9 +851,7 @@ GGS_lexicalStringNotMatchAST_2E_weak GGS_lexicalStringNotMatchAST_2E_weak::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalSendSearchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
@@ -1779,9 +1777,7 @@ GGS_lexicalErrorByDefaultAST_2E_weak GGS_lexicalErrorByDefaultAST_2E_weak::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalWhileBranchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
@@ -2287,9 +2283,7 @@ GGS_lexicalWhileBranchListAST GGS_lexicalWhileBranchListAST::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalSelectBranchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSelectBranchListAST : public cCollectionElement {
@@ -2997,9 +2991,7 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak GGS_lexicalRoutineOrF
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalFunctionCallActualArgumentListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionCallActualArgumentListAST : public cCollectionElement {
@@ -4594,9 +4586,7 @@ GGS_lexicalTypeEnum GGS_lexicalTypeEnum::extractObject (const GGS_object & inObj
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalSentValueList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSentValueList : public cCollectionElement {
@@ -6203,9 +6193,7 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::extractObject (const GGS_object
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@terminalList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalList : public cCollectionElement {
@@ -8722,9 +8710,7 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::extractObject (const GGS_object & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalRoutineFormalArgumentList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionElement {
@@ -9761,9 +9747,7 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::extractObject (const GGS_object & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalFunctionFormalArgumentList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionElement {
@@ -10786,9 +10770,7 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateDelimitorList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateDelimitorList : public cCollectionElement {
@@ -14975,9 +14957,7 @@ GGS_lexicalFormalInputArgumentAST_2E_weak GGS_lexicalFormalInputArgumentAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalRoutineCallActualArgumentListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRoutineCallActualArgumentListAST : public cCollectionElement {

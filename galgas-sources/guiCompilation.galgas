@@ -15,16 +15,16 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @guiSimpleAttributeListAST {
   public let @lstring mKey
   public let @lstring mValue
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @guiCompoundAttributeListAST {
   public let @lstring mKey
@@ -32,14 +32,14 @@ list @guiCompoundAttributeListAST {
   public let @lstring mValue
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @terminalLabelListAST {
   public let @lstring mTerminal
   public let @uint mDisplayFlags
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @guiLabelListAST {
   public let @uint mLeadingCharacterStrippedCount
@@ -47,7 +47,7 @@ list @guiLabelListAST {
   public let @location mLocation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @withLexiqueListAST {
   public let @lstring mLexiqueFileName
@@ -55,7 +55,7 @@ list @withLexiqueListAST {
   public let @guiSimpleAttributeListAST mSimpleAttributes
   public let @guiCompoundAttributeListAST mCompoundAttributes
 }
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @guiCommandLineOptionList {
   public let @string mOptionComponent
@@ -65,7 +65,7 @@ list @guiCommandLineOptionList {
   public let @string mComment
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @extensionMap {
   public let @string mLexiqueName
@@ -73,14 +73,14 @@ map @extensionMap {
   insert insertKey error message "the '%K' extension is already declared in %L"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @textMacroList {
   public let @string mKey
   public let @string mContents
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @importedLexiqueList {
   public let @string mLexiqueClassName
@@ -92,14 +92,14 @@ list @importedLexiqueList {
   public let @lexicalStyleListAST mLexicalStyleList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @projectIndexingDescriptorList {
   let @lstring mProjectFileExtension
   let @lstring indexingPathSuffix
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @galgasGUIComponentListAST {
   public let @lstring mGUIComponentName
@@ -109,9 +109,9 @@ list @galgasGUIComponentListAST {
   public let @projectIndexingDescriptorList mProjectIndexingDescriptorList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
@@ -246,7 +246,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
@@ -381,9 +381,9 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTIC ANALYSIS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 struct @guiAnalysisContext {
   public var @stringlist mImportedOptionComponentList = @()
@@ -397,14 +397,14 @@ struct @guiAnalysisContext {
   public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = @()
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc compileAllGuiComponentFromASTGalgas3
   ?let @galgasGUIComponentListAST inGuiComponentListAST
@@ -420,7 +420,7 @@ proc compileAllGuiComponentFromASTGalgas3
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
@@ -544,9 +544,9 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
@@ -594,9 +594,9 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //         G E N E R A T I O N    T E M P L A T E S
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
@@ -610,4 +610,4 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
     ?@bool QUIET_OUTPUT_BY_DEFAULT
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

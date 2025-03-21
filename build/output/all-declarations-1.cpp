@@ -117,9 +117,7 @@ GGS_templateInstructionExpressionForGeneration_2E_weak GGS_templateInstructionEx
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionListForGeneration : public cCollectionElement {
@@ -1158,9 +1156,7 @@ GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak GGS_templateInstr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionIfBranchListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionIfBranchListForGeneration : public cCollectionElement {
@@ -4046,9 +4042,7 @@ GGS__5B_lstring_5D_ GGS__5B_lstring_5D_::extractObject (const GGS_object & inObj
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionSwitchBranchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionSwitchBranchListAST : public cCollectionElement {
@@ -4698,9 +4692,7 @@ GGS_templateInstructionSwitchBranchListAST GGS_templateInstructionSwitchBranchLi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@switchExtractedValuesListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_switchExtractedValuesListAST : public cCollectionElement {
@@ -5599,9 +5591,7 @@ GGS_templateInstructionSwitchAST_2E_weak GGS_templateInstructionSwitchAST_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionSwitchBranchListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionSwitchBranchListForGeneration : public cCollectionElement {
@@ -6251,9 +6241,7 @@ GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwit
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@extractedAssociatedValuesForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollectionElement {
@@ -7053,9 +7041,7 @@ GGS_semanticDeclarationAST GGS_semanticDeclarationAST::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateDelimitorListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateDelimitorListAST : public cCollectionElement {
@@ -7777,9 +7763,7 @@ GGS_templateDelimitorListAST GGS_templateDelimitorListAST::extractObject (const 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateReplacementListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateReplacementListAST : public cCollectionElement {
@@ -8357,9 +8341,7 @@ GGS_templateReplacementListAST GGS_templateReplacementListAST::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalAttributeListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
@@ -8865,9 +8847,7 @@ GGS_lexicalAttributeListAST GGS_lexicalAttributeListAST::extractObject (const GG
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalStyleListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
@@ -9373,9 +9353,7 @@ GGS_lexicalStyleListAST GGS_lexicalStyleListAST::extractObject (const GGS_object
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@terminalDeclarationListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalDeclarationListAST : public cCollectionElement {
@@ -10169,9 +10147,7 @@ GGS_terminalDeclarationListAST GGS_terminalDeclarationListAST::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalMessageDeclarationListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionElement {
@@ -10677,9 +10653,7 @@ GGS_lexicalMessageDeclarationListAST GGS_lexicalMessageDeclarationListAST::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalListDeclarationListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalListDeclarationListAST : public cCollectionElement {
@@ -11401,9 +11375,7 @@ GGS_lexicalListDeclarationListAST GGS_lexicalListDeclarationListAST::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalRuleListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
@@ -11837,9 +11809,7 @@ GGS_lexicalRuleListAST GGS_lexicalRuleListAST::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@indexingListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_indexingListAST : public cCollectionElement {
@@ -12967,9 +12937,7 @@ GGS_lexicalInstructionAST_2E_weak GGS_lexicalInstructionAST_2E_weak::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalInstructionListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
@@ -13614,13 +13582,13 @@ GGS_bool extensionGetter_useLoopLocalVar (const GGS_lexicalRuleListAST & inObjec
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS_lexicalRuleListAST temp_0 = inObject ;
-  UpEnumerator_lexicalRuleListAST enumerator_2820 (temp_0) ;
+  UpEnumerator_lexicalRuleListAST enumerator_2838 (temp_0) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
-  if (enumerator_2820.hasCurrentObject () && bool_1) {
-    while (enumerator_2820.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2820.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 74)) ;
-      enumerator_2820.gotoNextObject () ;
-      if (enumerator_2820.hasCurrentObject ()) {
+  if (enumerator_2838.hasCurrentObject () && bool_1) {
+    while (enumerator_2838.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2838.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 74)) ;
+      enumerator_2838.gotoNextObject () ;
+      if (enumerator_2838.hasCurrentObject ()) {
         bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
       }
     }
@@ -14040,9 +14008,7 @@ GGS_lexicalExplicitRuleAST_2E_weak GGS_lexicalExplicitRuleAST_2E_weak::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@sentLexicalAttributeListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_sentLexicalAttributeListAST : public cCollectionElement {
@@ -14548,9 +14514,7 @@ GGS_sentLexicalAttributeListAST GGS_sentLexicalAttributeListAST::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lexicalListEntryListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {

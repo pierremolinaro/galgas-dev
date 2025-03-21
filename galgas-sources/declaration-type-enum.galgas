@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!  SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -94,7 +94,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -172,9 +172,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 struct @associatedValue {
   public let @bool weakQualifier
@@ -182,14 +182,14 @@ struct @associatedValue {
   public let @lstring valueName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @enumConstantList {
   public let @lstring name
   public let [@associatedValue] associatedValueTypeList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
@@ -507,16 +507,16 @@ class @enumDeclarationAST : @semanticDeclarationAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!  CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @enumConstantListForGeneration {
   public let @string name
   public let @associatedValueDescriptorList associatedValueTypeList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
@@ -583,7 +583,7 @@ class @enumTypeForGeneration : @semanticTypeForGeneration {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -602,5 +602,5 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool GENERATE_COMPARISON
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

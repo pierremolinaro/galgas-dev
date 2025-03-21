@@ -9,9 +9,7 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticExpressionForGeneration : public AC_GALGAS_reference_class {
@@ -152,9 +150,7 @@ class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
@@ -205,9 +201,7 @@ class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionExpressionForGeneration : public GGS_templateInstructionForGeneration {
@@ -262,9 +256,7 @@ class GGS_templateInstructionExpressionForGeneration : public GGS_templateInstru
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInstructionForGeneration {
@@ -312,9 +304,7 @@ class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInst
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -636,9 +626,7 @@ class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_roo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateBlockInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateBlockInstructionForGeneration : public GGS_templateInstructionForGeneration {
@@ -701,9 +689,7 @@ class GGS_templateBlockInstructionForGeneration : public GGS_templateInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateBlockInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructionForGeneration {
@@ -757,9 +743,7 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateBlockInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateBlockInstructionForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -846,9 +830,7 @@ class GGS_templateBlockInstructionForGeneration_2E_weak : public GGS_templateIns
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionGetColumnLocationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionGetColumnLocationForGeneration : public GGS_templateInstructionForGeneration {
@@ -899,9 +881,7 @@ class GGS_templateInstructionGetColumnLocationForGeneration : public GGS_templat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionGetColumnLocationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
@@ -944,9 +924,7 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionGetColumnLocationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionGetColumnLocationForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -1033,9 +1011,7 @@ class GGS_templateInstructionGetColumnLocationForGeneration_2E_weak : public GGS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionGotoColumnLocationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionGotoColumnLocationForGeneration : public GGS_templateInstructionForGeneration {
@@ -1086,9 +1062,7 @@ class GGS_templateInstructionGotoColumnLocationForGeneration : public GGS_templa
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionGotoColumnLocationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
@@ -1131,9 +1105,7 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionGotoColumnLocationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -1488,9 +1460,7 @@ class GGS_templateInstructionIfBranchListForGeneration_2E_element : public AC_GA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionIfForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionIfForGeneration : public GGS_templateInstructionForGeneration {
@@ -1549,9 +1519,7 @@ class GGS_templateInstructionIfForGeneration : public GGS_templateInstructionFor
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionIfForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionForGeneration {
@@ -1602,9 +1570,7 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionIfForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionIfForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -1845,9 +1811,7 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@templateVariableMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_templateVariableMap : public cMapElement {
@@ -1978,9 +1942,7 @@ class GGS_templateVariableMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: templateVariableMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateVariableMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2056,9 +2018,7 @@ class GGS_templateVariableMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @unifiedTypeMapElementClass reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMapElementClass : public AC_GALGAS_reference_class {
@@ -2200,9 +2160,7 @@ class GGS_typeDefinition : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @unifiedTypeMapElementClass class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
@@ -2245,9 +2203,7 @@ class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @unifiedTypeMapElementClass_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMapElementClass_2E_weak : public AC_GALGAS_weak_reference {
@@ -2413,9 +2369,7 @@ class GGS_unifiedTypeMapEntry_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: unifiedTypeMapEntry.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMapEntry_2E_element_3F_ : public AC_GALGAS_root {
@@ -2837,9 +2791,7 @@ void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressi
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @usefulEntitiesGraph graph
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_usefulEntitiesGraph : public AC_GALGAS_graph {
@@ -3059,9 +3011,7 @@ class GGS_unifiedTypeMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@unifiedTypeMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_unifiedTypeMap : public cMapElement {
@@ -4704,9 +4654,7 @@ class GGS_templateAnalysisContext : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAnalysisContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateGetterCallInExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateGetterCallInExpressionAST : public GGS_templateExpressionAST {
@@ -4773,9 +4721,7 @@ class GGS_templateGetterCallInExpressionAST : public GGS_templateExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateGetterCallInExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST {
@@ -4832,9 +4778,7 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateGetterCallInExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateGetterCallInExpressionAST_2E_weak : public GGS_templateExpressionAST_2E_weak {
@@ -5308,9 +5252,7 @@ class GGS_templateInstructionForEnumerationAST_2E_explicit : public AC_GALGAS_ro
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_explicit ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: templateInstructionForEnumerationAST.explicit? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ : public AC_GALGAS_root {
@@ -5475,9 +5417,7 @@ class GGS_templateInstructionForEnumerationAST_2E_implicit : public AC_GALGAS_ro
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_implicit ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: templateInstructionForEnumerationAST.implicit? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ : public AC_GALGAS_root {
@@ -5553,9 +5493,7 @@ class GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ : public AC_GALGA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_implicit_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForeachAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
@@ -5638,9 +5576,7 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionForeachAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
@@ -5709,9 +5645,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForeachAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForeachAST_2E_weak : public GGS_templateInstructionAST_2E_weak {
@@ -5798,9 +5732,7 @@ class GGS_templateInstructionForeachAST_2E_weak : public GGS_templateInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForeachForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForeachForGeneration : public GGS_templateInstructionForGeneration {
@@ -5883,9 +5815,7 @@ class GGS_templateInstructionForeachForGeneration : public GGS_templateInstructi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionForeachForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstructionForGeneration {
@@ -5954,9 +5884,7 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionForeachForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionForeachForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -6846,9 +6774,7 @@ class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
@@ -6911,9 +6837,7 @@ class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionSwitchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
@@ -6967,9 +6891,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchAST_2E_weak : public GGS_templateInstructionAST_2E_weak {
@@ -7691,9 +7613,7 @@ class GGS_extractedAssociatedValuesForGeneration_2E_element : public AC_GALGAS_r
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchForGeneration : public GGS_templateInstructionForGeneration {
@@ -7756,9 +7676,7 @@ class GGS_templateInstructionSwitchForGeneration : public GGS_templateInstructio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionSwitchForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstructionForGeneration {
@@ -7812,9 +7730,7 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionSwitchForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -7901,9 +7817,7 @@ class GGS_templateInstructionSwitchForGeneration_2E_weak : public GGS_templateIn
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationAST : public AC_GALGAS_reference_class {
@@ -7953,9 +7867,7 @@ class GGS_semanticDeclarationAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationAST : public acStrongPtr_class {
@@ -10841,9 +10753,7 @@ class GGS_lexicalRuleListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractLexicalRuleAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractLexicalRuleAST : public AC_GALGAS_reference_class {
@@ -10890,9 +10800,7 @@ class GGS_abstractLexicalRuleAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractLexicalRuleAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
@@ -11291,9 +11199,7 @@ class GGS_indexingListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -11380,9 +11286,7 @@ class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateLexiqueComponentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateLexiqueComponentAST : public GGS_semanticDeclarationAST {
@@ -11451,9 +11355,7 @@ class GGS_templateLexiqueComponentAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLexiqueComponentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateLexiqueComponentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
@@ -11537,9 +11439,7 @@ class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateLexiqueComponentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateLexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -11626,9 +11526,7 @@ class GGS_templateLexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLexiqueComponentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExpressionAST : public AC_GALGAS_reference_class {
@@ -11675,9 +11573,7 @@ class GGS_lexicalExpressionAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExpressionAST : public acStrongPtr_class {
@@ -11725,9 +11621,7 @@ class cPtr_lexicalExpressionAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -11814,9 +11708,7 @@ class GGS_lexicalExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalInstructionAST : public AC_GALGAS_reference_class {
@@ -11863,9 +11755,7 @@ class GGS_lexicalInstructionAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalInstructionAST : public acStrongPtr_class {
@@ -11920,9 +11810,7 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -12244,9 +12132,7 @@ class GGS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractLexicalRuleAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractLexicalRuleAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -12353,9 +12239,7 @@ class GGS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalImplicitRuleAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalImplicitRuleAST : public GGS_abstractLexicalRuleAST {
@@ -12410,9 +12294,7 @@ class GGS_lexicalImplicitRuleAST : public GGS_abstractLexicalRuleAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalImplicitRuleAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
@@ -12474,9 +12356,7 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalImplicitRuleAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalImplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_weak {
@@ -12563,9 +12443,7 @@ class GGS_lexicalImplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalExplicitRuleAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExplicitRuleAST : public GGS_abstractLexicalRuleAST {
@@ -12624,9 +12502,7 @@ class GGS_lexicalExplicitRuleAST : public GGS_abstractLexicalRuleAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRuleAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalExplicitRuleAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
@@ -12691,9 +12567,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalExplicitRuleAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_weak {

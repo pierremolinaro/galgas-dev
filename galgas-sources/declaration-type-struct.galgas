@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -99,7 +99,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private func %once forbiddenKeysForStruct -> @stringset {
   result = @()
@@ -108,7 +108,7 @@ private func %once forbiddenKeysForStruct -> @stringset {
   result += !"dynamicType"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @structComparison {
   case none
@@ -116,7 +116,7 @@ enum @structComparison {
   case comparable
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @structDeclarationAST : @semanticDeclarationAST {
   public let @lstring structTypeName
@@ -402,9 +402,9 @@ class @structDeclarationAST : @semanticDeclarationAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @structTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedPropertyList
@@ -469,7 +469,7 @@ class @structTypeForGeneration : @semanticTypeForGeneration {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -490,4 +490,4 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@bool GENERATE_COMPARISON
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

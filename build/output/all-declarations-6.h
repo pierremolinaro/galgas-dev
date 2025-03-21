@@ -122,9 +122,7 @@ class GGS_unifiedTypeMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: unifiedTypeMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -711,9 +709,7 @@ class GGS_typeDefinition_2E_solved : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: typeDefinition.solved? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeDefinition_2E_solved_3F_ : public AC_GALGAS_root {
@@ -1009,9 +1005,7 @@ class GGS_actualParameterListAST : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualParameterAST : public AC_GALGAS_reference_class {
@@ -1058,9 +1052,7 @@ class GGS_actualParameterAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @actualParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_actualParameterAST : public acStrongPtr_class {
@@ -1922,9 +1914,7 @@ class GGS_localVarManager : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarManager ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualParameterAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -2011,9 +2001,7 @@ class GGS_actualParameterAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticExpressionAST : public acStrongPtr_class {
@@ -2059,9 +2047,7 @@ class cPtr_semanticExpressionAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputActualParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputActualParameterAST : public GGS_actualParameterAST {
@@ -2124,9 +2110,7 @@ class GGS_outputActualParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputActualParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
@@ -2199,9 +2183,7 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputActualParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -2288,9 +2270,7 @@ class GGS_outputActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputActualParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputActualParameterAST : public GGS_actualParameterAST {
@@ -2353,9 +2333,7 @@ class GGS_outputInputActualParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputInputActualParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
@@ -2428,9 +2406,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputActualParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -2517,9 +2493,7 @@ class GGS_outputInputActualParameterAST_2E_weak : public GGS_actualParameterAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputJokerParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputJokerParameterAST : public GGS_actualParameterAST {
@@ -2578,9 +2552,7 @@ class GGS_outputInputJokerParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputInputJokerParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
@@ -2650,9 +2622,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputJokerParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputJokerParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -2739,9 +2709,7 @@ class GGS_outputInputJokerParameterAST_2E_weak : public GGS_actualParameterAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputSelfParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputSelfParameterAST : public GGS_actualParameterAST {
@@ -2796,9 +2764,7 @@ class GGS_outputInputSelfParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputInputSelfParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
@@ -2865,9 +2831,7 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputSelfParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -2954,9 +2918,7 @@ class GGS_outputInputSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualExistingVariableParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualExistingVariableParameterAST : public GGS_actualParameterAST {
@@ -3019,9 +2981,7 @@ class GGS_inputActualExistingVariableParameterAST : public GGS_actualParameterAS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualExistingVariableParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameterAST {
@@ -3094,9 +3054,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualExistingVariableParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualExistingVariableParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -3183,9 +3141,7 @@ class GGS_inputActualExistingVariableParameterAST_2E_weak : public GGS_actualPar
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualSelfPropertyParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualSelfPropertyParameterAST : public GGS_actualParameterAST {
@@ -3248,9 +3204,7 @@ class GGS_inputActualSelfPropertyParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualSelfPropertyParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST {
@@ -3323,9 +3277,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualSelfPropertyParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualSelfPropertyParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -3412,9 +3364,7 @@ class GGS_inputActualSelfPropertyParameterAST_2E_weak : public GGS_actualParamet
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualSelfParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualSelfParameterAST : public GGS_actualParameterAST {
@@ -3477,9 +3427,7 @@ class GGS_inputActualSelfParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualSelfParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
@@ -3552,9 +3500,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualSelfParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -3641,9 +3587,7 @@ class GGS_inputActualSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualNewVariableParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualNewVariableParameterAST : public GGS_actualParameterAST {
@@ -3710,9 +3654,7 @@ class GGS_inputActualNewVariableParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualNewVariableParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
@@ -3788,9 +3730,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualNewVariableParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualNewVariableParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -3877,9 +3817,7 @@ class GGS_inputActualNewVariableParameterAST_2E_weak : public GGS_actualParamete
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualNewConstantParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualNewConstantParameterAST : public GGS_actualParameterAST {
@@ -3950,9 +3888,7 @@ class GGS_inputActualNewConstantParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualNewConstantParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
@@ -4031,9 +3967,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualNewConstantParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualNewConstantParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -4120,9 +4054,7 @@ class GGS_inputActualNewConstantParameterAST_2E_weak : public GGS_actualParamete
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputSingleJokerActualParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputSingleJokerActualParameterAST : public GGS_actualParameterAST {
@@ -4181,9 +4113,7 @@ class GGS_inputSingleJokerActualParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputSingleJokerActualParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
@@ -4253,9 +4183,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputSingleJokerActualParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputSingleJokerActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -4342,9 +4270,7 @@ class GGS_inputSingleJokerActualParameterAST_2E_weak : public GGS_actualParamete
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputJokerActualParameterAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputJokerActualParameterAST : public GGS_actualParameterAST {
@@ -4403,9 +4329,7 @@ class GGS_inputJokerActualParameterAST : public GGS_actualParameterAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputJokerActualParameterAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
@@ -4475,9 +4399,7 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputJokerActualParameterAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputJokerActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_weak {
@@ -4564,9 +4486,7 @@ class GGS_inputJokerActualParameterAST_2E_weak : public GGS_actualParameterAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externProcedureDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externProcedureDeclarationAST : public GGS_semanticDeclarationAST {
@@ -4635,9 +4555,7 @@ class GGS_externProcedureDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @externProcedureDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -4721,9 +4639,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externProcedureDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externProcedureDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -4810,9 +4726,7 @@ class GGS_externProcedureDeclarationAST_2E_weak : public GGS_semanticDeclaration
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procDeclarationAST : public GGS_externProcedureDeclarationAST {
@@ -4881,9 +4795,7 @@ class GGS_procDeclarationAST : public GGS_externProcedureDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @procDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
@@ -4956,9 +4868,7 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procDeclarationAST_2E_weak : public GGS_externProcedureDeclarationAST_2E_weak {
@@ -5334,9 +5244,7 @@ class GGS_syntaxExtensionsDictionary_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: syntaxExtensionsDictionary.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxExtensionsDictionary_2E_element_3F_ : public AC_GALGAS_root {
@@ -6147,9 +6055,7 @@ class GGS_galgas_33_SyntaxExtensionListAST extensionGetter_listForKey (const cla
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -6276,9 +6182,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS_formalInp
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractInputParameter reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractInputParameter : public AC_GALGAS_reference_class {
@@ -6325,9 +6229,7 @@ class GGS_abstractInputParameter : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractInputParameter class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractInputParameter : public acStrongPtr_class {
@@ -6368,9 +6270,7 @@ class cPtr_abstractInputParameter : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractInputParameter_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractInputParameter_2E_weak : public AC_GALGAS_weak_reference {
@@ -6457,9 +6357,7 @@ class GGS_abstractInputParameter_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterAnonymousVariable reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterAnonymousVariable : public GGS_abstractInputParameter {
@@ -6510,9 +6408,7 @@ class GGS_inputParameterAnonymousVariable : public GGS_abstractInputParameter {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputParameterAnonymousVariable class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter {
@@ -6556,9 +6452,7 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterAnonymousVariable_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterAnonymousVariable_2E_weak : public GGS_abstractInputParameter_2E_weak {
@@ -6645,9 +6539,7 @@ class GGS_inputParameterAnonymousVariable_2E_weak : public GGS_abstractInputPara
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterVariable reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterVariable : public GGS_abstractInputParameter {
@@ -6702,9 +6594,7 @@ class GGS_inputParameterVariable : public GGS_abstractInputParameter {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterVariable ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputParameterVariable class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
@@ -6753,9 +6643,7 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterVariable_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterVariable_2E_weak : public GGS_abstractInputParameter_2E_weak {
@@ -6842,9 +6730,7 @@ class GGS_inputParameterVariable_2E_weak : public GGS_abstractInputParameter_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterVariable_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterDeclaredVariable reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterDeclaredVariable : public GGS_abstractInputParameter {
@@ -6903,9 +6789,7 @@ class GGS_inputParameterDeclaredVariable : public GGS_abstractInputParameter {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputParameterDeclaredVariable class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
@@ -6957,9 +6841,7 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterDeclaredVariable_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterDeclaredVariable_2E_weak : public GGS_abstractInputParameter_2E_weak {
@@ -7046,9 +6928,7 @@ class GGS_inputParameterDeclaredVariable_2E_weak : public GGS_abstractInputParam
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDeclaredVariable_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterDeclaredConstant reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterDeclaredConstant : public GGS_abstractInputParameter {
@@ -7107,9 +6987,7 @@ class GGS_inputParameterDeclaredConstant : public GGS_abstractInputParameter {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputParameterDeclaredConstant class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
@@ -7161,9 +7039,7 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputParameterDeclaredConstant_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputParameterDeclaredConstant_2E_weak : public GGS_abstractInputParameter_2E_weak {
@@ -7518,9 +7394,7 @@ class GGS_actualInputParameterListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -7607,9 +7481,7 @@ class GGS_syntaxInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticInstructionAST_2E_weak : public GGS_syntaxInstructionAST_2E_weak {
@@ -7931,9 +7803,7 @@ class GGS_semanticDeclarationListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externFunctionDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externFunctionDeclarationAST : public GGS_semanticDeclarationAST {
@@ -8002,9 +7872,7 @@ class GGS_externFunctionDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @externFunctionDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -8088,9 +7956,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externFunctionDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -8177,9 +8043,7 @@ class GGS_externFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionDeclarationAST : public GGS_externFunctionDeclarationAST {
@@ -8256,9 +8120,7 @@ class GGS_functionDeclarationAST : public GGS_externFunctionDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @functionDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
@@ -8327,9 +8189,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionDeclarationAST_2E_weak : public GGS_externFunctionDeclarationAST_2E_weak {
@@ -8416,9 +8276,7 @@ class GGS_functionDeclarationAST_2E_weak : public GGS_externFunctionDeclarationA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @onceFunctionDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_onceFunctionDeclarationAST : public GGS_semanticDeclarationAST {
@@ -8499,9 +8357,7 @@ class GGS_onceFunctionDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @onceFunctionDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -8594,9 +8450,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @onceFunctionDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_onceFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -9318,9 +9172,7 @@ class GGS_filewrapperTemplateListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @filewrapperDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperDeclarationAST : public GGS_semanticDeclarationAST {
@@ -9401,9 +9253,7 @@ class GGS_filewrapperDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @filewrapperDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -9496,9 +9346,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @filewrapperDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -10934,9 +10782,7 @@ class GGS_listOfSyntaxInstructionList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSyntaxInstructionList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_SyntaxComponentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_SyntaxComponentAST : public GGS_semanticDeclarationAST {
@@ -11009,9 +10855,7 @@ class GGS_galgas_33_SyntaxComponentAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @galgas3SyntaxComponentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
@@ -11098,9 +10942,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_SyntaxComponentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_SyntaxComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -11187,9 +11029,7 @@ class GGS_galgas_33_SyntaxComponentAST_2E_weak : public GGS_semanticDeclarationA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_GrammarComponentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_GrammarComponentAST : public GGS_semanticDeclarationAST {
@@ -11274,9 +11114,7 @@ class GGS_galgas_33_GrammarComponentAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @galgas3GrammarComponentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
@@ -11372,9 +11210,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @galgas_33_GrammarComponentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_galgas_33_GrammarComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {

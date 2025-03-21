@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3SyntaxComponentSyntax {
 
@@ -74,7 +74,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4SyntaxComponentSyntax {
 
@@ -134,9 +134,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! @terminalCheckInstructionAST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
@@ -243,9 +243,9 @@ class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! @terminalCheckInstructionForGeneration
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mTerminalSymbolName
@@ -283,9 +283,9 @@ class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGram
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! @terminalCheckInstructionForGeneration
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @lstring mTerminalName
@@ -296,9 +296,9 @@ class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX SIGNATURE
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?let @string unused inPosfix
@@ -315,9 +315,9 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! COMPARE SYNTAX SIGNATURE
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction -> @bool {
@@ -341,9 +341,9 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
@@ -388,4 +388,4 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

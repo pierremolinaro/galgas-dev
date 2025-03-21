@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 //
@@ -18,7 +18,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
@@ -220,7 +220,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
@@ -422,4 +422,4 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

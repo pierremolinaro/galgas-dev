@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Project Creation
 //
@@ -21,11 +21,11 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  F I L E W R A P P E R     T E M P L A T E S
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper projectCreationFileWrapper in "+generation-templates/project_creation" {
 }{
@@ -41,7 +41,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
   template PROJECT_syntax "PROJECT-syntax.galgas.galgasTemplate" ?@string PROJECT_NAME
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = [inProjectPath lastPathComponent]
@@ -60,7 +60,7 @@ proc performProjectCreation ?let @string inProjectPath {
    println (!"*** DONE ***")
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc projectCreation ?let @string inProjectPath {
   if [inProjectPath count] > 0 then
@@ -92,5 +92,5 @@ proc projectCreation ?let @string inProjectPath {
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

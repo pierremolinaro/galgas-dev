@@ -9,9 +9,7 @@
 #include "all-declarations-9.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dropInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dropInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -308,9 +306,7 @@ class GGS_fixitElementAST_2E_fixItInsertAfter : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fixItInsertAfter ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementAST.fixItInsertAfter? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementAST_2E_fixItInsertAfter_3F_ : public AC_GALGAS_root {
@@ -475,9 +471,7 @@ class GGS_fixitElementAST_2E_fixItInsertBefore : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fixItInsertBefore ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementAST.fixItInsertBefore? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementAST_2E_fixItInsertBefore_3F_ : public AC_GALGAS_root {
@@ -642,9 +636,7 @@ class GGS_fixitElementAST_2E_fixItReplace : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fixItReplace ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementAST.fixItReplace? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementAST_2E_fixItReplace_3F_ : public AC_GALGAS_root {
@@ -955,9 +947,7 @@ class GGS_fixitListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @errorInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_errorInstructionAST : public GGS_semanticInstructionAST {
@@ -1026,9 +1016,7 @@ class GGS_errorInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @errorInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
@@ -1092,9 +1080,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @errorInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_errorInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -1381,9 +1367,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter : public AC_GALGAS_root 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementForGeneration.fixItInsertAfter? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ : public AC_GALGAS_root {
@@ -1536,9 +1520,7 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore : public AC_GALGAS_root
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementForGeneration.fixItInsertBefore? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ : public AC_GALGAS_root {
@@ -1691,9 +1673,7 @@ class GGS_fixitElementForGeneration_2E_fixItReplace : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: fixitElementForGeneration.fixItReplace? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_fixitElementForGeneration_2E_fixItReplace_3F_ : public AC_GALGAS_root {
@@ -2035,9 +2015,7 @@ void callExtensionMethod_generateExpression (class cPtr_semanticExpressionForGen
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @errorInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -2108,9 +2086,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @errorInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -2170,9 +2146,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @errorInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_errorInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -2560,9 +2534,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractEnumeratedCollectionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractEnumeratedCollectionAST : public AC_GALGAS_reference_class {
@@ -2609,9 +2581,7 @@ class GGS_abstractEnumeratedCollectionAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractEnumeratedCollectionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractEnumeratedCollectionAST : public acStrongPtr_class {
@@ -2658,9 +2628,7 @@ class cPtr_abstractEnumeratedCollectionAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractEnumeratedCollectionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractEnumeratedCollectionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -2747,9 +2715,7 @@ class GGS_abstractEnumeratedCollectionAST_2E_weak : public AC_GALGAS_weak_refere
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionImplicitVarInExpAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionImplicitVarInExpAST : public GGS_abstractEnumeratedCollectionAST {
@@ -2812,9 +2778,7 @@ class GGS_enumeratedCollectionImplicitVarInExpAST : public GGS_abstractEnumerate
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @enumeratedCollectionImplicitVarInExpAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
@@ -2875,9 +2839,7 @@ class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumera
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionImplicitVarInExpAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak : public GGS_abstractEnumeratedCollectionAST_2E_weak {
@@ -2964,9 +2926,7 @@ class GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak : public GGS_abstractE
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionVarInExpAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionVarInExpAST : public GGS_abstractEnumeratedCollectionAST {
@@ -3033,9 +2993,7 @@ class GGS_enumeratedCollectionVarInExpAST : public GGS_abstractEnumeratedCollect
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @enumeratedCollectionVarInExpAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
@@ -3099,9 +3057,7 @@ class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedColle
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionVarInExpAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionVarInExpAST_2E_weak : public GGS_abstractEnumeratedCollectionAST_2E_weak {
@@ -3188,9 +3144,7 @@ class GGS_enumeratedCollectionVarInExpAST_2E_weak : public GGS_abstractEnumerate
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionCstListInExpAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCollectionAST {
@@ -3257,9 +3211,7 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @enumeratedCollectionCstListInExpAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedCollectionAST {
@@ -3323,9 +3275,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumeratedCollectionCstListInExpAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumeratedCollectionCstListInExpAST_2E_weak : public GGS_abstractEnumeratedCollectionAST_2E_weak {
@@ -3680,9 +3630,7 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forInstructionAST : public GGS_semanticInstructionAST {
@@ -3787,9 +3735,7 @@ class GGS_forInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @forInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
@@ -3880,9 +3826,7 @@ class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -4299,9 +4243,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -4384,9 +4326,7 @@ class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGenerat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @forInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -4455,9 +4395,7 @@ class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGener
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -4544,9 +4482,7 @@ class GGS_forInstructionForGeneration_2E_weak : public GGS_semanticInstructionFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak : public AC_GALGAS_weak_reference {
@@ -4633,9 +4569,7 @@ class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak : pu
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultNone reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultNone : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -4686,9 +4620,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone : public GGS_abs
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultNone class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -4746,9 +4678,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak {
@@ -4835,9 +4765,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak : public
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationDropResult reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationDropResult : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -4892,9 +4820,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult : public GGS_abs
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationDropResult class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -4957,9 +4883,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak {
@@ -5046,9 +4970,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak : public
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInVar reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5103,9 +5025,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GGS_ab
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultInVar class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5168,9 +5088,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak {
@@ -5257,9 +5175,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak : publi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5318,9 +5234,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5386,9 +5300,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak {
@@ -5475,9 +5387,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5536,9 +5446,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pub
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -5604,9 +5512,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak : public GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak {
@@ -5693,9 +5599,7 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInFileInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInFileInstructionAST : public GGS_semanticInstructionAST {
@@ -5772,9 +5676,7 @@ class GGS_grammarInFileInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInFileInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
@@ -5844,9 +5746,7 @@ class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInFileInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInFileInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -5933,9 +5833,7 @@ class GGS_grammarInFileInstructionAST_2E_weak : public GGS_semanticInstructionAS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInStringInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInStringInstructionAST : public GGS_semanticInstructionAST {
@@ -6020,9 +5918,7 @@ class GGS_grammarInStringInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInStringInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
@@ -6098,9 +5994,7 @@ class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInStringInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInStringInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -6187,9 +6081,7 @@ class GGS_grammarInStringInstructionAST_2E_weak : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionWithSourceFileForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticInstructionForGeneration {
@@ -6272,9 +6164,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticIns
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionWithSourceFileForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -6343,9 +6233,7 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionWithSourceFileForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionWithSourceFileForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -6432,9 +6320,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration_2E_weak : public GGS_sem
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionWithSourceExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -6521,9 +6407,7 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_seman
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @grammarInstructionWithSourceExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -6595,9 +6479,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInstructionWithSourceExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -6760,9 +6642,7 @@ class GGS_incDecKind : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecKind ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecInstructionAST : public GGS_semanticInstructionAST {
@@ -6831,9 +6711,7 @@ class GGS_incDecInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @incDecInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
@@ -6897,9 +6775,7 @@ class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -6986,9 +6862,7 @@ class GGS_incDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecNoOVFInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
@@ -7057,9 +6931,7 @@ class GGS_incDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @incDecNoOVFInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
@@ -7123,9 +6995,7 @@ class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecNoOVFInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -7212,9 +7082,7 @@ class GGS_incDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstructionAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfIncDecInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfIncDecInstructionAST : public GGS_semanticInstructionAST {
@@ -7271,9 +7139,7 @@ class GGS_selfIncDecInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selfIncDecInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
@@ -7328,9 +7194,7 @@ class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfIncDecInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfIncDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -7417,9 +7281,7 @@ class GGS_selfIncDecInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfIncDecNoOVFInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfIncDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
@@ -7476,9 +7338,7 @@ class GGS_selfIncDecNoOVFInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selfIncDecNoOVFInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
@@ -7533,9 +7393,7 @@ class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfIncDecNoOVFInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfIncDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -7622,9 +7480,7 @@ class GGS_selfIncDecNoOVFInstructionAST_2E_weak : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -7695,9 +7551,7 @@ class GGS_incDecInstructionForGeneration : public GGS_semanticInstructionForGene
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @incDecInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -7757,9 +7611,7 @@ class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -7846,9 +7698,7 @@ class GGS_incDecInstructionForGeneration_2E_weak : public GGS_semanticInstructio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecNoOVFInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecNoOVFInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -7919,9 +7769,7 @@ class GGS_incDecNoOVFInstructionForGeneration : public GGS_semanticInstructionFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @incDecNoOVFInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -7981,9 +7829,7 @@ class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstruction
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecNoOVFInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_incDecNoOVFInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -8289,9 +8135,7 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: ifExpressionKind.letExp? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
@@ -8456,9 +8300,7 @@ class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_regularExp ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: ifExpressionKind.regularExp? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifExpressionKind_2E_regularExp_3F_ : public AC_GALGAS_root {
@@ -8769,9 +8611,7 @@ class GGS_ifExpressionList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @ifInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifInstructionAST : public GGS_semanticInstructionAST {
@@ -8844,9 +8684,7 @@ class GGS_ifInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @ifInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
@@ -8913,9 +8751,7 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @ifInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -9237,9 +9073,7 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: ifTestForGeneration.letExp? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifTestForGeneration_2E_letExp_3F_ : public AC_GALGAS_root {
@@ -9416,9 +9250,7 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: ifTestForGeneration.optionalExp? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifTestForGeneration_2E_optionalExp_3F_ : public AC_GALGAS_root {
@@ -9571,9 +9403,7 @@ class GGS_ifTestForGeneration_2E_regular : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: ifTestForGeneration.regular? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifTestForGeneration_2E_regular_3F_ : public AC_GALGAS_root {
@@ -9884,9 +9714,7 @@ class GGS_ifTestListForGeneration_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @ifInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -9953,9 +9781,7 @@ class GGS_ifInstructionForGeneration : public GGS_semanticInstructionForGenerati
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @ifInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -10012,9 +9838,7 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @ifInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_ifInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -10101,9 +9925,7 @@ class GGS_ifInstructionForGeneration_2E_weak : public GGS_semanticInstructionFor
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVariableOrConstantDeclarationWithAssignmentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVariableOrConstantDeclarationWithAssignmentAST : public GGS_semanticInstructionAST {
@@ -10172,9 +9994,7 @@ class GGS_localVariableOrConstantDeclarationWithAssignmentAST : public GGS_seman
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithAssignmentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @localVariableOrConstantDeclarationWithAssignmentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
@@ -10238,9 +10058,7 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVariableOrConstantDeclarationWithAssignmentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -10327,9 +10145,7 @@ class GGS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak : public G
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithAssignmentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @undefinedLocalConstantDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_undefinedLocalConstantDeclarationAST : public GGS_semanticInstructionAST {
@@ -10390,9 +10206,7 @@ class GGS_undefinedLocalConstantDeclarationAST : public GGS_semanticInstructionA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @undefinedLocalConstantDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructionAST {
@@ -10450,9 +10264,7 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @undefinedLocalConstantDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_undefinedLocalConstantDeclarationAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -10539,9 +10351,7 @@ class GGS_undefinedLocalConstantDeclarationAST_2E_weak : public GGS_semanticInst
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localConstantDeclarationWithAssignmentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localConstantDeclarationWithAssignmentAST : public GGS_semanticInstructionAST {
@@ -10602,9 +10412,7 @@ class GGS_localConstantDeclarationWithAssignmentAST : public GGS_semanticInstruc
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantDeclarationWithAssignmentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @localConstantDeclarationWithAssignmentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
@@ -10662,9 +10470,7 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localConstantDeclarationWithAssignmentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localConstantDeclarationWithAssignmentAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -10751,9 +10557,7 @@ class GGS_localConstantDeclarationWithAssignmentAST_2E_weak : public GGS_semanti
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantDeclarationWithAssignmentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @undefinedLocalConstantDeclarationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_undefinedLocalConstantDeclarationForGeneration : public GGS_semanticInstructionForGeneration {
@@ -10812,9 +10616,7 @@ class GGS_undefinedLocalConstantDeclarationForGeneration : public GGS_semanticIn
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @undefinedLocalConstantDeclarationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -10865,9 +10667,7 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @undefinedLocalConstantDeclarationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_undefinedLocalConstantDeclarationForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -10954,9 +10754,7 @@ class GGS_undefinedLocalConstantDeclarationForGeneration_2E_weak : public GGS_se
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVariableOrConstantDeclarationWithSourceExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -11023,9 +10821,7 @@ class GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -11082,9 +10878,7 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVariableOrConstantDeclarationWithSourceExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -11439,9 +11233,7 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @logInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_logInstructionAST : public GGS_semanticInstructionAST {
@@ -11498,9 +11290,7 @@ class GGS_logInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @logInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
@@ -11555,9 +11345,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @logInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -11644,9 +11432,7 @@ class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @logInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_logInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -11705,9 +11491,7 @@ class GGS_logInstructionForGeneration : public GGS_semanticInstructionForGenerat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @logInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -11758,9 +11542,7 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @logInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_logInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -11847,9 +11629,7 @@ class GGS_logInstructionForGeneration_2E_weak : public GGS_semanticInstructionFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithVariantAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithVariantAST : public GGS_semanticInstructionAST {
@@ -11938,9 +11718,7 @@ class GGS_loopInstructionWithVariantAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @loopInstructionWithVariantAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
@@ -12019,9 +11797,7 @@ class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithVariantAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithVariantAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -12108,9 +11884,7 @@ class GGS_loopInstructionWithVariantAST_2E_weak : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithVariantForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithVariantForGeneration : public GGS_semanticInstructionForGeneration {
@@ -12181,9 +11955,7 @@ class GGS_loopInstructionWithVariantForGeneration : public GGS_semanticInstructi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @loopInstructionWithVariantForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -12243,9 +12015,7 @@ class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstruc
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithVariantForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithVariantForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -12332,9 +12102,7 @@ class GGS_loopInstructionWithVariantForGeneration_2E_weak : public GGS_semanticI
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithoutVariantAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithoutVariantAST : public GGS_semanticInstructionAST {
@@ -12415,9 +12183,7 @@ class GGS_loopInstructionWithoutVariantAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @loopInstructionWithoutVariantAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST {
@@ -12490,9 +12256,7 @@ class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithoutVariantAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithoutVariantAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -12579,9 +12343,7 @@ class GGS_loopInstructionWithoutVariantAST_2E_weak : public GGS_semanticInstruct
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithoutVariantForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithoutVariantForGeneration : public GGS_semanticInstructionForGeneration {
@@ -12648,9 +12410,7 @@ class GGS_loopInstructionWithoutVariantForGeneration : public GGS_semanticInstru
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @loopInstructionWithoutVariantForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -12707,9 +12467,7 @@ class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInst
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @loopInstructionWithoutVariantForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_loopInstructionWithoutVariantForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -12796,9 +12554,7 @@ class GGS_loopInstructionWithoutVariantForGeneration_2E_weak : public GGS_semant
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @messageInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_messageInstructionAST : public GGS_semanticInstructionAST {
@@ -12855,9 +12611,7 @@ class GGS_messageInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @messageInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
@@ -12912,9 +12666,7 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @messageInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_messageInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -13001,9 +12753,7 @@ class GGS_messageInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @messageInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_messageInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -13062,9 +12812,7 @@ class GGS_messageInstructionForGeneration : public GGS_semanticInstructionForGen
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @messageInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -13115,9 +12863,7 @@ class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForG
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @messageInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_messageInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -13204,9 +12950,7 @@ class GGS_messageInstructionForGeneration_2E_weak : public GGS_semanticInstructi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @methodCallInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_methodCallInstructionAST : public GGS_semanticInstructionAST {
@@ -13271,9 +13015,7 @@ class GGS_methodCallInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @methodCallInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
@@ -13334,9 +13076,7 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @methodCallInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_methodCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -13423,9 +13163,7 @@ class GGS_methodCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @methodCallInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_methodCallInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -13508,9 +13246,7 @@ class GGS_methodCallInstructionForGeneration : public GGS_semanticInstructionFor
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @methodCallInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -13579,9 +13315,7 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @methodCallInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_methodCallInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -13668,9 +13402,7 @@ class GGS_methodCallInstructionForGeneration_2E_weak : public GGS_semanticInstru
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superInitInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superInitInstructionAST : public GGS_semanticInstructionAST {
@@ -13727,9 +13459,7 @@ class GGS_superInitInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superInitInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @superInitInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_superInitInstructionAST : public cPtr_semanticInstructionAST {
@@ -13784,9 +13514,7 @@ class cPtr_superInitInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superInitInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superInitInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -13873,9 +13601,7 @@ class GGS_superInitInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superInitInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superInitInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superInitInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -13942,9 +13668,7 @@ class GGS_superInitInstructionForGeneration : public GGS_semanticInstructionForG
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superInitInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @superInitInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_superInitInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -14001,9 +13725,7 @@ class cPtr_superInitInstructionForGeneration : public cPtr_semanticInstructionFo
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superInitInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superInitInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -14090,9 +13812,7 @@ class GGS_superInitInstructionForGeneration_2E_weak : public GGS_semanticInstruc
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superInitInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superMethodCallInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superMethodCallInstructionAST : public GGS_semanticInstructionAST {
@@ -14153,9 +13873,7 @@ class GGS_superMethodCallInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superMethodCallInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @superMethodCallInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_superMethodCallInstructionAST : public cPtr_semanticInstructionAST {
@@ -14213,9 +13931,7 @@ class cPtr_superMethodCallInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superMethodCallInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superMethodCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -14302,9 +14018,7 @@ class GGS_superMethodCallInstructionAST_2E_weak : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superMethodCallInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superMethodCallInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superMethodCallInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -14375,9 +14089,7 @@ class GGS_superMethodCallInstructionForGeneration : public GGS_semanticInstructi
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superMethodCallInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @superMethodCallInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_superMethodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -14437,9 +14149,7 @@ class cPtr_superMethodCallInstructionForGeneration : public cPtr_semanticInstruc
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @superMethodCallInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_superMethodCallInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -14526,9 +14236,7 @@ class GGS_superMethodCallInstructionForGeneration_2E_weak : public GGS_semanticI
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_superMethodCallInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procCallInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procCallInstructionAST : public GGS_semanticInstructionAST {
@@ -14589,9 +14297,7 @@ class GGS_procCallInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @procCallInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
@@ -14649,9 +14355,7 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procCallInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -14738,9 +14442,7 @@ class GGS_procCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procCallInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procCallInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -14799,9 +14501,7 @@ class GGS_procCallInstructionForGeneration : public GGS_semanticInstructionForGe
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @procCallInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -14852,9 +14552,7 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @procCallInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_procCallInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -14941,9 +14639,7 @@ class GGS_procCallInstructionForGeneration_2E_weak : public GGS_semanticInstruct
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfAssignmentInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfAssignmentInstructionAST : public GGS_semanticInstructionAST {
@@ -15000,9 +14696,7 @@ class GGS_selfAssignmentInstructionAST : public GGS_semanticInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAssignmentInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selfAssignmentInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
@@ -15057,9 +14751,7 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfAssignmentInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfAssignmentInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -15146,9 +14838,7 @@ class GGS_selfAssignmentInstructionAST_2E_weak : public GGS_semanticInstructionA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAssignmentInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfPlusEqualElementsInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfPlusEqualElementsInstructionAST : public GGS_semanticInstructionAST {
@@ -15205,9 +14895,7 @@ class GGS_selfPlusEqualElementsInstructionAST : public GGS_semanticInstructionAS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selfPlusEqualElementsInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
@@ -15262,9 +14950,7 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfPlusEqualElementsInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
@@ -15351,9 +15037,7 @@ class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstr
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfPlusEqualExpressionInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfPlusEqualExpressionInstructionAST : public GGS_semanticInstructionAST {
@@ -15410,9 +15094,7 @@ class GGS_selfPlusEqualExpressionInstructionAST : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualExpressionInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selfPlusEqualExpressionInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
@@ -15467,9 +15149,7 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @selfPlusEqualExpressionInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_selfPlusEqualExpressionInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {

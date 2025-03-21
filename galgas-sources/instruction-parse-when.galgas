@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @parseWhenInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mWhenExpression
@@ -28,9 +28,9 @@ class @parseWhenInstruction : @syntaxInstructionAST {
   private let @location mEndOfElseInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3SyntaxComponentSyntax {
 
@@ -99,7 +99,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4SyntaxComponentSyntax {
 
@@ -168,9 +168,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! TRANSFORM
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @parseWhenInstruction transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -187,9 +187,9 @@ override method @parseWhenInstruction transformInstructionForGrammarAnalysis
   )
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -272,9 +272,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mWhenExpression
@@ -282,9 +282,9 @@ class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX SIGNATURE
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @parseWhenInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -292,9 +292,9 @@ override method @parseWhenInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @parseWhenInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -325,4 +325,4 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

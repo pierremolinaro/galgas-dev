@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -73,7 +73,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc handleEquatableComparableExtension ?!@equatableExtensionMap ioEquatableExtensionMap
                                         ?let @lstring inTypeName
@@ -110,14 +110,14 @@ proc handleEquatableComparableExtension ?!@equatableExtensionMap ioEquatableExte
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @equatableComparableExtension {
   case equatable
   case comparable
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @equatableExtensionMap {
   public let @equatableComparableExtension mExtension
@@ -125,7 +125,7 @@ map @equatableExtensionMap {
   remove removeKey error message "internal error ('%K' type)"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @equatableExtensionAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -205,4 +205,4 @@ class @equatableExtensionAST : @semanticDeclarationAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

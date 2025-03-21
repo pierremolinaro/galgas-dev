@@ -9,9 +9,7 @@
 #include "all-declarations-2.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSimpleSendInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSimpleSendInstructionAST : public GGS_lexicalInstructionAST {
@@ -66,9 +64,7 @@ class GGS_lexicalSimpleSendInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalSimpleSendInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
@@ -131,9 +127,7 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSimpleSendInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSimpleSendInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -220,9 +214,7 @@ class GGS_lexicalSimpleSendInstructionAST_2E_weak : public GGS_lexicalInstructio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalTagInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalTagInstructionAST : public GGS_lexicalInstructionAST {
@@ -277,9 +269,7 @@ class GGS_lexicalTagInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalTagInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
@@ -342,9 +332,7 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalTagInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalTagInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -431,9 +419,7 @@ class GGS_lexicalTagInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalWarningInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalWarningInstructionAST : public GGS_lexicalInstructionAST {
@@ -488,9 +474,7 @@ class GGS_lexicalWarningInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalWarningInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
@@ -553,9 +537,7 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalWarningInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalWarningInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -1158,9 +1140,7 @@ class GGS_commandLineOptionListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionComponentDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentDeclarationAST : public GGS_semanticDeclarationAST {
@@ -1221,9 +1201,7 @@ class GGS_optionComponentDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @optionComponentDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -1301,9 +1279,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionComponentDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -1845,9 +1821,7 @@ class GGS_commandLineOptionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@commandLineOptionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_commandLineOptionMap : public cMapElement {
@@ -2006,9 +1980,7 @@ class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: commandLineOptionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_commandLineOptionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -4067,9 +4039,7 @@ class GGS_extensionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionMap : public cMapElement {
@@ -4200,9 +4170,7 @@ class GGS_extensionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5900,9 +5868,7 @@ class GGS_optionComponentMapForGeneration : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@optionComponentMapForGeneration' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_optionComponentMapForGeneration : public cMapElement {
@@ -6019,9 +5985,7 @@ class GGS_optionComponentMapForGeneration_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: optionComponentMapForGeneration.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentMapForGeneration_2E_element_3F_ : public AC_GALGAS_root {
@@ -7068,9 +7032,7 @@ class GGS_formalInputParameterListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @predefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_predefinedTypeAST : public GGS_semanticDeclarationAST {
@@ -7121,9 +7083,7 @@ class GGS_predefinedTypeAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @predefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
@@ -7673,9 +7633,7 @@ class GGS_classFunctionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@classFunctionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_classFunctionMap : public cMapElement {
@@ -8134,9 +8092,7 @@ class GGS_getterMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@getterMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_getterMap : public cMapElement {
@@ -8613,9 +8569,7 @@ class GGS_setterMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@setterMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_setterMap : public cMapElement {
@@ -8887,9 +8841,7 @@ class GGS_instanceMethodMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@instanceMethodMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_instanceMethodMap : public cMapElement {
@@ -9098,9 +9050,7 @@ class GGS_classMethodMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@classMethodMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_classMethodMap : public cMapElement {
@@ -9140,9 +9090,7 @@ class GGS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @typeFeatures boolset
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeFeatures : public AC_GALGAS_root {
@@ -9529,9 +9477,7 @@ class GGS_enumerationDescriptorList : public AC_GALGAS_list {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @predefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_predefinedTypeAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -9618,9 +9564,7 @@ class GGS_predefinedTypeAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @applicationPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_applicationPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -9675,9 +9619,7 @@ class GGS_applicationPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @applicationPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {

@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper libpmFileWrapper in "../libpm" {
  "h", "cpp", "c", "m", "py", "swift" // Text files
@@ -24,7 +24,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 }{
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc updateLIBPMatPath ?let @string inLIBPMPath {
   let fw = [filewrapper libpmFileWrapper]
@@ -63,5 +63,5 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

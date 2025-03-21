@@ -8,9 +8,7 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@BuildFileList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_BuildFileList : public cCollectionElement {
@@ -1094,9 +1092,7 @@ GGS_templateInstructionForEnumerationAST_2E_implicit GGS_templateInstructionForE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @templateInstructionForEnumerationAST_2E_implicit_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionForEnumerationAST_2E_implicit_3F_::GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ (void) :
@@ -1343,9 +1339,7 @@ GGS_templateInstructionForEnumerationAST_2E_explicit GGS_templateInstructionForE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @templateInstructionForEnumerationAST_2E_explicit_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionForEnumerationAST_2E_explicit_3F_::GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ (void) :
@@ -3939,9 +3933,7 @@ GGS_propertyInCollectionInitializationAST_2E_some GGS_propertyInCollectionInitia
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @propertyInCollectionInitializationAST_2E_some_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_propertyInCollectionInitializationAST_2E_some_3F_::GGS_propertyInCollectionInitializationAST_2E_some_3F_ (void) :
@@ -4707,9 +4699,7 @@ GGS_typeKindEnum_2E_classType GGS_typeKindEnum_2E_classType::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @typeKindEnum_2E_classType_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeKindEnum_2E_classType_3F_::GGS_typeKindEnum_2E_classType_3F_ (void) :
@@ -4971,9 +4961,7 @@ GGS_typeKindEnum_2E_weakReferenceType GGS_typeKindEnum_2E_weakReferenceType::ext
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @typeKindEnum_2E_weakReferenceType_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeKindEnum_2E_weakReferenceType_3F_::GGS_typeKindEnum_2E_weakReferenceType_3F_ (void) :
@@ -5235,9 +5223,7 @@ GGS_typeKindEnum_2E_enumType GGS_typeKindEnum_2E_enumType::extractObject (const 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @typeKindEnum_2E_enumType_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeKindEnum_2E_enumType_3F_::GGS_typeKindEnum_2E_enumType_3F_ (void) :
@@ -5499,9 +5485,7 @@ GGS_localVarValuation_2E_declared GGS_localVarValuation_2E_declared::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @localVarValuation_2E_declared_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_localVarValuation_2E_declared_3F_::GGS_localVarValuation_2E_declared_3F_ (void) :
@@ -5870,9 +5854,7 @@ GGS_overrideKind_2E_selectOverrideFirstBranch GGS_overrideKind_2E_selectOverride
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @overrideKind_2E_selectOverrideFirstBranch_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_overrideKind_2E_selectOverrideFirstBranch_3F_::GGS_overrideKind_2E_selectOverrideFirstBranch_3F_ (void) :
@@ -6119,9 +6101,7 @@ GGS_overrideKind_2E_selectOverrideNextBranches GGS_overrideKind_2E_selectOverrid
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @overrideKind_2E_selectOverrideNextBranches_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_overrideKind_2E_selectOverrideNextBranches_3F_::GGS_overrideKind_2E_selectOverrideNextBranches_3F_ (void) :
@@ -6483,9 +6463,7 @@ GGS_unifiedTypeMapEntry_2E_element GGS_unifiedTypeMapEntry_2E_element::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @unifiedTypeMapEntry_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry_2E_element_3F_::GGS_unifiedTypeMapEntry_2E_element_3F_ (void) :
@@ -6866,9 +6844,7 @@ GGS_syntaxExtensionsDictionary_2E_element GGS_syntaxExtensionsDictionary_2E_elem
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @syntaxExtensionsDictionary_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_syntaxExtensionsDictionary_2E_element_3F_::GGS_syntaxExtensionsDictionary_2E_element_3F_ (void) :
@@ -9427,9 +9403,7 @@ GGS_selfAvailability_2E_available GGS_selfAvailability_2E_available::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @selfAvailability_2E_available_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_selfAvailability_2E_available_3F_::GGS_selfAvailability_2E_available_3F_ (void) :
@@ -9846,9 +9820,7 @@ GGS_fixitElementAST_2E_fixItReplace GGS_fixitElementAST_2E_fixItReplace::extract
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @fixitElementAST_2E_fixItReplace_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_fixitElementAST_2E_fixItReplace_3F_::GGS_fixitElementAST_2E_fixItReplace_3F_ (void) :
@@ -10095,9 +10067,7 @@ GGS_fixitElementAST_2E_fixItInsertAfter GGS_fixitElementAST_2E_fixItInsertAfter:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @fixitElementAST_2E_fixItInsertAfter_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_fixitElementAST_2E_fixItInsertAfter_3F_::GGS_fixitElementAST_2E_fixItInsertAfter_3F_ (void) :
@@ -10344,9 +10314,7 @@ GGS_fixitElementAST_2E_fixItInsertBefore GGS_fixitElementAST_2E_fixItInsertBefor
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @fixitElementAST_2E_fixItInsertBefore_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_fixitElementAST_2E_fixItInsertBefore_3F_::GGS_fixitElementAST_2E_fixItInsertBefore_3F_ (void) :
@@ -10956,9 +10924,7 @@ GGS_ifExpressionKind_2E_regularExp GGS_ifExpressionKind_2E_regularExp::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @ifExpressionKind_2E_regularExp_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_ifExpressionKind_2E_regularExp_3F_::GGS_ifExpressionKind_2E_regularExp_3F_ (void) :
@@ -12354,9 +12320,7 @@ GGS_genericExtensionMethodListMapDictionary_2E_element GGS_genericExtensionMetho
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @genericExtensionMethodListMapDictionary_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_genericExtensionMethodListMapDictionary_2E_element_3F_::GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ (void) :
@@ -12730,9 +12694,7 @@ GGS_descendantClassListMapDictionary_2E_element GGS_descendantClassListMapDictio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @descendantClassListMapDictionary_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_descendantClassListMapDictionary_2E_element_3F_::GGS_descendantClassListMapDictionary_2E_element_3F_ (void) :
@@ -12967,9 +12929,7 @@ GGS_AccessControlAST_2E_fileprivateAccess GGS_AccessControlAST_2E_fileprivateAcc
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControlAST_2E_fileprivateAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControlAST_2E_fileprivateAccess_3F_::GGS_AccessControlAST_2E_fileprivateAccess_3F_ (void) :
@@ -13204,9 +13164,7 @@ GGS_AccessControlAST_2E_fileprivateSetAccess GGS_AccessControlAST_2E_fileprivate
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControlAST_2E_fileprivateSetAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControlAST_2E_fileprivateSetAccess_3F_::GGS_AccessControlAST_2E_fileprivateSetAccess_3F_ (void) :
@@ -13441,9 +13399,7 @@ GGS_AccessControl_2E_protectedAccess GGS_AccessControl_2E_protectedAccess::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_protectedAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_protectedAccess_3F_::GGS_AccessControl_2E_protectedAccess_3F_ (void) :
@@ -13678,9 +13634,7 @@ GGS_AccessControl_2E_protectedSetAccess GGS_AccessControl_2E_protectedSetAccess:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_protectedSetAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_protectedSetAccess_3F_::GGS_AccessControl_2E_protectedSetAccess_3F_ (void) :
@@ -13915,9 +13869,7 @@ GGS_AccessControl_2E_privateAccess GGS_AccessControl_2E_privateAccess::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_privateAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_privateAccess_3F_::GGS_AccessControl_2E_privateAccess_3F_ (void) :
@@ -14152,9 +14104,7 @@ GGS_AccessControl_2E_privateSetAccess GGS_AccessControl_2E_privateSetAccess::ext
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_privateSetAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_privateSetAccess_3F_::GGS_AccessControl_2E_privateSetAccess_3F_ (void) :
@@ -14389,9 +14339,7 @@ GGS_AccessControl_2E_fileprivateAccess GGS_AccessControl_2E_fileprivateAccess::e
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_fileprivateAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_fileprivateAccess_3F_::GGS_AccessControl_2E_fileprivateAccess_3F_ (void) :
@@ -14626,9 +14574,7 @@ GGS_AccessControl_2E_fileprivateSetAccess GGS_AccessControl_2E_fileprivateSetAcc
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @AccessControl_2E_fileprivateSetAccess_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl_2E_fileprivateSetAccess_3F_::GGS_AccessControl_2E_fileprivateSetAccess_3F_ (void) :

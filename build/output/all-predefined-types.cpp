@@ -99,9 +99,7 @@ GGS_stringlist GGS_stringlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@stringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_stringlist : public cCollectionElement {
@@ -704,9 +702,7 @@ GGS_lstringlist GGS_lstringlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lstringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lstringlist : public cCollectionElement {
@@ -1331,9 +1327,7 @@ GGS__32_stringlist GGS__32_stringlist::extractObject (const GGS_object & inObjec
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_32_stringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_stringlist : public cCollectionElement {
@@ -2328,9 +2322,7 @@ GGS_functionlist GGS_functionlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@functionlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_functionlist : public cCollectionElement {
@@ -2773,9 +2765,7 @@ GGS_luintlist GGS_luintlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@luintlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_luintlist : public cCollectionElement {
@@ -3360,9 +3350,7 @@ GGS_objectlist GGS_objectlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@objectlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_objectlist : public cCollectionElement {
@@ -3805,9 +3793,7 @@ GGS_typelist GGS_typelist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typelist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typelist : public cCollectionElement {
@@ -4250,9 +4236,7 @@ GGS_uintlist GGS_uintlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@uintlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_uintlist : public cCollectionElement {
@@ -4695,9 +4679,7 @@ GGS_uint_36__34_list GGS_uint_36__34_list::extractObject (const GGS_object & inO
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@uint_36__34_list' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_uint_36__34_list : public cCollectionElement {
@@ -5140,9 +5122,7 @@ GGS_bigintlist GGS_bigintlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@bigintlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_bigintlist : public cCollectionElement {
@@ -5585,9 +5565,7 @@ GGS_lbigintlist GGS_lbigintlist::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@lbigintlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lbigintlist : public cCollectionElement {
@@ -6598,9 +6576,7 @@ GGS_bigint_3F_ GGS_bigint_3F_::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @bigint_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint_3F_::GGS_bigint_3F_ (void) :

@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2007, ..., 2019 Pierre Molinaro.
 //
@@ -18,11 +18,11 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //           I N S T R U C T I O N    G E N E R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc generateInstructionList
   ?!@stringset ioInclusionSet
@@ -45,25 +45,25 @@ proc generateInstructionList
   [!?ioGeneratedCode decIndentation !2]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @templateInstructionForGeneration {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @templateInstructionListForGeneration {
   public let @templateInstructionForGeneration mInstruction
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mResultType
   public let @location mLocation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @semanticExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -72,13 +72,13 @@ abstract method @semanticExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @semanticExpressionListForGeneration {
   public let @semanticExpressionForGeneration mExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mReceiverExpression
@@ -86,11 +86,11 @@ class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mCastType
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  F O R M A L    P A R A M E T E R    L I S T
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @formalParameterListForGeneration {
   public let @lstring mFormalSelector
@@ -100,11 +100,11 @@ list @formalParameterListForGeneration {
   public let @string mFormalArgumentCppName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  F O R M A L    I N P U T    P A R A M E T E R    L I S T
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @formalInputParameterListForGeneration {
   public let @lstring mFormalSelector
@@ -114,17 +114,17 @@ list @formalInputParameterListForGeneration {
   public let @bool mIsConstant
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  A C T U A L    P A R A M E T E R
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @actualParameterForGeneration {
   public let @unifiedTypeMapEntry mFormalArgumentType
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @actualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -135,19 +135,19 @@ abstract method @actualParameterForGeneration generateActualParameter
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @actualParameterForGeneration generatePoisonedVariables
   ?!@string ioImplementation
   ?!@stringset ioUnusedVariableCppNameSet
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @outputActualParameterForGeneration : @actualParameterForGeneration {
   public let @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mOutputInputVariableCppName
@@ -155,32 +155,32 @@ class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @unifiedTypeMapEntryList mTypeList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @inputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @inputJokerParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @actualParameterListForGeneration {
   public let @actualParameterForGeneration mActualParameter
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @semanticInstructionForGeneration {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @semanticInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -189,138 +189,138 @@ abstract method @semanticInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @semanticInstructionListForGeneration {
   public let @semanticInstructionForGeneration mInstruction
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @listOfSemanticInstructionListForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
   public let @location mEndOfInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationForGeneration {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
   result = ""
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@string unused ioHeader {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract getter @semanticDeclarationForGeneration getImplementationCppFileName -> @string
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract getter @semanticDeclarationForGeneration isPredefined -> @bool
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @semanticDeclarationListForGeneration {
   public let @string infoMessage %initArgLabel
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    T Y P E    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
   public let @unifiedTypeMapEntry mSelfTypeEntry
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration getImplementationCppFileName -> @string {
   result = [self.mSelfTypeEntry definition].headerFileName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
   result = true
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
   result = [self.mSelfTypeEntry definition].isPredefined
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind {
   result = [self.mSelfTypeEntry definition].headerKind
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    D E C L A R A T I O N    W I T H   H E A D E R    S P E C
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   public let @bool generateHeader %initArgLabel
   public let @string implementationCppFileName %initArgLabel
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticDeclarationWithHeaderForGeneration getImplementationCppFileName -> @string {
   result = self.implementationCppFileName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool {
   result = self.generateHeader
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind {
   result = @headerKind.twoHeaders
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool {
   result = false
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    L E X I Q U E    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mLexiqueName
@@ -332,22 +332,22 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
   public let @string mSwiftCocoaImplementation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   A C T I O N ,    M E T H O D    S I G N A T U R E
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @signatureForGrammarAnalysis {
   public let @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
   public let @lstring mGalgasTypeNameForGrammarAnalysis
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  N O N    T E R M I N A L    S Y M B O L    M A P
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
   public let @signatureForGrammarAnalysis mFormalParametersList
@@ -356,11 +356,11 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
   search searchKey error message "the rule label '%K' is not declared"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //             nonterminal symbols map
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
@@ -370,18 +370,18 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
   search searchKey error message "the '<%K>' non terminal symbol is not declared"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @nonTerminalToAddList {
   public let @string mSyntaxComponentName
   public let @uint mNonTerminalToAddCount
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    F U N C T I O N    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
@@ -389,22 +389,22 @@ class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeade
   public let @unifiedTypeMapEntry mReturnType
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    F U N C T I O N    I M P L E M E N T A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   public let @string mResultVariableCppName
   public let @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    O N C E    F U N C T I O N    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
@@ -413,11 +413,11 @@ class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForG
   public let @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  T E R M I N A L    C H E C K    I N S T R U C T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @terminalCheckAssignementList {
   public let @string mTypeName // Empty string if no declaration
@@ -425,17 +425,17 @@ list @terminalCheckAssignementList {
   public let @string mSourceLexicalAttributeName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    F I L E W R A P P E R    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @filewrapperTemplateListForGeneration {
   public let @string mFilewrapperTemplateName
@@ -443,7 +443,7 @@ list @filewrapperTemplateListForGeneration {
   public let @templateInstructionListForGeneration mTemplateInstructionListForGeneration
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFilewrapperName
@@ -453,22 +453,22 @@ class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGe
   public let @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    P R O G R A M    D E C L A R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @stringset mInclusionSet
   public let @string mImplementationString
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // A P P E N D    D E C L A R A T I O N    1
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -477,11 +477,11 @@ method @semanticDeclarationForGeneration appendDeclaration1
   outHeader = ""
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // A P P E N D    D E C L A R A T I O N    2
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticDeclarationForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -491,13 +491,13 @@ method @semanticDeclarationForGeneration appendDeclaration2
   outHeader = ""
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 getter @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
   outImplementation = ""
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inUnifiedTypeMap
@@ -506,7 +506,7 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
   outImplementation = ""
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @semanticDeclarationForGeneration appendSpecificFiles
   ?let @string unused inProductDirectory
@@ -516,5 +516,5 @@ method @semanticDeclarationForGeneration appendSpecificFiles
 {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

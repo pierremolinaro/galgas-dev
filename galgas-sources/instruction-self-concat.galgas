@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @actualOutputArgumentList mExpressions
@@ -47,9 +47,9 @@ class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -127,7 +127,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -206,41 +206,41 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -299,7 +299,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   end
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -347,7 +347,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   end
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -393,7 +393,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   end
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -439,7 +439,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   end
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -485,4 +485,4 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

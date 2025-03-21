@@ -1092,6 +1092,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       }else if string.hasPrefix ("green:") {
         let str = String (string.dropFirst ("green:".count))
         self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0))
+      }else if string.hasPrefix ("magenta:") {
+        let str = String (string.dropFirst ("magenta:".count))
+        self.mBuildLogTextView.appendMessageString (str, color: .magenta)
       }else if string.hasPrefix ("orange:") {
         let str = String (string.dropFirst ("orange:".count))
         self.mBuildLogTextView.appendMessageString (str, color: .systemOrange)
@@ -1116,9 +1119,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   private func appendIssue (jsonString inString : String,
                             _ inLocationInBuildLogTextView : Int) {
     if let issue = SWIFT_Issue (jsonString: inString, inLocationInBuildLogTextView) {
-      self.mBuildLogTextView.appendMessageString ("\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n", color: .systemRed)
+      self.mBuildLogTextView.appendMessageString (
+        "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
+        color: issue.color
+     )
       for str in issue.messageArray {
-        self.mBuildLogTextView.appendMessageString (str + "\n", color: .systemRed)
+        self.mBuildLogTextView.appendMessageString (str + "\n", color: issue.color)
       }
       for fixit in issue.fixitArray {
         self.mBuildLogTextView.appendMessageString ("  " + fixit.messageString + "\n", color: .systemBrown)

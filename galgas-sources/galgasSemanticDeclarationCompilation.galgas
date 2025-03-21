@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2016, ..., 2020 Pierre Molinaro.
 //
@@ -18,7 +18,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -109,11 +109,11 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    B U I L D    S E M A N T I C    C O N T E X T
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclarations
                                         ?let @location inEndOfProjectSourceFile
@@ -197,9 +197,9 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! Generation
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -291,7 +291,7 @@ proc generateSemanticDeclarationsGalgas3
    end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc generateManyHeaders
   ?let @string inProductDirectory
@@ -410,7 +410,7 @@ private proc generateManyHeaders
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
@@ -444,7 +444,7 @@ private proc generateOneBigHeader
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @headerCompositionMap {
   public let @stringset mInclusion
@@ -453,7 +453,7 @@ map @headerCompositionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @headerRepartitionMap {
   public let @string mHeaderFileName
@@ -461,7 +461,7 @@ map @headerRepartitionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc buildHeader
   ?let @headerCompositionMap inHeaderCompositionMap
@@ -495,13 +495,13 @@ private proc buildHeader
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private func %once definitionGroupAmount -> @uint {
   result = 50
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -566,7 +566,7 @@ private proc generateFewImplementationFiles
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -695,7 +695,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -732,5 +732,5 @@ private proc generateManyImplementationFiles
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

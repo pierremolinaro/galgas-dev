@@ -15,22 +15,22 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
@@ -38,9 +38,9 @@ class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @actualOutputArgumentList mExpressions
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -80,7 +80,7 @@ syntax extension galgas3ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
 
@@ -119,9 +119,9 @@ syntax extension galgas4ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -163,7 +163,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     !filewrapperPath.string}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -239,7 +239,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     !effectiveParameterList}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @filewrapperInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -326,9 +326,9 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     !isTextFile}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -347,7 +347,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -385,7 +385,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   outCppExpression += [self.mLocation commaSourceFile] + "))"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -407,4 +407,4 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

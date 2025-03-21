@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  semantics definitions for semantics component
 //
@@ -20,7 +20,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 struct @unifiedTypeDefinition {
   public let @lstring typeName %initArgLabel
@@ -50,7 +50,7 @@ struct @unifiedTypeDefinition {
   public let @headerKind headerKind %initArgLabel
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @typeKindEnum %equatable {
   case classType (@bool isReference)
@@ -95,7 +95,7 @@ enum @typeKindEnum %equatable {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 boolset @typeFeatures {
   case infixAddOperator
@@ -151,9 +151,9 @@ boolset @typeFeatures {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //  SUBSCRIPT MAP
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @subscriptMap {
   public let @functionSignature argumentTypeList
@@ -162,5 +162,5 @@ map @subscriptMap {
   search searchKey error message "the '%K' subscript is not declared"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

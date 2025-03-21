@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -43,7 +43,7 @@ syntax extension galgas3ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
 
@@ -91,14 +91,14 @@ syntax extension galgas4ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @collectionValueElementList {
   public let @semanticExpressionAST mExpression
   public let @location location
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @collectionValueAST : @semanticExpressionAST {
   public let @lstring mTypeName // Empty string if infered
@@ -186,14 +186,14 @@ class @collectionValueAST : @semanticExpressionAST {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @collectionValueElementListForGeneration {
   public let @semanticExpressionForGeneration expression
   public let @location location
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   public let @collectionValueElementListForGeneration expressionList
@@ -234,4 +234,4 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

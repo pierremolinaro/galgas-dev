@@ -415,9 +415,7 @@ GGS_bangExpressionForGeneration_2E_weak GGS_bangExpressionForGeneration_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@collectionValueElementList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_collectionValueElementList : public cCollectionElement {
@@ -1032,9 +1030,7 @@ GGS_collectionValueAST_2E_weak GGS_collectionValueAST_2E_weak::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@collectionValueElementListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_collectionValueElementListForGeneration : public cCollectionElement {
@@ -10941,10 +10937,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_1659 (temp_0) ;
-  while (enumerator_1659.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1659.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)) ;
-    enumerator_1659.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_1663 (temp_0) ;
+  while (enumerator_1663.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1663.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)) ;
+    enumerator_1663.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -10963,10 +10959,10 @@ GGS_string extensionGetter_subscriptSignature (const GGS_actualOutputArgumentLis
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_1928 (temp_0) ;
-  while (enumerator_1928.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1928.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
-    enumerator_1928.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_1932 (temp_0) ;
+  while (enumerator_1932.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1932.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
+    enumerator_1932.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -10986,10 +10982,10 @@ void extensionMethod_enterInSemanticContext (const GGS_actualOutputArgumentList 
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  UpEnumerator_actualOutputArgumentList enumerator_2193 (temp_0) ;
-  while (enumerator_2193.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2193.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 49)) ;
-    enumerator_2193.gotoNextObject () ;
+  UpEnumerator_actualOutputArgumentList enumerator_2197 (temp_0) ;
+  while (enumerator_2197.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2197.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 49)) ;
+    enumerator_2197.gotoNextObject () ;
   }
 }
 
@@ -13215,9 +13211,7 @@ GGS_assignmentInstructionForGeneration_2E_weak GGS_assignmentInstructionForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@castInstructionBranchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_castInstructionBranchListAST : public cCollectionElement {
@@ -14291,9 +14285,7 @@ GGS_structuredCastInstructionAST_2E_weak GGS_structuredCastInstructionAST_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@castInstructionBranchListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_castInstructionBranchListForGeneration : public cCollectionElement {

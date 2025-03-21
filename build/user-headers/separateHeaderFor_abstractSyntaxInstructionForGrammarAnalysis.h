@@ -6,9 +6,7 @@ class GrammarVocabulary ;
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractSyntaxInstructionForGrammarAnalysis class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_class {

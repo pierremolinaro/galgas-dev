@@ -8,9 +8,7 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_32_lstringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
@@ -5594,9 +5592,7 @@ GGS_templateInstructionAST_2E_weak GGS_templateInstructionAST_2E_weak::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionListAST : public cCollectionElement {
@@ -6232,9 +6228,7 @@ GGS_templateExpressionAST_2E_weak GGS_templateExpressionAST_2E_weak::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateExpressionListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateExpressionListAST : public cCollectionElement {
@@ -16040,9 +16034,7 @@ GGS_templateInstructionGotoColumnLocationAST_2E_weak GGS_templateInstructionGoto
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@templateInstructionIfBranchListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateInstructionIfBranchListAST : public cCollectionElement {

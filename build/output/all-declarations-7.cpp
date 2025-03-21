@@ -8,9 +8,7 @@
 #include "all-declarations-7.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@formalParameterSignature' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_formalParameterSignature : public cCollectionElement {
@@ -669,23 +667,23 @@ GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typedPropertyList temp_0 = inObject ;
-  UpEnumerator_typedPropertyList enumerator_8220 (temp_0) ;
-  while (enumerator_8220.hasCurrentObject ()) {
+  UpEnumerator_typedPropertyList enumerator_8268 (temp_0) ;
+  while (enumerator_8268.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8220.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 213)))).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8268.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 213)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         result_result.plusAssign_operation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 214)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8220.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8268.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssign_operation(enumerator_8220.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
+            result_result.plusAssign_operation(enumerator_8268.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
           }
         }
       }
     }
-    enumerator_8220.gotoNextObject () ;
+    enumerator_8268.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -2287,9 +2285,7 @@ GGS_routineArgumentMap GGS_routineArgumentMap::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@acceptableParameterList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_acceptableParameterList : public cCollectionElement {
@@ -2884,10 +2880,10 @@ void extensionMethod_enterInstructionListInSemanticContext (const GGS_semanticIn
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_semanticInstructionListAST temp_0 = inObject ;
-  UpEnumerator_semanticInstructionListAST enumerator_2872 (temp_0) ;
-  while (enumerator_2872.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2872.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 65)) ;
-    enumerator_2872.gotoNextObject () ;
+  UpEnumerator_semanticInstructionListAST enumerator_2888 (temp_0) ;
+  while (enumerator_2888.hasCurrentObject ()) {
+    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2888.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 65)) ;
+    enumerator_2888.gotoNextObject () ;
   }
 }
 
@@ -11050,9 +11046,7 @@ GGS_wrapperExtensionMap GGS_wrapperExtensionMap::extractObject (const GGS_object
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //'@semanticTypePrecedenceGraph' graph
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticTypePrecedenceGraph::GGS_semanticTypePrecedenceGraph (void) :
@@ -11368,9 +11362,7 @@ GGS_semanticExpressionForGeneration_2E_weak GGS_semanticExpressionForGeneration_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@semanticExpressionListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_semanticExpressionListForGeneration : public cCollectionElement {
@@ -12286,9 +12278,7 @@ GGS_outputActualParameterForGeneration_2E_weak GGS_outputActualParameterForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@unifiedTypeMapEntryList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_unifiedTypeMapEntryList : public cCollectionElement {
@@ -13255,9 +13245,7 @@ GGS_inputJokerParameterForGeneration_2E_weak GGS_inputJokerParameterForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@actualParameterListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_actualParameterListForGeneration : public cCollectionElement {
@@ -14189,9 +14177,7 @@ GGS_semanticBlockInstructionForGeneration_2E_weak GGS_semanticBlockInstructionFo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@listOfSemanticInstructionListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_listOfSemanticInstructionListForGeneration : public cCollectionElement {

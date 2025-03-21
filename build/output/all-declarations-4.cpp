@@ -5221,9 +5221,7 @@ GGS_propertyInCollectionInitializationAST GGS_propertyInCollectionInitialization
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@propertyInCollectionListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_propertyInCollectionListAST : public cCollectionElement {
@@ -6608,9 +6606,7 @@ GGS_classDeclarationAST_2E_weak GGS_classDeclarationAST_2E_weak::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typedPropertyList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typedPropertyList : public cCollectionElement {
@@ -8067,9 +8063,7 @@ GGS__5B_associatedValue_5D_ GGS__5B_associatedValue_5D_::extractObject (const GG
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@enumConstantList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_enumConstantList : public cCollectionElement {
@@ -8800,9 +8794,7 @@ GGS_enumDeclarationAST_2E_weak GGS_enumDeclarationAST_2E_weak::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@enumConstantListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_enumConstantListForGeneration : public cCollectionElement {
@@ -9308,9 +9300,7 @@ GGS_enumConstantListForGeneration GGS_enumConstantListForGeneration::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@associatedValueDescriptorList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_associatedValueDescriptorList : public cCollectionElement {
@@ -9825,9 +9815,7 @@ GGS_associatedValueDescriptorList GGS_associatedValueDescriptorList::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typeNameFormalParameterNameList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typeNameFormalParameterNameList : public cCollectionElement {
@@ -10405,9 +10393,7 @@ GGS_typeNameFormalParameterNameList GGS_typeNameFormalParameterNameList::extract
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@externTypeConstructorList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_externTypeConstructorList : public cCollectionElement {
@@ -10841,9 +10827,7 @@ GGS_externTypeConstructorList GGS_externTypeConstructorList::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@externTypeGetterList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_externTypeGetterList : public cCollectionElement {
@@ -11421,9 +11405,7 @@ GGS_externTypeGetterList GGS_externTypeGetterList::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@externTypeSetterList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_externTypeSetterList : public cCollectionElement {
@@ -11929,9 +11911,7 @@ GGS_externTypeSetterList GGS_externTypeSetterList::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@formalParameterListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_formalParameterListAST : public cCollectionElement {
@@ -12653,9 +12633,7 @@ GGS_formalParameterListAST GGS_formalParameterListAST::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@externTypeMethodList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_externTypeMethodList : public cCollectionElement {
@@ -13342,9 +13320,7 @@ GGS_externTypeDeclarationAST_2E_weak GGS_externTypeDeclarationAST_2E_weak::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@graphInsertModifierList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_graphInsertModifierList : public cCollectionElement {
@@ -14177,9 +14153,7 @@ GGS_dictDeclarationAST_2E_weak GGS_dictDeclarationAST_2E_weak::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@insertMethodListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_insertMethodListAST : public cCollectionElement {
@@ -14757,9 +14731,7 @@ GGS_insertMethodListAST GGS_insertMethodListAST::extractObject (const GGS_object
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@mapSearchMethodListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_mapSearchMethodListAST : public cCollectionElement {
@@ -15265,9 +15237,7 @@ GGS_mapSearchMethodListAST GGS_mapSearchMethodListAST::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@mapRemoveMethodListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_mapRemoveMethodListAST : public cCollectionElement {
@@ -15773,9 +15743,7 @@ GGS_mapRemoveMethodListAST GGS_mapRemoveMethodListAST::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@insertOrReplaceDeclarationListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_insertOrReplaceDeclarationListAST : public cCollectionElement {

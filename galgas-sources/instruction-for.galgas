@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @forInstructionEnumeratedObjectElementListAST {
   public let @lstring mOptionalTypeName // Empty string if joker
@@ -81,9 +81,9 @@ class @forInstructionAST : @semanticInstructionAST {
   private let @location mEndOf_foreach_instruction
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -300,7 +300,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -506,9 +506,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @forInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -544,9 +544,9 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifi
 }
 
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -878,9 +878,9 @@ override method @forInstructionAST analyzeSemanticInstruction
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @forInstructionEnumeratedObjectListForGeneration {
   public let @string mEnumerationOrder
@@ -901,9 +901,9 @@ class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticInstructionListForGeneration mAfterInstructionList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @forInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -1081,4 +1081,4 @@ override method @forInstructionForGeneration generateInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

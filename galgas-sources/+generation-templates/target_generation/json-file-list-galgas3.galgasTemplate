@@ -141,7 +141,7 @@ end
        "GALGAS_function.cpp",
        "GALGAS_location.cpp",
        "GALGAS_sint.cpp",
-       "GALGAS_sint_36__34_.cpp",
+       "GALGAS_sint64.cpp",
        "GALGAS_string.cpp",
        "GALGAS_string-getters.cpp",
        "GALGAS_stringset.cpp",
@@ -149,7 +149,7 @@ end
        "GALGAS_object.cpp",
        "GALGAS_uint.cpp",
        "GALGAS_timer.cpp",
-       "GALGAS_uint_36__34_.cpp"
+       "GALGAS_uint64.cpp"
     ],
     "USER_LINK_OPTIONS"  :  [%
 for  (mValue)  in  TOOL_LINK_LIST

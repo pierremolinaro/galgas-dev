@@ -453,9 +453,7 @@ void routine_enterTemplateString_26_ (class GGS_templateInstructionListAST & ioA
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionStringForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionStringForGeneration : public GGS_templateInstructionForGeneration {
@@ -510,9 +508,7 @@ class GGS_templateInstructionStringForGeneration : public GGS_templateInstructio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @templateInstructionStringForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstructionForGeneration {
@@ -560,9 +556,7 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @templateInstructionStringForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
@@ -649,9 +643,7 @@ class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateIn
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexiqueComponentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -738,9 +730,7 @@ class GGS_lexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationWithHeaderForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationWithHeaderForGeneration : public GGS_semanticDeclarationForGeneration {
@@ -793,9 +783,7 @@ class GGS_semanticDeclarationWithHeaderForGeneration : public GGS_semanticDeclar
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticDeclarationWithHeaderForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDeclarationForGeneration {
@@ -847,9 +835,7 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationWithHeaderForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
@@ -985,9 +971,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const cl
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticTypeForGeneration : public GGS_semanticDeclarationForGeneration {
@@ -1037,9 +1021,7 @@ class GGS_semanticTypeForGeneration : public GGS_semanticDeclarationForGeneratio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGeneration {
@@ -1091,9 +1073,7 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticTypeForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
@@ -1180,9 +1160,7 @@ class GGS_semanticTypeForGeneration_2E_weak : public GGS_semanticDeclarationForG
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolsetTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolsetTypeForGeneration : public GGS_semanticTypeForGeneration {
@@ -1243,9 +1221,7 @@ class GGS_boolsetTypeForGeneration : public GGS_semanticTypeForGeneration {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @boolsetTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
@@ -1301,9 +1277,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolsetTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolsetTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
@@ -1390,9 +1364,7 @@ class GGS_boolsetTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneratio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
@@ -1493,9 +1465,7 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @classTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
@@ -1587,9 +1557,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
@@ -1676,9 +1644,7 @@ class GGS_classTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @weakReferenceTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration {
@@ -1747,9 +1713,7 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @weakReferenceTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneration {
@@ -1811,9 +1775,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @weakReferenceTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_weakReferenceTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
@@ -1900,9 +1862,7 @@ class GGS_weakReferenceTypeForGeneration_2E_weak : public GGS_semanticTypeForGen
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumTypeForGeneration : public GGS_semanticTypeForGeneration {
@@ -1963,9 +1923,7 @@ class GGS_enumTypeForGeneration : public GGS_semanticTypeForGeneration {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @enumTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
@@ -2021,9 +1979,7 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
@@ -2120,9 +2076,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS_typeNameF
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externTypeDeclarationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externTypeDeclarationForGeneration : public GGS_semanticTypeForGeneration {
@@ -2187,9 +2141,7 @@ class GGS_externTypeDeclarationForGeneration : public GGS_semanticTypeForGenerat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @externTypeDeclarationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGeneration {
@@ -2242,9 +2194,7 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externTypeDeclarationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externTypeDeclarationForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
@@ -2331,9 +2281,7 @@ class GGS_externTypeDeclarationForGeneration_2E_weak : public GGS_semanticTypeFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @graphDeclarationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphDeclarationForGeneration : public GGS_semanticTypeForGeneration {
@@ -2398,9 +2346,7 @@ class GGS_graphDeclarationForGeneration : public GGS_semanticTypeForGeneration {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @graphDeclarationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration {

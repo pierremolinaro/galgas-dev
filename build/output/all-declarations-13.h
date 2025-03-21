@@ -476,9 +476,7 @@ class cParser_galgas_33_LexiqueComponentSyntax {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexiqueComponentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexiqueComponentAST : public GGS_semanticDeclarationAST {
@@ -575,9 +573,7 @@ class GGS_lexiqueComponentAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexiqueComponentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {

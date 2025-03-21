@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @selectInstructionForGrammarAnalysis class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {

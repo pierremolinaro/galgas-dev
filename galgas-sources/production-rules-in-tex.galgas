@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2016, ..., 2016 Pierre Molinaro.
 //
@@ -18,11 +18,11 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    O U T P U T    P R O D U C T I O N    R U L E S    I N    T E X
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
 }{
@@ -32,7 +32,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
     ?@string TEX_ESCAPED_DOCUMENT_NAME
  }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 private func escapeForTex (let @string inString) -> @string {
   result = ""
@@ -64,7 +64,7 @@ private func escapeForTex (let @string inString) -> @string {
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc emitProductionRulesInTexFile
   ?let @string inProductDirectory
@@ -108,7 +108,7 @@ proc emitProductionRulesInTexFile
   [s writeToFileWhenDifferentContents !texFilePath ?*]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @productionRuleListForGrammarAnalysis.@element displayRule
   ?let @string inSyntaxComponentName
@@ -162,7 +162,7 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ?let @string inSyntaxComponentName
@@ -222,9 +222,9 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! tikzNodeForSyntaxInstruction
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -263,13 +263,13 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @rowList {
   public let @2stringlist columns // Node name, node definition
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 setter @rowList appendRow
   ?nodeDefinition:let @string inNodeDefinition
@@ -299,7 +299,7 @@ setter @rowList appendRow
   [!?self setColumnsAtIndex !cols !inRow]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -311,7 +311,7 @@ abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxIn
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -337,7 +337,7 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
   ioColumn += 1
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -431,7 +431,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -539,9 +539,9 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! isLinear
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   result = [self count] > 4
@@ -550,28 +550,28 @@ getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract getter @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
   result = true
 }
 
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @selectInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @repeatInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

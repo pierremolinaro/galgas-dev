@@ -9,9 +9,7 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalOrExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalOrExpressionAST : public GGS_lexicalExpressionAST {
@@ -70,9 +68,7 @@ class GGS_lexicalOrExpressionAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalOrExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
@@ -131,9 +127,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalOrExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalOrExpressionAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -220,9 +214,7 @@ class GGS_lexicalOrExpressionAST_2E_weak : public GGS_lexicalExpressionAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterSetMatchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterSetMatchAST : public GGS_lexicalExpressionAST {
@@ -277,9 +269,7 @@ class GGS_lexicalCharacterSetMatchAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalCharacterSetMatchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
@@ -335,9 +325,7 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterSetMatchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterSetMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -424,9 +412,7 @@ class GGS_lexicalCharacterSetMatchAST_2E_weak : public GGS_lexicalExpressionAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterMatchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterMatchAST : public GGS_lexicalExpressionAST {
@@ -481,9 +467,7 @@ class GGS_lexicalCharacterMatchAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalCharacterMatchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
@@ -539,9 +523,7 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterMatchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -628,9 +610,7 @@ class GGS_lexicalCharacterMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterIntervalMatchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterIntervalMatchAST : public GGS_lexicalExpressionAST {
@@ -689,9 +669,7 @@ class GGS_lexicalCharacterIntervalMatchAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalCharacterIntervalMatchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
@@ -750,9 +728,7 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterIntervalMatchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterIntervalMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -839,9 +815,7 @@ class GGS_lexicalCharacterIntervalMatchAST_2E_weak : public GGS_lexicalExpressio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStringMatchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStringMatchAST : public GGS_lexicalExpressionAST {
@@ -896,9 +870,7 @@ class GGS_lexicalStringMatchAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalStringMatchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
@@ -954,9 +926,7 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStringMatchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStringMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -1043,9 +1013,7 @@ class GGS_lexicalStringMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStringNotMatchAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStringNotMatchAST : public GGS_lexicalExpressionAST {
@@ -1104,9 +1072,7 @@ class GGS_lexicalStringNotMatchAST : public GGS_lexicalExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalStringNotMatchAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
@@ -1165,9 +1131,7 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStringNotMatchAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStringNotMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_weak {
@@ -1522,9 +1486,7 @@ class GGS_lexicalSendSearchListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSendDefaultActionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
@@ -1571,9 +1533,7 @@ class GGS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalSendDefaultActionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
@@ -1621,9 +1581,7 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSendDefaultActionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSendDefaultActionAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -1710,9 +1668,7 @@ class GGS_lexicalSendDefaultActionAST_2E_weak : public AC_GALGAS_weak_reference 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSendTerminalByDefaultAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSendTerminalByDefaultAST : public GGS_lexicalSendDefaultActionAST {
@@ -1767,9 +1723,7 @@ class GGS_lexicalSendTerminalByDefaultAST : public GGS_lexicalSendDefaultActionA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalSendTerminalByDefaultAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
@@ -1825,9 +1779,7 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSendTerminalByDefaultAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSendTerminalByDefaultAST_2E_weak : public GGS_lexicalSendDefaultActionAST_2E_weak {
@@ -1914,9 +1866,7 @@ class GGS_lexicalSendTerminalByDefaultAST_2E_weak : public GGS_lexicalSendDefaul
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalErrorByDefaultAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalErrorByDefaultAST : public GGS_lexicalSendDefaultActionAST {
@@ -1971,9 +1921,7 @@ class GGS_lexicalErrorByDefaultAST : public GGS_lexicalSendDefaultActionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalErrorByDefaultAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
@@ -2029,9 +1977,7 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalErrorByDefaultAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalErrorByDefaultAST_2E_weak : public GGS_lexicalSendDefaultActionAST_2E_weak {
@@ -2654,9 +2600,7 @@ class GGS_lexicalSelectBranchListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranchListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRoutineOrFunctionFormalInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_reference_class {
@@ -2703,9 +2647,7 @@ class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_refe
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalRoutineOrFunctionFormalInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_class {
@@ -2756,9 +2698,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -3080,9 +3020,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST_2E_element : public AC_GALGAS
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalAttributeInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeInputArgumentAST : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3137,9 +3075,7 @@ class GGS_lexicalAttributeInputArgumentAST : public GGS_lexicalRoutineOrFunction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalAttributeInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3198,9 +3134,7 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalAttributeInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak {
@@ -3287,9 +3221,7 @@ class GGS_lexicalAttributeInputArgumentAST_2E_weak : public GGS_lexicalRoutineOr
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterInputArgumentAST : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3344,9 +3276,7 @@ class GGS_lexicalCharacterInputArgumentAST : public GGS_lexicalRoutineOrFunction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalCharacterInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3405,9 +3335,7 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCharacterInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCharacterInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak {
@@ -3494,9 +3422,7 @@ class GGS_lexicalCharacterInputArgumentAST_2E_weak : public GGS_lexicalRoutineOr
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalUnsignedInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalUnsignedInputArgumentAST : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3551,9 +3477,7 @@ class GGS_lexicalUnsignedInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalUnsignedInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3612,9 +3536,7 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalUnsignedInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalUnsignedInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak {
@@ -3701,9 +3623,7 @@ class GGS_lexicalUnsignedInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCurrentCharacterInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCurrentCharacterInputArgumentAST : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3758,9 +3678,7 @@ class GGS_lexicalCurrentCharacterInputArgumentAST : public GGS_lexicalRoutineOrF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalCurrentCharacterInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3819,9 +3737,7 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalCurrentCharacterInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak {
@@ -3908,9 +3824,7 @@ class GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak : public GGS_lexicalRo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalFunctionInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalFunctionInputArgumentAST : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -3969,9 +3883,7 @@ class GGS_lexicalFunctionInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalFunctionInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
@@ -4033,9 +3945,7 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalFunctionInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalFunctionInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak {
@@ -4789,9 +4699,7 @@ class GGS_terminalMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@terminalMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_terminalMap : public cMapElement {
@@ -4908,9 +4816,7 @@ class GGS_terminalMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: terminalMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5126,9 +5032,7 @@ class GGS_lexicalTypeMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalTypeMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTypeMap : public cMapElement {
@@ -5245,9 +5149,7 @@ class GGS_lexicalTypeMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalTypeMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalTypeMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5463,9 +5365,7 @@ class GGS_lexicalAttributeMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalAttributeMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalAttributeMap : public cMapElement {
@@ -5582,9 +5482,7 @@ class GGS_lexicalAttributeMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalAttributeMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -6228,9 +6126,7 @@ class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalExplicitTokenListMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
@@ -6375,9 +6271,7 @@ class GGS_lexicalExplicitTokenListMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalExplicitTokenListMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExplicitTokenListMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -6852,9 +6746,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalExplicitTokenListMapMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
@@ -6999,9 +6891,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalExplicitTokenListMapMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -7231,9 +7121,7 @@ class GGS_lexicalMessageMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalMessageMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalMessageMap : public cMapElement {
@@ -7364,9 +7252,7 @@ class GGS_lexicalMessageMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalMessageMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalMessageMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -7911,9 +7797,7 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalRoutineMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalRoutineMap : public cMapElement {
@@ -8058,9 +7942,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalRoutineMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRoutineMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -8586,9 +8468,7 @@ class GGS_lexicalFunctionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalFunctionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalFunctionMap : public cMapElement {
@@ -8747,9 +8627,7 @@ class GGS_lexicalFunctionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalFunctionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalFunctionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -9280,9 +9158,7 @@ class GGS_styleMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@styleMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_styleMap : public cMapElement {
@@ -9413,9 +9289,7 @@ class GGS_styleMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: styleMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_styleMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -9617,9 +9491,7 @@ class GGS_lexicalTagMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexicalTagMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTagMap : public cMapElement {
@@ -9722,9 +9594,7 @@ class GGS_lexicalTagMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexicalTagMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalTagMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -10376,9 +10246,7 @@ void callExtensionMethod_checkLexicalRule (class cPtr_abstractLexicalRuleAST * i
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStructuredSendInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStructuredSendInstructionAST : public GGS_lexicalInstructionAST {
@@ -10437,9 +10305,7 @@ class GGS_lexicalStructuredSendInstructionAST : public GGS_lexicalInstructionAST
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalStructuredSendInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
@@ -10505,9 +10371,7 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStructuredSendInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStructuredSendInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -10594,9 +10458,7 @@ class GGS_lexicalStructuredSendInstructionAST_2E_weak : public GGS_lexicalInstru
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalDropInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalDropInstructionAST : public GGS_lexicalInstructionAST {
@@ -10651,9 +10513,7 @@ class GGS_lexicalDropInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalDropInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
@@ -10716,9 +10576,7 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalDropInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalDropInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -10805,9 +10663,7 @@ class GGS_lexicalDropInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalErrorInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalErrorInstructionAST : public GGS_lexicalInstructionAST {
@@ -10862,9 +10718,7 @@ class GGS_lexicalErrorInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalErrorInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
@@ -10927,9 +10781,7 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalErrorInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalErrorInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -11016,9 +10868,7 @@ class GGS_lexicalErrorInstructionAST_2E_weak : public GGS_lexicalInstructionAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalLogInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalLogInstructionAST : public GGS_lexicalInstructionAST {
@@ -11069,9 +10919,7 @@ class GGS_lexicalLogInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalLogInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
@@ -11129,9 +10977,7 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalLogInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalLogInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -11218,9 +11064,7 @@ class GGS_lexicalLogInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRepeatInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRepeatInstructionAST : public GGS_lexicalInstructionAST {
@@ -11283,9 +11127,7 @@ class GGS_lexicalRepeatInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalRepeatInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
@@ -11354,9 +11196,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRepeatInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRepeatInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -11443,9 +11283,7 @@ class GGS_lexicalRepeatInstructionAST_2E_weak : public GGS_lexicalInstructionAST
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRewindInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRewindInstructionAST : public GGS_lexicalInstructionAST {
@@ -11504,9 +11342,7 @@ class GGS_lexicalRewindInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalRewindInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
@@ -11572,9 +11408,7 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRewindInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRewindInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -11661,9 +11495,7 @@ class GGS_lexicalRewindInstructionAST_2E_weak : public GGS_lexicalInstructionAST
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractLexicalRoutineActualArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_reference_class {
@@ -11713,9 +11545,7 @@ class GGS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_reference_c
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractLexicalRoutineActualArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
@@ -11769,9 +11599,7 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractLexicalRoutineActualArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractLexicalRoutineActualArgumentAST_2E_weak : public AC_GALGAS_weak_reference {
@@ -11858,9 +11686,7 @@ class GGS_abstractLexicalRoutineActualArgumentAST_2E_weak : public AC_GALGAS_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalAttributeInputOutputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeInputOutputArgumentAST : public GGS_abstractLexicalRoutineActualArgumentAST {
@@ -11917,9 +11743,7 @@ class GGS_lexicalAttributeInputOutputArgumentAST : public GGS_abstractLexicalRou
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalAttributeInputOutputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
@@ -11978,9 +11802,7 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalAttributeInputOutputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeInputOutputArgumentAST_2E_weak : public GGS_abstractLexicalRoutineActualArgumentAST_2E_weak {
@@ -12067,9 +11889,7 @@ class GGS_lexicalAttributeInputOutputArgumentAST_2E_weak : public GGS_abstractLe
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalFormalInputArgumentAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalFormalInputArgumentAST : public GGS_abstractLexicalRoutineActualArgumentAST {
@@ -12126,9 +11946,7 @@ class GGS_lexicalFormalInputArgumentAST : public GGS_abstractLexicalRoutineActua
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalFormalInputArgumentAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
@@ -12187,9 +12005,7 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalFormalInputArgumentAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalFormalInputArgumentAST_2E_weak : public GGS_abstractLexicalRoutineActualArgumentAST_2E_weak {
@@ -12511,9 +12327,7 @@ class GGS_lexicalRoutineCallActualArgumentListAST_2E_element : public AC_GALGAS_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRoutineCallInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRoutineCallInstructionAST : public GGS_lexicalInstructionAST {
@@ -12576,9 +12390,7 @@ class GGS_lexicalRoutineCallInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalRoutineCallInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST {
@@ -12647,9 +12459,7 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalRoutineCallInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRoutineCallInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
@@ -12781,9 +12591,7 @@ class GGS_string callExtensionGetter_generateRoutineArgument (const class cPtr_a
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSelectInstructionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSelectInstructionAST : public GGS_lexicalInstructionAST {
@@ -12842,9 +12650,7 @@ class GGS_lexicalSelectInstructionAST : public GGS_lexicalInstructionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @lexicalSelectInstructionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
@@ -12910,9 +12716,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalSelectInstructionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSelectInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {

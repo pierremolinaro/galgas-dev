@@ -9,9 +9,7 @@
 #include "all-declarations-23.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionComponentForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
@@ -90,9 +88,7 @@ class GGS_optionComponentForGeneration : public GGS_semanticDeclarationWithHeade
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @optionComponentForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
@@ -175,9 +171,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @optionComponentForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
@@ -264,9 +258,7 @@ class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationW
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @arrayTypeForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_arrayTypeForGeneration : public GGS_semanticTypeForGeneration {
@@ -323,9 +315,7 @@ class GGS_arrayTypeForGeneration : public GGS_semanticTypeForGeneration {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @arrayTypeForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
@@ -378,9 +368,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @arrayTypeForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_arrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {

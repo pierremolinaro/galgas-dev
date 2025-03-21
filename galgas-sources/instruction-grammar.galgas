@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
@@ -82,9 +82,9 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -265,7 +265,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -356,9 +356,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   override method @grammarInFileInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -380,9 +380,9 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -553,9 +553,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION (source file)
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -624,9 +624,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION (source string)
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -703,4 +703,4 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

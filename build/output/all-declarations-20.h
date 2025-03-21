@@ -9,9 +9,7 @@
 #include "all-declarations-19.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @terminalInstructionForGrammarAnalysis reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstructionForGrammarAnalysis {
@@ -74,9 +72,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstruction
 #include "separateHeaderFor_terminalInstructionForGrammarAnalysis.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @terminalInstructionForGrammarAnalysis_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak {

@@ -2051,9 +2051,7 @@ class GGS_headerCompositionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@headerCompositionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_headerCompositionMap : public cMapElement {
@@ -2184,9 +2182,7 @@ class GGS_headerCompositionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: headerCompositionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_headerCompositionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2402,9 +2398,7 @@ class GGS_headerRepartitionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@headerRepartitionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_headerRepartitionMap : public cMapElement {
@@ -2521,9 +2515,7 @@ class GGS_headerRepartitionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: headerRepartitionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_headerRepartitionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2739,9 +2731,7 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@projectQualifiedFeatureMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_projectQualifiedFeatureMap : public cMapElement {
@@ -2858,9 +2848,7 @@ class GGS_projectQualifiedFeatureMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: projectQualifiedFeatureMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_projectQualifiedFeatureMap_2E_element_3F_ : public AC_GALGAS_root {

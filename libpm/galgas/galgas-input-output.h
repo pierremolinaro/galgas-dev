@@ -108,10 +108,8 @@ class cToken {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 Class for handling parsing context                                            
+//                 Class for handling parsing context
 //          (used by parse ... rewind ... end parse ; instruction)                               
-//
 //--------------------------------------------------------------------------------------------------
 
 class ParsingContext final {
@@ -227,6 +225,10 @@ void ggs_printFileOperationSuccess (const String & inMessage) ;
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printFileCreationSuccess (const String & inMessage) ;
+
+//--------------------------------------------------------------------------------------------------
+
+void ggs_printFileDeletionSuccess (const String & inMessage) ;
 
 //--------------------------------------------------------------------------------------------------
 

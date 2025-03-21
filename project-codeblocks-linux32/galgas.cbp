@@ -241,7 +241,7 @@
    <Unit filename="../libpm/galgas/GALGAS_function.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_location.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_sint.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_sint_36__34_.cpp" />
+   <Unit filename="../libpm/galgas/GALGAS_sint64.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_string.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_string-getters.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_stringset.cpp" />
@@ -249,7 +249,7 @@
    <Unit filename="../libpm/galgas/GALGAS_object.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_uint.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_timer.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_uint_36__34_.cpp" />
+   <Unit filename="../libpm/galgas/GALGAS_uint64.cpp" />
   <Extensions>
    <code_completion />
    <envvars />

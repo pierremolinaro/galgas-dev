@@ -15,16 +15,16 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @sortedListSortDescriptorListAST {
   public let @lstring mSortedAttributeName
   public let @bool mAscending
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
@@ -33,9 +33,9 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @bool equatable %initArgLabel
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -94,7 +94,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -152,9 +152,9 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -171,9 +171,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   SEMANTIC CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
@@ -367,9 +367,9 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   SEMANTIC ANALYSIS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @sortedListDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -441,9 +441,9 @@ override method @sortedListDeclarationAST semanticAnalysis
     }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @sortDescriptorListForGeneration {
   public let @unifiedTypeMapEntry mAttributeTypeIndex
@@ -512,7 +512,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ]
  }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -532,5 +532,5 @@ filewrapper sortedListGenerationTemplate in "+generation-templates/type_generati
     ?@bool GENERATE_COMPARISON
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

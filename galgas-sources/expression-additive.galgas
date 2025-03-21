@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @rightShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -65,9 +65,9 @@ class @subExpressionNoOverflowAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -120,7 +120,7 @@ syntax extension galgas3ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
 
@@ -173,9 +173,9 @@ syntax extension galgas4ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @rightShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -247,7 +247,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @leftShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -319,7 +319,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -386,7 +386,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -452,7 +452,7 @@ override method @addExpressionAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -519,7 +519,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @subExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -585,9 +585,9 @@ override method @subExpressionAST analyzeSemanticExpression
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 enum @binaryOperator {
   case rightShift
@@ -683,4 +683,4 @@ override method @binaryOperatorExpressionForGeneration generateExpression
   outCppExpression += [self.mLocation commaSourceFile] + ")"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

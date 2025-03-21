@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @bool mIsConstant
@@ -26,23 +26,23 @@ class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructio
   private let @semanticExpressionAST mSourceExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
   private let @lstring mConstantTypeName
   private let @lstring mConstantName
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
 class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @lstring mVariableName
   private let @semanticExpressionAST mSourceExpression
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -90,7 +90,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -138,9 +138,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -165,9 +165,9 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
                                           ?let @lstring unused inUsefulnessCallerEntityName
@@ -278,9 +278,9 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mTargetType
@@ -328,4 +328,4 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

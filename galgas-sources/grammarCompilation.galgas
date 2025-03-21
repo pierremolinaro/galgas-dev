@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Grammar component compilation
 //
@@ -20,7 +20,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func transformLabelMap
   ?let @nonTerminalLabelListAST inLabels
@@ -39,7 +39,7 @@ func transformLabelMap
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc checkLabelMap
   ?let @location inNonTerminalLocation
@@ -91,7 +91,7 @@ proc checkLabelMap
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -114,7 +114,7 @@ proc handleNonTerminalDeclarations
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -144,9 +144,9 @@ proc handleNonTerminalDeclarationsFromRuleList
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //                     transformInstructionList
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 abstract method @syntaxInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -154,7 +154,7 @@ abstract method @syntaxInstructionAST transformInstructionForGrammarAnalysis
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @semanticInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -163,7 +163,7 @@ override method @semanticInstructionAST transformInstructionForGrammarAnalysis
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc transformInstructionListForGrammarAnalysis
   ?let @syntaxInstructionList inInstructionList
@@ -181,7 +181,7 @@ proc transformInstructionListForGrammarAnalysis
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc buildRuleList
   ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
@@ -217,11 +217,11 @@ proc buildRuleList
     !inSyntaxComponentName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generation" {
 }{
@@ -237,11 +237,11 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
     ?@lstringlist SYNTAX_COMPONENTS
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Extern routine that performs grammar analysis
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern proc grammarAnalysisAndGeneration
   ?let @lstring inGrammarName
@@ -258,5 +258,5 @@ extern proc grammarAnalysisAndGeneration
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

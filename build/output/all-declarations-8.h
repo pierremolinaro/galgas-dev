@@ -746,9 +746,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@nonterminalSymbolLabelMapForGrammarAnalysis' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis : public cMapElement {
@@ -865,9 +863,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element : public AC_GAL
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: nonterminalSymbolLabelMapForGrammarAnalysis.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element_3F_ : public AC_GALGAS_root {
@@ -1097,9 +1093,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@nonTerminalSymbolMapForGrammarAnalysis' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_nonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
@@ -1230,9 +1224,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element : public AC_GALGAS_r
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: nonTerminalSymbolMapForGrammarAnalysis.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ : public AC_GALGAS_root {
@@ -1877,9 +1869,7 @@ class GGS_terminalCheckAssignementList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssignementList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -1929,9 +1919,7 @@ class GGS_syntaxInstructionForGeneration : public GGS_semanticInstructionForGene
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @syntaxInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -1968,9 +1956,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -3081,9 +3067,7 @@ class GGS_string extensionGetter_correspondingEffectiveParameterString (const cl
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractGrammarInstructionSyntaxDirectedTranslationResult reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_GALGAS_reference_class {
@@ -3130,9 +3114,7 @@ class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public acStrongPtr_class {
@@ -3378,9 +3360,7 @@ class GGS_propertyIndexMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@propertyIndexMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_propertyIndexMap : public cMapElement {
@@ -3497,9 +3477,7 @@ class GGS_propertyIndexMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: propertyIndexMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_propertyIndexMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -3743,9 +3721,7 @@ class GGS_nonterminalLabelMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@nonterminalLabelMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_nonterminalLabelMap : public cMapElement {
@@ -3890,9 +3866,7 @@ class GGS_nonterminalLabelMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: nonterminalLabelMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonterminalLabelMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -4108,9 +4082,7 @@ class GGS_nonterminalMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@nonterminalMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_nonterminalMap : public cMapElement {
@@ -4227,9 +4199,7 @@ class GGS_nonterminalMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: nonterminalMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_nonterminalMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5040,9 +5010,7 @@ void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSynt
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxDeclarationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGeneration {
@@ -5121,9 +5089,7 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @syntaxDeclarationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGeneration {
@@ -5204,9 +5170,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @syntaxDeclarationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
@@ -5437,9 +5401,7 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@uselessEntityLocationMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_uselessEntityLocationMap : public cMapElement {
@@ -5570,9 +5532,7 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: uselessEntityLocationMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uselessEntityLocationMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5648,9 +5608,7 @@ class GGS_uselessEntityLocationMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @rightShiftExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_rightShiftExpressionAST : public GGS_semanticExpressionAST {
@@ -5713,9 +5671,7 @@ class GGS_rightShiftExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @rightShiftExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
@@ -5775,9 +5731,7 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @rightShiftExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_rightShiftExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -5864,9 +5818,7 @@ class GGS_rightShiftExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @leftShiftExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_leftShiftExpressionAST : public GGS_semanticExpressionAST {
@@ -5929,9 +5881,7 @@ class GGS_leftShiftExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @leftShiftExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
@@ -5991,9 +5941,7 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @leftShiftExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_leftShiftExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -6080,9 +6028,7 @@ class GGS_leftShiftExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @addExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_addExpressionAST : public GGS_semanticExpressionAST {
@@ -6145,9 +6091,7 @@ class GGS_addExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @addExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
@@ -6207,9 +6151,7 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @addExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_addExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -6296,9 +6238,7 @@ class GGS_addExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @addExpressionNoOverflowAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_addExpressionNoOverflowAST : public GGS_semanticExpressionAST {
@@ -6361,9 +6301,7 @@ class GGS_addExpressionNoOverflowAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @addExpressionNoOverflowAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
@@ -6423,9 +6361,7 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @addExpressionNoOverflowAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_addExpressionNoOverflowAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -6512,9 +6448,7 @@ class GGS_addExpressionNoOverflowAST_2E_weak : public GGS_semanticExpressionAST_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subExpressionAST : public GGS_semanticExpressionAST {
@@ -6577,9 +6511,7 @@ class GGS_subExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @subExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
@@ -6639,9 +6571,7 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -6728,9 +6658,7 @@ class GGS_subExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subExpressionNoOverflowAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subExpressionNoOverflowAST : public GGS_semanticExpressionAST {
@@ -6793,9 +6721,7 @@ class GGS_subExpressionNoOverflowAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @subExpressionNoOverflowAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
@@ -6855,9 +6781,7 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subExpressionNoOverflowAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subExpressionNoOverflowAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -7080,9 +7004,7 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperator ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @binaryOperatorExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_binaryOperatorExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -7149,9 +7071,7 @@ class GGS_binaryOperatorExpressionForGeneration : public GGS_semanticExpressionF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @binaryOperatorExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -7209,9 +7129,7 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @binaryOperatorExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_binaryOperatorExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -7298,9 +7216,7 @@ class GGS_binaryOperatorExpressionForGeneration_2E_weak : public GGS_semanticExp
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andShortExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andShortExpressionAST : public GGS_semanticExpressionAST {
@@ -7363,9 +7279,7 @@ class GGS_andShortExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @andShortExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_andShortExpressionAST : public cPtr_semanticExpressionAST {
@@ -7425,9 +7339,7 @@ class cPtr_andShortExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andShortExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andShortExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -7514,9 +7426,7 @@ class GGS_andShortExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andExpressionAST : public GGS_semanticExpressionAST {
@@ -7579,9 +7489,7 @@ class GGS_andExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @andExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_andExpressionAST : public cPtr_semanticExpressionAST {
@@ -7641,9 +7549,7 @@ class cPtr_andExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -7730,9 +7636,7 @@ class GGS_andExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andShortExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andShortExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -7795,9 +7699,7 @@ class GGS_andShortExpressionForGeneration : public GGS_semanticExpressionForGene
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @andShortExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -7852,9 +7754,7 @@ class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andShortExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andShortExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -7941,9 +7841,7 @@ class GGS_andShortExpressionForGeneration_2E_weak : public GGS_semanticExpressio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @testDynamicClassInExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_testDynamicClassInExpressionAST : public GGS_semanticExpressionAST {
@@ -8010,9 +7908,7 @@ class GGS_testDynamicClassInExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @testDynamicClassInExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
@@ -8075,9 +7971,7 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @testDynamicClassInExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_testDynamicClassInExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -8164,9 +8058,7 @@ class GGS_testDynamicClassInExpressionAST_2E_weak : public GGS_semanticExpressio
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @castInExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_castInExpressionAST : public GGS_semanticExpressionAST {
@@ -8229,9 +8121,7 @@ class GGS_castInExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @castInExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
@@ -8291,9 +8181,7 @@ class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @castInExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_castInExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -8380,9 +8268,7 @@ class GGS_castInExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @testDynamicClassInExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_testDynamicClassInExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -8449,9 +8335,7 @@ class GGS_testDynamicClassInExpressionForGeneration : public GGS_semanticExpress
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @testDynamicClassInExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -8509,9 +8393,7 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @testDynamicClassInExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_testDynamicClassInExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -8598,9 +8480,7 @@ class GGS_testDynamicClassInExpressionForGeneration_2E_weak : public GGS_semanti
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @extractObjectInExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extractObjectInExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -8663,9 +8543,7 @@ class GGS_extractObjectInExpressionForGeneration : public GGS_semanticExpression
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @extractObjectInExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -8720,9 +8598,7 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @extractObjectInExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extractObjectInExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -8915,9 +8791,7 @@ class GGS_comparison : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonExpressionAST : public GGS_semanticExpressionAST {
@@ -8984,9 +8858,7 @@ class GGS_comparisonExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @comparisonExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
@@ -9049,9 +8921,7 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -9138,9 +9008,7 @@ class GGS_comparisonExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -9207,9 +9075,7 @@ class GGS_comparisonExpressionForGeneration : public GGS_semanticExpressionForGe
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @comparisonExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -9267,9 +9133,7 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -9457,9 +9321,7 @@ class GGS_actualOutputArgumentList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputArgumentList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionCallExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionCallExpressionAST : public GGS_semanticExpressionAST {
@@ -9518,9 +9380,7 @@ class GGS_functionCallExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @functionCallExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
@@ -9577,9 +9437,7 @@ class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionCallExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionCallExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -9666,9 +9524,7 @@ class GGS_functionCallExpressionAST_2E_weak : public GGS_semanticExpressionAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionCallExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionCallExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -9731,9 +9587,7 @@ class GGS_functionCallExpressionForGeneration : public GGS_semanticExpressionFor
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @functionCallExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -9788,9 +9642,7 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionCallExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionCallExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -9877,9 +9729,7 @@ class GGS_functionCallExpressionForGeneration_2E_weak : public GGS_semanticExpre
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @getterCallExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_getterCallExpressionAST : public GGS_semanticExpressionAST {
@@ -9950,9 +9800,7 @@ class GGS_getterCallExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @getterCallExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
@@ -10018,9 +9866,7 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @getterCallExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_getterCallExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -10107,9 +9953,7 @@ class GGS_getterCallExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @getterCallExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_getterCallExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -10188,9 +10032,7 @@ class GGS_getterCallExpressionForGeneration : public GGS_semanticExpressionForGe
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @getterCallExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -10257,9 +10099,7 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @getterCallExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_getterCallExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -10346,9 +10186,7 @@ class GGS_getterCallExpressionForGeneration_2E_weak : public GGS_semanticExpress
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @initializerCallAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerCallAST : public GGS_semanticExpressionAST {
@@ -10411,9 +10249,7 @@ class GGS_initializerCallAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @initializerCallAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_initializerCallAST : public cPtr_semanticExpressionAST {
@@ -10473,9 +10309,7 @@ class cPtr_initializerCallAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @initializerCallAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerCallAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -10562,9 +10396,7 @@ class GGS_initializerCallAST_2E_weak : public GGS_semanticExpressionAST_2E_weak 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @initializerCallForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerCallForGeneration : public GGS_semanticExpressionForGeneration {
@@ -10627,9 +10459,7 @@ class GGS_initializerCallForGeneration : public GGS_semanticExpressionForGenerat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @initializerCallForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_initializerCallForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -10684,9 +10514,7 @@ class cPtr_initializerCallForGeneration : public cPtr_semanticExpressionForGener
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @initializerCallForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerCallForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -10773,9 +10601,7 @@ class GGS_initializerCallForGeneration_2E_weak : public GGS_semanticExpressionFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @structPropertyAccessExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_structPropertyAccessExpressionAST : public GGS_semanticExpressionAST {
@@ -10838,9 +10664,7 @@ class GGS_structPropertyAccessExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @structPropertyAccessExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST {
@@ -10900,9 +10724,7 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @structPropertyAccessExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_structPropertyAccessExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -10989,9 +10811,7 @@ class GGS_structPropertyAccessExpressionAST_2E_weak : public GGS_semanticExpress
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @propertyAccessExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_propertyAccessExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -11054,9 +10874,7 @@ class GGS_propertyAccessExpressionForGeneration : public GGS_semanticExpressionF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @propertyAccessExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_propertyAccessExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -11111,9 +10929,7 @@ class cPtr_propertyAccessExpressionForGeneration : public cPtr_semanticExpressio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @propertyAccessExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_propertyAccessExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -11200,9 +11016,7 @@ class GGS_propertyAccessExpressionForGeneration_2E_weak : public GGS_semanticExp
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subscriptReadAccessExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subscriptReadAccessExpressionAST : public GGS_semanticExpressionAST {
@@ -11265,9 +11079,7 @@ class GGS_subscriptReadAccessExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @subscriptReadAccessExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST {
@@ -11327,9 +11139,7 @@ class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subscriptReadAccessExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subscriptReadAccessExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -11584,9 +11394,7 @@ class GGS__5B_string_5D_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_string_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subscriptReadAccessExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subscriptReadAccessExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -11653,9 +11461,7 @@ class GGS_subscriptReadAccessExpressionForGeneration : public GGS_semanticExpres
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @subscriptReadAccessExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_subscriptReadAccessExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -11713,9 +11519,7 @@ class cPtr_subscriptReadAccessExpressionForGeneration : public cPtr_semanticExpr
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @subscriptReadAccessExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_subscriptReadAccessExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -11802,9 +11606,7 @@ class GGS_subscriptReadAccessExpressionForGeneration_2E_weak : public GGS_semant
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classFuncExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classFuncExpressionAST : public GGS_semanticExpressionAST {
@@ -11871,9 +11673,7 @@ class GGS_classFuncExpressionAST : public GGS_semanticExpressionAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @classFuncExpressionAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
@@ -11936,9 +11736,7 @@ class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classFuncExpressionAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classFuncExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
@@ -12025,9 +11823,7 @@ class GGS_classFuncExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classFuncExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classFuncExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -12102,9 +11898,7 @@ class GGS_classFuncExpressionForGeneration : public GGS_semanticExpressionForGen
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @classFuncExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -12168,9 +11962,7 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classFuncExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classFuncExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {

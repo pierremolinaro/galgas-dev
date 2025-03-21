@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @templateInstructionSwitchBranchListAST {
   public let [@lstring] constantList
@@ -34,9 +34,9 @@ class @templateInstructionSwitchAST : @templateInstructionAST {
   private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension templateSyntax {
 
@@ -125,9 +125,9 @@ syntax extension templateSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! ANALYSIS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?let @lstring inUsefulnessCallerEntityName
@@ -233,9 +233,9 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 list @templateInstructionSwitchBranchListForGeneration {
   public let [@lstring] mConstantList
@@ -320,5 +320,5 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

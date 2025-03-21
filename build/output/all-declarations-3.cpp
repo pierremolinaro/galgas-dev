@@ -466,9 +466,7 @@ GGS_optionDefaultValueEnumAST GGS_optionDefaultValueEnumAST::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@commandLineOptionListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
@@ -2435,9 +2433,7 @@ GGS_commandLineOptionMap GGS_commandLineOptionMap::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@guiSimpleAttributeListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
@@ -2943,9 +2939,7 @@ GGS_guiSimpleAttributeListAST GGS_guiSimpleAttributeListAST::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@guiCompoundAttributeListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement {
@@ -3523,9 +3517,7 @@ GGS_guiCompoundAttributeListAST GGS_guiCompoundAttributeListAST::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@terminalLabelListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalLabelListAST : public cCollectionElement {
@@ -4031,9 +4023,7 @@ GGS_terminalLabelListAST GGS_terminalLabelListAST::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@guiLabelListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiLabelListAST : public cCollectionElement {
@@ -4611,9 +4601,7 @@ GGS_guiLabelListAST GGS_guiLabelListAST::extractObject (const GGS_object & inObj
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@withLexiqueListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_withLexiqueListAST : public cCollectionElement {
@@ -5263,9 +5251,7 @@ GGS_withLexiqueListAST GGS_withLexiqueListAST::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@guiCommandLineOptionList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
@@ -6363,9 +6349,7 @@ GGS_extensionMap GGS_extensionMap::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@textMacroList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_textMacroList : public cCollectionElement {
@@ -6871,9 +6855,7 @@ GGS_textMacroList GGS_textMacroList::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@importedLexiqueList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_importedLexiqueList : public cCollectionElement {
@@ -7739,9 +7721,7 @@ GGS_importedLexiqueList GGS_importedLexiqueList::extractObject (const GGS_object
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@projectIndexingDescriptorList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_projectIndexingDescriptorList : public cCollectionElement {
@@ -8247,9 +8227,7 @@ GGS_projectIndexingDescriptorList GGS_projectIndexingDescriptorList::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@galgasGUIComponentListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_galgasGUIComponentListAST : public cCollectionElement {
@@ -14387,9 +14365,7 @@ String Lexique_galgasScanner_34_::styleNameForIndex (const uint32_t inStyleIndex
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@initializerSignatureList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_initializerSignatureList : public cCollectionElement {
@@ -14823,9 +14799,7 @@ GGS_initializerSignatureList GGS_initializerSignatureList::extractObject (const 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@formalInputParameterListAST' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_formalInputParameterListAST : public cCollectionElement {

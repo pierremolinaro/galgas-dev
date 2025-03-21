@@ -9,9 +9,7 @@
 #include "all-declarations-3.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @applicationPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_applicationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -98,9 +96,7 @@ class GGS_applicationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @bigintPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bigintPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -155,9 +151,7 @@ class GGS_bigintPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @bigintPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -224,9 +218,7 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @bigintPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bigintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -313,9 +305,7 @@ class GGS_bigintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @binarysetPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_binarysetPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -370,9 +360,7 @@ class GGS_binarysetPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @binarysetPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -437,9 +425,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @binarysetPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_binarysetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -526,9 +512,7 @@ class GGS_binarysetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -583,9 +567,7 @@ class GGS_boolPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @boolPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -642,9 +624,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -731,9 +711,7 @@ class GGS_boolPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @charPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_charPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -788,9 +766,7 @@ class GGS_charPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @charPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -847,9 +823,7 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @charPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_charPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -936,9 +910,7 @@ class GGS_charPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dataPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dataPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -993,9 +965,7 @@ class GGS_dataPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @dataPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -1071,9 +1041,7 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dataPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dataPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -1160,9 +1128,7 @@ class GGS_dataPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @doublePredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_doublePredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -1217,9 +1183,7 @@ class GGS_doublePredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @doublePredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -1276,9 +1240,7 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @doublePredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_doublePredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -1365,9 +1327,7 @@ class GGS_doublePredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @filewrapperPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -1422,9 +1382,7 @@ class GGS_filewrapperPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @filewrapperPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -1481,9 +1439,7 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @filewrapperPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -1570,9 +1526,7 @@ class GGS_filewrapperPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -1627,9 +1581,7 @@ class GGS_functionPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @functionPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -1686,9 +1638,7 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @functionPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -1775,9 +1725,7 @@ class GGS_functionPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @locationPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_locationPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -1832,9 +1780,7 @@ class GGS_locationPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @locationPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -1891,9 +1837,7 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @locationPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_locationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -1980,9 +1924,7 @@ class GGS_locationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_we
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @objectPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_objectPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -2037,9 +1979,7 @@ class GGS_objectPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @objectPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -2091,9 +2031,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @objectPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_objectPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -2180,9 +2118,7 @@ class GGS_objectPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @stringsetPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_stringsetPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -2237,9 +2173,7 @@ class GGS_stringsetPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @stringsetPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -2318,9 +2252,7 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @stringsetPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_stringsetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -2407,9 +2339,7 @@ class GGS_stringsetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @sintPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -2464,9 +2394,7 @@ class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @sintPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -2523,9 +2451,7 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @sintPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -2612,9 +2538,7 @@ class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @sint_36__34_PredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sint_36__34_PredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -2669,9 +2593,7 @@ class GGS_sint_36__34_PredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @sint64PredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -2728,9 +2650,7 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @sint_36__34_PredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sint_36__34_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -2817,9 +2737,7 @@ class GGS_sint_36__34_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @stringPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_stringPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -2874,9 +2792,7 @@ class GGS_stringPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @stringPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -2952,9 +2868,7 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @stringPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_stringPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -3041,9 +2955,7 @@ class GGS_stringPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @timerPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_timerPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -3098,9 +3010,7 @@ class GGS_timerPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @timerPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -3165,9 +3075,7 @@ class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @timerPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_timerPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -3254,9 +3162,7 @@ class GGS_timerPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @typePredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typePredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -3311,9 +3217,7 @@ class GGS_typePredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typePredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -3370,9 +3274,7 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @typePredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typePredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -3459,9 +3361,7 @@ class GGS_typePredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @uintPredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uintPredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -3516,9 +3416,7 @@ class GGS_uintPredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @uintPredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -3580,9 +3478,7 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @uintPredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -3669,9 +3565,7 @@ class GGS_uintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @uint_36__34_PredefinedTypeAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uint_36__34_PredefinedTypeAST : public GGS_predefinedTypeAST {
@@ -3726,9 +3620,7 @@ class GGS_uint_36__34_PredefinedTypeAST : public GGS_predefinedTypeAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @uint64PredefinedTypeAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
@@ -3785,9 +3677,7 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @uint_36__34_PredefinedTypeAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_uint_36__34_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
@@ -4043,9 +3933,7 @@ class GGS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticExpressionAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticExpressionAST : public AC_GALGAS_reference_class {
@@ -4171,9 +4059,7 @@ class GGS_propertyInCollectionInitializationAST_2E_some : public AC_GALGAS_root 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST_2E_some ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: propertyInCollectionInitializationAST.some? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_propertyInCollectionInitializationAST_2E_some_3F_ : public AC_GALGAS_root {
@@ -4847,9 +4733,7 @@ class GGS_AccessControlAST_2E_fileprivateAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2E_fileprivateAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControlAST.fileprivateAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControlAST_2E_fileprivateAccess_3F_ : public AC_GALGAS_root {
@@ -5002,9 +4886,7 @@ class GGS_AccessControlAST_2E_fileprivateSetAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2E_fileprivateSetAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControlAST.fileprivateSetAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControlAST_2E_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
@@ -5080,9 +4962,7 @@ class GGS_AccessControlAST_2E_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2E_fileprivateSetAccess_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @arrayTypeDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_arrayTypeDeclarationAST : public GGS_semanticDeclarationAST {
@@ -5151,9 +5031,7 @@ class GGS_arrayTypeDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @arrayTypeDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_arrayTypeDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -5241,9 +5119,7 @@ class cPtr_arrayTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @arrayTypeDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_arrayTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -5330,9 +5206,7 @@ class GGS_arrayTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolsetDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolsetDeclarationAST : public GGS_semanticDeclarationAST {
@@ -5397,9 +5271,7 @@ class GGS_boolsetDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @boolsetDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -5480,9 +5352,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @boolsetDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_boolsetDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -5569,9 +5439,7 @@ class GGS_boolsetDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_w
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classDeclarationAST : public GGS_semanticDeclarationAST {
@@ -5652,9 +5520,7 @@ class GGS_classDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @classDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -5747,9 +5613,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @classDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -6343,9 +6207,7 @@ class GGS_initializerMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@initializerMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_initializerMap : public cMapElement {
@@ -6462,9 +6324,7 @@ class GGS_initializerMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: initializerMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_initializerMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -6540,9 +6400,7 @@ class GGS_initializerMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @weakReferenceDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_weakReferenceDeclarationAST : public GGS_semanticDeclarationAST {
@@ -6611,9 +6469,7 @@ class GGS_weakReferenceDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @weakReferenceDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -6697,9 +6553,7 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @weakReferenceDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_weakReferenceDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -7404,9 +7258,7 @@ class GGS_structComparison : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structComparison ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumDeclarationAST : public GGS_semanticDeclarationAST {
@@ -7471,9 +7323,7 @@ class GGS_enumDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @enumDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -7558,9 +7408,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @enumDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -10046,9 +9894,7 @@ class GGS_externTypeMethodList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externTypeDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externTypeDeclarationAST : public GGS_semanticDeclarationAST {
@@ -10129,9 +9975,7 @@ class GGS_externTypeDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @externTypeDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -10224,9 +10068,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @externTypeDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_externTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -10581,9 +10423,7 @@ class GGS_graphInsertModifierList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @graphDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphDeclarationAST : public GGS_semanticDeclarationAST {
@@ -10648,9 +10488,7 @@ class GGS_graphDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @graphDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -10731,9 +10569,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @graphDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -10820,9 +10656,7 @@ class GGS_graphDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @listDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_listDeclarationAST : public GGS_semanticDeclarationAST {
@@ -10891,9 +10725,7 @@ class GGS_listDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @listDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -10981,9 +10813,7 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @listDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_listDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
@@ -11070,9 +10900,7 @@ class GGS_listDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dictDeclarationAST reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dictDeclarationAST : public GGS_semanticDeclarationAST {
@@ -11141,9 +10969,7 @@ class GGS_dictDeclarationAST : public GGS_semanticDeclarationAST {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @dictDeclarationAST class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
@@ -11231,9 +11057,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dictDeclarationAST_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dictDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {

@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @loopInstructionWithVariantAST : @semanticInstructionAST {
   public let @semanticExpressionAST mVariantExpression
@@ -31,9 +31,9 @@ class @loopInstructionWithVariantAST : @semanticInstructionAST {
   public let @location mEndOfLoopInstruction
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -78,7 +78,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -123,9 +123,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @loopInstructionWithVariantAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -134,9 +134,9 @@ override method @loopInstructionWithVariantAST enterInstructionInSemanticContext
   [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @loopInstructionWithVariantAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -218,9 +218,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !second_instructionList}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @loopInstructionWithVariantForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -290,4 +290,4 @@ override method @loopInstructionWithVariantForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

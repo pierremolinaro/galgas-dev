@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Computation of useful entities
 //
@@ -20,13 +20,13 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 graph @usefulEntitiesGraph (@lstringlist) {
   insert addNode error message "the '%K' entity is already declared at %L"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 map @uselessEntityLocationMap {
   public let @string mUnusedEntityName
@@ -34,7 +34,7 @@ map @uselessEntityLocationMap {
   insert insertKey error message "--- %K INTERNAL ERROR ---"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
                         ?let @lstringlist inRootEntities
@@ -72,108 +72,108 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
   result = @{!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSetterName -> @lstring {
   result = @{!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
   result = @{!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
                                ?let @string inParameterSignature -> @lstring {
   result = @("@" + inTypeName + "." + inParameterSignature, inTypeName.location)
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func equatableNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
   result = @("@" + inTypeName + " equatable", inTypeName.location)
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
   result = @{!"lexique " + inLexiqueName !inLexiqueName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func grammarNameForUsefulEntitiesGraph ?let @lstring inGrammarName -> @lstring {
   result = @{!"grammar " + inGrammarName !inGrammarName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
   result = @{!"syntax " + inSyntaxName !inSyntaxName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func optionNameForUsefulEntitiesGraph ?let @lstring inOptionName -> @lstring {
   result = @{!"option " + inOptionName !inOptionName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @lstring {
   result = @{!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func filewrapperTemplateNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName  ?let @lstring inTemplateName
 -> @lstring {
   result = @{!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
   result = @{!"function " + inFunctionName !inFunctionName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func procedureNameForUsefulEntitiesGraph ?let @lstring inProcName -> @lstring {
   result = @{!"procedure " + inProcName !inProcName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func typeNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
   result = @{!"type @" + inTypeName !inTypeName.location}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func afterNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
   result = @{!"after" !inLocation}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func beforeNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
   result = @{!"before" !inLocation}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 func rootRuleNameForUsefulEntitiesGraph ?let @lstring inFileExtension -> @lstring {
   result = @{!"rule ." + inFileExtension !inFileExtension}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

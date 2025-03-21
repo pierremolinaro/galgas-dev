@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
 //
@@ -19,7 +19,7 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
@@ -35,7 +35,7 @@ class @lexiqueComponentAST : @semanticDeclarationAST {
   private let @indexingListAST mIndexingListAST
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
@@ -444,7 +444,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
@@ -805,13 +805,13 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @lexiqueComponentAST keyRepresentation -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @lexiqueComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -825,7 +825,7 @@ override method @lexiqueComponentAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @lexiqueComponentAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -877,7 +877,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @lexiqueComponentAST semanticAnalysis
                                       ?!@lstringlist unused ioUsefulnessRootEntities
@@ -1106,9 +1106,9 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //         G E N E R A T I O N    T E M P L A T E S
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
 }{
@@ -1168,4 +1168,4 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

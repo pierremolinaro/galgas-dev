@@ -121,9 +121,7 @@ GGS_headerKind callExtensionGetter_headerKind (const cPtr_semanticDeclarationFor
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@semanticDeclarationListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_semanticDeclarationListForGeneration : public cCollectionElement {
@@ -629,9 +627,7 @@ GGS_semanticDeclarationListForGeneration GGS_semanticDeclarationListForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@signatureForGrammarAnalysis' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement {
@@ -1881,9 +1877,7 @@ GGS_nonTerminalSymbolMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAna
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@nonTerminalToAddList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
@@ -2389,9 +2383,7 @@ GGS_nonTerminalToAddList GGS_nonTerminalToAddList::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@terminalCheckAssignementList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalCheckAssignementList : public cCollectionElement {
@@ -3191,9 +3183,7 @@ GGS_syntaxInstructionForGeneration_2E_weak GGS_syntaxInstructionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@filewrapperTemplateListForGeneration' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_filewrapperTemplateListForGeneration : public cCollectionElement {
@@ -3927,9 +3917,7 @@ void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST
   }
 }
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@localConstantList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_localConstantList : public cCollectionElement {
@@ -4579,9 +4567,7 @@ GGS_localConstantList GGS_localConstantList::extractObject (const GGS_object & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@localInitializedVariableList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_localInitializedVariableList : public cCollectionElement {
@@ -6506,9 +6492,7 @@ GGS_nonterminalMap GGS_nonterminalMap::extractObject (const GGS_object & inObjec
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@ruleLabelImplementationList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_ruleLabelImplementationList : public cCollectionElement {
@@ -7230,9 +7214,7 @@ GGS_ruleLabelImplementationList GGS_ruleLabelImplementationList::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@ruleDeclarationList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_ruleDeclarationList : public cCollectionElement {
@@ -8314,9 +8296,7 @@ GGS_syntaxDeclarationForGeneration_2E_weak GGS_syntaxDeclarationForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //'@usefulEntitiesGraph' graph
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_usefulEntitiesGraph::GGS_usefulEntitiesGraph (void) :
@@ -13057,9 +13037,7 @@ GGS_comparisonExpressionForGeneration_2E_weak GGS_comparisonExpressionForGenerat
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@actualOutputArgumentList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_actualOutputArgumentList : public cCollectionElement {

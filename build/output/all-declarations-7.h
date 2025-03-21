@@ -209,9 +209,7 @@ class GGS_AccessControl_2E_fileprivateAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.fileprivateAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_fileprivateAccess_3F_ : public AC_GALGAS_root {
@@ -364,9 +362,7 @@ class GGS_AccessControl_2E_fileprivateSetAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateSetAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.fileprivateSetAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
@@ -519,9 +515,7 @@ class GGS_AccessControl_2E_privateAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_privateAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.privateAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_privateAccess_3F_ : public AC_GALGAS_root {
@@ -674,9 +668,7 @@ class GGS_AccessControl_2E_privateSetAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_privateSetAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.privateSetAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_privateSetAccess_3F_ : public AC_GALGAS_root {
@@ -829,9 +821,7 @@ class GGS_AccessControl_2E_protectedAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_protectedAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.protectedAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_protectedAccess_3F_ : public AC_GALGAS_root {
@@ -984,9 +974,7 @@ class GGS_AccessControl_2E_protectedSetAccess : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2E_protectedSetAccess ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: AccessControl.protectedSetAccess? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_AccessControl_2E_protectedSetAccess_3F_ : public AC_GALGAS_root {
@@ -1165,9 +1153,7 @@ class GGS_constantIndexMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantIndexMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: constantIndexMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_constantIndexMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -1399,9 +1385,7 @@ class GGS_routineArgumentMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineArgumentMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@internalRoutineMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_internalRoutineMap : public cMapElement {
@@ -1518,9 +1502,7 @@ class GGS_internalRoutineMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_internalRoutineMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: internalRoutineMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_internalRoutineMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -1596,9 +1578,7 @@ class GGS_internalRoutineMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_internalRoutineMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@routineArgumentMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_routineArgumentMap : public cMapElement {
@@ -1729,9 +1709,7 @@ class GGS_routineArgumentMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: routineArgumentMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_routineArgumentMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2268,9 +2246,7 @@ class GGS_grammarLabelMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@grammarLabelMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_grammarLabelMap : public cMapElement {
@@ -2387,9 +2363,7 @@ class GGS_grammarLabelMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: grammarLabelMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarLabelMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2465,9 +2439,7 @@ class GGS_grammarLabelMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@grammarMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_grammarMap : public cMapElement {
@@ -2612,9 +2584,7 @@ class GGS_grammarMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: grammarMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2690,9 +2660,7 @@ class GGS_grammarMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@functionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_functionMap : public cMapElement {
@@ -2837,9 +2805,7 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: functionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_functionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -3097,9 +3063,7 @@ class GGS_wrapperFileMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@wrapperFileMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_wrapperFileMap : public cMapElement {
@@ -3258,9 +3222,7 @@ class GGS_wrapperFileMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: wrapperFileMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_wrapperFileMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -3504,9 +3466,7 @@ class GGS_wrapperDirectoryMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@wrapperDirectoryMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_wrapperDirectoryMap : public cMapElement {
@@ -3651,9 +3611,7 @@ class GGS_wrapperDirectoryMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: wrapperDirectoryMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_wrapperDirectoryMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -3883,9 +3841,7 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@filewrapperTemplateMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_filewrapperTemplateMap : public cMapElement {
@@ -4016,9 +3972,7 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: filewrapperTemplateMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperTemplateMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -4094,9 +4048,7 @@ class GGS_filewrapperTemplateMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@filewrapperMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_filewrapperMap : public cMapElement {
@@ -4283,9 +4235,7 @@ class GGS_filewrapperMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: filewrapperMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -4361,9 +4311,7 @@ class GGS_filewrapperMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@optionComponentMapForSemanticAnalysis' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
@@ -4536,9 +4484,7 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_ro
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: optionComponentMapForSemanticAnalysis.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALGAS_root {
@@ -4614,9 +4560,7 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALGA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@lexiqueComponentMapForSemanticAnalysis' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
@@ -4817,9 +4761,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: lexiqueComponentMapForSemanticAnalysis.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALGAS_root {
@@ -4895,9 +4837,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALG
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@syntaxComponentMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_syntaxComponentMap : public cMapElement {
@@ -5056,9 +4996,7 @@ class GGS_syntaxComponentMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: syntaxComponentMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxComponentMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -5265,9 +5203,7 @@ class GGS_extensionInitializerMapForType : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionInitializerMapForType' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionInitializerMapForType : public cMapElement {
@@ -5384,9 +5320,7 @@ class GGS_extensionInitializerMapForType_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionInitializerMapForType.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionInitializerMapForType_2E_element_3F_ : public AC_GALGAS_root {
@@ -5602,9 +5536,7 @@ class GGS_extensionInitializerForBuildingContext : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionInitializerForBuildingContext' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionInitializerForBuildingContext : public cMapElement {
@@ -5721,9 +5653,7 @@ class GGS_extensionInitializerForBuildingContext_2E_element : public AC_GALGAS_r
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionInitializerForBuildingContext.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionInitializerForBuildingContext_2E_element_3F_ : public AC_GALGAS_root {
@@ -5943,9 +5873,7 @@ class GGS_extensionMethodMapForType : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionMethodMapForType' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionMethodMapForType : public cMapElement {
@@ -6076,9 +6004,7 @@ class GGS_extensionMethodMapForType_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionMethodMapForType.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionMethodMapForType_2E_element_3F_ : public AC_GALGAS_root {
@@ -6294,9 +6220,7 @@ class GGS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionMethodMapForBuildingContext' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionMethodMapForBuildingContext : public cMapElement {
@@ -6413,9 +6337,7 @@ class GGS_extensionMethodMapForBuildingContext_2E_element : public AC_GALGAS_roo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionMethodMapForBuildingContext.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionMethodMapForBuildingContext_2E_element_3F_ : public AC_GALGAS_root {
@@ -6622,9 +6544,7 @@ class GGS_extensionSetterMapForType : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionSetterMapForType' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionSetterMapForType : public cMapElement {
@@ -6741,9 +6661,7 @@ class GGS_extensionSetterMapForType_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionSetterMapForType.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionSetterMapForType_2E_element_3F_ : public AC_GALGAS_root {
@@ -6959,9 +6877,7 @@ class GGS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionSetterMapForBuildingContext' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionSetterMapForBuildingContext : public cMapElement {
@@ -7078,9 +6994,7 @@ class GGS_extensionSetterMapForBuildingContext_2E_element : public AC_GALGAS_roo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionSetterMapForBuildingContext.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionSetterMapForBuildingContext_2E_element_3F_ : public AC_GALGAS_root {
@@ -7313,9 +7227,7 @@ class GGS_extensionGetterMapForType : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionGetterMapForType' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionGetterMapForType : public cMapElement {
@@ -7460,9 +7372,7 @@ class GGS_extensionGetterMapForType_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionGetterMapForType.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionGetterMapForType_2E_element_3F_ : public AC_GALGAS_root {
@@ -7678,9 +7588,7 @@ class GGS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@extensionGetterMapForBuildingContext' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
@@ -7797,9 +7705,7 @@ class GGS_extensionGetterMapForBuildingContext_2E_element : public AC_GALGAS_roo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: extensionGetterMapForBuildingContext.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extensionGetterMapForBuildingContext_2E_element_3F_ : public AC_GALGAS_root {
@@ -8003,9 +7909,7 @@ class GGS_wrapperExtensionMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@wrapperExtensionMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_wrapperExtensionMap : public cMapElement {
@@ -8108,9 +8012,7 @@ class GGS_wrapperExtensionMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: wrapperExtensionMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_wrapperExtensionMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -8186,9 +8088,7 @@ class GGS_wrapperExtensionMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticTypePrecedenceGraph graph
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
@@ -8288,9 +8188,7 @@ void callExtensionMethod_addAssociatedElement (class cPtr_semanticDeclarationAST
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticExpressionForGeneration_2E_weak : public AC_GALGAS_weak_reference {
@@ -8612,9 +8510,7 @@ class GGS_semanticExpressionListForGeneration_2E_element : public AC_GALGAS_root
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @castInExpressionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_castInExpressionForGeneration : public GGS_semanticExpressionForGeneration {
@@ -8681,9 +8577,7 @@ class GGS_castInExpressionForGeneration : public GGS_semanticExpressionForGenera
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @castInExpressionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
@@ -8741,9 +8635,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @castInExpressionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_castInExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
@@ -8830,9 +8722,7 @@ class GGS_castInExpressionForGeneration_2E_weak : public GGS_semanticExpressionF
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualParameterForGeneration : public AC_GALGAS_reference_class {
@@ -8882,9 +8772,7 @@ class GGS_actualParameterForGeneration : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @actualParameterForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_actualParameterForGeneration : public acStrongPtr_class {
@@ -8936,9 +8824,7 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_actualParameterForGeneration_2E_weak : public AC_GALGAS_weak_reference {
@@ -9054,9 +8940,7 @@ void callExtensionMethod_generatePoisonedVariables (class cPtr_actualParameterFo
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputActualParameterForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputActualParameterForGeneration : public GGS_actualParameterForGeneration {
@@ -9113,9 +8997,7 @@ class GGS_outputActualParameterForGeneration : public GGS_actualParameterForGene
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputActualParameterForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
@@ -9172,9 +9054,7 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputActualParameterForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputActualParameterForGeneration_2E_weak : public GGS_actualParameterForGeneration_2E_weak {
@@ -9498,9 +9378,7 @@ class GGS_unifiedTypeMapEntryList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntryList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputActualParameterForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterForGeneration {
@@ -9565,9 +9443,7 @@ class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterFo
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @outputInputActualParameterForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
@@ -9630,9 +9506,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @outputInputActualParameterForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_outputInputActualParameterForGeneration_2E_weak : public GGS_actualParameterForGeneration_2E_weak {
@@ -9719,9 +9593,7 @@ class GGS_outputInputActualParameterForGeneration_2E_weak : public GGS_actualPar
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualParameterForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualParameterForGeneration : public GGS_actualParameterForGeneration {
@@ -9782,9 +9654,7 @@ class GGS_inputActualParameterForGeneration : public GGS_actualParameterForGener
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputActualParameterForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
@@ -9844,9 +9714,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputActualParameterForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputActualParameterForGeneration_2E_weak : public GGS_actualParameterForGeneration_2E_weak {
@@ -9933,9 +9801,7 @@ class GGS_inputActualParameterForGeneration_2E_weak : public GGS_actualParameter
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputJokerParameterForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputJokerParameterForGeneration : public GGS_actualParameterForGeneration {
@@ -9996,9 +9862,7 @@ class GGS_inputJokerParameterForGeneration : public GGS_actualParameterForGenera
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @inputJokerParameterForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
@@ -10058,9 +9922,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @inputJokerParameterForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_inputJokerParameterForGeneration_2E_weak : public GGS_actualParameterForGeneration_2E_weak {
@@ -10224,9 +10086,7 @@ class GGS_actualParameterListForGeneration_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticInstructionForGeneration_2E_weak : public AC_GALGAS_weak_reference {
@@ -10328,9 +10188,7 @@ void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForG
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticBlockInstructionForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticBlockInstructionForGeneration : public GGS_semanticInstructionForGeneration {
@@ -10385,9 +10243,7 @@ class GGS_semanticBlockInstructionForGeneration : public GGS_semanticInstruction
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticBlockInstructionForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
@@ -10435,9 +10291,7 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticBlockInstructionForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticBlockInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
@@ -10792,9 +10646,7 @@ class GGS_listOfSemanticInstructionListForGeneration_2E_element : public AC_GALG
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstructionListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationForGeneration reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationForGeneration : public AC_GALGAS_reference_class {
@@ -10841,9 +10693,7 @@ class GGS_semanticDeclarationForGeneration : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @semanticDeclarationForGeneration class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
@@ -10921,9 +10771,7 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticDeclarationForGeneration_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticDeclarationForGeneration_2E_weak : public AC_GALGAS_weak_reference {

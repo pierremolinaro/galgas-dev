@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
@@ -26,15 +26,15 @@ class @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @bool mGenerateInSeparateFile
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override getter @weakReferenceDeclarationAST keyRepresentation -> @string {
   result = "weak reference @" + self.mWeakReferenceTypeName
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -55,9 +55,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
   end
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   SEMANTIC CONTEXT
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
           ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -165,9 +165,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   SEMANTIC ANALYSIS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @weakReferenceDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -211,9 +211,9 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     }
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
@@ -222,7 +222,7 @@ class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry optionalClassTypeOrNull
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
@@ -263,7 +263,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   ]
  }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -288,9 +288,9 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ]
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! Generation Filewrappers
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 filewrapper weakClassGenerationTemplate in "+generation-templates/type_generation" {
   "ggs"
@@ -311,5 +311,5 @@ filewrapper weakClassGenerationTemplate in "+generation-templates/type_generatio
     ?@string OPTIONAL_CLASS_TYPE_IDENTIFIER
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

@@ -15,23 +15,23 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //!   AST
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @trueExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @falseExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -55,7 +55,7 @@ syntax extension galgas3ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
 
@@ -79,9 +79,9 @@ syntax extension galgas4ExpressionSyntax {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @trueExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -102,7 +102,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   outExpression = @trueExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 override method @falseExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -123,9 +123,9 @@ override method @falseExpressionAST analyzeSemanticExpression
   outExpression = @falseExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
@@ -141,7 +141,7 @@ override method @trueExpressionForGeneration generateExpression
   outCppExpression = "GGS_bool (true)"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class @falseExpressionForGeneration : @semanticExpressionForGeneration {
 }
@@ -157,11 +157,11 @@ override method @falseExpressionForGeneration generateExpression
   outCppExpression = "GGS_bool (false)"
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //           D E T E C T    ' T R U E '    E X P R E S S I O N
 //
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 getter @semanticExpressionForGeneration isTrueExpression -> @bool {
   result = false
@@ -173,4 +173,4 @@ override getter @trueExpressionForGeneration isTrueExpression -> @bool {
   result = true
 }
 
-//------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
