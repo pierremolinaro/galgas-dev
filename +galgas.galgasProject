@@ -44,7 +44,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/cocoaGalgas.galgas"
 
 //--- Project Creation
-  "galgas-sources/projectCreation.galgas"
+ "galgas-sources/projectCreation.galgas"
 
 //--- Templates
   "galgas-sources/templates/templateScanner.galgas"

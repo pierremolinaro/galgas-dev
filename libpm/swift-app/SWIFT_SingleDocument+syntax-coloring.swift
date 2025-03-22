@@ -54,7 +54,7 @@ extension SWIFT_SingleDocument {
             DEBUG_PRINT ("  REMOVED at \(tokenRangeInsertionIndex) : \(r)")
           }
         }
-        DEBUG_PRINT ("  self.mTokenRangeArray.count \(self.mTokenRangeArray.count), tokenRangeInsertionIndex \(tokenRangeInsertionIndex)")
+        DEBUG_PRINT ("    self.mTokenRangeArray.count \(self.mTokenRangeArray.count), tokenRangeInsertionIndex \(tokenRangeInsertionIndex)")
       //--- Translate token after edited range
         if foundRangeToMove {
           var idx = tokenRangeInsertionIndex
@@ -71,7 +71,7 @@ extension SWIFT_SingleDocument {
         }
       }
     //--- Loop over edited range for scanning tokens
-      DEBUG_PRINT ("  ➁ Loop over edited range for scanning tokens")
+      DEBUG_PRINT ("  ➁ Loop over edited range for scanning tokens, firstEditedLocation \(firstEditedLocation)")
       var templateDelimiterIndex : Int? = nil
       if tokenRangeInsertionIndex > 0, (tokenRangeInsertionIndex - 1) < self.mTokenRangeArray.count {
         templateDelimiterIndex = self.mTokenRangeArray [tokenRangeInsertionIndex - 1].templateDelimiterIndex
@@ -87,8 +87,9 @@ extension SWIFT_SingleDocument {
         let s : SWIFT_Token = tokenizer.parseLexicalTokenForLexicalColoring ()
         if s.tokenCode > 0 {
           while tokenRangeInsertionIndex < self.mTokenRangeArray.count,
-                (s.range.location + s.range.length) < NSMaxRange (self.mTokenRangeArray [tokenRangeInsertionIndex].range) {
-            self.mTokenRangeArray.remove (at: tokenRangeInsertionIndex)
+                (s.range.location + s.range.length) >= NSMaxRange (self.mTokenRangeArray [tokenRangeInsertionIndex].range) {
+           DEBUG_PRINT ("  removed at \(tokenRangeInsertionIndex)")
+           self.mTokenRangeArray.remove (at: tokenRangeInsertionIndex)
           }
           if tokenRangeInsertionIndex < self.mTokenRangeArray.count,
              s == self.mTokenRangeArray [tokenRangeInsertionIndex] {
@@ -124,9 +125,10 @@ extension SWIFT_SingleDocument {
         .paragraphStyle : ps
       ]
       let modifiedRange =  NSRange (location: firstEditedLocation, length: afterLastEditedLocation - firstEditedLocation)
+      DEBUG_PRINT ("    set default attributes for range \(modifiedRange)")
       self.mTextStorage.addAttributes (defaultAttributes, range: modifiedRange)
     //--- Apply new attributes
-      DEBUG_PRINT ("  ➃ Apply new attributes")
+      DEBUG_PRINT ("  ➃ Apply \(attributesArray.count) new attributes")
       for (attributes, range) in attributesArray {
         if DEBUG_RANGE_ARRAY {
           if range.location < 0 {
@@ -137,6 +139,7 @@ extension SWIFT_SingleDocument {
             ()
           }
         }
+        DEBUG_PRINT ("    set attributes for range \(range)")
         self.mTextStorage.addAttributes (attributes, range: range)
       }
     //--- IMPORTANT! This provides a default font to non represented glyphs
