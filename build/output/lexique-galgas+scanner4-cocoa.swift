@@ -355,7 +355,7 @@ func galgasScanner4_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
 
 class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mLexicalAttribute_bigintValue : String = ""
   private var mLexicalAttribute_charValue : UInt32 = 0
@@ -367,51 +367,51 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
   private var mLexicalAttribute_uint32value : UInt32 = 0
   private var mLexicalAttribute_uint64value : UInt64 = 0
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func lexiqueIdentifier () -> String {
     return galgasScanner4_lexiqueIdentifier ()
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func isTemplateLexique () -> Bool {
     return false
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
     return 196
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var font : EBPreferenceProperty <NSFont> { return gFont_galgasScanner4 }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_galgasScanner4 }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {
     return gColors_galgasScanner4 [Int (inStyleIndex)]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gBoldStyle_galgasScanner4 [Int (inStyleIndex)]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gItalicStyle_galgasScanner4 [Int (inStyleIndex)]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {
     let kTerminalSymbolStyles : [UInt8] = [
@@ -618,7 +618,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {
     let kTerminalAtomicSelection : [Bool] = [
@@ -825,7 +825,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func indexingTitles () -> [String] {
     return [
@@ -884,29 +884,29 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
     ]
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  S T Y L E S
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleCount () -> UInt8 {
     return 12
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleNameFor (styleIndex inIndex : UInt8) -> String {
     return galgasScanner4_styleNameFor (styleIndex: inIndex)
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
     return galgasScanner4_styleIdentifierFor (styleIndex: inIndex)
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Lexical analysis
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
     var loop = true
@@ -1515,7 +1515,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
     )
   }
   
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -240,15 +240,15 @@ func galgasTemplateScanner_lexiqueIdentifier () -> String {
 
 class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func isTemplateLexique () -> Bool {
     return true
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Lexical analysis
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
     let startLocation = self.currentLocation
@@ -312,14 +312,12 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //    }
 //  }
   
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //                           init
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (instancetype) init {
@@ -352,9 +350,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 } */
 
 //--------------------------------------------------------------------------------------------------
-//
 //            Terminal Symbols as end of script in template mark
-//
 //--------------------------------------------------------------------------------------------------
 
 /*
@@ -560,9 +556,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [197] = {
  */
 
 //--------------------------------------------------------------------------------------------------
-//
 //               P A R S E    L E X I C A L    T O K E N
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (void) parseLexicalTokenForLexicalColoring {
@@ -599,9 +593,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [197] = {
 }
 */ 
 //--------------------------------------------------------------------------------------------------
-//
 //                I S    T E M P L A T E    L E X I Q U E
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (BOOL) isTemplateLexique {
@@ -609,9 +601,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [197] = {
 } */
 
 //--------------------------------------------------------------------------------------------------
-//
 //         L E X I Q U E   I D E N T I F I E R
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (NSString *) lexiqueIdentifier {

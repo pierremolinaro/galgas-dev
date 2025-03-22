@@ -3930,46 +3930,46 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
       result.appendString (enumerator_3053.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" : SWIFT_Lexique_") ;
       result.appendString (enumerator_3053.current_mLexiqueClassName (HERE).stringValue ()) ;
-      result.appendString (", SWIFT_Tokenizer_Protocol {\n\n//- (NSUInteger) textMacroCount ;\n\n//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n\n//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func popupListData () -> [[UInt16]] {\n    return gPopUpData_") ;
-      result.appendString (enumerator_3053.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 131)).stringValue ()) ;
+      result.appendString (", SWIFT_Tokenizer_Protocol {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func popupListData () -> [[UInt16]] {\n    return gPopUpData_") ;
+      result.appendString (enumerator_3053.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 125)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_3053.current_mLexiqueClassName (HERE).getter_identifierRepresentation (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 131)).stringValue ()) ;
-      result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func tabItemTitle () -> String {\n    return ") ;
-      result.appendString (enumerator_3053.current_mTitle (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 137)).stringValue ()) ;
-      result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  \n  func blockComment () -> String {\n    return ") ;
-      result.appendString (enumerator_3053.current_mBlockComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 143)).stringValue ()) ;
-      result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {\n    let fontManager = NSFontManager.shared\n    var font = fontManager.convert (\n      self.font.propval,\n      toHaveTrait: self.bold (forStyle: inStyleIndex).propval \? .boldFontMask : .unboldFontMask\n    )\n    font = fontManager.convert (\n      font,\n      toHaveTrait: self.italic (forStyle: inStyleIndex).propval \? .italicFontMask : .unitalicFontMask\n    )\n    let result : [NSAttributedString.Key : Any] = [\n      .foregroundColor : self.color (forStyle: inStyleIndex).propval,\n      .font : font\n    ]\n    return result\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n\n/* @implementation OC_Tokenizer_") ;
-      result.appendString (enumerator_3053.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 170)).stringValue ()) ;
+      result.appendString (enumerator_3053.current_mLexiqueClassName (HERE).getter_identifierRepresentation (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 125)).stringValue ()) ;
+      result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func tabItemTitle () -> String {\n    return ") ;
+      result.appendString (enumerator_3053.current_mTitle (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 131)).stringValue ()) ;
+      result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  \n  func blockComment () -> String {\n    return ") ;
+      result.appendString (enumerator_3053.current_mBlockComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 137)).stringValue ()) ;
+      result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {\n    let fontManager = NSFontManager.shared\n    var font = fontManager.convert (\n      self.font.propval,\n      toHaveTrait: self.bold (forStyle: inStyleIndex).propval \? .boldFontMask : .unboldFontMask\n    )\n    font = fontManager.convert (\n      font,\n      toHaveTrait: self.italic (forStyle: inStyleIndex).propval \? .italicFontMask : .unitalicFontMask\n    )\n    let result : [NSAttributedString.Key : Any] = [\n      .foregroundColor : self.color (forStyle: inStyleIndex).propval,\n      .font : font\n    ]\n    return result\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n\n/* @implementation OC_Tokenizer_") ;
+      result.appendString (enumerator_3053.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 164)).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (enumerator_3053.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\n- (NSUInteger) textMacroCount {\n  return ") ;
-      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 173)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 173)).stringValue ()) ;
+      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 167)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 167)).stringValue ()) ;
       result.appendString (" ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n//--------------------------------------------------------------------------------------------------\n\n- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n  static NSString * kTextMacroTitle [") ;
-      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 178)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 178)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 178)).stringValue ()) ;
+      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 172)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 172)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 172)).stringValue ()) ;
       result.appendString ("] = {\n") ;
-      GGS_uint index_6772_ (0) ;
+      GGS_uint index_6508_ (0) ;
       if (enumerator_3053.current_mTextMacroList (HERE).isValid ()) {
-        UpEnumerator_textMacroList enumerator_6772 (enumerator_3053.current_mTextMacroList (HERE)) ;
-        while (enumerator_6772.hasCurrentObject ()) {
+        UpEnumerator_textMacroList enumerator_6508 (enumerator_3053.current_mTextMacroList (HERE)) ;
+        while (enumerator_6508.hasCurrentObject ()) {
           result.appendString ("    @") ;
-          result.appendString (enumerator_6772.current_mKey (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 180)).stringValue ()) ;
+          result.appendString (enumerator_6508.current_mKey (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 174)).stringValue ()) ;
           result.appendString (",\n") ;
-          enumerator_6772.gotoNextObject () ;
-          index_6772_.increment () ;
+          enumerator_6508.gotoNextObject () ;
+          index_6508_.increment () ;
         }
       }
       result.appendString ("    nullptr\n  } ;\n  return kTextMacroTitle [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n  static NSString * kTextMacroContent [") ;
-      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 188)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 188)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 188)).stringValue ()) ;
+      result.appendString (enumerator_3053.current_mTextMacroList (HERE).getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 182)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 182)).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 182)).stringValue ()) ;
       result.appendString ("] = {\n") ;
-      GGS_uint index_7235_ (0) ;
+      GGS_uint index_6971_ (0) ;
       if (enumerator_3053.current_mTextMacroList (HERE).isValid ()) {
-        UpEnumerator_textMacroList enumerator_7235 (enumerator_3053.current_mTextMacroList (HERE)) ;
-        while (enumerator_7235.hasCurrentObject ()) {
+        UpEnumerator_textMacroList enumerator_6971 (enumerator_3053.current_mTextMacroList (HERE)) ;
+        while (enumerator_6971.hasCurrentObject ()) {
           result.appendString ("    @") ;
-          result.appendString (enumerator_7235.current_mContents (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 190)).stringValue ()) ;
+          result.appendString (enumerator_6971.current_mContents (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 184)).stringValue ()) ;
           result.appendString (",\n") ;
-          enumerator_7235.gotoNextObject () ;
-          index_7235_.increment () ;
+          enumerator_6971.gotoNextObject () ;
+          index_6971_.increment () ;
         }
       }
       result.appendString ("    nullptr\n  } ;\n  return kTextMacroContent [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@end */\n\n") ;
@@ -3978,53 +3978,53 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
     }
   }
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//   Global functions\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)\? {\n  var result : (any SWIFT_Tokenizer_Protocol)\? = nil\n") ;
-  GGS_uint index_7987_ (0) ;
+  GGS_uint index_7723_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ().isValid ()) {
-    UpEnumerator_extensionMap enumerator_7987 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ()) ;
-    const bool nonEmpty_enumerator_7987 = enumerator_7987.hasCurrentObject () ;
-    if (nonEmpty_enumerator_7987) {
+    UpEnumerator_extensionMap enumerator_7723 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ()) ;
+    const bool nonEmpty_enumerator_7723 = enumerator_7723.hasCurrentObject () ;
+    if (nonEmpty_enumerator_7723) {
       result.appendString ("  if") ;
     }
-    while (enumerator_7987.hasCurrentObject ()) {
+    while (enumerator_7723.hasCurrentObject ()) {
       result.appendString (" inExtension == ") ;
-      result.appendString (enumerator_7987.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 209)).stringValue ()) ;
+      result.appendString (enumerator_7723.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 203)).stringValue ()) ;
       result.appendString (" {\n    result = SWIFT_Tokenizer_") ;
-      result.appendString (enumerator_7987.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 210)).stringValue ()) ;
+      result.appendString (enumerator_7723.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 204)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_7987.current_mLexiqueName (HERE).stringValue ()) ;
+      result.appendString (enumerator_7723.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      enumerator_7987.gotoNextObject () ;
-      if (enumerator_7987.hasCurrentObject ()) {
+      enumerator_7723.gotoNextObject () ;
+      if (enumerator_7723.hasCurrentObject ()) {
         result.appendString ("  }else if") ;
       }
-      index_7987_.increment () ;
+      index_7723_.increment () ;
     }
-    if (nonEmpty_enumerator_7987) {
+    if (nonEmpty_enumerator_7723) {
       result.appendString ("  }\n") ;
     }
   }
   result.appendString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {") ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 220)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 214)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case GalgasBool::boolTrue : {
     result.appendString ("\n  return []\n") ;
     } break ;
   case GalgasBool::boolFalse : {
     result.appendString ("\n  return [\n") ;
-    GGS_uint index_8519_ (0) ;
+    GGS_uint index_8255_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-      UpEnumerator_importedLexiqueList enumerator_8519 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-      while (enumerator_8519.hasCurrentObject ()) {
+      UpEnumerator_importedLexiqueList enumerator_8255 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+      while (enumerator_8255.hasCurrentObject ()) {
         result.appendString ("    SWIFT_Tokenizer_") ;
-        result.appendString (enumerator_8519.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 225)).stringValue ()) ;
+        result.appendString (enumerator_8255.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 219)).stringValue ()) ;
         result.appendString ("_") ;
-        result.appendString (enumerator_8519.current_mLexiqueClassName (HERE).stringValue ()) ;
+        result.appendString (enumerator_8255.current_mLexiqueClassName (HERE).stringValue ()) ;
         result.appendString (" ()") ;
-        enumerator_8519.gotoNextObject () ;
-        if (enumerator_8519.hasCurrentObject ()) {
+        enumerator_8255.gotoNextObject () ;
+        if (enumerator_8255.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
-        index_8519_.increment () ;
+        index_8255_.increment () ;
       }
     }
     result.appendString ("\n  ]\n") ;

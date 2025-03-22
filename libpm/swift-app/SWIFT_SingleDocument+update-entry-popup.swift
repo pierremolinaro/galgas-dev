@@ -12,6 +12,7 @@ extension SWIFT_SingleDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateEntryPopUpButtons (_ inPopupListData : [[UInt16]]) {
+    let popupListData = inPopupListData.sorted { $0.count > $1.count }
     let defaultAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.systemFont (ofSize: 11.0)]
     let specialAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.boldSystemFont (ofSize: 11.0)]
     var menuItemList = [(NSAttributedString, Int)] ()
@@ -19,8 +20,8 @@ extension SWIFT_SingleDocument {
     while tokenWithRangeIndex < self.mTokenRangeArray.count {
       var popUpDataListIndex = 0
       var found = false
-      while !found, popUpDataListIndex < inPopupListData.count {
-        let popUpData = inPopupListData [popUpDataListIndex]
+      while !found, popUpDataListIndex < popupListData.count {
+        let popUpData = popupListData [popUpDataListIndex]
         popUpDataListIndex += 1
         var matched = true
         var idx = 1
@@ -37,15 +38,17 @@ extension SWIFT_SingleDocument {
           testedTokenRangeIndex = tokenWithRangeIndex
           let displayFlags = popUpData [0]
           while idx < popUpData.count {
-            let r = self.mTokenRangeArray [testedTokenRangeIndex].range
+            let r = self.mTokenRangeArray [tokenWithRangeIndex].range
             let s = self.string.nsSubstring (with: r)
             title += " " + s
             idx += 2
-            testedTokenRangeIndex += 1
+            tokenWithRangeIndex += 1
           }
-          //Swift.print ("Entry \(title)")
-          let at = NSAttributedString (string: title, attributes: (displayFlags == 0) ? defaultAttributes : specialAttributes)
-          menuItemList.append ((at, self.mTokenRangeArray [tokenWithRangeIndex].range.location))
+          let at = NSAttributedString (
+            string: title,
+            attributes: (displayFlags == 0) ? defaultAttributes : specialAttributes
+          )
+          menuItemList.append ((at, self.mTokenRangeArray [testedTokenRangeIndex].range.location))
         }
       }
       tokenWithRangeIndex += 1

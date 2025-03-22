@@ -6230,54 +6230,54 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   result.appendString (in_LEXICAL_5F_STYLE_5F_LIST.getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 128)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 128)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 128)).stringValue ()) ;
   result.appendString ("\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n//                     S C A N N E R    C L A S S\n//--------------------------------------------------------------------------------------------------\n\nclass SWIFT_Lexique_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" : SWIFT_Lexique {\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n") ;
-  GGS_uint index_6980_ (0) ;
+  result.appendString (" : SWIFT_Lexique {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n") ;
+  GGS_uint index_6961_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
-    UpEnumerator_lexicalAttributeMap enumerator_6980 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
-    while (enumerator_6980.hasCurrentObject ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_6961 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
+    while (enumerator_6961.hasCurrentObject ()) {
       result.appendString ("  private var mLexicalAttribute_") ;
-      result.appendString (enumerator_6980.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_6961.current_lkey (HERE).readProperty_string ().stringValue ()) ;
       result.appendString (" : ") ;
-      result.appendString (extensionGetter_swiftTypeName (enumerator_6980.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 143)).stringValue ()) ;
+      result.appendString (extensionGetter_swiftTypeName (enumerator_6961.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 143)).stringValue ()) ;
       result.appendString (" = ") ;
-      result.appendString (extensionGetter_swiftInitializationCode (enumerator_6980.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 143)).stringValue ()) ;
+      result.appendString (extensionGetter_swiftInitializationCode (enumerator_6961.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 143)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_6980.gotoNextObject () ;
-      index_6980_.increment () ;
+      enumerator_6961.gotoNextObject () ;
+      index_6961_.increment () ;
     }
   }
-  result.appendString ("\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func lexiqueIdentifier () -> String {\n    return ") ;
+  result.appendString ("\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func lexiqueIdentifier () -> String {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexiqueIdentifier ()\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func isTemplateLexique () -> Bool {\n    return ") ;
+  result.appendString ("_lexiqueIdentifier ()\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func isTemplateLexique () -> Bool {\n    return ") ;
   result.appendString (GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 155)).objectCompare (GGS_uint (uint32_t (0U)))).getter_cString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 155)).stringValue ()) ;
-  result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func terminalVocabularyCount () -> Int {\n    return ") ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func terminalVocabularyCount () -> Int {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 161)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 161)).stringValue ()) ;
-  result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  var font : EBPreferenceProperty <NSFont> { return gFont_") ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  var font : EBPreferenceProperty <NSFont> { return gFont_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_") ;
+  result.appendString (" }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {\n    return gColors_") ;
+  result.appendString (" }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {\n    return gColors_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {\n    return gBoldStyle_") ;
+  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {\n    return gBoldStyle_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {\n    return gItalicStyle_") ;
+  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {\n    return gItalicStyle_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {\n    let kTerminalSymbolStyles : [UInt8] = [\n      0, // Default\n") ;
-  GGS_uint index_9363_idx (0) ;
+  result.appendString (" [Int (inStyleIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {\n    let kTerminalSymbolStyles : [UInt8] = [\n      0, // Default\n") ;
+  GGS_uint index_9173_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
-    UpEnumerator_terminalList enumerator_9363 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
-    while (enumerator_9363.hasCurrentObject ()) {
+    UpEnumerator_terminalList enumerator_9173 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_9173.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_9363.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
+      result.appendString (enumerator_9173.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
       result.appendString (", // ") ;
-      result.appendString (index_9363_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
+      result.appendString (index_9173_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
       result.appendString (" : ") ;
       result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
       result.appendString ("_1_") ;
-      result.appendString (enumerator_9363.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
+      result.appendString (enumerator_9173.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 197)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_9363.gotoNextObject () ;
-      index_9363_idx.increment () ;
+      enumerator_9173.gotoNextObject () ;
+      index_9173_idx.increment () ;
     }
   }
   result.appendString ("      ") ;
@@ -6292,22 +6292,22 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 200)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 200)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 200)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalSymbolStyles [Int (inTokenIndex)]\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {\n    let kTerminalAtomicSelection : [Bool] = [\n      false, // Default\n") ;
-  GGS_uint index_10211_idx (0) ;
+  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalSymbolStyles [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {\n    let kTerminalAtomicSelection : [Bool] = [\n      false, // Default\n") ;
+  GGS_uint index_10002_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
-    UpEnumerator_terminalList enumerator_10211 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
-    while (enumerator_10211.hasCurrentObject ()) {
+    UpEnumerator_terminalList enumerator_10002 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_10002.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_10211.current_atomicSelection (HERE).getter_cString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
+      result.appendString (enumerator_10002.current_atomicSelection (HERE).getter_cString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
       result.appendString (", // ") ;
-      result.appendString (index_10211_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
+      result.appendString (index_10002_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
       result.appendString (" : ") ;
       result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
       result.appendString ("_1_") ;
-      result.appendString (enumerator_10211.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
+      result.appendString (enumerator_10002.current_mTerminalName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 212)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_10211.gotoNextObject () ;
-      index_10211_idx.increment () ;
+      enumerator_10002.gotoNextObject () ;
+      index_10002_idx.increment () ;
     }
   }
   result.appendString ("      false, // ") ;
@@ -6318,25 +6318,25 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 215)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 215)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 215)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalAtomicSelection [Int (inTokenIndex)]\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func indexingTitles () -> [String] {\n") ;
+  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalAtomicSelection [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func indexingTitles () -> [String] {\n") ;
   const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_INDEXING_5F_LIST.getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 224)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_2) {
   case GalgasBool::boolTrue : {
     result.appendString ("    return [\n") ;
-    GGS_uint index_10917_ (0) ;
+    GGS_uint index_10689_ (0) ;
     if (in_INDEXING_5F_LIST.isValid ()) {
-      UpEnumerator_indexingListAST enumerator_10917 (in_INDEXING_5F_LIST) ;
-      while (enumerator_10917.hasCurrentObject ()) {
+      UpEnumerator_indexingListAST enumerator_10689 (in_INDEXING_5F_LIST) ;
+      while (enumerator_10689.hasCurrentObject ()) {
         result.appendString ("      ") ;
-        result.appendString (enumerator_10917.current_mIndexComment (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 228)).stringValue ()) ;
+        result.appendString (enumerator_10689.current_mIndexComment (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 228)).stringValue ()) ;
         result.appendString (" /* ") ;
-        result.appendString (enumerator_10917.current_mIndexName (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (enumerator_10689.current_mIndexName (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" */") ;
-        enumerator_10917.gotoNextObject () ;
-        if (enumerator_10917.hasCurrentObject ()) {
+        enumerator_10689.gotoNextObject () ;
+        if (enumerator_10689.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
-        index_10917_.increment () ;
+        index_10689_.increment () ;
       }
     }
     result.appendString ("\n    ]\n") ;
@@ -6347,37 +6347,37 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   case GalgasBool::boolNotValid :
     break ;
   }
-  result.appendString ("  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //  S T Y L E S\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleCount () -> UInt8 {\n    return ") ;
+  result.appendString ("  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //  S T Y L E S\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleCount () -> UInt8 {\n    return ") ;
   result.appendString (in_LEXICAL_5F_STYLE_5F_LIST.getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 245)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 245)).stringValue ()) ;
-  result.appendString ("\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleNameFor (styleIndex inIndex : UInt8) -> String {\n    return ") ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleNameFor (styleIndex inIndex : UInt8) -> String {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_styleNameFor (styleIndex: inIndex)\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {\n    return ") ;
+  result.appendString ("_styleNameFor (styleIndex: inIndex)\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_styleIdentifierFor (styleIndex: inIndex)\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {\n    var loop = true\n    var scanningOk = true\n") ;
-  GGS_uint index_12373_ (0) ;
+  result.appendString ("_styleIdentifierFor (styleIndex: inIndex)\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {\n    var loop = true\n    var scanningOk = true\n") ;
+  GGS_uint index_12031_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    UpEnumerator_lexicalAttributeMap enumerator_12373 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
-    while (enumerator_12373.hasCurrentObject ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_12031 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_12031.hasCurrentObject ()) {
       result.appendString ("    self.mLexicalAttribute_") ;
-      result.appendString (enumerator_12373.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_12031.current_lkey (HERE).readProperty_string ().stringValue ()) ;
       result.appendString (" = ") ;
-      result.appendString (extensionGetter_swiftInitializationCode (enumerator_12373.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 268)).stringValue ()) ;
+      result.appendString (extensionGetter_swiftInitializationCode (enumerator_12031.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 268)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_12373.gotoNextObject () ;
-      index_12373_.increment () ;
+      enumerator_12031.gotoNextObject () ;
+      index_12031_.increment () ;
     }
   }
   result.appendString ("    var tokenCode : UInt16 = 0\n    let startLocation = self.currentLocation\n") ;
   if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).isValid ()) {
     result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).uintValue ())) ;
   }
-  GGS_uint index_12610_ (0) ;
+  GGS_uint index_12268_ (0) ;
   if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
-    UpEnumerator_lexicalRuleListAST enumerator_12610 (in_LEXICAL_5F_RULE_5F_LIST) ;
-    while (enumerator_12610.hasCurrentObject ()) {
-      result.appendString (callExtensionGetter_generateSwiftCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_12610.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 275)).stringValue ()) ;
-      enumerator_12610.gotoNextObject () ;
-      index_12610_.increment () ;
+    UpEnumerator_lexicalRuleListAST enumerator_12268 (in_LEXICAL_5F_RULE_5F_LIST) ;
+    while (enumerator_12268.hasCurrentObject ()) {
+      result.appendString (callExtensionGetter_generateSwiftCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_12268.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 275)).stringValue ()) ;
+      enumerator_12268.gotoNextObject () ;
+      index_12268_.increment () ;
     }
   }
   if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 273)).isValid ()) {
@@ -6387,18 +6387,18 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_1_ ; // Empty string code\n    }else{ // Unknown input character\n      tokenCode = ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_2_TEMPLATE\n      self.advance ()\n    }\n    return SWIFT_Token (\n      range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n      tokenCode: tokenCode,\n      templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n    )\n  }\n  \n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n\n//--------------------------------------------------------------------------------------------------\n\n/* - (instancetype) init {\n  self = [super init] ;\n  if (self) {\n    noteObjectAllocation (self) ;\n") ;
-  GGS_uint index_13557_ (0) ;
+  result.appendString ("_2_TEMPLATE\n      self.advance ()\n    }\n    return SWIFT_Token (\n      range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n      tokenCode: tokenCode,\n      templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n    )\n  }\n  \n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n\n//--------------------------------------------------------------------------------------------------\n\n/* - (instancetype) init {\n  self = [super init] ;\n  if (self) {\n    noteObjectAllocation (self) ;\n") ;
+  GGS_uint index_13196_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    UpEnumerator_lexicalAttributeMap enumerator_13557 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
-    while (enumerator_13557.hasCurrentObject ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_13196 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_13196.hasCurrentObject ()) {
       result.appendString ("    mLexicalAttribute_") ;
-      result.appendString (enumerator_13557.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_13196.current_lkey (HERE).readProperty_string ().stringValue ()) ;
       result.appendString (" = ") ;
-      result.appendString (extensionGetter_cocoaInitializationCode (enumerator_13557.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 304)).stringValue ()) ;
+      result.appendString (extensionGetter_cocoaInitializationCode (enumerator_13196.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 304)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_13557.gotoNextObject () ;
-      index_13557_.increment () ;
+      enumerator_13196.gotoNextObject () ;
+      index_13196_.increment () ;
     }
   }
   result.appendString ("  }\n") ;
@@ -6410,30 +6410,30 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
     result.appendString (") {\n    kTemplateDefinitionArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 309)).stringValue ()) ;
     result.appendString (" = [NSArray arrayWithObjects:\n") ;
-    GGS_uint index_14047_ (0) ;
+    GGS_uint index_13686_ (0) ;
     if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
-      UpEnumerator_templateDelimitorList enumerator_14047 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
-      while (enumerator_14047.hasCurrentObject ()) {
+      UpEnumerator_templateDelimitorList enumerator_13686 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
+      while (enumerator_13686.hasCurrentObject ()) {
         result.appendString ("      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@") ;
-        result.appendString (enumerator_14047.current_mStartString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 311)).stringValue ()) ;
+        result.appendString (enumerator_13686.current_mStartString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 311)).stringValue ()) ;
         result.appendString (" endString:") ;
-        const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_14047.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 312)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_13686.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 312)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         switch (test_4) {
         case GalgasBool::boolTrue : {
           result.appendString ("nil") ;
           } break ;
         case GalgasBool::boolFalse : {
           result.appendString ("@") ;
-          result.appendString (enumerator_14047.current_mEndString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 315)).stringValue ()) ;
+          result.appendString (enumerator_13686.current_mEndString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 315)).stringValue ()) ;
           } break ;
         case GalgasBool::boolNotValid :
           break ;
         }
         result.appendString (" discardStartString:") ;
-        result.appendString (enumerator_14047.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 318)).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 318)).stringValue ()) ;
+        result.appendString (enumerator_13686.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 318)).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 318)).stringValue ()) ;
         result.appendString ("],\n") ;
-        enumerator_14047.gotoNextObject () ;
-        index_14047_.increment () ;
+        enumerator_13686.gotoNextObject () ;
+        index_13686_.increment () ;
       }
     }
     result.appendString ("      nil\n    ] ;\n  }\n") ;
@@ -6451,15 +6451,15 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
     result.appendString (") {\n\n    kTemplateReplacementArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 327)).stringValue ()) ;
     result.appendString (" = [NSArray arrayWithObjects:\n") ;
-    GGS_uint index_14812_ (0) ;
+    GGS_uint index_14451_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-      UpEnumerator_templateReplacementListAST enumerator_14812 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
-      while (enumerator_14812.hasCurrentObject ()) {
+      UpEnumerator_templateReplacementListAST enumerator_14451 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+      while (enumerator_14451.hasCurrentObject ()) {
         result.appendString ("      @") ;
-        result.appendString (enumerator_14812.current_mMatchString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 329)).stringValue ()) ;
+        result.appendString (enumerator_14451.current_mMatchString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 329)).stringValue ()) ;
         result.appendString (", ") ;
-        enumerator_14812.gotoNextObject () ;
-        index_14812_.increment () ;
+        enumerator_14451.gotoNextObject () ;
+        index_14451_.increment () ;
       }
     }
     result.appendString ("      nil\n    ] ;\n  }\n") ;
@@ -6473,30 +6473,30 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
   const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 345)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_6) {
   case GalgasBool::boolTrue : {
-    GGS_uint index_15622_ (0) ;
+    GGS_uint index_15261_ (0) ;
     if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
-      UpEnumerator_terminalList enumerator_15622 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
-      const bool nonEmpty_enumerator_15622 = enumerator_15622.hasCurrentObject () ;
-      if (nonEmpty_enumerator_15622) {
+      UpEnumerator_terminalList enumerator_15261 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+      const bool nonEmpty_enumerator_15261 = enumerator_15261.hasCurrentObject () ;
+      if (nonEmpty_enumerator_15261) {
         result.appendString ("static const BOOL kEndOfScriptInTemplateArray_") ;
         result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 347)).stringValue ()) ;
         result.appendString (" [") ;
         result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 347)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 347)).stringValue ()) ;
         result.appendString ("] = {\n") ;
       }
-      while (enumerator_15622.hasCurrentObject ()) {
+      while (enumerator_15261.hasCurrentObject ()) {
         result.appendString ("  ") ;
-        result.appendString (enumerator_15622.current_isEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 348)).stringValue ()) ;
+        result.appendString (enumerator_15261.current_isEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 348)).stringValue ()) ;
         result.appendString (" /* ") ;
-        result.appendString (enumerator_15622.current_mTerminalName (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (enumerator_15261.current_mTerminalName (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" */") ;
-        enumerator_15622.gotoNextObject () ;
-        if (enumerator_15622.hasCurrentObject ()) {
+        enumerator_15261.gotoNextObject () ;
+        if (enumerator_15261.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
-        index_15622_.increment () ;
+        index_15261_.increment () ;
       }
-      if (nonEmpty_enumerator_15622) {
+      if (nonEmpty_enumerator_15261) {
         result.appendString ("\n} ;\n") ;
       }
     }
@@ -6507,35 +6507,35 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
     break ;
   }
   result.appendString ("\n*/\n\n\n") ;
-  GGS_uint index_15918_ (0) ;
+  GGS_uint index_15557_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ().isValid ()) {
-    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_15918 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ()) ;
-    while (enumerator_15918.hasCurrentObject ()) {
-      const GalgasBool test_7 = enumerator_15918.current_mShouldBeGenerated (HERE).boolEnum () ;
+    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_15557 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ()) ;
+    while (enumerator_15557.hasCurrentObject ()) {
+      const GalgasBool test_7 = enumerator_15557.current_mShouldBeGenerated (HERE).boolEnum () ;
       switch (test_7) {
       case GalgasBool::boolTrue : {
         result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//             Key words table '") ;
-        result.appendString (enumerator_15918.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (enumerator_15557.current_lkey (HERE).readProperty_string ().stringValue ()) ;
         result.appendString ("'      \n//\n//--------------------------------------------------------------------------------------------------\n\nfileprivate func search_into_") ;
         result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 364)).stringValue ()) ;
         result.appendString ("_") ;
-        result.appendString (enumerator_15918.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (enumerator_15557.current_lkey (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" (_ inSearchedString : String) -> UInt16 {\n  let dictionary : [String : UInt16] = [\n") ;
-        GGS_uint index_16564_ (0) ;
-        if (enumerator_15918.current_mTokenSortedList (HERE).isValid ()) {
-          UpEnumerator_tokenSortedlist enumerator_16564 (enumerator_15918.current_mTokenSortedList (HERE)) ;
-          while (enumerator_16564.hasCurrentObject ()) {
+        GGS_uint index_16203_ (0) ;
+        if (enumerator_15557.current_mTokenSortedList (HERE).isValid ()) {
+          UpEnumerator_tokenSortedlist enumerator_16203 (enumerator_15557.current_mTokenSortedList (HERE)) ;
+          while (enumerator_16203.hasCurrentObject ()) {
             result.appendString ("    ") ;
-            result.appendString (enumerator_16564.current_mName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 367)).stringValue ()) ;
+            result.appendString (enumerator_16203.current_mName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 367)).stringValue ()) ;
             result.appendString (" : ") ;
             result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
             result.appendString ("_1_") ;
-            result.appendString (enumerator_16564.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 367)).stringValue ()) ;
-            enumerator_16564.gotoNextObject () ;
-            if (enumerator_16564.hasCurrentObject ()) {
+            result.appendString (enumerator_16203.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.swift.galgasTemplate", 367)).stringValue ()) ;
+            enumerator_16203.gotoNextObject () ;
+            if (enumerator_16203.hasCurrentObject ()) {
               result.appendString (",\n") ;
             }
-            index_16564_.increment () ;
+            index_16203_.increment () ;
           }
         }
         result.appendString ("\n  ]\n  return dictionary [inSearchedString, default: ") ;
@@ -6547,8 +6547,8 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_15918.gotoNextObject () ;
-      index_15918_.increment () ;
+      enumerator_15557.gotoNextObject () ;
+      index_15557_.increment () ;
     }
   }
   result.appendString ("\n\n\n\n//--------------------------------------------------------------------------------------------------\n//\n//               P A R S E    L E X I C A L    T O K E N\n//\n//--------------------------------------------------------------------------------------------------\n\n/* - (void) parseLexicalTokenForLexicalColoring {\n  BOOL scanningOk = YES ;\n  mTokenCode = 0 ;\n  while ((mTokenCode == 0) && (mCurrentChar != '\\0')) {\n") ;
@@ -7524,41 +7524,41 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImpl
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString (" : SWIFT_Lexique_") ;
   result.appendString (in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString (" {\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func isTemplateLexique () -> Bool {\n    return true\n  }\n\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {\n    let startLocation = self.currentLocation\n    if let idx = self.mEndTemplateDelimiterIndex, self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {\n      self.mEndTemplateDelimiterIndex = nil\n    }\n    if self.mEndTemplateDelimiterIndex != nil {\n      return super.parseLexicalTokenForLexicalColoring ()\n    }else{ // In template string, find code start string\n      while self.mEndTemplateDelimiterIndex == nil, self.currentChar != 0 {\n        var idx = 0\n        while self.mEndTemplateDelimiterIndex == nil, idx < kTemplateDefinitionArray_galgasTemplateScanner.count {\n          if self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].startString, advance: true) {\n            self.mEndTemplateDelimiterIndex = idx\n          }\n          idx += 1\n        }\n        if self.mEndTemplateDelimiterIndex == nil {\n          self.advance ()\n        }\n      }\n      return SWIFT_Token (\n        range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n        tokenCode: ") ;
+  result.appendString (" {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func isTemplateLexique () -> Bool {\n    return true\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {\n    let startLocation = self.currentLocation\n    if let idx = self.mEndTemplateDelimiterIndex, self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {\n      self.mEndTemplateDelimiterIndex = nil\n    }\n    if self.mEndTemplateDelimiterIndex != nil {\n      return super.parseLexicalTokenForLexicalColoring ()\n    }else{ // In template string, find code start string\n      while self.mEndTemplateDelimiterIndex == nil, self.currentChar != 0 {\n        var idx = 0\n        while self.mEndTemplateDelimiterIndex == nil, idx < kTemplateDefinitionArray_galgasTemplateScanner.count {\n          if self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].startString, advance: true) {\n            self.mEndTemplateDelimiterIndex = idx\n          }\n          idx += 1\n        }\n        if self.mEndTemplateDelimiterIndex == nil {\n          self.advance ()\n        }\n      }\n      return SWIFT_Token (\n        range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n        tokenCode: ") ;
   result.appendString (in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_2_TEMPLATE,\n        templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n      )\n    }\n  }\n//    var styleIndex : UInt8 = 0\n//    var tokenCode : UInt16 = 0\n//    let startLocation = self.currentLocation\n//    while styleIndex == 0, self.currentChar != 0 {\n//      let tokenStartLocation = self.currentLocation\n//      if let idx = matchedTemplateDelimiterIndex, !kTemplateDefinitionArray_galgasTemplateScanner [idx].startString.isEmpty {\n//        let foundEndDelimitor = self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true)\n//        if foundEndDelimitor {\n//          matchedTemplateDelimiterIndex = nil\n//        }\n//      }\n//      while matchedTemplateDelimiterIndex != nil, self.currentChar != 0 {\n//        self.searchForReplacementPattern (kTemplateReplacementArray_galgasTemplateScanner)\n//        matchedTemplateDelimiterIndex = self.findTemplateDelimiterIndex (kTemplateDefinitionArray_galgasTemplateScanner)\n//        if matchedTemplateDelimiterIndex == nil {\n//          self.advance ()\n//          styleIndex = -2\n//        }\n//      }\n//      if matchedTemplateDelimiterIndex != nil, styleIndex == 0, self.currentChar != 0 {\n//        let s = super.parseLexicalTokenForLexicalColoring ()\n//        styleIndex = s.styleIndex\n//        tokenCode = s.token\n//      }\n//      if styleIndex > 0, kEndOfScriptInTemplateArray_galgasTemplateScanner [Int (styleIndex) - 1] {\n//        matchedTemplateDelimiterIndex = nil\n//      }\n//    //--- Error \?\n////      if !scanningOk {\n////        styleIndex = Int8 (self.styleCount ())\n////        self.advance ()\n////      }\n//    }\n//  }\n  \n  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n//\n//                           init\n//\n//--------------------------------------------------------------------------------------------------\n\n/* - (instancetype) init {\n  self = [super init] ;\n  if (self) {\n    noteObjectAllocation (self) ;\n  }\n") ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 149)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  result.appendString ("_2_TEMPLATE,\n        templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n      )\n    }\n  }\n//    var styleIndex : UInt8 = 0\n//    var tokenCode : UInt16 = 0\n//    let startLocation = self.currentLocation\n//    while styleIndex == 0, self.currentChar != 0 {\n//      let tokenStartLocation = self.currentLocation\n//      if let idx = matchedTemplateDelimiterIndex, !kTemplateDefinitionArray_galgasTemplateScanner [idx].startString.isEmpty {\n//        let foundEndDelimitor = self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true)\n//        if foundEndDelimitor {\n//          matchedTemplateDelimiterIndex = nil\n//        }\n//      }\n//      while matchedTemplateDelimiterIndex != nil, self.currentChar != 0 {\n//        self.searchForReplacementPattern (kTemplateReplacementArray_galgasTemplateScanner)\n//        matchedTemplateDelimiterIndex = self.findTemplateDelimiterIndex (kTemplateDefinitionArray_galgasTemplateScanner)\n//        if matchedTemplateDelimiterIndex == nil {\n//          self.advance ()\n//          styleIndex = -2\n//        }\n//      }\n//      if matchedTemplateDelimiterIndex != nil, styleIndex == 0, self.currentChar != 0 {\n//        let s = super.parseLexicalTokenForLexicalColoring ()\n//        styleIndex = s.styleIndex\n//        tokenCode = s.token\n//      }\n//      if styleIndex > 0, kEndOfScriptInTemplateArray_galgasTemplateScanner [Int (styleIndex) - 1] {\n//        matchedTemplateDelimiterIndex = nil\n//      }\n//    //--- Error \?\n////      if !scanningOk {\n////        styleIndex = Int8 (self.styleCount ())\n////        self.advance ()\n////      }\n//    }\n//  }\n  \n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           init\n//--------------------------------------------------------------------------------------------------\n\n/* - (instancetype) init {\n  self = [super init] ;\n  if (self) {\n    noteObjectAllocation (self) ;\n  }\n") ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 147)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case GalgasBool::boolTrue : {
     result.appendString ("  if (nil == kTemplateDefinitionArray_") ;
-    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 150)).stringValue ()) ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 148)).stringValue ()) ;
     result.appendString (") {\n    kTemplateDefinitionArray_") ;
-    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 151)).stringValue ()) ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 149)).stringValue ()) ;
     result.appendString (" = [NSArray arrayWithObjects:\n") ;
-    GGS_uint index_6675_ (0) ;
+    GGS_uint index_6593_ (0) ;
     if (in_TEMPLATE_5F_DELIMITOR_5F_LIST.isValid ()) {
-      UpEnumerator_templateDelimitorList enumerator_6675 (in_TEMPLATE_5F_DELIMITOR_5F_LIST) ;
-      while (enumerator_6675.hasCurrentObject ()) {
+      UpEnumerator_templateDelimitorList enumerator_6593 (in_TEMPLATE_5F_DELIMITOR_5F_LIST) ;
+      while (enumerator_6593.hasCurrentObject ()) {
         result.appendString ("      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@") ;
-        result.appendString (enumerator_6675.current_mStartString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 153)).stringValue ()) ;
+        result.appendString (enumerator_6593.current_mStartString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 151)).stringValue ()) ;
         result.appendString (" endString:") ;
-        const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_6675.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 154)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_6593.current_mEndString (HERE).readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 152)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         switch (test_4) {
         case GalgasBool::boolTrue : {
           result.appendString ("nil") ;
           } break ;
         case GalgasBool::boolFalse : {
           result.appendString ("@") ;
-          result.appendString (enumerator_6675.current_mEndString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 157)).stringValue ()) ;
+          result.appendString (enumerator_6593.current_mEndString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 155)).stringValue ()) ;
           } break ;
         case GalgasBool::boolNotValid :
           break ;
         }
         result.appendString (" discardStartString:") ;
-        result.appendString (enumerator_6675.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 160)).getter_ocString (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 160)).stringValue ()) ;
+        result.appendString (enumerator_6593.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 158)).getter_ocString (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 158)).stringValue ()) ;
         result.appendString ("],\n") ;
-        enumerator_6675.gotoNextObject () ;
-        index_6675_.increment () ;
+        enumerator_6593.gotoNextObject () ;
+        index_6593_.increment () ;
       }
     }
     result.appendString ("      nil\n    ] ;\n  }\n") ;
@@ -7568,23 +7568,23 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImpl
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_5 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 167)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_5 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 165)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_5) {
   case GalgasBool::boolTrue : {
     result.appendString ("  if (nil == kTemplateReplacementArray_") ;
-    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 168)).stringValue ()) ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 166)).stringValue ()) ;
     result.appendString (") {\n    kTemplateReplacementArray_") ;
-    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 169)).stringValue ()) ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 167)).stringValue ()) ;
     result.appendString (" = [NSArray arrayWithObjects:\n") ;
-    GGS_uint index_7438_ (0) ;
+    GGS_uint index_7356_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-      UpEnumerator_templateReplacementListAST enumerator_7438 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
-      while (enumerator_7438.hasCurrentObject ()) {
+      UpEnumerator_templateReplacementListAST enumerator_7356 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+      while (enumerator_7356.hasCurrentObject ()) {
         result.appendString ("      @") ;
-        result.appendString (enumerator_7438.current_mMatchString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 171)).stringValue ()) ;
+        result.appendString (enumerator_7356.current_mMatchString (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 169)).stringValue ()) ;
         result.appendString (",\n") ;
-        enumerator_7438.gotoNextObject () ;
-        index_7438_.increment () ;
+        enumerator_7356.gotoNextObject () ;
+        index_7356_.increment () ;
       }
     }
     result.appendString ("      nil\n    ] ;\n  }\n") ;
@@ -7594,45 +7594,45 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImpl
   case GalgasBool::boolNotValid :
     break ;
   }
-  result.appendString ("  return self ;\n}\n*/\n\n//--------------------------------------------------------------------------------------------------\n\n/* - (void) dealloc {\n  noteObjectDeallocation (self) ;\n} */\n\n//--------------------------------------------------------------------------------------------------\n//\n//            Terminal Symbols as end of script in template mark\n//\n//--------------------------------------------------------------------------------------------------\n\n/*\n") ;
-  GGS_uint index_8312_ (0) ;
+  result.appendString ("  return self ;\n}\n*/\n\n//--------------------------------------------------------------------------------------------------\n\n/* - (void) dealloc {\n  noteObjectDeallocation (self) ;\n} */\n\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark\n//--------------------------------------------------------------------------------------------------\n\n/*\n") ;
+  GGS_uint index_8224_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
-    UpEnumerator_terminalList enumerator_8312 (in_TERMINAL_5F_LIST) ;
-    const bool nonEmpty_enumerator_8312 = enumerator_8312.hasCurrentObject () ;
-    if (nonEmpty_enumerator_8312) {
+    UpEnumerator_terminalList enumerator_8224 (in_TERMINAL_5F_LIST) ;
+    const bool nonEmpty_enumerator_8224 = enumerator_8224.hasCurrentObject () ;
+    if (nonEmpty_enumerator_8224) {
       result.appendString ("static const BOOL kEndOfScriptInTemplateArray_") ;
-      result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 195)).stringValue ()) ;
+      result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 191)).stringValue ()) ;
       result.appendString (" [") ;
-      result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 195)).getter_string (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 195)).stringValue ()) ;
+      result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 191)).getter_string (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 191)).stringValue ()) ;
       result.appendString ("] = {\n") ;
     }
-    while (enumerator_8312.hasCurrentObject ()) {
+    while (enumerator_8224.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_8312.current_isEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 196)).stringValue ()) ;
+      result.appendString (enumerator_8224.current_isEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 192)).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_8312.current_mTerminalName (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_8224.current_mTerminalName (HERE).readProperty_string ().stringValue ()) ;
       result.appendString (" */") ;
-      enumerator_8312.gotoNextObject () ;
-      if (enumerator_8312.hasCurrentObject ()) {
+      enumerator_8224.gotoNextObject () ;
+      if (enumerator_8224.hasCurrentObject ()) {
         result.appendString (",\n") ;
       }
-      index_8312_.increment () ;
+      index_8224_.increment () ;
     }
-    if (nonEmpty_enumerator_8312) {
+    if (nonEmpty_enumerator_8224) {
       result.appendString ("\n} ;\n") ;
     }
   }
-  result.appendString (" */\n\n//--------------------------------------------------------------------------------------------------\n//\n//               P A R S E    L E X I C A L    T O K E N\n//\n//--------------------------------------------------------------------------------------------------\n\n/* - (void) parseLexicalTokenForLexicalColoring {\n  BOOL scanningOk = YES ;\n  mTokenCode = 0 ;\n  while ((mTokenCode == 0) && (mCurrentChar != '\\0')) {\n    mTokenStartLocation = mCurrentLocation ;\n    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_") ;
-  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 213)).stringValue ()) ;
+  result.appendString (" */\n\n//--------------------------------------------------------------------------------------------------\n//               P A R S E    L E X I C A L    T O K E N\n//--------------------------------------------------------------------------------------------------\n\n/* - (void) parseLexicalTokenForLexicalColoring {\n  BOOL scanningOk = YES ;\n  mTokenCode = 0 ;\n  while ((mTokenCode == 0) && (mCurrentChar != '\\0')) {\n    mTokenStartLocation = mCurrentLocation ;\n    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 207)).stringValue ()) ;
   result.appendString (" objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {\n      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_") ;
-  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 214)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 208)).stringValue ()) ;
   result.appendString (" objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;\n      if (foundEndDelimitor) {\n        mMatchedTemplateDelimiterIndex = -1 ;\n      }\n    }\n    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n      [self searchForReplacementPattern:kTemplateReplacementArray_") ;
-  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 220)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 214)).stringValue ()) ;
   result.appendString ("] ;\n      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_") ;
-  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 221)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 215)).stringValue ()) ;
   result.appendString ("] ;\n      if (mMatchedTemplateDelimiterIndex < 0) {\n        [self advance] ;\n        mTokenCode = -2 ;\n      }\n    }\n    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\\0') && scanningOk) {\n      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;\n    }\n    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_") ;
-  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 230)).stringValue ()) ;
-  result.appendString (" [mTokenCode - 1]) {\n      mMatchedTemplateDelimiterIndex = -1 ;\n    }\n  //--- Error \?\n    if (! scanningOk) {\n      mTokenCode = -1 ;\n      [self advance] ;\n    }\n  }\n}\n*/ \n//--------------------------------------------------------------------------------------------------\n//\n//                I S    T E M P L A T E    L E X I Q U E\n//\n//--------------------------------------------------------------------------------------------------\n\n/* - (BOOL) isTemplateLexique {\n  return YES ;\n} */\n\n//--------------------------------------------------------------------------------------------------\n//\n//         L E X I Q U E   I D E N T I F I E R\n//\n//--------------------------------------------------------------------------------------------------\n\n/* - (NSString *) lexiqueIdentifier {\n  return @\"") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_cocoa_implementation.swift.galgasTemplate", 224)).stringValue ()) ;
+  result.appendString (" [mTokenCode - 1]) {\n      mMatchedTemplateDelimiterIndex = -1 ;\n    }\n  //--- Error \?\n    if (! scanningOk) {\n      mTokenCode = -1 ;\n      [self advance] ;\n    }\n  }\n}\n*/ \n//--------------------------------------------------------------------------------------------------\n//                I S    T E M P L A T E    L E X I Q U E\n//--------------------------------------------------------------------------------------------------\n\n/* - (BOOL) isTemplateLexique {\n  return YES ;\n} */\n\n//--------------------------------------------------------------------------------------------------\n//         L E X I Q U E   I D E N T I F I E R\n//--------------------------------------------------------------------------------------------------\n\n/* - (NSString *) lexiqueIdentifier {\n  return @\"") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("\" ;\n} */\n\n//--------------------------------------------------------------------------------------------------\n\n// @end\n\n") ;
   return GGS_string (result) ;

@@ -267,31 +267,25 @@ fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
   
 class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tokenizer_Protocol {
 
-//- (NSUInteger) textMacroCount ;
-
-//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
-
-//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
     return gPopUpData_0_galgasScanner_33_
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return "Source GALGAS 3"
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   func blockComment () -> String {
     return "//"
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
     let fontManager = NSFontManager.shared
@@ -310,7 +304,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
     return result
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -576,31 +570,25 @@ fileprivate let gPopUpData_1_galgasScanner_34_ : [[UInt16]] = [
   
 class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tokenizer_Protocol {
 
-//- (NSUInteger) textMacroCount ;
-
-//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
-
-//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
     return gPopUpData_1_galgasScanner_34_
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return "Source GALGAS 4"
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   func blockComment () -> String {
     return "//"
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
     let fontManager = NSFontManager.shared
@@ -619,7 +607,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
     return result
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -671,31 +659,25 @@ fileprivate let gPopUpData_2_galgasTemplateScanner : [[UInt16]] = [
   
 class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScanner, SWIFT_Tokenizer_Protocol {
 
-//- (NSUInteger) textMacroCount ;
-
-//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
-
-//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
     return gPopUpData_2_galgasTemplateScanner
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return "Template"
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   func blockComment () -> String {
     return ""
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
     let fontManager = NSFontManager.shared
@@ -714,7 +696,7 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
     return result
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

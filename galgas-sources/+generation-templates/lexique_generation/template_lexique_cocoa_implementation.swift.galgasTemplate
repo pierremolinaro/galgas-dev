@@ -59,15 +59,15 @@ func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
 
 class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func isTemplateLexique () -> Bool {
     return true
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Lexical analysis
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
     let startLocation = self.currentLocation
@@ -131,14 +131,12 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 //    }
 //  }
   
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //                           init
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (instancetype) init {
@@ -185,9 +183,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 } */
 
 //--------------------------------------------------------------------------------------------------
-//
 //            Terminal Symbols as end of script in template mark
-//
 //--------------------------------------------------------------------------------------------------
 
 /*
@@ -200,9 +196,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 % */
 
 //--------------------------------------------------------------------------------------------------
-//
 //               P A R S E    L E X I C A L    T O K E N
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (void) parseLexicalTokenForLexicalColoring {
@@ -239,9 +233,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 }
 */ 
 //--------------------------------------------------------------------------------------------------
-//
 //                I S    T E M P L A T E    L E X I Q U E
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (BOOL) isTemplateLexique {
@@ -249,9 +241,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 } */
 
 //--------------------------------------------------------------------------------------------------
-//
 //         L E X I Q U E   I D E N T I F I E R
-//
 //--------------------------------------------------------------------------------------------------
 
 /* - (NSString *) lexiqueIdentifier {

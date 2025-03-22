@@ -119,31 +119,25 @@ fileprivate let gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifi
   
 class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexique_%!lexiqueClassName%, SWIFT_Tokenizer_Protocol {
 
-//- (NSUInteger) textMacroCount ;
-
-//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
-
-//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
     return gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]%
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return %![title utf8RepresentationEscapingQuestionMark]%
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   func blockComment () -> String {
     return %![blockComment utf8RepresentationEscapingQuestionMark]%
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
     let fontManager = NSFontManager.shared
@@ -162,7 +156,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
     return result
   }
 
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
