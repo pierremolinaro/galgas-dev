@@ -220,6 +220,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/instruction-for.galgas"
   "galgas-sources/instruction-grammar.galgas"
   "galgas-sources/instruction-inc-dec.galgas"
+  "galgas-sources/instruction-comma-separated-expression.galgas"
   "galgas-sources/instruction-if.galgas"
   "galgas-sources/instruction-let.galgas"
   "galgas-sources/instruction-log.galgas"

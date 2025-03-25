@@ -3782,20 +3782,6 @@ void extensionSetter_insertUsedLocalConstant (class GGS_localVarManager & ioObje
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertInitializedLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializedLocalConstant (class GGS_localVarManager & ioObject,
-                                                     const class GGS_lstring constin_inVarName,
-                                                     const class GGS_unifiedTypeMapEntry constin_inType,
-                                                     const class GGS_string constin_inCppName,
-                                                     const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@localVarManager insertDeclaredLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
@@ -3952,16 +3938,6 @@ void extensionSetter_insertInitializerSelfProperty (class GGS_localVarManager & 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager openOverrideForSelectBlock'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openOverrideForSelectBlock (class GGS_localVarManager & ioObject,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@localVarManager openOverrideForRepeatBlock'
 //
 //--------------------------------------------------------------------------------------------------
@@ -3980,16 +3956,6 @@ void extensionSetter_closeOverride (class GGS_localVarManager & ioObject,
                                     const class GGS_location constin_inEndOfBranchLocation,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager openBranch'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openBranch (class GGS_localVarManager & ioObject,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

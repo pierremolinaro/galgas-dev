@@ -29,8 +29,8 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression
 
-  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                            !@ifExpressionList outExpressionList
+  rule <comma_separated_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                         !@CommaSeparatedExpressionList outExpressionList
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
@@ -78,7 +78,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     or
       $guard$
       let instructionLocation = @location.here
-      <if_expression_ggs3> !?ioDeclarations ?let testExpression
+      <comma_separated_expression_ggs3> !?ioDeclarations ?let testExpression
       $else$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
@@ -364,8 +364,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
                     !@semanticExpressionAST outExpression
 
-  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
-                       !@ifExpressionList outExpressionList
+  rule <comma_separated_expression> ?!@galgasDeclarationAST ioDeclarations
+                                    !@CommaSeparatedExpressionList outExpressionList
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                !@formalParameterListAST outFormalParameterList
@@ -409,10 +409,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     or
       $guard$
       let instructionLocation = @location.here
-      <if_expression> !?ioDeclarations ?let testExpression
+      <comma_separated_expression> !?ioDeclarations ?let testExpression
       $else$
-//      <error_instruction> !?ioDeclarations ?let errorInstruction
-//      let @semanticInstructionListAST else_instructionList = @[init  (errorInstruction)]
       <semantic_instruction_list> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
       $end$

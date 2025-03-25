@@ -1,0 +1,403 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//! SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas3InstructionsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <comma_separated_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                         !@CommaSeparatedExpressionList outExpressionList {
+    outExpressionList = @()
+    repeat
+      select
+        $let$
+        let @lstring constantName
+        select
+          $identifier$ ?constantName
+        or
+          $*$
+          constantName = ["" here]
+        end
+        $=$
+        <expression_or_ggs3> !?ioDeclarations ?let expression
+        let endOfReceiverExpression = @location.here
+        select
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: ["" here]
+          }
+        or
+          $as$
+          <type_definition_ggs3> !?ioDeclarations ?let typeName
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: typeName
+          }
+        end
+      or
+        <expression_ggs3> !?ioDeclarations ?let expression
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
+      end
+    while
+      $,$
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4InstructionsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <comma_separated_expression> ?!@galgasDeclarationAST ioDeclarations
+                                    !@CommaSeparatedExpressionList outExpressionList {
+    outExpressionList = @()
+    repeat
+      select
+        $let$
+        let @lstring constantName
+        select
+          $identifier$ ?constantName
+        or
+          $*$
+          constantName = ["" here]
+        end
+        $=$
+        <expression_or> !?ioDeclarations ?let expression
+        let endOfReceiverExpression = @location.here
+        select
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: ["" here]
+          }
+        or
+          $as$
+          <type_definition> !?ioDeclarations ?let typeName
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: typeName
+          }
+        end
+      or
+        <expression> !?ioDeclarations ?let expression
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
+      end
+    while
+      $,$
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//! AST
+//--------------------------------------------------------------------------------------------------
+
+enum @ifExpressionKind {
+  case regularExp (@semanticExpressionAST exp @location endOfExp)
+  case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+list @CommaSeparatedExpressionList {
+  public let @ifExpressionKind mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  method enterExpressionListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for (expression) in self do
+      switch expression
+      case regularExp (exp *) :
+        [exp enterExpressionInSemanticContext !?ioTypeMap]
+      case letExp (* exp * @lstring typeName) :
+        [exp enterExpressionInSemanticContext !?ioTypeMap]
+        [!?ioTypeMap makeEntry !typeName ?*]
+      end
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  method analyzeSemanticExpressionList ?let @lstring inUsefulnessCallerEntityName
+                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                       ?let @analysisContext inAnalysisContext
+                                       ?!@unifiedTypeMap ioTypeMap
+                                       ?!@localVarManager ioVariableMap
+                                       !@ifTestListForGeneration outTestListForGeneration {
+    outTestListForGeneration = @()
+    for (expression) in self do
+      switch expression
+      case regularExp (exp endOfExpression) :
+        [exp analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: .null
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?let analyzed_if_expression
+        ]
+        checkExpressionIsBoolean (
+          !inAnalysisContext
+          !endOfExpression
+          !analyzed_if_expression
+          ?let if_expression
+        )
+        outTestListForGeneration += !.regular {!exp: if_expression}
+        [!?ioVariableMap openOverrideForSelectBlock]
+        [!?ioVariableMap openBranch]
+      case letExp (constantName exp * @lstring typeName) :
+        [exp analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: .null
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?let analyzedExpression
+        ]
+        var castType = @unifiedTypeMapEntry.null
+        var testType = @unifiedTypeMapEntry.null
+      //--- Check this is an optional
+        let unwrappedType = [analyzedExpression.mResultType definition].unwrappedType 
+        if not [unwrappedType isNull] then
+          [!?ioVariableMap openOverrideForSelectBlock]
+          [!?ioVariableMap openBranch]
+          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
+                + "_" + [constantName.location startLocationIndex]
+          if constantName.string != "" then
+            [!?ioVariableMap insertInitializedLocalConstant
+              !constantName
+              !unwrappedType
+              !targetVariableCppName
+              !targetVariableCppName
+            ]
+          end
+          castType = unwrappedType
+          testType = analyzedExpression.mResultType
+          outTestListForGeneration += !.optionalExp {
+            !targetVarCppName: targetVariableCppName
+            !exp: analyzedExpression
+            !targetType: unwrappedType
+          }
+      //--- Check this is a class
+        elsif [[analyzedExpression.mResultType definition].typeKind isClassType] then
+          if typeName.string == "" then
+            error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
+          else
+            castType = [ioTypeMap typeMapEntryForLKey !typeName]
+            testType = castType
+          //--- Check expression type is a descendant of named type
+            var @unifiedTypeMapEntry t = castType
+            var @bool found = t == analyzedExpression.mResultType
+            loop ([ioTypeMap count] + 1)
+            while (not found) & not [[t definition].superType isNull] do
+              t = [t definition].superType
+              found = t == analyzedExpression.mResultType
+            end
+            if not found then
+              error typeName
+              : "the '@" + typeName + "' type is not a descendant of the '@"
+              + [analyzedExpression.mResultType definition].typeName.string
+              + "' type of the cast expression"
+            end
+          end
+          [!?ioVariableMap openOverrideForSelectBlock]
+          [!?ioVariableMap openBranch]
+          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
+                + "_" + [constantName.location startLocationIndex]
+          if constantName.string != "" then
+            [!?ioVariableMap insertInitializedLocalConstant
+              !constantName
+              !castType
+              !targetVariableCppName
+              !targetVariableCppName
+            ]
+          end
+          outTestListForGeneration += !.letExp {
+            !targetVarCppName: targetVariableCppName
+            !exp: analyzedExpression
+            !targetType: castType
+            !testType: testType
+          }
+        elsif let weakRefType = [[analyzedExpression.mResultType definition].typeKind getWeakReferenceType] then
+          if typeName.string == "" then
+            castType = weakRefType.referenceType
+          else
+            castType = [ioTypeMap typeMapEntryForLKey !typeName]
+          end
+          testType = castType
+          var @unifiedTypeMapEntry t = castType
+          var @bool found = t == analyzedExpression.mResultType
+          if found then
+            [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
+          elsif t == weakRefType.referenceType then
+            found = true
+          end
+          loop ([ioTypeMap count] + 1)
+          while (not found) & not [[t definition].superType isNull] do
+            t = [t definition].superType
+            if t == analyzedExpression.mResultType then
+              found = true
+              [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
+            elsif t == weakRefType.referenceType then
+              found = true
+            end
+          end
+          if not found then
+            error typeName
+            : "the '@" + [castType definition].typeName.string
+            + "' type is not compatible with the '@"
+            + [analyzedExpression.mResultType definition].typeName.string + "' type"
+          end
+          [!?ioVariableMap openOverrideForSelectBlock]
+          [!?ioVariableMap openBranch]
+          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
+                + "_" + [constantName.location startLocationIndex]
+          if constantName.string != "" then
+            [!?ioVariableMap insertInitializedLocalConstant
+              !constantName
+              !castType
+              !targetVariableCppName
+              !targetVariableCppName
+            ]
+          end
+          outTestListForGeneration += !.letExp {
+            !targetVarCppName: targetVariableCppName
+            !exp: analyzedExpression
+            !targetType: castType
+            !testType: testType
+          }
+        else
+          error analyzedExpression.mLocation
+           : "expression should be a class instance, or a weak reference: it is an @"
+           +  [analyzedExpression.mResultType definition].typeName.string + " instance"
+        end
+      end
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//! GENERATION
+//--------------------------------------------------------------------------------------------------
+
+enum @ifTestForGeneration {
+  case regular (@semanticExpressionForGeneration exp)
+  case letExp (@string targetVarCppName
+               @semanticExpressionForGeneration exp
+               @unifiedTypeMapEntry targetType
+               @unifiedTypeMapEntry testType)
+  case optionalExp (@string targetVarCppName
+                    @semanticExpressionForGeneration exp
+                    @unifiedTypeMapEntry targetType)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+list @ifTestListForGeneration {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let @ifTestForGeneration mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  method generateInstruction ?!@stringset ioInclusionSet
+                             ?!@uint ioTemporaryVariableIndex
+                             ?!@stringset ioUnusedVariableCppNameSet
+                             ?!@string ioGeneratedCode
+                             !@string outTestVar {
+  //--- Generate test expression
+    outTestVar = "test_" + [ioTemporaryVariableIndex string]
+    ioTemporaryVariableIndex += 1
+    ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
+    for (expression) in self do
+      ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
+      [!?ioGeneratedCode incIndentation !2]
+      switch expression
+      case regular (exp) :
+        [exp generateExpression
+          !?ioGeneratedCode
+          !?ioInclusionSet
+          !?ioTemporaryVariableIndex
+          !?ioUnusedVariableCppNameSet
+          ?let cppVarName
+        ]
+        ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
+      case letExp (targetVarCppName exp targetType testType) :
+        [targetType addHeaderFileName !?ioInclusionSet]
+        [testType addHeaderFileName !?ioInclusionSet]
+        let targetTypeName = [targetType identifierRepresentation]
+        let testTypeName = [testType identifierRepresentation]
+        [exp generateExpression
+          !?ioGeneratedCode
+          !?ioInclusionSet
+          !?ioTemporaryVariableIndex
+          !?ioUnusedVariableCppNameSet
+          ?let cppVarName
+        ]
+        ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
+        ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
+        ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
+        ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
+        ioGeneratedCode += "}\n"
+      case optionalExp (targetVarCppName exp targetType) :
+        let targetTypeName = [targetType identifierRepresentation]
+        [exp generateExpression
+          !?ioGeneratedCode
+          !?ioInclusionSet
+          !?ioTemporaryVariableIndex
+          !?ioUnusedVariableCppNameSet
+          ?let cppVarName
+        ]
+        ioGeneratedCode += "const GGS_" + targetTypeName + " " + targetVarCppName
+        ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
+        ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
+        ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
+        ioGeneratedCode += "}\n"
+      end
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+}
+
+//--------------------------------------------------------------------------------------------------

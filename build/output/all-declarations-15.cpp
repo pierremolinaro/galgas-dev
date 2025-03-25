@@ -11043,29 +11043,29 @@ GGS_ifExpressionKind_2E_regularExp_3F_ GGS_ifExpressionKind_2E_regularExp_3F_::e
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element::GGS_ifExpressionList_2E_element (void) :
+GGS_CommaSeparatedExpressionList_2E_element::GGS_CommaSeparatedExpressionList_2E_element (void) :
 mProperty_mExpression () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element::GGS_ifExpressionList_2E_element (const GGS_ifExpressionList_2E_element & inSource) :
+GGS_CommaSeparatedExpressionList_2E_element::GGS_CommaSeparatedExpressionList_2E_element (const GGS_CommaSeparatedExpressionList_2E_element & inSource) :
 mProperty_mExpression (inSource.mProperty_mExpression) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element & GGS_ifExpressionList_2E_element::operator = (const GGS_ifExpressionList_2E_element & inSource) {
+GGS_CommaSeparatedExpressionList_2E_element & GGS_CommaSeparatedExpressionList_2E_element::operator = (const GGS_CommaSeparatedExpressionList_2E_element & inSource) {
   mProperty_mExpression = inSource.mProperty_mExpression ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::init_21_ (const GGS_ifExpressionKind & in_mExpression,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifExpressionList_2E_element result ;
+GGS_CommaSeparatedExpressionList_2E_element GGS_CommaSeparatedExpressionList_2E_element::init_21_ (const GGS_ifExpressionKind & in_mExpression,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_CommaSeparatedExpressionList_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mExpression = in_mExpression ;
   return result ;
@@ -11073,21 +11073,21 @@ GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::init_21_ (const
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_CommaSeparatedExpressionList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element::GGS_ifExpressionList_2E_element (const GGS_ifExpressionKind & inOperand0) :
+GGS_CommaSeparatedExpressionList_2E_element::GGS_CommaSeparatedExpressionList_2E_element (const GGS_ifExpressionKind & inOperand0) :
 mProperty_mExpression (inOperand0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::class_func_new (const GGS_ifExpressionKind & in_mExpression,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifExpressionList_2E_element result ;
+GGS_CommaSeparatedExpressionList_2E_element GGS_CommaSeparatedExpressionList_2E_element::class_func_new (const GGS_ifExpressionKind & in_mExpression,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_CommaSeparatedExpressionList_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mExpression = in_mExpression ;
   return result ;
@@ -11095,21 +11095,21 @@ GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::class_func_new 
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifExpressionList_2E_element::isValid (void) const {
+bool GGS_CommaSeparatedExpressionList_2E_element::isValid (void) const {
   return mProperty_mExpression.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionList_2E_element::drop (void) {
+void GGS_CommaSeparatedExpressionList_2E_element::drop (void) {
   mProperty_mExpression.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionList_2E_element::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ifExpressionList.element:") ;
+void GGS_CommaSeparatedExpressionList_2E_element::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @CommaSeparatedExpressionList.element:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -11119,40 +11119,40 @@ void GGS_ifExpressionList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ifExpressionList.element generic code implementation
+//     @CommaSeparatedExpressionList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList_2E_element ("ifExpressionList.element",
-                                                                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_CommaSeparatedExpressionList_2E_element ("CommaSeparatedExpressionList.element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifExpressionList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionList_2E_element ;
+const C_galgas_type_descriptor * GGS_CommaSeparatedExpressionList_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_CommaSeparatedExpressionList_2E_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_ifExpressionList_2E_element::clonedObject (void) const {
+AC_GALGAS_root * GGS_CommaSeparatedExpressionList_2E_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_ifExpressionList_2E_element (*this)) ;
+    macroMyNew (result, GGS_CommaSeparatedExpressionList_2E_element (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionList_2E_element GGS_ifExpressionList_2E_element::extractObject (const GGS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_ifExpressionList_2E_element result ;
-  const GGS_ifExpressionList_2E_element * p = (const GGS_ifExpressionList_2E_element *) inObject.embeddedObject () ;
+GGS_CommaSeparatedExpressionList_2E_element GGS_CommaSeparatedExpressionList_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_CommaSeparatedExpressionList_2E_element result ;
+  const GGS_CommaSeparatedExpressionList_2E_element * p = (const GGS_CommaSeparatedExpressionList_2E_element *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifExpressionList_2E_element *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_CommaSeparatedExpressionList_2E_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifExpressionList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("CommaSeparatedExpressionList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -361,6 +361,18 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                           GGS_castInstructionBranchListAST & ioArgument1,
                                                           Lexique_galgasScanner_33_ * inCompiler) ;
 
+//------------------------------------- 'comma_separated_expression_ggs3' non terminal
+//--- 'parse' label
+  public: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                        GGS_CommaSeparatedExpressionList & outArgument1,
+                                                                        Lexique_galgasScanner_33_ * inCompiler) ;
+
 //------------------------------------- 'declaration_ggs3' non terminal
 //--- 'parse' label
   public: virtual void nt_declaration_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
@@ -675,18 +687,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 //----------- '' label
   public: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (GGS_lstringlist & ioArgument0,
                                                                  Lexique_galgasScanner_33_ * inCompiler) ;
-
-//------------------------------------- 'if_expression_ggs3' non terminal
-//--- 'parse' label
-  public: virtual void nt_if_5F_expression_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_if_5F_expression_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_if_5F_expression_5F_ggs_33__ (GGS_galgasDeclarationAST & ioArgument0,
-                                                        GGS_ifExpressionList & outArgument1,
-                                                        Lexique_galgasScanner_33_ * inCompiler) ;
 
 //------------------------------------- 'if_instruction_core' non terminal
 //--- 'parse' label

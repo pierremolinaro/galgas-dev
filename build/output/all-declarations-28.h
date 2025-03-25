@@ -90,19 +90,6 @@ void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_loca
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkExpressionIsBoolean???!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkExpressionIsBoolean_3F__3F__3F__21_ (const class GGS_analysisContext constinArgument0,
-                                                       const class GGS_location constinArgument1,
-                                                       const class GGS_semanticExpressionForGeneration constinArgument2,
-                                                       class GGS_semanticExpressionForGeneration & outArgument3,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'filewrapperNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

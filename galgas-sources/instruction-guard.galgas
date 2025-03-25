@@ -28,89 +28,6 @@ syntax extension galgas3InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#  rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-#                             !@semanticInstructionAST outInstruction {
-#    let instructionLocation = @location.here
-#    <if_expression_ggs3> !?ioDeclarations ?let testExpression
-#    $then$
-#    <semantic_instruction_list_ggs3> !?ioDeclarations ?let then_instructionList
-#    let endOf_then_branchLocation = @location.here
-#    let @semanticInstructionListAST else_instructionList
-#    select
-#      else_instructionList = @semanticInstructionListAST ()
-#    or
-#      $else$
-#      <semantic_instruction_list_ggs3> !?ioDeclarations ?else_instructionList
-#    or
-#      $elsif$
-#      <if_instruction_core> !?ioDeclarations ?let instruction
-#      else_instructionList = @[init  (instruction)]
-#    end
-#    outInstruction = @ifInstructionAST {
-#      !instructionLocation
-#      !testExpression
-#      !then_instructionList
-#      !endOf_then_branchLocation
-#      !else_instructionList
-#      !@location.here
-#    }
-#  }
-#
-#  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#
-#  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                                   !@semanticInstructionAST outInstruction {
-#    $guard$
-#    <if_instruction_core> !?ioDeclarations ?outInstruction
-#    $end$
-#  }
-#
-#  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#
-#  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                            !@ifExpressionList outExpressionList {
-#    outExpressionList = @()
-#    repeat
-#      select
-#        $let$
-#        let @lstring constantName
-#        select
-#          $identifier$ ?constantName
-#        or
-#          $*$
-#          constantName = ["" here]
-#        end
-#        $=$
-#        <expression_or_ggs3> !?ioDeclarations ?let expression
-#        let endOfReceiverExpression = @location.here
-#        select
-#          outExpressionList += !.letExp {
-#            !constantName: constantName
-#            !exp: expression
-#            !endOfExp: endOfReceiverExpression
-#            !typeName: ["" here]
-#          }
-#        or
-#          $as$
-#          <type_definition_ggs3> !?ioDeclarations ?let typeName
-#          outExpressionList += !.letExp {
-#            !constantName: constantName
-#            !exp: expression
-#            !endOfExp: endOfReceiverExpression
-#            !typeName: typeName
-#          }
-#        end
-#      or
-#        <expression_ggs3> !?ioDeclarations ?let expression
-#        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
-#      end
-#    while
-#      $,$
-#    end
-#  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -128,7 +45,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $guard$
     let instructionLocation = @location.here
-    <if_expression> !?ioDeclarations ?let testExpression
+    <comma_separated_expression> !?ioDeclarations ?let testExpression
     $else$
       $error$
 #    $end$
@@ -169,7 +86,7 @@ syntax extension galgas4InstructionsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
-#                       !@ifExpressionList outExpressionList {
+#                       !@CommaSeparatedExpressionList outExpressionList {
 #    outExpressionList = @()
 #    repeat
 #      select
