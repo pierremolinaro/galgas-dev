@@ -315,6 +315,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   override func close () {
     DispatchQueue.main.async {
+      for tab in self.mTabArray {
+        if tab.mDocument.isDocumentEdited {
+          tab.mDocument.save (nil)
+        }
+      }
       self.mTabArray.removeAll ()
       SWIFT_DocumentController.closeUnreferencedDocuments ()
     }
@@ -1063,24 +1068,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         self.mResultData.removeSubrange (self.mResultData.startIndex ..< idx)
       }
     }
-  //--- Look for last line feed
-//    let startIndex = self.mResultData.startIndex
-//    var idx = self.mResultData.endIndex
-//    var ok = false
-//    while !ok, idx > 0 {
-//      idx -= 1
-//      ok = self.mResultData [idx] == ASCII.lineFeed.rawValue
-//    }
-  //--- If found, extract data
-//    if ok {
-//      idx += 1
-//      let data = self.mResultData [startIndex ..< idx]
-//      if let string = String (data: data, encoding: .utf8) {
-//        self.processBuildOutputString (string)
-//        self.mResultData.removeSubrange (startIndex ..< idx)
-//      }
-//    }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mBuildOutputCurrentColor = NSColor.black
+  private var mBuildOutputIsBold = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1088,28 +1081,74 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     if let string = String (data: inData, encoding: .utf8) {
       if string.hasPrefix ("red:") {
         let str = String (string.dropFirst ("red:".count))
-        self.mBuildLogTextView.appendMessageString (str, color: .systemRed)
+        self.mBuildLogTextView.appendMessageString (str, color: .systemRed, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("green:") {
         let str = String (string.dropFirst ("green:".count))
-        self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0))
+        self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0), bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("magenta:") {
         let str = String (string.dropFirst ("magenta:".count))
-        self.mBuildLogTextView.appendMessageString (str, color: .magenta)
+        self.mBuildLogTextView.appendMessageString (str, color: .magenta, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("orange:") {
         let str = String (string.dropFirst ("orange:".count))
-        self.mBuildLogTextView.appendMessageString (str, color: .systemOrange)
+        self.mBuildLogTextView.appendMessageString (str, color: .systemOrange, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("blue:") {
         let str = String (string.dropFirst ("blue:".count))
-        self.mBuildLogTextView.appendMessageString (str, color: .systemBlue)
+        self.mBuildLogTextView.appendMessageString (str, color: .systemBlue, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("json:") {
         let str = String (string.dropFirst ("json:".count))
         let locationInBuildTextView = (self.mBuildLogTextView.string as NSString).length
         self.appendIssue (jsonString: str, locationInBuildTextView)
       }else{
-        self.mBuildLogTextView.appendMessageString (string, color: self.mCurrentBuildOutputColor)
+        var str = string
+        var displayString = ""
+        var loop = true
+        while loop {
+          if str.hasPrefix ("\u{1B}[") {
+            self.mBuildLogTextView.appendMessageString (displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
+            displayString = ""
+            str = String (str.dropFirst ("\u{1B}[".count))
+            if str.hasPrefix ("30m") {
+              str = String (str.dropFirst ("30m".count))
+              self.mBuildOutputCurrentColor = .black
+            }else if str.hasPrefix ("31m") {
+              str = String (str.dropFirst ("31m".count))
+              self.mBuildOutputCurrentColor = .systemRed
+            }else if str.hasPrefix ("32m") {
+              str = String (str.dropFirst ("32m".count))
+              self.mBuildOutputCurrentColor = .systemGreen
+            }else if str.hasPrefix ("33m") {
+              str = String (str.dropFirst ("33m".count))
+              self.mBuildOutputCurrentColor = .systemYellow
+            }else if str.hasPrefix ("34m") {
+              str = String (str.dropFirst ("34m".count))
+              self.mBuildOutputCurrentColor = .systemBlue
+            }else if str.hasPrefix ("35m") {
+              str = String (str.dropFirst ("35m".count))
+              self.mBuildOutputCurrentColor = .magenta
+            }else if str.hasPrefix ("36m") {
+              str = String (str.dropFirst ("36m".count))
+              self.mBuildOutputCurrentColor = .cyan
+            }else if str.hasPrefix ("0m") {
+              str = String (str.dropFirst ("0m".count))
+              self.mBuildOutputCurrentColor = .black
+              self.mBuildOutputIsBold = false
+            }else if str.hasPrefix ("1m") {
+              str = String (str.dropFirst ("1m".count))
+              self.mBuildOutputIsBold = true
+            }else{
+              self.mBuildOutputCurrentColor = .black
+            }
+          }else if !str.isEmpty {
+            let c = str.removeFirst ()
+            displayString.append (c)
+          }else{
+            loop = false
+          }
+        }
+        self.mBuildLogTextView.appendMessageString (displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
       }
     }else{
-      self.mBuildLogTextView.appendMessageString ("<<invalid output>>\n", color: self.mCurrentBuildOutputColor)
+      self.mBuildLogTextView.appendMessageString ("<<invalid output>>\n", color: self.mCurrentBuildOutputColor, bold: true)
     }
     self.mBuildLogTextView.scrollToEndOfText ()
   }
@@ -1121,13 +1160,14 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     if let issue = SWIFT_Issue (jsonString: inString, inLocationInBuildLogTextView) {
       self.mBuildLogTextView.appendMessageString (
         "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
-        color: issue.color
+        color: issue.color,
+        bold: true
      )
       for str in issue.messageArray {
-        self.mBuildLogTextView.appendMessageString (str + "\n", color: issue.color)
+        self.mBuildLogTextView.appendMessageString (str + "\n", color: issue.color, bold: true)
       }
       for fixit in issue.fixitArray {
-        self.mBuildLogTextView.appendMessageString ("  " + fixit.messageString + "\n", color: .systemBrown)
+        self.mBuildLogTextView.appendMessageString ("  " + fixit.messageString + "\n", color: .systemBrown, bold: false)
       }
     //--- Note issue on user interface
       self.mIssueArray.append (issue)
@@ -1146,7 +1186,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         self.mErrorCountTextField.setHidden (false)
       }
     }else{
-      self.mBuildLogTextView.appendMessageString ("<<invalid \(inString)>>\n", color: .systemRed)
+      self.mBuildLogTextView.appendMessageString ("<<invalid \(inString)>>\n", color: .systemRed, bold: true)
     }
   }
 

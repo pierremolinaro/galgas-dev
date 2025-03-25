@@ -56,9 +56,7 @@ mTokenCode (inOperand.mTokenCode) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //  Exception raised when maximum error count is reached
-//
 //--------------------------------------------------------------------------------------------------
 
 const char * max_error_count_reached_exception::what (void) const throw () {
@@ -66,9 +64,7 @@ const char * max_error_count_reached_exception::what (void) const throw () {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //  Exception raised when maximum warning count is reached
-//
 //--------------------------------------------------------------------------------------------------
 
 static const char * kMaxWarning = "The maximum warning count is reached" ;
@@ -116,9 +112,7 @@ int32_t totalWarningCount (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Construct error or warning location message
-//
 //--------------------------------------------------------------------------------------------------
 
 static String errorOrWarningLocationString (const IssueWithFixIt & inIssue,
@@ -196,9 +190,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    This method is called by lexique for signaling lexical warning
-//
 //--------------------------------------------------------------------------------------------------
 
 void signalLexicalWarning (Compiler * inCompiler,
@@ -207,7 +199,7 @@ void signalLexicalWarning (Compiler * inCompiler,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount ++ ;
+  mTotalWarningCount += 1 ;
 //--- Construct location warning message
   String warningMessage ;
 //--- Add warning
@@ -226,9 +218,7 @@ void signalLexicalWarning (Compiler * inCompiler,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    This method is called by lexique for signaling lexical error
-//
 //--------------------------------------------------------------------------------------------------
 
 void signalLexicalError (Compiler * inCompiler,
@@ -237,7 +227,7 @@ void signalLexicalError (Compiler * inCompiler,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Construct parsing error message
   String errorMessage ;
   errorMessage.appendString (verboseOutput () ? "lexical " : "") ;
@@ -255,9 +245,7 @@ void signalLexicalError (Compiler * inCompiler,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    This method is called by lexique for signaling parsing error
-//
 //--------------------------------------------------------------------------------------------------
 
 void signalParsingError (Compiler * inCompiler,
@@ -268,7 +256,7 @@ void signalParsingError (Compiler * inCompiler,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Construct parsing error message
@@ -298,9 +286,7 @@ void signalParsingError (Compiler * inCompiler,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //            Method called for signaling an extract error
-//
 //--------------------------------------------------------------------------------------------------
 
 void signalExtractError (Compiler * inCompiler,
@@ -360,7 +346,7 @@ void signalSemanticWarning (Compiler * inCompiler,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount ++ ;
+  mTotalWarningCount += 1 ;
 //--- Construct location error message
   String warningMessage ;
 //--- Add warning
@@ -411,7 +397,7 @@ void signalRunTimeError (Compiler * inCompiler,
                          const String & inRunTimeErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage = "Run Time Error #" ;
   errorMessage.appendSigned (mErrorTotalCount) ;
@@ -432,7 +418,7 @@ void signalRunTimeWarning (Compiler * inCompiler,
                            const String & inWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount ++ ;
+  mTotalWarningCount += 1 ;
 //--- Construct location error message
   String warningMessage = "Run Time Warning #" ;
   warningMessage.appendSigned (mTotalWarningCount) ;
@@ -459,9 +445,7 @@ static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
 static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Method called for printing an error
-//
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printError (Compiler * inCompiler,
@@ -577,9 +561,7 @@ void ggs_fatalError (const String & inErrorMessage,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Method called for printing a warning
-//
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printWarning (Compiler * inCompiler,
@@ -625,7 +607,7 @@ void ggs_printWarning (Compiler * inCompiler,
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (warningMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.appendNewLine () ; ;
+      gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
     }
@@ -643,9 +625,7 @@ void ggs_printWarning (Compiler * inCompiler,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Method called for printing a success message
-//
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printFileOperationSuccess (const String & inMessage) {
@@ -709,9 +689,7 @@ void ggs_printFileDeletionSuccess (const String & inMessage) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Method called for printing a file creation success
-//
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printFileCreationSuccess (const String & inMessage) {
@@ -744,21 +722,37 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    Methods called for printing a message
-//
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printMessage (const String & inMessage
                        COMMA_LOCATION_ARGS) {
   if (inMessage.length () > 0) {
-    if (! executionModeIsIndexing ()) {
+    if (!executionModeIsIndexing ()) {
       String message = inMessage ;
-      gCout.appendString (message) ;
       if (message.lastChar (HERE) != TO_UNICODE ('\n')) {
-        gCout.appendNewLine () ;
+        message.appendString ("\n") ;
       }
-      gCout.flush () ;
+      switch (issueOutputKind ()) {
+      case IssueOutputKind::swiftApp :
+        gCout.appendString (message) ;
+        gCout.flush () ;
+        break ;
+      case IssueOutputKind::cocoa :
+        gCout.setForeColor (kBlackForeColor) ;
+        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.appendString (message) ;
+        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.flush () ;
+        break ;
+      case IssueOutputKind::regular :
+        gCout.setForeColor (kBlackForeColor) ;
+        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.appendString (message) ;
+        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.flush () ;
+        break ;
+      }
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (verboseOutput ()) {
@@ -787,7 +781,6 @@ mStartLocation (),
 mEndLocation (),
 mTemplateStringBeforeToken (),
 mSeparatorStringBeforeToken (),
-// mIsOptional (false),
 mTokenCode (0) {
 }
 

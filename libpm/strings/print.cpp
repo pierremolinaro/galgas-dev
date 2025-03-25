@@ -7,26 +7,29 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "print.h"
+#include "Compiler.h"
+
+//--------------------------------------------------------------------------------------------------
+
 #include <iostream>
 
 //--------------------------------------------------------------------------------------------------
 
 void routine_println_3F_ (const GGS_string inString,
-                          Compiler * /* inCompiler */
-                          COMMA_UNUSED_LOCATION_ARGS) {
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    gCout.appendString (inString.stringValue ()) ;
-    gCout.appendNewLine () ;
+    inCompiler->printMessage (inString.stringValue () + "\n" COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void routine_print_3F_ (const GGS_string inString,
-                        Compiler * /* inCompiler */
-                        COMMA_UNUSED_LOCATION_ARGS) {
+                        Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    gCout.appendString (inString.stringValue ()) ;
+    inCompiler->printMessage (inString.stringValue () COMMA_THERE) ;
   }
 }
 

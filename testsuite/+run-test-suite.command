@@ -5,7 +5,7 @@ cd `dirname $0`/../makefile-unix && /usr/bin/python3 build.py debug &&
 cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files --Werror +testsuite.galgasProject &&
 cd `dirname $0`/makefile-unix && /usr/bin/python3 build.py &&
 echo "*** Running test suite" &&
-cd `dirname $0` && ./makefile-unix/testsuite > results.txt &&
+cd `dirname $0` && ./makefile-unix/testsuite --no-color > results.txt &&
 if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
   /Applications/Xcode.app/Contents/Developer/usr/bin/opendiff results.txt results_reference.txt
   echo "*************************"
@@ -13,7 +13,7 @@ if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
   echo "*************************"
 else
   echo "*** Running test suite (debug mode)" &&
-  cd `dirname $0` && ./makefile-unix/testsuite-debug -q &&
+  cd `dirname $0` && ./makefile-unix/testsuite-debug --no-color -q &&
   echo "*************************"
   echo "*        SUCCESS        *"
   echo "*************************"
