@@ -247,6 +247,19 @@ void GGS_stringlist::addAssign_operation (const GGS_string & inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_stringlist::plusPlusAssignOperation (const GGS_stringlist_2E_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_stringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_stringlist::setter_append (const GGS_string inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
@@ -846,6 +859,19 @@ void GGS_lstringlist::addAssign_operation (const GGS_lstring & inOperand0
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lstringlist::plusPlusAssignOperation (const GGS_lstringlist_2E_element & inValue,
+                                               Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1481,6 +1507,19 @@ void GGS__32_stringlist::addAssign_operation (const GGS_string & inOperand0,
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_stringlist::plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inValue,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_stringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2470,6 +2509,19 @@ void GGS_functionlist::addAssign_operation (const GGS_function & inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_functionlist::plusPlusAssignOperation (const GGS_functionlist_2E_element & inValue,
+                                                Compiler * /* inCompiler */
+                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_functionlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_functionlist::setter_append (const GGS_function inOperand0,
                                       Compiler * /* inCompiler */
                                       COMMA_LOCATION_ARGS) {
@@ -2909,6 +2961,19 @@ void GGS_luintlist::addAssign_operation (const GGS_luint & inOperand0
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_luintlist::plusPlusAssignOperation (const GGS_luintlist_2E_element & inValue,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_luintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3498,6 +3563,19 @@ void GGS_objectlist::addAssign_operation (const GGS_object & inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_objectlist::plusPlusAssignOperation (const GGS_objectlist_2E_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_objectlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_objectlist::setter_append (const GGS_object inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
@@ -3937,6 +4015,19 @@ void GGS_typelist::addAssign_operation (const GGS_type & inOperand0
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typelist::plusPlusAssignOperation (const GGS_typelist_2E_element & inValue,
+                                            Compiler * /* inCompiler */
+                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typelist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4384,6 +4475,19 @@ void GGS_uintlist::addAssign_operation (const GGS_uint & inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_uintlist::plusPlusAssignOperation (const GGS_uintlist_2E_element & inValue,
+                                            Compiler * /* inCompiler */
+                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_uintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_uintlist::setter_append (const GGS_uint inOperand0,
                                   Compiler * /* inCompiler */
                                   COMMA_LOCATION_ARGS) {
@@ -4823,6 +4927,19 @@ void GGS_uint_36__34_list::addAssign_operation (const GGS_uint_36__34_ & inOpera
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uint_36__34_list::plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inValue,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_uint_36__34_list (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5270,6 +5387,19 @@ void GGS_bigintlist::addAssign_operation (const GGS_bigint & inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_bigintlist::plusPlusAssignOperation (const GGS_bigintlist_2E_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_bigintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_bigintlist::setter_append (const GGS_bigint inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
@@ -5709,6 +5839,19 @@ void GGS_lbigintlist::addAssign_operation (const GGS_lbigint & inOperand0
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lbigintlist::plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inValue,
+                                               Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lbigintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

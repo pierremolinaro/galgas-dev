@@ -496,6 +496,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
+      !plusPlusAssignExpressionType: nil
       !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
@@ -584,6 +585,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.plusPlusAssignExpressionTypeName
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]

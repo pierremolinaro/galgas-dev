@@ -443,6 +443,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
+      !plusPlusAssignExpressionType: nil
       !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile
       !typeForEnumeratedElement: .null
@@ -659,6 +660,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.plusPlusAssignExpressionTypeName
       !selfTypeDefinition.typeForEnumeratedElement
       !selfTypeDefinition.supportCollectionValue
     ]

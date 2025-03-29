@@ -130,6 +130,15 @@ if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %
 end
 
+if PLUS_PLUS_ASSIGN_TYPE_NAME != "" then
+%//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (%?^%const GGS_%![PLUS_PLUS_ASSIGN_TYPE_NAME identifierRepresentation]% & inOperand,
+  %!^%Compiler * inCompiler
+  %!^%COMMA_LOCATION_ARGS) ;
+  
+%
+end
+
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixAndOperator]] then
   %//--------------------------------- & operator\n%
   %  public: VIRTUAL_IN_DEBUG GGS_%!TYPE_IDENTIFIER% operator_and (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand\n%
@@ -402,8 +411,8 @@ for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
   end
   %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
-
 %
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 %

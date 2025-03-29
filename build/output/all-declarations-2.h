@@ -58,6 +58,7 @@ class GGS_lexicalOrExpressionAST : public GGS_lexicalExpressionAST {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -204,6 +205,7 @@ class GGS_lexicalOrExpressionAST_2E_weak : public GGS_lexicalExpressionAST_2E_we
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -258,6 +260,7 @@ class GGS_lexicalCharacterSetMatchAST : public GGS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -402,6 +405,7 @@ class GGS_lexicalCharacterSetMatchAST_2E_weak : public GGS_lexicalExpressionAST_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -456,6 +460,7 @@ class GGS_lexicalCharacterMatchAST : public GGS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -600,6 +605,7 @@ class GGS_lexicalCharacterMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -658,6 +664,7 @@ class GGS_lexicalCharacterIntervalMatchAST : public GGS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -805,6 +812,7 @@ class GGS_lexicalCharacterIntervalMatchAST_2E_weak : public GGS_lexicalExpressio
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -859,6 +867,7 @@ class GGS_lexicalStringMatchAST : public GGS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1003,6 +1012,7 @@ class GGS_lexicalStringMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_wea
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1061,6 +1071,7 @@ class GGS_lexicalStringNotMatchAST : public GGS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1208,6 +1219,7 @@ class GGS_lexicalStringNotMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1296,6 +1308,11 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
                                                      const class GGS_lstring & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalSendSearchListAST_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalSendSearchListAST add_operation (const GGS_lexicalSendSearchListAST & inOperand,
                                                                        Compiler * inCompiler
@@ -1377,6 +1394,7 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1476,6 +1494,7 @@ class GGS_lexicalSendSearchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1522,6 +1541,7 @@ class GGS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1658,6 +1678,7 @@ class GGS_lexicalSendDefaultActionAST_2E_weak : public AC_GALGAS_weak_reference 
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1712,6 +1733,7 @@ class GGS_lexicalSendTerminalByDefaultAST : public GGS_lexicalSendDefaultActionA
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1856,6 +1878,7 @@ class GGS_lexicalSendTerminalByDefaultAST_2E_weak : public GGS_lexicalSendDefaul
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1910,6 +1933,7 @@ class GGS_lexicalErrorByDefaultAST : public GGS_lexicalSendDefaultActionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2054,6 +2078,7 @@ class GGS_lexicalErrorByDefaultAST_2E_weak : public GGS_lexicalSendDefaultAction
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2142,6 +2167,11 @@ class GGS_lexicalWhileBranchListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lexicalExpressionAST & inOperand0,
                                                      const class GGS_lexicalInstructionListAST & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalWhileBranchListAST_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalWhileBranchListAST add_operation (const GGS_lexicalWhileBranchListAST & inOperand,
                                                                         Compiler * inCompiler
@@ -2223,6 +2253,7 @@ class GGS_lexicalWhileBranchListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2322,6 +2353,7 @@ class GGS_lexicalWhileBranchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2410,6 +2442,11 @@ class GGS_lexicalSelectBranchListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lexicalExpressionAST & inOperand0,
                                                      const class GGS_lexicalInstructionListAST & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalSelectBranchListAST_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalSelectBranchListAST add_operation (const GGS_lexicalSelectBranchListAST & inOperand,
                                                                          Compiler * inCompiler
@@ -2491,6 +2528,7 @@ class GGS_lexicalSelectBranchListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2590,6 +2628,7 @@ class GGS_lexicalSelectBranchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2636,6 +2675,7 @@ class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_refe
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2775,6 +2815,7 @@ class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak : public AC_GAL
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2858,6 +2899,11 @@ class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalFunctionCallActualArgumentListAST_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalFunctionCallActualArgumentListAST add_operation (const GGS_lexicalFunctionCallActualArgumentListAST & inOperand,
                                                                                        Compiler * inCompiler
@@ -2923,6 +2969,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3010,6 +3057,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST_2E_element : public AC_GALGAS
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3064,6 +3112,7 @@ class GGS_lexicalAttributeInputArgumentAST : public GGS_lexicalRoutineOrFunction
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3211,6 +3260,7 @@ class GGS_lexicalAttributeInputArgumentAST_2E_weak : public GGS_lexicalRoutineOr
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3265,6 +3315,7 @@ class GGS_lexicalCharacterInputArgumentAST : public GGS_lexicalRoutineOrFunction
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3412,6 +3463,7 @@ class GGS_lexicalCharacterInputArgumentAST_2E_weak : public GGS_lexicalRoutineOr
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3466,6 +3518,7 @@ class GGS_lexicalUnsignedInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3613,6 +3666,7 @@ class GGS_lexicalUnsignedInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrF
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3667,6 +3721,7 @@ class GGS_lexicalCurrentCharacterInputArgumentAST : public GGS_lexicalRoutineOrF
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3814,6 +3869,7 @@ class GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak : public GGS_lexicalRo
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3872,6 +3928,7 @@ class GGS_lexicalFunctionInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4022,6 +4079,7 @@ class GGS_lexicalFunctionInputArgumentAST_2E_weak : public GGS_lexicalRoutineOrF
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4099,6 +4157,7 @@ class GGS_lexicalArgumentModeAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4248,6 +4307,7 @@ class GGS_lexicalTypeEnum : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4341,6 +4401,11 @@ class GGS_lexicalSentValueList : public AC_GALGAS_list {
                                                      const class GGS_string & inOperand1,
                                                      const class GGS_lexicalTypeEnum & inOperand2
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalSentValueList_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalSentValueList add_operation (const GGS_lexicalSentValueList & inOperand,
                                                                    Compiler * inCompiler
@@ -4438,6 +4503,7 @@ class GGS_lexicalSentValueList : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4548,6 +4614,7 @@ class GGS_lexicalSentValueList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4674,6 +4741,7 @@ class GGS_terminalMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_terminalMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -4806,6 +4874,7 @@ class GGS_terminalMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4881,6 +4950,7 @@ class GGS_terminalMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5007,6 +5077,7 @@ class GGS_lexicalTypeMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalTypeMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -5139,6 +5210,7 @@ class GGS_lexicalTypeMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5214,6 +5286,7 @@ class GGS_lexicalTypeMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5340,6 +5413,7 @@ class GGS_lexicalAttributeMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalAttributeMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -5472,6 +5546,7 @@ class GGS_lexicalAttributeMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5547,6 +5622,7 @@ class GGS_lexicalAttributeMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5656,6 +5732,11 @@ class GGS_terminalList : public AC_GALGAS_list {
                                                      const class GGS_bool & inOperand4,
                                                      const class GGS_uint & inOperand5
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_terminalList_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_terminalList add_operation (const GGS_terminalList & inOperand,
                                                            Compiler * inCompiler
@@ -5802,6 +5883,7 @@ class GGS_terminalList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -5947,6 +6029,7 @@ class GGS_terminalList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6101,6 +6184,7 @@ class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalExplicitTokenListMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -6261,6 +6345,7 @@ class GGS_lexicalExplicitTokenListMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6336,6 +6421,7 @@ class GGS_lexicalExplicitTokenListMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6458,6 +6544,7 @@ class GGS_tokenSortedlist : public AC_GALGAS_sortedlist {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -6567,6 +6654,7 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6721,6 +6809,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -6881,6 +6970,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6956,6 +7046,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ : public AC_GALGAS_root 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7096,6 +7187,7 @@ class GGS_lexicalMessageMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalMessageMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -7242,6 +7334,7 @@ class GGS_lexicalMessageMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7317,6 +7410,7 @@ class GGS_lexicalMessageMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7411,6 +7505,11 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
                                                      const class GGS_lexicalTypeEnum & inOperand1,
                                                      const class GGS_string & inOperand2
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentList_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalRoutineFormalArgumentList add_operation (const GGS_lexicalRoutineFormalArgumentList & inOperand,
                                                                                Compiler * inCompiler
@@ -7508,6 +7607,7 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7618,6 +7718,7 @@ class GGS_lexicalRoutineFormalArgumentList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7772,6 +7873,7 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalRoutineMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -7932,6 +8034,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8007,6 +8110,7 @@ class GGS_lexicalRoutineMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8096,6 +8200,11 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lexicalTypeEnum & inOperand0,
                                                      const class GGS_string & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentList_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalFunctionFormalArgumentList add_operation (const GGS_lexicalFunctionFormalArgumentList & inOperand,
                                                                                 Compiler * inCompiler
@@ -8177,6 +8286,7 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8275,6 +8385,7 @@ class GGS_lexicalFunctionFormalArgumentList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8443,6 +8554,7 @@ class GGS_lexicalFunctionMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalFunctionMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -8617,6 +8729,7 @@ class GGS_lexicalFunctionMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8692,6 +8805,7 @@ class GGS_lexicalFunctionMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8786,6 +8900,11 @@ class GGS_templateDelimitorList : public AC_GALGAS_list {
                                                      const class GGS_lstring & inOperand1,
                                                      const class GGS_bool & inOperand2
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_templateDelimitorList_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_templateDelimitorList add_operation (const GGS_templateDelimitorList & inOperand,
                                                                     Compiler * inCompiler
@@ -8883,6 +9002,7 @@ class GGS_templateDelimitorList : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8993,6 +9113,7 @@ class GGS_templateDelimitorList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9133,6 +9254,7 @@ class GGS_styleMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_styleMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -9279,6 +9401,7 @@ class GGS_styleMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9354,6 +9477,7 @@ class GGS_styleMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9466,6 +9590,7 @@ class GGS_lexicalTagMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_lexicalTagMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -9584,6 +9709,7 @@ class GGS_lexicalTagMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9659,6 +9785,7 @@ class GGS_lexicalTagMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9889,6 +10016,7 @@ class GGS_lexiqueAnalysisContext : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10295,6 +10423,7 @@ class GGS_lexicalStructuredSendInstructionAST : public GGS_lexicalInstructionAST
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10448,6 +10577,7 @@ class GGS_lexicalStructuredSendInstructionAST_2E_weak : public GGS_lexicalInstru
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10502,6 +10632,7 @@ class GGS_lexicalDropInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10653,6 +10784,7 @@ class GGS_lexicalDropInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10707,6 +10839,7 @@ class GGS_lexicalErrorInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10858,6 +10991,7 @@ class GGS_lexicalErrorInstructionAST_2E_weak : public GGS_lexicalInstructionAST_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10908,6 +11042,7 @@ class GGS_lexicalLogInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11054,6 +11189,7 @@ class GGS_lexicalLogInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11116,6 +11252,7 @@ class GGS_lexicalRepeatInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11273,6 +11410,7 @@ class GGS_lexicalRepeatInstructionAST_2E_weak : public GGS_lexicalInstructionAST
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11331,6 +11469,7 @@ class GGS_lexicalRewindInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11485,6 +11624,7 @@ class GGS_lexicalRewindInstructionAST_2E_weak : public GGS_lexicalInstructionAST
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11534,6 +11674,7 @@ class GGS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_reference_c
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11676,6 +11817,7 @@ class GGS_abstractLexicalRoutineActualArgumentAST_2E_weak : public AC_GALGAS_wea
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11732,6 +11874,7 @@ class GGS_lexicalAttributeInputOutputArgumentAST : public GGS_abstractLexicalRou
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11879,6 +12022,7 @@ class GGS_lexicalAttributeInputOutputArgumentAST_2E_weak : public GGS_abstractLe
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11935,6 +12079,7 @@ class GGS_lexicalFormalInputArgumentAST : public GGS_abstractLexicalRoutineActua
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12082,6 +12227,7 @@ class GGS_lexicalFormalInputArgumentAST_2E_weak : public GGS_abstractLexicalRout
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -12165,6 +12311,11 @@ class GGS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_abstractLexicalRoutineActualArgumentAST & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- ++= operator
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lexicalRoutineCallActualArgumentListAST add_operation (const GGS_lexicalRoutineCallActualArgumentListAST & inOperand,
                                                                                       Compiler * inCompiler
@@ -12230,6 +12381,7 @@ class GGS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12317,6 +12469,7 @@ class GGS_lexicalRoutineCallActualArgumentListAST_2E_element : public AC_GALGAS_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -12379,6 +12532,7 @@ class GGS_lexicalRoutineCallInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12536,6 +12690,7 @@ class GGS_lexicalRoutineCallInstructionAST_2E_weak : public GGS_lexicalInstructi
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -12640,6 +12795,7 @@ class GGS_lexicalSelectInstructionAST : public GGS_lexicalInstructionAST {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -12714,91 +12870,4 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalSelectInstructionAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalSelectInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_lexicalSelectInstructionAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_lexicalSelectInstructionAST_2E_weak (const class GGS_lexicalSelectInstructionAST & inSource) ;
-
-  public: GGS_lexicalSelectInstructionAST_2E_weak & operator = (const class GGS_lexicalSelectInstructionAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_lexicalSelectInstructionAST_2E_weak init_nil (void) {
-    GGS_lexicalSelectInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_lexicalSelectInstructionAST bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_lexicalSelectInstructionAST unwrappedValue (void) const {
-    GGS_lexicalSelectInstructionAST result ;
-    if (isValid ()) {
-      const cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_lexicalSelectInstructionAST (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lexicalSelectInstructionAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalSelectInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalSelectInstructionAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
 

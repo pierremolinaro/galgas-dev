@@ -42,12 +42,24 @@ struct @unifiedTypeDefinition {
   public let @subscriptMap readSubscriptMap %initArgLabel // Read access
   public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel // Empty List if cannot be enumerated
   public let @typeFeatures features %initArgLabel
-  public let @functionSignature addAssignOperatorArguments %initArgLabel // Empty list if += operator is not supported
+// addAssignOperatorArguments is empty list if += operator is not supported
+  public let @functionSignature addAssignOperatorArguments %initArgLabel
+// plusPlusAssignExpressionType is nil if ++= operator is not supported
+  public let @unifiedTypeMapEntry? plusPlusAssignExpressionType %initArgLabel
   public let @mapSearchMethodListAST mapSearchMethodList %initArgLabel // For a map, the list of search methods
   public let @bool generateHeaderInSeparateFile %initArgLabel // Significant only for classes
   public let @unifiedTypeMapEntry typeForEnumeratedElement %initArgLabel
   public let @string headerFileName %initArgLabel // Name of C++ header file that contains type declaration
   public let @headerKind headerKind %initArgLabel
+
+
+  getter plusPlusAssignExpressionTypeName -> @string {
+    if let t = self.plusPlusAssignExpressionType then
+      result = [t definition].typeName
+    else
+      result = ""
+    end
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

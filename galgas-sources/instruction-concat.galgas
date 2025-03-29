@@ -63,6 +63,16 @@ syntax extension galgas3InstructionsSyntax {
         !expression
       }
     or
+      $++=$
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      outInstruction = @plusPlusEqualElementsInstructionAST {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !propertyList
+        !expression
+      }
+    or
       $+=$
       select
         <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
@@ -218,6 +228,16 @@ syntax extension galgas4InstructionsSyntax {
         !receiverName
         !propertyList
         !.plusAssign
+        !expression
+      }
+    or
+      $++=$
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      outInstruction = @plusPlusEqualElementsInstructionAST {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !propertyList
         !expression
       }
     or
@@ -478,7 +498,7 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       !expression
       ![self.mOperator cppFunctionName]
     }
-}
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -604,6 +624,109 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+class @plusPlusEqualElementsInstructionAST : @semanticInstructionAST {
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionAST mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction
+                            ?let @lstring inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?let @analysisContext inAnalysisContext
+                            ?!@unifiedTypeMap ioTypeMap
+                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                            ?!@localVarManager ioVariableMap {
+  //--- Check target variable, or self.property
+    var @unifiedTypeMapEntry targetType
+    let @string targetVariableCppName
+    let @string nameForCheckingFormalParameterUsing
+    if self.mPrefixedBySelf then
+      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+        let propertyMap = [selfAvailable.type definition].propertyMap
+        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+        nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+        targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+        if isConstant then
+          error self.mReceiverName : "a constant property cannot be modified"
+        end
+        if not [selfAvailable.selfMutability propertiesAreMutable] then
+          error self.mReceiverName : "the property cannot be mutated in this context"
+        end
+      else
+        error self.mInstructionLocation : "'self' not available in this context"
+        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+      end
+    else
+      [!?ioVariableMap searchForReadWriteAccess
+        !self.mReceiverName
+        ?targetType
+        ?targetVariableCppName
+        ?nameForCheckingFormalParameterUsing
+      ]
+    end
+  //--- Check target variable
+    for (value) in self.mStructAttributeList do
+      let propertyMap = [targetType definition].propertyMap
+      [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
+      if isConstant then
+        error value : "a constant property cannot be modified"
+      end
+    end
+  //--- Check target variable type support '++=' operator
+    let @unifiedTypeMapEntry rightExpressionType
+    if let t = [targetType definition].plusPlusAssignExpressionType then
+      rightExpressionType = t
+    else
+      error self.mInstructionLocation
+      :"the target object has the '@" + [targetType definition].typeName.string
+      + "' type, but this type does not support the '++=' operator"
+      : rightExpressionType
+    end
+  //--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: rightExpressionType
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  //--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (
+      !rightExpressionType
+      !expression.mResultType
+      !self.mInstructionLocation
+      !?expression
+    )
+  //--- Generate instruction
+    ioInstructionListForGeneration += !@plusPlusAssignInstructionForGeneration {
+      !self.mInstructionLocation
+      !targetType
+      !targetVariableCppName
+      !nameForCheckingFormalParameterUsing
+      !self.mStructAttributeList
+      !expression
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
@@ -694,6 +817,47 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
     end
     ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
     ioGeneratedCode += ", " + compilerCppName ()
+    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGeneration {
+  private let @location mInstructionLocation
+  private let @unifiedTypeMapEntry mTargetType
+  private let @string mTargetVariableCppName
+  private let @string mNameForCheckingFormalParameterUsing
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionForGeneration mSourceExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+    [self.mTargetType addHeaderFileName !?ioInclusionSet]
+    [self.mSourceExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string sourceVar
+    ]
+    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+    ioGeneratedCode += self.mTargetVariableCppName
+    for (mValue) in self.mStructAttributeList do
+      ioGeneratedCode += ".mProperty_" + mValue
+    end
+    ioGeneratedCode += ".plusPlusAssignOperation (" + sourceVar + ", " + compilerCppName ()
     ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]

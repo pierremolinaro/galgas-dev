@@ -9,6 +9,115 @@
 
 //--------------------------------------------------------------------------------------------------
 
+ComparisonResult GGS_templateInstructionForGeneration_2E_weak::objectCompare (const GGS_templateInstructionForGeneration_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration_2E_weak::GGS_templateInstructionForGeneration_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration_2E_weak & GGS_templateInstructionForGeneration_2E_weak::operator = (const GGS_templateInstructionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration_2E_weak::GGS_templateInstructionForGeneration_2E_weak (const GGS_templateInstructionForGeneration & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration_2E_weak GGS_templateInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateInstructionForGeneration_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration GGS_templateInstructionForGeneration_2E_weak::bang_templateInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateInstructionForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionForGeneration) ;
+      result = GGS_templateInstructionForGeneration ((cPtr_templateInstructionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionForGeneration.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ("templateInstructionForGeneration.weak",
+                                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_templateInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_templateInstructionForGeneration_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_templateInstructionForGeneration_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionForGeneration_2E_weak GGS_templateInstructionForGeneration_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_templateInstructionForGeneration_2E_weak result ;
+  const GGS_templateInstructionForGeneration_2E_weak * p = (const GGS_templateInstructionForGeneration_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_templateInstructionForGeneration_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GGS_templateInstructionExpressionForGeneration_2E_weak::objectCompare (const GGS_templateInstructionExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -252,6 +361,19 @@ void GGS_templateInstructionListForGeneration::addAssign_operation (const GGS_te
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionListForGeneration_2E_element & inValue,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1301,6 +1423,19 @@ void GGS_templateInstructionIfBranchListForGeneration::addAssign_operation (cons
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionIfBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListForGeneration_2E_element & inValue,
+                                                                                Compiler * /* inCompiler */
+                                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionIfBranchListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4211,6 +4346,19 @@ void GGS_templateInstructionSwitchBranchListAST::addAssign_operation (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_templateInstructionSwitchBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListAST_2E_element & inValue,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_templateInstructionSwitchBranchListAST::setter_append (const GGS__5B_lstring_5D_ inOperand0,
                                                                 const GGS_switchExtractedValuesListAST inOperand1,
                                                                 const GGS_templateInstructionListAST inOperand2,
@@ -4847,6 +4995,19 @@ void GGS_switchExtractedValuesListAST::addAssign_operation (const GGS_lstring & 
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST::plusPlusAssignOperation (const GGS_switchExtractedValuesListAST_2E_element & inValue,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_switchExtractedValuesListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5760,6 +5921,19 @@ void GGS_templateInstructionSwitchBranchListForGeneration::addAssign_operation (
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_templateInstructionSwitchBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inValue,
+                                                                                    Compiler * /* inCompiler */
+                                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_templateInstructionSwitchBranchListForGeneration::setter_append (const GGS__5B_lstring_5D_ inOperand0,
                                                                           const GGS_extractedAssociatedValuesForGeneration inOperand1,
                                                                           const GGS_uint inOperand2,
@@ -6396,6 +6570,19 @@ void GGS_extractedAssociatedValuesForGeneration::addAssign_operation (const GGS_
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extractedAssociatedValuesForGeneration::plusPlusAssignOperation (const GGS_extractedAssociatedValuesForGeneration_2E_element & inValue,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7220,6 +7407,19 @@ void GGS_templateDelimitorListAST::addAssign_operation (const GGS_lstring & inOp
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_templateDelimitorListAST::plusPlusAssignOperation (const GGS_templateDelimitorListAST_2E_element & inValue,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateDelimitorListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_templateDelimitorListAST::setter_append (const GGS_lstring inOperand0,
                                                   const GGS_bool inOperand1,
                                                   const GGS_bool inOperand2,
@@ -7922,6 +8122,19 @@ void GGS_templateReplacementListAST::addAssign_operation (const GGS_lstring & in
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_templateReplacementListAST::plusPlusAssignOperation (const GGS_templateReplacementListAST_2E_element & inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateReplacementListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_templateReplacementListAST::setter_append (const GGS_lstring inOperand0,
                                                     const GGS_lstring inOperand1,
                                                     const GGS_lstring inOperand2,
@@ -8490,6 +8703,19 @@ void GGS_lexicalAttributeListAST::addAssign_operation (const GGS_lstring & inOpe
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_lexicalAttributeListAST::plusPlusAssignOperation (const GGS_lexicalAttributeListAST_2E_element & inValue,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalAttributeListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lexicalAttributeListAST::setter_append (const GGS_lstring inOperand0,
                                                  const GGS_lstring inOperand1,
                                                  Compiler * /* inCompiler */
@@ -8992,6 +9218,19 @@ void GGS_lexicalStyleListAST::addAssign_operation (const GGS_lstring & inOperand
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalStyleListAST::plusPlusAssignOperation (const GGS_lexicalStyleListAST_2E_element & inValue,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalStyleListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9538,6 +9777,19 @@ void GGS_terminalDeclarationListAST::addAssign_operation (const GGS_lstring & in
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_terminalDeclarationListAST::plusPlusAssignOperation (const GGS_terminalDeclarationListAST_2E_element & inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10296,6 +10548,19 @@ void GGS_lexicalMessageDeclarationListAST::addAssign_operation (const GGS_lstrin
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_lexicalMessageDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalMessageDeclarationListAST_2E_element & inValue,
+                                                                    Compiler * /* inCompiler */
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalMessageDeclarationListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lexicalMessageDeclarationListAST::setter_append (const GGS_lstring inOperand0,
                                                           const GGS_lstring inOperand1,
                                                           Compiler * /* inCompiler */
@@ -10828,6 +11093,19 @@ void GGS_lexicalListDeclarationListAST::addAssign_operation (const GGS_lstring &
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalListDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalListDeclarationListAST_2E_element & inValue,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11514,6 +11792,19 @@ void GGS_lexicalRuleListAST::addAssign_operation (const GGS_abstractLexicalRuleA
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_lexicalRuleListAST::plusPlusAssignOperation (const GGS_lexicalRuleListAST_2E_element & inValue,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalRuleListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lexicalRuleListAST::setter_append (const GGS_abstractLexicalRuleAST inOperand0,
                                             Compiler * /* inCompiler */
                                             COMMA_LOCATION_ARGS) {
@@ -11954,6 +12245,19 @@ void GGS_indexingListAST::addAssign_operation (const GGS_lstring & inOperand0,
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_indexingListAST::plusPlusAssignOperation (const GGS_indexingListAST_2E_element & inValue,
+                                                   Compiler * /* inCompiler */
+                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_indexingListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13076,6 +13380,19 @@ void GGS_lexicalInstructionListAST::addAssign_operation (const GGS_lexicalInstru
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_lexicalInstructionListAST::plusPlusAssignOperation (const GGS_lexicalInstructionListAST_2E_element & inValue,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalInstructionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lexicalInstructionListAST::setter_append (const GGS_lexicalInstructionAST inOperand0,
                                                    Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
@@ -14157,6 +14474,19 @@ void GGS_sentLexicalAttributeListAST::addAssign_operation (const GGS_lstring & i
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_sentLexicalAttributeListAST::plusPlusAssignOperation (const GGS_sentLexicalAttributeListAST_2E_element & inValue,
+                                                               Compiler * /* inCompiler */
+                                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_sentLexicalAttributeListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_sentLexicalAttributeListAST::setter_append (const GGS_lstring inOperand0,
                                                      const GGS_lstring inOperand1,
                                                      Compiler * /* inCompiler */
@@ -14679,6 +15009,19 @@ void GGS_lexicalListEntryListAST::addAssign_operation (const GGS_lstring & inOpe
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalListEntryListAST::plusPlusAssignOperation (const GGS_lexicalListEntryListAST_2E_element & inValue,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalListEntryListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

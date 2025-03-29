@@ -156,6 +156,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: @()
     !features: features
     !addAssignOperatorArguments: @()
+    !plusPlusAssignExpressionType: nil
     !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !typeForEnumeratedElement: .null
@@ -258,6 +259,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !typeDefinition.enumerationDescriptorList
     !typeDefinition.features
     !typeDefinition.addAssignOperatorArguments
+    !typeDefinition.plusPlusAssignExpressionTypeName
     !typeDefinition.typeForEnumeratedElement
     !typeDefinition.supportCollectionValue
   ]

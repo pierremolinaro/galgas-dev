@@ -180,7 +180,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 //--- Element type index
   [!?ioTypeMap makeEntry
     !makeEmbeddedElementTypeLName (!self.mListTypeName)
-    ?let @unifiedTypeMapEntry listElementTypeIndex
+    ?let @unifiedTypeMapEntry listElementType
   ]
 //--- Property description
   var @enumerationDescriptorList enumerationDescriptor = @()
@@ -412,9 +412,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: constructorAttributeTypeList
+    !plusPlusAssignExpressionType: listElementType
     !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false
-    !typeForEnumeratedElement: listElementTypeIndex
+    !typeForEnumeratedElement: listElementType
     !headerFileName: "list-" + [self.mListTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
@@ -568,6 +569,7 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.plusPlusAssignExpressionTypeName
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]

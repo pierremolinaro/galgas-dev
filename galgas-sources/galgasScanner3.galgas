@@ -2,7 +2,7 @@
 //
 //  GALGAS scanner definition
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -536,7 +536,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   ">",    ";",   ":",  ":>",
   "-",    "(",   ")",  "->",
   "==",   "=",   "&&",
-  "[",    "]",
+  "[",    "]",   "++=",
   ".",    "...", "..<", "@{", "@(", "@[",
   "+=",   "-=",   "*=", "/=", "&=", "|=", "^=",
   "/",    "!=",  ">=", "&",

@@ -242,6 +242,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: @()
     !features: features
     !addAssignOperatorArguments: @()
+    !plusPlusAssignExpressionType: nil
     !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: .null
@@ -328,28 +329,29 @@ override method @boolsetTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  let typeDefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    !typeDefinition.typeName.string
-    ![typeDefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !typeDefinition.typeName.string
-    ![typeDefinition.typeName.string identifierRepresentation]
-    !typeDefinition.isConcrete
-    !typeDefinition.initializerMap
-    !typeDefinition.classFunctionMap
-    !typeDefinition.getterMap
-    !typeDefinition.setterMap
-    !typeDefinition.instanceMethodMap
-    !typeDefinition.classMethodMap
-    !typeDefinition.readSubscriptMap
-    !typeDefinition.enumerationDescriptorList
-    !typeDefinition.features
-    !typeDefinition.addAssignOperatorArguments
-    !typeDefinition.typeForEnumeratedElement
-    !typeDefinition.supportCollectionValue
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.readSubscriptMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.plusPlusAssignExpressionTypeName
+    !selfTypeDefinition.typeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
   ]
  }
 

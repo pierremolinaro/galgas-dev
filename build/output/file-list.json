@@ -13,6 +13,7 @@
                        "../libpm/utilities",
                        "../hand_coded_sources"],
     "SOURCES"  :  [
+        "all-declarations-33.cpp",
         "all-declarations-32.cpp",
         "all-declarations-31.cpp",
         "all-declarations-30.cpp",

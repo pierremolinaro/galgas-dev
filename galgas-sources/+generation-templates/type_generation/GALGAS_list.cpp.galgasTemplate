@@ -209,6 +209,19 @@ void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^
   for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
   do (IDX) %const GGS_%![propertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,%

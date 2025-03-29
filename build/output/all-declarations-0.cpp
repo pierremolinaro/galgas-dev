@@ -157,6 +157,19 @@ void GGS__32_lstringlist::addAssign_operation (const GGS_lstring & inOperand0,
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue,
+                                                   Compiler * /* inCompiler */
+                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS__32_lstringlist::setter_append (const GGS_lstring inOperand0,
                                          const GGS_lstring inOperand1,
                                          Compiler * /* inCompiler */
@@ -590,8 +603,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 198)) {
-    static const char * syntaxErrorMessageArray [198] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 199)) {
+    static const char * syntaxErrorMessageArray [199] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -756,6 +769,7 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '&&' delimitor",
         "the '[' delimitor",
         "the ']' delimitor",
+        "the '++=' delimitor",
         "the '.' delimitor",
         "the '...' delimitor",
         "the '..<' delimitor",
@@ -909,6 +923,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B_
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B__2B_ = {
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
+} ;
+
+//--- Unicode string for '$++=$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2B__2B__3D_ = {
+  TO_UNICODE ('+'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('='),
 } ;
 
 //--- Unicode string for '$+=$'
@@ -2584,7 +2605,7 @@ int32_t Lexique_galgasScanner_33_::search_into_attributeKeyWordList (const Strin
 //             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 53 ;
+static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 54 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDelimitorsList [ktable_size_galgasScanner_33__galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26_, Lexique_galgasScanner_33_::kToken__26_),
@@ -2637,6 +2658,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___21__3D__3D_, Lexique_galgasScanner_33_::kToken__21__3D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2B__2B_, Lexique_galgasScanner_33_::kToken__26__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2D__2D_, Lexique_galgasScanner_33_::kToken__26__2D__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2B__2B__3D_, Lexique_galgasScanner_33_::kToken__2B__2B__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2E__2E__2E_, Lexique_galgasScanner_33_::kToken__2E__2E__2E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2E__2E__3C_, Lexique_galgasScanner_33_::kToken__2E__2E__3C_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3D__3D__3D_, Lexique_galgasScanner_33_::kToken__3D__3D__3D_)
@@ -3613,6 +3635,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("]") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
+    case kToken__2B__2B__3D_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("++=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     case kToken__2E_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString (".") ;
@@ -4105,6 +4132,9 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E__2E__2E_, true)) {
       token.mTokenCode = kToken__2E__2E__2E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2B__2B__3D_, true)) {
+      token.mTokenCode = kToken__2B__2B__3D_ ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___26__2D__2D_, true)) {
       token.mTokenCode = kToken__26__2D__2D_ ;
@@ -4910,6 +4940,7 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("&&") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("++=") COMMA_HERE) ;
   result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("...") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
@@ -5045,6 +5076,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("!==") ;
     ioList.appendObject ("&++") ;
     ioList.appendObject ("&--") ;
+    ioList.appendObject ("++=") ;
     ioList.appendObject ("...") ;
     ioList.appendObject ("..<") ;
     ioList.appendObject ("===") ;
@@ -5160,7 +5192,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [198] = {0,
+  static const uint32_t kTerminalSymbolStyles [199] = {0,
     0 /* galgasScanner3_1_identifier */,
     7 /* galgasScanner3_1_double_2E_xxx */,
     6 /* galgasScanner3_1_literalInt */,
@@ -5325,6 +5357,7 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     2 /* galgasScanner3_1__26__26_ */,
     2 /* galgasScanner3_1__5B_ */,
     2 /* galgasScanner3_1__5D_ */,
+    2 /* galgasScanner3_1__2B__2B__3D_ */,
     2 /* galgasScanner3_1__2E_ */,
     2 /* galgasScanner3_1__2E__2E__2E_ */,
     2 /* galgasScanner3_1__2E__2E__3C_ */,
@@ -5727,6 +5760,19 @@ void GGS_templateInstructionListAST::addAssign_operation (const GGS_templateInst
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionListAST::plusPlusAssignOperation (const GGS_templateInstructionListAST_2E_element & inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6383,6 +6429,19 @@ void GGS_templateExpressionListAST::addAssign_operation (const GGS_lstring & inO
     macroDetachSharedObject (p) ;
     appendObject (attributes) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateExpressionListAST::plusPlusAssignOperation (const GGS_templateExpressionListAST_2E_element & inValue,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateExpressionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16183,6 +16242,19 @@ void GGS_templateInstructionIfBranchListAST::addAssign_operation (const GGS_temp
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_templateInstructionIfBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListAST_2E_element & inValue,
+                                                                      Compiler * /* inCompiler */
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionIfBranchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_templateInstructionIfBranchListAST::setter_append (const GGS_templateExpressionAST inOperand0,
                                                             const GGS_templateInstructionListAST inOperand1,
                                                             Compiler * /* inCompiler */
@@ -16925,115 +16997,6 @@ GGS_templateInstructionForGeneration GGS_templateInstructionForGeneration::extra
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionForGeneration_2E_weak::objectCompare (const GGS_templateInstructionForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration_2E_weak::GGS_templateInstructionForGeneration_2E_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration_2E_weak & GGS_templateInstructionForGeneration_2E_weak::operator = (const GGS_templateInstructionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration_2E_weak::GGS_templateInstructionForGeneration_2E_weak (const GGS_templateInstructionForGeneration & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration_2E_weak GGS_templateInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateInstructionForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration GGS_templateInstructionForGeneration_2E_weak::bang_templateInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionForGeneration) ;
-      result = GGS_templateInstructionForGeneration ((cPtr_templateInstructionForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionForGeneration.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ("templateInstructionForGeneration.weak",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_templateInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_templateInstructionForGeneration_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_templateInstructionForGeneration_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration_2E_weak GGS_templateInstructionForGeneration_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionForGeneration_2E_weak result ;
-  const GGS_templateInstructionForGeneration_2E_weak * p = (const GGS_templateInstructionForGeneration_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_templateInstructionForGeneration_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -358,6 +358,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features 
     !addAssignOperatorArguments: constructorAttributeTypeList
+    !plusPlusAssignExpressionType: nil
     !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: listElementTypeIndex
@@ -486,6 +487,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.plusPlusAssignExpressionTypeName
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]

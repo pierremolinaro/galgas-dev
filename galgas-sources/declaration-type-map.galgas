@@ -655,6 +655,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
+    !plusPlusAssignExpressionType: nil
     !mapSearchMethodList: self.mSearchMethodList
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
@@ -827,6 +828,7 @@ override method @mapTypeForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.plusPlusAssignExpressionTypeName
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]

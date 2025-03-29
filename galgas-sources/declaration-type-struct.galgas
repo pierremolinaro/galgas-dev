@@ -267,7 +267,8 @@ class @structDeclarationAST : @semanticDeclarationAST {
       !readSubscriptMap: @()
       !enumerationDescriptorList: @()
       !features: features
-      !addAssignOperatorArguments:@()
+      !addAssignOperatorArguments: @()
+      !plusPlusAssignExpressionType: nil
       !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: enumeratedType // Type for enumerated element for "for" instruction
@@ -439,6 +440,7 @@ class @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.plusPlusAssignExpressionTypeName
       !selfTypeDefinition.typeForEnumeratedElement
       !selfTypeDefinition.supportCollectionValue
     ]
