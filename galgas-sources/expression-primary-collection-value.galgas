@@ -224,7 +224,7 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
         !?ioUnusedVariableCppNameSet
         ?let argumentCppName
       ]
-      ioGeneratedCode += outCppExpression + ".enterElement ("
+      ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("
       ioGeneratedCode += argumentCppName + ", "
       ioGeneratedCode += compilerCppName () + [location commaSourceFile] + ") ;\n"
     end

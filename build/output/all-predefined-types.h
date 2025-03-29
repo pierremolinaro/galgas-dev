@@ -1036,6 +1036,11 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_string & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GGS_stringset operator_and (const GGS_stringset & inOperand
                                                        COMMA_LOCATION_ARGS) const ;
@@ -1084,12 +1089,6 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_string & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_stringset ;
   friend class DownEnumerator_stringset ;
@@ -3325,11 +3324,11 @@ class GGS_stringlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_stringlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_stringlist add_operation (const GGS_stringlist & inOperand,
                                                          Compiler * inCompiler
@@ -3399,12 +3398,6 @@ class GGS_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_stringlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_stringlist ;
   friend class DownEnumerator_stringlist ;
@@ -3489,11 +3482,11 @@ class GGS_lstringlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lstringlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lstringlist add_operation (const GGS_lstringlist & inOperand,
                                                           Compiler * inCompiler
@@ -3563,12 +3556,6 @@ class GGS_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_lstringlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lstringlist ;
   friend class DownEnumerator_lstringlist ;
@@ -3750,11 +3737,11 @@ class GGS__32_stringlist : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
                                                      const class GGS_string & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS__32_stringlist add_operation (const GGS__32_stringlist & inOperand,
                                                              Compiler * inCompiler
@@ -3840,12 +3827,6 @@ class GGS__32_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS__32_stringlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator__32_stringlist ;
   friend class DownEnumerator__32_stringlist ;
@@ -3930,11 +3911,11 @@ class GGS_functionlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_function & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_functionlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_functionlist add_operation (const GGS_functionlist & inOperand,
                                                            Compiler * inCompiler
@@ -4004,12 +3985,6 @@ class GGS_functionlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_functionlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_functionlist ;
   friend class DownEnumerator_functionlist ;
@@ -4094,11 +4069,11 @@ class GGS_luintlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_luint & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_luintlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_luintlist add_operation (const GGS_luintlist & inOperand,
                                                         Compiler * inCompiler
@@ -4168,12 +4143,6 @@ class GGS_luintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_luintlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_luintlist ;
   friend class DownEnumerator_luintlist ;
@@ -4350,11 +4319,11 @@ class GGS_objectlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_object & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_objectlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_objectlist add_operation (const GGS_objectlist & inOperand,
                                                          Compiler * inCompiler
@@ -4424,12 +4393,6 @@ class GGS_objectlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_objectlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_objectlist ;
   friend class DownEnumerator_objectlist ;
@@ -4514,11 +4477,11 @@ class GGS_typelist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_type & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_typelist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_typelist add_operation (const GGS_typelist & inOperand,
                                                        Compiler * inCompiler
@@ -4588,12 +4551,6 @@ class GGS_typelist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_typelist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_typelist ;
   friend class DownEnumerator_typelist ;
@@ -4678,11 +4635,11 @@ class GGS_uintlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_uint & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uintlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_uintlist add_operation (const GGS_uintlist & inOperand,
                                                        Compiler * inCompiler
@@ -4752,12 +4709,6 @@ class GGS_uintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_uintlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_uintlist ;
   friend class DownEnumerator_uintlist ;
@@ -4842,11 +4793,11 @@ class GGS_uint_36__34_list : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_uint_36__34_ & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_uint_36__34_list add_operation (const GGS_uint_36__34_list & inOperand,
                                                                Compiler * inCompiler
@@ -4916,12 +4867,6 @@ class GGS_uint_36__34_list : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_uint_36__34_list_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_uint_36__34_list ;
   friend class DownEnumerator_uint_36__34_list ;
@@ -5006,11 +4951,11 @@ class GGS_bigintlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_bigint & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_bigintlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_bigintlist add_operation (const GGS_bigintlist & inOperand,
                                                          Compiler * inCompiler
@@ -5080,12 +5025,6 @@ class GGS_bigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_bigintlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_bigintlist ;
   friend class DownEnumerator_bigintlist ;
@@ -5170,11 +5109,11 @@ class GGS_lbigintlist : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lbigint & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
+
+//--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
-  
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lbigintlist add_operation (const GGS_lbigintlist & inOperand,
                                                           Compiler * inCompiler
@@ -5244,12 +5183,6 @@ class GGS_lbigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_lbigintlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lbigintlist ;
   friend class DownEnumerator_lbigintlist ;

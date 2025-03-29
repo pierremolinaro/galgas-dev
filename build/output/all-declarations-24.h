@@ -460,16 +460,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGenerat
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeDefinition plusPlusAssignExpressionTypeName' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_plusPlusAssignExpressionTypeName (const class GGS_unifiedTypeDefinition & inObject,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@localVarManager insertDeclaredLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------

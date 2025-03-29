@@ -1010,7 +1010,6 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (c
                                                                                const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                const class GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
                                                                                const class GGS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                               const class GGS_string & in_PLUS_5F_PLUS_5F_ASSIGN_5F_TYPE_5F_NAME,
                                                                                const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                const class GGS_bool & in_SUPPORT_5F_COLLECTION_5F_VALUE
                                                                                COMMA_LOCATION_ARGS) ;

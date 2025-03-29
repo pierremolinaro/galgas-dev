@@ -280,9 +280,9 @@ GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::enterElement (const GGS_string & inValue,
-                                  Compiler *
-                                  COMMA_LOCATION_ARGS) {
+void GGS_stringset::plusPlusAssignOperation (const GGS_string & inValue,
+                                             Compiler *
+                                             COMMA_LOCATION_ARGS) {
   addAssign_operation (inValue COMMA_THERE) ;
 }
 

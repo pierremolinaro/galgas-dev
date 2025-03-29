@@ -9894,17 +9894,17 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
                                                                                                                                               GGS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  GGS_lstring var_receiverName_7457 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_receiverName_7456 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 201)) ;
-  GGS_location var_instructionLocation_7478 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 202)) ;
-  GGS_lstringlist var_propertyList_7536 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
+  GGS_location var_instructionLocation_7477 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 202)) ;
+  GGS_lstringlist var_propertyList_7535 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_34_InstructionsSyntax_22 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 206)) ;
-      GGS_lstring var_attributeName_7610 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_attributeName_7609 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 207)) ;
-      var_propertyList_7536.addAssign_operation (var_attributeName_7610  COMMA_SOURCE_FILE ("instruction-concat.galgas", 208)) ;
+      var_propertyList_7535.addAssign_operation (var_attributeName_7609  COMMA_SOURCE_FILE ("instruction-concat.galgas", 208)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -9912,102 +9912,102 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
   switch (select_galgas_34_InstructionsSyntax_23 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 212)) ;
-    GGS_semanticExpressionAST var_expression_7763 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_7763, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_minusAssign (SOURCE_FILE ("instruction-concat.galgas", 219)), var_expression_7763, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_7762 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_7762, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_minusAssign (SOURCE_FILE ("instruction-concat.galgas", 219)), var_expression_7762, inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 223)) ;
-    GGS_semanticExpressionAST var_expression_8063 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_8063, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_plusAssign (SOURCE_FILE ("instruction-concat.galgas", 230)), var_expression_8063, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_8062 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_8062, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_plusAssign (SOURCE_FILE ("instruction-concat.galgas", 230)), var_expression_8062, inCompiler COMMA_HERE) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2B__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 234)) ;
-    GGS_semanticExpressionAST var_expression_8363 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_8363, inCompiler) ;
-    outArgument_outInstruction = GGS_plusPlusEqualElementsInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, var_expression_8363, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_8362 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_8362, inCompiler) ;
+    outArgument_outInstruction = GGS_plusPlusEqualElementInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, var_expression_8362, inCompiler COMMA_HERE) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 244)) ;
-    GGS_semanticExpressionAST var_expression_8644 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_8644, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_mulAssign (SOURCE_FILE ("instruction-concat.galgas", 251)), var_expression_8644, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_8642 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_8642, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_mulAssign (SOURCE_FILE ("instruction-concat.galgas", 251)), var_expression_8642, inCompiler COMMA_HERE) ;
   } break ;
   case 5: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 255)) ;
-    GGS_semanticExpressionAST var_expression_8942 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_8942, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_andAssign (SOURCE_FILE ("instruction-concat.galgas", 262)), var_expression_8942, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_8940 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_8940, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_andAssign (SOURCE_FILE ("instruction-concat.galgas", 262)), var_expression_8940, inCompiler COMMA_HERE) ;
   } break ;
   case 6: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 266)) ;
-    GGS_semanticExpressionAST var_expression_9240 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_9240, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_orAssign (SOURCE_FILE ("instruction-concat.galgas", 273)), var_expression_9240, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_9238 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_9238, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_orAssign (SOURCE_FILE ("instruction-concat.galgas", 273)), var_expression_9238, inCompiler COMMA_HERE) ;
   } break ;
   case 7: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5E__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 277)) ;
-    GGS_semanticExpressionAST var_expression_9537 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_9537, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_xorAssign (SOURCE_FILE ("instruction-concat.galgas", 284)), var_expression_9537, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_9535 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_9535, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_xorAssign (SOURCE_FILE ("instruction-concat.galgas", 284)), var_expression_9535, inCompiler COMMA_HERE) ;
   } break ;
   case 8: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 288)) ;
-    GGS_semanticExpressionAST var_expression_9835 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_9835, inCompiler) ;
-    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7478, constinArgument_inHasSelfPrefix, var_receiverName_7457, var_propertyList_7536, GGS_opAssignmentOperator::class_func_divAssign (SOURCE_FILE ("instruction-concat.galgas", 295)), var_expression_9835, inCompiler COMMA_HERE) ;
+    GGS_semanticExpressionAST var_expression_9833 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_9833, inCompiler) ;
+    outArgument_outInstruction = GGS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_7477, constinArgument_inHasSelfPrefix, var_receiverName_7456, var_propertyList_7535, GGS_opAssignmentOperator::class_func_divAssign (SOURCE_FILE ("instruction-concat.galgas", 295)), var_expression_9833, inCompiler COMMA_HERE) ;
   } break ;
   case 9: {
-    GGS_actualParameterListAST var_actualParameterList_10153 ;
-    nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (ioArgument_ioDeclarations, var_actualParameterList_10153, inCompiler) ;
+    GGS_actualParameterListAST var_actualParameterList_10151 ;
+    nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (ioArgument_ioDeclarations, var_actualParameterList_10151, inCompiler) ;
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
       test_1 = constinArgument_inHasSelfPrefix.boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = GGS_bool (ComparisonKind::equal, var_propertyList_7536.getter_count (SOURCE_FILE ("instruction-concat.galgas", 301)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_2 = GGS_bool (ComparisonKind::equal, var_propertyList_7535.getter_count (SOURCE_FILE ("instruction-concat.galgas", 301)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7478, GGS_selfInExpressionAST::init_21_ (var_instructionLocation_7478, inCompiler COMMA_HERE), var_receiverName_7457, var_actualParameterList_10153, inCompiler COMMA_HERE) ;
+            outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7477, GGS_selfInExpressionAST::init_21_ (var_instructionLocation_7477, inCompiler COMMA_HERE), var_receiverName_7456, var_actualParameterList_10151, inCompiler COMMA_HERE) ;
           }
         }
         if (GalgasBool::boolFalse == test_2) {
-          GGS_lstring var_methodName_10528 ;
+          GGS_lstring var_methodName_10526 ;
           {
-          var_propertyList_7536.setter_popLast (var_methodName_10528, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 309)) ;
+          var_propertyList_7535.setter_popLast (var_methodName_10526, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 309)) ;
           }
-          GGS_semanticExpressionAST var_receiverExpression_10577 = GGS_selfInExpressionAST::init_21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 310)), inCompiler COMMA_HERE) ;
-          var_receiverExpression_10577 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_receiverName_7457.readProperty_location (), var_receiverExpression_10577, var_receiverName_7457, inCompiler COMMA_HERE) ;
-          UpEnumerator_lstringlist enumerator_10777 (var_propertyList_7536) ;
-          while (enumerator_10777.hasCurrentObject ()) {
-            var_receiverExpression_10577 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_10777.current_mValue (HERE).readProperty_location (), var_receiverExpression_10577, enumerator_10777.current_mValue (HERE), inCompiler COMMA_HERE) ;
-            enumerator_10777.gotoNextObject () ;
+          GGS_semanticExpressionAST var_receiverExpression_10575 = GGS_selfInExpressionAST::init_21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 310)), inCompiler COMMA_HERE) ;
+          var_receiverExpression_10575 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_receiverName_7456.readProperty_location (), var_receiverExpression_10575, var_receiverName_7456, inCompiler COMMA_HERE) ;
+          UpEnumerator_lstringlist enumerator_10775 (var_propertyList_7535) ;
+          while (enumerator_10775.hasCurrentObject ()) {
+            var_receiverExpression_10575 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_10775.current_mValue (HERE).readProperty_location (), var_receiverExpression_10575, enumerator_10775.current_mValue (HERE), inCompiler COMMA_HERE) ;
+            enumerator_10775.gotoNextObject () ;
           }
-          outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7478, var_receiverExpression_10577, var_methodName_10528, var_actualParameterList_10153, inCompiler COMMA_HERE) ;
+          outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7477, var_receiverExpression_10575, var_methodName_10526, var_actualParameterList_10151, inCompiler COMMA_HERE) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_1) {
       GalgasBool test_3 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_3) {
-        test_3 = GGS_bool (ComparisonKind::equal, var_propertyList_7536.getter_count (SOURCE_FILE ("instruction-concat.galgas", 322)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        test_3 = GGS_bool (ComparisonKind::equal, var_propertyList_7535.getter_count (SOURCE_FILE ("instruction-concat.galgas", 322)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_3) {
-          outArgument_outInstruction = GGS_procCallInstructionAST::init_21__21__21_ (var_receiverName_7457.readProperty_location (), var_receiverName_7457, var_actualParameterList_10153, inCompiler COMMA_HERE) ;
+          outArgument_outInstruction = GGS_procCallInstructionAST::init_21__21__21_ (var_receiverName_7456.readProperty_location (), var_receiverName_7456, var_actualParameterList_10151, inCompiler COMMA_HERE) ;
         }
       }
       if (GalgasBool::boolFalse == test_3) {
-        GGS_lstring var_methodName_11405 ;
+        GGS_lstring var_methodName_11403 ;
         {
-        var_propertyList_7536.setter_popLast (var_methodName_11405, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 329)) ;
+        var_propertyList_7535.setter_popLast (var_methodName_11403, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 329)) ;
         }
-        GGS_semanticExpressionAST var_receiverExpression_11452 = GGS_varInExpressionAST::init_21_ (var_receiverName_7457, inCompiler COMMA_HERE) ;
-        UpEnumerator_lstringlist enumerator_11522 (var_propertyList_7536) ;
-        while (enumerator_11522.hasCurrentObject ()) {
-          var_receiverExpression_11452 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_11522.current_mValue (HERE).readProperty_location (), var_receiverExpression_11452, enumerator_11522.current_mValue (HERE), inCompiler COMMA_HERE) ;
-          enumerator_11522.gotoNextObject () ;
+        GGS_semanticExpressionAST var_receiverExpression_11450 = GGS_varInExpressionAST::init_21_ (var_receiverName_7456, inCompiler COMMA_HERE) ;
+        UpEnumerator_lstringlist enumerator_11520 (var_propertyList_7535) ;
+        while (enumerator_11520.hasCurrentObject ()) {
+          var_receiverExpression_11450 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_11520.current_mValue (HERE).readProperty_location (), var_receiverExpression_11450, enumerator_11520.current_mValue (HERE), inCompiler COMMA_HERE) ;
+          enumerator_11520.gotoNextObject () ;
         }
-        outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7478, var_receiverExpression_11452, var_methodName_11405, var_actualParameterList_10153, inCompiler COMMA_HERE) ;
+        outArgument_outInstruction = GGS_methodCallInstructionAST::init_21__21__21__21_ (var_instructionLocation_7477, var_receiverExpression_11450, var_methodName_11403, var_actualParameterList_10151, inCompiler COMMA_HERE) ;
       }
     }
   } break ;
@@ -11464,7 +11464,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_if_
     GGS_semanticInstructionAST var_instruction_4233 ;
     nt_if_5F_instruction_5F_core_ (ioArgument_ioDeclarations, var_instruction_4233, inCompiler) ;
     GGS_semanticInstructionListAST temp_0 = GGS_semanticInstructionListAST::init (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
-    temp_0.enterElement (GGS_semanticInstructionListAST_2E_element::init_21_ (var_instruction_4233, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
+    temp_0.plusPlusAssignOperation (GGS_semanticInstructionListAST_2E_element::init_21_ (var_instruction_4233, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
     var_else_5F_instructionList_4004 = temp_0 ;
   } break ;
   default:

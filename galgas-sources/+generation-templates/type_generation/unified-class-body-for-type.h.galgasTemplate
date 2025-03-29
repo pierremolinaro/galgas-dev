@@ -130,12 +130,12 @@ if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %
 end
 
-if PLUS_PLUS_ASSIGN_TYPE_NAME != "" then
-%//--------------------------------- ++= operator
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (%?^%const GGS_%![PLUS_PLUS_ASSIGN_TYPE_NAME identifierRepresentation]% & inOperand,
+if SUPPORT_COLLECTION_VALUE then
+%
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (%?^%const GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inOperand,
   %!^%Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) ;
-  
 %
 end
 
@@ -421,13 +421,6 @@ if [SUPPORTED_OPERATORS contains ![@typeFeatures supportWithAccessor]] then
   %  public: VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%
   !^%const GGS_string & inKey\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
-end
-if SUPPORT_COLLECTION_VALUE then
-%
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then

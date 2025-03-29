@@ -412,7 +412,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: constructorAttributeTypeList
-    !plusPlusAssignExpressionType: listElementType
     !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false
     !typeForEnumeratedElement: listElementType
@@ -569,7 +568,6 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments
-    !selfTypeDefinition.plusPlusAssignExpressionTypeName
     !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]

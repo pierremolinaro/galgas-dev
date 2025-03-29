@@ -276,7 +276,6 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
-      !plusPlusAssignExpressionType: nil
       !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementType
@@ -403,7 +402,6 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments
-      !selfTypeDefinition.plusPlusAssignExpressionTypeName
       !selfTypeDefinition.typeForEnumeratedElement
       !selfTypeDefinition.supportCollectionValue
     ]

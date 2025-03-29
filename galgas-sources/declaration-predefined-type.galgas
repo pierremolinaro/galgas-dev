@@ -144,7 +144,6 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !enumerationDescriptorList: enumerationList
       !features: [self getSupportedOperatorFlags]
       !addAssignOperatorArguments: addAssignArgumentList
-      !plusPlusAssignExpressionType: nil
       !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: enumeratedTypeEntry

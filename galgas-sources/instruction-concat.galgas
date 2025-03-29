@@ -65,7 +65,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $++=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @plusPlusEqualElementsInstructionAST {
+      outInstruction = @plusPlusEqualElementInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -233,7 +233,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $++=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @plusPlusEqualElementsInstructionAST {
+      outInstruction = @plusPlusEqualElementInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -559,20 +559,9 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   //--- Check target variable
     for (value) in self.mStructAttributeList do
       let propertyMap = [targetType definition].propertyMap
-  //    let previousTargetType = targetType
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
-  //    if not isPublic  then
-  //      switch inAnalysisContext.selfType
-  //      case none :
-  //        error value : " inaccessible property (due to its 'private' qualifier)"
-  //      case available (selfType 2*) :
-  //        if previousTargetType != selfType then
-  //          error value : " inaccessible property (due to its 'private' qualifier)"
-  //        end
-  //      end
-  //    end
-      if isConstant then
+       if isConstant then
         error value : "a constant property cannot be modified"
       end
     end
@@ -580,7 +569,8 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments // Empty list if += operator is not supported
     if [addAssignOperatorArguments count] == 0 then
       error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
+      :"the target object has the '@" + [targetType definition].typeName.string
+      + "' type, but this type does not support the '+=' operator"
   //--- Analyze source expressions
     elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
       error self.mInstructionLocation
@@ -625,7 +615,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @plusPlusEqualElementsInstructionAST : @semanticInstructionAST {
+class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -685,15 +675,12 @@ class @plusPlusEqualElementsInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support '++=' operator
-    let @unifiedTypeMapEntry rightExpressionType
-    if let t = [targetType definition].plusPlusAssignExpressionType then
-      rightExpressionType = t
-    else
+    if not [targetType definition].supportCollectionValue then
       error self.mInstructionLocation
       :"the target object has the '@" + [targetType definition].typeName.string
       + "' type, but this type does not support the '++=' operator"
-      : rightExpressionType
     end
+    let rightExpressionType = [targetType definition].typeForEnumeratedElement
   //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
