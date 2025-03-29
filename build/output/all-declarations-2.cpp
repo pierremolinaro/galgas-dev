@@ -5344,21 +5344,6 @@ GGS_terminalMap GGS_terminalMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalMap::enterElement (const GGS_terminalMap_2E_element & inValue,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  cMapElement_terminalMap * p = nullptr ;
-  macroMyNew (p, cMapElement_terminalMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@terminalMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_terminalMap::addAssign_operation (const GGS_lstring & inKey,
                                            const GGS_lexicalSentValueList & inArgument0,
                                            Compiler * inCompiler
@@ -5687,21 +5672,6 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::getter_overriddenMap (Compiler * inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTypeMap::enterElement (const GGS_lexicalTypeMap_2E_element & inValue,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTypeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTypeMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalTypeMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalTypeMap::addAssign_operation (const GGS_lstring & inKey,
                                               const GGS_lexicalTypeEnum & inArgument0,
                                               Compiler * inCompiler
@@ -6026,21 +5996,6 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::getter_overriddenMap (Compiler 
   GGS_lexicalAttributeMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalAttributeMap::enterElement (const GGS_lexicalAttributeMap_2E_element & inValue,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalAttributeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalAttributeMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalAttributeMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7196,21 +7151,6 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::getter_overridd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::enterElement (const GGS_lexicalExplicitTokenListMap_2E_element & inValue,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalExplicitTokenListMap::addAssign_operation (const GGS_lstring & inKey,
                                                            const GGS_lstring & inArgument0,
                                                            const GGS_bool & inArgument1,
@@ -8059,21 +7999,6 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::getter_ov
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::enterElement (const GGS_lexicalExplicitTokenListMapMap_2E_element & inValue,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMapMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMapMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMapMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalExplicitTokenListMapMap::addAssign_operation (const GGS_lstring & inKey,
                                                               const GGS_lexicalExplicitTokenListMap & inArgument0,
                                                               const GGS_tokenSortedlist & inArgument1,
@@ -8506,21 +8431,6 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::getter_overriddenMap (Compiler * in
   GGS_lexicalMessageMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalMessageMap::enterElement (const GGS_lexicalMessageMap_2E_element & inValue,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalMessageMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalMessageMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalMessageMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9510,21 +9420,6 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::enterElement (const GGS_lexicalRoutineMap_2E_element & inValue,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalRoutineMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalRoutineMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalRoutineMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalRoutineMap::addAssign_operation (const GGS_lstring & inKey,
                                                  const GGS_lexicalRoutineFormalArgumentList & inArgument0,
                                                  const GGS_stringlist & inArgument1,
@@ -10492,21 +10387,6 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::getter_overriddenMap (Compiler * 
   GGS_lexicalFunctionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionMap::enterElement (const GGS_lexicalFunctionMap_2E_element & inValue,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalFunctionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalFunctionMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalFunctionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11588,21 +11468,6 @@ GGS_styleMap GGS_styleMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_styleMap::enterElement (const GGS_styleMap_2E_element & inValue,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  cMapElement_styleMap * p = nullptr ;
-  macroMyNew (p, cMapElement_styleMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@styleMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_styleMap::addAssign_operation (const GGS_lstring & inKey,
                                         const GGS_lstring & inArgument0,
                                         const GGS_uint & inArgument1,
@@ -11969,21 +11834,6 @@ GGS_lexicalTagMap GGS_lexicalTagMap::getter_overriddenMap (Compiler * inCompiler
   GGS_lexicalTagMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalTagMap::enterElement (const GGS_lexicalTagMap_2E_element & inValue,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTagMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTagMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalTagMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15882,6 +15732,224 @@ GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("lexicalSelectInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSelectInstructionAST_2E_weak::objectCompare (const GGS_lexicalSelectInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (void) :
+GGS_lexicalInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak & GGS_lexicalSelectInstructionAST_2E_weak::operator = (const GGS_lexicalSelectInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (const GGS_lexicalSelectInstructionAST & inSource) :
+GGS_lexicalInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST_2E_weak::bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSelectInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalSelectInstructionAST) ;
+      result = GGS_lexicalSelectInstructionAST ((cPtr_lexicalSelectInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalSelectInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ("lexicalSelectInstructionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSelectInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSelectInstructionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSelectInstructionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST_2E_weak result ;
+  const GGS_lexicalSelectInstructionAST_2E_weak * p = (const GGS_lexicalSelectInstructionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSelectInstructionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSelectInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSimpleSendInstructionAST_2E_weak::objectCompare (const GGS_lexicalSimpleSendInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST_2E_weak::GGS_lexicalSimpleSendInstructionAST_2E_weak (void) :
+GGS_lexicalInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST_2E_weak & GGS_lexicalSimpleSendInstructionAST_2E_weak::operator = (const GGS_lexicalSimpleSendInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST_2E_weak::GGS_lexicalSimpleSendInstructionAST_2E_weak (const GGS_lexicalSimpleSendInstructionAST & inSource) :
+GGS_lexicalInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST_2E_weak GGS_lexicalSimpleSendInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_lexicalSimpleSendInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST GGS_lexicalSimpleSendInstructionAST_2E_weak::bang_lexicalSimpleSendInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSimpleSendInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalSimpleSendInstructionAST) ;
+      result = GGS_lexicalSimpleSendInstructionAST ((cPtr_lexicalSimpleSendInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalSimpleSendInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2E_weak ("lexicalSimpleSendInstructionAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSimpleSendInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSimpleSendInstructionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSimpleSendInstructionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST_2E_weak GGS_lexicalSimpleSendInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_lexicalSimpleSendInstructionAST_2E_weak result ;
+  const GGS_lexicalSimpleSendInstructionAST_2E_weak * p = (const GGS_lexicalSimpleSendInstructionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSimpleSendInstructionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSimpleSendInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

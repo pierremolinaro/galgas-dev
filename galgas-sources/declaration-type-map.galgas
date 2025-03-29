@@ -640,7 +640,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !isConcrete: true // Concrete Type
     !superType: .null
     !typeKind: .mapType
-    !supportCollectionValue: true // Support collection value
+    !supportCollectionValue: false // Support collection value
     !allTypedPropertyList: @()
     !propertyMap: @()
     !currentTypedPropertyList: typedPropertyList

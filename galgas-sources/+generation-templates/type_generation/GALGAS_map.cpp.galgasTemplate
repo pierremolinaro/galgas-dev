@@ -149,21 +149,6 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
-      %!^%Compiler * inCompiler
-      %!^%COMMA_LOCATION_ARGS) {
-  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;
-  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@%!TYPE_IDENTIFIER% insert error: '\%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GGS_lstring & inKey%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]

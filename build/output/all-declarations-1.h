@@ -1909,12 +1909,6 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
                                                                                                 const GGS_string & inKey
                                                                                                 COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_templateVariableMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_templateVariableMap ;
   friend class DownEnumerator_templateVariableMap ;
@@ -3119,12 +3113,6 @@ class GGS_unifiedTypeMap : public AC_GALGAS_map {
                                                                                            const GGS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_unifiedTypeMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_unifiedTypeMap ;
   friend class DownEnumerator_unifiedTypeMap ;
@@ -3358,12 +3346,6 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
                                                                                            const GGS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_filewrapperMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_filewrapperMap ;
   friend class DownEnumerator_filewrapperMap ;
@@ -3527,12 +3509,6 @@ class GGS_functionMap : public AC_GALGAS_map {
                                                                                         const GGS_string & inKey
                                                                                         COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_functionMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_functionMap ;
   friend class DownEnumerator_functionMap ;
@@ -3695,12 +3671,6 @@ class GGS_grammarMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG cMapElement_grammarMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                        const GGS_string & inKey
                                                                                        COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_grammarMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_grammarMap ;
@@ -3921,12 +3891,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                    const GGS_string & inKey
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexiqueComponentMapForSemanticAnalysis ;
   friend class DownEnumerator_lexiqueComponentMapForSemanticAnalysis ;
@@ -4118,12 +4082,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                   const GGS_string & inKey
                                                                                                                   COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_optionComponentMapForSemanticAnalysis_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_optionComponentMapForSemanticAnalysis ;
   friend class DownEnumerator_optionComponentMapForSemanticAnalysis ;
@@ -4301,12 +4259,6 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
                                                                                                const GGS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) ;
 
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_syntaxComponentMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_syntaxComponentMap ;
   friend class DownEnumerator_syntaxComponentMap ;
@@ -4445,12 +4397,6 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG cMapElement_internalRoutineMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                const GGS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_internalRoutineMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_internalRoutineMap ;

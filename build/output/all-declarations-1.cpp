@@ -2218,21 +2218,6 @@ GGS_templateVariableMap GGS_templateVariableMap::getter_overriddenMap (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateVariableMap::enterElement (const GGS_templateVariableMap_2E_element & inValue,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  cMapElement_templateVariableMap * p = nullptr ;
-  macroMyNew (p, cMapElement_templateVariableMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@templateVariableMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_templateVariableMap::addAssign_operation (const GGS_lstring & inKey,
                                                    const GGS_unifiedTypeMapEntry & inArgument0,
                                                    const GGS_string & inArgument1,
