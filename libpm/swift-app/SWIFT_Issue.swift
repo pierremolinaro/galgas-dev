@@ -18,7 +18,7 @@ final class SWIFT_Issue {
   let kind : Kind
   let fixitArray : [MyFixitDecoder]
   let locationInBuildLogTextView : Int
-  var range = NSRange ()
+  private(set) var range = NSRange ()
   private(set) var mIsValid = true
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,6 +87,12 @@ final class SWIFT_Issue {
     case .warning : return .orange
     case .error : return .red
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setRange (_ inRange : NSRange) {
+    self.range = inRange
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

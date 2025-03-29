@@ -224,26 +224,29 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   public func didDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
     if let layoutManager = inCocoaTextWiew.layoutManager,
+       let textContainer = inCocoaTextWiew.textContainer,
        let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView,
        let issueArray = ruler.mDocument?.mIssueArray {
      //-------- Note: ruler view and text view are both flipped
-//      for issue in issueArray {
-//        if issue.mIsValid {
-//          let lineFragmentRect = layoutManager.lineFragmentRect (
-//            forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location),
-//            effectiveRange: nil
-//          )
-//          let p1 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location))
-//          let p2 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location + issue.range.length + 1))
-//          let bp = NSBezierPath ()
-//          bp.move (to: NSPoint (x: lineFragmentRect.origin.x + p1.x, y: lineFragmentRect.maxY))
-//          bp.line (to: NSPoint (x: lineFragmentRect.origin.x + p2.x, y: lineFragmentRect.maxY))
-//          bp.lineWidth = 3.0
-//          bp.lineCapStyle = .round
-//          issue.color.setStroke ()
-//          bp.stroke ()
-//        }
-//      }
+      for issue in issueArray {
+        if issue.mIsValid {
+          let bp = NSBezierPath ()
+          let glyphRange = layoutManager.glyphRange (
+            forCharacterRange: issue.range,
+            actualCharacterRange: nil
+          )
+          let rr = layoutManager.boundingRect (
+            forGlyphRange: glyphRange,
+            in: textContainer
+          )
+          bp.move (to: NSPoint (x: rr.minX, y: rr.maxY))
+          bp.line (to: NSPoint (x: rr.maxX, y: rr.maxY))
+          bp.lineWidth = 3.0
+          bp.lineCapStyle = .round
+          issue.color.setStroke ()
+          bp.stroke ()
+        }
+      }
     }
   }
 

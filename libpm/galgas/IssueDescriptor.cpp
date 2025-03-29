@@ -93,7 +93,7 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
   result.appendSigned (mStartColumn) ;
 //--- End Column
   result.appendString (",\"length\":") ;
-  result.appendSigned (mEndColumn - mStartColumn) ;
+  result.appendSigned (mEndColumn - mStartColumn + 1) ;
 //--- message
   result.appendString (",\"message\":[") ;
   TC_UniqueArray <String> lines ;

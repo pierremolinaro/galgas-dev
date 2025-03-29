@@ -628,6 +628,44 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func gotoLineAction (_ inUnusedSender : Any?) {
+    let alert = NSAlert ()
+    _ = alert.addButton (withTitle: "Cancel")
+    _ = alert.addButton (withTitle: "Goto")
+    alert.messageText =  "Select Line"
+    alert.beginSheetModal (for: self) { (response : NSApplication.ModalResponse) in
+//      if response == .alertSecondButtonReturn {
+//        self.rootObject.mBoardSelectedInspector = 4
+//      }
+    }
+
+//    NSApp.beginSheet (<#T##sheet: NSWindow##NSWindow#>, modalFor: <#T##NSWindow#>, modalDelegate: <#T##Any?#>, didEnd: <#T##Selector?#>, contextInfo: <#T##UnsafeMutableRawPointer!#>)
+//    [NSApp
+//      beginSheet: mGotoWindow
+//      modalForWindow: self.windowForSheet
+//      modalDelegate: self
+//      didEndSelector: @selector (gotoLineSheetDidEnd:returnCode:contextInfo:)
+//      contextInfo: nil
+//    ] ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  - (void) gotoLineSheetDidEnd: (NSWindow *) inSheet
+//           returnCode: (int) inReturnCode
+//           contextInfo: (void *) inContextInfo {
+//    if (inReturnCode == 1) {
+//    //--- Get selected line
+//      const NSUInteger selectedLine = (NSUInteger) [mGotoLineTextField integerValue] ;
+//    //--- Goto selected line
+//      OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
+//      [selectedObject gotoLine: selectedLine] ;
+//    }
+//  }
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Utilities
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

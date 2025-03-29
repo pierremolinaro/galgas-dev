@@ -164,7 +164,7 @@ import AppKit
         startColumn: inIssue.startColumn,
         length: inIssue.length
       )
-      inIssue.range = range
+      inIssue.setRange (range)
       self.mIssueArray.append (inIssue)
       self.textViewNeedsDisplay ()
     }

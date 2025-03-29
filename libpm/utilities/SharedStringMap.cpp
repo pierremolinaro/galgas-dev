@@ -362,23 +362,6 @@ class SharedStringMapRoot final : public SharedObject {
           outRemovedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;
           ioBranchHasBeenRemoved = true ;
         }else{
-//          outRemovedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;
-//          OptionalSharedRef <SharedStringMapNode> p ;
-//          p.swap (outRemovedNode->mInfPtr) ;
-//          p.swap (ioRoot) ;
-//
-//          while (p.isNotNil ()) {
-//
-//          }
-//          ioRoot.swap (outRemovedNode->mSupPtr) ;
-//          OptionalSharedRef <SharedStringMapNode> p ;
-//          p.swap (outRemovedNode->mInfPtr) ;
-//          p.swap (ioRoot) ;
-//          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
-
-
-
-
           outRemovedNode = ioRoot ;
           OptionalSharedRef <SharedStringMapNode> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
@@ -395,23 +378,6 @@ class SharedStringMapRoot final : public SharedObject {
       }
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  public: bool hasKey2 (const String & inKey) const {
-//    const OptionalSharedRef <SharedStringMapNode> & ptr = mRootNode ;
-//    while (ptr.isNotNil ()) {
-//      const int32_t comparaison = ptr->mKey.compare (inKey) ;
-//      if (comparaison > 0) {
-//        ptr = ptr->mInfPtr ;
-//      }else if (comparaison < 0) {
-//        ptr = ptr->mSupPtr ;
-//      }else{ // Found
-//        return true ;
-//      }
-//    }
-//    return false ;
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
