@@ -147,48 +147,6 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compile
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GGS_lstring & inKey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
-end
-%,\n %!^%Compiler * inCompiler%
-%\n %!^%COMMA_LOCATION_ARGS) {\n%
-%  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
-%  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %, inArgument%![IDX string]
-end
-% COMMA_HERE)) ;\n%
-%  capCollectionElement attributes ;\n%
-%  attributes.setPointer (p) ;\n%
-%  macroDetachSharedObject (p) ;\n%
-block 2 :
-  %const char * kInsertErrorMessage = "@%!TYPE_IDENTIFIER% insert error: '\%K' already in map" ;\n%
-  %const char * kShadowErrorMessage = "" ;\n%
-  %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
-end
-%}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,\n%
-   !^%Compiler * inCompiler%
-   %\n %!^%COMMA_LOCATION_ARGS) const {
-  GGS_%!TYPE_IDENTIFIER% result = *this ;
-  UpEnumerator_%!TYPE_IDENTIFIER% enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE)%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do %, enumerator.current_%![mPropertyName identifierRepresentation]% (HERE)%
-end
-%, inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
 %for (insertMethodName errorMessage shadowErrorMessage) in INSERT_METHOD_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%

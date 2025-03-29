@@ -1970,17 +1970,6 @@ class GGS_headerCompositionMap : public AC_GALGAS_map {
   public: static class GGS_headerCompositionMap class_func_mapWithMapToOverride (const class GGS_headerCompositionMap & inOperand0
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_stringset & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_headerCompositionMap add_operation (const GGS_headerCompositionMap & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -2326,16 +2315,6 @@ class GGS_headerRepartitionMap : public AC_GALGAS_map {
   public: static class GGS_headerRepartitionMap class_func_mapWithMapToOverride (const class GGS_headerRepartitionMap & inOperand0
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_string & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_headerRepartitionMap add_operation (const GGS_headerRepartitionMap & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -2655,16 +2634,6 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
   public: static class GGS_projectQualifiedFeatureMap class_func_mapWithMapToOverride (const class GGS_projectQualifiedFeatureMap & inOperand0
                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_projectQualifiedFeatureMap add_operation (const GGS_projectQualifiedFeatureMap & inOperand,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters

@@ -1744,17 +1744,6 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
   public: static class GGS_templateVariableMap class_func_mapWithMapToOverride (const class GGS_templateVariableMap & inOperand0
                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_templateVariableMap add_operation (const GGS_templateVariableMap & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -2965,16 +2954,6 @@ class GGS_unifiedTypeMap : public AC_GALGAS_map {
   public: static class GGS_unifiedTypeMap class_func_mapWithMapToOverride (const class GGS_unifiedTypeMap & inOperand0
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_unifiedTypeMapElementClass & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_unifiedTypeMap add_operation (const GGS_unifiedTypeMap & inOperand,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_internalInsertKey (class GGS_lstring constinArgument0,
@@ -3132,21 +3111,6 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
 
   public: static class GGS_filewrapperMap class_func_mapWithMapToOverride (const class GGS_filewrapperMap & inOperand0
                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1,
-                                                     const class GGS_lstringlist & inOperand2,
-                                                     const class GGS_wrapperFileMap & inOperand3,
-                                                     const class GGS_wrapperDirectoryMap & inOperand4,
-                                                     const class GGS_filewrapperTemplateMap & inOperand5,
-                                                     const class GGS_bool & inOperand6,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_filewrapperMap add_operation (const GGS_filewrapperMap & inOperand,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -3332,18 +3296,6 @@ class GGS_functionMap : public AC_GALGAS_map {
   public: static class GGS_functionMap class_func_mapWithMapToOverride (const class GGS_functionMap & inOperand0
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_functionSignature & inOperand1,
-                                                     const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                     const class GGS_bool & inOperand3,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_functionMap add_operation (const GGS_functionMap & inOperand,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -3494,18 +3446,6 @@ class GGS_grammarMap : public AC_GALGAS_map {
 
   public: static class GGS_grammarMap class_func_mapWithMapToOverride (const class GGS_grammarMap & inOperand0
                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_grammarLabelMap & inOperand1,
-                                                     const class GGS_bool & inOperand2,
-                                                     const class GGS_bool & inOperand3,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_grammarMap add_operation (const GGS_grammarMap & inOperand,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -3665,22 +3605,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 
   public: static class GGS_lexiqueComponentMapForSemanticAnalysis class_func_mapWithMapToOverride (const class GGS_lexiqueComponentMapForSemanticAnalysis & inOperand0
                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_bool & inOperand1,
-                                                     const class GGS_terminalMap & inOperand2,
-                                                     const class GGS_indexingListAST & inOperand3,
-                                                     const class GGS_terminalDeclarationListAST & inOperand4,
-                                                     const class GGS_lexicalAttributeListAST & inOperand5,
-                                                     const class GGS_lexicalStyleListAST & inOperand6,
-                                                     const class GGS_lexicalListDeclarationListAST & inOperand7,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_lexiqueComponentMapForSemanticAnalysis add_operation (const GGS_lexiqueComponentMapForSemanticAnalysis & inOperand,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -3881,20 +3805,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
   public: static class GGS_optionComponentMapForSemanticAnalysis class_func_mapWithMapToOverride (const class GGS_optionComponentMapForSemanticAnalysis & inOperand0
                                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_bool & inOperand1,
-                                                     const class GGS_commandLineOptionMap & inOperand2,
-                                                     const class GGS_commandLineOptionMap & inOperand3,
-                                                     const class GGS_commandLineOptionMap & inOperand4,
-                                                     const class GGS_commandLineOptionMap & inOperand5,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_optionComponentMapForSemanticAnalysis add_operation (const GGS_optionComponentMapForSemanticAnalysis & inOperand,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -4070,19 +3980,6 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
   public: static class GGS_syntaxComponentMap class_func_mapWithMapToOverride (const class GGS_syntaxComponentMap & inOperand0
                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1,
-                                                     const class GGS_nonterminalDeclarationListAST & inOperand2,
-                                                     const class GGS_syntaxRuleListAST & inOperand3,
-                                                     const class GGS_bool & inOperand4,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_syntaxComponentMap add_operation (const GGS_syntaxComponentMap & inOperand,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -4240,16 +4137,6 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
 
   public: static class GGS_internalRoutineMap class_func_mapWithMapToOverride (const class GGS_internalRoutineMap & inOperand0
                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_routineArgumentMap & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_internalRoutineMap add_operation (const GGS_internalRoutineMap & inOperand,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters

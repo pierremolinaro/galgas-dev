@@ -586,7 +586,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   ]
 //--- Features
   var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
-           | .supportWithAccessor | .infixAddOperator | .doNotGenererateObjectCompare
+           | .supportWithAccessor | .doNotGenererateObjectCompare // | .infixAddOperator
   if self.equatable then
     features |= .equatable
   end
@@ -637,10 +637,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mMapTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true // Concrete Type
+    !isConcrete: true
     !superType: .null
     !typeKind: .mapType
-    !supportCollectionValue: false // Support collection value
+    !supportCollectionValue: false
     !allTypedPropertyList: @()
     !propertyMap: @()
     !currentTypedPropertyList: typedPropertyList
@@ -654,9 +654,9 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !readSubscriptMap: readSubscriptMap
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
-    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
+    !addAssignOperatorArguments: @() // argumentTypeListForAddAssignWithFieldExpressionList
     !mapSearchMethodList: self.mSearchMethodList
-    !generateHeaderInSeparateFile: false // Do not generate header in separate file
+    !generateHeaderInSeparateFile: false
     !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
     !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]
     !headerKind: .twoHeaders

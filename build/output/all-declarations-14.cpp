@@ -9720,37 +9720,6 @@ GGS_headerCompositionMap GGS_headerCompositionMap::getter_overriddenMap (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_headerCompositionMap::addAssign_operation (const GGS_lstring & inKey,
-                                                    const GGS_stringset & inArgument0,
-                                                    const GGS_string & inArgument1,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_headerCompositionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_headerCompositionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@headerCompositionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerCompositionMap GGS_headerCompositionMap::add_operation (const GGS_headerCompositionMap & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_headerCompositionMap result = *this ;
-  UpEnumerator_headerCompositionMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mInclusion (HERE), enumerator.current_mHeaderString (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_headerCompositionMap::setter_insertKey (GGS_lstring inKey,
                                                  GGS_stringset inArgument0,
                                                  GGS_string inArgument1,
@@ -10098,36 +10067,6 @@ GGS_headerRepartitionMap GGS_headerRepartitionMap::getter_overriddenMap (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_headerRepartitionMap::addAssign_operation (const GGS_lstring & inKey,
-                                                    const GGS_string & inArgument0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_headerRepartitionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_headerRepartitionMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@headerRepartitionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerRepartitionMap GGS_headerRepartitionMap::add_operation (const GGS_headerRepartitionMap & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_headerRepartitionMap result = *this ;
-  UpEnumerator_headerRepartitionMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mHeaderFileName (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_headerRepartitionMap::setter_insertKey (GGS_lstring inKey,
                                                  GGS_string inArgument0,
                                                  Compiler * inCompiler
@@ -10421,36 +10360,6 @@ GGS_projectQualifiedFeatureMap GGS_projectQualifiedFeatureMap::getter_overridden
                                                                                      COMMA_LOCATION_ARGS) const {
   GGS_projectQualifiedFeatureMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectQualifiedFeatureMap::addAssign_operation (const GGS_lstring & inKey,
-                                                          const GGS_lstring & inArgument0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_projectQualifiedFeatureMap * p = nullptr ;
-  macroMyNew (p, cMapElement_projectQualifiedFeatureMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@projectQualifiedFeatureMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectQualifiedFeatureMap GGS_projectQualifiedFeatureMap::add_operation (const GGS_projectQualifiedFeatureMap & inOperand,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_projectQualifiedFeatureMap result = *this ;
-  UpEnumerator_projectQualifiedFeatureMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFeatureValue (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 

@@ -2083,37 +2083,6 @@ GGS_templateVariableMap GGS_templateVariableMap::getter_overriddenMap (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateVariableMap::addAssign_operation (const GGS_lstring & inKey,
-                                                   const GGS_unifiedTypeMapEntry & inArgument0,
-                                                   const GGS_string & inArgument1,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_templateVariableMap * p = nullptr ;
-  macroMyNew (p, cMapElement_templateVariableMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@templateVariableMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateVariableMap GGS_templateVariableMap::add_operation (const GGS_templateVariableMap & inOperand,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_templateVariableMap result = *this ;
-  UpEnumerator_templateVariableMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mType (HERE), enumerator.current_mCppName (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_templateVariableMap::setter_insertKey (GGS_lstring inKey,
                                                 GGS_unifiedTypeMapEntry inArgument0,
                                                 GGS_string inArgument1,

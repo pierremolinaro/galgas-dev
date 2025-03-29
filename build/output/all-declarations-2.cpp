@@ -5279,36 +5279,6 @@ GGS_terminalMap GGS_terminalMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalMap::addAssign_operation (const GGS_lstring & inKey,
-                                           const GGS_lexicalSentValueList & inArgument0,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  cMapElement_terminalMap * p = nullptr ;
-  macroMyNew (p, cMapElement_terminalMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@terminalMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalMap GGS_terminalMap::add_operation (const GGS_terminalMap & inOperand,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_terminalMap result = *this ;
-  UpEnumerator_terminalMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mSentAttributeList (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_terminalMap::setter_insertKey (GGS_lstring inKey,
                                         GGS_lexicalSentValueList inArgument0,
                                         Compiler * inCompiler
@@ -5607,36 +5577,6 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::getter_overriddenMap (Compiler * inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTypeMap::addAssign_operation (const GGS_lstring & inKey,
-                                              const GGS_lexicalTypeEnum & inArgument0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTypeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTypeMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalTypeMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeMap GGS_lexicalTypeMap::add_operation (const GGS_lexicalTypeMap & inOperand,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lexicalTypeMap result = *this ;
-  UpEnumerator_lexicalTypeMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexicalType (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalTypeMap::setter_insertKey (GGS_lstring inKey,
                                            GGS_lexicalTypeEnum inArgument0,
                                            Compiler * inCompiler
@@ -5930,36 +5870,6 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::getter_overriddenMap (Compiler 
                                                                        COMMA_LOCATION_ARGS) const {
   GGS_lexicalAttributeMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalAttributeMap::addAssign_operation (const GGS_lstring & inKey,
-                                                   const GGS_lexicalTypeEnum & inArgument0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalAttributeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalAttributeMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalAttributeMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalAttributeMap GGS_lexicalAttributeMap::add_operation (const GGS_lexicalAttributeMap & inOperand,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_lexicalAttributeMap result = *this ;
-  UpEnumerator_lexicalAttributeMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexicalType (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -7073,38 +6983,6 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::getter_overridd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::addAssign_operation (const GGS_lstring & inKey,
-                                                           const GGS_lstring & inArgument0,
-                                                           const GGS_bool & inArgument1,
-                                                           const GGS_bool & inArgument2,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::add_operation (const GGS_lexicalExplicitTokenListMap & inOperand,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
-  GGS_lexicalExplicitTokenListMap result = *this ;
-  UpEnumerator_lexicalExplicitTokenListMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mTerminal (HERE), enumerator.current_atomicSelection (HERE), enumerator.current_isEndOfTemplateMark (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalExplicitTokenListMap::setter_insertKey (GGS_lstring inKey,
                                                         GGS_lstring inArgument0,
                                                         GGS_bool inArgument1,
@@ -7921,38 +7799,6 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::getter_ov
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::addAssign_operation (const GGS_lstring & inKey,
-                                                              const GGS_lexicalExplicitTokenListMap & inArgument0,
-                                                              const GGS_tokenSortedlist & inArgument1,
-                                                              const GGS_bool & inArgument2,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMapMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMapMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMapMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::add_operation (const GGS_lexicalExplicitTokenListMapMap & inOperand,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lexicalExplicitTokenListMapMap result = *this ;
-  UpEnumerator_lexicalExplicitTokenListMapMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExplicitTokenListMap (HERE), enumerator.current_mTokenSortedList (HERE), enumerator.current_mShouldBeGenerated (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalExplicitTokenListMapMap::setter_insertKey (GGS_lstring inKey,
                                                            GGS_lexicalExplicitTokenListMap inArgument0,
                                                            GGS_tokenSortedlist inArgument1,
@@ -8352,37 +8198,6 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::getter_overriddenMap (Compiler * in
                                                                    COMMA_LOCATION_ARGS) const {
   GGS_lexicalMessageMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalMessageMap::addAssign_operation (const GGS_lstring & inKey,
-                                                 const GGS_lstring & inArgument0,
-                                                 const GGS_bool & inArgument1,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalMessageMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalMessageMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalMessageMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalMessageMap GGS_lexicalMessageMap::add_operation (const GGS_lexicalMessageMap & inOperand,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lexicalMessageMap result = *this ;
-  UpEnumerator_lexicalMessageMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexicalMessage (HERE), enumerator.current_mMessageIsUsed (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -9329,38 +9144,6 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::addAssign_operation (const GGS_lstring & inKey,
-                                                 const GGS_lexicalRoutineFormalArgumentList & inArgument0,
-                                                 const GGS_stringlist & inArgument1,
-                                                 const GGS_bool & inArgument2,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalRoutineMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalRoutineMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalRoutineMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineMap GGS_lexicalRoutineMap::add_operation (const GGS_lexicalRoutineMap & inOperand,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineMap result = *this ;
-  UpEnumerator_lexicalRoutineMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexicalRoutineFormalArgumentList (HERE), enumerator.current_mErrorMessageList (HERE), enumerator.current_mIsExtern (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inKey,
                                               GGS_lexicalRoutineFormalArgumentList inArgument0,
                                               GGS_stringlist inArgument1,
@@ -10282,39 +10065,6 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::getter_overriddenMap (Compiler * 
                                                                      COMMA_LOCATION_ARGS) const {
   GGS_lexicalFunctionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionMap::addAssign_operation (const GGS_lstring & inKey,
-                                                  const GGS_lexicalFunctionFormalArgumentList & inArgument0,
-                                                  const GGS_lexicalTypeEnum & inArgument1,
-                                                  const GGS_string & inArgument2,
-                                                  const GGS_bool & inArgument3,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalFunctionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalFunctionMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalFunctionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionMap GGS_lexicalFunctionMap::add_operation (const GGS_lexicalFunctionMap & inOperand,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionMap result = *this ;
-  UpEnumerator_lexicalFunctionMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexicalTypeList (HERE), enumerator.current_mReturnedLexicalType (HERE), enumerator.current_mReplacementFunctionName (HERE), enumerator.current_mIsExtern (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -11351,37 +11101,6 @@ GGS_styleMap GGS_styleMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_styleMap::addAssign_operation (const GGS_lstring & inKey,
-                                        const GGS_lstring & inArgument0,
-                                        const GGS_uint & inArgument1,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  cMapElement_styleMap * p = nullptr ;
-  macroMyNew (p, cMapElement_styleMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@styleMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_styleMap GGS_styleMap::add_operation (const GGS_styleMap & inOperand,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
-  GGS_styleMap result = *this ;
-  UpEnumerator_styleMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mComment (HERE), enumerator.current_mStyleIndex (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_styleMap::setter_insertKey (GGS_lstring inKey,
                                      GGS_lstring inArgument0,
                                      GGS_uint inArgument1,
@@ -11716,35 +11435,6 @@ GGS_lexicalTagMap GGS_lexicalTagMap::getter_overriddenMap (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   GGS_lexicalTagMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalTagMap::addAssign_operation (const GGS_lstring & inKey,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTagMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTagMap (inKey COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@lexicalTagMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTagMap GGS_lexicalTagMap::add_operation (const GGS_lexicalTagMap & inOperand,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalTagMap result = *this ;
-  UpEnumerator_lexicalTagMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -15929,6 +15619,1112 @@ GGS_lexicalTagInstructionAST_2E_weak GGS_lexicalTagInstructionAST_2E_weak::extra
       result = *p ;
     }else{
       inCompiler->castError ("lexicalTagInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalWarningInstructionAST_2E_weak::objectCompare (const GGS_lexicalWarningInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST_2E_weak::GGS_lexicalWarningInstructionAST_2E_weak (void) :
+GGS_lexicalInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST_2E_weak & GGS_lexicalWarningInstructionAST_2E_weak::operator = (const GGS_lexicalWarningInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST_2E_weak::GGS_lexicalWarningInstructionAST_2E_weak (const GGS_lexicalWarningInstructionAST & inSource) :
+GGS_lexicalInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST_2E_weak GGS_lexicalWarningInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_lexicalWarningInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST GGS_lexicalWarningInstructionAST_2E_weak::bang_lexicalWarningInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_lexicalWarningInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalWarningInstructionAST) ;
+      result = GGS_lexicalWarningInstructionAST ((cPtr_lexicalWarningInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalWarningInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2E_weak ("lexicalWarningInstructionAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalWarningInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalWarningInstructionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalWarningInstructionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalWarningInstructionAST_2E_weak GGS_lexicalWarningInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_lexicalWarningInstructionAST_2E_weak result ;
+  const GGS_lexicalWarningInstructionAST_2E_weak * p = (const GGS_lexicalWarningInstructionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalWarningInstructionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalWarningInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Enum optionDefaultValueEnumAST
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST::GGS_optionDefaultValueEnumAST (void) :
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST GGS_optionDefaultValueEnumAST::class_func_noDefaultValue (UNUSED_LOCATION_ARGS) {
+  GGS_optionDefaultValueEnumAST result ;
+  result.mEnum = Enumeration::enum_noDefaultValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST GGS_optionDefaultValueEnumAST::class_func_unsignedDefaultValue (UNUSED_LOCATION_ARGS) {
+  GGS_optionDefaultValueEnumAST result ;
+  result.mEnum = Enumeration::enum_unsignedDefaultValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST GGS_optionDefaultValueEnumAST::class_func_stringDefaultValue (UNUSED_LOCATION_ARGS) {
+  GGS_optionDefaultValueEnumAST result ;
+  result.mEnum = Enumeration::enum_stringDefaultValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
+  "(not built)",
+  "noDefaultValue",
+  "unsignedDefaultValue",
+  "stringDefaultValue"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_optionDefaultValueEnumAST::getter_isNoDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_noDefaultValue == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_optionDefaultValueEnumAST::getter_isUnsignedDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsignedDefaultValue == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_optionDefaultValueEnumAST::getter_isStringDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_stringDefaultValue == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_optionDefaultValueEnumAST::description (String & ioString,
+                                                 const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<enum @optionDefaultValueEnumAST: ") ;
+  ioString.appendCString (gEnumNameArrayFor_optionDefaultValueEnumAST [size_t (mEnum)]) ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_optionDefaultValueEnumAST::objectCompare (const GGS_optionDefaultValueEnumAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @optionDefaultValueEnumAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ("optionDefaultValueEnumAST",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_optionDefaultValueEnumAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_optionDefaultValueEnumAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_optionDefaultValueEnumAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST GGS_optionDefaultValueEnumAST::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_optionDefaultValueEnumAST result ;
+  const GGS_optionDefaultValueEnumAST * p = (const GGS_optionDefaultValueEnumAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_optionDefaultValueEnumAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionDefaultValueEnumAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@commandLineOptionListAST' list
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
+  public: GGS_commandLineOptionListAST_2E_element mObject ;
+
+//--- Class functions
+  public: cCollectionElement_commandLineOptionListAST (const GGS_lstring & in_mOptionTypeName,
+                                                       const GGS_lstring & in_mOptionInternalName,
+                                                       const GGS_lchar & in_mOptionInvocationLetter,
+                                                       const GGS_lstring & in_mOptionInvocationString,
+                                                       const GGS_lstring & in_mOptionComment,
+                                                       const GGS_lstring & in_mOptionDefaultValue,
+                                                       const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind
+                                                       COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_commandLineOptionListAST (const GGS_commandLineOptionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GGS_lstring & in_mOptionTypeName,
+                                                                                          const GGS_lstring & in_mOptionInternalName,
+                                                                                          const GGS_lchar & in_mOptionInvocationLetter,
+                                                                                          const GGS_lstring & in_mOptionInvocationString,
+                                                                                          const GGS_lstring & in_mOptionComment,
+                                                                                          const GGS_lstring & in_mOptionDefaultValue,
+                                                                                          const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind
+                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mOptionTypeName, in_mOptionInternalName, in_mOptionInvocationLetter, in_mOptionInvocationString, in_mOptionComment, in_mOptionDefaultValue, in_mOptionDefaultValueKind) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GGS_commandLineOptionListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mOptionTypeName, inElement.mProperty_mOptionInternalName, inElement.mProperty_mOptionInvocationLetter, inElement.mProperty_mOptionInvocationString, inElement.mProperty_mOptionComment, inElement.mProperty_mOptionDefaultValue, inElement.mProperty_mOptionDefaultValueKind) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_commandLineOptionListAST::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_commandLineOptionListAST::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_commandLineOptionListAST (mObject.mProperty_mOptionTypeName, mObject.mProperty_mOptionInternalName, mObject.mProperty_mOptionInvocationLetter, mObject.mProperty_mOptionInvocationString, mObject.mProperty_mOptionComment, mObject.mProperty_mOptionDefaultValue, mObject.mProperty_mOptionDefaultValueKind COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_commandLineOptionListAST::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionTypeName" ":") ;
+  mObject.mProperty_mOptionTypeName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionInternalName" ":") ;
+  mObject.mProperty_mOptionInternalName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionInvocationLetter" ":") ;
+  mObject.mProperty_mOptionInvocationLetter.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionInvocationString" ":") ;
+  mObject.mProperty_mOptionInvocationString.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionComment" ":") ;
+  mObject.mProperty_mOptionComment.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionDefaultValue" ":") ;
+  mObject.mProperty_mOptionDefaultValue.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mOptionDefaultValueKind" ":") ;
+  mObject.mProperty_mOptionDefaultValueKind.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST::GGS_commandLineOptionListAST (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST::GGS_commandLineOptionListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_commandLineOptionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_commandLineOptionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::plusPlusAssignOperation (const GGS_commandLineOptionListAST_2E_element & inValue,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_commandLineOptionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                                     const GGS_lstring & inOperand1,
+                                                                                     const GGS_lchar & inOperand2,
+                                                                                     const GGS_lstring & inOperand3,
+                                                                                     const GGS_lstring & inOperand4,
+                                                                                     const GGS_lstring & inOperand5,
+                                                                                     const GGS_optionDefaultValueEnumAST & inOperand6
+                                                                                     COMMA_LOCATION_ARGS) {
+  GGS_commandLineOptionListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+    result = GGS_commandLineOptionListAST (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GGS_commandLineOptionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                              const GGS_lstring & in_mOptionTypeName,
+                                                              const GGS_lstring & in_mOptionInternalName,
+                                                              const GGS_lchar & in_mOptionInvocationLetter,
+                                                              const GGS_lstring & in_mOptionInvocationString,
+                                                              const GGS_lstring & in_mOptionComment,
+                                                              const GGS_lstring & in_mOptionDefaultValue,
+                                                              const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = nullptr ;
+  macroMyNew (p, cCollectionElement_commandLineOptionListAST (in_mOptionTypeName,
+                                                              in_mOptionInternalName,
+                                                              in_mOptionInvocationLetter,
+                                                              in_mOptionInvocationString,
+                                                              in_mOptionComment,
+                                                              in_mOptionDefaultValue,
+                                                              in_mOptionDefaultValueKind COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::addAssign_operation (const GGS_lstring & inOperand0,
+                                                        const GGS_lstring & inOperand1,
+                                                        const GGS_lchar & inOperand2,
+                                                        const GGS_lstring & inOperand3,
+                                                        const GGS_lstring & inOperand4,
+                                                        const GGS_lstring & inOperand5,
+                                                        const GGS_optionDefaultValueEnumAST & inOperand6
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_commandLineOptionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_append (const GGS_lstring inOperand0,
+                                                  const GGS_lstring inOperand1,
+                                                  const GGS_lchar inOperand2,
+                                                  const GGS_lstring inOperand3,
+                                                  const GGS_lstring inOperand4,
+                                                  const GGS_lstring inOperand5,
+                                                  const GGS_optionDefaultValueEnumAST inOperand6,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_commandLineOptionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                         const GGS_lstring inOperand1,
+                                                         const GGS_lchar inOperand2,
+                                                         const GGS_lstring inOperand3,
+                                                         const GGS_lstring inOperand4,
+                                                         const GGS_lstring inOperand5,
+                                                         const GGS_optionDefaultValueEnumAST inOperand6,
+                                                         const GGS_uint inInsertionIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_commandLineOptionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                         GGS_lstring & outOperand1,
+                                                         GGS_lchar & outOperand2,
+                                                         GGS_lstring & outOperand3,
+                                                         GGS_lstring & outOperand4,
+                                                         GGS_lstring & outOperand5,
+                                                         GGS_optionDefaultValueEnumAST & outOperand6,
+                                                         const GGS_uint inRemoveIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+      outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+      outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+      outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+      outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+      outOperand4 = p->mObject.mProperty_mOptionComment ;
+      outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+      outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
+    }
+  }else{
+    drop () ;    
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_popFirst (GGS_lstring & outOperand0,
+                                                    GGS_lstring & outOperand1,
+                                                    GGS_lchar & outOperand2,
+                                                    GGS_lstring & outOperand3,
+                                                    GGS_lstring & outOperand4,
+                                                    GGS_lstring & outOperand5,
+                                                    GGS_optionDefaultValueEnumAST & outOperand6,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+    outOperand6.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+    outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+    outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+    outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+    outOperand4 = p->mObject.mProperty_mOptionComment ;
+    outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+    outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_popLast (GGS_lstring & outOperand0,
+                                                   GGS_lstring & outOperand1,
+                                                   GGS_lchar & outOperand2,
+                                                   GGS_lstring & outOperand3,
+                                                   GGS_lstring & outOperand4,
+                                                   GGS_lstring & outOperand5,
+                                                   GGS_optionDefaultValueEnumAST & outOperand6,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+    outOperand6.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+    outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+    outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+    outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+    outOperand4 = p->mObject.mProperty_mOptionComment ;
+    outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+    outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::method_first (GGS_lstring & outOperand0,
+                                                 GGS_lstring & outOperand1,
+                                                 GGS_lchar & outOperand2,
+                                                 GGS_lstring & outOperand3,
+                                                 GGS_lstring & outOperand4,
+                                                 GGS_lstring & outOperand5,
+                                                 GGS_optionDefaultValueEnumAST & outOperand6,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+    outOperand6.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+    outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+    outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+    outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+    outOperand4 = p->mObject.mProperty_mOptionComment ;
+    outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+    outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::method_last (GGS_lstring & outOperand0,
+                                                GGS_lstring & outOperand1,
+                                                GGS_lchar & outOperand2,
+                                                GGS_lstring & outOperand3,
+                                                GGS_lstring & outOperand4,
+                                                GGS_lstring & outOperand5,
+                                                GGS_optionDefaultValueEnumAST & outOperand6,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+    outOperand5.drop () ;
+    outOperand6.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+    outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+    outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+    outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+    outOperand4 = p->mObject.mProperty_mOptionComment ;
+    outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+    outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::add_operation (const GGS_commandLineOptionListAST & inOperand,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_commandLineOptionListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::getter_subListWithRange (const GGS_range & inRange,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_commandLineOptionListAST result = GGS_commandLineOptionListAST::class_func_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_commandLineOptionListAST result = GGS_commandLineOptionListAST::class_func_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_commandLineOptionListAST result = GGS_commandLineOptionListAST::class_func_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::plusAssign_operation (const GGS_commandLineOptionListAST inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionTypeNameAtIndex (GGS_lstring inOperand,
+                                                                     GGS_uint inIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionTypeName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_commandLineOptionListAST::getter_mOptionTypeNameAtIndex (const GGS_uint & inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionTypeName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionInternalNameAtIndex (GGS_lstring inOperand,
+                                                                         GGS_uint inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionInternalName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_commandLineOptionListAST::getter_mOptionInternalNameAtIndex (const GGS_uint & inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionInternalName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionInvocationLetterAtIndex (GGS_lchar inOperand,
+                                                                             GGS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionInvocationLetter = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar GGS_commandLineOptionListAST::getter_mOptionInvocationLetterAtIndex (const GGS_uint & inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lchar result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionInvocationLetter ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionInvocationStringAtIndex (GGS_lstring inOperand,
+                                                                             GGS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionInvocationString = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_commandLineOptionListAST::getter_mOptionInvocationStringAtIndex (const GGS_uint & inIndex,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionInvocationString ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionCommentAtIndex (GGS_lstring inOperand,
+                                                                    GGS_uint inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionComment = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_commandLineOptionListAST::getter_mOptionCommentAtIndex (const GGS_uint & inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionComment ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionDefaultValueAtIndex (GGS_lstring inOperand,
+                                                                         GGS_uint inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionDefaultValue = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_commandLineOptionListAST::getter_mOptionDefaultValueAtIndex (const GGS_uint & inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionDefaultValue ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionListAST::setter_setMOptionDefaultValueKindAtIndex (GGS_optionDefaultValueEnumAST inOperand,
+                                                                             GGS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionDefaultValueKind = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST GGS_commandLineOptionListAST::getter_mOptionDefaultValueKindAtIndex (const GGS_uint & inIndex,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+  GGS_optionDefaultValueEnumAST result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+    result = p->mObject.mProperty_mOptionDefaultValueKind ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @commandLineOptionListAST
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_commandLineOptionListAST::DownEnumerator_commandLineOptionListAST (const GGS_commandLineOptionListAST & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST_2E_element DownEnumerator_commandLineOptionListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_commandLineOptionListAST::current_mOptionTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_commandLineOptionListAST::current_mOptionInternalName (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInternalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar DownEnumerator_commandLineOptionListAST::current_mOptionInvocationLetter (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInvocationLetter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_commandLineOptionListAST::current_mOptionInvocationString (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInvocationString ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_commandLineOptionListAST::current_mOptionComment (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionComment ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_commandLineOptionListAST::current_mOptionDefaultValue (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionDefaultValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST DownEnumerator_commandLineOptionListAST::current_mOptionDefaultValueKind (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionDefaultValueKind ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @commandLineOptionListAST
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_commandLineOptionListAST::UpEnumerator_commandLineOptionListAST (const GGS_commandLineOptionListAST & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST_2E_element UpEnumerator_commandLineOptionListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_commandLineOptionListAST::current_mOptionTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_commandLineOptionListAST::current_mOptionInternalName (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInternalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar UpEnumerator_commandLineOptionListAST::current_mOptionInvocationLetter (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInvocationLetter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_commandLineOptionListAST::current_mOptionInvocationString (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionInvocationString ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_commandLineOptionListAST::current_mOptionComment (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionComment ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_commandLineOptionListAST::current_mOptionDefaultValue (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionDefaultValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_optionDefaultValueEnumAST UpEnumerator_commandLineOptionListAST::current_mOptionDefaultValueKind (LOCATION_ARGS) const {
+  const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+  return p->mObject.mProperty_mOptionDefaultValueKind ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @commandLineOptionListAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST ("commandLineOptionListAST",
+                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_commandLineOptionListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_commandLineOptionListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_commandLineOptionListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_commandLineOptionListAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_commandLineOptionListAST GGS_commandLineOptionListAST::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_commandLineOptionListAST result ;
+  const GGS_commandLineOptionListAST * p = (const GGS_commandLineOptionListAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_commandLineOptionListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("commandLineOptionListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
