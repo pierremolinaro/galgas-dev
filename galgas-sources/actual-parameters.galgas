@@ -273,7 +273,7 @@ class @outputInputActualParameterAST : @actualParameterAST {
       error self.mOutputInputActualParameterName
       :"this variable is already named as input or output/input effective parameter"
     end
-    ioExclusiveVariableSet += !self.mOutputInputActualParameterName.string
+    ioExclusiveVariableSet ++= self.mOutputInputActualParameterName.string
   //--- Generate actual parameter
     ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
       !parameterType
@@ -519,7 +519,7 @@ class @inputActualExistingVariableParameterAST : @actualParameterAST {
       error self.mInputActualParameterName
       :"this variable is already named as input or output/input effective parameter"
     end
-    ioExclusiveVariableSet += !self.mInputActualParameterName.string
+    ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
     for (varName) in self.mPoisonedVarNameList do
@@ -806,7 +806,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
       error self.mInputActualParameterName
       :"this variable is already named as input or output/input effective parameter"
     end
-    ioExclusiveVariableSet += !self.mInputActualParameterName.string
+    ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
     for (varName) in self.mPoisonedVarNameList do
@@ -920,7 +920,7 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
       error self.mInputActualParameterName
       :"this variable is already named as input or output/input effective parameter"
     end
-    ioExclusiveVariableSet += !self.mInputActualParameterName.string
+    ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
     for (varName) in self.mPoisonedVarNameList do

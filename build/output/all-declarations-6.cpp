@@ -1159,8 +1159,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inValue
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
     mDictionary [inValue.mProperty_key] = inValue ;
@@ -1447,8 +1446,7 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_galgas_33_SyntaxExtensionListAST::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxExtensionListAST::plusPlusAssignOperation (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_galgas_33_SyntaxExtensionListAST::plusPlusAssignOperation (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_galgas_33_SyntaxExtensionListAST (inValue COMMA_THERE)) ;
@@ -3343,8 +3341,7 @@ GGS_actualInputParameterListAST GGS_actualInputParameterListAST::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualInputParameterListAST::plusPlusAssignOperation (const GGS_actualInputParameterListAST_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_actualInputParameterListAST::plusPlusAssignOperation (const GGS_actualInputParameterListAST_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_actualInputParameterListAST (inValue COMMA_THERE)) ;
@@ -4272,8 +4269,7 @@ GGS_semanticDeclarationListAST GGS_semanticDeclarationListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticDeclarationListAST::plusPlusAssignOperation (const GGS_semanticDeclarationListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_semanticDeclarationListAST::plusPlusAssignOperation (const GGS_semanticDeclarationListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_semanticDeclarationListAST (inValue COMMA_THERE)) ;
@@ -5051,8 +5047,7 @@ GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST:
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalTemplateInputParameterListAST::plusPlusAssignOperation (const GGS_formalTemplateInputParameterListAST_2E_element & inValue,
-                                                                       Compiler * /* inCompiler */
+void GGS_formalTemplateInputParameterListAST::plusPlusAssignOperation (const GGS_formalTemplateInputParameterListAST_2E_element & inValue
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_formalTemplateInputParameterListAST (inValue COMMA_THERE)) ;
@@ -5695,8 +5690,7 @@ GGS_filewrapperTemplateListAST GGS_filewrapperTemplateListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_filewrapperTemplateListAST::plusPlusAssignOperation (const GGS_filewrapperTemplateListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_filewrapperTemplateListAST::plusPlusAssignOperation (const GGS_filewrapperTemplateListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (inValue COMMA_THERE)) ;
@@ -6370,8 +6364,7 @@ GGS_syntaxInstructionList GGS_syntaxInstructionList::init (Compiler * COMMA_UNUS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxInstructionList::plusPlusAssignOperation (const GGS_syntaxInstructionList_2E_element & inValue,
-                                                         Compiler * /* inCompiler */
+void GGS_syntaxInstructionList::plusPlusAssignOperation (const GGS_syntaxInstructionList_2E_element & inValue
                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_syntaxInstructionList (inValue COMMA_THERE)) ;
@@ -6816,8 +6809,7 @@ GGS_nonTerminalLabelListAST GGS_nonTerminalLabelListAST::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalLabelListAST::plusPlusAssignOperation (const GGS_nonTerminalLabelListAST_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_nonTerminalLabelListAST::plusPlusAssignOperation (const GGS_nonTerminalLabelListAST_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_nonTerminalLabelListAST (inValue COMMA_THERE)) ;
@@ -7388,8 +7380,7 @@ GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::init (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonterminalDeclarationListAST::plusPlusAssignOperation (const GGS_nonterminalDeclarationListAST_2E_element & inValue,
-                                                                 Compiler * /* inCompiler */
+void GGS_nonterminalDeclarationListAST::plusPlusAssignOperation (const GGS_nonterminalDeclarationListAST_2E_element & inValue
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_nonterminalDeclarationListAST (inValue COMMA_THERE)) ;
@@ -7912,8 +7903,7 @@ GGS_syntaxRuleLabelListAST GGS_syntaxRuleLabelListAST::init (Compiler * COMMA_UN
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleLabelListAST::plusPlusAssignOperation (const GGS_syntaxRuleLabelListAST_2E_element & inValue,
-                                                          Compiler * /* inCompiler */
+void GGS_syntaxRuleLabelListAST::plusPlusAssignOperation (const GGS_syntaxRuleLabelListAST_2E_element & inValue
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_syntaxRuleLabelListAST (inValue COMMA_THERE)) ;
@@ -8616,8 +8606,7 @@ GGS_syntaxRuleListAST GGS_syntaxRuleListAST::init (Compiler * COMMA_UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleListAST::plusPlusAssignOperation (const GGS_syntaxRuleListAST_2E_element & inValue,
-                                                     Compiler * /* inCompiler */
+void GGS_syntaxRuleListAST::plusPlusAssignOperation (const GGS_syntaxRuleListAST_2E_element & inValue
                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_syntaxRuleListAST (inValue COMMA_THERE)) ;
@@ -9122,8 +9111,7 @@ GGS_listOfSyntaxInstructionList GGS_listOfSyntaxInstructionList::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_listOfSyntaxInstructionList::plusPlusAssignOperation (const GGS_listOfSyntaxInstructionList_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_listOfSyntaxInstructionList::plusPlusAssignOperation (const GGS_listOfSyntaxInstructionList_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_listOfSyntaxInstructionList (inValue COMMA_THERE)) ;
@@ -9864,8 +9852,7 @@ GGS_galgas_33_SyntaxComponentListAST GGS_galgas_33_SyntaxComponentListAST::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxComponentListAST::plusPlusAssignOperation (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_galgas_33_SyntaxComponentListAST::plusPlusAssignOperation (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inValue COMMA_THERE)) ;
@@ -10568,8 +10555,7 @@ GGS_prologueEpilogueList GGS_prologueEpilogueList::init (Compiler * COMMA_UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_prologueEpilogueList::plusPlusAssignOperation (const GGS_prologueEpilogueList_2E_element & inValue,
-                                                        Compiler * /* inCompiler */
+void GGS_prologueEpilogueList::plusPlusAssignOperation (const GGS_prologueEpilogueList_2E_element & inValue
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_prologueEpilogueList (inValue COMMA_THERE)) ;
@@ -11104,8 +11090,7 @@ GGS_programRuleList GGS_programRuleList::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_programRuleList::plusPlusAssignOperation (const GGS_programRuleList_2E_element & inValue,
-                                                   Compiler * /* inCompiler */
+void GGS_programRuleList::plusPlusAssignOperation (const GGS_programRuleList_2E_element & inValue
                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_programRuleList (inValue COMMA_THERE)) ;
@@ -12486,8 +12471,7 @@ GGS_optionalMethodSignature GGS_optionalMethodSignature::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionalMethodSignature::plusPlusAssignOperation (const GGS_optionalMethodSignature_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_optionalMethodSignature::plusPlusAssignOperation (const GGS_optionalMethodSignature_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_optionalMethodSignature (inValue COMMA_THERE)) ;
@@ -13136,8 +13120,7 @@ GGS_formalParameterSignature GGS_formalParameterSignature::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterSignature::plusPlusAssignOperation (const GGS_formalParameterSignature_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_formalParameterSignature::plusPlusAssignOperation (const GGS_formalParameterSignature_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_formalParameterSignature (inValue COMMA_THERE)) ;
@@ -15264,8 +15247,7 @@ GGS_acceptableParameterList GGS_acceptableParameterList::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_acceptableParameterList::plusPlusAssignOperation (const GGS_acceptableParameterList_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_acceptableParameterList::plusPlusAssignOperation (const GGS_acceptableParameterList_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_acceptableParameterList (inValue COMMA_THERE)) ;

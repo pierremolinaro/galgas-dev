@@ -22,13 +22,13 @@
 
 class @uint64PredefinedTypeAST : @predefinedTypeAST {
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.uint64_type]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getSupportedOperatorFlags ->@typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -40,7 +40,7 @@ class @uint64PredefinedTypeAST : @predefinedTypeAST {
       | .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -81,7 +81,7 @@ class @uint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -207,7 +207,7 @@ class @uint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

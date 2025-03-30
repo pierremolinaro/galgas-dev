@@ -30,7 +30,7 @@ proc groupSyntaxComponentsGalgas3
 //--- Add extensions to syntax list
   var @stringset componentNameSet = @()
   for component in inAllSyntaxComponents do
-    componentNameSet += !component.mSyntaxComponentName.string
+    componentNameSet ++= component.mSyntaxComponentName.string
     var nonterminalDeclarationList = component.mNonterminalDeclarationList
     var ruleList = component.mRuleList
     for (* mNonterminalDeclarationList mRuleList) in [inSyntaxExtensions listForKey !component.mSyntaxComponentName.string] do

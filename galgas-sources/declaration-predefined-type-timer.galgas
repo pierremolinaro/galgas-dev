@@ -24,19 +24,19 @@
 
 class @timerPredefinedTypeAST : @predefinedTypeAST {
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter initializers -> @initializerSignatureList {
-    result = @[@(@formalInputParameterListAST ())]
+  override getter initializers -> [@formalInputParameterListAST] {
+    result = @[@formalInputParameterListAST ()]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@setterMap outSetterMap {
@@ -53,7 +53,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -84,7 +84,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
     )
   }
   
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -98,13 +98,13 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

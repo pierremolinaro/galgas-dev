@@ -225,8 +225,8 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
         ?let argumentCppName
       ]
       ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("
-      ioGeneratedCode += argumentCppName + ", "
-      ioGeneratedCode += compilerCppName () + [location commaSourceFile] + ") ;\n"
+      ioGeneratedCode += argumentCppName + " "
+      ioGeneratedCode += [location commaSourceFile] + ") ;\n"
     end
   }
 

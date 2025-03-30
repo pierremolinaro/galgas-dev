@@ -279,7 +279,7 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
-    ioInclusionSet += !"method-"
+    ioInclusionSet ++= "method-"
          + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
          + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]

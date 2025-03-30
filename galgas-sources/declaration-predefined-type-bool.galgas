@@ -24,27 +24,27 @@
 
 class @boolPredefinedTypeAST : @predefinedTypeAST {
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixNotOperator
       | .generateDescriptionGetterUtilityMethod | .equatable | .comparable
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bool_type]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -107,7 +107,7 @@ class @boolPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

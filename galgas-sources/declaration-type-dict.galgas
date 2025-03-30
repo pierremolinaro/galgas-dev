@@ -458,10 +458,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  //--- Check escape seq
 //--------------------------------------------------------------------------------------------------
 
 func %once forbiddenKeysForMapAndDict () -> @stringset {
-  result = @()
-  result += !"key"
-  result += !"description"
-  result += !"object"
+  result = @["key", "description", "object"]
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -297,7 +297,7 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
       searching = false
     end
   end
-  ioInclusionSet += !"setter-" + [[baseType definition].typeName.string fileNameRepresentation]+ "-" + [self.mExtensionSetterName fileNameRepresentation]
+  ioInclusionSet ++= "setter-" + [[baseType definition].typeName.string fileNameRepresentation]+ "-" + [self.mExtensionSetterName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionSetterImplementation
     ![self.mReceiverType definition].typeName.string

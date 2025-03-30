@@ -1034,12 +1034,11 @@ class GGS_stringset : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_stringset & inOperand0
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_string & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_string & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GGS_stringset operator_and (const GGS_stringset & inOperand
@@ -3326,8 +3325,7 @@ class GGS_stringlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_stringlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_stringlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_stringlist add_operation (const GGS_stringlist & inOperand,
@@ -3484,8 +3482,7 @@ class GGS_lstringlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lstringlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lstringlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lstringlist add_operation (const GGS_lstringlist & inOperand,
@@ -3739,8 +3736,7 @@ class GGS__32_stringlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS__32_stringlist add_operation (const GGS__32_stringlist & inOperand,
@@ -3913,8 +3909,7 @@ class GGS_functionlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_functionlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_functionlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_functionlist add_operation (const GGS_functionlist & inOperand,
@@ -4071,8 +4066,7 @@ class GGS_luintlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_luintlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_luintlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_luintlist add_operation (const GGS_luintlist & inOperand,
@@ -4321,8 +4315,7 @@ class GGS_objectlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_objectlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_objectlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_objectlist add_operation (const GGS_objectlist & inOperand,
@@ -4479,8 +4472,7 @@ class GGS_typelist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_typelist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_typelist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_typelist add_operation (const GGS_typelist & inOperand,
@@ -4637,8 +4629,7 @@ class GGS_uintlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uintlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uintlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_uintlist add_operation (const GGS_uintlist & inOperand,
@@ -4795,8 +4786,7 @@ class GGS_uint_36__34_list : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_uint_36__34_list add_operation (const GGS_uint_36__34_list & inOperand,
@@ -4953,8 +4943,7 @@ class GGS_bigintlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_bigintlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_bigintlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_bigintlist add_operation (const GGS_bigintlist & inOperand,
@@ -5111,8 +5100,7 @@ class GGS_lbigintlist : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inOperand,
-                                                         Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inOperand
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_lbigintlist add_operation (const GGS_lbigintlist & inOperand,

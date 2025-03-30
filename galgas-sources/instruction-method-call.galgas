@@ -221,7 +221,7 @@ override method @methodCallInstructionForGeneration generateInstruction
 //--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    ioInclusionSet ++= "method-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
     if [[self.mReceiverType definition].typeKind isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
                       + " ((cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]

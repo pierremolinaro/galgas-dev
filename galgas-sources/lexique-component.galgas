@@ -991,7 +991,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !isEndOfTemplateMark: isTemplateEndMark
       ]
       tokenSortedlist += ![mEntrySpelling.string count] !mEntrySpelling.string !mTerminalSpelling.string
-      lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEntrySpelling.string
+      lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEntrySpelling.string
     end
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
@@ -1011,8 +1011,8 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 //-------------------------------------- Template delimiters
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorListAST do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mStartString.string
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mStartString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEndString.string
    lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
   var @stringset indexNameSet = @()
@@ -1020,12 +1020,12 @@ override method @lexiqueComponentAST semanticAnalysis
     if [indexNameSet hasKey !mIndexName.string] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
     end
-    indexNameSet += !mIndexName.string
+    indexNameSet ++= mIndexName.string
   end
 //-------------------------------------- Template replacements
   for (mMatchString mReplacementString *) in self.mTemplateReplacementListAST do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mMatchString.string
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mMatchString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mReplacementString.string
    // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents

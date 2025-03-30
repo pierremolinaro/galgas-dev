@@ -318,7 +318,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
           searching = false
         end
       end
-      ioInclusionSet += !"getter-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
+      ioInclusionSet ++= "getter-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
       [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
       if [[self.mReceiverExpression.mResultType definition].typeKind isClassType] then
         outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]

@@ -156,7 +156,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
             error constantName
             :"the '" + constantName + "' constant is already named in this switch instruction"
           end
-          constantsNamedInSwitchInstruction += !constantName.string
+          constantsNamedInSwitchInstruction ++= constantName.string
           [enumType.constantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
           if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
             error constantName

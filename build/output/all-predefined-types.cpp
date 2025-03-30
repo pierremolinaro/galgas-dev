@@ -195,8 +195,7 @@ GGS_stringlist GGS_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringlist::plusPlusAssignOperation (const GGS_stringlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
+void GGS_stringlist::plusPlusAssignOperation (const GGS_stringlist_2E_element & inValue
                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_stringlist (inValue COMMA_THERE)) ;
@@ -798,8 +797,7 @@ GGS_lstringlist GGS_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lstringlist::plusPlusAssignOperation (const GGS_lstringlist_2E_element & inValue,
-                                               Compiler * /* inCompiler */
+void GGS_lstringlist::plusPlusAssignOperation (const GGS_lstringlist_2E_element & inValue
                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lstringlist (inValue COMMA_THERE)) ;
@@ -1429,8 +1427,7 @@ GGS__32_stringlist GGS__32_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_stringlist::plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inValue,
-                                                  Compiler * /* inCompiler */
+void GGS__32_stringlist::plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inValue
                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement__32_stringlist (inValue COMMA_THERE)) ;
@@ -2418,8 +2415,7 @@ GGS_functionlist GGS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_functionlist::plusPlusAssignOperation (const GGS_functionlist_2E_element & inValue,
-                                                Compiler * /* inCompiler */
+void GGS_functionlist::plusPlusAssignOperation (const GGS_functionlist_2E_element & inValue
                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_functionlist (inValue COMMA_THERE)) ;
@@ -2861,8 +2857,7 @@ GGS_luintlist GGS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_luintlist::plusPlusAssignOperation (const GGS_luintlist_2E_element & inValue,
-                                             Compiler * /* inCompiler */
+void GGS_luintlist::plusPlusAssignOperation (const GGS_luintlist_2E_element & inValue
                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_luintlist (inValue COMMA_THERE)) ;
@@ -3446,8 +3441,7 @@ GGS_objectlist GGS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_objectlist::plusPlusAssignOperation (const GGS_objectlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
+void GGS_objectlist::plusPlusAssignOperation (const GGS_objectlist_2E_element & inValue
                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_objectlist (inValue COMMA_THERE)) ;
@@ -3889,8 +3883,7 @@ GGS_typelist GGS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typelist::plusPlusAssignOperation (const GGS_typelist_2E_element & inValue,
-                                            Compiler * /* inCompiler */
+void GGS_typelist::plusPlusAssignOperation (const GGS_typelist_2E_element & inValue
                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_typelist (inValue COMMA_THERE)) ;
@@ -4332,8 +4325,7 @@ GGS_uintlist GGS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uintlist::plusPlusAssignOperation (const GGS_uintlist_2E_element & inValue,
-                                            Compiler * /* inCompiler */
+void GGS_uintlist::plusPlusAssignOperation (const GGS_uintlist_2E_element & inValue
                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_uintlist (inValue COMMA_THERE)) ;
@@ -4775,8 +4767,7 @@ GGS_uint_36__34_list GGS_uint_36__34_list::init (Compiler * COMMA_UNUSED_LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_list::plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inValue,
-                                                    Compiler * /* inCompiler */
+void GGS_uint_36__34_list::plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inValue
                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_uint_36__34_list (inValue COMMA_THERE)) ;
@@ -5218,8 +5209,7 @@ GGS_bigintlist GGS_bigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigintlist::plusPlusAssignOperation (const GGS_bigintlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
+void GGS_bigintlist::plusPlusAssignOperation (const GGS_bigintlist_2E_element & inValue
                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_bigintlist (inValue COMMA_THERE)) ;
@@ -5661,8 +5651,7 @@ GGS_lbigintlist GGS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lbigintlist::plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inValue,
-                                               Compiler * /* inCompiler */
+void GGS_lbigintlist::plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inValue
                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lbigintlist (inValue COMMA_THERE)) ;

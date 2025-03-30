@@ -699,13 +699,13 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   else
     var @stringset s = @()
     for (lkey * * * *) in boolOptionMap do
-      s += !lkey
+      s ++= lkey
     end
     for (lkey * * * *) in uintOptionMap do
-      s += !lkey
+      s ++= lkey
     end
     for (lkey * * * *) in stringOptionMap do
-      s += !lkey
+      s ++= lkey
     end
     error self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"

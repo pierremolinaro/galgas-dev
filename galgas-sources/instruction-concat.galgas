@@ -844,9 +844,8 @@ class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGeneratio
     for (mValue) in self.mStructAttributeList do
       ioGeneratedCode += ".mProperty_" + mValue
     end
-    ioGeneratedCode += ".plusPlusAssignOperation (" + sourceVar + ", " + compilerCppName ()
-    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode += ".plusPlusAssignOperation (" + sourceVar + " "
+    ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
   }
 

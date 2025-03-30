@@ -24,13 +24,13 @@
 
 class @bigintPredefinedTypeAST : @predefinedTypeAST {
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getClassFunctionMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -45,7 +45,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getInstanceMethodMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -68,7 +68,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     ]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getSetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -95,7 +95,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getGetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -306,7 +306,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
@@ -318,7 +318,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
                .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

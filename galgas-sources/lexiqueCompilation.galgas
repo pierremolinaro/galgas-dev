@@ -249,14 +249,14 @@ override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
 
 override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += !self.mString.string
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += !self.mString.string
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessage.string]
 }
 

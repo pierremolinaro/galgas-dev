@@ -49,7 +49,7 @@ proc checkLabelMap
 {
   var @stringset labelStringSet = @()
   for (mLabelName mFormalArgumentList *) in inLabels do
-    labelStringSet += !mLabelName.string
+    labelStringSet ++= mLabelName.string
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?let formalParametersList]
     if [mFormalArgumentList count] != [formalParametersList count] then
       error mLabelName: [[mFormalArgumentList count] string]

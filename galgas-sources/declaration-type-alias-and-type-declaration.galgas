@@ -243,7 +243,7 @@ syntax extension galgas4DeclarationsSyntax {
       let elementTypeName = outTypeName 
       outTypeName = makeArrayTypeLName (!elementTypeName)
       if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-        ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+        ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
         ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
           !isPredefined: false,
           outTypeName,

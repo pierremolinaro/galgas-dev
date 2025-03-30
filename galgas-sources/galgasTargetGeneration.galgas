@@ -306,7 +306,7 @@ proc updateGalgasTargets
     !inAbsoluteBuildDirectory + "/output/project_header.h"
     ?*
   ]
-  ioAllProductFileSet += !"project_header.h"
+  ioAllProductFileSet ++= "project_header.h"
 //---------------------------------------------------------- %quietOutputByDefault
   var toolCppFileList = inToolCppFileList
   if inQuietOutputByDefault then
@@ -351,17 +351,17 @@ proc updateGalgasTargets
 //--------------------------------------- Check target names, file base name uniqueness, and build target file list
 //--- Parse features
   var @stringset availableGenerationFeatures = @()
-  availableGenerationFeatures += !"quietOutputByDefault"
-  availableGenerationFeatures += !"codeblocks-windows"
-  availableGenerationFeatures += !"codeblocks-linux32"
-  availableGenerationFeatures += !"codeblocks-linux64"
-  availableGenerationFeatures += !"makefile-macosx"
-  availableGenerationFeatures += !"makefile-unix"
-  availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
-  availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
-  availableGenerationFeatures += !"makefile-win32-on-macosx"
-  availableGenerationFeatures += !"MacOS"
-  availableGenerationFeatures += !"MacSwiftApp"
+  availableGenerationFeatures ++= "quietOutputByDefault"
+  availableGenerationFeatures ++= "codeblocks-windows"
+  availableGenerationFeatures ++= "codeblocks-linux32"
+  availableGenerationFeatures ++= "codeblocks-linux64"
+  availableGenerationFeatures ++= "makefile-macosx"
+  availableGenerationFeatures ++= "makefile-unix"
+  availableGenerationFeatures ++= "makefile-x86linux32-on-macosx"
+  availableGenerationFeatures ++= "makefile-x86linux64-on-macosx"
+  availableGenerationFeatures ++= "makefile-win32-on-macosx"
+  availableGenerationFeatures ++= "MacOS"
+  availableGenerationFeatures ++= "MacSwiftApp"
   var @stringset generationFeatures = @()
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
@@ -382,7 +382,7 @@ proc updateGalgasTargets
         end
         xcodeProject = .swiftApp
       else
-        generationFeatures += !value.string
+        generationFeatures ++= value.string
       end
     else
       var @stringlist s = @()
@@ -476,7 +476,7 @@ proc updateGalgasTargets
   ]
   let jsonFileListPath = inAbsoluteBuildDirectory + "/output/file-list.json"
   [jsonFileListContents writeToFileWhenDifferentContents !jsonFileListPath ?*]
-  ioAllProductFileSet += !"file-list.json"
+  ioAllProductFileSet ++= "file-list.json"
 //--------------------- update Xcode project
   switch xcodeProject 
   case none :
@@ -519,7 +519,7 @@ proc updateGalgasTargets
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   //--- Build pathes
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
-    ioAllProductFileSet += !"file-list-for-xcode-project.txt"
+    ioAllProductFileSet ++= "file-list-for-xcode-project.txt"
   //------------------------------------------------------- Xcode project generation
     var xcodeProject = @XcodeProjectDescriptor ()
     xcodeProject.mApplicationBundleName = applicationBundleBase

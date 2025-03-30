@@ -250,7 +250,7 @@ proc compileProgramComponentGalgas3
   end
   for (* * * * mReferenceGrammar * *) in inProgramRules do
     if mReferenceGrammar.string != "" then
-      inclusionSet += !"grammar-" + [mReferenceGrammar fileNameRepresentation]
+      inclusionSet ++= "grammar-" + [mReferenceGrammar fileNameRepresentation]
     end
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation

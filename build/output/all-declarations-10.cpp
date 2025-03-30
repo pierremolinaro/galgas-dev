@@ -150,8 +150,7 @@ GGS_forInstructionEnumeratedObjectListForGeneration GGS_forInstructionEnumerated
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListForGeneration::plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inValue,
-                                                                                   Compiler * /* inCompiler */
+void GGS_forInstructionEnumeratedObjectListForGeneration::plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inValue
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration (inValue COMMA_THERE)) ;
@@ -4040,8 +4039,7 @@ GGS_CommaSeparatedExpressionList GGS_CommaSeparatedExpressionList::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_CommaSeparatedExpressionList::plusPlusAssignOperation (const GGS_CommaSeparatedExpressionList_2E_element & inValue,
-                                                                Compiler * /* inCompiler */
+void GGS_CommaSeparatedExpressionList::plusPlusAssignOperation (const GGS_CommaSeparatedExpressionList_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_CommaSeparatedExpressionList (inValue COMMA_THERE)) ;
@@ -4999,8 +4997,7 @@ GGS_ifTestListForGeneration GGS_ifTestListForGeneration::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestListForGeneration::plusPlusAssignOperation (const GGS_ifTestListForGeneration_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_ifTestListForGeneration::plusPlusAssignOperation (const GGS_ifTestListForGeneration_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_ifTestListForGeneration (inValue COMMA_THERE)) ;
@@ -6892,8 +6889,7 @@ GGS_logListAST GGS_logListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_logListAST::plusPlusAssignOperation (const GGS_logListAST_2E_element & inValue,
-                                              Compiler * /* inCompiler */
+void GGS_logListAST::plusPlusAssignOperation (const GGS_logListAST_2E_element & inValue
                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_logListAST (inValue COMMA_THERE)) ;
@@ -13208,8 +13204,7 @@ GGS_switchBranchesAST GGS_switchBranchesAST::init (Compiler * COMMA_UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesAST::plusPlusAssignOperation (const GGS_switchBranchesAST_2E_element & inValue,
-                                                     Compiler * /* inCompiler */
+void GGS_switchBranchesAST::plusPlusAssignOperation (const GGS_switchBranchesAST_2E_element & inValue
                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_switchBranchesAST (inValue COMMA_THERE)) ;
@@ -14210,8 +14205,7 @@ GGS_switchBranchesForGeneration GGS_switchBranchesForGeneration::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesForGeneration::plusPlusAssignOperation (const GGS_switchBranchesForGeneration_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_switchBranchesForGeneration::plusPlusAssignOperation (const GGS_switchBranchesForGeneration_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_switchBranchesForGeneration (inValue COMMA_THERE)) ;

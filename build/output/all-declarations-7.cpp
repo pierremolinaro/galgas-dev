@@ -7781,8 +7781,7 @@ GGS_semanticExpressionListForGeneration GGS_semanticExpressionListForGeneration:
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticExpressionListForGeneration::plusPlusAssignOperation (const GGS_semanticExpressionListForGeneration_2E_element & inValue,
-                                                                       Compiler * /* inCompiler */
+void GGS_semanticExpressionListForGeneration::plusPlusAssignOperation (const GGS_semanticExpressionListForGeneration_2E_element & inValue
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_semanticExpressionListForGeneration (inValue COMMA_THERE)) ;
@@ -8706,8 +8705,7 @@ GGS_unifiedTypeMapEntryList GGS_unifiedTypeMapEntryList::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_unifiedTypeMapEntryList::plusPlusAssignOperation (const GGS_unifiedTypeMapEntryList_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_unifiedTypeMapEntryList::plusPlusAssignOperation (const GGS_unifiedTypeMapEntryList_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inValue COMMA_THERE)) ;
@@ -9664,8 +9662,7 @@ GGS_actualParameterListForGeneration GGS_actualParameterListForGeneration::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualParameterListForGeneration::plusPlusAssignOperation (const GGS_actualParameterListForGeneration_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_actualParameterListForGeneration::plusPlusAssignOperation (const GGS_actualParameterListForGeneration_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_actualParameterListForGeneration (inValue COMMA_THERE)) ;
@@ -10602,8 +10599,7 @@ GGS_listOfSemanticInstructionListForGeneration GGS_listOfSemanticInstructionList
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_listOfSemanticInstructionListForGeneration::plusPlusAssignOperation (const GGS_listOfSemanticInstructionListForGeneration_2E_element & inValue,
-                                                                              Compiler * /* inCompiler */
+void GGS_listOfSemanticInstructionListForGeneration::plusPlusAssignOperation (const GGS_listOfSemanticInstructionListForGeneration_2E_element & inValue
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_listOfSemanticInstructionListForGeneration (inValue COMMA_THERE)) ;
@@ -11423,8 +11419,7 @@ GGS_semanticDeclarationListForGeneration GGS_semanticDeclarationListForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticDeclarationListForGeneration::plusPlusAssignOperation (const GGS_semanticDeclarationListForGeneration_2E_element & inValue,
-                                                                        Compiler * /* inCompiler */
+void GGS_semanticDeclarationListForGeneration::plusPlusAssignOperation (const GGS_semanticDeclarationListForGeneration_2E_element & inValue
                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_semanticDeclarationListForGeneration (inValue COMMA_THERE)) ;
@@ -11929,8 +11924,7 @@ GGS_signatureForGrammarAnalysis GGS_signatureForGrammarAnalysis::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_signatureForGrammarAnalysis::plusPlusAssignOperation (const GGS_signatureForGrammarAnalysis_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_signatureForGrammarAnalysis::plusPlusAssignOperation (const GGS_signatureForGrammarAnalysis_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_signatureForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -13088,8 +13082,7 @@ GGS_nonTerminalToAddList GGS_nonTerminalToAddList::init (Compiler * COMMA_UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalToAddList::plusPlusAssignOperation (const GGS_nonTerminalToAddList_2E_element & inValue,
-                                                        Compiler * /* inCompiler */
+void GGS_nonTerminalToAddList::plusPlusAssignOperation (const GGS_nonTerminalToAddList_2E_element & inValue
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_nonTerminalToAddList (inValue COMMA_THERE)) ;
@@ -13600,8 +13593,7 @@ GGS_terminalCheckAssignementList GGS_terminalCheckAssignementList::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalCheckAssignementList::plusPlusAssignOperation (const GGS_terminalCheckAssignementList_2E_element & inValue,
-                                                                Compiler * /* inCompiler */
+void GGS_terminalCheckAssignementList::plusPlusAssignOperation (const GGS_terminalCheckAssignementList_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_terminalCheckAssignementList (inValue COMMA_THERE)) ;
@@ -14400,8 +14392,7 @@ GGS_filewrapperTemplateListForGeneration GGS_filewrapperTemplateListForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_filewrapperTemplateListForGeneration::plusPlusAssignOperation (const GGS_filewrapperTemplateListForGeneration_2E_element & inValue,
-                                                                        Compiler * /* inCompiler */
+void GGS_filewrapperTemplateListForGeneration::plusPlusAssignOperation (const GGS_filewrapperTemplateListForGeneration_2E_element & inValue
                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_filewrapperTemplateListForGeneration (inValue COMMA_THERE)) ;

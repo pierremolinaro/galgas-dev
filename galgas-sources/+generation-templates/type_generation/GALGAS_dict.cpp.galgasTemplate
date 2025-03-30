@@ -89,8 +89,7 @@ readSubscript__3F_ (const class GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
-      %!^%Compiler * /* inCompiler */
+void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
     mDictionary [inValue.mProperty_key] = inValue ;

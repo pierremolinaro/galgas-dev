@@ -944,8 +944,7 @@ GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalSendSearchListAST::plusPlusAssignOperation (const GGS_lexicalSendSearchListAST_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_lexicalSendSearchListAST::plusPlusAssignOperation (const GGS_lexicalSendSearchListAST_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inValue COMMA_THERE)) ;
@@ -1870,8 +1869,7 @@ GGS_lexicalWhileBranchListAST GGS_lexicalWhileBranchListAST::init (Compiler * CO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalWhileBranchListAST::plusPlusAssignOperation (const GGS_lexicalWhileBranchListAST_2E_element & inValue,
-                                                             Compiler * /* inCompiler */
+void GGS_lexicalWhileBranchListAST::plusPlusAssignOperation (const GGS_lexicalWhileBranchListAST_2E_element & inValue
                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalWhileBranchListAST (inValue COMMA_THERE)) ;
@@ -2376,8 +2374,7 @@ GGS_lexicalSelectBranchListAST GGS_lexicalSelectBranchListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalSelectBranchListAST::plusPlusAssignOperation (const GGS_lexicalSelectBranchListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_lexicalSelectBranchListAST::plusPlusAssignOperation (const GGS_lexicalSelectBranchListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalSelectBranchListAST (inValue COMMA_THERE)) ;
@@ -3078,8 +3075,7 @@ GGS_lexicalFunctionCallActualArgumentListAST GGS_lexicalFunctionCallActualArgume
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionCallActualArgumentListAST::plusPlusAssignOperation (const GGS_lexicalFunctionCallActualArgumentListAST_2E_element & inValue,
-                                                                            Compiler * /* inCompiler */
+void GGS_lexicalFunctionCallActualArgumentListAST::plusPlusAssignOperation (const GGS_lexicalFunctionCallActualArgumentListAST_2E_element & inValue
                                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST (inValue COMMA_THERE)) ;
@@ -4685,8 +4681,7 @@ GGS_lexicalSentValueList GGS_lexicalSentValueList::init (Compiler * COMMA_UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalSentValueList::plusPlusAssignOperation (const GGS_lexicalSentValueList_2E_element & inValue,
-                                                        Compiler * /* inCompiler */
+void GGS_lexicalSentValueList::plusPlusAssignOperation (const GGS_lexicalSentValueList_2E_element & inValue
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalSentValueList (inValue COMMA_THERE)) ;
@@ -6175,8 +6170,7 @@ GGS_terminalList GGS_terminalList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalList::plusPlusAssignOperation (const GGS_terminalList_2E_element & inValue,
-                                                Compiler * /* inCompiler */
+void GGS_terminalList::plusPlusAssignOperation (const GGS_terminalList_2E_element & inValue
                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_terminalList (inValue COMMA_THERE)) ;
@@ -7352,8 +7346,7 @@ AC_GALGAS_sortedlist () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_tokenSortedlist::plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inValue,
-                                                   Compiler * /* inCompiler */
+void GGS_tokenSortedlist::plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inValue
                                                    COMMA_LOCATION_ARGS) {
   cSortedListElement * p = nullptr ;
   macroMyNew (p, cSortedListElement_tokenSortedlist (inValue COMMA_THERE)) ;
@@ -8534,8 +8527,7 @@ GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentList_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_lexicalRoutineFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentList_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalRoutineFormalArgumentList (inValue COMMA_THERE)) ;
@@ -9518,8 +9510,7 @@ GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::ini
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentList_2E_element & inValue,
-                                                                     Compiler * /* inCompiler */
+void GGS_lexicalFunctionFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentList_2E_element & inValue
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalFunctionFormalArgumentList (inValue COMMA_THERE)) ;
@@ -10499,8 +10490,7 @@ GGS_templateDelimitorList GGS_templateDelimitorList::init (Compiler * COMMA_UNUS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateDelimitorList::plusPlusAssignOperation (const GGS_templateDelimitorList_2E_element & inValue,
-                                                         Compiler * /* inCompiler */
+void GGS_templateDelimitorList::plusPlusAssignOperation (const GGS_templateDelimitorList_2E_element & inValue
                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateDelimitorList (inValue COMMA_THERE)) ;
@@ -14584,8 +14574,7 @@ GGS_lexicalRoutineCallActualArgumentListAST GGS_lexicalRoutineCallActualArgument
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineCallActualArgumentListAST::plusPlusAssignOperation (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inValue,
-                                                                           Compiler * /* inCompiler */
+void GGS_lexicalRoutineCallActualArgumentListAST::plusPlusAssignOperation (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inValue
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST (inValue COMMA_THERE)) ;
@@ -15988,8 +15977,7 @@ GGS_commandLineOptionListAST GGS_commandLineOptionListAST::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionListAST::plusPlusAssignOperation (const GGS_commandLineOptionListAST_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_commandLineOptionListAST::plusPlusAssignOperation (const GGS_commandLineOptionListAST_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_commandLineOptionListAST (inValue COMMA_THERE)) ;

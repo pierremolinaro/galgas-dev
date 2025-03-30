@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?let elementTypeName
     outTypeName = makeArrayTypeLName (!elementTypeName)
     if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+      ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
       ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
         !isPredefined: false,
         outTypeName,

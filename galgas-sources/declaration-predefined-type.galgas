@@ -26,32 +26,26 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-list @initializerSignatureList {
-  public let @formalInputParameterListAST initializer
-}
-
-//--------------------------------------------------------------------------------------------------
-
 abstract class @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   getter typeKind -> @typeKindEnum {
     result = .otherType
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract getter cppDeclarationString -> @string
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  getter initializers -> @initializerSignatureList {
+  getter initializers -> [@formalInputParameterListAST] {
     result = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInGraph
        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -65,7 +59,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method enterDeclarationInSemanticContext
         ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -96,14 +90,15 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     end
   //--- Add Extensions
     var @initializerMap initializerMap = @()
-    for (initializer) in [self initializers] do
+    for initializer in [self initializers] do
       var @functionSignature formalParameterList = @()
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
-        formalParameterList +=
-          !mFormalSelector
-          ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
-          !mFormalArgumentName.string
-          !mIsConstant
+        formalParameterList ++= @(
+          mFormalSelector,
+          [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName],
+          mFormalArgumentName.string,
+          mIsConstant
+        )
       end      
       [!?initializerMap insertKey !@([initializer initializerSignature], .nowhere) !formalParameterList]
     end
@@ -153,7 +148,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method semanticAnalysis
       ?!@lstringlist ioUsefulnessRootEntities
@@ -188,61 +183,61 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       }
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
     outClassFunctionMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
     outGetterMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
     outSetterMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
     outClassMethodMap = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   getter getSupportedOperatorFlags -> @typeFeatures outFlags {
     outFlags = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   getter supportsCollectionValue -> @bool {
     result = false // Does not support collection value
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
     outAddAssignArgumentList = @()
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
@@ -251,7 +246,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     outEnumeratedType = "" // Enumeration is not supported
   }
 
-  //----------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -406,7 +401,7 @@ private proc insertPredefinedType
   for initializer in inPredefinedTypeAST.initializers do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
-      ![initializer.initializer initializerSignature]
+      ![initializer initializerSignature]
     )
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

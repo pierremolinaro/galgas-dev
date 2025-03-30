@@ -9,7 +9,7 @@ static void routine_test_dictionary (void) {
 //--- First insertion
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
     String s = stringWithSigned (i) ;
-    dictionary.addAssign_operation (GGS_string (s) COMMA_HERE) ;
+    dictionary.plusPlusAssignOperation (GGS_string (s) COMMA_HERE) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- First remove
@@ -21,7 +21,7 @@ static void routine_test_dictionary (void) {
 //--- Second insertion
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
     String s = stringWithSigned (i) ;
-    dictionary.addAssign_operation (GGS_string (s) COMMA_HERE) ;
+    dictionary.plusPlusAssignOperation (GGS_string (s) COMMA_HERE) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- Second Remove

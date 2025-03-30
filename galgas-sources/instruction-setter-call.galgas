@@ -455,7 +455,7 @@ override method @setterCallInstructionForGeneration generateInstruction
 //--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
     if [[self.mReceiverType definition].typeKind isClassType] then
       if ([[self.mReceiverType definition].allTypedPropertyList count] > 0) then //  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
@@ -465,7 +465,7 @@ override method @setterCallInstructionForGeneration generateInstruction
       ioGeneratedCode += "cPtr_" + [self.mReceiverType identifierRepresentation] + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
       if [self.mCastType definition].typeName.string != [self.mReceiverType definition].typeName.string then
-        ioInclusionSet += !"class-" + [[self.mCastType definition].typeName.string fileNameRepresentation]
+        ioInclusionSet ++= "class-" + [[self.mCastType definition].typeName.string fileNameRepresentation]
         ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == nullptr)) {\n"
@@ -530,7 +530,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 //--- Generate setter call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
     if [[self.mReceiverType definition].typeKind isClassType] then
       ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     else

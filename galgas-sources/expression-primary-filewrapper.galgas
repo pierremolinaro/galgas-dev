@@ -343,7 +343,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
+  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
@@ -364,7 +364,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
 //---
-  ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
+  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var parameterList = @stringlist ()
   for (mExpression) in self.mActualOutputParameterList do
     [mExpression generateExpression
@@ -402,7 +402,7 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
 //---
-  ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
+  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
   outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }

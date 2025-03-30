@@ -365,7 +365,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ]
-    ioInclusionSet += !"method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+    ioInclusionSet ++= "method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateProcedure (
       !static:false
       !"extensionMethod_" + [self.mExtensionMethodName identifierRepresentation]
@@ -402,8 +402,8 @@ override method @extensionMethodForGeneration appendSpecificImplementation
         searching = false
       end
     end
-    ioInclusionSet +=
-      !"method-" + [[baseType definition].typeName.string fileNameRepresentation]
+    ioInclusionSet ++=
+      "method-" + [[baseType definition].typeName.string fileNameRepresentation]
       + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateExtensionMethodNew (
       !self.mReceiverType

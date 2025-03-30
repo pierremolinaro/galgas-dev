@@ -269,8 +269,7 @@ GGS_localConstantList GGS_localConstantList::init (Compiler * COMMA_UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_localConstantList::plusPlusAssignOperation (const GGS_localConstantList_2E_element & inValue,
-                                                     Compiler * /* inCompiler */
+void GGS_localConstantList::plusPlusAssignOperation (const GGS_localConstantList_2E_element & inValue
                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_localConstantList (inValue COMMA_THERE)) ;
@@ -913,8 +912,7 @@ GGS_localInitializedVariableList GGS_localInitializedVariableList::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_localInitializedVariableList::plusPlusAssignOperation (const GGS_localInitializedVariableList_2E_element & inValue,
-                                                                Compiler * /* inCompiler */
+void GGS_localInitializedVariableList::plusPlusAssignOperation (const GGS_localInitializedVariableList_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_localInitializedVariableList (inValue COMMA_THERE)) ;
@@ -2713,8 +2711,7 @@ GGS_ruleLabelImplementationList GGS_ruleLabelImplementationList::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ruleLabelImplementationList::plusPlusAssignOperation (const GGS_ruleLabelImplementationList_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_ruleLabelImplementationList::plusPlusAssignOperation (const GGS_ruleLabelImplementationList_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_ruleLabelImplementationList (inValue COMMA_THERE)) ;
@@ -3423,8 +3420,7 @@ GGS_ruleDeclarationList GGS_ruleDeclarationList::init (Compiler * COMMA_UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ruleDeclarationList::plusPlusAssignOperation (const GGS_ruleDeclarationList_2E_element & inValue,
-                                                       Compiler * /* inCompiler */
+void GGS_ruleDeclarationList::plusPlusAssignOperation (const GGS_ruleDeclarationList_2E_element & inValue
                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_ruleDeclarationList (inValue COMMA_THERE)) ;
@@ -9200,8 +9196,7 @@ GGS_actualOutputArgumentList GGS_actualOutputArgumentList::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualOutputArgumentList::plusPlusAssignOperation (const GGS_actualOutputArgumentList_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_actualOutputArgumentList::plusPlusAssignOperation (const GGS_actualOutputArgumentList_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_actualOutputArgumentList (inValue COMMA_THERE)) ;
@@ -10916,8 +10911,7 @@ void GGS__5B_string_5D_::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_5D_::plusPlusAssignOperation (const GGS_string & inValue,
-                                                  Compiler * /* inCompiler */
+void GGS__5B_string_5D_::plusPlusAssignOperation (const GGS_string & inValue
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
 }
@@ -11982,8 +11976,7 @@ GGS_collectionValueElementList GGS_collectionValueElementList::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_collectionValueElementList::plusPlusAssignOperation (const GGS_collectionValueElementList_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_collectionValueElementList::plusPlusAssignOperation (const GGS_collectionValueElementList_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_collectionValueElementList (inValue COMMA_THERE)) ;
@@ -12597,8 +12590,7 @@ GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_collectionValueElementListForGeneration::plusPlusAssignOperation (const GGS_collectionValueElementListForGeneration_2E_element & inValue,
-                                                                           Compiler * /* inCompiler */
+void GGS_collectionValueElementListForGeneration::plusPlusAssignOperation (const GGS_collectionValueElementListForGeneration_2E_element & inValue
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_collectionValueElementListForGeneration (inValue COMMA_THERE)) ;

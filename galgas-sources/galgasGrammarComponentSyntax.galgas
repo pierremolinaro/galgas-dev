@@ -104,7 +104,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       if [argumentNameSet hasKey !argumentName.string] then
         error argumentName: "there is already an argument named '" + argumentName + "'"
       end
-      argumentNameSet += !argumentName.string
+      argumentNameSet ++= argumentName.string
     end
     ioLabelList += !inLabelName !mFormalParameterList !.here
   }
@@ -307,7 +307,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
         if [argumentNameSet hasKey !argumentName.string] then
           error argumentName: "there is already an argument named '" + argumentName + "'"
         end
-        argumentNameSet += !argumentName.string
+        argumentNameSet ++= argumentName.string
       while
         $,$
       end

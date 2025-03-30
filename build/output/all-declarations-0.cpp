@@ -101,8 +101,7 @@ GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue,
-                                                   Compiler * /* inCompiler */
+void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue
                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
@@ -5699,8 +5698,7 @@ GGS_templateInstructionListAST GGS_templateInstructionListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionListAST::plusPlusAssignOperation (const GGS_templateInstructionListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_templateInstructionListAST::plusPlusAssignOperation (const GGS_templateInstructionListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionListAST (inValue COMMA_THERE)) ;
@@ -6347,8 +6345,7 @@ GGS_templateExpressionListAST GGS_templateExpressionListAST::init (Compiler * CO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateExpressionListAST::plusPlusAssignOperation (const GGS_templateExpressionListAST_2E_element & inValue,
-                                                             Compiler * /* inCompiler */
+void GGS_templateExpressionListAST::plusPlusAssignOperation (const GGS_templateExpressionListAST_2E_element & inValue
                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateExpressionListAST (inValue COMMA_THERE)) ;
@@ -16147,8 +16144,7 @@ GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfBranchListAST::i
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionIfBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListAST_2E_element & inValue,
-                                                                      Compiler * /* inCompiler */
+void GGS_templateInstructionIfBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListAST_2E_element & inValue
                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionIfBranchListAST (inValue COMMA_THERE)) ;

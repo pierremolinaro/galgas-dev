@@ -265,7 +265,7 @@ class @switchInstructionAST : @semanticInstructionAST {
               error constantName
               :"the '" + constantName + "' constant is already named in this switch instruction"
             end
-            constantsNamedInSwitchInstruction += !constantName.string
+            constantsNamedInSwitchInstruction ++= constantName.string
             [enumType.constantMap searchKey !constantName ?* ?let associatedTypeList]
             if ([associatedTypeList count] > 0) & ([branch.mAssociatedValuesExtraction count] == 0) then
               error constantName

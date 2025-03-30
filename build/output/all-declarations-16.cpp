@@ -11007,7 +11007,7 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak GGS_semanticDeclarationWi
 GGS_typeKindEnum cPtr_predefinedTypeAST::getter_typeKind (Compiler */* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeKindEnum result_result ; // Returned variable
-  result_result = GGS_typeKindEnum::class_func_otherType (SOURCE_FILE ("declaration-predefined-type.galgas", 41)) ;
+  result_result = GGS_typeKindEnum::class_func_otherType (SOURCE_FILE ("declaration-predefined-type.galgas", 35)) ;
 //---
   return result_result ;
 }
@@ -11048,7 +11048,7 @@ void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollec
   GGS_stringset var_inclusionSet_9583 = GGS_stringset::init (inCompiler COMMA_HERE) ;
   GGS_uint var_temporaryVariableIndex_9626 = GGS_uint (uint32_t (0U)) ;
   GGS_stringset temp_0 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
-  temp_0.plusPlusAssignOperation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
+  temp_0.plusPlusAssignOperation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260))  COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
   outArgument_outUnusedVariableCppNameSet = temp_0 ;
   const GGS_propertyInCollectionListAST temp_1 = inObject ;
   UpEnumerator_propertyInCollectionListAST enumerator_9764 (temp_1) ;

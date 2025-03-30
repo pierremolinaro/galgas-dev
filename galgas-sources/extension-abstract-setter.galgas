@@ -254,7 +254,7 @@ class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForG
     ?!@stringset ioInclusionSet
     !@string outImplementation
   {
-    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+    ioInclusionSet ++= "setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

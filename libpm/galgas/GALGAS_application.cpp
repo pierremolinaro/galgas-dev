@@ -341,7 +341,7 @@ GGS_stringset GGS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
   TC_UniqueArray <String> list ;
   cLexiqueIntrospection::getKeywordListNames (list) ;
   for (int32_t i=0 ; i < list.count () ; i++) {
-    result.addAssign_operation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+    result.plusPlusAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
   }
   return result ;
 }

@@ -647,7 +647,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 //-------------------------------------- Build "indexing" set
   var @stringset indexNameSet = @()
   for (mIndexName *) in indexingListAST do
-    indexNameSet += !mIndexName.string
+    indexNameSet ++= mIndexName.string
   end
   let @bool hasIndexing = true // not [indexingDirectory isNowhere]
 //--- Build semantic context from rule headers and non terminal declaration

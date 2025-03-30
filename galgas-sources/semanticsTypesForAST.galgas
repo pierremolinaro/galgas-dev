@@ -434,7 +434,7 @@ struct @galgasDeclarationAST {
                              ?isPredefined: let @bool inPredefined {
     outOptionalTypeName = makeOptionalTypeLName (!forTypeNamed: inTypeName)
     if not [self.implicitTypeDeclarationSet hasKey !outOptionalTypeName.string] then
-      self.implicitTypeDeclarationSet += !outOptionalTypeName.string
+      self.implicitTypeDeclarationSet ++= outOptionalTypeName.string
       self.mDeclarationList += !@optionalTypeDeclarationAST (
         !isPredefined: inPredefined,
         !optionalTypeName: outOptionalTypeName,

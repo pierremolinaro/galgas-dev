@@ -223,25 +223,25 @@ private proc compileProject ?let @lstring inProjectSourceFile
       handCodedSourceToolFileList += !featureValue.string
       let directory = [featureValue stringByDeletingLastPathComponent]
       if directory == "" then
-        handCodedSourceDirectorySet += !"../"
+        handCodedSourceDirectorySet ++= "../"
       elsif [directory characterAtIndex !0] != '/' then
-        handCodedSourceDirectorySet += !"../" + directory
+        handCodedSourceDirectorySet ++= "../" + directory
       else
-        handCodedSourceDirectorySet += !directory
+        handCodedSourceDirectorySet ++= directory
       end
     elsif featureName.string == "tool-include" then
-      handCodedSourceDirectorySet += !featureValue
+      handCodedSourceDirectorySet ++= featureValue
     elsif featureName.string == "tool-framework" then
       frameworkToolFileList += ![featureValue lastPathComponent]
     elsif featureName.string == "app-source" then
       handCodedSourceAppFileList += !featureValue.string
       let directory = [featureValue stringByDeletingLastPathComponent]
       if directory == "" then
-        handCodedSourceDirectorySet += !"../"
+        handCodedSourceDirectorySet ++= "../"
       elsif [directory characterAtIndex !0] != '/' then
-        handCodedSourceDirectorySet += !"../" + directory
+        handCodedSourceDirectorySet ++= "../" + directory
       else
-        handCodedSourceDirectorySet += !directory
+        handCodedSourceDirectorySet ++= directory
       end
     elsif featureName.string == "tool-link" then
       handCodedLinkToolFileList += !featureValue.string
@@ -338,7 +338,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = @()
     for (lkey *) in typeMap do
-      firstLetterSet += ![[lkey.string characterAtIndex!0] string]
+      firstLetterSet ++= [[lkey.string characterAtIndex!0] string]
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
@@ -463,14 +463,14 @@ private proc projectGeneration
   if 0 == @uint.errorCount then
     var @stringset handledExtensionSet = @()
     for (mSourceFileExtension * * * * * *) in inSourceRuleList do
-      handledExtensionSet += !mSourceFileExtension.string
+      handledExtensionSet ++= mSourceFileExtension.string
     end
   //--- Build qualified feature map
     var @stringset ignoredFeatureSet = @()
-    ignoredFeatureSet += !"tool-framework"
-    ignoredFeatureSet += !"tool-source"
-    ignoredFeatureSet += !"tool-link"
-    ignoredFeatureSet += !"app-source"
+    ignoredFeatureSet ++= "tool-framework"
+    ignoredFeatureSet ++= "tool-source"
+    ignoredFeatureSet ++= "tool-link"
+    ignoredFeatureSet ++= "app-source"
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
@@ -509,7 +509,7 @@ private proc projectGeneration
   if 0 == @uint.errorCount then
     var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
     for (mValue) in [productDirectory regularFiles !false] do
-      allActualFileSet += !mValue
+      allActualFileSet ++= mValue
     end
     let uselessFileSet = allActualFileSet - allProductFileSet
     for (key) in uselessFileSet do

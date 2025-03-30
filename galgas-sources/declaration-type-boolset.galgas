@@ -154,7 +154,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     if [slotNameSet hasKey !slotName] then
       error slotName : "duplicated slot name"
     end
-    slotNameSet += !slotName
+    slotNameSet ++= slotName
   end
 //--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]

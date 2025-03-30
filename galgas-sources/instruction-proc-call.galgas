@@ -141,7 +141,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString
                                       ?!@string ioGeneratedCode {
-    ioInclusionSet += !"proc-" + [self.routineMangledName fileNameRepresentation]
+    ioInclusionSet ++= "proc-" + [self.routineMangledName fileNameRepresentation]
     ioGeneratedCode += "{\n"
   //--- Parameters
     var @stringlist parameterCppNameList = @()

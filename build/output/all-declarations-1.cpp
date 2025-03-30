@@ -204,8 +204,7 @@ GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionListForGeneration_2E_element & inValue,
-                                                                        Compiler * /* inCompiler */
+void GGS_templateInstructionListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionListForGeneration_2E_element & inValue
                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inValue COMMA_THERE)) ;
@@ -1249,8 +1248,7 @@ GGS_templateInstructionIfBranchListForGeneration GGS_templateInstructionIfBranch
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionIfBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListForGeneration_2E_element & inValue,
-                                                                                Compiler * /* inCompiler */
+void GGS_templateInstructionIfBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionIfBranchListForGeneration_2E_element & inValue
                                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionIfBranchListForGeneration (inValue COMMA_THERE)) ;
@@ -3023,8 +3021,7 @@ void GGS__5B_unifiedTypeMapEntry_5D_::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_unifiedTypeMapEntry_5D_::plusPlusAssignOperation (const GGS_unifiedTypeMapEntry & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS__5B_unifiedTypeMapEntry_5D_::plusPlusAssignOperation (const GGS_unifiedTypeMapEntry & inValue
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
 }
@@ -3757,8 +3754,7 @@ void GGS__5B_lstring_5D_::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lstring_5D_::plusPlusAssignOperation (const GGS_lstring & inValue,
-                                                   Compiler * /* inCompiler */
+void GGS__5B_lstring_5D_::plusPlusAssignOperation (const GGS_lstring & inValue
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
 }
@@ -4101,8 +4097,7 @@ GGS_templateInstructionSwitchBranchListAST GGS_templateInstructionSwitchBranchLi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionSwitchBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListAST_2E_element & inValue,
-                                                                          Compiler * /* inCompiler */
+void GGS_templateInstructionSwitchBranchListAST::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListAST_2E_element & inValue
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListAST (inValue COMMA_THERE)) ;
@@ -4745,8 +4740,7 @@ GGS_switchExtractedValuesListAST GGS_switchExtractedValuesListAST::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchExtractedValuesListAST::plusPlusAssignOperation (const GGS_switchExtractedValuesListAST_2E_element & inValue,
-                                                                Compiler * /* inCompiler */
+void GGS_switchExtractedValuesListAST::plusPlusAssignOperation (const GGS_switchExtractedValuesListAST_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_switchExtractedValuesListAST (inValue COMMA_THERE)) ;
@@ -5650,8 +5644,7 @@ GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwit
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionSwitchBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inValue,
-                                                                                    Compiler * /* inCompiler */
+void GGS_templateInstructionSwitchBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inValue
                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration (inValue COMMA_THERE)) ;
@@ -6294,8 +6287,7 @@ GGS_extractedAssociatedValuesForGeneration GGS_extractedAssociatedValuesForGener
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_extractedAssociatedValuesForGeneration::plusPlusAssignOperation (const GGS_extractedAssociatedValuesForGeneration_2E_element & inValue,
-                                                                          Compiler * /* inCompiler */
+void GGS_extractedAssociatedValuesForGeneration::plusPlusAssignOperation (const GGS_extractedAssociatedValuesForGeneration_2E_element & inValue
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inValue COMMA_THERE)) ;
@@ -7106,8 +7098,7 @@ GGS_templateDelimitorListAST GGS_templateDelimitorListAST::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateDelimitorListAST::plusPlusAssignOperation (const GGS_templateDelimitorListAST_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_templateDelimitorListAST::plusPlusAssignOperation (const GGS_templateDelimitorListAST_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateDelimitorListAST (inValue COMMA_THERE)) ;
@@ -7816,8 +7807,7 @@ GGS_templateReplacementListAST GGS_templateReplacementListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateReplacementListAST::plusPlusAssignOperation (const GGS_templateReplacementListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_templateReplacementListAST::plusPlusAssignOperation (const GGS_templateReplacementListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_templateReplacementListAST (inValue COMMA_THERE)) ;
@@ -8388,8 +8378,7 @@ GGS_lexicalAttributeListAST GGS_lexicalAttributeListAST::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalAttributeListAST::plusPlusAssignOperation (const GGS_lexicalAttributeListAST_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_lexicalAttributeListAST::plusPlusAssignOperation (const GGS_lexicalAttributeListAST_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalAttributeListAST (inValue COMMA_THERE)) ;
@@ -8894,8 +8883,7 @@ GGS_lexicalStyleListAST GGS_lexicalStyleListAST::init (Compiler * COMMA_UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalStyleListAST::plusPlusAssignOperation (const GGS_lexicalStyleListAST_2E_element & inValue,
-                                                       Compiler * /* inCompiler */
+void GGS_lexicalStyleListAST::plusPlusAssignOperation (const GGS_lexicalStyleListAST_2E_element & inValue
                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalStyleListAST (inValue COMMA_THERE)) ;
@@ -9424,8 +9412,7 @@ GGS_terminalDeclarationListAST GGS_terminalDeclarationListAST::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalDeclarationListAST::plusPlusAssignOperation (const GGS_terminalDeclarationListAST_2E_element & inValue,
-                                                              Compiler * /* inCompiler */
+void GGS_terminalDeclarationListAST::plusPlusAssignOperation (const GGS_terminalDeclarationListAST_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inValue COMMA_THERE)) ;
@@ -10194,8 +10181,7 @@ GGS_lexicalMessageDeclarationListAST GGS_lexicalMessageDeclarationListAST::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalMessageDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalMessageDeclarationListAST_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_lexicalMessageDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalMessageDeclarationListAST_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalMessageDeclarationListAST (inValue COMMA_THERE)) ;
@@ -10718,8 +10704,7 @@ GGS_lexicalListDeclarationListAST GGS_lexicalListDeclarationListAST::init (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalListDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalListDeclarationListAST_2E_element & inValue,
-                                                                 Compiler * /* inCompiler */
+void GGS_lexicalListDeclarationListAST::plusPlusAssignOperation (const GGS_lexicalListDeclarationListAST_2E_element & inValue
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inValue COMMA_THERE)) ;
@@ -11416,8 +11401,7 @@ GGS_lexicalRuleListAST GGS_lexicalRuleListAST::init (Compiler * COMMA_UNUSED_LOC
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRuleListAST::plusPlusAssignOperation (const GGS_lexicalRuleListAST_2E_element & inValue,
-                                                      Compiler * /* inCompiler */
+void GGS_lexicalRuleListAST::plusPlusAssignOperation (const GGS_lexicalRuleListAST_2E_element & inValue
                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalRuleListAST (inValue COMMA_THERE)) ;
@@ -11856,8 +11840,7 @@ GGS_indexingListAST GGS_indexingListAST::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_indexingListAST::plusPlusAssignOperation (const GGS_indexingListAST_2E_element & inValue,
-                                                   Compiler * /* inCompiler */
+void GGS_indexingListAST::plusPlusAssignOperation (const GGS_indexingListAST_2E_element & inValue
                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_indexingListAST (inValue COMMA_THERE)) ;
@@ -12978,8 +12961,7 @@ GGS_lexicalInstructionListAST GGS_lexicalInstructionListAST::init (Compiler * CO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalInstructionListAST::plusPlusAssignOperation (const GGS_lexicalInstructionListAST_2E_element & inValue,
-                                                             Compiler * /* inCompiler */
+void GGS_lexicalInstructionListAST::plusPlusAssignOperation (const GGS_lexicalInstructionListAST_2E_element & inValue
                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalInstructionListAST (inValue COMMA_THERE)) ;
@@ -14055,8 +14037,7 @@ GGS_sentLexicalAttributeListAST GGS_sentLexicalAttributeListAST::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sentLexicalAttributeListAST::plusPlusAssignOperation (const GGS_sentLexicalAttributeListAST_2E_element & inValue,
-                                                               Compiler * /* inCompiler */
+void GGS_sentLexicalAttributeListAST::plusPlusAssignOperation (const GGS_sentLexicalAttributeListAST_2E_element & inValue
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_sentLexicalAttributeListAST (inValue COMMA_THERE)) ;
@@ -14573,8 +14554,7 @@ GGS_lexicalListEntryListAST GGS_lexicalListEntryListAST::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalListEntryListAST::plusPlusAssignOperation (const GGS_lexicalListEntryListAST_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
+void GGS_lexicalListEntryListAST::plusPlusAssignOperation (const GGS_lexicalListEntryListAST_2E_element & inValue
                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_lexicalListEntryListAST (inValue COMMA_THERE)) ;

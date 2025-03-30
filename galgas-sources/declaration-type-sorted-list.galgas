@@ -425,7 +425,7 @@ override method @sortedListDeclarationAST semanticAnalysis
     if [attributesUsedForSorting hasKey !mSortedAttributeName.string] then
       error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
     end
-    attributesUsedForSorting += !mSortedAttributeName.string
+    attributesUsedForSorting ++= mSortedAttributeName.string
     if not [[type definition].features contains !.comparable] then
       error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
     end

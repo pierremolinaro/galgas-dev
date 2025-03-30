@@ -133,8 +133,7 @@ end
 if SUPPORT_COLLECTION_VALUE then
 %
 //--------------------------------- ++= operator, collection value
-  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (%?^%const GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inOperand,
-  %!^%Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (%?^%const GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inOperand
   %!^%COMMA_LOCATION_ARGS) ;
 %
 end

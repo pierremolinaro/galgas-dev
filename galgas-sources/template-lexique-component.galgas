@@ -382,14 +382,14 @@ override method @templateLexiqueComponentAST semanticAnalysis
   var @stringset unicodeStringToGenerate = @()
   var @templateDelimitorList templateDelimitorList = @()
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
-   unicodeStringToGenerate += !mStartString.string
-   unicodeStringToGenerate += !mEndString.string
+   unicodeStringToGenerate ++= mStartString.string
+   unicodeStringToGenerate ++= mEndString.string
    templateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
 //-------------------------------------- Template replacements
   for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
-    unicodeStringToGenerate += !mMatchString.string
-    unicodeStringToGenerate += !mReplacementString.string
+    unicodeStringToGenerate ++= mMatchString.string
+    unicodeStringToGenerate ++= mReplacementString.string
    // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents

@@ -301,7 +301,7 @@ class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForG
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
-    ioInclusionSet += !"getter-"
+    ioInclusionSet ++= "getter-"
       + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
       + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
     [self.mResultType addHeaderFileName !?ioInclusionSet]

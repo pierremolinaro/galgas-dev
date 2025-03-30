@@ -424,7 +424,7 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
                                                               ?let @unifiedTypeMap unused inTypeMap
                                                               ?!@stringset ioInclusionSet
                                                               !@string outImplementation {
-  ioInclusionSet += !"class-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
+  ioInclusionSet ++= "class-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
   generateExtensionGetter (
     !"cPtr_" + [[self.mReceiverType definition].typeName.string identifierRepresentation] + "::getter_" + [self.mOverridingExtensionGetterName identifierRepresentation]
     !?ioInclusionSet

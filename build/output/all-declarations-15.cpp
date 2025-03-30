@@ -107,8 +107,7 @@ GGS_BuildFileList GGS_BuildFileList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_BuildFileList::plusPlusAssignOperation (const GGS_BuildFileList_2E_element & inValue,
-                                                 Compiler * /* inCompiler */
+void GGS_BuildFileList::plusPlusAssignOperation (const GGS_BuildFileList_2E_element & inValue
                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_BuildFileList (inValue COMMA_THERE)) ;
@@ -3683,123 +3682,6 @@ GGS_importedLexiqueList_2E_element GGS_importedLexiqueList_2E_element::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("importedLexiqueList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element::GGS_initializerSignatureList_2E_element (void) :
-mProperty_initializer () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element::GGS_initializerSignatureList_2E_element (const GGS_initializerSignatureList_2E_element & inSource) :
-mProperty_initializer (inSource.mProperty_initializer) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element & GGS_initializerSignatureList_2E_element::operator = (const GGS_initializerSignatureList_2E_element & inSource) {
-  mProperty_initializer = inSource.mProperty_initializer ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element GGS_initializerSignatureList_2E_element::init_21_ (const GGS_formalInputParameterListAST & in_initializer,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_initializerSignatureList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_initializer = in_initializer ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_initializerSignatureList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element::GGS_initializerSignatureList_2E_element (const GGS_formalInputParameterListAST & inOperand0) :
-mProperty_initializer (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element GGS_initializerSignatureList_2E_element::class_func_new (const GGS_formalInputParameterListAST & in_initializer,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_initializerSignatureList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_initializer = in_initializer ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_initializerSignatureList_2E_element::isValid (void) const {
-  return mProperty_initializer.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_initializerSignatureList_2E_element::drop (void) {
-  mProperty_initializer.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_initializerSignatureList_2E_element::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @initializerSignatureList.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_initializer.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @initializerSignatureList.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerSignatureList_2E_element ("initializerSignatureList.element",
-                                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_initializerSignatureList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerSignatureList_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_initializerSignatureList_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_initializerSignatureList_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerSignatureList_2E_element GGS_initializerSignatureList_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_initializerSignatureList_2E_element result ;
-  const GGS_initializerSignatureList_2E_element * p = (const GGS_initializerSignatureList_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_initializerSignatureList_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("initializerSignatureList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

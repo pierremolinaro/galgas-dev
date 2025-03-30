@@ -79,11 +79,15 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::addAssign_operation (const GGS_string & inKey
+void GGS_stringset::addAssign_operation (const GGS_stringset & inOperand
                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && (inKey.isValid ())) {
-    auto newNode = OptionalSharedRef <SharedStringMapNode>::make (inKey.stringValue () COMMA_HERE) ;
-    mSharedMap.insert (newNode COMMA_THERE) ;
+  if (isValid () && (inOperand.isValid ())) {
+    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    int32_t idx2 = 0 ;
+    while (idx2 < array2.count ()) {
+      plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_THERE)) COMMA_THERE) ;
+      idx2 += 1 ;
+    }
   }
 }
 
@@ -117,7 +121,7 @@ GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
       }else if (comparaison > 0) {
         idx2 += 1 ;
       }else{
-        result.addAssign_operation (GGS_string (array1 (idx1 COMMA_HERE)) COMMA_HERE) ;
+        result.plusPlusAssignOperation (GGS_string (array1 (idx1 COMMA_HERE)) COMMA_HERE) ;
         idx1 += 1 ;
         idx2 += 1 ;
       }
@@ -138,7 +142,7 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      result.addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -154,7 +158,7 @@ void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
-      addAssign_operation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
+      plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
       idx2 += 1 ;
     }
   }
@@ -187,7 +191,7 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
     const TC_Array <String> array = mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array.count () ; i++) {
-      result.addAssign_operation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -280,10 +284,12 @@ GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::plusPlusAssignOperation (const GGS_string & inValue,
-                                             Compiler *
+void GGS_stringset::plusPlusAssignOperation (const GGS_string & inValue
                                              COMMA_LOCATION_ARGS) {
-  addAssign_operation (inValue COMMA_THERE) ;
+  if (isValid () && (inValue.isValid ())) {
+    auto newNode = OptionalSharedRef <SharedStringMapNode>::make (inValue.stringValue () COMMA_HERE) ;
+    mSharedMap.insert (newNode COMMA_THERE) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -293,7 +299,7 @@ GGS_stringset GGS_stringset::class_func_setWithString (const GGS_string & inStri
   GGS_stringset result ;
   if (inString.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    result.addAssign_operation (inString COMMA_HERE) ;
+    result.plusPlusAssignOperation (inString COMMA_HERE) ;
   }
   return result ;
 }
@@ -307,7 +313,7 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
     result = class_func_emptySet (THERE) ;
     UpEnumerator_stringlist enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
-      result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
+      result.plusPlusAssignOperation (enumerator.current_mValue (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
   }
@@ -323,7 +329,7 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
     result = class_func_emptySet (THERE) ;
     UpEnumerator_lstringlist enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
-      result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
+      result.plusPlusAssignOperation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
   }

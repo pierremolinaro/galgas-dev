@@ -4267,7 +4267,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
           inCompiler->emitSemanticError (var_argumentName_4103.readProperty_location (), GGS_string ("there is already an argument named '").add_operation (var_argumentName_4103.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 105)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 105)), fixItArray2  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 105)) ;
         }
       }
-      var_argumentNameSet_3943.addAssign_operation (var_argumentName_4103.readProperty_string ()  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 107)) ;
+      var_argumentNameSet_3943.plusPlusAssignOperation (var_argumentName_4103.readProperty_string ()  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 107)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -11464,7 +11464,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_if_
     GGS_semanticInstructionAST var_instruction_4233 ;
     nt_if_5F_instruction_5F_core_ (ioArgument_ioDeclarations, var_instruction_4233, inCompiler) ;
     GGS_semanticInstructionListAST temp_0 = GGS_semanticInstructionListAST::init (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
-    temp_0.plusPlusAssignOperation (GGS_semanticInstructionListAST_2E_element::init_21_ (var_instruction_4233, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
+    temp_0.plusPlusAssignOperation (GGS_semanticInstructionListAST_2E_element::init_21_ (var_instruction_4233, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 99)) ;
     var_else_5F_instructionList_4004 = temp_0 ;
   } break ;
   default:

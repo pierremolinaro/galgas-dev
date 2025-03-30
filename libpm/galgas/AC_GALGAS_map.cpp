@@ -898,7 +898,7 @@ static void enterKeyInStringSet (const cMapNode * inNode,
   if (inNode != nullptr) {
     enterKeyInStringSet (inNode->mInfPtr, ioResult) ;
     GGS_string object (inNode->mKey) ;
-    ioResult.addAssign_operation (object COMMA_HERE) ;
+    ioResult.plusPlusAssignOperation (object COMMA_HERE) ;
     enterKeyInStringSet (inNode->mSupPtr, ioResult) ;
   }
 }

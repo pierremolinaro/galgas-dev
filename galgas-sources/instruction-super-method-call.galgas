@@ -204,7 +204,7 @@ class @superMethodCallInstructionForGeneration : @semanticInstructionForGenerati
       parameterCppNameList += !parameterCppName
     end
   //--- Generate method call
-    ioInclusionSet += !"method-" + [[self.mBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    ioInclusionSet ++= "method-" + [[self.mBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
     ioGeneratedCode += "cPtr_" + [[self.mBaseType definition].typeName identifierRepresentation]
     ioGeneratedCode += "::method_" + [self.mMethodName identifierRepresentation] + " ("
     for (mValue) in parameterCppNameList

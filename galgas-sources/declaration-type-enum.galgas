@@ -471,7 +471,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         if [associatedValueNameSet hasKey !associatedValue.valueName.string] then
           error associatedValue.valueName : "duplicated name"
         end
-        associatedValueNameSet += !associatedValue.valueName.string
+        associatedValueNameSet ++= associatedValue.valueName.string
       //--- Comparison
         switch self.comparison
         case none :

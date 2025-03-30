@@ -411,7 +411,7 @@ class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneratio
         !true
         !0
       ]
-      ioInclusionSet += !"getter-"
+      ioInclusionSet ++= "getter-"
         + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
         + "-" + [self.mExtensionGetterName fileNameRepresentation]
       generateFunction (
@@ -446,7 +446,7 @@ class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneratio
           searching = false
         end
       end
-      ioInclusionSet += !"getter-"
+      ioInclusionSet ++= "getter-"
         + [[baseType definition].typeName.string fileNameRepresentation]
         + "-" + [self.mExtensionGetterName fileNameRepresentation]
       generateExtensionGetter (

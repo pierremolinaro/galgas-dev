@@ -5905,8 +5905,7 @@ GGS_syntaxInstructionListForGrammarAnalysis GGS_syntaxInstructionListForGrammarA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxInstructionListForGrammarAnalysis::plusPlusAssignOperation (const GGS_syntaxInstructionListForGrammarAnalysis_2E_element & inValue,
-                                                                           Compiler * /* inCompiler */
+void GGS_syntaxInstructionListForGrammarAnalysis::plusPlusAssignOperation (const GGS_syntaxInstructionListForGrammarAnalysis_2E_element & inValue
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -6357,8 +6356,7 @@ GGS_productionRuleListForGrammarAnalysis GGS_productionRuleListForGrammarAnalysi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_productionRuleListForGrammarAnalysis::plusPlusAssignOperation (const GGS_productionRuleListForGrammarAnalysis_2E_element & inValue,
-                                                                        Compiler * /* inCompiler */
+void GGS_productionRuleListForGrammarAnalysis::plusPlusAssignOperation (const GGS_productionRuleListForGrammarAnalysis_2E_element & inValue
                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_productionRuleListForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -7266,8 +7264,7 @@ AC_GALGAS_sortedlist () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inValue,
-                                                                                 Compiler * /* inCompiler */
+void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inValue
                                                                                  COMMA_LOCATION_ARGS) {
   cSortedListElement * p = nullptr ;
   macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -7775,8 +7772,7 @@ GGS_branchListForGrammarAnalysis GGS_branchListForGrammarAnalysis::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_branchListForGrammarAnalysis::plusPlusAssignOperation (const GGS_branchListForGrammarAnalysis_2E_element & inValue,
-                                                                Compiler * /* inCompiler */
+void GGS_branchListForGrammarAnalysis::plusPlusAssignOperation (const GGS_branchListForGrammarAnalysis_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_branchListForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -8827,8 +8823,7 @@ GGS_syntaxComponentListForGrammarAnalysis GGS_syntaxComponentListForGrammarAnaly
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxComponentListForGrammarAnalysis::plusPlusAssignOperation (const GGS_syntaxComponentListForGrammarAnalysis_2E_element & inValue,
-                                                                         Compiler * /* inCompiler */
+void GGS_syntaxComponentListForGrammarAnalysis::plusPlusAssignOperation (const GGS_syntaxComponentListForGrammarAnalysis_2E_element & inValue
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_syntaxComponentListForGrammarAnalysis (inValue COMMA_THERE)) ;
@@ -9688,8 +9683,7 @@ GGS_rowList GGS_rowList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_rowList::plusPlusAssignOperation (const GGS_rowList_2E_element & inValue,
-                                           Compiler * /* inCompiler */
+void GGS_rowList::plusPlusAssignOperation (const GGS_rowList_2E_element & inValue
                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_rowList (inValue COMMA_THERE)) ;
@@ -10239,8 +10233,7 @@ GGS_programListForGeneration GGS_programListForGeneration::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_programListForGeneration::plusPlusAssignOperation (const GGS_programListForGeneration_2E_element & inValue,
-                                                            Compiler * /* inCompiler */
+void GGS_programListForGeneration::plusPlusAssignOperation (const GGS_programListForGeneration_2E_element & inValue
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_programListForGeneration (inValue COMMA_THERE)) ;
@@ -10676,8 +10669,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::plusPlusAssignOperation (const GGS_genericExtensionMethodListMapDictionary_2E_element & inValue,
-                                                                           Compiler * /* inCompiler */
+void GGS_genericExtensionMethodListMapDictionary::plusPlusAssignOperation (const GGS_genericExtensionMethodListMapDictionary_2E_element & inValue
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
     mDictionary [inValue.mProperty_key] = inValue ;
@@ -11140,8 +11132,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::plusPlusAssignOperation (const GGS_descendantClassListMapDictionary_2E_element & inValue,
-                                                                    Compiler * /* inCompiler */
+void GGS_descendantClassListMapDictionary::plusPlusAssignOperation (const GGS_descendantClassListMapDictionary_2E_element & inValue
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
     mDictionary [inValue.mProperty_key] = inValue ;
@@ -12230,8 +12221,7 @@ GGS_galgas_33_QualifiedFeatureList GGS_galgas_33_QualifiedFeatureList::init (Com
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_QualifiedFeatureList::plusPlusAssignOperation (const GGS_galgas_33_QualifiedFeatureList_2E_element & inValue,
-                                                                  Compiler * /* inCompiler */
+void GGS_galgas_33_QualifiedFeatureList::plusPlusAssignOperation (const GGS_galgas_33_QualifiedFeatureList_2E_element & inValue
                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_galgas_33_QualifiedFeatureList (inValue COMMA_THERE)) ;

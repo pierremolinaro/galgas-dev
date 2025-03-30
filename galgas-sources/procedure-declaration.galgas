@@ -279,7 +279,7 @@ class @routineImplementationForGeneration : @routinePrototypeDeclarationForGener
     !@string outImplementation
   {
     if self.generateHeader then
-      ioInclusionSet += !"proc-" + [self.routineMangledName fileNameRepresentation]
+      ioInclusionSet ++= "proc-" + [self.routineMangledName fileNameRepresentation]
     end
     generateProcedure (
       !static: self.mGenerateStatic
