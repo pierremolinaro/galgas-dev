@@ -817,6 +817,8 @@ proc updateGalgasTargets
           "button/AutoLayoutButton.swift",
           "button/AutoLayoutFontButton.swift",
           "button/AutoLayoutCheckbox.swift",
+          "button/AutoLayoutSheetCancelButton.swift",
+          "button/AutoLayoutSheetDefaultOkButton.swift",
           "color-well/AutoLayoutColorWell.swift",
           "debug/AutoLayout-debug-menu.swift",
           "debug/EBAllocationDebug-debug-with-actor.swift",

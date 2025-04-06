@@ -78,6 +78,16 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@()
     !false // Is not extern
   ]
+//--- prependCharacter
+  lexicalRoutineFormalArgumentList = @()
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"ioString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inCharacter"
+  [!?outLexicalRoutineMap insertKey
+    !@{!"prependCharacter" !.here}
+    !lexicalRoutineFormalArgumentList
+    !@()
+    !false // Is not extern
+  ]
 //--- resetString
   [!?outLexicalRoutineMap insertKey
     !@lstring {!"resetString" !@location.here}

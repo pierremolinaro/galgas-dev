@@ -96,6 +96,14 @@ void scanner_routine_enterCharacterIntoString (Lexique & /* inLexique */,
 
 //--------------------------------------------------------------------------------------------------
 
+void scanner_routine_prependCharacter (Lexique & /* inLexique */,
+                                       String & ioString,
+                                       const utf32 inCharacter) {
+  ioString.insertCharacterAtIndex (inCharacter, 0 COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void scanner_routine_convertStringToDouble (Lexique & inLexique,
                                             const String & inString,
                                             double & outValue,

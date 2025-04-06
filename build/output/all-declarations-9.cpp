@@ -14657,6 +14657,11 @@ GGS_abstractEnumeratedCollectionAST::GGS_abstractEnumeratedCollectionAST (void) 
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_abstractEnumeratedCollectionAST::
+abstractEnumeratedCollectionAST_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractEnumeratedCollectionAST::GGS_abstractEnumeratedCollectionAST (const cPtr_abstractEnumeratedCollectionAST * inSourcePtr) :

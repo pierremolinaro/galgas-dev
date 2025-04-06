@@ -297,6 +297,7 @@ import AppKit
   override func save (_ inSender : Any?) {
     super.save (inSender)
     self.releaseTimer ()
+    // NSSound.beep ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

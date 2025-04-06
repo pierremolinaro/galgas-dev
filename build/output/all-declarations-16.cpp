@@ -4674,6 +4674,15 @@ GGS_semanticExpressionForGeneration::GGS_semanticExpressionForGeneration (void) 
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_semanticExpressionForGeneration::
+semanticExpressionForGeneration_init_21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                              const GGS_location & in_mLocation,
+                                              Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticExpressionForGeneration::GGS_semanticExpressionForGeneration (const cPtr_semanticExpressionForGeneration * inSourcePtr) :
@@ -10785,6 +10794,15 @@ GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeade
 GGS_semanticDeclarationForGeneration () {
 }
 
+
+void cPtr_semanticDeclarationWithHeaderForGeneration::
+semanticDeclarationWithHeaderForGeneration_init_21_generateHeader_21_implementationCppFileName (const GGS_bool & in_generateHeader,
+                                                                                                const GGS_string & in_implementationCppFileName,
+                                                                                                Compiler * /* inCompiler */) {
+  mProperty_generateHeader = in_generateHeader ;
+  mProperty_implementationCppFileName = in_implementationCppFileName ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeaderForGeneration (const cPtr_semanticDeclarationWithHeaderForGeneration * inSourcePtr) :
@@ -11349,6 +11367,13 @@ ComparisonResult GGS_semanticTypeForGeneration::objectCompare (const GGS_semanti
 
 GGS_semanticTypeForGeneration::GGS_semanticTypeForGeneration (void) :
 GGS_semanticDeclarationForGeneration () {
+}
+
+
+void cPtr_semanticTypeForGeneration::
+semanticTypeForGeneration_init_21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                    Compiler * /* inCompiler */) {
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
 }
 
 //--------------------------------------------------------------------------------------------------

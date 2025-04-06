@@ -232,6 +232,20 @@ func scanner_cocoa_routine_enterCharacterIntoString (_ ioScanningOk : inout Bool
                                                      _ inUnicodeCharacter : UInt32) {
   if let char = Unicode.Scalar (inUnicodeCharacter) {
     ioStr += String (char)
+  }else{
+    ioScanningOk = false
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func scanner_cocoa_routine_prependCharacter (_ ioScanningOk : inout Bool,
+                                             _ ioStr : inout String,
+                                             _ inUnicodeCharacter : UInt32) {
+  if let char = Unicode.Scalar (inUnicodeCharacter) {
+    ioStr.insert (Character (char), at: ioStr.startIndex)
+  }else{
+    ioScanningOk = false
   }
 }
 

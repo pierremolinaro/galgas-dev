@@ -51,8 +51,12 @@ final class SWIFT_TextViewRulerView : NSRulerView {
       NSColor.windowBackgroundColor.setFill ()
       NSBezierPath.fill (self.bounds)
     //-------- Set draw text attributes and find point size
+      let font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.smallSystemFontSize, weight: .semibold)
+      let boundingRectForFont = font.boundingRectForFont
+//      Swift.print ("font.ascender \(font.ascender) font.descender \(font.descender)")
+//      Swift.print ("boundingRectForFont \(font.boundingRectForFont)")
       let textAttributes : [NSAttributedString.Key : Any] = [
-        .font : NSFont.monospacedDigitSystemFont (ofSize: NSFont.smallSystemFontSize, weight: .semibold),
+        .font : font,
         .foregroundColor : NSColor.darkGray
       ]
     //-------- Note: ruler view and text view are both flipped
@@ -106,13 +110,14 @@ final class SWIFT_TextViewRulerView : NSRulerView {
           let strSize = str.size (withAttributes: textAttributes)
           let lineNumberOrigin = NSPoint (
             x: self.bounds.size.width - strSize.width - rightMargin,
-            y: ruleRectForCurrentLine.midY - strSize.height / 2.0
+//            y: ruleRectForCurrentLine.midY - strSize.height / 2.0
+            y: ruleRectForCurrentLine.maxY + font.descender - font.ascender + boundingRectForFont.minY
           )
           str.draw (at: lineNumberOrigin, withAttributes: textAttributes)
         //--- Draw mark ?
           while issueIndex < issueArray.count,
                 issueArray [issueIndex].mIsValid,
-                issueArray [issueIndex].range.intersection(lineRange) != nil {
+                issueArray [issueIndex].range.intersection (lineRange) != nil {
             let mark = NSRect (
               x: markOffset,
               y: ruleRectForCurrentLine.midY - markDiameter / 2.0,
@@ -130,24 +135,6 @@ final class SWIFT_TextViewRulerView : NSRulerView {
       //---
         lineIndex += 1
       }
-    //--- Iterate on issues
-//      let warningBP = NSBezierPath ()
-//      let errorBP = NSBezierPath ()
-//      let markDiameter = self.bounds.size.width * 2.0 / 3.0
-//      let markOffset = (self.bounds.size.width - markDiameter) / 2.0
-//      for issue in self.mIssueArray {
-//        let r = layoutManager.lineFragmentRect (
-//          forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.locationInBuildLogTextView),
-//          effectiveRange: nil
-//        )
-//        let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
-//      //--- Draw mark
-//        let mark = NSRect (x: markOffset, y: p.y, width: markDiameter, height: markDiameter)
-//        switch issue.kind {
-//        case .warning : warningBP.appendOval (in: mark)
-//        case .error   : errorBP.appendOval (in: mark)
-//        }
-//      }
       NSColor.orange.setFill ()
       warningBP.fill ()
       NSColor.red.setFill ()

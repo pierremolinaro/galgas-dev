@@ -3464,6 +3464,13 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis::GGS_abstractSyntaxInstructionFo
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_abstractSyntaxInstructionForGrammarAnalysis::
+abstractSyntaxInstructionForGrammarAnalysis_init_21_ (const GGS_location & in_mStartLocation,
+                                                      Compiler * /* inCompiler */) {
+  mProperty_mStartLocation = in_mStartLocation ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractSyntaxInstructionForGrammarAnalysis::GGS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) :

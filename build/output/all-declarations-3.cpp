@@ -12936,6 +12936,15 @@ GGS_predefinedTypeAST::GGS_predefinedTypeAST (void) :
 GGS_semanticDeclarationAST () {
 }
 
+
+void cPtr_predefinedTypeAST::
+predefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                                            const GGS_string & in_mPredefinedTypeName,
+                                            Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_predefinedTypeAST::GGS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) :

@@ -69,7 +69,9 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::
 }
 
 //--------------------------------------------------------------------------------------------------
-
+%end
+if GENERATE_SYNTHETIZED_INITIALIZER then
+%
 void cPtr_%!TYPE_IDENTIFIER%::
 %!TYPE_IDENTIFIER%_%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do

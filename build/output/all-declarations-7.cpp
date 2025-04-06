@@ -8261,6 +8261,13 @@ GGS_actualParameterForGeneration::GGS_actualParameterForGeneration (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_actualParameterForGeneration::
+actualParameterForGeneration_init_21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                       Compiler * /* inCompiler */) {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_actualParameterForGeneration::GGS_actualParameterForGeneration (const cPtr_actualParameterForGeneration * inSourcePtr) :
@@ -10033,6 +10040,11 @@ GGS_semanticInstructionForGeneration::GGS_semanticInstructionForGeneration (void
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_semanticInstructionForGeneration::
+semanticInstructionForGeneration_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticInstructionForGeneration::GGS_semanticInstructionForGeneration (const cPtr_semanticInstructionForGeneration * inSourcePtr) :
@@ -11034,6 +11046,11 @@ ComparisonResult GGS_semanticDeclarationForGeneration::objectCompare (const GGS_
 
 GGS_semanticDeclarationForGeneration::GGS_semanticDeclarationForGeneration (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_semanticDeclarationForGeneration::
+semanticDeclarationForGeneration_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14094,6 +14111,13 @@ ComparisonResult GGS_syntaxInstructionForGeneration::objectCompare (const GGS_sy
 
 GGS_syntaxInstructionForGeneration::GGS_syntaxInstructionForGeneration (void) :
 GGS_semanticInstructionForGeneration () {
+}
+
+
+void cPtr_syntaxInstructionForGeneration::
+syntaxInstructionForGeneration_init_21_ (const GGS_location & in_mInstructionLocation,
+                                         Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------

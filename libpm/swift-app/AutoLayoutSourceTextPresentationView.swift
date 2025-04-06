@@ -90,6 +90,20 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var currentLine : Int { self.mSourceTextView.currentLine }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var lineCount : Int { self.mSourceTextView.lineCount }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func selectLineStart (_ inLineIndex : Int) {
+    self.mSourceTextView.selectLineStart (inLineIndex)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  populateRevealInFinderPullDownButton
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

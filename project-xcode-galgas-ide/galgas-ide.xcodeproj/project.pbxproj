@@ -115,6 +115,8 @@
 		CF08BB892D55316A000DE9C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08BB872D55316A000DE9C4 /* MainMenu.xib */; };
 		CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
 		CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
+		CF1731902D9D5B21005AC302 /* AutoLayoutSheetDefaultOkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17318F2D9D5B1E005AC302 /* AutoLayoutSheetDefaultOkButton.swift */; };
+		CF1731922D9D5D23005AC302 /* AutoLayoutSheetCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1731912D9D5D1C005AC302 /* AutoLayoutSheetCancelButton.swift */; };
 		CF1B8C302D8AE53B0093FD81 /* SWIFT_String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B8C2F2D8AE52C0093FD81 /* SWIFT_String+extension.swift */; };
 		CF305F972D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
@@ -641,6 +643,8 @@
 		CF08BB862D55316A000DE9C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
 		CF1612462D74891000CCF20D /* all-declarations-32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
 		CF1612472D74891000CCF20D /* all-declarations-32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
+		CF17318F2D9D5B1E005AC302 /* AutoLayoutSheetDefaultOkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetDefaultOkButton.swift; sourceTree = "<group>"; };
+		CF1731912D9D5D1C005AC302 /* AutoLayoutSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetCancelButton.swift; sourceTree = "<group>"; };
 		CF1B8C2F2D8AE52C0093FD81 /* SWIFT_String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_String+extension.swift"; sourceTree = "<group>"; };
 		CF305E4C2D0D8A2E000A5F79 /* BinaryDecisionDiagram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagram.h; sourceTree = "<group>"; };
 		CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagram.cpp; sourceTree = "<group>"; };
@@ -1080,6 +1084,8 @@
 				CF08BA192D552D3A000DE9C4 /* AutoLayoutButton.swift */,
 				CF08BA1A2D552D3A000DE9C4 /* AutoLayoutCheckbox.swift */,
 				CF08BA1B2D552D3A000DE9C4 /* AutoLayoutFontButton.swift */,
+				CF1731912D9D5D1C005AC302 /* AutoLayoutSheetCancelButton.swift */,
+				CF17318F2D9D5B1E005AC302 /* AutoLayoutSheetDefaultOkButton.swift */,
 			);
 			path = button;
 			sourceTree = "<group>";
@@ -2212,6 +2218,7 @@
 				CF08BABC2D552D3A000DE9C4 /* EBPreferenceProperty.swift in Sources */,
 				CF08BABD2D552D3A000DE9C4 /* extension-Data-EBPropertyProtocol.swift in Sources */,
 				CF08BABE2D552D3A000DE9C4 /* extension-NSBezierPath.swift in Sources */,
+				CF1731902D9D5B21005AC302 /* AutoLayoutSheetDefaultOkButton.swift in Sources */,
 				CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */,
 				CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */,
 				CF08BAC12D552D3A000DE9C4 /* EBObservedObject.swift in Sources */,
@@ -2220,6 +2227,7 @@
 				CF08BAC42D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift in Sources */,
 				CF08BAC52D552D3A000DE9C4 /* Spacing.swift in Sources */,
 				CF08BAC62D552D3A000DE9C4 /* EBObservableMutableProperty.swift in Sources */,
+				CF1731922D9D5D23005AC302 /* AutoLayoutSheetCancelButton.swift in Sources */,
 				CF08BAC72D552D3A000DE9C4 /* EBObservablePropertyController.swift in Sources */,
 				CF08BAC82D552D3A000DE9C4 /* StringArray.swift in Sources */,
 				CF08BAC92D552D3A000DE9C4 /* VerticalStackSeparator.swift in Sources */,

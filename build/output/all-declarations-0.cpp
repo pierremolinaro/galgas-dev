@@ -5434,6 +5434,11 @@ GGS_templateInstructionAST::GGS_templateInstructionAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_templateInstructionAST::
+templateInstructionAST_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionAST::GGS_templateInstructionAST (const cPtr_templateInstructionAST * inSourcePtr) :
@@ -6067,6 +6072,11 @@ ComparisonResult GGS_templateExpressionAST::objectCompare (const GGS_templateExp
 
 GGS_templateExpressionAST::GGS_templateExpressionAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_templateExpressionAST::
+templateExpressionAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16877,6 +16887,11 @@ ComparisonResult GGS_templateInstructionForGeneration::objectCompare (const GGS_
 
 GGS_templateInstructionForGeneration::GGS_templateInstructionForGeneration (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_templateInstructionForGeneration::
+templateInstructionForGeneration_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------

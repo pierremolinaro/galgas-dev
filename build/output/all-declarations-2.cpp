@@ -1381,6 +1381,11 @@ GGS_lexicalSendDefaultActionAST::GGS_lexicalSendDefaultActionAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_lexicalSendDefaultActionAST::
+lexicalSendDefaultActionAST_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSendDefaultActionAST::GGS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) :
@@ -2809,6 +2814,11 @@ ComparisonResult GGS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompa
 
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST::GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::
+lexicalRoutineOrFunctionFormalInputArgumentAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13896,6 +13906,13 @@ ComparisonResult GGS_abstractLexicalRoutineActualArgumentAST::objectCompare (con
 
 GGS_abstractLexicalRoutineActualArgumentAST::GGS_abstractLexicalRoutineActualArgumentAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_abstractLexicalRoutineActualArgumentAST::
+abstractLexicalRoutineActualArgumentAST_init_21_ (const GGS_location & in_mActualPassingModeLocation,
+                                                  Compiler * /* inCompiler */) {
+  mProperty_mActualPassingModeLocation = in_mActualPassingModeLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------

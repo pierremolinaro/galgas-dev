@@ -14935,6 +14935,11 @@ GGS_actualParameterAST::GGS_actualParameterAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_actualParameterAST::
+actualParameterAST_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_actualParameterAST::GGS_actualParameterAST (const cPtr_actualParameterAST * inSourcePtr) :
@@ -15214,6 +15219,11 @@ ComparisonResult GGS_semanticExpressionAST::objectCompare (const GGS_semanticExp
 
 GGS_semanticExpressionAST::GGS_semanticExpressionAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_semanticExpressionAST::
+semanticExpressionAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------

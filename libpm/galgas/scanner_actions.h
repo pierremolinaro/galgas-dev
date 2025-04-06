@@ -60,8 +60,12 @@ void scanner_routine_convertStringToDouble (Lexique & inLexique,
                                            const char * inConversionError) ;
 
 void scanner_routine_enterCharacterIntoString (Lexique & inLexique,
-                                              String & ioString,
-                                              const utf32 inCharacter) ;
+                                               String & ioString,
+                                               const utf32 inCharacter) ;
+
+void scanner_routine_prependCharacter (Lexique & inLexique,
+                                       String & ioString,
+                                       const utf32 inCharacter) ;
 
 void scanner_routine_enterHexDigitIntoASCIIcharacter (Lexique & inLexique,
                                                      utf32 & ioValue,

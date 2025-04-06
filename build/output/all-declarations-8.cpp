@@ -1455,6 +1455,11 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult::GGS_abstractGramm
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::
+abstractGrammarInstructionSyntaxDirectedTranslationResult_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult::GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inSourcePtr) :

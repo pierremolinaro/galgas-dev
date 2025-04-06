@@ -314,13 +314,13 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func close () {
-    DispatchQueue.main.async {
-      for tab in self.mTabArray {
-        if tab.mDocument.isDocumentEdited {
-          tab.mDocument.save (nil)
-        }
+    for tab in self.mTabArray {
+      if tab.mDocument.isDocumentEdited {
+        tab.mDocument.save (nil)
       }
-      self.mTabArray.removeAll ()
+    }
+    self.mTabArray.removeAll ()
+    DispatchQueue.main.async {
       SWIFT_DocumentController.closeUnreferencedDocuments ()
     }
     super.close ()
@@ -425,7 +425,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func closeTab (atIndex inIndex : Int) {
-    if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
+    if inIndex >= 0, inIndex < self.mTabArray.count {
+    //--- Enregistrer tous les documents
+      SWIFT_DocumentController.mySaveAllDocuments ()
     //--- Supprimer l'entrée
       self.mTabArray.remove (at: inIndex)
     //--- Fermer les documents qui ne sont plus visibles (en fait, un seul peut être
@@ -630,40 +632,52 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func gotoLineAction (_ inUnusedSender : Any?) {
-    let alert = NSAlert ()
-    _ = alert.addButton (withTitle: "Cancel")
-    _ = alert.addButton (withTitle: "Goto")
-    alert.messageText =  "Select Line"
-    alert.beginSheetModal (for: self) { (response : NSApplication.ModalResponse) in
-//      if response == .alertSecondButtonReturn {
-//        self.rootObject.mBoardSelectedInspector = 4
-//      }
+    if self.mSelectedTabIndex >= 0, self.mSelectedTabIndex < self.mTabArray.count {
+      let dd : SWIFT_DisplayDescriptor = self.mTabArray [self.mSelectedTabIndex]
+      let currentLine = dd.currentLine
+      let lineCount = dd.lineCount
+      if lineCount > 1 {
+        let panel = NSPanel (
+          contentRect: NSRect (x: 0.0, y: 0.0, width: 400.0, height: 150.0),
+          styleMask: [.titled],
+          backing: .buffered,
+          defer: false
+        )
+        let title = AutoLayoutStaticLabel (title: "Goto Line", bold: true, size: .regular, alignment: .center)
+        let lineProperty = EBStandAloneProperty <Int> (currentLine)
+        let intField = AutoLayoutIntField (minWidth: 100, size: .regular)
+          .setMin (1)
+          .setMax (lineCount)
+          .bind_value (lineProperty, sendContinously: true)
+        let rangeLabel = AutoLayoutStaticLabel (title: "(1 - \(lineCount))", bold: false, size: .regular, alignment: .center)
+        let intFieldLine = AutoLayoutHorizontalStackView ()
+          .set (margins: .zero)
+          .appendView (intField)
+          .appendView (rangeLabel)
+        let okButton = AutoLayoutSheetDefaultOkButton (title: "Goto Line", size: .regular, sheet: panel)
+        let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
+        let lastLine = AutoLayoutHorizontalStackView ()
+          .set (margins: .zero)
+          .appendView (cancelButton)
+          .appendFlexibleSpace ()
+          .appendView (okButton)
+        let mainView = AutoLayoutVerticalStackView ()
+          .appendView (title)
+          .appendFlexibleSpace ()
+          .appendView (intFieldLine)
+          .appendView (lastLine)
+      //--- Set autolayout view to panel
+        panel.setRootView (mainView)
+        RunLoop.current.run (until: Date ()) 
+
+        self.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
+          if inResponse == .stop {
+            dd.selectLineStart (lineProperty.propval)
+          }
+        }
+      }
     }
-
-//    NSApp.beginSheet (<#T##sheet: NSWindow##NSWindow#>, modalFor: <#T##NSWindow#>, modalDelegate: <#T##Any?#>, didEnd: <#T##Selector?#>, contextInfo: <#T##UnsafeMutableRawPointer!#>)
-//    [NSApp
-//      beginSheet: mGotoWindow
-//      modalForWindow: self.windowForSheet
-//      modalDelegate: self
-//      didEndSelector: @selector (gotoLineSheetDidEnd:returnCode:contextInfo:)
-//      contextInfo: nil
-//    ] ;
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  - (void) gotoLineSheetDidEnd: (NSWindow *) inSheet
-//           returnCode: (int) inReturnCode
-//           contextInfo: (void *) inContextInfo {
-//    if (inReturnCode == 1) {
-//    //--- Get selected line
-//      const NSUInteger selectedLine = (NSUInteger) [mGotoLineTextField integerValue] ;
-//    //--- Goto selected line
-//      OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
-//      [selectedObject gotoLine: selectedLine] ;
-//    }
-//  }
-
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Utilities

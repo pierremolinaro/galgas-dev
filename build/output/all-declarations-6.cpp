@@ -2496,6 +2496,11 @@ GGS_abstractInputParameter::GGS_abstractInputParameter (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_abstractInputParameter::
+abstractInputParameter_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractInputParameter::GGS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) :
@@ -3778,6 +3783,13 @@ GGS_syntaxInstructionAST::GGS_syntaxInstructionAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_syntaxInstructionAST::
+syntaxInstructionAST_init_21_ (const GGS_location & in_mInstructionLocation,
+                               Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_syntaxInstructionAST::GGS_syntaxInstructionAST (const cPtr_syntaxInstructionAST * inSourcePtr) :
@@ -3998,6 +4010,13 @@ ComparisonResult GGS_semanticInstructionAST::objectCompare (const GGS_semanticIn
 
 GGS_semanticInstructionAST::GGS_semanticInstructionAST (void) :
 GGS_syntaxInstructionAST () {
+}
+
+
+void cPtr_semanticInstructionAST::
+semanticInstructionAST_init_21_ (const GGS_location & in_mInstructionLocation,
+                                 Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------

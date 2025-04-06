@@ -58,6 +58,13 @@ import Cocoa
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func applicationShouldTerminate (_ sender: NSApplication) -> NSApplication.TerminateReply {
+    SWIFT_DocumentController.mySaveAllDocuments ()
+    return .terminateNow
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Settings Window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -6899,6 +6899,13 @@ GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_semanticDeclarationAST::
+semanticDeclarationAST_init_21_isPredefined (const GGS_bool & in_isPredefined,
+                                             Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (const cPtr_semanticDeclarationAST * inSourcePtr) :
@@ -12495,6 +12502,11 @@ GGS_lexicalExpressionAST::GGS_lexicalExpressionAST (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_lexicalExpressionAST::
+lexicalExpressionAST_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExpressionAST::GGS_lexicalExpressionAST (const cPtr_lexicalExpressionAST * inSourcePtr) :
@@ -12695,6 +12707,11 @@ ComparisonResult GGS_lexicalInstructionAST::objectCompare (const GGS_lexicalInst
 
 GGS_lexicalInstructionAST::GGS_lexicalInstructionAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_lexicalInstructionAST::
+lexicalInstructionAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13330,6 +13347,11 @@ ComparisonResult GGS_abstractLexicalRuleAST::objectCompare (const GGS_abstractLe
 
 GGS_abstractLexicalRuleAST::GGS_abstractLexicalRuleAST (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_abstractLexicalRuleAST::
+abstractLexicalRuleAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------

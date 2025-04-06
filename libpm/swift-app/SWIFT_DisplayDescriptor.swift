@@ -137,6 +137,20 @@ import AppKit
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  var currentLine : Int { self.sourcePresentationView.currentLine }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var lineCount : Int { self.sourcePresentationView.lineCount }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func selectLineStart (_ inLineIndex : Int) {
+    self.sourcePresentationView.selectLineStart (inLineIndex)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   var selectedRange : NSRange { self.sourcePresentationView.selectedRange }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,7 +174,6 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func commentSelection () {
-//    let newRange = [documentData.textSyntaxColoring commentRange:mTextView.selectedRange] ;
     let newRange = self.mDocument.commentRange (self.selectedRange)
     self.setSelectedRange (newRange)
   }
@@ -170,8 +183,6 @@ import AppKit
   func uncommentSelection () {
     let newRange = self.mDocument.uncommentRange (self.selectedRange)
     self.setSelectedRange (newRange)
-//    const NSRange newRange = [documentData.textSyntaxColoring uncommentRange:mTextView.selectedRange] ;
-//    mTextView.selectedRange = newRange ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
