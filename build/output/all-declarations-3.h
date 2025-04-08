@@ -305,17 +305,17 @@ class GGS_commandLineOptionSortedList : public AC_GALGAS_sortedlist {
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_commandLineOptionSortedList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_commandLineOptionSortedList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_char & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_string & inOperand4
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_char & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_string & inOperand3,
+                                                    const class GGS_string & inOperand4
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_commandLineOptionSortedList_2E_element & inOperand
@@ -981,14 +981,14 @@ class GGS_guiSimpleAttributeListAST : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_guiSimpleAttributeListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_guiSimpleAttributeListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_guiSimpleAttributeListAST_2E_element & inOperand
@@ -1253,15 +1253,15 @@ class GGS_guiCompoundAttributeListAST : public AC_GALGAS_list {
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_guiCompoundAttributeListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_guiCompoundAttributeListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1,
-                                                     const class GGS_lstring & inOperand2
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1,
+                                                    const class GGS_lstring & inOperand2
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_guiCompoundAttributeListAST_2E_element & inOperand
@@ -1550,14 +1550,14 @@ class GGS_terminalLabelListAST : public AC_GALGAS_list {
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_terminalLabelListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_terminalLabelListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_uint & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_uint & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_terminalLabelListAST_2E_element & inOperand
@@ -1822,15 +1822,15 @@ class GGS_guiLabelListAST : public AC_GALGAS_list {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_guiLabelListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_guiLabelListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_uint & inOperand0,
-                                                     const class GGS_terminalLabelListAST & inOperand1,
-                                                     const class GGS_location & inOperand2
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_uint & inOperand0,
+                                                    const class GGS_terminalLabelListAST & inOperand1,
+                                                    const class GGS_location & inOperand2
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_guiLabelListAST_2E_element & inOperand
@@ -2127,16 +2127,16 @@ class GGS_withLexiqueListAST : public AC_GALGAS_list {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_withLexiqueListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_withLexiqueListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_guiLabelListAST & inOperand1,
-                                                     const class GGS_guiSimpleAttributeListAST & inOperand2,
-                                                     const class GGS_guiCompoundAttributeListAST & inOperand3
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_guiLabelListAST & inOperand1,
+                                                    const class GGS_guiSimpleAttributeListAST & inOperand2,
+                                                    const class GGS_guiCompoundAttributeListAST & inOperand3
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_withLexiqueListAST_2E_element & inOperand
@@ -2465,17 +2465,17 @@ class GGS_guiCommandLineOptionList : public AC_GALGAS_list {
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_guiCommandLineOptionList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_guiCommandLineOptionList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_string & inOperand1,
-                                                     const class GGS_char & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_string & inOperand4
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_string & inOperand1,
+                                                    const class GGS_char & inOperand2,
+                                                    const class GGS_string & inOperand3,
+                                                    const class GGS_string & inOperand4
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_guiCommandLineOptionList_2E_element & inOperand
@@ -3157,14 +3157,14 @@ class GGS_textMacroList : public AC_GALGAS_list {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_textMacroList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_textMacroList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_string & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_string & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_textMacroList_2E_element & inOperand
@@ -3445,19 +3445,19 @@ class GGS_importedLexiqueList : public AC_GALGAS_list {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_importedLexiqueList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_importedLexiqueList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_uint & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_textMacroList & inOperand4,
-                                                     const class GGS_guiLabelListAST & inOperand5,
-                                                     const class GGS_lexicalStyleListAST & inOperand6
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_uint & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_string & inOperand3,
+                                                    const class GGS_textMacroList & inOperand4,
+                                                    const class GGS_guiLabelListAST & inOperand5,
+                                                    const class GGS_lexicalStyleListAST & inOperand6
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_importedLexiqueList_2E_element & inOperand
@@ -3858,14 +3858,14 @@ class GGS_projectIndexingDescriptorList : public AC_GALGAS_list {
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_projectIndexingDescriptorList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_projectIndexingDescriptorList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_projectIndexingDescriptorList_2E_element & inOperand
@@ -4138,17 +4138,17 @@ class GGS_galgasGUIComponentListAST : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_galgasGUIComponentListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_galgasGUIComponentListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstringlist & inOperand1,
-                                                     const class GGS_guiSimpleAttributeListAST & inOperand2,
-                                                     const class GGS_withLexiqueListAST & inOperand3,
-                                                     const class GGS_projectIndexingDescriptorList & inOperand4
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstringlist & inOperand1,
+                                                    const class GGS_guiSimpleAttributeListAST & inOperand2,
+                                                    const class GGS_withLexiqueListAST & inOperand3,
+                                                    const class GGS_projectIndexingDescriptorList & inOperand4
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_galgasGUIComponentListAST_2E_element & inOperand
@@ -5542,9 +5542,9 @@ class GGS__5B_formalInputParameterListAST_5D_ : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS__5B_formalInputParameterListAST_5D_ inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS__5B_formalInputParameterListAST_5D_ inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- ++= operator, collection value
@@ -5694,17 +5694,17 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_list {
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_formalInputParameterListAST inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_formalInputParameterListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1,
-                                                     const class GGS_lstring & inOperand2,
-                                                     const class GGS_bool & inOperand3,
-                                                     const class GGS_bool & inOperand4
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1,
+                                                    const class GGS_lstring & inOperand2,
+                                                    const class GGS_bool & inOperand3,
+                                                    const class GGS_bool & inOperand4
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_formalInputParameterListAST_2E_element & inOperand
@@ -6079,16 +6079,16 @@ class GGS_functionSignature : public AC_GALGAS_list {
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_functionSignature inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_functionSignature inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_bool & inOperand3
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_bool & inOperand3
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_functionSignature_2E_element & inOperand
@@ -6948,16 +6948,16 @@ class GGS_formalParameterSignature : public AC_GALGAS_list {
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_formalParameterSignature inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_formalParameterSignature inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                     const class GGS_formalArgumentPassingModeAST & inOperand2,
-                                                     const class GGS_string & inOperand3
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                    const class GGS_formalArgumentPassingModeAST & inOperand2,
+                                                    const class GGS_string & inOperand3
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_formalParameterSignature_2E_element & inOperand
@@ -7868,24 +7868,24 @@ class GGS_typeFeatures : public AC_GALGAS_root {
   public: static class GGS_typeFeatures class_func_xorAssignOperatorWithExpression (LOCATION_ARGS) ;
 
 //--------------------------------- &= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void andAssign_operation (const GGS_typeFeatures inOperand,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- |= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void orAssign_operation (const GGS_typeFeatures inOperand,
+  public: VIRTUAL_IN_DEBUG void andAssignOperation (const GGS_typeFeatures inOperand,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- |= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void orAssignOperation (const GGS_typeFeatures inOperand,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- ^= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void xorAssign_operation (const GGS_typeFeatures inOperand,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void xorAssignOperation (const GGS_typeFeatures inOperand,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator (with expression)
-  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GGS_typeFeatures inOperand,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void minusAssignOperation (const GGS_typeFeatures inOperand,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GGS_typeFeatures operator_and (const GGS_typeFeatures & inOperand
@@ -8039,14 +8039,14 @@ class GGS_enumerationDescriptorList : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_enumerationDescriptorList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_enumerationDescriptorList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                     const class GGS_string & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                    const class GGS_string & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_enumerationDescriptorList_2E_element & inOperand

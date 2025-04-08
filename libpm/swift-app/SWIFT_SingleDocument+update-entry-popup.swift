@@ -26,8 +26,11 @@ extension SWIFT_SingleDocument {
         var matched = true
         var idx = 1
         var testedTokenRangeIndex = tokenWithRangeIndex
-        while matched, idx < popUpData.count, testedTokenRangeIndex < self.mTokenRangeArray.count {
-          matched = self.mTokenRangeArray [testedTokenRangeIndex].tokenCode == popUpData [idx]
+        while matched, idx < popUpData.count {
+          matched = testedTokenRangeIndex < self.mTokenRangeArray.count
+          if matched {
+            matched = self.mTokenRangeArray [testedTokenRangeIndex].tokenCode == popUpData [idx]
+          }
           idx += 2
           testedTokenRangeIndex += 1
         }

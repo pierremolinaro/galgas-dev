@@ -79,7 +79,7 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::addAssign_operation (const GGS_stringset & inOperand
+void GGS_stringset::addAssignOperation (const GGS_stringset & inOperand
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && (inOperand.isValid ())) {
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
@@ -151,9 +151,9 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
-                                          Compiler *
-                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_stringset::plusAssignOperation (const GGS_stringset inOperand,
+                                         Compiler *
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;

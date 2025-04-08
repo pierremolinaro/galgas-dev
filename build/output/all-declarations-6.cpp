@@ -1168,10 +1168,10 @@ void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxEx
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::addAssign_operation (const GGS_string & inKey,
-                                                          const GGS_galgas_33_SyntaxExtensionListAST & inArgument0,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_syntaxExtensionsDictionary::addAssignOperation (const GGS_string & inKey,
+                                                         const GGS_galgas_33_SyntaxExtensionListAST & inArgument0,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
     mDictionary [inKey] = newElement ;
@@ -1489,10 +1489,10 @@ void GGS_galgas_33_SyntaxExtensionListAST::makeAttributesFromObjects (capCollect
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxExtensionListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                                const GGS_nonterminalDeclarationListAST & inOperand1,
-                                                                const GGS_syntaxRuleListAST & inOperand2
-                                                                COMMA_LOCATION_ARGS) {
+void GGS_galgas_33_SyntaxExtensionListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                               const GGS_nonterminalDeclarationListAST & inOperand1,
+                                                               const GGS_syntaxRuleListAST & inOperand2
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_galgas_33_SyntaxExtensionListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -1699,9 +1699,9 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_galgas_33_SyntaxExtensionListAST::gette
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxExtensionListAST::plusAssign_operation (const GGS_galgas_33_SyntaxExtensionListAST inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_galgas_33_SyntaxExtensionListAST::plusAssignOperation (const GGS_galgas_33_SyntaxExtensionListAST inOperand,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2420,27 +2420,27 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
       {
-        result_result.plusAssign_operation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 126)) ;
+        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 126)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
       {
-        result_result.plusAssign_operation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 128)) ;
+        result_result.plusAssignOperation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 128)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
       {
-        result_result.plusAssign_operation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 130)) ;
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 130)) ;
       }
       break ;
     }
-    result_result.plusAssign_operation(enumerator_4905.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
+    result_result.plusAssignOperation(enumerator_4905.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
     enumerator_4905.gotoNextObject () ;
     if (enumerator_4905.hasCurrentObject ()) {
-      result_result.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 134)) ;
+      result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 134)) ;
     }
   }
-  result_result.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 136)) ;
+  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 136)) ;
 //---
   return result_result ;
 }
@@ -2460,7 +2460,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   const GGS_formalInputParameterListAST temp_0 = inObject ;
   UpEnumerator_formalInputParameterListAST enumerator_5826 (temp_0) ;
   while (enumerator_5826.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_5826.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5826.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
     enumerator_5826.gotoNextObject () ;
   }
 //---
@@ -3386,9 +3386,9 @@ void GGS_actualInputParameterListAST::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualInputParameterListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                           const GGS_abstractInputParameter & inOperand1
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_actualInputParameterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                          const GGS_abstractInputParameter & inOperand1
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_actualInputParameterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -3578,9 +3578,9 @@ GGS_actualInputParameterListAST GGS_actualInputParameterListAST::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualInputParameterListAST::plusAssign_operation (const GGS_actualInputParameterListAST inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_actualInputParameterListAST::plusAssignOperation (const GGS_actualInputParameterListAST inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4325,8 +4325,8 @@ void GGS_semanticDeclarationListAST::makeAttributesFromObjects (capCollectionEle
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticDeclarationListAST::addAssign_operation (const GGS_semanticDeclarationAST & inOperand0
-                                                          COMMA_LOCATION_ARGS) {
+void GGS_semanticDeclarationListAST::addAssignOperation (const GGS_semanticDeclarationAST & inOperand0
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_semanticDeclarationListAST (inOperand0 COMMA_THERE)) ;
@@ -4499,9 +4499,9 @@ GGS_semanticDeclarationListAST GGS_semanticDeclarationListAST::getter_subListToI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticDeclarationListAST::plusAssign_operation (const GGS_semanticDeclarationListAST inOperand,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_semanticDeclarationListAST::plusAssignOperation (const GGS_semanticDeclarationListAST inOperand,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5112,11 +5112,11 @@ void GGS_formalTemplateInputParameterListAST::makeAttributesFromObjects (capColl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalTemplateInputParameterListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                                   const GGS_lstring & inOperand1,
-                                                                   const GGS_lstring & inOperand2,
-                                                                   const GGS_bool & inOperand3
-                                                                   COMMA_LOCATION_ARGS) {
+void GGS_formalTemplateInputParameterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                                  const GGS_lstring & inOperand1,
+                                                                  const GGS_lstring & inOperand2,
+                                                                  const GGS_bool & inOperand3
+                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formalTemplateInputParameterListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -5340,9 +5340,9 @@ GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST:
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalTemplateInputParameterListAST::plusAssign_operation (const GGS_formalTemplateInputParameterListAST inOperand,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formalTemplateInputParameterListAST::plusAssignOperation (const GGS_formalTemplateInputParameterListAST inOperand,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5752,10 +5752,10 @@ void GGS_filewrapperTemplateListAST::makeAttributesFromObjects (capCollectionEle
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_filewrapperTemplateListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                          const GGS_lstring & inOperand1,
-                                                          const GGS_formalTemplateInputParameterListAST & inOperand2
-                                                          COMMA_LOCATION_ARGS) {
+void GGS_filewrapperTemplateListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                         const GGS_lstring & inOperand1,
+                                                         const GGS_formalTemplateInputParameterListAST & inOperand2
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_filewrapperTemplateListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -5962,9 +5962,9 @@ GGS_filewrapperTemplateListAST GGS_filewrapperTemplateListAST::getter_subListToI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_filewrapperTemplateListAST::plusAssign_operation (const GGS_filewrapperTemplateListAST inOperand,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_filewrapperTemplateListAST::plusAssignOperation (const GGS_filewrapperTemplateListAST inOperand,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6420,8 +6420,8 @@ void GGS_syntaxInstructionList::makeAttributesFromObjects (capCollectionElement 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxInstructionList::addAssign_operation (const GGS_syntaxInstructionAST & inOperand0
-                                                     COMMA_LOCATION_ARGS) {
+void GGS_syntaxInstructionList::addAssignOperation (const GGS_syntaxInstructionAST & inOperand0
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_syntaxInstructionList (inOperand0 COMMA_THERE)) ;
@@ -6594,9 +6594,9 @@ GGS_syntaxInstructionList GGS_syntaxInstructionList::getter_subListToIndex (cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxInstructionList::plusAssign_operation (const GGS_syntaxInstructionList inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_syntaxInstructionList::plusAssignOperation (const GGS_syntaxInstructionList inOperand,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6871,10 +6871,10 @@ void GGS_nonTerminalLabelListAST::makeAttributesFromObjects (capCollectionElemen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalLabelListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                       const GGS_formalParameterListAST & inOperand1,
-                                                       const GGS_location & inOperand2
-                                                       COMMA_LOCATION_ARGS) {
+void GGS_nonTerminalLabelListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                      const GGS_formalParameterListAST & inOperand1,
+                                                      const GGS_location & inOperand2
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_nonTerminalLabelListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -7081,9 +7081,9 @@ GGS_nonTerminalLabelListAST GGS_nonTerminalLabelListAST::getter_subListToIndex (
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalLabelListAST::plusAssign_operation (const GGS_nonTerminalLabelListAST inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_nonTerminalLabelListAST::plusAssignOperation (const GGS_nonTerminalLabelListAST inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7439,9 +7439,9 @@ void GGS_nonterminalDeclarationListAST::makeAttributesFromObjects (capCollection
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonterminalDeclarationListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                             const GGS_nonTerminalLabelListAST & inOperand1
-                                                             COMMA_LOCATION_ARGS) {
+void GGS_nonterminalDeclarationListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                            const GGS_nonTerminalLabelListAST & inOperand1
+                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_nonterminalDeclarationListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7631,9 +7631,9 @@ GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::getter_subL
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonterminalDeclarationListAST::plusAssign_operation (const GGS_nonterminalDeclarationListAST inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_nonterminalDeclarationListAST::plusAssignOperation (const GGS_nonterminalDeclarationListAST inOperand,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7971,12 +7971,12 @@ void GGS_syntaxRuleLabelListAST::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleLabelListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                      const GGS_formalParameterListAST & inOperand1,
-                                                      const GGS_location & inOperand2,
-                                                      const GGS_syntaxInstructionList & inOperand3,
-                                                      const GGS_location & inOperand4
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_syntaxRuleLabelListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                     const GGS_formalParameterListAST & inOperand1,
+                                                     const GGS_location & inOperand2,
+                                                     const GGS_syntaxInstructionList & inOperand3,
+                                                     const GGS_location & inOperand4
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_syntaxRuleLabelListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -8217,9 +8217,9 @@ GGS_syntaxRuleLabelListAST GGS_syntaxRuleLabelListAST::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleLabelListAST::plusAssign_operation (const GGS_syntaxRuleLabelListAST inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_syntaxRuleLabelListAST::plusAssignOperation (const GGS_syntaxRuleLabelListAST inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -8665,9 +8665,9 @@ void GGS_syntaxRuleListAST::makeAttributesFromObjects (capCollectionElement & ou
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                 const GGS_syntaxRuleLabelListAST & inOperand1
-                                                 COMMA_LOCATION_ARGS) {
+void GGS_syntaxRuleListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                const GGS_syntaxRuleLabelListAST & inOperand1
+                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_syntaxRuleListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -8857,9 +8857,9 @@ GGS_syntaxRuleListAST GGS_syntaxRuleListAST::getter_subListToIndex (const GGS_ui
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleListAST::plusAssign_operation (const GGS_syntaxRuleListAST inOperand,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_syntaxRuleListAST::plusAssignOperation (const GGS_syntaxRuleListAST inOperand,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9170,9 +9170,9 @@ void GGS_listOfSyntaxInstructionList::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_listOfSyntaxInstructionList::addAssign_operation (const GGS_syntaxInstructionList & inOperand0,
-                                                           const GGS_location & inOperand1
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_listOfSyntaxInstructionList::addAssignOperation (const GGS_syntaxInstructionList & inOperand0,
+                                                          const GGS_location & inOperand1
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_listOfSyntaxInstructionList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -9362,9 +9362,9 @@ GGS_listOfSyntaxInstructionList GGS_listOfSyntaxInstructionList::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_listOfSyntaxInstructionList::plusAssign_operation (const GGS_listOfSyntaxInstructionList inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_listOfSyntaxInstructionList::plusAssignOperation (const GGS_listOfSyntaxInstructionList inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9920,12 +9920,12 @@ void GGS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (capCollect
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxComponentListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                                const GGS_lstring & inOperand1,
-                                                                const GGS_nonterminalDeclarationListAST & inOperand2,
-                                                                const GGS_syntaxRuleListAST & inOperand3,
-                                                                const GGS_bool & inOperand4
-                                                                COMMA_LOCATION_ARGS) {
+void GGS_galgas_33_SyntaxComponentListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                               const GGS_lstring & inOperand1,
+                                                               const GGS_nonterminalDeclarationListAST & inOperand2,
+                                                               const GGS_syntaxRuleListAST & inOperand3,
+                                                               const GGS_bool & inOperand4
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -10166,9 +10166,9 @@ GGS_galgas_33_SyntaxComponentListAST GGS_galgas_33_SyntaxComponentListAST::gette
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxComponentListAST::plusAssign_operation (const GGS_galgas_33_SyntaxComponentListAST inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_galgas_33_SyntaxComponentListAST::plusAssignOperation (const GGS_galgas_33_SyntaxComponentListAST inOperand,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10614,9 +10614,9 @@ void GGS_prologueEpilogueList::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_prologueEpilogueList::addAssign_operation (const GGS_semanticInstructionListAST & inOperand0,
-                                                    const GGS_location & inOperand1
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_prologueEpilogueList::addAssignOperation (const GGS_semanticInstructionListAST & inOperand0,
+                                                   const GGS_location & inOperand1
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_prologueEpilogueList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -10806,9 +10806,9 @@ GGS_prologueEpilogueList GGS_prologueEpilogueList::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_prologueEpilogueList::plusAssign_operation (const GGS_prologueEpilogueList inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_prologueEpilogueList::plusAssignOperation (const GGS_prologueEpilogueList inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -11164,14 +11164,14 @@ void GGS_programRuleList::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_programRuleList::addAssign_operation (const GGS_lstring & inOperand0,
-                                               const GGS_lstring & inOperand1,
-                                               const GGS_lstring & inOperand2,
-                                               const GGS_bool & inOperand3,
-                                               const GGS_lstring & inOperand4,
-                                               const GGS_semanticInstructionListAST & inOperand5,
-                                               const GGS_location & inOperand6
-                                               COMMA_LOCATION_ARGS) {
+void GGS_programRuleList::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_lstring & inOperand1,
+                                              const GGS_lstring & inOperand2,
+                                              const GGS_bool & inOperand3,
+                                              const GGS_lstring & inOperand4,
+                                              const GGS_semanticInstructionListAST & inOperand5,
+                                              const GGS_location & inOperand6
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_programRuleList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
@@ -11446,9 +11446,9 @@ GGS_programRuleList GGS_programRuleList::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_programRuleList::plusAssign_operation (const GGS_programRuleList inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_programRuleList::plusAssignOperation (const GGS_programRuleList inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12039,7 +12039,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_functionSignature & i
   const GGS_functionSignature temp_0 = inObject ;
   UpEnumerator_functionSignature enumerator_1835 (temp_0) ;
   while (enumerator_1835.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1835.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)) ;
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1835.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)) ;
     enumerator_1835.gotoNextObject () ;
   }
 //---
@@ -12061,7 +12061,7 @@ GGS_string extensionGetter_subcriptSignature (const GGS_functionSignature & inOb
   const GGS_functionSignature temp_0 = inObject ;
   UpEnumerator_functionSignature enumerator_1981 (temp_0) ;
   while (enumerator_1981.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1981.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)) ;
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1981.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)) ;
     enumerator_1981.gotoNextObject () ;
   }
 //---
@@ -12536,11 +12536,11 @@ void GGS_optionalMethodSignature::makeAttributesFromObjects (capCollectionElemen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionalMethodSignature::addAssign_operation (const GGS_bool & inOperand0,
-                                                       const GGS_lstring & inOperand1,
-                                                       const GGS_unifiedTypeMapEntry & inOperand2,
-                                                       const GGS_string & inOperand3
-                                                       COMMA_LOCATION_ARGS) {
+void GGS_optionalMethodSignature::addAssignOperation (const GGS_bool & inOperand0,
+                                                      const GGS_lstring & inOperand1,
+                                                      const GGS_unifiedTypeMapEntry & inOperand2,
+                                                      const GGS_string & inOperand3
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_optionalMethodSignature (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -12764,9 +12764,9 @@ GGS_optionalMethodSignature GGS_optionalMethodSignature::getter_subListToIndex (
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionalMethodSignature::plusAssign_operation (const GGS_optionalMethodSignature inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_optionalMethodSignature::plusAssignOperation (const GGS_optionalMethodSignature inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13185,11 +13185,11 @@ void GGS_formalParameterSignature::makeAttributesFromObjects (capCollectionEleme
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterSignature::addAssign_operation (const GGS_lstring & inOperand0,
-                                                        const GGS_unifiedTypeMapEntry & inOperand1,
-                                                        const GGS_formalArgumentPassingModeAST & inOperand2,
-                                                        const GGS_string & inOperand3
-                                                        COMMA_LOCATION_ARGS) {
+void GGS_formalParameterSignature::addAssignOperation (const GGS_lstring & inOperand0,
+                                                       const GGS_unifiedTypeMapEntry & inOperand1,
+                                                       const GGS_formalArgumentPassingModeAST & inOperand2,
+                                                       const GGS_string & inOperand3
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formalParameterSignature (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -13413,9 +13413,9 @@ GGS_formalParameterSignature GGS_formalParameterSignature::getter_subListToIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterSignature::plusAssign_operation (const GGS_formalParameterSignature inOperand,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formalParameterSignature::plusAssignOperation (const GGS_formalParameterSignature inOperand,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13698,12 +13698,12 @@ GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & i
     if (GalgasBool::boolTrue == test_1) {
       test_1 = GGS_bool (ComparisonKind::equal, enumerator_8268.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 213)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        result_result.plusAssign_operation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 214)) ;
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 214)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
           test_2 = enumerator_8268.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssign_operation(enumerator_8268.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
+            result_result.plusAssignOperation(enumerator_8268.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
           }
         }
       }
@@ -15306,9 +15306,9 @@ void GGS_acceptableParameterList::makeAttributesFromObjects (capCollectionElemen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_acceptableParameterList::addAssign_operation (const GGS_formalParameterSignature & inOperand0,
-                                                       const GGS_bool & inOperand1
-                                                       COMMA_LOCATION_ARGS) {
+void GGS_acceptableParameterList::addAssignOperation (const GGS_formalParameterSignature & inOperand0,
+                                                      const GGS_bool & inOperand1
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_acceptableParameterList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -15498,9 +15498,9 @@ GGS_acceptableParameterList GGS_acceptableParameterList::getter_subListToIndex (
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_acceptableParameterList::plusAssign_operation (const GGS_acceptableParameterList inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_acceptableParameterList::plusAssignOperation (const GGS_acceptableParameterList inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

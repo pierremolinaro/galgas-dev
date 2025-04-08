@@ -240,9 +240,9 @@ void GGS_sint::decrement_operation (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint::plusAssign_operation (const GGS_sint inOperand,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
+void GGS_sint::plusAssignOperation (const GGS_sint inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const int32_t r = mSIntValue + inOperand.mSIntValue ;
     const bool signA = mSIntValue >= 0 ;
@@ -260,7 +260,7 @@ void GGS_sint::plusAssign_operation (const GGS_sint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint::minusAssign_operation (const GGS_sint inOperand,
+void GGS_sint::minusAssignOperation (const GGS_sint inOperand,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -277,7 +277,7 @@ void GGS_sint::minusAssign_operation (const GGS_sint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint::mulAssign_operation (const GGS_sint inOperand,
+void GGS_sint::mulAssignOperation (const GGS_sint inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -299,7 +299,7 @@ void GGS_sint::mulAssign_operation (const GGS_sint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint::divAssign_operation (const GGS_sint inOperand,
+void GGS_sint::divAssignOperation (const GGS_sint inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

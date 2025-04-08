@@ -50,7 +50,7 @@ GGS__32_stringlist GGS_application::class_func_boolOptionNameList (LOCATION_ARGS
   TC_UniqueArray <String> array ;
   BoolCommandLineOption::getBoolOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
@@ -129,7 +129,7 @@ GGS__32_stringlist GGS_application::class_func_uintOptionNameList (LOCATION_ARGS
   TC_UniqueArray <String> array ;
   UIntCommandLineOption::getUIntOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
@@ -220,7 +220,7 @@ GGS__32_stringlist GGS_application::class_func_stringOptionNameList (LOCATION_AR
   TC_UniqueArray <String> array ;
   StringCommandLineOption::getStringOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
@@ -357,7 +357,7 @@ GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_s
     bool found = false ;
     cLexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
     for (int32_t i=0 ; i < list.count () ; i++) {
-      result.addAssign_operation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;

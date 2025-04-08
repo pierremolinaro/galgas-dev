@@ -185,7 +185,7 @@ void GGS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
+void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
   for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
   do (IDX) %const GGS_%![propertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
@@ -430,7 +430,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
                           %!^%Compiler * /* inCompiler */
                           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;

@@ -393,9 +393,9 @@ GGS_uint_36__34_ GGS_uint_36__34_::add_operation (const GGS_uint_36__34_ & inOpe
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_::plusAssign_operation (const GGS_uint_36__34_ inOperand,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void GGS_uint_36__34_::plusAssignOperation (const GGS_uint_36__34_ inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const uint64_t r = mUInt64Value + inOperand.mUInt64Value ;
     const bool ovf = r < mUInt64Value ;
@@ -410,9 +410,9 @@ void GGS_uint_36__34_::plusAssign_operation (const GGS_uint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_::minusAssign_operation (const GGS_uint_36__34_ inOperand,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void GGS_uint_36__34_::minusAssignOperation (const GGS_uint_36__34_ inOperand,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const bool ovf = mUInt64Value < inOperand.mUInt64Value ;
     if (ovf) {
@@ -426,9 +426,9 @@ void GGS_uint_36__34_::minusAssign_operation (const GGS_uint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_::mulAssign_operation (const GGS_uint_36__34_ inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void GGS_uint_36__34_::mulAssignOperation (const GGS_uint_36__34_ inOperand,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const uint64_t r = mUInt64Value * inOperand.mUInt64Value ;
     const bool ovf = (inOperand.mUInt64Value != 0) && ((r / inOperand.mUInt64Value) != mUInt64Value) ;
@@ -443,9 +443,9 @@ void GGS_uint_36__34_::mulAssign_operation (const GGS_uint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_::divAssign_operation (const GGS_uint_36__34_ inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void GGS_uint_36__34_::divAssignOperation (const GGS_uint_36__34_ inOperand,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     if (inOperand.mUInt64Value == 0) {
       inCompiler->onTheFlyRunTimeError ("@uint64 /= divide by zero" COMMA_THERE) ;

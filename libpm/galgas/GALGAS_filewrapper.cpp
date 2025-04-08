@@ -94,7 +94,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
     String path = inWrapperPath ;
     path.appendString ((* mFiles)->mName) ;
     if ((* mFiles)->mIsTextFile == inEnumerateTextFile) {
-      ioList.addAssign_operation (GGS_string (path) COMMA_HERE) ;
+      ioList.addAssignOperation (GGS_string (path) COMMA_HERE) ;
     }
     mFiles ++ ;
   }
@@ -137,7 +137,7 @@ static void internalEnumerateDirectories (const cDirectoryWrapper & inDirectory,
                                           const String & inWrapperPath,
                                           GGS_stringlist & ioList) {
 //--- Enumerate regular files
-  ioList.addAssign_operation (GGS_string (inWrapperPath) COMMA_HERE) ;
+  ioList.addAssignOperation (GGS_string (inWrapperPath) COMMA_HERE) ;
 //--- Walk throught directories
   const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
   while ((* mDirs) != nullptr) {
@@ -172,7 +172,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
     String path = inWrapperPath ;
     if (inExtension.compare ((* mFiles)->mExtension) == 0) {
       path.appendString ((* mFiles)->mName) ;
-      ioList.addAssign_operation (GGS_string (path) COMMA_HERE) ;
+      ioList.addAssignOperation (GGS_string (path) COMMA_HERE) ;
     }
     mFiles ++ ;
   }
@@ -503,7 +503,7 @@ GGS_stringlist GGS_filewrapper::getter_directoriesAtPath (const GGS_string & inP
         result = GGS_stringlist::class_func_emptyList (THERE) ;
         const cDirectoryWrapper * * dirs = dir->mDirectories ;
         while ((*dirs) != nullptr) {
-          result.addAssign_operation (GGS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
+          result.addAssignOperation (GGS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
           dirs ++ ;
         }
       }
@@ -527,7 +527,7 @@ GGS_stringlist GGS_filewrapper::getter_textFilesAtPath (const GGS_string & inPat
         const cRegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if ((*files)->mIsTextFile) {
-            result.addAssign_operation (GGS_string ((*files)->mName) COMMA_HERE) ;
+            result.addAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;
           }
           files ++ ;
         }
@@ -552,7 +552,7 @@ GGS_stringlist GGS_filewrapper::getter_binaryFilesAtPath (const GGS_string & inP
         const cRegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if (! (*files)->mIsTextFile) {
-            result.addAssign_operation (GGS_string ((*files)->mName) COMMA_HERE) ;
+            result.addAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;
           }
           files ++ ;
         }

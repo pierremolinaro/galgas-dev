@@ -79,7 +79,7 @@ GGS_typelist GGS_type::class_func_typeList (LOCATION_ARGS) {
   C_galgas_type_descriptor::typeListRoot (typeList) ;
   GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
-    result.addAssign_operation (GGS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
+    result.addAssignOperation (GGS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
   }
   return result ;
 }

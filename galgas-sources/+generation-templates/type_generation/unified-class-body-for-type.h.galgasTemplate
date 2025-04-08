@@ -69,56 +69,56 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures andAssignOperatorWithExpression]] then
   %//--------------------------------- &= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void andAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                     class Compiler * inCompiler\n%
-  %                                                     COMMA_LOCATION_ARGS) ;\n\n%
-end
-
-if [SUPPORTED_OPERATORS contains ![@typeFeatures orAssignOperatorWithExpression]] then
-  %//--------------------------------- |= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void orAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG void andAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                                    class Compiler * inCompiler\n%
   %                                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
+if [SUPPORTED_OPERATORS contains ![@typeFeatures orAssignOperatorWithExpression]] then
+  %//--------------------------------- |= operator (with expression)\n%
+  %  public: VIRTUAL_IN_DEBUG void orAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                   class Compiler * inCompiler\n%
+  %                                                   COMMA_LOCATION_ARGS) ;\n\n%
+end
+
 if [SUPPORTED_OPERATORS contains ![@typeFeatures xorAssignOperatorWithExpression]] then
   %//--------------------------------- ^= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void xorAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                     class Compiler * inCompiler\n%
-  %                                                     COMMA_LOCATION_ARGS) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void xorAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                    class Compiler * inCompiler\n%
+  %                                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures plusAssignOperatorWithExpression]] then
   %//--------------------------------- += operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                       class Compiler * inCompiler\n%
-  %                                                       COMMA_LOCATION_ARGS) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                     class Compiler * inCompiler\n%
+  %                                                     COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures minusAssignOperatorWithExpression]] then
   %//--------------------------------- -= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                        class Compiler * inCompiler\n%
-  %                                                        COMMA_LOCATION_ARGS) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void minusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                      class Compiler * inCompiler\n%
+  %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures mulAssignOperatorWithExpression]] then
   %//--------------------------------- *= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void mulAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                      class Compiler * inCompiler\n%
-  %                                                      COMMA_LOCATION_ARGS) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void mulAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                    class Compiler * inCompiler\n%
+  %                                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures divAssignOperatorWithExpression]] then
   %//--------------------------------- /= operator (with expression)\n%
-  %  public: VIRTUAL_IN_DEBUG void divAssign_operation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                                      class Compiler * inCompiler\n%
-  %                                                      COMMA_LOCATION_ARGS) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void divAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                    class Compiler * inCompiler\n%
+  %                                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (%?^
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (%?^
   for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in ADD_ASSIGN_ARGUMENT_LIST
   do (IDX) %const class GGS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^

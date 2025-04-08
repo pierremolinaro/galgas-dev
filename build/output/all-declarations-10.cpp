@@ -193,10 +193,10 @@ void GGS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObje
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListForGeneration::addAssign_operation (const GGS_string & inOperand0,
-                                                                               const GGS_semanticExpressionForGeneration & inOperand1,
-                                                                               const GGS_string & inOperand2
-                                                                               COMMA_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectListForGeneration::addAssignOperation (const GGS_string & inOperand0,
+                                                                              const GGS_semanticExpressionForGeneration & inOperand1,
+                                                                              const GGS_string & inOperand2
+                                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -403,9 +403,9 @@ GGS_forInstructionEnumeratedObjectListForGeneration GGS_forInstructionEnumerated
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListForGeneration::plusAssign_operation (const GGS_forInstructionEnumeratedObjectListForGeneration inOperand,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectListForGeneration::plusAssignOperation (const GGS_forInstructionEnumeratedObjectListForGeneration inOperand,
+                                                                               Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4076,8 +4076,8 @@ void GGS_CommaSeparatedExpressionList::makeAttributesFromObjects (capCollectionE
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_CommaSeparatedExpressionList::addAssign_operation (const GGS_ifExpressionKind & inOperand0
-                                                            COMMA_LOCATION_ARGS) {
+void GGS_CommaSeparatedExpressionList::addAssignOperation (const GGS_ifExpressionKind & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_CommaSeparatedExpressionList (inOperand0 COMMA_THERE)) ;
@@ -4250,9 +4250,9 @@ GGS_CommaSeparatedExpressionList GGS_CommaSeparatedExpressionList::getter_subLis
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_CommaSeparatedExpressionList::plusAssign_operation (const GGS_CommaSeparatedExpressionList inOperand,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_CommaSeparatedExpressionList::plusAssignOperation (const GGS_CommaSeparatedExpressionList inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4418,7 +4418,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
         {
         routine_checkExpressionIsBoolean_3F__3F__3F__21_ (constinArgument_inAnalysisContext, extractedValue_6136_endOfExpression_1, var_analyzed_5F_if_5F_expression_6420, var_if_5F_expression_6593, inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 173)) ;
         }
-        outArgument_outTestListForGeneration.addAssign_operation (GGS_ifTestForGeneration::class_func_regular (var_if_5F_expression_6593  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 179))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 179)) ;
+        outArgument_outTestListForGeneration.addAssignOperation (GGS_ifTestForGeneration::class_func_regular (var_if_5F_expression_6593  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 179))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 179)) ;
         {
         extensionSetter_openOverrideForSelectBlock (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 180)) ;
         }
@@ -4461,7 +4461,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
             }
             var_castType_7140 = var_unwrappedType_7276 ;
             var_testType_7189 = var_analyzedExpression_7099.readProperty_mResultType () ;
-            outArgument_outTestListForGeneration.addAssign_operation (GGS_ifTestForGeneration::class_func_optionalExp (var_targetVariableCppName_7502, var_analyzedExpression_7099, var_unwrappedType_7276  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 211))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 211)) ;
+            outArgument_outTestListForGeneration.addAssignOperation (GGS_ifTestForGeneration::class_func_optionalExp (var_targetVariableCppName_7502, var_analyzedExpression_7099, var_unwrappedType_7276  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 211))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 211)) ;
           }
         }
         if (GalgasBool::boolFalse == test_1) {
@@ -4528,7 +4528,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
                   }
                 }
               }
-              outArgument_outTestListForGeneration.addAssign_operation (GGS_ifTestForGeneration::class_func_letExp (var_targetVariableCppName_9380, var_analyzedExpression_7099, var_castType_7140, var_testType_7189  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 250))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 250)) ;
+              outArgument_outTestListForGeneration.addAssignOperation (GGS_ifTestForGeneration::class_func_letExp (var_targetVariableCppName_9380, var_analyzedExpression_7099, var_castType_7140, var_testType_7189  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 250))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 250)) ;
             }
           }
           if (GalgasBool::boolFalse == test_3) {
@@ -4627,7 +4627,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
                     }
                   }
                 }
-                outArgument_outTestListForGeneration.addAssign_operation (GGS_ifTestForGeneration::class_func_letExp (var_targetVariableCppName_11463, var_analyzedExpression_7099, var_castType_7140, var_testType_7189  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 298))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 298)) ;
+                outArgument_outTestListForGeneration.addAssignOperation (GGS_ifTestForGeneration::class_func_letExp (var_targetVariableCppName_11463, var_analyzedExpression_7099, var_castType_7140, var_testType_7189  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 298))  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 298)) ;
               }
             }
             if (GalgasBool::boolFalse == test_9) {
@@ -5034,8 +5034,8 @@ void GGS_ifTestListForGeneration::makeAttributesFromObjects (capCollectionElemen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestListForGeneration::addAssign_operation (const GGS_ifTestForGeneration & inOperand0
-                                                       COMMA_LOCATION_ARGS) {
+void GGS_ifTestListForGeneration::addAssignOperation (const GGS_ifTestForGeneration & inOperand0
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_ifTestListForGeneration (inOperand0 COMMA_THERE)) ;
@@ -5208,9 +5208,9 @@ GGS_ifTestListForGeneration GGS_ifTestListForGeneration::getter_subListToIndex (
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestListForGeneration::plusAssign_operation (const GGS_ifTestListForGeneration inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_ifTestListForGeneration::plusAssignOperation (const GGS_ifTestListForGeneration inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6929,9 +6929,9 @@ void GGS_logListAST::makeAttributesFromObjects (capCollectionElement & outAttrib
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_logListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                          const GGS_semanticExpressionAST & inOperand1
-                                          COMMA_LOCATION_ARGS) {
+void GGS_logListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                         const GGS_semanticExpressionAST & inOperand1
+                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_logListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7121,9 +7121,9 @@ GGS_logListAST GGS_logListAST::getter_subListToIndex (const GGS_uint & inIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_logListAST::plusAssign_operation (const GGS_logListAST inOperand,
-                                           Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_logListAST::plusAssignOperation (const GGS_logListAST inOperand,
+                                          Compiler * /* inCompiler */
+                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13250,11 +13250,11 @@ void GGS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement & ou
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesAST::addAssign_operation (const GGS__5B_lstring_5D_ & inOperand0,
-                                                 const GGS_switchExtractedValuesListAST & inOperand1,
-                                                 const GGS_semanticInstructionListAST & inOperand2,
-                                                 const GGS_location & inOperand3
-                                                 COMMA_LOCATION_ARGS) {
+void GGS_switchBranchesAST::addAssignOperation (const GGS__5B_lstring_5D_ & inOperand0,
+                                                const GGS_switchExtractedValuesListAST & inOperand1,
+                                                const GGS_semanticInstructionListAST & inOperand2,
+                                                const GGS_location & inOperand3
+                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -13478,9 +13478,9 @@ GGS_switchBranchesAST GGS_switchBranchesAST::getter_subListToIndex (const GGS_ui
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesAST::plusAssign_operation (const GGS_switchBranchesAST inOperand,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_switchBranchesAST::plusAssignOperation (const GGS_switchBranchesAST inOperand,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -14251,11 +14251,11 @@ void GGS_switchBranchesForGeneration::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesForGeneration::addAssign_operation (const GGS__5B_lstring_5D_ & inOperand0,
-                                                           const GGS_extractedAssociatedValuesForGeneration & inOperand1,
-                                                           const GGS_uint & inOperand2,
-                                                           const GGS_semanticInstructionListForGeneration & inOperand3
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_switchBranchesForGeneration::addAssignOperation (const GGS__5B_lstring_5D_ & inOperand0,
+                                                          const GGS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                          const GGS_uint & inOperand2,
+                                                          const GGS_semanticInstructionListForGeneration & inOperand3
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_switchBranchesForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -14479,9 +14479,9 @@ GGS_switchBranchesForGeneration GGS_switchBranchesForGeneration::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_switchBranchesForGeneration::plusAssign_operation (const GGS_switchBranchesForGeneration inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_switchBranchesForGeneration::plusAssignOperation (const GGS_switchBranchesForGeneration inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

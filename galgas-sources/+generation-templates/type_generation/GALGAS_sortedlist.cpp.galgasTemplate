@@ -178,7 +178,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
+void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
   for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
   do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
@@ -225,7 +225,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
                           %!^%Compiler * /* inCompiler */
                           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {

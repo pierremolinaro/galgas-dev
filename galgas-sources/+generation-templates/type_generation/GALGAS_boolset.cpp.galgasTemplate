@@ -64,7 +64,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::andAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -74,7 +74,7 @@ void GGS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::orAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -84,7 +84,7 @@ void GGS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::xorAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -94,7 +94,7 @@ void GGS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::minusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::minusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
           %!^%class Compiler * /* inCompiler */
           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

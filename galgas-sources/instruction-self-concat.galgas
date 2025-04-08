@@ -340,7 +340,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
       !""
       !@()
       !expression
-      !"plusAssign_operation"
+      !"plusAssignOperation"
     }
   else
     error self.mInstructionLocation : "'self' not available in this context"
@@ -386,7 +386,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
       !""
       !@()
       !expression
-      !"minusAssign_operation"
+      !"minusAssignOperation"
     }
   else
     error self.mInstructionLocation : "'self' not available in this context"
@@ -432,7 +432,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
       !""
       !@()
       !expression
-      !"mulAssign_operation"
+      !"mulAssignOperation"
     }
   else
     error self.mInstructionLocation : "'self' not available in this context"
@@ -478,7 +478,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
       !""
       !@()
       !expression
-      !"divAssign_operation"
+      !"divAssignOperation"
     }
   else
     error self.mInstructionLocation : "'self' not available in this context"

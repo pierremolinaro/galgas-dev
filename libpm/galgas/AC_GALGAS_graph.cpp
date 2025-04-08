@@ -433,7 +433,7 @@ GGS_location cSharedGraph::locationForKey (const String & inKey,
 GGS_stringlist cSharedGraph::keyList (void) const {
   GGS_stringlist result = GGS_stringlist::class_func_emptyList (HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
-    result.addAssign_operation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
+    result.addAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
   }
   return result ;
 }
@@ -464,7 +464,7 @@ GGS_lstringlist cSharedGraph::lkeyList (void) const {
     if (! loc.isValid ()) {
       loc = GGS_location::class_func_nowhere (HERE) ;
     }
-    result.addAssign_operation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
+    result.addAssignOperation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
   }
   return result ;
 }
@@ -972,7 +972,7 @@ void cSharedGraph::edges (GGS__32_stringlist & ioList) const {
   TC_UniqueArray <cEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
   for (int32_t i=0 ; i<edgeArray.count () ; i++) {
     const cEdge edge = edgeArray (i COMMA_HERE) ;
-    ioList.addAssign_operation (mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
+    ioList.addAssignOperation (mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
                                 mNodeArray ((int32_t) edge.mTarget COMMA_HERE)->mKey
                                 COMMA_HERE) ;
   }
@@ -1031,7 +1031,7 @@ static void buildUndefinedNodeKeyList (const cGraphNode * inNode, GGS_stringlist
   if (nullptr != inNode) {
     buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;
     if (! inNode->mIsDefined) {
-      ioResult.addAssign_operation (GGS_string (inNode->mKey) COMMA_HERE) ;
+      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
     }
     buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;
   }
@@ -1069,7 +1069,7 @@ void cSharedGraph::internalFindCircularities (capCollectionElementArray & outInf
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
@@ -1105,7 +1105,7 @@ void cSharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & o
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
@@ -1141,7 +1141,7 @@ void cSharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & out
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
@@ -1181,7 +1181,7 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
@@ -1193,7 +1193,7 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
@@ -1251,7 +1251,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAllObjects() ;
@@ -1263,7 +1263,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
@@ -1313,7 +1313,7 @@ static void buildUndefinedNodeReferenceList (const cGraphNode * inNode,
       lkey.mProperty_string = GGS_string (inNode->mKey) ;
       for (int32_t i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
         lkey.mProperty_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
-        ioResult.addAssign_operation (lkey COMMA_HERE) ;
+        ioResult.addAssignOperation (lkey COMMA_HERE) ;
       }
     }
     buildUndefinedNodeReferenceList (inNode->mSupPtr, ioResult) ;

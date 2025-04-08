@@ -2962,16 +2962,16 @@ class GGS_XCodeGroupList : public AC_GALGAS_list {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_XCodeGroupList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_XCodeGroupList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_string & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_stringlist & inOperand3
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_string & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_stringlist & inOperand3
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_XCodeGroupList_2E_element & inOperand
@@ -3324,23 +3324,23 @@ class GGS_XCodeToolTargetList : public AC_GALGAS_list {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_XCodeToolTargetList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_XCodeToolTargetList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_string & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_stringlist & inOperand4,
-                                                     const class GGS_string & inOperand5,
-                                                     const class GGS_string & inOperand6,
-                                                     const class GGS_stringlist & inOperand7,
-                                                     const class GGS_string & inOperand8,
-                                                     const class GGS_stringlist & inOperand9,
-                                                     const class GGS_string & inOperand10
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_string & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_string & inOperand3,
+                                                    const class GGS_stringlist & inOperand4,
+                                                    const class GGS_string & inOperand5,
+                                                    const class GGS_string & inOperand6,
+                                                    const class GGS_stringlist & inOperand7,
+                                                    const class GGS_string & inOperand8,
+                                                    const class GGS_stringlist & inOperand9,
+                                                    const class GGS_string & inOperand10
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_XCodeToolTargetList_2E_element & inOperand
@@ -3901,26 +3901,26 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_list {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_XCodeAppTargetList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_XCodeAppTargetList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_string & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_stringlist & inOperand4,
-                                                     const class GGS_string & inOperand5,
-                                                     const class GGS_string & inOperand6,
-                                                     const class GGS_stringlist & inOperand7,
-                                                     const class GGS_string & inOperand8,
-                                                     const class GGS_stringlist & inOperand9,
-                                                     const class GGS_string & inOperand10,
-                                                     const class GGS__32_stringlist & inOperand11,
-                                                     const class GGS_string & inOperand12,
-                                                     const class GGS_stringlist & inOperand13
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_string & inOperand1,
+                                                    const class GGS_string & inOperand2,
+                                                    const class GGS_string & inOperand3,
+                                                    const class GGS_stringlist & inOperand4,
+                                                    const class GGS_string & inOperand5,
+                                                    const class GGS_string & inOperand6,
+                                                    const class GGS_stringlist & inOperand7,
+                                                    const class GGS_string & inOperand8,
+                                                    const class GGS_stringlist & inOperand9,
+                                                    const class GGS_string & inOperand10,
+                                                    const class GGS__32_stringlist & inOperand11,
+                                                    const class GGS_string & inOperand12,
+                                                    const class GGS_stringlist & inOperand13
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
   public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_XCodeAppTargetList_2E_element & inOperand

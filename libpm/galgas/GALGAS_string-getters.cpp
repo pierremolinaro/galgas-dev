@@ -656,7 +656,7 @@ GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string 
     TC_UniqueArray <String> components ;
     mString.componentsSeparatedByString (inSeparator.mString, components) ;
     for (int32_t i=0 ; i<components.count () ; i++) {
-      result.addAssign_operation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -732,7 +732,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
           }
         }else if (FileManager::fileExistsAtPath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
-          ioResult.addAssign_operation (GGS_string (relativePath) COMMA_HERE) ;
+          ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
         }
       }
       current = readdir (dir) ;
@@ -780,7 +780,7 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
           }
         }else if (FileManager::fileExistsAtPath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
-          ioResult.addAssign_operation (GGS_string (relativePath) COMMA_HERE) ;
+          ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
         }
       }
       current = readdir (dir) ;
@@ -821,7 +821,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
-          ioResult.addAssign_operation (GGS_string (relativePath) COMMA_HERE) ;
+          ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
           if (inRecursiveSearch) {
             recursiveSearchForDirectories (name,
                                            inRecursiveSearch,
@@ -887,7 +887,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
           }
           if (extensionFound) {
             const String relativePath = inRelativePath + current->d_name ;
-            ioResult.addAssign_operation (GGS_string (relativePath) COMMA_HERE) ;
+            ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
           }
         }
       }
@@ -943,7 +943,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
           }
           if (extensionFound) {
             const String relativePath = inRelativePath + current->d_name ;
-            ioResult.addAssign_operation (GGS_string (relativePath) COMMA_HERE) ;
+            ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
           }
         //--- Recursive Search ?
           if (inRecursiveSearch) {

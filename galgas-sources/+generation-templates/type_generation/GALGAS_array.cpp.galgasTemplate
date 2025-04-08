@@ -89,7 +89,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
             %!^%Compiler * /* inCompiler */
             %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

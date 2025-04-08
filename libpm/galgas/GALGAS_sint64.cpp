@@ -246,9 +246,9 @@ void GGS_sint_36__34_::decrement_operation (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::plusAssign_operation (const GGS_sint_36__34_ inOperand,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void GGS_sint_36__34_::plusAssignOperation (const GGS_sint_36__34_ inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
     const bool signA = mSInt64Value >= 0 ;
@@ -266,7 +266,7 @@ void GGS_sint_36__34_::plusAssign_operation (const GGS_sint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::minusAssign_operation (const GGS_sint_36__34_ inOperand,
+void GGS_sint_36__34_::minusAssignOperation (const GGS_sint_36__34_ inOperand,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -283,7 +283,7 @@ void GGS_sint_36__34_::minusAssign_operation (const GGS_sint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::mulAssign_operation (const GGS_sint_36__34_ inOperand,
+void GGS_sint_36__34_::mulAssignOperation (const GGS_sint_36__34_ inOperand,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -305,7 +305,7 @@ void GGS_sint_36__34_::mulAssign_operation (const GGS_sint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::divAssign_operation (const GGS_sint_36__34_ inOperand,
+void GGS_sint_36__34_::divAssignOperation (const GGS_sint_36__34_ inOperand,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

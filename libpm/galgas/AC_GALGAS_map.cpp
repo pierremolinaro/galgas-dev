@@ -936,7 +936,7 @@ static void enterKeyInLStringList (cMapNode * inNode,
     cMapElement * p = (cMapElement *) inNode->mAttributes.ptr () ;
     if (nullptr != p) {
       macroValidSharedObject (p, cMapElement) ;
-      ioResult.addAssign_operation (p->mProperty_lkey COMMA_HERE) ;
+      ioResult.addAssignOperation (p->mProperty_lkey COMMA_HERE) ;
     }
     enterKeyInLStringList (inNode->mSupPtr, ioResult) ;
   }

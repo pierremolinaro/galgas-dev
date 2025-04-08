@@ -275,12 +275,12 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::class_func_sort
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionSortedList::addAssign_operation (const GGS_string & inOperand0,
-                                                           const GGS_char & inOperand1,
-                                                           const GGS_string & inOperand2,
-                                                           const GGS_string & inOperand3,
-                                                           const GGS_string & inOperand4
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_commandLineOptionSortedList::addAssignOperation (const GGS_string & inOperand0,
+                                                          const GGS_char & inOperand1,
+                                                          const GGS_string & inOperand2,
+                                                          const GGS_string & inOperand3,
+                                                          const GGS_string & inOperand4
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cSortedListElement * p = nullptr ;
     macroMyNew (p, cSortedListElement_commandLineOptionSortedList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -312,9 +312,9 @@ void GGS_commandLineOptionSortedList::setter_insert (const GGS_string inOperand0
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionSortedList::plusAssign_operation (const GGS_commandLineOptionSortedList inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_commandLineOptionSortedList::plusAssignOperation (const GGS_commandLineOptionSortedList inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
@@ -1193,9 +1193,9 @@ void GGS_guiSimpleAttributeListAST::makeAttributesFromObjects (capCollectionElem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiSimpleAttributeListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                         const GGS_lstring & inOperand1
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_guiSimpleAttributeListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                        const GGS_lstring & inOperand1
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_guiSimpleAttributeListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -1385,9 +1385,9 @@ GGS_guiSimpleAttributeListAST GGS_guiSimpleAttributeListAST::getter_subListToInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiSimpleAttributeListAST::plusAssign_operation (const GGS_guiSimpleAttributeListAST inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_guiSimpleAttributeListAST::plusAssignOperation (const GGS_guiSimpleAttributeListAST inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1707,10 +1707,10 @@ void GGS_guiCompoundAttributeListAST::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCompoundAttributeListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                           const GGS_lstring & inOperand1,
-                                                           const GGS_lstring & inOperand2
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_guiCompoundAttributeListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                          const GGS_lstring & inOperand1,
+                                                          const GGS_lstring & inOperand2
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_guiCompoundAttributeListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -1917,9 +1917,9 @@ GGS_guiCompoundAttributeListAST GGS_guiCompoundAttributeListAST::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCompoundAttributeListAST::plusAssign_operation (const GGS_guiCompoundAttributeListAST inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_guiCompoundAttributeListAST::plusAssignOperation (const GGS_guiCompoundAttributeListAST inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2275,9 +2275,9 @@ void GGS_terminalLabelListAST::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalLabelListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                    const GGS_uint & inOperand1
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_terminalLabelListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                   const GGS_uint & inOperand1
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_terminalLabelListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -2467,9 +2467,9 @@ GGS_terminalLabelListAST GGS_terminalLabelListAST::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalLabelListAST::plusAssign_operation (const GGS_terminalLabelListAST inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_terminalLabelListAST::plusAssignOperation (const GGS_terminalLabelListAST inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2789,10 +2789,10 @@ void GGS_guiLabelListAST::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiLabelListAST::addAssign_operation (const GGS_uint & inOperand0,
-                                               const GGS_terminalLabelListAST & inOperand1,
-                                               const GGS_location & inOperand2
-                                               COMMA_LOCATION_ARGS) {
+void GGS_guiLabelListAST::addAssignOperation (const GGS_uint & inOperand0,
+                                              const GGS_terminalLabelListAST & inOperand1,
+                                              const GGS_location & inOperand2
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_guiLabelListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -2999,9 +2999,9 @@ GGS_guiLabelListAST GGS_guiLabelListAST::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiLabelListAST::plusAssign_operation (const GGS_guiLabelListAST inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_guiLabelListAST::plusAssignOperation (const GGS_guiLabelListAST inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3375,11 +3375,11 @@ void GGS_withLexiqueListAST::makeAttributesFromObjects (capCollectionElement & o
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_withLexiqueListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                  const GGS_guiLabelListAST & inOperand1,
-                                                  const GGS_guiSimpleAttributeListAST & inOperand2,
-                                                  const GGS_guiCompoundAttributeListAST & inOperand3
-                                                  COMMA_LOCATION_ARGS) {
+void GGS_withLexiqueListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                 const GGS_guiLabelListAST & inOperand1,
+                                                 const GGS_guiSimpleAttributeListAST & inOperand2,
+                                                 const GGS_guiCompoundAttributeListAST & inOperand3
+                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_withLexiqueListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -3603,9 +3603,9 @@ GGS_withLexiqueListAST GGS_withLexiqueListAST::getter_subListToIndex (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_withLexiqueListAST::plusAssign_operation (const GGS_withLexiqueListAST inOperand,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_withLexiqueListAST::plusAssignOperation (const GGS_withLexiqueListAST inOperand,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4033,12 +4033,12 @@ void GGS_guiCommandLineOptionList::makeAttributesFromObjects (capCollectionEleme
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCommandLineOptionList::addAssign_operation (const GGS_string & inOperand0,
-                                                        const GGS_string & inOperand1,
-                                                        const GGS_char & inOperand2,
-                                                        const GGS_string & inOperand3,
-                                                        const GGS_string & inOperand4
-                                                        COMMA_LOCATION_ARGS) {
+void GGS_guiCommandLineOptionList::addAssignOperation (const GGS_string & inOperand0,
+                                                       const GGS_string & inOperand1,
+                                                       const GGS_char & inOperand2,
+                                                       const GGS_string & inOperand3,
+                                                       const GGS_string & inOperand4
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -4279,9 +4279,9 @@ GGS_guiCommandLineOptionList GGS_guiCommandLineOptionList::getter_subListToIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCommandLineOptionList::plusAssign_operation (const GGS_guiCommandLineOptionList inOperand,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_guiCommandLineOptionList::plusAssignOperation (const GGS_guiCommandLineOptionList inOperand,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5057,9 +5057,9 @@ void GGS_textMacroList::makeAttributesFromObjects (capCollectionElement & outAtt
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_textMacroList::addAssign_operation (const GGS_string & inOperand0,
-                                             const GGS_string & inOperand1
-                                             COMMA_LOCATION_ARGS) {
+void GGS_textMacroList::addAssignOperation (const GGS_string & inOperand0,
+                                            const GGS_string & inOperand1
+                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_textMacroList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -5249,9 +5249,9 @@ GGS_textMacroList GGS_textMacroList::getter_subListToIndex (const GGS_uint & inI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_textMacroList::plusAssign_operation (const GGS_textMacroList inOperand,
-                                              Compiler * /* inCompiler */
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_textMacroList::plusAssignOperation (const GGS_textMacroList inOperand,
+                                             Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5607,14 +5607,14 @@ void GGS_importedLexiqueList::makeAttributesFromObjects (capCollectionElement & 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_importedLexiqueList::addAssign_operation (const GGS_string & inOperand0,
-                                                   const GGS_uint & inOperand1,
-                                                   const GGS_string & inOperand2,
-                                                   const GGS_string & inOperand3,
-                                                   const GGS_textMacroList & inOperand4,
-                                                   const GGS_guiLabelListAST & inOperand5,
-                                                   const GGS_lexicalStyleListAST & inOperand6
-                                                   COMMA_LOCATION_ARGS) {
+void GGS_importedLexiqueList::addAssignOperation (const GGS_string & inOperand0,
+                                                  const GGS_uint & inOperand1,
+                                                  const GGS_string & inOperand2,
+                                                  const GGS_string & inOperand3,
+                                                  const GGS_textMacroList & inOperand4,
+                                                  const GGS_guiLabelListAST & inOperand5,
+                                                  const GGS_lexicalStyleListAST & inOperand6
+                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
@@ -5889,9 +5889,9 @@ GGS_importedLexiqueList GGS_importedLexiqueList::getter_subListToIndex (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_importedLexiqueList::plusAssign_operation (const GGS_importedLexiqueList inOperand,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_importedLexiqueList::plusAssignOperation (const GGS_importedLexiqueList inOperand,
+                                                   Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6427,9 +6427,9 @@ void GGS_projectIndexingDescriptorList::makeAttributesFromObjects (capCollection
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_projectIndexingDescriptorList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                             const GGS_lstring & inOperand1
-                                                             COMMA_LOCATION_ARGS) {
+void GGS_projectIndexingDescriptorList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                            const GGS_lstring & inOperand1
+                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_projectIndexingDescriptorList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -6619,9 +6619,9 @@ GGS_projectIndexingDescriptorList GGS_projectIndexingDescriptorList::getter_subL
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_projectIndexingDescriptorList::plusAssign_operation (const GGS_projectIndexingDescriptorList inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_projectIndexingDescriptorList::plusAssignOperation (const GGS_projectIndexingDescriptorList inOperand,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6959,12 +6959,12 @@ void GGS_galgasGUIComponentListAST::makeAttributesFromObjects (capCollectionElem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgasGUIComponentListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                         const GGS_lstringlist & inOperand1,
-                                                         const GGS_guiSimpleAttributeListAST & inOperand2,
-                                                         const GGS_withLexiqueListAST & inOperand3,
-                                                         const GGS_projectIndexingDescriptorList & inOperand4
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_galgasGUIComponentListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                        const GGS_lstringlist & inOperand1,
+                                                        const GGS_guiSimpleAttributeListAST & inOperand2,
+                                                        const GGS_withLexiqueListAST & inOperand3,
+                                                        const GGS_projectIndexingDescriptorList & inOperand4
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_galgasGUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -7205,9 +7205,9 @@ GGS_galgasGUIComponentListAST GGS_galgasGUIComponentListAST::getter_subListToInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgasGUIComponentListAST::plusAssign_operation (const GGS_galgasGUIComponentListAST inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_galgasGUIComponentListAST::plusAssignOperation (const GGS_galgasGUIComponentListAST inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12267,203 +12267,203 @@ GGS_luint_36__34_ Lexique_galgasScanner_34_::synthetizedAttribute_uint_36__34_va
 
 GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("double.xxx") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literalInt") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("'char'") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("$terminal$") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("comment") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("commentMark") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("@type") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?selector:") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?!selector:") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?!") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!selector:") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!\?selector:") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!\?") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<non_terminal>") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\"string\"") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("abstract") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("after") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("as") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("before") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("between") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("block") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("boolset") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("case") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("class") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("default") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("dict") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("do") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("drop") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("else") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("elsif") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("end") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("enum") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("error") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("extension") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("extern") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("false") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("fileprivate") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("filewrapper") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("final") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("for") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("fixit") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("func") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("grammar") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("graph") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("guard") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("gui") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("if") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("in") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("indexing") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("init") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("is") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("label") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("let") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("lexique") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("list") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("log") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("loop") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("map") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("mod") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("mutating") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("nil") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("not") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("on") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("operator") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("option") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("or") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("override") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("package") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("parse") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("public") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("protected") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("private") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("proc") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("project") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("repeat") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("rewind") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("rule") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("select") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("self") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("send") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("sortedlist") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("spoil") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("super") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("struct") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("style") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("switch") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("syntax") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("tag") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("template") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("then") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("true") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("typealias") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("unused") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("var") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("warning") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("weak") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("while") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("with") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%app-link") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%app-source") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%applicationBundleBase") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%clonable") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%codeblocks-linux32") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%codeblocks-linux64") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%codeblocks-windows") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%comparable") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%equatable") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%errorMessage") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%from") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%generatedInSeparateFile") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%initArgLabel") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%insertAfter") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%insertBefore") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%insertOrReplaceSetter") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%insertSetter") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%libpmAtPath") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%macCodeSign") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%makefile-macosx") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%makefile-unix") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%makefile-x86linux32-on-macosx") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%makefile-x86linux64-on-macosx") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%makefile-win32-on-macosx") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%MacOS") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%MacSwiftApp") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%MacOSDeployment") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%nonAtomicSelection") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%once") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%preserved") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%quietOutputByDefault") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%replaceBy") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%remove") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%removeSetter") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%searchMethod") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%searchString") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%tool-source") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%templateEndMark") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%templateReplacement") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%translate") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("%usefull") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("*") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (",") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("+") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&+") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&-") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&*") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&/") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (";") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":>") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("-") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("(") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (")") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("->") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("==") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&&") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("++=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("@(") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("...") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("-=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("*=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("/=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("|=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("^=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("/") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("{") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("}") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("`") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("||") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("|") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("^") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">>") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("~") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("--") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("++") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&--") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&++") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("===") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!==") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?^") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("double.xxx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literalInt") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("'char'") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("$terminal$") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("commentMark") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("@type") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?selector:") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?!selector:") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?!") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!selector:") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!\?selector:") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!\?") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<non_terminal>") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\"string\"") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("abstract") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("after") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("as") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("before") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("between") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("block") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("boolset") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("case") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("class") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("default") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("dict") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("do") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("drop") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("else") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("elsif") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("end") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("enum") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("error") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("extension") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("extern") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("fileprivate") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("filewrapper") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("final") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("for") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("fixit") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("func") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("grammar") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("graph") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("guard") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("gui") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("if") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("in") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("indexing") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("init") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("is") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("label") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("let") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("lexique") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("list") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("log") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("loop") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("map") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("mod") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("mutating") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("nil") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("not") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("on") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("operator") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("option") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("or") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("override") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("package") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("parse") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("public") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("protected") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("private") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("proc") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("project") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("repeat") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("rewind") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("rule") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("select") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("self") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("send") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("sortedlist") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("spoil") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("super") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("struct") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("style") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("switch") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("syntax") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("tag") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("template") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("then") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("typealias") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("unused") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("var") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("warning") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("weak") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("while") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("with") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%app-link") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%app-source") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%applicationBundleBase") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%clonable") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%codeblocks-linux32") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%codeblocks-linux64") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%codeblocks-windows") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%comparable") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%equatable") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%errorMessage") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%from") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%generatedInSeparateFile") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%initArgLabel") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%insertAfter") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%insertBefore") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%insertOrReplaceSetter") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%insertSetter") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%libpmAtPath") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%macCodeSign") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-macosx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-unix") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-x86linux32-on-macosx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-x86linux64-on-macosx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-win32-on-macosx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%MacOS") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%MacSwiftApp") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%MacOSDeployment") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%nonAtomicSelection") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%once") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%preserved") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%quietOutputByDefault") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%replaceBy") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%remove") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%removeSetter") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%searchMethod") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%searchString") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%tool-source") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%templateEndMark") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%templateReplacement") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%translate") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%usefull") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("*") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&+") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&-") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&*") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&/") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":>") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("->") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("==") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("++=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (".") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("@(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("...") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("..<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("*=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("/=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("^=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("/") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("`") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("||") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">>") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("--") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("++") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&--") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&++") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("===") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!==") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!^") COMMA_HERE) ;
   return result ;
 }
 
@@ -13141,9 +13141,9 @@ void GGS__5B_formalInputParameterListAST_5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterListAST_5D_::plusAssign_operation (const GGS__5B_formalInputParameterListAST_5D_ inOperand,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_formalInputParameterListAST_5D_::plusAssignOperation (const GGS__5B_formalInputParameterListAST_5D_ inOperand,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -13493,12 +13493,12 @@ void GGS_formalInputParameterListAST::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalInputParameterListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                           const GGS_lstring & inOperand1,
-                                                           const GGS_lstring & inOperand2,
-                                                           const GGS_bool & inOperand3,
-                                                           const GGS_bool & inOperand4
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_formalInputParameterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                          const GGS_lstring & inOperand1,
+                                                          const GGS_lstring & inOperand2,
+                                                          const GGS_bool & inOperand3,
+                                                          const GGS_bool & inOperand4
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formalInputParameterListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -13739,9 +13739,9 @@ GGS_formalInputParameterListAST GGS_formalInputParameterListAST::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalInputParameterListAST::plusAssign_operation (const GGS_formalInputParameterListAST inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formalInputParameterListAST::plusAssignOperation (const GGS_formalInputParameterListAST inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

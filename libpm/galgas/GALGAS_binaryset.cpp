@@ -618,7 +618,7 @@ GGS_uint_36__34_list GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint
     result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint64_t v = valuesArray (i COMMA_HERE) ;
-      result.addAssign_operation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -638,7 +638,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueListWithNameList (const GGS_uint
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;
       GGS_uint object = GGS_uint (v) ;
-      result.addAssign_operation (inStringList.getter_mValueAtIndex (object, inCompiler COMMA_HERE) COMMA_HERE) ;
+      result.addAssignOperation (inStringList.getter_mValueAtIndex (object, inCompiler COMMA_HERE) COMMA_HERE) ;
     }
   }
   return result ;
@@ -667,7 +667,7 @@ GGS_stringlist GGS_binaryset::getter_compressedStringValueList (const GGS_uint &
       result = GGS_stringlist::class_func_emptyList (THERE) ;
       for (int32_t i=0 ; i<valuesArray.count () ; i++) {
         const String v = valuesArray (i COMMA_HERE) ;
-        result.addAssign_operation (GGS_string (v) COMMA_HERE) ;
+        result.addAssignOperation (GGS_string (v) COMMA_HERE) ;
       }
     }
   }
@@ -685,7 +685,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueList (const GGS_uint & inVariabl
     result = GGS_stringlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const String v = valuesArray (i COMMA_HERE) ;
-      result.addAssign_operation (GGS_string (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_string (v) COMMA_HERE) ;
     }
   }
   return result ;

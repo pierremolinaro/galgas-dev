@@ -6480,7 +6480,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentL
   const GGS_actualOutputArgumentList temp_0 = inObject ;
   UpEnumerator_actualOutputArgumentList enumerator_1663 (temp_0) ;
   while (enumerator_1663.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1663.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)) ;
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1663.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)) ;
     enumerator_1663.gotoNextObject () ;
   }
 //---
@@ -6502,7 +6502,7 @@ GGS_string extensionGetter_subscriptSignature (const GGS_actualOutputArgumentLis
   const GGS_actualOutputArgumentList temp_0 = inObject ;
   UpEnumerator_actualOutputArgumentList enumerator_1932 (temp_0) ;
   while (enumerator_1932.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1932.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1932.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
     enumerator_1932.gotoNextObject () ;
   }
 //---
@@ -8912,12 +8912,12 @@ void GGS_castInstructionBranchListAST::makeAttributesFromObjects (capCollectionE
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_castInstructionBranchListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                            const GGS_lstring & inOperand1,
-                                                            const GGS_semanticInstructionListAST & inOperand2,
-                                                            const GGS_dynamicTypeComparisonKind & inOperand3,
-                                                            const GGS_location & inOperand4
-                                                            COMMA_LOCATION_ARGS) {
+void GGS_castInstructionBranchListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                           const GGS_lstring & inOperand1,
+                                                           const GGS_semanticInstructionListAST & inOperand2,
+                                                           const GGS_dynamicTypeComparisonKind & inOperand3,
+                                                           const GGS_location & inOperand4
+                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_castInstructionBranchListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -9158,9 +9158,9 @@ GGS_castInstructionBranchListAST GGS_castInstructionBranchListAST::getter_subLis
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_castInstructionBranchListAST::plusAssign_operation (const GGS_castInstructionBranchListAST inOperand,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_castInstructionBranchListAST::plusAssignOperation (const GGS_castInstructionBranchListAST inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9976,11 +9976,11 @@ void GGS_castInstructionBranchListForGeneration::makeAttributesFromObjects (capC
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_castInstructionBranchListForGeneration::addAssign_operation (const GGS_dynamicTypeComparisonKind & inOperand0,
-                                                                      const GGS_unifiedTypeMapEntry & inOperand1,
-                                                                      const GGS_string & inOperand2,
-                                                                      const GGS_semanticInstructionListForGeneration & inOperand3
-                                                                      COMMA_LOCATION_ARGS) {
+void GGS_castInstructionBranchListForGeneration::addAssignOperation (const GGS_dynamicTypeComparisonKind & inOperand0,
+                                                                     const GGS_unifiedTypeMapEntry & inOperand1,
+                                                                     const GGS_string & inOperand2,
+                                                                     const GGS_semanticInstructionListForGeneration & inOperand3
+                                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_castInstructionBranchListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -10204,9 +10204,9 @@ GGS_castInstructionBranchListForGeneration GGS_castInstructionBranchListForGener
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_castInstructionBranchListForGeneration::plusAssign_operation (const GGS_castInstructionBranchListForGeneration inOperand,
-                                                                       Compiler * /* inCompiler */
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_castInstructionBranchListForGeneration::plusAssignOperation (const GGS_castInstructionBranchListForGeneration inOperand,
+                                                                      Compiler * /* inCompiler */
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10835,37 +10835,37 @@ GGS_string extensionGetter_cppFunctionName (const GGS_opAssignmentOperator & inO
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_orAssign:
     {
-      result_result = GGS_string ("orAssign_operation") ;
+      result_result = GGS_string ("orAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_xorAssign:
     {
-      result_result = GGS_string ("xorAssign_operation") ;
+      result_result = GGS_string ("xorAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_andAssign:
     {
-      result_result = GGS_string ("andAssign_operation") ;
+      result_result = GGS_string ("andAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_plusAssign:
     {
-      result_result = GGS_string ("plusAssign_operation") ;
+      result_result = GGS_string ("plusAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_minusAssign:
     {
-      result_result = GGS_string ("minusAssign_operation") ;
+      result_result = GGS_string ("minusAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_mulAssign:
     {
-      result_result = GGS_string ("mulAssign_operation") ;
+      result_result = GGS_string ("mulAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_divAssign:
     {
-      result_result = GGS_string ("divAssign_operation") ;
+      result_result = GGS_string ("divAssignOperation") ;
     }
     break ;
   }
@@ -12489,8 +12489,8 @@ void GGS_fixitListAST::makeAttributesFromObjects (capCollectionElement & outAttr
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_fixitListAST::addAssign_operation (const GGS_fixitElementAST & inOperand0
-                                            COMMA_LOCATION_ARGS) {
+void GGS_fixitListAST::addAssignOperation (const GGS_fixitElementAST & inOperand0
+                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_fixitListAST (inOperand0 COMMA_THERE)) ;
@@ -12663,9 +12663,9 @@ GGS_fixitListAST GGS_fixitListAST::getter_subListToIndex (const GGS_uint & inInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_fixitListAST::plusAssign_operation (const GGS_fixitListAST inOperand,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_fixitListAST::plusAssignOperation (const GGS_fixitListAST inOperand,
+                                            Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13574,8 +13574,8 @@ void GGS_fixitListForGeneration::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_fixitListForGeneration::addAssign_operation (const GGS_fixitElementForGeneration & inOperand0
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_fixitListForGeneration::addAssignOperation (const GGS_fixitElementForGeneration & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_fixitListForGeneration (inOperand0 COMMA_THERE)) ;
@@ -13748,9 +13748,9 @@ GGS_fixitListForGeneration GGS_fixitListForGeneration::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_fixitListForGeneration::plusAssign_operation (const GGS_fixitListForGeneration inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_fixitListForGeneration::plusAssignOperation (const GGS_fixitListForGeneration inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13899,8 +13899,8 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFixItArrayCppName.drop () ; // Release 'out' argument
   outArgument_outFixItArrayCppName = GGS_string ("fixItArray").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-error.galgas", 416)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 416)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 417)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("TC_Array <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 418)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 417)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("TC_Array <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 418)) ;
   const GGS_fixitListForGeneration temp_0 = inObject ;
   UpEnumerator_fixitListForGeneration enumerator_16225 (temp_0) ;
   while (enumerator_16225.hasCurrentObject ()) {
@@ -13909,7 +13909,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItRemove:
       {
-        ioArgument_ioGeneratedCode.plusAssign_operation(outArgument_outFixItArrayCppName.add_operation (GGS_string (".appendObject (FixItDescription (EnumFixItKind::fixItRemove, \"\")) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 422)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 422)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(outArgument_outFixItArrayCppName.add_operation (GGS_string (".appendObject (FixItDescription (EnumFixItKind::fixItRemove, \"\")) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 422)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 422)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItReplace:
@@ -13918,7 +13918,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
         enumerator_16225.current_mElement (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_16467_exp_0) ;
         GGS_string var_receiverCppVarName_16640 ;
         callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_16467_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_16640, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 424)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (var_receiverCppVarName_16640, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 431)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (var_receiverCppVarName_16640, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 431)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertBefore:
@@ -13927,7 +13927,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
         enumerator_16225.current_mElement (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_16866_exp_0) ;
         GGS_string var_receiverCppVarName_17039 ;
         callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_16866_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17039, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 433)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (var_receiverCppVarName_17039, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 440)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (var_receiverCppVarName_17039, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 440)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertAfter:
@@ -13936,7 +13936,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
         enumerator_16225.current_mElement (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_17269_exp_0) ;
         GGS_string var_receiverCppVarName_17442 ;
         callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_17269_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17442, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 442)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (var_receiverCppVarName_17442, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 449)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (var_receiverCppVarName_17442, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 449)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 449)) ;
       }
       break ;
     }
@@ -14197,10 +14197,10 @@ void GGS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectElementListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                                            const GGS_bool & inOperand1,
-                                                                            const GGS_lstring & inOperand2
-                                                                            COMMA_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectElementListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                                           const GGS_bool & inOperand1,
+                                                                           const GGS_lstring & inOperand2
+                                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -14407,9 +14407,9 @@ GGS_forInstructionEnumeratedObjectElementListAST GGS_forInstructionEnumeratedObj
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectElementListAST::plusAssign_operation (const GGS_forInstructionEnumeratedObjectElementListAST inOperand,
-                                                                             Compiler * /* inCompiler */
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectElementListAST::plusAssignOperation (const GGS_forInstructionEnumeratedObjectElementListAST inOperand,
+                                                                            Compiler * /* inCompiler */
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15534,9 +15534,9 @@ void GGS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (capCo
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListAST::addAssign_operation (const GGS_bool & inOperand0,
-                                                                     const GGS_abstractEnumeratedCollectionAST & inOperand1
-                                                                     COMMA_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectListAST::addAssignOperation (const GGS_bool & inOperand0,
+                                                                    const GGS_abstractEnumeratedCollectionAST & inOperand1
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -15726,9 +15726,9 @@ GGS_forInstructionEnumeratedObjectListAST GGS_forInstructionEnumeratedObjectList
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_forInstructionEnumeratedObjectListAST::plusAssign_operation (const GGS_forInstructionEnumeratedObjectListAST inOperand,
-                                                                      Compiler * /* inCompiler */
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_forInstructionEnumeratedObjectListAST::plusAssignOperation (const GGS_forInstructionEnumeratedObjectListAST inOperand,
+                                                                     Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

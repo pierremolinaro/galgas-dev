@@ -401,9 +401,9 @@ GGS_string GGS_string::add_operation (const GGS_string & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_string::plusAssign_operation (GGS_string inOperand,
-                                          Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_string::plusAssignOperation (GGS_string inOperand,
+                                      Compiler * /* inCompiler */
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mString.appendString (inOperand.mString) ;
   }else{

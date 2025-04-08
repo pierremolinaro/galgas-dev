@@ -356,9 +356,9 @@ GGS_double GGS_double::substract_operation (const GGS_double & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::plusAssign_operation (const GGS_double inOperand,
-                                       Compiler *
-                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_double::plusAssignOperation (const GGS_double inOperand,
+                                      Compiler *
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mDoubleValue += inOperand.mDoubleValue ;
   }else{
@@ -368,7 +368,7 @@ void GGS_double::plusAssign_operation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::minusAssign_operation (const GGS_double inOperand,
+void GGS_double::minusAssignOperation (const GGS_double inOperand,
                                         Compiler *
                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -380,7 +380,7 @@ void GGS_double::minusAssign_operation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::mulAssign_operation (const GGS_double inOperand,
+void GGS_double::mulAssignOperation (const GGS_double inOperand,
                                       Compiler * /* inCompiler */
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -392,7 +392,7 @@ void GGS_double::mulAssign_operation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::divAssign_operation (const GGS_double inOperand,
+void GGS_double::divAssignOperation (const GGS_double inOperand,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

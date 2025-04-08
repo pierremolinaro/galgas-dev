@@ -12177,7 +12177,7 @@ void extensionSetter_openOverrideForSelectBlock (GGS_localVarManager & ioObject,
                                                  Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_localVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 290))  COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
+  ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 290))  COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
 }
 
 
@@ -12190,7 +12190,7 @@ void extensionSetter_openOverrideForSelectBlock (GGS_localVarManager & ioObject,
 void extensionSetter_openOverrideForRepeatBlock (GGS_localVarManager & ioObject,
                                                  Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
+  ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
 }
 
 
@@ -12279,7 +12279,7 @@ void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
           GGS_currentVarManager extractedValue_14741_savedManager_0 ;
           var_savedManager_14648.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14741_savedManager_0) ;
           const GGS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14741_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14741_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
           ioObject.mProperty_mCurrentManager = extractedValue_14741_savedManager_0 ;
         }
         break ;
@@ -12293,13 +12293,13 @@ void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
           {
           extensionSetter_combineManagerWith (var_newReferenceManager_15049, extractedValue_15019_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14987_savedManager_0, var_newReferenceManager_15049  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14987_savedManager_0, var_newReferenceManager_15049  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
           ioObject.mProperty_mCurrentManager = extractedValue_14987_savedManager_0 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_repeatOverride:
         {
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_14648  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
+          ioObject.mProperty_mOverridenManagers.addAssignOperation (var_savedManager_14648  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
         }
         break ;
       }
@@ -12458,7 +12458,7 @@ GGS_lstringlist extensionGetter_unsolvedEntryList (const GGS_unifiedTypeMap & in
     if (GalgasBool::boolTrue == test_1) {
       test_1 = enumerator_1851.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 37)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        result_result.addAssign_operation (enumerator_1851.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 38)) ;
+        result_result.addAssignOperation (enumerator_1851.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 38)) ;
       }
     }
     enumerator_1851.gotoNextObject () ;

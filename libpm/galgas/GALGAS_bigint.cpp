@@ -213,7 +213,7 @@ GGS_uintlist GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_A
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.addAssign_operation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -228,7 +228,7 @@ GGS_uintlist GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARG
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.addAssign_operation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -252,7 +252,7 @@ GGS_uintlist GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATI
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.addAssign_operation (GGS_uint (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -276,7 +276,7 @@ GGS_uintlist GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.addAssign_operation (GGS_uint (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -298,7 +298,7 @@ GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.addAssign_operation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -320,7 +320,7 @@ GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForSignedRepresentation (
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.addAssign_operation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -755,9 +755,9 @@ GGS_bigint GGS_bigint::right_shift_operation (const GGS_bigint inShiftOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigint::plusAssign_operation (const GGS_bigint inOperand,
-                                          Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_bigint::plusAssignOperation (const GGS_bigint inOperand,
+                                      Compiler * /* inCompiler */
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mValue += inOperand.mValue ;
   }
@@ -765,7 +765,7 @@ void GGS_bigint::plusAssign_operation (const GGS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigint::minusAssign_operation (const GGS_bigint inOperand,
+void GGS_bigint::minusAssignOperation (const GGS_bigint inOperand,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -776,7 +776,7 @@ void GGS_bigint::minusAssign_operation (const GGS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigint::mulAssign_operation (const GGS_bigint inOperand,
+void GGS_bigint::mulAssignOperation (const GGS_bigint inOperand,
                                          Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -786,7 +786,7 @@ void GGS_bigint::mulAssign_operation (const GGS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigint::divAssign_operation (const GGS_bigint inOperand,
+void GGS_bigint::divAssignOperation (const GGS_bigint inOperand,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

@@ -3514,13 +3514,13 @@ void GGS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::addAssign_operation (const GGS_propertyMutability & inOperand0,
-                                                           const GGS_lstring & inOperand1,
-                                                           const GGS_lstring & inOperand2,
-                                                           const GGS_AccessControlAST & inOperand3,
-                                                           const GGS_bool & inOperand4,
-                                                           const GGS_propertyInCollectionInitializationAST & inOperand5
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_propertyInCollectionListAST::addAssignOperation (const GGS_propertyMutability & inOperand0,
+                                                          const GGS_lstring & inOperand1,
+                                                          const GGS_lstring & inOperand2,
+                                                          const GGS_AccessControlAST & inOperand3,
+                                                          const GGS_bool & inOperand4,
+                                                          const GGS_propertyInCollectionInitializationAST & inOperand5
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_propertyInCollectionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
@@ -3778,9 +3778,9 @@ GGS_propertyInCollectionListAST GGS_propertyInCollectionListAST::getter_subListT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::plusAssign_operation (const GGS_propertyInCollectionListAST inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_propertyInCollectionListAST::plusAssignOperation (const GGS_propertyInCollectionListAST inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4889,12 +4889,12 @@ void GGS_typedPropertyList::makeAttributesFromObjects (capCollectionElement & ou
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typedPropertyList::addAssign_operation (const GGS_unifiedTypeMapEntry & inOperand0,
-                                                 const GGS_lstring & inOperand1,
-                                                 const GGS_propertyInCollectionInitializationAST & inOperand2,
-                                                 const GGS_bool & inOperand3,
-                                                 const GGS_bool & inOperand4
-                                                 COMMA_LOCATION_ARGS) {
+void GGS_typedPropertyList::addAssignOperation (const GGS_unifiedTypeMapEntry & inOperand0,
+                                                const GGS_lstring & inOperand1,
+                                                const GGS_propertyInCollectionInitializationAST & inOperand2,
+                                                const GGS_bool & inOperand3,
+                                                const GGS_bool & inOperand4
+                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_typedPropertyList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -5135,9 +5135,9 @@ GGS_typedPropertyList GGS_typedPropertyList::getter_subListToIndex (const GGS_ui
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typedPropertyList::plusAssign_operation (const GGS_typedPropertyList inOperand,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_typedPropertyList::plusAssignOperation (const GGS_typedPropertyList inOperand,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5947,9 +5947,9 @@ void GGS__5B_associatedValue_5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_associatedValue_5D_::plusAssign_operation (const GGS__5B_associatedValue_5D_ inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_associatedValue_5D_::plusAssignOperation (const GGS__5B_associatedValue_5D_ inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -6272,9 +6272,9 @@ void GGS_enumConstantList::makeAttributesFromObjects (capCollectionElement & out
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_enumConstantList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                const GGS__5B_associatedValue_5D_ & inOperand1
-                                                COMMA_LOCATION_ARGS) {
+void GGS_enumConstantList::addAssignOperation (const GGS_lstring & inOperand0,
+                                               const GGS__5B_associatedValue_5D_ & inOperand1
+                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_enumConstantList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -6464,9 +6464,9 @@ GGS_enumConstantList GGS_enumConstantList::getter_subListToIndex (const GGS_uint
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_enumConstantList::plusAssign_operation (const GGS_enumConstantList inOperand,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_enumConstantList::plusAssignOperation (const GGS_enumConstantList inOperand,
+                                                Compiler * /* inCompiler */
+                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7002,9 +7002,9 @@ void GGS_enumConstantListForGeneration::makeAttributesFromObjects (capCollection
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_enumConstantListForGeneration::addAssign_operation (const GGS_string & inOperand0,
-                                                             const GGS_associatedValueDescriptorList & inOperand1
-                                                             COMMA_LOCATION_ARGS) {
+void GGS_enumConstantListForGeneration::addAssignOperation (const GGS_string & inOperand0,
+                                                            const GGS_associatedValueDescriptorList & inOperand1
+                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_enumConstantListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7194,9 +7194,9 @@ GGS_enumConstantListForGeneration GGS_enumConstantListForGeneration::getter_subL
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_enumConstantListForGeneration::plusAssign_operation (const GGS_enumConstantListForGeneration inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_enumConstantListForGeneration::plusAssignOperation (const GGS_enumConstantListForGeneration inOperand,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7516,9 +7516,9 @@ void GGS_associatedValueDescriptorList::makeAttributesFromObjects (capCollection
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_associatedValueDescriptorList::addAssign_operation (const GGS_unifiedTypeMapEntry & inOperand0,
-                                                             const GGS_string & inOperand1
-                                                             COMMA_LOCATION_ARGS) {
+void GGS_associatedValueDescriptorList::addAssignOperation (const GGS_unifiedTypeMapEntry & inOperand0,
+                                                            const GGS_string & inOperand1
+                                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_associatedValueDescriptorList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7708,9 +7708,9 @@ GGS_associatedValueDescriptorList GGS_associatedValueDescriptorList::getter_subL
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_associatedValueDescriptorList::plusAssign_operation (const GGS_associatedValueDescriptorList inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_associatedValueDescriptorList::plusAssignOperation (const GGS_associatedValueDescriptorList inOperand,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -8030,10 +8030,10 @@ void GGS_typeNameFormalParameterNameList::makeAttributesFromObjects (capCollecti
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeNameFormalParameterNameList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                               const GGS_lstring & inOperand1,
-                                                               const GGS_lstring & inOperand2
-                                                               COMMA_LOCATION_ARGS) {
+void GGS_typeNameFormalParameterNameList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                              const GGS_lstring & inOperand1,
+                                                              const GGS_lstring & inOperand2
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -8240,9 +8240,9 @@ GGS_typeNameFormalParameterNameList GGS_typeNameFormalParameterNameList::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeNameFormalParameterNameList::plusAssign_operation (const GGS_typeNameFormalParameterNameList inOperand,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_typeNameFormalParameterNameList::plusAssignOperation (const GGS_typeNameFormalParameterNameList inOperand,
+                                                               Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -8589,8 +8589,8 @@ void GGS_externTypeConstructorList::makeAttributesFromObjects (capCollectionElem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeConstructorList::addAssign_operation (const GGS_typeNameFormalParameterNameList & inOperand0
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_externTypeConstructorList::addAssignOperation (const GGS_typeNameFormalParameterNameList & inOperand0
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_externTypeConstructorList (inOperand0 COMMA_THERE)) ;
@@ -8763,9 +8763,9 @@ GGS_externTypeConstructorList GGS_externTypeConstructorList::getter_subListToInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeConstructorList::plusAssign_operation (const GGS_externTypeConstructorList inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_externTypeConstructorList::plusAssignOperation (const GGS_externTypeConstructorList inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9040,10 +9040,10 @@ void GGS_externTypeGetterList::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeGetterList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                    const GGS_lstring & inOperand1,
-                                                    const GGS_typeNameFormalParameterNameList & inOperand2
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_externTypeGetterList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                   const GGS_lstring & inOperand1,
+                                                   const GGS_typeNameFormalParameterNameList & inOperand2
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_externTypeGetterList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -9250,9 +9250,9 @@ GGS_externTypeGetterList GGS_externTypeGetterList::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeGetterList::plusAssign_operation (const GGS_externTypeGetterList inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_externTypeGetterList::plusAssignOperation (const GGS_externTypeGetterList inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9608,9 +9608,9 @@ void GGS_externTypeSetterList::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeSetterList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                    const GGS_formalParameterListAST & inOperand1
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_externTypeSetterList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                   const GGS_formalParameterListAST & inOperand1
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_externTypeSetterList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -9800,9 +9800,9 @@ GGS_externTypeSetterList GGS_externTypeSetterList::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeSetterList::plusAssign_operation (const GGS_externTypeSetterList inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_externTypeSetterList::plusAssignOperation (const GGS_externTypeSetterList inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10140,12 +10140,12 @@ void GGS_formalParameterListAST::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                      const GGS_formalArgumentPassingModeAST & inOperand1,
-                                                      const GGS_lstring & inOperand2,
-                                                      const GGS_lstring & inOperand3,
-                                                      const GGS_bool & inOperand4
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_formalParameterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                     const GGS_formalArgumentPassingModeAST & inOperand1,
+                                                     const GGS_lstring & inOperand2,
+                                                     const GGS_lstring & inOperand3,
+                                                     const GGS_bool & inOperand4
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formalParameterListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -10386,9 +10386,9 @@ GGS_formalParameterListAST GGS_formalParameterListAST::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalParameterListAST::plusAssign_operation (const GGS_formalParameterListAST inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formalParameterListAST::plusAssignOperation (const GGS_formalParameterListAST inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10843,10 +10843,10 @@ void GGS_externTypeMethodList::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeMethodList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                    const GGS_formalParameterListAST & inOperand1,
-                                                    const GGS_location & inOperand2
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_externTypeMethodList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                   const GGS_formalParameterListAST & inOperand1,
+                                                   const GGS_location & inOperand2
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_externTypeMethodList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -11053,9 +11053,9 @@ GGS_externTypeMethodList GGS_externTypeMethodList::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_externTypeMethodList::plusAssign_operation (const GGS_externTypeMethodList inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_externTypeMethodList::plusAssignOperation (const GGS_externTypeMethodList inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -11520,9 +11520,9 @@ void GGS_graphInsertModifierList::makeAttributesFromObjects (capCollectionElemen
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_graphInsertModifierList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                       const GGS_lstring & inOperand1
-                                                       COMMA_LOCATION_ARGS) {
+void GGS_graphInsertModifierList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                      const GGS_lstring & inOperand1
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_graphInsertModifierList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -11712,9 +11712,9 @@ GGS_graphInsertModifierList GGS_graphInsertModifierList::getter_subListToIndex (
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_graphInsertModifierList::plusAssign_operation (const GGS_graphInsertModifierList inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_graphInsertModifierList::plusAssignOperation (const GGS_graphInsertModifierList inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12361,10 +12361,10 @@ void GGS_insertMethodListAST::makeAttributesFromObjects (capCollectionElement & 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertMethodListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                   const GGS_lstring & inOperand1,
-                                                   const GGS_lstring & inOperand2
-                                                   COMMA_LOCATION_ARGS) {
+void GGS_insertMethodListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                  const GGS_lstring & inOperand1,
+                                                  const GGS_lstring & inOperand2
+                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_insertMethodListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -12571,9 +12571,9 @@ GGS_insertMethodListAST GGS_insertMethodListAST::getter_subListToIndex (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertMethodListAST::plusAssign_operation (const GGS_insertMethodListAST inOperand,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_insertMethodListAST::plusAssignOperation (const GGS_insertMethodListAST inOperand,
+                                                   Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12929,9 +12929,9 @@ void GGS_mapSearchMethodListAST::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_mapSearchMethodListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                      const GGS_lstring & inOperand1
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_mapSearchMethodListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                     const GGS_lstring & inOperand1
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -13121,9 +13121,9 @@ GGS_mapSearchMethodListAST GGS_mapSearchMethodListAST::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_mapSearchMethodListAST::plusAssign_operation (const GGS_mapSearchMethodListAST inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_mapSearchMethodListAST::plusAssignOperation (const GGS_mapSearchMethodListAST inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13434,9 +13434,9 @@ void GGS_mapRemoveMethodListAST::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_mapRemoveMethodListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                      const GGS_lstring & inOperand1
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_mapRemoveMethodListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                     const GGS_lstring & inOperand1
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_mapRemoveMethodListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -13626,9 +13626,9 @@ GGS_mapRemoveMethodListAST GGS_mapRemoveMethodListAST::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_mapRemoveMethodListAST::plusAssign_operation (const GGS_mapRemoveMethodListAST inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_mapRemoveMethodListAST::plusAssignOperation (const GGS_mapRemoveMethodListAST inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13930,8 +13930,8 @@ void GGS_insertOrReplaceDeclarationListAST::makeAttributesFromObjects (capCollec
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::addAssign_operation (const GGS_location & inOperand0
-                                                                 COMMA_LOCATION_ARGS) {
+void GGS_insertOrReplaceDeclarationListAST::addAssignOperation (const GGS_location & inOperand0
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inOperand0 COMMA_THERE)) ;
@@ -14104,9 +14104,9 @@ GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::get
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::plusAssign_operation (const GGS_insertOrReplaceDeclarationListAST inOperand,
-                                                                  Compiler * /* inCompiler */
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_insertOrReplaceDeclarationListAST::plusAssignOperation (const GGS_insertOrReplaceDeclarationListAST inOperand,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15034,9 +15034,9 @@ void GGS_sortedListSortDescriptorListAST::makeAttributesFromObjects (capCollecti
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sortedListSortDescriptorListAST::addAssign_operation (const GGS_lstring & inOperand0,
-                                                               const GGS_bool & inOperand1
-                                                               COMMA_LOCATION_ARGS) {
+void GGS_sortedListSortDescriptorListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                              const GGS_bool & inOperand1
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_sortedListSortDescriptorListAST (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -15226,9 +15226,9 @@ GGS_sortedListSortDescriptorListAST GGS_sortedListSortDescriptorListAST::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sortedListSortDescriptorListAST::plusAssign_operation (const GGS_sortedListSortDescriptorListAST inOperand,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_sortedListSortDescriptorListAST::plusAssignOperation (const GGS_sortedListSortDescriptorListAST inOperand,
+                                                               Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15657,10 +15657,10 @@ void GGS_sortDescriptorListForGeneration::makeAttributesFromObjects (capCollecti
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sortDescriptorListForGeneration::addAssign_operation (const GGS_unifiedTypeMapEntry & inOperand0,
-                                                               const GGS_string & inOperand1,
-                                                               const GGS_bool & inOperand2
-                                                               COMMA_LOCATION_ARGS) {
+void GGS_sortDescriptorListForGeneration::addAssignOperation (const GGS_unifiedTypeMapEntry & inOperand0,
+                                                              const GGS_string & inOperand1,
+                                                              const GGS_bool & inOperand2
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_sortDescriptorListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -15867,9 +15867,9 @@ GGS_sortDescriptorListForGeneration GGS_sortDescriptorListForGeneration::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sortDescriptorListForGeneration::plusAssign_operation (const GGS_sortDescriptorListForGeneration inOperand,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_sortDescriptorListForGeneration::plusAssignOperation (const GGS_sortDescriptorListForGeneration inOperand,
+                                                               Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
