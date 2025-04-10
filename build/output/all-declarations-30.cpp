@@ -3329,39 +3329,6 @@ void cPtr_selfAssignmentInstructionAST::method_analyzeSemanticInstruction (const
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfPlusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_selfPlusEqualExpressionInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 214)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfMinusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_selfMinusEqualExpressionInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 220)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfMulEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_selfMulEqualExpressionInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 226)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 
@@ -3369,278 +3336,7 @@ void cPtr_selfDivEqualExpressionInstructionAST::method_enterInstructionInSemanti
                                                                                           Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_selfDivEqualExpressionInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 232)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfPlusEqualElementsInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_selfPlusEqualElementsInstructionAST temp_0 = this ;
-  extensionMethod_enterInSemanticContext (temp_0.readProperty_mExpressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 238)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfPlusEqualElementsInstructionAST analyzeSemanticInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                  GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                  const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                  GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                  GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                  GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_10318 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 253)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 253)).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_10318.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 254)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 254)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          const GGS_selfPlusEqualElementsInstructionAST temp_2 = this ;
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 255)) ;
-        }
-      }
-      GGS_functionSignature var_addAssignOperatorArguments_10600 = extensionGetter_definition (var_selfAvailable_10318.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 258)).readProperty_addAssignOperatorArguments () ;
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_addAssignOperatorArguments_10600.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 259)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          const GGS_selfPlusEqualElementsInstructionAST temp_5 = this ;
-          TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_10318.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 261)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 261)).add_operation (GGS_string ("' type, but this type does not support the '+=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 261)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 260)) ;
-        }
-      }
-      if (GalgasBool::boolFalse == test_4) {
-        GalgasBool test_7 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_7) {
-          const GGS_selfPlusEqualElementsInstructionAST temp_8 = this ;
-          test_7 = GGS_bool (ComparisonKind::notEqual, temp_8.readProperty_mExpressions ().getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 263)).objectCompare (var_addAssignOperatorArguments_10600.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 263)))).boolEnum () ;
-          if (GalgasBool::boolTrue == test_7) {
-            const GGS_selfPlusEqualElementsInstructionAST temp_9 = this ;
-            const GGS_selfPlusEqualElementsInstructionAST temp_10 = this ;
-            TC_Array <FixItDescription> fixItArray11 ;
-            inCompiler->emitSemanticError (temp_9.readProperty_mInstructionLocation (), GGS_string ("calling the '+=' operator on an '@").add_operation (extensionGetter_definition (var_selfAvailable_10318.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265)).add_operation (GGS_string ("' object requires "), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265)).add_operation (var_addAssignOperatorArguments_10600.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 266)).getter_string (SOURCE_FILE ("instruction-self-concat.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265)).add_operation (GGS_string (" parameter(s), while this invocation has "), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 266)).add_operation (temp_10.readProperty_mExpressions ().getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 267)).getter_string (SOURCE_FILE ("instruction-self-concat.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 266)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 267)), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 264)) ;
-          }
-        }
-        if (GalgasBool::boolFalse == test_7) {
-          GGS_semanticExpressionListForGeneration var_effectiveParameterList_11420 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
-          const GGS_selfPlusEqualElementsInstructionAST temp_12 = this ;
-          UpEnumerator_actualOutputArgumentList enumerator_11524 (temp_12.readProperty_mExpressions ()) ;
-          UpEnumerator_functionSignature enumerator_11610 (var_addAssignOperatorArguments_10600) ;
-          while (enumerator_11524.hasCurrentObject () && enumerator_11610.hasCurrentObject ()) {
-            GGS_semanticExpressionForGeneration var_expression_11962 ;
-            callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_11524.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_11610.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11962, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 271)) ;
-            GalgasBool test_13 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_13) {
-              test_13 = GGS_bool (ComparisonKind::notEqual, enumerator_11610.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_11524.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
-              if (GalgasBool::boolTrue == test_13) {
-                GGS_string temp_14 ;
-                const GalgasBool test_15 = GGS_bool (ComparisonKind::notEqual, enumerator_11610.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-                if (GalgasBool::boolTrue == test_15) {
-                  temp_14 = enumerator_11610.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 281)) ;
-                }else if (GalgasBool::boolFalse == test_15) {
-                  temp_14 = GGS_string::makeEmptyString () ;
-                }
-                GGS_string var_s_12070 = GGS_string ("!").add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 281)) ;
-                TC_Array <FixItDescription> fixItArray16 ;
-                appendFixItActions (fixItArray16, EnumFixItKind::fixItReplace, var_s_12070) ;
-                inCompiler->emitSemanticError (enumerator_11524.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_12070, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 282)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 282)), fixItArray16  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 282)) ;
-              }
-            }
-            {
-            routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_11610.current_mFormalArgumentType (HERE), var_expression_11962.readProperty_mResultType (), enumerator_11524.current_mEndOfExpressionLocation (HERE), var_expression_11962, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 284)) ;
-            }
-            var_effectiveParameterList_11420.addAssignOperation (var_expression_11962  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 285)) ;
-            enumerator_11524.gotoNextObject () ;
-            enumerator_11610.gotoNextObject () ;
-          }
-          const GGS_selfPlusEqualElementsInstructionAST temp_17 = this ;
-          ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_plusEqualnstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_10318.readProperty_type (), GGS_string::makeEmptyString (), temp_17.readProperty_mInstructionLocation (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_effectiveParameterList_11420, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 288)) ;
-        }
-      }
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_selfPlusEqualElementsInstructionAST temp_18 = this ;
-    TC_Array <FixItDescription> fixItArray19 ;
-    inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray19  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 298)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfPlusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                    GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_13466 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 314)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 314)).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_13466.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 315)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 315)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          const GGS_selfPlusEqualExpressionInstructionAST temp_2 = this ;
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 316)) ;
-        }
-      }
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = extensionGetter_definition (var_selfAvailable_13466.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 319)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 319)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 319)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 319)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          const GGS_selfPlusEqualExpressionInstructionAST temp_5 = this ;
-          TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_13466.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 321)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 321)).add_operation (GGS_string ("' type, but this type does not support the '+=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 321)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 320)) ;
-        }
-      }
-      GGS_semanticExpressionForGeneration var_expression_14364 ;
-      const GGS_selfPlusEqualExpressionInstructionAST temp_7 = this ;
-      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_13466.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_14364, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 324)) ;
-      {
-      const GGS_selfPlusEqualExpressionInstructionAST temp_8 = this ;
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_13466.readProperty_type (), var_expression_14364.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_14364, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 334)) ;
-      }
-      const GGS_selfPlusEqualExpressionInstructionAST temp_9 = this ;
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_13466.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_14364, GGS_string ("plusAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 336)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_selfPlusEqualExpressionInstructionAST temp_10 = this ;
-    TC_Array <FixItDescription> fixItArray11 ;
-    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 346)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfMinusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                     GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                     const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                     GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                     GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                     GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_15473 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 360)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 360)).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_15473.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 361)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 361)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          const GGS_selfMinusEqualExpressionInstructionAST temp_2 = this ;
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 362)) ;
-        }
-      }
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = extensionGetter_definition (var_selfAvailable_15473.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 365)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 365)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 365)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 365)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          const GGS_selfMinusEqualExpressionInstructionAST temp_5 = this ;
-          TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_15473.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 367)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 367)).add_operation (GGS_string ("' type, but this type does not support the '-=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 367)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 366)) ;
-        }
-      }
-      GGS_semanticExpressionForGeneration var_expression_16372 ;
-      const GGS_selfMinusEqualExpressionInstructionAST temp_7 = this ;
-      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_15473.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_16372, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 370)) ;
-      {
-      const GGS_selfMinusEqualExpressionInstructionAST temp_8 = this ;
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_15473.readProperty_type (), var_expression_16372.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_16372, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 380)) ;
-      }
-      const GGS_selfMinusEqualExpressionInstructionAST temp_9 = this ;
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_15473.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_16372, GGS_string ("minusAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 382)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_selfMinusEqualExpressionInstructionAST temp_10 = this ;
-    TC_Array <FixItDescription> fixItArray11 ;
-    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 392)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@selfMulEqualExpressionInstructionAST analyzeSemanticInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_selfMulEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                   GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                   const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                   GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                   GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                   GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_17480 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 406)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 406)).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_17480.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 407)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 407)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          const GGS_selfMulEqualExpressionInstructionAST temp_2 = this ;
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 408)) ;
-        }
-      }
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = extensionGetter_definition (var_selfAvailable_17480.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 411)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 411)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 411)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          const GGS_selfMulEqualExpressionInstructionAST temp_5 = this ;
-          TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_17480.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 413)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 413)).add_operation (GGS_string ("' type, but this type does not support the '*=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 413)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 412)) ;
-        }
-      }
-      GGS_semanticExpressionForGeneration var_expression_18373 ;
-      const GGS_selfMulEqualExpressionInstructionAST temp_7 = this ;
-      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_17480.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_18373, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 416)) ;
-      {
-      const GGS_selfMulEqualExpressionInstructionAST temp_8 = this ;
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_17480.readProperty_type (), var_expression_18373.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_18373, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 426)) ;
-      }
-      const GGS_selfMulEqualExpressionInstructionAST temp_9 = this ;
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_17480.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_18373, GGS_string ("mulAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 428)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_selfMulEqualExpressionInstructionAST temp_10 = this ;
-    TC_Array <FixItDescription> fixItArray11 ;
-    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 438)) ;
-  }
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 187)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3657,44 +3353,348 @@ void cPtr_selfDivEqualExpressionInstructionAST::method_analyzeSemanticInstructio
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    const GGS_selfAvailability_2E_available var_selfAvailable_19479 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 452)).unwrappedValue () ;
-    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 452)).isValuated ()) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_8187 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 199)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 199)).isValuated ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_19479.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 453)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 453)).boolEnum () ;
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_8187.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 200)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 200)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
           const GGS_selfDivEqualExpressionInstructionAST temp_2 = this ;
           TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 454)) ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 201)) ;
         }
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = extensionGetter_definition (var_selfAvailable_19479.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 457)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 457)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 457)).boolEnum () ;
+        test_4 = extensionGetter_definition (var_selfAvailable_8187.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 204)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 204)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 204)).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
           const GGS_selfDivEqualExpressionInstructionAST temp_5 = this ;
           TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_19479.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 459)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 459)).add_operation (GGS_string ("' type, but this type does not support the '/=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 459)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 458)) ;
+          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_8187.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 206)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 206)).add_operation (GGS_string ("' type, but this type does not support the '/=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 206)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 205)) ;
         }
       }
-      GGS_semanticExpressionForGeneration var_expression_20372 ;
+      GGS_semanticExpressionForGeneration var_expression_9122 ;
       const GGS_selfDivEqualExpressionInstructionAST temp_7 = this ;
-      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_19479.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_20372, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 462)) ;
+      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_8187.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_9122, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 210)) ;
       {
       const GGS_selfDivEqualExpressionInstructionAST temp_8 = this ;
-      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_19479.readProperty_type (), var_expression_20372.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_20372, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 472)) ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_8187.readProperty_type (), var_expression_9122.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_9122, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 220)) ;
       }
       const GGS_selfDivEqualExpressionInstructionAST temp_9 = this ;
-      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_19479.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_20372, GGS_string ("divAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 474)) ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_8187.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_9122, GGS_string ("divAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 227)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     const GGS_selfDivEqualExpressionInstructionAST temp_10 = this ;
     TC_Array <FixItDescription> fixItArray11 ;
-    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 484)) ;
+    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 237)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfPlusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_selfPlusEqualExpressionInstructionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 255)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfPlusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                    GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_11185 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 267)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 267)).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      GalgasBool test_1 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_1) {
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_11185.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 268)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 268)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_1) {
+          const GGS_selfPlusEqualExpressionInstructionAST temp_2 = this ;
+          TC_Array <FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 269)) ;
+        }
+      }
+      GalgasBool test_4 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_4) {
+        test_4 = extensionGetter_definition (var_selfAvailable_11185.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 272)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 272)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 272)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 272)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_4) {
+          const GGS_selfPlusEqualExpressionInstructionAST temp_5 = this ;
+          TC_Array <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_11185.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 274)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 274)).add_operation (GGS_string ("' type, but this type does not support the '+=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 274)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 273)) ;
+        }
+      }
+      GGS_semanticExpressionForGeneration var_expression_12126 ;
+      const GGS_selfPlusEqualExpressionInstructionAST temp_7 = this ;
+      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_11185.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_12126, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 278)) ;
+      {
+      const GGS_selfPlusEqualExpressionInstructionAST temp_8 = this ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_11185.readProperty_type (), var_expression_12126.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_12126, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 288)) ;
+      }
+      const GGS_selfPlusEqualExpressionInstructionAST temp_9 = this ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_11185.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_12126, GGS_string ("plusAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 295)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    const GGS_selfPlusEqualExpressionInstructionAST temp_10 = this ;
+    TC_Array <FixItDescription> fixItArray11 ;
+    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 305)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfMinusEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_selfMinusEqualExpressionInstructionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 323)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfMinusEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                     GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                     const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                                     GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                     GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                                     GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_14191 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 335)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 335)).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      GalgasBool test_1 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_1) {
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_14191.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 336)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 336)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_1) {
+          const GGS_selfMinusEqualExpressionInstructionAST temp_2 = this ;
+          TC_Array <FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 337)) ;
+        }
+      }
+      GalgasBool test_4 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_4) {
+        test_4 = extensionGetter_definition (var_selfAvailable_14191.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 340)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 340)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 340)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 340)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_4) {
+          const GGS_selfMinusEqualExpressionInstructionAST temp_5 = this ;
+          TC_Array <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_14191.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 342)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 342)).add_operation (GGS_string ("' type, but this type does not support the '-=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 342)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 341)) ;
+        }
+      }
+      GGS_semanticExpressionForGeneration var_expression_15133 ;
+      const GGS_selfMinusEqualExpressionInstructionAST temp_7 = this ;
+      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_14191.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_15133, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 346)) ;
+      {
+      const GGS_selfMinusEqualExpressionInstructionAST temp_8 = this ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_14191.readProperty_type (), var_expression_15133.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_15133, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 356)) ;
+      }
+      const GGS_selfMinusEqualExpressionInstructionAST temp_9 = this ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_14191.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_15133, GGS_string ("minusAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 363)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    const GGS_selfMinusEqualExpressionInstructionAST temp_10 = this ;
+    TC_Array <FixItDescription> fixItArray11 ;
+    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 373)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfMulEqualExpressionInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_selfMulEqualExpressionInstructionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 391)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfMulEqualExpressionInstructionAST analyzeSemanticInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfMulEqualExpressionInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                   GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                   const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                                   GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                   GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                                   GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_17195 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 403)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 403)).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      GalgasBool test_1 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_1) {
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_17195.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 404)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 404)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_1) {
+          const GGS_selfMulEqualExpressionInstructionAST temp_2 = this ;
+          TC_Array <FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 405)) ;
+        }
+      }
+      GalgasBool test_4 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_4) {
+        test_4 = extensionGetter_definition (var_selfAvailable_17195.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 408)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-self-concat.galgas", 408)) COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 408)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_4) {
+          const GGS_selfMulEqualExpressionInstructionAST temp_5 = this ;
+          TC_Array <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_17195.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 410)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 410)).add_operation (GGS_string ("' type, but this type does not support the '*=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 410)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 409)) ;
+        }
+      }
+      GGS_semanticExpressionForGeneration var_expression_18131 ;
+      const GGS_selfMulEqualExpressionInstructionAST temp_7 = this ;
+      callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_7.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_selfAvailable_17195.readProperty_type (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_18131, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 414)) ;
+      {
+      const GGS_selfMulEqualExpressionInstructionAST temp_8 = this ;
+      routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_selfAvailable_17195.readProperty_type (), var_expression_18131.readProperty_mResultType (), temp_8.readProperty_mInstructionLocation (), var_expression_18131, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 424)) ;
+      }
+      const GGS_selfMulEqualExpressionInstructionAST temp_9 = this ;
+      ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_opAssignInstructionForGeneration::init_21__21__21__21__21__21__21_ (temp_9.readProperty_mInstructionLocation (), var_selfAvailable_17195.readProperty_type (), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), GGS_string::makeEmptyString (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_expression_18131, GGS_string ("mulAssignOperation"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 431)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    const GGS_selfMulEqualExpressionInstructionAST temp_10 = this ;
+    TC_Array <FixItDescription> fixItArray11 ;
+    inCompiler->emitSemanticError (temp_10.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 441)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfPlusEqualElementsInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_selfPlusEqualElementsInstructionAST temp_0 = this ;
+  extensionMethod_enterInSemanticContext (temp_0.readProperty_mExpressions (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 459)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@selfPlusEqualElementsInstructionAST analyzeSemanticInstruction'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                  GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                  const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                                  GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                  GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                                  GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_selfAvailability_2E_available var_selfAvailable_20184 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 471)).unwrappedValue () ;
+    if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-self-concat.galgas", 471)).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      GalgasBool test_1 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_1) {
+        test_1 = extensionGetter_selfIsMutable (var_selfAvailable_20184.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 472)).operator_not (SOURCE_FILE ("instruction-self-concat.galgas", 472)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_1) {
+          const GGS_selfPlusEqualElementsInstructionAST temp_2 = this ;
+          TC_Array <FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mInstructionLocation (), GGS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 473)) ;
+        }
+      }
+      GGS_functionSignature var_addAssignOperatorArguments_20476 = extensionGetter_definition (var_selfAvailable_20184.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 476)).readProperty_addAssignOperatorArguments () ;
+      GalgasBool test_4 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_4) {
+        test_4 = GGS_bool (ComparisonKind::equal, var_addAssignOperatorArguments_20476.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 477)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_4) {
+          const GGS_selfPlusEqualElementsInstructionAST temp_5 = this ;
+          TC_Array <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticError (temp_5.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_selfAvailable_20184.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 479)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 479)).add_operation (GGS_string ("' type, but this type does not support the '+=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 479)), fixItArray6  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 478)) ;
+        }
+      }
+      if (GalgasBool::boolFalse == test_4) {
+        GalgasBool test_7 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_7) {
+          const GGS_selfPlusEqualElementsInstructionAST temp_8 = this ;
+          test_7 = GGS_bool (ComparisonKind::notEqual, temp_8.readProperty_mExpressions ().getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 482)).objectCompare (var_addAssignOperatorArguments_20476.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 482)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_7) {
+            const GGS_selfPlusEqualElementsInstructionAST temp_9 = this ;
+            const GGS_selfPlusEqualElementsInstructionAST temp_10 = this ;
+            TC_Array <FixItDescription> fixItArray11 ;
+            inCompiler->emitSemanticError (temp_9.readProperty_mInstructionLocation (), GGS_string ("calling the '+=' operator on an '@").add_operation (extensionGetter_definition (var_selfAvailable_20184.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 484)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 484)).add_operation (GGS_string ("' object requires "), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 484)).add_operation (var_addAssignOperatorArguments_20476.getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 486)).getter_string (SOURCE_FILE ("instruction-self-concat.galgas", 486)), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 485)).add_operation (GGS_string (" parameter(s), while this invocation has "), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 486)).add_operation (temp_10.readProperty_mExpressions ().getter_count (SOURCE_FILE ("instruction-self-concat.galgas", 487)).getter_string (SOURCE_FILE ("instruction-self-concat.galgas", 487)), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 486)).add_operation (GGS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 487)), fixItArray11  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 483)) ;
+          }
+        }
+        if (GalgasBool::boolFalse == test_7) {
+          GGS_semanticExpressionListForGeneration var_effectiveParameterList_21335 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
+          const GGS_selfPlusEqualElementsInstructionAST temp_12 = this ;
+          UpEnumerator_actualOutputArgumentList enumerator_21441 (temp_12.readProperty_mExpressions ()) ;
+          UpEnumerator_functionSignature enumerator_21527 (var_addAssignOperatorArguments_20476) ;
+          while (enumerator_21441.hasCurrentObject () && enumerator_21527.hasCurrentObject ()) {
+            GGS_semanticExpressionForGeneration var_expression_21895 ;
+            callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_21441.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_21527.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_21895, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 491)) ;
+            GalgasBool test_13 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_13) {
+              test_13 = GGS_bool (ComparisonKind::notEqual, enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_21441.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+              if (GalgasBool::boolTrue == test_13) {
+                GGS_string temp_14 ;
+                const GalgasBool test_15 = GGS_bool (ComparisonKind::notEqual, enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                if (GalgasBool::boolTrue == test_15) {
+                  temp_14 = enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 501)) ;
+                }else if (GalgasBool::boolFalse == test_15) {
+                  temp_14 = GGS_string::makeEmptyString () ;
+                }
+                GGS_string var_s_22001 = GGS_string ("!").add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 501)) ;
+                TC_Array <FixItDescription> fixItArray16 ;
+                appendFixItActions (fixItArray16, EnumFixItKind::fixItReplace, var_s_22001) ;
+                inCompiler->emitSemanticError (enumerator_21441.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_22001, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)), fixItArray16  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)) ;
+              }
+            }
+            {
+            routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_21527.current_mFormalArgumentType (HERE), var_expression_21895.readProperty_mResultType (), enumerator_21441.current_mEndOfExpressionLocation (HERE), var_expression_21895, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 504)) ;
+            }
+            var_effectiveParameterList_21335.addAssignOperation (var_expression_21895  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 510)) ;
+            enumerator_21441.gotoNextObject () ;
+            enumerator_21527.gotoNextObject () ;
+          }
+          const GGS_selfPlusEqualElementsInstructionAST temp_17 = this ;
+          ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_plusEqualnstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_20184.readProperty_type (), GGS_string::makeEmptyString (), temp_17.readProperty_mInstructionLocation (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_effectiveParameterList_21335, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 513)) ;
+        }
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    const GGS_selfPlusEqualElementsInstructionAST temp_18 = this ;
+    TC_Array <FixItDescription> fixItArray19 ;
+    inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray19  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 523)) ;
   }
 }
 

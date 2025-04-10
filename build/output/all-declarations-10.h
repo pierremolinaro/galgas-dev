@@ -11091,43 +11091,43 @@ class GGS_selfAssignmentInstructionAST_2E_weak : public GGS_semanticInstructionA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAssignmentInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @selfPlusEqualElementsInstructionAST reference class
+// Phase 1: @selfDivEqualExpressionInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_selfPlusEqualElementsInstructionAST : public GGS_semanticInstructionAST {
+class GGS_selfDivEqualExpressionInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Default constructor
-  public: GGS_selfPlusEqualElementsInstructionAST (void) ;
+  public: GGS_selfDivEqualExpressionInstructionAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GGS_selfPlusEqualElementsInstructionAST (const class cPtr_selfPlusEqualElementsInstructionAST * inSourcePtr) ;
+  public: GGS_selfDivEqualExpressionInstructionAST (const class cPtr_selfDivEqualExpressionInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_actualOutputArgumentList readProperty_mExpressions (void) const ;
+  public: class GGS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_selfPlusEqualElementsInstructionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                                       const class GGS_actualOutputArgumentList & inOperand1,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfDivEqualExpressionInstructionAST init_21__21_ (const class GGS_location & inOperand0,
+                                                                        const class GGS_semanticExpressionAST & inOperand1,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_selfPlusEqualElementsInstructionAST extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfDivEqualExpressionInstructionAST extractObject (const GGS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_selfPlusEqualElementsInstructionAST class_func_new (const class GGS_location & inOperand0,
-                                                                               const class GGS_actualOutputArgumentList & inOperand1,
-                                                                               class Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GGS_selfDivEqualExpressionInstructionAST class_func_new (const class GGS_location & inOperand0,
+                                                                                const class GGS_semanticExpressionAST & inOperand1,
+                                                                                class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfPlusEqualElementsInstructionAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_selfDivEqualExpressionInstructionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -11146,22 +11146,22 @@ class GGS_selfPlusEqualElementsInstructionAST : public GGS_semanticInstructionAS
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @selfPlusEqualElementsInstructionAST class
+// Phase 2: pointer class for @selfDivEqualExpressionInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void selfPlusEqualElementsInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                                 const class GGS_actualOutputArgumentList & inOperand1,
-                                                                 Compiler * inCompiler) ;
+  public: void selfDivEqualExpressionInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
+                                                                  const class GGS_semanticExpressionAST & inOperand1,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -11178,17 +11178,17 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_actualOutputArgumentList mProperty_mExpressions ;
+  public: GGS_semanticExpressionAST mProperty_mExpression ;
 
 
 //--- Default constructor
-  public: cPtr_selfPlusEqualElementsInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_selfDivEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_selfPlusEqualElementsInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                    const GGS_actualOutputArgumentList & in_mExpressions,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public: cPtr_selfDivEqualExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                     const GGS_semanticExpressionAST & in_mExpression,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
@@ -11204,29 +11204,29 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @selfPlusEqualElementsInstructionAST_2E_weak weak reference class
+// Phase 1: @selfDivEqualExpressionInstructionAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
+class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
 //--------------------------------- Default constructor
-  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak (void) ;
+  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak (const class GGS_selfPlusEqualElementsInstructionAST & inSource) ;
+  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
 
-  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak & operator = (const class GGS_selfPlusEqualElementsInstructionAST & inSource) ;
+  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak & operator = (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
 
 //--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
-  public: inline static GGS_selfPlusEqualElementsInstructionAST_2E_weak init_nil (void) {
-    GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
+  public: inline static GGS_selfDivEqualExpressionInstructionAST_2E_weak init_nil (void) {
+    GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
     macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
     return result ;
   }
 
 //--------------------------------- Bang operator
-  public: GGS_selfPlusEqualElementsInstructionAST bang_selfPlusEqualElementsInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_selfDivEqualExpressionInstructionAST bang_selfDivEqualExpressionInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- isValuated
   public: inline bool isValuated (void) const {
@@ -11234,12 +11234,12 @@ class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstr
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_selfPlusEqualElementsInstructionAST unwrappedValue (void) const {
-    GGS_selfPlusEqualElementsInstructionAST result ;
+  public: inline GGS_selfDivEqualExpressionInstructionAST unwrappedValue (void) const {
+    GGS_selfDivEqualExpressionInstructionAST result ;
     if (isValid ()) {
-      const cPtr_selfPlusEqualElementsInstructionAST * p = (cPtr_selfPlusEqualElementsInstructionAST *) ptr () ;
+      const cPtr_selfDivEqualExpressionInstructionAST * p = (cPtr_selfDivEqualExpressionInstructionAST *) ptr () ;
       if (nullptr != p) {
-        result = GGS_selfPlusEqualElementsInstructionAST (p) ;
+        result = GGS_selfDivEqualExpressionInstructionAST (p) ;
       }
     }
     return result ;
@@ -11262,15 +11262,15 @@ class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstr
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_selfPlusEqualElementsInstructionAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfDivEqualExpressionInstructionAST_2E_weak extractObject (const GGS_object & inObject,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_selfPlusEqualElementsInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GGS_selfDivEqualExpressionInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfPlusEqualElementsInstructionAST_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_selfDivEqualExpressionInstructionAST_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -11289,7 +11289,7 @@ class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstr
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @selfPlusEqualExpressionInstructionAST reference class
@@ -11895,43 +11895,43 @@ class GGS_selfMulEqualExpressionInstructionAST_2E_weak : public GGS_semanticInst
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMulEqualExpressionInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @selfDivEqualExpressionInstructionAST reference class
+// Phase 1: @selfPlusEqualElementsInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_selfDivEqualExpressionInstructionAST : public GGS_semanticInstructionAST {
+class GGS_selfPlusEqualElementsInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Default constructor
-  public: GGS_selfDivEqualExpressionInstructionAST (void) ;
+  public: GGS_selfPlusEqualElementsInstructionAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GGS_selfDivEqualExpressionInstructionAST (const class cPtr_selfDivEqualExpressionInstructionAST * inSourcePtr) ;
+  public: GGS_selfPlusEqualElementsInstructionAST (const class cPtr_selfPlusEqualElementsInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_semanticExpressionAST readProperty_mExpression (void) const ;
+  public: class GGS_actualOutputArgumentList readProperty_mExpressions (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_selfDivEqualExpressionInstructionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                                        const class GGS_semanticExpressionAST & inOperand1,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfPlusEqualElementsInstructionAST init_21__21_ (const class GGS_location & inOperand0,
+                                                                       const class GGS_actualOutputArgumentList & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_selfDivEqualExpressionInstructionAST extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfPlusEqualElementsInstructionAST extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_selfDivEqualExpressionInstructionAST class_func_new (const class GGS_location & inOperand0,
-                                                                                const class GGS_semanticExpressionAST & inOperand1,
-                                                                                class Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static class GGS_selfPlusEqualElementsInstructionAST class_func_new (const class GGS_location & inOperand0,
+                                                                               const class GGS_actualOutputArgumentList & inOperand1,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfDivEqualExpressionInstructionAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_selfPlusEqualElementsInstructionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -11950,22 +11950,22 @@ class GGS_selfDivEqualExpressionInstructionAST : public GGS_semanticInstructionA
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @selfDivEqualExpressionInstructionAST class
+// Phase 2: pointer class for @selfPlusEqualElementsInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void selfDivEqualExpressionInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                                  const class GGS_semanticExpressionAST & inOperand1,
-                                                                  Compiler * inCompiler) ;
+  public: void selfPlusEqualElementsInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
+                                                                 const class GGS_actualOutputArgumentList & inOperand1,
+                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -11982,17 +11982,17 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_semanticExpressionAST mProperty_mExpression ;
+  public: GGS_actualOutputArgumentList mProperty_mExpressions ;
 
 
 //--- Default constructor
-  public: cPtr_selfDivEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_selfPlusEqualElementsInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_selfDivEqualExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                     const GGS_semanticExpressionAST & in_mExpression,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public: cPtr_selfPlusEqualElementsInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                    const GGS_actualOutputArgumentList & in_mExpressions,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
@@ -12008,29 +12008,29 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @selfDivEqualExpressionInstructionAST_2E_weak weak reference class
+// Phase 1: @selfPlusEqualElementsInstructionAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
+class GGS_selfPlusEqualElementsInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
 //--------------------------------- Default constructor
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (void) ;
+  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
+  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak (const class GGS_selfPlusEqualElementsInstructionAST & inSource) ;
 
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak & operator = (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
+  public: GGS_selfPlusEqualElementsInstructionAST_2E_weak & operator = (const class GGS_selfPlusEqualElementsInstructionAST & inSource) ;
 
 //--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
-  public: inline static GGS_selfDivEqualExpressionInstructionAST_2E_weak init_nil (void) {
-    GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
+  public: inline static GGS_selfPlusEqualElementsInstructionAST_2E_weak init_nil (void) {
+    GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
     macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
     return result ;
   }
 
 //--------------------------------- Bang operator
-  public: GGS_selfDivEqualExpressionInstructionAST bang_selfDivEqualExpressionInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_selfPlusEqualElementsInstructionAST bang_selfPlusEqualElementsInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- isValuated
   public: inline bool isValuated (void) const {
@@ -12038,12 +12038,12 @@ class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInst
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_selfDivEqualExpressionInstructionAST unwrappedValue (void) const {
-    GGS_selfDivEqualExpressionInstructionAST result ;
+  public: inline GGS_selfPlusEqualElementsInstructionAST unwrappedValue (void) const {
+    GGS_selfPlusEqualElementsInstructionAST result ;
     if (isValid ()) {
-      const cPtr_selfDivEqualExpressionInstructionAST * p = (cPtr_selfDivEqualExpressionInstructionAST *) ptr () ;
+      const cPtr_selfPlusEqualElementsInstructionAST * p = (cPtr_selfPlusEqualElementsInstructionAST *) ptr () ;
       if (nullptr != p) {
-        result = GGS_selfDivEqualExpressionInstructionAST (p) ;
+        result = GGS_selfPlusEqualElementsInstructionAST (p) ;
       }
     }
     return result ;
@@ -12066,15 +12066,15 @@ class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInst
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_selfDivEqualExpressionInstructionAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GGS_selfPlusEqualElementsInstructionAST_2E_weak extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_selfDivEqualExpressionInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GGS_selfPlusEqualElementsInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfDivEqualExpressionInstructionAST_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_selfPlusEqualElementsInstructionAST_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -12093,7 +12093,7 @@ class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInst
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @setterCallInstructionAST reference class

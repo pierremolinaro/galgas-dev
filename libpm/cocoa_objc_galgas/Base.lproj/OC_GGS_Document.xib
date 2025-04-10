@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="54" y="469" width="313" height="140"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1496" height="933"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1312" height="818"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="139">
                 <rect key="frame" x="0.0" y="0.0" width="313" height="140"/>
@@ -103,7 +103,7 @@ Gw
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="17" y="719" width="880" height="691"/>
-            <rect key="screenRect" x="0.0" y="967" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="848" width="1920" height="1055"/>
             <value key="minSize" type="size" width="500" height="350"/>
             <view key="contentView" id="48">
                 <rect key="frame" x="0.0" y="0.0" width="880" height="691"/>
@@ -785,7 +785,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="435" y="549" width="267" height="107"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1496" height="933"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1312" height="818"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="205">
                 <rect key="frame" x="0.0" y="0.0" width="267" height="107"/>

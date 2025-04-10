@@ -16,38 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
-  private let @actualOutputArgumentList mExpressions
-}
-
-//································································································*
-
-class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
-
-//································································································*
-
-class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
-
-//································································································*
-
-class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
-
-//································································································*
-
-class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -207,282 +175,357 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CONTEXT
+//! @selfDivEqualExpressionInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
+class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
+  private let @semanticExpressionAST mExpression
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override method @selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpressions enterInSemanticContext !?ioTypeMap]
-}
-
-//--------------------------------------------------------------------------------------------------
-//! SEMANTICS
-//--------------------------------------------------------------------------------------------------
-
-override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
-//--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability selfIsMutable] then
-      error self.mInstructionLocation : "'self' not mutable in this context"
-    end
-  //--- Check target variable type support '+=' operator
-    let addAssignOperatorArguments= [selfAvailable.type definition].addAssignOperatorArguments // Empty list if += operator is not supported
-    if [addAssignOperatorArguments count] == 0 then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '+=' operator"
-  //--- Analyze source expressions
-    elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
-      error self.mInstructionLocation
-      : "calling the '+=' operator on an '@" + [selfAvailable.type definition].typeName.string + "' object requires "
-      + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
-      + [[self.mExpressions count] string] + " parameter(s)"
-    else
-      var effectiveParameterList = @semanticExpressionListForGeneration ()
-      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
-        [mExpression analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: mFormalArgumentType
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
-          ?@semanticExpressionForGeneration expression
-        ]
-        if mFormalSelector.string != mActualSelector.string then
-          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
-        effectiveParameterList += !expression
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                             ?let @analysisContext inAnalysisContext
+                                             ?!@unifiedTypeMap ioTypeMap
+                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                             ?!@localVarManager ioVariableMap {
+  //--- Analyze "self", as receiver expression
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
+        error self.mInstructionLocation : "'self' not mutable in this context"
       end
-    //--- Generate instruction
-      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
-        !inAnalysisContext.selfObjectCppName
+    //--- Check target variable type support '/= exp' operator
+      if [[selfAvailable.type definition].features contains !.divAssignOperatorWithExpression] then
+        error self.mInstructionLocation
+        :"the target object has the '@" + [selfAvailable.type definition].typeName.string
+        + "' type, but this type does not support the '/=' operator"
+      end
+    //--- Analyze source expression
+      [self.mExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inferenceType: selfAvailable.type
+        !inAnalysisContext
+        !?ioTypeMap
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+    //--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (
         !selfAvailable.type
-        !""
+        !expression.mResultType 
         !self.mInstructionLocation
-        !@lstringlist ()
-        !effectiveParameterList
+        !?expression
+      )
+    //--- Generate instruction
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
+        !self.mInstructionLocation
+        !selfAvailable.type
+        !inAnalysisContext.selfObjectCppName
+        !""
+        !@()
+        !expression
+        !"divAssignOperation"
       }
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
     end
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
+//! @selfPlusEqualExpressionInstructionAST
+//--------------------------------------------------------------------------------------------------
 
-override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
-//--- Analyze "self", as receiver expression
-//  var @unifiedTypeMapEntry selfTypeEntry
-//  var @string selfObjectCppName
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability selfIsMutable] then
-      error self.mInstructionLocation : "'self' not mutable in this context"
+class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+  private let @semanticExpressionAST mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                             ?let @analysisContext inAnalysisContext
+                                             ?!@unifiedTypeMap ioTypeMap
+                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                             ?!@localVarManager ioVariableMap {
+  //--- Analyze "self", as receiver expression
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+    //--- Check target variable type support '+= exp' operator
+      if not [[selfAvailable.type definition].features contains !.plusAssignOperatorWithExpression] then
+        error self.mInstructionLocation
+        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        + "' type, but this type does not support the '+=' operator"
+      end
+    //--- Analyze source expression
+      [self.mExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inferenceType: selfAvailable.type
+        !inAnalysisContext
+        !?ioTypeMap
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+    //--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (
+        !selfAvailable.type
+        !expression.mResultType
+        !self.mInstructionLocation
+        !?expression
+      )
+    //--- Generate instruction
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
+        !self.mInstructionLocation
+        !selfAvailable.type
+        !inAnalysisContext.selfObjectCppName
+        !""
+        !@()
+        !expression
+        !"plusAssignOperation"
+      }
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
     end
-  //--- Check target variable type support '+= exp' operator
-    if not [[selfAvailable.type definition].features contains !.plusAssignOperatorWithExpression] then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '+=' operator"
-    end
-  //--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: selfAvailable.type
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      ?@semanticExpressionForGeneration expression
-    ]
-  //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
-  //--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !selfAvailable.type
-      !inAnalysisContext.selfObjectCppName
-      !""
-      !@()
-      !expression
-      !"plusAssignOperation"
-    }
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
+//! @selfMinusEqualExpressionInstructionAST
+//--------------------------------------------------------------------------------------------------
 
-override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
-//--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability selfIsMutable] then
-      error self.mInstructionLocation : "'self' not mutable in this context"
+class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
+  private let @semanticExpressionAST mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                             ?let @analysisContext inAnalysisContext
+                                             ?!@unifiedTypeMap ioTypeMap
+                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                             ?!@localVarManager ioVariableMap {
+  //--- Analyze "self", as receiver expression
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+    //--- Check target variable type support '-= exp' operator
+      if not [[selfAvailable.type definition].features contains !.minusAssignOperatorWithExpression] then
+        error self.mInstructionLocation
+        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        + "' type, but this type does not support the '-=' operator"
+      end
+    //--- Analyze source expression
+      [self.mExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inferenceType: selfAvailable.type
+        !inAnalysisContext
+        !?ioTypeMap
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+    //--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (
+        !selfAvailable.type
+        !expression.mResultType
+        !self.mInstructionLocation
+        !?expression
+      )
+    //--- Generate instruction
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
+        !self.mInstructionLocation
+        !selfAvailable.type
+        !inAnalysisContext.selfObjectCppName
+        !""
+        !@()
+        !expression
+        !"minusAssignOperation"
+      }
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
     end
-  //--- Check target variable type support '-= exp' operator
-    if not [[selfAvailable.type definition].features contains !.minusAssignOperatorWithExpression] then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '-=' operator"
-    end
-  //--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: selfAvailable.type
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      ?@semanticExpressionForGeneration expression
-    ]
-  //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
-  //--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !selfAvailable.type
-      !inAnalysisContext.selfObjectCppName
-      !""
-      !@()
-      !expression
-      !"minusAssignOperation"
-    }
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
+//! @selfMulEqualExpressionInstructionAST
+//--------------------------------------------------------------------------------------------------
 
-override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
-//--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability selfIsMutable] then
-      error self.mInstructionLocation : "'self' not mutable in this context"
+class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
+  private let @semanticExpressionAST mExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                             ?let @analysisContext inAnalysisContext
+                                             ?!@unifiedTypeMap ioTypeMap
+                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                             ?!@localVarManager ioVariableMap {
+  //--- Analyze "self", as receiver expression
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+    //--- Check target variable type support '*= exp' operator
+      if [[selfAvailable.type definition].features contains !.mulAssignOperatorWithExpression] then
+        error self.mInstructionLocation
+        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        + "' type, but this type does not support the '*=' operator"
+      end
+    //--- Analyze source expression
+      [self.mExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inferenceType: selfAvailable.type
+        !inAnalysisContext
+        !?ioTypeMap
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+    //--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (
+        !selfAvailable.type
+        !expression.mResultType
+        !self.mInstructionLocation
+        !?expression
+      )
+    //--- Generate instruction
+      ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
+        !self.mInstructionLocation
+        !selfAvailable.type
+        !inAnalysisContext.selfObjectCppName
+        !""
+        !@()
+        !expression
+        !"mulAssignOperation"
+      }
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
     end
-  //--- Check target variable type support '*= exp' operator
-    if [[selfAvailable.type definition].features contains !.mulAssignOperatorWithExpression] then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '*=' operator"
-    end
-  //--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: selfAvailable.type
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      ?@semanticExpressionForGeneration expression
-    ]
-  //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
-  //--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !selfAvailable.type
-      !inAnalysisContext.selfObjectCppName
-      !""
-      !@()
-      !expression
-      !"mulAssignOperation"
-    }
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
+//! @selfPlusEqualElementsInstructionAST
+//--------------------------------------------------------------------------------------------------
 
-override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
-//--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability selfIsMutable] then
-      error self.mInstructionLocation : "'self' not mutable in this context"
+class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+  private let @actualOutputArgumentList mExpressions
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpressions enterInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                             ?let @analysisContext inAnalysisContext
+                                             ?!@unifiedTypeMap ioTypeMap
+                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                             ?!@localVarManager ioVariableMap {
+  //--- Analyze "self", as receiver expression
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+    //--- Check target variable type support '+=' operator
+      let addAssignOperatorArguments= [selfAvailable.type definition].addAssignOperatorArguments // Empty list if += operator is not supported
+      if [addAssignOperatorArguments count] == 0 then
+        error self.mInstructionLocation
+        : "the target object has the '@" + [selfAvailable.type definition].typeName.string
+        + "' type, but this type does not support the '+=' operator"
+    //--- Analyze source expressions
+      elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
+        error self.mInstructionLocation
+        : "calling the '+=' operator on an '@" + [selfAvailable.type definition].typeName.string
+        + "' object requires "
+        + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
+        + [[self.mExpressions count] string] + " parameter(s)"
+      else
+        var effectiveParameterList = @semanticExpressionListForGeneration ()
+        for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
+          [mExpression analyzeSemanticExpression
+            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+            !?ioUsefulEntitiesGraph
+            !inferenceType: mFormalArgumentType
+            !inAnalysisContext
+            !?ioTypeMap
+            !?ioVariableMap
+            ?@semanticExpressionForGeneration expression
+          ]
+          if mFormalSelector.string != mActualSelector.string then
+            let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+            error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          end
+          checkAssignmentTypeWithImplicitGetterCall (
+            !mFormalArgumentType
+            !expression.mResultType
+            !mEndOfExpressionLocation
+            !?expression
+          )
+          effectiveParameterList += !expression
+        end
+      //--- Generate instruction
+        ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
+          !inAnalysisContext.selfObjectCppName
+          !selfAvailable.type
+          !""
+          !self.mInstructionLocation
+          !@()
+          !effectiveParameterList
+        }
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
     end
-  //--- Check target variable type support '/= exp' operator
-    if [[selfAvailable.type definition].features contains !.divAssignOperatorWithExpression] then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '/=' operator"
-    end
-  //--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType: selfAvailable.type
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      ?@semanticExpressionForGeneration expression
-    ]
-  //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
-  //--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !selfAvailable.type
-      !inAnalysisContext.selfObjectCppName
-      !""
-      !@()
-      !expression
-      !"divAssignOperation"
-    }
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -11248,10 +11248,10 @@ GGS_selfAssignmentInstructionAST_2E_weak GGS_selfAssignmentInstructionAST_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-// @selfPlusEqualElementsInstructionAST reference class
+// @selfDivEqualExpressionInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_selfPlusEqualElementsInstructionAST::objectCompare (const GGS_selfPlusEqualElementsInstructionAST & inOperand) const {
+ComparisonResult GGS_selfDivEqualExpressionInstructionAST::objectCompare (const GGS_selfDivEqualExpressionInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -11269,105 +11269,105 @@ ComparisonResult GGS_selfPlusEqualElementsInstructionAST::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST::GGS_selfPlusEqualElementsInstructionAST (void) :
+GGS_selfDivEqualExpressionInstructionAST::GGS_selfDivEqualExpressionInstructionAST (void) :
 GGS_semanticInstructionAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::
+GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::
 init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_actualOutputArgumentList & in_mExpressions,
+              const GGS_semanticExpressionAST & in_mExpression,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  cPtr_selfPlusEqualElementsInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_selfPlusEqualElementsInstructionAST (inCompiler COMMA_THERE)) ;
-  object->selfPlusEqualElementsInstructionAST_init_21__21_ (in_mInstructionLocation, in_mExpressions, inCompiler) ;
-  const GGS_selfPlusEqualElementsInstructionAST result (object) ;
+  cPtr_selfDivEqualExpressionInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_selfDivEqualExpressionInstructionAST (inCompiler COMMA_THERE)) ;
+  object->selfDivEqualExpressionInstructionAST_init_21__21_ (in_mInstructionLocation, in_mExpression, inCompiler) ;
+  const GGS_selfDivEqualExpressionInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_selfPlusEqualElementsInstructionAST::
-selfPlusEqualElementsInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                                  const GGS_actualOutputArgumentList & in_mExpressions,
-                                                  Compiler * /* inCompiler */) {
+void cPtr_selfDivEqualExpressionInstructionAST::
+selfDivEqualExpressionInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
+                                                   const GGS_semanticExpressionAST & in_mExpression,
+                                                   Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST::GGS_selfPlusEqualElementsInstructionAST (const cPtr_selfPlusEqualElementsInstructionAST * inSourcePtr) :
+GGS_selfDivEqualExpressionInstructionAST::GGS_selfDivEqualExpressionInstructionAST (const cPtr_selfDivEqualExpressionInstructionAST * inSourcePtr) :
 GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfPlusEqualElementsInstructionAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfDivEqualExpressionInstructionAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
-                                                                                                 const GGS_actualOutputArgumentList & in_mExpressions,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) {
-  GGS_selfPlusEqualElementsInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_selfPlusEqualElementsInstructionAST (in_mInstructionLocation, in_mExpressions,  inCompiler COMMA_THERE)) ;
+GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
+                                                                                                   const GGS_semanticExpressionAST & in_mExpression,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
+  GGS_selfDivEqualExpressionInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_selfDivEqualExpressionInstructionAST (in_mInstructionLocation, in_mExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualOutputArgumentList GGS_selfPlusEqualElementsInstructionAST::readProperty_mExpressions (void) const {
+GGS_semanticExpressionAST GGS_selfDivEqualExpressionInstructionAST::readProperty_mExpression (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_actualOutputArgumentList () ;
+    return GGS_semanticExpressionAST () ;
   }else{
-    cPtr_selfPlusEqualElementsInstructionAST * p = (cPtr_selfPlusEqualElementsInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfPlusEqualElementsInstructionAST) ;
-    return p->mProperty_mExpressions ;
+    cPtr_selfDivEqualExpressionInstructionAST * p = (cPtr_selfDivEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selfDivEqualExpressionInstructionAST) ;
+    return p->mProperty_mExpression ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @selfPlusEqualElementsInstructionAST class
+//Pointer class for @selfDivEqualExpressionInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_selfPlusEqualElementsInstructionAST::cPtr_selfPlusEqualElementsInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_selfDivEqualExpressionInstructionAST::cPtr_selfDivEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mExpressions () {
+mProperty_mExpression () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_selfPlusEqualElementsInstructionAST::cPtr_selfPlusEqualElementsInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                                    const GGS_actualOutputArgumentList & in_mExpressions,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_selfDivEqualExpressionInstructionAST::cPtr_selfDivEqualExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                                                      const GGS_semanticExpressionAST & in_mExpression,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mExpressions () {
+mProperty_mExpression () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpressions = in_mExpressions ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selfPlusEqualElementsInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
+const C_galgas_type_descriptor * cPtr_selfDivEqualExpressionInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
 }
 
-void cPtr_selfPlusEqualElementsInstructionAST::description (String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@selfPlusEqualElementsInstructionAST:") ;
+void cPtr_selfDivEqualExpressionInstructionAST::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("[@selfDivEqualExpressionInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mExpressions.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_selfPlusEqualElementsInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+acPtr_class * cPtr_selfDivEqualExpressionInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selfPlusEqualElementsInstructionAST (mProperty_mInstructionLocation, mProperty_mExpressions, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_selfDivEqualExpressionInstructionAST (mProperty_mInstructionLocation, mProperty_mExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -11375,47 +11375,47 @@ acPtr_class * cPtr_selfPlusEqualElementsInstructionAST::duplicate (Compiler * in
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_selfPlusEqualElementsInstructionAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_selfDivEqualExpressionInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @selfPlusEqualElementsInstructionAST generic code implementation
+//     @selfDivEqualExpressionInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ("selfPlusEqualElementsInstructionAST",
-                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ("selfDivEqualExpressionInstructionAST",
+                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfPlusEqualElementsInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
+const C_galgas_type_descriptor * GGS_selfDivEqualExpressionInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_selfPlusEqualElementsInstructionAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_selfDivEqualExpressionInstructionAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_selfPlusEqualElementsInstructionAST (*this)) ;
+    macroMyNew (result, GGS_selfDivEqualExpressionInstructionAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_selfPlusEqualElementsInstructionAST result ;
-  const GGS_selfPlusEqualElementsInstructionAST * p = (const GGS_selfPlusEqualElementsInstructionAST *) inObject.embeddedObject () ;
+GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_selfDivEqualExpressionInstructionAST result ;
+  const GGS_selfDivEqualExpressionInstructionAST * p = (const GGS_selfDivEqualExpressionInstructionAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfPlusEqualElementsInstructionAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_selfDivEqualExpressionInstructionAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("selfPlusEqualElementsInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("selfDivEqualExpressionInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11423,7 +11423,7 @@ GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST:
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_selfPlusEqualElementsInstructionAST_2E_weak::objectCompare (const GGS_selfPlusEqualElementsInstructionAST_2E_weak & inOperand) const {
+ComparisonResult GGS_selfDivEqualExpressionInstructionAST_2E_weak::objectCompare (const GGS_selfDivEqualExpressionInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11443,13 +11443,13 @@ ComparisonResult GGS_selfPlusEqualElementsInstructionAST_2E_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST_2E_weak::GGS_selfPlusEqualElementsInstructionAST_2E_weak (void) :
+GGS_selfDivEqualExpressionInstructionAST_2E_weak::GGS_selfDivEqualExpressionInstructionAST_2E_weak (void) :
 GGS_semanticInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST_2E_weak & GGS_selfPlusEqualElementsInstructionAST_2E_weak::operator = (const GGS_selfPlusEqualElementsInstructionAST & inSource) {
+GGS_selfDivEqualExpressionInstructionAST_2E_weak & GGS_selfDivEqualExpressionInstructionAST_2E_weak::operator = (const GGS_selfDivEqualExpressionInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11461,70 +11461,70 @@ GGS_selfPlusEqualElementsInstructionAST_2E_weak & GGS_selfPlusEqualElementsInstr
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST_2E_weak::GGS_selfPlusEqualElementsInstructionAST_2E_weak (const GGS_selfPlusEqualElementsInstructionAST & inSource) :
+GGS_selfDivEqualExpressionInstructionAST_2E_weak::GGS_selfDivEqualExpressionInstructionAST_2E_weak (const GGS_selfDivEqualExpressionInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST_2E_weak GGS_selfPlusEqualElementsInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
+GGS_selfDivEqualExpressionInstructionAST_2E_weak GGS_selfDivEqualExpressionInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST_2E_weak::bang_selfPlusEqualElementsInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_selfPlusEqualElementsInstructionAST result ;
+GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST_2E_weak::bang_selfDivEqualExpressionInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_selfDivEqualExpressionInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_selfPlusEqualElementsInstructionAST) ;
-      result = GGS_selfPlusEqualElementsInstructionAST ((cPtr_selfPlusEqualElementsInstructionAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_selfDivEqualExpressionInstructionAST) ;
+      result = GGS_selfDivEqualExpressionInstructionAST ((cPtr_selfDivEqualExpressionInstructionAST *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @selfPlusEqualElementsInstructionAST.weak generic code implementation
+//     @selfDivEqualExpressionInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ("selfPlusEqualElementsInstructionAST.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ("selfDivEqualExpressionInstructionAST.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfPlusEqualElementsInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ;
+const C_galgas_type_descriptor * GGS_selfDivEqualExpressionInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_selfPlusEqualElementsInstructionAST_2E_weak::clonedObject (void) const {
+AC_GALGAS_root * GGS_selfDivEqualExpressionInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_selfPlusEqualElementsInstructionAST_2E_weak (*this)) ;
+    macroMyNew (result, GGS_selfDivEqualExpressionInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfPlusEqualElementsInstructionAST_2E_weak GGS_selfPlusEqualElementsInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
-  const GGS_selfPlusEqualElementsInstructionAST_2E_weak * p = (const GGS_selfPlusEqualElementsInstructionAST_2E_weak *) inObject.embeddedObject () ;
+GGS_selfDivEqualExpressionInstructionAST_2E_weak GGS_selfDivEqualExpressionInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
+  const GGS_selfDivEqualExpressionInstructionAST_2E_weak * p = (const GGS_selfDivEqualExpressionInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfPlusEqualElementsInstructionAST_2E_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_selfDivEqualExpressionInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("selfPlusEqualElementsInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("selfDivEqualExpressionInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12380,10 +12380,10 @@ GGS_selfMulEqualExpressionInstructionAST_2E_weak GGS_selfMulEqualExpressionInstr
 }
 
 //--------------------------------------------------------------------------------------------------
-// @selfDivEqualExpressionInstructionAST reference class
+// @selfPlusEqualElementsInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_selfDivEqualExpressionInstructionAST::objectCompare (const GGS_selfDivEqualExpressionInstructionAST & inOperand) const {
+ComparisonResult GGS_selfPlusEqualElementsInstructionAST::objectCompare (const GGS_selfPlusEqualElementsInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -12401,105 +12401,105 @@ ComparisonResult GGS_selfDivEqualExpressionInstructionAST::objectCompare (const 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST::GGS_selfDivEqualExpressionInstructionAST (void) :
+GGS_selfPlusEqualElementsInstructionAST::GGS_selfPlusEqualElementsInstructionAST (void) :
 GGS_semanticInstructionAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::
+GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::
 init_21__21_ (const GGS_location & in_mInstructionLocation,
-              const GGS_semanticExpressionAST & in_mExpression,
+              const GGS_actualOutputArgumentList & in_mExpressions,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  cPtr_selfDivEqualExpressionInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_selfDivEqualExpressionInstructionAST (inCompiler COMMA_THERE)) ;
-  object->selfDivEqualExpressionInstructionAST_init_21__21_ (in_mInstructionLocation, in_mExpression, inCompiler) ;
-  const GGS_selfDivEqualExpressionInstructionAST result (object) ;
+  cPtr_selfPlusEqualElementsInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_selfPlusEqualElementsInstructionAST (inCompiler COMMA_THERE)) ;
+  object->selfPlusEqualElementsInstructionAST_init_21__21_ (in_mInstructionLocation, in_mExpressions, inCompiler) ;
+  const GGS_selfPlusEqualElementsInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_selfDivEqualExpressionInstructionAST::
-selfDivEqualExpressionInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
-                                                   const GGS_semanticExpressionAST & in_mExpression,
-                                                   Compiler * /* inCompiler */) {
+void cPtr_selfPlusEqualElementsInstructionAST::
+selfPlusEqualElementsInstructionAST_init_21__21_ (const GGS_location & in_mInstructionLocation,
+                                                  const GGS_actualOutputArgumentList & in_mExpressions,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpression = in_mExpression ;
+  mProperty_mExpressions = in_mExpressions ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST::GGS_selfDivEqualExpressionInstructionAST (const cPtr_selfDivEqualExpressionInstructionAST * inSourcePtr) :
+GGS_selfPlusEqualElementsInstructionAST::GGS_selfPlusEqualElementsInstructionAST (const cPtr_selfPlusEqualElementsInstructionAST * inSourcePtr) :
 GGS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfDivEqualExpressionInstructionAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfPlusEqualElementsInstructionAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
-                                                                                                   const GGS_semanticExpressionAST & in_mExpression,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) {
-  GGS_selfDivEqualExpressionInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_selfDivEqualExpressionInstructionAST (in_mInstructionLocation, in_mExpression,  inCompiler COMMA_THERE)) ;
+GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::class_func_new (const GGS_location & in_mInstructionLocation,
+                                                                                                 const GGS_actualOutputArgumentList & in_mExpressions,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
+  GGS_selfPlusEqualElementsInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_selfPlusEqualElementsInstructionAST (in_mInstructionLocation, in_mExpressions,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticExpressionAST GGS_selfDivEqualExpressionInstructionAST::readProperty_mExpression (void) const {
+GGS_actualOutputArgumentList GGS_selfPlusEqualElementsInstructionAST::readProperty_mExpressions (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_semanticExpressionAST () ;
+    return GGS_actualOutputArgumentList () ;
   }else{
-    cPtr_selfDivEqualExpressionInstructionAST * p = (cPtr_selfDivEqualExpressionInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_selfDivEqualExpressionInstructionAST) ;
-    return p->mProperty_mExpression ;
+    cPtr_selfPlusEqualElementsInstructionAST * p = (cPtr_selfPlusEqualElementsInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selfPlusEqualElementsInstructionAST) ;
+    return p->mProperty_mExpressions ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @selfDivEqualExpressionInstructionAST class
+//Pointer class for @selfPlusEqualElementsInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_selfDivEqualExpressionInstructionAST::cPtr_selfDivEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_selfPlusEqualElementsInstructionAST::cPtr_selfPlusEqualElementsInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
-mProperty_mExpression () {
+mProperty_mExpressions () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_selfDivEqualExpressionInstructionAST::cPtr_selfDivEqualExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
-                                                                                      const GGS_semanticExpressionAST & in_mExpression,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_selfPlusEqualElementsInstructionAST::cPtr_selfPlusEqualElementsInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                                                    const GGS_actualOutputArgumentList & in_mExpressions,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
-mProperty_mExpression () {
+mProperty_mExpressions () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
-  mProperty_mExpression = in_mExpression ;
+  mProperty_mExpressions = in_mExpressions ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selfDivEqualExpressionInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
+const C_galgas_type_descriptor * cPtr_selfPlusEqualElementsInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
 }
 
-void cPtr_selfDivEqualExpressionInstructionAST::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@selfDivEqualExpressionInstructionAST:") ;
+void cPtr_selfPlusEqualElementsInstructionAST::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@selfPlusEqualElementsInstructionAST:") ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpressions.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_selfDivEqualExpressionInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+acPtr_class * cPtr_selfPlusEqualElementsInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selfDivEqualExpressionInstructionAST (mProperty_mInstructionLocation, mProperty_mExpression, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_selfPlusEqualElementsInstructionAST (mProperty_mInstructionLocation, mProperty_mExpressions, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -12507,47 +12507,47 @@ acPtr_class * cPtr_selfDivEqualExpressionInstructionAST::duplicate (Compiler * i
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_selfDivEqualExpressionInstructionAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_selfPlusEqualElementsInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @selfDivEqualExpressionInstructionAST generic code implementation
+//     @selfPlusEqualElementsInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ("selfDivEqualExpressionInstructionAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ("selfPlusEqualElementsInstructionAST",
+                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfDivEqualExpressionInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST ;
+const C_galgas_type_descriptor * GGS_selfPlusEqualElementsInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_selfDivEqualExpressionInstructionAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_selfPlusEqualElementsInstructionAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_selfDivEqualExpressionInstructionAST (*this)) ;
+    macroMyNew (result, GGS_selfPlusEqualElementsInstructionAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST::extractObject (const GGS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_selfDivEqualExpressionInstructionAST result ;
-  const GGS_selfDivEqualExpressionInstructionAST * p = (const GGS_selfDivEqualExpressionInstructionAST *) inObject.embeddedObject () ;
+GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST::extractObject (const GGS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_selfPlusEqualElementsInstructionAST result ;
+  const GGS_selfPlusEqualElementsInstructionAST * p = (const GGS_selfPlusEqualElementsInstructionAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfDivEqualExpressionInstructionAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_selfPlusEqualElementsInstructionAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("selfDivEqualExpressionInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("selfPlusEqualElementsInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12555,7 +12555,7 @@ GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAS
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_selfDivEqualExpressionInstructionAST_2E_weak::objectCompare (const GGS_selfDivEqualExpressionInstructionAST_2E_weak & inOperand) const {
+ComparisonResult GGS_selfPlusEqualElementsInstructionAST_2E_weak::objectCompare (const GGS_selfPlusEqualElementsInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12575,13 +12575,13 @@ ComparisonResult GGS_selfDivEqualExpressionInstructionAST_2E_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST_2E_weak::GGS_selfDivEqualExpressionInstructionAST_2E_weak (void) :
+GGS_selfPlusEqualElementsInstructionAST_2E_weak::GGS_selfPlusEqualElementsInstructionAST_2E_weak (void) :
 GGS_semanticInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST_2E_weak & GGS_selfDivEqualExpressionInstructionAST_2E_weak::operator = (const GGS_selfDivEqualExpressionInstructionAST & inSource) {
+GGS_selfPlusEqualElementsInstructionAST_2E_weak & GGS_selfPlusEqualElementsInstructionAST_2E_weak::operator = (const GGS_selfPlusEqualElementsInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12593,70 +12593,70 @@ GGS_selfDivEqualExpressionInstructionAST_2E_weak & GGS_selfDivEqualExpressionIns
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST_2E_weak::GGS_selfDivEqualExpressionInstructionAST_2E_weak (const GGS_selfDivEqualExpressionInstructionAST & inSource) :
+GGS_selfPlusEqualElementsInstructionAST_2E_weak::GGS_selfPlusEqualElementsInstructionAST_2E_weak (const GGS_selfPlusEqualElementsInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST_2E_weak GGS_selfDivEqualExpressionInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
+GGS_selfPlusEqualElementsInstructionAST_2E_weak GGS_selfPlusEqualElementsInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST GGS_selfDivEqualExpressionInstructionAST_2E_weak::bang_selfDivEqualExpressionInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_selfDivEqualExpressionInstructionAST result ;
+GGS_selfPlusEqualElementsInstructionAST GGS_selfPlusEqualElementsInstructionAST_2E_weak::bang_selfPlusEqualElementsInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_selfPlusEqualElementsInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_selfDivEqualExpressionInstructionAST) ;
-      result = GGS_selfDivEqualExpressionInstructionAST ((cPtr_selfDivEqualExpressionInstructionAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_selfPlusEqualElementsInstructionAST) ;
+      result = GGS_selfPlusEqualElementsInstructionAST ((cPtr_selfPlusEqualElementsInstructionAST *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @selfDivEqualExpressionInstructionAST.weak generic code implementation
+//     @selfPlusEqualElementsInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ("selfDivEqualExpressionInstructionAST.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ("selfPlusEqualElementsInstructionAST.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfDivEqualExpressionInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ;
+const C_galgas_type_descriptor * GGS_selfPlusEqualElementsInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfPlusEqualElementsInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_selfDivEqualExpressionInstructionAST_2E_weak::clonedObject (void) const {
+AC_GALGAS_root * GGS_selfPlusEqualElementsInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_selfDivEqualExpressionInstructionAST_2E_weak (*this)) ;
+    macroMyNew (result, GGS_selfPlusEqualElementsInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_selfDivEqualExpressionInstructionAST_2E_weak GGS_selfDivEqualExpressionInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
-  const GGS_selfDivEqualExpressionInstructionAST_2E_weak * p = (const GGS_selfDivEqualExpressionInstructionAST_2E_weak *) inObject.embeddedObject () ;
+GGS_selfPlusEqualElementsInstructionAST_2E_weak GGS_selfPlusEqualElementsInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_selfPlusEqualElementsInstructionAST_2E_weak result ;
+  const GGS_selfPlusEqualElementsInstructionAST_2E_weak * p = (const GGS_selfPlusEqualElementsInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_selfDivEqualExpressionInstructionAST_2E_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_selfPlusEqualElementsInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("selfDivEqualExpressionInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("selfPlusEqualElementsInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
