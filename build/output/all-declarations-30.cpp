@@ -3656,37 +3656,37 @@ void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction
         if (GalgasBool::boolFalse == test_7) {
           GGS_semanticExpressionListForGeneration var_effectiveParameterList_21335 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
           const GGS_selfPlusEqualElementsInstructionAST temp_12 = this ;
-          UpEnumerator_actualOutputArgumentList enumerator_21441 (temp_12.readProperty_mExpressions ()) ;
-          UpEnumerator_functionSignature enumerator_21527 (var_addAssignOperatorArguments_20476) ;
-          while (enumerator_21441.hasCurrentObject () && enumerator_21527.hasCurrentObject ()) {
-            GGS_semanticExpressionForGeneration var_expression_21895 ;
-            callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_21441.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_21527.current_mFormalArgumentType (HERE), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_21895, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 491)) ;
+          UpEnumerator_actualOutputArgumentList enumerator_21434 (temp_12.readProperty_mExpressions ()) ;
+          UpEnumerator_functionSignature enumerator_21469 (var_addAssignOperatorArguments_20476) ;
+          while (enumerator_21434.hasCurrentObject () && enumerator_21469.hasCurrentObject ()) {
+            GGS_semanticExpressionForGeneration var_expression_21863 ;
+            callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_21434.current (HERE).readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_21469.current (HERE).readProperty_mFormalArgumentType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_21863, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 491)) ;
             GalgasBool test_13 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_13) {
-              test_13 = GGS_bool (ComparisonKind::notEqual, enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().objectCompare (enumerator_21441.current_mActualSelector (HERE).readProperty_string ())).boolEnum () ;
+              test_13 = GGS_bool (ComparisonKind::notEqual, enumerator_21469.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (enumerator_21434.current (HERE).readProperty_mActualSelector ().readProperty_string ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_13) {
                 GGS_string temp_14 ;
-                const GalgasBool test_15 = GGS_bool (ComparisonKind::notEqual, enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_15 = GGS_bool (ComparisonKind::notEqual, enumerator_21469.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 if (GalgasBool::boolTrue == test_15) {
-                  temp_14 = enumerator_21527.current_mFormalSelector (HERE).readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 501)) ;
+                  temp_14 = enumerator_21469.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)) ;
                 }else if (GalgasBool::boolFalse == test_15) {
                   temp_14 = GGS_string::makeEmptyString () ;
                 }
                 GGS_string var_s_22001 = GGS_string ("!").add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 501)) ;
                 TC_Array <FixItDescription> fixItArray16 ;
                 appendFixItActions (fixItArray16, EnumFixItKind::fixItReplace, var_s_22001) ;
-                inCompiler->emitSemanticError (enumerator_21441.current_mActualSelector (HERE).readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_22001, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)), fixItArray16  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 502)) ;
+                inCompiler->emitSemanticError (enumerator_21434.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_22001, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 505)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 505)), fixItArray16  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 505)) ;
               }
             }
             {
-            routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_21527.current_mFormalArgumentType (HERE), var_expression_21895.readProperty_mResultType (), enumerator_21441.current_mEndOfExpressionLocation (HERE), var_expression_21895, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 504)) ;
+            routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_21469.current (HERE).readProperty_mFormalArgumentType (), var_expression_21863.readProperty_mResultType (), enumerator_21434.current (HERE).readProperty_mEndOfExpressionLocation (), var_expression_21863, inCompiler  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 507)) ;
             }
-            var_effectiveParameterList_21335.addAssignOperation (var_expression_21895  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 510)) ;
-            enumerator_21441.gotoNextObject () ;
-            enumerator_21527.gotoNextObject () ;
+            var_effectiveParameterList_21335.addAssignOperation (var_expression_21863  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 513)) ;
+            enumerator_21434.gotoNextObject () ;
+            enumerator_21469.gotoNextObject () ;
           }
           const GGS_selfPlusEqualElementsInstructionAST temp_17 = this ;
-          ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_plusEqualnstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_20184.readProperty_type (), GGS_string::makeEmptyString (), temp_17.readProperty_mInstructionLocation (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_effectiveParameterList_21335, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 513)) ;
+          ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_plusEqualnstructionForGeneration::init_21__21__21__21__21__21_ (constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), var_selfAvailable_20184.readProperty_type (), GGS_string::makeEmptyString (), temp_17.readProperty_mInstructionLocation (), GGS_lstringlist::init (inCompiler COMMA_HERE), var_effectiveParameterList_21335, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 516)) ;
         }
       }
     }
@@ -3694,7 +3694,7 @@ void cPtr_selfPlusEqualElementsInstructionAST::method_analyzeSemanticInstruction
   if (GalgasBool::boolFalse == test_0) {
     const GGS_selfPlusEqualElementsInstructionAST temp_18 = this ;
     TC_Array <FixItDescription> fixItArray19 ;
-    inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray19  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 523)) ;
+    inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray19  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 526)) ;
   }
 }
 

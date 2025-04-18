@@ -204,7 +204,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
           return nil
         }
       },
-      actionDelegate: { [weak self] in self?.closeTab (atIndex: $0) },
+      actionDelegate: { [weak self] (_ inRow : Int) in self?.closeTab (atIndex: inRow) },
       title: "",
       minWidth: 25,
       maxWidth: 25,
@@ -338,7 +338,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func selectTab (atIndex inIndex : Int) {
-    if inIndex >= 0, inIndex < self.mTabArray.count, self.mSelectedTabIndex != inIndex {
+    if inIndex >= 0, inIndex < self.mTabArray.count { //, self.mSelectedTabIndex != inIndex {
       self.mSelectedTabIndex = inIndex
     //--- Remove all subviews of base view
       while self.mSourceEditionView.subViews.count > 0 {
@@ -430,8 +430,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       SWIFT_DocumentController.mySaveAllDocuments ()
     //--- Supprimer l'entrée
       self.mTabArray.remove (at: inIndex)
-    //--- Fermer les documents qui ne sont plus visibles (en fait, un seul peut être
-    //    fermé, celui dont on vient de supprimer l'entrée, si il n'est pas référencé ailleurs)
+    //--- Fermer les documents qui ne sont plus visibles
+    //    En fait, un seul peut être fermé, celui dont on vient de supprimer l'entrée,
+    //    si il n'est pas référencé ailleurs
       SWIFT_DocumentController.closeUnreferencedDocuments ()
     //--- Mettre à jour la sélection
       if inIndex == self.mTabArray.count {

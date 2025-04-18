@@ -432,7 +432,6 @@ private proc projectGeneration
       !inOptionComponentMapForGeneration
       !productDirectory
       !quietOutputByDefault
-//      !?appProductFileList
       !?objc: objcAppProductFileList
       !?swift: swiftAppProductFileList
     )

@@ -487,24 +487,27 @@ class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
         + [[self.mExpressions count] string] + " parameter(s)"
       else
         var effectiveParameterList = @semanticExpressionListForGeneration ()
-        for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
-          [mExpression analyzeSemanticExpression
+        for expressionAST in self.mExpressions, addAssignArgument in addAssignOperatorArguments do
+          [expressionAST.mExpression analyzeSemanticExpression
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
-            !inferenceType: mFormalArgumentType
+            !inferenceType: addAssignArgument.mFormalArgumentType
             !inAnalysisContext
             !?ioTypeMap
             !?ioVariableMap
             ?@semanticExpressionForGeneration expression
           ]
-          if mFormalSelector.string != mActualSelector.string then
-            let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-            error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          if addAssignArgument.mFormalSelector.string != expressionAST.mActualSelector.string then
+            let s = "!" + if addAssignArgument.mFormalSelector.string != ""
+              then addAssignArgument.mFormalSelector.string + ":"
+              else ""
+            end
+            error expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
           end
           checkAssignmentTypeWithImplicitGetterCall (
-            !mFormalArgumentType
+            !addAssignArgument.mFormalArgumentType
             !expression.mResultType
-            !mEndOfExpressionLocation
+            !expressionAST.mEndOfExpressionLocation
             !?expression
           )
           effectiveParameterList += !expression
