@@ -84,10 +84,13 @@ import AppKit
         tokenizer.lineHeight.startsBeingObserved (by: self.mLineHeightObserver)
       }
       self.mDisplayStyleChangeObserver.mEventCallBack = { [weak self] in
-        if let me = self {
-          me.mTextStorage.beginEditing ()
-          me.computeLexicalColoring (NSRange (location: 0, length: me.mTextStorage.length), 0)
-          me.mTextStorage.endEditing ()
+        if let me = self { // §
+//          me.mTextStorage.beginEditing ()
+//          me.computeLexicalColoring (
+//            editedRange: NSRange (location: 0, length: me.mTextStorage.length),
+//            changeInLength: 0
+//          )
+//          me.mTextStorage.endEditing ()
           for displayDescriptor in me.mDisplayDescriptors {
             displayDescriptor.possibleElement?.textViewNeedsDisplay ()
           }
@@ -238,7 +241,7 @@ import AppKit
                     changeInLength inDelta : Int) {
     if inEditedMask.contains (.editedCharacters) {
       self.mTextStorage.beginEditing ()
-      self.computeLexicalColoring (inEditedRange, inDelta)
+      self.computeLexicalColoring (editedRange: inEditedRange, changeInLength: inDelta)
       self.mTextStorage.endEditing ()
       if self.mActivateTimerOnChange && (nil == self.mTimerForAutosaving) {
         let timer = Timer (

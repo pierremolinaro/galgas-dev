@@ -485,7 +485,9 @@ private proc projectGeneration
       !inProjectSourceFile
       !inProjectComponentAST.mTargetName.string
       !inProjectComponentAST.mEndOfSourceFile
-      ![inProjectComponentAST.mMajorVersion.bigint string] + "." + inProjectComponentAST.mMinorVersion.bigint + "." + inProjectComponentAST.mRevisionVersion.bigint
+      ![inProjectComponentAST.mMajorVersion.bigint string]
+         + "." + inProjectComponentAST.mMinorVersion.bigint
+         + "." + inProjectComponentAST.mRevisionVersion.bigint
       !projectQualifiedFeatureMap
       !inProjectComponentAST.mGenerationFeatureList
       !quietOutputByDefault

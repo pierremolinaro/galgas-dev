@@ -264,7 +264,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/programComponentCompilation.galgas"
 
 //--- Main program
-  "galgas-sources/galgasProgram.galgas"
+ "galgas-sources/galgasProgram.galgas"
 
 //--- Project component
   "galgas-sources/projectGlobalCheckings.galgas"
