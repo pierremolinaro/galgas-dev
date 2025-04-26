@@ -25,6 +25,7 @@ extension SWIFT_SingleDocument {
 
   func computeLexicalColoring (editedRange inEditedRange : NSRange,
                                changeInLength inChangeInLength : Int) {
+    //Swift.print ("computeLexicalColoring: inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength)")
     if let tokenizer = self.mTokenizer {
       let lineRange = (self.mTextStorage.string as NSString).lineRange (for: inEditedRange)
       DEBUG_PRINT ("computeLexicalColoring: inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength) -> lineRange \(lineRange)")

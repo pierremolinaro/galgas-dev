@@ -72,6 +72,13 @@ import AppKit
   override func read (from inData : Data, ofType inTypeName : String) throws {
     let str = String (data: inData, encoding: .utf8) ?? ""
     DispatchQueue.main.async {
+      self.mLineHeightObserver.mEventCallBack = { [weak self] in
+        if let me = self {
+          for displayDescriptor in me.mDisplayDescriptors {
+            displayDescriptor.possibleElement?.textViewNeedsDisplay ()
+          }
+        }
+      }
       self.mTokenizer = tokenizerFor (extension: self.lastComponentOfFileName.pathExtension)
       if let tokenizer = self.mTokenizer {
         for i : UInt8 in 0 ..< (tokenizer.styleCount () + 3) {
@@ -84,20 +91,13 @@ import AppKit
         tokenizer.lineHeight.startsBeingObserved (by: self.mLineHeightObserver)
       }
       self.mDisplayStyleChangeObserver.mEventCallBack = { [weak self] in
-        if let me = self { // §
-//          me.mTextStorage.beginEditing ()
-//          me.computeLexicalColoring (
-//            editedRange: NSRange (location: 0, length: me.mTextStorage.length),
-//            changeInLength: 0
-//          )
-//          me.mTextStorage.endEditing ()
-          for displayDescriptor in me.mDisplayDescriptors {
-            displayDescriptor.possibleElement?.textViewNeedsDisplay ()
-          }
-        }
-      }
-      self.mLineHeightObserver.mEventCallBack = { [weak self] in
         if let me = self {
+          me.mTextStorage.beginEditing ()
+          me.computeLexicalColoring (
+            editedRange: NSRange (location: 0, length: me.mTextStorage.length),
+            changeInLength: 0
+          )
+          me.mTextStorage.endEditing ()
           for displayDescriptor in me.mDisplayDescriptors {
             displayDescriptor.possibleElement?.textViewNeedsDisplay ()
           }
@@ -134,7 +134,10 @@ import AppKit
       self.releaseTimer ()
       self.mActivateTimerOnChange = false
       self.mTextStorage.beginEditing ()
-      self.mTextStorage.replaceCharacters (in: NSRange (location: 0, length: self.mTextStorage.length), with: inString)
+      self.mTextStorage.replaceCharacters (
+        in: NSRange (location: 0, length: self.mTextStorage.length),
+        with: inString
+      )
       self.mTextStorage.endEditing ()
     }
   }
@@ -300,7 +303,6 @@ import AppKit
   override func save (_ inSender : Any?) {
     super.save (inSender)
     self.releaseTimer ()
-    // NSSound.beep ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

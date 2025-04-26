@@ -967,7 +967,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     for w in NSApp.windows {
       if let window = w as? SWIFT_SingleWindow {
         DispatchQueue.main.async {
-          window.mTabListView.sortAndReloadData ()
+    // §      window.mTabListView.sortAndReloadData ()
           window.editionStateDidChange ()
           window.updateUserDefaults ()
         }
