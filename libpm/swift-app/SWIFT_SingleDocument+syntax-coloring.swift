@@ -27,8 +27,18 @@ extension SWIFT_SingleDocument {
                                changeInLength inChangeInLength : Int) {
     //Swift.print ("computeLexicalColoring: inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength)")
     if let tokenizer = self.mTokenizer {
-      let lineRange = (self.mTextStorage.string as NSString).lineRange (for: inEditedRange)
+      let nsString = self.mTextStorage.string as NSString
+    //---------------------------------------- Edited line range
+      var editedRange = inEditedRange
+      if inChangeInLength < 0 {
+        editedRange.length -= inChangeInLength
+      }
+      if (editedRange.location + editedRange.length) > nsString.length {
+        editedRange.length = nsString.length - editedRange.location
+      }
+      let lineRange = nsString.lineRange (for: editedRange)
       DEBUG_PRINT ("computeLexicalColoring: inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength) -> lineRange \(lineRange)")
+      DEBUG_PRINT ("Edited line «\(nsString.substring (with: lineRange))»")
     //---------------------------------------- Remove edited token from range array
       DEBUG_PRINT ("  ➀ Remove tokens in line range (\(self.mTokenRangeArray.count) tokens)")
       var tokenRangeInsertionIndex = 0
@@ -111,7 +121,7 @@ extension SWIFT_SingleDocument {
       )
       var loop = true
       var attributesArray = [([NSAttributedString.Key : Any], NSRange)] ()
-      while loop, tokenizer.currentLocation < (self.mTextStorage.string as NSString).length {
+      while loop, tokenizer.currentLocation < nsString.length {
         let newToken : SWIFT_Token = tokenizer.parseLexicalTokenForLexicalColoring ()
         if newToken.tokenCode > 0 {
 //          while tokenRangeInsertionIndex < self.mTokenRangeArray.count,
@@ -141,8 +151,8 @@ extension SWIFT_SingleDocument {
           if range.location < 0 {
             Swift.print ("  ERROR: Negative range.location \(range.location), line \(#line)")
             ()
-          }else if (range.location + range.length) > (self.mTextStorage.string as NSString).length {
-            Swift.print ("  ERROR: too large range \(range), string length \( (self.mTextStorage.string as NSString).length), line \(#line)")
+          }else if (range.location + range.length) > nsString.length {
+            Swift.print ("  ERROR: too large range \(range), string length \(nsString.length), line \(#line)")
             ()
           }
         }

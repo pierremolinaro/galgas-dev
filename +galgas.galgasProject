@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------------------------------------
-//                                           
-//  Compile all galgas sources               
-//                                           
-//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
-//                                           
+//
+//  Compile all galgas sources
+//
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
+//
 //  MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -33,9 +33,6 @@ project (3:8:0) -> "galgas" {
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
-
-//--- JSON Parser
-//  "galgas-sources/json.galgas"
 
 //--- Command Line Options
   "galgas-sources/galgasCommandLineOptions.galgas"
@@ -207,7 +204,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/expression-unary-minus.galgas"
   "galgas-sources/expression-unary-plus.galgas"
   "galgas-sources/expression-unary-wrapping-minus.galgas"
-  
+
   "galgas-sources/galgasExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"
 
