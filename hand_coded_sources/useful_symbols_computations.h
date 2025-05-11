@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class Compiler ;
@@ -40,7 +40,7 @@ class BinaryDecisionDiagramRelation ;
 void useful_symbols_computations (Compiler * inCompiler,
                                   const GGS_location & inErrorLocation,
                                   const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                                  const cPureBNFproductionsList & inPureBNFproductions,
+                                  const PureBNFproductionsList & inPureBNFproductions,
                                   const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,
                                   HTMLString & ioHTMLFileContents,

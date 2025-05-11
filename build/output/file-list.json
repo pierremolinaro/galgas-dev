@@ -48,7 +48,7 @@
         "all-declarations-0.cpp",
         "all-predefined-types.cpp",
         "C_galgas_quiet_option.cpp",
-        "cDecisionTableElement.cpp",
+        "DecisionTableElement.cpp",
         "GrammarVocabulary.cpp",
         "buildPureBNFgrammar.cpp",
         "empty_strings_computations.cpp",

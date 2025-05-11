@@ -286,7 +286,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/galgasTargetGeneration.galgas"
 
 //--- Hand coded sources
-  %tool-source : "hand_coded_sources/cDecisionTableElement.cpp"
+  %tool-source : "hand_coded_sources/DecisionTableElement.cpp"
   %tool-source : "hand_coded_sources/GrammarVocabulary.cpp"
   %tool-source : "hand_coded_sources/buildPureBNFgrammar.cpp"
   %tool-source : "hand_coded_sources/empty_strings_computations.cpp"

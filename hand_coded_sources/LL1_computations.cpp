@@ -31,7 +31,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "LL1_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
 
@@ -74,7 +74,7 @@ void cAffichagePremiersProduction::action (const bool * tableauDesValeurs,
 //--------------------------------------------------------------------------------------------------
 
 static bool
-check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
+check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
                      const BinaryDecisionDiagramRelation & inFIRSTsets,
                      const BinaryDecisionDiagramRelation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
@@ -121,7 +121,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             ioHTMLFileContents.appendSigned (numeroProduction) ;
             ioHTMLFileContents.addRawData ("</a></td><td><code>") ;
           }
-          cProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
+          GrammarProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
             BinaryDecisionDiagramRelation temp (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
@@ -259,7 +259,7 @@ static void
 engendrerAiguillageNonTerminaux (const GrammarVocabulary & inVocabulary,
                                  const int32_t inOriginalGrammarProductionLeftNonTerminalIndex,
                                  const int16_t nombreDeParametres,
-                                 const cPureBNFproductionsList & inPureBNFproductions,
+                                 const PureBNFproductionsList & inPureBNFproductions,
                                  AbstractOutputStream & fichierCPP,
                                  const String & inAltName,
                                  const String & inSyntaxDirectedTranslationVarName) {
@@ -321,7 +321,7 @@ mLineNumber (inLineNumber) {
 //--------------------------------------------------------------------------------------------------
 
 static void
-printProductions (const cPureBNFproductionsList & inPureBNFproductions,
+printProductions (const PureBNFproductionsList & inPureBNFproductions,
                   const GrammarVocabulary & inVocabulary,
                   const String & inLexiqueName,
                   const int32_t inNonterminalIndex,
@@ -338,7 +338,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
     const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
     for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
       ioProductionRulesIndex.appendObject (ioProductionIndex) ;
-      cProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
+      GrammarProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       String title ;
       inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
       const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
@@ -391,7 +391,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
 //--------------------------------------------------------------------------------------------------
 
 static void
-printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
+printDecisionTable (const PureBNFproductionsList & inPureBNFproductions,
                     const GrammarVocabulary & inVocabulary,
                     const String & inLexiqueName,
                     const int32_t inNonterminalIndex,
@@ -414,7 +414,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
     }else{ // Several productions : generate decision table
       inCppFile.appendCString ("\n") ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
-        cProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
+        GrammarProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <uint64_t> array ;
         p.derivationFirst ().getValueArray (array) ;
         for (int32_t i=0 ; i < array.count () ; i++) {
@@ -448,7 +448,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                                String & ioCppFileContents,
                                const String & inLexiqueName,
                                const GrammarVocabulary & inVocabulary,
-                               const cPureBNFproductionsList & inPureBNFproductions,
+                               const PureBNFproductionsList & inPureBNFproductions,
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
@@ -1018,7 +1018,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
 //--------------------------------------------------------------------------------------------------
 
 void
-LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
+LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const GrammarVocabulary & inVocabulary,

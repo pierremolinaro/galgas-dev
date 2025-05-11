@@ -49,7 +49,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                         const int32_t inOriginalGrammarSymbolCount,
                                                         const String & inSyntaxComponentName,
-                                                        cPureBNFproductionsList & ioProductions) const override ;
+                                                        PureBNFproductionsList & ioProductions) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties

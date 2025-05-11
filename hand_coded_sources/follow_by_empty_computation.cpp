@@ -29,13 +29,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
 static void
-computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
+computeNonterminalFollowedByEmpty (const PureBNFproductionsList & inProductionRules,
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const GrammarVocabulary & inVocabulary,
                                    BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
@@ -53,7 +53,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
     loop = false ;
     outIterationsCount ++ ;
     for (int32_t i=0 ; i<productionsCount ; i++) {
-      const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
+      const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionIsHandled (i COMMA_HERE)) {
         if (vocabularyFollowedByEmpty_Array (p.leftNonTerminalIndex () COMMA_HERE)) {
           const int32_t n = p.derivationLength () ;
@@ -123,7 +123,7 @@ displayNonterminalSymbolsFollowedByEmpty (const BinaryDecisionDiagramRelation & 
 //--------------------------------------------------------------------------------------------------
 
 void
-follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
+follow_by_empty_computations (const PureBNFproductionsList & inPureBNFproductions,
                               HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
                               const GrammarVocabulary & inVocabulary,

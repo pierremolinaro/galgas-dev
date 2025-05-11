@@ -37,7 +37,7 @@ class GrammarVocabulary ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cProduction {
+class GrammarProduction {
   private: String mSourceFileName ;
   private: int32_t mLineDefinition ;
   private: int32_t mColumnDefinition ;
@@ -47,50 +47,60 @@ class cProduction {
   private: uint32_t mProductionIndex ;
 
 //--- Constructor
-  public: cProduction (void) ;
-  public: cProduction (const String & inSourceFileName,
-                        const int32_t inDefinitionLine,
-                        const int32_t inColumnDefinition,
-                        const int32_t inLeftNonTerminalIndex,
-                        TC_UniqueArray <int32_t> & ioDerivation, // Swap
-                        const uint32_t inProductionIndex) ;
-  public: cProduction (const String & inSourceFileName,
-                        const int32_t inDefinitionLine,
-                        const int32_t inColumnDefinition,
-                        const int32_t inLeftNonTerminalIndex) ;
+  public: GrammarProduction (void) ;
+
+  public: GrammarProduction (const String & inSourceFileName,
+                             const int32_t inDefinitionLine,
+                             const int32_t inColumnDefinition,
+                             const int32_t inLeftNonTerminalIndex,
+                             TC_UniqueArray <int32_t> & ioDerivation, // Swap
+                             const uint32_t inProductionIndex) ;
+
+  public: GrammarProduction (const String & inSourceFileName,
+                             const int32_t inDefinitionLine,
+                             const int32_t inColumnDefinition,
+                             const int32_t inLeftNonTerminalIndex) ;
 
 //--- Accessors
   public: inline String sourceFileName (void) const { return mSourceFileName ; }
+
   public: inline int32_t lineDefinition (void) const { return mLineDefinition ; }
+
   public: inline int32_t columnDefinition (void) const { return mColumnDefinition ; }
+
   public: inline int32_t leftNonTerminalIndex (void) const { return mLeftNonTerminalIndex ; }
+
   public: inline uint32_t productionIndex (void) const { return mProductionIndex ; }
+
   public: inline BinaryDecisionDiagramRelation derivationFirst (void) const {
     return mDerivationFirst ;
   }
 
   public: inline int32_t derivationLength (void) const { return mDerivation.count () ; }
-  public: inline int32_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const { return mDerivation (inIndex COMMA_THERE) ; }
+
+  public: inline int32_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+    return mDerivation (inIndex COMMA_THERE) ;
+  }
 
 //--- Generate a C++ call instruction of this production
   public: void engendrerAppelProduction (const int16_t nombreDeParametres,
-                                          const GrammarVocabulary & inVocabulary,
-                                          const String & inAltName,
-                                          AbstractOutputStream & fichierCPP,
-                                          const String & inSyntaxDirectedTranslationVarName) const ;
+                                         const GrammarVocabulary & inVocabulary,
+                                         const String & inAltName,
+                                         AbstractOutputStream & fichierCPP,
+                                         const String & inSyntaxDirectedTranslationVarName) const ;
 
 //--- No copy
-  private: cProduction (const cProduction &) = delete ;
-  private: cProduction & operator = (const cProduction &) = delete ;
+  private: GrammarProduction (const GrammarProduction &) = delete ;
+  private: GrammarProduction & operator = (const GrammarProduction &) = delete ;
 
-  friend void swap (cProduction & ioProduction1, cProduction & ioProduction2) ;
+  friend void swap (GrammarProduction & ioProduction1, GrammarProduction & ioProduction2) ;
 } ;
 
 
 //--------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList final {
-  public: TC_UniqueArray <cProduction> mProductionArray ;
+class PureBNFproductionsList final {
+  public: TC_UniqueArray <GrammarProduction> mProductionArray ;
   public: TC_UniqueArray <int32_t> tableauIndicePremiereProduction ;
   public: TC_UniqueArray <int32_t> tableauIndiceDerniereProduction ;
   public: TC_UniqueArray <int32_t> tableauIndirectionProduction ;
@@ -102,7 +112,7 @@ class cPureBNFproductionsList final {
   public: void buildProductionsArray (const int32_t inTerminalSymbolsCount,
                                       const int32_t inNonTerminalSymbolsCount) ;
 
-  public: cPureBNFproductionsList (void) ;
+  public: PureBNFproductionsList (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -42,7 +42,7 @@
 #include "follow_by_empty_computation.h"
 #include "FOLLOW_computations.h"
 #include "LL1_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "SLR_computations.h"
 #include "LR1_computations.h"
 #include "GrammarVocabulary.h"
@@ -52,7 +52,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cProduction::cProduction (void) :
+GrammarProduction::GrammarProduction (void) :
 mSourceFileName (),
 mLineDefinition (0),
 mColumnDefinition (0),
@@ -64,12 +64,12 @@ mProductionIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-cProduction::cProduction (const String & inSourceFileName,
-                          const int32_t inDefinitionLine,
-                          const int32_t inColumnDefinition,
-                          const int32_t inLeftNonTerminalIndex,
-                          TC_UniqueArray <int32_t> & ioDerivation, // Swap
-                          const uint32_t inProductionIndex) :
+GrammarProduction::GrammarProduction (const String & inSourceFileName,
+                                      const int32_t inDefinitionLine,
+                                      const int32_t inColumnDefinition,
+                                      const int32_t inLeftNonTerminalIndex,
+                                      TC_UniqueArray <int32_t> & ioDerivation, // Swap
+                                      const uint32_t inProductionIndex) :
 mSourceFileName (inSourceFileName),
 mLineDefinition (inDefinitionLine),
 mColumnDefinition (inColumnDefinition),
@@ -82,10 +82,10 @@ mProductionIndex (inProductionIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-cProduction::cProduction (const String & inSourceFileName,
-                          const int32_t inDefinitionLine,
-                          const int32_t inColumnDefinition,
-                          const int32_t inLeftNonTerminalIndex) :
+GrammarProduction::GrammarProduction (const String & inSourceFileName,
+                                      const int32_t inDefinitionLine,
+                                      const int32_t inColumnDefinition,
+                                      const int32_t inLeftNonTerminalIndex) :
 mSourceFileName (inSourceFileName),
 mLineDefinition (inDefinitionLine),
 mColumnDefinition (inColumnDefinition),
@@ -98,7 +98,7 @@ mProductionIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-cPureBNFproductionsList::cPureBNFproductionsList (void) :
+PureBNFproductionsList::PureBNFproductionsList (void) :
 mProductionArray (),
 tableauIndicePremiereProduction (),
 tableauIndiceDerniereProduction (),
@@ -110,7 +110,7 @@ mProductionIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-void cProduction::
+void GrammarProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
                           const GrammarVocabulary & inVocabulary,
                           const String & inAltName,
@@ -140,7 +140,7 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
 
 //--------------------------------------------------------------------------------------------------
 
-void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
+void swap (GrammarProduction & ioProduction1, GrammarProduction & ioProduction2) {
   swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
   swap (ioProduction1.mLineDefinition, ioProduction2.mLineDefinition) ;
   swap (ioProduction1.mColumnDefinition, ioProduction2.mColumnDefinition) ;
@@ -153,15 +153,15 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
 //--------------------------------------------------------------------------------------------------
 
 static bool
-searchForIdenticalProductions (const cPureBNFproductionsList & productions,
+searchForIdenticalProductions (const PureBNFproductionsList & productions,
                                HTMLString & ioHTMLFileContents) {
   ioHTMLFileContents.addRawData ("<p><a name=\"identical_productions\"></a></p>") ;
   ioHTMLFileContents.appendTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
   for (int32_t i=0 ; i<productions.mProductionArray.count () ; i++) {
-    const cProduction & pi = productions.mProductionArray (i COMMA_HERE) ;
+    const GrammarProduction & pi = productions.mProductionArray (i COMMA_HERE) ;
     for (int32_t j=i+1 ; j<productions.mProductionArray.count () ; j++) {
-      const cProduction & pj = productions.mProductionArray (j COMMA_HERE) ;
+      const GrammarProduction & pj = productions.mProductionArray (j COMMA_HERE) ;
       bool identiques = pi.leftNonTerminalIndex () == pj.leftNonTerminalIndex () ;
       if (identiques) {
         identiques = pi.derivationLength () == pj.derivationLength () ;
@@ -368,7 +368,7 @@ analyzeGrammar (Compiler * inCompiler,
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
   GrammarVocabulary vocabulary ;
-  cPureBNFproductionsList pureBNFproductions ;
+  PureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
       gCout.appendCString ("  Building pure BNF productions... ") ;

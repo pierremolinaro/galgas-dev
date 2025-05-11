@@ -33,7 +33,7 @@ typedef enum {
  kMagentaForeColor,
  kCyanForeColor,
  kWhiteForeColor
-} consoleForeColorEnum ;
+} ConsoleForeColorEnum ;
 
 //--------------------------------------------------------------------------------------------------
 //                     BACKGROUND COLOR ENUMERATION                                              
@@ -60,7 +60,7 @@ typedef enum {
  kBlinkTextAttribute,
  kReverseVideoTextAttribute,
  kConcealedTextAttribute
-} consoleTextAttributeEnum ;
+} ConsoleTextAttributeEnum ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -70,13 +70,13 @@ typedef enum {
 
 class ColoredConsole : public AbstractOutputStream {
 //--- Set fore color
-  public: void setForeColor (const consoleForeColorEnum inForeColor) ;
+  public: void setForeColor (const ConsoleForeColorEnum inForeColor) ;
 
 //--- Set background color
   public: void setBackgroundColor (const consoleBackgroundColorEnum inBackgroundColor) ;
 
 //--- Set text attribute
-  public: void setTextAttribute (const consoleTextAttributeEnum inTextAttribute) ;
+  public: void setTextAttribute (const ConsoleTextAttributeEnum inTextAttribute) ;
 
 //--- Fore color, Background color, text attributes are used or not (default: used)
   public: static void setUseTextAttributes (const bool inUsesTextAttributes) ;

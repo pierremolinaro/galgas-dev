@@ -31,7 +31,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class HTMLString ;
 class Lexique ;
 class BinaryDecisionDiagramRelation ;
@@ -39,7 +39,7 @@ class BinaryDecisionDiagramRelationConfiguration ;
 
 //--------------------------------------------------------------------------------------------------
 
-BinaryDecisionDiagramRelation empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
+BinaryDecisionDiagramRelation empty_strings_computations (const PureBNFproductionsList & inPureBNFproductions,
                                        HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,

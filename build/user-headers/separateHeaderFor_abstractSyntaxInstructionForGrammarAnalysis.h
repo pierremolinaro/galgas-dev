@@ -1,7 +1,7 @@
 //--- START OF USER ZONE 1
 
 class HTMLString ;
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class GrammarVocabulary ;
 
 //--- END OF USER ZONE 1
@@ -49,7 +49,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                         const int32_t inOriginalGrammarSymbolCount,
                                                         const String & inSyntaxComponentName,
-                                                        cPureBNFproductionsList & ioProductions) const = 0 ;
+                                                        PureBNFproductionsList & ioProductions) const = 0 ;
 
 //--- END OF USER ZONE 2
 //--- Properties

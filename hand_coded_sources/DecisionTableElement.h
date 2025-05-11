@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//     Class for SLR and LR1 grammar computations                                                
+//  Class for SLR and LR1 grammar computations
 //
 //  Copyright (C) 2008, ..., 2008 Pierre Molinaro.
 //                                           
@@ -31,7 +31,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cDecisionTableElement {
+class DecisionTableElement {
   private: int32_t mParameter ;
   public: inline int32_t parameter (void) const { return mParameter ; }
 
@@ -43,19 +43,19 @@ class cDecisionTableElement {
     return mDecision == kUndefinedState ;
   }
 
-  public: cDecisionTableElement (void) ;
+  public: DecisionTableElement (void) ;
 
-  public: cDecisionTableElement (const cDecisionTableElement & inSource) ;
+  public: DecisionTableElement (const DecisionTableElement & inSource) ;
 
-  public: cDecisionTableElement & operator = (const cDecisionTableElement & inSource) ;
+  public: DecisionTableElement & operator = (const DecisionTableElement & inSource) ;
 
-  private: cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) ;
+  private: DecisionTableElement (const int32_t inParameter, const enumDecision inDecision) ;
   
-  public: static cDecisionTableElement shiftDecision (const int32_t inNextState) ;
+  public: static DecisionTableElement shiftDecision (const int32_t inNextState) ;
 
-  public: static cDecisionTableElement reduceDecision (const int32_t inReduceProduction) ;
+  public: static DecisionTableElement reduceDecision (const int32_t inReduceProduction) ;
 
-  public: static cDecisionTableElement acceptDecision (void) ;
+  public: static DecisionTableElement acceptDecision (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

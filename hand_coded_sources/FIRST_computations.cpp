@@ -29,13 +29,13 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "FIRST_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
 static BinaryDecisionDiagramRelation
-computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
+computeFIRSTsets (const PureBNFproductionsList & inProductionRules,
                   const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
                   const int32_t inTerminalSymbolsCount,
                   const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
@@ -45,7 +45,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------- Compute direct firsts with each production
   BinaryDecisionDiagramRelation directFIRST (vocabulary2Config, false) ;
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
-    const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     const int32_t n = p.derivationLength () ;
     if (n > 0) {
       const BinaryDecisionDiagramRelation left (vocabulary2Config, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;
@@ -187,7 +187,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
 //--------------------------------------------------------------------------------------------------
 
 void
-FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
+FIRST_computations (const PureBNFproductionsList & inPureBNFproductions,
                     HTMLString & ioHTMLFileContents,
                     const bool inPopulateHTMLHelperString,
                     const GrammarVocabulary & inVocabulary,

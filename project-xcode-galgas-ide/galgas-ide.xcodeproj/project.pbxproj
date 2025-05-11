@@ -380,7 +380,7 @@
 		CF8F813F2D0D91490095170B /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp */; };
 		CF8F81402D0D91490095170B /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB12D0D8CFD006DF788 /* FOLLOW_computations.cpp */; };
 		CF8F81412D0D91490095170B /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAAB2D0D8CFD006DF788 /* empty_strings_computations.cpp */; };
-		CF8F81422D0D91490095170B /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA62D0D8CFD006DF788 /* cDecisionTableElement.cpp */; };
+		CF8F81422D0D91490095170B /* DecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA62D0D8CFD006DF788 /* DecisionTableElement.cpp */; };
 		CF8F81432D0D91490095170B /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA92D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp */; };
 		CF8F81442D0D91490095170B /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BABA2D0D8CFD006DF788 /* printOriginalGrammar.cpp */; };
 		CF8F81452D0D91490095170B /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB62D0D8CFD006DF788 /* LL1_computations.cpp */; };
@@ -470,7 +470,7 @@
 		CF93BAC42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp */; };
 		CF93BAC52D0D8CFD006DF788 /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB12D0D8CFD006DF788 /* FOLLOW_computations.cpp */; };
 		CF93BAC62D0D8CFD006DF788 /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAAB2D0D8CFD006DF788 /* empty_strings_computations.cpp */; };
-		CF93BAC72D0D8CFD006DF788 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA62D0D8CFD006DF788 /* cDecisionTableElement.cpp */; };
+		CF93BAC72D0D8CFD006DF788 /* DecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA62D0D8CFD006DF788 /* DecisionTableElement.cpp */; };
 		CF93BAC82D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA92D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp */; };
 		CF93BAC92D0D8CFD006DF788 /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BABA2D0D8CFD006DF788 /* printOriginalGrammar.cpp */; };
 		CF93BACA2D0D8CFD006DF788 /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB62D0D8CFD006DF788 /* LL1_computations.cpp */; };
@@ -964,10 +964,10 @@
 		CF8F81C02D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-cocoa.swift"; sourceTree = "<group>"; };
 		CF93BAA32D0D8CFD006DF788 /* buildPureBNFgrammar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = buildPureBNFgrammar.h; sourceTree = "<group>"; };
 		CF93BAA42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFgrammar.cpp; sourceTree = "<group>"; };
-		CF93BAA52D0D8CFD006DF788 /* cDecisionTableElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cDecisionTableElement.h; sourceTree = "<group>"; };
-		CF93BAA62D0D8CFD006DF788 /* cDecisionTableElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cDecisionTableElement.cpp; sourceTree = "<group>"; };
+		CF93BAA52D0D8CFD006DF788 /* DecisionTableElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionTableElement.h; sourceTree = "<group>"; };
+		CF93BAA62D0D8CFD006DF788 /* DecisionTableElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DecisionTableElement.cpp; sourceTree = "<group>"; };
 		CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "check-big-integer.cpp"; sourceTree = "<group>"; };
-		CF93BAA82D0D8CFD006DF788 /* cPureBNFproductionsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cPureBNFproductionsList.h; sourceTree = "<group>"; };
+		CF93BAA82D0D8CFD006DF788 /* PureBNFproductionsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PureBNFproductionsList.h; sourceTree = "<group>"; };
 		CF93BAA92D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = displayUnicodeLexicalTestFunctions.cpp; sourceTree = "<group>"; };
 		CF93BAAA2D0D8CFD006DF788 /* empty_strings_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = empty_strings_computations.h; sourceTree = "<group>"; };
 		CF93BAAB2D0D8CFD006DF788 /* empty_strings_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty_strings_computations.cpp; sourceTree = "<group>"; };
@@ -1757,10 +1757,9 @@
 			children = (
 				CF93BAA32D0D8CFD006DF788 /* buildPureBNFgrammar.h */,
 				CF93BAA42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp */,
-				CF93BAA52D0D8CFD006DF788 /* cDecisionTableElement.h */,
-				CF93BAA62D0D8CFD006DF788 /* cDecisionTableElement.cpp */,
 				CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */,
-				CF93BAA82D0D8CFD006DF788 /* cPureBNFproductionsList.h */,
+				CF93BAA52D0D8CFD006DF788 /* DecisionTableElement.h */,
+				CF93BAA62D0D8CFD006DF788 /* DecisionTableElement.cpp */,
 				CF93BAA92D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp */,
 				CF93BAAA2D0D8CFD006DF788 /* empty_strings_computations.h */,
 				CF93BAAB2D0D8CFD006DF788 /* empty_strings_computations.cpp */,
@@ -1779,6 +1778,7 @@
 				CF93BAB82D0D8CFD006DF788 /* LR1_computations.cpp */,
 				CF93BAB92D0D8CFD006DF788 /* printOriginalGrammar.h */,
 				CF93BABA2D0D8CFD006DF788 /* printOriginalGrammar.cpp */,
+				CF93BAA82D0D8CFD006DF788 /* PureBNFproductionsList.h */,
 				CF93BABB2D0D8CFD006DF788 /* SLR_computations.h */,
 				CF93BABC2D0D8CFD006DF788 /* SLR_computations.cpp */,
 				CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */,
@@ -1909,7 +1909,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					CFDF0C9B2D0A0EEF0014CD68 = {
 						CreatedOnToolsVersion = 16.2;
@@ -2054,7 +2054,7 @@
 				CF8F813F2D0D91490095170B /* buildPureBNFgrammar.cpp in Sources */,
 				CF8F81402D0D91490095170B /* FOLLOW_computations.cpp in Sources */,
 				CF8F81412D0D91490095170B /* empty_strings_computations.cpp in Sources */,
-				CF8F81422D0D91490095170B /* cDecisionTableElement.cpp in Sources */,
+				CF8F81422D0D91490095170B /* DecisionTableElement.cpp in Sources */,
 				CF8F81432D0D91490095170B /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
 				CF8F81442D0D91490095170B /* printOriginalGrammar.cpp in Sources */,
 				CF8F81452D0D91490095170B /* LL1_computations.cpp in Sources */,
@@ -2375,7 +2375,7 @@
 				CF93BAC42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp in Sources */,
 				CF93BAC52D0D8CFD006DF788 /* FOLLOW_computations.cpp in Sources */,
 				CF93BAC62D0D8CFD006DF788 /* empty_strings_computations.cpp in Sources */,
-				CF93BAC72D0D8CFD006DF788 /* cDecisionTableElement.cpp in Sources */,
+				CF93BAC72D0D8CFD006DF788 /* DecisionTableElement.cpp in Sources */,
 				CF93BAC82D0D8CFD006DF788 /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
 				CF93BAC92D0D8CFD006DF788 /* printOriginalGrammar.cpp in Sources */,
 				CF93BACA2D0D8CFD006DF788 /* LL1_computations.cpp in Sources */,

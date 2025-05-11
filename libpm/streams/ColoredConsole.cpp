@@ -65,7 +65,7 @@ bool ColoredConsole::usesTextAttributes (void) {
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 0
-  void ColoredConsole::setForeColor (const consoleForeColorEnum inForeColor) {
+  void ColoredConsole::setForeColor (const ConsoleForeColorEnum inForeColor) {
     if (gTextAttributesAreUsed) {
       switch (inForeColor) {
       case kBlackForeColor   : printf ("\x1B[30m") ; break ;
@@ -84,7 +84,7 @@ bool ColoredConsole::usesTextAttributes (void) {
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
-  void ColoredConsole::setForeColor (const consoleForeColorEnum /* inForeColor */) {
+  void ColoredConsole::setForeColor (const ConsoleForeColorEnum /* inForeColor */) {
   }
 #endif
 
@@ -117,7 +117,7 @@ bool ColoredConsole::usesTextAttributes (void) {
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 0
-  void ColoredConsole::setTextAttribute (const consoleTextAttributeEnum inTextAttribute) {
+  void ColoredConsole::setTextAttribute (const ConsoleTextAttributeEnum inTextAttribute) {
     if (gTextAttributesAreUsed) {
       switch (inTextAttribute) {
       case kAllAttributesOff          : printf ("\x1B[0m") ; break ;
@@ -133,7 +133,7 @@ bool ColoredConsole::usesTextAttributes (void) {
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
-  void ColoredConsole::setTextAttribute (const consoleTextAttributeEnum /* inTextAttribute */) {
+  void ColoredConsole::setTextAttribute (const ConsoleTextAttributeEnum /* inTextAttribute */) {
   }
 #endif
 

@@ -29,7 +29,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "buildPureBNFgrammar.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
 
@@ -116,7 +116,6 @@ fixNewNonterminalSymbols (GrammarVocabulary & /* ioVocabulary */,
 }
 
 //--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
@@ -186,7 +185,7 @@ void cPtr_selectInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
                                  const String & inSyntaxComponentName,
-                                 cPureBNFproductionsList & ioProductions) const {
+                                 PureBNFproductionsList & ioProductions) const {
 // A ; choix X ou Y ou Z ... fin choix ; B
 //  'aNumeroNonTerminauxRepeter' designe le nouveau non terminal 'choix_xx_xx', note <W>,
 //     et on engendre les productions :
@@ -210,7 +209,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
       }
       instruction.gotoNextObject () ;
     }
-    cProduction p (inSyntaxComponentName,
+    GrammarProduction p (inSyntaxComponentName,
                    mProperty_mStartLocation.startLocation ().lineNumber (),
                    mProperty_mStartLocation.startLocation ().columnNumber (),
                    ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount,
@@ -248,7 +247,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
                                  const String & inSyntaxComponentName,
-                                 cPureBNFproductionsList & ioProductions) const {
+                                 PureBNFproductionsList & ioProductions) const {
 //--- How the sequence 'A ; repeat X while Y while Z ... end repeat ; B' is translated into pure BNF productions
 // A new non terminal, call it <T> is created (in fact, in the BNF file, this non terminal has a mangled
 // name from source file, location line and column : <select_repeat_SOURCEFILE_LINE_COLUMN>)
@@ -264,7 +263,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 //         ...
 
 //--- Insert empty production <T>=.
-  { cProduction p (inSyntaxComponentName,
+  { GrammarProduction p (inSyntaxComponentName,
                    mProperty_mStartLocation.startLocation ().lineNumber (),
                    mProperty_mStartLocation.startLocation ().columnNumber (),
                    ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount) ;
@@ -306,7 +305,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   //--- insert <T> production call
     const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     derivation.appendObject ((int32_t) idx) ;
-    cProduction p (inSyntaxComponentName,
+    GrammarProduction p (inSyntaxComponentName,
                    mProperty_mStartLocation.startLocation ().lineNumber (),
                    mProperty_mStartLocation.startLocation ().columnNumber (),
                    idx,
@@ -344,7 +343,7 @@ void cPtr_terminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
                                  const String & /* inSyntaxComponentName */,
-                                 cPureBNFproductionsList  & /* ioProductions */) const {
+                                 PureBNFproductionsList  & /* ioProductions */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -353,7 +352,7 @@ void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
                                  const String & /* inSyntaxComponentName */,
-                                 cPureBNFproductionsList  & /* ioProductions */) const {
+                                 PureBNFproductionsList  & /* ioProductions */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -367,7 +366,7 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
 void
 buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                      GrammarVocabulary & ioVocabulary,
-                     cPureBNFproductionsList & ioProductions) {
+                     PureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names
   UpEnumerator_syntaxComponentListForGrammarAnalysis currentComponent (inSyntaxComponentsList) ;
   while (currentComponent.hasCurrentObject ()) {
@@ -403,7 +402,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
         }
         instruction.gotoNextObject () ;
       }
-      cProduction p (currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
+      GrammarProduction p (currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
                      currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber (),
                      currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().columnNumber (),
                      terminalSymbolsCount + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue (),
@@ -445,7 +444,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- ... add the production <> -> <start_symbol>
   { TC_UniqueArray <int32_t> derivation ;
     derivation.appendObject ((int32_t) ioVocabulary.getStartSymbol ()) ;
-    cProduction p ("",
+    GrammarProduction p ("",
                    0,
                    0,
                    ioVocabulary.getAllSymbolsCount () - 1,
@@ -469,7 +468,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 void
 printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const GrammarVocabulary & inVocabulary,
-                              const cPureBNFproductionsList & inProductions) {
+                              const PureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;
   inHTMLfile.addRawData ("<p><a name=\"pure_bnf\"></a>") ;
   inHTMLfile.appendCString ("Listing of the ") ;
@@ -479,7 +478,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
   inHTMLfile.appendCString (" :") ;
   inHTMLfile.addRawData ("</p>\n<table class=\"result\">") ;
   for (int32_t i=0 ; i<productionsCount ; i++) {
-    const cProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
+    const GrammarProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.addRawData ("<a name=\"pure_bnf_") ;
     inHTMLfile.appendSigned (i) ;
@@ -529,7 +528,7 @@ printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
 
 //--------------------------------------------------------------------------------------------------
 
-void cPureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymbolsCount,
+void PureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymbolsCount,
                                                      const int32_t inNonTerminalSymbolsCount) {
   const int32_t nombreProductions = mProductionArray.count () ;
 
@@ -550,14 +549,14 @@ void cPureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSym
 //--- Parcourir les productions
   int32_t indiceIndirection = 0 ;
   for (int32_t i=0 ; i<nombreProductions ; i++) {
-    cProduction & p = mProductionArray (i COMMA_HERE) ;
+    GrammarProduction & p = mProductionArray (i COMMA_HERE) ;
     if (! productionTraitee (i COMMA_HERE)) {
       productionTraitee.setObjectAtIndex (true, i COMMA_HERE) ;
       const int32_t g = ((int32_t) p.leftNonTerminalIndex ()) - inTerminalSymbolsCount ;
       tableauIndicePremiereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
       tableauIndirectionProduction.setObjectAtIndex (i, indiceIndirection COMMA_HERE) ;
       for (int32_t j=i+1 ; j<nombreProductions ; j++) {
-        cProduction & pj = mProductionArray (j COMMA_HERE) ;
+        GrammarProduction & pj = mProductionArray (j COMMA_HERE) ;
         if (p.leftNonTerminalIndex () == pj.leftNonTerminalIndex ()) {
           indiceIndirection ++ ;
           tableauIndirectionProduction.setObjectAtIndex (j, indiceIndirection COMMA_HERE) ;

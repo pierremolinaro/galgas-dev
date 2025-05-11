@@ -26,7 +26,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxComponentListForGrammarAnalysis ;
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 
@@ -35,13 +35,13 @@ class HTMLString ;
 void
 buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                      GrammarVocabulary & ioVocabulary,
-                     cPureBNFproductionsList & ioProductions) ;
+                     PureBNFproductionsList & ioProductions) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void
 printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
                               const GrammarVocabulary & inVocabulary,
-                              const cPureBNFproductionsList & inProductions) ;
+                              const PureBNFproductionsList & inProductions) ;
 
 //--------------------------------------------------------------------------------------------------

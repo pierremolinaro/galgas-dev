@@ -29,7 +29,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "FOLLOW_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
+static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
                                const BinaryDecisionDiagramRelation & inNonterminalSymbolsFollowedByEmpty,
                                const GrammarVocabulary & inVocabulary,
                                const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
@@ -52,7 +52,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
   BinaryDecisionDiagramRelation lastOfProduction (directFollowers.configuration(), false) ;
 //--- Build the directFollower and lastOfProduction sets
   for (int32_t ip=0 ; ip<inProductionRules.mProductionArray.count () ; ip++) {
-    const cProduction & p = inProductionRules.mProductionArray (ip COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (ip COMMA_HERE) ;
     const int32_t derivationLength = p.derivationLength () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
@@ -239,7 +239,7 @@ checkFOLLOWsets (HTMLString & ioHTMLFileContents,
 
 //--------------------------------------------------------------------------------------------------
 
-void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
+void FOLLOW_computations (const PureBNFproductionsList & inPureBNFproductions,
                           HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
                           const GrammarVocabulary & inVocabulary,

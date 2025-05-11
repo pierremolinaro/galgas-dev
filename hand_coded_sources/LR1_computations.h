@@ -31,7 +31,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class String ;
@@ -39,7 +39,7 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 
-void LR1_computations (const cPureBNFproductionsList & inProductionRules,
+void LR1_computations (const PureBNFproductionsList & inProductionRules,
                        const GrammarVocabulary & inVocabulary,
                        HTMLString & ioHTMLFileContents,
                        const bool inPopulateHTMLHelperString,

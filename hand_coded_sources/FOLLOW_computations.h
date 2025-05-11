@@ -31,7 +31,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList ;
+class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class Lexique ;
@@ -40,7 +40,7 @@ class BinaryDecisionDiagramRelation ;
 //--------------------------------------------------------------------------------------------------
 
 void
-FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
+FOLLOW_computations (const PureBNFproductionsList & inPureBNFproductions,
                      HTMLString & ioHTMLFileContents,
                      const bool inPopulateHTMLHelperString,
                      const GrammarVocabulary & inVocabulary,

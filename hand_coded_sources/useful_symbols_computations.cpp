@@ -32,14 +32,14 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "useful_symbols_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
 
 //--------------------------------------------------------------------------------------------------
 
 static void
-computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
+computeUsefulSymbols (const PureBNFproductionsList & inPureBNFproductions,
                       const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                       BinaryDecisionDiagramRelation & outUsefulSymbols,
                       const uint16_t inStartSymbolIndex,
@@ -51,7 +51,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   vocabulary2.addVariable ("target", inVocabularyBDDType) ;
   BinaryDecisionDiagramRelation accessibilityRelation (vocabulary2, false) ;
   for (int32_t i=0 ; i<inPureBNFproductions.mProductionArray.count () ; i++) {
-    const cProduction & p = inPureBNFproductions.mProductionArray (i COMMA_HERE) ;
+    const GrammarProduction & p = inPureBNFproductions.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () > 0) {
       BinaryDecisionDiagramRelation rightVocabularyRelation (vocabulary2, false) ;
       rightVocabularyRelation.setToEmpty () ;
@@ -187,7 +187,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
 void useful_symbols_computations (Compiler * inCompiler,
                                   const GGS_location & inErrorLocation,
                                   const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                                  const cPureBNFproductionsList & inPureBNFproductions,
+                                  const PureBNFproductionsList & inPureBNFproductions,
                                   const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,
                                   HTMLString & ioHTMLFileContents,

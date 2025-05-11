@@ -30,9 +30,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SLR_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
-#include "cDecisionTableElement.h"
+#include "DecisionTableElement.h"
 #include "grammarCompilation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -105,19 +105,19 @@ class c_LR0_items_set final {
                               const int32_t inLocationIndex) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
-  public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+  public: void getTransitionFrom (const PureBNFproductionsList & inProductionRules,
                                   const int32_t inSymbol,
                                   c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Closing the LR0 items set
-  public: void close_items_set (const cPureBNFproductionsList & inProductionRules,
+  public: void close_items_set (const PureBNFproductionsList & inProductionRules,
                                 const int32_t inTerminalSymbolsCount) ;
 
 //--- Empty set ?
   public: bool isEmptySet (void) const ;
 
 //--- Display LR0 items set
-  public: void display (const cPureBNFproductionsList & inProductionRules,
+  public: void display (const PureBNFproductionsList & inProductionRules,
                          const GrammarVocabulary & inVocabulary,
                          HTMLString & inHTMLfile) ;
 
@@ -126,7 +126,7 @@ class c_LR0_items_set final {
                                                    const c_LR0_items_set & inItemsSet2) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
-  public: void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
+  public: void getProductionsWhereLocationIsRight (const PureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
@@ -176,7 +176,7 @@ add_LR0_item (const int32_t inProductionRuleIndex,
 
 
 void c_LR0_items_set::
-close_items_set (const cPureBNFproductionsList & inProductionRules,
+close_items_set (const PureBNFproductionsList & inProductionRules,
                  const int32_t inTerminalSymbolsCount) {
   bool loop = true ;
   while (loop) {
@@ -211,11 +211,11 @@ bool c_LR0_items_set::isEmptySet (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void c_LR0_items_set::
-display (const cPureBNFproductionsList & inProductionRules,
+display (const PureBNFproductionsList & inProductionRules,
          const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
-    const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.addRawData ("<span class=\"list\">") ;
     inHTMLfile.appendCString ("[") ;
@@ -239,13 +239,13 @@ display (const cPureBNFproductionsList & inProductionRules,
 //--------------------------------------------------------------------------------------------------
 
 void c_LR0_items_set::
-getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+getTransitionFrom (const PureBNFproductionsList & inProductionRules,
                    const int32_t inSymbol,
                    c_LR0_items_set & out_LR0_item_set) {
   out_LR0_item_set.mItemsSet.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-    const cProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location < p.derivationLength ()) {
       const int32_t symbol = p.derivationAtIndex (location COMMA_HERE) ;
@@ -259,14 +259,14 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
 //--------------------------------------------------------------------------------------------------
 
 void c_LR0_items_set::
-getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
+getProductionsWhereLocationIsRight (const PureBNFproductionsList & inProductionRules,
                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                     bool & outAcceptCondition) {
   outProductionsSet.removeAllKeepingCapacity () ;
   outAcceptCondition = false ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-    const cProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.derivationLength ()) {
       outProductionsSet.appendObject (productionRuleIndex) ;
@@ -513,19 +513,19 @@ class c_LR0_items_sets_collection final {
   public: int32_t getStatesCount (void) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
-  public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+  public: void getTransitionFrom (const PureBNFproductionsList & inProductionRules,
                                    const int32_t inStateIndex,
                                    const int32_t inSymbol,
                                    c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Display LR0 items set
-  public: void display (const cPureBNFproductionsList & inProductionRules,
+  public: void display (const PureBNFproductionsList & inProductionRules,
                          const GrammarVocabulary & inVocabulary,
                          HTMLString & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
   public: void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
-                                                    const cPureBNFproductionsList & inProductionRules,
+                                                    const PureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
@@ -559,7 +559,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
 //--------------------------------------------------------------------------------------------------
 
 void c_LR0_items_sets_collection::
-display (const cPureBNFproductionsList & inProductionRules,
+display (const PureBNFproductionsList & inProductionRules,
          const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
@@ -581,7 +581,7 @@ int32_t c_LR0_items_sets_collection::getStatesCount (void) {
 //--------------------------------------------------------------------------------------------------
 
 void c_LR0_items_sets_collection::
-getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+getTransitionFrom (const PureBNFproductionsList & inProductionRules,
                    const int32_t inStateIndex,
                    const int32_t inSymbol,
                    c_LR0_items_set & out_LR0_item_set) {
@@ -592,7 +592,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
 
 void c_LR0_items_sets_collection::
 getProductionsWhereLocationIsRight (const int32_t inStateIndex,
-                                    const cPureBNFproductionsList & inProductionRules,
+                                    const PureBNFproductionsList & inProductionRules,
                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                     bool & outAcceptCondition) {
   m_LR0_items_sets_array (inStateIndex COMMA_HERE)
@@ -661,9 +661,9 @@ mTargetState (inTargetState) {
 //--------------------------------------------------------------------------------------------------
 
 static void
-generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
+generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                                const GrammarVocabulary & inVocabulary,
-                               const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
+                               const TC_UniqueArray2 <DecisionTableElement> & inSLRdecisionTable,
                                const TC_UniqueArray <c_LR0_automaton_transition> & inTransitionList,
                                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
@@ -722,8 +722,8 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     ioCppFileContents.appendCString (")") ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
-      const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
-      if (decision != cDecisionTableElement::kUndefinedState) {
+      const DecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
+      if (decision != DecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         ioCppFileContents.appendCString ("\n") ;
         if (isFirst) {
@@ -737,11 +737,11 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents.appendCString ("::kToken_") ;
         ioCppFileContents.appendString (inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()) ;
         ioCppFileContents.appendCString (", ") ;
-        if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
+        if (decision == DecisionTableElement::kDecisionReduce) { // Reduce action
           ioCppFileContents.appendCString ("BOTTOM_UP_REDUCE (") ;
           ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents.appendCString (")") ;
-        }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
+        }else if (decision == DecisionTableElement::kDecisionShift) { // Shift action
           ioCppFileContents.appendCString ("BOTTOM_UP_SHIFT (") ;
           ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents.appendCString (")") ;
@@ -1399,7 +1399,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 //--------------------------------------------------------------------------------------------------
 
 static void
-compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
+compute_LR0_automation (const PureBNFproductionsList & inProductionRules,
                         const GrammarVocabulary & inVocabulary,
                         c_LR0_items_sets_collection & outLR0_items_sets_collection,
                         TC_UniqueArray <c_LR0_automaton_transition> & outTransitionList) {
@@ -1431,7 +1431,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 //--------------------------------------------------------------------------------------------------
 
 void
-SLR_computations (const cPureBNFproductionsList & inProductionRules,
+SLR_computations (const PureBNFproductionsList & inProductionRules,
                   const GrammarVocabulary & inVocabulary,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
@@ -1508,7 +1508,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
 
 //--- Build SLR table... detect if grammar is not SLR
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  TC_UniqueArray2 <cDecisionTableElement> SLRdecisionTable (LR0_items_sets_collection.getStatesCount (), terminalSymbolsCount) ;
+  TC_UniqueArray2 <DecisionTableElement> SLRdecisionTable (LR0_items_sets_collection.getStatesCount (), terminalSymbolsCount) ;
   int32_t shiftActions = 0 ;
   int32_t reduceActions = 0 ;
   int32_t successorEntries = 0 ;
@@ -1533,7 +1533,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
         ioHTMLFileContents.appendSigned (targetState) ;
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;
       }
-      SLRdecisionTable (sourceState, terminal COMMA_HERE) = cDecisionTableElement::shiftDecision (targetState) ;
+      SLRdecisionTable (sourceState, terminal COMMA_HERE) = DecisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
     }
   }
@@ -1568,7 +1568,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
         }
         conflictCount += 1 ;
       }
-      SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
+      SLRdecisionTable (state, terminal COMMA_HERE) = DecisionTableElement::acceptDecision () ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.addRawData ("</td></tr>") ;
       }
@@ -1599,7 +1599,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.addRawData ("</td></tr>") ;
         }
-        SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
+        SLRdecisionTable (state, terminal COMMA_HERE) = DecisionTableElement::reduceDecision (productionIndex) ;
         reduceActions += 1 ;
       }
     }

@@ -112,7 +112,7 @@
   <Unit filename="../build/output/all-declarations-1.cpp" />
   <Unit filename="../build/output/all-declarations-0.cpp" />
   <Unit filename="../build/output/all-predefined-types.cpp" />
-  <Unit filename="../hand_coded_sources/cDecisionTableElement.cpp" />
+  <Unit filename="../hand_coded_sources/DecisionTableElement.cpp" />
   <Unit filename="../hand_coded_sources/GrammarVocabulary.cpp" />
   <Unit filename="../hand_coded_sources/buildPureBNFgrammar.cpp" />
   <Unit filename="../hand_coded_sources/empty_strings_computations.cpp" />

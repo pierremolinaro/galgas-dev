@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//     Class for SLR and LR1 grammar computations                                                
+//  Class for SLR and LR1 grammar computations
 //
 //  Copyright (C) 2008, ..., 2008 Pierre Molinaro.
 //                                           
@@ -23,7 +23,7 @@
 //                                           
 //--------------------------------------------------------------------------------------------------
 
-#include "cDecisionTableElement.h"
+#include "DecisionTableElement.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -31,21 +31,21 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement::cDecisionTableElement (void) :
+DecisionTableElement::DecisionTableElement (void) :
 mParameter (0),
 mDecision (kUndefinedState) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement::cDecisionTableElement (const cDecisionTableElement & inSource) :
+DecisionTableElement::DecisionTableElement (const DecisionTableElement & inSource) :
 mParameter (inSource.mParameter),
 mDecision (inSource.mDecision) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement & cDecisionTableElement::operator = (const cDecisionTableElement & inSource) {
+DecisionTableElement & DecisionTableElement::operator = (const DecisionTableElement & inSource) {
   mParameter = inSource.mParameter ;
   mDecision = inSource.mDecision ;
   return *this ;
@@ -53,29 +53,29 @@ cDecisionTableElement & cDecisionTableElement::operator = (const cDecisionTableE
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement::cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) :
+DecisionTableElement::DecisionTableElement (const int32_t inParameter, const enumDecision inDecision) :
 mParameter (inParameter),
 mDecision (inDecision) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement cDecisionTableElement::shiftDecision (const int32_t inNextState) {
-  cDecisionTableElement d (inNextState, kDecisionShift) ;
+DecisionTableElement DecisionTableElement::shiftDecision (const int32_t inNextState) {
+  DecisionTableElement d (inNextState, kDecisionShift) ;
   return d ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement cDecisionTableElement::reduceDecision (const int32_t inReduceProduction) {
-  cDecisionTableElement d (inReduceProduction, kDecisionReduce) ;
+DecisionTableElement DecisionTableElement::reduceDecision (const int32_t inReduceProduction) {
+  DecisionTableElement d (inReduceProduction, kDecisionReduce) ;
   return d ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cDecisionTableElement cDecisionTableElement::acceptDecision (void) {
-  cDecisionTableElement d (0, kDecisionAccept) ;
+DecisionTableElement DecisionTableElement::acceptDecision (void) {
+  DecisionTableElement d (0, kDecisionAccept) ;
   return d ;
 }
 

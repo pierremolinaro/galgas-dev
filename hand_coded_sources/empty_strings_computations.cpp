@@ -29,17 +29,17 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "empty_strings_computations.h"
-#include "cPureBNFproductionsList.h"
+#include "PureBNFproductionsList.h"
 #include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
 static BinaryDecisionDiagramRelation
-computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
+computeNonterminalSymbolsHavingEmptyDerivation (const PureBNFproductionsList & inProductionRules,
                                                 const BinaryDecisionDiagramRelationConfiguration & inConfiguration) {
   BinaryDecisionDiagramRelation nonterminalSymbolsHavingEmptyDerivation (inConfiguration, false) ;
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
-    const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
+    const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () == 0) {
       nonterminalSymbolsHavingEmptyDerivation.orWith (BinaryDecisionDiagramRelation (inConfiguration, 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
     }
@@ -82,7 +82,7 @@ printNonterminalSymbolsHavingEmptyDerivation (const BinaryDecisionDiagramRelatio
 //--------------------------------------------------------------------------------------------------
 
 static BinaryDecisionDiagramRelation
-computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
+computeNonterminalDerivingInEmptyString (const PureBNFproductionsList & inProductionRules,
                                          const BinaryDecisionDiagramRelation & inNonTerminalHavingEmptyDerivation,
                                          TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide,
                                          const uint32_t inAllSymbolsCount,
@@ -101,7 +101,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
     onProgresse = false ;
     outIterationsCount ++ ;
     for (int32_t i=0 ; i<productionCount ; i++) {
-      const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
+      const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionTraitee (i COMMA_HERE)) {
         const int32_t n = p.derivationLength () ;
         bool estVide = true ;
@@ -182,7 +182,7 @@ printNonterminalDerivingInEmptyString (const BinaryDecisionDiagramRelation & inV
 //--------------------------------------------------------------------------------------------------
 
 BinaryDecisionDiagramRelation
-empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
+empty_strings_computations (const PureBNFproductionsList & inPureBNFproductions,
                             HTMLString & ioHTMLFileContents,
                             const bool inPopulateHTMLstring,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,

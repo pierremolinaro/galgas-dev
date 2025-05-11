@@ -55,6 +55,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private let mSearchInFilesView = AutoLayoutVerticalStackView ()
   private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
+    .setRecentsAutosaveName ("SearchTextFieldRecents")
   private let mSearchResultLabel = AutoLayoutStaticLabel (title: "", bold: false, size: .small, alignment: .center)
   private let mSearchResultOutlineView = AutoLayoutOutlineView (size: .small, allowsEmptySelection: true, allowsMultipleSelection: false)
     .noHeaderView ()
