@@ -247,7 +247,7 @@ class String : public AbstractOutputStream {
 
 //--- Returns a string made by deleting the extension (if any, and only the last)
 //    from the receiver.
-  public: String stringByDeletingPathExtension (void) const ;
+  public: String deletingPathExtension (void) const ;
 
 //--- Returns the last path component of the receiver.
   public: String lastPathComponent (void) const ;

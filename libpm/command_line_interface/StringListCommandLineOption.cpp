@@ -127,12 +127,12 @@ void StringListCommandLineOption::printStringOptions (void) {
         if (i != 0) {
           gCout.appendCString (" ") ;
         }
-        gCout.setForeColor (kBlueForeColor) ;
-        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.setConsoleForeColor (kBlueForeColor) ;
+        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendCString ("-") ;
         gCout.appendASCIIChar (p->mCommandChar) ;
         gCout.appendCString ("=string") ;
-        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       }
       gCout.appendCString (" ...\n") ;
     }
@@ -141,12 +141,12 @@ void StringListCommandLineOption::printStringOptions (void) {
         if (i != 0) {
           gCout.appendCString (" ") ;
         }
-        gCout.setForeColor (kBlueForeColor) ;
-        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.setConsoleForeColor (kBlueForeColor) ;
+        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendCString ("--") ;
         gCout.appendString (p->mCommandString) ;
         gCout.appendCString ("=string") ;
-        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       }
       gCout.appendCString (" ...\n") ;
     }

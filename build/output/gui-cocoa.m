@@ -35,7 +35,7 @@ NSArray * nibsAndClasses (void) {
 //--------------------------------------------------------------------------------------------------
 
 NSDictionary * indexingDescriptorDictionary (void) {
-  return [NSDictionary dictionaryWithObjectsAndKeys: @"build/indexes", @"galgasProject", @"*-build/indexes", @"ggsproject", nil] ;
+  return [NSDictionary dictionaryWithObjectsAndKeys: @"build/indexes", @"galgasProject", @"*+BUILD/indexes", @"ggsproject", nil] ;
 }
 
 //--------------------------------------------------------------------------------------------------

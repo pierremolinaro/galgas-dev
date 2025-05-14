@@ -562,7 +562,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
        let appDelegate = NSApp.delegate as? SWIFT_AppDelegate {
       let projectFileDirectory = projectFilePath.deletingLastPathComponent
       let projectFileName = projectFilePath.lastPathComponent
-      let projectFileNameModified = projectFileName.replacingOccurrences (of: ".", with: "-")
+      let projectFileNameModified = projectFileName.replacingOccurrences (of: ".", with: "+")
       let modifiedIndexingSuffix = indexingSuffix.replacingOccurrences (of: "*", with: projectFileNameModified)
       let indexingDirectory = projectFileDirectory + "/" + modifiedIndexingSuffix
       try? fm.createDirectory (

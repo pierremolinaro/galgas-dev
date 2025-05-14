@@ -344,7 +344,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
   if (! executionModeIsLexicalAnalysisOnly ()) {
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
-       && (sourceFilePath ().stringByDeletingPathExtension ().length () > 0) ;
+       && (sourceFilePath ().deletingPathExtension ().length () > 0) ;
     String syntaxTreeDescriptionString ;
     TC_Array <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
@@ -610,7 +610,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.appendCString ("}\n") ;
-      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + String (".dot") ;
+      const String dotFilePath = sourceFilePath ().deletingPathExtension () + String (".dot") ;
       GGS_bool fileWritten ;
       GGS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GGS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -715,7 +715,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     }
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
-       && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
+       && (sourceFilePath ().deletingPathExtension () != "") ;
     String syntaxTreeDescriptionString ;
     TC_Array <String> shiftedElementStack ;
     shiftedElementStack.appendObject ("TOP") ;
@@ -932,7 +932,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.appendCString ("}\n") ;
-      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      const String dotFilePath = sourceFilePath ().deletingPathExtension () + ".dot" ;
       GGS_bool fileWritten ;
       GGS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GGS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }

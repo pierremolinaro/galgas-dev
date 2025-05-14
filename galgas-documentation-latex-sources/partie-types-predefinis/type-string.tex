@@ -664,6 +664,23 @@ Une erreur est déclenchée à l'exécution si le réception n'est pas une chaî
 
 
 
+
+
+
+
+
+\subsectionGetter{deletingPathExtension}{string}
+
+\begin{galgas4box}
+func @string deletingPathExtension () -> @string
+\end{galgas4box}
+
+Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère «~\texttt{.}~».
+
+
+
+
+
 \subsectionGetter{directories}{string}
 
 \begin{galgas3box}
@@ -865,6 +882,36 @@ getter @string here -> @lstring
 \end{galgas3box}
 
 Retourne un \ggst!@lstring! dont le champ \ggst!string! est la valeur du récepteur, et dont le champ \ggst!location! désigne la position courante de l'analyse. L'expression \ggst![s here]! est équivalente à \ggst*@lstring.new{!s !.here}*.
+
+
+
+
+
+
+
+
+\subsectionGetter{hasPrefix}{string}
+
+\begin{galgas4box}
+func @string hasPrefix (@string inPrefix) -> @bool
+\end{galgas4box}
+
+Retourne un \ggst!@bool! dont la valeur est vraie si le récepteur commence par la chaîne donnée en argument.
+
+
+
+
+
+
+
+
+\subsectionGetter{hasSuffix}{string}
+
+\begin{galgas4box}
+func @string hasSuffix (@string inSuffix) -> @bool
+\end{galgas4box}
+
+Retourne un \ggst!@bool! dont la valeur est vraie si le récepteur se termine par la chaîne donnée en argument.
 
 
 
@@ -1404,23 +1451,6 @@ getter @string stringByDeletingLastPathComponent -> @string
 \end{galgas3box}
 
 Si le récepteur ne contient pas de caractère « \texttt{/} », la chaîne vide est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère « \texttt{/} ».
-
-
-
-
-
-
-
-
-
-\subsectionGetter{stringByDeletingPathExtension}{string}
-
-\begin{galgas3box}
-getter @string stringByDeletingPathExtension -> @string
-\end{galgas3box}
-
-Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère «~\texttt{.}~».
-
 
 
 

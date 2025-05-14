@@ -475,19 +475,19 @@ void ggs_printError (Compiler * inCompiler,
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kRedForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kRedForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (errorMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kRedForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kRedForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (errorMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
@@ -530,19 +530,19 @@ void ggs_fatalError (const String & inErrorMessage,
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kRedForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kRedForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (message) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kRedForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kRedForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (message) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
       break ;
@@ -594,19 +594,19 @@ void ggs_printWarning (Compiler * inCompiler,
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kYellowForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kYellowForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_WARNING_ID) ;
       gCout.appendString (warningMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kYellowForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kYellowForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (warningMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
       gCout.flush () ;
       break ;
@@ -640,17 +640,17 @@ void ggs_printFileOperationSuccess (const String & inMessage) {
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kGreenForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kGreenForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kGreenForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kGreenForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     }
@@ -671,17 +671,17 @@ void ggs_printFileDeletionSuccess (const String & inMessage) {
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kMagentaForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kMagentaForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kGreenForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kGreenForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     }
@@ -704,17 +704,17 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
       gCout.flush () ;
       break ;
     case IssueOutputKind::cocoa :
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     case IssueOutputKind::regular :
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
       break ;
     }
@@ -739,17 +739,17 @@ void ggs_printMessage (const String & inMessage
         gCout.flush () ;
         break ;
       case IssueOutputKind::cocoa :
-        gCout.setForeColor (kBlackForeColor) ;
-        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.setConsoleForeColor (kBlackForeColor) ;
+        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendString (message) ;
-        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
         gCout.flush () ;
         break ;
       case IssueOutputKind::regular :
-        gCout.setForeColor (kBlackForeColor) ;
-        gCout.setTextAttribute (kBoldTextAttribute) ;
+        gCout.setConsoleForeColor (kBlackForeColor) ;
+        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendString (message) ;
-        gCout.setTextAttribute (kAllAttributesOff) ;
+        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
         gCout.flush () ;
         break ;
       }

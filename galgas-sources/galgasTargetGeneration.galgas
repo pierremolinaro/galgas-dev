@@ -457,7 +457,7 @@ proc updateGalgasTargets
   var @stringlist linkOptionForLinkingFrameworkWithTool = @()
   for (s) in inFrameworkToolFileList do
     linkOptionForLinkingFrameworkWithTool += !"-framework"
-    linkOptionForLinkingFrameworkWithTool += ![s stringByDeletingPathExtension]
+    linkOptionForLinkingFrameworkWithTool += ![s deletingPathExtension]
   end
 //--- Update json file list
   var @stringlist handCodedSourceToolFileList = @()

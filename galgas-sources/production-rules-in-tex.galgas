@@ -140,7 +140,7 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
     + "}{"
-    + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+    + escapeForTex (![[[loc file] lastPathComponent] deletingPathExtension])
     + "}{" + escapeForTex (![loc startLine])
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
@@ -200,7 +200,7 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
     + "}{"
-    + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+    + escapeForTex (![[[loc file] lastPathComponent] deletingPathExtension])
     + "}{" + escapeForTex (![loc startLine])
     + "}\n\n"
     + "\\begin{tikzpicture}\n"

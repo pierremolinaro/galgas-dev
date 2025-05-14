@@ -2,7 +2,7 @@
 //
 //  Generate predefined types
 //
-//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -571,6 +571,24 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
       !returnedTypeName:"string"
       !hasCompilerArgument:false
     )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "hasPrefix"
+      !argSelector: ""
+      !argType: "string" !argName: "inPrefix"
+      !returnedTypeName: "bool"
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "hasSuffix"
+      !argSelector: ""
+      !argType: "string" !argName: "inSuffix"
+      !returnedTypeName: "bool"
+      !hasCompilerArgument: false
+    )
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -758,7 +776,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByDeletingPathExtension"
+      !getterName: "deletingPathExtension"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false

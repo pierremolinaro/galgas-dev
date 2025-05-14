@@ -990,7 +990,7 @@ String String::pathExtension (void) const {
 //   stringByDeletingPathExtension
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByDeletingPathExtension (void) const {
+String String::deletingPathExtension (void) const {
   int32_t receiver_length = length ();
 //--- Suppress training '/'
   while ((receiver_length > 1) && (UNICODE_VALUE (charAtIndex (receiver_length - 1 COMMA_HERE)) == '/')) {
@@ -1081,7 +1081,7 @@ String String::lastPathComponent (void) const {
 
 String String::lastPathComponentWithoutExtension (void) const {
   const String fileNameWithExtension = lastPathComponent () ;
-  return fileNameWithExtension.stringByDeletingPathExtension () ;
+  return fileNameWithExtension.deletingPathExtension () ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -24,7 +24,7 @@ NSArray * nibsAndClasses (void) {
 //--------------------------------------------------------------------------------------------------
 
 func indexingDescriptorDictionary () -> [String : String] {
-  return [  "galgasProject" : "build/indexes",  "ggsproject" : "*-build/indexes",]
+  return [  "galgasProject" : "build/indexes",  "ggsproject" : "*+BUILD/indexes",]
 }
 
 //--------------------------------------------------------------------------------------------------

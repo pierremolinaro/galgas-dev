@@ -71,10 +71,10 @@ const char * galgasVersionString (void) {
 //--------------------------------------------------------------------------------------------------
 
 static void print_usage (int argv, const char * argc []) {
-  gCout.setForeColor (kMagentaForeColor) ;
-  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout.setConsoleForeColor (kMagentaForeColor) ;
+  gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
   gCout.appendCString ("Usage:\n") ;
-  gCout.setTextAttribute (kAllAttributesOff) ;
+  gCout.setConsoleTextAttribute (kAllAttributesOff) ;
   if (argv > 0) {
     gCout.appendCString (argc [0]) ;
   }
@@ -121,10 +121,10 @@ static void print_help (const int argv,
   gCout.appendCString (".\n") ;
   print_tool_help_message () ;
   print_usage (argv, argc) ;
-  gCout.setForeColor (kMagentaForeColor) ;
-  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout.setConsoleForeColor (kMagentaForeColor) ;
+  gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
   gCout.appendCString ("Options:\n") ;
-  gCout.setTextAttribute (kAllAttributesOff) ;
+  gCout.setConsoleTextAttribute (kAllAttributesOff) ;
   gCout.appendCString ("You can place options anywhere in the command line: they will be executed before the files are processed.\n") ;
   BoolCommandLineOption::printBoolOptions () ;
   UIntCommandLineOption::printUIntOptions () ;
@@ -135,19 +135,19 @@ static void print_help (const int argv,
   while (inExtensionArray [extensionIndex] != nullptr) {
     extensionIndex ++ ;
   }
-  gCout.setForeColor (kMagentaForeColor) ;
-  gCout.setTextAttribute (kBoldTextAttribute) ;
+  gCout.setConsoleForeColor (kMagentaForeColor) ;
+  gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
   gCout.appendCString ("Handled extension") ;
   gCout.appendCString ((extensionIndex > 1) ? "s" : "") ;
   gCout.appendCString (":\n") ;
-  gCout.setTextAttribute (kAllAttributesOff) ;
+  gCout.setConsoleTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
   while (inExtensionArray [extensionIndex] != nullptr) {
-    gCout.setForeColor (kBlueForeColor) ;
-    gCout.setTextAttribute (kBoldTextAttribute) ;
+    gCout.setConsoleForeColor (kBlueForeColor) ;
+    gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
     gCout.appendCString (".") ;
     gCout.appendCString (inExtensionArray [extensionIndex]) ;
-    gCout.setTextAttribute (kAllAttributesOff) ;
+    gCout.setConsoleTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensionArray [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {

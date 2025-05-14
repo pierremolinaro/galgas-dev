@@ -47,6 +47,41 @@
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_bool GGS_string::getter_hasPrefix (const GGS_string & inPrefix
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inPrefix.isValid ()) {
+    bool r = stringValue().length () >= inPrefix.stringValue ().length () ;
+    int32_t idx = 0 ;
+    while (r && (idx < inPrefix.stringValue ().length ())) {
+      r = stringValue().charAtIndex (idx COMMA_HERE) == inPrefix.stringValue().charAtIndex (idx COMMA_HERE) ;
+      idx += 1 ;
+    }
+    result = GGS_bool (r) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_string::getter_hasSuffix (const GGS_string & inPrefix
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inPrefix.isValid ()) {
+    bool r = stringValue().length () >= inPrefix.stringValue ().length () ;
+    int32_t idx = 0 ;
+    while (r && (idx < inPrefix.stringValue ().length ())) {
+      const int32_t leftIdx = stringValue().length () - inPrefix.stringValue ().length () + idx ;
+      r = stringValue().charAtIndex (leftIdx COMMA_HERE) == inPrefix.stringValue().charAtIndex (idx COMMA_HERE) ;
+      idx += 1 ;
+    }
+    result = GGS_bool (r) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_bigint_3F_ GGS_string::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GGS_bigint_3F_ result ;
   if (isValid ()) {
@@ -426,8 +461,8 @@ GGS_char GGS_string::getter_firstCharacterOrNul (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByDeletingPathExtension (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.stringByDeletingPathExtension ()) ;
+GGS_string GGS_string::getter_deletingPathExtension (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mString.deletingPathExtension ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

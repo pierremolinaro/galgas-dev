@@ -96,19 +96,19 @@ void BoolCommandLineOption::printBoolOptions (void) {
   BoolCommandLineOption * p = gFirstBoolCommand ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("-") ;
       gCout.appendASCIIChar (p->mCommandChar) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     if (p->mCommandString [0] != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;
       gCout.appendString (p->mCommandString) ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     gCout.appendCString ("    ") ;

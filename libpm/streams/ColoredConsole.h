@@ -48,7 +48,7 @@ typedef enum {
  kMagentaBackgroundColor,
  kCyanBackgroundColor,
  kWhiteBackgroundColor
-} consoleBackgroundColorEnum ;
+} ConsoleBackgroundColorEnum ;
 
 //--------------------------------------------------------------------------------------------------
 //                     TEXT ATTRIBUTES ENUMERATION                                               
@@ -70,13 +70,13 @@ typedef enum {
 
 class ColoredConsole : public AbstractOutputStream {
 //--- Set fore color
-  public: void setForeColor (const ConsoleForeColorEnum inForeColor) ;
+  public: void setConsoleForeColor (const ConsoleForeColorEnum inForeColor) ;
 
 //--- Set background color
-  public: void setBackgroundColor (const consoleBackgroundColorEnum inBackgroundColor) ;
+  public: void setConsoleBackgroundColor (const ConsoleBackgroundColorEnum inBackgroundColor) ;
 
 //--- Set text attribute
-  public: void setTextAttribute (const ConsoleTextAttributeEnum inTextAttribute) ;
+  public: void setConsoleTextAttribute (const ConsoleTextAttributeEnum inTextAttribute) ;
 
 //--- Fore color, Background color, text attributes are used or not (default: used)
   public: static void setUseTextAttributes (const bool inUsesTextAttributes) ;

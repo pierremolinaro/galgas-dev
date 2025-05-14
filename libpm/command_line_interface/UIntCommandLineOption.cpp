@@ -143,21 +143,21 @@ void UIntCommandLineOption::printUIntOptions (void) {
   UIntCommandLineOption * p = gFirstIntOption ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("-") ;
       gCout.appendASCIIChar (p->mCommandChar) ;
       gCout.appendCString ("=number") ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     if (p->mCommandString [0] != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;
       gCout.appendString (p->mCommandString) ;
       gCout.appendCString ("=number") ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     gCout.appendCString ("    ") ;

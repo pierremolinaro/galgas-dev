@@ -127,21 +127,21 @@ void StringCommandLineOption::printStringOptions (void) {
   StringCommandLineOption * p = gFirstStringOption ;
   while (p != nullptr) {
     if (p->mCommandChar != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("-") ;
       gCout.appendASCIIChar (p->mCommandChar) ;
       gCout.appendCString ("=string") ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     if (p->mCommandString [0] != '\0') {
-      gCout.setForeColor (kBlueForeColor) ;
-      gCout.setTextAttribute (kBoldTextAttribute) ;
+      gCout.setConsoleForeColor (kBlueForeColor) ;
+      gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
       gCout.appendCString ("--") ;
       gCout.appendString (p->mCommandString) ;
       gCout.appendCString ("=string") ;
-      gCout.setTextAttribute (kAllAttributesOff) ;
+      gCout.setConsoleTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ;
     }
     gCout.appendCString ("    ") ;
