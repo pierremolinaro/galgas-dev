@@ -1491,8 +1491,8 @@ proc updateGalgasTargets
     [!?xcodeProject addAppTarget
       !targetName: if isSwiftApp then inTargetName + " IDE" else "Cocoa " + inTargetName end
       !productFileName: if isSwiftApp
-         then [inTargetName stringByCapitalizingFirstCharacter] + " IDE"
-         else "Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
+         then [inTargetName capitalizingFirstCharacter] + " IDE"
+         else "Cocoa" + [inTargetName capitalizingFirstCharacter]
        end
       !sources: m_FileRefList + m_handCodedSourceFileRefForAppList + swift_FileRefList
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList

@@ -784,7 +784,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterBaseGetterWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
-      !getterName: "stringByCapitalizingFirstCharacter"
+      !getterName: "capitalizingFirstCharacter"
       !obsoleteName: ""
       !returnedTypeName:"string"
       !hasCompilerArgument:false

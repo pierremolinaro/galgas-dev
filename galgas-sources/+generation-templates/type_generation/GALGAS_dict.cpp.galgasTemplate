@@ -227,7 +227,7 @@ end
 
 for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inPropertyValue,
+  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inPropertyValue,
                              %!^%GGS_%!KEY_TYPE_IDENTIFIER% inKey,
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
@@ -235,7 +235,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
     auto iterator = mDictionary.find (inKey) ;
     if (iterator == mDictionary.end ()) { // Not found
     //--- Build error message
-     const String message = "cannot set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
+     const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{

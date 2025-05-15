@@ -405,6 +405,8 @@ class GGS_string : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GGS_uint getter_capacity (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_capitalizingFirstCharacter (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_char getter_characterAtIndex (const class GGS_uint & constinOperand0,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const ;
@@ -540,8 +542,6 @@ class GGS_string : public AC_GALGAS_root {
                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_string getter_sha_32__35__36_ (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_stringByCapitalizingFirstCharacter (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_string getter_stringByDeletingLastPathComponent (LOCATION_ARGS) const ;
 

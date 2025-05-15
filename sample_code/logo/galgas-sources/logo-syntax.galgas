@@ -97,7 +97,7 @@ syntax logo_syntax (logo_lexique) {
       ![sourceFilePath lastPathComponent]
       !SVG
     ]
-    [code writeToFile ![sourceFilePath stringByDeletingPathExtension] + ".svg"]
+    [code writeToFile ![sourceFilePath deletingPathExtension] + ".svg"]
   }
 
   //----------------------------------------------------------------------------------------------

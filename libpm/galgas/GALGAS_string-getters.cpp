@@ -473,8 +473,8 @@ GGS_string GGS_string::getter_stringByDeletingLastPathComponent (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_stringByCapitalizingFirstCharacter (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.stringByCapitalizingFirstCharacter ()) ;
+GGS_string GGS_string::getter_capitalizingFirstCharacter (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mString.capitalizingFirstCharacter ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

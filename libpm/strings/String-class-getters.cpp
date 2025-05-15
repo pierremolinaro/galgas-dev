@@ -307,7 +307,7 @@ String String::subString (const int32_t inStartIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByCapitalizingFirstCharacter (void) const {
+String String::capitalizingFirstCharacter (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;

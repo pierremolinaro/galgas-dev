@@ -558,7 +558,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for property in self.mPropertyList do
     let accessorName = @lstring {
-      !"set" + [property.name.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !"set" + [property.name.string capitalizingFirstCharacter] + "ForKey"
       !property.name.location
     }
     [!?ioTypeMap makeEntry

@@ -37,7 +37,7 @@ grammar class_sample_language_grammar
       for (mDeclaration) in  sortedDeclarationListAST do
         [mDeclaration generateCode !?codeToGenerate]
       end
-      let @string targetFile = [inSourceFile stringByDeletingPathExtension] + ".cpp"
+      let @string targetFile = [inSourceFile deletingPathExtension] + ".cpp"
       [codeToGenerate writeToFile !targetFile]
     end
   end

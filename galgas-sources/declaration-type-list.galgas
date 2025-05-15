@@ -336,7 +336,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
-        !@lstring {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
+        !@lstring {!"set" + [mPropertyName.string capitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
         !@methodKind.definedAsMember
         !setterFormalArgumentList
         !true

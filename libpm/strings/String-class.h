@@ -257,7 +257,7 @@ class String : public AbstractOutputStream {
   public: bool containsString (const String & inSearchedString) const ;
 
 //--- Return string, with first letter in upper case
-  public: String stringByCapitalizingFirstCharacter (void) const ;
+  public: String capitalizingFirstCharacter (void) const ;
 
 //--- Return string, with all letters in upper case
   public: String uppercaseString (void) const ;

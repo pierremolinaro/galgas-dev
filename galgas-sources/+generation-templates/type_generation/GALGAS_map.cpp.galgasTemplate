@@ -264,7 +264,7 @@ end
 
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GGS_string inKey,\n%
   %                           %!^%Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%

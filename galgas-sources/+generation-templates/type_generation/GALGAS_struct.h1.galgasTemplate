@@ -21,7 +21,7 @@ end
 //--------------------------------- Property setters
 %
 for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
-  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  public: inline void setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
 end%//--------------------------------- Set initialized properties

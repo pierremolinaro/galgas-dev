@@ -440,7 +440,7 @@ void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIE
 for (propertyTypeEntry propertyName * hasSetter *) in ATTRIBUTE_LIST do (IDX)
   if hasSetter then
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inOperand,\n%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inOperand,\n%
   %                                              %!^%GGS_uint inIndex,\n%
   %                                              %!^%Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%

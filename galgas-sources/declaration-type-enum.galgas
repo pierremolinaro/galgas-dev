@@ -330,7 +330,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
           hasAssociatedValues = true
         end
         [!?instanceMethodMap insertKey
-          !@("extract" + [constant.name stringByCapitalizingFirstCharacter], constant.name)
+          !@("extract" + [constant.name capitalizingFirstCharacter], constant.name)
           !.definedAsMember
           !argumentTypeList
           !constant.name.location
@@ -349,7 +349,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         enterBaseGetterWithoutArgument (
           !?getterMap
           !?ioTypeMap
-          !getterName: "get" + [constant.name stringByCapitalizingFirstCharacter]
+          !getterName: "get" + [constant.name capitalizingFirstCharacter]
           !obsoleteName: ""
           !returnedTypeName: optionalTypeName
           !hasCompilerArgument: false
@@ -361,7 +361,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       enterBaseGetterWithoutArgument (
         !?getterMap
         !?ioTypeMap
-        !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
+        !getterName: "is" + [constant.name capitalizingFirstCharacter]
         !obsoleteName: ""
         !returnedTypeName: "bool"
         !hasCompilerArgument:false

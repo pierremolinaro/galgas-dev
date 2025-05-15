@@ -364,7 +364,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
           [!?setterMap insertKey
-            !@{!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
+            !@{!"setProperty_"+ [property.name.string capitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
             !@[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
             !true // Compiler argument

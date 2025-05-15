@@ -400,6 +400,21 @@ Retourne le nombre de caractères alloués pour stocker la valeur du récepteur.
 
 
 
+
+\subsectionGetter{capitalizingFirstCharacter}{string}
+
+\begin{galgas4box}
+func @string capitalizingFirstCharacter () -> @string
+\end{galgas4box}
+
+Retourne la valeur du récepteur dans laquelle le premier caractère, si il est une lettre, a été mis en majuscule.
+
+
+
+
+
+
+
 \subsectionGetter{characterAtIndex}{string}
 
 \begin{galgas3box}
@@ -1421,21 +1436,6 @@ Par exemple :
    // y = "B993212A26658C9077096B804CDFB92AD21CF1E199E272C44EB028E45D07B6E0"
 \end{galgas4}
 
-
-
-
-
-
-
-
-
-\subsectionGetter{stringByCapitalizingFirstCharacter}{string}
-
-\begin{galgas3box}
-getter @string stringByCapitalizingFirstCharacter -> @string
-\end{galgas3box}
-
-Retourne la valeur du récepteur dans laquelle le premier caractère, si il est une lettre, a été mis en majuscule.
 
 
 

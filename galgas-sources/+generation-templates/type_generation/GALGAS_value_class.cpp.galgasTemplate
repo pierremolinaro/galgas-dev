@@ -117,7 +117,7 @@ end
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   if mHasSetter then
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void GGS_%!TYPE_IDENTIFIER%::setter_setProperty_5F_%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
+    %void GGS_%!TYPE_IDENTIFIER%::setter_setProperty_5F_%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
                   !^%Compiler * inCompiler\n%
                   !^%COMMA_LOCATION_ARGS) {\n%
     %  if (nullptr != mObjectPtr) {\n%
@@ -128,7 +128,7 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROP
     %  }\n%
     %}\n\n%
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
                           !^%Compiler * /* inCompiler */\n%
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%

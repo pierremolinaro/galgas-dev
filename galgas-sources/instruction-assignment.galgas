@@ -355,7 +355,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
         ioGeneratedCode += " (" + sourceVar + ") ;\n"
       else
         ioGeneratedCode += self.mTargetCppName + ".setter_setProperty_5F_"
-        ioGeneratedCode += [[self.mOptionalProperty identifierRepresentation] stringByCapitalizingFirstCharacter]
+        ioGeneratedCode += [[self.mOptionalProperty identifierRepresentation] capitalizingFirstCharacter]
         ioGeneratedCode += " (" + sourceVar + ", " + compilerCppName () + " COMMA_HERE) ;\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       end

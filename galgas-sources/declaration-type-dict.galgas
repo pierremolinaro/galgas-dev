@@ -314,7 +314,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (* typeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring {
-      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !"set" + [mPropertyName.string capitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
     [!?ioTypeMap makeEntry
