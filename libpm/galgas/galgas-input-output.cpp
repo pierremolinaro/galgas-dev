@@ -739,17 +739,17 @@ void ggs_printMessage (const String & inMessage
         gCout.flush () ;
         break ;
       case IssueOutputKind::cocoa :
-        gCout.setConsoleForeColor (kBlackForeColor) ;
-        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
+//        gCout.setConsoleForeColor (kBlackForeColor) ;
+//        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendString (message) ;
-        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
+//        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
         gCout.flush () ;
         break ;
       case IssueOutputKind::regular :
-        gCout.setConsoleForeColor (kBlackForeColor) ;
-        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
+//        gCout.setConsoleForeColor (kBlackForeColor) ;
+//        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
         gCout.appendString (message) ;
-        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
+//        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
         gCout.flush () ;
         break ;
       }
