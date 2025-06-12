@@ -49,8 +49,8 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperWeakReferenceTypeName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge
-      !key
-      !@lstring {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
+      !from: key
+      !to: @{!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
     ]
   end
 }
@@ -183,7 +183,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness]
   if self.mSuperWeakReferenceTypeName.string != "" then
     let superWeakRefNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperWeakReferenceTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: weakRefTypeNameForUsefulness !to: superWeakRefNameForUsefulness]
   end
 //----- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mWeakReferenceTypeName]

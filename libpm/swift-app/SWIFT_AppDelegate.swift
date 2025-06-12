@@ -43,9 +43,9 @@ import Cocoa
     self.mSettingsWindow.isReleasedWhenClosed = false
 
     let tabView = AutoLayoutBorderLessTabView (size: .regular)
-    self.populateEditionTab (tabView: tabView)
-    self.populateFontAndColorsTab (tabView: tabView)
     self.populateBuildOptionsTab (tabView: tabView)
+    self.populateFontAndColorsTab (tabView: tabView)
+    self.populateEditionTab (tabView: tabView)
     self.mSettingsWindow.setRootView (tabView)
   }
 

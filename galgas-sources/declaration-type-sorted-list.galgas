@@ -386,7 +386,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
   )
-  [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: sortedListNameForUsefulness !to: elementTypeNameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !sortedListNameForUsefulness
   end
@@ -396,7 +396,7 @@ override method @sortedListDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
-  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !sortedListNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: sortedListNameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
@@ -405,7 +405,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: sortedListNameForUsefulness !to: propertyTypeNameForUsefulness]
     let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     let hasSelector = true
     typedAttributeList +=

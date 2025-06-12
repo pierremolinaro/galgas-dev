@@ -148,7 +148,7 @@ class @collectionValueAST : @semanticExpressionAST {
         ![targetType definition].typeName
         ![emptyArgumentList initializerSignature]
       )
-      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
     //---
       let elementType = [targetType definition].typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
@@ -178,7 +178,7 @@ class @collectionValueAST : @semanticExpressionAST {
       }
     //--- Usefull entity graph
       let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([targetType definition].typeName)
-      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
+      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
     end
   }
 

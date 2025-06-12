@@ -535,7 +535,7 @@ override method @externTypeDeclarationAST semanticAnalysis
       ![initializer.mParameterList initializerSignature]
     )
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
-    [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]
   end
 //---
   ioSemanticDeclarationListForGeneration +=

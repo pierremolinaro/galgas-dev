@@ -38,8 +38,8 @@ graph @monGraphe (@uintlist) {
 Si l'information associée à chaque nœud est composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste particulier :
 \begin{galgas3}
 list @maListe {
-  @uint monInfo1
-  @string monInfo2
+  var @uint monInfo1
+  var @string monInfo2
 }
 graph @monGraphe (@maListe) {
 }
@@ -115,8 +115,12 @@ var gr = @monGraphe.emptyGraph
 
 \subsectionLabel{Entrer un arc : setter \texttt{addEdge}}{setter-addEdge}
 
+\begin{galgas4}
+mutating func addEdge (?from: @lstring inSourceNode, ?to: @lstring inTargetNode)
+\end{galgas4}
+
 \begin{galgas3}
-setter addEdge ?@lstring inSourceNode ?@lstring inTargetNode
+setter addEdge ?from: @lstring inSourceNode ?to: @lstring inTargetNode
 \end{galgas3}
 
 Pour entrer un arc, appeler le setter prédéfini \ggst+addEdge+. Celui-ci possède deux arguments d'entrée de type \ggst+@lstring+ :
@@ -132,6 +136,10 @@ Pour entrer un arc, appeler le setter prédéfini \ggst+addEdge+. Celui-ci poss�
 
 
 \subsectionLabel{setter \texttt{noteNode}}{setter-noteNode}
+
+\begin{galgas4}
+mutating func noteNode (@lstring inNode)
+\end{galgas4}
 
 \begin{galgas3}
 setter noteNode ?@lstring inNode
@@ -153,6 +161,10 @@ Deux \emph{setters} permettent d'enlever des arcs à un graphe :
 
 \subsectionLabel{Setter \texttt{removeEdgesToNode}}{setter-graphe-removeEdgesToNode}
 
+\begin{galgas4}
+mutating func removeEdgesToNode (@string inTargetNode)
+\end{galgas4}
+
 \begin{galgas3}
 setter removeEdgesToNode ?@string inTargetNode
 \end{galgas3}
@@ -160,6 +172,10 @@ setter removeEdgesToNode ?@string inTargetNode
 Ce \emph{setter} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
 
 \subsectionLabel{Setter \texttt{removeEdgesToDominators}}{setter-graphe-removeEdgesToDominators}
+
+\begin{galgas4}
+mutating func removeEdgesToDominators ()
+\end{galgas4}
 
 \begin{galgas3}
 setter removeEdgesToDominators
@@ -173,6 +189,10 @@ Ce \emph{setter} considère que les nœuds d'entrée sont les nœuds sans préd�
 
 \subsection{Getter \texttt{edges}}
 
+\begin{galgas4}
+func edges () -> @2stringlist
+\end{galgas4}
+
 \begin{galgas3}
 getter edges -> @2stringlist
 \end{galgas3}
@@ -181,6 +201,10 @@ Ce getter retourne la liste des arcs.
 
 
 \subsection{Getter \texttt{graphviz}}
+
+\begin{galgas4}
+func graphviz () -> @string
+\end{galgas4}
 
 \begin{galgas3}
 getter graphviz -> @string
@@ -192,6 +216,10 @@ Ce getter retourne une chaîne de caractères contenant une description compatib
 
 \subsection{Getter \texttt{isNodeDefined}}
 
+\begin{galgas4}
+func isNodeDefined (@string inNodeName) -> @bool
+\end{galgas4}
+
 \begin{galgas3}
 getter isNodeDefined ?@string inNodeName -> @bool
 \end{galgas3}
@@ -200,6 +228,10 @@ Ce getter retourne \ggst+true+ si le nœud \texttt{inNodeName} est défini, et \
 
 
 \subsection{Getter \texttt{keyList}}
+
+\begin{galgas4}
+func keyList () -> @stringlist
+\end{galgas4}
 
 \begin{galgas3}
 getter keyList -> @stringlist
@@ -210,6 +242,10 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 
 
 \subsection{Getter \texttt{lkeyList}}
+
+\begin{galgas4}
+func lkeyList () -> @stringlist
+\end{galgas4}
 
 \begin{galgas3}
 getter lkeyList -> @stringlist
@@ -224,6 +260,10 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 
 \subsection{Getter \texttt{locationForKey}}
 
+\begin{galgas4}
+func locationForKey (@string inNodeName) -> @location
+\end{galgas4}
+
 \begin{galgas3}
 getter locationForKey ?@string inNodeName -> @location
 \end{galgas3}
@@ -232,6 +272,10 @@ Ce getter retourne la localisation de la définition du nœud \texttt{inNodeName
 
 
 \subsection{Getter \texttt{nodeList}}
+
+\begin{galgas4}
+func nodeList () -> @nom_liste_information
+\end{galgas4}
 
 \begin{galgas3}
 getter nodeList -> @nom_liste_information
@@ -244,8 +288,12 @@ Ce \emph{getter} retourne la liste des nœuds du graphe. L'ordre est imprévisib
 
 \subsection{Getter \texttt{reversedGraph}}
 
+\begin{galgas4}
+func reversedGraph () -> @T
+\end{galgas4}
+
 \begin{galgas3}
-getter reversedGraph -> @T
+getter reversedGraph -> @self
 \end{galgas3}
 
 Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs sont inversés.
@@ -256,11 +304,14 @@ Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs 
 
 \subsection{Getter \texttt{subgraphFromNodes}}
 
+\begin{galgas4}
+func subgraphFromNodes (@lstringlist inStartNodes,
+                        @stringset inNodesToExclude) -> @self
+\end{galgas4}
+
 \begin{galgas3}
-getter subgraphFromNodes
-  ?@lstringlist inStartNodes
-  ?@stringset inNodesToExclude
-  -> @self
+getter subgraphFromNodes ?@lstringlist inStartNodes
+                         ?@stringset inNodesToExclude -> @self
 \end{galgas3}
 
 Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \ggst+inStartNodes+, en excluant les nœuds nommés dans \ggst+inNodesToExclude+.
@@ -272,11 +323,14 @@ Ce getter retourne le graphe défini par la partie accessible du receveur à par
 
 \subsection{Getter \texttt{accessibleNodesFrom}}
 
+\begin{galgas4}
+func accessibleNodesFrom (@lstringlist inStartNodes,
+                          @stringset inNodesToExclude) -> @lstringlist
+\end{galgas4}
+
 \begin{galgas3}
-getter accessibleNodesFrom
-  ?@lstringlist inStartNodes
-  ?@stringset inNodesToExclude
-  -> @lstringlist
+getter accessibleNodesFrom ?@lstringlist inStartNodes
+                           ?@stringset inNodesToExclude -> @lstringlist
 \end{galgas3}
 
 Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \ggst+inStartNodes+, en excluant les nœuds cités dans \ggst+inNodesToExclude+.
@@ -287,6 +341,10 @@ Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés 
 
 
 \subsection{Getter \texttt{undefinedNodeCount}}
+
+\begin{galgas4}
+func undefinedNodeCount () -> @uint
+\end{galgas4}
 
 \begin{galgas3}
 getter undefinedNodeCount -> @uint
@@ -301,6 +359,10 @@ Ce getter retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour
 
 
 \subsection{Getter \texttt{undefinedNodeKeyList}}
+
+\begin{galgas4}
+func undefinedNodeKeyList () -> @stringlist
+\end{galgas4}
 
 \begin{galgas3}
 getter undefinedNodeKeyList -> @stringlist
@@ -317,6 +379,10 @@ Ce getter retourne la liste des noms des nœuds indéfinis (c'est à dire les n�
 
 \subsection{Getter \texttt{undefinedNodeReferenceList}}
 
+\begin{galgas4}
+func undefinedNodeReferenceList () -> @lstringlist
+\end{galgas4}
+
 \begin{galgas3}
 getter undefinedNodeReferenceList -> @lstringlist
 \end{galgas3}
@@ -330,12 +396,18 @@ Ce getter retourne la liste des références des nœuds indéfinis (c'est à dir
 
 \subsectionLabel{Méthode \texttt{depthFirstTopologicalSort}}{methode-graphe-depthFirstTopologicalSort}
 
+\begin{galgas4}
+proc depthFirstTopologicalSort (!@nom_liste_information outSortedInformationList,
+                             !@lstringlist outSortedKeyList,
+                             !@nom_liste_information outUnsortedInformationList,
+                             !@lstringlist outUnsortedKeyList)
+\end{galgas4}
+
 \begin{galgas3}
-method depthFirstTopologicalSort
-  !@nom_liste_information outSortedInformationList
-  !@lstringlist outSortedKeyList
-  !@nom_liste_information outUnsortedInformationList
-  !@lstringlist outUnsortedKeyList
+method depthFirstTopologicalSort !@nom_liste_information outSortedInformationList
+                               !@lstringlist outSortedKeyList
+                               !@nom_liste_information outUnsortedInformationList
+                               !@lstringlist outUnsortedKeyList
 \end{galgas3}
 
 Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie~:
@@ -362,10 +434,14 @@ Cette méthode différe de \ggst+topologicalSort+ (\refSubsectionPage{methode-gr
 
 \subsectionLabel{Méthode \texttt{circularities}}{methode-graphe-circularities}
 
+\begin{galgas4}
+proc circularities (!@nom_liste_information outInformationList,
+                  !@lstringlist outKeyList)
+\end{galgas4}
+
 \begin{galgas3}
-method circularities
-  !@nom_liste_information outInformationList
-  !@lstringlist outKeyList
+method circularities !@nom_liste_information outInformationList
+                   !@lstringlist outKeyList
 \end{galgas3}
 
 Cette méthode renvoie la liste de tous les nœuds impliqués dans une circularité. Les deux arguments sont en sortie :
@@ -383,10 +459,14 @@ Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent 
 
 \subsectionLabel{Méthode \texttt{nodesWithNoPredecessor}}{methode-graphe-nodesWithNoPredecessor}
 
+\begin{galgas4}
+proc nodesWithNoPredecessor (!@nom_liste_information outInformationList,
+                           !@lstringlist outKeyList)
+\end{galgas4}
+
 \begin{galgas3}
-method nodesWithNoPredecessor
-  !@nom_liste_information outInformationList
-  !@lstringlist outKeyList
+method nodesWithNoPredecessor !@nom_liste_information outInformationList
+                             !@lstringlist outKeyList
 \end{galgas3}
 
 Cette méthode renvoie la liste de tous les nœuds sans prédecesseur. Les deux arguments sont en sortie :
@@ -404,10 +484,14 @@ Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent 
 
 \subsectionLabel{Méthode \texttt{nodesWithNoSucccessor}}{methode-graphe-nodesWithNoSucccessor}
 
+\begin{galgas4}
+proc nodesWithNoSucccessor (!@nom_liste_information outInformationList,
+                          !@lstringlist outKeyList)
+\end{galgas4}
+
 \begin{galgas3}
-method nodesWithNoSucccessor
-  !@nom_liste_information outInformationList
-  !@lstringlist outKeyList
+method nodesWithNoSucccessor !@nom_liste_information outInformationList
+                           !@lstringlist outKeyList
 \end{galgas3}
 
 Cette méthode renvoie la liste de tous les nœuds sans successeur. Les deux arguments sont en sortie :
@@ -423,6 +507,14 @@ Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent 
 
 
 \subsectionLabel{Méthode \texttt{topologicalSort}}{methode-graphe-topologicalSort}
+
+\begin{galgas4}
+proc topologicalSort (
+  !@nom_liste_information outSortedInformationList,
+  !@lstringlist outSortedKeyList,
+  !@nom_liste_information outUnsortedInformationList,
+  !@lstringlist outUnsortedKeyList)
+\end{galgas4}
 
 \begin{galgas3}
 method topologicalSort

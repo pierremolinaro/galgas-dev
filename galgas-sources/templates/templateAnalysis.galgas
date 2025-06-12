@@ -637,7 +637,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName
     ?let @bool optionComponentIsPredefined
@@ -726,7 +726,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Retrieve function features
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !self.mFunctionName

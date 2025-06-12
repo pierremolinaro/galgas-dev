@@ -326,7 +326,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.elementTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: elementTypeNameForUsefulness]
     if self.isUsefull || self.isPredefined then
       ioUsefulnessRootEntities += !elementTypeNameForUsefulness
     end
@@ -347,7 +347,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 //        error propertyName : "property initialization is not handled for a list"
 //      end
 //      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-//      [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+//      [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !propertyTypeNameForUsefulness]
 //      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
 //      typedAttributeList +=
 //        !t

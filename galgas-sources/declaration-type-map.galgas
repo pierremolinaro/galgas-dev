@@ -695,7 +695,7 @@ override method @mapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mMapTypeName)
   )
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: elementTypeNameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
@@ -705,7 +705,7 @@ override method @mapDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
-  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
@@ -714,7 +714,7 @@ override method @mapDeclarationAST semanticAnalysis
   var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     let hasSelector = false
     typedAttributeList +=

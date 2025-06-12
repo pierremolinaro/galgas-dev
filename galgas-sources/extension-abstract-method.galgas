@@ -140,7 +140,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
       !self.mAbstractExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey

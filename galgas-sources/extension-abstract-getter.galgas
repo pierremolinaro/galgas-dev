@@ -168,7 +168,7 @@ class @abstractExtensionGetterAST : @semanticDeclarationAST {
       !self.mAbstractExtensionGetterName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionGetterMapForBuildingContext insertKey

@@ -49,7 +49,7 @@ inline int32_t TOP_DOWN_END_PRODUCTION (void) { return 0 ; }
 //inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }
 #define BOTTOM_UP_SHIFT(inSymbol) ((inSymbol) + 2)
 
-//inline int32_t BOTTOM_UP_REDUCE (const int32_t inSymbol) { return - inSymbol - 1 ; }
+// inline int32_t BOTTOM_UP_REDUCE (const int32_t inSymbol) { return - inSymbol - 1 ; }
 #define BOTTOM_UP_REDUCE(inSymbol) (- (inSymbol) - 1)
 
 static const int32_t BOTTOM_UP_ACCEPT = 1 ;

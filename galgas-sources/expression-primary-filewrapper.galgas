@@ -140,7 +140,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
@@ -185,7 +185,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //---
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
      !self.mFilewrapperName
@@ -258,7 +258,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Parse filewrapper path
   var @stringlist directoryList
   let @string fileName

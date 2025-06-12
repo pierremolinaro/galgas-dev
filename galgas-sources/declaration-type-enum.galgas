@@ -275,7 +275,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         for associatedValue in constant.associatedValueTypeList do
           let propertyKey = @lstring {!"@" + associatedValue.typeName !associatedValue.typeName}
           if (propertyKey.string != key.string) then
-            [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+            [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: propertyKey]
           end
         end
       end
@@ -465,7 +465,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       var @stringset associatedValueNameSet = @()
       for associatedValue in constant.associatedValueTypeList do
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!associatedValue.typeName)
-        [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+        [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: propertyTypeNameForUsefulness]
         let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !associatedValue.typeName]
         associatedTypeList += !associatedTypeEntry !associatedValue.valueName
         if [associatedValueNameSet hasKey !associatedValue.valueName.string] then

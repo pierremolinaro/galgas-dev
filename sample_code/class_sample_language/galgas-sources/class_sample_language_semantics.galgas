@@ -32,7 +32,7 @@ override method @classWithoutSuperClassAST buildGraph
 override method @classWithSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph {
   [!?ioGraph addNode !self.mClassName !self]
-  [!?ioGraph addEdge  !self.mClassName !self.mSuperClassName]
+  [!?ioGraph addEdge !from: self.mClassName !to: self.mSuperClassName]
 }
 
 

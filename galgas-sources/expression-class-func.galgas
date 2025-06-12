@@ -167,9 +167,9 @@ class @classFuncExpressionAST : @semanticExpressionAST {
       ?let [@unifiedTypeMapEntry] requiredTypes
     )
     let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![classFuncType definition].typeName.string !self.typeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
+    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: constructorTypeUsefulnessName]
     let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![returnedType definition].typeName.string !self.typeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
+    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: returnedTypeUsefulnessName]
   //---
     outExpression = @classFuncExpressionForGeneration {
       !returnedType

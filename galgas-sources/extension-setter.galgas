@@ -180,7 +180,7 @@ override method @extensionSetterAST enterDeclarationInGraph
     !self.mExtensionSetterName.location
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
 //---
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
@@ -227,7 +227,7 @@ override method @extensionSetterAST semanticAnalysis
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionSetterName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let @string selfObjectName

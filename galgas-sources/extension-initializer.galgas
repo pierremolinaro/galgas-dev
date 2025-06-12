@@ -156,7 +156,7 @@ class @initializerAST : @semanticDeclarationAST {
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@("@" + self.mTypeName, self.mTypeName)]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @("@" + self.mTypeName, self.mTypeName)]
   //---
     if not [ioExtensionInitializerForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionInitializerForBuildingContext insertKey

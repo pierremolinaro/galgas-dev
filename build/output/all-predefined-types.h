@@ -536,6 +536,9 @@ class GGS_string : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GGS_string getter_relativePathFromPath (const class GGS_string & constinOperand0
                                                                          COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_removingFirst (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_string getter_reversedString (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_string getter_rightSubString (const class GGS_uint & constinOperand0

@@ -19,68 +19,68 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-  abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  }
+abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionSyntaxDirectedTranslationResultNone :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  }
+class @grammarInstructionSyntaxDirectedTranslationResultNone :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionSyntaxDirectedTranslationDropResult :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    private let @location mLocation
-  }
+class @grammarInstructionSyntaxDirectedTranslationDropResult :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  private let @location mLocation
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionSyntaxDirectedTranslationResultInVar :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    private let @lstring mActualParameterName
-  }
+class @grammarInstructionSyntaxDirectedTranslationResultInVar :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  private let @lstring mActualParameterName
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    private let @lstring mActualParameterTypeName
-    private let @lstring mActualParameterName
-  }
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  private let @lstring mActualParameterTypeName
+  private let @lstring mActualParameterName
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    private let @lstring mActualParameterTypeName
-    private let @lstring mActualParameterName
-  }
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  private let @lstring mActualParameterTypeName
+  private let @lstring mActualParameterName
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInFileInstructionAST : @semanticInstructionAST {
-    private let @lstring mGrammarComponentName
-    private let @lstring mLabelName
-    private let @semanticExpressionAST mSourceExpression
-    private let @location mEndOfSourceExpression
-    private let @actualParameterListAST mActualParameterList
-    private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
-  }
+class @grammarInFileInstructionAST : @semanticInstructionAST {
+  private let @lstring mGrammarComponentName
+  private let @lstring mLabelName
+  private let @semanticExpressionAST mSourceExpression
+  private let @location mEndOfSourceExpression
+  private let @actualParameterListAST mActualParameterList
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+}
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  class @grammarInStringInstructionAST : @semanticInstructionAST {
-    private let @lstring mGrammarComponentName
-    private let @lstring mLabelName
-    private let @semanticExpressionAST mSourceExpression
-    private let @location mEndOfSourceExpression
-    private let @semanticExpressionAST mNameExpression
-    private let @location mEndOfNameExpression
-    private let @actualParameterListAST mActualParameterList
-    private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
-  }
+class @grammarInStringInstructionAST : @semanticInstructionAST {
+  private let @lstring mGrammarComponentName
+  private let @lstring mLabelName
+  private let @semanticExpressionAST mSourceExpression
+  private let @location mEndOfSourceExpression
+  private let @semanticExpressionAST mNameExpression
+  private let @location mEndOfNameExpression
+  private let @actualParameterListAST mActualParameterList
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+}
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
@@ -393,7 +393,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
@@ -470,7 +470,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !grammarUsefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: grammarUsefulnessName]
 //--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName

@@ -118,7 +118,7 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
   {
     let key = @lstring {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionSetterMapForBuildingContext insertKey

@@ -207,8 +207,8 @@ class @classDeclarationAST : @semanticDeclarationAST {
   //--- Add edge from super class
     if self.mSuperClassName.string != "" then
       [!?ioSemanticTypePrecedenceGraph addEdge
-        !key
-        !@{!"@" + self.mSuperClassName !self.mSuperClassName.location}
+        !from: key
+        !to: @{!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
   //--- Add edge from property types, note type if optional type
@@ -217,7 +217,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       if [property.typeName lastCharacter] == '?' then
         [!?ioSemanticTypePrecedenceGraph noteNode !propertyKey]
       else
-        [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+        [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: propertyKey]
       end
     end
   }
@@ -469,11 +469,11 @@ class @classDeclarationAST : @semanticDeclarationAST {
     end
     if self.mSuperClassName.string != "" then
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
-      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: superClassNameForUsefulness]
     end
     if self.mIsReference then
       let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
-      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: weakRefTypeNameForUsefulness]
       if self.isPredefined  then
         ioUsefulnessRootEntities += !weakRefTypeNameForUsefulness
       end
@@ -524,7 +524,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     var @propertyIndexMap attributeMap = @()
     for property in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
-      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: classTypeNameForUsefulness !to: propertyTypeNameForUsefulness]
       let t = [ioTypeMap typeMapEntryForLKey !property.typeName]
       typedAttributeList +=
         !t
@@ -589,11 +589,11 @@ class @classDeclarationAST : @semanticDeclarationAST {
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
       if self.isPredefined then
         ioUsefulnessRootEntities += !initializerForUsefulness
-        [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !classTypeNameForUsefulness]
+        [!?ioUsefulEntitiesGraph addEdge !from: initializerForUsefulness !to: classTypeNameForUsefulness]
       elsif self.mIsAbstract then
         ioUsefulnessRootEntities += !initializerForUsefulness
       else
-        [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !classTypeNameForUsefulness]
+        [!?ioUsefulEntitiesGraph addEdge !from: initializerForUsefulness !to: classTypeNameForUsefulness]
       end
     end
   }

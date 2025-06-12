@@ -567,7 +567,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !mFilewrapperTemplateName
       )
       [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
-      [!?ioUsefulEntitiesGraph addEdge !filewrapperTemplateNameForUsefulness !filewrapperNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: filewrapperTemplateNameForUsefulness !to: filewrapperNameForUsefulness]
       if [mFilewrapperTemplatePath.string firstCharacterOrNul] == '/' then
         error mFilewrapperTemplatePath
          : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
@@ -701,7 +701,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   var @uint addedNonTerminalCount = 0
   for (syntaxComponentName) in self.mSyntaxComponents do
     let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
-    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefulness !syntaxNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: grammarNameForUsefulness !to: syntaxNameForUsefulness]
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     [inSemanticContext.mSyntaxComponentMapForSemanticAnalysis searchKey
       !syntaxComponentName
@@ -711,7 +711,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       ?let @bool hasTranslateFeature
     ]
     let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
-    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefulness !lexiqueNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: grammarNameForUsefulness !to: lexiqueNameForUsefulness]
   //--- Check translate feature
     if self.mHasTranslateFeature & not hasTranslateFeature then
       error syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"

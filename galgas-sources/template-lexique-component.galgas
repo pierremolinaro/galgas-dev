@@ -237,7 +237,7 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
   let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !superKey]
+  [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: superKey]
 }
 
 //--------------------------------------------------------------------------------------------------

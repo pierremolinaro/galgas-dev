@@ -454,10 +454,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       let dc = NSDocumentController.shared
       dc.openDocument (withContentsOf: url, display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
         if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.insertTab (document: document, at: idx)
-          self.selectTab (atIndex: idx)
-          idx += 1
-          self.mInspectorTabView.selectTab (atIndex: 0)
+          DispatchQueue.main.async {
+            self.insertTab (document: document, at: idx)
+            self.selectTab (atIndex: idx)
+            idx += 1
+            self.mInspectorTabView.selectTab (atIndex: 0)
+          }
         }
       }
     }
@@ -483,22 +485,21 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     }
     if !found {
       let dc = NSDocumentController.shared
+      let line = inIssue.line
       dc.openDocument (withContentsOf: inIssue.fileURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
         if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
-          let idx = self.mTabArray.count - 1
           DispatchQueue.main.async {
+            self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+            let idx = self.mTabArray.count - 1
             let range = self.mTabArray [idx].mDocument.mTextStorage.rangeFor (
-              line: inIssue.line,
+              line: line,
               startColumn: 0,
               length: 0
             )
             self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
             self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
-            DispatchQueue.main.async {
-              for issue in self.mIssueArray {
-                document.appendIssue (issue)
-              }
+            for issue in self.mIssueArray {
+              document.appendIssue (issue)
             }
           }
         }
@@ -510,7 +511,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   func findOrAddTab (forURL inURL : URL,
                      range inRange : NSRange,
-                     postAction inPostAction : (() -> Void)?) {
+                     postAction inPostAction : (@Sendable () -> Void)?) {
     var found = false
     for idx in 0 ..< self.mTabArray.count {
       let dd = self.mTabArray [idx]
@@ -526,15 +527,15 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       let dc = NSDocumentController.shared
       dc.openDocument (withContentsOf: inURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
         if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.appendTabUpdatingUserDefaults (document: document, selectedRange: inRange)
-          let idx = self.mTabArray.count - 1
           DispatchQueue.main.async {
+            self.appendTabUpdatingUserDefaults (document: document, selectedRange: inRange)
+            let idx = self.mTabArray.count - 1
             self.mTabArray [idx].sourcePresentationView.setSelectedRange (inRange)
             self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
             for issue in self.mIssueArray {
               document.appendIssue (issue)
             }
-            DispatchQueue.main.async { inPostAction? () }
+            inPostAction? ()
           }
         }
       }
@@ -578,7 +579,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   @IBAction func openDocumentInNewTab (_ inUnusedSender : Any?) {
     NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in
       if let urls = inOptionalURLs {
-        self.openFilesInNewTabs (urls, atIndex: self.mTabArray.count)
+        DispatchQueue.main.async {
+         self.openFilesInNewTabs (urls, atIndex: self.mTabArray.count)
+        }
       }
     }
   }
@@ -604,12 +607,14 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         let dc = NSDocumentController.shared
         dc.openDocument (withContentsOf: url, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
           if let document = inOptionalDocument as? SWIFT_SingleDocument {
-            self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+            DispatchQueue.main.async {
+              self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+            }
           }
         }
+      }else{
+        NSSound.beep ()
       }
-    }else{
-      NSSound.beep ()
     }
   }
 
@@ -674,7 +679,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
         self.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
           if inResponse == .stop {
-            dd.selectLineStart (lineProperty.propval)
+            DispatchQueue.main.async {
+              dd.selectLineStart (lineProperty.propval)
+            }
           }
         }
       }
@@ -731,9 +738,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     }
 
     func childDidSelect () {
-      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: NSRange ()) {
+      let w = self.mWindow
+      w?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: NSRange ()) {
         DispatchQueue.main.async {
-          _ = self.mWindow?.mSearchResultOutlineView.makeFirstResponder ()
+          _ = w?.mSearchResultOutlineView.makeFirstResponder ()
         }
       }
     }
@@ -782,9 +790,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     }
 
     func childDidSelect () {
-      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: self.mRange) {
+      let w = self.mWindow
+      w?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: self.mRange) {
         DispatchQueue.main.async {
-          _ = self.mWindow?.mSearchResultOutlineView.makeFirstResponder ()
+          _ = w?.mSearchResultOutlineView.makeFirstResponder ()
         }
       }
     }
@@ -909,7 +918,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         if let filePath = tabDict ["file"], let rangeString = tabDict ["range"] {
           NSDocumentController.shared.openDocument (withContentsOf: URL (fileURLWithPath: filePath), display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
             if let document = inOptionalDocument as? SWIFT_SingleDocument {
-              self.appendTab (document: document, selectedRange: NSRangeFromString (rangeString))
+              DispatchQueue.main.async {
+                self.appendTab (document: document, selectedRange: NSRangeFromString (rangeString))
+              }
             }
           }
         }

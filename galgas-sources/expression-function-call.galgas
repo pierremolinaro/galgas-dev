@@ -120,7 +120,7 @@ class @functionCallExpressionAST : @semanticExpressionAST {
     !@semanticExpressionForGeneration outExpression
   {
     let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
   //--- Retrieve function features
     [inAnalysisContext.semanticContext.mFunctionMap searchKey
       !self.mFunctionName

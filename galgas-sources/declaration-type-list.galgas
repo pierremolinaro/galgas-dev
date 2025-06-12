@@ -468,7 +468,7 @@ override method @listDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mListTypeName)
   )
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: elementTypeNameForUsefulness]
   if self.usefullList || self.isPredefined  then
     ioUsefulnessRootEntities += !elementTypeNameForUsefulness
   end
@@ -478,7 +478,7 @@ override method @listDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
-  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: initializerNameForUsefulness !to: nameForUsefulness]
   if self.usefullList || self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
@@ -490,7 +490,7 @@ override method @listDeclarationAST semanticAnalysis
       error propertyName : "property initialization is not handled for a list"
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: propertyTypeNameForUsefulness]
     let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     typedAttributeList +=
       !t

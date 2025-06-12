@@ -170,7 +170,7 @@ class @extensionMethodAST : @semanticDeclarationAST {
       !self.mExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@{!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
@@ -213,7 +213,7 @@ class @extensionMethodAST : @semanticDeclarationAST {
     let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionMethodName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
     let @string selfObjectNameString

@@ -414,8 +414,16 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap
       !getterName: "lastCharacter"
       !obsoleteName: ""
-      !returnedTypeName:"char"
-      !hasCompilerArgument:true
+      !returnedTypeName: "char"
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "removingFirst"
+      !obsoleteName: ""
+      !returnedTypeName: "string"
+      !hasCompilerArgument: true
     )
     enterBaseGetterWithoutArgument (
       !?outMap

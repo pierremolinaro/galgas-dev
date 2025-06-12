@@ -118,8 +118,8 @@ class @graphDeclarationAST : @semanticDeclarationAST {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge
-      !key
-      !@("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
+      !from: key
+      !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
     ]
   }
   
@@ -420,10 +420,10 @@ class @graphDeclarationAST : @semanticDeclarationAST {
     ]
   //--- setter 'addEdge'
     formalParameterList = @formalParameterSignature ()
-    formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
-    formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
+    formalParameterList += !["from" nowhere] !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
+    formalParameterList += !["to" nowhere] !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
     [!?setterMap insertKey
-      !@("addEdge", .here)
+      !"addEdge".here
       !.definedAsMember
       !formalParameterList
       !false // No compiler argument
@@ -524,7 +524,7 @@ class @graphDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
     let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: associatedTypeNameForUsefulness]
     if self.isPredefined  then
       ioUsefulnessRootEntities += !associatedTypeNameForUsefulness
     end

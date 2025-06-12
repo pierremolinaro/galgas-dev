@@ -116,7 +116,7 @@ int32_t totalWarningCount (void) {
 //--------------------------------------------------------------------------------------------------
 
 static String errorOrWarningLocationString (const IssueWithFixIt & inIssue,
-                                              const SourceTextInString & inSourceText) {
+                                            const SourceTextInString & inSourceText) {
   String result ;
   if (inSourceText.isValid ()) {
     const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
@@ -580,11 +580,7 @@ void ggs_printWarning (Compiler * inCompiler,
   ) ;
   inCompiler->appendIssue (issue) ;
 //---
-  String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
-//--- Append source string
-  if (inSourceText.isValid ()) {
-    inSourceText.appendSourceContents (warningMessage) ;
-  }
+  const String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   if (! executionModeIsIndexing ()) {
     switch (issueOutputKind ()) {
     case IssueOutputKind::swiftApp :
@@ -733,26 +729,8 @@ void ggs_printMessage (const String & inMessage
       if (message.lastChar (HERE) != TO_UNICODE ('\n')) {
         message.appendString ("\n") ;
       }
-      switch (issueOutputKind ()) {
-      case IssueOutputKind::swiftApp :
-        gCout.appendString (message) ;
-        gCout.flush () ;
-        break ;
-      case IssueOutputKind::cocoa :
-//        gCout.setConsoleForeColor (kBlackForeColor) ;
-//        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
-        gCout.appendString (message) ;
-//        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
-        gCout.flush () ;
-        break ;
-      case IssueOutputKind::regular :
-//        gCout.setConsoleForeColor (kBlackForeColor) ;
-//        gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
-        gCout.appendString (message) ;
-//        gCout.setConsoleTextAttribute (kAllAttributesOff) ;
-        gCout.flush () ;
-        break ;
-      }
+      gCout.appendString (message) ;
+      gCout.flush () ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (verboseOutput ()) {

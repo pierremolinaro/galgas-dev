@@ -41,7 +41,7 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     let selfKey = @lstring {!"@" + self.optionalTypeName !self.optionalTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !selfKey !self]
     let unwrappedKey = @lstring {!"@" + self.unwrappedTypeName !self.unwrappedTypeName.location}
-    [!?ioSemanticTypePrecedenceGraph addEdge !selfKey !unwrappedKey]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: selfKey !to: unwrappedKey]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -155,7 +155,7 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.optionalTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.unwrappedTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !unwrappedTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: unwrappedTypeNameForUsefulness]
     if self.isUsefull then
       ioUsefulnessRootEntities += !nameForUsefulness
     end

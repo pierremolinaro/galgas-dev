@@ -226,7 +226,7 @@ class @initializerCallAST : @semanticExpressionAST {
     )
   //--- Usefull entity graph
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([instanciedType definition].typeName)
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
+    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: typeUsefulnessName]
   //---
     outExpression = @initializerCallForGeneration {
       !instanciedType
@@ -274,7 +274,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
         !instanciedTypeDefinition.typeName
         ![inInvocationArguments initializerSignature]
       )
-      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: nameForUsefulness]
     //--- Search initializer
       outInitializerName = @{![inInvocationArguments initializerSignature] !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap

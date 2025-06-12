@@ -486,7 +486,7 @@ override method @dictDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mDictTypeName)
   )
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: elementTypeNameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !elementTypeNameForUsefulness
   end
@@ -504,7 +504,7 @@ override method @dictDeclarationAST semanticAnalysis
   var @propertyIndexMap attributeMap = @()
   for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !from: nameForUsefulness !to: propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
     let hasSetter = true
     typedAttributeList +=

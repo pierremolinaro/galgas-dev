@@ -562,7 +562,7 @@ proc updateGalgasTargets
       @("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES"),
       @("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
       @("GCC_WARN_ABOUT_MISSING_NEWLINE = YES"),
-      @("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES"),
+      @("GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO"),
       @("GCC_WARN_ABOUT_RETURN_TYPE = YES"),
       @("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES"),
       @("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES"),
@@ -1197,7 +1197,6 @@ proc updateGalgasTargets
         "cLexiqueIntrospection.h",
         "cObjectArray.cpp",
         "cObjectArray.h",
-        "cProductionNameDescriptor.h",
         "cPtr_object.cpp",
         "cPtr_object.h",
         "cSortedListElement.cpp",
@@ -1494,7 +1493,10 @@ proc updateGalgasTargets
          then [inTargetName capitalizingFirstCharacter] + " IDE"
          else "Cocoa" + [inTargetName capitalizingFirstCharacter]
        end
-      !sources: m_FileRefList + m_handCodedSourceFileRefForAppList + swift_FileRefList
+      !sources: if isSwiftApp
+         then swift_FileRefList
+         else m_FileRefList + m_handCodedSourceFileRefForAppList
+       end
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs: resourceFileBuildRefs + resource_handCodedResourceFileRefForAppList
       !buildConfigurationSettingList: cocoaConfigurationSettingList

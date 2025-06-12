@@ -426,16 +426,34 @@ GGS_string GGS_string::getter_relativePathFromPath (const GGS_string & inReferen
 //--------------------------------------------------------------------------------------------------
 
 GGS_char GGS_string::getter_lastCharacter (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
+                                           COMMA_LOCATION_ARGS) const {
   GGS_char result ;
   if (isValid ()) {
     if (mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError (
-        "@string lastCharacter getter called on empty string"
+        "@string.lastCharacter getter called on empty string"
         COMMA_THERE
       ) ;
     }else{
       result = GGS_char (mString.lastChar (THERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_string::getter_removingFirst (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (isValid ()) {
+    if (mString.length () == 0) {
+      inCompiler->onTheFlyRunTimeError (
+        "@string.removingFirst getter called on empty string"
+        COMMA_THERE
+      ) ;
+    }else{
+      result = GGS_string (mString.subString (1, mString.length () - 1)) ;
     }
   }
   return result ;

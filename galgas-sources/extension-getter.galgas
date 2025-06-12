@@ -217,7 +217,7 @@ class @extensionGetterAST : @semanticDeclarationAST {
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@{!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionGetterMapForBuildingContext insertKey
@@ -268,7 +268,7 @@ override method @extensionGetterAST semanticAnalysis
   let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionGetterName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !from: typeNameForUsefulness !to: nameForUsefulness]
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check self type is a class (new)

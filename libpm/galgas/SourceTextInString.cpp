@@ -84,15 +84,3 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void SourceTextInString::appendSourceContents (String & ioMessage) const {
-  if ((nullptr != mObject) && mObject->mShowSourceOnDetailledErrorMessage) {
-    const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastChar (HERE)) != '\n')  ;
-    ioMessage.appendCString ("-- SOURCE STRING (--verbose option) --\n") ;
-    ioMessage.appendString (mObject->mSourceString) ;
-    ioMessage.appendString (insertCarriageReturn ? "\n" : "") ;
-    ioMessage.appendCString ("-------------------------------------------------------\n") ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------

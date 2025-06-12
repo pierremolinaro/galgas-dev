@@ -101,8 +101,6 @@ class SourceTextInString final {
 
   public: String getLineForLocation (const class LocationInSource & inLocation) const ;
 
-  public: void appendSourceContents (String & ioMessage) const ;
-
 //--- Private property
   private: cSourceTextInString * mObject ;
 } ;

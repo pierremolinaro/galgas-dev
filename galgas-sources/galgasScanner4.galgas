@@ -147,6 +147,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "indexing",
   "init",
   "is",
+  "json",
   "label",
   "let",
   "lexique",

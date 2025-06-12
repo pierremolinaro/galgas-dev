@@ -137,7 +137,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for property in self.mStructurePropertyListAST do
       let propertyKey = @lstring {!"@" + property.typeName !property.typeName.location}
-      [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+      [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: propertyKey]
     end
   }
 
@@ -295,7 +295,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
     var @propertyIndexMap propertyMap = @()
     for property in self.mStructurePropertyListAST do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
-      [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: structNameForUsefulness !to: propertyTypeNameForUsefulness]
       let t = [ioTypeMap typeMapEntryForLKey !property.typeName]
       if [forbiddenKeysForStruct () hasKey !property.name.string] then
         var @string m = "an property cannot be named:"
@@ -388,7 +388,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
         ![constructorArgumentList initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
-      [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !structNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !from: initializerForUsefulness !to: structNameForUsefulness]
       if self.isUsefullStruct || self.isPredefined then
         ioUsefulnessRootEntities += !initializerForUsefulness
       end

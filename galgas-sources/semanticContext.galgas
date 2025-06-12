@@ -826,7 +826,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
   let key = @lstring {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (s) in self.mSyntaxComponents do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"syntax " + s !s.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"syntax " + s !s.location}]
   end
 }
 
@@ -842,12 +842,12 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
   for (* mLabelList) in self.mRuleList do
     for (* mFormalArguments * * *) in mLabelList do
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArguments do
         switch mFormalArgumentPassingMode
-          case argumentVarIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
+          case argumentVarIn : [!?ioSemanticTypePrecedenceGraph addEdge !from: key !to: @{!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
           case argumentOut, argumentInOut, argumentConstantIn :
         end
       end

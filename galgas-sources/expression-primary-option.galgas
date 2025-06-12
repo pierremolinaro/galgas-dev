@@ -119,7 +119,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
 //---
   [inAnalysisContext.semanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName

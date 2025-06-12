@@ -94,7 +94,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
      ]
   //--- Usefulness
     let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+    [!?ioUsefulEntitiesGraph addEdge !from: inUsefulnessCallerEntityName !to: usefulnessName]
   //--- Check internal
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
