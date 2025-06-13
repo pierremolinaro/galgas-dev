@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -910,7 +910,7 @@ template <typename TYPE> TYPE & TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS
 template <typename TYPE> void TC_UniqueArray <TYPE>::
 subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
                        TC_UniqueArray <TYPE> & outResult) const {
-  outResult.clear () ;
+  outResult.removeAll () ;
   if (inFunction != nullptr) {
     outResult.setCapacity (mCount) ;
     for (int32_t i=0 ; i<mCount ; i++) {
@@ -1332,7 +1332,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::
 intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
                        TC_UniqueArray <TYPE> & outResult) const {
 //--- Empty destination array
-  outResult.clear () ;
+  outResult.removeAll () ;
   outResult.setCapacity (mCount) ;
 //--- loop throught array
   for (int32_t i=0 ; i<mCount ; i++) {
@@ -1362,7 +1362,7 @@ template <typename TYPE>void TC_UniqueArray <TYPE>::
 multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
                                TC_UniqueArray <TYPE> & outResult) const {
 //--- Empty destination array
-  outResult.clear () ;
+  outResult.removeAll () ;
   outResult.setCapacity (mCount) ;
 //--- Build counted set for current object
   TC_UniqueArray <TYPE> set (mCount COMMA_HERE) ;
@@ -1402,7 +1402,7 @@ multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
 template <typename TYPE> void TC_UniqueArray <TYPE>::unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
                                                                      TC_UniqueArray <TYPE> & outResult) const {
 //--- Empty destination array
-  outResult.clear () ;
+  outResult.removeAll () ;
   outResult.setCapacity (mCount + inOperand.mCount) ;
 //--- Copy current object
   for (int32_t i=0 ; i<mCount ; i++) {

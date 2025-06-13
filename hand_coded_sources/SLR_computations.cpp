@@ -3,9 +3,9 @@
 //     Routines for SLR grammar computations
 //
 //  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
-//                                           
+//
 //  MIT License
-//                                           
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 // and associated documentation files (the "Software"), to deal in the Software without restriction,
 // including without limitation the rights to use, copy, modify, merge, publish, distribute,
@@ -20,7 +20,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//                                           
+//
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
@@ -746,11 +746,11 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents.appendCString (")") ;
         }else{ // Accept action
-          ioCppFileContents.appendCString ("BOTTOM_UP_ACCEPT ()") ;
+          ioCppFileContents.appendCString ("BOTTOM_UP_ACCEPT") ;
         }
       }
     }
-    ioCppFileContents.appendCString ("\n, BOTTOM_UP_END ()") ;
+    ioCppFileContents.appendCString ("\n, BOTTOM_UP_END") ;
     startIndex ++ ;
   }
   ioCppFileContents.appendCString ("} ;\n\n"

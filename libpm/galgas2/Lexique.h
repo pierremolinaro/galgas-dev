@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'Lexique' : an abstract lexique class ;                                                    
-//  Galgas generated scanner classes inherit from this class.                                    
+//  'Lexique' : an abstract lexique class ;
+//  Galgas generated scanner classes inherit from this class.
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
 //
@@ -46,13 +46,15 @@ inline int32_t TOP_DOWN_END_PRODUCTION (void) { return 0 ; }
 //                 Bottom Up parsing utilities
 //--------------------------------------------------------------------------------------------------
 
-inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }
+//inline int32_t BOTTOM_UP_SHIFT (const int32_t inSymbol) { return inSymbol + 2 ; }
+#define BOTTOM_UP_SHIFT(inSymbol) ((inSymbol) + 2)
 
-inline int32_t BOTTOM_UP_REDUCE (const int32_t inSymbol) { return - inSymbol - 1 ; }
+// inline int32_t BOTTOM_UP_REDUCE (const int32_t inSymbol) { return - inSymbol - 1 ; }
+#define BOTTOM_UP_REDUCE(inSymbol) (- (inSymbol) - 1)
 
-inline int32_t BOTTOM_UP_ACCEPT (void) { return 1 ; }
+static const int32_t BOTTOM_UP_ACCEPT = 1 ;
 
-inline int32_t BOTTOM_UP_END (void) { return -1 ; }
+static const int32_t BOTTOM_UP_END = -1 ;
 
 //--------------------------------------------------------------------------------------------------
 //                 Lexique class
@@ -246,7 +248,7 @@ class Lexique : public Compiler {
   private: void appendCharacterToLatexFile (const utf32 inUnicodeCharacter) ;
   protected: void enterDroppedTerminal (const int32_t inTerminalIndex) ;
   protected: void signalLexicalErrorInLatexOutput (void) ;
-//--- Style name 
+//--- Style name
   protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const = 0 ;
   protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const = 0 ;
 } ;
