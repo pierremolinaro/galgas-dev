@@ -821,7 +821,6 @@
 		CF305F3C2D0D8A2E000A5F79 /* TC_UniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
 		CF305F3D2D0D8A2E000A5F79 /* TC_UniqueArray2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray2.h; sourceTree = "<group>"; };
 		CF305F3F2D0D8A2E000A5F79 /* License */ = {isa = PBXFileReference; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
-		CF305F592D0D8A2E000A5F79 /* readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = readme.rtf; sourceTree = "<group>"; };
 		CF305F5A2D0D8A2E000A5F79 /* AbstractOutputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractOutputStream.h; sourceTree = "<group>"; };
 		CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractOutputStream.cpp; sourceTree = "<group>"; };
 		CF305F5C2D0D8A2E000A5F79 /* ColoredConsole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColoredConsole.h; sourceTree = "<group>"; };
@@ -1341,7 +1340,6 @@
 				CF305F3A2D0D8A2E000A5F79 /* galgas */,
 				CF305F3E2D0D8A2E000A5F79 /* generic-arraies */,
 				CF305F3F2D0D8A2E000A5F79 /* License */,
-				CF305F592D0D8A2E000A5F79 /* readme.rtf */,
 				CF305F602D0D8A2E000A5F79 /* streams */,
 				CF305F702D0D8A2E000A5F79 /* strings */,
 				CF305F752D0D8A2E000A5F79 /* time */,
@@ -1909,7 +1907,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					CFDF0C9B2D0A0EEF0014CD68 = {
 						CreatedOnToolsVersion = 16.2;
@@ -2584,7 +2582,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -2665,6 +2665,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
