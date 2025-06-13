@@ -179,7 +179,14 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY)
 //-------------------- Importer GALGAS
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "galgas-dev"])
-runCommand ("/usr/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/galgas-dev.git"])
+runCommand (
+  "/usr/bin/git",
+  [
+    "clone", "--depth=1",
+    "--single-branch", "--branch", "evolution-galgas-3",
+    "https://github.com/pierremolinaro/galgas-dev.git"
+  ]
+)
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY + "/galgas-dev")
 //-------------------- Obtenir l'année
 let ANNÉE = Calendar.current.component (.year, from: Date ())
