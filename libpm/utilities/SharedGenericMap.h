@@ -46,8 +46,8 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericMapNode <KEY, NODE> (const NODE & inNode
-                                            COMMA_LOCATION_ARGS) :
+  public: SharedGenericMapNode (const NODE & inNode
+                                COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
