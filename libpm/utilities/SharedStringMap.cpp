@@ -42,17 +42,6 @@ mValue (inNodePtr->mValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-//void SharedStringMapNode::populateCacheArray (SharedStringMapNode * inNode,
-//                                              TC_Array <SharedStringMapNode *> & ioCacheArray) {
-//  if (inNode != nullptr) {
-//    populateCacheArray (inNode->mInfPtr, ioCacheArray) ;
-//    ioCacheArray.appendObject (inNode) ;
-//    populateCacheArray (inNode->mSupPtr, ioCacheArray) ;
-//  }
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 void SharedStringMapNode::populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
                                                TC_Array <String> & ioStringArray) {
   if (inNode.isNotNil ()) {
@@ -72,8 +61,6 @@ class SharedStringMapRoot final : public SharedObject {
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private: TC_Array <SharedStringMapNode *> mCacheArray ;
-//  private: bool mCacheArrayIsBuilt ;
   private: OptionalSharedRef <SharedStringMapNode> mRootNode ;
   private: int32_t mCount ;
 
@@ -83,8 +70,6 @@ class SharedStringMapRoot final : public SharedObject {
 
   public: SharedStringMapRoot (LOCATION_ARGS) :
   SharedObject (THERE),
-//  mCacheArray (),
-//  mCacheArrayIsBuilt (false),
   mRootNode (),
   mCount (0) {
   }
@@ -94,7 +79,6 @@ class SharedStringMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: virtual ~ SharedStringMapRoot (void) {
-//    macroMyDelete (mRootNode) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,20 +106,6 @@ class SharedStringMapRoot final : public SharedObject {
   public: inline String rootNodeKey (void) const { return mRootNode->mKey ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Get cache array
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) {
-//    if (mCacheArrayIsBuilt) {
-//      return mCacheArray ;
-//    }else{
-//      mCacheArrayIsBuilt = true ;
-//      SharedStringMapNode::populateCacheArray (mRootNode, mCacheArray) ;
-//      return mCacheArray ;
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -153,10 +123,6 @@ class SharedStringMapRoot final : public SharedObject {
                              OptionalSharedRef <SharedStringMapNode> & ioObject
                              COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
-//    if (mCacheArrayIsBuilt) {
-//      mCacheArrayIsBuilt = false ;
-//      mCacheArray.removeAllKeepingCapacity () ;
-//    }
     internalRecursiveInsert (mRootNode, inKey, ioObject) ;
   }
 
@@ -251,10 +217,6 @@ class SharedStringMapRoot final : public SharedObject {
   public: void removeObject (const String & inKey,
                              OptionalSharedRef <SharedStringMapNode> & outRemovedNode) {
     macroUniqueSharedObject (this) ;
-//    if (mCacheArrayIsBuilt) {
-//      mCacheArrayIsBuilt = false ;
-//      mCacheArray.removeAllKeepingCapacity () ;
-//    }
     bool ioBranchHasBeenRemoved ;
     internalRemoveEntry (inKey, mRootNode, outRemovedNode, ioBranchHasBeenRemoved) ;
   }
@@ -460,23 +422,8 @@ void SharedStringMap::insulate (LOCATION_ARGS) {
     auto p = OptionalSharedRef <SharedStringMapRoot>::make (THERE) ;
     mSharedRoot->duplicateTo (p COMMA_THERE) ;
     mSharedRoot = p ;
-//    SharedStringMapRoot * p = nullptr ;
-//    macroMyNew (p, SharedStringMapRoot (THERE)) ;
-//    mSharedRoot->duplicateTo (p COMMA_THERE) ;
-//    macroAssignSharedObject (mSharedRoot, p) ;
-//    macroDetachSharedObject (p) ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//TC_Array <SharedStringMapNode *> SharedStringMap::unsecureOrderedPointerArray (void) const {
-//  if (mSharedRoot != nullptr) {
-//    return mSharedRoot->unsecureOrderedPointerArray () ;
-//  }else{
-//    return TC_Array <SharedStringMapNode *> () ;
-//  }
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -535,36 +482,6 @@ int32_t SharedStringMap::count (void) const {
     return mSharedRoot->count () ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-//    C O M P A R I S O N
-//--------------------------------------------------------------------------------------------------
-
-//ComparisonResult SharedStringMap::objectCompare (const SharedStringMap & inOperand) const {
-//  ComparisonResult result = ComparisonResult::invalid ;
-//  if (isValid () && inOperand.isValid ()) {
-//    const TC_Array <String> array1 = mSharedRoot->cacheArray () ;
-//    const TC_Array <String> array2 = inOperand.mSharedRoot->cacheArray () ;
-//    if (array1.count () < array2.count ()) {
-//      result = ComparisonResult::firstOperandLowerThanSecond ;
-//    }else if (array1.count () > array2.count ()) {
-//      result = ComparisonResult::firstOperandGreaterThanSecond ;
-//    }else{
-//      result = ComparisonResult::operandEqual ;
-//      int32_t idx = 0 ;
-//      while ((idx < array1.count ()) && (result == ComparisonResult::operandEqual)) {
-//        const int32_t comp = array1 (idx COMMA_HERE).compare (array2 (idx COMMA_HERE)) ;
-//        if (comp < 0) {
-//          result = ComparisonResult::firstOperandLowerThanSecond ;
-//        }else if (comp > 0) {
-//          result = ComparisonResult::firstOperandGreaterThanSecond ;
-//        }
-//        idx += 1 ;
-//      }
-//    }
-//  }
-//  return result ;
-//}
 
 //--------------------------------------------------------------------------------------------------
 

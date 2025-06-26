@@ -124,8 +124,6 @@ class SharedStringMap final {
 
   public: String rootNodeKey (void) const ;
 
-//  public: TC_Array <SharedStringMapNode *> unsecureOrderedPointerArray (void) const ;
-
   public: TC_Array <String> sortedKeyArray (void) const ;
 
 } ;
