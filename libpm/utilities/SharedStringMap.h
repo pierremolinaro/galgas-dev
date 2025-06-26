@@ -37,7 +37,6 @@ class SharedStringMapNode final : public SharedObject {
   private: OptionalSharedRef <SharedStringMapNode> mSupPtr ;
   private: int32_t mBalance ;
   public: const String mKey ;
-  public: SharedPtrWithValueSemantics <SharedObjectWithValueSemantics> mValue ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

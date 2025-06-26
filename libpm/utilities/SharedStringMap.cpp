@@ -18,8 +18,7 @@ SharedObject (THERE),
 mInfPtr (),
 mSupPtr (),
 mBalance (0),
-mKey (inKey),
-mValue () {
+mKey (inKey) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,8 +29,7 @@ SharedObject (THERE),
 mInfPtr (),
 mSupPtr (),
 mBalance (inNodePtr->mBalance),
-mKey (inNodePtr->mKey),
-mValue (inNodePtr->mValue) {
+mKey (inNodePtr->mKey) {
   if (inNodePtr->mInfPtr.isNotNil ()) {
     mInfPtr = OptionalSharedRef <SharedStringMapNode>::make (inNodePtr->mInfPtr COMMA_THERE) ;
   }

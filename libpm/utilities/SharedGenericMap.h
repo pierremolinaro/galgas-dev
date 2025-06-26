@@ -57,7 +57,7 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~SharedGenericMapNode <KEY, NODE> (void) = default ;
+  public: ~SharedGenericMapNode (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
