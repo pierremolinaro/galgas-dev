@@ -78,8 +78,8 @@ readSubscript__3F_ (const class GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> foundObject ;
-    mDictionary.nodeForKey (inKey, foundObject) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+    const auto foundObject = mDictionary.nodeForKey (inKey) ;
     if (foundObject.isNotNil ()) {
       return GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% (foundObject->mNode) ;
     }else{
@@ -155,8 +155,8 @@ end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
-    mDictionary.nodeForKey (inKey, removedObject) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+    const auto removedObject = mDictionary.nodeForKey (inKey) ;
     if (removedObject.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -213,8 +213,8 @@ end
                                                  %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![propertyTypeEntry identifierRepresentation]% result ;
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
-    mDictionary.nodeForKey (inKey, removedObject) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+    const auto removedObject = mDictionary.nodeForKey (inKey) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;
@@ -235,8 +235,8 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedObject ;
-    mDictionary.nodeForKey (inKey, modifiedObject) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+    const auto modifiedObject = mDictionary.nodeForKey (inKey) ;
     if (modifiedObject.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;

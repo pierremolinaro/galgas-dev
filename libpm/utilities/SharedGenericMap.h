@@ -570,12 +570,11 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void nodeForKey (const KEY & inKey,
-                           OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & outNodePtr) const {
+  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> nodeForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
-      outNodePtr = mSharedRoot->search (inKey) ;
+      return mSharedRoot->search (inKey) ;
     }else{
-      outNodePtr = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> () ;
+      return OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> () ;
     }
   }
 
