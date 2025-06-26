@@ -2,31 +2,21 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " dictionary enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-class KeyComparator_%!TYPE_IDENTIFIER% final {
-  public: bool operator () (const GGS_%!KEY_TYPE_IDENTIFIER% & inLeft,
-                            const GGS_%!KEY_TYPE_IDENTIFIER% & inRight) const {
-    return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
-  }
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-typedef std::map <GGS_%!KEY_TYPE_IDENTIFIER%,
-                  GGS_%!ELEMENT_TYPE_IDENTIFIER%,
-                  KeyComparator_%!TYPE_IDENTIFIER%> MapFor_%!TYPE_IDENTIFIER% ;
+typedef SharedGenericMap <GGS_%!KEY_TYPE_IDENTIFIER%,
+                          GGS_%!ELEMENT_TYPE_IDENTIFIER%> MapFor_%!TYPE_IDENTIFIER% ;
 
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
 
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
   
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mArray (mIndex COMMA_HERE).mProperty_%![mEnumerationName identifierRepresentation]% ;
   }
 
 %
@@ -34,14 +24,14 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
 %  public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const  {
-     return mIterator->second ;
+     return mArray (mIndex COMMA_HERE) ;
   }
 %
   end
 %
 //--- Private properties
-  private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
-  private: MapFor_%!TYPE_IDENTIFIER%::reverse_iterator mIterator ;
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -53,14 +43,14 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mArray (mIndex COMMA_HERE).mProperty_%![mEnumerationName identifierRepresentation]% ;
  }
  
 %
@@ -68,13 +58,13 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access
   public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second ;
+    return mArray (mIndex COMMA_HERE) ;
   }
 %  end
 %
 //--- Private properties
-  private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
-  private: MapFor_%!TYPE_IDENTIFIER%::iterator mIterator ;
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -88,25 +78,26 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: MapFor_%!TYPE_IDENTIFIER% mDictionary ;
-  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- Destructor
-//  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
-
+//--------------------------------- Build
+  public: static GGS_%!TYPE_IDENTIFIER% builtDictionary (LOCATION_ARGS) ;
+ 
 //--------------------------------- Handle copy
   public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
   public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+//--------------------------------- isValid
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return mDictionary.isValid () ;
+  }
 
-//--- drop
+//--------------------------------- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--- Implementation of reader 'description'
+//--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 

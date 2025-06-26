@@ -7,3 +7,4 @@ list @2lstringlist %usefull {
   public var @lstring mValue0
   public var @lstring mValue1
 }
+

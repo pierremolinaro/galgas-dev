@@ -1072,47 +1072,47 @@ GGS_procDeclarationAST_2E_weak GGS_procDeclarationAST_2E_weak::extractObject (co
 
 GGS_syntaxExtensionsDictionary::GGS_syntaxExtensionsDictionary (void) :
 AC_GALGAS_root (),
-mDictionary (),
-mIsValid (false) {
+mDictionary () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::builtDictionary (LOCATION_ARGS) {
+  GGS_syntaxExtensionsDictionary result ;
+  result.mDictionary.build (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_syntaxExtensionsDictionary::GGS_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inSource) :
 AC_GALGAS_root (),
-mDictionary (inSource.mDictionary),
-mIsValid (inSource.mIsValid) {
+mDictionary (inSource.mDictionary) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_syntaxExtensionsDictionary & GGS_syntaxExtensionsDictionary::operator = (const GGS_syntaxExtensionsDictionary & inSource) {
   mDictionary = inSource.mDictionary ;
-  mIsValid = inSource.mIsValid ;
-  return * this ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_syntaxExtensionsDictionary::drop (void) {
-  mDictionary.clear () ;
-  mIsValid = false ;
+  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::class_func_emptyDict (UNUSED_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary result ;
-  result.mIsValid = true ;
-  return result ;
+GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::class_func_emptyDict (LOCATION_ARGS) {
+  return GGS_syntaxExtensionsDictionary::builtDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary result ;
-  result.mIsValid = true ;
-  return result ;
+GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS_syntaxExtensionsDictionary::builtDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1123,7 +1123,7 @@ void GGS_syntaxExtensionsDictionary::description (String & ioString,
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendUnsigned (mDictionary.size ()) ;
+    ioString.appendSigned (mDictionary.count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -1136,7 +1136,7 @@ void GGS_syntaxExtensionsDictionary::description (String & ioString,
 GGS_uint GGS_syntaxExtensionsDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.size ())) ;
+    result = GGS_uint (uint32_t (mDictionary.count ())) ;
   }
   return result ;
 }
@@ -1147,22 +1147,25 @@ GGS_syntaxExtensionsDictionary_2E_element_3F_ GGS_syntaxExtensionsDictionary::
 readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_syntaxExtensionsDictionary_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator != mDictionary.end ()) { // Key exists
-      result = iterator->second ;
-    }  
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> foundObject ;
+    mDictionary.nodeForKey (inKey, foundObject) ;
+    if (foundObject.isNotNil ()) {
+      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (foundObject->mNode) ;
+    }else{
+      return GGS_syntaxExtensionsDictionary_2E_element_3F_::init_nil () ;
+    }
+  }else{
+    return GGS_syntaxExtensionsDictionary_2E_element_3F_ () ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inValue
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary [inValue.mProperty_key] = inValue ;
+    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -1171,10 +1174,10 @@ void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxEx
 void GGS_syntaxExtensionsDictionary::addAssignOperation (const GGS_string & inKey,
                                                          const GGS_galgas_33_SyntaxExtensionListAST & inArgument0,
                                                          Compiler * /* inCompiler */
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                         COMMA_LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary [inKey] = newElement ;
+    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -1183,10 +1186,10 @@ void GGS_syntaxExtensionsDictionary::addAssignOperation (const GGS_string & inKe
 void GGS_syntaxExtensionsDictionary::setter_insert (const GGS_string inKey,
                                                     const GGS_galgas_33_SyntaxExtensionListAST inArgument0,
                                                     Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+                                                    COMMA_LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary [inKey] = newElement ;
+    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -1196,8 +1199,7 @@ GGS_bool GGS_syntaxExtensionsDictionary::getter_hasKey (const GGS_string & inKey
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    result = GGS_bool (iterator != mDictionary.end ()) ; // Key exists
+    result = GGS_bool (mDictionary.hasKey (inKey)) ;
   }
   return result ;
 }
@@ -1209,16 +1211,17 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> removedObject ;
+    mDictionary.nodeForKey (inKey, removedObject) ;
+    if (removedObject.isNil ()) {
     //--- Build error message
-      String message = "cannot search in dict: the key does not exist" ;
+      const String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop out arguments
       outArgument0.drop () ;
     }else{
-      outArgument0 = iterator->second.mProperty_extensionList ;
+      outArgument0 = removedObject->mNode.mProperty_extensionList ;
     }
   }
 }
@@ -1230,19 +1233,18 @@ void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> removedObject ;
+    mDictionary.removeAndReturnRemovedNode (inKey, removedObject COMMA_THERE) ;
+    if (removedObject.isNil ()) { // Not found
     //--- Build error message
-      String message = "cannot remove in dict: the key does not exist" ;
+      const String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop output arguments
       outArgument0.drop () ;
     }else{
     //--- Assign output arguments
-      outArgument0 = iterator->second.mProperty_extensionList ;
-    //--- Remove entry
-      mDictionary.erase (iterator) ;
+      outArgument0 = removedObject->mNode.mProperty_extensionList ;
     }
   }
 }
@@ -1254,14 +1256,15 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_syntaxExtensionsDictionary::getter_exte
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_galgas_33_SyntaxExtensionListAST result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> removedObject ;
+    mDictionary.nodeForKey (inKey, removedObject) ;
+    if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get extensionList ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = iterator->second.mProperty_extensionList ;
+      result = removedObject->mNode.mProperty_extensionList ;
     }
   }
   return result ;
@@ -1273,14 +1276,15 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> modifiedObject ;
+    mDictionary.nodeForKey (inKey, modifiedObject) ;
+    if (modifiedObject.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setExtensionListForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      iterator->second.mProperty_extensionList = inPropertyValue ;
+      modifiedObject->mNode.mProperty_extensionList = inPropertyValue ;
     }
   }
 }
@@ -1290,9 +1294,8 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_syntaxExtensionsDictionary::UpEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mDictionary (inOperand.mIsValid ? inOperand.mDictionary : MapFor_syntaxExtensionsDictionary ()),
-mIterator () {
-  mIterator = mDictionary.begin () ;
+mArray (inOperand.mDictionary.sortedNodeArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1300,9 +1303,9 @@ mIterator () {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_syntaxExtensionsDictionary::DownEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mDictionary (inOperand.mIsValid ? inOperand.mDictionary : MapFor_syntaxExtensionsDictionary ()),
-mIterator () {
-  mIterator = mDictionary.rbegin () ;
+mArray (inOperand.mDictionary.sortedNodeArray ()),
+mIndex () {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------

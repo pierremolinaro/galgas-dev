@@ -2208,43 +2208,33 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDic
 // Phase 1: @syntaxExtensionsDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-class KeyComparator_syntaxExtensionsDictionary final {
-  public: bool operator () (const GGS_string & inLeft,
-                            const GGS_string & inRight) const {
-    return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
-  }
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-typedef std::map <GGS_string,
-                  GGS_syntaxExtensionsDictionary_2E_element,
-                  KeyComparator_syntaxExtensionsDictionary> MapFor_syntaxExtensionsDictionary ;
+typedef SharedGenericMap <GGS_string,
+                          GGS_syntaxExtensionsDictionary_2E_element> MapFor_syntaxExtensionsDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_syntaxExtensionsDictionary final {
   public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand) ;
 
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
   
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
   }
 
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_extensionList ;
+    return mArray (mIndex COMMA_HERE).mProperty_extensionList ;
   }
 
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mIterator->second ;
+     return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_syntaxExtensionsDictionary mDictionary ;
-  private: MapFor_syntaxExtensionsDictionary::reverse_iterator mIterator ;
+  private: TC_Array <GGS_syntaxExtensionsDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: DownEnumerator_syntaxExtensionsDictionary (const DownEnumerator_syntaxExtensionsDictionary &) = delete ;
@@ -2256,26 +2246,26 @@ class DownEnumerator_syntaxExtensionsDictionary final {
 class UpEnumerator_syntaxExtensionsDictionary final {
   public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
  }
  
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_extensionList ;
+    return mArray (mIndex COMMA_HERE).mProperty_extensionList ;
  }
  
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second ;
+    return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_syntaxExtensionsDictionary mDictionary ;
-  private: MapFor_syntaxExtensionsDictionary::iterator mIterator ;
+  private: TC_Array <GGS_syntaxExtensionsDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: UpEnumerator_syntaxExtensionsDictionary (const UpEnumerator_syntaxExtensionsDictionary &) = delete ;
@@ -2289,25 +2279,26 @@ class UpEnumerator_syntaxExtensionsDictionary final {
 class GGS_syntaxExtensionsDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: MapFor_syntaxExtensionsDictionary mDictionary ;
-  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_syntaxExtensionsDictionary (void) ;
 
-//--------------------------------- Destructor
-//  public: virtual ~ GGS_syntaxExtensionsDictionary (void) ;
-
+//--------------------------------- Build
+  public: static GGS_syntaxExtensionsDictionary builtDictionary (LOCATION_ARGS) ;
+ 
 //--------------------------------- Handle copy
   public: GGS_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inSource) ;
   public: GGS_syntaxExtensionsDictionary & operator = (const GGS_syntaxExtensionsDictionary & inSource) ;
 
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+//--------------------------------- isValid
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return mDictionary.isValid () ;
+  }
 
-//--- drop
+//--------------------------------- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--- Implementation of reader 'description'
+//--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 

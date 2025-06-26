@@ -9154,43 +9154,33 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 // Phase 1: @genericExtensionMethodListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-class KeyComparator_genericExtensionMethodListMapDictionary final {
-  public: bool operator () (const GGS_string & inLeft,
-                            const GGS_string & inRight) const {
-    return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
-  }
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-typedef std::map <GGS_string,
-                  GGS_genericExtensionMethodListMapDictionary_2E_element,
-                  KeyComparator_genericExtensionMethodListMapDictionary> MapFor_genericExtensionMethodListMapDictionary ;
+typedef SharedGenericMap <GGS_string,
+                          GGS_genericExtensionMethodListMapDictionary_2E_element> MapFor_genericExtensionMethodListMapDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_genericExtensionMethodListMapDictionary final {
   public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand) ;
 
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
   
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
   }
 
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_mList ;
+    return mArray (mIndex COMMA_HERE).mProperty_mList ;
   }
 
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mIterator->second ;
+     return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
-  private: MapFor_genericExtensionMethodListMapDictionary::reverse_iterator mIterator ;
+  private: TC_Array <GGS_genericExtensionMethodListMapDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: DownEnumerator_genericExtensionMethodListMapDictionary (const DownEnumerator_genericExtensionMethodListMapDictionary &) = delete ;
@@ -9202,26 +9192,26 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
 class UpEnumerator_genericExtensionMethodListMapDictionary final {
   public: UpEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
  }
  
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_mList ;
+    return mArray (mIndex COMMA_HERE).mProperty_mList ;
  }
  
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second ;
+    return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
-  private: MapFor_genericExtensionMethodListMapDictionary::iterator mIterator ;
+  private: TC_Array <GGS_genericExtensionMethodListMapDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: UpEnumerator_genericExtensionMethodListMapDictionary (const UpEnumerator_genericExtensionMethodListMapDictionary &) = delete ;
@@ -9235,25 +9225,26 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
 class GGS_genericExtensionMethodListMapDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
-  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_genericExtensionMethodListMapDictionary (void) ;
 
-//--------------------------------- Destructor
-//  public: virtual ~ GGS_genericExtensionMethodListMapDictionary (void) ;
-
+//--------------------------------- Build
+  public: static GGS_genericExtensionMethodListMapDictionary builtDictionary (LOCATION_ARGS) ;
+ 
 //--------------------------------- Handle copy
   public: GGS_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inSource) ;
   public: GGS_genericExtensionMethodListMapDictionary & operator = (const GGS_genericExtensionMethodListMapDictionary & inSource) ;
 
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+//--------------------------------- isValid
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return mDictionary.isValid () ;
+  }
 
-//--- drop
+//--------------------------------- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--- Implementation of reader 'description'
+//--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 
@@ -9619,43 +9610,33 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 // Phase 1: @descendantClassListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-class KeyComparator_descendantClassListMapDictionary final {
-  public: bool operator () (const GGS_string & inLeft,
-                            const GGS_string & inRight) const {
-    return inLeft.objectCompare (inRight) == ComparisonResult::firstOperandLowerThanSecond ;
-  }
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-typedef std::map <GGS_string,
-                  GGS_descendantClassListMapDictionary_2E_element,
-                  KeyComparator_descendantClassListMapDictionary> MapFor_descendantClassListMapDictionary ;
+typedef SharedGenericMap <GGS_string,
+                          GGS_descendantClassListMapDictionary_2E_element> MapFor_descendantClassListMapDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_descendantClassListMapDictionary final {
   public: DownEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand) ;
 
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.rend () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
   
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
   }
 
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_typeList ;
+    return mArray (mIndex COMMA_HERE).mProperty_typeList ;
   }
 
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mIterator->second ;
+     return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_descendantClassListMapDictionary mDictionary ;
-  private: MapFor_descendantClassListMapDictionary::reverse_iterator mIterator ;
+  private: TC_Array <GGS_descendantClassListMapDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: DownEnumerator_descendantClassListMapDictionary (const DownEnumerator_descendantClassListMapDictionary &) = delete ;
@@ -9667,26 +9648,26 @@ class DownEnumerator_descendantClassListMapDictionary final {
 class UpEnumerator_descendantClassListMapDictionary final {
   public: UpEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIterator != mDictionary.end () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
-  public: inline void gotoNextObject (void) { mIterator ++ ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_key ;
+    return mArray (mIndex COMMA_HERE).mProperty_key ;
  }
  
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second.mProperty_typeList ;
+    return mArray (mIndex COMMA_HERE).mProperty_typeList ;
  }
  
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mIterator->second ;
+    return mArray (mIndex COMMA_HERE) ;
   }
 
 //--- Private properties
-  private: MapFor_descendantClassListMapDictionary mDictionary ;
-  private: MapFor_descendantClassListMapDictionary::iterator mIterator ;
+  private: TC_Array <GGS_descendantClassListMapDictionary_2E_element> mArray ;
+  private: int mIndex ;
 
 //--- No copy
   private: UpEnumerator_descendantClassListMapDictionary (const UpEnumerator_descendantClassListMapDictionary &) = delete ;
@@ -9700,25 +9681,26 @@ class UpEnumerator_descendantClassListMapDictionary final {
 class GGS_descendantClassListMapDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: MapFor_descendantClassListMapDictionary mDictionary ;
-  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_descendantClassListMapDictionary (void) ;
 
-//--------------------------------- Destructor
-//  public: virtual ~ GGS_descendantClassListMapDictionary (void) ;
-
+//--------------------------------- Build
+  public: static GGS_descendantClassListMapDictionary builtDictionary (LOCATION_ARGS) ;
+ 
 //--------------------------------- Handle copy
   public: GGS_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inSource) ;
   public: GGS_descendantClassListMapDictionary & operator = (const GGS_descendantClassListMapDictionary & inSource) ;
 
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+//--------------------------------- isValid
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return mDictionary.isValid () ;
+  }
 
-//--- drop
+//--------------------------------- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--- Implementation of reader 'description'
+//--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 

@@ -2,47 +2,47 @@
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
-mDictionary (),
-mIsValid (false) {
+mDictionary () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::builtDictionary (LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  result.mDictionary.build (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
-mDictionary (inSource.mDictionary),
-mIsValid (inSource.mIsValid) {
+mDictionary (inSource.mDictionary) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
   mDictionary = inSource.mDictionary ;
-  mIsValid = inSource.mIsValid ;
-  return * this ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::drop (void) {
-  mDictionary.clear () ;
-  mIsValid = false ;
+  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyDict (UNUSED_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.mIsValid = true ;
-  return result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyDict (LOCATION_ARGS) {
+  return GGS_%!TYPE_IDENTIFIER%::builtDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  result.mIsValid = true ;
-  return result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS_%!TYPE_IDENTIFIER%::builtDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendUnsigned (mDictionary.size ()) ;
+    ioString.appendSigned (mDictionary.count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -66,7 +66,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
 GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.size ())) ;
+    result = GGS_uint (uint32_t (mDictionary.count ())) ;
   }
   return result ;
 }
@@ -77,22 +77,25 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::
 readSubscript__3F_ (const class GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator != mDictionary.end ()) { // Key exists
-      result = iterator->second ;
-    }  
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> foundObject ;
+    mDictionary.nodeForKey (inKey, foundObject) ;
+    if (foundObject.isNotNil ()) {
+      return GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% (foundObject->mNode) ;
+    }else{
+      return GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
+    }
+  }else{
+    return GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% () ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
-      %!^%COMMA_UNUSED_LOCATION_ARGS) {
+      %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary [inValue.mProperty_key] = inValue ;
+    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -103,14 +106,14 @@ for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%const GGS_%![propertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%Compiler * /* inCompiler */%
-%\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+%\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
 for (5*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
 %) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary [inKey] = newElement ;
+    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -121,14 +124,14 @@ for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%const GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
 end
 %,\n %!^%Compiler * /* inCompiler */%
-%\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+%\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
 for (5*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
 %) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary [inKey] = newElement ;
+    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -138,8 +141,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_%!KEY_TYPE_IDENTIF
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    result = GGS_bool (iterator != mDictionary.end ()) ; // Key exists
+    result = GGS_bool (mDictionary.hasKey (inKey)) ;
   }
   return result ;
 }
@@ -153,10 +155,11 @@ end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
+    mDictionary.nodeForKey (inKey, removedObject) ;
+    if (removedObject.isNil ()) {
     //--- Build error message
-      String message = "cannot search in dict: the key does not exist" ;
+      const String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop out arguments
@@ -167,7 +170,7 @@ end
 %    }else{
 %
 for (* propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %      outArgument%![IDX string]% = iterator->second.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %      outArgument%![IDX string]% = removedObject->mNode.mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
 %    }
   }
@@ -181,10 +184,11 @@ end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
+    mDictionary.removeAndReturnRemovedNode (inKey, removedObject COMMA_THERE) ;
+    if (removedObject.isNil ()) { // Not found
     //--- Build error message
-      String message = "cannot remove in dict: the key does not exist" ;
+      const String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop output arguments
@@ -196,11 +200,9 @@ end
     //--- Assign output arguments
 %
 for (* propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %      outArgument%![IDX string]% = iterator->second.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %      outArgument%![IDX string]% = removedObject->mNode.mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
-%    //--- Remove entry
-      mDictionary.erase (iterator) ;
-    }
+%    }
   }
 }
 
@@ -211,14 +213,15 @@ end
                                                  %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![propertyTypeEntry identifierRepresentation]% result ;
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
+    mDictionary.nodeForKey (inKey, removedObject) ;
+    if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = iterator->second.mProperty_%![propertyName identifierRepresentation]% ;
+      result = removedObject->mNode.mProperty_%![propertyName identifierRepresentation]% ;
     }
   }
   return result ;
@@ -232,14 +235,15 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    auto iterator = mDictionary.find (inKey) ;
-    if (iterator == mDictionary.end ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedObject ;
+    mDictionary.nodeForKey (inKey, modifiedObject) ;
+    if (modifiedObject.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      iterator->second.mProperty_%![propertyName identifierRepresentation]% = inPropertyValue ;
+      modifiedObject->mNode.mProperty_%![propertyName identifierRepresentation]% = inPropertyValue ;
     }
   }
 }\n\n%
@@ -250,9 +254,8 @@ end
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mDictionary (inOperand.mIsValid ? inOperand.mDictionary : MapFor_%!TYPE_IDENTIFIER% ()),
-mIterator () {
-  mIterator = mDictionary.begin () ;
+mArray (inOperand.mDictionary.sortedNodeArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -260,9 +263,9 @@ mIterator () {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mDictionary (inOperand.mIsValid ? inOperand.mDictionary : MapFor_%!TYPE_IDENTIFIER% ()),
-mIterator () {
-  mIterator = mDictionary.rbegin () ;
+mArray (inOperand.mDictionary.sortedNodeArray ()),
+mIndex () {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------

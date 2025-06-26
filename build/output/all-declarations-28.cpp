@@ -5037,13 +5037,14 @@ const char * gWrapperFileContent_0_typeGenerationTemplate =
   "  public var @lstring mValue0\n"
   "  public var @lstring mValue1\n"
   "}\n"
+  "\n"
    ;
 
 const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate (
   "galgas-predefined-types.ggs",
   "ggs",
   true, // Text file
- 197, // Text length
+ 198, // Text length
   gWrapperFileContent_0_typeGenerationTemplate
 ) ;
 
