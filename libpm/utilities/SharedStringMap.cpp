@@ -406,10 +406,6 @@ SharedStringMap & SharedStringMap::operator = (const SharedStringMap & inSource)
 SharedStringMap SharedStringMap::build (LOCATION_ARGS) {
   SharedStringMap result ;
   result.mSharedRoot = OptionalSharedRef <SharedStringMapRoot>::make (THERE) ;
-//  SharedStringMapRoot * p = nullptr ;
-//  macroMyNew (p, SharedStringMapRoot (THERE)) ;
-//  macroAssignSharedObject (result.mSharedRoot, p) ;
-//  macroDetachSharedObject (p) ;
   return result ;
 }
 
@@ -484,4 +480,3 @@ int32_t SharedStringMap::count (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-

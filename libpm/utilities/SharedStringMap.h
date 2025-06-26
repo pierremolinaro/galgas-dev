@@ -62,9 +62,6 @@ class SharedStringMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private: static void populateCacheArray (SharedStringMapNode * inNode,
-//                                           TC_Array <SharedStringMapNode *> & ioCacheArray) ;
-
   private: static void populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
                                             TC_Array <String> & ioStringArray) ;
 
