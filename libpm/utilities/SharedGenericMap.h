@@ -284,11 +284,10 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void removeAndReturnRemovedNode (const KEY & inKey,
-                             OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & outRemovedNode) {
+  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> removeAndReturnRemovedNode (const KEY & inKey) {
     macroUniqueSharedObject (this) ;
     bool ioBranchHasBeenRemoved ;
-    internalRemoveEntry (inKey, mRootNode, outRemovedNode, ioBranchHasBeenRemoved) ;
+    return internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -368,37 +367,37 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: void internalRemoveEntry (const KEY & inKeyToRemove,
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> internalRemoveEntry (const KEY & inKeyToRemove,
                                      OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRoot,
-                                     OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & outRemovedNode,
                                      bool & ioBranchHasBeenRemoved) {
+    OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> removedNode ;
     if (ioRoot.isNotNil ()) {
 //      const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
       const ComparisonResult comparaison = ioRoot->mNode.mProperty_key.objectCompare (inKeyToRemove) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
-        internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, outRemovedNode, ioBranchHasBeenRemoved);
+        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);
         if (ioBranchHasBeenRemoved) {
           infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
         }
         break ;
       case ComparisonResult::firstOperandLowerThanSecond : // <
-        internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, outRemovedNode, ioBranchHasBeenRemoved);
+        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);
         if (ioBranchHasBeenRemoved) {
           supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
         }
         break ;
       case ComparisonResult::operandEqual :
         mCount -= 1 ;
-        outRemovedNode.setToNil () ;
+        removedNode.setToNil () ;
         if (ioRoot->mInfPtr.isNil ()) {
-          outRemovedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;
+          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;
           ioBranchHasBeenRemoved = true ;
         }else if (ioRoot->mSupPtr.isNil ()) {
-          outRemovedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;
+          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;
           ioBranchHasBeenRemoved = true ;
         }else{
-          outRemovedNode = ioRoot ;
+          removedNode = ioRoot ;
           OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
@@ -415,6 +414,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
         break ;
       }
     }
+    return removedNode ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -545,12 +545,14 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   //   Remove
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void removeAndReturnRemovedNode (const KEY & inKey,
-                           OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & outRemovedNode
-                           COMMA_LOCATION_ARGS) {
+  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>
+  removeAndReturnRemovedNode (const KEY & inKey
+                              COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil ()) {
       insulate (THERE) ;
-      mSharedRoot->removeAndReturnRemovedNode (inKey, outRemovedNode) ;
+      return mSharedRoot->removeAndReturnRemovedNode (inKey) ;
+    }else{
+      return OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> () ;
     }
   }
 

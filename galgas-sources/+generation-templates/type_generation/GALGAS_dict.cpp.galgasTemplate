@@ -184,8 +184,8 @@ end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> removedObject ;
-    mDictionary.removeAndReturnRemovedNode (inKey, removedObject COMMA_THERE) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+    const auto removedObject = mDictionary.removeAndReturnRemovedNode (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;

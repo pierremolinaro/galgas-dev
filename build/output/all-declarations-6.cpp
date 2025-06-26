@@ -1233,8 +1233,8 @@ void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> removedObject ;
-    mDictionary.removeAndReturnRemovedNode (inKey, removedObject COMMA_THERE) ;
+    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
+    const auto removedObject = mDictionary.removeAndReturnRemovedNode (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
