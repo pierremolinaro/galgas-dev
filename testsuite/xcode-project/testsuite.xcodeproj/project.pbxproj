@@ -8080,7 +8080,7 @@
     1758261F10D052E6E2C1123C /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
-        ONLY_ACTIVE_ARCH = YES;
+        ONLY_ACTIVE_ARCH = NO;
       GCC_OPTIMIZATION_LEVEL = 2 ;
       GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS) ;
       GCC_WARN_UNUSED_PARAMETER = YES ;
@@ -8094,7 +8094,7 @@
     7032108EEE6DD897F3BCA8A5 /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
-        ONLY_ACTIVE_ARCH = YES;
+        ONLY_ACTIVE_ARCH = NO;
       GCC_OPTIMIZATION_LEVEL = 0 ;
       GCC_GENERATE_DEBUGGING_SYMBOLS = YES ;
       GCC_PREPROCESSOR_DEFINITIONS = () ;

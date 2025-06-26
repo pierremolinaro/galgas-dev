@@ -1664,16 +1664,16 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
     while (enumerator_14061.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_14061.current_mBuildConfigurationRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        ONLY_ACTIVE_ARCH = YES;\n") ;
-      GGS_uint index_14265_ (0) ;
+      result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        ONLY_ACTIVE_ARCH = NO;\n") ;
+      GGS_uint index_14264_ (0) ;
       if (enumerator_14061.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_14265 (enumerator_14061.current_mBuildConfigurationSettingList (HERE)) ;
-        while (enumerator_14265.hasCurrentObject ()) {
+        UpEnumerator_stringlist enumerator_14264 (enumerator_14061.current_mBuildConfigurationSettingList (HERE)) ;
+        while (enumerator_14264.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_14265.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_14264.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          enumerator_14265.gotoNextObject () ;
-          index_14265_.increment () ;
+          enumerator_14264.gotoNextObject () ;
+          index_14264_.increment () ;
         }
       }
       result.appendString ("      PRODUCT_NAME = ") ;
@@ -1683,33 +1683,33 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       index_14061_.increment () ;
     }
   }
-  GGS_uint index_14740_ (0) ;
+  GGS_uint index_14739_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_14740 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_14740.hasCurrentObject ()) {
+    UpEnumerator_XCodeAppTargetList enumerator_14739 (in_APP_5F_TARGET_5F_LIST) ;
+    while (enumerator_14739.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_14740.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_14739.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n") ;
-      GGS_uint index_14908_ (0) ;
-      if (enumerator_14740.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_14908 (enumerator_14740.current_mBuildConfigurationSettingList (HERE)) ;
-        while (enumerator_14908.hasCurrentObject ()) {
+      GGS_uint index_14907_ (0) ;
+      if (enumerator_14739.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        UpEnumerator_stringlist enumerator_14907 (enumerator_14739.current_mBuildConfigurationSettingList (HERE)) ;
+        while (enumerator_14907.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_14908.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_14907.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          enumerator_14908.gotoNextObject () ;
-          index_14908_.increment () ;
+          enumerator_14907.gotoNextObject () ;
+          index_14907_.increment () ;
         }
       }
       result.appendString ("      INFOPLIST_FILE = \"Info.plist\";\n      PRODUCT_NAME = ") ;
-      result.appendString (enumerator_14740.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 368)).stringValue ()) ;
+      result.appendString (enumerator_14739.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 368)).stringValue ()) ;
       result.appendString (";\n      PRODUCT_BUNDLE_IDENTIFIER = \"") ;
       result.appendString (in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue ()) ;
       result.appendString (".") ;
       result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
       result.appendString ("\";\n      SWIFT_ACTIVE_COMPILATION_CONDITIONS = \"CONFIGURATION_IS_DEBUG $(inherited)\";\n    };\n    name = Default;\n  };\n\n") ;
-      enumerator_14740.gotoNextObject () ;
-      index_14740_.increment () ;
+      enumerator_14739.gotoNextObject () ;
+      index_14739_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ XCConfigurationList section */\n\n    ") ;
@@ -1717,30 +1717,30 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   result.appendString (" /* Build configuration list for PBXProject */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
   result.appendString (in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
   result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-  GGS_uint index_15954_ (0) ;
+  GGS_uint index_15953_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_15954 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_15954.hasCurrentObject ()) {
+    UpEnumerator_XCodeToolTargetList enumerator_15953 (in_TOOL_5F_TARGET_5F_LIST) ;
+    while (enumerator_15953.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_15954.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_15953.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_15954.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_15953.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      enumerator_15954.gotoNextObject () ;
-      index_15954_.increment () ;
+      enumerator_15953.gotoNextObject () ;
+      index_15953_.increment () ;
     }
   }
-  GGS_uint index_16536_ (0) ;
+  GGS_uint index_16535_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_16536 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_16536.hasCurrentObject ()) {
+    UpEnumerator_XCodeAppTargetList enumerator_16535 (in_APP_5F_TARGET_5F_LIST) ;
+    while (enumerator_16535.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_16536.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_16535.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_16536.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_16535.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      enumerator_16536.gotoNextObject () ;
-      index_16536_.increment () ;
+      enumerator_16535.gotoNextObject () ;
+      index_16535_.increment () ;
     }
   }
   result.appendString ("/*------------------------------------------------------------------ End */\n  };\n\n  rootObject = ") ;
