@@ -1001,6 +1001,7 @@
 		CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
 		CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
 		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
+		CFD863382E0EBF7A002153FB /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_AppDelegate.swift; sourceTree = "<group>"; };
 		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
@@ -1639,6 +1640,7 @@
 				CF305F8C2D0D8A2E000A5F79 /* SHA256.h */,
 				CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */,
 				CFC0C55A2E0D9102001FB9B1 /* SharedGenericMap.h */,
+				CFD863382E0EBF7A002153FB /* SharedGenericPtrWithValueSemantics.h */,
 				CF305F8E2D0D8A2E000A5F79 /* SharedObject.h */,
 				CF305F8F2D0D8A2E000A5F79 /* SharedObject.cpp */,
 				CF634CCB2D85CB15009BFAE6 /* SharedObjectWithValueSemantics.h */,

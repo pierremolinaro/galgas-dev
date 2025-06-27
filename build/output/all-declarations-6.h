@@ -2220,21 +2220,21 @@ class DownEnumerator_syntaxExtensionsDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_extensionList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_extensionList ;
   }
 
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE) ;
+     return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_syntaxExtensionsDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_syntaxExtensionsDictionary (const DownEnumerator_syntaxExtensionsDictionary &) = delete ;
@@ -2251,21 +2251,21 @@ class UpEnumerator_syntaxExtensionsDictionary final {
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_extensionList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_extensionList ;
  }
  
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE) ;
+    return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_syntaxExtensionsDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_syntaxExtensionsDictionary (const UpEnumerator_syntaxExtensionsDictionary &) = delete ;

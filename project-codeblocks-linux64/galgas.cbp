@@ -193,7 +193,6 @@
    <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/utilities/SharedStringMap.cpp" />
-   <Unit filename="../libpm/utilities/SharedObjectWithValueSemantics.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_CLI_Options.cpp" />
    <Unit filename="../libpm/galgas/Compiler.cpp" />
    <Unit filename="../libpm/galgas/Lexique.cpp" />

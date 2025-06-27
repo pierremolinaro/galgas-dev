@@ -16,7 +16,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
   }
 
 %
@@ -24,14 +24,14 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
 %  public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE) ;
+     return mArray (mIndex COMMA_HERE).value () ;
   }
 %
   end
 %
 //--- Private properties
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -50,7 +50,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
  }
  
 %
@@ -58,13 +58,13 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access
   public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE) ;
+    return mArray (mIndex COMMA_HERE).value () ;
   }
 %  end
 %
 //--- Private properties
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;

@@ -9166,21 +9166,21 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_mList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_mList ;
   }
 
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE) ;
+     return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_genericExtensionMethodListMapDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_genericExtensionMethodListMapDictionary (const DownEnumerator_genericExtensionMethodListMapDictionary &) = delete ;
@@ -9197,21 +9197,21 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_mList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_mList ;
  }
  
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE) ;
+    return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_genericExtensionMethodListMapDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_genericExtensionMethodListMapDictionary (const UpEnumerator_genericExtensionMethodListMapDictionary &) = delete ;
@@ -9622,21 +9622,21 @@ class DownEnumerator_descendantClassListMapDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_typeList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_typeList ;
   }
 
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE) ;
+     return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_descendantClassListMapDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: DownEnumerator_descendantClassListMapDictionary (const DownEnumerator_descendantClassListMapDictionary &) = delete ;
@@ -9653,21 +9653,21 @@ class UpEnumerator_descendantClassListMapDictionary final {
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_key ;
+    return mArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).mProperty_typeList ;
+    return mArray (mIndex COMMA_HERE)->mProperty_typeList ;
  }
  
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE) ;
+    return mArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <GGS_descendantClassListMapDictionary_2E_element> mArray ;
-  private: int mIndex ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mArray ;
+  private: int32_t mIndex ;
 
 //--- No copy
   private: UpEnumerator_descendantClassListMapDictionary (const UpEnumerator_descendantClassListMapDictionary &) = delete ;

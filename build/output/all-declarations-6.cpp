@@ -1148,10 +1148,9 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
-    const auto foundObject = mDictionary.nodeForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> foundObject = mDictionary.nodeForKey (inKey) ;
     if (foundObject.isNotNil ()) {
-      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (foundObject->mNode) ;
+      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (foundObject.value ()) ;
     }else{
       return GGS_syntaxExtensionsDictionary_2E_element_3F_::init_nil () ;
     }
@@ -1211,8 +1210,7 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
-    const auto removedObject = mDictionary.nodeForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
     if (removedObject.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -1221,7 +1219,7 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
     //--- Drop out arguments
       outArgument0.drop () ;
     }else{
-      outArgument0 = removedObject->mNode.mProperty_extensionList ;
+      outArgument0 = removedObject->mProperty_extensionList ;
     }
   }
 }
@@ -1256,15 +1254,14 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_syntaxExtensionsDictionary::getter_exte
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_galgas_33_SyntaxExtensionListAST result ;
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
-    const auto removedObject = mDictionary.nodeForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get extensionList ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = removedObject->mNode.mProperty_extensionList ;
+      result = removedObject->mProperty_extensionList ;
     }
   }
   return result ;
@@ -1276,15 +1273,14 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
-    const auto modifiedObject = mDictionary.nodeForKey (inKey) ;
+    SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> modifiedObject = mDictionary.nodeForKey (inKey) ;
     if (modifiedObject.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setExtensionListForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      modifiedObject->mNode.mProperty_extensionList = inPropertyValue ;
+      modifiedObject->mProperty_extensionList = inPropertyValue ;
     }
   }
 }
@@ -1307,8 +1303,6 @@ mArray (inOperand.mDictionary.sortedNodeArray ()),
 mIndex () {
   mIndex = mArray.count () - 1 ;
 }
-
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 //     @syntaxExtensionsDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------

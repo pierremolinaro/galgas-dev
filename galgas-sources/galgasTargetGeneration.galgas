@@ -1347,8 +1347,7 @@ proc updateGalgasTargets
         "SharedGenericMap.h",
         "SharedStringMap.h",
         "SharedStringMap.cpp",
-        "SharedObjectWithValueSemantics.h",
-        "SharedObjectWithValueSemantics.cpp",
+        "SharedGenericPtrWithValueSemantics.h",
         "galgas-random.cpp",
         "galgas-random.h"
       ]

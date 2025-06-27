@@ -3,8 +3,7 @@
 //  SharedGenericMap.h
 //  galgas-ide
 //
-//  Created by Pierre Molinaro on 26/06/2025.
-//  Copyright (C) 2025, ..., 2025 Pierre Molinaro.
+//  Created by Pierre Molinaro on 26/06/2025, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,8 +21,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedObjectWithValueSemantics.h"
 #include "String-class.h"
+#include "SharedGenericPtrWithValueSemantics.h"
 
 //--------------------------------------------------------------------------------------------------
 //  SharedGenericMapRoot
@@ -41,8 +40,9 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
 
   private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> mInfPtr ;
   private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> mSupPtr ;
-  private: int32_t mBalance ;
   public:  NODE mNode ;
+  public:  SharedGenericPtrWithValueSemantics <NODE> mSharedNode ;
+  private: int32_t mBalance ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -51,8 +51,10 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
-  mBalance (0),
-  mNode (inNode) {
+  mNode (inNode),
+  mSharedNode (),
+  mBalance (0) {
+    mSharedNode = SharedGenericPtrWithValueSemantics <NODE>::make (inNode COMMA_THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,8 +68,9 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
-  mBalance (inNodePtr->mBalance),
-  mNode (inNodePtr->mNode) {
+  mNode (inNodePtr->mNode),
+  mSharedNode (inNodePtr->mSharedNode),
+  mBalance (inNodePtr->mBalance) {
     if (inNodePtr->mInfPtr.isNotNil ()) {
       mInfPtr = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
     }
@@ -86,10 +89,10 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateNodeArray (const OptionalSharedRef <SharedGenericMapNode> & inNode,
-                                          TC_Array <NODE> & ioNodeArray) {
+                                          TC_Array <SharedGenericPtrWithValueSemantics <NODE>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateNodeArray (inNode->mInfPtr, ioNodeArray) ;
-      ioNodeArray.appendObject (inNode->mNode) ;
+      ioNodeArray.appendObject (inNode->mSharedNode) ;
       populateNodeArray (inNode->mSupPtr, ioNodeArray) ;
     }
   }
@@ -159,8 +162,8 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <NODE> sortedNodeArray (void) const {
-    TC_Array <NODE> array ;
+  public: TC_Array <SharedGenericPtrWithValueSemantics <NODE>> sortedNodeArray (void) const {
+    TC_Array <SharedGenericPtrWithValueSemantics <NODE>> array ;
     SharedGenericMapNode <KEY, NODE>::populateNodeArray (mRootNode, array) ;
     return array ;
   }
@@ -169,8 +172,8 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> search (const KEY & inKey) const {
-    OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> result ;
+  public: SharedGenericPtrWithValueSemantics <NODE> search (const KEY & inKey) const {
+    SharedGenericPtrWithValueSemantics <NODE> result ;
     recursiveSearch (inKey, mRootNode, result) ;
     return result ;
   }
@@ -235,8 +238,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
       mCount += 1 ;
       extension = true ;
     }else{
-//      const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
-      const ComparisonResult comparaison = ioRootPtr->mNode.mProperty_key.objectCompare (inKey) ;
+      const ComparisonResult comparaison = ioRootPtr->mSharedNode->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
         extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inNodeToInsert) ;
@@ -270,6 +272,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
         break ;
       case ComparisonResult::operandEqual :
         extension = false ;
+        ioRootPtr->mSharedNode = SharedGenericPtrWithValueSemantics <NODE>::make (inNodeToInsert COMMA_HERE) ;
         ioRootPtr->mNode = inNodeToInsert ;
         break ;
       case ComparisonResult::invalid :
@@ -372,8 +375,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
                                      bool & ioBranchHasBeenRemoved) {
     OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> removedNode ;
     if (ioRoot.isNotNil ()) {
-//      const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
-      const ComparisonResult comparaison = ioRoot->mNode.mProperty_key.objectCompare (inKeyToRemove) ;
+      const ComparisonResult comparaison = ioRoot->mSharedNode->mProperty_key.objectCompare (inKeyToRemove) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
         removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);
@@ -420,7 +422,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: bool hasKey (const KEY & inKey) const {
-    OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> result ;
+    SharedGenericPtrWithValueSemantics <NODE> result ;
     recursiveSearch (inKey, mRootNode, result) ;
     return result.isNotNil () ;
   }
@@ -429,10 +431,9 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   public: static void recursiveSearch (const KEY & inKey,
                             const OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & inNodePtr,
-                            OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & outNodePtr) {
+                            SharedGenericPtrWithValueSemantics <NODE> & outNodePtr) {
     if (inNodePtr.isNotNil ()) {
-      // const int32_t comparaison = inNodePtr->mKey.compare (inKey) ;
-      const ComparisonResult comparaison = inNodePtr->mNode.mProperty_key.objectCompare (inKey) ;
+      const ComparisonResult comparaison = inNodePtr->mSharedNode->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
         recursiveSearch (inKey, inNodePtr->mInfPtr, outNodePtr) ;
@@ -441,7 +442,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
         recursiveSearch (inKey, inNodePtr->mSupPtr, outNodePtr) ;
         break ;
       case ComparisonResult::operandEqual : // Found
-        outNodePtr = inNodePtr ;
+        outNodePtr = inNodePtr->mSharedNode ;
         break ;
       case ComparisonResult::invalid : // Found
         outNodePtr.setToNil () ;
@@ -478,8 +479,7 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   //   Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~ SharedGenericMap (void) {
-  }
+  public: ~ SharedGenericMap (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Build
@@ -572,11 +572,11 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> nodeForKey (const KEY & inKey) const {
+  public: SharedGenericPtrWithValueSemantics <NODE> nodeForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->search (inKey) ;
     }else{
-      return OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> () ;
+      return SharedGenericPtrWithValueSemantics <NODE> () ;
     }
   }
 
@@ -592,17 +592,11 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  public: String rootNodeKey (void) const  {
-//    return mSharedRoot->rootNodeKey () ;
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: TC_Array <NODE> sortedNodeArray (void) const {
+  public: TC_Array <SharedGenericPtrWithValueSemantics <NODE>> sortedNodeArray (void) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->sortedNodeArray () ;
     }else{
-      return TC_Array <NODE> () ;
+      return TC_Array <SharedGenericPtrWithValueSemantics <NODE>> () ;
     }
   }
 
