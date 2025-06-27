@@ -1344,6 +1344,7 @@ proc updateGalgasTargets
         "MF_MemoryControl.h",
         "switch-fallthrough.h",
         "TF_Swap.h",
+        "SharedGenericMap.h",
         "SharedStringMap.h",
         "SharedStringMap.cpp",
         "SharedObjectWithValueSemantics.h",
