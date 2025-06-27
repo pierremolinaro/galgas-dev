@@ -34,16 +34,16 @@ template <typename TYPE> class SharedGenericObjectWithValueSemantics final : pub
   //  Property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TYPE mInfo ;
+  public: TYPE mValue ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  public: SharedGenericObjectWithValueSemantics (const TYPE & inInfo
+  public: SharedGenericObjectWithValueSemantics (const TYPE & inValue
                                                  COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
-  mInfo (inInfo) {
+  mValue (inValue) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,7 +70,7 @@ template <typename TYPE> class SharedGenericObjectWithValueSemantics final : pub
 
   public: SharedGenericObjectWithValueSemantics <TYPE> * cloned (LOCATION_ARGS) const {
     SharedGenericObjectWithValueSemantics <TYPE> * result = nullptr ;
-    macroMyNew (result, SharedGenericObjectWithValueSemantics <TYPE> (mInfo COMMA_THERE)) ;
+    macroMyNew (result, SharedGenericObjectWithValueSemantics <TYPE> (mValue COMMA_THERE)) ;
     return result ;
   }
 
@@ -89,7 +89,6 @@ template <typename TYPE> class SharedGenericObjectWithValueSemantics final : pub
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class SharedGenericPtrWithValueSemantics {
-//  static_assert (std::is_base_of <SharedGenericObjectWithValueSemantics, TYPE>::value, "TYPE doit dériver de SharedGenericObjectWithValueSemantics");
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Private property
@@ -139,23 +138,27 @@ template <typename TYPE> class SharedGenericPtrWithValueSemantics {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: TYPE * operator -> (void) {
+    macroValidPointer (mSharedPtr) ;
     if (!mSharedPtr->isUniquelyReferenced ()) {
       auto newPtr = mSharedPtr->cloned (HERE) ;
       macroDetachSharedObject (mSharedPtr) ;
       mSharedPtr = newPtr ;
     }
-    return &(mSharedPtr->mInfo) ;
+    return &(mSharedPtr->mValue) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: const TYPE * operator -> (void) const { return &(mSharedPtr->mInfo) ; }
+  public: const TYPE * operator -> (void) const {
+    macroValidPointer (mSharedPtr) ;
+    return &(mSharedPtr->mValue) ;
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: const TYPE value (void) const {
     macroValidPointer (mSharedPtr) ;
-    return mSharedPtr->mInfo ;
+    return mSharedPtr->mValue ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,18 +166,7 @@ template <typename TYPE> class SharedGenericPtrWithValueSemantics {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: SharedGenericPtrWithValueSemantics (const SharedGenericPtrWithValueSemantics <TYPE> & inSource) :
-  mSharedPtr (inSource.mSharedPtr) {
-    SharedObject::retain (mSharedPtr) ;
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Copy constructor from SharedGenericPtrWithValueSemantics <SOURCE>
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: template <typename SOURCE>
-  SharedGenericPtrWithValueSemantics (const SharedGenericPtrWithValueSemantics <SOURCE> & inSource) :
   mSharedPtr (nullptr) {
-    static_assert (std::is_base_of <TYPE, SOURCE>::value, "SOURCE doit dériver de TYPE");
     macroAssignSharedObject (mSharedPtr, inSource.mSharedPtr) ;
   }
 
@@ -198,4 +190,3 @@ template <typename TYPE> class SharedGenericPtrWithValueSemantics {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-

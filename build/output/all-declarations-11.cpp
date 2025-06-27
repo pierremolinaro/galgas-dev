@@ -10665,9 +10665,9 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> foundObject = mDictionary.nodeForKey (inKey) ;
-    if (foundObject.isNotNil ()) {
-      return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ (foundObject.value ()) ;
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ (object.value ()) ;
     }else{
       return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_::init_nil () ;
     }
@@ -10727,8 +10727,8 @@ void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string i
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
@@ -10736,7 +10736,7 @@ void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string i
     //--- Drop out arguments
       outArgument0.drop () ;
     }else{
-      outArgument0 = removedObject->mProperty_mList ;
+      outArgument0 = object->mProperty_mList ;
     }
   }
 }
@@ -10748,8 +10748,8 @@ void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string i
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>>
-    const auto removedObject = mDictionary.removeAndReturnRemovedNode (inKey COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> removedObject
+                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -10759,7 +10759,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string i
       outArgument0.drop () ;
     }else{
     //--- Assign output arguments
-      outArgument0 = removedObject->mNode.mProperty_mList ;
+      outArgument0 = removedObject->mProperty_mList ;
     }
   }
 }
@@ -10771,14 +10771,14 @@ GGS_lstringlist GGS_genericExtensionMethodListMapDictionary::getter_mListForKey 
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_lstringlist result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) { // Not found
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get mList ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = removedObject->mProperty_mList ;
+      result = object->mProperty_mList ;
     }
   }
   return result ;
@@ -10790,14 +10790,14 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> modifiedObject = mDictionary.nodeForKey (inKey) ;
-    if (modifiedObject.isNil ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setMListForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      modifiedObject->mProperty_mList = inPropertyValue ;
+      modifiedNode->mSharedInfo->mProperty_mList = inPropertyValue ;
     }
   }
 }
@@ -11125,9 +11125,9 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> foundObject = mDictionary.nodeForKey (inKey) ;
-    if (foundObject.isNotNil ()) {
-      return GGS_descendantClassListMapDictionary_2E_element_3F_ (foundObject.value ()) ;
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      return GGS_descendantClassListMapDictionary_2E_element_3F_ (object.value ()) ;
     }else{
       return GGS_descendantClassListMapDictionary_2E_element_3F_::init_nil () ;
     }
@@ -11187,8 +11187,8 @@ void GGS_descendantClassListMapDictionary::method_searchKey (GGS_string inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
@@ -11196,7 +11196,7 @@ void GGS_descendantClassListMapDictionary::method_searchKey (GGS_string inKey,
     //--- Drop out arguments
       outArgument0.drop () ;
     }else{
-      outArgument0 = removedObject->mProperty_typeList ;
+      outArgument0 = object->mProperty_typeList ;
     }
   }
 }
@@ -11208,8 +11208,8 @@ void GGS_descendantClassListMapDictionary::setter_removeKey (GGS_string inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>>
-    const auto removedObject = mDictionary.removeAndReturnRemovedNode (inKey COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> removedObject
+                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -11219,7 +11219,7 @@ void GGS_descendantClassListMapDictionary::setter_removeKey (GGS_string inKey,
       outArgument0.drop () ;
     }else{
     //--- Assign output arguments
-      outArgument0 = removedObject->mNode.mProperty_typeList ;
+      outArgument0 = removedObject->mProperty_typeList ;
     }
   }
 }
@@ -11231,14 +11231,14 @@ GGS_unifiedTypeMapEntryList GGS_descendantClassListMapDictionary::getter_typeLis
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS_unifiedTypeMapEntryList result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) { // Not found
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get typeList ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = removedObject->mProperty_typeList ;
+      result = object->mProperty_typeList ;
     }
   }
   return result ;
@@ -11250,14 +11250,14 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> modifiedObject = mDictionary.nodeForKey (inKey) ;
-    if (modifiedObject.isNil ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setTypeListForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      modifiedObject->mProperty_typeList = inPropertyValue ;
+      modifiedNode->mSharedInfo->mProperty_typeList = inPropertyValue ;
     }
   }
 }

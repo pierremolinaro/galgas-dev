@@ -28,33 +28,31 @@
 //  SharedGenericMapRoot
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename NODE> class SharedGenericMapRoot ;
+template <typename KEY, typename INFO> class SharedGenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 //  SharedGenericMapNode
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename NODE> class SharedGenericMapNode final : public SharedObject {
+template <typename KEY, typename INFO> class SharedGenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> mInfPtr ;
-  private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> mSupPtr ;
-  public:  NODE mNode ;
-  public:  SharedGenericPtrWithValueSemantics <NODE> mSharedNode ;
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> mInfPtr ;
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> mSupPtr ;
+  public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;
   private: int32_t mBalance ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericMapNode (const NODE & inNode
+  public: SharedGenericMapNode (const INFO & inInfo
                                 COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
-  mNode (inNode),
-  mSharedNode (),
+  mSharedInfo (),
   mBalance (0) {
-    mSharedNode = SharedGenericPtrWithValueSemantics <NODE>::make (inNode COMMA_THERE) ;
+    mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,19 +61,18 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericMapNode (const OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & inNodePtr
+  public: SharedGenericMapNode (const OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & inNodePtr
                                 COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
-  mNode (inNodePtr->mNode),
-  mSharedNode (inNodePtr->mSharedNode),
+  mSharedInfo (inNodePtr->mSharedInfo),
   mBalance (inNodePtr->mBalance) {
     if (inNodePtr->mInfPtr.isNotNil ()) {
-      mInfPtr = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
+      mInfPtr = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
     }
     if (inNodePtr->mSupPtr.isNotNil ()) {
-      mSupPtr = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
+      mSupPtr = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
     }
   }
 
@@ -89,17 +86,17 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateNodeArray (const OptionalSharedRef <SharedGenericMapNode> & inNode,
-                                          TC_Array <SharedGenericPtrWithValueSemantics <NODE>> & ioNodeArray) {
+                                          TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateNodeArray (inNode->mInfPtr, ioNodeArray) ;
-      ioNodeArray.appendObject (inNode->mSharedNode) ;
+      ioNodeArray.appendObject (inNode->mSharedInfo) ;
       populateNodeArray (inNode->mSupPtr, ioNodeArray) ;
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class SharedGenericMapRoot <KEY, NODE> ;
+  friend class SharedGenericMapRoot <KEY, INFO> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -109,13 +106,13 @@ template <typename KEY, typename NODE> class SharedGenericMapNode final : public
 //MARK:  SharedGenericMapRoot
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename NODE> class SharedGenericMapRoot final : public SharedObject {
+template <typename KEY, typename INFO> class SharedGenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> mRootNode ;
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> mRootNode ;
   private: int32_t mCount ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -132,8 +129,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ SharedGenericMapRoot (void) {
-  }
+  public: virtual ~ SharedGenericMapRoot (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // No copy
@@ -144,10 +140,10 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void duplicateTo (OptionalSharedRef <SharedGenericMapRoot <KEY, NODE>> & outNewRoot
+  public: void duplicateTo (OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>> & outNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode.isNotNil ()) {
-      outNewRoot->mRootNode = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>::make (mRootNode COMMA_HERE) ;
+      outNewRoot->mRootNode = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (mRootNode COMMA_HERE) ;
       outNewRoot->mCount = mCount ;
     }
   }
@@ -162,9 +158,9 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <NODE>> sortedNodeArray (void) const {
-    TC_Array <SharedGenericPtrWithValueSemantics <NODE>> array ;
-    SharedGenericMapNode <KEY, NODE>::populateNodeArray (mRootNode, array) ;
+  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedNodeArray (void) const {
+    TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array ;
+    SharedGenericMapNode <KEY, INFO>::populateNodeArray (mRootNode, array) ;
     return array ;
   }
 
@@ -172,9 +168,9 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericPtrWithValueSemantics <NODE> search (const KEY & inKey) const {
-    SharedGenericPtrWithValueSemantics <NODE> result ;
-    recursiveSearch (inKey, mRootNode, result) ;
+  public: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> searchNode (const KEY & inKey) const {
+    OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> result ;
+    internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result ;
   }
 
@@ -182,16 +178,16 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Insert
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void insertObject (const KEY & inKey,
-                             const NODE & inObject
-                             COMMA_LOCATION_ARGS) {
+  public: void insertOrReplaceInfo (const KEY & inKey,
+                                    const INFO & inInfo
+                                    COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
-    internalRecursiveInsert (mRootNode, inKey, inObject) ;
+    internalRecursiveInsert (mRootNode, inKey, inInfo) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRootPtr) {
+  private: static void rotateLeft (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRootPtr) {
     if (ioRootPtr->mSupPtr->mBalance >= 0) {
       ioRootPtr->mBalance += 1 ;
     }else{
@@ -209,7 +205,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRootPtr) {
+  private: static void rotateRight (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRootPtr) {
     if (ioRootPtr->mInfPtr->mBalance > 0) {
       ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;
     }else{
@@ -225,12 +221,12 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRootPtr,
+  private: bool internalRecursiveInsert (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRootPtr,
                                          const KEY & inKey,
-                                         const NODE & inNodeToInsert) {
+                                         const INFO & inInfo) {
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
-      ioRootPtr = OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>::make (inNodeToInsert COMMA_HERE) ;
+      ioRootPtr = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (inInfo COMMA_HERE) ;
 //      ioRootPtr.swap (ioObjectToInsert) ;
 //      ioRootPtr->mInfPtr.setToNil () ;
 //      ioRootPtr->mSupPtr.setToNil () ;
@@ -238,10 +234,10 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
       mCount += 1 ;
       extension = true ;
     }else{
-      const ComparisonResult comparaison = ioRootPtr->mSharedNode->mProperty_key.objectCompare (inKey) ;
+      const ComparisonResult comparaison = ioRootPtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
-        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inNodeToInsert) ;
+        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo) ;
         if (extension) {
           ioRootPtr->mBalance += 1 ;
           if (ioRootPtr->mBalance == 0) {
@@ -256,7 +252,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
         }
         break ;
       case ComparisonResult::firstOperandLowerThanSecond: // <
-        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inNodeToInsert) ;
+        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo) ;
         if (extension) {
           ioRootPtr->mBalance -= 1 ;
           if (ioRootPtr->mBalance == 0) {
@@ -272,8 +268,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
         break ;
       case ComparisonResult::operandEqual :
         extension = false ;
-        ioRootPtr->mSharedNode = SharedGenericPtrWithValueSemantics <NODE>::make (inNodeToInsert COMMA_HERE) ;
-        ioRootPtr->mNode = inNodeToInsert ;
+        ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_HERE) ;
         break ;
       case ComparisonResult::invalid :
         extension = false ;
@@ -287,15 +282,20 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> removeAndReturnRemovedNode (const KEY & inKey) {
+  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey) {
     macroUniqueSharedObject (this) ;
     bool ioBranchHasBeenRemoved ;
-    return internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    SharedGenericPtrWithValueSemantics <INFO> result ;
+    if (removedEntry.isNotNil ()) {
+      result = removedEntry->mSharedInfo ;
+    }
+    return result ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static inline void supBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRoot,
+  private: static inline void supBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -324,7 +324,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static inline void infBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRoot,
+  private: static inline void infBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -= 1 ;
     switch (ioRoot->mBalance) {
@@ -353,8 +353,8 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRoot,
-                                           OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioElement,
+  private: static void getPreviousElement (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
+                                           OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr.isNil ()) {
       ioElement = ioRoot ;
@@ -370,12 +370,12 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> internalRemoveEntry (const KEY & inKeyToRemove,
-                                     OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & ioRoot,
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> internalRemoveEntry (const KEY & inKeyToRemove,
+                                     OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
                                      bool & ioBranchHasBeenRemoved) {
-    OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> removedNode ;
+    OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> removedNode ;
     if (ioRoot.isNotNil ()) {
-      const ComparisonResult comparaison = ioRoot->mSharedNode->mProperty_key.objectCompare (inKeyToRemove) ;
+      const ComparisonResult comparaison = ioRoot->mSharedInfo->mProperty_key.objectCompare (inKeyToRemove) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
         removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);
@@ -400,7 +400,7 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
           ioBranchHasBeenRemoved = true ;
         }else{
           removedNode = ioRoot ;
-          OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> p = ioRoot ;
+          OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
           p->mSupPtr.setToNil () ;
@@ -422,34 +422,34 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: bool hasKey (const KEY & inKey) const {
-    SharedGenericPtrWithValueSemantics <NODE> result ;
-    recursiveSearch (inKey, mRootNode, result) ;
+    OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> result ;
+    internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result.isNotNil () ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: static void recursiveSearch (const KEY & inKey,
-                            const OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> & inNodePtr,
-                            SharedGenericPtrWithValueSemantics <NODE> & outNodePtr) {
+  public: static void internalRecursiveSearchNode (const KEY & inKey,
+                            const OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & inNodePtr,
+                            OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & outInfoPtr) {
     if (inNodePtr.isNotNil ()) {
-      const ComparisonResult comparaison = inNodePtr->mSharedNode->mProperty_key.objectCompare (inKey) ;
+      const ComparisonResult comparaison = inNodePtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
-        recursiveSearch (inKey, inNodePtr->mInfPtr, outNodePtr) ;
+        internalRecursiveSearchNode (inKey, inNodePtr->mInfPtr, outInfoPtr) ;
         break ;
       case ComparisonResult::firstOperandLowerThanSecond : // <
-        recursiveSearch (inKey, inNodePtr->mSupPtr, outNodePtr) ;
+        internalRecursiveSearchNode (inKey, inNodePtr->mSupPtr, outInfoPtr) ;
         break ;
       case ComparisonResult::operandEqual : // Found
-        outNodePtr = inNodePtr->mSharedNode ;
+        outInfoPtr = inNodePtr ;
         break ;
       case ComparisonResult::invalid : // Found
-        outNodePtr.setToNil () ;
+        outInfoPtr.setToNil () ;
         break ;
       }
     }else{
-      outNodePtr.setToNil () ;
+      outInfoPtr.setToNil () ;
     }
   }
 
@@ -461,11 +461,11 @@ template <typename KEY, typename NODE> class SharedGenericMapRoot final : public
 //  SharedGenericMap
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename NODE> class SharedGenericMap final {
+template <typename KEY, typename INFO> class SharedGenericMap final {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <SharedGenericMapRoot <KEY, NODE> > mSharedRoot ;
+  private: OptionalSharedRef <SharedGenericMapRoot <KEY, INFO> > mSharedRoot ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Default constructor
@@ -486,7 +486,7 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void build (LOCATION_ARGS) {
-    mSharedRoot = OptionalSharedRef <SharedGenericMapRoot <KEY, NODE>>::make (THERE) ;
+    mSharedRoot = OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>>::make (THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -507,7 +507,7 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
 
   private: void insulate (LOCATION_ARGS) {
     if (mSharedRoot.isNotNil () && !mSharedRoot->isUniquelyReferenced ()) {
-      auto p = OptionalSharedRef <SharedGenericMapRoot <KEY, NODE>>::make (THERE) ;
+      auto p = OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>>::make (THERE) ;
       mSharedRoot->duplicateTo (p COMMA_THERE) ;
       mSharedRoot = p ;
     }
@@ -533,11 +533,11 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void insertOrReplace (const KEY & inKey,
-                                const NODE & inNode
+                                const INFO & inInfo
                                 COMMA_LOCATION_ARGS) {
-    if (mSharedRoot.isNotNil () && inKey.isValid () && inNode.isValid ()) {
+    if (mSharedRoot.isNotNil () && inKey.isValid () && inInfo.isValid ()) {
       insulate (THERE) ;
-      mSharedRoot->insertObject (inKey, inNode COMMA_THERE) ;
+      mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;
     }
   }
 
@@ -545,14 +545,13 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   //   Remove
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <SharedGenericMapNode <KEY, NODE>>
-  removeAndReturnRemovedNode (const KEY & inKey
-                              COMMA_LOCATION_ARGS) {
+  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey
+                                                                                COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil ()) {
       insulate (THERE) ;
-      return mSharedRoot->removeAndReturnRemovedNode (inKey) ;
+      return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;
     }else{
-      return OptionalSharedRef <SharedGenericMapNode <KEY, NODE>> () ;
+      return SharedGenericPtrWithValueSemantics <INFO> () ;
     }
   }
 
@@ -569,14 +568,31 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: const SharedGenericPtrWithValueSemantics <INFO> infoForKey (const KEY & inKey) const {
+    if (mSharedRoot.isNotNil ()) {
+      const OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> node = mSharedRoot->searchNode (inKey) ;
+      if (node.isNil ()) {
+        return SharedGenericPtrWithValueSemantics <INFO> () ;
+      }else{
+        return node->mSharedInfo ;
+      }
+    }else{
+      return SharedGenericPtrWithValueSemantics <INFO> () ;
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericPtrWithValueSemantics <NODE> nodeForKey (const KEY & inKey) const {
+  public: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> nodeForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
-      return mSharedRoot->search (inKey) ;
+      return mSharedRoot->searchNode (inKey) ;
     }else{
-      return SharedGenericPtrWithValueSemantics <NODE> () ;
+      return OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> () ;
     }
   }
 
@@ -592,11 +608,11 @@ template <typename KEY, typename NODE> class SharedGenericMap final {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <NODE>> sortedNodeArray (void) const {
+  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedNodeArray (void) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->sortedNodeArray () ;
     }else{
-      return TC_Array <SharedGenericPtrWithValueSemantics <NODE>> () ;
+      return TC_Array <SharedGenericPtrWithValueSemantics <INFO>> () ;
     }
   }
 

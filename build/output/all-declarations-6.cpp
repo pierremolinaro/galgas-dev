@@ -1148,9 +1148,9 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> foundObject = mDictionary.nodeForKey (inKey) ;
-    if (foundObject.isNotNil ()) {
-      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (foundObject.value ()) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (object.value ()) ;
     }else{
       return GGS_syntaxExtensionsDictionary_2E_element_3F_::init_nil () ;
     }
@@ -1210,8 +1210,8 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
     //--- Emit error message
@@ -1219,7 +1219,7 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
     //--- Drop out arguments
       outArgument0.drop () ;
     }else{
-      outArgument0 = removedObject->mProperty_extensionList ;
+      outArgument0 = object->mProperty_extensionList ;
     }
   }
 }
@@ -1231,8 +1231,8 @@ void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    // OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>>
-    const auto removedObject = mDictionary.removeAndReturnRemovedNode (inKey COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject
+                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -1242,7 +1242,7 @@ void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
       outArgument0.drop () ;
     }else{
     //--- Assign output arguments
-      outArgument0 = removedObject->mNode.mProperty_extensionList ;
+      outArgument0 = removedObject->mProperty_extensionList ;
     }
   }
 }
@@ -1254,14 +1254,14 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_syntaxExtensionsDictionary::getter_exte
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_galgas_33_SyntaxExtensionListAST result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject = mDictionary.nodeForKey (inKey) ;
-    if (removedObject.isNil ()) { // Not found
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get extensionList ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = removedObject->mProperty_extensionList ;
+      result = object->mProperty_extensionList ;
     }
   }
   return result ;
@@ -1273,14 +1273,14 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> modifiedObject = mDictionary.nodeForKey (inKey) ;
-    if (modifiedObject.isNil ()) { // Not found
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setExtensionListForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      modifiedObject->mProperty_extensionList = inPropertyValue ;
+      modifiedNode->mSharedInfo->mProperty_extensionList = inPropertyValue ;
     }
   }
 }
