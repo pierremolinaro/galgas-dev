@@ -80,6 +80,19 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil 
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_%!CLASS_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::unwrappedValue (void) const {
+  GGS_%!CLASS_TYPE_IDENTIFIER% result ;
+  if (isValid ()) {
+    const cPtr_%!CLASS_TYPE_IDENTIFIER% * p = (cPtr_%!CLASS_TYPE_IDENTIFIER% *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_%!CLASS_TYPE_IDENTIFIER% (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_%!CLASS_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mProxyPtr != nullptr) {

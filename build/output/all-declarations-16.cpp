@@ -4594,6 +4594,19 @@ GGS_templateInstructionStringForGeneration_2E_weak GGS_templateInstructionString
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_templateInstructionStringForGeneration GGS_templateInstructionStringForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_templateInstructionStringForGeneration result ;
+  if (isValid ()) {
+    const cPtr_templateInstructionStringForGeneration * p = (cPtr_templateInstructionStringForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateInstructionStringForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_templateInstructionStringForGeneration GGS_templateInstructionStringForGeneration_2E_weak::bang_templateInstructionStringForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_templateInstructionStringForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -6554,6 +6567,19 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 GGS_lexiqueComponentAST_2E_weak GGS_lexiqueComponentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_lexiqueComponentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST GGS_lexiqueComponentAST_2E_weak::unwrappedValue (void) const {
+  GGS_lexiqueComponentAST result ;
+  if (isValid ()) {
+    const cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_lexiqueComponentAST (p) ;
+    }
+  }
   return result ;
 }
 
@@ -10962,6 +10988,19 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak GGS_semanticDeclarationWi
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticDeclarationWithHeaderForGeneration GGS_semanticDeclarationWithHeaderForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_semanticDeclarationWithHeaderForGeneration result ;
+  if (isValid ()) {
+    const cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_semanticDeclarationWithHeaderForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticDeclarationWithHeaderForGeneration GGS_semanticDeclarationWithHeaderForGeneration_2E_weak::bang_semanticDeclarationWithHeaderForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_semanticDeclarationWithHeaderForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -11518,6 +11557,19 @@ GGS_semanticTypeForGeneration_2E_weak GGS_semanticTypeForGeneration_2E_weak::cla
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_semanticTypeForGeneration GGS_semanticTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_semanticTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_semanticTypeForGeneration * p = (cPtr_semanticTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_semanticTypeForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_semanticTypeForGeneration GGS_semanticTypeForGeneration_2E_weak::bang_semanticTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_semanticTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -12039,6 +12091,19 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 GGS_boolsetTypeForGeneration_2E_weak GGS_boolsetTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_boolsetTypeForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_boolsetTypeForGeneration GGS_boolsetTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_boolsetTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_boolsetTypeForGeneration * p = (cPtr_boolsetTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_boolsetTypeForGeneration (p) ;
+    }
+  }
   return result ;
 }
 
@@ -12892,6 +12957,19 @@ GGS_classTypeForGeneration_2E_weak GGS_classTypeForGeneration_2E_weak::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_classTypeForGeneration GGS_classTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_classTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_classTypeForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_classTypeForGeneration GGS_classTypeForGeneration_2E_weak::bang_classTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_classTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -13482,6 +13560,19 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 GGS_weakReferenceTypeForGeneration_2E_weak GGS_weakReferenceTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_weakReferenceTypeForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_weakReferenceTypeForGeneration GGS_weakReferenceTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_weakReferenceTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_weakReferenceTypeForGeneration (p) ;
+    }
+  }
   return result ;
 }
 
@@ -14154,6 +14245,19 @@ GGS_enumTypeForGeneration_2E_weak GGS_enumTypeForGeneration_2E_weak::class_func_
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_enumTypeForGeneration GGS_enumTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_enumTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_enumTypeForGeneration * p = (cPtr_enumTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_enumTypeForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_enumTypeForGeneration GGS_enumTypeForGeneration_2E_weak::bang_enumTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_enumTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -14817,6 +14921,19 @@ GGS_externTypeDeclarationForGeneration_2E_weak GGS_externTypeDeclarationForGener
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_externTypeDeclarationForGeneration GGS_externTypeDeclarationForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_externTypeDeclarationForGeneration result ;
+  if (isValid ()) {
+    const cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_externTypeDeclarationForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_externTypeDeclarationForGeneration GGS_externTypeDeclarationForGeneration_2E_weak::bang_externTypeDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_externTypeDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -15086,226 +15203,6 @@ GGS_graphDeclarationAST GGS_graphDeclarationAST::extractObject (const GGS_object
       result = *p ;
     }else{
       inCompiler->castError ("graphDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @graphDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_graphDeclarationForGeneration::objectCompare (const GGS_graphDeclarationForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphDeclarationForGeneration::GGS_graphDeclarationForGeneration (void) :
-GGS_semanticTypeForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_graphDeclarationForGeneration GGS_graphDeclarationForGeneration::
-init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                      const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
-                      const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                      const GGS_graphInsertModifierList & in_mInsertModifierList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_graphDeclarationForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_graphDeclarationForGeneration (inCompiler COMMA_THERE)) ;
-  object->graphDeclarationForGeneration_init_21__21__21__21_ (in_mSelfTypeEntry, in_mAssociatedListTypeEntry, in_mAssociatedListElementTypeEntry, in_mInsertModifierList, inCompiler) ;
-  const GGS_graphDeclarationForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_graphDeclarationForGeneration::
-graphDeclarationForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                    const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
-                                                    const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                                    const GGS_graphInsertModifierList & in_mInsertModifierList,
-                                                    Compiler * /* inCompiler */) {
-  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
-  mProperty_mAssociatedListTypeEntry = in_mAssociatedListTypeEntry ;
-  mProperty_mAssociatedListElementTypeEntry = in_mAssociatedListElementTypeEntry ;
-  mProperty_mInsertModifierList = in_mInsertModifierList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphDeclarationForGeneration::GGS_graphDeclarationForGeneration (const cPtr_graphDeclarationForGeneration * inSourcePtr) :
-GGS_semanticTypeForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_graphDeclarationForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphDeclarationForGeneration GGS_graphDeclarationForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                     const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
-                                                                                     const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                                                                     const GGS_graphInsertModifierList & in_mInsertModifierList,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
-  GGS_graphDeclarationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_graphDeclarationForGeneration (in_mSelfTypeEntry, in_mAssociatedListTypeEntry, in_mAssociatedListElementTypeEntry, in_mInsertModifierList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_graphDeclarationForGeneration::readProperty_mAssociatedListTypeEntry (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphDeclarationForGeneration) ;
-    return p->mProperty_mAssociatedListTypeEntry ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_graphDeclarationForGeneration::readProperty_mAssociatedListElementTypeEntry (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphDeclarationForGeneration) ;
-    return p->mProperty_mAssociatedListElementTypeEntry ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphInsertModifierList GGS_graphDeclarationForGeneration::readProperty_mInsertModifierList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_graphInsertModifierList () ;
-  }else{
-    cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphDeclarationForGeneration) ;
-    return p->mProperty_mInsertModifierList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @graphDeclarationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_graphDeclarationForGeneration::cPtr_graphDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mAssociatedListTypeEntry (),
-mProperty_mAssociatedListElementTypeEntry (),
-mProperty_mInsertModifierList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_graphDeclarationForGeneration::cPtr_graphDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                        const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
-                                                                        const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                                                        const GGS_graphInsertModifierList & in_mInsertModifierList,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
-mProperty_mAssociatedListTypeEntry (),
-mProperty_mAssociatedListElementTypeEntry (),
-mProperty_mInsertModifierList () {
-  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
-  mProperty_mAssociatedListTypeEntry = in_mAssociatedListTypeEntry ;
-  mProperty_mAssociatedListElementTypeEntry = in_mAssociatedListElementTypeEntry ;
-  mProperty_mInsertModifierList = in_mInsertModifierList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_graphDeclarationForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
-}
-
-void cPtr_graphDeclarationForGeneration::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@graphDeclarationForGeneration:") ;
-  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAssociatedListTypeEntry.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAssociatedListElementTypeEntry.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInsertModifierList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_graphDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mAssociatedListTypeEntry, mProperty_mAssociatedListElementTypeEntry, mProperty_mInsertModifierList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_graphDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mAssociatedListTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListTypeEntry") ;
-    mProperty_mAssociatedListElementTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListElementTypeEntry") ;
-    mProperty_mInsertModifierList.printNonNullClassInstanceProperties ("mInsertModifierList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @graphDeclarationForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ("graphDeclarationForGeneration",
-                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_graphDeclarationForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_graphDeclarationForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_graphDeclarationForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphDeclarationForGeneration GGS_graphDeclarationForGeneration::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_graphDeclarationForGeneration result ;
-  const GGS_graphDeclarationForGeneration * p = (const GGS_graphDeclarationForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_graphDeclarationForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("graphDeclarationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

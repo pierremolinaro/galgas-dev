@@ -705,6 +705,19 @@ GGS_optionComponentForGeneration_2E_weak GGS_optionComponentForGeneration_2E_wea
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_optionComponentForGeneration GGS_optionComponentForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_optionComponentForGeneration result ;
+  if (isValid ()) {
+    const cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_optionComponentForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_optionComponentForGeneration GGS_optionComponentForGeneration_2E_weak::bang_optionComponentForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_optionComponentForGeneration result ;
   if (mProxyPtr != nullptr) {
@@ -983,6 +996,19 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 GGS_arrayTypeForGeneration_2E_weak GGS_arrayTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_arrayTypeForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_arrayTypeForGeneration GGS_arrayTypeForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_arrayTypeForGeneration result ;
+  if (isValid ()) {
+    const cPtr_arrayTypeForGeneration * p = (cPtr_arrayTypeForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_arrayTypeForGeneration (p) ;
+    }
+  }
   return result ;
 }
 
@@ -8726,24 +8752,6 @@ GGS_string cPtr_lexicalCharacterIntervalMatchAST::getter_generateSwiftCocoaCondi
   const GGS_lexicalCharacterIntervalMatchAST temp_1 = this ;
   result_outGeneratedCode.plusAssignOperation(temp_1.readProperty_mUpperBound ().readProperty_char ().getter_uint (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 120)).getter_string (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 120)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 120)) ;
   result_outGeneratedCode.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 121)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension getter '@lexicalStringMatchAST generateSwiftCocoaConditionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cPtr_lexicalStringMatchAST::getter_generateSwiftCocoaConditionCode (const GGS_lexiqueAnalysisContext /* constinArgument_inLexiqueAnalysisContext */,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_string result_outGeneratedCode ; // Returned variable
-  const GGS_lexicalStringMatchAST temp_0 = this ;
-  result_outGeneratedCode = GGS_string ("self.testForInputString (").add_operation (temp_0.readProperty_mString ().readProperty_string ().getter_utf_38_Representation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 129)), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 129)) ;
-  result_outGeneratedCode.plusAssignOperation(GGS_string (", advance: true)"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 130)) ;
 //---
   return result_outGeneratedCode ;
 }

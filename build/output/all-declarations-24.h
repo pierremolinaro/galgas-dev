@@ -202,16 +202,7 @@ class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationW
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_optionComponentForGeneration unwrappedValue (void) const {
-    GGS_optionComponentForGeneration result ;
-    if (isValid ()) {
-      const cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_optionComponentForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_optionComponentForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -401,16 +392,7 @@ class GGS_arrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_arrayTypeForGeneration unwrappedValue (void) const {
-    GGS_arrayTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_arrayTypeForGeneration * p = (cPtr_arrayTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_arrayTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_arrayTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {

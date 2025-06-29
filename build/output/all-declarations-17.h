@@ -9,6 +9,131 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @graphDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_graphDeclarationForGeneration : public GGS_semanticTypeForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_graphDeclarationForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_graphDeclarationForGeneration (const class cPtr_graphDeclarationForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_unifiedTypeMapEntry readProperty_mAssociatedListTypeEntry (void) const ;
+
+  public: class GGS_unifiedTypeMapEntry readProperty_mAssociatedListElementTypeEntry (void) const ;
+
+  public: class GGS_graphInsertModifierList readProperty_mInsertModifierList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_graphDeclarationForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                         const class GGS_graphInsertModifierList & inOperand3,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_graphDeclarationForGeneration extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_graphDeclarationForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                         const class GGS_graphInsertModifierList & inOperand3,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_graphDeclarationForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @graphDeclarationForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void graphDeclarationForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                   const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                   const class GGS_graphInsertModifierList & inOperand3,
+                                                                   Compiler * inCompiler) ;
+
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_string & arg_outHeader,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GGS_stringset & arg_ioInclusionSet,
+           class GGS_string & arg_outImplementation,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_unifiedTypeMapEntry mProperty_mAssociatedListTypeEntry ;
+  public: GGS_unifiedTypeMapEntry mProperty_mAssociatedListElementTypeEntry ;
+  public: GGS_graphInsertModifierList mProperty_mInsertModifierList ;
+
+
+//--- Default constructor
+  public: cPtr_graphDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_graphDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                              const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
+                                              const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
+                                              const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @graphDeclarationForGeneration_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -39,16 +164,7 @@ class GGS_graphDeclarationForGeneration_2E_weak : public GGS_semanticTypeForGene
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_graphDeclarationForGeneration unwrappedValue (void) const {
-    GGS_graphDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_graphDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_graphDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -245,16 +361,7 @@ class GGS_listTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_listTypeForGeneration unwrappedValue (void) const {
-    GGS_listTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_listTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_listTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -472,16 +579,7 @@ class GGS_dictTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_dictTypeForGeneration unwrappedValue (void) const {
-    GGS_dictTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_dictTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_dictTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -726,16 +824,7 @@ class GGS_mapTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_mapTypeForGeneration unwrappedValue (void) const {
-    GGS_mapTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_mapTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_mapTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -932,16 +1021,7 @@ class GGS_optionalTypeForGeneration_2E_weak : public GGS_semanticTypeForGenerati
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_optionalTypeForGeneration unwrappedValue (void) const {
-    GGS_optionalTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_optionalTypeForGeneration * p = (cPtr_optionalTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_optionalTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_optionalTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1145,16 +1225,7 @@ class GGS_sortedListTypeForGeneration_2E_weak : public GGS_semanticTypeForGenera
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_sortedListTypeForGeneration unwrappedValue (void) const {
-    GGS_sortedListTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_sortedListTypeForGeneration * p = (cPtr_sortedListTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_sortedListTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_sortedListTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1372,16 +1443,7 @@ class GGS_structTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_structTypeForGeneration unwrappedValue (void) const {
-    GGS_structTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_structTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_structTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1599,16 +1661,7 @@ class GGS_abstractExtensionGetterForGeneration_2E_weak : public GGS_semanticDecl
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_abstractExtensionGetterForGeneration unwrappedValue (void) const {
-    GGS_abstractExtensionGetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_abstractExtensionGetterForGeneration * p = (cPtr_abstractExtensionGetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_abstractExtensionGetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_abstractExtensionGetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1819,16 +1872,7 @@ class GGS_abstractExtensionMethodForGeneration_2E_weak : public GGS_semanticDecl
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_abstractExtensionMethodForGeneration unwrappedValue (void) const {
-    GGS_abstractExtensionMethodForGeneration result ;
-    if (isValid ()) {
-      const cPtr_abstractExtensionMethodForGeneration * p = (cPtr_abstractExtensionMethodForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_abstractExtensionMethodForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_abstractExtensionMethodForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2039,16 +2083,7 @@ class GGS_abstractExtensionSetterForGeneration_2E_weak : public GGS_semanticDecl
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_abstractExtensionSetterForGeneration unwrappedValue (void) const {
-    GGS_abstractExtensionSetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_abstractExtensionSetterForGeneration * p = (cPtr_abstractExtensionSetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_abstractExtensionSetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_abstractExtensionSetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2294,16 +2329,7 @@ class GGS_extensionGetterForGeneration_2E_weak : public GGS_semanticDeclarationW
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_extensionGetterForGeneration unwrappedValue (void) const {
-    GGS_extensionGetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionGetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_extensionGetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2535,16 +2561,7 @@ class GGS_extensionMethodForGeneration_2E_weak : public GGS_semanticDeclarationW
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_extensionMethodForGeneration unwrappedValue (void) const {
-    GGS_extensionMethodForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionMethodForGeneration * p = (cPtr_extensionMethodForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionMethodForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_extensionMethodForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2776,16 +2793,7 @@ class GGS_extensionSetterForGeneration_2E_weak : public GGS_semanticDeclarationW
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_extensionSetterForGeneration unwrappedValue (void) const {
-    GGS_extensionSetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionSetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_extensionSetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3005,16 +3013,7 @@ class GGS_extensionInitializerForGeneration_2E_weak : public GGS_semanticDeclara
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_extensionInitializerForGeneration unwrappedValue (void) const {
-    GGS_extensionInitializerForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionInitializerForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_extensionInitializerForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3255,16 +3254,7 @@ class GGS_overrideExtensionGetterForGeneration_2E_weak : public GGS_semanticDecl
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_overrideExtensionGetterForGeneration unwrappedValue (void) const {
-    GGS_overrideExtensionGetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_overrideExtensionGetterForGeneration * p = (cPtr_overrideExtensionGetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_overrideExtensionGetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_overrideExtensionGetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3491,16 +3481,7 @@ class GGS_overridingExtensionMethodForGeneration_2E_weak : public GGS_semanticDe
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_overridingExtensionMethodForGeneration unwrappedValue (void) const {
-    GGS_overridingExtensionMethodForGeneration result ;
-    if (isValid ()) {
-      const cPtr_overridingExtensionMethodForGeneration * p = (cPtr_overridingExtensionMethodForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_overridingExtensionMethodForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_overridingExtensionMethodForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3727,16 +3708,7 @@ class GGS_overridingExtensionSetterForGeneration_2E_weak : public GGS_semanticDe
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_overridingExtensionSetterForGeneration unwrappedValue (void) const {
-    GGS_overridingExtensionSetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_overridingExtensionSetterForGeneration * p = (cPtr_overridingExtensionSetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_overridingExtensionSetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_overridingExtensionSetterForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {

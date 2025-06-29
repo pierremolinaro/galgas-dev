@@ -196,7 +196,7 @@ end
   }
   return result ;
 }\n%
-end 
+end
 
 for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
@@ -216,7 +216,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
     }
   }
 }\n\n%
-end 
+end
 
 %//--------------------------------------------------------------------------------------------------
 // Up Enumerator for @%!TYPE_IDENTIFIER%
@@ -225,6 +225,22 @@ end
 UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
 mInfoArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
+}
+
+%
+  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![mEnumeratedType identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+}
+
+%
+  end
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -237,3 +253,18 @@ mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }
 
+%  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![mEnumeratedType identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+}
+
+%
+end
+%
+//--------------------------------------------------------------------------------------------------
+
+GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE).value () ;
+}

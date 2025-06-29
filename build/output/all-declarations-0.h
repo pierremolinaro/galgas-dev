@@ -766,16 +766,7 @@ class GGS_templateInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionAST unwrappedValue (void) const {
-    GGS_templateInstructionAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionAST * p = (cPtr_templateInstructionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInstructionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1177,16 +1168,7 @@ class GGS_templateExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateExpressionAST unwrappedValue (void) const {
-    GGS_templateExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateExpressionAST * p = (cPtr_templateExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1684,16 +1666,7 @@ class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateClassFunctionAST unwrappedValue (void) const {
-    GGS_templateClassFunctionAST result ;
-    if (isValid ()) {
-      const cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateClassFunctionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateClassFunctionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1890,16 +1863,7 @@ class GGS_templateFileWrapperTemplateCallAST_2E_weak : public GGS_templateExpres
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateFileWrapperTemplateCallAST unwrappedValue (void) const {
-    GGS_templateFileWrapperTemplateCallAST result ;
-    if (isValid ()) {
-      const cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateFileWrapperTemplateCallAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateFileWrapperTemplateCallAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2096,16 +2060,7 @@ class GGS_templateExtensionTemplateCallAST_2E_weak : public GGS_templateExpressi
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateExtensionTemplateCallAST unwrappedValue (void) const {
-    GGS_templateExtensionTemplateCallAST result ;
-    if (isValid ()) {
-      const cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateExtensionTemplateCallAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateExtensionTemplateCallAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2302,16 +2257,7 @@ class GGS_templateAndOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateAndOperationAST unwrappedValue (void) const {
-    GGS_templateAndOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateAndOperationAST * p = (cPtr_templateAndOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateAndOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateAndOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2508,16 +2454,7 @@ class GGS_templateOrOperationAST_2E_weak : public GGS_templateExpressionAST_2E_w
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateOrOperationAST unwrappedValue (void) const {
-    GGS_templateOrOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateOrOperationAST * p = (cPtr_templateOrOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateOrOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateOrOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2714,16 +2651,7 @@ class GGS_templateXorOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateXorOperationAST unwrappedValue (void) const {
-    GGS_templateXorOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateXorOperationAST * p = (cPtr_templateXorOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateXorOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateXorOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2906,16 +2834,7 @@ class GGS_templateTrueBoolAST_2E_weak : public GGS_templateExpressionAST_2E_weak
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateTrueBoolAST unwrappedValue (void) const {
-    GGS_templateTrueBoolAST result ;
-    if (isValid ()) {
-      const cPtr_templateTrueBoolAST * p = (cPtr_templateTrueBoolAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateTrueBoolAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateTrueBoolAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3098,16 +3017,7 @@ class GGS_templateFalseBoolAST_2E_weak : public GGS_templateExpressionAST_2E_wea
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateFalseBoolAST unwrappedValue (void) const {
-    GGS_templateFalseBoolAST result ;
-    if (isValid ()) {
-      const cPtr_templateFalseBoolAST * p = (cPtr_templateFalseBoolAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateFalseBoolAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateFalseBoolAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3297,16 +3207,7 @@ class GGS_templateLiteralStringExpressionAST_2E_weak : public GGS_templateExpres
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLiteralStringExpressionAST unwrappedValue (void) const {
-    GGS_templateLiteralStringExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLiteralStringExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLiteralStringExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3489,16 +3390,7 @@ class GGS_templateLiteralUIntExpressionAST_2E_weak : public GGS_templateExpressi
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLiteralUIntExpressionAST unwrappedValue (void) const {
-    GGS_templateLiteralUIntExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateLiteralUIntExpressionAST * p = (cPtr_templateLiteralUIntExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLiteralUIntExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLiteralUIntExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3681,16 +3573,7 @@ class GGS_templateLiteralCharExpressionAST_2E_weak : public GGS_templateExpressi
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLiteralCharExpressionAST unwrappedValue (void) const {
-    GGS_templateLiteralCharExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateLiteralCharExpressionAST * p = (cPtr_templateLiteralCharExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLiteralCharExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLiteralCharExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -3873,16 +3756,7 @@ class GGS_templateLiteralDoubleExpressionAST_2E_weak : public GGS_templateExpres
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLiteralDoubleExpressionAST unwrappedValue (void) const {
-    GGS_templateLiteralDoubleExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateLiteralDoubleExpressionAST * p = (cPtr_templateLiteralDoubleExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLiteralDoubleExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLiteralDoubleExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -4079,16 +3953,7 @@ class GGS_structFieldAccessTemplateExpressionAST_2E_weak : public GGS_templateEx
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_structFieldAccessTemplateExpressionAST unwrappedValue (void) const {
-    GGS_structFieldAccessTemplateExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_structFieldAccessTemplateExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_structFieldAccessTemplateExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -4278,16 +4143,7 @@ class GGS_templateNotOperatorAST_2E_weak : public GGS_templateExpressionAST_2E_w
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateNotOperatorAST unwrappedValue (void) const {
-    GGS_templateNotOperatorAST result ;
-    if (isValid ()) {
-      const cPtr_templateNotOperatorAST * p = (cPtr_templateNotOperatorAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateNotOperatorAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateNotOperatorAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -4477,16 +4333,7 @@ class GGS_templateLogicalNegateAST_2E_weak : public GGS_templateExpressionAST_2E
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLogicalNegateAST unwrappedValue (void) const {
-    GGS_templateLogicalNegateAST result ;
-    if (isValid ()) {
-      const cPtr_templateLogicalNegateAST * p = (cPtr_templateLogicalNegateAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLogicalNegateAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLogicalNegateAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -4683,16 +4530,7 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateOptionAccessAST unwrappedValue (void) const {
-    GGS_templateOptionAccessAST result ;
-    if (isValid ()) {
-      const cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateOptionAccessAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateOptionAccessAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -4978,16 +4816,7 @@ class GGS_templateTestDynamicClassAST_2E_weak : public GGS_templateExpressionAST
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateTestDynamicClassAST unwrappedValue (void) const {
-    GGS_templateTestDynamicClassAST result ;
-    if (isValid ()) {
-      const cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateTestDynamicClassAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateTestDynamicClassAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -5177,16 +5006,7 @@ class GGS_templateFunctionCallAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateFunctionCallAST unwrappedValue (void) const {
-    GGS_templateFunctionCallAST result ;
-    if (isValid ()) {
-      const cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateFunctionCallAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateFunctionCallAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -5369,16 +5189,7 @@ class GGS_templateVarInExpressionAST_2E_weak : public GGS_templateExpressionAST_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateVarInExpressionAST unwrappedValue (void) const {
-    GGS_templateVarInExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateVarInExpressionAST * p = (cPtr_templateVarInExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateVarInExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateVarInExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -5575,16 +5386,7 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateAddOperationAST unwrappedValue (void) const {
-    GGS_templateAddOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateAddOperationAST * p = (cPtr_templateAddOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateAddOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateAddOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -5781,16 +5583,7 @@ class GGS_templateSubOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateSubOperationAST unwrappedValue (void) const {
-    GGS_templateSubOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateSubOperationAST * p = (cPtr_templateSubOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateSubOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateSubOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -5987,16 +5780,7 @@ class GGS_templateMultiplyOperationAST_2E_weak : public GGS_templateExpressionAS
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateMultiplyOperationAST unwrappedValue (void) const {
-    GGS_templateMultiplyOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateMultiplyOperationAST * p = (cPtr_templateMultiplyOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateMultiplyOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateMultiplyOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6193,16 +5977,7 @@ class GGS_templateDivideOperationAST_2E_weak : public GGS_templateExpressionAST_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateDivideOperationAST unwrappedValue (void) const {
-    GGS_templateDivideOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateDivideOperationAST * p = (cPtr_templateDivideOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateDivideOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateDivideOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6399,16 +6174,7 @@ class GGS_templateModuloOperationAST_2E_weak : public GGS_templateExpressionAST_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateModuloOperationAST unwrappedValue (void) const {
-    GGS_templateModuloOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateModuloOperationAST * p = (cPtr_templateModuloOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateModuloOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateModuloOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6598,16 +6364,7 @@ class GGS_templateUnaryMinusOperationAST_2E_weak : public GGS_templateExpression
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateUnaryMinusOperationAST unwrappedValue (void) const {
-    GGS_templateUnaryMinusOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateUnaryMinusOperationAST * p = (cPtr_templateUnaryMinusOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateUnaryMinusOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateUnaryMinusOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6804,16 +6561,7 @@ class GGS_templateEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_wea
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateEqualTestAST unwrappedValue (void) const {
-    GGS_templateEqualTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateEqualTestAST * p = (cPtr_templateEqualTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateEqualTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateEqualTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -7010,16 +6758,7 @@ class GGS_templateNonEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateNonEqualTestAST unwrappedValue (void) const {
-    GGS_templateNonEqualTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateNonEqualTestAST * p = (cPtr_templateNonEqualTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateNonEqualTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateNonEqualTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -7216,16 +6955,7 @@ class GGS_templateStrictInfTestAST_2E_weak : public GGS_templateExpressionAST_2E
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateStrictInfTestAST unwrappedValue (void) const {
-    GGS_templateStrictInfTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateStrictInfTestAST * p = (cPtr_templateStrictInfTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateStrictInfTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateStrictInfTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -7422,16 +7152,7 @@ class GGS_templateInfOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInfOrEqualTestAST unwrappedValue (void) const {
-    GGS_templateInfOrEqualTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateInfOrEqualTestAST * p = (cPtr_templateInfOrEqualTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInfOrEqualTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInfOrEqualTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -7628,16 +7349,7 @@ class GGS_templateStrictSupTestAST_2E_weak : public GGS_templateExpressionAST_2E
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateStrictSupTestAST unwrappedValue (void) const {
-    GGS_templateStrictSupTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateStrictSupTestAST * p = (cPtr_templateStrictSupTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateStrictSupTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateStrictSupTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -7834,16 +7546,7 @@ class GGS_templateSupOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateSupOrEqualTestAST unwrappedValue (void) const {
-    GGS_templateSupOrEqualTestAST result ;
-    if (isValid ()) {
-      const cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateSupOrEqualTestAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateSupOrEqualTestAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -8040,16 +7743,7 @@ class GGS_templateLeftShiftOperationAST_2E_weak : public GGS_templateExpressionA
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateLeftShiftOperationAST unwrappedValue (void) const {
-    GGS_templateLeftShiftOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateLeftShiftOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateLeftShiftOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -8246,16 +7940,7 @@ class GGS_templateRightShiftOperationAST_2E_weak : public GGS_templateExpression
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateRightShiftOperationAST unwrappedValue (void) const {
-    GGS_templateRightShiftOperationAST result ;
-    if (isValid ()) {
-      const cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateRightShiftOperationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateRightShiftOperationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -8438,16 +8123,7 @@ class GGS_templateInstructionStringAST_2E_weak : public GGS_templateInstructionA
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionStringAST unwrappedValue (void) const {
-    GGS_templateInstructionStringAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionStringAST * p = (cPtr_templateInstructionStringAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionStringAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInstructionStringAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -8637,16 +8313,7 @@ class GGS_templateInstructionExpressionAST_2E_weak : public GGS_templateInstruct
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionExpressionAST unwrappedValue (void) const {
-    GGS_templateInstructionExpressionAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionExpressionAST * p = (cPtr_templateInstructionExpressionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionExpressionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInstructionExpressionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -8843,16 +8510,7 @@ class GGS_templateBlockInstructionAST_2E_weak : public GGS_templateInstructionAS
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateBlockInstructionAST unwrappedValue (void) const {
-    GGS_templateBlockInstructionAST result ;
-    if (isValid ()) {
-      const cPtr_templateBlockInstructionAST * p = (cPtr_templateBlockInstructionAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateBlockInstructionAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateBlockInstructionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -9026,16 +8684,7 @@ class GGS_templateInstructionGetColumnLocationAST_2E_weak : public GGS_templateI
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionGetColumnLocationAST unwrappedValue (void) const {
-    GGS_templateInstructionGetColumnLocationAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionGetColumnLocationAST * p = (cPtr_templateInstructionGetColumnLocationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionGetColumnLocationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInstructionGetColumnLocationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -9209,16 +8858,7 @@ class GGS_templateInstructionGotoColumnLocationAST_2E_weak : public GGS_template
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionGotoColumnLocationAST unwrappedValue (void) const {
-    GGS_templateInstructionGotoColumnLocationAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionGotoColumnLocationAST * p = (cPtr_templateInstructionGotoColumnLocationAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionGotoColumnLocationAST (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_templateInstructionGotoColumnLocationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -9644,268 +9284,4 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionIfAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionIfAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_templateInstructionIfAST_2E_weak (const class GGS_templateInstructionIfAST & inSource) ;
-
-  public: GGS_templateInstructionIfAST_2E_weak & operator = (const class GGS_templateInstructionIfAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_templateInstructionIfAST_2E_weak init_nil (void) {
-    GGS_templateInstructionIfAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_templateInstructionIfAST bang_templateInstructionIfAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionIfAST unwrappedValue (void) const {
-    GGS_templateInstructionIfAST result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionIfAST (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionIfAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionIfAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionIfAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionForGeneration init (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionForGeneration extractObject (const GGS_object & inObject,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @templateInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateInstructionForGeneration_init (Compiler * inCompiler) ;
-
-
-//--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GGS_bool & arg_ioUseColumnMarker,
-           Compiler * COMMA_LOCATION_ARGS) = 0 ;
-
-//--- Properties
-
-
-
-//--- Constructor
-  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override = 0 ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_reference {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_templateInstructionForGeneration_2E_weak (const class GGS_templateInstructionForGeneration & inSource) ;
-
-  public: GGS_templateInstructionForGeneration_2E_weak & operator = (const class GGS_templateInstructionForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_templateInstructionForGeneration_2E_weak init_nil (void) {
-    GGS_templateInstructionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_templateInstructionForGeneration bang_templateInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionForGeneration unwrappedValue (void) const {
-    GGS_templateInstructionForGeneration result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionForGeneration * p = (cPtr_templateInstructionForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
 

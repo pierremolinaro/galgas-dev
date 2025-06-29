@@ -1,10 +1,8 @@
 #! /usr/bin/python3
-#-----------------------------------------------------------------------------------------
 # -*- coding: UTF-8 -*-
-
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   Releases
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # 1.0: march 18th, 2015
 #        first release
 # 2.0: october 2th, 2015
@@ -31,7 +29,7 @@
 # 3.3: november 19th, 2021
 #        accelerated job construction
 #
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # http://www.diveintopython3.net/porting-code-to-python-3-with-2to3.html
 
 import subprocess, sys, os, copy
@@ -42,12 +40,12 @@ import threading, types, traceback
 if sys.version_info >= (2, 6) :
   import multiprocessing
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   find_executable
 # From:
 # https://gist.github.com/4368898
 # Public domain code by anatoly techtonik <techtonik@gmail.com>
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def find_executable(executable, path=None):
     """Try to find 'executable' in the directories listed in 'path' (a
@@ -82,9 +80,9 @@ def find_executable(executable, path=None):
     else:
         return None
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   processorCount
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def processorCount () :
   if sys.version_info >= (2, 6) :
@@ -93,9 +91,9 @@ def processorCount () :
     coreCount = 1
   return coreCount
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   argumentIsString
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def argumentIsString (argument) :
   if sys.version_info < (3,0):
@@ -103,86 +101,86 @@ def argumentIsString (argument) :
   else:
     return type (argument) is str
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   FOR PRINTING IN COLOR
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BLACK () :
   return '\033[30m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def RED () :
   return '\033[31m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def GREEN () :
   return '\033[32m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def YELLOW () :
   return '\033[33m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BLUE () :
   return '\033[34m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def MAGENTA () :
   return '\033[35m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def CYAN () :
   return '\033[36m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def WHITE () :
   return '\033[37m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def ENDC () :
   return '\033[0m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BOLD () :
   return '\033[1m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def UNDERLINE () :
   return '\033[4m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BLINK () :
   return '\033[5m'
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BOLD_BLUE () :
   return BOLD () + BLUE ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BOLD_GREEN () :
   return BOLD () + GREEN ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def BOLD_RED () :
   return BOLD () + RED ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   runHiddenCommand
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def runHiddenCommand (cmd, logUtilityTool=False) :
   executable = find_executable (cmd [0])
@@ -203,9 +201,9 @@ def runHiddenCommand (cmd, logUtilityTool=False) :
         sys.exit (childProcess.returncode)
       return result
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   runCommand
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def runCommand (cmd, title, showCommand, logUtilityTool) :
   if title != "":
@@ -228,9 +226,9 @@ def runCommand (cmd, title, showCommand, logUtilityTool) :
   if returncode != 0 :
     sys.exit (returncode)
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   runInThread
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def runInThread (job, displayLock, terminationSemaphore):
   executable = find_executable (job.mCommand [0])
@@ -255,9 +253,9 @@ def runInThread (job, displayLock, terminationSemaphore):
         terminationSemaphore.release ()
         break
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   modificationDateForFile
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def modificationDateForFile (dateCacheDictionary, file):
   absFilePath = os.path.abspath (file)
@@ -272,23 +270,23 @@ def modificationDateForFile (dateCacheDictionary, file):
     dateCacheDictionary [absFilePath] = date
     return date
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   class PostCommand
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 class PostCommand:
   mCommand = []
   mTitle = ""
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def __init__ (self, title = ""):
     self.mCommand = []
     self.mTitle = title
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   class Job
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 class Job:
   mTargets = []
@@ -303,7 +301,7 @@ class Job:
   mOpenSourceOnError = False # Do not try to open source file on error
   mLogUtilityTool = False
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def __init__ (self, targets, requiredFiles, command, postCommands, priority, title, openSourceOnError, logUtilityTool):
     self.mTargets = copy.deepcopy (targets)
@@ -316,7 +314,7 @@ class Job:
     self.mOpenSourceOnError = openSourceOnError
     self.mLogUtilityTool = logUtilityTool
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def run (self, displayLock, terminationSemaphore, showCommand, progressString):
     displayLock.acquire ()
@@ -334,13 +332,13 @@ class Job:
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
     thread.start()
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def runPostCommand (self, displayLock, terminationSemaphore, showCommand):
     postCommand = self.mPostCommands [0]
     self.mCommand = postCommand.mCommand
     displayLock.acquire ()
-    print (BOLD_BLUE () + "       " + postCommand.mTitle + ENDC ())
+    print (BOLD_BLUE () + "                " + postCommand.mTitle + ENDC ())
     if showCommand:
       cmdAsString = ""
       for s in self.mCommand:
@@ -353,9 +351,9 @@ class Job:
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
     thread.start()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   class Rule
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 class Rule:
   mTargets = []
@@ -369,7 +367,7 @@ class Rule:
   mCleanOperation = 0 # No operation on clean
   mOpenSourceOnError = False # Do not try to open source file on error
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def __init__ (self, targets, title = ""):
     # print ("Rule '" + title + "'")
@@ -404,17 +402,17 @@ class Rule:
     else:
       self.mTitle = copy.deepcopy (title)
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def deleteTargetFileOnClean (self):
     self.mCleanOperation = 1
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def deleteTargetDirectoryOnClean (self):
     self.mCleanOperation = 2
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def enterSecondaryDependanceFile (self, secondaryDependanceFile, make):
     if not argumentIsString (secondaryDependanceFile):
@@ -449,9 +447,9 @@ class Rule:
                 self.mSecondaryMostRecentModificationDate = modifDate
                 #print (BOLD_BLUE () + str (modifDate) + ENDC ())
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   class Make
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 class Make:
   mRuleList = []
@@ -467,7 +465,7 @@ class Make:
   mShowProgressString = True
   mAlreadyBuildTargetSet = set ()
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def __init__ (self, goal, logUtilityTool=False):
     if not argumentIsString (goal):
@@ -484,12 +482,12 @@ class Make:
     self.mMacTextEditor = "TextEdit"
     self.mLogUtilityTool = logUtilityTool
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def doNotShowProgressString (self) :
      self.mShowProgressString = False
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def addRule (self, rule):
     if not isinstance (rule, Rule):
@@ -498,7 +496,7 @@ class Make:
       sys.exit (1)
     self.mRuleList.append (copy.deepcopy (rule))
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def printRules (self):
     print (BOLD_BLUE () + "--- Print " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC ())
@@ -539,7 +537,7 @@ class Make:
 
     print (BOLD_BLUE () + "--- End of print rule ---" + ENDC ())
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def writeRuleDependancesInDotFile (self, dotFileName):
     s = "digraph G {\n"
@@ -557,7 +555,7 @@ class Make:
     f.write (s)
     f.close ()
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def checkRules (self):
     if self.mErrorCount == 0:
@@ -612,7 +610,7 @@ class Make:
           for dep in aRule.mDependences:
             print (BOLD_RED () + "      '" + dep + "'" + ENDC ())
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def existsJobForTarget (self, target):
     for job in self.mJobList:
@@ -621,7 +619,7 @@ class Make:
           return True
     return False
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def makeJob (self, target): # Return a bool indicating wheither the target should be built
   #--- If there are errors, return immediatly
@@ -690,7 +688,7 @@ class Make:
   #--- Return
     return appendToJobList
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   #Job state
   # 0: waiting
   # 1:running
@@ -713,8 +711,8 @@ class Make:
         displayLock = threading.Lock ()
         loop = True
         returnCode = 0
-        totalJobCount = float (len (self.mJobList))
-        launchedJobCount = 0.0
+        totalJobCount = len (self.mJobList)
+        launchedJobCount = 0
         while loop:
         #--- Launch jobs in parallel
           for job in self.mJobList:
@@ -732,9 +730,9 @@ class Make:
                     )
                     displayLock.release ()
                 #--- Progress string
-                launchedJobCount += 1.0
+                launchedJobCount += 1
                 if self.mShowProgressString:
-                  progressString = "[{0:3d}%] ".format (int (100.0 * launchedJobCount / totalJobCount))
+                  progressString = "[{0:3d}/{1:3d}, {2:3d}%] ".format (launchedJobCount, totalJobCount, int (100.0 * float (launchedJobCount) / float (totalJobCount)))
                 else:
                   progressString = ""
                 #--- Run job
@@ -814,7 +812,7 @@ class Make:
                 returnCode = job.mReturnCode
           loop = (len (self.mJobList) > 0) if (returnCode == 0) else (jobCount > 0)
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def searchFileInRelativeDirectories (self, file, directoryList): # returns "" if not found, register error
     matchCount = 0
@@ -836,7 +834,7 @@ class Make:
       result = ""
     return result
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def searchFileInDirectories (self, file, directoryList): # returns "" if not found, register error
     matchCount = 0
@@ -855,7 +853,7 @@ class Make:
       result = ""
     return result
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def addGoal (self, goal, targetList, message):
     if not argumentIsString (goal):
@@ -882,7 +880,7 @@ class Make:
       self.mGoals [goal] = (targetList, message)
     #print ('%s' % ', '.join(map(str, self.mGoals)))
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def printGoals (self):
     print (BOLD_BLUE () + "--- Print " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC ())
@@ -895,7 +893,7 @@ class Make:
 
     print (BOLD_BLUE () + "--- End of print goals ---" + ENDC ())
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def runGoal (self, maxConcurrentJobs, showCommand):
     if not isinstance (maxConcurrentJobs, int):
@@ -950,18 +948,18 @@ class Make:
       print (BOLD_RED () + errorMessage + ENDC ())
       self.mErrorCount = self.mErrorCount + 1
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def simulateClean (self):
     self.mSimulateClean = True
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def enterError (self, message):
     print (BOLD_RED () + message + ENDC ())
     self.mErrorCount = self.mErrorCount + 1
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def printErrorCountAndExitOnError (self):
     if self.mErrorCount == 1:
@@ -971,7 +969,7 @@ class Make:
       print (BOLD_RED () + str (self.mErrorCount) + " errors." + ENDC ())
       sys.exit (1)
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def printErrorCount (self):
     if self.mErrorCount == 1:
@@ -979,9 +977,9 @@ class Make:
     elif self.mErrorCount > 1:
       print (BOLD_RED () + str (self.mErrorCount) + " errors." + ENDC ())
 
-  #---------------------------------------------------------------------------------------
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   def errorCount (self):
     return self.mErrorCount
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------

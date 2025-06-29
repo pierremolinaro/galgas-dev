@@ -197,7 +197,7 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/mv", [DISTRIBUTION_DIR_TEMPORARY, DISTRIBUTION_DIR])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Fixer le numéro de version
-  let plistFileFullPath = DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/Info-developer.plist"
+  let plistFileFullPath = DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/galgas-ide/Info.plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
   var plistDictionary : [String : Any]
   if let d = try PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any] {
@@ -212,10 +212,24 @@ print ("ANNÉE : \(ANNÉE)")
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Mettre a jour les numéros de version
-  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/en.lproj/InfoPlist.strings")
+ // remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/en.lproj/InfoPlist.strings")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/galgas-sources")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
+//-------------------- Compiler le projet Xcode
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide")
+  runCommand ("/bin/rm", ["-fr", "build"])
+  runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", ["-target", "GalgasIDE", "BUILD_DIR=GALGAS_BUILD"])
+  let PRODUCT_NAME : String
+  switch BUILD_KIND {
+  case .debug :
+    PRODUCT_NAME = "galgas-Debug"
+  case .release:
+    PRODUCT_NAME = "galgas"
+  }
+//-------------------- Vérifier Big integers
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--check-big-int"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas-debug", ["--check-big-int"])
 //-------------------- Vérifier les programmes d'exemple
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
@@ -267,31 +281,17 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux64-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
-//-------------------- Compiler le projet Xcode
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas")
-  runCommand ("/bin/rm", ["-fr", "build"])
-  runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", ["-target", "GALGAS Cocoa"])
-  let PRODUCT_NAME : String
-  switch BUILD_KIND {
-  case .debug :
-    PRODUCT_NAME = "galgas-Debug"
-  case .release:
-    PRODUCT_NAME = "galgas"
-  }
-//-------------------- Vérifier Big integers
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--check-big-int"])
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas-debug", ["--check-big-int"])
 //-------------------- Recompiler en utilsant différents modes de génération
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
   runCommand ("/usr/bin/python3", ["clean.py"])
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
   runCommand ("/usr/bin/python3", ["clean.py"])
   runCommand ("/usr/bin/python3", ["build.py"])
@@ -310,7 +310,7 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Construction package
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev")
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
-  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build/Default/cocoaGalgas.app", "/Applications", packageFile])
+  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas-ide/GALGAS_BUILD/Release/GalgasIDE.app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_GALGAS
@@ -361,7 +361,7 @@ print ("ANNÉE : \(ANNÉE)")
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_GALGAS + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
 //--- Vérifier la signature
-  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/cocoaGalgas.app"])
+  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/GalgasIDE.app"])
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas-dev") {

@@ -103,16 +103,7 @@ class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyn
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_terminalInstructionForGrammarAnalysis unwrappedValue (void) const {
-    GGS_terminalInstructionForGrammarAnalysis result ;
-    if (isValid ()) {
-      const cPtr_terminalInstructionForGrammarAnalysis * p = (cPtr_terminalInstructionForGrammarAnalysis *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_terminalInstructionForGrammarAnalysis (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_terminalInstructionForGrammarAnalysis unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {

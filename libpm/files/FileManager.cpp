@@ -469,7 +469,7 @@ static bool parseWithEncoding (const U8Data & inDataString,
   while ((idx < inDataString.count ()) && (inDataString (idx COMMA_HERE) != 0) && ok) {
     const uint8_t c = inDataString (idx COMMA_HERE) ;
     if (c == 0x0A) { // LF
-      if (! foundCR) {
+      if (!foundCR) {
         outString.appendChar (TO_UNICODE ('\n')) ;
       }
       foundCR = false ;

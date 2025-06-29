@@ -35,16 +35,7 @@ class GGS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_%!CLASS_TYPE_IDENTIFIER% unwrappedValue (void) const {
-    GGS_%!CLASS_TYPE_IDENTIFIER% result ;
-    if (isValid ()) {
-      const cPtr_%!CLASS_TYPE_IDENTIFIER% * p = (cPtr_%!CLASS_TYPE_IDENTIFIER% *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_%!CLASS_TYPE_IDENTIFIER% (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_%!CLASS_TYPE_IDENTIFIER% unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {

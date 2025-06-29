@@ -158,16 +158,7 @@ class GGS_routinePrototypeDeclarationForGeneration_2E_weak : public GGS_semantic
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_routinePrototypeDeclarationForGeneration unwrappedValue (void) const {
-    GGS_routinePrototypeDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_routinePrototypeDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_routinePrototypeDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -371,16 +362,7 @@ class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototy
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_routineImplementationForGeneration unwrappedValue (void) const {
-    GGS_routineImplementationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_routineImplementationForGeneration * p = (cPtr_routineImplementationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_routineImplementationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_routineImplementationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -683,16 +665,7 @@ class GGS_lexiqueDeclarationForGeneration_2E_weak : public GGS_semanticDeclarati
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_lexiqueDeclarationForGeneration unwrappedValue (void) const {
-    GGS_lexiqueDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_lexiqueDeclarationForGeneration * p = (cPtr_lexiqueDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_lexiqueDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_lexiqueDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -897,16 +870,7 @@ class GGS_functionPrototypeDeclarationForGeneration_2E_weak : public GGS_semanti
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_functionPrototypeDeclarationForGeneration unwrappedValue (void) const {
-    GGS_functionPrototypeDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_functionPrototypeDeclarationForGeneration * p = (cPtr_functionPrototypeDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_functionPrototypeDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_functionPrototypeDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1114,16 +1078,7 @@ class GGS_functionImplementationForGeneration_2E_weak : public GGS_functionProto
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_functionImplementationForGeneration unwrappedValue (void) const {
-    GGS_functionImplementationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_functionImplementationForGeneration * p = (cPtr_functionImplementationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_functionImplementationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_functionImplementationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1341,16 +1296,7 @@ class GGS_onceFunctionDeclarationForGeneration_2E_weak : public GGS_semanticDecl
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_onceFunctionDeclarationForGeneration unwrappedValue (void) const {
-    GGS_onceFunctionDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_onceFunctionDeclarationForGeneration * p = (cPtr_onceFunctionDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_onceFunctionDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_onceFunctionDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1575,16 +1521,7 @@ class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDecla
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_filewrapperDeclarationForGeneration unwrappedValue (void) const {
-    GGS_filewrapperDeclarationForGeneration result ;
-    if (isValid ()) {
-      const cPtr_filewrapperDeclarationForGeneration * p = (cPtr_filewrapperDeclarationForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_filewrapperDeclarationForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_filewrapperDeclarationForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -1783,16 +1720,7 @@ class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclaration
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_programComponentForGeneration unwrappedValue (void) const {
-    GGS_programComponentForGeneration result ;
-    if (isValid ()) {
-      const cPtr_programComponentForGeneration * p = (cPtr_programComponentForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_programComponentForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_programComponentForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2063,16 +1991,7 @@ class GGS_grammarForGeneration_2E_weak : public GGS_semanticDeclarationWithHeade
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_grammarForGeneration unwrappedValue (void) const {
-    GGS_grammarForGeneration result ;
-    if (isValid ()) {
-      const cPtr_grammarForGeneration * p = (cPtr_grammarForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_grammarForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_grammarForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -2272,16 +2191,7 @@ class GGS_primitiveTypeForGeneration_2E_weak : public GGS_semanticTypeForGenerat
   }
 
 //--------------------------------- Unwrapped value
-  public: inline GGS_primitiveTypeForGeneration unwrappedValue (void) const {
-    GGS_primitiveTypeForGeneration result ;
-    if (isValid ()) {
-      const cPtr_primitiveTypeForGeneration * p = (cPtr_primitiveTypeForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_primitiveTypeForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
+  public: GGS_primitiveTypeForGeneration unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
