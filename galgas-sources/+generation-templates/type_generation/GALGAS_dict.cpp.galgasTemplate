@@ -250,7 +250,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -259,7 +259,8 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex () {
-  mIndex = mArray.count () - 1 ;
+  mIndex = mInfoArray.count () - 1 ;
 }
+

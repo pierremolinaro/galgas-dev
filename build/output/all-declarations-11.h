@@ -9166,20 +9166,20 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_mList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
   }
 
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE).value () ;
+     return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -9192,25 +9192,25 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
 class UpEnumerator_genericExtensionMethodListMapDictionary final {
   public: UpEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_mList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
  }
  
 //--- Current element access
   public: inline GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).value () ;
+    return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -9622,20 +9622,20 @@ class DownEnumerator_descendantClassListMapDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_typeList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_typeList ;
   }
 
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE).value () ;
+     return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -9648,25 +9648,25 @@ class DownEnumerator_descendantClassListMapDictionary final {
 class UpEnumerator_descendantClassListMapDictionary final {
   public: UpEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_unifiedTypeMapEntryList current_typeList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_typeList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_typeList ;
  }
  
 //--- Current element access
   public: inline GGS_descendantClassListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).value () ;
+    return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy

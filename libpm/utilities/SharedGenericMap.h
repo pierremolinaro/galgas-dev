@@ -25,10 +25,11 @@
 #include "SharedGenericPtrWithValueSemantics.h"
 
 //--------------------------------------------------------------------------------------------------
-//  SharedGenericMapRoot
+//  Predeclarations
 //--------------------------------------------------------------------------------------------------
 
 template <typename KEY, typename INFO> class SharedGenericMapRoot ;
+template <typename KEY_, typename INFO_> class SharedGenericMap ;
 
 //--------------------------------------------------------------------------------------------------
 //  SharedGenericMapNode
@@ -85,12 +86,12 @@ template <typename KEY, typename INFO> class SharedGenericMapNode final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateNodeArray (const OptionalSharedRef <SharedGenericMapNode> & inNode,
+  private: static void populateInfoArray (const OptionalSharedRef <SharedGenericMapNode> & inNode,
                                           TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
-      populateNodeArray (inNode->mInfPtr, ioNodeArray) ;
+      populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
       ioNodeArray.appendObject (inNode->mSharedInfo) ;
-      populateNodeArray (inNode->mSupPtr, ioNodeArray) ;
+      populateInfoArray (inNode->mSupPtr, ioNodeArray) ;
     }
   }
 
@@ -113,7 +114,9 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> mRootNode ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
+  private: bool mCacheSortedArrayIsValid ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Default constructor
@@ -122,7 +125,9 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
   public: SharedGenericMapRoot (LOCATION_ARGS) :
   SharedObject (THERE),
   mRootNode (),
-  mCount (0) {
+  mCacheSortedArray (),
+  mCount (0),
+  mCacheSortedArrayIsValid (false) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -140,11 +145,20 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void duplicateTo (OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>> & outNewRoot
+  private: void duplicateTo (OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>> & outNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
-    if (mRootNode.isNotNil ()) {
+    if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray
       outNewRoot->mRootNode = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (mRootNode COMMA_HERE) ;
       outNewRoot->mCount = mCount ;
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: void invalidateCacheSortedArray (void) {
+    if (mCacheSortedArrayIsValid) { // Do not duplicate mCacheSortedArray
+      mCacheSortedArrayIsValid = false ;
+      mCacheSortedArray.removeAllKeepingCapacity () ;
     }
   }
 
@@ -152,23 +166,29 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
   // Accessors
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: inline int32_t count (void) const { return mCount ; }
+  private: inline int32_t count (void) const { return mCount ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedNodeArray (void) const {
-    TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array ;
-    SharedGenericMapNode <KEY, INFO>::populateNodeArray (mRootNode, array) ;
-    return array ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
+    if (mCacheSortedArrayIsValid) {
+      return mCacheSortedArray ;
+    }else{
+      TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
+      SharedGenericMapNode <KEY, INFO>::populateInfoArray (mRootNode, array) ;
+      mCacheSortedArray = array ;
+      mCacheSortedArrayIsValid = true ;
+      return array ;
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> searchNode (const KEY & inKey) const {
+  private: OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> searchNode (const KEY & inKey) const {
     OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result ;
@@ -178,9 +198,9 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
   // Insert
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void insertOrReplaceInfo (const KEY & inKey,
-                                    const INFO & inInfo
-                                    COMMA_LOCATION_ARGS) {
+  private: void insertOrReplaceInfo (const KEY & inKey,
+                                     const INFO & inInfo
+                                     COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
     internalRecursiveInsert (mRootNode, inKey, inInfo) ;
   }
@@ -282,7 +302,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey) {
+  private: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey) {
     macroUniqueSharedObject (this) ;
     bool ioBranchHasBeenRemoved ;
     auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
@@ -421,7 +441,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: bool hasKey (const KEY & inKey) const {
+  private: bool hasKey (const KEY & inKey) const {
     OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result.isNotNil () ;
@@ -429,7 +449,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: static void internalRecursiveSearchNode (const KEY & inKey,
+  private: static void internalRecursiveSearchNode (const KEY & inKey,
                             const OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & inNodePtr,
                             OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & outInfoPtr) {
     if (inNodePtr.isNotNil ()) {
@@ -452,6 +472,10 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
       outInfoPtr.setToNil () ;
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  friend class SharedGenericMap <KEY, INFO> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -506,10 +530,13 @@ template <typename KEY, typename INFO> class SharedGenericMap final {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: void insulate (LOCATION_ARGS) {
-    if (mSharedRoot.isNotNil () && !mSharedRoot->isUniquelyReferenced ()) {
-      auto p = OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>>::make (THERE) ;
-      mSharedRoot->duplicateTo (p COMMA_THERE) ;
-      mSharedRoot = p ;
+    if (mSharedRoot.isNotNil ()) {
+      mSharedRoot->invalidateCacheSortedArray () ;
+      if (!mSharedRoot->isUniquelyReferenced ()) {
+        auto p = OptionalSharedRef <SharedGenericMapRoot <KEY, INFO>>::make (THERE) ;
+        mSharedRoot->duplicateTo (p COMMA_THERE) ;
+        mSharedRoot = p ;
+      }
     }
   }
 
@@ -608,9 +635,9 @@ template <typename KEY, typename INFO> class SharedGenericMap final {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedNodeArray (void) const {
+  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
     if (mSharedRoot.isNotNil ()) {
-      return mSharedRoot->sortedNodeArray () ;
+      return mSharedRoot->sortedInfoArray () ;
     }else{
       return TC_Array <SharedGenericPtrWithValueSemantics <INFO>> () ;
     }

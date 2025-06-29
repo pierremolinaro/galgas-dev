@@ -10807,7 +10807,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_genericExtensionMethodListMapDictionary::UpEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -10816,10 +10816,11 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_genericExtensionMethodListMapDictionary::DownEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex () {
-  mIndex = mArray.count () - 1 ;
+  mIndex = mInfoArray.count () - 1 ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //     @genericExtensionMethodListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
@@ -11267,7 +11268,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_descendantClassListMapDictionary::UpEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -11276,10 +11277,11 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_descendantClassListMapDictionary::DownEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex () {
-  mIndex = mArray.count () - 1 ;
+  mIndex = mInfoArray.count () - 1 ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //     @descendantClassListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------

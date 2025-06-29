@@ -2220,20 +2220,20 @@ class DownEnumerator_syntaxExtensionsDictionary final {
   
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
   }
 
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_extensionList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_extensionList ;
   }
 
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE).value () ;
+     return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -2246,25 +2246,25 @@ class DownEnumerator_syntaxExtensionsDictionary final {
 class UpEnumerator_syntaxExtensionsDictionary final {
   public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: inline GGS_string current_key (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_key ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
  }
  
   public: inline GGS_galgas_33_SyntaxExtensionListAST current_extensionList (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_extensionList ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_extensionList ;
  }
  
 //--- Current element access
   public: inline GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).value () ;
+    return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy

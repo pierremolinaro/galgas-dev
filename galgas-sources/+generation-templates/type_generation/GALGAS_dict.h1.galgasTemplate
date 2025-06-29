@@ -16,7 +16,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
   }
 
 %
@@ -24,13 +24,13 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
 %  public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const  {
-     return mArray (mIndex COMMA_HERE).value () ;
+     return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 %
   end
 %
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -43,14 +43,14 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand)  ;
   
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: inline GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+    return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
  }
  
 %
@@ -58,12 +58,12 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access
   public: inline GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const {
-    return mArray (mIndex COMMA_HERE).value () ;
+    return mInfoArray (mIndex COMMA_HERE).value () ;
   }
 %  end
 %
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mArray ;
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy

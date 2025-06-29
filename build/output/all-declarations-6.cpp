@@ -1290,7 +1290,7 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_syntaxExtensionsDictionary::UpEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -1299,10 +1299,11 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_syntaxExtensionsDictionary::DownEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mArray (inOperand.mDictionary.sortedNodeArray ()),
+mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
 mIndex () {
-  mIndex = mArray.count () - 1 ;
+  mIndex = mInfoArray.count () - 1 ;
 }
+
 //--------------------------------------------------------------------------------------------------
 //     @syntaxExtensionsDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
