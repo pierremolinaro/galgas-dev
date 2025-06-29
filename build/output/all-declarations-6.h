@@ -2208,11 +2208,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDic
 // Phase 1: @syntaxExtensionsDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-typedef SharedGenericMap <GGS_string,
-                          GGS_syntaxExtensionsDictionary_2E_element> MapFor_syntaxExtensionsDictionary ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_syntaxExtensionsDictionary final {
   public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand) ;
 
@@ -2278,7 +2273,7 @@ class UpEnumerator_syntaxExtensionsDictionary final {
 
 class GGS_syntaxExtensionsDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
-  private: MapFor_syntaxExtensionsDictionary mDictionary ;
+  private: SharedGenericMap <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> mDictionary ;
 
 //--------------------------------- Default constructor
   public: GGS_syntaxExtensionsDictionary (void) ;

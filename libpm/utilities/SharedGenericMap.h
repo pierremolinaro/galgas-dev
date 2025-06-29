@@ -247,10 +247,6 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
       ioRootPtr = OptionalSharedRef <SharedGenericMapNode <KEY, INFO>>::make (inInfo COMMA_HERE) ;
-//      ioRootPtr.swap (ioObjectToInsert) ;
-//      ioRootPtr->mInfPtr.setToNil () ;
-//      ioRootPtr->mSupPtr.setToNil () ;
-//      ioRootPtr->mBalance = 0 ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -315,7 +311,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static inline void supBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
+  private: static void supBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -344,7 +340,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static inline void infBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
+  private: static void infBranchDecreased (OptionalSharedRef <SharedGenericMapNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -= 1 ;
     switch (ioRoot->mBalance) {

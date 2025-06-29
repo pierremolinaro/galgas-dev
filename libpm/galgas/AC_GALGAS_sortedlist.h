@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2005, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 2005, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -29,7 +29,7 @@
 
 class GGS_uint ;
 class Compiler ;
-class cSharedSortedListRoot ;
+class SharedSortedListRoot ;
 class String ;
 class C_galgas_type_descriptor ;
 class capSortedListElement ;
@@ -40,7 +40,7 @@ class capCollectionElementArray ;
 
 class AC_GALGAS_sortedlist : public AC_GALGAS_root {
 //--------------------------------- Private data member
-  private: cSharedSortedListRoot * mSharedRoot ;
+  private: SharedSortedListRoot * mSharedRoot ;
 
 //--------------------------------- Native constructor
   public: AC_GALGAS_sortedlist (void) ;
@@ -90,12 +90,12 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
 
 //--------------------------------- Modifier Implementation
   protected: void removeSmallestObject (capSortedListElement & outAttributeArray,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
   protected: void removeGreatestObject (capSortedListElement & outAttributeArray,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Compare
   public: ComparisonResult objectCompare (const AC_GALGAS_sortedlist & inOperand) const ;

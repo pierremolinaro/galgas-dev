@@ -9154,11 +9154,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 // Phase 1: @genericExtensionMethodListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-typedef SharedGenericMap <GGS_string,
-                          GGS_genericExtensionMethodListMapDictionary_2E_element> MapFor_genericExtensionMethodListMapDictionary ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_genericExtensionMethodListMapDictionary final {
   public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand) ;
 
@@ -9224,7 +9219,7 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
 
 class GGS_genericExtensionMethodListMapDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
-  private: MapFor_genericExtensionMethodListMapDictionary mDictionary ;
+  private: SharedGenericMap <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element> mDictionary ;
 
 //--------------------------------- Default constructor
   public: GGS_genericExtensionMethodListMapDictionary (void) ;
@@ -9610,11 +9605,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 // Phase 1: @descendantClassListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-typedef SharedGenericMap <GGS_string,
-                          GGS_descendantClassListMapDictionary_2E_element> MapFor_descendantClassListMapDictionary ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_descendantClassListMapDictionary final {
   public: DownEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inOperand) ;
 
@@ -9680,7 +9670,7 @@ class UpEnumerator_descendantClassListMapDictionary final {
 
 class GGS_descendantClassListMapDictionary : public AC_GALGAS_root {
 //--------------------------------- Private properties
-  private: MapFor_descendantClassListMapDictionary mDictionary ;
+  private: SharedGenericMap <GGS_string, GGS_descendantClassListMapDictionary_2E_element> mDictionary ;
 
 //--------------------------------- Default constructor
   public: GGS_descendantClassListMapDictionary (void) ;
