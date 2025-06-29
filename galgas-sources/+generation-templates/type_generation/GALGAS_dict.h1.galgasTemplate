@@ -2,6 +2,10 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " dictionary enumerator"%
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
 

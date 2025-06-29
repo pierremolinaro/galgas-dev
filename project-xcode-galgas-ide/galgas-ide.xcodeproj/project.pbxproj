@@ -943,6 +943,7 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
+		CF6B7E302E119DB60056916E /* SharedGenericSortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericSortedList.h; sourceTree = "<group>"; };
 		CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DisplayDescriptor.swift; sourceTree = "<group>"; };
 		CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DocumentController.swift; sourceTree = "<group>"; };
 		CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+syntax-coloring.swift"; sourceTree = "<group>"; };
@@ -1549,6 +1550,7 @@
 				CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */,
 				CF00BE042E116075007B987F /* SharedGenericMap.h */,
 				CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */,
+				CF6B7E302E119DB60056916E /* SharedGenericSortedList.h */,
 				CF00BE062E116075007B987F /* SharedObject.h */,
 				CF00BE072E116075007B987F /* SharedObject.cpp */,
 				CF00BE082E116075007B987F /* SharedStringMap.h */,

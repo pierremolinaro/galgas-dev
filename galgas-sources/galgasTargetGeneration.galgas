@@ -1230,6 +1230,7 @@ proc updateGalgasTargets
         "SharedGenericMap.h",
         "SharedStringMap.h",
         "SharedGenericPtrWithValueSemantics.h",
+        "SharedGenericSortedList.h",
         "SharedStringMap.cpp",
         "SharedObject.cpp",
         "SharedObject.h"

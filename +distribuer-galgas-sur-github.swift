@@ -227,6 +227,21 @@ print ("ANNÉE : \(ANNÉE)")
   case .release:
     PRODUCT_NAME = "galgas"
   }
+//-------------------- Recompiler en utilsant différents modes de génération
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["clean.py"])
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["clean.py"])
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Vérifier Big integers
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--check-big-int"])
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas-debug", ["--check-big-int"])
@@ -281,21 +296,6 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux64-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
-//-------------------- Recompiler en utilsant différents modes de génération
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["clean.py"])
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["clean.py"])
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Construire la documentation Latex
   let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)

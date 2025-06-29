@@ -17,8 +17,6 @@
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"
-#include "SharedStringMap.h"
-#include "SharedGenericMap.h"
 #include "AC_GALGAS_sortedlist.h"
 #include "AC_GALGAS_map.h"
 #include "AC_GALGAS_reference_class.h"
@@ -943,7 +941,11 @@ class GGS_uint : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @stringset enumerator
+// Phase 1: @stringset
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedStringMap.h"
+
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_stringset final {

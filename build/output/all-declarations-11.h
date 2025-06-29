@@ -9629,6 +9629,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSy
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericSortedList.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final : public cGenericAbstractEnumerator {
   public: DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject) ;
 
@@ -9638,6 +9642,7 @@ class DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final : publi
   public: class GGS_lstring current_mNonTerminalSymbol (LOCATION_ARGS) const ;
   public: class GGS_uint current_mNonTerminalIndex (LOCATION_ARGS) const ;
   public: class GGS_nonterminalSymbolLabelMapForGrammarAnalysis current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
 } ;
@@ -9653,6 +9658,7 @@ class UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final : public 
   public: class GGS_lstring current_mNonTerminalSymbol (LOCATION_ARGS) const ;
   public: class GGS_uint current_mNonTerminalIndex (LOCATION_ARGS) const ;
   public: class GGS_nonterminalSymbolLabelMapForGrammarAnalysis current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
 } ;
@@ -11833,6 +11839,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 // Phase 1: @genericExtensionMethodListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_genericExtensionMethodListMapDictionary final {
   public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inOperand) ;
 
@@ -12256,6 +12266,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @descendantClassListMapDictionary dictionary enumerator
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericMap.h"
+
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_descendantClassListMapDictionary final {

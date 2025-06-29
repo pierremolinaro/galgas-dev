@@ -6307,6 +6307,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 // Phase 1: @tokenSortedlist sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericSortedList.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_tokenSortedlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_tokenSortedlist (const class GGS_tokenSortedlist & inEnumeratedObject) ;
 
@@ -6316,6 +6320,7 @@ class DownEnumerator_tokenSortedlist final : public cGenericAbstractEnumerator {
   public: class GGS_uint current_mLength (LOCATION_ARGS) const ;
   public: class GGS_string current_mName (LOCATION_ARGS) const ;
   public: class GGS_string current_mTerminalName (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_tokenSortedlist_2E_element current (LOCATION_ARGS) const ;
 } ;
@@ -6331,6 +6336,7 @@ class UpEnumerator_tokenSortedlist final : public cGenericAbstractEnumerator {
   public: class GGS_uint current_mLength (LOCATION_ARGS) const ;
   public: class GGS_string current_mName (LOCATION_ARGS) const ;
   public: class GGS_string current_mTerminalName (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_tokenSortedlist_2E_element current (LOCATION_ARGS) const ;
 } ;

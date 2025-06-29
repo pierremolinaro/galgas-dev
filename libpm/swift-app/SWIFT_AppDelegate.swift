@@ -59,9 +59,15 @@ import Cocoa
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func applicationShouldTerminate (_ sender: NSApplication) -> NSApplication.TerminateReply {
+  func applicationShouldTerminate (_ inApplication : NSApplication) -> NSApplication.TerminateReply {
     SWIFT_DocumentController.mySaveAllDocuments ()
     return .terminateNow
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func applicationSupportsSecureRestorableState (_ inApplication : NSApplication) -> Bool {
+    return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

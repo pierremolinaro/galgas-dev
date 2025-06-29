@@ -1592,6 +1592,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDecl
 // Phase 1: @commandLineOptionSortedList sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericSortedList.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_commandLineOptionSortedList final : public cGenericAbstractEnumerator {
   public: DownEnumerator_commandLineOptionSortedList (const class GGS_commandLineOptionSortedList & inEnumeratedObject) ;
 
@@ -1603,6 +1607,7 @@ class DownEnumerator_commandLineOptionSortedList final : public cGenericAbstract
   public: class GGS_string current_mOptionString (LOCATION_ARGS) const ;
   public: class GGS_string current_mComment (LOCATION_ARGS) const ;
   public: class GGS_string current_mDefaultValue (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_commandLineOptionSortedList_2E_element current (LOCATION_ARGS) const ;
 } ;
@@ -1620,6 +1625,7 @@ class UpEnumerator_commandLineOptionSortedList final : public cGenericAbstractEn
   public: class GGS_string current_mOptionString (LOCATION_ARGS) const ;
   public: class GGS_string current_mComment (LOCATION_ARGS) const ;
   public: class GGS_string current_mDefaultValue (LOCATION_ARGS) const ;
+
 //--- Current element access
   public: class GGS_commandLineOptionSortedList_2E_element current (LOCATION_ARGS) const ;
 } ;

@@ -2,6 +2,10 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list enumerator"%
 //--------------------------------------------------------------------------------------------------
 
+#include "SharedGenericSortedList.h"
+
+//--------------------------------------------------------------------------------------------------
+
 class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
 
@@ -12,11 +16,10 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerato
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
-  if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
-%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end
-%} ;
+%
+//--- Current element access
+  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,11 +33,10 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator 
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
-  if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
-%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end
-%} ;
+%
+//--- Current element access
+  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list"%
