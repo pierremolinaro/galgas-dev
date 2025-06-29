@@ -10587,37 +10587,10 @@ GGS_programListForGeneration GGS_programListForGeneration::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary::GGS_genericExtensionMethodListMapDictionary (void) :
-AC_GALGAS_root (),
-mDictionary () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_genericExtensionMethodListMapDictionary GGS_genericExtensionMethodListMapDictionary::builtDictionary (LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary result ;
-  result.mDictionary.build (THERE) ;
+  result.build (THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary::GGS_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inSource) :
-AC_GALGAS_root (),
-mDictionary (inSource.mDictionary) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary & GGS_genericExtensionMethodListMapDictionary::operator = (const GGS_genericExtensionMethodListMapDictionary & inSource) {
-  mDictionary = inSource.mDictionary ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary::drop (void) {
-  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10640,7 +10613,7 @@ void GGS_genericExtensionMethodListMapDictionary::description (String & ioString
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendSigned (mDictionary.count ()) ;
+    ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -10653,7 +10626,7 @@ void GGS_genericExtensionMethodListMapDictionary::description (String & ioString
 GGS_uint GGS_genericExtensionMethodListMapDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.count ())) ;
+    result = GGS_uint (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -10665,7 +10638,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
       return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ (object.value ()) ;
     }else{
@@ -10681,7 +10654,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 void GGS_genericExtensionMethodListMapDictionary::plusPlusAssignOperation (const GGS_genericExtensionMethodListMapDictionary_2E_element & inValue
                                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
+    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -10693,7 +10666,7 @@ void GGS_genericExtensionMethodListMapDictionary::addAssignOperation (const GGS_
                                                                       COMMA_LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -10705,7 +10678,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_insert (const GGS_strin
                                                                  COMMA_LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -10715,7 +10688,7 @@ GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_hasKey (const GGS_s
                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mDictionary.hasKey (inKey)) ;
+    result = GGS_bool (hasKey (inKey)) ;
   }
   return result ;
 }
@@ -10727,7 +10700,7 @@ void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string i
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -10749,7 +10722,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string i
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> removedObject
-                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
+                    = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -10771,7 +10744,7 @@ GGS_lstringlist GGS_genericExtensionMethodListMapDictionary::getter_mListForKey 
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_lstringlist result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get mList ForKey in dict: the key does not exist" ;
@@ -10790,7 +10763,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setMListForKey in dict: the key does not exist" ;
@@ -10807,7 +10780,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_genericExtensionMethodListMapDictionary::UpEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -10816,7 +10789,7 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_genericExtensionMethodListMapDictionary::DownEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }
@@ -11048,37 +11021,10 @@ void callExtensionMethod_buildExtensionListMaps (cPtr_semanticDeclarationAST * i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary::GGS_descendantClassListMapDictionary (void) :
-AC_GALGAS_root (),
-mDictionary () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_descendantClassListMapDictionary GGS_descendantClassListMapDictionary::builtDictionary (LOCATION_ARGS) {
   GGS_descendantClassListMapDictionary result ;
-  result.mDictionary.build (THERE) ;
+  result.build (THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary::GGS_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inSource) :
-AC_GALGAS_root (),
-mDictionary (inSource.mDictionary) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary & GGS_descendantClassListMapDictionary::operator = (const GGS_descendantClassListMapDictionary & inSource) {
-  mDictionary = inSource.mDictionary ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary::drop (void) {
-  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11101,7 +11047,7 @@ void GGS_descendantClassListMapDictionary::description (String & ioString,
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendSigned (mDictionary.count ()) ;
+    ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -11114,7 +11060,7 @@ void GGS_descendantClassListMapDictionary::description (String & ioString,
 GGS_uint GGS_descendantClassListMapDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.count ())) ;
+    result = GGS_uint (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -11126,7 +11072,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
       return GGS_descendantClassListMapDictionary_2E_element_3F_ (object.value ()) ;
     }else{
@@ -11142,7 +11088,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 void GGS_descendantClassListMapDictionary::plusPlusAssignOperation (const GGS_descendantClassListMapDictionary_2E_element & inValue
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
+    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -11154,7 +11100,7 @@ void GGS_descendantClassListMapDictionary::addAssignOperation (const GGS_string 
                                                                COMMA_LOCATION_ARGS) {
   GGS_descendantClassListMapDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -11166,7 +11112,7 @@ void GGS_descendantClassListMapDictionary::setter_insert (const GGS_string inKey
                                                           COMMA_LOCATION_ARGS) {
   GGS_descendantClassListMapDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -11176,7 +11122,7 @@ GGS_bool GGS_descendantClassListMapDictionary::getter_hasKey (const GGS_string &
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mDictionary.hasKey (inKey)) ;
+    result = GGS_bool (hasKey (inKey)) ;
   }
   return result ;
 }
@@ -11188,7 +11134,7 @@ void GGS_descendantClassListMapDictionary::method_searchKey (GGS_string inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -11210,7 +11156,7 @@ void GGS_descendantClassListMapDictionary::setter_removeKey (GGS_string inKey,
                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> removedObject
-                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
+                    = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -11232,7 +11178,7 @@ GGS_unifiedTypeMapEntryList GGS_descendantClassListMapDictionary::getter_typeLis
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS_unifiedTypeMapEntryList result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get typeList ForKey in dict: the key does not exist" ;
@@ -11251,7 +11197,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setTypeListForKey in dict: the key does not exist" ;
@@ -11268,7 +11214,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_descendantClassListMapDictionary::UpEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -11277,7 +11223,7 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_descendantClassListMapDictionary::DownEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }

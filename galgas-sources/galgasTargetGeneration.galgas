@@ -1226,7 +1226,13 @@ proc updateGalgasTargets
         "scanner_actions.h",
         "ComparisonResult.h",
         "ComparisonKind.h",
-        "EnumerationOrder.h"
+        "EnumerationOrder.h",
+        "SharedGenericMap.h",
+        "SharedStringMap.h",
+        "SharedGenericPtrWithValueSemantics.h",
+        "SharedStringMap.cpp",
+        "SharedObject.cpp",
+        "SharedObject.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1322,8 +1328,6 @@ proc updateGalgasTargets
         "DirectedGraph.h",
         "PrologueEpilogue.cpp",
         "PrologueEpilogue.h",
-        "SharedObject.cpp",
-        "SharedObject.h",
         "UInt32Set.cpp",
         "UInt32Set.h",
         "cpp-allocation.cpp",
@@ -1344,10 +1348,6 @@ proc updateGalgasTargets
         "MF_MemoryControl.h",
         "switch-fallthrough.h",
         "TF_Swap.h",
-        "SharedGenericMap.h",
-        "SharedStringMap.h",
-        "SharedStringMap.cpp",
-        "SharedGenericPtrWithValueSemantics.h",
         "galgas-random.cpp",
         "galgas-random.h"
       ]

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF0108862D859E050042ABFD /* SharedStringMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0108852D859E050042ABFD /* SharedStringMap.cpp */; };
-		CF0108872D859E050042ABFD /* SharedStringMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0108852D859E050042ABFD /* SharedStringMap.cpp */; };
+		CF00BE0A2E116075007B987F /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE072E116075007B987F /* SharedObject.cpp */; };
+		CF00BE0B2E116075007B987F /* SharedStringMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE092E116075007B987F /* SharedStringMap.cpp */; };
+		CF00BE0C2E116075007B987F /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE072E116075007B987F /* SharedObject.cpp */; };
+		CF00BE0D2E116075007B987F /* SharedStringMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE092E116075007B987F /* SharedStringMap.cpp */; };
 		CF08BA842D552D3A000DE9C4 /* EBComputedProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA402D552D3A000DE9C4 /* EBComputedProperty.swift */; };
 		CF08BA852D552D3A000DE9C4 /* AutoLayoutIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA732D552D3A000DE9C4 /* AutoLayoutIntField.swift */; };
 		CF08BA862D552D3A000DE9C4 /* extension-NSFont-EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA2E2D552D3A000DE9C4 /* extension-NSFont-EBPropertyProtocol.swift */; };
@@ -173,7 +175,6 @@
 		CF305FD82D0D8A2E000A5F79 /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E652D0D8A2E000A5F79 /* BigUnsigned-add.cpp */; };
 		CF305FDA2D0D8A2E000A5F79 /* GALGAS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1D2D0D8A2E000A5F79 /* GALGAS_double.cpp */; };
 		CF305FDB2D0D8A2E000A5F79 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC22D0D8A2E000A5F79 /* F_mainForLIBPM.cpp */; };
-		CF305FDC2D0D8A2E000A5F79 /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8F2D0D8A2E000A5F79 /* SharedObject.cpp */; };
 		CF305FDD2D0D8A2E000A5F79 /* BigUnsigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6A2D0D8A2E000A5F79 /* BigUnsigned-divide.cpp */; };
 		CF305FDE2D0D8A2E000A5F79 /* AbstractOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */; };
 		CF305FDF2D0D8A2E000A5F79 /* GALGAS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1C2D0D8A2E000A5F79 /* GALGAS_data.cpp */; };
@@ -339,7 +340,6 @@
 		CF8F81182D0D91490095170B /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E652D0D8A2E000A5F79 /* BigUnsigned-add.cpp */; };
 		CF8F81192D0D91490095170B /* GALGAS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1D2D0D8A2E000A5F79 /* GALGAS_double.cpp */; };
 		CF8F811A2D0D91490095170B /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC22D0D8A2E000A5F79 /* F_mainForLIBPM.cpp */; };
-		CF8F811B2D0D91490095170B /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8F2D0D8A2E000A5F79 /* SharedObject.cpp */; };
 		CF8F811C2D0D91490095170B /* BigUnsigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E6A2D0D8A2E000A5F79 /* BigUnsigned-divide.cpp */; };
 		CF8F811D2D0D91490095170B /* AbstractOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */; };
 		CF8F811E2D0D91490095170B /* GALGAS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1C2D0D8A2E000A5F79 /* GALGAS_data.cpp */; };
@@ -533,8 +533,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CF0108842D859E050042ABFD /* SharedStringMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedStringMap.h; sourceTree = "<group>"; };
-		CF0108852D859E050042ABFD /* SharedStringMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedStringMap.cpp; sourceTree = "<group>"; };
+		CF00BE042E116075007B987F /* SharedGenericMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericMap.h; sourceTree = "<group>"; };
+		CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
+		CF00BE062E116075007B987F /* SharedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObject.h; sourceTree = "<group>"; };
+		CF00BE072E116075007B987F /* SharedObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedObject.cpp; sourceTree = "<group>"; };
+		CF00BE082E116075007B987F /* SharedStringMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedStringMap.h; sourceTree = "<group>"; };
+		CF00BE092E116075007B987F /* SharedStringMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedStringMap.cpp; sourceTree = "<group>"; };
 		CF08BA082D552D3A000DE9C4 /* BaseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseControl.swift; sourceTree = "<group>"; };
 		CF08BA092D552D3A000DE9C4 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CF08BA0A2D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignmentInVerticalStack.swift; sourceTree = "<group>"; };
@@ -866,8 +870,6 @@
 		CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrologueEpilogue.cpp; sourceTree = "<group>"; };
 		CF305F8C2D0D8A2E000A5F79 /* SHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHA256.h; sourceTree = "<group>"; };
 		CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SHA256.cpp; sourceTree = "<group>"; };
-		CF305F8E2D0D8A2E000A5F79 /* SharedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObject.h; sourceTree = "<group>"; };
-		CF305F8F2D0D8A2E000A5F79 /* SharedObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedObject.cpp; sourceTree = "<group>"; };
 		CF305F902D0D8A2E000A5F79 /* switch-fallthrough.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
 		CF305F912D0D8A2E000A5F79 /* TF_Swap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF305F922D0D8A2E000A5F79 /* U8Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = U8Data.h; sourceTree = "<group>"; };
@@ -989,7 +991,6 @@
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
 		CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_BuildLogViewRuler.swift; sourceTree = "<group>"; };
-		CFC0C55A2E0D9102001FB9B1 /* SharedGenericMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericMap.h; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -997,7 +998,6 @@
 		CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
 		CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
 		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
-		CFD863382E0EBF7A002153FB /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_AppDelegate.swift; sourceTree = "<group>"; };
 		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
@@ -1547,6 +1547,12 @@
 				CF305F342D0D8A2E000A5F79 /* ProductionNameDescriptor.h */,
 				CF305F352D0D8A2E000A5F79 /* scanner_actions.h */,
 				CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */,
+				CF00BE042E116075007B987F /* SharedGenericMap.h */,
+				CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */,
+				CF00BE062E116075007B987F /* SharedObject.h */,
+				CF00BE072E116075007B987F /* SharedObject.cpp */,
+				CF00BE082E116075007B987F /* SharedStringMap.h */,
+				CF00BE092E116075007B987F /* SharedStringMap.cpp */,
 				CF305F372D0D8A2E000A5F79 /* SourceTextInString.h */,
 				CF305F382D0D8A2E000A5F79 /* SourceTextInString.cpp */,
 				CF305F392D0D8A2E000A5F79 /* TemplateDelimiter.h */,
@@ -1635,12 +1641,6 @@
 				CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */,
 				CF305F8C2D0D8A2E000A5F79 /* SHA256.h */,
 				CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */,
-				CFC0C55A2E0D9102001FB9B1 /* SharedGenericMap.h */,
-				CFD863382E0EBF7A002153FB /* SharedGenericPtrWithValueSemantics.h */,
-				CF305F8E2D0D8A2E000A5F79 /* SharedObject.h */,
-				CF305F8F2D0D8A2E000A5F79 /* SharedObject.cpp */,
-				CF0108842D859E050042ABFD /* SharedStringMap.h */,
-				CF0108852D859E050042ABFD /* SharedStringMap.cpp */,
 				CF305F902D0D8A2E000A5F79 /* switch-fallthrough.h */,
 				CF305F912D0D8A2E000A5F79 /* TF_Swap.h */,
 				CF305F922D0D8A2E000A5F79 /* U8Data.h */,
@@ -1955,6 +1955,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF00BE0C2E116075007B987F /* SharedObject.cpp in Sources */,
+				CF00BE0D2E116075007B987F /* SharedStringMap.cpp in Sources */,
 				CF8F80E42D0D91490095170B /* BigUnsigned-conversions.cpp in Sources */,
 				CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF8F80E62D0D91490095170B /* galgas-input-output.cpp in Sources */,
@@ -2010,7 +2012,6 @@
 				CF8F81182D0D91490095170B /* BigUnsigned-add.cpp in Sources */,
 				CF8F81192D0D91490095170B /* GALGAS_double.cpp in Sources */,
 				CF8F811A2D0D91490095170B /* F_mainForLIBPM.cpp in Sources */,
-				CF8F811B2D0D91490095170B /* SharedObject.cpp in Sources */,
 				CF8F811C2D0D91490095170B /* BigUnsigned-divide.cpp in Sources */,
 				CF8F811D2D0D91490095170B /* AbstractOutputStream.cpp in Sources */,
 				CF8F811E2D0D91490095170B /* GALGAS_data.cpp in Sources */,
@@ -2115,7 +2116,6 @@
 				CF8F81802D0D91490095170B /* print.cpp in Sources */,
 				CF8F81812D0D91490095170B /* GALGAS_filewrapper.cpp in Sources */,
 				CF8F81822D0D91490095170B /* BinaryFileWrite.cpp in Sources */,
-				CF0108872D859E050042ABFD /* SharedStringMap.cpp in Sources */,
 				CF8F81832D0D91490095170B /* BoolCommandLineOption.cpp in Sources */,
 				CF8F81842D0D91490095170B /* AC_GALGAS_map.cpp in Sources */,
 				CF8F81852D0D91490095170B /* DateTime.cpp in Sources */,
@@ -2275,6 +2275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF00BE0A2E116075007B987F /* SharedObject.cpp in Sources */,
+				CF00BE0B2E116075007B987F /* SharedStringMap.cpp in Sources */,
 				CF305F972D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp in Sources */,
 				CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */,
@@ -2330,7 +2332,6 @@
 				CF305FD82D0D8A2E000A5F79 /* BigUnsigned-add.cpp in Sources */,
 				CF305FDA2D0D8A2E000A5F79 /* GALGAS_double.cpp in Sources */,
 				CF305FDB2D0D8A2E000A5F79 /* F_mainForLIBPM.cpp in Sources */,
-				CF305FDC2D0D8A2E000A5F79 /* SharedObject.cpp in Sources */,
 				CF305FDD2D0D8A2E000A5F79 /* BigUnsigned-divide.cpp in Sources */,
 				CF305FDE2D0D8A2E000A5F79 /* AbstractOutputStream.cpp in Sources */,
 				CF305FDF2D0D8A2E000A5F79 /* GALGAS_data.cpp in Sources */,
@@ -2435,7 +2436,6 @@
 				CF30601B2D0D8A2E000A5F79 /* print.cpp in Sources */,
 				CF30601C2D0D8A2E000A5F79 /* GALGAS_filewrapper.cpp in Sources */,
 				CF30601D2D0D8A2E000A5F79 /* BinaryFileWrite.cpp in Sources */,
-				CF0108862D859E050042ABFD /* SharedStringMap.cpp in Sources */,
 				CF30601E2D0D8A2E000A5F79 /* BoolCommandLineOption.cpp in Sources */,
 				CF30601F2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp in Sources */,
 				CF3060202D0D8A2E000A5F79 /* DateTime.cpp in Sources */,

@@ -1070,37 +1070,10 @@ GGS_procDeclarationAST_2E_weak GGS_procDeclarationAST_2E_weak::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary::GGS_syntaxExtensionsDictionary (void) :
-AC_GALGAS_root (),
-mDictionary () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::builtDictionary (LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary result ;
-  result.mDictionary.build (THERE) ;
+  result.build (THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary::GGS_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inSource) :
-AC_GALGAS_root (),
-mDictionary (inSource.mDictionary) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary & GGS_syntaxExtensionsDictionary::operator = (const GGS_syntaxExtensionsDictionary & inSource) {
-  mDictionary = inSource.mDictionary ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary::drop (void) {
-  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1123,7 +1096,7 @@ void GGS_syntaxExtensionsDictionary::description (String & ioString,
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendSigned (mDictionary.count ()) ;
+    ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -1136,7 +1109,7 @@ void GGS_syntaxExtensionsDictionary::description (String & ioString,
 GGS_uint GGS_syntaxExtensionsDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.count ())) ;
+    result = GGS_uint (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -1148,7 +1121,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
       return GGS_syntaxExtensionsDictionary_2E_element_3F_ (object.value ()) ;
     }else{
@@ -1164,7 +1137,7 @@ readSubscript__3F_ (const class GGS_string & inKey,
 void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
+    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -1176,7 +1149,7 @@ void GGS_syntaxExtensionsDictionary::addAssignOperation (const GGS_string & inKe
                                                          COMMA_LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -1188,7 +1161,7 @@ void GGS_syntaxExtensionsDictionary::setter_insert (const GGS_string inKey,
                                                     COMMA_LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -1198,7 +1171,7 @@ GGS_bool GGS_syntaxExtensionsDictionary::getter_hasKey (const GGS_string & inKey
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mDictionary.hasKey (inKey)) ;
+    result = GGS_bool (hasKey (inKey)) ;
   }
   return result ;
 }
@@ -1210,7 +1183,7 @@ void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -1232,7 +1205,7 @@ void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject
-                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
+                    = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -1254,7 +1227,7 @@ GGS_galgas_33_SyntaxExtensionListAST GGS_syntaxExtensionsDictionary::getter_exte
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS_galgas_33_SyntaxExtensionListAST result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get extensionList ForKey in dict: the key does not exist" ;
@@ -1273,7 +1246,7 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setExtensionListForKey in dict: the key does not exist" ;
@@ -1290,7 +1263,7 @@ void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS_galgas_3
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_syntaxExtensionsDictionary::UpEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -1299,7 +1272,7 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_syntaxExtensionsDictionary::DownEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }

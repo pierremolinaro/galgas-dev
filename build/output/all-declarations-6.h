@@ -2271,27 +2271,13 @@ class UpEnumerator_syntaxExtensionsDictionary final {
 // Phase 1: @syntaxExtensionsDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxExtensionsDictionary : public AC_GALGAS_root {
-//--------------------------------- Private properties
-  private: SharedGenericMap <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> mDictionary ;
+class GGS_syntaxExtensionsDictionary final : public SharedGenericMap <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> {
 
-//--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary (void) ;
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_syntaxExtensionsDictionary (void) = default ;
 
 //--------------------------------- Build
-  public: static GGS_syntaxExtensionsDictionary builtDictionary (LOCATION_ARGS) ;
- 
-//--------------------------------- Handle copy
-  public: GGS_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inSource) ;
-  public: GGS_syntaxExtensionsDictionary & operator = (const GGS_syntaxExtensionsDictionary & inSource) ;
-
-//--------------------------------- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return mDictionary.isValid () ;
-  }
-
-//--------------------------------- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  protected: static GGS_syntaxExtensionsDictionary builtDictionary (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,

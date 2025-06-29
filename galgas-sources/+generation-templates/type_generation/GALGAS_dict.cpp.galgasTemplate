@@ -1,36 +1,9 @@
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_root (),
-mDictionary () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::builtDictionary (LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.mDictionary.build (THERE) ;
+  result.build (THERE) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
-AC_GALGAS_root (),
-mDictionary (inSource.mDictionary) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
-  mDictionary = inSource.mDictionary ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_%!TYPE_IDENTIFIER%::drop (void) {
-  mDictionary.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -53,7 +26,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
   ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
   if (isValid ()) {
-    ioString.appendSigned (mDictionary.count ()) ;
+    ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
   }else{
     ioString.appendCString ("not built") ;
@@ -66,7 +39,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
 GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mDictionary.count ())) ;
+    result = GGS_uint (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -78,7 +51,7 @@ readSubscript__3F_ (const class GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                     Compiler * /* inCompiler */
                     COMMA_UNUSED_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
       return GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% (object.value ()) ;
     }else{
@@ -94,7 +67,7 @@ readSubscript__3F_ (const class GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
 void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.mProperty_key.isValid ()) {
-    mDictionary.insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
+    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
   }
 }
 
@@ -112,7 +85,7 @@ for (5*) in CURRENT_PROPERTY_LIST
 end
 %) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -130,7 +103,7 @@ for (5*) in CURRENT_PROPERTY_LIST
 end
 %) ;
   if (isValid () && inKey.isValid ()) {
-    mDictionary.insertOrReplace (inKey, newElement COMMA_THERE) ;
+    insertOrReplace (inKey, newElement COMMA_THERE) ;
   }
 }
 
@@ -140,7 +113,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_%!KEY_TYPE_IDENTIF
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mDictionary.hasKey (inKey)) ;
+    result = GGS_bool (hasKey (inKey)) ;
   }
   return result ;
 }
@@ -154,7 +127,7 @@ end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
       const String message = "cannot search in dict: the key does not exist" ;
@@ -183,7 +156,7 @@ end
 %\n %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> removedObject
-                    = mDictionary.removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
+                    = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
@@ -211,7 +184,7 @@ end
                                                  %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![propertyTypeEntry identifierRepresentation]% result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = mDictionary.infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;
@@ -232,7 +205,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedNode = mDictionary.nodeForKey (inKey) ;
+    OptionalSharedRef <SharedGenericMapNode <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
@@ -250,7 +223,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
@@ -259,7 +232,7 @@ mIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
-mInfoArray (inOperand.mDictionary.sortedInfoArray ()),
+mInfoArray (inOperand.sortedInfoArray ()),
 mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }

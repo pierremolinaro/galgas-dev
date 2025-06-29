@@ -481,7 +481,7 @@ template <typename KEY, typename INFO> class SharedGenericMapRoot final : public
 //  SharedGenericMap
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class SharedGenericMap final {
+template <typename KEY, typename INFO> class SharedGenericMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -499,7 +499,7 @@ template <typename KEY, typename INFO> class SharedGenericMap final {
   //   Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~ SharedGenericMap (void) = default ;
+  public: virtual ~ SharedGenericMap (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Build

@@ -70,27 +70,13 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //%!" Phase 1: @" + TYPE_NAME + " dict"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
-//--------------------------------- Private properties
-  private: SharedGenericMap <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%> mDictionary ;
+class GGS_%!TYPE_IDENTIFIER% final : public SharedGenericMap <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
 
-//--------------------------------- Default constructor
-  public: GGS_%!TYPE_IDENTIFIER% (void) ;
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) = default ;
 
 //--------------------------------- Build
-  public: static GGS_%!TYPE_IDENTIFIER% builtDictionary (LOCATION_ARGS) ;
- 
-//--------------------------------- Handle copy
-  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
-  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
-
-//--------------------------------- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return mDictionary.isValid () ;
-  }
-
-//--------------------------------- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  protected: static GGS_%!TYPE_IDENTIFIER% builtDictionary (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,

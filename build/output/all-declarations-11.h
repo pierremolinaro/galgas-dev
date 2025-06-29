@@ -9217,27 +9217,13 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
 // Phase 1: @genericExtensionMethodListMapDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_genericExtensionMethodListMapDictionary : public AC_GALGAS_root {
-//--------------------------------- Private properties
-  private: SharedGenericMap <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element> mDictionary ;
+class GGS_genericExtensionMethodListMapDictionary final : public SharedGenericMap <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element> {
 
-//--------------------------------- Default constructor
-  public: GGS_genericExtensionMethodListMapDictionary (void) ;
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_genericExtensionMethodListMapDictionary (void) = default ;
 
 //--------------------------------- Build
-  public: static GGS_genericExtensionMethodListMapDictionary builtDictionary (LOCATION_ARGS) ;
- 
-//--------------------------------- Handle copy
-  public: GGS_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inSource) ;
-  public: GGS_genericExtensionMethodListMapDictionary & operator = (const GGS_genericExtensionMethodListMapDictionary & inSource) ;
-
-//--------------------------------- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return mDictionary.isValid () ;
-  }
-
-//--------------------------------- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  protected: static GGS_genericExtensionMethodListMapDictionary builtDictionary (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -9668,27 +9654,13 @@ class UpEnumerator_descendantClassListMapDictionary final {
 // Phase 1: @descendantClassListMapDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_descendantClassListMapDictionary : public AC_GALGAS_root {
-//--------------------------------- Private properties
-  private: SharedGenericMap <GGS_string, GGS_descendantClassListMapDictionary_2E_element> mDictionary ;
+class GGS_descendantClassListMapDictionary final : public SharedGenericMap <GGS_string, GGS_descendantClassListMapDictionary_2E_element> {
 
-//--------------------------------- Default constructor
-  public: GGS_descendantClassListMapDictionary (void) ;
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_descendantClassListMapDictionary (void) = default ;
 
 //--------------------------------- Build
-  public: static GGS_descendantClassListMapDictionary builtDictionary (LOCATION_ARGS) ;
- 
-//--------------------------------- Handle copy
-  public: GGS_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inSource) ;
-  public: GGS_descendantClassListMapDictionary & operator = (const GGS_descendantClassListMapDictionary & inSource) ;
-
-//--------------------------------- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return mDictionary.isValid () ;
-  }
-
-//--------------------------------- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  protected: static GGS_descendantClassListMapDictionary builtDictionary (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
