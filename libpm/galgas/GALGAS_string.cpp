@@ -439,7 +439,7 @@ void GGS_string::method_makeDirectoryAndWriteToFile (GGS_string inFilePath,
                                                         COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
-    const String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
+    const String directory = inFilePath.mString.deletingLastPathComponent () ;
     bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
@@ -459,7 +459,7 @@ void GGS_string::method_makeDirectoryAndWriteToExecutableFile (GGS_string inFile
                                                                   COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
-    const String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
+    const String directory = inFilePath.mString.deletingLastPathComponent () ;
     bool ok = FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (! ok) {
       String message = "cannot create '" ;
@@ -516,7 +516,7 @@ void GGS_string::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.deletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
           message.appendString (inFilePath.mString) ;
@@ -588,7 +588,7 @@ void GGS_string::method_writeToExecutableFileWhenDifferentContents (GGS_string i
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.deletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
           message.appendString (inFilePath.mString) ;
@@ -881,7 +881,7 @@ static bool writeFile (const String & inMessage,
   bool ok = true ;
   if (inCompiler->performGeneration ()) {
     const bool verboseOptionOn = verboseOutput () ;
-    const String directory = inFullPathName.stringByDeletingLastPathComponent () ;
+    const String directory = inFullPathName.deletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     BinaryFileWrite binaryFile (inFullPathName) ;
     ok = binaryFile.isOpened () ;

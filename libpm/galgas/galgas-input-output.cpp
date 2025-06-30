@@ -380,7 +380,7 @@ void signalSemanticError (Compiler * inCompiler,
   errorMessage.appendCString ("semantic error #") ;
   errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
-  String s = inErrorMessage.stringByReplacingStringByString (String ("\n"), String ("\\n")) ;
+  String s = inErrorMessage.replacingStringByString (String ("\n"), String ("\\n")) ;
   errorMessage.appendString (inErrorMessage) ;
   errorMessage.appendCString ("\n") ;
 //--- Print

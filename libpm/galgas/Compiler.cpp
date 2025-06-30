@@ -536,7 +536,7 @@ void Compiler::generateFile (const String & inLineCommentPrefix,
                                const String & inDefaultUserZone2,
                                const String & inGeneratedZone3,
                                const bool inMakeExecutable) {
-  generateFileWithPatternFromPathes (sourceFilePath ().stringByDeletingLastPathComponent (),
+  generateFileWithPatternFromPathes (sourceFilePath ().deletingLastPathComponent (),
                           inDirectoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
@@ -558,7 +558,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
   const bool verboseOptionOn = verboseOutput () ;
 //--- Start path : by default, use source file directory
   const String startPath = (inStartPath.length () == 0)
-   ? sourceFilePath ().stringByDeletingLastPathComponent ()
+   ? sourceFilePath ().deletingLastPathComponent ()
    : inStartPath ;
 //--- Search file in directory
   const String fullPathName = FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
@@ -567,7 +567,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
     String fileName = startPath ;
     fileName.appendCString ("/") ;
     fileName.appendString (inFileName) ;
-    const String directory = fileName.stringByDeletingLastPathComponent () ;
+    const String directory = fileName.deletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       TextFileWrite f (fileName) ;
@@ -632,7 +632,7 @@ void Compiler::generateFileWithPatternFromPathes (
   const String kEND_OF_USER_ZONE_2   = String (inLineCommentPrefix) + END_OF_USER_ZONE_2 ;
 //--- Start path : by default, use source file directory
   const String startPath = (inStartPath.length () == 0)
-    ? sourceFilePath ().stringByDeletingLastPathComponent ()
+    ? sourceFilePath ().deletingLastPathComponent ()
     : inStartPath
   ;
 //--- Search file in directory
@@ -642,7 +642,7 @@ void Compiler::generateFileWithPatternFromPathes (
     String fileName = startPath ;
     fileName.appendCString ("/") ;
     fileName.appendString (inFileName) ;
-    const String directory = fileName.stringByDeletingLastPathComponent () ;
+    const String directory = fileName.deletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       TextFileWrite f (fileName) ;

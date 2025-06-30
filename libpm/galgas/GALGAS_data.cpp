@@ -260,7 +260,7 @@ void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
-        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
+        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().deletingLastPathComponent ()) ;
         if (! ok) {
           String message ;
           message.appendCString ("cannot create '") ;
@@ -304,7 +304,7 @@ void GGS_data::method_writeToFile (GGS_string inFilePath,
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
-      FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;
@@ -345,7 +345,7 @@ void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
-      FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
+      FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
         String s ;

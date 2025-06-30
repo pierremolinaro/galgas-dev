@@ -407,7 +407,7 @@ GGS_string GGS_string::getter_absolutePathFromPath (const GGS_string & inBasePat
       r.appendChar (TO_UNICODE ('/')) ;
       r.appendString (path) ;
     }
-    result = GGS_string (r.stringByStandardizingPath ()) ;
+    result = GGS_string (r.standardizedPath ()) ;
   }
   return result ;
 }
@@ -462,7 +462,7 @@ GGS_string GGS_string::getter_removingFirst (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_stringByStandardizingPath (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.stringByStandardizingPath ()) ;
+  return GGS_string (mString.standardizedPath ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -486,7 +486,7 @@ GGS_string GGS_string::getter_deletingPathExtension (UNUSED_LOCATION_ARGS) const
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_stringByDeletingLastPathComponent (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.stringByDeletingLastPathComponent ()) ;
+  return GGS_string (mString.deletingLastPathComponent ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -498,13 +498,13 @@ GGS_string GGS_string::getter_capitalizingFirstCharacter (UNUSED_LOCATION_ARGS) 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_uppercaseString (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.uppercaseString ()) ;
+  return GGS_string (mString.uppercasedString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_lowercaseString (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.lowercaseString ()) ;
+  return GGS_string (mString.lowercasedString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -516,7 +516,7 @@ GGS_string GGS_string::getter_reversedString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::getter_stringByTrimmingWhiteSpaces (UNUSED_LOCATION_ARGS) const {
-  return GGS_string (mString.stringByTrimmingSeparators ()) ;
+  return GGS_string (mString.trimmingSeparators ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -613,7 +613,7 @@ GGS_string GGS_string::getter_stringByReplacingStringByString (const GGS_string 
       ) ;
     }else{
       uint32_t replacementCount = 0 ;
-      const String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount) ;
+      const String s = mString.replacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount) ;
       result = GGS_string (s) ;
     }
   }

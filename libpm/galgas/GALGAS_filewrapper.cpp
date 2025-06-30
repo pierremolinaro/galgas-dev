@@ -337,7 +337,7 @@ GGS_bool GGS_filewrapper::getter_fileExistsAtPath (const GGS_string & inPath,
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const String directoryPath = path.stringValue ().stringByDeletingLastPathComponent () ;
+      const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
       const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
       const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       result = GGS_bool (file != nullptr) ;
@@ -355,7 +355,7 @@ GGS_string GGS_filewrapper::getter_textFileContentsAtPath (const GGS_string & in
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const String directoryPath = path.stringValue ().stringByDeletingLastPathComponent () ;
+      const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
       const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
       const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == nullptr) {
@@ -387,7 +387,7 @@ GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & in
   if (isValid () && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const String directoryPath = path.stringValue ().stringByDeletingLastPathComponent () ;
+      const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
       const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
       const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == nullptr) {

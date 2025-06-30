@@ -625,7 +625,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath) {
 
 bool FileManager::writeStringToFile (const String & inString,
                                        const String & inFilePath) {
-  makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
+  makeDirectoryIfDoesNotExist (inFilePath.deletingLastPathComponent ()) ;
   TextFileWrite file (inFilePath) ;
   bool success = file.isOpened () ;
   file.appendString (inString) ;
@@ -639,7 +639,7 @@ bool FileManager::writeStringToFile (const String & inString,
 
 bool FileManager::writeStringToExecutableFile (const String & inString,
                                                  const String & inFilePath) {
-  makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
+  makeDirectoryIfDoesNotExist (inFilePath.deletingLastPathComponent()) ;
   TextFileWrite file (inFilePath) ;
   file.appendString (inString) ;
   bool success = file.isOpened () ;
@@ -658,7 +658,7 @@ bool FileManager::writeStringToExecutableFile (const String & inString,
 
 bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
                                            const String & inFilePath) {
-  makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
+  makeDirectoryIfDoesNotExist (inFilePath.deletingLastPathComponent()) ;
 //---
   BinaryFileWrite binaryFile (inFilePath) ;
   bool success = binaryFile.isOpened () ;
@@ -675,7 +675,7 @@ bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
 
 bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
                                                      const String & inFilePath) {
-  makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
+  makeDirectoryIfDoesNotExist (inFilePath.deletingLastPathComponent()) ;
 //---
   BinaryFileWrite binaryFile (inFilePath) ;
   bool success = binaryFile.isOpened () ;
@@ -778,7 +778,7 @@ bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
   const String directoryPath = absolutePathFromCurrentDirectory (inDirectoryPath) ;
   bool ok = directoryExists (directoryPath) ;
   if (! ok) {
-    ok = makeDirectoryIfDoesNotExist (directoryPath.stringByDeletingLastPathComponent ()) ;
+    ok = makeDirectoryIfDoesNotExist (directoryPath.deletingLastPathComponent ()) ;
     if (ok && !directoryExists (directoryPath)) { // Special case when the path contains ../
       const String nativePath = nativePathWithUnixPath (directoryPath) ;
     //--- Create directory (mkdir returns 0 if creation is ok)
@@ -854,11 +854,11 @@ String FileManager::absolutePathFromPath (const String & inPath,
 //--------------------------------------------------------------------------------------------------
 
 String FileManager::relativePathFromPath (const String & inPath,
-                                              const String & inFromPath) {
+                                          const String & inFromPath) {
   TC_UniqueArray <String> absoluteReferencePathComponents ;
-  absolutePathFromCurrentDirectory (inFromPath.stringByStandardizingPath ()).componentsSeparatedByString("/", absoluteReferencePathComponents) ;
+  absolutePathFromCurrentDirectory (inFromPath.standardizedPath ()).componentsSeparatedByString("/", absoluteReferencePathComponents) ;
   TC_UniqueArray <String> absoluteReceiverPathComponents ;
-  absolutePathFromCurrentDirectory (inPath.stringByStandardizingPath ()).componentsSeparatedByString("/", absoluteReceiverPathComponents) ;
+  absolutePathFromCurrentDirectory (inPath.standardizedPath ()).componentsSeparatedByString("/", absoluteReceiverPathComponents) ;
   String result ;
   int32_t idx = 0 ;
   while ((idx < absoluteReferencePathComponents.count ())

@@ -51,8 +51,8 @@ mMessage (inMessage) {
 //--------------------------------------------------------------------------------------------------
 
 void IssueDescriptor::appendToJSONstring (String & ioJSONstring, const bool inIsFirstIssue) const {
-  String s = mMessage.stringByReplacingStringByString (String ("\n"), String ("\\n")) ;
-  s = s.stringByReplacingStringByString (String ("\""), String ("\\\"")) ;
+  String s = mMessage.replacingStringByString (String ("\n"), String ("\\n")) ;
+  s = s.replacingStringByString (String ("\""), String ("\\\"")) ;
   ioJSONstring.appendCString (inIsFirstIssue ? "" : ",\n") ;
   ioJSONstring.appendCString ("  { \"ERROR\" : ") ;
   ioJSONstring.appendCString (mIsError ? "true" : "false") ;

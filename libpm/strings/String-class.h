@@ -192,16 +192,16 @@ class String : public AbstractOutputStream {
                                           const int32_t inColumnNumber) const ;
 
 //--- Subsitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
-  public: String stringByReplacingCharacterByString (const utf32 inCharacter,
-                                                     const String & inString) const ;
+  public: String replacingCharacterByString (const utf32 inCharacter,
+                                             const String & inString) const ;
 
 //--- Substitute 'inSearchedString' by 'inReplacementString'
-  public: String stringByReplacingStringByString (const String inSearchedString,
-                                                  const String inReplacementString,
-                                                  uint32_t & outReplacementCount) const ;
+  public: String replacingStringByString (const String inSearchedString,
+                                          const String inReplacementString,
+                                          uint32_t & outReplacementCount) const ;
 
-  public: String stringByReplacingStringByString (const String inSearchedString,
-                                                  const String inReplacementString) const ;
+  public: String replacingStringByString (const String inSearchedString,
+                                          const String inReplacementString) const ;
 
 //--- Get character last occurrence (returns -1 if not found)
   public: int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
@@ -210,7 +210,7 @@ class String : public AbstractOutputStream {
 //    - at the beginning of the string,
 //    - within the string (replace a sequence of white spaces with a single space),
 //    - at end at the end of string.
-  public: String stringByTrimmingSeparators (void) const ;
+  public: String trimmingSeparators (void) const ;
 
 //--- Get a sub string
   public: String subString (const int32_t inStartIndex,
@@ -243,7 +243,7 @@ class String : public AbstractOutputStream {
 
 //--- Returns a string made by deleting the last path component (if any, and only the last)
 //    from the receiver.
-  public: String stringByDeletingLastPathComponent (void) const ;
+  public: String deletingLastPathComponent (void) const ;
 
 //--- Returns a string made by deleting the extension (if any, and only the last)
 //    from the receiver.
@@ -260,10 +260,10 @@ class String : public AbstractOutputStream {
   public: String capitalizingFirstCharacter (void) const ;
 
 //--- Return string, with all letters in upper case
-  public: String uppercaseString (void) const ;
+  public: String uppercasedString (void) const ;
 
 //--- Return string, with all letters in lower case
-  public: String lowercaseString (void) const ;
+  public: String lowercasedString (void) const ;
 
 //--- Check if the receiver ends with inString
   public: bool endsWithString (const String & inString) const ;
@@ -282,7 +282,7 @@ class String : public AbstractOutputStream {
 //--- Standardizing Path
 //    - first, convert Windows Path to Unix Path (on windows only)
 //    - Reduce empty components and references to the current directory (that is, the sequences "//" and "/./") to single path separators
-  public: String stringByStandardizingPath (void) const ;
+  public: String standardizedPath (void) const ;
 
 //--- Convert string to double
   public: void convertToDouble (double & outDoubleValue,

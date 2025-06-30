@@ -194,8 +194,8 @@ bool String::endsWithString (const String & inString) const {
 
 //--- Substitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
 
-String String::stringByReplacingCharacterByString (const utf32 inCharacter,
-                                                   const String & inString) const {
+String String::replacingCharacterByString (const utf32 inCharacter,
+                                           const String & inString) const {
   const int32_t stringLength = length () ;
   String resultingString ;
   bool previousCharIsSubstituteChar = false ;
@@ -227,9 +227,9 @@ String String::stringByReplacingCharacterByString (const utf32 inCharacter,
 //  if inSearchedString is empty, returns the receiver
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByReplacingStringByString (const String inSearchedString,
-                                                const String inReplacementString,
-                                                uint32_t & outReplacementCount) const {
+String String::replacingStringByString (const String inSearchedString,
+                                        const String inReplacementString,
+                                        uint32_t & outReplacementCount) const {
   String result ;
   outReplacementCount = 0 ;
   if (inSearchedString.length () == 0) {
@@ -264,10 +264,10 @@ String String::stringByReplacingStringByString (const String inSearchedString,
 
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByReplacingStringByString (const String inSearchedString,
-                                                const String inReplacementString) const {
+String String::replacingStringByString (const String inSearchedString,
+                                        const String inReplacementString) const {
   uint32_t unusedReplacementCount = 0 ;
-  return stringByReplacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount) ;
+  return replacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ String String::capitalizingFirstCharacter (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::lowercaseString (void) const {
+String String::lowercasedString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
@@ -334,7 +334,7 @@ String String::lowercaseString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByTrimmingSeparators (void) const {
+String String::trimmingSeparators (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
@@ -363,7 +363,7 @@ String String::stringByTrimmingSeparators (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::uppercaseString (void) const {
+String String::uppercasedString (void) const {
   String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
@@ -1011,10 +1011,10 @@ String String::deletingPathExtension (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   stringByDeletingLastPathComponent
+//   deletingLastPathComponent
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByDeletingLastPathComponent (void) const {
+String String::deletingLastPathComponent (void) const {
   String result ;
   int32_t receiver_length = length () ;
 //--- Suppress training '/'
@@ -1182,9 +1182,9 @@ String String::XMLEscapedString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByStandardizingPath (void) const {
+String String::standardizedPath (void) const {
   #ifdef COMPILE_FOR_WINDOWS
-    String path = stringByReplacingCharacterByString (TO_UNICODE ('\\'), "/") ;
+    String path = replacingCharacterByString (TO_UNICODE ('\\'), "/") ;
   #else
     String path = * this ;
   #endif
