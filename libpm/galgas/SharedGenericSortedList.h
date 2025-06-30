@@ -87,53 +87,23 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: typedef ComparisonResult (SortFunction) (const ELEMENT & inLeft,
-                                                    const ELEMENT & inRight) ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private: void quickSortUsingFunction (SortFunction inSortFunction,
-                                        const int32_t inLowIndex,
-                                        const int32_t inHighIndex) {
-    if (inLowIndex < inHighIndex) {
-      const int32_t pivotIndex = (inHighIndex + inLowIndex) / 2 ;
-      const ELEMENT pivotValue = mSharedArray (pivotIndex COMMA_HERE) ;
-    //--- Move pivot to the end
-      swap (mSharedArray (pivotIndex COMMA_HERE), mSharedArray (inHighIndex COMMA_HERE)) ;
-    //--- storeIndex := left
-      int32_t storeIndex = inLowIndex ;
-      for (int32_t i = inLowIndex ; i < inHighIndex ; i++) {
-        if (inSortFunction (mSharedArray (i COMMA_HERE), pivotValue) == ComparisonResult::firstOperandLowerThanSecond) {
-          swap (mSharedArray (i COMMA_HERE), mSharedArray (storeIndex COMMA_HERE)) ;
-          storeIndex += 1 ;
-        }
-      }
-      swap (mSharedArray (inHighIndex COMMA_HERE), mSharedArray (storeIndex COMMA_HERE)) ;
-    //---
-      quickSortUsingFunction (inSortFunction, inLowIndex, storeIndex - 1) ;
-      quickSortUsingFunction (inSortFunction, storeIndex + 1, inHighIndex) ;
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void insertObject (const ELEMENT & inElement,
-                                SortFunction inSortFunction) {
+                                CompareFunction <ELEMENT> inSortFunction) {
     if (isValid () && inElement.isValid ()) {
       mSharedArray.appendObject (inElement) ;
-      quickSortUsingFunction (inSortFunction, 0, count () - 1) ;
+      mSharedArray.sortArrayUsingFunction (inSortFunction) ;
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   protected: void appendSortedList (const SharedGenericSortedList <ELEMENT> & inSortedList,
-                                    SortFunction inSortFunction) {
+                                    CompareFunction <ELEMENT> inSortFunction) {
     if (isValid () && inSortedList.isValid ()) {
       for (int32_t i=0 ; i<inSortedList.count () ; i++) {
         mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
       }
-      quickSortUsingFunction (inSortFunction, 0, count () - 1) ;
+      mSharedArray.sortArrayUsingFunction (inSortFunction) ;
     }
   }
 

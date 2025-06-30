@@ -22,28 +22,24 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "M_SourceLocation.h"
-#include "TF_Swap.h"
-#include "MF_MemoryControl.h"
-#include "cpp-allocation.h"
 #include "TC_UniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 //   Template class predeclaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_Array ;
+template <typename ELEMENT> class TC_Array ;
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_Array <TYPE> classes
+//   swap function for TC_Array <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void swap (TC_Array <TYPE> & ioOperand1,
-                                    TC_Array <TYPE> & ioOperand2) ;
+template <typename ELEMENT> void swap (TC_Array <ELEMENT> & ioOperand1,
+                                       TC_Array <ELEMENT> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class InternalSharedArray final : public SharedObject {
+template <typename ELEMENT> class InternalSharedArray final : public SharedObject {
 //--- Default Constructor
   public: InternalSharedArray (void) :
   SharedObject (HERE),
@@ -61,20 +57,20 @@ template <typename TYPE> class InternalSharedArray final : public SharedObject {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: InternalSharedArray (const int32_t inCount,
-                               const TYPE & inValue COMMA_LOCATION_ARGS) :
+                               const ELEMENT & inValue COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mUniqueArray (inCount, inValue COMMA_THERE) {
   }
 
 //--- Property
-  public: TC_UniqueArray <TYPE> mUniqueArray ;
+  public: TC_UniqueArray <ELEMENT> mUniqueArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //   Template class declaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_Array final {
+template <typename ELEMENT> class TC_Array final {
 //--- Default Constructor
   public: TC_Array (void) ;
 
@@ -86,16 +82,16 @@ template <typename TYPE> class TC_Array final {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: TC_Array (const int32_t inCount,
-                    const TYPE & inValue COMMA_LOCATION_ARGS) ;
+                    const ELEMENT & inValue COMMA_LOCATION_ARGS) ;
 
 //--- Handle Copy
-  public: TC_Array (const TC_Array <TYPE> &) ;
-  public: TC_Array <TYPE> & operator = (const TC_Array <TYPE> &) ;
+  public: TC_Array (const TC_Array <ELEMENT> &) ;
+  public: TC_Array <ELEMENT> & operator = (const TC_Array <ELEMENT> &) ;
   private: void insulate (void) ;
 
 //--- swap
-  friend void swap <TYPE> (TC_Array <TYPE> & ioOperand1,
-                           TC_Array <TYPE> & ioOperand2) ;
+  friend void swap <ELEMENT> (TC_Array <ELEMENT> & ioOperand1,
+                              TC_Array <ELEMENT> & ioOperand2) ;
 
 //--- Methods for setting capacity
   public: void setCapacity (const int32_t inNewCapacity) ;
@@ -107,15 +103,15 @@ template <typename TYPE> class TC_Array final {
   public: inline bool isAllocated (void) const { return mSharedArray != nullptr ; }
 
 //--- Array Pointer
-  public: const TYPE * unsafeArrayPointer (void) const ;
+  public: const ELEMENT * unsafeArrayPointer (void) const ;
 
 //--- Add objects at the end of the array
-  public: void appendObject (const TYPE & inValue) ; // inValue is copied
-  public: void appendObjects (const int32_t inCount, const TYPE & inValue) ; // inValue is copied
+  public: void appendObject (const ELEMENT & inValue) ; // inValue is copied
+  public: void appendObjects (const int32_t inCount, const ELEMENT & inValue) ; // inValue is copied
 
 //--- Insert
   public: void insertObjectsAtIndex (const int32_t inCount,
-                                     const TYPE & inValue,
+                                     const ELEMENT & inValue,
                                      const int32_t inStartingIndex
                                      COMMA_LOCATION_ARGS) ; // inValue is copied
 
@@ -126,19 +122,19 @@ template <typename TYPE> class TC_Array final {
   public: void removeAll (void) ;
 
 //--- Call operators
-  public: TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
-  public: TYPE operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: ELEMENT & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
+  public: ELEMENT operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Element access (with index checking)
-  public: TYPE lastObject (LOCATION_ARGS) const ;
-  public: TYPE & lastObject (LOCATION_ARGS) ;
+  public: ELEMENT lastObject (LOCATION_ARGS) const ;
+  public: ELEMENT & lastObject (LOCATION_ARGS) ;
 
-  public: void setObjectAtIndex (const TYPE & inObject,
+  public: void setObjectAtIndex (const ELEMENT & inObject,
                                  const int32_t inIndex
                                  COMMA_LOCATION_ARGS) ;
 
 //--- Insert object at index (0 <= index <= count)
-  public: void insertObjectAtIndex (const TYPE & inValue,
+  public: void insertObjectAtIndex (const ELEMENT & inValue,
                                     const int32_t inIndex
                                     COMMA_LOCATION_ARGS) ; // inValue is copied
 
@@ -147,18 +143,18 @@ template <typename TYPE> class TC_Array final {
   public: void removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) ;
 
 //--- Comparisons (based on == operator on objects)
-  public: bool operator == (const TC_Array <TYPE> & inOperand) const ;
+  public: bool operator == (const TC_Array <ELEMENT> & inOperand) const ;
 
-  public: inline bool operator != (const TC_Array <TYPE> & inOperand) const {
+  public: inline bool operator != (const TC_Array <ELEMENT> & inOperand) const {
     return ! ((*this) == inOperand) ;
   }
 
 //--- Allocation with provided data
-  public: void setDataFromPointer (TYPE * & ioDataPtr,
+  public: void setDataFromPointer (ELEMENT * & ioDataPtr,
                                    const int32_t inDataLength) ;
 
 //--- Append data
-  public: void appendDataFromPointer (const TYPE * inDataPtr,
+  public: void appendDataFromPointer (const ELEMENT * inDataPtr,
                                       const int32_t inDataLength) ;
 
 //--- Remove objects at index (0 <= index < count)
@@ -169,15 +165,24 @@ template <typename TYPE> class TC_Array final {
                                      const int32_t inStartingIndex
                                      COMMA_LOCATION_ARGS) ;
 
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+  public: void sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+  public: void reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+
 //--- Shared Array
-  private: InternalSharedArray <TYPE> * mSharedArray ;
+  private: InternalSharedArray <ELEMENT> * mSharedArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //   Default Constructor
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE>::TC_Array (void) :
+template <typename ELEMENT>
+TC_Array <ELEMENT>::TC_Array (void) :
 mSharedArray (nullptr) {
 }
 
@@ -185,7 +190,8 @@ mSharedArray (nullptr) {
 //   Destructor
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE>::~ TC_Array (void) {
+template <typename ELEMENT>
+TC_Array <ELEMENT>::~ TC_Array (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 
@@ -193,25 +199,30 @@ template <typename TYPE> TC_Array <TYPE>::~ TC_Array (void) {
 //   Allocation Constructor
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE>::TC_Array (const int32_t inCapacity COMMA_LOCATION_ARGS) :
+template <typename ELEMENT>
+TC_Array <ELEMENT>::TC_Array (const int32_t inCapacity COMMA_LOCATION_ARGS) :
 mSharedArray (nullptr) {
-  macroMyNew (mSharedArray, InternalSharedArray <TYPE> (inCapacity COMMA_THERE)) ;
+  macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inCapacity COMMA_THERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //   Allocation Constructor
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE>:: TC_Array (const int32_t inCount, const TYPE & inValue COMMA_LOCATION_ARGS) :
+template <typename ELEMENT>
+TC_Array <ELEMENT>::TC_Array (const int32_t inCount,
+                              const ELEMENT & inValue
+                              COMMA_LOCATION_ARGS) :
 mSharedArray (nullptr) {
-  macroMyNew (mSharedArray, InternalSharedArray <TYPE> (inCount, inValue COMMA_THERE)) ;
+  macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inCount, inValue COMMA_THERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //   Copy Constructor
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE>::TC_Array (const TC_Array <TYPE> & inOperand) :
+template <typename ELEMENT>
+TC_Array <ELEMENT>::TC_Array (const TC_Array <ELEMENT> & inOperand) :
 mSharedArray (nullptr) {
   macroAssignSharedObject (mSharedArray, inOperand.mSharedArray) ;
 }
@@ -220,7 +231,8 @@ mSharedArray (nullptr) {
 //   Assignment Operator
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_Array <TYPE> & TC_Array <TYPE>::operator = (const TC_Array <TYPE> & inOperand) {
+template <typename ELEMENT>
+TC_Array <ELEMENT> & TC_Array <ELEMENT>::operator = (const TC_Array <ELEMENT> & inOperand) {
   if (mSharedArray != inOperand.mSharedArray) {
     macroAssignSharedObject (mSharedArray, inOperand.mSharedArray) ;
   }
@@ -228,11 +240,11 @@ template <typename TYPE> TC_Array <TYPE> & TC_Array <TYPE>::operator = (const TC
 }
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_Array <TYPE> classes
+//   swap function for TC_Array <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void swap (TC_Array <TYPE> & ioOperand1,
-                                    TC_Array <TYPE> & ioOperand2) {
+template <typename ELEMENT> void swap (TC_Array <ELEMENT> & ioOperand1,
+                                       TC_Array <ELEMENT> & ioOperand2) {
   swap (ioOperand1.mSharedArray, ioOperand2.mSharedArray) ;
 }
 
@@ -240,7 +252,8 @@ template <typename TYPE> void swap (TC_Array <TYPE> & ioOperand1,
 //   Count
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> int32_t TC_Array <TYPE>::count (void) const {
+template <typename ELEMENT>
+int32_t TC_Array <ELEMENT>::count (void) const {
   int32_t result = 0 ;
   if (nullptr != mSharedArray) {
     result = mSharedArray->mUniqueArray.count () ;
@@ -252,8 +265,9 @@ template <typename TYPE> int32_t TC_Array <TYPE>::count (void) const {
 //   unsafeArrayPointer
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> const TYPE * TC_Array <TYPE>::unsafeArrayPointer (void) const {
-  const TYPE * result = 0 ;
+template <typename ELEMENT>
+const ELEMENT * TC_Array <ELEMENT>::unsafeArrayPointer (void) const {
+  const ELEMENT * result = 0 ;
   if (nullptr != mSharedArray) {
     result = mSharedArray->mUniqueArray.unsafeArrayPointer () ;
   }
@@ -264,10 +278,11 @@ template <typename TYPE> const TYPE * TC_Array <TYPE>::unsafeArrayPointer (void)
 //   insulate
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::insulate (void) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::insulate (void) {
   if ((nullptr != mSharedArray) && !mSharedArray->isUniquelyReferenced ()) {
-    InternalSharedArray <TYPE> * p = nullptr ;
-    macroMyNew (p, InternalSharedArray <TYPE> ()) ;
+    InternalSharedArray <ELEMENT> * p = nullptr ;
+    macroMyNew (p, InternalSharedArray <ELEMENT> ()) ;
     mSharedArray->mUniqueArray.copyTo (p->mUniqueArray) ;
     macroAssignSharedObject (mSharedArray, p) ;
     macroDetachSharedObject (p) ;
@@ -278,9 +293,10 @@ template <typename TYPE> void TC_Array <TYPE>::insulate (void) {
 //   appendObject (inValue is copied)
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::appendObject (const TYPE & inValue) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::appendObject (const ELEMENT & inValue) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
     insulate () ;
   }
@@ -289,11 +305,12 @@ template <typename TYPE> void TC_Array <TYPE>::appendObject (const TYPE & inValu
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::appendObjects (const int32_t inCount,
-                                                              const TYPE & inValue) { // inValue is copied
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::appendObjects (const int32_t inCount,
+                                        const ELEMENT & inValue) { // inValue is copied
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
-      macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+      macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
     }else{
       insulate () ;
     }
@@ -303,13 +320,14 @@ template <typename TYPE> void TC_Array <TYPE>::appendObjects (const int32_t inCo
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::insertObjectsAtIndex (const int32_t inCount,
-                                                                     const TYPE & inValue,
-                                                                     const int32_t inStartingIndex
-                                                                     COMMA_LOCATION_ARGS) { // inValue is copied
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
+                                            const ELEMENT & inValue,
+                                            const int32_t inStartingIndex
+                                            COMMA_LOCATION_ARGS) { // inValue is copied
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
-      macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+      macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
     }else{
       insulate () ;
     }
@@ -321,7 +339,8 @@ template <typename TYPE> void TC_Array <TYPE>::insertObjectsAtIndex (const int32
 //   removeAll (remove all objects and deallocate)
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeAll (void) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeAll (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 
@@ -329,9 +348,11 @@ template <typename TYPE> void TC_Array <TYPE>::removeAll (void) {
 //   CALL operators
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TYPE & TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+ELEMENT & TC_Array <ELEMENT>::operator () (const int32_t inIndex
+                                           COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
     insulate () ;
   }
@@ -341,7 +362,9 @@ template <typename TYPE> TYPE & TC_Array <TYPE>::operator () (const int32_t inIn
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TYPE TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+template <typename ELEMENT>
+ELEMENT TC_Array <ELEMENT>::operator () (const int32_t inIndex
+                                         COMMA_LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray (inIndex COMMA_THERE) ;
 }
@@ -350,16 +373,18 @@ template <typename TYPE> TYPE TC_Array <TYPE>::operator () (const int32_t inInde
 //   Last object access (with index checking)
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TYPE TC_Array <TYPE>::lastObject (LOCATION_ARGS) const {
+template <typename ELEMENT>
+ELEMENT TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray.lastObject (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TYPE & TC_Array <TYPE>::lastObject (LOCATION_ARGS) {
+template <typename ELEMENT>
+ELEMENT & TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
     insulate () ;
   }
@@ -371,7 +396,8 @@ template <typename TYPE> TYPE & TC_Array <TYPE>::lastObject (LOCATION_ARGS) {
 //   Remove last object
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeLastObject (LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeLastObject (LOCATION_ARGS) {
   insulate () ;
   macroValidPointer (mSharedArray) ;
   mSharedArray->mUniqueArray.removeLastObject (THERE) ;
@@ -381,7 +407,9 @@ template <typename TYPE> void TC_Array <TYPE>::removeLastObject (LOCATION_ARGS) 
 //   Remove last objects
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeLastObjects (const int32_t inCount
+                                            COMMA_LOCATION_ARGS) {
   insulate () ;
   macroValidPointer (mSharedArray) ;
   mSharedArray->mUniqueArray.removeLastObjects (inCount COMMA_THERE) ;
@@ -391,7 +419,8 @@ template <typename TYPE> void TC_Array <TYPE>::removeLastObjects (const int32_t 
 //   Set Count To zero
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeAllKeepingCapacity (void) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeAllKeepingCapacity (void) {
   if (nullptr != mSharedArray) {
     insulate () ;
     mSharedArray->mUniqueArray.removeAllKeepingCapacity () ;
@@ -402,7 +431,8 @@ template <typename TYPE> void TC_Array <TYPE>::removeAllKeepingCapacity (void) {
 //   ==
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> bool TC_Array <TYPE>::operator == (const TC_Array <TYPE> & inOperand) const {
+template <typename ELEMENT>
+bool TC_Array <ELEMENT>::operator == (const TC_Array <ELEMENT> & inOperand) const {
   bool result = mSharedArray == inOperand.mSharedArray ;
   if (!result && (mSharedArray != nullptr) && (inOperand.mSharedArray != nullptr)) {
     result = mSharedArray->mUniqueArray == inOperand.mSharedArray->mUniqueArray ;
@@ -414,12 +444,13 @@ template <typename TYPE> bool TC_Array <TYPE>::operator == (const TC_Array <TYPE
 //   setDataFromPointer
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::setDataFromPointer (TYPE * & ioDataPtr,
-                                                                   const int32_t inDataLength) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
+                                             const int32_t inDataLength) {
   if (nullptr != mSharedArray) {
     macroDetachSharedObject (mSharedArray) ;
   }
-  macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+  macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   mSharedArray->mUniqueArray.setDataFromPointer (ioDataPtr, inDataLength) ;
 }
 
@@ -427,10 +458,11 @@ template <typename TYPE> void TC_Array <TYPE>::setDataFromPointer (TYPE * & ioDa
 //   appendDataFromPointer
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::appendDataFromPointer (const TYPE * inDataPtr,
-                                                                      const int32_t inDataLength) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
+                                                const int32_t inDataLength) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE> ()) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
     insulate () ;
   }
@@ -441,9 +473,10 @@ template <typename TYPE> void TC_Array <TYPE>::appendDataFromPointer (const TYPE
 //   setCapacity
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::setCapacity (const int32_t inNewCapacity) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE> (inNewCapacity COMMA_HERE)) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inNewCapacity COMMA_HERE)) ;
   }else{
     insulate () ;
     mSharedArray->mUniqueArray.setCapacity (inNewCapacity) ;
@@ -454,8 +487,9 @@ template <typename TYPE> void TC_Array <TYPE>::setCapacity (const int32_t inNewC
 //   Remove objects at index (0 <= index < count)
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeObjectAtIndex (const int32_t inIndex
-                                                                    COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
+                                              COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.removeObjectAtIndex (inIndex COMMA_THERE) ;
@@ -463,9 +497,10 @@ template <typename TYPE> void TC_Array <TYPE>::removeObjectAtIndex (const int32_
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::removeObjectsAtIndex (const int32_t inCount,
-                                                                     const int32_t inStartingIndex
-                                                                     COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
+                                               const int32_t inStartingIndex
+                                               COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.removeObjectsAtIndex (inCount, inStartingIndex COMMA_THERE) ;
@@ -475,9 +510,10 @@ template <typename TYPE> void TC_Array <TYPE>::removeObjectsAtIndex (const int32
 //   setObjectAtIndex
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::setObjectAtIndex (const TYPE & inObject,
-                                                                 const int32_t inIndex
-                                                                 COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
+                                           const int32_t inIndex
+                                           COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.setObjectAtIndex (inObject, inIndex COMMA_THERE) ;
@@ -487,16 +523,42 @@ template <typename TYPE> void TC_Array <TYPE>::setObjectAtIndex (const TYPE & in
 //   insertObjectAtIndex
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::insertObjectAtIndex (const TYPE & inObject,
-                                                                    const int32_t inIndex  // inValue is copied
-                                                                    COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
+                                              const int32_t inIndex  // inValue is copied
+                                              COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
-    macroMyNew (mSharedArray, InternalSharedArray <TYPE>) ;
+    macroMyNew (mSharedArray, InternalSharedArray <ELEMENT>) ;
   }else{
     insulate () ;
   }
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.insertObjectAtIndex (inObject, inIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+  insulate () ;
+  if (mSharedArray != nullptr) {
+    mSharedArray->mUniqueArray.sortArrayUsingFunction (inCompareFunction) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+
+template <typename ELEMENT>
+void TC_Array <ELEMENT>::reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+  insulate () ;
+  if (mSharedArray != nullptr) {
+    mSharedArray->mUniqueArray.reverseSortArrayUsingFunction (inCompareFunction) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

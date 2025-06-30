@@ -1822,13 +1822,13 @@ GGS_optionComponentDeclarationAST_2E_weak GGS_optionComponentDeclarationAST_2E_w
 //@commandLineOptionSortedList' sorted list
 //--------------------------------------------------------------------------------------------------
 
-static ComparisonResult compareForSorting_commandLineOptionSortedList (const GGS_commandLineOptionSortedList_2E_element & inLeft,
-                                                                       const GGS_commandLineOptionSortedList_2E_element & inRight) {
+static int32_t compareForSorting_commandLineOptionSortedList (const GGS_commandLineOptionSortedList_2E_element & inLeft,
+                                                              const GGS_commandLineOptionSortedList_2E_element & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
     result = inLeft.mProperty_mComment.objectCompare (inRight.mProperty_mComment) ;
   }
-  return result ;
+  return int32_t (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------

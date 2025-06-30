@@ -11116,13 +11116,13 @@ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis GGS_unusedNonTerminalSymbolMapF
 //@nonTerminalSymbolSortedListForGrammarAnalysis' sorted list
 //--------------------------------------------------------------------------------------------------
 
-static ComparisonResult compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inLeft,
-                                                                                         const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inRight) {
+static int32_t compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inLeft,
+                                                                                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
     result = inLeft.mProperty_mNonTerminalIndex.objectCompare (inRight.mProperty_mNonTerminalIndex) ;
   }
-  return result ;
+  return int32_t (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------

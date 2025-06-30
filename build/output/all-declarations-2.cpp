@@ -8115,8 +8115,8 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::extractObject (
 //@tokenSortedlist' sorted list
 //--------------------------------------------------------------------------------------------------
 
-static ComparisonResult compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_element & inLeft,
-                                                           const GGS_tokenSortedlist_2E_element & inRight) {
+static int32_t compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_element & inLeft,
+                                                  const GGS_tokenSortedlist_2E_element & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
     result = inLeft.mProperty_mLength.objectCompare (inRight.mProperty_mLength) ;
@@ -8124,7 +8124,7 @@ static ComparisonResult compareForSorting_tokenSortedlist (const GGS_tokenSorted
   if (result == ComparisonResult::operandEqual) {
     result = inLeft.mProperty_mName.objectCompare (inRight.mProperty_mName) ;
   }
-  return result ;
+  return int32_t (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------

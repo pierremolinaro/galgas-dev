@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,11 +22,11 @@
 //   ComparisonResult
 //--------------------------------------------------------------------------------------------------
 
-enum class ComparisonResult {
-  invalid,
-  firstOperandLowerThanSecond,
-  operandEqual,
-  firstOperandGreaterThanSecond
+enum class ComparisonResult : int32_t {
+  invalid = -2,
+  firstOperandLowerThanSecond = -1,
+  operandEqual = 0,
+  firstOperandGreaterThanSecond = 1
 } ;
 
 //--------------------------------------------------------------------------------------------------

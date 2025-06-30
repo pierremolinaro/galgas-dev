@@ -8,7 +8,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -35,15 +35,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_UniqueArray2 ;
+template <typename ELEMENT> class TC_UniqueArray2 ;
 
-template <typename TYPE> void swap (TC_UniqueArray2 <TYPE> & ioOperand1,
-                                    TC_UniqueArray2 <TYPE> & ioOperand2) ;
+template <typename ELEMENT> void swap (TC_UniqueArray2 <ELEMENT> & ioOperand1,
+                                       TC_UniqueArray2 <ELEMENT> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_UniqueArray2 final {
-  protected: TYPE * mArray ;
+template <typename ELEMENT> class TC_UniqueArray2 final {
+  protected: ELEMENT * mArray ;
   protected: int32_t mCurrentRowCount ;
   protected: int32_t mCurrentColumnCount ;
 
@@ -55,8 +55,8 @@ template <typename TYPE> class TC_UniqueArray2 final {
   public: ~TC_UniqueArray2 (void) ;
 
 //--- No copy
-  private: TC_UniqueArray2 (TC_UniqueArray2 <TYPE> & inSource) = delete ;
-  private: TC_UniqueArray2 <TYPE> & operator = (TC_UniqueArray2 <TYPE> & inSource) = delete ;
+  private: TC_UniqueArray2 (TC_UniqueArray2 <ELEMENT> & inSource) = delete ;
+  private: TC_UniqueArray2 <ELEMENT> & operator = (TC_UniqueArray2 <ELEMENT> & inSource) = delete ;
 
 //--- Get Row and Column count
   public: inline int32_t rowCount (void) const { return mCurrentRowCount ; }
@@ -64,17 +64,17 @@ template <typename TYPE> class TC_UniqueArray2 final {
 
 //--- Access
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: TYPE & operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) ;
-    public: const TYPE & operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) const ;
+    public: ELEMENT & operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) ;
+    public: const ELEMENT & operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) const ;
   #endif
 
   #ifdef DO_NOT_GENERATE_CHECKINGS
-    public: inline TYPE & operator () (const int32_t inRowIndex,
-                                       const int32_t inColumnIndex) {
+    public: inline ELEMENT & operator () (const int32_t inRowIndex,
+                                          const int32_t inColumnIndex) {
       return mArray [size_t (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
     }
-    public: inline const TYPE & operator () (const int32_t inRowIndex,
-                                              const int32_t inColumnIndex) const {
+    public: inline const ELEMENT & operator () (const int32_t inRowIndex,
+                                                const int32_t inColumnIndex) const {
       return mArray [size_t (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
     }
   #endif
@@ -87,29 +87,29 @@ template <typename TYPE> class TC_UniqueArray2 final {
     return size_t (inRowIndex * mCurrentColumnCount + inColumnIndex) ;
   }
 
-  public: void setObjectAtIndexes (const TYPE & inObject,
+  public: void setObjectAtIndexes (const ELEMENT & inObject,
                                    const int32_t inRowIndex,
                                    const int32_t inColumnIndex
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Exchange
-  friend void swap <TYPE> (TC_UniqueArray2 <TYPE> & ioOperand1,
-                           TC_UniqueArray2 <TYPE> & ioOperand2) ;
+  friend void swap <ELEMENT> (TC_UniqueArray2 <ELEMENT> & ioOperand1,
+                              TC_UniqueArray2 <ELEMENT> & ioOperand2) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //                         Implementation
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE>
-TC_UniqueArray2 <TYPE>::
+template <typename ELEMENT>
+TC_UniqueArray2 <ELEMENT>::
 TC_UniqueArray2 (const int32_t inRowCount,
                  const int32_t inColumnCount) :
 mArray (nullptr),
 mCurrentRowCount (0),
 mCurrentColumnCount (0) {
   if ((inRowCount > 0) && (inColumnCount > 0)) {
-    macroMyNewArray (mArray, TYPE, (size_t) (inRowCount * inColumnCount)) ;
+    macroMyNewArray (mArray, ELEMENT, (size_t) (inRowCount * inColumnCount)) ;
     mCurrentRowCount = inRowCount ;
     mCurrentColumnCount = inColumnCount ;
   }
@@ -117,16 +117,18 @@ mCurrentColumnCount (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE>
-TC_UniqueArray2 <TYPE>::~TC_UniqueArray2 (void) {
+template <typename ELEMENT>
+TC_UniqueArray2 <ELEMENT>::~TC_UniqueArray2 (void) {
   macroMyDeleteArray (mArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  TYPE & TC_UniqueArray2 <TYPE>::operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) {
+  template <typename ELEMENT>
+  ELEMENT & TC_UniqueArray2 <ELEMENT>::operator () (const int32_t inRowIndex,
+                                                    const int32_t inColumnIndex
+                                                    COMMA_LOCATION_ARGS) {
     return mArray [long2size_t (inRowIndex, inColumnIndex COMMA_THERE)] ;
   }
 #endif
@@ -134,17 +136,19 @@ TC_UniqueArray2 <TYPE>::~TC_UniqueArray2 (void) {
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  const TYPE & TC_UniqueArray2 <TYPE>::operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) const {
+  template <typename ELEMENT>
+  const ELEMENT & TC_UniqueArray2 <ELEMENT>::operator () (const int32_t inRowIndex,
+                                                          const int32_t inColumnIndex
+                                                          COMMA_LOCATION_ARGS) const {
     return mArray [long2size_t (inRowIndex, inColumnIndex COMMA_THERE)] ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE>
-void swap (TC_UniqueArray2 <TYPE> & ioOperand1,
-           TC_UniqueArray2 <TYPE> & ioOperand2) {
+template <typename ELEMENT>
+void swap (TC_UniqueArray2 <ELEMENT> & ioOperand1,
+           TC_UniqueArray2 <ELEMENT> & ioOperand2) {
   swap (ioOperand1.mArray, ioOperand2.mArray) ;
   swap (ioOperand1.mCurrentRowCount, ioOperand2.mCurrentRowCount) ;
   swap (ioOperand1.mCurrentColumnCount, ioOperand2.mCurrentColumnCount) ;
@@ -153,11 +157,11 @@ void swap (TC_UniqueArray2 <TYPE> & ioOperand1,
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE>
-void TC_UniqueArray2 <TYPE>::setObjectAtIndexes (const TYPE & inObject,
-                                                 const int32_t inRowIndex,
-                                                 const int32_t inColumnIndex
-                                                 COMMA_LOCATION_ARGS) {
+template <typename ELEMENT>
+void TC_UniqueArray2 <ELEMENT>::setObjectAtIndexes (const ELEMENT & inObject,
+                                                    const int32_t inRowIndex,
+                                                    const int32_t inColumnIndex
+                                                    COMMA_LOCATION_ARGS) {
   const size_t idx = long2size_t (inRowIndex, inColumnIndex COMMA_THERE) ;
   if (nullptr != mArray) {
     mArray [idx] = inObject ;

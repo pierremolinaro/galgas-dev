@@ -2,7 +2,7 @@
 //%!"@" + TYPE_IDENTIFIER + "' sorted list"%
 //--------------------------------------------------------------------------------------------------
 
-static ComparisonResult compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inLeft,
+static int32_t compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inLeft,
                             %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
 % for (mAttributeTypeIndex mAttributeName mAscendingOrder) in SORT_ATTRIBUTE_LIST do
@@ -16,7 +16,7 @@ static ComparisonResult compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!EL
     % ;\n%
     %  }\n%
   end
-%  return result ;
+%  return int32_t (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------
