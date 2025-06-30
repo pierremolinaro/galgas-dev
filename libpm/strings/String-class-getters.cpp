@@ -1035,10 +1035,10 @@ String String::stringByDeletingLastPathComponent (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   stringByAppendingPathComponent
+//   appendingPathComponent
 //--------------------------------------------------------------------------------------------------
 
-String String::stringByAppendingPathComponent (const String & inPathComponent) const {
+String String::appendingPathComponent (const String & inPathComponent) const {
   String result = *this ;
   if (result.length () == 0) {
     result = inPathComponent ;

@@ -821,7 +821,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                             "    const GGS_string filePathAsString = inFilePath.readProperty_string () ;\n"
                             "    String filePath = filePathAsString.stringValue () ;\n"
                             "    if (! FileManager::isAbsolutePath (filePath)) {\n"
-                            "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
+                            "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().appendingPathComponent (filePath) ;\n"
                             "    }\n"
                             "    if (FileManager::fileExistsAtPath (filePath)) {\n"
                             "    Lexique_") ;

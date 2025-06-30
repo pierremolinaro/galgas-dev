@@ -239,7 +239,7 @@ class String : public AbstractOutputStream {
   public: String pathExtension (void) const ;
 
 //--- Returns a new string made by appending inPathComponent to the receiver, preceded if necessary by a path separator.
-  public: String stringByAppendingPathComponent (const String & inPathComponent) const ;
+  public: String appendingPathComponent (const String & inPathComponent) const ;
 
 //--- Returns a string made by deleting the last path component (if any, and only the last)
 //    from the receiver.
