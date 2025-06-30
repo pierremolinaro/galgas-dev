@@ -14683,7 +14683,7 @@ bool GGS__5B_formalInputParameterListAST_5D_::isValid (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterListAST_5D_::drop (void) {
-  mSharedArray.free () ;
+  mSharedArray.removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------

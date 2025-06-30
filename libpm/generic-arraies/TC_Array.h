@@ -124,7 +124,7 @@ template <typename TYPE> class TC_Array final {
   public: void removeAllKeepingCapacity (void) ;
 
 //--- Remove all objects and deallocate
-  public: void free (void) ;
+  public: void removeAll (void) ;
 
 //--- Call operators
   public: TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
@@ -341,10 +341,10 @@ template <typename TYPE> void TC_Array <TYPE>::insertObjectsAtIndex (const int32
 }
 
 //--------------------------------------------------------------------------------------------------
-//   free (remove all objects and deallocate)
+//   removeAll (remove all objects and deallocate)
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::free (void) {
+template <typename TYPE> void TC_Array <TYPE>::removeAll (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 

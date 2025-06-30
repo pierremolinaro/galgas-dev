@@ -162,7 +162,7 @@ void StringListCommandLineOption::printStringOptions (void) {
 void StringListCommandLineOption::releaseStrings (void) {
   StringListCommandLineOption * p = gFirstStringListOption ;
   while (p != nullptr) {
-    p->mValue.free () ;
+    p->mValue.removeAll () ;
     p = p->mNext ;
   }
 }

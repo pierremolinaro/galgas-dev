@@ -73,7 +73,7 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: inline virtual void drop (void) override {
-    mSharedArray.free () ;
+    mSharedArray.removeAll () ;
     mIsValid = false ;
   }
 

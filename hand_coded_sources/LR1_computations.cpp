@@ -279,10 +279,10 @@ class cLR1ItemUniqueArray {
   public: void makeRoom (const int32_t inNewCapacity) ;
 
 //--- Remove all objects (no deallocation)
-  public: inline void clear (void) { mCount = 0 ; }
+  public: inline void removeAllKeepingCapacity (void) { mCount = 0 ; }
 
 //--- Remove all objects and deallocate
-  public: void free (void) ;
+  public: void removeAll (void) ;
 
 //--- Add objects at the end of the array
   public: void appendObject (const cLR1_items_AVL_tree * inValue) ;
@@ -398,7 +398,7 @@ void cLR1ItemUniqueArray::makeRoom (const int32_t inNewCapacity) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void cLR1ItemUniqueArray::free (void) {
+void cLR1ItemUniqueArray::removeAll (void) {
   mCount = 0 ;
   macroMyDeleteArray (mArray) ;
   mCapacity = 0 ;
@@ -512,7 +512,7 @@ class c_LR1_items_set final {
                                     const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
-  public: void clear (void) ;
+  public: void removeAllKeepingCapacity (void) ;
 
 //--- Empty set ?
   public: bool isEmptySet (void) const ;
@@ -559,8 +559,8 @@ c_LR1_items_set::~c_LR1_items_set (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void c_LR1_items_set::clear (void) {
-  mItemsSet.clear () ;
+void c_LR1_items_set::removeAllKeepingCapacity (void) {
+  mItemsSet.removeAllKeepingCapacity () ;
   macroMyDelete (mRoot) ;
   mHashCode = 0 ;
 }
@@ -691,7 +691,7 @@ void c_LR1_items_set::
 getTransitionFrom (const PureBNFproductionsList & inProductionRules,
                    const int32_t inSymbol,
                    c_LR1_items_set & out_LR1_item_set) {
-  out_LR1_item_set.clear () ;
+  out_LR1_item_set.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const GrammarProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
@@ -739,12 +739,12 @@ compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
   if (result == 0) {
     if (! inItemsSet1.mArrayIsSorted) {
       inItemsSet1.mArrayIsSorted = true ;
-      inItemsSet1.mItemsSet.clear () ;
+      inItemsSet1.mItemsSet.removeAllKeepingCapacity () ;
       inItemsSet1.recursiveBuildSortedArray (inItemsSet1.mRoot) ;
     }
     if (! inItemsSet2.mArrayIsSorted) {
       inItemsSet2.mArrayIsSorted = true ;
-      inItemsSet2.mItemsSet.clear () ;
+      inItemsSet2.mItemsSet.removeAllKeepingCapacity () ;
       inItemsSet2.recursiveBuildSortedArray (inItemsSet2.mRoot) ;
     }
     for (int32_t i=0 ; (i<length1) && (result==0) ; i++) {

@@ -634,7 +634,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::prependObject (const TYPE &
     mArray [i] = mArray [i-1] ;
   }
   mArray [0] = inValue ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -714,7 +714,7 @@ insertObjectsUsingExchangeAndClear (const int32_t inCount,
       swap (mArray [i], mArray [i-inCount]) ;
     }
     for (int32_t i=0 ; i<inCount ; i++) {
-      mArray [i+inStartingIndex].clear () ;
+      mArray [i+inStartingIndex].removeAllKeepingCapacity () ;
     }
     mCount += inCount ;
   }
@@ -1213,7 +1213,7 @@ removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) 
     }
   }
   for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
-    mArray [i].clear () ;
+    mArray [i].removeAllKeepingCapacity () ;
   }
   mCount = targetIndex ;
 }
@@ -1272,7 +1272,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::removeIdenticalObjectsUsing
     }
   }
   for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
-    mArray [i].clear () ;
+    mArray [i].removeAllKeepingCapacity () ;
   }
   mCount -= sourceIndex - targetIndex ;
 }
