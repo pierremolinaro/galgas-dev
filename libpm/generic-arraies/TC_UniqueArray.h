@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -31,26 +31,20 @@
 #include "cpp-allocation.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Template class predeclaration
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class TC_UniqueArray ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   swap function for TC_UniqueArray <TYPE> classes
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1,
                                     TC_UniqueArray <TYPE> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Template class declaration
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class TC_UniqueArray final {
@@ -63,7 +57,7 @@ template <typename TYPE> class TC_UniqueArray final {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: TC_UniqueArray (const int32_t inCapacity,
-                          const TYPE & inValue
+                          const TYPE & inRepeatedValue
                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual Destructor
@@ -110,52 +104,6 @@ template <typename TYPE> class TC_UniqueArray final {
     return ! ((*this) == inOperand) ;
   }
 
-//-------- Sorted array operations
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    private: void checkOrdered (LOCATION_ARGS) const ;
-  #endif
-
-//--- Remove an object, suppose the array is ordered
-  public: void removeObjectFromOrderedArray (const TYPE & inKey) ;
-
-// Test is based on 'compare' method, and inValue is copied, object is added if not already in array
-  public: void appendUniqueObjectInOrderedArray (const TYPE & inValue) ;
-
-//--- Return -1 if not found
-  public: int32_t indexOfObjectInOrderedArray (const TYPE & inValue) const ;
-
-//--- Intersection
-  public: void intersectionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
-                                              TC_UniqueArray<TYPE> & outResult) const ;
-
-//--- Union
-  public: void unionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
-                                       TC_UniqueArray<TYPE> & outResult) const ;
-
-//--- substract
-  public: void substractOfOrderedArraies (const TC_UniqueArray<TYPE> & inSubstractedSet,
-                                           TC_UniqueArray<TYPE> & outResult) const ;
-
-
-//--- Intersection (based on == operator)
-//    Copies (using assignment operator) elements of current object that
-//    also are in inOperand array.
-  public: void intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                                       TC_UniqueArray <TYPE> & outResult) const ;
-
-//--- Multi set intersection (based on == operator), perserves object count.
-//    If an object appears x times in current object and y times in operand,
-//    it appears min (x, y) times in result.
-//    Copies (using assignment operator) elements of current object that also are in inOperand array.
-  public: void multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                                               TC_UniqueArray <TYPE> & outResult) const ;
-
-//--- Union (based on == operator)
-//    Copies (using assignment operator) elements of current object in result,
-//    then adds elements of operand that are not yet in result.
-  public: void unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                                TC_UniqueArray <TYPE> & outResult) const ;
-
 //--- Increment, decrement
   public: void incrementAtIndex (const int32_t inIndex
                                  COMMA_LOCATION_ARGS) ; // ++ on object
@@ -165,7 +113,7 @@ template <typename TYPE> class TC_UniqueArray final {
 
 //--- Append objects at the end of the array
   public: void appendObject (const TYPE & inValue) ; // inValue is copied
-  public: void appendObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
+//  public: void appendObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
 
   public: void appendObjectUsingSwap (TYPE & ioValue) ;
   public: void appendDefaultObjectUsingSwap (void) ;
@@ -220,27 +168,27 @@ template <typename TYPE> class TC_UniqueArray final {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Remove objects from an other array (uses == operator for selecting objects to remove)
-  public: void removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) ; // Remaining objects are copied
-  public: void removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) ; // Remaining objects are copied
+//  public: void removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) ; // Remaining objects are copied
+//  public: void removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) ; // Remaining objects are copied
 
 //--- Remove identical objects (based on == operator)
-  public: void removeIdenticalObjects (void) ;
-  public: void removeIdenticalObjectsUsingSwapAndClear (void) ;
+//  public: void removeIdenticalObjects (void) ;
+//  public: void removeIdenticalObjectsUsingSwapAndClear (void) ;
 
 //--- Contains an objects equal to method actual argument value (based on == operator)
   public: bool containsObjectEqualTo (const TYPE & inObject) const ;
 
 //--- Count objects equal to method actual argument value (based on == operator)
-  public: int32_t countObjectsEqualTo (const TYPE & inObject) const ;
+//  public: int32_t countObjectsEqualTo (const TYPE & inObject) const ;
 
 //--- Count objects that respond true to function
-  public: int32_t countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject)) const ;
+//  public: int32_t countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject)) const ;
 
 //--- Get a sub array: selection is done using a function. result array contains
 //    objects for which inFunction returns true.
 //    If inFunction is nullptr, result array is empty.
-  public: void subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
-                                       TC_UniqueArray <TYPE> & outResult) const ;
+//  public: void subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
+//                                       TC_UniqueArray <TYPE> & outResult) const ;
 
 //--- Sort and reverse sort array with <= and >= operators
 //    these operators must be defined for TYPE class
@@ -252,13 +200,13 @@ template <typename TYPE> class TC_UniqueArray final {
   public: void sortArrayUsingCompareMethod (void) ;
   public: void reverseSortArrayUsingCompareMethod (void) ;
 
-//--- Sort array with a sort function (does nothing if inSortFunction == nullptr)
-//  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+  public: void sortArrayUsingFunction (int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
 
-//--- Sort array with a sort function (does nothing if inSortFunction == nullptr)
-//  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
+//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
+//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
+  public: void reverseSortArrayUsingFunction (int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
 
 //--- Element access (with index checking)
   public: TYPE lastObject (LOCATION_ARGS) const ;
@@ -287,12 +235,12 @@ template <typename TYPE> class TC_UniqueArray final {
 
   private: void internalSortArrayUsingFunction (const int32_t inFirst,
                                                 const int32_t inLast,
-                                                int32_t (* inSortFunction) (const TYPE & inOperand1,
+                                                int32_t (* inCompareFunction) (const TYPE & inOperand1,
                                                                             const TYPE & inOperand2)) ;
 
   private: void internalReverseSortArrayUsingFunction (const int32_t inFirst,
                                                        const int32_t inLast,
-                                                       int32_t (* inSortFunction) (const TYPE & inOperand1,
+                                                       int32_t (* inCompareFunction) (const TYPE & inOperand1,
                                                                                    const TYPE & inOperand2)) ;
 //--- Index checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -315,9 +263,7 @@ template <typename TYPE> class TC_UniqueArray final {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Default Constructor
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_UniqueArray <TYPE>::TC_UniqueArray (void) :
@@ -327,12 +273,11 @@ mCapacity (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Allocation Constructor
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> TC_UniqueArray <TYPE>::TC_UniqueArray (const int32_t inCapacity COMMA_LOCATION_ARGS) :
+template <typename TYPE> TC_UniqueArray <TYPE>::TC_UniqueArray (const int32_t inCapacity
+                                                                COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0),
 mCapacity (0) {
@@ -346,13 +291,11 @@ mCapacity (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Allocation Constructor
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_UniqueArray <TYPE>::TC_UniqueArray (const int32_t inCapacity,
-                                                                const TYPE & inValue
+                                                                const TYPE & inRepeatedValue
                                                                 COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0),
@@ -364,16 +307,12 @@ mCapacity (0) {
     macroMyNewArray (mArray, TYPE, uint32_t (inCapacity)) ;
     mCapacity = inCapacity ;
     for (int32_t i=0 ; i<inCapacity ; i++) {
-      mArray [i] = inValue ;
+      mArray [i] = inRepeatedValue ;
     }
     mCount = inCapacity ;
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Allocation Constructor
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::setDataFromPointer (TYPE * & ioDataPtr,
@@ -395,9 +334,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendDataFromPointer (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Destructor
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_UniqueArray <TYPE>::~TC_UniqueArray (void) {
@@ -405,19 +342,11 @@ template <typename TYPE> TC_UniqueArray <TYPE>::~TC_UniqueArray (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Destructor
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::removeAllKeepingCapacity (void) {
   mCount = 0 ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Method for making room using copy
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) const {
@@ -427,10 +356,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYP
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Method for making room using copy
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacity (const int32_t inNewCapacity) {
@@ -449,10 +374,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacity (const int32_t 
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Method for making room using copy
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::forceObjectAtIndex (const int32_t inIndex,
@@ -474,10 +395,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::forceObjectAtIndex (const i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Method for setting capacity using swap function
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacityUsingSwap (const int32_t inNewCapacity) {
   if (mCapacity < inNewCapacity) {
@@ -496,10 +413,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacityUsingSwap (const
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Remove all objects and deallocate
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::removeAll (void) {
   mCount = 0 ;
@@ -507,10 +420,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::removeAll (void) {
   mCapacity = 0 ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Add object at the end of the array
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendObject (const TYPE & inValue) {
@@ -522,27 +431,19 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObject (const TYPE & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Add object at the end of the array, if object is not already in array
-//
-//--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectIfUnique (const TYPE & inValue) {
-  bool found = false ;
-  for (int32_t i=0 ; (i<mCount) && ! found ; i++) {
-    found = mArray [i] == inValue ;
-  }
-  if (! found) {
-    setCapacity (mCount + 1 + mCount / 2) ;
-    mArray [mCount] = inValue ;
-    mCount ++ ;
-  }
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectIfUnique (const TYPE & inValue) {
+//  bool found = false ;
+//  for (int32_t i=0 ; (i<mCount) && ! found ; i++) {
+//    found = mArray [i] == inValue ;
+//  }
+//  if (! found) {
+//    setCapacity (mCount + 1 + mCount / 2) ;
+//    mArray [mCount] = inValue ;
+//    mCount ++ ;
+//  }
+//}
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Add objects at the end of the array
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjects (const int32_t inCount, const TYPE & inValue) {
@@ -557,10 +458,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjects (const int32_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Add object at the end of the array
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectUsingSwap (TYPE & ioValue) {
   setCapacityUsingSwap (mCount + 1) ;
@@ -569,22 +466,14 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectUsingSwap (TYPE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Add default object at the end of the array
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendDefaultObjectUsingSwap (void) {
   setCapacityUsingSwap (mCount + 1) ;
   TYPE value ;
   swap (mArray [mCount], value) ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Add objects at the end of the array from an other array
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (const TC_UniqueArray <TYPE> & inObjectArray) {
@@ -597,10 +486,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (con
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Check index before insertion
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -653,10 +538,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectAtIndex (const 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Insert objects at index
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectsAtIndex (const int32_t inCount,
                                                                            const TYPE & inValue,
@@ -678,10 +559,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectsAtIndex (const
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Insert objects at index using swap
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::
 insertObjectUsingSwap (TYPE & ioValue, const int32_t inIndex COMMA_LOCATION_ARGS) { // inValue is copied
@@ -696,10 +573,6 @@ insertObjectUsingSwap (TYPE & ioValue, const int32_t inIndex COMMA_LOCATION_ARGS
   mCount ++ ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Insert objects at index using default constructor
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::
@@ -721,10 +594,6 @@ insertObjectsUsingExchangeAndClear (const int32_t inCount,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   remove last object
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::removeLastObject (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -733,10 +602,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::removeLastObject (LOCATION_
   mCount -- ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   remove last objects
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
@@ -748,10 +613,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::removeLastObjects (const in
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   remove object at index (0 <= index < count)
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::exchangeObjectAtIndexes (const int32_t inIndex1,
@@ -767,10 +628,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::exchangeObjectAtIndexes (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   remove object at index (0 <= index < count)
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::removeObjectAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -782,10 +639,6 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::removeObjectAtIndex (const 
   mCount -- ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   delete objects from index (0<=index<mCount), ((index+inCount)<=mCount)
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::
@@ -803,10 +656,6 @@ removeObjectsAtIndex (const int32_t inCount, const int32_t inStartingIndex COMMA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Search Objects
-//
-//--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> int32_t TC_UniqueArray <TYPE>::indexOfFirstObjectEqualTo (const TYPE & inValue) const {
   int32_t result = -1 ;
@@ -818,10 +667,6 @@ template <typename TYPE> int32_t TC_UniqueArray <TYPE>::indexOfFirstObjectEqualT
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Array Access
-//
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -902,29 +747,23 @@ template <typename TYPE> TYPE & TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Extract sub array
-//
-//--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
-                       TC_UniqueArray <TYPE> & outResult) const {
-  outResult.removeAllKeepingCapacity () ;
-  if (inFunction != nullptr) {
-    outResult.setCapacity (mCount) ;
-    for (int32_t i=0 ; i<mCount ; i++) {
-      if (inFunction (mArray [i])) {
-        outResult.appendObject (mArray [i]) ;
-      }
-    }
-  }
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::
+//subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
+//                       TC_UniqueArray <TYPE> & outResult) const {
+//  outResult.removeAllKeepingCapacity () ;
+//  if (inFunction != nullptr) {
+//    outResult.setCapacity (mCount) ;
+//    for (int32_t i=0 ; i<mCount ; i++) {
+//      if (inFunction (mArray [i])) {
+//        outResult.appendObject (mArray [i]) ;
+//      }
+//    }
+//  }
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Sort array using >= and <= operators
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::internalSortArrayUsingOperators (const int32_t inFirst,
@@ -957,9 +796,7 @@ template <typename TYPE> void TC_UniqueArray<TYPE>::sortArrayUsingComparisonOper
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Reverse sort array using >= and <= operators
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::internalReverseSortArrayUsingOperators (const int32_t inFirst,
@@ -992,9 +829,7 @@ template <typename TYPE> void TC_UniqueArray<TYPE>::reverseSortArrayUsingCompari
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   Sort array using comare method
-//
+//   Sort array using compare method
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE>void TC_UniqueArray<TYPE>::internalSortArrayUsingCompareMethod (const int32_t inFirst,
@@ -1027,9 +862,7 @@ template <typename TYPE> void TC_UniqueArray<TYPE>::sortArrayUsingCompareMethod 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Reverse sort array using compare method
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::
@@ -1063,24 +896,22 @@ template <typename TYPE> void TC_UniqueArray<TYPE>::reverseSortArrayUsingCompare
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Sort array using comparison function
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::
 internalSortArrayUsingFunction (const int32_t inFirst,
                                 const int32_t inLast,
-                                int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
+                                int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
 //--- Sort using 'quick sort' algorithm
   if (inFirst < inLast) {
     int32_t i = inFirst ;
     int32_t j = inLast ;
     while (i < j) {
-      while ((i < inLast) && (inSortFunction (mArray [i], mArray [inFirst]) <= 0)) {
+      while ((i < inLast) && (inCompareFunction (mArray [i], mArray [inFirst]) <= 0)) {
         i ++ ;
       }
-      while ((j > inFirst) && (inSortFunction (mArray [j], mArray [inFirst]) >= 0)) {
+      while ((j > inFirst) && (inCompareFunction (mArray [j], mArray [inFirst]) >= 0)) {
         j -- ;
       }
       if (i < j) {
@@ -1088,39 +919,37 @@ internalSortArrayUsingFunction (const int32_t inFirst,
       }
     }
     swap (mArray [j], mArray [inFirst]) ;
-    internalSortArrayUsingFunction (inFirst, j-1, inSortFunction) ;
-    internalSortArrayUsingFunction (j+1, inLast, inSortFunction) ;
+    internalSortArrayUsingFunction (inFirst, j-1, inCompareFunction) ;
+    internalSortArrayUsingFunction (j+1, inLast, inCompareFunction) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::
-sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
-  if (inSortFunction != nullptr) {
-    internalSortArrayUsingFunction (0, mCount - 1, inSortFunction) ;
+sortArrayUsingFunction (int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
+  if (inCompareFunction != nullptr) {
+    internalSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Reverse sort array using comparison function
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray<TYPE>::
 internalReverseSortArrayUsingFunction (const int32_t inFirst,
                                        const int32_t inLast,
-                                       int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
+                                       int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
 //--- Reverse sort using 'quick sort' algorithm
   if (inFirst < inLast) {
     int32_t i = inFirst ;
     int32_t j = inLast ;
     while (i < j) {
-      while ((i < inLast) && (inSortFunction (mArray [i], mArray [inFirst]) >= 0)) {
+      while ((i < inLast) && (inCompareFunction (mArray [i], mArray [inFirst]) >= 0)) {
         i ++ ;
       }
-      while ((j > inFirst) && (inSortFunction (mArray [j], mArray [inFirst]) <= 0)) {
+      while ((j > inFirst) && (inCompareFunction (mArray [j], mArray [inFirst]) <= 0)) {
         j -- ;
       }
       if (i < j) {
@@ -1128,24 +957,22 @@ internalReverseSortArrayUsingFunction (const int32_t inFirst,
       }
     }
     swap (mArray [j], mArray [inFirst]) ;
-    internalReverseSortArrayUsingFunction (inFirst, j-1, inSortFunction) ;
-    internalReverseSortArrayUsingFunction (j+1, inLast, inSortFunction) ;
+    internalReverseSortArrayUsingFunction (inFirst, j-1, inCompareFunction) ;
+    internalReverseSortArrayUsingFunction (j+1, inLast, inCompareFunction) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::
-reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
-  if (inSortFunction != nullptr) {
-    internalReverseSortArrayUsingFunction (0, mCount - 1, inSortFunction) ;
+reverseSortArrayUsingFunction (int32_t (* inCompareFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
+  if (inCompareFunction != nullptr) {
+    internalReverseSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Comparisons (based on == operator on objects)
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> bool TC_UniqueArray<TYPE>::operator == (const TC_UniqueArray <TYPE> & inOperand) const {
@@ -1157,130 +984,120 @@ template <typename TYPE> bool TC_UniqueArray<TYPE>::operator == (const TC_Unique
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Remove from an other array (using assignment operator)
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) {
-  int32_t sourceIndex = 0 ;
-  int32_t targetIndex = 0 ;
-  while (sourceIndex < mCount) {
-  //--- Serach for element
-    bool found = false ;
-    for (int32_t i=0 ; (i<inArray.count ()) && ! found ; i++) {
-      found = inArray (i COMMA_HERE) == mArray [sourceIndex] ;
-    }
-    if (found) {
-      sourceIndex ++ ;
-    }else if (sourceIndex != targetIndex) {
-      mArray [targetIndex] = mArray [sourceIndex] ;
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }else{
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }
-  }
-  mCount = targetIndex ;
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) {
+//  int32_t sourceIndex = 0 ;
+//  int32_t targetIndex = 0 ;
+//  while (sourceIndex < mCount) {
+//  //--- Serach for element
+//    bool found = false ;
+//    for (int32_t i=0 ; (i<inArray.count ()) && ! found ; i++) {
+//      found = inArray (i COMMA_HERE) == mArray [sourceIndex] ;
+//    }
+//    if (found) {
+//      sourceIndex ++ ;
+//    }else if (sourceIndex != targetIndex) {
+//      mArray [targetIndex] = mArray [sourceIndex] ;
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }else{
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }
+//  }
+//  mCount = targetIndex ;
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Remove from an other array (using swap function)
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) {
-  int32_t sourceIndex = 0 ;
-  int32_t targetIndex = 0 ;
-  while (sourceIndex < mCount) {
-  //--- Serach for element
-    bool found = false ;
-    for (int32_t i=0 ; (i<inArray.count ()) && ! found ; i++) {
-      found = inArray (i COMMA_HERE) == mArray [sourceIndex] ;
-    }
-    if (found) {
-      sourceIndex ++ ;
-    }else if (sourceIndex != targetIndex) {
-      swap (mArray [targetIndex], mArray [sourceIndex]) ;
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }else{
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }
-  }
-  for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
-    mArray [i].removeAllKeepingCapacity () ;
-  }
-  mCount = targetIndex ;
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::
+//removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) {
+//  int32_t sourceIndex = 0 ;
+//  int32_t targetIndex = 0 ;
+//  while (sourceIndex < mCount) {
+//  //--- Serach for element
+//    bool found = false ;
+//    for (int32_t i=0 ; (i<inArray.count ()) && ! found ; i++) {
+//      found = inArray (i COMMA_HERE) == mArray [sourceIndex] ;
+//    }
+//    if (found) {
+//      sourceIndex ++ ;
+//    }else if (sourceIndex != targetIndex) {
+//      swap (mArray [targetIndex], mArray [sourceIndex]) ;
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }else{
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }
+//  }
+//  for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
+//    mArray [i].removeAllKeepingCapacity () ;
+//  }
+//  mCount = targetIndex ;
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Remove identical objects (based on == operator)
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::removeIdenticalObjects (void) {
-  int32_t sourceIndex = 1 ;
-  int32_t targetIndex = 1 ;
-  while (sourceIndex < mCount) {
-    bool found = false ;
-    for (int32_t i=0 ; (i<targetIndex) && ! found ; i++) {
-      found = mArray [sourceIndex] == mArray [i] ;
-    }
-    if (found) {
-      sourceIndex ++ ;
-    }else if (sourceIndex != targetIndex) {
-      mArray [targetIndex] = mArray [sourceIndex] ;
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }else{
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }
-  }
-  mCount -= sourceIndex - targetIndex ;
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::removeIdenticalObjects (void) {
+//  int32_t sourceIndex = 1 ;
+//  int32_t targetIndex = 1 ;
+//  while (sourceIndex < mCount) {
+//    bool found = false ;
+//    for (int32_t i=0 ; (i<targetIndex) && ! found ; i++) {
+//      found = mArray [sourceIndex] == mArray [i] ;
+//    }
+//    if (found) {
+//      sourceIndex ++ ;
+//    }else if (sourceIndex != targetIndex) {
+//      mArray [targetIndex] = mArray [sourceIndex] ;
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }else{
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }
+//  }
+//  mCount -= sourceIndex - targetIndex ;
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 //   Remove identical objects (based on == operator)
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::removeIdenticalObjectsUsingSwapAndClear (void) {
-  int32_t sourceIndex = 1 ;
-  int32_t targetIndex = 1 ;
-  while (sourceIndex < mCount) {
-    bool found = false ;
-    for (int32_t i=0 ; (i<targetIndex) && ! found ; i++) {
-      found = mArray [sourceIndex] == mArray [i] ;
-    }
-    if (found) {
-      sourceIndex ++ ;
-    }else if (sourceIndex != targetIndex) {
-      swap (mArray [targetIndex], mArray [sourceIndex]) ;
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }else{
-      sourceIndex ++ ;
-      targetIndex ++ ;
-    }
-  }
-  for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
-    mArray [i].removeAllKeepingCapacity () ;
-  }
-  mCount -= sourceIndex - targetIndex ;
-}
+//template <typename TYPE> void TC_UniqueArray <TYPE>::removeIdenticalObjectsUsingSwapAndClear (void) {
+//  int32_t sourceIndex = 1 ;
+//  int32_t targetIndex = 1 ;
+//  while (sourceIndex < mCount) {
+//    bool found = false ;
+//    for (int32_t i=0 ; (i<targetIndex) && ! found ; i++) {
+//      found = mArray [sourceIndex] == mArray [i] ;
+//    }
+//    if (found) {
+//      sourceIndex ++ ;
+//    }else if (sourceIndex != targetIndex) {
+//      swap (mArray [targetIndex], mArray [sourceIndex]) ;
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }else{
+//      sourceIndex ++ ;
+//      targetIndex ++ ;
+//    }
+//  }
+//  for (int32_t i=targetIndex ; i<sourceIndex ; i++) {
+//    mArray [i].removeAllKeepingCapacity () ;
+//  }
+//  mCount -= sourceIndex - targetIndex ;
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 // Has objects equal to method actual argument value (based on == operator)
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> bool TC_UniqueArray <TYPE>::containsObjectEqualTo (const TYPE & inObject) const {
@@ -1292,140 +1109,32 @@ template <typename TYPE> bool TC_UniqueArray <TYPE>::containsObjectEqualTo (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 // Count objects equal to method actual argument value (based on == operator)
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> int32_t TC_UniqueArray <TYPE>::countObjectsEqualTo (const TYPE & inObject) const {
-  int32_t  matchCount = 0 ;
-  for (int32_t i=0 ; i<mCount ; i++) {
-    matchCount += mArray [i] == inObject ;
-  }
-  return matchCount ;
-}
+//template <typename TYPE> int32_t TC_UniqueArray <TYPE>::countObjectsEqualTo (const TYPE & inObject) const {
+//  int32_t  matchCount = 0 ;
+//  for (int32_t i=0 ; i<mCount ; i++) {
+//    matchCount += mArray [i] == inObject ;
+//  }
+//  return matchCount ;
+//}
 
 //--------------------------------------------------------------------------------------------------
-//
 //        Count objects that respond true to function
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> int32_t TC_UniqueArray <TYPE>::
-countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject)) const {
-  int32_t matchCount = 0 ;
-  if (inFunction != nullptr) {
-    for (int32_t i=0 ; i<mCount ; i++) {
-      matchCount += inFunction (mArray [i]) ;
-    }
-  }
-  return matchCount ;
-}
+//template <typename TYPE> int32_t TC_UniqueArray <TYPE>::
+//countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject)) const {
+//  int32_t matchCount = 0 ;
+//  if (inFunction != nullptr) {
+//    for (int32_t i=0 ; i<mCount ; i++) {
+//      matchCount += inFunction (mArray [i]) ;
+//    }
+//  }
+//  return matchCount ;
+//}
 
-//--------------------------------------------------------------------------------------------------
-//
-//   Intersection with an other array
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                       TC_UniqueArray <TYPE> & outResult) const {
-//--- Empty destination array
-  outResult.removeAllKeepingCapacity () ;
-  outResult.setCapacity (mCount) ;
-//--- loop throught array
-  for (int32_t i=0 ; i<mCount ; i++) {
-    bool accept = true ;
-    for (int32_t j=0 ; j<i; j++) {
-      accept = ! (mArray [j] == mArray [i]) ;
-    }
-    if (accept) {
-      bool found = false ;
-      for (int32_t j=0 ; (j<inOperand.count ()) && ! found ; j++) {
-        found = inOperand.mArray [j] == mArray [i] ;
-      }
-      if (found) {
-        outResult.appendObject (mArray [i]) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Multi Set Intersection with an other array
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE>void TC_UniqueArray <TYPE>::
-multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                               TC_UniqueArray <TYPE> & outResult) const {
-//--- Empty destination array
-  outResult.removeAllKeepingCapacity () ;
-  outResult.setCapacity (mCount) ;
-//--- Build counted set for current object
-  TC_UniqueArray <TYPE> set (mCount COMMA_HERE) ;
-  TC_UniqueArray <int32_t> setCount (mCount COMMA_HERE) ;
-  for (int32_t i=0 ; i<mCount ; i++) {
-    bool found = false ;
-    for (int32_t j=0 ; (j<set.count ()) && ! found ; j++) {
-      found = set.mArray [j] == mArray [i] ;
-      if (found) {
-        setCount.mArray [j] ++ ;
-      }
-    }
-    if (! found) {
-      set.appendObject (mArray [i]) ;
-      setCount.appendObject (1) ;
-    }
-  }
-//--- loop throught counted set
-  for (int32_t i=0 ; i<set.mCount ; i++) {
-    int32_t countInOperand = 0 ;
-    for (int32_t j=0 ; j<inOperand.mCount; j++) {
-      countInOperand += inOperand.mArray [j] == set.mArray [i] ;
-    }
-    const int32_t resultCount = countInOperand < setCount.mArray [i] ? countInOperand : setCount.mArray [i] ;
-    for (int32_t j=0 ; j<resultCount ; j++) {
-      outResult.appendObject (set.mArray [i]) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Union with an other array
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE> void TC_UniqueArray <TYPE>::unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                                                                     TC_UniqueArray <TYPE> & outResult) const {
-//--- Empty destination array
-  outResult.removeAllKeepingCapacity () ;
-  outResult.setCapacity (mCount + inOperand.mCount) ;
-//--- Copy current object
-  for (int32_t i=0 ; i<mCount ; i++) {
-    outResult.appendObject (mArray [i]) ;
-  }
-//--- Remove duplicates
-  outResult.removeIdenticalObjects () ;
-//--- Add objects from operand array
-  for (int32_t i=0 ; i<inOperand.mCount ; i++) {
-    bool found = false ;
-    for (int32_t j=0 ; (j<outResult.count ()) && ! found ; j++) {
-      found = outResult.mArray [j] == inOperand.mArray [i] ;
-    }
-    if (! found) {
-      outResult.appendObject (inOperand.mArray [i]) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Union with an other array
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE> const TYPE * TC_UniqueArray <TYPE>::unsafeArrayPointer (void) const {
@@ -1433,228 +1142,14 @@ template <typename TYPE> const TYPE * TC_UniqueArray <TYPE>::unsafeArrayPointer 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //   swap function for TC_UniqueArray <TYPE> classes
-//
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE>
-void swap (TC_UniqueArray <TYPE> & ioOperand1,
-           TC_UniqueArray <TYPE> & ioOperand2) {
+template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1,
+                                    TC_UniqueArray <TYPE> & ioOperand2) {
   swap (ioOperand1.mCount, ioOperand2.mCount) ;
   swap (ioOperand1.mCapacity, ioOperand2.mCapacity) ;
   swap (ioOperand1.mArray, ioOperand2.mArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Add object in array, maintaining array sorted
-//
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE> void TC_UniqueArray <TYPE>::checkOrdered (LOCATION_ARGS) const {
-    for (int32_t i=1 ; i<count () ; i++) {
-      const int32_t r = mArray [i - 1].compare (mArray [i]) ;
-      macroAssertThere (r < 0, "Ordered Array Error for index %lld", i, 0) ;
-    }
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Add object in array, maintaining array sorted
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE> void TC_UniqueArray <TYPE>::appendUniqueObjectInOrderedArray (const TYPE & inKey) {
-//--- Search
-  bool found = false ;
-  int32_t low = 0 ;
-  int32_t high = mCount - 1 ;
-  int32_t idx = 0 ;
-  int32_t r = 0 ;
-  while ((low <= high) && ! found) {
-    idx = (low + high) / 2 ;
-    r = mArray [idx].compare (inKey) ;
-    if (r < 0) {
-      low = idx + 1 ;
-    }else if (r > 0) {
-      high = idx - 1 ;
-    }else{
-      found = true ;
-    }
-  }
-//--- Insert in not found
-  if (! found) {
-    setCapacity (mCount + 1) ;
-    idx += r < 0 ;
-    for (int32_t i=mCount ; i>idx ; i--) {
-      mArray [i] = mArray [i - 1] ;
-    }
-    mArray [idx] = inKey ;
-    mCount ++ ;
-  }
-//--- Check array is ordered
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    checkOrdered (HERE) ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   indexOfObjectInOrderedArray
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE> int32_t TC_UniqueArray <TYPE>::indexOfObjectInOrderedArray (const TYPE & inValue) const {
-//--- Search
-  bool found = false ;
-  int32_t low = 0 ;
-  int32_t high = mCount - 1 ;
-  int32_t idx = 0 ;
-  int32_t r = 0 ;
-  while ((low <= high) && ! found) {
-    idx = (low + high) / 2 ;
-    r = mArray [idx].compare (inValue) ;
-    if (r < 0) {
-      low = idx + 1 ;
-    }else if (r > 0) {
-      high = idx - 1 ;
-    }else{
-      found = true ;
-    }
-  }
-  return found ? idx : -1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   intersectionOfOrderedArraies
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE>
-void TC_UniqueArray <TYPE>::intersectionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
-                                                          TC_UniqueArray<TYPE> & outResult) const {
-  outResult.removeAllKeepingCapacity () ;
-  int32_t leftIdx = 0 ;
-  int32_t rightIdx = 0 ;
-  while ((leftIdx < count ()) && (rightIdx < inOperand.count ())) {
-    const int32_t r = (*this) (leftIdx COMMA_HERE).compare (inOperand (rightIdx COMMA_HERE)) ;
-    if (r < 0) {
-      leftIdx ++ ;
-    }else if (r > 0) {
-      rightIdx ++ ;
-    }else{
-      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
-      leftIdx ++ ;
-      rightIdx ++ ;
-    }
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    outResult.checkOrdered (HERE) ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   unionOfOrderedArraies
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE>
-void TC_UniqueArray <TYPE>::unionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
-                                                   TC_UniqueArray<TYPE> & outResult) const {
-  outResult.removeAllKeepingCapacity () ;
-  int32_t leftIdx = 0 ;
-  int32_t rightIdx = 0 ;
-  while ((leftIdx < count ()) && (rightIdx < inOperand.count ())) {
-    const int32_t r = (*this) (leftIdx COMMA_HERE).compare (inOperand (rightIdx COMMA_HERE)) ;
-    if (r < 0) {
-      outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
-      leftIdx ++ ;
-    }else if (r > 0) {
-      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
-      rightIdx ++ ;
-    }else{
-      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
-      leftIdx ++ ;
-      rightIdx ++ ;
-    }
-  }
-  while (leftIdx < count ()) {
-    outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
-    leftIdx ++ ;
-  }
-  while (rightIdx < inOperand.count ()) {
-    outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
-    rightIdx ++ ;
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    outResult.checkOrdered (HERE) ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   substractOfOrderedArraies
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE>
-void TC_UniqueArray <TYPE>::substractOfOrderedArraies (const TC_UniqueArray<TYPE> & inSubstractedSet,
-                                                       TC_UniqueArray<TYPE> & outResult) const {
-  outResult.removeAllKeepingCapacity () ;
-  int32_t leftIdx = 0 ;
-  int32_t rightIdx = 0 ;
-  while ((leftIdx < count ()) && (rightIdx < inSubstractedSet.count ())) {
-    const int32_t r = (*this) (leftIdx COMMA_HERE).compare (inSubstractedSet (rightIdx COMMA_HERE)) ;
-    if (r < 0) {
-      outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
-      leftIdx ++ ;
-    }else if (r > 0) {
-      rightIdx ++ ;
-    }else{
-      leftIdx ++ ;
-      rightIdx ++ ;
-    }
-  }
-  while (leftIdx < count ()) {
-    outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
-    leftIdx ++ ;
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    outResult.checkOrdered (HERE) ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Remove object in ordered array (based on < and > operators)
-//
-//--------------------------------------------------------------------------------------------------
-
-template <typename TYPE> void TC_UniqueArray <TYPE>::removeObjectFromOrderedArray (const TYPE & inKey) {
-  bool found = false ;
-  int32_t low = 0 ;
-  int32_t high = mCount - 1 ;
-  while ((low <= high) && !found) {
-    const int32_t mid = (low + high) / 2 ;
-    const TYPE x = mArray [mid] ;
-    const int32_t r = x.compare (inKey) ;
-    if (r < 0) {
-      low = mid + 1 ;
-    }else if (r > 0) {
-      high = mid - 1 ;
-    }else{
-      found = true ;
-      removeObjectAtIndex (mid COMMA_HERE) ;
-    }
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    checkOrdered (HERE) ;
-  #endif
 }
 
 //--------------------------------------------------------------------------------------------------

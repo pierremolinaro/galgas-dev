@@ -42,7 +42,7 @@ template <typename TYPE> void swap (TC_UniqueArray2 <TYPE> & ioOperand1,
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_UniqueArray2 {
+template <typename TYPE> class TC_UniqueArray2 final {
   protected: TYPE * mArray ;
   protected: int32_t mCurrentRowCount ;
   protected: int32_t mCurrentColumnCount ;
@@ -52,7 +52,7 @@ template <typename TYPE> class TC_UniqueArray2 {
                            const int32_t inColumnCount) ;
 
 //--- Destructor
-  public: virtual ~TC_UniqueArray2 (void) ;
+  public: ~TC_UniqueArray2 (void) ;
 
 //--- No copy
   private: TC_UniqueArray2 (TC_UniqueArray2 <TYPE> & inSource) = delete ;
@@ -70,12 +70,12 @@ template <typename TYPE> class TC_UniqueArray2 {
 
   #ifdef DO_NOT_GENERATE_CHECKINGS
     public: inline TYPE & operator () (const int32_t inRowIndex,
-                                        const int32_t inColumnIndex) {
-      return mArray [(size_t) (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
+                                       const int32_t inColumnIndex) {
+      return mArray [size_t (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
     }
     public: inline const TYPE & operator () (const int32_t inRowIndex,
                                               const int32_t inColumnIndex) const {
-      return mArray [(size_t) (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
+      return mArray [size_t (inRowIndex * mCurrentColumnCount + inColumnIndex)] ;
     }
   #endif
 
@@ -84,7 +84,7 @@ template <typename TYPE> class TC_UniqueArray2 {
     macroAssertThere (inRowIndex < mCurrentRowCount, "indice ligne (%ld) >= nombre de lignes (%ld)", inRowIndex, mCurrentRowCount) ;
     macroAssertThere (inColumnIndex >= 0, "indice colonne (%ld) < 0", inColumnIndex, 0) ;
     macroAssertThere (inColumnIndex < mCurrentColumnCount, "indice ligne (%ld) >= nombre de colonnes (%ld)", inColumnIndex, mCurrentColumnCount) ;
-    return (size_t) (inRowIndex * mCurrentColumnCount + inColumnIndex) ;
+    return size_t (inRowIndex * mCurrentColumnCount + inColumnIndex) ;
   }
 
   public: void setObjectAtIndexes (const TYPE & inObject,
@@ -98,9 +98,7 @@ template <typename TYPE> class TC_UniqueArray2 {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //                         Implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 template <typename TYPE>
