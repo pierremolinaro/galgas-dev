@@ -1143,8 +1143,6 @@ proc updateGalgasTargets
         "AC_GALGAS_map.h",
         "AC_GALGAS_root.cpp",
         "AC_GALGAS_root.h",
-        "AC_GALGAS_sortedlist.cpp",
-        "AC_GALGAS_sortedlist.h",
         "AC_GALGAS_weak_reference.cpp",
         "AC_GALGAS_weak_reference.h",
         "acPtr_class.cpp",

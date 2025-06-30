@@ -6,12 +6,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
+class DownEnumerator_%!TYPE_IDENTIFIER% final {
+//--- Constructor
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
@@ -19,16 +21,28 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerato
 %
 //--- Current element access
   public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mElementArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
+class UpEnumerator_%!TYPE_IDENTIFIER% final {
+//--- Constructor
   public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex < mElementArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
 %
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
@@ -36,13 +50,26 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator 
 %
 //--- Current element access
   public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mElementArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_sortedlist {
-//--------------------------------- Default constructor
+class GGS_%!TYPE_IDENTIFIER% final : public SharedGenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
+//--- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
 

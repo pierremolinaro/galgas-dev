@@ -1,11 +1,11 @@
 #! /usr/bin/swift
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 import Foundation
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // Product Kind
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 enum ProductKind {
   case release
@@ -19,13 +19,13 @@ enum ProductKind {
   }
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 let BUILD_KIND = ProductKind.release
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // Infos de version
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 let NOTES : [String] = [
 ]
@@ -39,9 +39,9 @@ let NEWS : [String] = [
   "Ajout de @string SHA256"
 ]
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 let BLACK   = "\u{001B}[0;30m"
 let RED     = "\u{001B}[0;31m"
@@ -58,9 +58,9 @@ let BOLD_BLUE = BOLD + BLUE
 let BOLD_GREEN = BOLD + GREEN
 let BOLD_RED = BOLD + RED
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //   runCommand
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 func runCommand (_ cmd : String, _ args : [String]) {
   var str = "+ " + cmd
@@ -77,9 +77,9 @@ func runCommand (_ cmd : String, _ args : [String]) {
   }
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //   runHiddenCommand
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 func runHiddenCommand (_ cmd : String, _ args : [String]) -> String {
   var str = "+ " + cmd
@@ -113,9 +113,9 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> String {
   return String (data: data, encoding: .ascii)!
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //   dictionaryFromJsonFile
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 struct VersionDescriptor : Codable {
   var bugfixes = [String] ()
@@ -128,9 +128,9 @@ struct VersionDescriptor : Codable {
   var date = ""
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //   remplacerAnneeEtVersionGALGAS
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, file filePath : String) {
   let url = URL (fileURLWithPath: filePath)
@@ -141,7 +141,7 @@ func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, fil
   try! data.write (to: url)
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, directory inPath : String) {
   let directoryEnumerator = fm.enumerator (atPath: inPath)
@@ -160,7 +160,7 @@ func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, dir
   }
 }
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 let débutConstruction = Date ()
 let fm = FileManager ()
@@ -170,14 +170,14 @@ print ("scriptDir \(scriptDir)")
 //-------------------- Supprimer une distribution existante
 let DISTRIBUTION_DIR_TEMPORARY = scriptDir + "/../DISTRIBUTION_GALGAS_TEMPORARY"
 while fm.fileExists (atPath: DISTRIBUTION_DIR_TEMPORARY) {
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR_TEMPORARY])
+  try fm.removeItem (atPath: DISTRIBUTION_DIR_TEMPORARY)
 }
 //-------------------- Creer le repertoire contenant la distribution
 runCommand ("/bin/mkdir", [DISTRIBUTION_DIR_TEMPORARY])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY)
 //-------------------- Importer GALGAS
-runCommand ("/bin/rm", ["-f", "archive.zip"])
-runCommand ("/bin/rm", ["-fr", "galgas-dev"])
+//runCommand ("/bin/rm", ["-f", "archive.zip"])
+//runCommand ("/bin/rm", ["-fr", "galgas-dev"])
 runCommand ("/usr/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/galgas-dev.git"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY + "/galgas-dev")
 //-------------------- Obtenir l'année
@@ -192,7 +192,7 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Renommer le répertoire de distribution
   let DISTRIBUTION_DIR = scriptDir + "/../DISTRIBUTION_GALGAS_" + VERSION_GALGAS
   while fm.fileExists (atPath: DISTRIBUTION_DIR) {
-    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR])
+    try fm.removeItem (atPath: DISTRIBUTION_DIR)
   }
   runCommand ("/bin/mv", [DISTRIBUTION_DIR_TEMPORARY, DISTRIBUTION_DIR])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
@@ -218,7 +218,7 @@ print ("ANNÉE : \(ANNÉE)")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
 //-------------------- Compiler le projet Xcode
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide")
-  runCommand ("/bin/rm", ["-fr", "build"])
+//  runCommand ("/bin/rm", ["-fr", "build"])
   runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", ["-target", "GalgasIDE", "BUILD_DIR=GALGAS_BUILD"])
   let PRODUCT_NAME : String
   switch BUILD_KIND {
@@ -247,10 +247,10 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas-ide/GALGAS_BUILD/Release/galgas-debug", ["--check-big-int"])
 //-------------------- Vérifier les programmes d'exemple
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
+  try fm.removeItem (atPath: DISTRIBUTION_DIR + "/galgas-dev/sample_code")
 //-------------------- Exécuter les tests
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
+  try fm.removeItem (atPath: DISTRIBUTION_DIR + "/galgas-dev/testsuite")
 //-------------------- Vérifier la création de projet
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Créer le répertoire recevant les outils ligne de commande
@@ -264,8 +264,7 @@ print ("ANNÉE : \(ANNÉE)")
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-unix/galgas.bz2", cliToolsDir + "/galgas.osx.bz2"])
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-unix/galgas-debug.bz2", cliToolsDir + "/galgas-debug.osx.bz2"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-unix"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
+  try fm.removeItem (atPath: "galgas-dev/build/cli-objects")
 //-------------------- Creer l'archive de l'executable windows (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
@@ -274,8 +273,8 @@ print ("ANNÉE : \(ANNÉE)")
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx/galgas.exe.bz2", cliToolsDir + "/galgas.exe.bz2"])
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx/galgas-debug.exe.bz2", cliToolsDir + "/galgas-debug.exe.bz2"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-win32-on-macosx"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
+  try fm.removeItem (atPath: "galgas-dev/makefile-win32-on-macosx")
+  try fm.removeItem (atPath: "galgas-dev/build/cli-objects")
 //-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
@@ -284,8 +283,8 @@ print ("ANNÉE : \(ANNÉE)")
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux32.zip"])
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux32.zip"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux32-on-macosx"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
+  try fm.removeItem (atPath: "galgas-dev/makefile-x86linux32-on-macosx")
+  try fm.removeItem (atPath: "galgas-dev/build/cli-objects")
 //-------------------- Creer l'archive de l'executable x86 linux 64 (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
@@ -294,8 +293,8 @@ print ("ANNÉE : \(ANNÉE)")
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux64.zip"])
   runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux64-on-macosx"])
-  runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
+  try fm.removeItem (atPath: "galgas-dev/makefile-x86linux64-on-macosx")
+  try fm.removeItem (atPath: "galgas-dev/build/cli-objects")
 //-------------------- Construire la documentation Latex
   let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
@@ -306,7 +305,7 @@ print ("ANNÉE : \(ANNÉE)")
   }
   runCommand (latexDir + "/+build.command", [])
   runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
-  runCommand ("/bin/rm", ["-fr", latexDir])
+  try fm.removeItem (atPath: latexDir)
 //-------------------- Construction package
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev")
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
@@ -365,11 +364,11 @@ print ("ANNÉE : \(ANNÉE)")
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas-dev") {
-    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev"])
+    try fm.removeItem (atPath: DISTRIBUTION_DIR + "/galgas-dev")
   }
   //---
   let duréeConstruction = Date ().timeIntervalSince (débutConstruction)
   let durée = Int (duréeConstruction)
   print ("Durée de compilation : \(durée / 60) min \(durée % 60) s")
 
-//----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------

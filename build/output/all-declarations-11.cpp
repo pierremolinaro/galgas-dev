@@ -11113,129 +11113,54 @@ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis GGS_unusedNonTerminalSymbolMapF
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@nonTerminalSymbolSortedListForGrammarAnalysis' sorted list
+//@nonTerminalSymbolSortedListForGrammarAnalysis' sorted list
 //--------------------------------------------------------------------------------------------------
 
-class cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis : public cSortedListElement {
-  public: GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element mObject ;
-
-//--- Constructors
-  public: cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
-                                                                            const GGS_uint & in_mNonTerminalIndex,
-                                                                            const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap
-                                                                            COMMA_LOCATION_ARGS) ;
-
-  public: cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inObject
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cSortedListElement * copy (void) ;
-
-//--- Virtual method for comparing elements
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-
-//--- Virtual method that comparing element for sorting
-  public: virtual ComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
-                                                                                                                                    const GGS_uint & in_mNonTerminalIndex,
-                                                                                                                                    const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap
-                                                                                                                                    COMMA_LOCATION_ARGS) :
-cSortedListElement (THERE),
-mObject (in_mNonTerminalSymbol, in_mNonTerminalIndex, in_mNonterminalSymbolParametersMap) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::
-cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inObject
-                                                                  COMMA_LOCATION_ARGS) :
-cSortedListElement (THERE),
-mObject (inObject) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cSortedListElement * cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::copy (void) {
-  cSortedListElement * result = nullptr ;
-  macroMyNew (result, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (mObject.mProperty_mNonTerminalSymbol, mObject.mProperty_mNonTerminalIndex, mObject.mProperty_mNonterminalSymbolParametersMap COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mNonTerminalSymbol" ":") ;
-  mObject.mProperty_mNonTerminalSymbol.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mNonTerminalIndex" ":") ;
-  mObject.mProperty_mNonTerminalIndex.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mNonterminalSymbolParametersMap" ":") ;
-  mObject.mProperty_mNonterminalSymbolParametersMap.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedListForGrammarAnalysis::GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) :
-AC_GALGAS_sortedlist () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inValue
-                                                                                 COMMA_LOCATION_ARGS) {
-  cSortedListElement * p = nullptr ;
-  macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inValue COMMA_THERE)) ;
-  capSortedListElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::compareForSorting (const cSortedListElement * inOperand) const {
+static ComparisonResult compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inLeft,
+                                                                                         const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * operand = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) inOperand ;
-  macroValidSharedObject (operand, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
   if (result == ComparisonResult::operandEqual) {
-    result = mObject.mProperty_mNonTerminalIndex.objectCompare (operand->mObject.mProperty_mNonTerminalIndex) ;
+    result = inLeft.mProperty_mNonTerminalIndex.objectCompare (inRight.mProperty_mNonTerminalIndex) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::class_func_emptySortedList (LOCATION_ARGS) {
-  GGS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
-  result.createNewEmptySortedList (THERE) ;
+GGS_nonTerminalSymbolSortedListForGrammarAnalysis::GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) :
+SharedGenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_nonTerminalSymbolSortedListForGrammarAnalysis::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::init (Compiler * COMMA_LOCATION_ARGS) {
+void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inValue
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  insertObject (inValue, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
-  result.createNewEmptySortedList (THERE) ;
+  result.build () ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
+  result.build () ;
   return result ;
 }
 
@@ -11246,12 +11171,8 @@ GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedLis
                                                                                                                                      const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2
                                                                                                                                      COMMA_LOCATION_ARGS) {
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis result = class_func_emptySortedList (THERE) ;
-  cSortedListElement * p = nullptr ;
-  macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-  capSortedListElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  result.appendObject (attributes) ;
+  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  result.insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
   return result ;
 }
 
@@ -11260,15 +11181,9 @@ GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedLis
 void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::addAssignOperation (const GGS_lstring & inOperand0,
                                                                             const GGS_uint & inOperand1,
                                                                             const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2
-                                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cSortedListElement * p = nullptr ;
-    macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capSortedListElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11277,15 +11192,9 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_insert (const GGS
                                                                        const GGS_uint inOperand1,
                                                                        const GGS_nonterminalSymbolLabelMapForGrammarAnalysis inOperand2,
                                                                        Compiler * /* inCompiler */
-                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cSortedListElement * p = nullptr ;
-    macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capSortedListElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11293,9 +11202,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_insert (const GGS
 void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
                                                                              Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    appendSortedList (inOperand) ;
-  }
+  appendSortedList (inOperand, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11305,18 +11212,16 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popSmallest (GGS_
                                                                             GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) attributes.ptr () ;
-  if (nullptr == p) {
+  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
+  removeFirst (removedElement, inCompiler COMMA_THERE) ;
+  if (removedElement.isValid ()) {
+    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
+    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
+    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
+  }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mProperty_mNonTerminalSymbol ;
-    outOperand1 = p->mObject.mProperty_mNonTerminalIndex ;
-    outOperand2 = p->mObject.mProperty_mNonterminalSymbolParametersMap ;
   }
 }
 
@@ -11327,18 +11232,16 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popGreatest (GGS_
                                                                             GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) attributes.ptr () ;
-  if (nullptr == p) {
+  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
+  removeLast (removedElement, inCompiler COMMA_THERE) ;
+  if (removedElement.isValid ()) {
+    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
+    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
+    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
+  }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mProperty_mNonTerminalSymbol ;
-    outOperand1 = p->mObject.mProperty_mNonTerminalIndex ;
-    outOperand2 = p->mObject.mProperty_mNonterminalSymbolParametersMap ;
   }
 }
 
@@ -11349,18 +11252,16 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_smallest (GGS_lst
                                                                          GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) attributes.ptr () ;
-  if (nullptr == p) {
+  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
+  getFirst (removedElement, inCompiler COMMA_THERE) ;
+  if (removedElement.isValid ()) {
+    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
+    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
+    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
+  }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mProperty_mNonTerminalSymbol ;
-    outOperand1 = p->mObject.mProperty_mNonTerminalIndex ;
-    outOperand2 = p->mObject.mProperty_mNonterminalSymbolParametersMap ;
   }
 }
 
@@ -11371,19 +11272,28 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_greatest (GGS_lst
                                                                          GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) attributes.ptr () ;
-  if (nullptr == p) {
+  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
+  getLast (removedElement, inCompiler COMMA_THERE) ;
+  if (removedElement.isValid ()) {
+    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
+    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
+    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
+  }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mProperty_mNonTerminalSymbol ;
-    outOperand1 = p->mObject.mProperty_mNonTerminalIndex ;
-    outOperand2 = p->mObject.mProperty_mNonterminalSymbolParametersMap ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString (" (") ;
+  ioString.appendSigned (count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count () > 1) ? "s" : "") ;
+  ioString.appendCString (")>") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11391,83 +11301,66 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_greatest (GGS_lst
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mElementArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mElementArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject ;
+  return mElementArray (mIndex COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonTerminalSymbol (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonTerminalSymbol ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonTerminalSymbol ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonTerminalIndex ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonTerminalIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonterminalSymbolLabelMapForGrammarAnalysis DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonterminalSymbolParametersMap ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonterminalSymbolParametersMap ;
 }
-
-
 
 //--------------------------------------------------------------------------------------------------
 // Up Enumerator for @nonTerminalSymbolSortedListForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mElementArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject ;
+  return mElementArray (mIndex COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonTerminalSymbol (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonTerminalSymbol ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonTerminalSymbol ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonTerminalIndex ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonTerminalIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonterminalSymbolLabelMapForGrammarAnalysis UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis::current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const {
-  const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * p = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
-  return p->mObject.mProperty_mNonterminalSymbolParametersMap ;
+  return mElementArray (mIndex COMMA_THERE).mProperty_mNonterminalSymbolParametersMap ;
 }
 
 

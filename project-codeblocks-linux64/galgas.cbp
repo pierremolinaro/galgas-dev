@@ -217,7 +217,6 @@
    <Unit filename="../libpm/galgas/cLexiqueIntrospection.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_root.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_list.cpp" />
-   <Unit filename="../libpm/galgas/AC_GALGAS_sortedlist.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_map.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_reference_class.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_value_class.cpp" />
