@@ -5041,7 +5041,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDic
 // Phase 1: @syntaxExtensionsDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericMap.h"
+#include "GGS_GenericDictionary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5096,7 +5096,7 @@ class UpEnumerator_syntaxExtensionsDictionary final {
 // Phase 1: @syntaxExtensionsDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxExtensionsDictionary final : public SharedGenericMap <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> {
+class GGS_syntaxExtensionsDictionary final : public GGS_GenericDictionary <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> {
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_syntaxExtensionsDictionary (void) = default ;

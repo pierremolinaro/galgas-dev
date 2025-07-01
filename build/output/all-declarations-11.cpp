@@ -14625,7 +14625,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
+    OptionalSharedRef <GGS_GenericDictionaryNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setMListForKey in dict: the key does not exist" ;
@@ -15095,7 +15095,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <SharedGenericMapNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
+    OptionalSharedRef <GGS_GenericDictionaryNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setTypeListForKey in dict: the key does not exist" ;

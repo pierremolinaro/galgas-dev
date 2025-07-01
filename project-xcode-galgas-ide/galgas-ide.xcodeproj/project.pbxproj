@@ -532,7 +532,7 @@
 
 /* Begin PBXFileReference section */
 		CF00A29F2E12F5D3005B4882 /* TC_UniqueArray2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray2.h; sourceTree = "<group>"; };
-		CF00BE042E116075007B987F /* SharedGenericMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericMap.h; sourceTree = "<group>"; };
+		CF00BE042E116075007B987F /* GGS_GenericDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGS_GenericDictionary.h; sourceTree = "<group>"; };
 		CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
 		CF00BE062E116075007B987F /* SharedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObject.h; sourceTree = "<group>"; };
 		CF00BE072E116075007B987F /* SharedObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedObject.cpp; sourceTree = "<group>"; };
@@ -988,6 +988,7 @@
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
 		CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_BuildLogViewRuler.swift; sourceTree = "<group>"; };
+		CFC40C932E13CFBC0082B014 /* GGS_GenericMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGS_GenericMap.h; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -1528,6 +1529,8 @@
 				CF305F2A2D0D8A2E000A5F79 /* GALGAS_uint64.cpp */,
 				CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */,
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
+				CF00BE042E116075007B987F /* GGS_GenericDictionary.h */,
+				CFC40C932E13CFBC0082B014 /* GGS_GenericMap.h */,
 				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
 				CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */,
 				CF305F052D0D8A2E000A5F79 /* IssueDescriptor.h */,
@@ -1542,7 +1545,6 @@
 				CF305F342D0D8A2E000A5F79 /* ProductionNameDescriptor.h */,
 				CF305F352D0D8A2E000A5F79 /* scanner_actions.h */,
 				CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */,
-				CF00BE042E116075007B987F /* SharedGenericMap.h */,
 				CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */,
 				CF6B7E302E119DB60056916E /* SharedGenericSortedList.h */,
 				CF00BE062E116075007B987F /* SharedObject.h */,

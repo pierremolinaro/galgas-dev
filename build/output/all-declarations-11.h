@@ -11866,7 +11866,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 // Phase 1: @genericExtensionMethodListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericMap.h"
+#include "GGS_GenericDictionary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11921,7 +11921,7 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
 // Phase 1: @genericExtensionMethodListMapDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_genericExtensionMethodListMapDictionary final : public SharedGenericMap <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element> {
+class GGS_genericExtensionMethodListMapDictionary final : public GGS_GenericDictionary <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element> {
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_genericExtensionMethodListMapDictionary (void) = default ;
@@ -12295,7 +12295,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 // Phase 1: @descendantClassListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericMap.h"
+#include "GGS_GenericDictionary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12350,7 +12350,7 @@ class UpEnumerator_descendantClassListMapDictionary final {
 // Phase 1: @descendantClassListMapDictionary dict
 //--------------------------------------------------------------------------------------------------
 
-class GGS_descendantClassListMapDictionary final : public SharedGenericMap <GGS_string, GGS_descendantClassListMapDictionary_2E_element> {
+class GGS_descendantClassListMapDictionary final : public GGS_GenericDictionary <GGS_string, GGS_descendantClassListMapDictionary_2E_element> {
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_descendantClassListMapDictionary (void) = default ;
