@@ -91,7 +91,7 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
                                 CompareFunction <ELEMENT> inSortFunction) {
     if (isValid () && inElement.isValid ()) {
       mSharedArray.appendObject (inElement) ;
-      mSharedArray.sortArrayUsingFunction (inSortFunction) ;
+      mSharedArray.quickSortUsingFunction (inSortFunction) ;
     }
   }
 
@@ -103,7 +103,7 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
       for (int32_t i=0 ; i<inSortedList.count () ; i++) {
         mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
       }
-      mSharedArray.sortArrayUsingFunction (inSortFunction) ;
+      mSharedArray.quickSortUsingFunction (inSortFunction) ;
     }
   }
 

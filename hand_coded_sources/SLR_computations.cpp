@@ -167,7 +167,7 @@ add_LR0_item (const int32_t inProductionRuleIndex,
 //--- If not found, add it
   if (! found) {
     mItemsSet.appendObject (item) ;
-    mItemsSet.sortArrayUsingFunction (c_LR0_item::compare_LR0_items) ;
+    mItemsSet.quickSortUsingFunction (c_LR0_item::compare_LR0_items) ;
   }
   return ! found ;
 }

@@ -167,11 +167,11 @@ template <typename ELEMENT> class TC_Array final {
 
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+  public: void quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
 
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+  public: void reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
 
 //--- Shared Array
   private: InternalSharedArray <ELEMENT> * mSharedArray ;
@@ -322,9 +322,9 @@ void TC_Array <ELEMENT>::appendObjects (const int32_t inCount,
 
 template <typename ELEMENT>
 void TC_Array <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
-                                            const ELEMENT & inValue,
-                                            const int32_t inStartingIndex
-                                            COMMA_LOCATION_ARGS) { // inValue is copied
+                                               const ELEMENT & inValue, // inValue is copied
+                                               const int32_t inStartingIndex
+                                               COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
       macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
@@ -537,27 +537,25 @@ void TC_Array <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void TC_Array <ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   insulate () ;
   if (mSharedArray != nullptr) {
-    mSharedArray->mUniqueArray.sortArrayUsingFunction (inCompareFunction) ;
+    mSharedArray->mUniqueArray.quickSortUsingFunction (inCompareFunction) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void TC_Array <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   insulate () ;
   if (mSharedArray != nullptr) {
-    mSharedArray->mUniqueArray.reverseSortArrayUsingFunction (inCompareFunction) ;
+    mSharedArray->mUniqueArray.reverseQuickSortUsingFunction (inCompareFunction) ;
   }
 }
 

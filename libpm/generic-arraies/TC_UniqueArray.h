@@ -188,11 +188,11 @@ template <typename ELEMENT> class TC_UniqueArray final {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
   //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+  public: void quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
 
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public: void reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
+  public: void reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
 
 //--- Element access (with index checking)
   public: ELEMENT lastObject (LOCATION_ARGS) const ;
@@ -926,7 +926,7 @@ void TC_UniqueArray<ELEMENT>::internalSortArrayUsingFunction (const int32_t inFi
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::sortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void TC_UniqueArray<ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   if (inCompareFunction != nullptr) {
     internalSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
@@ -964,7 +964,7 @@ void TC_UniqueArray <ELEMENT>::internalReverseSortArrayUsingFunction (const int3
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::reverseSortArrayUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void TC_UniqueArray <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   if (inCompareFunction != nullptr) {
     internalReverseSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
