@@ -11128,7 +11128,7 @@ static int32_t compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis (
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis::GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) :
-SharedGenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () {
+GGS_GenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------

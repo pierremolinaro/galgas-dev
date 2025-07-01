@@ -6307,7 +6307,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 // Phase 1: @tokenSortedlist sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericSortedList.h"
+#include "GGS_GenericSortedList.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6367,7 +6367,7 @@ class UpEnumerator_tokenSortedlist final {
 // Phase 1: @tokenSortedlist sorted list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_tokenSortedlist final : public SharedGenericSortedList <GGS_tokenSortedlist_2E_element> {
+class GGS_tokenSortedlist final : public GGS_GenericSortedList <GGS_tokenSortedlist_2E_element> {
 //--- Default constructor
   public: GGS_tokenSortedlist (void) ;
 

@@ -2,7 +2,104 @@
 // Phase 1: @stringset
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedStringMap.h"
+//--------------------------------------------------------------------------------------------------
+//  SharedStringMapNode
+//--------------------------------------------------------------------------------------------------
+
+class SharedStringMapNode final : public SharedObject {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: OptionalSharedRef <SharedStringMapNode> mInfPtr ;
+  private: OptionalSharedRef <SharedStringMapNode> mSupPtr ;
+  private: int32_t mBalance ;
+  public: const String mKey ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: SharedStringMapNode (const String & inKey
+                               COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: virtual ~SharedStringMapNode (void) = default ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: SharedStringMapNode (const OptionalSharedRef <SharedStringMapNode> & inNodePtr
+                               COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // No copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: SharedStringMapNode (const SharedStringMapNode &) = delete ;
+  private: SharedStringMapNode & operator = (const SharedStringMapNode &) = delete ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private: static void populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
+                                            TC_Array <String> & ioStringArray) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  friend class SharedStringMapRoot ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//  SharedStringMap
+//--------------------------------------------------------------------------------------------------
+
+class SharedStringMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class SharedStringMap final {
+//--------------------------------- Private data members
+  private: OptionalSharedRef <SharedStringMapRoot> mSharedRoot ;
+
+//--------------------------------- Build
+  public: static SharedStringMap build (LOCATION_ARGS) ;
+
+//--------------------------------- Accessors
+  public: inline bool isValid (void) const { return mSharedRoot.isNotNil () ; }
+
+//--------------------------------- Drop
+  public: void drop (void) ;
+
+//--------------------------------- Default constructor
+  public: SharedStringMap () ;
+
+//--------------------------------- Destructor
+  public: ~ SharedStringMap (void) ;
+
+//--------------------------------- Insulate
+  private: void insulate (LOCATION_ARGS) ;
+
+//--------------------------------- Handle copy
+  public: SharedStringMap (const SharedStringMap & inSource) ;
+  public: SharedStringMap & operator = (const SharedStringMap & inSource) ;
+
+//--------------------------------- Insert
+  public: void insert (OptionalSharedRef <SharedStringMapNode> & ioObject
+                       COMMA_LOCATION_ARGS) ;
+
+  public: void removeAndReturnRemovedNode (const String & inKey,
+                           OptionalSharedRef <SharedStringMapNode> & outRemovedNode
+                           COMMA_LOCATION_ARGS) ;
+
+  public: bool hasKey (const String & inKey) const ;
+
+  public: int32_t count (void) const ;
+
+  public: String rootNodeKey (void) const ;
+
+  public: TC_Array <String> sortedKeyArray (void) const ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -65,6 +162,6 @@ class GGS_stringset : public AC_GALGAS_root {
   public: GGS_stringset (void) ;
 
 //--------------------------------- Virtual constructor
-  public: virtual ~ GGS_stringset (void) ;
+  public: virtual ~ GGS_stringset (void) = default ;
 
 

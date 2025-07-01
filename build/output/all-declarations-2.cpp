@@ -8130,7 +8130,7 @@ static int32_t compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_e
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist::GGS_tokenSortedlist (void) :
-SharedGenericSortedList <GGS_tokenSortedlist_2E_element> () {
+GGS_GenericSortedList <GGS_tokenSortedlist_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------

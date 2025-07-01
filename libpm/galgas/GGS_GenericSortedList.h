@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  SharedGenericSortedList.h
+//  GGS_GenericSortedList.h
 //  galgas-ide
 //
 //  Created by Pierre Molinaro on 29/06/2025, ..., 2025 Pierre Molinaro.
@@ -24,62 +24,59 @@
 #include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
-//  SharedGenericSortedList
+//  GGS_GenericSortedList
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_root {
+template <typename ELEMENT> class GGS_GenericSortedList : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: TC_Array <ELEMENT> mSharedArray ;
-  private: bool mIsValid ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericSortedList () :
-  mSharedArray (),
-  mIsValid (false) {
+  public: GGS_GenericSortedList () :
+  mSharedArray () {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ SharedGenericSortedList (void) = default ;
+  public: virtual ~ GGS_GenericSortedList (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Handle copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericSortedList (const SharedGenericSortedList & inSource) :
-  mSharedArray (inSource.mSharedArray),
-  mIsValid (inSource.mIsValid) {
+  public: GGS_GenericSortedList (const GGS_GenericSortedList & inSource) :
+  mSharedArray (inSource.mSharedArray) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericSortedList & operator = (const SharedGenericSortedList & inSource) {
+  public: GGS_GenericSortedList & operator = (const GGS_GenericSortedList & inSource) {
     mSharedArray = inSource.mSharedArray ;
-    mIsValid = inSource.mIsValid ;
-    return * this ;
+    return *this ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: inline bool isValid (void) const override { return mIsValid ; }
+  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: inline virtual void drop (void) override {
     mSharedArray.removeAll () ;
-    mIsValid = false ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  protected: inline void build (void) { mIsValid = true ; }
+  protected: inline void build (void) {
+    mSharedArray.setCapacity (16) ;
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -97,7 +94,7 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  protected: void appendSortedList (const SharedGenericSortedList <ELEMENT> & inSortedList,
+  protected: void appendSortedList (const GGS_GenericSortedList <ELEMENT> & inSortedList,
                                     CompareFunction <ELEMENT> inSortFunction) {
     if (isValid () && inSortedList.isValid ()) {
       for (int32_t i=0 ; i<inSortedList.count () ; i++) {
@@ -189,7 +186,7 @@ template <typename ELEMENT> class SharedGenericSortedList : public AC_GALGAS_roo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public : ComparisonResult objectCompare (const SharedGenericSortedList & inOperand) const {
+  public : ComparisonResult objectCompare (const GGS_GenericSortedList & inOperand) const {
     ComparisonResult result = ComparisonResult::invalid ;
     if (isValid () && inOperand.isValid ()) {
       if (count () < inOperand.count ()) {

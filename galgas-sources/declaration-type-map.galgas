@@ -812,6 +812,7 @@ override method @mapTypeForGeneration appendDeclaration1
     !self.mSearchMethodList
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
+    ![self.mElementTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
@@ -888,6 +889,7 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
+    ?@string ELEMENT_TYPE_IDENTIFIER
 
   template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
     ?@string TYPE_NAME

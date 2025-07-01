@@ -22,7 +22,7 @@ static int32_t compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYP
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-SharedGenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () {
+GGS_GenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () {
 }
 
 //--------------------------------------------------------------------------------------------------

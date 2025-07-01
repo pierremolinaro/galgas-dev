@@ -2,7 +2,7 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericSortedList.h"
+#include "GGS_GenericSortedList.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% final : public SharedGenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
+class GGS_%!TYPE_IDENTIFIER% final : public GGS_GenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
 //--- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 

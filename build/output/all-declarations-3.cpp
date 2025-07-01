@@ -1834,7 +1834,7 @@ static int32_t compareForSorting_commandLineOptionSortedList (const GGS_commandL
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionSortedList::GGS_commandLineOptionSortedList (void) :
-SharedGenericSortedList <GGS_commandLineOptionSortedList_2E_element> () {
+GGS_GenericSortedList <GGS_commandLineOptionSortedList_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------

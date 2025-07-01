@@ -9629,7 +9629,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSy
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericSortedList.h"
+#include "GGS_GenericSortedList.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9689,7 +9689,7 @@ class UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final {
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public SharedGenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> {
+class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public GGS_GenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> {
 //--- Default constructor
   public: GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) ;
 

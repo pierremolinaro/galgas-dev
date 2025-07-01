@@ -1227,10 +1227,8 @@ proc updateGalgasTargets
         "EnumerationOrder.h",
         "GGS_GenericDictionary.h",
         "GGS_GenericMap.h",
-        "SharedStringMap.h",
+        "GGS_GenericSortedList.h",
         "SharedGenericPtrWithValueSemantics.h",
-        "SharedGenericSortedList.h",
-        "SharedStringMap.cpp",
         "SharedObject.cpp",
         "SharedObject.h"
       ]
