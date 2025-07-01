@@ -97,12 +97,12 @@ proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList {
   for (mNonterminalName mLabels) in inNonterminalDeclarationList do
-    with mNonterminalName.string in ioNonTerminalMapForGrammarAnalysis  do
+    if let entry = ioNonTerminalMapForGrammarAnalysis @[mNonterminalName.string] then
       checkLabelMap (
         !mNonterminalName.location
         !mLabels
         ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string]
-        !mNonterminalSymbolParametersMap
+        !entry.mNonterminalSymbolParametersMap
       )
     else
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
@@ -127,12 +127,12 @@ proc handleNonTerminalDeclarationsFromRuleList
         !mFormalArguments
         !mEndOfArgumentLocation
     end
-    with mNonterminalName.string in ioNonTerminalMapForGrammarAnalysis  do
+    if let entry = ioNonTerminalMapForGrammarAnalysis @[mNonterminalName.string] then
       checkLabelMap (
         !mNonterminalName.location
         !nonTerminalLabelListAST
         ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string]
-        !mNonterminalSymbolParametersMap
+        !entry.mNonterminalSymbolParametersMap
       )
     else
       [!?ioNonTerminalMapForGrammarAnalysis insertKey

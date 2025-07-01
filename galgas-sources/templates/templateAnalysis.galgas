@@ -132,14 +132,14 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         kind = @methodKind. definedAsMember
         for (mPropertyTypeEntry mPropertyName 3*) in [receiverType definition].currentTypedPropertyList do
           let @getterMap aMap = [mPropertyTypeEntry definition].getterMap
-          with self.mGetterName.string in aMap  do
+          if let entry = aMap @[self.mGetterName.string] then
             matchingReaderCount += 1
-            getterFormalArgumentTypeList = mArgumentTypeList
-            hasCompilerArgument = mHasCompilerArgument
-            returnedType = mReturnedType
-            kind = mKind
-            if mGetterNameThatObsoletesInvokationName != "" then
-              actualGetterName = mGetterNameThatObsoletesInvokationName
+            getterFormalArgumentTypeList = entry.mArgumentTypeList
+            hasCompilerArgument = entry.mHasCompilerArgument
+            returnedType = entry.mReturnedType
+            kind = entry.mKind
+            if entry.mGetterNameThatObsoletesInvokationName != "" then
+              actualGetterName = entry.mGetterNameThatObsoletesInvokationName
             end
             fieldList += !mPropertyName.string
           end
@@ -229,10 +229,14 @@ override method @templateClassFunctionAST templateExpressionAnalysis
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
   let @functionSignature classFuncFormalArgumentTypeList
-  with self.mClassFunctionName.string in classFunctionMap  do
-    classFuncFormalArgumentTypeList = mArgumentTypeList
-    hasCompilerArgument = mHasCompilerArgument
-    returnedType = mReturnedType
+  if let entry = classFunctionMap @[!self.mClassFunctionName.string] then
+    classFuncFormalArgumentTypeList = entry.mArgumentTypeList
+    hasCompilerArgument = entry.mHasCompilerArgument
+    returnedType = entry.mReturnedType
+//  with self.mClassFunctionName.string in classFunctionMap  do
+//    classFuncFormalArgumentTypeList = mArgumentTypeList
+//    hasCompilerArgument = mHasCompilerArgument
+//    returnedType = mReturnedType
   else
     if [classFunctionMap count] == 0 then
       error self.mClassFunctionName

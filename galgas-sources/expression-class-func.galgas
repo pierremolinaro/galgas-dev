@@ -227,10 +227,10 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     end
   //--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
-    with inConstructorName.string in classFunctionMap  do
-      constructorFormalArgumentTypeList = mArgumentTypeList
-      outHasCompilerArgument = mHasCompilerArgument
-      outReturnedType = mReturnedType
+    if let entry = classFunctionMap @[inConstructorName.string] then
+      constructorFormalArgumentTypeList = entry.mArgumentTypeList
+      outHasCompilerArgument = entry.mHasCompilerArgument
+      outReturnedType = entry.mReturnedType
     else
       if [classFunctionMap count] == 0 then
         error inConstructorName

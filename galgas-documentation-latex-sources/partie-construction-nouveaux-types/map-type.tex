@@ -240,24 +240,62 @@ Par exemple~:
 \end{galgas3}
 
 
-%\subsection{Attribut \texttt{\%location}}
-%
-%À partir de la version 3.2.13, la déclaration d'une méthode de recherche peut comporter l'attribut \ggst=%location=, placée juste après le nom de la méthode~:
-%
-%\begin{galgas3}
-%search nom %location error message "message_erreur"
-%\end{galgas3}
-%
-%La conséquence est que l'appel a la méthode de recherche doit comporter un argument effectif supplémentaire, de type \ggst=@location=, qui recevra l'information de localisation de la clé recherchée~:
-%
-%\begin{galgas3}
-%@MaTable uneTable = {}
-%...
-%@lstring clef = ...
-%[uneTable searchKey !clef ?@string s ?@uint v ?@location key]
-%\end{galgas3}
-%
-%La valeur retournée est la même que celle renvoyée par le getter \ggst=locationForKey= (\refSubsectionPage{getterLocationForKey}). Si la clé recherchée n'existe pas, une valeur poison est retournée.
+
+
+
+
+
+
+
+\sectionLabel{Recherche optionnelle}{rechercheOptionnelleTable}
+
+L'instruction \ggst!with! a été supprimée. À la place on utilise l'expression de recherche optionnelle. Pour une instance de table nommée \ggst!uneTable! de type \ggst!@MaTable! , elle s'écrit :
+
+\begin{galgas3}
+let @string clé = ...
+let @MaTable.@element? entry = uneTable @[clé]
+\end{galgas3}
+
+\begin{galgas4}
+let @string clé = ...
+let @MaTable.@element? entry = uneTable [clé]
+\end{galgas4}
+
+On remarquera que la clé est une \ggsq!@string! et non pas une \ggsq!@lstring!. La valeur renvoyée est une valeur optionnelle, qui vaut \ggsq!nil! si la clé n'existe pas.
+
+Pour remplacer l'instruction \ggsq!with! qui a été supprimée :
+
+\begin{galgas3}
+let @uint terminalSymbolIndex
+with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
+  terminalSymbolIndex = mTerminalIndex // Accès direct à l'entrée
+else // L'entrée n'existe pas
+  terminalSymbolIndex = ...
+end
+\end{galgas3}
+
+On écrit :
+
+\begin{galgas3}
+let @uint terminalSymbolIndex
+if let entry = ioActuallyUsedTerminalSymbolMap @[self.mTerminalName.string] then
+  terminalSymbolIndex = entry.mTerminalIndex // Accès direct à l'entrée
+else // L'entrée n'existe pas
+  terminalSymbolIndex = ...
+end
+\end{galgas3}
+
+
+\begin{galgas4}
+let @uint terminalSymbolIndex
+if let entry = ioActuallyUsedTerminalSymbolMap [self.mTerminalName.string] then
+  terminalSymbolIndex = entry.mTerminalIndex // Accès direct à l'entrée
+else // L'entrée n'existe pas
+  terminalSymbolIndex = ...
+end
+\end{galgas4}
+
+
 
 
 

@@ -168,20 +168,20 @@ class @getterCallExpressionAST : @semanticExpressionAST {
         for (propertyTypeEntry propertyName 3*) in [receiverType definition].currentTypedPropertyList do
           let propertyType = [ioTypeMap typeMapEntryForLKey !@{![propertyTypeEntry definition].typeName.string !.here}]
           let aMap = [propertyType definition].getterMap
-          with self.mGetterName.string in aMap do
+          if let entry = aMap @[self.mGetterName.string] then
             if [propertyType definition].typeName.string == propertyName.string then
               matchingReaderCount += 1
-              getterFormalArgumentTypeList = mArgumentTypeList
-              hasCompilerArgument = mHasCompilerArgument
-              returnedType = mReturnedType
+              getterFormalArgumentTypeList = entry.mArgumentTypeList
+              hasCompilerArgument = entry.mHasCompilerArgument
+              returnedType = entry.mReturnedType
               receiverExpression = @propertyAccessExpressionForGeneration {
                 !returnedType
                 !self.mGetterName.location
                 !receiverExpression
                 !propertyName.string
               }
-              kind = mKind
-              obsoletedByGetter = mGetterNameThatObsoletesInvokationName
+              kind = entry.mKind
+              obsoletedByGetter = entry.mGetterNameThatObsoletesInvokationName
             end
           end
         end

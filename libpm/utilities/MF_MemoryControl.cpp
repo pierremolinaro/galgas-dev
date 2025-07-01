@@ -197,7 +197,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  static const uint32_t ROOT_TABLE_SIZE = 33554467 ;
+  static const uint32_t ROOT_TABLE_SIZE = 100'000'007 ; // 33'554'467  1'000'000'007
   static cPointerDescriptor * gPointerDescriptorTreeRoot [ROOT_TABLE_SIZE] ; // Initialized to array of nullptr
   static int32_t gCreatedPointersCount = 0 ;
   static int32_t gPointersCurrentCount = 0 ;

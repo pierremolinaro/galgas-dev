@@ -153,8 +153,8 @@ class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
     let @uint terminalSymbolIndex
-    with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
-      terminalSymbolIndex = mTerminalIndex
+    if let entry = ioActuallyUsedTerminalSymbolMap @[self.mTerminalName.string] then
+      terminalSymbolIndex = entry.mTerminalIndex
     else
       terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
       [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]

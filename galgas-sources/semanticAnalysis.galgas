@@ -976,8 +976,8 @@ proc enterNonterminalNonTerminalInMapAndCheck
   ?let @lstring inNonTerminalName
   ?let @nonterminalLabelMap inNonterminalLabelMap
   ?!@nonterminalMap ioNonterminalDeclarationMap {
-  with inNonTerminalName.string in ioNonterminalDeclarationMap  do
-    let @stringset firstDeclarationLabelSet = [mLabelMap keySet]
+  if let entry = ioNonterminalDeclarationMap @[inNonTerminalName.string] then
+    let @stringset firstDeclarationLabelSet = [entry.mLabelMap keySet]
     let @stringset reDeclarationLabelSet = [inNonterminalLabelMap keySet]
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
     if [missingLabelSet count] > 0 then
@@ -998,7 +998,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
     end
     if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
-      for aLabel in mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
+      for aLabel in entry.mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
         var @formalParameterSignature newSignature = @()
         for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in new_mSignature do
           newSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName

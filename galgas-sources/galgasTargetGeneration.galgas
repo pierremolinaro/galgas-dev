@@ -316,33 +316,33 @@ proc updateGalgasTargets
   end
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
-  with "macCodeSign" in inProjectQualifiedFeatureMap  do
-    if mFeatureValue.string == "" then
-      error mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
+  if let entry = inProjectQualifiedFeatureMap @["macCodeSign"] then
+    if entry.mFeatureValue.string == "" then
+      error entry.mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
     else
-      macCodeSign = mFeatureValue
+      macCodeSign = entry.mFeatureValue
     end
   else
     macCodeSign = ["" nowhere]
   end
 //---------------------------------------------------------- MacOSDeployment
   let @string MACOSX_DEPLOYMENT_TARGET
-  with "MacOSDeployment" in inProjectQualifiedFeatureMap  do
-    if mFeatureValue.string == "" then
-      error mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
+  if let entry = inProjectQualifiedFeatureMap @["MacOSDeployment"] then
+    if entry.mFeatureValue.string == "" then
+      error entry.mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
     else
-      MACOSX_DEPLOYMENT_TARGET = mFeatureValue
+      MACOSX_DEPLOYMENT_TARGET = entry.mFeatureValue
     end
   else
     MACOSX_DEPLOYMENT_TARGET = ["10.15" nowhere]
   end
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
-  with "libpmAtPath" in inProjectQualifiedFeatureMap  do
-    if mFeatureValue.string == "" then
-      error mFeatureValue:"the libpm path should not be empty" : libpmPath
+  if let entry = inProjectQualifiedFeatureMap @["libpmAtPath"] then
+    if entry.mFeatureValue.string == "" then
+      error entry.mFeatureValue:"the libpm path should not be empty" : libpmPath
     else
-      libpmPath = mFeatureValue.string
+      libpmPath = entry.mFeatureValue.string
     end
   else
     updateLIBPMatPath (!inAbsoluteBuildDirectory + "/libpm" )
@@ -486,10 +486,10 @@ proc updateGalgasTargets
     [dir makeDirectory]
   //--- Info.plist
     let @string applicationBundleBase
-    with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
-      applicationBundleBase = mFeatureValue.string
+    if let entry = inProjectQualifiedFeatureMap @["applicationBundleBase"] then
+      applicationBundleBase = entry.mFeatureValue.string
     else
-      applicationBundleBase = "fr.irccyn"
+      applicationBundleBase = "unknown.unknown"
     end
     let InfoPlistContents = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
       !inTargetName

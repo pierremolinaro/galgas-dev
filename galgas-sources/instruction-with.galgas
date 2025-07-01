@@ -83,6 +83,7 @@ syntax extension galgas3InstructionsSyntax {
                                 ?let @location inEndOfKeyExpression
                                 ?let @lstring inWithPrefix
                                 !@semanticInstructionAST outInstruction {
+    warning .here : "deprecated 'with' read instruction"
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
@@ -234,6 +235,7 @@ syntax extension galgas4InstructionsSyntax {
                                 ?let @location inEndOfKeyExpression
                                 ?let @lstring inWithPrefix
                                 !@semanticInstructionAST outInstruction {
+    warning .here : "deprecated 'with' read instruction"
     <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling

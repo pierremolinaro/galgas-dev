@@ -181,21 +181,22 @@ proc checkExpressionIsBoolean
       : outExpression
     end
   else
-    with "bool" in [expressionType definition].getterMap do
-      if mReturnedType != boolType then
-        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
-      elsif [mArgumentTypeList count] > 0 then
+    if let entry = [expressionType definition].getterMap @["bool"] then
+      if entry.mReturnedType != boolType then
+        error inErrorLocation
+        : "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
+      elsif [entry.mArgumentTypeList count] > 0 then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" : outExpression
       else
         outExpression = @getterCallExpressionForGeneration {
           !boolType
           !inErrorLocation
-          !mKind
+          !entry.mKind
           !inExpression
           !@()
           !"bool"
           !@()
-          !mHasCompilerArgument
+          !entry.mHasCompilerArgument
         }
       end
     else
