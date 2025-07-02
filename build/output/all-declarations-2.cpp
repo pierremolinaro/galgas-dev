@@ -6091,8 +6091,8 @@ GGS_terminalMap GGS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
 
 GGS_terminalMap_2E_element_3F_ GGS_terminalMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_terminalMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchForKey (inKey) ;
@@ -6163,7 +6163,26 @@ void GGS_terminalMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_mSentAttributeList ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_terminalMap_2E_element GGS_terminalMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_terminalMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) performSearch (inKey,
+                                                                                         inCompiler,
+                                                                                         kSearchErrorMessage_terminalMap_searchKey
+                                                                                         COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mSentAttributeList = p->mProperty_mSentAttributeList ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSentValueList GGS_terminalMap::getter_mSentAttributeListForKey (const GGS_string & inKey,
@@ -6202,6 +6221,7 @@ cMapElement_terminalMap * GGS_terminalMap::readWriteAccessForWithInstruction (Co
   macroNullOrValidSharedObject (result, cMapElement_terminalMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @terminalMap
@@ -6389,8 +6409,8 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS) {
 
 GGS_lexicalTypeMap_2E_element_3F_ GGS_lexicalTypeMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTypeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchForKey (inKey) ;
@@ -6461,7 +6481,26 @@ void GGS_lexicalTypeMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_mLexicalType ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalTypeMap_2E_element GGS_lexicalTypeMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalTypeMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) performSearch (inKey,
+                                                                                               inCompiler,
+                                                                                               kSearchErrorMessage_lexicalTypeMap_searchKey
+                                                                                               COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum GGS_lexicalTypeMap::getter_mLexicalTypeForKey (const GGS_string & inKey,
@@ -6500,6 +6539,7 @@ cMapElement_lexicalTypeMap * GGS_lexicalTypeMap::readWriteAccessForWithInstructi
   macroNullOrValidSharedObject (result, cMapElement_lexicalTypeMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTypeMap
@@ -6687,8 +6727,8 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::class_func_emptyMap (LOCATION_A
 
 GGS_lexicalAttributeMap_2E_element_3F_ GGS_lexicalAttributeMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalAttributeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchForKey (inKey) ;
@@ -6759,7 +6799,26 @@ void GGS_lexicalAttributeMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_mLexicalType ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalAttributeMap_2E_element GGS_lexicalAttributeMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalAttributeMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) performSearch (inKey,
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_lexicalAttributeMap_searchKey
+                                                                                                         COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum GGS_lexicalAttributeMap::getter_mLexicalTypeForKey (const GGS_string & inKey,
@@ -6798,6 +6857,7 @@ cMapElement_lexicalAttributeMap * GGS_lexicalAttributeMap::readWriteAccessForWit
   macroNullOrValidSharedObject (result, cMapElement_lexicalAttributeMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalAttributeMap
@@ -7792,8 +7852,8 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::class_func_empt
 
 GGS_lexicalExplicitTokenListMap_2E_element_3F_ GGS_lexicalExplicitTokenListMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchForKey (inKey) ;
@@ -7874,7 +7934,28 @@ void GGS_lexicalExplicitTokenListMap::method_searchKey (GGS_lstring inKey,
     outArgument2 = p->mProperty_isEndOfTemplateMark ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalExplicitTokenListMap_2E_element GGS_lexicalExplicitTokenListMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalExplicitTokenListMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) performSearch (inKey,
+                                                                                                                         inCompiler,
+                                                                                                                         kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey
+                                                                                                                         COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mTerminal = p->mProperty_mTerminal ;
+    result.mProperty_atomicSelection = p->mProperty_atomicSelection ;
+    result.mProperty_isEndOfTemplateMark = p->mProperty_isEndOfTemplateMark ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_lexicalExplicitTokenListMap::getter_mTerminalForKey (const GGS_string & inKey,
@@ -7971,6 +8052,7 @@ cMapElement_lexicalExplicitTokenListMap * GGS_lexicalExplicitTokenListMap::readW
   macroNullOrValidSharedObject (result, cMapElement_lexicalExplicitTokenListMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMap
@@ -8500,8 +8582,8 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::class_fun
 
 GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ GGS_lexicalExplicitTokenListMapMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchForKey (inKey) ;
@@ -8582,7 +8664,28 @@ void GGS_lexicalExplicitTokenListMapMap::method_searchKey (GGS_lstring inKey,
     outArgument2 = p->mProperty_mShouldBeGenerated ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalExplicitTokenListMapMap_2E_element GGS_lexicalExplicitTokenListMapMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalExplicitTokenListMapMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) performSearch (inKey,
+                                                                                                                               inCompiler,
+                                                                                                                               kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey
+                                                                                                                               COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mExplicitTokenListMap = p->mProperty_mExplicitTokenListMap ;
+    result.mProperty_mTokenSortedList = p->mProperty_mTokenSortedList ;
+    result.mProperty_mShouldBeGenerated = p->mProperty_mShouldBeGenerated ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMapMap::getter_mExplicitTokenListMapForKey (const GGS_string & inKey,
@@ -8679,6 +8782,7 @@ cMapElement_lexicalExplicitTokenListMapMap * GGS_lexicalExplicitTokenListMapMap:
   macroNullOrValidSharedObject (result, cMapElement_lexicalExplicitTokenListMapMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMapMap
@@ -8905,8 +9009,8 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::class_func_emptyMap (LOCATION_ARGS)
 
 GGS_lexicalMessageMap_2E_element_3F_ GGS_lexicalMessageMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalMessageMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchForKey (inKey) ;
@@ -8982,6 +9086,40 @@ void GGS_lexicalMessageMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mMessageIsUsed ;
   }
 }
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalMessageMap_2E_element GGS_lexicalMessageMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalMessageMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) performSearch (inKey,
+                                                                                                     inCompiler,
+                                                                                                     kSearchErrorMessage_lexicalMessageMap_searchKey
+                                                                                                     COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mLexicalMessage = p->mProperty_mLexicalMessage ;
+    result.mProperty_mMessageIsUsed = p->mProperty_mMessageIsUsed ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalMessageMap::setter_replaceKey (GGS_lexicalMessageMap_2E_element inElement,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  const char * kReplaceErrorMessage = "the '%K' message is not declared" ;
+  cMapElement_lexicalMessageMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalMessageMap (inElement.mProperty_lkey, inElement.mProperty_mLexicalMessage, inElement.mProperty_mMessageIsUsed COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9050,6 +9188,7 @@ cMapElement_lexicalMessageMap * GGS_lexicalMessageMap::readWriteAccessForWithIns
   macroNullOrValidSharedObject (result, cMapElement_lexicalMessageMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalMessageMap
@@ -9844,8 +9983,8 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::class_func_emptyMap (LOCATION_ARGS)
 
 GGS_lexicalRoutineMap_2E_element_3F_ GGS_lexicalRoutineMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalRoutineMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchForKey (inKey) ;
@@ -9926,7 +10065,28 @@ void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inKey,
     outArgument2 = p->mProperty_mIsExtern ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalRoutineMap_2E_element GGS_lexicalRoutineMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalRoutineMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) performSearch (inKey,
+                                                                                                     inCompiler,
+                                                                                                     kSearchErrorMessage_lexicalRoutineMap_searchKey
+                                                                                                     COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mLexicalRoutineFormalArgumentList = p->mProperty_mLexicalRoutineFormalArgumentList ;
+    result.mProperty_mErrorMessageList = p->mProperty_mErrorMessageList ;
+    result.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GGS_string & inKey,
@@ -10023,6 +10183,7 @@ cMapElement_lexicalRoutineMap * GGS_lexicalRoutineMap::readWriteAccessForWithIns
   macroNullOrValidSharedObject (result, cMapElement_lexicalRoutineMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalRoutineMap
@@ -10768,8 +10929,8 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::class_func_emptyMap (LOCATION_ARG
 
 GGS_lexicalFunctionMap_2E_element_3F_ GGS_lexicalFunctionMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalFunctionMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchForKey (inKey) ;
@@ -10855,7 +11016,29 @@ void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inKey,
     outArgument3 = p->mProperty_mIsExtern ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalFunctionMap_2E_element GGS_lexicalFunctionMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalFunctionMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) performSearch (inKey,
+                                                                                                       inCompiler,
+                                                                                                       kSearchErrorMessage_lexicalFunctionMap_searchKey
+                                                                                                       COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mLexicalTypeList = p->mProperty_mLexicalTypeList ;
+    result.mProperty_mReturnedLexicalType = p->mProperty_mReturnedLexicalType ;
+    result.mProperty_mReplacementFunctionName = p->mProperty_mReplacementFunctionName ;
+    result.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionMap::getter_mLexicalTypeListForKey (const GGS_string & inKey,
@@ -10981,6 +11164,7 @@ cMapElement_lexicalFunctionMap * GGS_lexicalFunctionMap::readWriteAccessForWithI
   macroNullOrValidSharedObject (result, cMapElement_lexicalFunctionMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalFunctionMap
@@ -11800,8 +11984,8 @@ GGS_styleMap GGS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
 
 GGS_styleMap_2E_element_3F_ GGS_styleMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_styleMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_styleMap * p = (cMapElement_styleMap *) searchForKey (inKey) ;
@@ -11877,7 +12061,27 @@ void GGS_styleMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mStyleIndex ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_styleMap_2E_element GGS_styleMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_styleMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_styleMap * p = (const cMapElement_styleMap *) performSearch (inKey,
+                                                                                   inCompiler,
+                                                                                   kSearchErrorMessage_styleMap_searchKey
+                                                                                   COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mComment = p->mProperty_mComment ;
+    result.mProperty_mStyleIndex = p->mProperty_mStyleIndex ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_styleMap::getter_mCommentForKey (const GGS_string & inKey,
@@ -11945,6 +12149,7 @@ cMapElement_styleMap * GGS_styleMap::readWriteAccessForWithInstruction (Compiler
   macroNullOrValidSharedObject (result, cMapElement_styleMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @styleMap
@@ -12141,8 +12346,8 @@ GGS_lexicalTagMap GGS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
 
 GGS_lexicalTagMap_2E_element_3F_ GGS_lexicalTagMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTagMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchForKey (inKey) ;
@@ -12208,7 +12413,25 @@ void GGS_lexicalTagMap::method_searchKey (GGS_lstring inKey,
     macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lexicalTagMap_2E_element GGS_lexicalTagMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalTagMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) performSearch (inKey,
+                                                                                             inCompiler,
+                                                                                             kSearchErrorMessage_lexicalTagMap_searchKey
+                                                                                             COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalTagMap * GGS_lexicalTagMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -12218,6 +12441,7 @@ cMapElement_lexicalTagMap * GGS_lexicalTagMap::readWriteAccessForWithInstruction
   macroNullOrValidSharedObject (result, cMapElement_lexicalTagMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTagMap
@@ -15790,178 +16014,3 @@ GGS_lexicalRoutineCallActualArgumentListAST GGS_lexicalRoutineCallActualArgument
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalRoutineCallInstructionAST_2E_weak::objectCompare (const GGS_lexicalRoutineCallInstructionAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak::GGS_lexicalRoutineCallInstructionAST_2E_weak (void) :
-GGS_lexicalInstructionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak & GGS_lexicalRoutineCallInstructionAST_2E_weak::operator = (const GGS_lexicalRoutineCallInstructionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak::GGS_lexicalRoutineCallInstructionAST_2E_weak (const GGS_lexicalRoutineCallInstructionAST & inSource) :
-GGS_lexicalInstructionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_lexicalRoutineCallInstructionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST_2E_weak::unwrappedValue (void) const {
-  GGS_lexicalRoutineCallInstructionAST result ;
-  if (isValid ()) {
-    const cPtr_lexicalRoutineCallInstructionAST * p = (cPtr_lexicalRoutineCallInstructionAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_lexicalRoutineCallInstructionAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST_2E_weak::bang_lexicalRoutineCallInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineCallInstructionAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalRoutineCallInstructionAST) ;
-      result = GGS_lexicalRoutineCallInstructionAST ((cPtr_lexicalRoutineCallInstructionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalRoutineCallInstructionAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ("lexicalRoutineCallInstructionAST.weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_lexicalRoutineCallInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalRoutineCallInstructionAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalRoutineCallInstructionAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_lexicalRoutineCallInstructionAST_2E_weak result ;
-  const GGS_lexicalRoutineCallInstructionAST_2E_weak * p = (const GGS_lexicalRoutineCallInstructionAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalRoutineCallInstructionAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalRoutineCallInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string callExtensionGetter_generateObjcCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                 const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_generateObjcCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                  const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_generateSwiftCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          const GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
-                                                          const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
-    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentMode, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
-  }
-}

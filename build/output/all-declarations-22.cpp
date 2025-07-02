@@ -9561,6 +9561,135 @@ GGS_mapRemoveMethodListAST_2E_element GGS_mapRemoveMethodListAST_2E_element::ext
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_mapReplaceSetterListAST_2E_element::GGS_mapReplaceSetterListAST_2E_element (void) :
+mProperty_mMethodName (),
+mProperty_mErrorMessage () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element::GGS_mapReplaceSetterListAST_2E_element (const GGS_mapReplaceSetterListAST_2E_element & inSource) :
+mProperty_mMethodName (inSource.mProperty_mMethodName),
+mProperty_mErrorMessage (inSource.mProperty_mErrorMessage) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element & GGS_mapReplaceSetterListAST_2E_element::operator = (const GGS_mapReplaceSetterListAST_2E_element & inSource) {
+  mProperty_mMethodName = inSource.mProperty_mMethodName ;
+  mProperty_mErrorMessage = inSource.mProperty_mErrorMessage ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element GGS_mapReplaceSetterListAST_2E_element::init_21__21_ (const GGS_lstring & in_mMethodName,
+                                                                                             const GGS_lstring & in_mErrorMessage,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mMethodName = in_mMethodName ;
+  result.mProperty_mErrorMessage = in_mErrorMessage ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element::GGS_mapReplaceSetterListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                const GGS_lstring & inOperand1) :
+mProperty_mMethodName (inOperand0),
+mProperty_mErrorMessage (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element GGS_mapReplaceSetterListAST_2E_element::class_func_new (const GGS_lstring & in_mMethodName,
+                                                                                               const GGS_lstring & in_mErrorMessage,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mMethodName = in_mMethodName ;
+  result.mProperty_mErrorMessage = in_mErrorMessage ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_mapReplaceSetterListAST_2E_element::isValid (void) const {
+  return mProperty_mMethodName.isValid () && mProperty_mErrorMessage.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST_2E_element::drop (void) {
+  mProperty_mMethodName.drop () ;
+  mProperty_mErrorMessage.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST_2E_element::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @mapReplaceSetterListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mMethodName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @mapReplaceSetterListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapReplaceSetterListAST_2E_element ("mapReplaceSetterListAST.element",
+                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_mapReplaceSetterListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mapReplaceSetterListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_mapReplaceSetterListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_mapReplaceSetterListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element GGS_mapReplaceSetterListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST_2E_element result ;
+  const GGS_mapReplaceSetterListAST_2E_element * p = (const GGS_mapReplaceSetterListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_mapReplaceSetterListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("mapReplaceSetterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_insertMethodMap_2E_element::GGS_insertMethodMap_2E_element (void) :
 mProperty_lkey () {
 }
@@ -15405,171 +15534,6 @@ GGS_classMethodMap_2E_element_3F_ GGS_classMethodMap_2E_element_3F_::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("classMethodMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (void) :
-mProperty_typeEntry (),
-mProperty_name (),
-mProperty_initialization (),
-mProperty_hasSetter (),
-mProperty_hasSelector () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_typedPropertyList_2E_element & inSource) :
-mProperty_typeEntry (inSource.mProperty_typeEntry),
-mProperty_name (inSource.mProperty_name),
-mProperty_initialization (inSource.mProperty_initialization),
-mProperty_hasSetter (inSource.mProperty_hasSetter),
-mProperty_hasSelector (inSource.mProperty_hasSelector) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element & GGS_typedPropertyList_2E_element::operator = (const GGS_typedPropertyList_2E_element & inSource) {
-  mProperty_typeEntry = inSource.mProperty_typeEntry ;
-  mProperty_name = inSource.mProperty_name ;
-  mProperty_initialization = inSource.mProperty_initialization ;
-  mProperty_hasSetter = inSource.mProperty_hasSetter ;
-  mProperty_hasSelector = inSource.mProperty_hasSelector ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::init_21__21__21__21_hasSetter_21_hasSelector (const GGS_unifiedTypeMapEntry & in_typeEntry,
-                                                                                                                 const GGS_lstring & in_name,
-                                                                                                                 const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                                                 const GGS_bool & in_hasSetter,
-                                                                                                                 const GGS_bool & in_hasSelector,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typedPropertyList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeEntry = in_typeEntry ;
-  result.mProperty_name = in_name ;
-  result.mProperty_initialization = in_initialization ;
-  result.mProperty_hasSetter = in_hasSetter ;
-  result.mProperty_hasSelector = in_hasSelector ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_unifiedTypeMapEntry & inOperand0,
-                                                                    const GGS_lstring & inOperand1,
-                                                                    const GGS_propertyInCollectionInitializationAST & inOperand2,
-                                                                    const GGS_bool & inOperand3,
-                                                                    const GGS_bool & inOperand4) :
-mProperty_typeEntry (inOperand0),
-mProperty_name (inOperand1),
-mProperty_initialization (inOperand2),
-mProperty_hasSetter (inOperand3),
-mProperty_hasSelector (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::class_func_new (const GGS_unifiedTypeMapEntry & in_typeEntry,
-                                                                                   const GGS_lstring & in_name,
-                                                                                   const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                   const GGS_bool & in_hasSetter,
-                                                                                   const GGS_bool & in_hasSelector,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typedPropertyList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeEntry = in_typeEntry ;
-  result.mProperty_name = in_name ;
-  result.mProperty_initialization = in_initialization ;
-  result.mProperty_hasSetter = in_hasSetter ;
-  result.mProperty_hasSelector = in_hasSelector ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typedPropertyList_2E_element::isValid (void) const {
-  return mProperty_typeEntry.isValid () && mProperty_name.isValid () && mProperty_initialization.isValid () && mProperty_hasSetter.isValid () && mProperty_hasSelector.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::drop (void) {
-  mProperty_typeEntry.drop () ;
-  mProperty_name.drop () ;
-  mProperty_initialization.drop () ;
-  mProperty_hasSetter.drop () ;
-  mProperty_hasSelector.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @typedPropertyList.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_typeEntry.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_name.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_initialization.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_hasSetter.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_hasSelector.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typedPropertyList.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList_2E_element ("typedPropertyList.element",
-                                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_typedPropertyList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typedPropertyList_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typedPropertyList_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typedPropertyList_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_typedPropertyList_2E_element result ;
-  const GGS_typedPropertyList_2E_element * p = (const GGS_typedPropertyList_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typedPropertyList_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typedPropertyList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

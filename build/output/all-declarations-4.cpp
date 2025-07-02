@@ -8,6 +8,128 @@
 #include "all-declarations-4.h"
 
 //--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_applicationPredefinedTypeAST_2E_weak::objectCompare (const GGS_applicationPredefinedTypeAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak::GGS_applicationPredefinedTypeAST_2E_weak (void) :
+GGS_predefinedTypeAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak & GGS_applicationPredefinedTypeAST_2E_weak::operator = (const GGS_applicationPredefinedTypeAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak::GGS_applicationPredefinedTypeAST_2E_weak (const GGS_applicationPredefinedTypeAST & inSource) :
+GGS_predefinedTypeAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak GGS_applicationPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_applicationPredefinedTypeAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST_2E_weak::unwrappedValue (void) const {
+  GGS_applicationPredefinedTypeAST result ;
+  if (isValid ()) {
+    const cPtr_applicationPredefinedTypeAST * p = (cPtr_applicationPredefinedTypeAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_applicationPredefinedTypeAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST_2E_weak::bang_applicationPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_applicationPredefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_applicationPredefinedTypeAST) ;
+      result = GGS_applicationPredefinedTypeAST ((cPtr_applicationPredefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @applicationPredefinedTypeAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ("applicationPredefinedTypeAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_applicationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_applicationPredefinedTypeAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_applicationPredefinedTypeAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak GGS_applicationPredefinedTypeAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_applicationPredefinedTypeAST_2E_weak result ;
+  const GGS_applicationPredefinedTypeAST_2E_weak * p = (const GGS_applicationPredefinedTypeAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_applicationPredefinedTypeAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("applicationPredefinedTypeAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @bigintPredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -7568,8 +7690,8 @@ GGS_initializerMap GGS_initializerMap::class_func_emptyMap (LOCATION_ARGS) {
 
 GGS_initializerMap_2E_element_3F_ GGS_initializerMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_initializerMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_initializerMap * p = (cMapElement_initializerMap *) searchForKey (inKey) ;
@@ -7640,7 +7762,26 @@ void GGS_initializerMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_mArgumentTypeList ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_initializerMap_2E_element GGS_initializerMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_initializerMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_initializerMap * p = (const cMapElement_initializerMap *) performSearch (inKey,
+                                                                                               inCompiler,
+                                                                                               kSearchErrorMessage_initializerMap_searchKey
+                                                                                               COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mArgumentTypeList = p->mProperty_mArgumentTypeList ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionSignature GGS_initializerMap::getter_mArgumentTypeListForKey (const GGS_string & inKey,
@@ -7679,6 +7820,7 @@ cMapElement_initializerMap * GGS_initializerMap::readWriteAccessForWithInstructi
   macroNullOrValidSharedObject (result, cMapElement_initializerMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @initializerMap
@@ -15924,16 +16066,17 @@ GGS_mapRemoveMethodListAST GGS_mapRemoveMethodListAST::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@insertOrReplaceDeclarationListAST' list
+//Class for element of '@mapReplaceSetterListAST' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_insertOrReplaceDeclarationListAST : public cCollectionElement {
-  public: GGS_insertOrReplaceDeclarationListAST_2E_element mObject ;
+class cCollectionElement_mapReplaceSetterListAST : public cCollectionElement {
+  public: GGS_mapReplaceSetterListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_insertOrReplaceDeclarationListAST (const GGS_location & in_mInsertOrReplaceDeclarationLocation
-                                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_insertOrReplaceDeclarationListAST (const GGS_insertOrReplaceDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_mapReplaceSetterListAST (const GGS_lstring & in_mMethodName,
+                                                      const GGS_lstring & in_mErrorMessage
+                                                      COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -15949,72 +16092,77 @@ class cCollectionElement_insertOrReplaceDeclarationListAST : public cCollectionE
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_insertOrReplaceDeclarationListAST::cCollectionElement_insertOrReplaceDeclarationListAST (const GGS_location & in_mInsertOrReplaceDeclarationLocation
-                                                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement_mapReplaceSetterListAST::cCollectionElement_mapReplaceSetterListAST (const GGS_lstring & in_mMethodName,
+                                                                                        const GGS_lstring & in_mErrorMessage
+                                                                                        COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mInsertOrReplaceDeclarationLocation) {
+mObject (in_mMethodName, in_mErrorMessage) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_insertOrReplaceDeclarationListAST::cCollectionElement_insertOrReplaceDeclarationListAST (const GGS_insertOrReplaceDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_mapReplaceSetterListAST::cCollectionElement_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mInsertOrReplaceDeclarationLocation) {
+mObject (inElement.mProperty_mMethodName, inElement.mProperty_mErrorMessage) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_insertOrReplaceDeclarationListAST::isValid (void) const {
+bool cCollectionElement_mapReplaceSetterListAST::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_insertOrReplaceDeclarationListAST::copy (void) {
+cCollectionElement * cCollectionElement_mapReplaceSetterListAST::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_insertOrReplaceDeclarationListAST (mObject.mProperty_mInsertOrReplaceDeclarationLocation COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_mapReplaceSetterListAST (mObject.mProperty_mMethodName, mObject.mProperty_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_insertOrReplaceDeclarationListAST::description (String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_mapReplaceSetterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mInsertOrReplaceDeclarationLocation" ":") ;
-  mObject.mProperty_mInsertOrReplaceDeclarationLocation.description (ioString, inIndentation) ;
+  ioString.appendCString ("mMethodName" ":") ;
+  mObject.mProperty_mMethodName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mErrorMessage" ":") ;
+  mObject.mProperty_mErrorMessage.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST::GGS_insertOrReplaceDeclarationListAST (void) :
+GGS_mapReplaceSetterListAST::GGS_mapReplaceSetterListAST (void) :
 AC_GALGAS_list () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST::GGS_insertOrReplaceDeclarationListAST (const capCollectionElementArray & inSharedArray) :
+GGS_mapReplaceSetterListAST::GGS_mapReplaceSetterListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_insertOrReplaceDeclarationListAST (capCollectionElementArray ()) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_insertOrReplaceDeclarationListAST (capCollectionElementArray ()) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::plusPlusAssignOperation (const GGS_insertOrReplaceDeclarationListAST_2E_element & inValue
-                                                                     COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::plusPlusAssignOperation (const GGS_mapReplaceSetterListAST_2E_element & inValue
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inValue COMMA_THERE)) ;
+  macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -16023,13 +16171,14 @@ void GGS_insertOrReplaceDeclarationListAST::plusPlusAssignOperation (const GGS_i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::class_func_listWithValue (const GGS_location & inOperand0
-                                                                                                       COMMA_LOCATION_ARGS) {
-  GGS_insertOrReplaceDeclarationListAST result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_insertOrReplaceDeclarationListAST (capCollectionElementArray ()) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                                   const GGS_lstring & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GGS_insertOrReplaceDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    GGS_mapReplaceSetterListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -16037,22 +16186,25 @@ GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::cla
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                       const GGS_location & in_mInsertOrReplaceDeclarationLocation
-                                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (in_mInsertOrReplaceDeclarationLocation COMMA_THERE)) ;
+void GGS_mapReplaceSetterListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                             const GGS_lstring & in_mMethodName,
+                                                             const GGS_lstring & in_mErrorMessage
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = nullptr ;
+  macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (in_mMethodName,
+                                                             in_mErrorMessage COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::addAssignOperation (const GGS_location & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                      const GGS_lstring & inOperand1
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inOperand0 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -16062,12 +16214,13 @@ void GGS_insertOrReplaceDeclarationListAST::addAssignOperation (const GGS_locati
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_append (const GGS_location inOperand0,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::setter_append (const GGS_lstring inOperand0,
+                                                 const GGS_lstring inOperand1,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inOperand0 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -16077,13 +16230,14 @@ void GGS_insertOrReplaceDeclarationListAST::setter_append (const GGS_location in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_insertAtIndex (const GGS_location inOperand0,
-                                                                  const GGS_uint inInsertionIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                        const GGS_lstring inOperand1,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inOperand0 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -16093,20 +16247,23 @@ void GGS_insertOrReplaceDeclarationListAST::setter_insertAtIndex (const GGS_loca
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_removeAtIndex (GGS_location & outOperand0,
-                                                                  const GGS_uint inRemoveIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                        GGS_lstring & outOperand1,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   outOperand0.drop () ;
+  outOperand1.drop () ;
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
+    cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
     if (nullptr == p) {
       drop () ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-      outOperand0 = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+      macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+      outOperand0 = p->mObject.mProperty_mMethodName ;
+      outOperand1 = p->mObject.mProperty_mErrorMessage ;
     }
   }else{
     drop () ;    
@@ -16115,74 +16272,86 @@ void GGS_insertOrReplaceDeclarationListAST::setter_removeAtIndex (GGS_location &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_popFirst (GGS_location & outOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::setter_popFirst (GGS_lstring & outOperand0,
+                                                   GGS_lstring & outOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
+    outOperand1.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-    outOperand0 = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mMethodName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_popLast (GGS_location & outOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::setter_popLast (GGS_lstring & outOperand0,
+                                                  GGS_lstring & outOperand1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
+    outOperand1.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-    outOperand0 = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mMethodName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::method_first (GGS_location & outOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+void GGS_mapReplaceSetterListAST::method_first (GGS_lstring & outOperand0,
+                                                GGS_lstring & outOperand1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
+    outOperand1.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-    outOperand0 = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mMethodName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::method_last (GGS_location & outOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
+void GGS_mapReplaceSetterListAST::method_last (GGS_lstring & outOperand0,
+                                               GGS_lstring & outOperand1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
+    outOperand1.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-    outOperand0 = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mMethodName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::add_operation (const GGS_insertOrReplaceDeclarationListAST & inOperand,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_insertOrReplaceDeclarationListAST result ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::add_operation (const GGS_mapReplaceSetterListAST & inOperand,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -16192,67 +16361,96 @@ GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::add
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::getter_subListWithRange (const GGS_range & inRange,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_insertOrReplaceDeclarationListAST result = GGS_insertOrReplaceDeclarationListAST::class_func_emptyList (THERE) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListWithRange (const GGS_range & inRange,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_insertOrReplaceDeclarationListAST result = GGS_insertOrReplaceDeclarationListAST::class_func_emptyList (THERE) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_insertOrReplaceDeclarationListAST result = GGS_insertOrReplaceDeclarationListAST::class_func_emptyList (THERE) ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::plusAssignOperation (const GGS_insertOrReplaceDeclarationListAST inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_mapReplaceSetterListAST::plusAssignOperation (const GGS_mapReplaceSetterListAST inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_insertOrReplaceDeclarationListAST::setter_setMInsertOrReplaceDeclarationLocationAtIndex (GGS_location inOperand,
-                                                                                                  GGS_uint inIndex,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+void GGS_mapReplaceSetterListAST::setter_setMMethodNameAtIndex (GGS_lstring inOperand,
+                                                                GGS_uint inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mInsertOrReplaceDeclarationLocation = inOperand ;
+    p->mObject.mProperty_mMethodName = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location GGS_insertOrReplaceDeclarationListAST::getter_mInsertOrReplaceDeclarationLocationAtIndex (const GGS_uint & inIndex,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
+GGS_lstring GGS_mapReplaceSetterListAST::getter_mMethodNameAtIndex (const GGS_uint & inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_insertOrReplaceDeclarationListAST * p = (cCollectionElement_insertOrReplaceDeclarationListAST *) attributes.ptr () ;
-  GGS_location result ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  GGS_lstring result ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-    result = p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    result = p->mObject.mProperty_mMethodName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_setMErrorMessageAtIndex (GGS_lstring inOperand,
+                                                                  GGS_uint inIndex,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mErrorMessage = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_mapReplaceSetterListAST::getter_mErrorMessageAtIndex (const GGS_uint & inIndex,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    result = p->mObject.mProperty_mErrorMessage ;
   }
   return result ;
 }
@@ -16260,97 +16458,113 @@ GGS_location GGS_insertOrReplaceDeclarationListAST::getter_mInsertOrReplaceDecla
 
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @insertOrReplaceDeclarationListAST
+// Down Enumerator for @mapReplaceSetterListAST
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_insertOrReplaceDeclarationListAST::DownEnumerator_insertOrReplaceDeclarationListAST (const GGS_insertOrReplaceDeclarationListAST & inEnumeratedObject) :
+DownEnumerator_mapReplaceSetterListAST::DownEnumerator_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST & inEnumeratedObject) :
 cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST_2E_element DownEnumerator_insertOrReplaceDeclarationListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_insertOrReplaceDeclarationListAST * p = (const cCollectionElement_insertOrReplaceDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
+GGS_mapReplaceSetterListAST_2E_element DownEnumerator_mapReplaceSetterListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
   return p->mObject ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location DownEnumerator_insertOrReplaceDeclarationListAST::current_mInsertOrReplaceDeclarationLocation (LOCATION_ARGS) const {
-  const cCollectionElement_insertOrReplaceDeclarationListAST * p = (const cCollectionElement_insertOrReplaceDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-  return p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+GGS_lstring DownEnumerator_mapReplaceSetterListAST::current_mMethodName (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mMethodName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_mapReplaceSetterListAST::current_mErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mErrorMessage ;
 }
 
 
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @insertOrReplaceDeclarationListAST
+// Up Enumerator for @mapReplaceSetterListAST
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_insertOrReplaceDeclarationListAST::UpEnumerator_insertOrReplaceDeclarationListAST (const GGS_insertOrReplaceDeclarationListAST & inEnumeratedObject) :
+UpEnumerator_mapReplaceSetterListAST::UpEnumerator_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST & inEnumeratedObject) :
 cGenericAbstractEnumerator (EnumerationOrder::Up) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST_2E_element UpEnumerator_insertOrReplaceDeclarationListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_insertOrReplaceDeclarationListAST * p = (const cCollectionElement_insertOrReplaceDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
+GGS_mapReplaceSetterListAST_2E_element UpEnumerator_mapReplaceSetterListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
   return p->mObject ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location UpEnumerator_insertOrReplaceDeclarationListAST::current_mInsertOrReplaceDeclarationLocation (LOCATION_ARGS) const {
-  const cCollectionElement_insertOrReplaceDeclarationListAST * p = (const cCollectionElement_insertOrReplaceDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_insertOrReplaceDeclarationListAST) ;
-  return p->mObject.mProperty_mInsertOrReplaceDeclarationLocation ;
+GGS_lstring UpEnumerator_mapReplaceSetterListAST::current_mMethodName (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mMethodName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_mapReplaceSetterListAST::current_mErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mErrorMessage ;
 }
 
 
 
 
 //--------------------------------------------------------------------------------------------------
-//     @insertOrReplaceDeclarationListAST generic code implementation
+//     @mapReplaceSetterListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
-                                                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapReplaceSetterListAST ("mapReplaceSetterListAST",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertOrReplaceDeclarationListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ;
+const C_galgas_type_descriptor * GGS_mapReplaceSetterListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mapReplaceSetterListAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_insertOrReplaceDeclarationListAST::clonedObject (void) const {
+AC_GALGAS_root * GGS_mapReplaceSetterListAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_insertOrReplaceDeclarationListAST (*this)) ;
+    macroMyNew (result, GGS_mapReplaceSetterListAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_insertOrReplaceDeclarationListAST result ;
-  const GGS_insertOrReplaceDeclarationListAST * p = (const GGS_insertOrReplaceDeclarationListAST *) inObject.embeddedObject () ;
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST result ;
+  const GGS_mapReplaceSetterListAST * p = (const GGS_mapReplaceSetterListAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_insertOrReplaceDeclarationListAST *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_mapReplaceSetterListAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("insertOrReplaceDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("mapReplaceSetterListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

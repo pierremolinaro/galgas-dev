@@ -233,6 +233,7 @@ map @extensionInitializerForBuildingContext {
   public let @extensionInitializerMapForType mExtensionInitializerMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -253,6 +254,7 @@ map @extensionMethodMapForBuildingContext {
   public let @extensionMethodMapForType mExtensionMethodMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -272,6 +274,7 @@ map @extensionSetterMapForBuildingContext {
   public let @extensionSetterMapForType mExtensionSetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -293,31 +296,9 @@ map @extensionGetterMapForBuildingContext {
   public let @extensionGetterMapForType mExtensionGetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
-//--------------------------------------------------------------------------------------------------
-//
-//    EXTENSION INITIALIZER MAP
-//
-//--------------------------------------------------------------------------------------------------
-
-//map @extensionInitializerMapForType {
-//  public let @formalInputParameterListAST mInputFormalParameterList
-//  insert insertKey error message "the '%K' initializer has been already declared in %L"
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//map @extensionInitializerMapForBuildingContext {
-//  public let @extensionInitializerMapForType mExtensionInitiamlizerMapForType
-//  insert insertKey error message "internal error"
-//  search searchKey error message "internal error"
-//}
-
-//--------------------------------------------------------------------------------------------------
-//
-//    D I S P L A Y
-//
 //--------------------------------------------------------------------------------------------------
 
 abstract getter @semanticDeclarationAST keyRepresentation -> @string

@@ -25,27 +25,34 @@ list @insertMethodListAST {
   public let @lstring mShadowErrorMessage
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 list @mapSearchMethodListAST {
   public let @lstring mSearchMethodName
   public let @lstring mErrorMessage
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 list @mapRemoveMethodListAST {
   public let @lstring mMethodName
   public let @lstring mErrorMessage
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
+
+list @mapReplaceSetterListAST {
+  public let @lstring mMethodName
+  public let @lstring mErrorMessage
+}
+
+//--------------------------------------------------------------------------------------------------
 
 list @insertOrReplaceDeclarationListAST {
   public let @location mInsertOrReplaceDeclarationLocation
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
@@ -53,6 +60,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
   private let @insertMethodListAST mInsertMethodList
   private let @mapSearchMethodListAST mSearchMethodList
   private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @mapReplaceSetterListAST mReplaceSetterList
   private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
   private let @bool equatable %initArgLabel
 }
@@ -86,6 +94,7 @@ syntax extension galgas3DeclarationsSyntax {
     var mInsertMethodList = @insertMethodListAST ()
     var @mapSearchMethodListAST mSearchMethodList = @()
     var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @mapReplaceSetterListAST replaceMethodList = @()
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
     repeat
     while
@@ -96,6 +105,8 @@ syntax extension galgas3DeclarationsSyntax {
       <search_declaration> !?mSearchMethodList
     while
       <remove_declaration> !?mRemoveMethodList
+    while
+      <replace_declaration> !?replaceMethodList
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
@@ -109,6 +120,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mInsertMethodList
       !mSearchMethodList
       !mRemoveMethodList
+      !replaceMethodList
       !insertOrReplaceDeclarationListAST
       !equatable: isEquatable
     }
@@ -133,6 +145,17 @@ syntax extension galgas3DeclarationsSyntax {
     $message$
     $"string"$ ?let @lstring mErrorMessage
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <replace_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
+    $replace$
+    $identifier$ ?let @lstring mMethodName
+    $error$
+    $message$
+    $"string"$ ?let @lstring mErrorMessage
+    ioMapReplaceMethodListAST += !mMethodName !mErrorMessage
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,6 +213,7 @@ syntax extension galgas4DeclarationsSyntax {
     var mInsertMethodList = @insertMethodListAST ()
     var @mapSearchMethodListAST mSearchMethodList = @()
     var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @mapReplaceSetterListAST replaceMethodList = @()
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
     repeat
     while
@@ -200,6 +224,8 @@ syntax extension galgas4DeclarationsSyntax {
       <search_declaration> !?mSearchMethodList
     while
       <remove_declaration> !?mRemoveMethodList
+    while
+      <replace_declaration> !?replaceMethodList
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
@@ -213,6 +239,7 @@ syntax extension galgas4DeclarationsSyntax {
       !mInsertMethodList
       !mSearchMethodList
       !mRemoveMethodList
+      !replaceMethodList
       !insertOrReplaceDeclarationListAST
       !equatable: isEquatable
     }
@@ -221,7 +248,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
-    $%searchMethod$
+    $%searchMethodAndGetter$
     $identifier$ ?let @lstring methodName
     $%errorMessage$
     $"string"$ ?let @lstring errorMessage
@@ -236,6 +263,16 @@ syntax extension galgas4DeclarationsSyntax {
     $%errorMessage$
     $"string"$ ?let @lstring mErrorMessage
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <replace_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
+    $%replaceSetter$
+    $identifier$ ?let @lstring mMethodName
+    $%errorMessage$
+    $"string"$ ?let @lstring mErrorMessage
+    ioMapReplaceMethodListAST += !mMethodName !mErrorMessage
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -493,21 +530,43 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     else
       [!?setterMap insertOrReplace
         !mInsertMethodName
-        !@methodKind.definedAsMember
+        !.definedAsMember
         !insertMethodFormalArgumentList
         !true
-        !@methodQualifier.isBasic
+        !.isBasic
         !""
       ]
     end
   end
+//--- Element type index
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
+  [!?ioTypeMap makeEntry
+    !elementTypeName
+    ?let @unifiedTypeMapEntry elementTypeEntry
+  ]
+//--- Handle replace setters
+  for entry in self.mReplaceSetterList do
+    let @formalParameterSignature replaceSetterFormalArgumentList = @[
+      @("with".nowhere, elementTypeEntry, .argumentConstantIn, "inEntry")
+    ]
+    [!?setterMap insertOrReplace
+      !entry.mMethodName
+      !.definedAsMember
+      !replaceSetterFormalArgumentList
+      !true
+      !.isBasic
+      !""
+    ]
+  end
 //--- Handle remove setters
-  for (mMethodName *) in self.mRemoveMethodList do
-    if [setterMap hasKey !mMethodName.string] then
-      error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
+  for entry in self.mRemoveMethodList do
+    if [setterMap hasKey !entry.mMethodName.string] then
+      error entry.mMethodName
+      : "the '" + entry.mMethodName
+                + "' method is already declared as an insert setter or a remove setter"
     else
       [!?setterMap insertOrReplace
-        !mMethodName
+        !entry.mMethodName
         !.definedAsMember
         !removeMethodFormalArgumentList
         !true
@@ -613,12 +672,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-//--- Element type index
-  let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
-  [!?ioTypeMap makeEntry
-    !elementTypeName
-    ?let @unifiedTypeMapEntry elementTypeEntry
-  ]
 //--- Optional Element type index
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   [!?ioTypeMap makeEntry
@@ -633,6 +686,14 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !argumentTypeList
     !optionalElementTypeEntry
   ]
+  for (mSearchMethodName *) in self.mSearchMethodList do
+     let @functionSignature subscriptArgumentTypeList = @[@(mSearchMethodName, lstringTypeIndex, "inKey", true)]
+     [!?readSubscriptMap insertKey
+      !@([subscriptArgumentTypeList subcriptSignature], .nowhere)
+      !subscriptArgumentTypeList
+      !elementTypeEntry
+    ]
+  end
 //--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mMapTypeName
@@ -779,6 +840,7 @@ override method @mapDeclarationAST semanticAnalysis
       !self.mInsertMethodList
       !self.mSearchMethodList
       !self.mRemoveMethodList
+      !self.mReplaceSetterList
       !hasInsertOrReplaceModifier
       !optionalElementTypeEntry
     }
@@ -795,6 +857,7 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @insertMethodListAST mInsertMethodList
   private let @mapSearchMethodListAST mSearchMethodList
   private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @mapReplaceSetterListAST mReplaceSetterList
   private let @bool mHasInsertOrReplaceModifier
   private let @unifiedTypeMapEntry mOptionalElementTypeEntry
 }
@@ -870,6 +933,7 @@ override method @mapTypeForGeneration appendSpecificImplementation
     ![self.mOptionalElementTypeEntry identifierRepresentation]
     !self.mSearchMethodList
     !self.mRemoveMethodList
+    !self.mReplaceSetterList
     !self.mHasInsertOrReplaceModifier
     ![selfTypeDefinition.features generateCppObjectComparison]
   ]
@@ -906,6 +970,7 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
+    ?@mapReplaceSetterListAST REPLACE_SETTER_LIST
     ?@bool HAS_INSERT_OR_REPLACE
     ?@bool GENERATE_COMPARISON
 }

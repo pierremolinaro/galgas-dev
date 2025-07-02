@@ -651,6 +651,8 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_mapRemoveMethodListAST readProperty_mRemoveMethodList (void) const ;
 
+  public: class GGS_mapReplaceSetterListAST readProperty_mReplaceSetterList (void) const ;
+
   public: class GGS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
   public: class GGS_unifiedTypeMapEntry readProperty_mOptionalElementTypeEntry (void) const ;
@@ -658,17 +660,18 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_mapTypeForGeneration init_21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                    const class GGS_lstring & inOperand2,
-                                                                                    const class GGS_typedPropertyList & inOperand3,
-                                                                                    const class GGS_insertMethodListAST & inOperand4,
-                                                                                    const class GGS_mapSearchMethodListAST & inOperand5,
-                                                                                    const class GGS_mapRemoveMethodListAST & inOperand6,
-                                                                                    const class GGS_bool & inOperand7,
-                                                                                    const class GGS_unifiedTypeMapEntry & inOperand8,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GGS_mapTypeForGeneration init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                        const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                        const class GGS_lstring & inOperand2,
+                                                                                        const class GGS_typedPropertyList & inOperand3,
+                                                                                        const class GGS_insertMethodListAST & inOperand4,
+                                                                                        const class GGS_mapSearchMethodListAST & inOperand5,
+                                                                                        const class GGS_mapRemoveMethodListAST & inOperand6,
+                                                                                        const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                                                        const class GGS_bool & inOperand8,
+                                                                                        const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -686,8 +689,9 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                 const class GGS_insertMethodListAST & inOperand4,
                                                                 const class GGS_mapSearchMethodListAST & inOperand5,
                                                                 const class GGS_mapRemoveMethodListAST & inOperand6,
-                                                                const class GGS_bool & inOperand7,
-                                                                const class GGS_unifiedTypeMapEntry & inOperand8,
+                                                                const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                                const class GGS_bool & inOperand8,
+                                                                const class GGS_unifiedTypeMapEntry & inOperand9,
                                                                 class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
@@ -724,16 +728,17 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                              const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                              const class GGS_lstring & inOperand2,
-                                                                              const class GGS_typedPropertyList & inOperand3,
-                                                                              const class GGS_insertMethodListAST & inOperand4,
-                                                                              const class GGS_mapSearchMethodListAST & inOperand5,
-                                                                              const class GGS_mapRemoveMethodListAST & inOperand6,
-                                                                              const class GGS_bool & inOperand7,
-                                                                              const class GGS_unifiedTypeMapEntry & inOperand8,
-                                                                              Compiler * inCompiler) ;
+  public: void mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                  const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                  const class GGS_lstring & inOperand2,
+                                                                                  const class GGS_typedPropertyList & inOperand3,
+                                                                                  const class GGS_insertMethodListAST & inOperand4,
+                                                                                  const class GGS_mapSearchMethodListAST & inOperand5,
+                                                                                  const class GGS_mapRemoveMethodListAST & inOperand6,
+                                                                                  const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                                                  const class GGS_bool & inOperand8,
+                                                                                  const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -760,6 +765,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GGS_insertMethodListAST mProperty_mInsertMethodList ;
   public: GGS_mapSearchMethodListAST mProperty_mSearchMethodList ;
   public: GGS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
+  public: GGS_mapReplaceSetterListAST mProperty_mReplaceSetterList ;
   public: GGS_bool mProperty_mHasInsertOrReplaceModifier ;
   public: GGS_unifiedTypeMapEntry mProperty_mOptionalElementTypeEntry ;
 
@@ -775,6 +781,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GGS_insertMethodListAST & in_mInsertMethodList,
                                      const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                      const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                     const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                      const GGS_bool & in_mHasInsertOrReplaceModifier,
                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                      Compiler * inCompiler

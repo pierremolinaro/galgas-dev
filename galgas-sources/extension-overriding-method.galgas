@@ -186,13 +186,20 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
       !@()
     ]
   end
-  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-    [!?mExtensionMethodMapForType insertKey
-      !self.mOverridingExtensionMethodName
-      ! self.mOverridingExtensionMethodFormalParameterList
-      !.isVirtualOverriding
-    ]
-  end
+  var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+  [!?entry.mExtensionMethodMapForType insertKey
+    !self.mOverridingExtensionMethodName
+    ! self.mOverridingExtensionMethodFormalParameterList
+    !.isVirtualOverriding
+  ]
+  [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
+//  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+//    [!?mExtensionMethodMapForType insertKey
+//      !self.mOverridingExtensionMethodName
+//      ! self.mOverridingExtensionMethodFormalParameterList
+//      !.isVirtualOverriding
+//    ]
+//  end
 }
 
 //--------------------------------------------------------------------------------------------------

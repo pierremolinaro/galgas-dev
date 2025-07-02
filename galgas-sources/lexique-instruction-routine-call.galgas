@@ -284,9 +284,12 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
   end
 //--- Check error messages are actually defined
   for (mValue) in self.mErrorMessageList do
-    with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
-      mMessageIsUsed = true
-    end
+    var entry = ioLexiqueAnalysisContext.mLexicalMessageMap @[!searchKey: mValue]
+    entry.mMessageIsUsed = true
+    [!?ioLexiqueAnalysisContext.mLexicalMessageMap replaceKey !with: entry]
+//    with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
+//      mMessageIsUsed = true
+//    end
   end
 }
 

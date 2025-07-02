@@ -1989,6 +1989,10 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_templateVariableMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -3392,6 +3396,10 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_filewrapperMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -3543,6 +3551,10 @@ class GGS_functionMap : public AC_GALGAS_map {
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_functionMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -3693,6 +3705,10 @@ class GGS_grammarMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_grammarMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_grammarMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -3897,6 +3913,10 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                                                    Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -4074,6 +4094,10 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_optionComponentMapForSemanticAnalysis_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -4238,6 +4262,10 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GGS_syntaxComponentMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
@@ -4366,6 +4394,10 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_internalRoutineMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_internalRoutineMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
 

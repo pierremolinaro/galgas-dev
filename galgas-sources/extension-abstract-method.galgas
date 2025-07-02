@@ -148,13 +148,20 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
         !@()
       ]
     end
-    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-      [!?mExtensionMethodMapForType insertKey
-        !self.mAbstractExtensionMethodName
-        !self.mAbstractExtensionMethodFormalParameterList
-        !.isVirtualAbstract
-      ]
-    end
+    var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+    [!?entry.mExtensionMethodMapForType insertKey
+      !self.mAbstractExtensionMethodName
+      !self.mAbstractExtensionMethodFormalParameterList
+      !.isVirtualAbstract
+    ]
+    [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
+//    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+//      [!?mExtensionMethodMapForType insertKey
+//        !self.mAbstractExtensionMethodName
+//        !self.mAbstractExtensionMethodFormalParameterList
+//        !.isVirtualAbstract
+//      ]
+//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

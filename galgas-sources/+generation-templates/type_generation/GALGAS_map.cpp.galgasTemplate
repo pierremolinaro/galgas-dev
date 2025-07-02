@@ -110,8 +110,8 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARG
 
 GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (inKey) ;
@@ -196,7 +196,30 @@ for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
     %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
   %  }\n%
-  %}\n\n%
+  %}
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
+::readSubscript__3F_%![mSearchMethodName identifierRepresentation]% (%?^%const class GGS_lstring & inKey,
+    %!^%Compiler * inCompiler
+    %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
+               !^%inCompiler,\n%
+               !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
+               !^%COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+  %  for (* mPropertyName * * *) in ATTRIBUTE_LIST do
+       %    result.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+     end
+  %    }
+  }
+  return result ;
+}
+%
 end
 
 
@@ -223,6 +246,27 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   end
   %  }\n%
 
+  %}\n\n%
+end
+
+
+
+for (mMethodName mErrorMessage) in REPLACE_SETTER_LIST do
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement%
+  %,\n %!^%Compiler * inCompiler%
+  %\n %!^%COMMA_LOCATION_ARGS) {\n%
+  %  const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
+  %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inElement.mProperty_lkey%
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+    %, inElement.mProperty_%![mPropertyName identifierRepresentation]
+  end
+  % COMMA_HERE)) ;\n%
+  %  capCollectionElement attributes ;\n%
+  %  attributes.setPointer (p) ;\n%
+  %  macroDetachSharedObject (p) ;\n%
+  %  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;\n%
   %}\n\n%
 end
 
@@ -286,6 +330,7 @@ cMapElement_%!TYPE_IDENTIFIER% * GGS_%!TYPE_IDENTIFIER%::readWriteAccessForWithI
   macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @%!TYPE_IDENTIFIER%

@@ -2450,8 +2450,8 @@ GGS_templateVariableMap GGS_templateVariableMap::class_func_emptyMap (LOCATION_A
 
 GGS_templateVariableMap_2E_element_3F_ GGS_templateVariableMap
 ::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_templateVariableMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) searchForKey (inKey) ;
@@ -2527,7 +2527,27 @@ void GGS_templateVariableMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mCppName ;
   }
 }
-
+  
+//--------------------------------------------------------------------------------------------------
+  
+GGS_templateVariableMap_2E_element GGS_templateVariableMap
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_templateVariableMap_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) performSearch (inKey,
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_templateVariableMap_searchKey
+                                                                                                         COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mType = p->mProperty_mType ;
+    result.mProperty_mCppName = p->mProperty_mCppName ;
+    }
+  }
+  return result ;
+}
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry GGS_templateVariableMap::getter_mTypeForKey (const GGS_string & inKey,
@@ -2595,6 +2615,7 @@ cMapElement_templateVariableMap * GGS_templateVariableMap::readWriteAccessForWit
   macroNullOrValidSharedObject (result, cMapElement_templateVariableMap) ;
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @templateVariableMap

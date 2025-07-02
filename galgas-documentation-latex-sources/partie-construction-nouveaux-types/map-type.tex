@@ -5,7 +5,7 @@
 \chapterLabel{Le type \texttt{map}}{typeMap}
 %-------------------------------------------------------------
 
-\tableDesMatieresLocaleDeProfondeurRelative{1}
+\tableDesMatieresLocaleDeProfondeurRelative{2}
 
 
 Un objet de type \ggst+map+ est une table de symboles, chaque symbole étant associé à des valeurs. Un objet de type \ggst+map+ a une sémantique de valeur.
@@ -16,7 +16,8 @@ La déclaration d'un type \ggst+map+ nomme~:
 \begin{itemize}
   \item les \emph{setters} d'insertion (\refSectionPage{setterInsertionTable})~;
   \item les \emph{méthodes} de recherche (\refSectionPage{methodesRechercheTable})~;
-  \item les \emph{setters} de retrait (\refSectionPage{setterRetraitTable}).
+  \item les \emph{setters} de retrait (\refSectionPage{setterRetraitTable})~
+  \item les \emph{setters} de remplacement (\refSectionPage{setterRemplacementTable}).
 \end{itemize}
 
 Les clés sont déclarées implicitement et sont du type \refTypePredefini{lstring}.
@@ -30,6 +31,7 @@ map @MaTable {
   insert insertKey error message "the '%K' key is already declared in %L"
   search searchKey error message "the '%K' key is not defined"
   remove removeKey error message "the '%K' key is not defined"
+  replace replaceKey error message "the '%K' key is not defined"
   insert or replace
 }
 \end{galgas3}
@@ -40,8 +42,9 @@ map @MaTable {
   public let @string mPremier
   public var @bool mSecond
   %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' key is not defined"
+  %searchMethodAndGetter searchKey %errorMessage "the '%K' key is not defined"
   %removeSetter removeKey %errorMessage "the '%K' key is not defined"
+  %replaceSetter replaceKey %errorMessage "the '%K' key is not defined"
   %insertOrReplaceSetter
 }
 \end{galgas4}
@@ -56,17 +59,16 @@ map @MaTable {
 
 Pour initialiser une table vide, il y a trois possibilités, sémantiquement identiques~:
 \begin{itemize}
-  \item la constante \texttt{\{\}} (\refSubsectionPage{constanteMapVide})~;
-  \item le constructeur \texttt{emptyMap} (\refSubsectionPage{constructeurEmptyMap})~;
-  \item le constructeur \texttt{default} (\refSubsectionPage{constructeurMapDefault}).
+  \item la constante \texttt{\{\}}, \texttt{()} (\refSubsectionPage{constanteMapVide})~;
+  \item le constructeur \texttt{emptyMap} (\refSubsectionPage{constructeurEmptyMap}).
 \end{itemize}
 
 
-\subsectionLabel{Constante \texttt{\{\}}}{constanteMapVide}
+\subsectionLabel{Constante \texttt{\{\}}, \texttt{()}}{constanteMapVide}
 
-Cette constante permet d'instancier une table vide. Exemple~:
+La constante \texttt{\{\}} en Galgas 3 permet d'instancier une table vide. Exemple~:
 \begin{galgas3}
-@MaTable uneTable = {}
+var @MaTable uneTable = {}
 \end{galgas3}
 
 Ou encore~:
@@ -74,6 +76,20 @@ Ou encore~:
 \begin{galgas3}
 var uneTable = @MaTable {}
 \end{galgas3}
+
+En Galgas 4, cette constante est \texttt{()}. Exemple~:
+\begin{galgas4}
+var @MaTable uneTable = ()
+\end{galgas4}
+
+Ou encore~:
+
+\begin{galgas4}
+var uneTable = @MaTable ()
+\end{galgas4}
+
+
+
 
 \subsectionLabel{Constructeur \texttt{emptyMap}}{constructeurEmptyMap}
 
@@ -88,21 +104,6 @@ Ou encore~:
 var uneTable = @MaTable.emptyMap
 \end{galgas3}
 
-
-
-\subsectionLabel{Constructeur \texttt{default}}{constructeurMapDefault}
-
-
-Une table accepte le constructeur \ggst=default=. Exemple~:
-\begin{galgas3}
-@MaTable uneTable = .default
-\end{galgas3}
-
-Ou encore~:
-
-\begin{galgas3}
-var uneTable = @MaTable.default
-\end{galgas3}
 
 
 
@@ -203,26 +204,41 @@ var @uint v = ...
 
 
 
-\sectionLabel{Méthodes de recherche}{methodesRechercheTable}
+\sectionLabel{Recherche dans une table}{methodesRechercheTable}
 
-Une \ggst+map+ peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherche. Une \emph{méthode} de recherche permet de rechercher une entrée d'une table, et retourne la valeur de ses attributs associés. Une erreur est déclenchée si la clé n'existe pas.
+Pour rechercher une entrée dans une table, on peut appeler :
+\begin{itemize}
+  \item une \emph{méthode de recherche} (\refSubsectionPage{methodeRechercheTable}) qui nomme un identificateur de recherche (\refSubsectionPage{methodeRechercheTable})~;
+  \item un \emph{getter} (\refSubsectionPage{getterRechercheTable}) qui nomme un identificateur de recherche (\refSubsectionPage{methodeRechercheTable})~;
+  \item l'opérateur d'indiçage, qui renvoie une valeur optionnelle (\refSubsectionPage{rechercheOptionnelleTable}).
+\end{itemize}
 
 
-Une \emph{méthode} de recherche est déclarée par~:
+\subsectionLabel{Identificateur de recherche}{idfRechercheTable}
+
+Une \ggst+map+ peut déclarer zéro, une ou plusieurs \emph{identificateurs} de recherche. Un \emph{identificateur} de recherche permet de rechercher une entrée d'une table via une \emph{méthode de recherche} (\refSubsectionPage{methodeRechercheTable}) ou un  une \emph{getter de recherche} (\refSubsectionPage{getterRechercheTable}). Une erreur est déclenchée si la clé n'existe pas.
+
+
+Un \emph{identificateur} de recherche est déclaré par~:
 
 
 \begin{galgas3}
-search nom error message "message_erreur"
+search identificateurRecherche error message "message_erreur_associe"
 \end{galgas3}
 
 \begin{galgas4}
-%searchMethod nom %errorMessage "message_erreur"
+%searchMethodAndGetter identificateurRecherche %errorMessage "message_erreur_associe"
 \end{galgas4}
 
-L'identificateur \ggst+nom+ donne un nom à la \emph{méthode} de recherche~; ce nom doit être unique parmi ces \emph{méthodes}. La chaîne de caractères \ggst+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement~:
+L'identificateur \ggst+identificateurRecherche+ donne un nom à l'\emph{identificateur} de recherche~; ce nom doit être unique parmi ces \emph{identificateurs}. La chaîne de caractères \ggst+"message_erreur_associe"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante dans la table. Cette chaîne accepte une séquence d'échappement~:
 \begin{itemize}
   \item \texttt{\%K}, qui est remplacée par la chaîne de caractères de la clé inexistante recherchée.
 \end{itemize}
+
+
+
+
+\subsectionLabel{Méthode de recherche}{methodeRechercheTable}
 
 
 Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel de méthode}~:
@@ -232,14 +248,47 @@ Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel
 \end{itemize}
 
 Par exemple~:
+
 \begin{galgas3}
-@MaTable uneTable = {}
+var @MaTable uneTable = {}
 ...
-@lstring clef = ...
+var @lstring clef = ...
 [uneTable searchKey !clef ?@string s ?@uint v]
 \end{galgas3}
 
 
+\begin{galgas4}
+var @MaTable uneTable = ()
+...
+var @lstring clef = ...
+uneTable.searchKey (!clef, ?@string s, ?@uint v)
+\end{galgas4}
+
+
+
+
+\subsectionLabel{Getter de recherche}{getterRechercheTable}
+
+
+Un \emph{getter} de recherche est appelé via l'opérateur d'indiçage, dont le sélecteur est l'identificateur de recherche. L'argument est une expression de type \ggst+@lstring+ qui caractérise la clé à rechercher.
+
+Il renvoie une copie de l'entrée, et déclenche le message d'erreur associé à l'identifficateur si la clef n'existe dans la table. 
+
+
+Par exemple~:
+\begin{galgas3}
+var @MaTable uneTable = {}
+...
+var @lstring clef = ...
+let @MaTable.@element entry = uneTable @[!searchKey: clef]
+\end{galgas3}
+
+\begin{galgas4}
+var @MaTable uneTable = ()
+...
+var @lstring clef = ...
+let @MaTable.@element entry = uneTable [!searchKey: clef]
+\end{galgas4}
 
 
 
@@ -247,7 +296,8 @@ Par exemple~:
 
 
 
-\sectionLabel{Recherche optionnelle}{rechercheOptionnelleTable}
+
+\subsectionLabel{Recherche optionnelle}{rechercheOptionnelleTable}
 
 L'instruction \ggst!with! a été supprimée. À la place on utilise l'expression de recherche optionnelle. Pour une instance de table nommée \ggst!uneTable! de type \ggst!@MaTable! , elle s'écrit :
 
@@ -267,7 +317,8 @@ Pour remplacer l'instruction \ggsq!with! qui a été supprimée :
 
 \begin{galgas3}
 let @uint terminalSymbolIndex
-with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
+// ATTENTION : l'instruction with a été supprimée
+with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap do
   terminalSymbolIndex = mTerminalIndex // Accès direct à l'entrée
 else // L'entrée n'existe pas
   terminalSymbolIndex = ...
@@ -305,7 +356,7 @@ end
 
 \sectionLabel{Setters de retrait}{setterRetraitTable}
 
-Une \ggst+map+ peut déclarer zéro, un ou plusieurs \emph{setters} de retrait. Un \emph{setter} de recherche permet de retirer une entrée d'une table, et retourne la valeur des attributs de la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
+Une \ggst+map+ peut déclarer zéro, un ou plusieurs \emph{setters} de retrait. Un \emph{setter} de retrait permet de retirer une entrée d'une table, et retourne la valeur des attributs de la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
 
 
 Un \emph{setter} de retrait est déclaré par~:
@@ -337,6 +388,61 @@ Par exemple~:
 @lstring clef = ...
 [!?uneTable removeKey !clef ?@string s ?@uint v]
 \end{galgas3}
+
+
+
+
+
+
+
+
+
+\sectionLabel{Setters de remplacement}{setterRemplacementTable}
+
+Une \ggst+map+ peut déclarer zéro, un ou plusieurs \emph{setters} de remplacement. Un \emph{setter} de remplacement permet de remplacer une entrée d'une table. Une erreur est déclenchée si la clé n'existe pas.
+
+
+Un \emph{setter} de remplacement est déclaré par~:
+
+\begin{galgas3}
+replace nom error message "message_erreur"
+\end{galgas3}
+
+\begin{galgas4}
+%replaceSetter nom %errorMessage "message_erreur"
+\end{galgas4}
+
+L'identificateur \ggst+nom+ donne un nom au \emph{setter} de remplacement~; ce nom doit être unique parmi les \emph{setters} de la table. La chaîne de caractères \ggst+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement~:
+\begin{itemize}
+  \item \texttt{\%K}, qui est remplacée par la chaîne de caractères de la clé inexistante à retirer.
+\end{itemize}
+
+
+Un \emph{setter} de remplacement est appelé dans une \emph{instruction d'appel de setter}. Il comporte un seul argument, l'élement qui doit être remplacé. Le sélecteur est \ggsq+!with:+.
+
+
+Par exemple~:
+
+\begin{galgas3}
+var @MaTable uneTable = {}
+...
+var @MaTable.@element element = ...
+[!?uneTable replaceKey !with: element]
+\end{galgas3}
+
+
+\begin{galgas4}
+var @MaTable uneTable = ()
+...
+var @MaTable.@element element = ...
+!?uneTable.replaceKey (!with: element)
+\end{galgas4}
+
+
+
+
+
+
 
 \sectionLabel{Getters}{gettersDeTable}
 

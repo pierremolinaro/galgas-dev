@@ -92,6 +92,12 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                   const char * inShadowErrorMessage
                                                   COMMA_LOCATION_ARGS) ;
 
+  protected: VIRTUAL_IN_DEBUG void performReplace (const GGS_lstring & inKey,
+                                                   const capCollectionElement & inAttributes,
+                                                   const char * inErrorMessage,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Search for 'with' read only instruction
   public: VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GGS_string & inKey) const ;
 

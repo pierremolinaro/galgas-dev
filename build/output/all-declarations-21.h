@@ -735,6 +735,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_repeat_5F_while_5F_branch_ (GGS_lexicalWhileBranchListAST & ioArgument0,
                                                       Lexique_galgasScanner_34_ * inCompiler) ;
 
+//------------------------------------- 'replace_declaration' non terminal
+//--- 'parse' label
+  public: virtual void nt_replace_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_replace_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_replace_5F_declaration_ (GGS_mapReplaceSetterListAST & ioArgument0,
+                                                   Lexique_galgasScanner_34_ * inCompiler) ;
+
 //------------------------------------- 'search_declaration' non terminal
 //--- 'parse' label
   public: virtual void nt_search_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;
@@ -1019,22 +1030,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                                GGS_lstring & outArgument1,
                                                Lexique_galgasScanner_34_ * inCompiler) ;
 
-//------------------------------------- 'with_instruction_core' non terminal
-//--- 'parse' label
-  public: virtual void nt_with_5F_instruction_5F_core_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_with_5F_instruction_5F_core_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_with_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                        const GGS_location inArgument1,
-                                                        const GGS_semanticExpressionAST inArgument2,
-                                                        const GGS_location inArgument3,
-                                                        const GGS_lstring inArgument4,
-                                                        GGS_semanticInstructionAST & outArgument5,
-                                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
   public: virtual int32_t select_galgas_34_ExpressionSyntax_0 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_ExpressionSyntax_1 (Lexique_galgasScanner_34_ *) ;
@@ -1278,10 +1273,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_InstructionsSyntax_71 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_72 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_73 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_74 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (Lexique_galgasScanner_34_ *) ;
 

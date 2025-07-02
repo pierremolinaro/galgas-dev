@@ -126,12 +126,18 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
         !@()
       ]
     end
-    with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
-      [!?mExtensionSetterMapForType insertKey
-        !self.mAbstractExtensionSetterName
-        !self.mAbstractExtensionSetterFormalParameterList
-      ]
-    end
+    var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
+    [!?entry.mExtensionSetterMapForType insertKey
+      !self.mAbstractExtensionSetterName
+      !self.mAbstractExtensionSetterFormalParameterList
+    ]
+    [!?ioExtensionSetterMapForBuildingContext replaceKey !with: entry]
+//    with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey do
+//      [!?mExtensionSetterMapForType insertKey
+//        !self.mAbstractExtensionSetterName
+//        !self.mAbstractExtensionSetterFormalParameterList
+//      ]
+//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

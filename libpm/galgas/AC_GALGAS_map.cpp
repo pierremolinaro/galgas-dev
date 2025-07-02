@@ -72,6 +72,12 @@ class cSharedMapRoot : public SharedObject {
                                                         const char * inShadowErrorMessage
                                                         COMMA_LOCATION_ARGS) ;
 
+  protected: VIRTUAL_IN_DEBUG void performReplace (const GGS_lstring & inKey,
+                                                   const capCollectionElement & inAttributes,
+                                                   const char * inErrorMessage,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Search
   private: VIRTUAL_IN_DEBUG cMapNode * findEntryInMap (const String & inKey,
                                                        const cSharedMapRoot * inFirstMap) const ;
@@ -798,7 +804,7 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
     cMapNode * matchingEntry = internalInsert (mRoot, key, inAttributes, entryAlreadyExists, extension) ;
     if (! entryAlreadyExists) {
       result = matchingEntry ;
-      mCount ++ ;
+      mCount += 1 ;
       const String shadowErrorMessage (inShadowErrorMessage) ;
       const int32_t shadowErrorMessageLength = shadowErrorMessage.length () ;
       if (shadowErrorMessageLength > 0) {
@@ -845,16 +851,51 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
 
 //--------------------------------------------------------------------------------------------------
 
+void cSharedMapRoot::performReplace (const GGS_lstring & inKey,
+                                     const capCollectionElement & inAttributes,
+                                     const char * inReplaceErrorMessage,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+//--- If all attributes are built, perform insertion
+  if (inAttributes.isValid ()) {
+    cMapElement * p = (cMapElement *) inAttributes.ptr () ;
+    macroValidSharedObject (p, cMapElement) ;
+    const String key = p->mProperty_lkey.mProperty_string.stringValue () ;
+  //--- Insert or replace
+    cMapNode * node = performSearch (inKey, inCompiler, inReplaceErrorMessage COMMA_THERE) ;
+    if (nullptr != node) {
+      node->mAttributes = inAttributes ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
                                    Compiler * inCompiler,
                                    const char * inInsertErrorMessage,
                                    const char * inShadowErrorMessage
                                    COMMA_LOCATION_ARGS) {
-//--- If all attributes are built, perform insertion
   if (isValid () && inAttributes.isValid ()) {
     insulate (HERE) ;
     if (nullptr != mSharedMap) {
       mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AC_GALGAS_map::performReplace (const GGS_lstring & inKey,
+                                    const capCollectionElement & inAttributes,
+                                    const char * inErrorMessage,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inAttributes.isValid ()) {
+    insulate (HERE) ;
+    if (nullptr != mSharedMap) {
+      mSharedMap->performReplace (inKey, inAttributes, inErrorMessage, inCompiler COMMA_THERE) ;
     }
   }
 }
