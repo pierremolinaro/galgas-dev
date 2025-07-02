@@ -647,13 +647,13 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_insertSetterListAST readProperty_mInsertSetterList (void) const ;
 
-  public: class GGS_mapSearchMethodListAST readProperty_mSearchMethodList (void) const ;
+  public: class GGS_mapAccessorListAST readProperty_mSearchMethodList (void) const ;
 
-  public: class GGS_mapSearchSubscriptListAST readProperty_mSearchSubscriptList (void) const ;
+  public: class GGS_mapAccessorListAST readProperty_mSearchSubscriptList (void) const ;
 
-  public: class GGS_mapRemoveSetterListAST readProperty_mRemoveSetterList (void) const ;
+  public: class GGS_mapAccessorListAST readProperty_mRemoveSetterList (void) const ;
 
-  public: class GGS_mapReplaceSetterListAST readProperty_mReplaceSetterList (void) const ;
+  public: class GGS_mapAccessorListAST readProperty_mReplaceSetterList (void) const ;
 
   public: class GGS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
@@ -667,10 +667,10 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                                             const class GGS_lstring & inOperand2,
                                                                                             const class GGS_typedPropertyList & inOperand3,
                                                                                             const class GGS_insertSetterListAST & inOperand4,
-                                                                                            const class GGS_mapSearchMethodListAST & inOperand5,
-                                                                                            const class GGS_mapSearchSubscriptListAST & inOperand6,
-                                                                                            const class GGS_mapRemoveSetterListAST & inOperand7,
-                                                                                            const class GGS_mapReplaceSetterListAST & inOperand8,
+                                                                                            const class GGS_mapAccessorListAST & inOperand5,
+                                                                                            const class GGS_mapAccessorListAST & inOperand6,
+                                                                                            const class GGS_mapAccessorListAST & inOperand7,
+                                                                                            const class GGS_mapAccessorListAST & inOperand8,
                                                                                             const class GGS_bool & inOperand9,
                                                                                             const class GGS_unifiedTypeMapEntry & inOperand10,
                                                                                             Compiler * inCompiler
@@ -690,10 +690,10 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                 const class GGS_lstring & inOperand2,
                                                                 const class GGS_typedPropertyList & inOperand3,
                                                                 const class GGS_insertSetterListAST & inOperand4,
-                                                                const class GGS_mapSearchMethodListAST & inOperand5,
-                                                                const class GGS_mapSearchSubscriptListAST & inOperand6,
-                                                                const class GGS_mapRemoveSetterListAST & inOperand7,
-                                                                const class GGS_mapReplaceSetterListAST & inOperand8,
+                                                                const class GGS_mapAccessorListAST & inOperand5,
+                                                                const class GGS_mapAccessorListAST & inOperand6,
+                                                                const class GGS_mapAccessorListAST & inOperand7,
+                                                                const class GGS_mapAccessorListAST & inOperand8,
                                                                 const class GGS_bool & inOperand9,
                                                                 const class GGS_unifiedTypeMapEntry & inOperand10,
                                                                 class Compiler * inCompiler
@@ -737,10 +737,10 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                       const class GGS_lstring & inOperand2,
                                                                                       const class GGS_typedPropertyList & inOperand3,
                                                                                       const class GGS_insertSetterListAST & inOperand4,
-                                                                                      const class GGS_mapSearchMethodListAST & inOperand5,
-                                                                                      const class GGS_mapSearchSubscriptListAST & inOperand6,
-                                                                                      const class GGS_mapRemoveSetterListAST & inOperand7,
-                                                                                      const class GGS_mapReplaceSetterListAST & inOperand8,
+                                                                                      const class GGS_mapAccessorListAST & inOperand5,
+                                                                                      const class GGS_mapAccessorListAST & inOperand6,
+                                                                                      const class GGS_mapAccessorListAST & inOperand7,
+                                                                                      const class GGS_mapAccessorListAST & inOperand8,
                                                                                       const class GGS_bool & inOperand9,
                                                                                       const class GGS_unifiedTypeMapEntry & inOperand10,
                                                                                       Compiler * inCompiler) ;
@@ -768,10 +768,10 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GGS_lstring mProperty_mMapTypeName ;
   public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GGS_insertSetterListAST mProperty_mInsertSetterList ;
-  public: GGS_mapSearchMethodListAST mProperty_mSearchMethodList ;
-  public: GGS_mapSearchSubscriptListAST mProperty_mSearchSubscriptList ;
-  public: GGS_mapRemoveSetterListAST mProperty_mRemoveSetterList ;
-  public: GGS_mapReplaceSetterListAST mProperty_mReplaceSetterList ;
+  public: GGS_mapAccessorListAST mProperty_mSearchMethodList ;
+  public: GGS_mapAccessorListAST mProperty_mSearchSubscriptList ;
+  public: GGS_mapAccessorListAST mProperty_mRemoveSetterList ;
+  public: GGS_mapAccessorListAST mProperty_mReplaceSetterList ;
   public: GGS_bool mProperty_mHasInsertOrReplaceModifier ;
   public: GGS_unifiedTypeMapEntry mProperty_mOptionalElementTypeEntry ;
 
@@ -785,10 +785,10 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GGS_lstring & in_mMapTypeName,
                                      const GGS_typedPropertyList & in_mTypedAttributeList,
                                      const GGS_insertSetterListAST & in_mInsertSetterList,
-                                     const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                     const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                     const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                     const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                     const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                     const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                     const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                     const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                      const GGS_bool & in_mHasInsertOrReplaceModifier,
                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                      Compiler * inCompiler

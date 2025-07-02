@@ -4963,12 +4963,12 @@ void cPtr_readWriteAccessWithInstructionAST::method_analyzeSemanticInstruction (
     test_32 = GGS_bool (ComparisonKind::notEqual, temp_33.readProperty_mSearchMethodNameForErrorSignaling ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_32) {
       GGS_bool var_found_13329 = GGS_bool (false) ;
-      UpEnumerator_mapSearchMethodListAST enumerator_13370 (extensionGetter_definition (var_targetType_11369, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 342)).readProperty_mapSearchMethodList ()) ;
+      UpEnumerator_mapAccessorListAST enumerator_13370 (extensionGetter_definition (var_targetType_11369, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 342)).readProperty_mapSearchMethodList ()) ;
       bool bool_34 = var_found_13329.operator_not (SOURCE_FILE ("instruction-with.galgas", 342)).isValidAndTrue () ;
       if (enumerator_13370.hasCurrentObject () && bool_34) {
         while (enumerator_13370.hasCurrentObject () && bool_34) {
           const GGS_readWriteAccessWithInstructionAST temp_35 = this ;
-          var_found_13329 = GGS_bool (ComparisonKind::equal, enumerator_13370.current_mSearchMethodName (HERE).readProperty_string ().objectCompare (temp_35.readProperty_mSearchMethodNameForErrorSignaling ().readProperty_string ())) ;
+          var_found_13329 = GGS_bool (ComparisonKind::equal, enumerator_13370.current_mName (HERE).readProperty_string ().objectCompare (temp_35.readProperty_mSearchMethodNameForErrorSignaling ().readProperty_string ())) ;
           enumerator_13370.gotoNextObject () ;
           if (enumerator_13370.hasCurrentObject ()) {
             bool_34 = var_found_13329.operator_not (SOURCE_FILE ("instruction-with.galgas", 342)).isValidAndTrue () ;

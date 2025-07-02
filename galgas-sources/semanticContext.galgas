@@ -612,9 +612,13 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   var @filewrapperTemplateMap filewrapperTemplateMap = @()
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
     var @functionSignature templateSignature = @()
-    for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName isConstant) in mFilewrapperTemplateFormalInputParameters do
-      [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
-      templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string !isConstant
+    for parameter in mFilewrapperTemplateFormalInputParameters do
+      [!?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let parameterTypeIndex]
+      templateSignature +=
+        !parameter.mFormalTemplateSelector
+        !parameterTypeIndex
+        !parameter.mFormalArgumentName.string
+        !parameter.mIsUnused
     end
     [!?filewrapperTemplateMap insertKey
       !mFilewrapperTemplateName

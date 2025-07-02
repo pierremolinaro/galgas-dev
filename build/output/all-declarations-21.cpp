@@ -37371,7 +37371,7 @@ void cGrammar_galgas_34_Grammar::nt_search_5F_method_5F_declaration_indexing (Le
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_search_5F_method_5F_declaration_ (GGS_mapSearchMethodListAST &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_search_5F_method_5F_declaration_ (GGS_mapAccessorListAST &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 126) {
   rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i26_(parameter_1, inLexique) ;
@@ -37402,7 +37402,7 @@ void cGrammar_galgas_34_Grammar::nt_search_5F_subscript_5F_declaration_indexing 
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_search_5F_subscript_5F_declaration_ (GGS_mapSearchSubscriptListAST &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_search_5F_subscript_5F_declaration_ (GGS_mapAccessorListAST &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 127) {
   rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i27_(parameter_1, inLexique) ;
@@ -37433,7 +37433,7 @@ void cGrammar_galgas_34_Grammar::nt_remove_5F_setter_5F_declaration_indexing (Le
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_remove_5F_setter_5F_declaration_ (GGS_mapRemoveSetterListAST &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_remove_5F_setter_5F_declaration_ (GGS_mapAccessorListAST &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 128) {
   rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i28_(parameter_1, inLexique) ;
@@ -37464,7 +37464,7 @@ void cGrammar_galgas_34_Grammar::nt_replace_5F_setter_5F_declaration_indexing (L
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_replace_5F_setter_5F_declaration_ (GGS_mapReplaceSetterListAST &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_replace_5F_setter_5F_declaration_ (GGS_mapAccessorListAST &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 129) {
   rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i29_(parameter_1, inLexique) ;

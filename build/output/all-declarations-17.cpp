@@ -1575,10 +1575,10 @@ init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const GGS_boo
                                                                    const GGS_lstring & in_mMapTypeName,
                                                                    const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                                    const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                                   const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                   const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                                   const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                                   const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                   const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                                   const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                                   const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                                   const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                                    const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                                    const GGS_bool & in_equatable,
                                                                    Compiler * inCompiler
@@ -1598,10 +1598,10 @@ mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equata
                                                                                      const GGS_lstring & in_mMapTypeName,
                                                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                                                      const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                                                     const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                                     const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                                                     const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                                                     const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                                     const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                                                     const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                                                     const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                                                     const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                                                      const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                                                      const GGS_bool & in_equatable,
                                                                                      Compiler * /* inCompiler */) {
@@ -1629,10 +1629,10 @@ GGS_mapDeclarationAST GGS_mapDeclarationAST::class_func_new (const GGS_bool & in
                                                              const GGS_lstring & in_mMapTypeName,
                                                              const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                              const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                             const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                             const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                             const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                             const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                             const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                             const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                             const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                             const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                              const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                              const GGS_bool & in_equatable,
                                                              Compiler * inCompiler
@@ -1680,9 +1680,9 @@ GGS_insertSetterListAST GGS_mapDeclarationAST::readProperty_mInsertSetterList (v
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapSearchMethodListAST GGS_mapDeclarationAST::readProperty_mSearchMethodList (void) const {
+GGS_mapAccessorListAST GGS_mapDeclarationAST::readProperty_mSearchMethodList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapSearchMethodListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
@@ -1692,9 +1692,9 @@ GGS_mapSearchMethodListAST GGS_mapDeclarationAST::readProperty_mSearchMethodList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapSearchSubscriptListAST GGS_mapDeclarationAST::readProperty_mSearchSubscriptList (void) const {
+GGS_mapAccessorListAST GGS_mapDeclarationAST::readProperty_mSearchSubscriptList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapSearchSubscriptListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
@@ -1704,9 +1704,9 @@ GGS_mapSearchSubscriptListAST GGS_mapDeclarationAST::readProperty_mSearchSubscri
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapRemoveSetterListAST GGS_mapDeclarationAST::readProperty_mRemoveSetterList (void) const {
+GGS_mapAccessorListAST GGS_mapDeclarationAST::readProperty_mRemoveSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapRemoveSetterListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
@@ -1716,9 +1716,9 @@ GGS_mapRemoveSetterListAST GGS_mapDeclarationAST::readProperty_mRemoveSetterList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapReplaceSetterListAST GGS_mapDeclarationAST::readProperty_mReplaceSetterList (void) const {
+GGS_mapAccessorListAST GGS_mapDeclarationAST::readProperty_mReplaceSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapReplaceSetterListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
@@ -1773,10 +1773,10 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined
                                                 const GGS_lstring & in_mMapTypeName,
                                                 const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                 const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                 const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                 const GGS_bool & in_equatable,
                                                 Compiler * inCompiler
@@ -1934,10 +1934,10 @@ init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry 
                                                   const GGS_lstring & in_mMapTypeName,
                                                   const GGS_typedPropertyList & in_mTypedAttributeList,
                                                   const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                  const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                  const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                  const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                  const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                  const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                  const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                  const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                  const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                   const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                   const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                   Compiler * inCompiler
@@ -1958,10 +1958,10 @@ mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS
                                                                        const GGS_lstring & in_mMapTypeName,
                                                                        const GGS_typedPropertyList & in_mTypedAttributeList,
                                                                        const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                                       const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                       const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                                       const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                                       const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                       const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                                       const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                                       const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                                       const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                                        const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                                        const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                                        Compiler * /* inCompiler */) {
@@ -1991,10 +1991,10 @@ GGS_mapTypeForGeneration GGS_mapTypeForGeneration::class_func_new (const GGS_uni
                                                                    const GGS_lstring & in_mMapTypeName,
                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
                                                                    const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                                   const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                   const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                                   const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                                   const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                   const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                                   const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                                   const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                                   const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                                    const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                                    const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                                    Compiler * inCompiler
@@ -2054,9 +2054,9 @@ GGS_insertSetterListAST GGS_mapTypeForGeneration::readProperty_mInsertSetterList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapSearchMethodListAST GGS_mapTypeForGeneration::readProperty_mSearchMethodList (void) const {
+GGS_mapAccessorListAST GGS_mapTypeForGeneration::readProperty_mSearchMethodList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapSearchMethodListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -2066,9 +2066,9 @@ GGS_mapSearchMethodListAST GGS_mapTypeForGeneration::readProperty_mSearchMethodL
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapSearchSubscriptListAST GGS_mapTypeForGeneration::readProperty_mSearchSubscriptList (void) const {
+GGS_mapAccessorListAST GGS_mapTypeForGeneration::readProperty_mSearchSubscriptList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapSearchSubscriptListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -2078,9 +2078,9 @@ GGS_mapSearchSubscriptListAST GGS_mapTypeForGeneration::readProperty_mSearchSubs
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapRemoveSetterListAST GGS_mapTypeForGeneration::readProperty_mRemoveSetterList (void) const {
+GGS_mapAccessorListAST GGS_mapTypeForGeneration::readProperty_mRemoveSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapRemoveSetterListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -2090,9 +2090,9 @@ GGS_mapRemoveSetterListAST GGS_mapTypeForGeneration::readProperty_mRemoveSetterL
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapReplaceSetterListAST GGS_mapTypeForGeneration::readProperty_mReplaceSetterList (void) const {
+GGS_mapAccessorListAST GGS_mapTypeForGeneration::readProperty_mReplaceSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapReplaceSetterListAST () ;
+    return GGS_mapAccessorListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -2149,10 +2149,10 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_unifiedTypeMapEn
                                                       const GGS_lstring & in_mMapTypeName,
                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
                                                       const GGS_insertSetterListAST & in_mInsertSetterList,
-                                                      const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                      const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
-                                                      const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
-                                                      const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                      const GGS_mapAccessorListAST & in_mSearchMethodList,
+                                                      const GGS_mapAccessorListAST & in_mSearchSubscriptList,
+                                                      const GGS_mapAccessorListAST & in_mRemoveSetterList,
+                                                      const GGS_mapAccessorListAST & in_mReplaceSetterList,
                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                       const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                       Compiler * inCompiler
@@ -12001,7 +12001,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPrede
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_enumerationDescriptorList & in_enumerationDescriptorList,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_typeFeatures & in_features,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_functionSignature & in_addAssignOperatorArguments,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const GGS_mapSearchMethodListAST & in_mapSearchMethodList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const GGS_mapAccessorListAST & in_mapSearchMethodList,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_bool & in_generateHeaderInSeparateFile,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  const GGS_string & in_headerFileName,
@@ -12065,7 +12065,7 @@ GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (const GGS_lstring & inOper
                                                       const GGS_enumerationDescriptorList & inOperand17,
                                                       const GGS_typeFeatures & inOperand18,
                                                       const GGS_functionSignature & inOperand19,
-                                                      const GGS_mapSearchMethodListAST & inOperand20,
+                                                      const GGS_mapAccessorListAST & inOperand20,
                                                       const GGS_bool & inOperand21,
                                                       const GGS_unifiedTypeMapEntry & inOperand22,
                                                       const GGS_string & inOperand23,
@@ -12119,7 +12119,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::class_func_new (const GGS_l
                                                                      const GGS_enumerationDescriptorList & in_enumerationDescriptorList,
                                                                      const GGS_typeFeatures & in_features,
                                                                      const GGS_functionSignature & in_addAssignOperatorArguments,
-                                                                     const GGS_mapSearchMethodListAST & in_mapSearchMethodList,
+                                                                     const GGS_mapAccessorListAST & in_mapSearchMethodList,
                                                                      const GGS_bool & in_generateHeaderInSeparateFile,
                                                                      const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
                                                                      const GGS_string & in_headerFileName,

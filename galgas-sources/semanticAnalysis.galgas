@@ -94,9 +94,6 @@ proc checkGetterSignatures
       if mFormalSelector.string != ref_mFormalSelector.string then
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
-//        error mFormalSelector
-//        : "the selector should be '?" + ref_mFormalSelector
-//          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType definition].typeName.string != [ref_mFormalArgumentType definition].typeName.string then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
@@ -561,25 +558,25 @@ override method @filewrapperDeclarationAST semanticAnalysis
   else
   //--- Analyze filewrapper templates
     var @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = @()
-    for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
+    for filewrapperTemplate in self.mFilewrapperTemplateList do
       let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
         !self.mFilewrapperName
-        !mFilewrapperTemplateName
+        !filewrapperTemplate.mFilewrapperTemplateName
       )
       [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
       [!?ioUsefulEntitiesGraph addEdge !from: filewrapperTemplateNameForUsefulness !to: filewrapperNameForUsefulness]
-      if [mFilewrapperTemplatePath.string firstCharacterOrNul] == '/' then
-        error mFilewrapperTemplatePath
+      if [filewrapperTemplate.mFilewrapperTemplatePath.string firstCharacterOrNul] == '/' then
+        error filewrapperTemplate.mFilewrapperTemplatePath
          : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
-      let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
+      let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
     //--- Parse template
       grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
-         in @lstring {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
+         in @lstring {!absoluteTemplatePath !filewrapperTemplate.mFilewrapperTemplatePath.location}
     //--- Build template variable map
       var @templateVariableMap templateVariableMap = @()
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = @()
-      for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
+      for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
         let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
         let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
@@ -602,7 +599,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       )
     //--- Enter in generation list
       filewrapperTemplateListForGeneration +=
-        !mFilewrapperTemplateName.string
+        !filewrapperTemplate.mFilewrapperTemplateName.string
         !filewrapperTemplateFormalInputParameters
         !templateInstructionListForGeneration
     end
