@@ -302,6 +302,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "once" -> $%once$,
   "preserved" -> $%preserved$,
   "quietOutputByDefault" -> $%quietOutputByDefault$,
+  "searchSubscript" -> $%searchSubscript$,
   "templateEndMark" -> $%templateEndMark$,
   "tool-source" -> $%tool-source$,
   "translate" -> $%translate$,

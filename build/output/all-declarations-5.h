@@ -9,6 +9,274 @@
 #include "all-declarations-4.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @mapReplaceSetterListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_mapReplaceSetterListAST final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_mapReplaceSetterListAST (const class GGS_mapReplaceSetterListAST & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_mSetterName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_mapReplaceSetterListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_mapReplaceSetterListAST final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_mapReplaceSetterListAST (const class GGS_mapReplaceSetterListAST & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_mSetterName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_mapReplaceSetterListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @mapReplaceSetterListAST list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_mapReplaceSetterListAST : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public: GGS_mapReplaceSetterListAST (void) ;
+
+//--------------------------------- List constructor by graph
+  public: GGS_mapReplaceSetterListAST (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                 const class GGS_lstring & in_mSetterName,
+                                                 const class GGS_lstring & in_mErrorMessage
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_mapReplaceSetterListAST init (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_mapReplaceSetterListAST extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_mapReplaceSetterListAST class_func_emptyList (LOCATION_ARGS) ;
+
+  public: static class GGS_mapReplaceSetterListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
+                                                                             const class GGS_lstring & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_mapReplaceSetterListAST inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_mapReplaceSetterListAST_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GGS_mapReplaceSetterListAST add_operation (const GGS_mapReplaceSetterListAST & inOperand,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_lstring constinArgument0,
+                                               class GGS_lstring constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_lstring constinArgument0,
+                                                      class GGS_lstring constinArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_lstring & outArgument0,
+                                                 class GGS_lstring & outArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_lstring & outArgument0,
+                                                class GGS_lstring & outArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_lstring & outArgument0,
+                                                      class GGS_lstring & outArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMErrorMessageAtIndex (class GGS_lstring constinArgument0,
+                                                                class GGS_uint constinArgument1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSetterNameAtIndex (class GGS_lstring constinArgument0,
+                                                              class GGS_uint constinArgument1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_first (class GGS_lstring & outArgument0,
+                                              class GGS_lstring & outArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_last (class GGS_lstring & outArgument0,
+                                             class GGS_lstring & outArgument1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mErrorMessageAtIndex (const class GGS_uint & constinOperand0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mSetterNameAtIndex (const class GGS_uint & constinOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_mapReplaceSetterListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_mapReplaceSetterListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_mapReplaceSetterListAST getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_mapReplaceSetterListAST ;
+  friend class DownEnumerator_mapReplaceSetterListAST ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapReplaceSetterListAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @mapReplaceSetterListAST_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_mapReplaceSetterListAST_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mSetterName ;
+  public: inline GGS_lstring readProperty_mSetterName (void) const {
+    return mProperty_mSetterName ;
+  }
+
+  public: GGS_lstring mProperty_mErrorMessage ;
+  public: inline GGS_lstring readProperty_mErrorMessage (void) const {
+    return mProperty_mErrorMessage ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_mapReplaceSetterListAST_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSetterName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSetterName = inValue ;
+  }
+
+  public: inline void setter_setMErrorMessage (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mErrorMessage = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_mapReplaceSetterListAST_2E_element (const GGS_lstring & in_mSetterName,
+                                                  const GGS_lstring & in_mErrorMessage) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_mapReplaceSetterListAST_2E_element (const GGS_mapReplaceSetterListAST_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_mapReplaceSetterListAST_2E_element & operator = (const GGS_mapReplaceSetterListAST_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_mapReplaceSetterListAST_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
+                                                                      const class GGS_lstring & inOperand1,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_mapReplaceSetterListAST_2E_element extractObject (const GGS_object & inObject,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_mapReplaceSetterListAST_2E_element class_func_new (const class GGS_lstring & inOperand0,
+                                                                              const class GGS_lstring & inOperand1,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapReplaceSetterListAST_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @insertOrReplaceDeclarationListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
@@ -259,11 +527,13 @@ class GGS_mapDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
 
-  public: class GGS_insertMethodListAST readProperty_mInsertMethodList (void) const ;
+  public: class GGS_insertSetterListAST readProperty_mInsertSetterList (void) const ;
 
   public: class GGS_mapSearchMethodListAST readProperty_mSearchMethodList (void) const ;
 
-  public: class GGS_mapRemoveMethodListAST readProperty_mRemoveMethodList (void) const ;
+  public: class GGS_mapSearchSubscriptListAST readProperty_mSearchSubscriptList (void) const ;
+
+  public: class GGS_mapRemoveSetterListAST readProperty_mRemoveSetterList (void) const ;
 
   public: class GGS_mapReplaceSetterListAST readProperty_mReplaceSetterList (void) const ;
 
@@ -274,17 +544,18 @@ class GGS_mapDeclarationAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_mapDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (const class GGS_bool & inOperand0,
-                                                                                                      const class GGS_lstring & inOperand1,
-                                                                                                      const class GGS_propertyInCollectionListAST & inOperand2,
-                                                                                                      const class GGS_insertMethodListAST & inOperand3,
-                                                                                                      const class GGS_mapSearchMethodListAST & inOperand4,
-                                                                                                      const class GGS_mapRemoveMethodListAST & inOperand5,
-                                                                                                      const class GGS_mapReplaceSetterListAST & inOperand6,
-                                                                                                      const class GGS_insertOrReplaceDeclarationListAST & inOperand7,
-                                                                                                      const class GGS_bool & inOperand8,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_mapDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const class GGS_bool & inOperand0,
+                                                                                                          const class GGS_lstring & inOperand1,
+                                                                                                          const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                                          const class GGS_insertSetterListAST & inOperand3,
+                                                                                                          const class GGS_mapSearchMethodListAST & inOperand4,
+                                                                                                          const class GGS_mapSearchSubscriptListAST & inOperand5,
+                                                                                                          const class GGS_mapRemoveSetterListAST & inOperand6,
+                                                                                                          const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                                                                          const class GGS_insertOrReplaceDeclarationListAST & inOperand8,
+                                                                                                          const class GGS_bool & inOperand9,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -298,12 +569,13 @@ class GGS_mapDeclarationAST : public GGS_semanticDeclarationAST {
   public: static class GGS_mapDeclarationAST class_func_new (const class GGS_bool & inOperand0,
                                                              const class GGS_lstring & inOperand1,
                                                              const class GGS_propertyInCollectionListAST & inOperand2,
-                                                             const class GGS_insertMethodListAST & inOperand3,
+                                                             const class GGS_insertSetterListAST & inOperand3,
                                                              const class GGS_mapSearchMethodListAST & inOperand4,
-                                                             const class GGS_mapRemoveMethodListAST & inOperand5,
-                                                             const class GGS_mapReplaceSetterListAST & inOperand6,
-                                                             const class GGS_insertOrReplaceDeclarationListAST & inOperand7,
-                                                             const class GGS_bool & inOperand8,
+                                                             const class GGS_mapSearchSubscriptListAST & inOperand5,
+                                                             const class GGS_mapRemoveSetterListAST & inOperand6,
+                                                             const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                             const class GGS_insertOrReplaceDeclarationListAST & inOperand8,
+                                                             const class GGS_bool & inOperand9,
                                                              class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
@@ -340,16 +612,17 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (const class GGS_bool & inOperand0,
-                                                                                                const class GGS_lstring & inOperand1,
-                                                                                                const class GGS_propertyInCollectionListAST & inOperand2,
-                                                                                                const class GGS_insertMethodListAST & inOperand3,
-                                                                                                const class GGS_mapSearchMethodListAST & inOperand4,
-                                                                                                const class GGS_mapRemoveMethodListAST & inOperand5,
-                                                                                                const class GGS_mapReplaceSetterListAST & inOperand6,
-                                                                                                const class GGS_insertOrReplaceDeclarationListAST & inOperand7,
-                                                                                                const class GGS_bool & inOperand8,
-                                                                                                Compiler * inCompiler) ;
+  public: void mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const class GGS_bool & inOperand0,
+                                                                                                    const class GGS_lstring & inOperand1,
+                                                                                                    const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                                    const class GGS_insertSetterListAST & inOperand3,
+                                                                                                    const class GGS_mapSearchMethodListAST & inOperand4,
+                                                                                                    const class GGS_mapSearchSubscriptListAST & inOperand5,
+                                                                                                    const class GGS_mapRemoveSetterListAST & inOperand6,
+                                                                                                    const class GGS_mapReplaceSetterListAST & inOperand7,
+                                                                                                    const class GGS_insertOrReplaceDeclarationListAST & inOperand8,
+                                                                                                    const class GGS_bool & inOperand9,
+                                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -392,9 +665,10 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GGS_lstring mProperty_mMapTypeName ;
   public: GGS_propertyInCollectionListAST mProperty_mPropertyList ;
-  public: GGS_insertMethodListAST mProperty_mInsertMethodList ;
+  public: GGS_insertSetterListAST mProperty_mInsertSetterList ;
   public: GGS_mapSearchMethodListAST mProperty_mSearchMethodList ;
-  public: GGS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
+  public: GGS_mapSearchSubscriptListAST mProperty_mSearchSubscriptList ;
+  public: GGS_mapRemoveSetterListAST mProperty_mRemoveSetterList ;
   public: GGS_mapReplaceSetterListAST mProperty_mReplaceSetterList ;
   public: GGS_insertOrReplaceDeclarationListAST mProperty_mInsertOrReplaceDeclarationListAST ;
   public: GGS_bool mProperty_equatable ;
@@ -407,9 +681,10 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined,
                                   const GGS_lstring & in_mMapTypeName,
                                   const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                  const GGS_insertMethodListAST & in_mInsertMethodList,
+                                  const GGS_insertSetterListAST & in_mInsertSetterList,
                                   const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                  const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                  const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                  const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
                                   const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                   const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                   const GGS_bool & in_equatable,
@@ -8241,10 +8516,6 @@ class GGS_constantIndexMap : public AC_GALGAS_map {
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_constantIndexMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -8713,10 +8984,6 @@ class GGS_propertyMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_propertyMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_propertyMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -10282,10 +10549,6 @@ class GGS_subscriptMap : public AC_GALGAS_map {
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_subscriptMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -11394,10 +11657,6 @@ class GGS_scopeLocalVarMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_scopeLocalVarMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_scopeLocalVarMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -12794,46 +13053,4 @@ void extensionSetter_readTransition (class GGS_localVarValuation & ioObject,
                                      const class GGS_localVariableAttributes constin_inAttributes,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@currentVarManager searchForReadWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioObject,
-                                               const class GGS_lstring constin_inVarName,
-                                               class GGS_unifiedTypeMapEntry & out_outType,
-                                               class GGS_string & out_outCppName,
-                                               class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarMapListForLLVM readWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readWriteAccess (class GGS_localVarMapListForLLVM & ioObject,
-                                      const class GGS_lstring constin_inVarName,
-                                      const class GGS_uint constin_inIndex,
-                                      class GGS_unifiedTypeMapEntry & out_outType,
-                                      class GGS_string & out_outCppName,
-                                      class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarValuation readWriteTransition'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readWriteTransition (class GGS_localVarValuation & ioObject,
-                                          const class GGS_lstring constin_inVarName,
-                                          const class GGS_bool constin_inOverridenMap,
-                                          const class GGS_localVariableAttributes constin_inAttributes,
-                                          class Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
 

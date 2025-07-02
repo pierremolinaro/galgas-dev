@@ -547,12 +547,13 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_32_ (class Co
 
 GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                     const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                    const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
                                                                                     const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                    const class GGS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
+                                                                                    const class GGS_insertSetterListAST & in_INSERT_5F_SETTER_5F_LIST,
                                                                                     const class GGS_string & in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                     const class GGS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
-                                                                                    const class GGS_mapRemoveMethodListAST & in_REMOVE_5F_METHOD_5F_LIST,
+                                                                                    const class GGS_mapSearchSubscriptListAST & in_SEARCH_5F_SUBSCRIPT_5F_LIST,
+                                                                                    const class GGS_mapRemoveSetterListAST & in_REMOVE_5F_SETTER_5F_LIST,
                                                                                     const class GGS_mapReplaceSetterListAST & in_REPLACE_5F_SETTER_5F_LIST,
                                                                                     const class GGS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
                                                                                     const class GGS_bool & in_GENERATE_5F_COMPARISON

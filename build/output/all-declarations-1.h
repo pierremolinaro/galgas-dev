@@ -9,6 +9,117 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionIfAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionIfAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionIfAST (const class cPtr_templateInstructionIfAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (void) const ;
+
+  public: class GGS_templateInstructionListAST readProperty_mElseInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionIfAST init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                            const class GGS_templateInstructionListAST & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_templateInstructionIfAST extractObject (const GGS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateInstructionIfAST class_func_new (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                                    const class GGS_templateInstructionListAST & inOperand1,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionIfAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateInstructionIfAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionIfAST_init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                      const class GGS_templateInstructionListAST & inOperand1,
+                                                      Compiler * inCompiler) ;
+
+
+//--- Extension method templateInstructionAnalysis
+  public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_templateInstructionListForGeneration & arg_ioInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_templateInstructionIfBranchListAST mProperty_mTemplateInstructionIfBranchList ;
+  public: GGS_templateInstructionListAST mProperty_mElseInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
+                                         const GGS_templateInstructionListAST & in_mElseInstructionList,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionIfAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1989,10 +2100,6 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_templateVariableMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -3396,10 +3503,6 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_filewrapperMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -3551,10 +3654,6 @@ class GGS_functionMap : public AC_GALGAS_map {
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_functionMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -3705,10 +3804,6 @@ class GGS_grammarMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_grammarMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_grammarMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -3913,10 +4008,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                                                    Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -4094,10 +4185,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_optionComponentMapForSemanticAnalysis_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -4262,10 +4349,6 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_syntaxComponentMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const ;
-
 
 
 //--------------------------------- Introspection
@@ -4394,10 +4477,6 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_internalRoutineMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_internalRoutineMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
 

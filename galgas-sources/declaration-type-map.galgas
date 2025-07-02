@@ -19,7 +19,7 @@
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-list @insertMethodListAST {
+list @insertSetterListAST {
   public let @lstring mInsertMethodName
   public let @lstring mErrorMessage
   public let @lstring mShadowErrorMessage
@@ -34,15 +34,22 @@ list @mapSearchMethodListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @mapRemoveMethodListAST {
-  public let @lstring mMethodName
+list @mapSearchSubscriptListAST {
+  public let @lstring mSearchMethodName
+  public let @lstring mErrorMessage
+}
+
+//--------------------------------------------------------------------------------------------------
+
+list @mapRemoveSetterListAST {
+  public let @lstring mSetterName
   public let @lstring mErrorMessage
 }
 
 //--------------------------------------------------------------------------------------------------
 
 list @mapReplaceSetterListAST {
-  public let @lstring mMethodName
+  public let @lstring mSetterName
   public let @lstring mErrorMessage
 }
 
@@ -57,9 +64,10 @@ list @insertOrReplaceDeclarationListAST {
 class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
   private let @propertyInCollectionListAST mPropertyList
-  private let @insertMethodListAST mInsertMethodList
+  private let @insertSetterListAST mInsertSetterList
   private let @mapSearchMethodListAST mSearchMethodList
-  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @mapSearchSubscriptListAST mSearchSubscriptList
+  private let @mapRemoveSetterListAST mRemoveSetterList
   private let @mapReplaceSetterListAST mReplaceSetterList
   private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
   private let @bool equatable %initArgLabel
@@ -91,22 +99,25 @@ syntax extension galgas3DeclarationsSyntax {
     end
     ${$
     var propertyList = @propertyInCollectionListAST ()
-    var mInsertMethodList = @insertMethodListAST ()
+    var mInsertSetterList = @insertSetterListAST ()
     var @mapSearchMethodListAST mSearchMethodList = @()
-    var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @mapRemoveSetterListAST mRemoveSetterList = @()
     var @mapReplaceSetterListAST replaceMethodList = @()
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
+    var @mapSearchSubscriptListAST searchSubscriptListAST = @()
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !? propertyList
     while
-      <map_insert_setter_declaration> !? mInsertMethodList
+      <map_insert_setter_declaration> !? mInsertSetterList
     while
-      <search_declaration> !?mSearchMethodList
+      <search_method_declaration> !?mSearchMethodList
     while
-      <remove_declaration> !?mRemoveMethodList
+      <search_subscript_declaration> !?searchSubscriptListAST
     while
-      <replace_declaration> !?replaceMethodList
+      <remove_setter_declaration> !?mRemoveSetterList
+    while
+      <replace_setter_declaration> !?replaceMethodList
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
@@ -117,9 +128,10 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false // Is not predefined
       !mapTypeName
       !propertyList
-      !mInsertMethodList
+      !mInsertSetterList
       !mSearchMethodList
-      !mRemoveMethodList
+      !searchSubscriptListAST
+      !mRemoveSetterList
       !replaceMethodList
       !insertOrReplaceDeclarationListAST
       !equatable: isEquatable
@@ -128,7 +140,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+  rule <search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring methodName
     $error$ ; $message$
@@ -138,7 +150,17 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
+  rule <search_subscript_declaration> ?!@mapSearchSubscriptListAST ioMapSearchSubscriptListAST {
+    $%searchSubscript$
+    $identifier$ ?let @lstring methodName
+    $error$ ; $message$
+    $"string"$ ?let @lstring errorMessage
+    ioMapSearchSubscriptListAST += !methodName !errorMessage // !locationAttribute
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <remove_setter_declaration> ?!@mapRemoveSetterListAST ioMapRemoveMethodListAST {
     $remove$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -149,7 +171,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
+  rule <replace_setter_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
     $replace$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -169,7 +191,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
+  rule <map_insert_setter_declaration> ?!@insertSetterListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
     $error$
@@ -210,22 +232,25 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ${$
     var propertyList = @propertyInCollectionListAST ()
-    var mInsertMethodList = @insertMethodListAST ()
+    var mInsertSetterList = @insertSetterListAST ()
     var @mapSearchMethodListAST mSearchMethodList = @()
-    var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @mapRemoveSetterListAST mRemoveSetterList = @()
     var @mapReplaceSetterListAST replaceMethodList = @()
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
+    var @mapSearchSubscriptListAST searchSubscriptListAST = @()
     repeat
     while
       <property_declaration> !?ioDeclarations !? propertyList
     while
-      <map_insert_setter_declaration> !? mInsertMethodList
+      <map_insert_setter_declaration> !? mInsertSetterList
     while
-      <search_declaration> !?mSearchMethodList
+      <search_method_declaration> !?mSearchMethodList
     while
-      <remove_declaration> !?mRemoveMethodList
+      <search_subscript_declaration> !?searchSubscriptListAST
     while
-      <replace_declaration> !?replaceMethodList
+      <remove_setter_declaration> !?mRemoveSetterList
+    while
+      <replace_setter_declaration> !?replaceMethodList
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
@@ -236,9 +261,10 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false // Is not predefined
       !mapTypeName
       !propertyList
-      !mInsertMethodList
+      !mInsertSetterList
       !mSearchMethodList
-      !mRemoveMethodList
+      !searchSubscriptListAST
+      !mRemoveSetterList
       !replaceMethodList
       !insertOrReplaceDeclarationListAST
       !equatable: isEquatable
@@ -247,8 +273,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
-    $%searchMethodAndGetter$
+  rule <search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+    $%searchMethod$
     $identifier$ ?let @lstring methodName
     $%errorMessage$
     $"string"$ ?let @lstring errorMessage
@@ -257,7 +283,17 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
+  rule <search_subscript_declaration> ?!@mapSearchSubscriptListAST ioMapSearchSubscriptListAST {
+    $%searchSubscript$
+    $identifier$ ?let @lstring methodName
+    $%errorMessage$
+    $"string"$ ?let @lstring errorMessage
+    ioMapSearchSubscriptListAST += !methodName !errorMessage // !locationAttribute
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <remove_setter_declaration> ?!@mapRemoveSetterListAST ioMapRemoveMethodListAST {
     $%removeSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -267,7 +303,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
+  rule <replace_setter_declaration> ?!@mapReplaceSetterListAST ioMapReplaceMethodListAST {
     $%replaceSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -284,7 +320,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
+  rule <map_insert_setter_declaration> ?!@insertSetterListAST ioMapMethodList {
     $%insertSetter$
     $identifier$ ?let @lstring mMethodName
     $%errorMessage$
@@ -524,7 +560,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !mPropertyName.string
   end
 //--- Handle insert setters
-  for (mInsertMethodName * *) in self.mInsertMethodList do
+  for (mInsertMethodName * *) in self.mInsertSetterList do
     if [setterMap hasKey !mInsertMethodName.string] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -550,7 +586,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       @("with".nowhere, elementTypeEntry, .argumentConstantIn, "inEntry")
     ]
     [!?setterMap insertOrReplace
-      !entry.mMethodName
+      !entry.mSetterName
       !.definedAsMember
       !replaceSetterFormalArgumentList
       !true
@@ -559,14 +595,14 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 //--- Handle remove setters
-  for entry in self.mRemoveMethodList do
-    if [setterMap hasKey !entry.mMethodName.string] then
-      error entry.mMethodName
-      : "the '" + entry.mMethodName
+  for entry in self.mRemoveSetterList do
+    if [setterMap hasKey !entry.mSetterName.string] then
+      error entry.mSetterName
+      : "the '" + entry.mSetterName
                 + "' method is already declared as an insert setter or a remove setter"
     else
       [!?setterMap insertOrReplace
-        !entry.mMethodName
+        !entry.mSetterName
         !.definedAsMember
         !removeMethodFormalArgumentList
         !true
@@ -686,7 +722,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !argumentTypeList
     !optionalElementTypeEntry
   ]
-  for (mSearchMethodName *) in self.mSearchMethodList do
+  for (mSearchMethodName *) in self.mSearchSubscriptList do
      let @functionSignature subscriptArgumentTypeList = @[@(mSearchMethodName, lstringTypeIndex, "inKey", true)]
      [!?readSubscriptMap insertKey
       !@([subscriptArgumentTypeList subcriptSignature], .nowhere)
@@ -796,7 +832,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
 //--- Enter insert setters
   var @insertMethodMap insertMethodMap = @()
-  for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertMethodList do
+  for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertSetterList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters (!mErrorMessage )
     check_K_L_escapeCharacters (!mShadowErrorMessage )
@@ -808,8 +844,8 @@ override method @mapDeclarationAST semanticAnalysis
     check_K_escapeCharacters (!mErrorMessage )
   end
 //--- Enter remove methods
-  for (mMethodName mErrorMessage) in self.mRemoveMethodList do
-    [!?insertMethodMap insertKey !mMethodName]
+  for (mSetterName mErrorMessage) in self.mRemoveSetterList do
+    [!?insertMethodMap insertKey !mSetterName]
     check_K_escapeCharacters (!mErrorMessage )
   end
 //--- Warn for duplicated declarations or 'insertOrReplace' setter
@@ -837,9 +873,10 @@ override method @mapDeclarationAST semanticAnalysis
       !elementTypeEntry
       !self.mMapTypeName
       !typedAttributeList
-      !self.mInsertMethodList
+      !self.mInsertSetterList
       !self.mSearchMethodList
-      !self.mRemoveMethodList
+      !self.mSearchSubscriptList
+      !self.mRemoveSetterList
       !self.mReplaceSetterList
       !hasInsertOrReplaceModifier
       !optionalElementTypeEntry
@@ -854,9 +891,10 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
   private let @typedPropertyList mTypedAttributeList
-  private let @insertMethodListAST mInsertMethodList
+  private let @insertSetterListAST mInsertSetterList
   private let @mapSearchMethodListAST mSearchMethodList
-  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @mapSearchSubscriptListAST mSearchSubscriptList
+  private let @mapRemoveSetterListAST mRemoveSetterList
   private let @mapReplaceSetterListAST mReplaceSetterList
   private let @bool mHasInsertOrReplaceModifier
   private let @unifiedTypeMapEntry mOptionalElementTypeEntry
@@ -929,10 +967,11 @@ override method @mapTypeForGeneration appendSpecificImplementation
     ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mTypedAttributeList
     ![self.mElementTypeEntry identifierRepresentation]
-    !self.mInsertMethodList
+    !self.mInsertSetterList
     ![self.mOptionalElementTypeEntry identifierRepresentation]
     !self.mSearchMethodList
-    !self.mRemoveMethodList
+    !self.mSearchSubscriptList
+    !self.mRemoveSetterList
     !self.mReplaceSetterList
     !self.mHasInsertOrReplaceModifier
     ![selfTypeDefinition.features generateCppObjectComparison]
@@ -964,12 +1003,13 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@typedPropertyList PROPERTY_LIST
     ?@string ELEMENT_TYPE_IDENTIFIER
-    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@insertSetterListAST INSERT_SETTER_LIST
     ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
+    ?@mapSearchSubscriptListAST SEARCH_SUBSCRIPT_LIST
+    ?@mapRemoveSetterListAST REMOVE_SETTER_LIST
     ?@mapReplaceSetterListAST REPLACE_SETTER_LIST
     ?@bool HAS_INSERT_OR_REPLACE
     ?@bool GENERATE_COMPARISON

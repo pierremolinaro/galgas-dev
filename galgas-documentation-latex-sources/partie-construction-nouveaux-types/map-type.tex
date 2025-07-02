@@ -42,7 +42,7 @@ map @MaTable {
   public let @string mPremier
   public var @bool mSecond
   %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethodAndGetter searchKey %errorMessage "the '%K' key is not defined"
+  %searchMethodAndSubscript searchKey %errorMessage "the '%K' key is not defined"
   %removeSetter removeKey %errorMessage "the '%K' key is not defined"
   %replaceSetter replaceKey %errorMessage "the '%K' key is not defined"
   %insertOrReplaceSetter
@@ -227,7 +227,7 @@ search identificateurRecherche error message "message_erreur_associe"
 \end{galgas3}
 
 \begin{galgas4}
-%searchMethodAndGetter identificateurRecherche %errorMessage "message_erreur_associe"
+%searchMethodAndSubscript identificateurRecherche %errorMessage "message_erreur_associe"
 \end{galgas4}
 
 L'identificateur \ggst+identificateurRecherche+ donne un nom à l'\emph{identificateur} de recherche~; ce nom doit être unique parmi ces \emph{identificateurs}. La chaîne de caractères \ggst+"message_erreur_associe"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante dans la table. Cette chaîne accepte une séquence d'échappement~:

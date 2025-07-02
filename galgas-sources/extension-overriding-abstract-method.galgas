@@ -159,20 +159,20 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
       !@()
     ]
   end
-  var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
-  [!?entry.mExtensionMethodMapForType insertKey
-    !self.mOverridingExtensionMethodName
-    ! self.mOverridingExtensionMethodFormalParameterList
-    !.isVirtualOverridingAbstract
-  ]
-  [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
-//  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-//    [!?mExtensionMethodMapForType insertKey
-//      !self.mOverridingExtensionMethodName
-//      ! self.mOverridingExtensionMethodFormalParameterList
-//      !.isVirtualOverridingAbstract
-//    ]
-//  end
+//  var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+//  [!?entry.mExtensionMethodMapForType insertKey
+//    !self.mOverridingExtensionMethodName
+//    ! self.mOverridingExtensionMethodFormalParameterList
+//    !.isVirtualOverridingAbstract
+//  ]
+//  [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
+  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+    [!?mExtensionMethodMapForType insertKey
+      !self.mOverridingExtensionMethodName
+      ! self.mOverridingExtensionMethodFormalParameterList
+      !.isVirtualOverridingAbstract
+    ]
+  end
 }
 
 //--------------------------------------------------------------------------------------------------

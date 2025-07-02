@@ -479,64 +479,65 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken__25_once = 139 ;
   public: static const int32_t kToken__25_preserved = 140 ;
   public: static const int32_t kToken__25_quietOutputByDefault = 141 ;
-  public: static const int32_t kToken__25_templateEndMark = 142 ;
-  public: static const int32_t kToken__25_tool_2D_source = 143 ;
-  public: static const int32_t kToken__25_translate = 144 ;
-  public: static const int32_t kToken__25_usefull = 145 ;
-  public: static const int32_t kToken__2A_ = 146 ;
-  public: static const int32_t kToken__2C_ = 147 ;
-  public: static const int32_t kToken__2B_ = 148 ;
-  public: static const int32_t kToken__26__2B_ = 149 ;
-  public: static const int32_t kToken__26__2D_ = 150 ;
-  public: static const int32_t kToken__26__2A_ = 151 ;
-  public: static const int32_t kToken__26__2F_ = 152 ;
-  public: static const int32_t kToken__3E_ = 153 ;
-  public: static const int32_t kToken__3B_ = 154 ;
-  public: static const int32_t kToken__3A_ = 155 ;
-  public: static const int32_t kToken__3A__3E_ = 156 ;
-  public: static const int32_t kToken__2D_ = 157 ;
-  public: static const int32_t kToken__28_ = 158 ;
-  public: static const int32_t kToken__29_ = 159 ;
-  public: static const int32_t kToken__2D__3E_ = 160 ;
-  public: static const int32_t kToken__3D__3D_ = 161 ;
-  public: static const int32_t kToken__3D_ = 162 ;
-  public: static const int32_t kToken__26__26_ = 163 ;
-  public: static const int32_t kToken__5B_ = 164 ;
-  public: static const int32_t kToken__5D_ = 165 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 166 ;
-  public: static const int32_t kToken__2E_ = 167 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 168 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 169 ;
-  public: static const int32_t kToken__40__7B_ = 170 ;
-  public: static const int32_t kToken__40__28_ = 171 ;
-  public: static const int32_t kToken__40__5B_ = 172 ;
-  public: static const int32_t kToken__2B__3D_ = 173 ;
-  public: static const int32_t kToken__2D__3D_ = 174 ;
-  public: static const int32_t kToken__2A__3D_ = 175 ;
-  public: static const int32_t kToken__2F__3D_ = 176 ;
-  public: static const int32_t kToken__26__3D_ = 177 ;
-  public: static const int32_t kToken__7C__3D_ = 178 ;
-  public: static const int32_t kToken__5E__3D_ = 179 ;
-  public: static const int32_t kToken__2F_ = 180 ;
-  public: static const int32_t kToken__21__3D_ = 181 ;
-  public: static const int32_t kToken__3E__3D_ = 182 ;
-  public: static const int32_t kToken__26_ = 183 ;
-  public: static const int32_t kToken__7B_ = 184 ;
-  public: static const int32_t kToken__7D_ = 185 ;
-  public: static const int32_t kToken__60_ = 186 ;
-  public: static const int32_t kToken__7C__7C_ = 187 ;
-  public: static const int32_t kToken__7C_ = 188 ;
-  public: static const int32_t kToken__5E_ = 189 ;
-  public: static const int32_t kToken__3E__3E_ = 190 ;
-  public: static const int32_t kToken__7E_ = 191 ;
-  public: static const int32_t kToken__2D__2D_ = 192 ;
-  public: static const int32_t kToken__2B__2B_ = 193 ;
-  public: static const int32_t kToken__26__2D__2D_ = 194 ;
-  public: static const int32_t kToken__26__2B__2B_ = 195 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 196 ;
-  public: static const int32_t kToken__21__3D__3D_ = 197 ;
-  public: static const int32_t kToken__3F__5E_ = 198 ;
-  public: static const int32_t kToken__21__5E_ = 199 ;
+  public: static const int32_t kToken__25_searchSubscript = 142 ;
+  public: static const int32_t kToken__25_templateEndMark = 143 ;
+  public: static const int32_t kToken__25_tool_2D_source = 144 ;
+  public: static const int32_t kToken__25_translate = 145 ;
+  public: static const int32_t kToken__25_usefull = 146 ;
+  public: static const int32_t kToken__2A_ = 147 ;
+  public: static const int32_t kToken__2C_ = 148 ;
+  public: static const int32_t kToken__2B_ = 149 ;
+  public: static const int32_t kToken__26__2B_ = 150 ;
+  public: static const int32_t kToken__26__2D_ = 151 ;
+  public: static const int32_t kToken__26__2A_ = 152 ;
+  public: static const int32_t kToken__26__2F_ = 153 ;
+  public: static const int32_t kToken__3E_ = 154 ;
+  public: static const int32_t kToken__3B_ = 155 ;
+  public: static const int32_t kToken__3A_ = 156 ;
+  public: static const int32_t kToken__3A__3E_ = 157 ;
+  public: static const int32_t kToken__2D_ = 158 ;
+  public: static const int32_t kToken__28_ = 159 ;
+  public: static const int32_t kToken__29_ = 160 ;
+  public: static const int32_t kToken__2D__3E_ = 161 ;
+  public: static const int32_t kToken__3D__3D_ = 162 ;
+  public: static const int32_t kToken__3D_ = 163 ;
+  public: static const int32_t kToken__26__26_ = 164 ;
+  public: static const int32_t kToken__5B_ = 165 ;
+  public: static const int32_t kToken__5D_ = 166 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 167 ;
+  public: static const int32_t kToken__2E_ = 168 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 169 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 170 ;
+  public: static const int32_t kToken__40__7B_ = 171 ;
+  public: static const int32_t kToken__40__28_ = 172 ;
+  public: static const int32_t kToken__40__5B_ = 173 ;
+  public: static const int32_t kToken__2B__3D_ = 174 ;
+  public: static const int32_t kToken__2D__3D_ = 175 ;
+  public: static const int32_t kToken__2A__3D_ = 176 ;
+  public: static const int32_t kToken__2F__3D_ = 177 ;
+  public: static const int32_t kToken__26__3D_ = 178 ;
+  public: static const int32_t kToken__7C__3D_ = 179 ;
+  public: static const int32_t kToken__5E__3D_ = 180 ;
+  public: static const int32_t kToken__2F_ = 181 ;
+  public: static const int32_t kToken__21__3D_ = 182 ;
+  public: static const int32_t kToken__3E__3D_ = 183 ;
+  public: static const int32_t kToken__26_ = 184 ;
+  public: static const int32_t kToken__7B_ = 185 ;
+  public: static const int32_t kToken__7D_ = 186 ;
+  public: static const int32_t kToken__60_ = 187 ;
+  public: static const int32_t kToken__7C__7C_ = 188 ;
+  public: static const int32_t kToken__7C_ = 189 ;
+  public: static const int32_t kToken__5E_ = 190 ;
+  public: static const int32_t kToken__3E__3E_ = 191 ;
+  public: static const int32_t kToken__7E_ = 192 ;
+  public: static const int32_t kToken__2D__2D_ = 193 ;
+  public: static const int32_t kToken__2B__2B_ = 194 ;
+  public: static const int32_t kToken__26__2D__2D_ = 195 ;
+  public: static const int32_t kToken__26__2B__2B_ = 196 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 197 ;
+  public: static const int32_t kToken__21__3D__3D_ = 198 ;
+  public: static const int32_t kToken__3F__5E_ = 199 ;
+  public: static const int32_t kToken__21__5E_ = 200 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -634,7 +635,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 199 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 200 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -9173,115 +9174,4 @@ class GGS_templateInstructionIfBranchListAST_2E_element : public AC_GALGAS_root 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionIfAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionIfAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateInstructionIfAST (const class cPtr_templateInstructionIfAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (void) const ;
-
-  public: class GGS_templateInstructionListAST readProperty_mElseInstructionList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionIfAST init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
-                                                            const class GGS_templateInstructionListAST & inOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionIfAST extractObject (const GGS_object & inObject,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionIfAST class_func_new (const class GGS_templateInstructionIfBranchListAST & inOperand0,
-                                                                    const class GGS_templateInstructionListAST & inOperand1,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionIfAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @templateInstructionIfAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateInstructionIfAST_init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
-                                                      const class GGS_templateInstructionListAST & inOperand1,
-                                                      Compiler * inCompiler) ;
-
-
-//--- Extension method templateInstructionAnalysis
-  public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_templateAnalysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_templateInstructionListForGeneration & arg_ioInstructionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_templateInstructionIfBranchListAST mProperty_mTemplateInstructionIfBranchList ;
-  public: GGS_templateInstructionListAST mProperty_mElseInstructionList ;
-
-
-//--- Default constructor
-  public: cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                         const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
 

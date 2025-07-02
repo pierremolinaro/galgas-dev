@@ -8,181 +8,6 @@
 #include "all-declarations-3.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalRoutineCallInstructionAST_2E_weak::objectCompare (const GGS_lexicalRoutineCallInstructionAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak::GGS_lexicalRoutineCallInstructionAST_2E_weak (void) :
-GGS_lexicalInstructionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak & GGS_lexicalRoutineCallInstructionAST_2E_weak::operator = (const GGS_lexicalRoutineCallInstructionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak::GGS_lexicalRoutineCallInstructionAST_2E_weak (const GGS_lexicalRoutineCallInstructionAST & inSource) :
-GGS_lexicalInstructionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_lexicalRoutineCallInstructionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST_2E_weak::unwrappedValue (void) const {
-  GGS_lexicalRoutineCallInstructionAST result ;
-  if (isValid ()) {
-    const cPtr_lexicalRoutineCallInstructionAST * p = (cPtr_lexicalRoutineCallInstructionAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_lexicalRoutineCallInstructionAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST_2E_weak::bang_lexicalRoutineCallInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineCallInstructionAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalRoutineCallInstructionAST) ;
-      result = GGS_lexicalRoutineCallInstructionAST ((cPtr_lexicalRoutineCallInstructionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalRoutineCallInstructionAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ("lexicalRoutineCallInstructionAST.weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_lexicalRoutineCallInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalRoutineCallInstructionAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalRoutineCallInstructionAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_lexicalRoutineCallInstructionAST_2E_weak result ;
-  const GGS_lexicalRoutineCallInstructionAST_2E_weak * p = (const GGS_lexicalRoutineCallInstructionAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalRoutineCallInstructionAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalRoutineCallInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string callExtensionGetter_generateObjcCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                 const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_generateObjcCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                  const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_generateSwiftCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          const GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
-                                                          const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
-    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentMode, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
 //
 //Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
 //
@@ -2526,29 +2351,6 @@ void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inKey,
     outArgument2 = p->mProperty_mComment ;
     outArgument3 = p->mProperty_mDefaultValue ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_commandLineOptionMap_2E_element GGS_commandLineOptionMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) performSearch (inKey,
-                                                                                                           inCompiler,
-                                                                                                           kSearchErrorMessage_commandLineOptionMap_searchKey
-                                                                                                           COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mOptionChar = p->mProperty_mOptionChar ;
-    result.mProperty_mOptionString = p->mProperty_mOptionString ;
-    result.mProperty_mComment = p->mProperty_mComment ;
-    result.mProperty_mDefaultValue = p->mProperty_mDefaultValue ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -9833,8 +9635,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 200)) {
-    static const char * syntaxErrorMessageArray [200] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 201)) {
+    static const char * syntaxErrorMessageArray [201] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -9975,7 +9777,8 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '%remove' keyword",
         "the '%removeSetter' keyword",
         "the '%replaceSetter' keyword",
-        "the '%searchMethodAndGetter' keyword",
+        "the '%searchMethod' keyword",
+        "the '%searchSubscript' keyword",
         "the '%searchString' keyword",
         "the '%tool-source' keyword",
         "the '%templateEndMark' keyword",
@@ -11540,8 +11343,8 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rule
   TO_UNICODE ('e'),
 } ;
 
-//--- Unicode string for '$searchMethodAndGetter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchMethodAndGetter = {
+//--- Unicode string for '$searchMethod$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchMethod = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
@@ -11554,15 +11357,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sear
   TO_UNICODE ('h'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('G'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
 } ;
 
 //--- Unicode string for '$searchString$'
@@ -11579,6 +11373,25 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sear
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('g'),
+} ;
+
+//--- Unicode string for '$searchSubscript$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchSubscript = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
 } ;
 
 //--- Unicode string for '$select$'
@@ -11896,7 +11709,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 42 ;
+static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 43 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attributeKeyWordList [ktable_size_galgasScanner_34__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__from, Lexique_galgasScanner_34_::kToken__25_from),
@@ -11922,11 +11735,13 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertBefore, Lexique_galgasScanner_34_::kToken__25_insertBefore),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertSetter, Lexique_galgasScanner_34_::kToken__25_insertSetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__removeSetter, Lexique_galgasScanner_34_::kToken__25_removeSetter),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchMethod, Lexique_galgasScanner_34_::kToken__25_searchMethod),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchString, Lexique_galgasScanner_34_::kToken__25_searchString),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_unix, Lexique_galgasScanner_34_::kToken__25_makefile_2D_unix),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__replaceSetter, Lexique_galgasScanner_34_::kToken__25_replaceSetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__MacOSDeployment, Lexique_galgasScanner_34_::kToken__25_MacOSDeployment),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_macosx, Lexique_galgasScanner_34_::kToken__25_makefile_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchSubscript, Lexique_galgasScanner_34_::kToken__25_searchSubscript),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__templateEndMark, Lexique_galgasScanner_34_::kToken__25_templateEndMark),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__codeblocks_2D_linux_33__32_, Lexique_galgasScanner_34_::kToken__25_codeblocks_2D_linux_33__32_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__codeblocks_2D_linux_36__34_, Lexique_galgasScanner_34_::kToken__25_codeblocks_2D_linux_36__34_),
@@ -11936,7 +11751,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__quietOutputByDefault, Lexique_galgasScanner_34_::kToken__25_quietOutputByDefault),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__applicationBundleBase, Lexique_galgasScanner_34_::kToken__25_applicationBundleBase),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertOrReplaceSetter, Lexique_galgasScanner_34_::kToken__25_insertOrReplaceSetter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__searchMethodAndGetter, Lexique_galgasScanner_34_::kToken__25_searchMethodAndGetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__generatedInSeparateFile, Lexique_galgasScanner_34_::kToken__25_generatedInSeparateFile),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_galgasScanner_34_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_galgasScanner_34_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
@@ -12850,9 +12664,14 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("%replaceSetter") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
-    case kToken__25_searchMethodAndGetter:
+    case kToken__25_searchMethod:
       s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("%searchMethodAndGetter") ;
+      s.appendCString ("%searchMethod") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__25_searchSubscript:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%searchSubscript") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_searchString:
@@ -14230,7 +14049,8 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("%remove") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%removeSetter") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%replaceSetter") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("%searchMethodAndGetter") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%searchMethod") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%searchSubscript") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%searchString") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%tool-source") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%templateEndMark") COMMA_HERE) ;
@@ -14330,11 +14150,13 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("insertBefore") ;
     ioList.appendObject ("insertSetter") ;
     ioList.appendObject ("removeSetter") ;
+    ioList.appendObject ("searchMethod") ;
     ioList.appendObject ("searchString") ;
     ioList.appendObject ("makefile-unix") ;
     ioList.appendObject ("replaceSetter") ;
     ioList.appendObject ("MacOSDeployment") ;
     ioList.appendObject ("makefile-macosx") ;
+    ioList.appendObject ("searchSubscript") ;
     ioList.appendObject ("templateEndMark") ;
     ioList.appendObject ("codeblocks-linux32") ;
     ioList.appendObject ("codeblocks-linux64") ;
@@ -14344,7 +14166,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("quietOutputByDefault") ;
     ioList.appendObject ("applicationBundleBase") ;
     ioList.appendObject ("insertOrReplaceSetter") ;
-    ioList.appendObject ("searchMethodAndGetter") ;
     ioList.appendObject ("generatedInSeparateFile") ;
     ioList.appendObject ("makefile-win32-on-macosx") ;
     ioList.appendObject ("makefile-x86linux32-on-macosx") ;
@@ -14508,7 +14329,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [200] = {0,
+  static const uint32_t kTerminalSymbolStyles [201] = {0,
     0 /* galgasScanner4_1_identifier */,
     7 /* galgasScanner4_1_double_2E_xxx */,
     6 /* galgasScanner4_1_literalInt */,
@@ -14649,7 +14470,8 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     11 /* galgasScanner4_1__25_remove */,
     11 /* galgasScanner4_1__25_removeSetter */,
     11 /* galgasScanner4_1__25_replaceSetter */,
-    11 /* galgasScanner4_1__25_searchMethodAndGetter */,
+    11 /* galgasScanner4_1__25_searchMethod */,
+    11 /* galgasScanner4_1__25_searchSubscript */,
     11 /* galgasScanner4_1__25_searchString */,
     11 /* galgasScanner4_1__25_tool_2D_source */,
     11 /* galgasScanner4_1__25_templateEndMark */,
@@ -16421,6 +16243,128 @@ GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("applicationPredefinedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_applicationPredefinedTypeAST_2E_weak::objectCompare (const GGS_applicationPredefinedTypeAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak::GGS_applicationPredefinedTypeAST_2E_weak (void) :
+GGS_predefinedTypeAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak & GGS_applicationPredefinedTypeAST_2E_weak::operator = (const GGS_applicationPredefinedTypeAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak::GGS_applicationPredefinedTypeAST_2E_weak (const GGS_applicationPredefinedTypeAST & inSource) :
+GGS_predefinedTypeAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak GGS_applicationPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_applicationPredefinedTypeAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST_2E_weak::unwrappedValue (void) const {
+  GGS_applicationPredefinedTypeAST result ;
+  if (isValid ()) {
+    const cPtr_applicationPredefinedTypeAST * p = (cPtr_applicationPredefinedTypeAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_applicationPredefinedTypeAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST_2E_weak::bang_applicationPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_applicationPredefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_applicationPredefinedTypeAST) ;
+      result = GGS_applicationPredefinedTypeAST ((cPtr_applicationPredefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @applicationPredefinedTypeAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ("applicationPredefinedTypeAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_applicationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_applicationPredefinedTypeAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_applicationPredefinedTypeAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_applicationPredefinedTypeAST_2E_weak GGS_applicationPredefinedTypeAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_applicationPredefinedTypeAST_2E_weak result ;
+  const GGS_applicationPredefinedTypeAST_2E_weak * p = (const GGS_applicationPredefinedTypeAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_applicationPredefinedTypeAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("applicationPredefinedTypeAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

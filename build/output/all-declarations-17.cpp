@@ -1571,20 +1571,21 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_mapDeclarationAST GGS_mapDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (const GGS_bool & in_isPredefined,
-                                                               const GGS_lstring & in_mMapTypeName,
-                                                               const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                               const GGS_insertMethodListAST & in_mInsertMethodList,
-                                                               const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                               const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                               const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
-                                                               const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
-                                                               const GGS_bool & in_equatable,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const GGS_bool & in_isPredefined,
+                                                                   const GGS_lstring & in_mMapTypeName,
+                                                                   const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                                   const GGS_insertSetterListAST & in_mInsertSetterList,
+                                                                   const GGS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                   const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                                   const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
+                                                                   const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                   const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
+                                                                   const GGS_bool & in_equatable,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cPtr_mapDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_mapDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable, inCompiler) ;
+  object->mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable, inCompiler) ;
   const GGS_mapDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1593,22 +1594,24 @@ init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (const GGS_bool & 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapDeclarationAST::
-mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_equatable (const GGS_bool & in_isPredefined,
-                                                                                 const GGS_lstring & in_mMapTypeName,
-                                                                                 const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                                                 const GGS_insertMethodListAST & in_mInsertMethodList,
-                                                                                 const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                                 const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                                                 const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
-                                                                                 const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
-                                                                                 const GGS_bool & in_equatable,
-                                                                                 Compiler * /* inCompiler */) {
+mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const GGS_bool & in_isPredefined,
+                                                                                     const GGS_lstring & in_mMapTypeName,
+                                                                                     const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                                                     const GGS_insertSetterListAST & in_mInsertSetterList,
+                                                                                     const GGS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                                     const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                                                     const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
+                                                                                     const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                                     const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
+                                                                                     const GGS_bool & in_equatable,
+                                                                                     Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mMapTypeName = in_mMapTypeName ;
   mProperty_mPropertyList = in_mPropertyList ;
-  mProperty_mInsertMethodList = in_mInsertMethodList ;
+  mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mRemoveMethodList = in_mRemoveMethodList ;
+  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mInsertOrReplaceDeclarationListAST = in_mInsertOrReplaceDeclarationListAST ;
   mProperty_equatable = in_equatable ;
@@ -1625,16 +1628,17 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_mapDeclarationAST GGS_mapDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                              const GGS_lstring & in_mMapTypeName,
                                                              const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                             const GGS_insertMethodListAST & in_mInsertMethodList,
+                                                             const GGS_insertSetterListAST & in_mInsertSetterList,
                                                              const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                             const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                             const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                             const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
                                                              const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                                              const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                              const GGS_bool & in_equatable,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_mapDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1664,13 +1668,13 @@ GGS_propertyInCollectionListAST GGS_mapDeclarationAST::readProperty_mPropertyLis
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertMethodListAST GGS_mapDeclarationAST::readProperty_mInsertMethodList (void) const {
+GGS_insertSetterListAST GGS_mapDeclarationAST::readProperty_mInsertSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_insertMethodListAST () ;
+    return GGS_insertSetterListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
-    return p->mProperty_mInsertMethodList ;
+    return p->mProperty_mInsertSetterList ;
   }
 }
 
@@ -1688,13 +1692,25 @@ GGS_mapSearchMethodListAST GGS_mapDeclarationAST::readProperty_mSearchMethodList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapRemoveMethodListAST GGS_mapDeclarationAST::readProperty_mRemoveMethodList (void) const {
+GGS_mapSearchSubscriptListAST GGS_mapDeclarationAST::readProperty_mSearchSubscriptList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapRemoveMethodListAST () ;
+    return GGS_mapSearchSubscriptListAST () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
-    return p->mProperty_mRemoveMethodList ;
+    return p->mProperty_mSearchSubscriptList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapRemoveSetterListAST GGS_mapDeclarationAST::readProperty_mRemoveSetterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_mapRemoveSetterListAST () ;
+  }else{
+    cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
+    return p->mProperty_mRemoveSetterList ;
   }
 }
 
@@ -1742,9 +1758,10 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (Compiler * inCompiler COMMA_LOCA
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mMapTypeName (),
 mProperty_mPropertyList (),
-mProperty_mInsertMethodList (),
+mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
+mProperty_mSearchSubscriptList (),
+mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mInsertOrReplaceDeclarationListAST (),
 mProperty_equatable () {
@@ -1755,9 +1772,10 @@ mProperty_equatable () {
 cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined,
                                                 const GGS_lstring & in_mMapTypeName,
                                                 const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                const GGS_insertMethodListAST & in_mInsertMethodList,
+                                                const GGS_insertSetterListAST & in_mInsertSetterList,
                                                 const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
                                                 const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                                 const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
                                                 const GGS_bool & in_equatable,
@@ -1766,18 +1784,20 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mMapTypeName (),
 mProperty_mPropertyList (),
-mProperty_mInsertMethodList (),
+mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
+mProperty_mSearchSubscriptList (),
+mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mInsertOrReplaceDeclarationListAST (),
 mProperty_equatable () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mMapTypeName = in_mMapTypeName ;
   mProperty_mPropertyList = in_mPropertyList ;
-  mProperty_mInsertMethodList = in_mInsertMethodList ;
+  mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mRemoveMethodList = in_mRemoveMethodList ;
+  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mInsertOrReplaceDeclarationListAST = in_mInsertOrReplaceDeclarationListAST ;
   mProperty_equatable = in_equatable ;
@@ -1798,11 +1818,13 @@ void cPtr_mapDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mInsertMethodList.description (ioString, inIndentation+1) ;
+  mProperty_mInsertSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
+  mProperty_mSearchSubscriptList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mRemoveSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mReplaceSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -1816,7 +1838,7 @@ void cPtr_mapDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mReplaceSetterList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubscriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -1828,9 +1850,10 @@ acPtr_class * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOC
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
+    mProperty_mInsertSetterList.printNonNullClassInstanceProperties ("mInsertSetterList") ;
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
+    mProperty_mSearchSubscriptList.printNonNullClassInstanceProperties ("mSearchSubscriptList") ;
+    mProperty_mRemoveSetterList.printNonNullClassInstanceProperties ("mRemoveSetterList") ;
     mProperty_mReplaceSetterList.printNonNullClassInstanceProperties ("mReplaceSetterList") ;
     mProperty_mInsertOrReplaceDeclarationListAST.printNonNullClassInstanceProperties ("mInsertOrReplaceDeclarationListAST") ;
     mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
@@ -1906,21 +1929,22 @@ GGS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_mapTypeForGeneration GGS_mapTypeForGeneration::
-init_21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                              const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                              const GGS_lstring & in_mMapTypeName,
-                                              const GGS_typedPropertyList & in_mTypedAttributeList,
-                                              const GGS_insertMethodListAST & in_mInsertMethodList,
-                                              const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                              const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                              const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
-                                              const GGS_bool & in_mHasInsertOrReplaceModifier,
-                                              const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                  const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                  const GGS_lstring & in_mMapTypeName,
+                                                  const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                  const GGS_insertSetterListAST & in_mInsertSetterList,
+                                                  const GGS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                  const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                  const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
+                                                  const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                  const GGS_bool & in_mHasInsertOrReplaceModifier,
+                                                  const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cPtr_mapTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_mapTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry, inCompiler) ;
+  object->mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry, inCompiler) ;
   const GGS_mapTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1929,24 +1953,26 @@ init_21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapTypeForGeneration::
-mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                   const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                                                   const GGS_lstring & in_mMapTypeName,
-                                                                   const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                   const GGS_insertMethodListAST & in_mInsertMethodList,
-                                                                   const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                   const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                                   const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
-                                                                   const GGS_bool & in_mHasInsertOrReplaceModifier,
-                                                                   const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
-                                                                   Compiler * /* inCompiler */) {
+mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                                       const GGS_lstring & in_mMapTypeName,
+                                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                       const GGS_insertSetterListAST & in_mInsertSetterList,
+                                                                       const GGS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                       const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                                       const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
+                                                                       const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
+                                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
+                                                                       const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                                       Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mElementTypeEntry = in_mElementTypeEntry ;
   mProperty_mMapTypeName = in_mMapTypeName ;
   mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_mInsertMethodList = in_mInsertMethodList ;
+  mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mRemoveMethodList = in_mRemoveMethodList ;
+  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
   mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
@@ -1964,16 +1990,17 @@ GGS_mapTypeForGeneration GGS_mapTypeForGeneration::class_func_new (const GGS_uni
                                                                    const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                                    const GGS_lstring & in_mMapTypeName,
                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                   const GGS_insertMethodListAST & in_mInsertMethodList,
+                                                                   const GGS_insertSetterListAST & in_mInsertSetterList,
                                                                    const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                   const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                                   const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                                   const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
                                                                    const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                                                    const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                                    const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GGS_mapTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2015,13 +2042,13 @@ GGS_typedPropertyList GGS_mapTypeForGeneration::readProperty_mTypedAttributeList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertMethodListAST GGS_mapTypeForGeneration::readProperty_mInsertMethodList (void) const {
+GGS_insertSetterListAST GGS_mapTypeForGeneration::readProperty_mInsertSetterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_insertMethodListAST () ;
+    return GGS_insertSetterListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
-    return p->mProperty_mInsertMethodList ;
+    return p->mProperty_mInsertSetterList ;
   }
 }
 
@@ -2039,13 +2066,25 @@ GGS_mapSearchMethodListAST GGS_mapTypeForGeneration::readProperty_mSearchMethodL
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapRemoveMethodListAST GGS_mapTypeForGeneration::readProperty_mRemoveMethodList (void) const {
+GGS_mapSearchSubscriptListAST GGS_mapTypeForGeneration::readProperty_mSearchSubscriptList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_mapRemoveMethodListAST () ;
+    return GGS_mapSearchSubscriptListAST () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
-    return p->mProperty_mRemoveMethodList ;
+    return p->mProperty_mSearchSubscriptList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapRemoveSetterListAST GGS_mapTypeForGeneration::readProperty_mRemoveSetterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_mapRemoveSetterListAST () ;
+  }else{
+    cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
+    return p->mProperty_mRemoveSetterList ;
   }
 }
 
@@ -2094,9 +2133,10 @@ cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
 mProperty_mElementTypeEntry (),
 mProperty_mMapTypeName (),
 mProperty_mTypedAttributeList (),
-mProperty_mInsertMethodList (),
+mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
+mProperty_mSearchSubscriptList (),
+mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mHasInsertOrReplaceModifier (),
 mProperty_mOptionalElementTypeEntry () {
@@ -2108,9 +2148,10 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_unifiedTypeMapEn
                                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                       const GGS_lstring & in_mMapTypeName,
                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                      const GGS_insertMethodListAST & in_mInsertMethodList,
+                                                      const GGS_insertSetterListAST & in_mInsertSetterList,
                                                       const GGS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                      const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                      const GGS_mapSearchSubscriptListAST & in_mSearchSubscriptList,
+                                                      const GGS_mapRemoveSetterListAST & in_mRemoveSetterList,
                                                       const GGS_mapReplaceSetterListAST & in_mReplaceSetterList,
                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
                                                       const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
@@ -2120,9 +2161,10 @@ cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mElementTypeEntry (),
 mProperty_mMapTypeName (),
 mProperty_mTypedAttributeList (),
-mProperty_mInsertMethodList (),
+mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
+mProperty_mSearchSubscriptList (),
+mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mHasInsertOrReplaceModifier (),
 mProperty_mOptionalElementTypeEntry () {
@@ -2130,9 +2172,10 @@ mProperty_mOptionalElementTypeEntry () {
   mProperty_mElementTypeEntry = in_mElementTypeEntry ;
   mProperty_mMapTypeName = in_mMapTypeName ;
   mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_mInsertMethodList = in_mInsertMethodList ;
+  mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mRemoveMethodList = in_mRemoveMethodList ;
+  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
   mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
@@ -2155,11 +2198,13 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mInsertMethodList.description (ioString, inIndentation+1) ;
+  mProperty_mInsertSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
+  mProperty_mSearchSubscriptList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mRemoveSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mReplaceSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -2173,7 +2218,7 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mReplaceSetterList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubscriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -2186,9 +2231,10 @@ acPtr_class * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler COMMA_
     mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
     mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
     mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
+    mProperty_mInsertSetterList.printNonNullClassInstanceProperties ("mInsertSetterList") ;
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
+    mProperty_mSearchSubscriptList.printNonNullClassInstanceProperties ("mSearchSubscriptList") ;
+    mProperty_mRemoveSetterList.printNonNullClassInstanceProperties ("mRemoveSetterList") ;
     mProperty_mReplaceSetterList.printNonNullClassInstanceProperties ("mReplaceSetterList") ;
     mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
     mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;

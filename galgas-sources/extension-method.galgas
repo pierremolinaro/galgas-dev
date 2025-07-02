@@ -178,20 +178,20 @@ class @extensionMethodAST : @semanticDeclarationAST {
         !@()
       ]
     end
-    var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
-    [!?entry.mExtensionMethodMapForType insertKey
-      !self.mExtensionMethodName
-      ! self.mExtensionMethodFormalParameterList
-      !.isBasic
-    ]
-    [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
-//    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-//      [!?mExtensionMethodMapForType insertKey
-//        !self.mExtensionMethodName
-//        ! self.mExtensionMethodFormalParameterList
-//        !.isBasic
-//      ]
-//    end
+//    var entry = ioExtensionMethodMapForBuildingContext @[!searchKey: self.mTypeName]
+//    [!?entry.mExtensionMethodMapForType insertKey
+//      !self.mExtensionMethodName
+//      ! self.mExtensionMethodFormalParameterList
+//      !.isBasic
+//    ]
+//    [!?ioExtensionMethodMapForBuildingContext replaceKey !with: entry]
+    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+      [!?mExtensionMethodMapForType insertKey
+        !self.mExtensionMethodName
+        ! self.mExtensionMethodFormalParameterList
+        !.isBasic
+      ]
+    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

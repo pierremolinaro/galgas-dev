@@ -11682,20 +11682,6 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::setter_insertKey (GGS_lst
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::setter_replaceKey (GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element inElement,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  const char * kReplaceErrorMessage = "the '<%K>' non terminal symbol has already been declared as unused in %L" ;
-  cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * p = nullptr ;
-  macroMyNew (p, cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis (inElement.mProperty_lkey, inElement.mProperty_mNonTerminalIndex COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_mNonTerminalIndexForKey (const GGS_string & inKey,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
@@ -13982,26 +13968,6 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::method_searchKey (GGS_lstring inK
     macroValidSharedObject (p, cMapElement_terminalSymbolsMapForGrammarAnalysis) ;
     outArgument0 = p->mProperty_mTerminalIndex ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_terminalSymbolsMapForGrammarAnalysis_2E_element GGS_terminalSymbolsMapForGrammarAnalysis
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_terminalSymbolsMapForGrammarAnalysis_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_terminalSymbolsMapForGrammarAnalysis * p = (const cMapElement_terminalSymbolsMapForGrammarAnalysis *) performSearch (inKey,
-                                                                                                                                           inCompiler,
-                                                                                                                                           kSearchErrorMessage_terminalSymbolsMapForGrammarAnalysis_searchKey
-                                                                                                                                           COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mTerminalIndex = p->mProperty_mTerminalIndex ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 

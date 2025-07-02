@@ -8,6 +8,511 @@
 #include "all-declarations-5.h"
 
 //--------------------------------------------------------------------------------------------------
+//Class for element of '@mapReplaceSetterListAST' list
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_mapReplaceSetterListAST : public cCollectionElement {
+  public: GGS_mapReplaceSetterListAST_2E_element mObject ;
+
+//--- Class functions
+  public: cCollectionElement_mapReplaceSetterListAST (const GGS_lstring & in_mSetterName,
+                                                      const GGS_lstring & in_mErrorMessage
+                                                      COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_mapReplaceSetterListAST::cCollectionElement_mapReplaceSetterListAST (const GGS_lstring & in_mSetterName,
+                                                                                        const GGS_lstring & in_mErrorMessage
+                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mSetterName, in_mErrorMessage) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_mapReplaceSetterListAST::cCollectionElement_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mSetterName, inElement.mProperty_mErrorMessage) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_mapReplaceSetterListAST::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_mapReplaceSetterListAST::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_mapReplaceSetterListAST (mObject.mProperty_mSetterName, mObject.mProperty_mErrorMessage COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_mapReplaceSetterListAST::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mSetterName" ":") ;
+  mObject.mProperty_mSetterName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mErrorMessage" ":") ;
+  mObject.mProperty_mErrorMessage.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST::GGS_mapReplaceSetterListAST (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST::GGS_mapReplaceSetterListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::plusPlusAssignOperation (const GGS_mapReplaceSetterListAST_2E_element & inValue
+                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                                   const GGS_lstring & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GGS_mapReplaceSetterListAST (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GGS_mapReplaceSetterListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                             const GGS_lstring & in_mSetterName,
+                                                             const GGS_lstring & in_mErrorMessage
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = nullptr ;
+  macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (in_mSetterName,
+                                                             in_mErrorMessage COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                      const GGS_lstring & inOperand1
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_append (const GGS_lstring inOperand0,
+                                                 const GGS_lstring inOperand1,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                        const GGS_lstring inOperand1,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_mapReplaceSetterListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                        GGS_lstring & outOperand1,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+      outOperand0 = p->mObject.mProperty_mSetterName ;
+      outOperand1 = p->mObject.mProperty_mErrorMessage ;
+    }
+  }else{
+    drop () ;    
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_popFirst (GGS_lstring & outOperand0,
+                                                   GGS_lstring & outOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mSetterName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_popLast (GGS_lstring & outOperand0,
+                                                  GGS_lstring & outOperand1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mSetterName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::method_first (GGS_lstring & outOperand0,
+                                                GGS_lstring & outOperand1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mSetterName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::method_last (GGS_lstring & outOperand0,
+                                               GGS_lstring & outOperand1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    outOperand0 = p->mObject.mProperty_mSetterName ;
+    outOperand1 = p->mObject.mProperty_mErrorMessage ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::add_operation (const GGS_mapReplaceSetterListAST & inOperand,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListWithRange (const GGS_range & inRange,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS_mapReplaceSetterListAST result = GGS_mapReplaceSetterListAST::class_func_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::plusAssignOperation (const GGS_mapReplaceSetterListAST inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_setMSetterNameAtIndex (GGS_lstring inOperand,
+                                                                GGS_uint inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mSetterName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_mapReplaceSetterListAST::getter_mSetterNameAtIndex (const GGS_uint & inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    result = p->mObject.mProperty_mSetterName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_mapReplaceSetterListAST::setter_setMErrorMessageAtIndex (GGS_lstring inOperand,
+                                                                  GGS_uint inIndex,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mErrorMessage = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_mapReplaceSetterListAST::getter_mErrorMessageAtIndex (const GGS_uint & inIndex,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_mapReplaceSetterListAST * p = (cCollectionElement_mapReplaceSetterListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+    result = p->mObject.mProperty_mErrorMessage ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @mapReplaceSetterListAST
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_mapReplaceSetterListAST::DownEnumerator_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element DownEnumerator_mapReplaceSetterListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_mapReplaceSetterListAST::current_mSetterName (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mSetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_mapReplaceSetterListAST::current_mErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mErrorMessage ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @mapReplaceSetterListAST
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_mapReplaceSetterListAST::UpEnumerator_mapReplaceSetterListAST (const GGS_mapReplaceSetterListAST & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST_2E_element UpEnumerator_mapReplaceSetterListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_mapReplaceSetterListAST::current_mSetterName (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mSetterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_mapReplaceSetterListAST::current_mErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_mapReplaceSetterListAST * p = (const cCollectionElement_mapReplaceSetterListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapReplaceSetterListAST) ;
+  return p->mObject.mProperty_mErrorMessage ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @mapReplaceSetterListAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapReplaceSetterListAST ("mapReplaceSetterListAST",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_mapReplaceSetterListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mapReplaceSetterListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_mapReplaceSetterListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_mapReplaceSetterListAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_mapReplaceSetterListAST GGS_mapReplaceSetterListAST::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_mapReplaceSetterListAST result ;
+  const GGS_mapReplaceSetterListAST * p = (const GGS_mapReplaceSetterListAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_mapReplaceSetterListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("mapReplaceSetterListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@insertOrReplaceDeclarationListAST' list
 //--------------------------------------------------------------------------------------------------
 
@@ -7514,28 +8019,6 @@ void GGS_propertyMap::method_searchKey (GGS_lstring inKey,
     outArgument2 = p->mProperty_mPropertyType ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_propertyMap_2E_element GGS_propertyMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_propertyMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) performSearch (inKey,
-                                                                                         inCompiler,
-                                                                                         kSearchErrorMessage_propertyMap_searchKey
-                                                                                         COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mAccessControl = p->mProperty_mAccessControl ;
-    result.mProperty_mIsConstant = p->mProperty_mIsConstant ;
-    result.mProperty_mPropertyType = p->mProperty_mPropertyType ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl GGS_propertyMap::getter_mAccessControlForKey (const GGS_string & inKey,
@@ -7947,28 +8430,6 @@ void GGS_classFunctionMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mHasCompilerArgument ;
     outArgument2 = p->mProperty_mReturnedType ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_classFunctionMap_2E_element GGS_classFunctionMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_classFunctionMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_classFunctionMap * p = (const cMapElement_classFunctionMap *) performSearch (inKey,
-                                                                                                   inCompiler,
-                                                                                                   kSearchErrorMessage_classFunctionMap_searchKey
-                                                                                                   COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mArgumentTypeList = p->mProperty_mArgumentTypeList ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    result.mProperty_mReturnedType = p->mProperty_mReturnedType ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -8444,32 +8905,6 @@ void GGS_getterMap::method_searchKey (GGS_lstring inKey,
     outArgument5 = p->mProperty_mQualifier ;
     outArgument6 = p->mProperty_mGetterNameThatObsoletesInvokationName ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_getterMap_2E_element GGS_getterMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_getterMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_getterMap * p = (const cMapElement_getterMap *) performSearch (inKey,
-                                                                                     inCompiler,
-                                                                                     kSearchErrorMessage_getterMap_searchKey
-                                                                                     COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mKind = p->mProperty_mKind ;
-    result.mProperty_mArgumentTypeList = p->mProperty_mArgumentTypeList ;
-    result.mProperty_mDeclarationLocation = p->mProperty_mDeclarationLocation ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    result.mProperty_mReturnedType = p->mProperty_mReturnedType ;
-    result.mProperty_mQualifier = p->mProperty_mQualifier ;
-    result.mProperty_mGetterNameThatObsoletesInvokationName = p->mProperty_mGetterNameThatObsoletesInvokationName ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -9106,30 +9541,6 @@ void GGS_setterMap::method_searchKey (GGS_lstring inKey,
     outArgument4 = p->mProperty_mErrorMessage ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_setterMap_2E_element GGS_setterMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_setterMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_setterMap * p = (const cMapElement_setterMap *) performSearch (inKey,
-                                                                                     inCompiler,
-                                                                                     kSearchErrorMessage_setterMap_searchKey
-                                                                                     COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mKind = p->mProperty_mKind ;
-    result.mProperty_mParameterList = p->mProperty_mParameterList ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    result.mProperty_mQualifier = p->mProperty_mQualifier ;
-    result.mProperty_mErrorMessage = p->mProperty_mErrorMessage ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 void GGS_setterMap::setter_insertOrReplace (GGS_lstring inKey,
@@ -9685,31 +10096,6 @@ void GGS_instanceMethodMap::method_searchKey (GGS_lstring inKey,
     outArgument5 = p->mProperty_mErrorMessage ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_instanceMethodMap_2E_element GGS_instanceMethodMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_instanceMethodMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) performSearch (inKey,
-                                                                                                     inCompiler,
-                                                                                                     kSearchErrorMessage_instanceMethodMap_searchKey
-                                                                                                     COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mKind = p->mProperty_mKind ;
-    result.mProperty_mParameterList = p->mProperty_mParameterList ;
-    result.mProperty_mDeclarationLocation = p->mProperty_mDeclarationLocation ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    result.mProperty_mQualifier = p->mProperty_mQualifier ;
-    result.mProperty_mErrorMessage = p->mProperty_mErrorMessage ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_instanceMethodMap_searchInheritedKey = "as the '%K' method is tagged as 'override', it should be declared in the super class" ;
@@ -9745,31 +10131,6 @@ void GGS_instanceMethodMap::method_searchInheritedKey (GGS_lstring inKey,
     outArgument4 = p->mProperty_mQualifier ;
     outArgument5 = p->mProperty_mErrorMessage ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_instanceMethodMap_2E_element GGS_instanceMethodMap
-::readSubscript__3F_searchInheritedKey (const class GGS_lstring & inKey,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  GGS_instanceMethodMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) performSearch (inKey,
-                                                                                                     inCompiler,
-                                                                                                     kSearchErrorMessage_instanceMethodMap_searchInheritedKey
-                                                                                                     COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mKind = p->mProperty_mKind ;
-    result.mProperty_mParameterList = p->mProperty_mParameterList ;
-    result.mProperty_mDeclarationLocation = p->mProperty_mDeclarationLocation ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    result.mProperty_mQualifier = p->mProperty_mQualifier ;
-    result.mProperty_mErrorMessage = p->mProperty_mErrorMessage ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -10306,27 +10667,6 @@ void GGS_classMethodMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mHasCompilerArgument ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_classMethodMap_2E_element GGS_classMethodMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_classMethodMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_classMethodMap * p = (const cMapElement_classMethodMap *) performSearch (inKey,
-                                                                                               inCompiler,
-                                                                                               kSearchErrorMessage_classMethodMap_searchKey
-                                                                                               COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mParameterList = p->mProperty_mParameterList ;
-    result.mProperty_mHasCompilerArgument = p->mProperty_mHasCompilerArgument ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classMethodMap::setter_insertOrReplace (GGS_lstring inKey,
@@ -10695,27 +11035,6 @@ void GGS_subscriptMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_argumentTypeList ;
     outArgument1 = p->mProperty_valueType ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_subscriptMap_2E_element GGS_subscriptMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_subscriptMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) performSearch (inKey,
-                                                                                           inCompiler,
-                                                                                           kSearchErrorMessage_subscriptMap_searchKey
-                                                                                           COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_argumentTypeList = p->mProperty_argumentTypeList ;
-    result.mProperty_valueType = p->mProperty_valueType ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -13492,30 +13811,6 @@ void GGS_scopeLocalVarMap::method_searchKey (GGS_lstring inKey,
     outArgument4 = p->mProperty_mState ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_scopeLocalVarMap_2E_element GGS_scopeLocalVarMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_scopeLocalVarMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) performSearch (inKey,
-                                                                                                   inCompiler,
-                                                                                                   kSearchErrorMessage_scopeLocalVarMap_searchKey
-                                                                                                   COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mType = p->mProperty_mType ;
-    result.mProperty_mCppName = p->mProperty_mCppName ;
-    result.mProperty_mNameForCheckingFormalParameterUsing = p->mProperty_mNameForCheckingFormalParameterUsing ;
-    result.mProperty_mAttributes = p->mProperty_mAttributes ;
-    result.mProperty_mState = p->mProperty_mState ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 void GGS_scopeLocalVarMap::setter_removeKey (GGS_lstring inKey,
@@ -15577,213 +15872,6 @@ void extensionSetter_readAccess (GGS_localVarMapListForLLVM & ioObject,
       extensionSetter_readAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 693)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 693)) ;
       }
     }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarValuation readTransition'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readTransition (GGS_localVarValuation & ioObject,
-                                     const GGS_lstring constinArgument_inVarName,
-                                     const GGS_localVariableAttributes constinArgument_inAttributes,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_localVarValuation temp_0 = ioObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_localVarValuation::Enumeration::invalid:
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_invalid:
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_declared:
-    {
-      GGS_bool extractedValue_31456__0 ;
-      temp_0.getAssociatedValuesFor_declared (extractedValue_31456__0) ;
-      TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 705)).add_operation (GGS_string ("' used before being initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 705)), fixItArray1  COMMA_SOURCE_FILE ("variable-manager.galgas", 705)) ;
-      ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 706)) ;
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_initialized:
-    {
-      ioObject = GGS_localVarValuation::class_func_read (SOURCE_FILE ("variable-manager.galgas", 708)) ;
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        test_2 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 709)) COMMA_SOURCE_FILE ("variable-manager.galgas", 709)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_2) {
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 710)) ;
-        }
-      }
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_read:
-    {
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 713)) COMMA_SOURCE_FILE ("variable-manager.galgas", 713)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          TC_Array <FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 714)) ;
-        }
-      }
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_mutated:
-    {
-      GalgasBool test_6 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_6) {
-        test_6 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 717)) COMMA_SOURCE_FILE ("variable-manager.galgas", 717)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_6) {
-          TC_Array <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 718)) ;
-        }
-      }
-    }
-    break ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@currentVarManager searchForReadWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadWriteAccess (GGS_currentVarManager & ioObject,
-                                               const GGS_lstring constinArgument_inVarName,
-                                               GGS_unifiedTypeMapEntry & outArgument_outType,
-                                               GGS_string & outArgument_outCppName,
-                                               GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_currentVarManager temp_1 = ioObject ;
-    const GGS_scopeLocalVarMap_2E_element var_varDescriptor_33302 = temp_1.readProperty_mLocalVarMap ().readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!temp_1.readProperty_mLocalVarMap ().readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      GGS_localVarValuation var_newValuation_33594 = var_varDescriptor_33302.readProperty_mState () ;
-      {
-      extensionSetter_readWriteTransition (var_newValuation_33594, constinArgument_inVarName, GGS_bool (false), var_varDescriptor_33302.readProperty_mAttributes (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 749)) ;
-      }
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        test_2 = GGS_bool (ComparisonKind::notEqual, var_newValuation_33594.objectCompare (var_varDescriptor_33302.readProperty_mState ())).boolEnum () ;
-        if (GalgasBool::boolTrue == test_2) {
-          {
-          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_33594, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 751)) ;
-          }
-        }
-      }
-      outArgument_outType = var_varDescriptor_33302.readProperty_mType () ;
-      outArgument_outCppName = var_varDescriptor_33302.readProperty_mCppName () ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_varDescriptor_33302.readProperty_mNameForCheckingFormalParameterUsing () ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    {
-    extensionSetter_readWriteAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GGS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 757)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarMapListForLLVM readWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readWriteAccess (GGS_localVarMapListForLLVM & ioObject,
-                                      const GGS_lstring constinArgument_inVarName,
-                                      const GGS_uint constinArgument_inIndex,
-                                      GGS_unifiedTypeMapEntry & outArgument_outType,
-                                      GGS_string & outArgument_outCppName,
-                                      GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                      Compiler * inCompiler
-                                      COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 768)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 769)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 769)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 769)) ;
-      outArgument_outType.drop () ; // Release error dropped variable
-      outArgument_outCppName.drop () ; // Release error dropped variable
-      outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_localVarMapListForLLVM temp_3 = ioObject ;
-    GGS_scopeLocalVarMap var_localMap_34821 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 772)) ;
-    GalgasBool test_4 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_4) {
-      const GGS_scopeLocalVarMap_2E_element var_varDescriptor_34871 = var_localMap_34821.readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!var_localMap_34821.readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-        test_4 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_4) {
-        GGS_localVarValuation var_newValuation_35167 = var_varDescriptor_34871.readProperty_mState () ;
-        {
-        extensionSetter_readWriteTransition (var_newValuation_35167, constinArgument_inVarName, GGS_bool (true), var_varDescriptor_34871.readProperty_mAttributes (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 782)) ;
-        }
-        GalgasBool test_5 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::notEqual, var_newValuation_35167.objectCompare (var_varDescriptor_34871.readProperty_mState ())).boolEnum () ;
-          if (GalgasBool::boolTrue == test_5) {
-            {
-            var_localMap_34821.setter_setMStateForKey (var_newValuation_35167, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 784)) ;
-            }
-            {
-            ioObject.setter_setMMapAtIndex (var_localMap_34821, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 785)) ;
-            }
-          }
-        }
-        outArgument_outType = var_varDescriptor_34871.readProperty_mType () ;
-        outArgument_outCppName = var_varDescriptor_34871.readProperty_mCppName () ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_varDescriptor_34871.readProperty_mNameForCheckingFormalParameterUsing () ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_4) {
-      {
-      extensionSetter_readWriteAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 791)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 791)) ;
-      }
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarValuation readWriteTransition'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readWriteTransition (GGS_localVarValuation & ioObject,
-                                          const GGS_lstring constinArgument_inVarName,
-                                          const GGS_bool constinArgument_inOverridenMap,
-                                          const GGS_localVariableAttributes constinArgument_inAttributes,
-                                          Compiler * inCompiler
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_readTransition (ioObject, constinArgument_inVarName, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 801)) ;
-  }
-  {
-  extensionSetter_writeTransition (ioObject, constinArgument_inVarName, constinArgument_inOverridenMap, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 802)) ;
   }
 }
 

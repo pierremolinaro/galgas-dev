@@ -64,7 +64,6 @@ list @productionRuleListForGrammarAnalysis {
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L"
-  replace replaceKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
 //--------------------------------------------------------------------------------------------------

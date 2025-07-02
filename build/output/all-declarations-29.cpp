@@ -8,6 +8,90 @@
 #include "all-declarations-29.h"
 
 //--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@functionPrototypeDeclarationForGeneration headerKind'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind cPtr_functionPrototypeDeclarationForGeneration::getter_headerKind (Compiler */* inCompiler */
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_headerKind result_result ; // Returned variable
+  result_result = GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("semanticGeneration.galgas", 964)) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@functionPrototypeDeclarationForGeneration appendDeclaration1'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_functionPrototypeDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                                   GGS_string & outArgument_outHeader,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_functionPrototypeDeclarationForGeneration temp_0 = this ;
+  const GGS_functionPrototypeDeclarationForGeneration temp_1 = this ;
+  const GGS_functionPrototypeDeclarationForGeneration temp_2 = this ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (inCompiler, temp_0.readProperty_mFunctionName (), temp_1.readProperty_mFormalArgumentList (), extensionGetter_identifierRepresentation (temp_2.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 975)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 972))) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@onceFunctionDeclarationForGeneration headerKind'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind cPtr_onceFunctionDeclarationForGeneration::getter_headerKind (Compiler */* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_headerKind result_result ; // Returned variable
+  result_result = GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("semanticGeneration.galgas", 982)) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@onceFunctionDeclarationForGeneration appendDeclaration1'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_onceFunctionDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                              GGS_string & outArgument_outHeader,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_onceFunctionDeclarationForGeneration temp_0 = this ;
+  const GGS_onceFunctionDeclarationForGeneration temp_1 = this ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (inCompiler, temp_0.readProperty_mFunctionName (), GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE), extensionGetter_identifierRepresentation (temp_1.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 993)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 990))) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@semanticTypeForGeneration appendTypeGenericImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_semanticTypeForGeneration::getter_appendTypeGenericImplementation (Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_result ; // Returned variable
+  const GGS_semanticTypeForGeneration temp_0 = this ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_40774 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1002)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = GGS_bool (ComparisonKind::equal, var_selfTypeDefinition_40774.readProperty_typeKind ().objectCompare (GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("semanticGeneration.galgas", 1003)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_1) {
+    const GGS_semanticTypeForGeneration temp_2 = this ;
+    result_result = GGS_string (filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (inCompiler, var_selfTypeDefinition_40774.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1008)), var_selfTypeDefinition_40774.readProperty_superType () COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1006))) ;
+  }
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@functionImplementationForGeneration appendSpecificImplementation'
 //--------------------------------------------------------------------------------------------------
 

@@ -663,26 +663,6 @@ void GGS_nonterminalSymbolLabelMapForGrammarAnalysis::method_searchKey (GGS_lstr
     outArgument0 = p->mProperty_mFormalParametersList ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element GGS_nonterminalSymbolLabelMapForGrammarAnalysis
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) performSearch (inKey,
-                                                                                                                                                         inCompiler,
-                                                                                                                                                         kSearchErrorMessage_nonterminalSymbolLabelMapForGrammarAnalysis_searchKey
-                                                                                                                                                         COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mFormalParametersList = p->mProperty_mFormalParametersList ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 GGS_signatureForGrammarAnalysis GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_mFormalParametersListForKey (const GGS_string & inKey,
@@ -992,27 +972,6 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis::method_searchKey (GGS_lstring i
     outArgument0 = p->mProperty_mNonTerminalIndex ;
     outArgument1 = p->mProperty_mNonterminalSymbolParametersMap ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element GGS_nonTerminalSymbolMapForGrammarAnalysis
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) performSearch (inKey,
-                                                                                                                                               inCompiler,
-                                                                                                                                               kSearchErrorMessage_nonTerminalSymbolMapForGrammarAnalysis_searchKey
-                                                                                                                                               COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mNonTerminalIndex = p->mProperty_mNonTerminalIndex ;
-    result.mProperty_mNonterminalSymbolParametersMap = p->mProperty_mNonterminalSymbolParametersMap ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -4847,26 +4806,6 @@ void GGS_propertyIndexMap::method_searchKey (GGS_lstring inKey,
     outArgument0 = p->mProperty_mPropertyTypeIndex ;
   }
 }
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_propertyIndexMap_2E_element GGS_propertyIndexMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_propertyIndexMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_propertyIndexMap * p = (const cMapElement_propertyIndexMap *) performSearch (inKey,
-                                                                                                   inCompiler,
-                                                                                                   kSearchErrorMessage_propertyIndexMap_searchKey
-                                                                                                   COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mPropertyTypeIndex = p->mProperty_mPropertyTypeIndex ;
-    }
-  }
-  return result ;
-}
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry GGS_propertyIndexMap::getter_mPropertyTypeIndexForKey (const GGS_string & inKey,
@@ -5188,28 +5127,6 @@ void GGS_nonterminalLabelMap::method_searchKey (GGS_lstring inKey,
     outArgument1 = p->mProperty_mSignature ;
     outArgument2 = p->mProperty_mEndOfArgumentLocation ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_nonterminalLabelMap_2E_element GGS_nonterminalLabelMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalLabelMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) performSearch (inKey,
-                                                                                                         inCompiler,
-                                                                                                         kSearchErrorMessage_nonterminalLabelMap_searchKey
-                                                                                                         COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mSignatureForGeneration = p->mProperty_mSignatureForGeneration ;
-    result.mProperty_mSignature = p->mProperty_mSignature ;
-    result.mProperty_mEndOfArgumentLocation = p->mProperty_mEndOfArgumentLocation ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -5598,26 +5515,6 @@ void GGS_nonterminalMap::method_searchKey (GGS_lstring inKey,
     macroValidSharedObject (p, cMapElement_nonterminalMap) ;
     outArgument0 = p->mProperty_mLabelMap ;
   }
-}
-  
-//--------------------------------------------------------------------------------------------------
-  
-GGS_nonterminalMap_2E_element GGS_nonterminalMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_nonterminalMap * p = (const cMapElement_nonterminalMap *) performSearch (inKey,
-                                                                                               inCompiler,
-                                                                                               kSearchErrorMessage_nonterminalMap_searchKey
-                                                                                               COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mLabelMap = p->mProperty_mLabelMap ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 

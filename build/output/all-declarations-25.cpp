@@ -1698,10 +1698,10 @@ void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_
   const GGS_lexicalRoutineCallInstructionAST temp_12 = this ;
   UpEnumerator_lstringlist enumerator_11973 (temp_12.readProperty_mErrorMessageList ()) ;
   while (enumerator_11973.hasCurrentObject ()) {
-    GGS_lexicalMessageMap_2E_element var_entry_12018 = ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalMessageMap ().readSubscript__3F_searchKey (enumerator_11973.current_mValue (HERE), inCompiler COMMA_HERE) ;
-    var_entry_12018.mProperty_mMessageIsUsed = GGS_bool (true) ;
-    {
-    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_replaceKey (var_entry_12018, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 289)) ;
+    cMapElement_lexicalMessageMap * objectArray_12210 = (cMapElement_lexicalMessageMap *) ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, enumerator_11973.current_mValue (HERE), kSearchErrorMessage_lexicalMessageMap_searchKey  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 290)) ;
+    if (nullptr != objectArray_12210) {
+      macroValidSharedObject (objectArray_12210, cMapElement_lexicalMessageMap) ;
+      objectArray_12210->mProperty_mMessageIsUsed = GGS_bool (true) ;
     }
     enumerator_11973.gotoNextObject () ;
   }

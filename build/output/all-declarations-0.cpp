@@ -589,8 +589,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 200)) {
-    static const char * syntaxErrorMessageArray [200] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 201)) {
+    static const char * syntaxErrorMessageArray [201] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -732,6 +732,7 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '%once' keyword",
         "the '%preserved' keyword",
         "the '%quietOutputByDefault' keyword",
+        "the '%searchSubscript' keyword",
         "the '%templateEndMark' keyword",
         "the '%tool-source' keyword",
         "the '%translate' keyword",
@@ -2241,6 +2242,25 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__sear
   TO_UNICODE ('h'),
 } ;
 
+//--- Unicode string for '$searchSubscript$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__searchSubscript = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
+} ;
+
 //--- Unicode string for '$select$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__select = {
   TO_UNICODE ('s'),
@@ -2557,7 +2577,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 30 ;
+static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 31 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attributeKeyWordList [ktable_size_galgasScanner_33__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__from, Lexique_galgasScanner_33_::kToken__25_from),
@@ -2579,6 +2599,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_unix, Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__MacOSDeployment, Lexique_galgasScanner_33_::kToken__25_MacOSDeployment),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__searchSubscript, Lexique_galgasScanner_33_::kToken__25_searchSubscript),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__templateEndMark, Lexique_galgasScanner_33_::kToken__25_templateEndMark),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__codeblocks_2D_linux_33__32_, Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__codeblocks_2D_linux_36__34_, Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_),
@@ -3514,6 +3535,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_quietOutputByDefault:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%quietOutputByDefault") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__25_searchSubscript:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%searchSubscript") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_templateEndMark:
@@ -4918,6 +4944,7 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("%once") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%preserved") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%quietOutputByDefault") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%searchSubscript") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%templateEndMark") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%tool-source") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%translate") COMMA_HERE) ;
@@ -5013,6 +5040,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("makefile-unix") ;
     ioList.appendObject ("MacOSDeployment") ;
     ioList.appendObject ("makefile-macosx") ;
+    ioList.appendObject ("searchSubscript") ;
     ioList.appendObject ("templateEndMark") ;
     ioList.appendObject ("codeblocks-linux32") ;
     ioList.appendObject ("codeblocks-linux64") ;
@@ -5195,7 +5223,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [200] = {0,
+  static const uint32_t kTerminalSymbolStyles [201] = {0,
     0 /* galgasScanner3_1_identifier */,
     7 /* galgasScanner3_1_double_2E_xxx */,
     6 /* galgasScanner3_1_literalInt */,
@@ -5337,6 +5365,7 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     11 /* galgasScanner3_1__25_once */,
     11 /* galgasScanner3_1__25_preserved */,
     11 /* galgasScanner3_1__25_quietOutputByDefault */,
+    11 /* galgasScanner3_1__25_searchSubscript */,
     11 /* galgasScanner3_1__25_templateEndMark */,
     11 /* galgasScanner3_1__25_tool_2D_source */,
     11 /* galgasScanner3_1__25_translate */,
@@ -17098,195 +17127,6 @@ GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfBranchListAST::e
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionIfBranchListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInstructionIfAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionIfAST::objectCompare (const GGS_templateInstructionIfAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST::GGS_templateInstructionIfAST (void) :
-GGS_templateInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::
-init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-              const GGS_templateInstructionListAST & in_mElseInstructionList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_templateInstructionIfAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInstructionIfAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionIfAST_init_21__21_ (in_mTemplateInstructionIfBranchList, in_mElseInstructionList, inCompiler) ;
-  const GGS_templateInstructionIfAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInstructionIfAST::
-templateInstructionIfAST_init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                       const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                       Compiler * /* inCompiler */) {
-  mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
-  mProperty_mElseInstructionList = in_mElseInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST::GGS_templateInstructionIfAST (const cPtr_templateInstructionIfAST * inSourcePtr) :
-GGS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionIfAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::class_func_new (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                                           const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionIfAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (in_mTemplateInstructionIfBranchList, in_mElseInstructionList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfAST::readProperty_mTemplateInstructionIfBranchList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionIfBranchListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mTemplateInstructionIfBranchList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListAST GGS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mElseInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionIfAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateInstructionIfBranchList (),
-mProperty_mElseInstructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                              const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateInstructionIfBranchList (),
-mProperty_mElseInstructionList () {
-  mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
-  mProperty_mElseInstructionList = in_mElseInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateInstructionIfAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-void cPtr_templateInstructionIfAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInstructionIfAST:") ;
-  mProperty_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionIfAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionIfAST (mProperty_mTemplateInstructionIfBranchList, mProperty_mElseInstructionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionIfAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTemplateInstructionIfBranchList.printNonNullClassInstanceProperties ("mTemplateInstructionIfBranchList") ;
-    mProperty_mElseInstructionList.printNonNullClassInstanceProperties ("mElseInstructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionIfAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
-                                                                                & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_templateInstructionIfAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_templateInstructionIfAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_templateInstructionIfAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionIfAST result ;
-  const GGS_templateInstructionIfAST * p = (const GGS_templateInstructionIfAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_templateInstructionIfAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionIfAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

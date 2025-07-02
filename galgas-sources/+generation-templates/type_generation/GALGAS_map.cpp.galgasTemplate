@@ -3,7 +3,7 @@
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE)%
-for (* mPropertyName * * *) in ATTRIBUTE_LIST
+for (* mPropertyName * * *) in PROPERTY_LIST
   do %,\n%  %mProperty_%![mPropertyName identifierRepresentation]% (inValue.mProperty_%![mPropertyName identifierRepresentation]%)%
 end
 % {
@@ -12,13 +12,13 @@ end
 //--------------------------------------------------------------------------------------------------
 
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_lstring & inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE)%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
   do %,\n%  %mProperty_%![mPropertyName identifierRepresentation]% (in_%![mPropertyName identifierRepresentation]%)%
 end
 % {
@@ -35,7 +35,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = nullptr ;
   macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mProperty_lkey%
-    for (* mPropertyName 3*) in ATTRIBUTE_LIST
+    for (* mPropertyName 3*) in PROPERTY_LIST
       do %, mProperty_%![mPropertyName identifierRepresentation]
     end
   % COMMA_HERE)) ;
@@ -44,11 +44,11 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-%if [ATTRIBUTE_LIST count] == 0 then
+%if [PROPERTY_LIST count] == 0 then
   %void cMapElement_%!TYPE_IDENTIFIER%::description (String & /* ioString */, const int32_t /* inIndentation */) const {\n%
 else
   %void cMapElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
     %  ioString.appendNewLine () ;\n%
     %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
     %  ioString.appendCString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
@@ -63,7 +63,7 @@ end
 ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
   ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-%  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+%  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
      %  if (ComparisonResult::operandEqual == result) {\n%
      %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (operand->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
      %  }\n%
@@ -120,7 +120,7 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
     }else{
       GGS_%!ELEMENT_TYPE_IDENTIFIER% element ;
       element.mProperty_lkey = p->mProperty_lkey ;
-%  for (* mPropertyName * * *) in ATTRIBUTE_LIST do
+%  for (* mPropertyName * * *) in PROPERTY_LIST do
      %      element.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
    end
 %      result = element ;
@@ -147,17 +147,17 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compile
   return result ;
 }
 
-%for (insertMethodName errorMessage shadowErrorMessage) in INSERT_METHOD_LIST do
+%for (insertMethodName errorMessage shadowErrorMessage) in INSERT_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
-    for (propertyTypeEntry 4*) in ATTRIBUTE_LIST
+    for (propertyTypeEntry 4*) in PROPERTY_LIST
       do (IDX) %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
     end
     %,\n %!^%Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
     %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
     %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %, inArgument%![IDX string]
   end
   % COMMA_HERE)) ;\n%
@@ -177,7 +177,7 @@ for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n\n%
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%Compiler * inCompiler%
@@ -187,18 +187,21 @@ for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
                !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
                !^%COMMA_THERE) ;\n%
   %  if (nullptr == p) {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
   %  }else{\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
   %  }\n%
   %}
+%end
+
+for (mSearchMethodName mErrorMessage) in SEARCH_SUBSCRIPT_LIST do
   
-//--------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
   
 GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
 ::readSubscript__3F_%![mSearchMethodName identifierRepresentation]% (%?^%const class GGS_lstring & inKey,
@@ -212,7 +215,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
                !^%COMMA_THERE) ;
     if (nullptr != p) {
       result.mProperty_lkey = p->mProperty_lkey ;
-  %  for (* mPropertyName * * *) in ATTRIBUTE_LIST do
+  %  for (* mPropertyName * * *) in PROPERTY_LIST do
        %    result.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
      end
   %    }
@@ -223,10 +226,10 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
 end
 
 
-for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
+for (mMethodName mErrorMessage) in REMOVE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%Compiler * inCompiler%
@@ -236,20 +239,18 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
   %  if (nullptr == p) {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
   %  }else{\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
   %  }\n%
 
   %}\n\n%
 end
-
-
 
 for (mMethodName mErrorMessage) in REPLACE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
@@ -259,7 +260,7 @@ for (mMethodName mErrorMessage) in REPLACE_SETTER_LIST do
   %  const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
   %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inElement.mProperty_lkey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
     %, inElement.mProperty_%![mPropertyName identifierRepresentation]
   end
   % COMMA_HERE)) ;\n%
@@ -273,13 +274,13 @@ end
 if HAS_INSERT_OR_REPLACE then
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GGS_lstring inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
   end
   %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
   %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %, inArgument%![IDX string]
   end
   % COMMA_HERE)) ;\n%
@@ -290,7 +291,7 @@ if HAS_INSERT_OR_REPLACE then
   %}\n\n%
 end
 
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GGS_string & inKey,\n%
   %            %!^%Compiler * inCompiler\n%
@@ -306,7 +307,7 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LI
   %}\n\n%
 end 
 
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GGS_string inKey,\n%
@@ -347,7 +348,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCAT
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
   return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
   %, p->mProperty_%![mPropertyName identifierRepresentation]
 end
 %) ;
@@ -361,7 +362,7 @@ GGS_lstring DownEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   return p->mProperty_lkey ;
 }
 
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
@@ -385,7 +386,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATIO
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
   return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
   %, p->mProperty_%![mPropertyName identifierRepresentation]
 end
 %) ;
@@ -399,7 +400,7 @@ GGS_lstring UpEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const 
   return p->mProperty_lkey ;
 }
 
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
