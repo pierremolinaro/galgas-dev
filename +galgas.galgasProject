@@ -235,7 +235,6 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/instruction-type-method-call.galgas"
   "galgas-sources/instruction-var-declaration.galgas"
   "galgas-sources/instruction-warning.galgas"
-  "galgas-sources/instruction-with.galgas"
 
 //--- Syntax instructions
   "galgas-sources/instruction-non-terminal.galgas"
