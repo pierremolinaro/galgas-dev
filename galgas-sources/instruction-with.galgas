@@ -45,6 +45,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
     $with$
+    warning .here : "Deprecated!!!"
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here

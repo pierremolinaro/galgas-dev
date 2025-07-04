@@ -7105,6 +7105,39 @@ void GGS_extensionInitializerForBuildingContext::method_searchKey (GGS_lstring i
   }
 }
 //--------------------------------------------------------------------------------------------------
+  
+GGS_extensionInitializerForBuildingContext_2E_element GGS_extensionInitializerForBuildingContext
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_extensionInitializerForBuildingContext_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_extensionInitializerForBuildingContext * p = (const cMapElement_extensionInitializerForBuildingContext *) performSearch (inKey,
+                                                                                                                                               inCompiler,
+                                                                                                                                               kSearchErrorMessage_extensionInitializerForBuildingContext_searchKey
+                                                                                                                                               COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mExtensionInitializerMapForType = p->mProperty_mExtensionInitializerMapForType ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extensionInitializerForBuildingContext::setter_replaceKey (GGS_extensionInitializerForBuildingContext_2E_element inElement,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  const char * kReplaceErrorMessage = "internal error" ;
+  cMapElement_extensionInitializerForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionInitializerForBuildingContext (inElement.mProperty_lkey, inElement.mProperty_mExtensionInitializerMapForType COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GGS_extensionInitializerMapForType GGS_extensionInitializerForBuildingContext::getter_mExtensionInitializerMapForTypeForKey (const GGS_string & inKey,
                                                                                                                              Compiler * inCompiler
@@ -7734,6 +7767,39 @@ void GGS_extensionMethodMapForBuildingContext::method_searchKey (GGS_lstring inK
   }
 }
 //--------------------------------------------------------------------------------------------------
+  
+GGS_extensionMethodMapForBuildingContext_2E_element GGS_extensionMethodMapForBuildingContext
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_extensionMethodMapForBuildingContext_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) performSearch (inKey,
+                                                                                                                                           inCompiler,
+                                                                                                                                           kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey
+                                                                                                                                           COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mExtensionMethodMapForType = p->mProperty_mExtensionMethodMapForType ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extensionMethodMapForBuildingContext::setter_replaceKey (GGS_extensionMethodMapForBuildingContext_2E_element inElement,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  const char * kReplaceErrorMessage = "internal error" ;
+  cMapElement_extensionMethodMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForBuildingContext (inElement.mProperty_lkey, inElement.mProperty_mExtensionMethodMapForType COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GGS_extensionMethodMapForType GGS_extensionMethodMapForBuildingContext::getter_mExtensionMethodMapForTypeForKey (const GGS_string & inKey,
                                                                                                                  Compiler * inCompiler
@@ -8308,6 +8374,39 @@ void GGS_extensionSetterMapForBuildingContext::method_searchKey (GGS_lstring inK
     outArgument0 = p->mProperty_mExtensionSetterMapForType ;
   }
 }
+//--------------------------------------------------------------------------------------------------
+  
+GGS_extensionSetterMapForBuildingContext_2E_element GGS_extensionSetterMapForBuildingContext
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_extensionSetterMapForBuildingContext_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) performSearch (inKey,
+                                                                                                                                           inCompiler,
+                                                                                                                                           kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey
+                                                                                                                                           COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mExtensionSetterMapForType = p->mProperty_mExtensionSetterMapForType ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extensionSetterMapForBuildingContext::setter_replaceKey (GGS_extensionSetterMapForBuildingContext_2E_element inElement,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  const char * kReplaceErrorMessage = "internal error" ;
+  cMapElement_extensionSetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForBuildingContext (inElement.mProperty_lkey, inElement.mProperty_mExtensionSetterMapForType COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionSetterMapForType GGS_extensionSetterMapForBuildingContext::getter_mExtensionSetterMapForTypeForKey (const GGS_string & inKey,
@@ -8991,6 +9090,39 @@ void GGS_extensionGetterMapForBuildingContext::method_searchKey (GGS_lstring inK
     outArgument0 = p->mProperty_mExtensionGetterMapForType ;
   }
 }
+//--------------------------------------------------------------------------------------------------
+  
+GGS_extensionGetterMapForBuildingContext_2E_element GGS_extensionGetterMapForBuildingContext
+::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_extensionGetterMapForBuildingContext_2E_element result ;
+  if (isValid () && inKey.isValid ()) {
+    const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) performSearch (inKey,
+                                                                                                                                           inCompiler,
+                                                                                                                                           kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey
+                                                                                                                                           COMMA_THERE) ;
+    if (nullptr != p) {
+      result.mProperty_lkey = p->mProperty_lkey ;
+      result.mProperty_mExtensionGetterMapForType = p->mProperty_mExtensionGetterMapForType ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extensionGetterMapForBuildingContext::setter_replaceKey (GGS_extensionGetterMapForBuildingContext_2E_element inElement,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  const char * kReplaceErrorMessage = "internal error" ;
+  cMapElement_extensionGetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionGetterMapForBuildingContext (inElement.mProperty_lkey, inElement.mProperty_mExtensionGetterMapForType COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionGetterMapForType GGS_extensionGetterMapForBuildingContext::getter_mExtensionGetterMapForTypeForKey (const GGS_string & inKey,

@@ -6615,7 +6615,7 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
   public: enum class Enumeration {
     invalid,
     enum_regularExp,
-    enum_letExp
+    enum_letVarExp
   } ;
   
 //--------------------------------- Private properties
@@ -6625,10 +6625,11 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
   public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regularExp (class GGS_semanticExpressionAST & out_exp,
                                                                    class GGS_location & out_endOfExp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letExp (class GGS_lstring & out_constantName,
-                                                               class GGS_semanticExpressionAST & out_exp,
-                                                               class GGS_location & out_endOfExp,
-                                                               class GGS_lstring & out_typeName) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letVarExp (class GGS_lstring & out_varName,
+                                                                  class GGS_bool & out_isConstant,
+                                                                  class GGS_semanticExpressionAST & out_exp,
+                                                                  class GGS_location & out_endOfExp,
+                                                                  class GGS_lstring & out_typeName) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6657,11 +6658,12 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_ifExpressionKind class_func_letExp (const class GGS_lstring & inOperand0,
-                                                               const class GGS_semanticExpressionAST & inOperand1,
-                                                               const class GGS_location & inOperand2,
-                                                               const class GGS_lstring & inOperand3
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GGS_ifExpressionKind class_func_letVarExp (const class GGS_lstring & inOperand0,
+                                                                  const class GGS_bool & inOperand1,
+                                                                  const class GGS_semanticExpressionAST & inOperand2,
+                                                                  const class GGS_location & inOperand3,
+                                                                  const class GGS_lstring & inOperand4
+                                                                  COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_ifExpressionKind class_func_regularExp (const class GGS_semanticExpressionAST & inOperand0,
                                                                    const class GGS_location & inOperand1
@@ -6674,12 +6676,13 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_extractLetExp (class GGS_lstring & outArgument0,
-                                                      class GGS_semanticExpressionAST & outArgument1,
-                                                      class GGS_location & outArgument2,
-                                                      class GGS_lstring & outArgument3,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void method_extractLetVarExp (class GGS_lstring & outArgument0,
+                                                         class GGS_bool & outArgument1,
+                                                         class GGS_semanticExpressionAST & outArgument2,
+                                                         class GGS_location & outArgument3,
+                                                         class GGS_lstring & outArgument4,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_extractRegularExp (class GGS_semanticExpressionAST & outArgument0,
                                                           class GGS_location & outArgument1,
@@ -6689,11 +6692,11 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_ifExpressionKind_2E_letExp_3F_ getter_getLetExp (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_ifExpressionKind_2E_letVarExp_3F_ getter_getLetVarExp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_ifExpressionKind_2E_regularExp_3F_ getter_getRegularExp (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isLetExp (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isLetVarExp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_bool getter_isRegularExp (LOCATION_ARGS) const ;
 
@@ -6711,14 +6714,19 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @ifExpressionKind_2E_letExp struct
+// Phase 1: @ifExpressionKind_2E_letVarExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
+class GGS_ifExpressionKind_2E_letVarExp : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_lstring mProperty_constantName ;
-  public: inline GGS_lstring readProperty_constantName (void) const {
-    return mProperty_constantName ;
+  public: GGS_lstring mProperty_varName ;
+  public: inline GGS_lstring readProperty_varName (void) const {
+    return mProperty_varName ;
+  }
+
+  public: GGS_bool mProperty_isConstant ;
+  public: inline GGS_bool readProperty_isConstant (void) const {
+    return mProperty_isConstant ;
   }
 
   public: GGS_semanticExpressionAST mProperty_exp ;
@@ -6741,11 +6749,15 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_ifExpressionKind_2E_letExp (void) ;
+  public: GGS_ifExpressionKind_2E_letVarExp (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setConstantName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_constantName = inValue ;
+  public: inline void setter_setVarName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_varName = inValue ;
+  }
+
+  public: inline void setter_setIsConstant (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_isConstant = inValue ;
   }
 
   public: inline void setter_setExp (const GGS_semanticExpressionAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -6764,42 +6776,45 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_ifExpressionKind_2E_letExp (const GGS_lstring & in_constantName,
-                                          const GGS_semanticExpressionAST & in_exp,
-                                          const GGS_location & in_endOfExp,
-                                          const GGS_lstring & in_typeName) ;
+  public: GGS_ifExpressionKind_2E_letVarExp (const GGS_lstring & in_varName,
+                                             const GGS_bool & in_isConstant,
+                                             const GGS_semanticExpressionAST & in_exp,
+                                             const GGS_location & in_endOfExp,
+                                             const GGS_lstring & in_typeName) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_ifExpressionKind_2E_letExp (const GGS_ifExpressionKind_2E_letExp & inSource) ;
+  public: GGS_ifExpressionKind_2E_letVarExp (const GGS_ifExpressionKind_2E_letVarExp & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_ifExpressionKind_2E_letExp & operator = (const GGS_ifExpressionKind_2E_letExp & inSource) ;
+  public: GGS_ifExpressionKind_2E_letVarExp & operator = (const GGS_ifExpressionKind_2E_letVarExp & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_ifExpressionKind_2E_letExp init_21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                      const class GGS_semanticExpressionAST & inOperand1,
-                                                                      const class GGS_location & inOperand2,
-                                                                      const class GGS_lstring & inOperand3,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifExpressionKind_2E_letVarExp init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                             const class GGS_bool & inOperand1,
+                                                                             const class GGS_semanticExpressionAST & inOperand2,
+                                                                             const class GGS_location & inOperand3,
+                                                                             const class GGS_lstring & inOperand4,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_ifExpressionKind_2E_letExp extractObject (const GGS_object & inObject,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifExpressionKind_2E_letVarExp extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_ifExpressionKind_2E_letExp class_func_new (const class GGS_lstring & inOperand0,
-                                                                      const class GGS_semanticExpressionAST & inOperand1,
-                                                                      const class GGS_location & inOperand2,
-                                                                      const class GGS_lstring & inOperand3,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GGS_ifExpressionKind_2E_letVarExp class_func_new (const class GGS_lstring & inOperand0,
+                                                                         const class GGS_bool & inOperand1,
+                                                                         const class GGS_semanticExpressionAST & inOperand2,
+                                                                         const class GGS_location & inOperand3,
+                                                                         const class GGS_lstring & inOperand4,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6822,32 +6837,32 @@ class GGS_ifExpressionKind_2E_letExp : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: ifExpressionKind.letExp? optional
+// Phase 1: ifExpressionKind.letVarExp? optional
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
+class GGS_ifExpressionKind_2E_letVarExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: GGS_ifExpressionKind_2E_letExp mValue ;
+  private: GGS_ifExpressionKind_2E_letVarExp mValue ;
   private: OptionalState mState ;
 
 //--------------------------------- Default constructor
-  public: GGS_ifExpressionKind_2E_letExp_3F_ (void) ;
+  public: GGS_ifExpressionKind_2E_letVarExp_3F_ (void) ;
 
 //--------------------------------- Constructor from unwrapped type
-  public: GGS_ifExpressionKind_2E_letExp_3F_ (const GGS_ifExpressionKind_2E_letExp & inSource) ;
+  public: GGS_ifExpressionKind_2E_letVarExp_3F_ (const GGS_ifExpressionKind_2E_letVarExp & inSource) ;
 
 //--------------------------------- Constructor from weak type
 
 //--------------------------------- nil initializer
-  public: static GGS_ifExpressionKind_2E_letExp_3F_ init_nil (void) ;
+  public: static GGS_ifExpressionKind_2E_letVarExp_3F_ init_nil (void) ;
 
   public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
-  public: inline GGS_ifExpressionKind_2E_letExp unwrappedValue (void) const {
+  public: inline GGS_ifExpressionKind_2E_letVarExp unwrappedValue (void) const {
     return mValue ;
   }
 
@@ -6877,9 +6892,9 @@ class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_ifExpressionKind_2E_letExp_3F_ extractObject (const GGS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifExpressionKind_2E_letVarExp_3F_ extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -6899,7 +6914,7 @@ class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp_3F_ ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @ifExpressionKind_2E_regularExp struct
@@ -7331,7 +7346,7 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
   public: enum class Enumeration {
     invalid,
     enum_regular,
-    enum_letExp,
+    enum_letVarExp,
     enum_optionalExp
   } ;
   
@@ -7341,11 +7356,12 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Associated value extraction
   public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regular (class GGS_semanticExpressionForGeneration & out_exp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letExp (class GGS_string & out_targetVarCppName,
-                                                               class GGS_semanticExpressionForGeneration & out_exp,
-                                                               class GGS_unifiedTypeMapEntry & out_targetType,
-                                                               class GGS_unifiedTypeMapEntry & out_testType) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letVarExp (class GGS_string & out_targetVarCppName,
+                                                                  class GGS_semanticExpressionForGeneration & out_exp,
+                                                                  class GGS_unifiedTypeMapEntry & out_targetType,
+                                                                  class GGS_unifiedTypeMapEntry & out_testType) const ;
   public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_optionalExp (class GGS_string & out_targetVarCppName,
+                                                                    class GGS_bool & out_isConstant,
                                                                     class GGS_semanticExpressionForGeneration & out_exp,
                                                                     class GGS_unifiedTypeMapEntry & out_targetType) const ;
 
@@ -7376,15 +7392,16 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_ifTestForGeneration class_func_letExp (const class GGS_string & inOperand0,
-                                                                  const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                  const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                  const class GGS_unifiedTypeMapEntry & inOperand3
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static class GGS_ifTestForGeneration class_func_letVarExp (const class GGS_string & inOperand0,
+                                                                     const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                     const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                     const class GGS_unifiedTypeMapEntry & inOperand3
+                                                                     COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_ifTestForGeneration class_func_optionalExp (const class GGS_string & inOperand0,
-                                                                       const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                       const class GGS_unifiedTypeMapEntry & inOperand2
+                                                                       const class GGS_bool & inOperand1,
+                                                                       const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                       const class GGS_unifiedTypeMapEntry & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_ifTestForGeneration class_func_regular (const class GGS_semanticExpressionForGeneration & inOperand0
@@ -7397,16 +7414,17 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_extractLetExp (class GGS_string & outArgument0,
-                                                      class GGS_semanticExpressionForGeneration & outArgument1,
-                                                      class GGS_unifiedTypeMapEntry & outArgument2,
-                                                      class GGS_unifiedTypeMapEntry & outArgument3,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void method_extractLetVarExp (class GGS_string & outArgument0,
+                                                         class GGS_semanticExpressionForGeneration & outArgument1,
+                                                         class GGS_unifiedTypeMapEntry & outArgument2,
+                                                         class GGS_unifiedTypeMapEntry & outArgument3,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_extractOptionalExp (class GGS_string & outArgument0,
-                                                           class GGS_semanticExpressionForGeneration & outArgument1,
-                                                           class GGS_unifiedTypeMapEntry & outArgument2,
+                                                           class GGS_bool & outArgument1,
+                                                           class GGS_semanticExpressionForGeneration & outArgument2,
+                                                           class GGS_unifiedTypeMapEntry & outArgument3,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
 
@@ -7417,13 +7435,13 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_ifTestForGeneration_2E_letExp_3F_ getter_getLetExp (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_ifTestForGeneration_2E_letVarExp_3F_ getter_getLetVarExp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_ifTestForGeneration_2E_optionalExp_3F_ getter_getOptionalExp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_ifTestForGeneration_2E_regular_3F_ getter_getRegular (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isLetExp (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isLetVarExp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_bool getter_isOptionalExp (LOCATION_ARGS) const ;
 
@@ -7628,6 +7646,21 @@ void extensionSetter_insertInitializedLocalConstant (class GGS_localVarManager &
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension setter '@localVarManager insertInitializedLocalVariable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInitializedLocalVariable (class GGS_localVarManager & ioObject,
+                                                     const class GGS_lstring constin_inVarName,
+                                                     const class GGS_bool constin_inWarnsIfNotMutated,
+                                                     const class GGS_unifiedTypeMapEntry constin_inType,
+                                                     const class GGS_string constin_inCppName,
+                                                     const class GGS_string constin_inNameForCheckingFormalParameterUsing,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager openBranch'
 //
 //--------------------------------------------------------------------------------------------------
@@ -7647,10 +7680,10 @@ void extensionSetter_openOverrideForSelectBlock (class GGS_localVarManager & ioO
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @ifTestForGeneration_2E_letExp struct
+// Phase 1: @ifTestForGeneration_2E_letVarExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
+class GGS_ifTestForGeneration_2E_letVarExp : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_targetVarCppName ;
   public: inline GGS_string readProperty_targetVarCppName (void) const {
@@ -7677,7 +7710,7 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_ifTestForGeneration_2E_letExp (void) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setTargetVarCppName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -7700,42 +7733,42 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_ifTestForGeneration_2E_letExp (const GGS_string & in_targetVarCppName,
-                                             const GGS_semanticExpressionForGeneration & in_exp,
-                                             const GGS_unifiedTypeMapEntry & in_targetType,
-                                             const GGS_unifiedTypeMapEntry & in_testType) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp (const GGS_string & in_targetVarCppName,
+                                                const GGS_semanticExpressionForGeneration & in_exp,
+                                                const GGS_unifiedTypeMapEntry & in_targetType,
+                                                const GGS_unifiedTypeMapEntry & in_testType) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_ifTestForGeneration_2E_letExp (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp (const GGS_ifTestForGeneration_2E_letVarExp & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_ifTestForGeneration_2E_letExp & operator = (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp & operator = (const GGS_ifTestForGeneration_2E_letVarExp & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_ifTestForGeneration_2E_letExp init_21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                         const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifTestForGeneration_2E_letVarExp init_21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                            const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                            const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                            const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_ifTestForGeneration_2E_letExp extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifTestForGeneration_2E_letVarExp extractObject (const GGS_object & inObject,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_ifTestForGeneration_2E_letExp class_func_new (const class GGS_string & inOperand0,
-                                                                         const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                         class Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GGS_ifTestForGeneration_2E_letVarExp class_func_new (const class GGS_string & inOperand0,
+                                                                            const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                            const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                            const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                            class Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -7758,32 +7791,32 @@ class GGS_ifTestForGeneration_2E_letExp : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: ifTestForGeneration.letExp? optional
+// Phase 1: ifTestForGeneration.letVarExp? optional
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration_2E_letExp_3F_ : public AC_GALGAS_root {
+class GGS_ifTestForGeneration_2E_letVarExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: GGS_ifTestForGeneration_2E_letExp mValue ;
+  private: GGS_ifTestForGeneration_2E_letVarExp mValue ;
   private: OptionalState mState ;
 
 //--------------------------------- Default constructor
-  public: GGS_ifTestForGeneration_2E_letExp_3F_ (void) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp_3F_ (void) ;
 
 //--------------------------------- Constructor from unwrapped type
-  public: GGS_ifTestForGeneration_2E_letExp_3F_ (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
+  public: GGS_ifTestForGeneration_2E_letVarExp_3F_ (const GGS_ifTestForGeneration_2E_letVarExp & inSource) ;
 
 //--------------------------------- Constructor from weak type
 
 //--------------------------------- nil initializer
-  public: static GGS_ifTestForGeneration_2E_letExp_3F_ init_nil (void) ;
+  public: static GGS_ifTestForGeneration_2E_letVarExp_3F_ init_nil (void) ;
 
   public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
-  public: inline GGS_ifTestForGeneration_2E_letExp unwrappedValue (void) const {
+  public: inline GGS_ifTestForGeneration_2E_letVarExp unwrappedValue (void) const {
     return mValue ;
   }
 
@@ -7813,9 +7846,9 @@ class GGS_ifTestForGeneration_2E_letExp_3F_ : public AC_GALGAS_root {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_ifTestForGeneration_2E_letExp_3F_ extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifTestForGeneration_2E_letVarExp_3F_ extractObject (const GGS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -7835,7 +7868,7 @@ class GGS_ifTestForGeneration_2E_letExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp_3F_ ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @ifTestForGeneration_2E_optionalExp struct
@@ -7846,6 +7879,11 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
   public: GGS_string mProperty_targetVarCppName ;
   public: inline GGS_string readProperty_targetVarCppName (void) const {
     return mProperty_targetVarCppName ;
+  }
+
+  public: GGS_bool mProperty_isConstant ;
+  public: inline GGS_bool readProperty_isConstant (void) const {
+    return mProperty_isConstant ;
   }
 
   public: GGS_semanticExpressionForGeneration mProperty_exp ;
@@ -7870,6 +7908,10 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
     mProperty_targetVarCppName = inValue ;
   }
 
+  public: inline void setter_setIsConstant (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_isConstant = inValue ;
+  }
+
   public: inline void setter_setExp (const GGS_semanticExpressionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_exp = inValue ;
   }
@@ -7883,6 +7925,7 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_ifTestForGeneration_2E_optionalExp (const GGS_string & in_targetVarCppName,
+                                                  const GGS_bool & in_isConstant,
                                                   const GGS_semanticExpressionForGeneration & in_exp,
                                                   const GGS_unifiedTypeMapEntry & in_targetType) ;
 
@@ -7895,11 +7938,12 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_ifTestForGeneration_2E_optionalExp init_21__21__21_ (const class GGS_string & inOperand0,
-                                                                          const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                          const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_ifTestForGeneration_2E_optionalExp init_21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                              const class GGS_bool & inOperand1,
+                                                                              const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                              const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7911,8 +7955,9 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_ifTestForGeneration_2E_optionalExp class_func_new (const class GGS_string & inOperand0,
-                                                                              const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                              const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                              const class GGS_bool & inOperand1,
+                                                                              const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                              const class GGS_unifiedTypeMapEntry & inOperand3,
                                                                               class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -13544,83 +13589,4 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @selfDivEqualExpressionInstructionAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_selfDivEqualExpressionInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
-
-  public: GGS_selfDivEqualExpressionInstructionAST_2E_weak & operator = (const class GGS_selfDivEqualExpressionInstructionAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_selfDivEqualExpressionInstructionAST_2E_weak init_nil (void) {
-    GGS_selfDivEqualExpressionInstructionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_selfDivEqualExpressionInstructionAST bang_selfDivEqualExpressionInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_selfDivEqualExpressionInstructionAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_selfDivEqualExpressionInstructionAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_selfDivEqualExpressionInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_selfDivEqualExpressionInstructionAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpressionInstructionAST_2E_weak ;
 

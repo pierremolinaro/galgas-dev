@@ -188,18 +188,18 @@ override method @extensionSetterAST enterDeclarationInGraph
       !@()
     ]
   end
-//  var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
-//  [!?entry.mExtensionSetterMapForType insertKey
-//    !self.mExtensionSetterName
-//    !self.mExtensionSetterFormalParameterList
-//  ]
-//  [!?ioExtensionSetterMapForBuildingContext replaceKey !with: entry]
-  with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
-    [!?mExtensionSetterMapForType insertKey
-      !self.mExtensionSetterName
-      !self.mExtensionSetterFormalParameterList
-    ]
-  end
+  var entry = ioExtensionSetterMapForBuildingContext @[!searchKey: self.mTypeName]
+  [!?entry.mExtensionSetterMapForType insertKey
+    !self.mExtensionSetterName
+    !self.mExtensionSetterFormalParameterList
+  ]
+  [!?ioExtensionSetterMapForBuildingContext replaceKey !with: entry]
+//  with %aliasOf ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName] do
+//    [!?mExtensionSetterMapForType insertKey
+//      !self.mExtensionSetterName
+//      !self.mExtensionSetterFormalParameterList
+//    ]
+//  end
 }
 
 //--------------------------------------------------------------------------------------------------

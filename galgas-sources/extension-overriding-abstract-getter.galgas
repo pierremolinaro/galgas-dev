@@ -181,22 +181,22 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
       !@()
     ]
   end
-//  var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-//  [!?entry.mExtensionGetterMapForType insertKey
-//    !self.mAbstractExtensionGetterName
-//    !self.mAbstractExtensionGetterReturnedTypeName
-//    !self.mAbstractExtensionGetterFormalInputParameterList
-//    !.isVirtualOverridingAbstract
-//  ]
-//  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
-  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-    [!?mExtensionGetterMapForType insertKey
-      !self.mAbstractExtensionGetterName
-      !self.mAbstractExtensionGetterReturnedTypeName
-      !self.mAbstractExtensionGetterFormalInputParameterList
-      !.isVirtualOverridingAbstract
-    ]
-   end
+  var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
+  [!?entry.mExtensionGetterMapForType insertKey
+    !self.mAbstractExtensionGetterName
+    !self.mAbstractExtensionGetterReturnedTypeName
+    !self.mAbstractExtensionGetterFormalInputParameterList
+    !.isVirtualOverridingAbstract
+  ]
+  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+//  with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
+//    [!?mExtensionGetterMapForType insertKey
+//      !self.mAbstractExtensionGetterName
+//      !self.mAbstractExtensionGetterReturnedTypeName
+//      !self.mAbstractExtensionGetterFormalInputParameterList
+//      !.isVirtualOverridingAbstract
+//    ]
+//   end
 }
 
 //--------------------------------------------------------------------------------------------------

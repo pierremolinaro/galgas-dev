@@ -230,22 +230,22 @@ override method @overridingExtensionGetterAST enterDeclarationInGraph
       !@()
     ]
   end
-//  var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-//  [!?entry.mExtensionGetterMapForType insertKey
-//    !self.mOverridingExtensionGetterName
-//    !self.mOverridingExtensionGetterReturnedTypeName
-//    !self.mOverridingExtensionGetterFormalInputParameterList
-//    !.isVirtualOverriding
-//  ]
-//  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
-  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-    [!?mExtensionGetterMapForType insertKey
-      !self.mOverridingExtensionGetterName
-      !self.mOverridingExtensionGetterReturnedTypeName
-      !self.mOverridingExtensionGetterFormalInputParameterList
-      !.isVirtualOverriding
-    ]
-   end
+  var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
+  [!?entry.mExtensionGetterMapForType insertKey
+    !self.mOverridingExtensionGetterName
+    !self.mOverridingExtensionGetterReturnedTypeName
+    !self.mOverridingExtensionGetterFormalInputParameterList
+    !.isVirtualOverriding
+  ]
+  [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+//  with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
+//    [!?mExtensionGetterMapForType insertKey
+//      !self.mOverridingExtensionGetterName
+//      !self.mOverridingExtensionGetterReturnedTypeName
+//      !self.mOverridingExtensionGetterFormalInputParameterList
+//      !.isVirtualOverriding
+//    ]
+//   end
 }
 
 //--------------------------------------------------------------------------------------------------

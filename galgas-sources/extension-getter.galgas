@@ -225,22 +225,22 @@ class @extensionGetterAST : @semanticDeclarationAST {
         !@()
       ]
     end
-//    var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
-//    [!?entry.mExtensionGetterMapForType insertKey
-//      !self.mExtensionGetterName
-//      !self.mExtensionGetterReturnedTypeName
-//      !self.mExtensionGetterFormalInputParameterList
-//      !.isBasic
-//    ]
-//    [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
-    with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-      [!?mExtensionGetterMapForType insertKey
-        !self.mExtensionGetterName
-        !self.mExtensionGetterReturnedTypeName
-        !self.mExtensionGetterFormalInputParameterList
-        !.isBasic
-      ]
-    end
+    var entry = ioExtensionGetterMapForBuildingContext @[!searchKey: self.mTypeName]
+    [!?entry.mExtensionGetterMapForType insertKey
+      !self.mExtensionGetterName
+      !self.mExtensionGetterReturnedTypeName
+      !self.mExtensionGetterFormalInputParameterList
+      !.isBasic
+    ]
+    [!?ioExtensionGetterMapForBuildingContext replaceKey !with: entry]
+//    with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
+//      [!?mExtensionGetterMapForType insertKey
+//        !self.mExtensionGetterName
+//        !self.mExtensionGetterReturnedTypeName
+//        !self.mExtensionGetterFormalInputParameterList
+//        !.isBasic
+//      ]
+//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

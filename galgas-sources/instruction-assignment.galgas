@@ -17,24 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-class @assignmentInstructionAST : @semanticInstructionAST {
-  private let @lstring mTargetVariableName
-  private let @lstring mOptionalProperty
-  private let @semanticExpressionAST mSourceExpression
-}
-
-//--------------------------------------------------------------------------------------------------
-
-class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
-  private let @lstring mTargetSelfPropertyName
-  private let @lstring mOptionalProperty
-  private let @semanticExpressionAST mSourceExpression
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -163,123 +145,44 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CONTEXT
+//! @assignmentInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-override method @assignmentInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
+class @assignmentInstructionAST : @semanticInstructionAST {
+  private let @lstring mTargetVariableName
+  private let @lstring mOptionalProperty
+  private let @semanticExpressionAST mSourceExpression
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @selfPropertyAssignmentInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-//--------------------------------------------------------------------------------------------------
-//! SEMANTICS
-//--------------------------------------------------------------------------------------------------
-
-override method @assignmentInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-//--- Get target variable type
-  [!?ioVariableMap neutralAccess
-    !self.mTargetVariableName
-    ?let receiverType
-    ?*
-    ?*
-  ]
-  var targetType = receiverType
-  if self.mOptionalProperty.string != "" then
-    let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
-    if isConstant then
-      error self.mOptionalProperty : "a constant property cannot be modified"
-    end
-  end
-//--- Analyze source expression
-  [self.mSourceExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-//--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (
-    !targetType
-    !expression.mResultType
-    !self.mInstructionLocation
-    !?expression
-  )
-//--- Get target variable
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mOptionalProperty.string == "" then
-    [!?ioVariableMap searchForWriteAccess
-      !self.mTargetVariableName
-      ?*
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mTargetVariableName
-      ?*
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-//--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-    !receiverType
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mOptionalProperty
-    !expression
-    !self.mTargetVariableName.location
+  override method enterInstructionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap
+  {
+    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
-}
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
-                        ?let @lstring inUsefulnessCallerEntityName
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                        ?let @analysisContext inAnalysisContext
-                        ?!@unifiedTypeMap ioTypeMap
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                        ?!@localVarManager ioVariableMap {
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    if not [selfAvailable.selfMutability propertiesAreMutable] then
-      error self.mInstructionLocation : "'self' property not mutable in this context"
-    end
-    let propertyMap = [selfAvailable.type definition].propertyMap
-    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
-    if isConstant & not [selfAvailable.selfMutability isInitializer] then
-      error self.mTargetSelfPropertyName : "a constant property cannot be modified"
-    end
-    let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-       + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
+  override method analyzeSemanticInstruction
+    ?let @lstring inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@localVarManager ioVariableMap
+  {
   //--- Get target variable type
+    [!?ioVariableMap neutralAccess
+      !self.mTargetVariableName
+      ?let receiverType
+      ?*
+      ?*
+    ]
+    var targetType = receiverType
     if self.mOptionalProperty.string != "" then
       let propertyMap = [targetType definition].propertyMap
       [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
-      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty.location]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
       if isConstant then
         error self.mOptionalProperty : "a constant property cannot be modified"
       end
@@ -294,29 +197,130 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
-  //---
-    [!?ioVariableMap searchForWriteAccess 
-      !@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
-    ]
   //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
+    checkAssignmentTypeWithImplicitGetterCall (
+      !targetType
+      !expression.mResultType
+      !self.mInstructionLocation
+      !?expression
+    )
+  //--- Get target variable
+    let @string targetVariableCppName
+    let @string nameForCheckingFormalParameterUsing
+    if self.mOptionalProperty.string == "" then
+      [!?ioVariableMap searchForWriteAccess
+        !self.mTargetVariableName
+        ?*
+        ?targetVariableCppName
+        ?nameForCheckingFormalParameterUsing
+      ]
+    else
+      [!?ioVariableMap searchForReadWriteAccess
+        !self.mTargetVariableName
+        ?*
+        ?targetVariableCppName
+        ?nameForCheckingFormalParameterUsing
+      ]
+    end
   //--- Generate instruction
     ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-      !selfAvailable.type
+      !receiverType
       !targetType
       !targetVariableCppName
-      !inAnalysisContext.selfObjectCppName
+      !nameForCheckingFormalParameterUsing
       !self.mOptionalProperty
       !expression
-      !self.mTargetSelfPropertyName.location
+      !self.mTargetVariableName.location
     }
-  else
-    error self.mInstructionLocation : "'self' not available in this context"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
-//! GENERATION TYPES
+//! @selfPropertyAssignmentInstructionAST
+//--------------------------------------------------------------------------------------------------
+
+class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
+  private let @lstring mTargetSelfPropertyName
+  private let @lstring mOptionalProperty
+  private let @semanticExpressionAST mSourceExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterInstructionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap
+  {
+    [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method analyzeSemanticInstruction
+                          ?let @lstring inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                          ?let @analysisContext inAnalysisContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                          ?!@localVarManager ioVariableMap {
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
+        error self.mInstructionLocation : "'self' property not mutable in this context"
+      end
+      let propertyMap = [selfAvailable.type definition].propertyMap
+      [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
+      if isConstant & not [selfAvailable.selfMutability isInitializer] then
+        error self.mTargetSelfPropertyName : "a constant property cannot be modified"
+      end
+      let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+         + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
+    //--- Get target variable type
+      if self.mOptionalProperty.string != "" then
+        let propertyMap = [targetType definition].propertyMap
+        [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
+        [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty.location]
+        if isConstant then
+          error self.mOptionalProperty : "a constant property cannot be modified"
+        end
+      end
+    //--- Analyze source expression
+      [self.mSourceExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inferenceType: targetType
+        !inAnalysisContext
+        !?ioTypeMap
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+    //---
+      [!?ioVariableMap searchForWriteAccess 
+        !@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
+      ]
+    //--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
+    //--- Generate instruction
+      ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
+        !selfAvailable.type
+        !targetType
+        !targetVariableCppName
+        !inAnalysisContext.selfObjectCppName
+        !self.mOptionalProperty
+        !expression
+        !self.mTargetSelfPropertyName.location
+      }
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//! @assignmentInstructionForGeneration
 //--------------------------------------------------------------------------------------------------
 
 class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {

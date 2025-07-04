@@ -233,6 +233,8 @@ map @extensionInitializerForBuildingContext {
   public let @extensionInitializerMapForType mExtensionInitializerMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  %searchSubscript searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -253,6 +255,8 @@ map @extensionMethodMapForBuildingContext {
   public let @extensionMethodMapForType mExtensionMethodMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  %searchSubscript searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -272,6 +276,8 @@ map @extensionSetterMapForBuildingContext {
   public let @extensionSetterMapForType mExtensionSetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  %searchSubscript searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -293,6 +299,8 @@ map @extensionGetterMapForBuildingContext {
   public let @extensionGetterMapForType mExtensionGetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
+  %searchSubscript searchKey error message "internal error"
+  replace replaceKey error message "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------

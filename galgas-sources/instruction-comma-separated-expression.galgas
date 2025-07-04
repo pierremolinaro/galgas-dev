@@ -28,20 +28,29 @@ syntax extension galgas3InstructionsSyntax {
     outExpressionList = @()
     repeat
       select
-        $let$
-        let @lstring constantName
+        let @lstring varName
+        let @bool isConstant
         select
-          $identifier$ ?constantName
+          $var$
+          $identifier$ ?varName
+          isConstant = false
         or
-          $*$
-          constantName = ["" here]
+          $let$
+          isConstant = true
+          select
+            $identifier$ ?varName
+           or
+             $*$
+             varName = ["" here]
+          end
         end
         $=$
         <expression_or_ggs3> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
-          outExpressionList += !.letExp {
-            !constantName: constantName
+          outExpressionList += !.letVarExp {
+            !varName: varName
+            !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
             !typeName: ["" here]
@@ -49,8 +58,9 @@ syntax extension galgas3InstructionsSyntax {
         or
           $as$
           <type_definition_ggs3> !?ioDeclarations ?let typeName
-          outExpressionList += !.letExp {
-            !constantName: constantName
+          outExpressionList += !.letVarExp {
+            !varName: varName
+            !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
             !typeName: typeName
@@ -80,20 +90,29 @@ syntax extension galgas4InstructionsSyntax {
     outExpressionList = @()
     repeat
       select
-        $let$
-        let @lstring constantName
+        let @lstring varName
+        let @bool isConstant
         select
-          $identifier$ ?constantName
+          $var$
+          $identifier$ ?varName
+          isConstant = false
         or
-          $*$
-          constantName = ["" here]
+          $let$
+          isConstant = true
+          select
+            $identifier$ ?varName
+           or
+             $*$
+             varName = ["" here]
+          end
         end
         $=$
         <expression_or> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
-          outExpressionList += !.letExp {
-            !constantName: constantName
+          outExpressionList += !.letVarExp {
+            !varName: varName
+            !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
             !typeName: ["" here]
@@ -101,8 +120,9 @@ syntax extension galgas4InstructionsSyntax {
         or
           $as$
           <type_definition> !?ioDeclarations ?let typeName
-          outExpressionList += !.letExp {
-            !constantName: constantName
+          outExpressionList += !.letVarExp {
+            !varName: varName
+            !isConstant: isConstant
             !exp: expression
             !endOfExp: endOfReceiverExpression
             !typeName: typeName
@@ -127,7 +147,11 @@ syntax extension galgas4InstructionsSyntax {
 
 enum @ifExpressionKind {
   case regularExp (@semanticExpressionAST exp @location endOfExp)
-  case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
+  case letVarExp (@lstring varName 
+                  @bool isConstant
+                  @semanticExpressionAST exp
+                  @location endOfExp
+                  @lstring typeName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -142,7 +166,7 @@ list @CommaSeparatedExpressionList {
       switch expression
       case regularExp (exp *) :
         [exp enterExpressionInSemanticContext !?ioTypeMap]
-      case letExp (* exp * @lstring typeName) :
+      case letVarExp (2* exp * @lstring typeName) :
         [exp enterExpressionInSemanticContext !?ioTypeMap]
         [!?ioTypeMap makeEntry !typeName ?*]
       end
@@ -179,7 +203,7 @@ list @CommaSeparatedExpressionList {
         outTestListForGeneration += !.regular {!exp: if_expression}
         [!?ioVariableMap openOverrideForSelectBlock]
         [!?ioVariableMap openBranch]
-      case letExp (constantName exp * @lstring typeName) :
+      case letVarExp (varName isConstant exp * @lstring typeName) :
         [exp analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
@@ -196,20 +220,31 @@ list @CommaSeparatedExpressionList {
         if not [unwrappedType isNull] then
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-                + "_" + [constantName.location startLocationIndex]
-          if constantName.string != "" then
-            [!?ioVariableMap insertInitializedLocalConstant
-              !constantName
-              !unwrappedType
-              !targetVariableCppName
-              !targetVariableCppName
-            ]
+          let targetVariableCppName = "var_" + [varName identifierRepresentation]
+                + "_" + [varName.location startLocationIndex]
+          if varName.string != "" then
+            if isConstant then
+              [!?ioVariableMap insertInitializedLocalConstant
+                !varName
+                !unwrappedType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            else
+              [!?ioVariableMap insertInitializedLocalVariable
+                !varName
+                !warnsIfNotMutated: true
+                !unwrappedType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            end
           end
           castType = unwrappedType
           testType = analyzedExpression.mResultType
           outTestListForGeneration += !.optionalExp {
             !targetVarCppName: targetVariableCppName
+            !isConstant: isConstant
             !exp: analyzedExpression
             !targetType: unwrappedType
           }
@@ -237,17 +272,27 @@ list @CommaSeparatedExpressionList {
           end
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-                + "_" + [constantName.location startLocationIndex]
-          if constantName.string != "" then
-            [!?ioVariableMap insertInitializedLocalConstant
-              !constantName
-              !castType
-              !targetVariableCppName
-              !targetVariableCppName
-            ]
+          let targetVariableCppName = "var_" + [varName identifierRepresentation]
+                + "_" + [varName.location startLocationIndex]
+          if varName.string != "" then
+             if isConstant then
+              [!?ioVariableMap insertInitializedLocalConstant
+                !varName
+                !castType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            else
+              [!?ioVariableMap insertInitializedLocalVariable
+                !varName
+                !warnsIfNotMutated: true
+                !castType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            end
           end
-          outTestListForGeneration += !.letExp {
+          outTestListForGeneration += !.letVarExp {
             !targetVarCppName: targetVariableCppName
             !exp: analyzedExpression
             !targetType: castType
@@ -285,17 +330,27 @@ list @CommaSeparatedExpressionList {
           end
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
-          let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-                + "_" + [constantName.location startLocationIndex]
-          if constantName.string != "" then
-            [!?ioVariableMap insertInitializedLocalConstant
-              !constantName
-              !castType
-              !targetVariableCppName
-              !targetVariableCppName
-            ]
+          let targetVariableCppName = "var_" + [varName identifierRepresentation]
+                + "_" + [varName.location startLocationIndex]
+          if varName.string != "" then
+           if isConstant then
+              [!?ioVariableMap insertInitializedLocalConstant
+                !varName
+                !castType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            else
+              [!?ioVariableMap insertInitializedLocalVariable
+                !varName
+                !warnsIfNotMutated: true
+                !castType
+                !targetVariableCppName
+                !targetVariableCppName
+              ]
+            end
           end
-          outTestListForGeneration += !.letExp {
+          outTestListForGeneration += !.letVarExp {
             !targetVarCppName: targetVariableCppName
             !exp: analyzedExpression
             !targetType: castType
@@ -320,11 +375,12 @@ list @CommaSeparatedExpressionList {
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
-  case letExp (@string targetVarCppName
-               @semanticExpressionForGeneration exp
-               @unifiedTypeMapEntry targetType
-               @unifiedTypeMapEntry testType)
+  case letVarExp (@string targetVarCppName
+                  @semanticExpressionForGeneration exp
+                  @unifiedTypeMapEntry targetType
+                  @unifiedTypeMapEntry testType)
   case optionalExp (@string targetVarCppName
+                    @bool isConstant
                     @semanticExpressionForGeneration exp
                     @unifiedTypeMapEntry targetType)
 }
@@ -361,7 +417,7 @@ list @ifTestListForGeneration {
           ?let cppVarName
         ]
         ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
-      case letExp (targetVarCppName exp targetType testType) :
+      case letVarExp (targetVarCppName exp targetType testType) :
         [targetType addHeaderFileName !?ioInclusionSet]
         [testType addHeaderFileName !?ioInclusionSet]
         let targetTypeName = [targetType identifierRepresentation]
@@ -378,7 +434,7 @@ list @ifTestListForGeneration {
         ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
         ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
         ioGeneratedCode += "}\n"
-      case optionalExp (targetVarCppName exp targetType) :
+      case optionalExp (targetVarCppName isConstant exp targetType) :
         let targetTypeName = [targetType identifierRepresentation]
         [exp generateExpression
           !?ioGeneratedCode
@@ -387,7 +443,10 @@ list @ifTestListForGeneration {
           !?ioUnusedVariableCppNameSet
           ?let cppVarName
         ]
-        ioGeneratedCode += "const GGS_" + targetTypeName + " " + targetVarCppName
+        if isConstant then
+          ioGeneratedCode += "const "
+        end
+        ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
         ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
         ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
         ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"

@@ -164,18 +164,18 @@ class @initializerAST : @semanticDeclarationAST {
         !@()
       ]
     end
-//    var entry = ioExtensionInitializerForBuildingContext @[!searchKey: self.mTypeName]
-//    [!?entry.mExtensionInitializerMapForType insertKey
-//      !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
-//      !self.mFormalParameterList
-//    ]
-//    [!?ioExtensionInitializerForBuildingContext replaceKey !with: entry]
-    with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey do
-      [!?mExtensionInitializerMapForType insertKey
-        !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
-        !self.mFormalParameterList
-      ]
-    end
+    var entry = ioExtensionInitializerForBuildingContext @[!searchKey: self.mTypeName]
+    [!?entry.mExtensionInitializerMapForType insertKey
+      !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
+      !self.mFormalParameterList
+    ]
+    [!?ioExtensionInitializerForBuildingContext replaceKey !with: entry]
+//    with %aliasOf ioExtensionInitializerForBuildingContext [!searchKey: self.mTypeName] do
+//      [!?mExtensionInitializerMapForType insertKey
+//        !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
+//        !self.mFormalParameterList
+//      ]
+//    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

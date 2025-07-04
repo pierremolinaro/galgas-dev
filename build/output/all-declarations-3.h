@@ -10,6 +10,30 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                                        const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                          class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          const class GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
+                                                          const class GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -6407,101 +6431,102 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static const int32_t kToken_weak = 103 ;
   public: static const int32_t kToken_while = 104 ;
   public: static const int32_t kToken_with = 105 ;
-  public: static const int32_t kToken__25_app_2D_link = 106 ;
-  public: static const int32_t kToken__25_app_2D_source = 107 ;
-  public: static const int32_t kToken__25_applicationBundleBase = 108 ;
-  public: static const int32_t kToken__25_clonable = 109 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 110 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 111 ;
-  public: static const int32_t kToken__25_codeblocks_2D_windows = 112 ;
-  public: static const int32_t kToken__25_comparable = 113 ;
-  public: static const int32_t kToken__25_equatable = 114 ;
-  public: static const int32_t kToken__25_errorMessage = 115 ;
-  public: static const int32_t kToken__25_from = 116 ;
-  public: static const int32_t kToken__25_generatedInSeparateFile = 117 ;
-  public: static const int32_t kToken__25_initArgLabel = 118 ;
-  public: static const int32_t kToken__25_insertAfter = 119 ;
-  public: static const int32_t kToken__25_insertBefore = 120 ;
-  public: static const int32_t kToken__25_insertOrReplaceSetter = 121 ;
-  public: static const int32_t kToken__25_insertSetter = 122 ;
-  public: static const int32_t kToken__25_libpmAtPath = 123 ;
-  public: static const int32_t kToken__25_macCodeSign = 124 ;
-  public: static const int32_t kToken__25_makefile_2D_macosx = 125 ;
-  public: static const int32_t kToken__25_makefile_2D_unix = 126 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 127 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 128 ;
-  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 129 ;
-  public: static const int32_t kToken__25_MacOS = 130 ;
-  public: static const int32_t kToken__25_MacSwiftApp = 131 ;
-  public: static const int32_t kToken__25_MacOSDeployment = 132 ;
-  public: static const int32_t kToken__25_nonAtomicSelection = 133 ;
-  public: static const int32_t kToken__25_once = 134 ;
-  public: static const int32_t kToken__25_preserved = 135 ;
-  public: static const int32_t kToken__25_quietOutputByDefault = 136 ;
-  public: static const int32_t kToken__25_replaceBy = 137 ;
-  public: static const int32_t kToken__25_remove = 138 ;
-  public: static const int32_t kToken__25_removeSetter = 139 ;
-  public: static const int32_t kToken__25_replaceSetter = 140 ;
-  public: static const int32_t kToken__25_searchMethod = 141 ;
-  public: static const int32_t kToken__25_searchSubscript = 142 ;
-  public: static const int32_t kToken__25_searchString = 143 ;
-  public: static const int32_t kToken__25_tool_2D_source = 144 ;
-  public: static const int32_t kToken__25_templateEndMark = 145 ;
-  public: static const int32_t kToken__25_templateReplacement = 146 ;
-  public: static const int32_t kToken__25_translate = 147 ;
-  public: static const int32_t kToken__25_usefull = 148 ;
-  public: static const int32_t kToken__2A_ = 149 ;
-  public: static const int32_t kToken__2C_ = 150 ;
-  public: static const int32_t kToken__2B_ = 151 ;
-  public: static const int32_t kToken__26__2B_ = 152 ;
-  public: static const int32_t kToken__26__2D_ = 153 ;
-  public: static const int32_t kToken__26__2A_ = 154 ;
-  public: static const int32_t kToken__26__2F_ = 155 ;
-  public: static const int32_t kToken__3E_ = 156 ;
-  public: static const int32_t kToken__3B_ = 157 ;
-  public: static const int32_t kToken__3A_ = 158 ;
-  public: static const int32_t kToken__3A__3E_ = 159 ;
-  public: static const int32_t kToken__2D_ = 160 ;
-  public: static const int32_t kToken__28_ = 161 ;
-  public: static const int32_t kToken__29_ = 162 ;
-  public: static const int32_t kToken__2D__3E_ = 163 ;
-  public: static const int32_t kToken__3D__3D_ = 164 ;
-  public: static const int32_t kToken__3D_ = 165 ;
-  public: static const int32_t kToken__26__26_ = 166 ;
-  public: static const int32_t kToken__5B_ = 167 ;
-  public: static const int32_t kToken__5D_ = 168 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 169 ;
-  public: static const int32_t kToken__2E_ = 170 ;
-  public: static const int32_t kToken__40__28_ = 171 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 172 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 173 ;
-  public: static const int32_t kToken__2B__3D_ = 174 ;
-  public: static const int32_t kToken__2D__3D_ = 175 ;
-  public: static const int32_t kToken__2A__3D_ = 176 ;
-  public: static const int32_t kToken__2F__3D_ = 177 ;
-  public: static const int32_t kToken__26__3D_ = 178 ;
-  public: static const int32_t kToken__7C__3D_ = 179 ;
-  public: static const int32_t kToken__5E__3D_ = 180 ;
-  public: static const int32_t kToken__2F_ = 181 ;
-  public: static const int32_t kToken__21__3D_ = 182 ;
-  public: static const int32_t kToken__3E__3D_ = 183 ;
-  public: static const int32_t kToken__26_ = 184 ;
-  public: static const int32_t kToken__7B_ = 185 ;
-  public: static const int32_t kToken__7D_ = 186 ;
-  public: static const int32_t kToken__60_ = 187 ;
-  public: static const int32_t kToken__7C__7C_ = 188 ;
-  public: static const int32_t kToken__7C_ = 189 ;
-  public: static const int32_t kToken__5E_ = 190 ;
-  public: static const int32_t kToken__3E__3E_ = 191 ;
-  public: static const int32_t kToken__7E_ = 192 ;
-  public: static const int32_t kToken__2D__2D_ = 193 ;
-  public: static const int32_t kToken__2B__2B_ = 194 ;
-  public: static const int32_t kToken__26__2D__2D_ = 195 ;
-  public: static const int32_t kToken__26__2B__2B_ = 196 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 197 ;
-  public: static const int32_t kToken__21__3D__3D_ = 198 ;
-  public: static const int32_t kToken__3F__5E_ = 199 ;
-  public: static const int32_t kToken__21__5E_ = 200 ;
+  public: static const int32_t kToken__25_aliasOf = 106 ;
+  public: static const int32_t kToken__25_app_2D_link = 107 ;
+  public: static const int32_t kToken__25_app_2D_source = 108 ;
+  public: static const int32_t kToken__25_applicationBundleBase = 109 ;
+  public: static const int32_t kToken__25_clonable = 110 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 111 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 112 ;
+  public: static const int32_t kToken__25_codeblocks_2D_windows = 113 ;
+  public: static const int32_t kToken__25_comparable = 114 ;
+  public: static const int32_t kToken__25_equatable = 115 ;
+  public: static const int32_t kToken__25_errorMessage = 116 ;
+  public: static const int32_t kToken__25_from = 117 ;
+  public: static const int32_t kToken__25_generatedInSeparateFile = 118 ;
+  public: static const int32_t kToken__25_initArgLabel = 119 ;
+  public: static const int32_t kToken__25_insertAfter = 120 ;
+  public: static const int32_t kToken__25_insertBefore = 121 ;
+  public: static const int32_t kToken__25_insertOrReplaceSetter = 122 ;
+  public: static const int32_t kToken__25_insertSetter = 123 ;
+  public: static const int32_t kToken__25_libpmAtPath = 124 ;
+  public: static const int32_t kToken__25_macCodeSign = 125 ;
+  public: static const int32_t kToken__25_makefile_2D_macosx = 126 ;
+  public: static const int32_t kToken__25_makefile_2D_unix = 127 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 128 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 129 ;
+  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 130 ;
+  public: static const int32_t kToken__25_MacOS = 131 ;
+  public: static const int32_t kToken__25_MacSwiftApp = 132 ;
+  public: static const int32_t kToken__25_MacOSDeployment = 133 ;
+  public: static const int32_t kToken__25_nonAtomicSelection = 134 ;
+  public: static const int32_t kToken__25_once = 135 ;
+  public: static const int32_t kToken__25_preserved = 136 ;
+  public: static const int32_t kToken__25_quietOutputByDefault = 137 ;
+  public: static const int32_t kToken__25_replaceBy = 138 ;
+  public: static const int32_t kToken__25_remove = 139 ;
+  public: static const int32_t kToken__25_removeSetter = 140 ;
+  public: static const int32_t kToken__25_replaceSetter = 141 ;
+  public: static const int32_t kToken__25_searchMethod = 142 ;
+  public: static const int32_t kToken__25_searchSubscript = 143 ;
+  public: static const int32_t kToken__25_searchString = 144 ;
+  public: static const int32_t kToken__25_tool_2D_source = 145 ;
+  public: static const int32_t kToken__25_templateEndMark = 146 ;
+  public: static const int32_t kToken__25_templateReplacement = 147 ;
+  public: static const int32_t kToken__25_translate = 148 ;
+  public: static const int32_t kToken__25_usefull = 149 ;
+  public: static const int32_t kToken__2A_ = 150 ;
+  public: static const int32_t kToken__2C_ = 151 ;
+  public: static const int32_t kToken__2B_ = 152 ;
+  public: static const int32_t kToken__26__2B_ = 153 ;
+  public: static const int32_t kToken__26__2D_ = 154 ;
+  public: static const int32_t kToken__26__2A_ = 155 ;
+  public: static const int32_t kToken__26__2F_ = 156 ;
+  public: static const int32_t kToken__3E_ = 157 ;
+  public: static const int32_t kToken__3B_ = 158 ;
+  public: static const int32_t kToken__3A_ = 159 ;
+  public: static const int32_t kToken__3A__3E_ = 160 ;
+  public: static const int32_t kToken__2D_ = 161 ;
+  public: static const int32_t kToken__28_ = 162 ;
+  public: static const int32_t kToken__29_ = 163 ;
+  public: static const int32_t kToken__2D__3E_ = 164 ;
+  public: static const int32_t kToken__3D__3D_ = 165 ;
+  public: static const int32_t kToken__3D_ = 166 ;
+  public: static const int32_t kToken__26__26_ = 167 ;
+  public: static const int32_t kToken__5B_ = 168 ;
+  public: static const int32_t kToken__5D_ = 169 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 170 ;
+  public: static const int32_t kToken__2E_ = 171 ;
+  public: static const int32_t kToken__40__28_ = 172 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 173 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 174 ;
+  public: static const int32_t kToken__2B__3D_ = 175 ;
+  public: static const int32_t kToken__2D__3D_ = 176 ;
+  public: static const int32_t kToken__2A__3D_ = 177 ;
+  public: static const int32_t kToken__2F__3D_ = 178 ;
+  public: static const int32_t kToken__26__3D_ = 179 ;
+  public: static const int32_t kToken__7C__3D_ = 180 ;
+  public: static const int32_t kToken__5E__3D_ = 181 ;
+  public: static const int32_t kToken__2F_ = 182 ;
+  public: static const int32_t kToken__21__3D_ = 183 ;
+  public: static const int32_t kToken__3E__3D_ = 184 ;
+  public: static const int32_t kToken__26_ = 185 ;
+  public: static const int32_t kToken__7B_ = 186 ;
+  public: static const int32_t kToken__7D_ = 187 ;
+  public: static const int32_t kToken__60_ = 188 ;
+  public: static const int32_t kToken__7C__7C_ = 189 ;
+  public: static const int32_t kToken__7C_ = 190 ;
+  public: static const int32_t kToken__5E_ = 191 ;
+  public: static const int32_t kToken__3E__3E_ = 192 ;
+  public: static const int32_t kToken__7E_ = 193 ;
+  public: static const int32_t kToken__2D__2D_ = 194 ;
+  public: static const int32_t kToken__2B__2B_ = 195 ;
+  public: static const int32_t kToken__26__2D__2D_ = 196 ;
+  public: static const int32_t kToken__26__2B__2B_ = 197 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 198 ;
+  public: static const int32_t kToken__21__3D__3D_ = 199 ;
+  public: static const int32_t kToken__3F__5E_ = 200 ;
+  public: static const int32_t kToken__21__5E_ = 201 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -6599,7 +6624,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 200 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 201 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -9693,83 +9718,4 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @applicationPredefinedTypeAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_applicationPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_applicationPredefinedTypeAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_applicationPredefinedTypeAST_2E_weak (const class GGS_applicationPredefinedTypeAST & inSource) ;
-
-  public: GGS_applicationPredefinedTypeAST_2E_weak & operator = (const class GGS_applicationPredefinedTypeAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_applicationPredefinedTypeAST_2E_weak init_nil (void) {
-    GGS_applicationPredefinedTypeAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_applicationPredefinedTypeAST bang_applicationPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_applicationPredefinedTypeAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_applicationPredefinedTypeAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_applicationPredefinedTypeAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_applicationPredefinedTypeAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
 

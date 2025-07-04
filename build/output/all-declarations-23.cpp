@@ -9965,8 +9965,9 @@ GGS_forInstructionEnumeratedObjectListForGeneration_2E_element GGS_forInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp::GGS_ifExpressionKind_2E_letExp (void) :
-mProperty_constantName (),
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (void) :
+mProperty_varName (),
+mProperty_isConstant (),
 mProperty_exp (),
 mProperty_endOfExp (),
 mProperty_typeName () {
@@ -9974,8 +9975,9 @@ mProperty_typeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp::GGS_ifExpressionKind_2E_letExp (const GGS_ifExpressionKind_2E_letExp & inSource) :
-mProperty_constantName (inSource.mProperty_constantName),
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (const GGS_ifExpressionKind_2E_letVarExp & inSource) :
+mProperty_varName (inSource.mProperty_varName),
+mProperty_isConstant (inSource.mProperty_isConstant),
 mProperty_exp (inSource.mProperty_exp),
 mProperty_endOfExp (inSource.mProperty_endOfExp),
 mProperty_typeName (inSource.mProperty_typeName) {
@@ -9983,8 +9985,9 @@ mProperty_typeName (inSource.mProperty_typeName) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp & GGS_ifExpressionKind_2E_letExp::operator = (const GGS_ifExpressionKind_2E_letExp & inSource) {
-  mProperty_constantName = inSource.mProperty_constantName ;
+GGS_ifExpressionKind_2E_letVarExp & GGS_ifExpressionKind_2E_letVarExp::operator = (const GGS_ifExpressionKind_2E_letVarExp & inSource) {
+  mProperty_varName = inSource.mProperty_varName ;
+  mProperty_isConstant = inSource.mProperty_isConstant ;
   mProperty_exp = inSource.mProperty_exp ;
   mProperty_endOfExp = inSource.mProperty_endOfExp ;
   mProperty_typeName = inSource.mProperty_typeName ;
@@ -9993,15 +9996,55 @@ GGS_ifExpressionKind_2E_letExp & GGS_ifExpressionKind_2E_letExp::operator = (con
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp GGS_ifExpressionKind_2E_letExp::init_21__21__21__21_ (const GGS_lstring & in_constantName,
+GGS_ifExpressionKind_2E_letVarExp GGS_ifExpressionKind_2E_letVarExp::init_21__21__21__21__21_ (const GGS_lstring & in_varName,
+                                                                                               const GGS_bool & in_isConstant,
+                                                                                               const GGS_semanticExpressionAST & in_exp,
+                                                                                               const GGS_location & in_endOfExp,
+                                                                                               const GGS_lstring & in_typeName,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_varName = in_varName ;
+  result.mProperty_isConstant = in_isConstant ;
+  result.mProperty_exp = in_exp ;
+  result.mProperty_endOfExp = in_endOfExp ;
+  result.mProperty_typeName = in_typeName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ifExpressionKind_2E_letVarExp::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp::GGS_ifExpressionKind_2E_letVarExp (const GGS_lstring & inOperand0,
+                                                                      const GGS_bool & inOperand1,
+                                                                      const GGS_semanticExpressionAST & inOperand2,
+                                                                      const GGS_location & inOperand3,
+                                                                      const GGS_lstring & inOperand4) :
+mProperty_varName (inOperand0),
+mProperty_isConstant (inOperand1),
+mProperty_exp (inOperand2),
+mProperty_endOfExp (inOperand3),
+mProperty_typeName (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ifExpressionKind_2E_letVarExp GGS_ifExpressionKind_2E_letVarExp::class_func_new (const GGS_lstring & in_varName,
+                                                                                     const GGS_bool & in_isConstant,
                                                                                      const GGS_semanticExpressionAST & in_exp,
                                                                                      const GGS_location & in_endOfExp,
                                                                                      const GGS_lstring & in_typeName,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifExpressionKind_2E_letExp result ;
+  GGS_ifExpressionKind_2E_letVarExp result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_constantName = in_constantName ;
+  result.mProperty_varName = in_varName ;
+  result.mProperty_isConstant = in_isConstant ;
   result.mProperty_exp = in_exp ;
   result.mProperty_endOfExp = in_endOfExp ;
   result.mProperty_typeName = in_typeName ;
@@ -10010,48 +10053,15 @@ GGS_ifExpressionKind_2E_letExp GGS_ifExpressionKind_2E_letExp::init_21__21__21__
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionKind_2E_letExp::setInitializedProperties (Compiler * /* inCompiler */) {
+bool GGS_ifExpressionKind_2E_letVarExp::isValid (void) const {
+  return mProperty_varName.isValid () && mProperty_isConstant.isValid () && mProperty_exp.isValid () && mProperty_endOfExp.isValid () && mProperty_typeName.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp::GGS_ifExpressionKind_2E_letExp (const GGS_lstring & inOperand0,
-                                                                const GGS_semanticExpressionAST & inOperand1,
-                                                                const GGS_location & inOperand2,
-                                                                const GGS_lstring & inOperand3) :
-mProperty_constantName (inOperand0),
-mProperty_exp (inOperand1),
-mProperty_endOfExp (inOperand2),
-mProperty_typeName (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifExpressionKind_2E_letExp GGS_ifExpressionKind_2E_letExp::class_func_new (const GGS_lstring & in_constantName,
-                                                                               const GGS_semanticExpressionAST & in_exp,
-                                                                               const GGS_location & in_endOfExp,
-                                                                               const GGS_lstring & in_typeName,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifExpressionKind_2E_letExp result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_constantName = in_constantName ;
-  result.mProperty_exp = in_exp ;
-  result.mProperty_endOfExp = in_endOfExp ;
-  result.mProperty_typeName = in_typeName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_ifExpressionKind_2E_letExp::isValid (void) const {
-  return mProperty_constantName.isValid () && mProperty_exp.isValid () && mProperty_endOfExp.isValid () && mProperty_typeName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ifExpressionKind_2E_letExp::drop (void) {
-  mProperty_constantName.drop () ;
+void GGS_ifExpressionKind_2E_letVarExp::drop (void) {
+  mProperty_varName.drop () ;
+  mProperty_isConstant.drop () ;
   mProperty_exp.drop () ;
   mProperty_endOfExp.drop () ;
   mProperty_typeName.drop () ;
@@ -10059,13 +10069,15 @@ void GGS_ifExpressionKind_2E_letExp::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionKind_2E_letExp::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ifExpressionKind.letExp:") ;
+void GGS_ifExpressionKind_2E_letVarExp::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifExpressionKind.letVarExp:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_constantName.description (ioString, inIndentation+1) ;
+    mProperty_varName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_exp.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
@@ -10077,50 +10089,50 @@ void GGS_ifExpressionKind_2E_letExp::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ifExpressionKind.letExp generic code implementation
+//     @ifExpressionKind.letVarExp generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp ("ifExpressionKind.letExp",
-                                                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp ("ifExpressionKind.letVarExp",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifExpressionKind_2E_letExp::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp ;
+const C_galgas_type_descriptor * GGS_ifExpressionKind_2E_letVarExp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_ifExpressionKind_2E_letExp::clonedObject (void) const {
+AC_GALGAS_root * GGS_ifExpressionKind_2E_letVarExp::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_ifExpressionKind_2E_letExp (*this)) ;
+    macroMyNew (result, GGS_ifExpressionKind_2E_letVarExp (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp GGS_ifExpressionKind_2E_letExp::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_ifExpressionKind_2E_letExp result ;
-  const GGS_ifExpressionKind_2E_letExp * p = (const GGS_ifExpressionKind_2E_letExp *) inObject.embeddedObject () ;
+GGS_ifExpressionKind_2E_letVarExp GGS_ifExpressionKind_2E_letVarExp::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp result ;
+  const GGS_ifExpressionKind_2E_letVarExp * p = (const GGS_ifExpressionKind_2E_letVarExp *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letExp *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letVarExp *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifExpressionKind.letExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifExpressionKind.letVarExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Optional @ifExpressionKind_2E_letExp_3F_
+//Optional @ifExpressionKind_2E_letVarExp_3F_
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp_3F_::GGS_ifExpressionKind_2E_letExp_3F_ (void) :
+GGS_ifExpressionKind_2E_letVarExp_3F_::GGS_ifExpressionKind_2E_letVarExp_3F_ (void) :
 AC_GALGAS_root (),
 mValue (),
 mState (OptionalState::invalid) {
@@ -10128,7 +10140,7 @@ mState (OptionalState::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp_3F_::GGS_ifExpressionKind_2E_letExp_3F_ (const GGS_ifExpressionKind_2E_letExp & inSource) :
+GGS_ifExpressionKind_2E_letVarExp_3F_::GGS_ifExpressionKind_2E_letVarExp_3F_ (const GGS_ifExpressionKind_2E_letVarExp & inSource) :
 AC_GALGAS_root (),
 mValue (inSource),
 mState (OptionalState::valuated) {
@@ -10137,15 +10149,15 @@ mState (OptionalState::valuated) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp_3F_ GGS_ifExpressionKind_2E_letExp_3F_::init_nil (void) {
-  GGS_ifExpressionKind_2E_letExp_3F_ result ;
+GGS_ifExpressionKind_2E_letVarExp_3F_ GGS_ifExpressionKind_2E_letVarExp_3F_::init_nil (void) {
+  GGS_ifExpressionKind_2E_letVarExp_3F_ result ;
   result.mState = OptionalState::isNil ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifExpressionKind_2E_letExp_3F_::isValid (void) const {
+bool GGS_ifExpressionKind_2E_letVarExp_3F_::isValid (void) const {
   bool result = false ;
   switch (mState) {
   case OptionalState::invalid :
@@ -10162,21 +10174,21 @@ bool GGS_ifExpressionKind_2E_letExp_3F_::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifExpressionKind_2E_letExp_3F_::isValuated (void) const {
+bool GGS_ifExpressionKind_2E_letVarExp_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionKind_2E_letExp_3F_::drop (void) {
+void GGS_ifExpressionKind_2E_letVarExp_3F_::drop (void) {
   mState = OptionalState::invalid ;
-  mValue = GGS_ifExpressionKind_2E_letExp () ;
+  mValue = GGS_ifExpressionKind_2E_letVarExp () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifExpressionKind_2E_letExp_3F_::description (String & ioString,
-                                                      const int32_t inIndentation) const {
+void GGS_ifExpressionKind_2E_letVarExp_3F_::description (String & ioString,
+                                                         const int32_t inIndentation) const {
   ioString.appendCString ("<optional @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
@@ -10195,40 +10207,40 @@ void GGS_ifExpressionKind_2E_letExp_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ifExpressionKind.letExp? generic code implementation
+//     @ifExpressionKind.letVarExp? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp_3F_ ("ifExpressionKind.letExp?",
-                                                                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ("ifExpressionKind.letVarExp?",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifExpressionKind_2E_letExp_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp_3F_ ;
+const C_galgas_type_descriptor * GGS_ifExpressionKind_2E_letVarExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_ifExpressionKind_2E_letExp_3F_::clonedObject (void) const {
+AC_GALGAS_root * GGS_ifExpressionKind_2E_letVarExp_3F_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_ifExpressionKind_2E_letExp_3F_ (*this)) ;
+    macroMyNew (result, GGS_ifExpressionKind_2E_letVarExp_3F_ (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifExpressionKind_2E_letExp_3F_ GGS_ifExpressionKind_2E_letExp_3F_::extractObject (const GGS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_ifExpressionKind_2E_letExp_3F_ result ;
-  const GGS_ifExpressionKind_2E_letExp_3F_ * p = (const GGS_ifExpressionKind_2E_letExp_3F_ *) inObject.embeddedObject () ;
+GGS_ifExpressionKind_2E_letVarExp_3F_ GGS_ifExpressionKind_2E_letVarExp_3F_::extractObject (const GGS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GGS_ifExpressionKind_2E_letVarExp_3F_ result ;
+  const GGS_ifExpressionKind_2E_letVarExp_3F_ * p = (const GGS_ifExpressionKind_2E_letVarExp_3F_ *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letExp_3F_ *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_ifExpressionKind_2E_letVarExp_3F_ *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifExpressionKind.letExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifExpressionKind.letVarExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10471,7 +10483,7 @@ GGS_ifTestForGeneration_2E_regular_3F_ GGS_ifTestForGeneration_2E_regular_3F_::e
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp::GGS_ifTestForGeneration_2E_letExp (void) :
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (void) :
 mProperty_targetVarCppName (),
 mProperty_exp (),
 mProperty_targetType (),
@@ -10480,7 +10492,7 @@ mProperty_testType () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp::GGS_ifTestForGeneration_2E_letExp (const GGS_ifTestForGeneration_2E_letExp & inSource) :
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (const GGS_ifTestForGeneration_2E_letVarExp & inSource) :
 mProperty_targetVarCppName (inSource.mProperty_targetVarCppName),
 mProperty_exp (inSource.mProperty_exp),
 mProperty_targetType (inSource.mProperty_targetType),
@@ -10489,7 +10501,7 @@ mProperty_testType (inSource.mProperty_testType) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp & GGS_ifTestForGeneration_2E_letExp::operator = (const GGS_ifTestForGeneration_2E_letExp & inSource) {
+GGS_ifTestForGeneration_2E_letVarExp & GGS_ifTestForGeneration_2E_letVarExp::operator = (const GGS_ifTestForGeneration_2E_letVarExp & inSource) {
   mProperty_targetVarCppName = inSource.mProperty_targetVarCppName ;
   mProperty_exp = inSource.mProperty_exp ;
   mProperty_targetType = inSource.mProperty_targetType ;
@@ -10499,13 +10511,13 @@ GGS_ifTestForGeneration_2E_letExp & GGS_ifTestForGeneration_2E_letExp::operator 
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp GGS_ifTestForGeneration_2E_letExp::init_21__21__21__21_ (const GGS_string & in_targetVarCppName,
-                                                                                           const GGS_semanticExpressionForGeneration & in_exp,
-                                                                                           const GGS_unifiedTypeMapEntry & in_targetType,
-                                                                                           const GGS_unifiedTypeMapEntry & in_testType,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifTestForGeneration_2E_letExp result ;
+GGS_ifTestForGeneration_2E_letVarExp GGS_ifTestForGeneration_2E_letVarExp::init_21__21__21__21_ (const GGS_string & in_targetVarCppName,
+                                                                                                 const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                 const GGS_unifiedTypeMapEntry & in_targetType,
+                                                                                                 const GGS_unifiedTypeMapEntry & in_testType,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_targetVarCppName = in_targetVarCppName ;
   result.mProperty_exp = in_exp ;
@@ -10516,15 +10528,15 @@ GGS_ifTestForGeneration_2E_letExp GGS_ifTestForGeneration_2E_letExp::init_21__21
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestForGeneration_2E_letExp::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_ifTestForGeneration_2E_letVarExp::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp::GGS_ifTestForGeneration_2E_letExp (const GGS_string & inOperand0,
-                                                                      const GGS_semanticExpressionForGeneration & inOperand1,
-                                                                      const GGS_unifiedTypeMapEntry & inOperand2,
-                                                                      const GGS_unifiedTypeMapEntry & inOperand3) :
+GGS_ifTestForGeneration_2E_letVarExp::GGS_ifTestForGeneration_2E_letVarExp (const GGS_string & inOperand0,
+                                                                            const GGS_semanticExpressionForGeneration & inOperand1,
+                                                                            const GGS_unifiedTypeMapEntry & inOperand2,
+                                                                            const GGS_unifiedTypeMapEntry & inOperand3) :
 mProperty_targetVarCppName (inOperand0),
 mProperty_exp (inOperand1),
 mProperty_targetType (inOperand2),
@@ -10533,13 +10545,13 @@ mProperty_testType (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp GGS_ifTestForGeneration_2E_letExp::class_func_new (const GGS_string & in_targetVarCppName,
-                                                                                     const GGS_semanticExpressionForGeneration & in_exp,
-                                                                                     const GGS_unifiedTypeMapEntry & in_targetType,
-                                                                                     const GGS_unifiedTypeMapEntry & in_testType,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifTestForGeneration_2E_letExp result ;
+GGS_ifTestForGeneration_2E_letVarExp GGS_ifTestForGeneration_2E_letVarExp::class_func_new (const GGS_string & in_targetVarCppName,
+                                                                                           const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                           const GGS_unifiedTypeMapEntry & in_targetType,
+                                                                                           const GGS_unifiedTypeMapEntry & in_testType,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_targetVarCppName = in_targetVarCppName ;
   result.mProperty_exp = in_exp ;
@@ -10550,13 +10562,13 @@ GGS_ifTestForGeneration_2E_letExp GGS_ifTestForGeneration_2E_letExp::class_func_
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifTestForGeneration_2E_letExp::isValid (void) const {
+bool GGS_ifTestForGeneration_2E_letVarExp::isValid (void) const {
   return mProperty_targetVarCppName.isValid () && mProperty_exp.isValid () && mProperty_targetType.isValid () && mProperty_testType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestForGeneration_2E_letExp::drop (void) {
+void GGS_ifTestForGeneration_2E_letVarExp::drop (void) {
   mProperty_targetVarCppName.drop () ;
   mProperty_exp.drop () ;
   mProperty_targetType.drop () ;
@@ -10565,9 +10577,9 @@ void GGS_ifTestForGeneration_2E_letExp::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestForGeneration_2E_letExp::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ifTestForGeneration.letExp:") ;
+void GGS_ifTestForGeneration_2E_letVarExp::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ifTestForGeneration.letVarExp:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -10583,50 +10595,50 @@ void GGS_ifTestForGeneration_2E_letExp::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ifTestForGeneration.letExp generic code implementation
+//     @ifTestForGeneration.letVarExp generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp ("ifTestForGeneration.letExp",
-                                                                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp ("ifTestForGeneration.letVarExp",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifTestForGeneration_2E_letExp::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp ;
+const C_galgas_type_descriptor * GGS_ifTestForGeneration_2E_letVarExp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_ifTestForGeneration_2E_letExp::clonedObject (void) const {
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_letVarExp::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_ifTestForGeneration_2E_letExp (*this)) ;
+    macroMyNew (result, GGS_ifTestForGeneration_2E_letVarExp (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp GGS_ifTestForGeneration_2E_letExp::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_ifTestForGeneration_2E_letExp result ;
-  const GGS_ifTestForGeneration_2E_letExp * p = (const GGS_ifTestForGeneration_2E_letExp *) inObject.embeddedObject () ;
+GGS_ifTestForGeneration_2E_letVarExp GGS_ifTestForGeneration_2E_letVarExp::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp result ;
+  const GGS_ifTestForGeneration_2E_letVarExp * p = (const GGS_ifTestForGeneration_2E_letVarExp *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letExp *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letVarExp *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifTestForGeneration.letExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifTestForGeneration.letVarExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Optional @ifTestForGeneration_2E_letExp_3F_
+//Optional @ifTestForGeneration_2E_letVarExp_3F_
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp_3F_::GGS_ifTestForGeneration_2E_letExp_3F_ (void) :
+GGS_ifTestForGeneration_2E_letVarExp_3F_::GGS_ifTestForGeneration_2E_letVarExp_3F_ (void) :
 AC_GALGAS_root (),
 mValue (),
 mState (OptionalState::invalid) {
@@ -10634,7 +10646,7 @@ mState (OptionalState::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp_3F_::GGS_ifTestForGeneration_2E_letExp_3F_ (const GGS_ifTestForGeneration_2E_letExp & inSource) :
+GGS_ifTestForGeneration_2E_letVarExp_3F_::GGS_ifTestForGeneration_2E_letVarExp_3F_ (const GGS_ifTestForGeneration_2E_letVarExp & inSource) :
 AC_GALGAS_root (),
 mValue (inSource),
 mState (OptionalState::valuated) {
@@ -10643,15 +10655,15 @@ mState (OptionalState::valuated) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp_3F_ GGS_ifTestForGeneration_2E_letExp_3F_::init_nil (void) {
-  GGS_ifTestForGeneration_2E_letExp_3F_ result ;
+GGS_ifTestForGeneration_2E_letVarExp_3F_ GGS_ifTestForGeneration_2E_letVarExp_3F_::init_nil (void) {
+  GGS_ifTestForGeneration_2E_letVarExp_3F_ result ;
   result.mState = OptionalState::isNil ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifTestForGeneration_2E_letExp_3F_::isValid (void) const {
+bool GGS_ifTestForGeneration_2E_letVarExp_3F_::isValid (void) const {
   bool result = false ;
   switch (mState) {
   case OptionalState::invalid :
@@ -10668,21 +10680,21 @@ bool GGS_ifTestForGeneration_2E_letExp_3F_::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ifTestForGeneration_2E_letExp_3F_::isValuated (void) const {
+bool GGS_ifTestForGeneration_2E_letVarExp_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestForGeneration_2E_letExp_3F_::drop (void) {
+void GGS_ifTestForGeneration_2E_letVarExp_3F_::drop (void) {
   mState = OptionalState::invalid ;
-  mValue = GGS_ifTestForGeneration_2E_letExp () ;
+  mValue = GGS_ifTestForGeneration_2E_letVarExp () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ifTestForGeneration_2E_letExp_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
+void GGS_ifTestForGeneration_2E_letVarExp_3F_::description (String & ioString,
+                                                            const int32_t inIndentation) const {
   ioString.appendCString ("<optional @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   ioString.appendCString (": ") ;
@@ -10701,40 +10713,40 @@ void GGS_ifTestForGeneration_2E_letExp_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ifTestForGeneration.letExp? generic code implementation
+//     @ifTestForGeneration.letVarExp? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp_3F_ ("ifTestForGeneration.letExp?",
-                                                                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp_3F_ ("ifTestForGeneration.letVarExp?",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifTestForGeneration_2E_letExp_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp_3F_ ;
+const C_galgas_type_descriptor * GGS_ifTestForGeneration_2E_letVarExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letVarExp_3F_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_ifTestForGeneration_2E_letExp_3F_::clonedObject (void) const {
+AC_GALGAS_root * GGS_ifTestForGeneration_2E_letVarExp_3F_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_ifTestForGeneration_2E_letExp_3F_ (*this)) ;
+    macroMyNew (result, GGS_ifTestForGeneration_2E_letVarExp_3F_ (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_letExp_3F_ GGS_ifTestForGeneration_2E_letExp_3F_::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_ifTestForGeneration_2E_letExp_3F_ result ;
-  const GGS_ifTestForGeneration_2E_letExp_3F_ * p = (const GGS_ifTestForGeneration_2E_letExp_3F_ *) inObject.embeddedObject () ;
+GGS_ifTestForGeneration_2E_letVarExp_3F_ GGS_ifTestForGeneration_2E_letVarExp_3F_::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_ifTestForGeneration_2E_letVarExp_3F_ result ;
+  const GGS_ifTestForGeneration_2E_letVarExp_3F_ * p = (const GGS_ifTestForGeneration_2E_letVarExp_3F_ *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letExp_3F_ *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_ifTestForGeneration_2E_letVarExp_3F_ *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifTestForGeneration.letExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifTestForGeneration.letVarExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10744,6 +10756,7 @@ GGS_ifTestForGeneration_2E_letExp_3F_ GGS_ifTestForGeneration_2E_letExp_3F_::ext
 
 GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (void) :
 mProperty_targetVarCppName (),
+mProperty_isConstant (),
 mProperty_exp (),
 mProperty_targetType () {
 }
@@ -10752,6 +10765,7 @@ mProperty_targetType () {
 
 GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (const GGS_ifTestForGeneration_2E_optionalExp & inSource) :
 mProperty_targetVarCppName (inSource.mProperty_targetVarCppName),
+mProperty_isConstant (inSource.mProperty_isConstant),
 mProperty_exp (inSource.mProperty_exp),
 mProperty_targetType (inSource.mProperty_targetType) {
 }
@@ -10760,6 +10774,7 @@ mProperty_targetType (inSource.mProperty_targetType) {
 
 GGS_ifTestForGeneration_2E_optionalExp & GGS_ifTestForGeneration_2E_optionalExp::operator = (const GGS_ifTestForGeneration_2E_optionalExp & inSource) {
   mProperty_targetVarCppName = inSource.mProperty_targetVarCppName ;
+  mProperty_isConstant = inSource.mProperty_isConstant ;
   mProperty_exp = inSource.mProperty_exp ;
   mProperty_targetType = inSource.mProperty_targetType ;
   return *this ;
@@ -10767,14 +10782,16 @@ GGS_ifTestForGeneration_2E_optionalExp & GGS_ifTestForGeneration_2E_optionalExp:
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::init_21__21__21_ (const GGS_string & in_targetVarCppName,
-                                                                                                 const GGS_semanticExpressionForGeneration & in_exp,
-                                                                                                 const GGS_unifiedTypeMapEntry & in_targetType,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::init_21__21__21__21_ (const GGS_string & in_targetVarCppName,
+                                                                                                     const GGS_bool & in_isConstant,
+                                                                                                     const GGS_semanticExpressionForGeneration & in_exp,
+                                                                                                     const GGS_unifiedTypeMapEntry & in_targetType,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_ifTestForGeneration_2E_optionalExp result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_targetVarCppName = in_targetVarCppName ;
+  result.mProperty_isConstant = in_isConstant ;
   result.mProperty_exp = in_exp ;
   result.mProperty_targetType = in_targetType ;
   return result ;
@@ -10788,16 +10805,19 @@ void GGS_ifTestForGeneration_2E_optionalExp::setInitializedProperties (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 GGS_ifTestForGeneration_2E_optionalExp::GGS_ifTestForGeneration_2E_optionalExp (const GGS_string & inOperand0,
-                                                                                const GGS_semanticExpressionForGeneration & inOperand1,
-                                                                                const GGS_unifiedTypeMapEntry & inOperand2) :
+                                                                                const GGS_bool & inOperand1,
+                                                                                const GGS_semanticExpressionForGeneration & inOperand2,
+                                                                                const GGS_unifiedTypeMapEntry & inOperand3) :
 mProperty_targetVarCppName (inOperand0),
-mProperty_exp (inOperand1),
-mProperty_targetType (inOperand2) {
+mProperty_isConstant (inOperand1),
+mProperty_exp (inOperand2),
+mProperty_targetType (inOperand3) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::class_func_new (const GGS_string & in_targetVarCppName,
+                                                                                               const GGS_bool & in_isConstant,
                                                                                                const GGS_semanticExpressionForGeneration & in_exp,
                                                                                                const GGS_unifiedTypeMapEntry & in_targetType,
                                                                                                Compiler * inCompiler
@@ -10805,6 +10825,7 @@ GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::c
   GGS_ifTestForGeneration_2E_optionalExp result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_targetVarCppName = in_targetVarCppName ;
+  result.mProperty_isConstant = in_isConstant ;
   result.mProperty_exp = in_exp ;
   result.mProperty_targetType = in_targetType ;
   return result ;
@@ -10813,13 +10834,14 @@ GGS_ifTestForGeneration_2E_optionalExp GGS_ifTestForGeneration_2E_optionalExp::c
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_ifTestForGeneration_2E_optionalExp::isValid (void) const {
-  return mProperty_targetVarCppName.isValid () && mProperty_exp.isValid () && mProperty_targetType.isValid () ;
+  return mProperty_targetVarCppName.isValid () && mProperty_isConstant.isValid () && mProperty_exp.isValid () && mProperty_targetType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_ifTestForGeneration_2E_optionalExp::drop (void) {
   mProperty_targetVarCppName.drop () ;
+  mProperty_isConstant.drop () ;
   mProperty_exp.drop () ;
   mProperty_targetType.drop () ;
 }
@@ -10833,6 +10855,8 @@ void GGS_ifTestForGeneration_2E_optionalExp::description (String & ioString,
     ioString.appendCString (" not built") ;
   }else{
     mProperty_targetVarCppName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_exp.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
