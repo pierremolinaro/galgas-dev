@@ -664,7 +664,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Features
     var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
-             | .supportWithAccessor | .doNotGenererateObjectCompare // | .infixAddOperator
+             | .doNotGenererateObjectCompare // | .infixAddOperator
     if self.equatable then
       features |= .equatable
     end
@@ -735,7 +735,6 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: enumerationDescriptor
       !features: features
       !addAssignOperatorArguments: @() // argumentTypeListForAddAssignWithFieldExpressionList
-      !mapSearchMethodList: self.mSearchMethodList
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
       !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]

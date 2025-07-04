@@ -44,7 +44,6 @@ struct @unifiedTypeDefinition {
   public let @typeFeatures features %initArgLabel
 // addAssignOperatorArguments is empty list if += operator is not supported
   public let @functionSignature addAssignOperatorArguments %initArgLabel
-  public let @mapAccessorListAST mapSearchMethodList %initArgLabel // For a map, the list of search methods
   public let @bool generateHeaderInSeparateFile %initArgLabel // Significant only for classes
   public let @unifiedTypeMapEntry typeForEnumeratedElement %initArgLabel
   public let @string headerFileName %initArgLabel // Name of C++ header file that contains type declaration
@@ -134,7 +133,7 @@ boolset @typeFeatures {
   case prefixMinusOperatorNoOVF
   case incDecOperatorNoOVF
 
-  case supportWithAccessor
+//  case supportWithAccessor
   case plusEqualOperatorWithFieldListNeedsCompilerArg
   case doNotGenererateObjectCompare
   case generateDescriptionGetterUtilityMethod

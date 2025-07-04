@@ -410,7 +410,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
-    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: elementTypeEntry
     !headerFileName: "dict-" + [self.mDictTypeName fileNameRepresentation]

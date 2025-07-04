@@ -412,7 +412,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: constructorAttributeTypeList
-    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false
     !typeForEnumeratedElement: listElementType
     !headerFileName: "list-" + [self.mListTypeName fileNameRepresentation]

@@ -156,7 +156,6 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: @()
     !features: features
     !addAssignOperatorArguments: @()
-    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !typeForEnumeratedElement: .null
     !headerFileName: "weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]

@@ -8,395 +8,6 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
-//  Enum typeDefinition
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition::GGS_typeDefinition (void) :
-mAssociatedValues (),
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::class_func_unsolved (UNUSED_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  result.mEnum = Enumeration::enum_unsolved ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::class_func_solved (const GGS_unifiedTypeDefinition & inAssociatedValue0
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  result.mEnum = Enumeration::enum_solved ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_typeDefinition_2E_solved (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::method_extractSolved (GGS_unifiedTypeDefinition & outAssociatedValue_definition,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_solved) {
-    outAssociatedValue_definition.drop () ;
-    String s ;
-    s.appendCString ("method @typeDefinition.solved invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_definition = ptr->mProperty_definition ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition_2E_solved_3F_ GGS_typeDefinition::getter_getSolved (UNUSED_LOCATION_ARGS) const {
-  GGS_typeDefinition_2E_solved_3F_ result ;
-  if (mEnum == Enumeration::enum_solved) {
-    const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_typeDefinition_2E_solved (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::getAssociatedValuesFor_solved (GGS_unifiedTypeDefinition & out_definition) const {
-  const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-  out_definition = ptr->mProperty_definition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_typeDefinition [3] = {
-  "(not built)",
-  "unsolved",
-  "solved"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsolved == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_solved == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::description (String & ioString,
-                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @typeDefinition: ") ;
-  ioString.appendCString (gEnumNameArrayFor_typeDefinition [size_t (mEnum)]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @typeDefinition generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
-                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_typeDefinition::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeDefinition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typeDefinition::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typeDefinition (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  const GGS_typeDefinition * p = (const GGS_typeDefinition *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typeDefinition *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_unifiedTypeMapElementClass_2E_weak::objectCompare (const GGS_unifiedTypeMapElementClass_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak & GGS_unifiedTypeMapElementClass_2E_weak::operator = (const GGS_unifiedTypeMapElementClass & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (const GGS_unifiedTypeMapElementClass & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_unifiedTypeMapElementClass_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::unwrappedValue (void) const {
-  GGS_unifiedTypeMapElementClass result ;
-  if (isValid ()) {
-    const cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_unifiedTypeMapElementClass (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::bang_unifiedTypeMapElementClass_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_unifiedTypeMapElementClass result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_unifiedTypeMapElementClass) ;
-      result = GGS_unifiedTypeMapElementClass ((cPtr_unifiedTypeMapElementClass *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @unifiedTypeMapElementClass.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ("unifiedTypeMapElementClass.weak",
-                                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_unifiedTypeMapElementClass_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_unifiedTypeMapElementClass_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_unifiedTypeMapElementClass_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_unifiedTypeMapElementClass_2E_weak result ;
-  const GGS_unifiedTypeMapElementClass_2E_weak * p = (const GGS_unifiedTypeMapElementClass_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_unifiedTypeMapElementClass_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMapElementClass.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry definition'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEntry & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeDefinition result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_unifiedTypeMapEntry::Enumeration::invalid:
-    break ;
-  case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
-    {
-      TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 197)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 197)) ;
-      result_result.drop () ; // Release error dropped variable
-    }
-    break ;
-  case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
-    {
-      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7447_weakElement_0 ;
-      temp_0.getAssociatedValuesFor_element (extractedValue_7447_weakElement_0) ;
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        const GGS_unifiedTypeMapElementClass var_type_7475 = extractedValue_7447_weakElement_0.unwrappedValue () ;
-        if (!extractedValue_7447_weakElement_0.isValuated ()) {
-          test_2 = GalgasBool::boolFalse ;
-        }
-        if (GalgasBool::boolTrue == test_2) {
-          switch (var_type_7475.readProperty_mDefinition ().enumValue ()) {
-          case GGS_typeDefinition::Enumeration::invalid:
-            break ;
-          case GGS_typeDefinition::Enumeration::enum_unsolved:
-            {
-              TC_Array <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 202)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 202)) ;
-              result_result.drop () ; // Release error dropped variable
-            }
-            break ;
-          case GGS_typeDefinition::Enumeration::enum_solved:
-            {
-              GGS_unifiedTypeDefinition extractedValue_7628_definition_0 ;
-              var_type_7475.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7628_definition_0) ;
-              result_result = extractedValue_7628_definition_0 ;
-            }
-            break ;
-          }
-        }
-      }
-      if (GalgasBool::boolFalse == test_2) {
-        TC_Array <FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 207)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)) ;
-        result_result.drop () ; // Release error dropped variable
-      }
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEntry & inObject,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 215)) ;
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry typeName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 221)).readProperty_typeName ().readProperty_string () ;
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry baseType'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
-                                                  Compiler * inCompiler
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_outBaseType = temp_0 ;
-  bool loop_8355 = true ;
-  while (loop_8355) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      test_1 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).boolEnum () ;
-      loop_8355 = test_1 == GalgasBool::boolTrue ;
-      if (loop_8355) {
-        result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 229)).readProperty_superType () ;
-      }
-    }
-  }
-//---
-  return result_outBaseType ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
 //
 //Extension method '@unifiedTypeMapEntry addHeaderFileName'
 //
@@ -15858,6 +15469,461 @@ GGS_formalParameterSignature GGS_formalParameterSignature::extractObject (const 
       result = *p ;
     }else{
       inCompiler->castError ("formalParameterSignature", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@typedPropertyList initializerSignature'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  result_result = GGS_string ("init") ;
+  const GGS_typedPropertyList temp_0 = inObject ;
+  UpEnumerator_typedPropertyList enumerator_8268 (temp_0) ;
+  while (enumerator_8268.hasCurrentObject ()) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8268.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 213)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_1) {
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 214)) ;
+        GalgasBool test_2 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_2) {
+          test_2 = enumerator_8268.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          if (GalgasBool::boolTrue == test_2) {
+            result_result.plusAssignOperation(enumerator_8268.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
+          }
+        }
+      }
+    }
+    enumerator_8268.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Enum AccessControl
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl::GGS_AccessControl (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_publicAccess (UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_publicAccess ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_protectedAccess (const GGS_unifiedTypeMapEntry & inAssociatedValue0
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_protectedAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_protectedAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_protectedSetAccess (const GGS_unifiedTypeMapEntry & inAssociatedValue0
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_protectedSetAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_protectedSetAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_privateAccess (const GGS_unifiedTypeMapEntry & inAssociatedValue0
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_privateAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_privateAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_privateSetAccess (const GGS_unifiedTypeMapEntry & inAssociatedValue0
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_privateSetAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_privateSetAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_fileprivateAccess (const GGS_location & inAssociatedValue0
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_fileprivateAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_fileprivateAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::class_func_fileprivateSetAccess (const GGS_location & inAssociatedValue0
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  result.mEnum = Enumeration::enum_fileprivateSetAccess ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_AccessControl_2E_fileprivateSetAccess (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractProtectedAccess (GGS_unifiedTypeMapEntry & outAssociatedValue_declaringType,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_protectedAccess) {
+    outAssociatedValue_declaringType.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.protectedAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_protectedAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declaringType = ptr->mProperty_declaringType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractProtectedSetAccess (GGS_unifiedTypeMapEntry & outAssociatedValue_declaringType,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_protectedSetAccess) {
+    outAssociatedValue_declaringType.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.protectedSetAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_protectedSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declaringType = ptr->mProperty_declaringType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractPrivateAccess (GGS_unifiedTypeMapEntry & outAssociatedValue_declaringType,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_privateAccess) {
+    outAssociatedValue_declaringType.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.privateAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_privateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declaringType = ptr->mProperty_declaringType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractPrivateSetAccess (GGS_unifiedTypeMapEntry & outAssociatedValue_declaringType,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_privateSetAccess) {
+    outAssociatedValue_declaringType.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.privateSetAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_privateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declaringType = ptr->mProperty_declaringType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractFileprivateAccess (GGS_location & outAssociatedValue_declarationLocation,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_fileprivateAccess) {
+    outAssociatedValue_declarationLocation.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.fileprivateAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declarationLocation = ptr->mProperty_declarationLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::method_extractFileprivateSetAccess (GGS_location & outAssociatedValue_declarationLocation,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_fileprivateSetAccess) {
+    outAssociatedValue_declarationLocation.drop () ;
+    String s ;
+    s.appendCString ("method @AccessControl.fileprivateSetAccess invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_AccessControl_2E_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_declarationLocation = ptr->mProperty_declarationLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_protectedAccess_3F_ GGS_AccessControl::getter_getProtectedAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_protectedAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_protectedAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_protectedAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_protectedAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_protectedAccess (GGS_unifiedTypeMapEntry & out_declaringType) const {
+  const auto ptr = (const GGS_AccessControl_2E_protectedAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_protectedSetAccess_3F_ GGS_AccessControl::getter_getProtectedSetAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_protectedSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_protectedSetAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_protectedSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_protectedSetAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_protectedSetAccess (GGS_unifiedTypeMapEntry & out_declaringType) const {
+  const auto ptr = (const GGS_AccessControl_2E_protectedSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_privateAccess_3F_ GGS_AccessControl::getter_getPrivateAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_privateAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_privateAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_privateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_privateAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_privateAccess (GGS_unifiedTypeMapEntry & out_declaringType) const {
+  const auto ptr = (const GGS_AccessControl_2E_privateAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_privateSetAccess_3F_ GGS_AccessControl::getter_getPrivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_privateSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_privateSetAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_privateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_privateSetAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_privateSetAccess (GGS_unifiedTypeMapEntry & out_declaringType) const {
+  const auto ptr = (const GGS_AccessControl_2E_privateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateAccess_3F_ GGS_AccessControl::getter_getFileprivateAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_fileprivateAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_fileprivateAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_fileprivateAccess (GGS_location & out_declarationLocation) const {
+  const auto ptr = (const GGS_AccessControl_2E_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declarationLocation = ptr->mProperty_declarationLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateSetAccess_3F_ GGS_AccessControl::getter_getFileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  GGS_AccessControl_2E_fileprivateSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateSetAccess) {
+    const auto ptr = (const GGS_AccessControl_2E_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_AccessControl_2E_fileprivateSetAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::getAssociatedValuesFor_fileprivateSetAccess (GGS_location & out_declarationLocation) const {
+  const auto ptr = (const GGS_AccessControl_2E_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+  out_declarationLocation = ptr->mProperty_declarationLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_AccessControl [8] = {
+  "(not built)",
+  "publicAccess",
+  "protectedAccess",
+  "protectedSetAccess",
+  "privateAccess",
+  "privateSetAccess",
+  "fileprivateAccess",
+  "fileprivateSetAccess"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isPublicAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_publicAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isProtectedAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isProtectedSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedSetAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isPrivateAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isPrivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateSetAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isFileprivateAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_AccessControl::getter_isFileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateSetAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl::description (String & ioString,
+                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @AccessControl: ") ;
+  ioString.appendCString (gEnumNameArrayFor_AccessControl [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @AccessControl generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl ("AccessControl",
+                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_AccessControl::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_AccessControl ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_AccessControl::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_AccessControl (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl GGS_AccessControl::extractObject (const GGS_object & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  GGS_AccessControl result ;
+  const GGS_AccessControl * p = (const GGS_AccessControl *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_AccessControl *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("AccessControl", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

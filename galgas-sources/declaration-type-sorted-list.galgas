@@ -387,7 +387,6 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: enumerationDescriptor
       !features: features 
       !addAssignOperatorArguments: constructorAttributeTypeList
-      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: listElementTypeIndex
       !headerFileName: "-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]

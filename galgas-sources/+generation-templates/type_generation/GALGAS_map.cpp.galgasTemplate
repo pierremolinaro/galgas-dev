@@ -323,17 +323,6 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIS
 end 
 
 %//--------------------------------------------------------------------------------------------------
-
-cMapElement_%!TYPE_IDENTIFIER% * GGS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%
-             !^%const GGS_string & inKey\n%
-             !^%COMMA_LOCATION_ARGS) {
-  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 

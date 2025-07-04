@@ -496,7 +496,6 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
-      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
       !headerFileName: "externtype-" + [self.mExternTypeName fileNameRepresentation]

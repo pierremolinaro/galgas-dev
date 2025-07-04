@@ -6193,17 +6193,6 @@ void GGS_terminalMap::setter_setMSentAttributeListForKey (GGS_lexicalSentValueLi
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_terminalMap * GGS_terminalMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                              const GGS_string & inKey
-                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_terminalMap * result = (cMapElement_terminalMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_terminalMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @terminalMap
 //--------------------------------------------------------------------------------------------------
 
@@ -6491,17 +6480,6 @@ void GGS_lexicalTypeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum inAtt
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalTypeMap * GGS_lexicalTypeMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                    const GGS_string & inKey
-                                                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTypeMap * result = (cMapElement_lexicalTypeMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalTypeMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTypeMap
 //--------------------------------------------------------------------------------------------------
 
@@ -6787,17 +6765,6 @@ void GGS_lexicalAttributeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum 
     p->mProperty_mLexicalType = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalAttributeMap * GGS_lexicalAttributeMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                              const GGS_string & inKey
-                                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalAttributeMap * result = (cMapElement_lexicalAttributeMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalAttributeMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalAttributeMap
@@ -7962,17 +7929,6 @@ void GGS_lexicalExplicitTokenListMap::setter_setIsEndOfTemplateMarkForKey (GGS_b
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalExplicitTokenListMap * GGS_lexicalExplicitTokenListMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                              const GGS_string & inKey
-                                                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMap * result = (cMapElement_lexicalExplicitTokenListMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalExplicitTokenListMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMap
 //--------------------------------------------------------------------------------------------------
 
@@ -8670,17 +8626,6 @@ void GGS_lexicalExplicitTokenListMapMap::setter_setMShouldBeGeneratedForKey (GGS
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalExplicitTokenListMapMap * GGS_lexicalExplicitTokenListMapMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                                    const GGS_string & inKey
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMapMap * result = (cMapElement_lexicalExplicitTokenListMapMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
 
@@ -9073,17 +9018,6 @@ void GGS_lexicalMessageMap::setter_setMMessageIsUsedForKey (GGS_bool inAttribute
     p->mProperty_mMessageIsUsed = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalMessageMap * GGS_lexicalMessageMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                          const GGS_string & inKey
-                                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalMessageMap * result = (cMapElement_lexicalMessageMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalMessageMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalMessageMap
@@ -10048,17 +9982,6 @@ void GGS_lexicalRoutineMap::setter_setMIsExternForKey (GGS_bool inAttributeValue
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalRoutineMap * GGS_lexicalRoutineMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                          const GGS_string & inKey
-                                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalRoutineMap * result = (cMapElement_lexicalRoutineMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalRoutineMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
@@ -11004,17 +10927,6 @@ void GGS_lexicalFunctionMap::setter_setMIsExternForKey (GGS_bool inAttributeValu
     p->mProperty_mIsExtern = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalFunctionMap * GGS_lexicalFunctionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                            const GGS_string & inKey
-                                                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalFunctionMap * result = (cMapElement_lexicalFunctionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalFunctionMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalFunctionMap
@@ -11970,17 +11882,6 @@ void GGS_styleMap::setter_setMStyleIndexForKey (GGS_uint inAttributeValue,
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_styleMap * GGS_styleMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                        const GGS_string & inKey
-                                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_styleMap * result = (cMapElement_styleMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_styleMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @styleMap
 //--------------------------------------------------------------------------------------------------
 
@@ -12242,17 +12143,6 @@ void GGS_lexicalTagMap::method_searchKey (GGS_lstring inKey,
     macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
   }
 }
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalTagMap * GGS_lexicalTagMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                  const GGS_string & inKey
-                                                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTagMap * result = (cMapElement_lexicalTagMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_lexicalTagMap) ;
-  return result ;
-}
-
-
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTagMap
 //--------------------------------------------------------------------------------------------------
@@ -15959,6 +15849,247 @@ GGS_string callExtensionGetter_generateObjcCocoaRoutineArgument (const cPtr_abst
   GGS_string result ;
   if (nullptr != inObject) {
     result = inObject->getter_generateObjcCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                                  const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaRoutineArgument (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                          GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          const GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
+                                                          const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
+    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentMode, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateRoutineArgument (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalSelectInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSelectInstructionAST::objectCompare (const GGS_lexicalSelectInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST::GGS_lexicalSelectInstructionAST (void) :
+GGS_lexicalInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::
+init_21__21_ (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+              const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_lexicalSelectInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalSelectInstructionAST (inCompiler COMMA_THERE)) ;
+  object->lexicalSelectInstructionAST_init_21__21_ (in_mLexicalSelectBranchList, in_mDefaultInstructionList, inCompiler) ;
+  const GGS_lexicalSelectInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalSelectInstructionAST::
+lexicalSelectInstructionAST_init_21__21_ (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+                                          const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                          Compiler * /* inCompiler */) {
+  mProperty_mLexicalSelectBranchList = in_mLexicalSelectBranchList ;
+  mProperty_mDefaultInstructionList = in_mDefaultInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST::GGS_lexicalSelectInstructionAST (const cPtr_lexicalSelectInstructionAST * inSourcePtr) :
+GGS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSelectInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::class_func_new (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+                                                                                 const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalSelectInstructionAST (in_mLexicalSelectBranchList, in_mDefaultInstructionList,  inCompiler COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectBranchListAST GGS_lexicalSelectInstructionAST::readProperty_mLexicalSelectBranchList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalSelectBranchListAST () ;
+  }else{
+    cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalSelectInstructionAST) ;
+    return p->mProperty_mLexicalSelectBranchList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalInstructionListAST GGS_lexicalSelectInstructionAST::readProperty_mDefaultInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lexicalInstructionListAST () ;
+  }else{
+    cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalSelectInstructionAST) ;
+    return p->mProperty_mDefaultInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalSelectInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSelectInstructionAST::cPtr_lexicalSelectInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalSelectBranchList (),
+mProperty_mDefaultInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSelectInstructionAST::cPtr_lexicalSelectInstructionAST (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+                                                                    const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalSelectBranchList (),
+mProperty_mDefaultInstructionList () {
+  mProperty_mLexicalSelectBranchList = in_mLexicalSelectBranchList ;
+  mProperty_mDefaultInstructionList = in_mDefaultInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalSelectInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ;
+}
+
+void cPtr_lexicalSelectInstructionAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalSelectInstructionAST:") ;
+  mProperty_mLexicalSelectBranchList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mDefaultInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalSelectInstructionAST (mProperty_mLexicalSelectBranchList, mProperty_mDefaultInstructionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalSelectInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalSelectBranchList.printNonNullClassInstanceProperties ("mLexicalSelectBranchList") ;
+    mProperty_mDefaultInstructionList.printNonNullClassInstanceProperties ("mDefaultInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalSelectInstructionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ("lexicalSelectInstructionAST",
+                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSelectInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSelectInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSelectInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST result ;
+  const GGS_lexicalSelectInstructionAST * p = (const GGS_lexicalSelectInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSelectInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSelectInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
   }
   return result ;
 }

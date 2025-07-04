@@ -9902,17 +9902,6 @@ void GGS_headerCompositionMap::setter_setMHeaderStringForKey (GGS_string inAttri
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_headerCompositionMap * GGS_headerCompositionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                const GGS_string & inKey
-                                                                                                COMMA_LOCATION_ARGS) {
-  cMapElement_headerCompositionMap * result = (cMapElement_headerCompositionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_headerCompositionMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @headerCompositionMap
 //--------------------------------------------------------------------------------------------------
 
@@ -10216,17 +10205,6 @@ void GGS_headerRepartitionMap::setter_setMHeaderFileNameForKey (GGS_string inAtt
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_headerRepartitionMap * GGS_headerRepartitionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                const GGS_string & inKey
-                                                                                                COMMA_LOCATION_ARGS) {
-  cMapElement_headerRepartitionMap * result = (cMapElement_headerRepartitionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_headerRepartitionMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @headerRepartitionMap
 //--------------------------------------------------------------------------------------------------
 
@@ -10512,17 +10490,6 @@ void GGS_projectQualifiedFeatureMap::setter_setMFeatureValueForKey (GGS_lstring 
     p->mProperty_mFeatureValue = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_projectQualifiedFeatureMap * GGS_projectQualifiedFeatureMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                            const GGS_string & inKey
-                                                                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_projectQualifiedFeatureMap * result = (cMapElement_projectQualifiedFeatureMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_projectQualifiedFeatureMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @projectQualifiedFeatureMap

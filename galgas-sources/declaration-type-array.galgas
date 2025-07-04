@@ -276,7 +276,6 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
-      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementType
       !headerFileName: "array-" + [self.arrayTypeName fileNameRepresentation]

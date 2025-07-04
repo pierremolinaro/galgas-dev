@@ -2775,17 +2775,6 @@ void GGS_templateVariableMap::setter_setMCppNameForKey (GGS_string inAttributeVa
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_templateVariableMap * GGS_templateVariableMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                              const GGS_string & inKey
-                                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_templateVariableMap * result = (cMapElement_templateVariableMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_templateVariableMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @templateVariableMap
 //--------------------------------------------------------------------------------------------------
 

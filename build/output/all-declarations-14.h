@@ -2048,10 +2048,6 @@ class GGS_headerCompositionMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_headerCompositionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                 const GGS_string & inKey
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_headerCompositionMap ;
   friend class DownEnumerator_headerCompositionMap ;
@@ -2382,10 +2378,6 @@ class GGS_headerRepartitionMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_headerRepartitionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                 const GGS_string & inKey
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_headerRepartitionMap ;
   friend class DownEnumerator_headerRepartitionMap ;
@@ -2702,10 +2694,6 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_projectQualifiedFeatureMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                       const GGS_string & inKey
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_projectQualifiedFeatureMap ;
   friend class DownEnumerator_projectQualifiedFeatureMap ;

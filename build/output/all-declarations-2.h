@@ -4680,10 +4680,6 @@ class GGS_terminalMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_terminalMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                        const GGS_string & inKey
-                                                                                        COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_terminalMap ;
   friend class DownEnumerator_terminalMap ;
@@ -5000,10 +4996,6 @@ class GGS_lexicalTypeMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalTypeMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                           const GGS_string & inKey
-                                                                                           COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalTypeMap ;
   friend class DownEnumerator_lexicalTypeMap ;
@@ -5320,10 +5312,6 @@ class GGS_lexicalAttributeMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalAttributeMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                const GGS_string & inKey
-                                                                                                COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalAttributeMap ;
   friend class DownEnumerator_lexicalAttributeMap ;
@@ -6066,10 +6054,6 @@ class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalExplicitTokenListMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                        const GGS_string & inKey
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalExplicitTokenListMap ;
   friend class DownEnumerator_lexicalExplicitTokenListMap ;
@@ -6704,10 +6688,6 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalExplicitTokenListMapMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                           const GGS_string & inKey
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalExplicitTokenListMapMap ;
   friend class DownEnumerator_lexicalExplicitTokenListMapMap ;
@@ -7073,10 +7053,6 @@ class GGS_lexicalMessageMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalMessageMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                              const GGS_string & inKey
-                                                                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalMessageMap ;
   friend class DownEnumerator_lexicalMessageMap ;
@@ -7734,10 +7710,6 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalRoutineMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                              const GGS_string & inKey
-                                                                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalRoutineMap ;
   friend class DownEnumerator_lexicalRoutineMap ;
@@ -8389,10 +8361,6 @@ class GGS_lexicalFunctionMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalFunctionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                               const GGS_string & inKey
-                                                                                               COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalFunctionMap ;
   friend class DownEnumerator_lexicalFunctionMap ;
@@ -9065,10 +9033,6 @@ class GGS_styleMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_styleMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                     const GGS_string & inKey
-                                                                                     COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_styleMap ;
   friend class DownEnumerator_styleMap ;
@@ -9386,10 +9350,6 @@ class GGS_lexicalTagMap : public AC_GALGAS_map {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_lexicalTagMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                          const GGS_string & inKey
-                                                                                          COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_lexicalTagMap ;
   friend class DownEnumerator_lexicalTagMap ;
@@ -12398,4 +12358,164 @@ class GGS_string callExtensionGetter_generateObjcCocoaRoutineArgument (const cla
                                                                        const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
                                                                        class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                                        const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                          class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          const class GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
+                                                          const class GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string callExtensionGetter_generateRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalSelectInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSelectInstructionAST : public GGS_lexicalInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_lexicalSelectInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_lexicalSelectInstructionAST (const class cPtr_lexicalSelectInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lexicalSelectBranchListAST readProperty_mLexicalSelectBranchList (void) const ;
+
+  public: class GGS_lexicalInstructionListAST readProperty_mDefaultInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSelectInstructionAST init_21__21_ (const class GGS_lexicalSelectBranchListAST & inOperand0,
+                                                               const class GGS_lexicalInstructionListAST & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSelectInstructionAST extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalSelectInstructionAST class_func_new (const class GGS_lexicalSelectBranchListAST & inOperand0,
+                                                                       const class GGS_lexicalInstructionListAST & inOperand1,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalSelectInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @lexicalSelectInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void lexicalSelectInstructionAST_init_21__21_ (const class GGS_lexicalSelectBranchListAST & inOperand0,
+                                                         const class GGS_lexicalInstructionListAST & inOperand1,
+                                                         Compiler * inCompiler) ;
+
+
+//--- Extension getter generateLexicalInstructionCode
+  public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
+           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateObjcCocoaInstructionCode
+  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
+           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateSwiftCocoaInstructionCode
+  public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
+           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+  public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalInstruction
+  public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
+           class GGS_lexicalTagMap & arg_ioTagMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
+  public: GGS_lexicalInstructionListAST mProperty_mDefaultInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalSelectInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_lexicalSelectInstructionAST (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+                                            const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
 

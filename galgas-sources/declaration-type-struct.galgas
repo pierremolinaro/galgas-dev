@@ -265,7 +265,6 @@ class @structDeclarationAST : @semanticDeclarationAST {
       !enumerationDescriptorList: @()
       !features: features
       !addAssignOperatorArguments: @()
-      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: enumeratedType // Type for enumerated element for "for" instruction
       !headerFileName: "struct-" + [self.structTypeName fileNameRepresentation]

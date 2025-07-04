@@ -8,250 +8,6 @@
 #include "all-declarations-5.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_mapDeclarationAST_2E_weak::objectCompare (const GGS_mapDeclarationAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST_2E_weak::GGS_mapDeclarationAST_2E_weak (void) :
-GGS_semanticDeclarationAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST_2E_weak & GGS_mapDeclarationAST_2E_weak::operator = (const GGS_mapDeclarationAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST_2E_weak::GGS_mapDeclarationAST_2E_weak (const GGS_mapDeclarationAST & inSource) :
-GGS_semanticDeclarationAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST_2E_weak GGS_mapDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_mapDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST GGS_mapDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_mapDeclarationAST result ;
-  if (isValid ()) {
-    const cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_mapDeclarationAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST GGS_mapDeclarationAST_2E_weak::bang_mapDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_mapDeclarationAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_mapDeclarationAST) ;
-      result = GGS_mapDeclarationAST ((cPtr_mapDeclarationAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @mapDeclarationAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ("mapDeclarationAST.weak",
-                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_mapDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_mapDeclarationAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_mapDeclarationAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_mapDeclarationAST_2E_weak GGS_mapDeclarationAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_mapDeclarationAST_2E_weak result ;
-  const GGS_mapDeclarationAST_2E_weak * p = (const GGS_mapDeclarationAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_mapDeclarationAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("mapDeclarationAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_optionalTypeDeclarationAST_2E_weak::objectCompare (const GGS_optionalTypeDeclarationAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST_2E_weak::GGS_optionalTypeDeclarationAST_2E_weak (void) :
-GGS_semanticDeclarationAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST_2E_weak & GGS_optionalTypeDeclarationAST_2E_weak::operator = (const GGS_optionalTypeDeclarationAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST_2E_weak::GGS_optionalTypeDeclarationAST_2E_weak (const GGS_optionalTypeDeclarationAST & inSource) :
-GGS_semanticDeclarationAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST_2E_weak GGS_optionalTypeDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_optionalTypeDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_optionalTypeDeclarationAST result ;
-  if (isValid ()) {
-    const cPtr_optionalTypeDeclarationAST * p = (cPtr_optionalTypeDeclarationAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_optionalTypeDeclarationAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST_2E_weak::bang_optionalTypeDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_optionalTypeDeclarationAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_optionalTypeDeclarationAST) ;
-      result = GGS_optionalTypeDeclarationAST ((cPtr_optionalTypeDeclarationAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @optionalTypeDeclarationAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ("optionalTypeDeclarationAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_optionalTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_optionalTypeDeclarationAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_optionalTypeDeclarationAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_optionalTypeDeclarationAST_2E_weak GGS_optionalTypeDeclarationAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_optionalTypeDeclarationAST_2E_weak result ;
-  const GGS_optionalTypeDeclarationAST_2E_weak * p = (const GGS_optionalTypeDeclarationAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_optionalTypeDeclarationAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalTypeDeclarationAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@sortedListSortDescriptorListAST' list
 //--------------------------------------------------------------------------------------------------
 
@@ -3662,17 +3418,6 @@ void GGS_equatableExtensionMap::setter_setMExtensionForKey (GGS_equatableCompara
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_equatableExtensionMap * GGS_equatableExtensionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                  const GGS_string & inKey
-                                                                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_equatableExtensionMap * result = (cMapElement_equatableExtensionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_equatableExtensionMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @equatableExtensionMap
 //--------------------------------------------------------------------------------------------------
 
@@ -6723,17 +6468,6 @@ void GGS_propertyMap::setter_setMPropertyTypeForKey (GGS_unifiedTypeMapEntry inA
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_propertyMap * GGS_propertyMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                              const GGS_string & inKey
-                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_propertyMap * result = (cMapElement_propertyMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_propertyMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @propertyMap
 //--------------------------------------------------------------------------------------------------
 
@@ -7148,17 +6882,6 @@ void GGS_classFunctionMap::setter_setMReturnedTypeForKey (GGS_unifiedTypeMapEntr
     p->mProperty_mReturnedType = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_classFunctionMap * GGS_classFunctionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                        const GGS_string & inKey
-                                                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_classFunctionMap * result = (cMapElement_classFunctionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_classFunctionMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @classFunctionMap
@@ -7745,17 +7468,6 @@ void GGS_getterMap::setter_setMGetterNameThatObsoletesInvokationNameForKey (GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_getterMap * GGS_getterMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                          const GGS_string & inKey
-                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_getterMap * result = (cMapElement_getterMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_getterMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @getterMap
 //--------------------------------------------------------------------------------------------------
 
@@ -8318,17 +8030,6 @@ void GGS_setterMap::setter_setMErrorMessageForKey (GGS_string inAttributeValue,
     p->mProperty_mErrorMessage = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_setterMap * GGS_setterMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                          const GGS_string & inKey
-                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_setterMap * result = (cMapElement_setterMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_setterMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @setterMap
@@ -8923,17 +8624,6 @@ void GGS_instanceMethodMap::setter_setMErrorMessageForKey (GGS_string inAttribut
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_instanceMethodMap * GGS_instanceMethodMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                          const GGS_string & inKey
-                                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_instanceMethodMap * result = (cMapElement_instanceMethodMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_instanceMethodMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @instanceMethodMap
 //--------------------------------------------------------------------------------------------------
 
@@ -9356,17 +9046,6 @@ void GGS_classMethodMap::setter_setMHasCompilerArgumentForKey (GGS_bool inAttrib
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_classMethodMap * GGS_classMethodMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                    const GGS_string & inKey
-                                                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_classMethodMap * result = (cMapElement_classMethodMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_classMethodMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @classMethodMap
 //--------------------------------------------------------------------------------------------------
 
@@ -9709,17 +9388,6 @@ void GGS_subscriptMap::setter_setValueTypeForKey (GGS_unifiedTypeMapEntry inAttr
     p->mProperty_valueType = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_subscriptMap * GGS_subscriptMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                const GGS_string & inKey
-                                                                                COMMA_LOCATION_ARGS) {
-  cMapElement_subscriptMap * result = (cMapElement_subscriptMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_subscriptMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @subscriptMap
@@ -10553,44 +10221,38 @@ GGS_typeFeatures GGS_typeFeatures::class_func_incDecOperatorNoOVF (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_supportWithAccessor (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 30) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 31) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 32) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 33) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 34) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 35) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typeFeatures GGS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 36) ;
+  return GGS_typeFeatures (uint64_t (1) << 35) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10700,7 +10362,7 @@ GGS_typeFeatures GGS_typeFeatures::substract_operation (const GGS_typeFeatures &
 GGS_typeFeatures GGS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result ;
   if (mIsValid) {
-    result = GGS_typeFeatures (uint64_t (0x1FFFFFFFFF) ^ mFlags) ;
+    result = GGS_typeFeatures (uint64_t (0xFFFFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -10804,24 +10466,21 @@ void GGS_typeFeatures::description (String & ioString,
       ioString.appendCString (" incDecOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 30)) != 0) {
-      ioString.appendCString (" supportWithAccessor") ;
-    }
-    if ((mFlags & (uint64_t (1) << 31)) != 0) {
       ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
     }
-    if ((mFlags & (uint64_t (1) << 32)) != 0) {
+    if ((mFlags & (uint64_t (1) << 31)) != 0) {
       ioString.appendCString (" doNotGenererateObjectCompare") ;
     }
-    if ((mFlags & (uint64_t (1) << 33)) != 0) {
+    if ((mFlags & (uint64_t (1) << 32)) != 0) {
       ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
     }
-    if ((mFlags & (uint64_t (1) << 34)) != 0) {
+    if ((mFlags & (uint64_t (1) << 33)) != 0) {
       ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 35)) != 0) {
+    if ((mFlags & (uint64_t (1) << 34)) != 0) {
       ioString.appendCString (" generateSynthetizedInitializer") ;
     }
-    if ((mFlags & (uint64_t (1) << 36)) != 0) {
+    if ((mFlags & (uint64_t (1) << 35)) != 0) {
       ioString.appendCString (" clonable") ;
     }
   }
@@ -11662,10 +11321,10 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_classType:
     {
-      GGS_bool extractedValue_3886_isReference_0 ;
-      temp_0.getAssociatedValuesFor_classType (extractedValue_3886_isReference_0) ;
+      GGS_bool extractedValue_3778_isReference_0 ;
+      temp_0.getAssociatedValuesFor_classType (extractedValue_3778_isReference_0) ;
       GGS_string temp_1 ;
-      const GalgasBool test_2 = extractedValue_3886_isReference_0.boolEnum () ;
+      const GalgasBool test_2 = extractedValue_3778_isReference_0.boolEnum () ;
       if (GalgasBool::boolTrue == test_2) {
         temp_1 = GGS_string ("reference class") ;
       }else if (GalgasBool::boolFalse == test_2) {
@@ -11676,8 +11335,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3992__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3992__0) ;
+      GGS_constantIndexMap extractedValue_3884__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3884__0) ;
       result_result = GGS_string ("enumeration") ;
     }
     break ;
@@ -11743,8 +11402,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4581__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4581__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4473__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4473__0) ;
       result_result = GGS_string ("weak reference") ;
     }
     break ;
@@ -11765,7 +11424,7 @@ GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & i
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result_result ; // Returned variable
   const GGS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 148)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)) ;
+  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) ;
 //---
   return result_result ;
 }
@@ -12601,17 +12260,6 @@ void GGS_scopeLocalVarMap::setter_setMStateForKey (GGS_localVarValuation inAttri
     p->mProperty_mState = inAttributeValue ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_scopeLocalVarMap * GGS_scopeLocalVarMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                        const GGS_string & inKey
-                                                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_scopeLocalVarMap * result = (cMapElement_scopeLocalVarMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_scopeLocalVarMap) ;
-  return result ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @scopeLocalVarMap
@@ -15307,17 +14955,6 @@ void GGS_unifiedTypeMap::setter_setMElementForKey (GGS_unifiedTypeMapElementClas
 }
 
 //--------------------------------------------------------------------------------------------------
-
-cMapElement_unifiedTypeMap * GGS_unifiedTypeMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                    const GGS_string & inKey
-                                                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_unifiedTypeMap * result = (cMapElement_unifiedTypeMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_unifiedTypeMap) ;
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @unifiedTypeMap
 //--------------------------------------------------------------------------------------------------
 
@@ -15680,6 +15317,395 @@ GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeM
   }
 //---
   return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Enum typeDefinition
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition::GGS_typeDefinition (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::class_func_unsolved (UNUSED_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  result.mEnum = Enumeration::enum_unsolved ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::class_func_solved (const GGS_unifiedTypeDefinition & inAssociatedValue0
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  result.mEnum = Enumeration::enum_solved ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_typeDefinition_2E_solved (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::method_extractSolved (GGS_unifiedTypeDefinition & outAssociatedValue_definition,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_solved) {
+    outAssociatedValue_definition.drop () ;
+    String s ;
+    s.appendCString ("method @typeDefinition.solved invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_definition = ptr->mProperty_definition ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition_2E_solved_3F_ GGS_typeDefinition::getter_getSolved (UNUSED_LOCATION_ARGS) const {
+  GGS_typeDefinition_2E_solved_3F_ result ;
+  if (mEnum == Enumeration::enum_solved) {
+    const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_typeDefinition_2E_solved (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::getAssociatedValuesFor_solved (GGS_unifiedTypeDefinition & out_definition) const {
+  const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+  out_definition = ptr->mProperty_definition ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_typeDefinition [3] = {
+  "(not built)",
+  "unsolved",
+  "solved"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsolved == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_solved == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::description (String & ioString,
+                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @typeDefinition: ") ;
+  ioString.appendCString (gEnumNameArrayFor_typeDefinition [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @typeDefinition generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
+                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_typeDefinition::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeDefinition ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_typeDefinition::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_typeDefinition (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::extractObject (const GGS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  const GGS_typeDefinition * p = (const GGS_typeDefinition *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_typeDefinition *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_unifiedTypeMapElementClass_2E_weak::objectCompare (const GGS_unifiedTypeMapElementClass_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak & GGS_unifiedTypeMapElementClass_2E_weak::operator = (const GGS_unifiedTypeMapElementClass & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (const GGS_unifiedTypeMapElementClass & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_unifiedTypeMapElementClass_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::unwrappedValue (void) const {
+  GGS_unifiedTypeMapElementClass result ;
+  if (isValid ()) {
+    const cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_unifiedTypeMapElementClass (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::bang_unifiedTypeMapElementClass_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_unifiedTypeMapElementClass result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_unifiedTypeMapElementClass) ;
+      result = GGS_unifiedTypeMapElementClass ((cPtr_unifiedTypeMapElementClass *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @unifiedTypeMapElementClass.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ("unifiedTypeMapElementClass.weak",
+                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_unifiedTypeMapElementClass_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_unifiedTypeMapElementClass_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_unifiedTypeMapElementClass_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_unifiedTypeMapElementClass_2E_weak result ;
+  const GGS_unifiedTypeMapElementClass_2E_weak * p = (const GGS_unifiedTypeMapElementClass_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_unifiedTypeMapElementClass_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("unifiedTypeMapElementClass.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry definition'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEntry & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeDefinition result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_unifiedTypeMapEntry::Enumeration::invalid:
+    break ;
+  case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
+    {
+      TC_Array <FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 197)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 197)) ;
+      result_result.drop () ; // Release error dropped variable
+    }
+    break ;
+  case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
+    {
+      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7447_weakElement_0 ;
+      temp_0.getAssociatedValuesFor_element (extractedValue_7447_weakElement_0) ;
+      GalgasBool test_2 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_2) {
+        const GGS_unifiedTypeMapElementClass var_type_7475 = extractedValue_7447_weakElement_0.unwrappedValue () ;
+        if (!extractedValue_7447_weakElement_0.isValuated ()) {
+          test_2 = GalgasBool::boolFalse ;
+        }
+        if (GalgasBool::boolTrue == test_2) {
+          switch (var_type_7475.readProperty_mDefinition ().enumValue ()) {
+          case GGS_typeDefinition::Enumeration::invalid:
+            break ;
+          case GGS_typeDefinition::Enumeration::enum_unsolved:
+            {
+              TC_Array <FixItDescription> fixItArray3 ;
+              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 202)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 202)) ;
+              result_result.drop () ; // Release error dropped variable
+            }
+            break ;
+          case GGS_typeDefinition::Enumeration::enum_solved:
+            {
+              GGS_unifiedTypeDefinition extractedValue_7628_definition_0 ;
+              var_type_7475.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7628_definition_0) ;
+              result_result = extractedValue_7628_definition_0 ;
+            }
+            break ;
+          }
+        }
+      }
+      if (GalgasBool::boolFalse == test_2) {
+        TC_Array <FixItDescription> fixItArray4 ;
+        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 207)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)) ;
+        result_result.drop () ; // Release error dropped variable
+      }
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEntry & inObject,
+                                                     Compiler * inCompiler
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 215)) ;
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry typeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
+                                     Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 221)).readProperty_typeName ().readProperty_string () ;
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry baseType'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
+                                                  Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_outBaseType = temp_0 ;
+  bool loop_8355 = true ;
+  while (loop_8355) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      test_1 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).boolEnum () ;
+      loop_8355 = test_1 == GalgasBool::boolTrue ;
+      if (loop_8355) {
+        result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 229)).readProperty_superType () ;
+      }
+    }
+  }
+//---
+  return result_outBaseType ;
 }
 
 

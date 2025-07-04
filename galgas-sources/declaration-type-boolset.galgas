@@ -242,7 +242,6 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptorList: @()
     !features: features
     !addAssignOperatorArguments: @()
-    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: .null
     !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
