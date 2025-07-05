@@ -476,21 +476,37 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterInheritedGetterWith2Arguments&&??????returnedTypeName?hasCompilerArgument'
+//Routine 'enterBaseGetterWithArgument&&?getterName?argumentTypeName?argumentName?returnedTypeName?hasCompilerArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_enterInheritedGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                           class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                           const class GGS_string constinArgument2,
-                                                                                                                           const class GGS_string constinArgument3,
-                                                                                                                           const class GGS_string constinArgument4,
-                                                                                                                           const class GGS_string constinArgument5,
-                                                                                                                           const class GGS_string constinArgument6,
-                                                                                                                           const class GGS_string constinArgument7,
-                                                                                                                           const class GGS_bool constinArgument8,
-                                                                                                                           class Compiler * inCompiler
-                                                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argumentTypeName_3F_argumentName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
+                                                                                                                                               class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                               const class GGS_string constinArgument2,
+                                                                                                                                               const class GGS_string constinArgument3,
+                                                                                                                                               const class GGS_string constinArgument4,
+                                                                                                                                               const class GGS_string constinArgument5,
+                                                                                                                                               const class GGS_bool constinArgument6,
+                                                                                                                                               class Compiler * inCompiler
+                                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWith2Arguments&&??????returnedTypeName?hasCompilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
+                                                                                                                      class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                      const class GGS_string constinArgument2,
+                                                                                                                      const class GGS_string constinArgument3,
+                                                                                                                      const class GGS_string constinArgument4,
+                                                                                                                      const class GGS_string constinArgument5,
+                                                                                                                      const class GGS_string constinArgument6,
+                                                                                                                      const class GGS_string constinArgument7,
+                                                                                                                      const class GGS_bool constinArgument8,
+                                                                                                                      class Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -2898,26 +2898,6 @@ class GGS_equatableExtensionMap : public GGS_GenericMap <GGS_equatableExtensionM
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 
 //-- Start of type generic part
 
@@ -2961,6 +2941,24 @@ class GGS_equatableExtensionMap : public GGS_GenericMap <GGS_equatableExtensionM
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                                                const class GGS_uint & constinOperand1
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_equatableComparableExtension getter_mExtensionForKey (const class GGS_string & constinOperand0,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
@@ -7141,26 +7139,6 @@ class GGS_constantIndexMap : public GGS_GenericMap <GGS_constantIndexMap_2E_elem
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 //--------------------------------- Compare
   public: ComparisonResult objectCompare (const GGS_constantIndexMap & inOperand) const ;
 
@@ -7214,6 +7192,24 @@ class GGS_constantIndexMap : public GGS_GenericMap <GGS_constantIndexMap_2E_elem
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                                                const class GGS_uint & constinOperand1
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_associatedValueDescriptorList getter_mAssociatedTypeListForKey (const class GGS_string & constinOperand0,
                                                                                                      Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
@@ -7642,26 +7638,6 @@ class GGS_propertyMap : public GGS_GenericMap <GGS_propertyMap_2E_element> {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 
 //-- Start of type generic part
 
@@ -7719,6 +7695,24 @@ class GGS_propertyMap : public GGS_GenericMap <GGS_propertyMap_2E_element> {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                                                const class GGS_uint & constinOperand1
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_AccessControl getter_mAccessControlForKey (const class GGS_string & constinOperand0,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
@@ -9627,26 +9621,6 @@ class GGS_subscriptMap : public GGS_GenericMap <GGS_subscriptMap_2E_element> {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 
 //-- Start of type generic part
 
@@ -9700,6 +9674,24 @@ class GGS_subscriptMap : public GGS_GenericMap <GGS_subscriptMap_2E_element> {
   public: VIRTUAL_IN_DEBUG class GGS_functionSignature getter_argumentTypeListForKey (const class GGS_string & constinOperand0,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                                                const class GGS_uint & constinOperand1
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_subscriptMap getter_overriddenMap (Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
@@ -10675,26 +10667,6 @@ class GGS_scopeLocalVarMap : public GGS_GenericMap <GGS_scopeLocalVarMap_2E_elem
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 
 //-- Start of type generic part
 
@@ -10775,6 +10747,24 @@ class GGS_scopeLocalVarMap : public GGS_GenericMap <GGS_scopeLocalVarMap_2E_elem
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                                                const class GGS_uint & constinOperand1
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_localVariableAttributes getter_mAttributesForKey (const class GGS_string & constinOperand0,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
@@ -13082,26 +13072,4 @@ class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry &
 class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedTypeMapEntry & inObject,
                                                         class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName (const class GGS_unifiedTypeMapEntry inObject,
-                                        class GGS_stringset & io_ioInclusions,
-                                        class Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName_31_ (const class GGS_unifiedTypeMapEntry inObject,
-                                            class GGS_stringset & io_ioInclusions,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
 

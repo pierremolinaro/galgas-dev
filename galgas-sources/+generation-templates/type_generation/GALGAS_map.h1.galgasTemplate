@@ -77,26 +77,6 @@ class GGS_%!TYPE_IDENTIFIER% : public GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIF
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Getter locationForKey
-  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keyList
-  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter hasKey
-  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter getter_hasKeyAtLevel
-  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
-                                         const GGS_uint & inLevel
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter count
-  public: GGS_uint getter_count (LOCATION_ARGS) const ;
-
 %if GENERATE_COMPARISON then
 %//--------------------------------- Compare
   public: ComparisonResult objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;

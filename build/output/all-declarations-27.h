@@ -768,12 +768,3 @@ class GGS_lstring function_procedureNameForUsefulEntitiesGraph (const class GGS_
 class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxDirectedTranslationResultVarName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-

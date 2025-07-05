@@ -421,15 +421,15 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !hasLexiqueArg:false
     )
   //--- Getters
-    enterInheritedGetterWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioTypeMap
-      !getterName:"levels"
+      !getterName: "levels"
       !obsoleteName: ""
-      !returnedTypeName:"uint"
-      !hasCompilerArgument:false
+      !returnedTypeName: "uint"
+      !hasCompilerArgument: false
     )
-    enterInheritedGetterWith2Arguments (
+    enterBaseGetterWith2Arguments (
       !?getterMap
       !?ioTypeMap
       !"hasKeyAtLevel"
@@ -437,8 +437,8 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !"inKey"
       !"uint"
       !"inLevel"
-      !returnedTypeName:"bool"
-      !hasCompilerArgument:false
+      !returnedTypeName: "bool"
+      !hasCompilerArgument: false
     )
     enterInheritedGetterWithoutArgument (
       !?getterMap
@@ -448,31 +448,31 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName: "stringset"
       !hasCompilerArgument: true
     )
-    enterInheritedGetterWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioTypeMap
-      !getterName:"keyList"
+      !getterName: "keyList"
       !obsoleteName: ""
-      !returnedTypeName:"lstringlist"
+      !returnedTypeName: "lstringlist"
       !hasCompilerArgument: true
     )
-    enterInheritedGetterWithArgument (
+    enterBaseGetterWithArgument (
       !?getterMap
       !?ioTypeMap
-      !getterName:"hasKey"
-      !argumentTypeName:"string"
-      !argumentName:"inKey"
+      !getterName: "hasKey"
+      !argumentTypeName: "string"
+      !argumentName: "inKey"
       !returnedTypeName:"bool"
-      !hasCompilerArgument:false
+      !hasCompilerArgument: false
     )
-    enterInheritedGetterWithArgument (
+    enterBaseGetterWithArgument (
       !?getterMap
       !?ioTypeMap
-      !getterName:"locationForKey"
-      !argumentTypeName:"string"
-      !argumentName:"inKey"
-      !returnedTypeName:"location"
-      !hasCompilerArgument:true
+      !getterName: "locationForKey"
+      !argumentTypeName: "string"
+      !argumentName: "inKey"
+      !returnedTypeName: "location"
+      !hasCompilerArgument: true
     )
     enterBaseGetterWithoutArgument (
       !?getterMap
@@ -482,13 +482,13 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName:self.mMapTypeName.string
       !hasCompilerArgument:true
     )
-    enterInheritedGetterWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioTypeMap
-      !getterName:"count"
+      !getterName: "count"
       !obsoleteName: ""
-      !returnedTypeName:"uint"
-      !hasCompilerArgument:false
+      !returnedTypeName: "uint"
+      !hasCompilerArgument: false
     )
   //--- Handle properties
     var insertMethodFormalArgumentList = @formalParameterSignature ()

@@ -115,7 +115,65 @@ proc enterInheritedGetterWithArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterInheritedGetterWith2Arguments
+proc enterBaseGetterWithArgument
+  ?!@getterMap ioGetterMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?getterName:let @string inGetterName
+  ?argumentTypeName:let @string inArgument1TypeName
+  ?argumentName:let @string inArgument1Name
+  ?returnedTypeName:let @string inReturnedTypeName
+  ?hasCompilerArgument:let @bool inHasCompilerArgument
+ {
+  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
+  var @functionSignature argList = @()
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
+  argList += !["" nowhere] !t !inArgument1Name !true
+  [!?ioGetterMap insertOrReplace
+    !@{!inGetterName !.here}
+    !.definedAsMember
+    !argList
+    !.here
+    !inHasCompilerArgument
+    !returnedTypeIndex
+    !.isBasicFinal
+    !"" // getter name is not obsolete, no replacement getter
+  ]
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//proc enterInheritedGetterWith2Arguments
+//  ?!@getterMap ioGetterMap
+//  ?!@unifiedTypeMap ioUnifiedTypeMap
+//  ?let @string inGetterName
+//  ?let @string inArgument1TypeName
+//  ?let @string inArgument1Name
+//  ?let @string inArgument2TypeName
+//  ?let @string inArgument2Name
+//  ?returnedTypeName:let @string inReturnedTypeName
+//  ?hasCompilerArgument:let @bool inHasCompilerArgument
+//{
+//  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
+//  var @functionSignature argList = @()
+//  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
+//  argList += !["" nowhere] !t !inArgument1Name !true
+//  [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
+//  argList += !["" nowhere] !t !inArgument2Name !true
+//  [!?ioGetterMap insertOrReplace
+//    !@lstring {!inGetterName !@location.here}
+//    !@methodKind. definedAsMember
+//    !argList
+//    !@location.here
+//    !inHasCompilerArgument
+//    !returnedTypeIndex
+//    !@methodQualifier.isInherited
+//    !"" // getter name is not obsolete, no replacement getter
+//  ]
+//}
+
+//--------------------------------------------------------------------------------------------------
+
+proc enterBaseGetterWith2Arguments
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inGetterName
@@ -133,13 +191,13 @@ proc enterInheritedGetterWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name !true
   [!?ioGetterMap insertOrReplace
-    !@lstring {!inGetterName !@location.here}
-    !@methodKind. definedAsMember
+    !@{!inGetterName !.here}
+    !.definedAsMember
     !argList
     !@location.here
     !inHasCompilerArgument
     !returnedTypeIndex
-    !@methodQualifier. isInherited
+    !.isBasicFinal
     !"" // getter name is not obsolete, no replacement getter
   ]
 }

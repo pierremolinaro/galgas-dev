@@ -253,17 +253,16 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Getter HasKey
+  //   levels
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private: GGS_bool hasKey (const class GGS_String & inKey COMMA_UNUSED_LOCATION_ARGS) const {
-//    GGS_bool result ;
-//    if (inKey.isValid ()) {
-//      const OptionalSharedRef <GGS_GenericMapNode <INFO>> node = searchNode (inKey.stringValue ()) ;
-//      result = GGS_bool (node.isNotNil()) ;
-//    }
-//    return result ;
-//  }
+  public: uint32_t levels (void) const {
+    uint32_t result = 1 ;
+    if (mOverriddenRoot.isNotNil ()) {
+      result += mOverriddenRoot->levels () ;
+    }
+    return result ;
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Insert
@@ -617,7 +616,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   Insulate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void insulate (LOCATION_ARGS) {
+  protected: void insulate (LOCATION_ARGS) {
     if (mSharedRoot.isNotNil ()) {
       mSharedRoot->invalidateCacheSortedArray () ;
       if (!mSharedRoot->isUniquelyReferenced ()) {
@@ -647,8 +646,8 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   Insert or replace
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void insertOrReplace (const INFO & inElement
-                                COMMA_LOCATION_ARGS) {
+  protected: void insertOrReplace (const INFO & inElement
+                                   COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil () && inElement.mProperty_lkey.isValid ()) {
       insulate (THERE) ;
       OptionalSharedRef <GGS_GenericMapNode <INFO>> unusedExistingNode ;
@@ -694,8 +693,8 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   Remove
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const String & inKey
-                                                                                COMMA_LOCATION_ARGS) {
+  protected: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const String & inKey
+                                                                                   COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil ()) {
       insulate (THERE) ;
       return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;
@@ -708,7 +707,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   contains
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: bool contains (const String & inKey) const {
+  protected: bool contains (const String & inKey) const {
     bool result = false ;
     if (mSharedRoot.isNotNil ()) {
       result = mSharedRoot->hasKey (inKey, 0) ;
@@ -720,7 +719,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   containsAtLevel
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const {
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const {
     bool result = false ;
     if (mSharedRoot.isNotNil ()) {
       result = mSharedRoot->hasKey (inKey, inLevel) ;
@@ -732,7 +731,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   infoForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: const SharedGenericPtrWithValueSemantics <INFO> infoForKey (const String & inKey) const {
+  protected: const SharedGenericPtrWithValueSemantics <INFO> infoForKey (const String & inKey) const {
     if (mSharedRoot.isNotNil ()) {
       const OptionalSharedRef <GGS_GenericMapNode <INFO>> node = mSharedRoot->searchNode (inKey) ;
       if (node.isNil ()) {
@@ -749,7 +748,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <GGS_GenericMapNode <INFO>> nodeForKey (const String & inKey) const {
+  protected: OptionalSharedRef <GGS_GenericMapNode <INFO>> nodeForKey (const String & inKey) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->searchNode (inKey) ;
     }else{
@@ -769,7 +768,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->sortedInfoArray () ;
     }else{
@@ -779,8 +778,8 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_lstringlist keyList (Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const {
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const {
     GGS_lstringlist result ;
     if (isValid ()) {
       result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
@@ -792,7 +791,7 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   protected: void makeNewEmptyMapWithMapToOverride (const GGS_GenericMap <INFO> & inOverridenMap
-                                                 COMMA_LOCATION_ARGS) {
+                                                    COMMA_LOCATION_ARGS) {
     if (inOverridenMap.isValid ()) {
       mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <INFO>>::make (inOverridenMap.mSharedRoot COMMA_THERE) ;
     }
@@ -819,6 +818,18 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
         inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   levels
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const {
+    uint32_t result = 0 ;
+    if (mSharedRoot.isNotNil ()) {
+      result = mSharedRoot->levels () ;
+    }
+    return result ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
