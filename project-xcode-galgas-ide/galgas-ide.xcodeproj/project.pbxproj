@@ -182,7 +182,6 @@
 		CF305FE52D0D8A2E000A5F79 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EF82D0D8A2E000A5F79 /* capCollectionElement.cpp */; };
 		CF305FE72D0D8A2E000A5F79 /* GALGAS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1A2D0D8A2E000A5F79 /* GALGAS_bool.cpp */; };
 		CF305FE82D0D8A2E000A5F79 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */; };
-		CF305FE92D0D8A2E000A5F79 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */; };
 		CF305FEA2D0D8A2E000A5F79 /* StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC42D0D8A2E000A5F79 /* StringCommandLineOption.cpp */; };
 		CF305FEB2D0D8A2E000A5F79 /* basic-allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F772D0D8A2E000A5F79 /* basic-allocation.cpp */; };
 		CF305FEC2D0D8A2E000A5F79 /* BigSigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5C2D0D8A2E000A5F79 /* BigSigned-conversions.cpp */; };
@@ -200,7 +199,6 @@
 		CF305FFB2D0D8A2E000A5F79 /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E622D0D8A2E000A5F79 /* BigSigned-subtract.cpp */; };
 		CF305FFC2D0D8A2E000A5F79 /* UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC82D0D8A2E000A5F79 /* UIntCommandLineOption.cpp */; };
 		CF305FFD2D0D8A2E000A5F79 /* IndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */; };
-		CF305FFE2D0D8A2E000A5F79 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */; };
 		CF305FFF2D0D8A2E000A5F79 /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED32D0D8A2E000A5F79 /* TextFileWrite.cpp */; };
 		CF3060002D0D8A2E000A5F79 /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5B2D0D8A2E000A5F79 /* BigSigned-constructors.cpp */; };
 		CF3060012D0D8A2E000A5F79 /* String-class-getters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */; };
@@ -346,7 +344,6 @@
 		CF8F81222D0D91490095170B /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EF82D0D8A2E000A5F79 /* capCollectionElement.cpp */; };
 		CF8F81232D0D91490095170B /* GALGAS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1A2D0D8A2E000A5F79 /* GALGAS_bool.cpp */; };
 		CF8F81242D0D91490095170B /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F362D0D8A2E000A5F79 /* scanner_actions.cpp */; };
-		CF8F81252D0D91490095170B /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */; };
 		CF8F81262D0D91490095170B /* StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC42D0D8A2E000A5F79 /* StringCommandLineOption.cpp */; };
 		CF8F81272D0D91490095170B /* basic-allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F772D0D8A2E000A5F79 /* basic-allocation.cpp */; };
 		CF8F81282D0D91490095170B /* BigSigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5C2D0D8A2E000A5F79 /* BigSigned-conversions.cpp */; };
@@ -364,7 +361,6 @@
 		CF8F81342D0D91490095170B /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E622D0D8A2E000A5F79 /* BigSigned-subtract.cpp */; };
 		CF8F81352D0D91490095170B /* UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC82D0D8A2E000A5F79 /* UIntCommandLineOption.cpp */; };
 		CF8F81362D0D91490095170B /* IndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */; };
-		CF8F81372D0D91490095170B /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */; };
 		CF8F81382D0D91490095170B /* TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ED32D0D8A2E000A5F79 /* TextFileWrite.cpp */; };
 		CF8F81392D0D91490095170B /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E5B2D0D8A2E000A5F79 /* BigSigned-constructors.cpp */; };
 		CF8F813A2D0D91490095170B /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB82D0D8CFD006DF788 /* LR1_computations.cpp */; };
@@ -749,8 +745,6 @@
 		CF305EF82D0D8A2E000A5F79 /* capCollectionElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElement.cpp; sourceTree = "<group>"; };
 		CF305EF92D0D8A2E000A5F79 /* capCollectionElementArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = capCollectionElementArray.h; sourceTree = "<group>"; };
 		CF305EFA2D0D8A2E000A5F79 /* capCollectionElementArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElementArray.cpp; sourceTree = "<group>"; };
-		CF305EFB2D0D8A2E000A5F79 /* capSortedListElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = capSortedListElement.h; sourceTree = "<group>"; };
-		CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capSortedListElement.cpp; sourceTree = "<group>"; };
 		CF305EFD2D0D8A2E000A5F79 /* cCollectionElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
 		CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cCollectionElement.cpp; sourceTree = "<group>"; };
 		CF305EFF2D0D8A2E000A5F79 /* Enumerator_range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enumerator_range.h; sourceTree = "<group>"; };
@@ -773,8 +767,6 @@
 		CF305F102D0D8A2E000A5F79 /* cPtr_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_object.cpp; sourceTree = "<group>"; };
 		CF305F112D0D8A2E000A5F79 /* cPtr_weakReference_proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cPtr_weakReference_proxy.h; sourceTree = "<group>"; };
 		CF305F122D0D8A2E000A5F79 /* cPtr_weakReference_proxy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_weakReference_proxy.cpp; sourceTree = "<group>"; };
-		CF305F132D0D8A2E000A5F79 /* cSortedListElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cSortedListElement.h; sourceTree = "<group>"; };
-		CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cSortedListElement.cpp; sourceTree = "<group>"; };
 		CF305F152D0D8A2E000A5F79 /* EnumerationOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumerationOrder.h; sourceTree = "<group>"; };
 		CF305F162D0D8A2E000A5F79 /* F_verbose_output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = F_verbose_output.h; sourceTree = "<group>"; };
 		CF305F172D0D8A2E000A5F79 /* GALGAS_application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_application.cpp; sourceTree = "<group>"; };
@@ -1479,8 +1471,6 @@
 				CF305EF82D0D8A2E000A5F79 /* capCollectionElement.cpp */,
 				CF305EF92D0D8A2E000A5F79 /* capCollectionElementArray.h */,
 				CF305EFA2D0D8A2E000A5F79 /* capCollectionElementArray.cpp */,
-				CF305EFB2D0D8A2E000A5F79 /* capSortedListElement.h */,
-				CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */,
 				CF305EFD2D0D8A2E000A5F79 /* cCollectionElement.h */,
 				CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */,
 				CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */,
@@ -1495,8 +1485,6 @@
 				CF305F102D0D8A2E000A5F79 /* cPtr_object.cpp */,
 				CF305F112D0D8A2E000A5F79 /* cPtr_weakReference_proxy.h */,
 				CF305F122D0D8A2E000A5F79 /* cPtr_weakReference_proxy.cpp */,
-				CF305F132D0D8A2E000A5F79 /* cSortedListElement.h */,
-				CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */,
 				CF305F152D0D8A2E000A5F79 /* EnumerationOrder.h */,
 				CF305EFF2D0D8A2E000A5F79 /* Enumerator_range.h */,
 				CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */,
@@ -2012,7 +2000,6 @@
 				CF8F81222D0D91490095170B /* capCollectionElement.cpp in Sources */,
 				CF8F81232D0D91490095170B /* GALGAS_bool.cpp in Sources */,
 				CF8F81242D0D91490095170B /* scanner_actions.cpp in Sources */,
-				CF8F81252D0D91490095170B /* capSortedListElement.cpp in Sources */,
 				CF8F81262D0D91490095170B /* StringCommandLineOption.cpp in Sources */,
 				CF8F81272D0D91490095170B /* basic-allocation.cpp in Sources */,
 				CF8F81282D0D91490095170B /* BigSigned-conversions.cpp in Sources */,
@@ -2030,7 +2017,6 @@
 				CF8F81342D0D91490095170B /* BigSigned-subtract.cpp in Sources */,
 				CF8F81352D0D91490095170B /* UIntCommandLineOption.cpp in Sources */,
 				CF8F81362D0D91490095170B /* IndexingDictionary.cpp in Sources */,
-				CF8F81372D0D91490095170B /* cSortedListElement.cpp in Sources */,
 				CF8F81382D0D91490095170B /* TextFileWrite.cpp in Sources */,
 				CF8F81392D0D91490095170B /* BigSigned-constructors.cpp in Sources */,
 				CF8F813A2D0D91490095170B /* LR1_computations.cpp in Sources */,
@@ -2330,7 +2316,6 @@
 				CF305FE52D0D8A2E000A5F79 /* capCollectionElement.cpp in Sources */,
 				CF305FE72D0D8A2E000A5F79 /* GALGAS_bool.cpp in Sources */,
 				CF305FE82D0D8A2E000A5F79 /* scanner_actions.cpp in Sources */,
-				CF305FE92D0D8A2E000A5F79 /* capSortedListElement.cpp in Sources */,
 				CF305FEA2D0D8A2E000A5F79 /* StringCommandLineOption.cpp in Sources */,
 				CF305FEB2D0D8A2E000A5F79 /* basic-allocation.cpp in Sources */,
 				CF305FEC2D0D8A2E000A5F79 /* BigSigned-conversions.cpp in Sources */,
@@ -2348,7 +2333,6 @@
 				CF305FFB2D0D8A2E000A5F79 /* BigSigned-subtract.cpp in Sources */,
 				CF305FFC2D0D8A2E000A5F79 /* UIntCommandLineOption.cpp in Sources */,
 				CF305FFD2D0D8A2E000A5F79 /* IndexingDictionary.cpp in Sources */,
-				CF305FFE2D0D8A2E000A5F79 /* cSortedListElement.cpp in Sources */,
 				CF305FFF2D0D8A2E000A5F79 /* TextFileWrite.cpp in Sources */,
 				CF3060002D0D8A2E000A5F79 /* BigSigned-constructors.cpp in Sources */,
 				CF93BABF2D0D8CFD006DF788 /* LR1_computations.cpp in Sources */,

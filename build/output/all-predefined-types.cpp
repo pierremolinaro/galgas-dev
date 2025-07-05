@@ -6,8 +6,6 @@
 
 #include "all-predefined-types.h"
 #include "cCollectionElement.h"
-#include "cSortedListElement.h"
-#include "capSortedListElement.h"
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------

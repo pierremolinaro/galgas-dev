@@ -107,8 +107,6 @@ end
        "cCollectionElement.cpp",
        "capCollectionElement.cpp",
        "capCollectionElementArray.cpp",
-       "cSortedListElement.cpp",
-       "capSortedListElement.cpp",
        "cGenericAbstractEnumerator.cpp",
        "Enumerator_range.cpp",
        "IndexingDictionary.cpp",

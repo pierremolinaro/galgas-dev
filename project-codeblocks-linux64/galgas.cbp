@@ -207,8 +207,6 @@
    <Unit filename="../libpm/galgas/cCollectionElement.cpp" />
    <Unit filename="../libpm/galgas/capCollectionElement.cpp" />
    <Unit filename="../libpm/galgas/capCollectionElementArray.cpp" />
-   <Unit filename="../libpm/galgas/cSortedListElement.cpp" />
-   <Unit filename="../libpm/galgas/capSortedListElement.cpp" />
    <Unit filename="../libpm/galgas/cGenericAbstractEnumerator.cpp" />
    <Unit filename="../libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../libpm/galgas/IndexingDictionary.cpp" />

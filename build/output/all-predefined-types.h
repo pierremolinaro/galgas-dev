@@ -7017,8 +7017,6 @@ class cMapElement : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-#include "cSortedListElement.h"
-#include "capSortedListElement.h"
 #include "C_galgas_function_descriptor.h"
 #include "cObjectArray.h"
 

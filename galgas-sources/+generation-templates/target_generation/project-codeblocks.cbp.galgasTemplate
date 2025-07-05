@@ -175,8 +175,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/cCollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/capCollectionElementArray.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cSortedListElement.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/capSortedListElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/cGenericAbstractEnumerator.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Enumerator_range.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IndexingDictionary.cpp" />
