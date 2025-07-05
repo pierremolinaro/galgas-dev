@@ -360,9 +360,9 @@ void Compiler::semanticErrorWith_K_message (const GGS_lstring & inKey,
 //--------------------------------------------------------------------------------------------------
 
 void Compiler::semanticErrorWith_K_L_message (const GGS_lstring & inKey,
-                                                const char * in_K_L_ErrorMessage,
-                                                const GGS_location & inExistingKeyLocation
-                                                COMMA_LOCATION_ARGS) {
+                                              const char * in_K_L_ErrorMessage,
+                                              const GGS_location & inExistingKeyLocation
+                                              COMMA_LOCATION_ARGS) {
   const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
   String message ;

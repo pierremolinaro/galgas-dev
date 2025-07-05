@@ -1,100 +1,52 @@
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
-      %!^%COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE)%
-for (* mPropertyName * * *) in PROPERTY_LIST
-  do %,\n%  %mProperty_%![mPropertyName identifierRepresentation]% (inValue.mProperty_%![mPropertyName identifierRepresentation]%)%
-end
-% {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_lstring & inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-    do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
-  end
-%\n%
-!^%COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE)%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-  do %,\n%  %mProperty_%![mPropertyName identifierRepresentation]% (in_%![mPropertyName identifierRepresentation]%)%
-end
-% {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mProperty_lkey%
-    for (* mPropertyName 3*) in PROPERTY_LIST
-      do %, mProperty_%![mPropertyName identifierRepresentation]
-    end
-  % COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-%if [PROPERTY_LIST count] == 0 then
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (String & /* ioString */, const int32_t /* inIndentation */) const {\n%
-else
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-    %  ioString.appendNewLine () ;\n%
-    %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString.appendCString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
-    %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
-  end
-end
-%}
 
 %if GENERATE_COMPARISON then
 %//--------------------------------------------------------------------------------------------------
 
-ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
-  cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-%  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-     %  if (ComparisonResult::operandEqual == result) {\n%
-     %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (operand->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
-     %  }\n%
-   end
-%  return result ;
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> left = sortedInfoArray () ;
+      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> right = inOperand.sortedInfoArray () ;
+      for (int32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        result = left (i COMMA_HERE).value ().objectCompare (right (i COMMA_HERE).value ()) ;
+      }
+    }
+  }
+  return result ;
 }
 
-%end%//--------------------------------------------------------------------------------------------------
+%end%
+
+//--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
+GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIFIER%> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -102,7 +54,59 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_string & inKey
+            %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_%!TYPE_IDENTIFIER%::getter_locationForKey (%?^%const GGS_string & inKey,
+            %!^%Compiler * inCompiler
+            %!^%COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_keyList (%?^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -114,14 +118,14 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
     }else{
       GGS_%!ELEMENT_TYPE_IDENTIFIER% element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_lkey = info->mProperty_lkey ;
 %  for (* mPropertyName * * *) in PROPERTY_LIST do
-     %      element.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+     %      element.mProperty_%![mPropertyName identifierRepresentation]% = info->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
    end
 %      result = element ;
     }
@@ -129,7 +133,32 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%for (mSearchMethodName mErrorMessage) in SEARCH_SUBSCRIPT_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
+::readSubscript__3F_%![mSearchMethodName identifierRepresentation]% (%?^%const GGS_lstring & inLKey,
+    %!^%Compiler * inCompiler
+    %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      const char * kErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kErrorMessage COMMA_THERE) ;
+    }else{
+      result = info.value () ;
+    }
+  }
+  return result ;
+}
+
+%
+end
+%//--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GGS_%!TYPE_IDENTIFIER% & inMapToOverride
        %!^%COMMA_LOCATION_ARGS) {
@@ -148,79 +177,57 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compile
 }
 
 %for (insertMethodName errorMessage shadowErrorMessage) in INSERT_SETTER_LIST do
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
-    for (propertyTypeEntry 4*) in PROPERTY_LIST
-      do (IDX) %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
-    end
-    %,\n %!^%Compiler * inCompiler%
-    %\n %!^%COMMA_LOCATION_ARGS) {\n%
-    %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
-    %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-    do (IDX) %, inArgument%![IDX string]
-  end
-  % COMMA_HERE)) ;\n%
-  %  capCollectionElement attributes ;\n%
-  %  attributes.setPointer (p) ;\n%
-  %  macroDetachSharedObject (p) ;\n%
-  block 2 :
-    %const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-    %const char * kShadowErrorMessage = %![shadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-    %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
-  end
-  %}\n\n%
+%//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+for (propertyTypeEntry 4*) in PROPERTY_LIST do (IDX)
+%,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
 end
+%,\n %!^%Compiler * inCompiler
+  %!^%COMMA_LOCATION_ARGS) {
+  const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (inLKey%
+for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
+  const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;
+%
+if [shadowErrorMessage length] == 0 then
+%  const char * kShadowErrorMessage = nullptr ;
+%else
+%  const char * kShadowErrorMessage = %![shadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+%end
+%  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+%end
 
 for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n\n%
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
+%//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
-  %,\n %!^%Compiler * inCompiler%
-  %\n %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
-               !^%inCompiler,\n%
-               !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
-               !^%COMMA_THERE) ;\n%
-  %  if (nullptr == p) {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
+  %,\n %!^%Compiler * inCompiler
+       %!^%COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+%for (5*) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
-  %  }else{\n%
-  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
-    %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%  }else{
+%for (* mPropertyName 3*) in PROPERTY_LIST do (IDX)
+    %    outArgument%![IDX string]% = info->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
-  %  }\n%
-  %}
-%end
-
-for (mSearchMethodName mErrorMessage) in SEARCH_SUBSCRIPT_LIST do
-  
-%//--------------------------------------------------------------------------------------------------
-  
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
-::readSubscript__3F_%![mSearchMethodName identifierRepresentation]% (%?^%const class GGS_lstring & inKey,
-    %!^%Compiler * inCompiler
-    %!^%COMMA_LOCATION_ARGS) const {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
-               !^%inCompiler,\n%
-               !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
-               !^%COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-  %  for (* mPropertyName * * *) in PROPERTY_LIST do
-       %    result.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-     end
-  %    }
-  }
-  return result ;
+%  }
 }
 %
 end
@@ -228,173 +235,198 @@ end
 
 for (mMethodName mErrorMessage) in REMOVE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-    do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+  for (mPropertyTypeEntry 4*) in PROPERTY_LIST do (IDX)
+    %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%Compiler * inCompiler%
-  %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  %  const char * kRemoveErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-  %  capCollectionElement attributes ;\n%
-  %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-  %  if (nullptr == p) {\n%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
+  %\n %!^%COMMA_LOCATION_ARGS) {
+  SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const char * kRemoveErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = removeAndReturnRemovedInfo (key COMMA_THERE) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kRemoveErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+%for (5*) in PROPERTY_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
-  %  }else{\n%
-  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
-    %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%  }else{
+%for (* mPropertyName 3*) in PROPERTY_LIST do (IDX)
+    %    outArgument%![IDX string]% = info->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
-  %  }\n%
-
-  %}\n\n%
+%  }
+}
+%
 end
 
+
 for (mMethodName mErrorMessage) in REPLACE_SETTER_LIST do
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement%
-  %,\n %!^%Compiler * inCompiler%
-  %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  %  const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
-  %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inElement.mProperty_lkey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-    %, inElement.mProperty_%![mPropertyName identifierRepresentation]
-  end
-  % COMMA_HERE)) ;\n%
-  %  capCollectionElement attributes ;\n%
-  %  attributes.setPointer (p) ;\n%
-  %  macroDetachSharedObject (p) ;\n%
-  %  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;\n%
-  %}\n\n%
+  %//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement,
+       %!^%Compiler * inCompiler
+       %!^%COMMA_LOCATION_ARGS) {
+  SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info ;
+  if (isValid () && inElement.isValid ()) {
+    const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+    const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inElement.mProperty_lkey, nearestKeyArray, kReplaceErrorMessage COMMA_THERE) ;
+    }else{
+      node->mSharedInfo = SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>::make (inElement COMMA_THERE) ;
+    }
+  }
+}
+%
 end
 
 if HAS_INSERT_OR_REPLACE then
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GGS_lstring inKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GGS_lstring inLKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
   end
-  %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
-  %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-    do (IDX) %, inArgument%![IDX string]
-  end
-  % COMMA_HERE)) ;\n%
-  %  capCollectionElement attributes ;\n%
-  %  attributes.setPointer (p) ;\n%
-  %  macroDetachSharedObject (p) ;\n%
-  %  performInsertOrReplace (attributes) ;\n%
-  %}\n\n%
+  %\n %!^%COMMA_LOCATION_ARGS) {
+  const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (inLKey%
+  for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
+  insertOrReplace (element COMMA_THERE) ;
+}
+
+%
 end
 
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![mPropertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GGS_string & inKey,\n%
-  %            %!^%Compiler * inCompiler\n%
-  %            %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
-  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
-  %  GGS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
-  %  if (nullptr != p) {\n%
-  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end 
+for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
+%//--------------------------------------------------------------------------------------------------
 
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
-  %                           %!^%GGS_string inKey,\n%
-  %                           %!^%Compiler * inCompiler\n%
-  %                           %!^%COMMA_LOCATION_ARGS) {\n%
-  %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
-  %  if (nullptr != p) {\n%
-  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    p->mProperty_%![mPropertyName identifierRepresentation]% = inAttributeValue ;\n%
-  %  }\n%
-  %}\n\n%
-end 
+GGS_%![mPropertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GGS_string & inKey,
+         %!^%Compiler * inCompiler
+         %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%![mPropertyTypeEntry identifierRepresentation]% result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_%![mPropertyName identifierRepresentation]% ;
+    }
+  }
+  return result ;
+}
+%end
+
+for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
+%//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,
+         %!^%GGS_string inKey,
+         %!^%Compiler * inCompiler
+         %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;
+    }
+  }
+}
+%
+end
 
 %//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-  %, p->mProperty_%![mPropertyName identifierRepresentation]
-end
-%) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %}\n\n%
+%for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_%![mPropertyName identifierRepresentation]% ;
+}
+
+%
 end
 
 %//--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-  %, p->mProperty_%![mPropertyName identifierRepresentation]
-end
-%) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %}\n\n%
+%for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_%![mPropertyName identifierRepresentation]% ;
+}
+
+%
 end
 %

@@ -9,128 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_lexicalSelectInstructionAST_2E_weak::objectCompare (const GGS_lexicalSelectInstructionAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (void) :
-GGS_lexicalInstructionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST_2E_weak & GGS_lexicalSelectInstructionAST_2E_weak::operator = (const GGS_lexicalSelectInstructionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (const GGS_lexicalSelectInstructionAST & inSource) :
-GGS_lexicalInstructionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_lexicalSelectInstructionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST_2E_weak::unwrappedValue (void) const {
-  GGS_lexicalSelectInstructionAST result ;
-  if (isValid ()) {
-    const cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_lexicalSelectInstructionAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST_2E_weak::bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_lexicalSelectInstructionAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalSelectInstructionAST) ;
-      result = GGS_lexicalSelectInstructionAST ((cPtr_lexicalSelectInstructionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalSelectInstructionAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ("lexicalSelectInstructionAST.weak",
-                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_lexicalSelectInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalSelectInstructionAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalSelectInstructionAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_lexicalSelectInstructionAST_2E_weak result ;
-  const GGS_lexicalSelectInstructionAST_2E_weak * p = (const GGS_lexicalSelectInstructionAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalSelectInstructionAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalSelectInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalSimpleSendInstructionAST_2E_weak::objectCompare (const GGS_lexicalSimpleSendInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1960,91 +1838,33 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::extractObject (
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_commandLineOptionMap::cMapElement_commandLineOptionMap (const GGS_commandLineOptionMap_2E_element & inValue
-                                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mOptionChar (inValue.mProperty_mOptionChar),
-mProperty_mOptionString (inValue.mProperty_mOptionString),
-mProperty_mComment (inValue.mProperty_mComment),
-mProperty_mDefaultValue (inValue.mProperty_mDefaultValue) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_commandLineOptionMap::cMapElement_commandLineOptionMap (const GGS_lstring & inKey,
-                                                                    const GGS_char & in_mOptionChar,
-                                                                    const GGS_string & in_mOptionString,
-                                                                    const GGS_string & in_mComment,
-                                                                    const GGS_string & in_mDefaultValue
-                                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mOptionChar (in_mOptionChar),
-mProperty_mOptionString (in_mOptionString),
-mProperty_mComment (in_mComment),
-mProperty_mDefaultValue (in_mDefaultValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_commandLineOptionMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_commandLineOptionMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_commandLineOptionMap (mProperty_lkey, mProperty_mOptionChar, mProperty_mOptionString, mProperty_mComment, mProperty_mDefaultValue COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_commandLineOptionMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mOptionChar" ":") ;
-  mProperty_mOptionChar.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mOptionString" ":") ;
-  mProperty_mOptionString.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mComment" ":") ;
-  mProperty_mComment.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mDefaultValue" ":") ;
-  mProperty_mDefaultValue.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionMap::GGS_commandLineOptionMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_commandLineOptionMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_commandLineOptionMap::GGS_commandLineOptionMap (const GGS_commandLineOptionMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_commandLineOptionMap::GGS_commandLineOptionMap (const GGS_commandLineOptionMap & inSource) :
+GGS_GenericMap <GGS_commandLineOptionMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_commandLineOptionMap & GGS_commandLineOptionMap::operator = (const GGS_commandLineOptionMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_commandLineOptionMap & GGS_commandLineOptionMap::operator = (const GGS_commandLineOptionMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionMap GGS_commandLineOptionMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_commandLineOptionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -2052,7 +1872,59 @@ GGS_commandLineOptionMap GGS_commandLineOptionMap::init (Compiler * COMMA_LOCATI
 
 GGS_commandLineOptionMap GGS_commandLineOptionMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_commandLineOptionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_commandLineOptionMap::getter_hasKey (const GGS_string & inKey
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_commandLineOptionMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_commandLineOptionMap::getter_locationForKey (const GGS_string & inKey,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_commandLineOptionMap::getter_keyList (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2064,16 +1936,16 @@ GGS_commandLineOptionMap_2E_element_3F_ GGS_commandLineOptionMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_commandLineOptionMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_commandLineOptionMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_commandLineOptionMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mOptionChar = p->mProperty_mOptionChar ;
-      element.mProperty_mOptionString = p->mProperty_mOptionString ;
-      element.mProperty_mComment = p->mProperty_mComment ;
-      element.mProperty_mDefaultValue = p->mProperty_mDefaultValue ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mOptionChar = info->mProperty_mOptionChar ;
+      element.mProperty_mOptionString = info->mProperty_mOptionString ;
+      element.mProperty_mComment = info->mProperty_mComment ;
+      element.mProperty_mDefaultValue = info->mProperty_mDefaultValue ;
       result = element ;
     }
   }
@@ -2100,51 +1972,49 @@ GGS_commandLineOptionMap GGS_commandLineOptionMap::getter_overriddenMap (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionMap::setter_insertKey (GGS_lstring inKey,
+void GGS_commandLineOptionMap::setter_insertKey (GGS_lstring inLKey,
                                                  GGS_char inArgument0,
                                                  GGS_string inArgument1,
                                                  GGS_string inArgument2,
                                                  GGS_string inArgument3,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_commandLineOptionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_commandLineOptionMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_commandLineOptionMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3) ;
   const char * kInsertErrorMessage = "the '%K' command line option has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_commandLineOptionMap_searchKey = "the '%K' command line option is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inKey,
+void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inLKey,
                                                  GGS_char & outArgument0,
                                                  GGS_string & outArgument1,
                                                  GGS_string & outArgument2,
                                                  GGS_string & outArgument3,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) performSearch (inKey,
-                                                                                                         inCompiler,
-                                                                                                         kSearchErrorMessage_commandLineOptionMap_searchKey
-                                                                                                         COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' command line option is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
     outArgument3.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    outArgument0 = p->mProperty_mOptionChar ;
-    outArgument1 = p->mProperty_mOptionString ;
-    outArgument2 = p->mProperty_mComment ;
-    outArgument3 = p->mProperty_mDefaultValue ;
+    outArgument0 = info->mProperty_mOptionChar ;
+    outArgument1 = info->mProperty_mOptionString ;
+    outArgument2 = info->mProperty_mComment ;
+    outArgument3 = info->mProperty_mDefaultValue ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -2152,229 +2022,266 @@ void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inKey,
 GGS_char GGS_commandLineOptionMap::getter_mOptionCharForKey (const GGS_string & inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
   GGS_char result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mOptionChar ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mOptionChar ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_commandLineOptionMap::getter_mOptionStringForKey (const GGS_string & inKey,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mOptionString ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mOptionString ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_commandLineOptionMap::getter_mCommentForKey (const GGS_string & inKey,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mComment ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mComment ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_commandLineOptionMap::getter_mDefaultValueForKey (const GGS_string & inKey,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mDefaultValue ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mDefaultValue ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionMap::setter_setMOptionCharForKey (GGS_char inAttributeValue,
+void GGS_commandLineOptionMap::setter_setMOptionCharForKey (GGS_char inValue,
                                                             GGS_string inKey,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mOptionChar = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_commandLineOptionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mOptionChar = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionMap::setter_setMOptionStringForKey (GGS_string inAttributeValue,
+void GGS_commandLineOptionMap::setter_setMOptionStringForKey (GGS_string inValue,
                                                               GGS_string inKey,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mOptionString = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_commandLineOptionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mOptionString = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionMap::setter_setMCommentForKey (GGS_string inAttributeValue,
+void GGS_commandLineOptionMap::setter_setMCommentForKey (GGS_string inValue,
                                                          GGS_string inKey,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mComment = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_commandLineOptionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mComment = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionMap::setter_setMDefaultValueForKey (GGS_string inAttributeValue,
+void GGS_commandLineOptionMap::setter_setMDefaultValueForKey (GGS_string inValue,
                                                               GGS_string inKey,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mDefaultValue = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_commandLineOptionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mDefaultValue = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_commandLineOptionMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @commandLineOptionMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_commandLineOptionMap::DownEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_commandLineOptionMap::DownEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionMap_2E_element DownEnumerator_commandLineOptionMap::current (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return GGS_commandLineOptionMap_2E_element (p->mProperty_lkey, p->mProperty_mOptionChar, p->mProperty_mOptionString, p->mProperty_mComment, p->mProperty_mDefaultValue) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_commandLineOptionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_char DownEnumerator_commandLineOptionMap::current_mOptionChar (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionChar ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mOptionChar ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_commandLineOptionMap::current_mOptionString (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionString ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mOptionString ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_commandLineOptionMap::current_mComment (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mComment ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mComment ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_commandLineOptionMap::current_mDefaultValue (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mDefaultValue ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mDefaultValue ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @commandLineOptionMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_commandLineOptionMap::UpEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_commandLineOptionMap::UpEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionMap_2E_element UpEnumerator_commandLineOptionMap::current (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return GGS_commandLineOptionMap_2E_element (p->mProperty_lkey, p->mProperty_mOptionChar, p->mProperty_mOptionString, p->mProperty_mComment, p->mProperty_mDefaultValue) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_commandLineOptionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_char UpEnumerator_commandLineOptionMap::current_mOptionChar (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionChar ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mOptionChar ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_commandLineOptionMap::current_mOptionString (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionString ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mOptionString ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_commandLineOptionMap::current_mComment (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mComment ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mComment ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_commandLineOptionMap::current_mDefaultValue (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mDefaultValue ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mDefaultValue ;
 }
 
 
@@ -5952,77 +5859,33 @@ GGS_guiCommandLineOptionList GGS_guiCommandLineOptionList::extractObject (const 
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_extensionMap::cMapElement_extensionMap (const GGS_extensionMap_2E_element & inValue
-                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexiqueName (inValue.mProperty_mLexiqueName),
-mProperty_mIndex (inValue.mProperty_mIndex) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_extensionMap::cMapElement_extensionMap (const GGS_lstring & inKey,
-                                                    const GGS_string & in_mLexiqueName,
-                                                    const GGS_uint & in_mIndex
-                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexiqueName (in_mLexiqueName),
-mProperty_mIndex (in_mIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_extensionMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_extensionMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_extensionMap (mProperty_lkey, mProperty_mLexiqueName, mProperty_mIndex COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_extensionMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexiqueName" ":") ;
-  mProperty_mLexiqueName.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mIndex" ":") ;
-  mProperty_mIndex.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMap::GGS_extensionMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_extensionMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extensionMap::GGS_extensionMap (const GGS_extensionMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_extensionMap::GGS_extensionMap (const GGS_extensionMap & inSource) :
+GGS_GenericMap <GGS_extensionMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extensionMap & GGS_extensionMap::operator = (const GGS_extensionMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_extensionMap & GGS_extensionMap::operator = (const GGS_extensionMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMap GGS_extensionMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_extensionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -6030,7 +5893,59 @@ GGS_extensionMap GGS_extensionMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 GGS_extensionMap GGS_extensionMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_extensionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_extensionMap::getter_hasKey (const GGS_string & inKey
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_extensionMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_extensionMap::getter_locationForKey (const GGS_string & inKey,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_extensionMap::getter_keyList (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6042,14 +5957,14 @@ GGS_extensionMap_2E_element_3F_ GGS_extensionMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_extensionMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionMap * p = (cMapElement_extensionMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_extensionMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_extensionMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexiqueName = p->mProperty_mLexiqueName ;
-      element.mProperty_mIndex = p->mProperty_mIndex ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexiqueName = info->mProperty_mLexiqueName ;
+      element.mProperty_mIndex = info->mProperty_mIndex ;
       result = element ;
     }
   }
@@ -6076,19 +5991,15 @@ GGS_extensionMap GGS_extensionMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_extensionMap::setter_insertKey (GGS_lstring inKey,
+void GGS_extensionMap::setter_insertKey (GGS_lstring inLKey,
                                          GGS_string inArgument0,
                                          GGS_uint inArgument1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  cMapElement_extensionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_extensionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_extensionMap_2E_element element (inLKey, inArgument0, inArgument1) ;
   const char * kInsertErrorMessage = "the '%K' extension is already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6096,139 +6007,162 @@ void GGS_extensionMap::setter_insertKey (GGS_lstring inKey,
 GGS_string GGS_extensionMap::getter_mLexiqueNameForKey (const GGS_string & inKey,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) attributes ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_extensionMap) ;
-    result = p->mProperty_mLexiqueName ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexiqueName ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_extensionMap::getter_mIndexForKey (const GGS_string & inKey,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) attributes ;
   GGS_uint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_extensionMap) ;
-    result = p->mProperty_mIndex ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIndex ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_extensionMap::setter_setMLexiqueNameForKey (GGS_string inAttributeValue,
+void GGS_extensionMap::setter_setMLexiqueNameForKey (GGS_string inValue,
                                                      GGS_string inKey,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_extensionMap * p = (cMapElement_extensionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_extensionMap) ;
-    p->mProperty_mLexiqueName = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_extensionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexiqueName = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_extensionMap::setter_setMIndexForKey (GGS_uint inAttributeValue,
+void GGS_extensionMap::setter_setMIndexForKey (GGS_uint inValue,
                                                GGS_string inKey,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_extensionMap * p = (cMapElement_extensionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_extensionMap) ;
-    p->mProperty_mIndex = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_extensionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIndex = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_extensionMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @extensionMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_extensionMap::DownEnumerator_extensionMap (const GGS_extensionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_extensionMap::DownEnumerator_extensionMap (const GGS_extensionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMap_2E_element DownEnumerator_extensionMap::current (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return GGS_extensionMap_2E_element (p->mProperty_lkey, p->mProperty_mLexiqueName, p->mProperty_mIndex) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_extensionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_extensionMap::current_mLexiqueName (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return p->mProperty_mLexiqueName ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexiqueName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint DownEnumerator_extensionMap::current_mIndex (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return p->mProperty_mIndex ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @extensionMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_extensionMap::UpEnumerator_extensionMap (const GGS_extensionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_extensionMap::UpEnumerator_extensionMap (const GGS_extensionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMap_2E_element UpEnumerator_extensionMap::current (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return GGS_extensionMap_2E_element (p->mProperty_lkey, p->mProperty_mLexiqueName, p->mProperty_mIndex) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_extensionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_extensionMap::current_mLexiqueName (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return p->mProperty_mLexiqueName ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexiqueName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint UpEnumerator_extensionMap::current_mIndex (LOCATION_ARGS) const {
-  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionMap) ;
-  return p->mProperty_mIndex ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
 }
 
 
@@ -9054,70 +8988,33 @@ GGS_guiAnalysisContext GGS_guiAnalysisContext::extractObject (const GGS_object &
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_optionComponentMapForGeneration::cMapElement_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration_2E_element & inValue
-                                                                                          COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mGuiComponentContext (inValue.mProperty_mGuiComponentContext) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_optionComponentMapForGeneration::cMapElement_optionComponentMapForGeneration (const GGS_lstring & inKey,
-                                                                                          const GGS_guiAnalysisContext & in_mGuiComponentContext
-                                                                                          COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mGuiComponentContext (in_mGuiComponentContext) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_optionComponentMapForGeneration::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_optionComponentMapForGeneration::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_optionComponentMapForGeneration (mProperty_lkey, mProperty_mGuiComponentContext COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_optionComponentMapForGeneration::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mGuiComponentContext" ":") ;
-  mProperty_mGuiComponentContext.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentMapForGeneration::GGS_optionComponentMapForGeneration (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_optionComponentMapForGeneration_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_optionComponentMapForGeneration::GGS_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_optionComponentMapForGeneration::GGS_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inSource) :
+GGS_GenericMap <GGS_optionComponentMapForGeneration_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_optionComponentMapForGeneration & GGS_optionComponentMapForGeneration::operator = (const GGS_optionComponentMapForGeneration & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_optionComponentMapForGeneration & GGS_optionComponentMapForGeneration::operator = (const GGS_optionComponentMapForGeneration & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_optionComponentMapForGeneration result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -9125,7 +9022,59 @@ GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::init (C
 
 GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::class_func_emptyMap (LOCATION_ARGS) {
   GGS_optionComponentMapForGeneration result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_optionComponentMapForGeneration::getter_hasKey (const GGS_string & inKey
+                                                             COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_optionComponentMapForGeneration::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_optionComponentMapForGeneration::getter_locationForKey (const GGS_string & inKey,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_optionComponentMapForGeneration::getter_keyList (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -9137,13 +9086,13 @@ GGS_optionComponentMapForGeneration_2E_element_3F_ GGS_optionComponentMapForGene
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_optionComponentMapForGeneration_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_optionComponentMapForGeneration * p = (cMapElement_optionComponentMapForGeneration *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_optionComponentMapForGeneration_2E_element_3F_::init_nil () ;
     }else{
       GGS_optionComponentMapForGeneration_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mGuiComponentContext = p->mProperty_mGuiComponentContext ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mGuiComponentContext = info->mProperty_mGuiComponentContext ;
       result = element ;
     }
   }
@@ -9170,18 +9119,14 @@ GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionComponentMapForGeneration::setter_insertKey (GGS_lstring inKey,
+void GGS_optionComponentMapForGeneration::setter_insertKey (GGS_lstring inLKey,
                                                             GGS_guiAnalysisContext inArgument0,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  cMapElement_optionComponentMapForGeneration * p = nullptr ;
-  macroMyNew (p, cMapElement_optionComponentMapForGeneration (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_optionComponentMapForGeneration_2E_element element (inLKey, inArgument0) ;
   const char * kInsertErrorMessage = "redefinition of the '%K' option component: it has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9189,94 +9134,110 @@ void GGS_optionComponentMapForGeneration::setter_insertKey (GGS_lstring inKey,
 GGS_guiAnalysisContext GGS_optionComponentMapForGeneration::getter_mGuiComponentContextForKey (const GGS_string & inKey,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_optionComponentMapForGeneration * p = (const cMapElement_optionComponentMapForGeneration *) attributes ;
   GGS_guiAnalysisContext result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-    result = p->mProperty_mGuiComponentContext ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mGuiComponentContext ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionComponentMapForGeneration::setter_setMGuiComponentContextForKey (GGS_guiAnalysisContext inAttributeValue,
+void GGS_optionComponentMapForGeneration::setter_setMGuiComponentContextForKey (GGS_guiAnalysisContext inValue,
                                                                                 GGS_string inKey,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_optionComponentMapForGeneration * p = (cMapElement_optionComponentMapForGeneration *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-    p->mProperty_mGuiComponentContext = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_optionComponentMapForGeneration_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mGuiComponentContext = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_optionComponentMapForGeneration::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @optionComponentMapForGeneration
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_optionComponentMapForGeneration::DownEnumerator_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_optionComponentMapForGeneration::DownEnumerator_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentMapForGeneration_2E_element DownEnumerator_optionComponentMapForGeneration::current (LOCATION_ARGS) const {
-  const cMapElement_optionComponentMapForGeneration * p = (const cMapElement_optionComponentMapForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-  return GGS_optionComponentMapForGeneration_2E_element (p->mProperty_lkey, p->mProperty_mGuiComponentContext) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_optionComponentMapForGeneration::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_guiAnalysisContext DownEnumerator_optionComponentMapForGeneration::current_mGuiComponentContext (LOCATION_ARGS) const {
-  const cMapElement_optionComponentMapForGeneration * p = (const cMapElement_optionComponentMapForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-  return p->mProperty_mGuiComponentContext ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mGuiComponentContext ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @optionComponentMapForGeneration
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_optionComponentMapForGeneration::UpEnumerator_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_optionComponentMapForGeneration::UpEnumerator_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentMapForGeneration_2E_element UpEnumerator_optionComponentMapForGeneration::current (LOCATION_ARGS) const {
-  const cMapElement_optionComponentMapForGeneration * p = (const cMapElement_optionComponentMapForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-  return GGS_optionComponentMapForGeneration_2E_element (p->mProperty_lkey, p->mProperty_mGuiComponentContext) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_optionComponentMapForGeneration::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_guiAnalysisContext UpEnumerator_optionComponentMapForGeneration::current_mGuiComponentContext (LOCATION_ARGS) const {
-  const cMapElement_optionComponentMapForGeneration * p = (const cMapElement_optionComponentMapForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_optionComponentMapForGeneration) ;
-  return p->mProperty_mGuiComponentContext ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mGuiComponentContext ;
 }
 
 
@@ -16408,6 +16369,165 @@ GGS_bigintPredefinedTypeAST_2E_weak GGS_bigintPredefinedTypeAST_2E_weak::extract
       result = *p ;
     }else{
       inCompiler->castError ("bigintPredefinedTypeAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @binarysetPredefinedTypeAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_binarysetPredefinedTypeAST::objectCompare (const GGS_binarysetPredefinedTypeAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_binarysetPredefinedTypeAST::GGS_binarysetPredefinedTypeAST (void) :
+GGS_predefinedTypeAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST::
+init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                          const GGS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_binarysetPredefinedTypeAST * object = nullptr ;
+  macroMyNew (object, cPtr_binarysetPredefinedTypeAST (inCompiler COMMA_THERE)) ;
+  object->binarysetPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  const GGS_binarysetPredefinedTypeAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_binarysetPredefinedTypeAST::
+binarysetPredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                                                     const GGS_string & in_mPredefinedTypeName,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_binarysetPredefinedTypeAST::GGS_binarysetPredefinedTypeAST (const cPtr_binarysetPredefinedTypeAST * inSourcePtr) :
+GGS_predefinedTypeAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_binarysetPredefinedTypeAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST::class_func_new (const GGS_bool & in_isPredefined,
+                                                                               const GGS_string & in_mPredefinedTypeName,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
+  GGS_binarysetPredefinedTypeAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_binarysetPredefinedTypeAST (in_isPredefined, in_mPredefinedTypeName,  inCompiler COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @binarysetPredefinedTypeAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_binarysetPredefinedTypeAST::cPtr_binarysetPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_binarysetPredefinedTypeAST::cPtr_binarysetPredefinedTypeAST (const GGS_bool & in_isPredefined,
+                                                                  const GGS_string & in_mPredefinedTypeName,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMMA_THERE) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_binarysetPredefinedTypeAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
+}
+
+void cPtr_binarysetPredefinedTypeAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@binarysetPredefinedTypeAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_binarysetPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_binarysetPredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_binarysetPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @binarysetPredefinedTypeAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ("binarysetPredefinedTypeAST",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_binarysetPredefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_binarysetPredefinedTypeAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_binarysetPredefinedTypeAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_binarysetPredefinedTypeAST result ;
+  const GGS_binarysetPredefinedTypeAST * p = (const GGS_binarysetPredefinedTypeAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_binarysetPredefinedTypeAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("binarysetPredefinedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

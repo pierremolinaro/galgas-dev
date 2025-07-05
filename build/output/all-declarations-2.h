@@ -4570,42 +4570,66 @@ class GGS_lexicalSentValueList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @terminalMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_terminalMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_terminalMap (const class GGS_terminalMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalSentValueList current_mSentAttributeList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_terminalMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_terminalMap (const class GGS_terminalMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalSentValueList current_mSentAttributeList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @terminalMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_terminalMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_terminalMap final {
+//--- Constructor
+  public: DownEnumerator_terminalMap (const class GGS_terminalMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalSentValueList current_mSentAttributeList (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_terminalMap (const DownEnumerator_terminalMap &) = delete ;
+  private: DownEnumerator_terminalMap & operator = (const DownEnumerator_terminalMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_terminalMap final {
+  public: UpEnumerator_terminalMap (const class GGS_terminalMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalSentValueList current_mSentAttributeList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_terminalMap (const UpEnumerator_terminalMap &) = delete ;
+  private: UpEnumerator_terminalMap & operator = (const UpEnumerator_terminalMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4613,14 +4637,41 @@ extern const char * kSearchErrorMessage_terminalMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_terminalMap : public AC_GALGAS_map {
+class GGS_terminalMap : public GGS_GenericMap <GGS_terminalMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_terminalMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_terminalMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_terminalMap (const GGS_terminalMap & inSource) ;
-  public: GGS_terminalMap & operator = (const GGS_terminalMap & inSource) ;
-  
+//  public: GGS_terminalMap (const GGS_terminalMap & inSource) ;
+//  public: GGS_terminalMap & operator = (const GGS_terminalMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4693,31 +4744,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@terminalMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_terminalMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalSentValueList mProperty_mSentAttributeList ;
-
-//--- Constructors
-  public: cMapElement_terminalMap (const GGS_terminalMap_2E_element & inValue
-                                   COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_terminalMap (const GGS_lstring & inKey,
-                                   const GGS_lexicalSentValueList & in_mSentAttributeList
-                                   COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @terminalMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -4886,42 +4912,66 @@ class GGS_terminalMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalTypeMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalTypeMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalTypeMap (const class GGS_lexicalTypeMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalTypeMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalTypeMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalTypeMap (const class GGS_lexicalTypeMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalTypeMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTypeMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalTypeMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalTypeMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalTypeMap (const class GGS_lexicalTypeMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalTypeMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalTypeMap (const DownEnumerator_lexicalTypeMap &) = delete ;
+  private: DownEnumerator_lexicalTypeMap & operator = (const DownEnumerator_lexicalTypeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalTypeMap final {
+  public: UpEnumerator_lexicalTypeMap (const class GGS_lexicalTypeMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalTypeMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalTypeMap (const UpEnumerator_lexicalTypeMap &) = delete ;
+  private: UpEnumerator_lexicalTypeMap & operator = (const UpEnumerator_lexicalTypeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4929,14 +4979,41 @@ extern const char * kSearchErrorMessage_lexicalTypeMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTypeMap : public AC_GALGAS_map {
+class GGS_lexicalTypeMap : public GGS_GenericMap <GGS_lexicalTypeMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalTypeMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalTypeMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) ;
-  public: GGS_lexicalTypeMap & operator = (const GGS_lexicalTypeMap & inSource) ;
-  
+//  public: GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) ;
+//  public: GGS_lexicalTypeMap & operator = (const GGS_lexicalTypeMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5009,31 +5086,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalTypeMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalTypeMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalTypeEnum mProperty_mLexicalType ;
-
-//--- Constructors
-  public: cMapElement_lexicalTypeMap (const GGS_lexicalTypeMap_2E_element & inValue
-                                      COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalTypeMap (const GGS_lstring & inKey,
-                                      const GGS_lexicalTypeEnum & in_mLexicalType
-                                      COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTypeMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -5202,42 +5254,66 @@ class GGS_lexicalTypeMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalAttributeMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalAttributeMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalAttributeMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalAttributeMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalAttributeMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalAttributeMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalAttributeMap (const DownEnumerator_lexicalAttributeMap &) = delete ;
+  private: DownEnumerator_lexicalAttributeMap & operator = (const DownEnumerator_lexicalAttributeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalAttributeMap final {
+  public: UpEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalAttributeMap (const UpEnumerator_lexicalAttributeMap &) = delete ;
+  private: UpEnumerator_lexicalAttributeMap & operator = (const UpEnumerator_lexicalAttributeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5245,14 +5321,41 @@ extern const char * kSearchErrorMessage_lexicalAttributeMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalAttributeMap : public AC_GALGAS_map {
+class GGS_lexicalAttributeMap : public GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalAttributeMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalAttributeMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) ;
-  public: GGS_lexicalAttributeMap & operator = (const GGS_lexicalAttributeMap & inSource) ;
-  
+//  public: GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) ;
+//  public: GGS_lexicalAttributeMap & operator = (const GGS_lexicalAttributeMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5325,31 +5428,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalAttributeMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalAttributeMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalTypeEnum mProperty_mLexicalType ;
-
-//--- Constructors
-  public: cMapElement_lexicalAttributeMap (const GGS_lexicalAttributeMap_2E_element & inValue
-                                           COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalAttributeMap (const GGS_lstring & inKey,
-                                           const GGS_lexicalTypeEnum & in_mLexicalType
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalAttributeMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -5918,46 +5996,72 @@ class GGS_terminalList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalExplicitTokenListMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalExplicitTokenListMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
-  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
-  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalExplicitTokenListMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
-  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
-  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalExplicitTokenListMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalExplicitTokenListMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalExplicitTokenListMap (const DownEnumerator_lexicalExplicitTokenListMap &) = delete ;
+  private: DownEnumerator_lexicalExplicitTokenListMap & operator = (const DownEnumerator_lexicalExplicitTokenListMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalExplicitTokenListMap final {
+  public: UpEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
+  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalExplicitTokenListMap (const UpEnumerator_lexicalExplicitTokenListMap &) = delete ;
+  private: UpEnumerator_lexicalExplicitTokenListMap & operator = (const UpEnumerator_lexicalExplicitTokenListMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5965,14 +6069,41 @@ extern const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
+class GGS_lexicalExplicitTokenListMap : public GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalExplicitTokenListMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalExplicitTokenListMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) ;
-  public: GGS_lexicalExplicitTokenListMap & operator = (const GGS_lexicalExplicitTokenListMap & inSource) ;
-  
+//  public: GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) ;
+//  public: GGS_lexicalExplicitTokenListMap & operator = (const GGS_lexicalExplicitTokenListMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6067,35 +6198,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalExplicitTokenListMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lstring mProperty_mTerminal ;
-  public: GGS_bool mProperty_atomicSelection ;
-  public: GGS_bool mProperty_isEndOfTemplateMark ;
-
-//--- Constructors
-  public: cMapElement_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap_2E_element & inValue
-                                                   COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalExplicitTokenListMap (const GGS_lstring & inKey,
-                                                   const GGS_lstring & in_mTerminal,
-                                                   const GGS_bool & in_atomicSelection,
-                                                   const GGS_bool & in_isEndOfTemplateMark
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -6552,46 +6654,72 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalExplicitTokenListMapMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalExplicitTokenListMapMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
-  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalExplicitTokenListMapMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
-  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMapMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalExplicitTokenListMapMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalExplicitTokenListMapMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
+
+  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalExplicitTokenListMapMap (const DownEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+  private: DownEnumerator_lexicalExplicitTokenListMapMap & operator = (const DownEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalExplicitTokenListMapMap final {
+  public: UpEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
+  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalExplicitTokenListMapMap (const UpEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+  private: UpEnumerator_lexicalExplicitTokenListMapMap & operator = (const UpEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6599,14 +6727,41 @@ extern const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
+class GGS_lexicalExplicitTokenListMapMap : public GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalExplicitTokenListMapMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalExplicitTokenListMapMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
-  public: GGS_lexicalExplicitTokenListMapMap & operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
-  
+//  public: GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
+//  public: GGS_lexicalExplicitTokenListMapMap & operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6701,35 +6856,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalExplicitTokenListMapMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalExplicitTokenListMap mProperty_mExplicitTokenListMap ;
-  public: GGS_tokenSortedlist mProperty_mTokenSortedList ;
-  public: GGS_bool mProperty_mShouldBeGenerated ;
-
-//--- Constructors
-  public: cMapElement_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap_2E_element & inValue
-                                                      COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalExplicitTokenListMapMap (const GGS_lstring & inKey,
-                                                      const GGS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
-                                                      const GGS_tokenSortedlist & in_mTokenSortedList,
-                                                      const GGS_bool & in_mShouldBeGenerated
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMapMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -6922,44 +7048,69 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ : public AC_GALGAS_root 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalMessageMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalMessageMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalMessageMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalMessageMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalMessageMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalMessageMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalMessageMap (const DownEnumerator_lexicalMessageMap &) = delete ;
+  private: DownEnumerator_lexicalMessageMap & operator = (const DownEnumerator_lexicalMessageMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalMessageMap final {
+  public: UpEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalMessageMap (const UpEnumerator_lexicalMessageMap &) = delete ;
+  private: UpEnumerator_lexicalMessageMap & operator = (const UpEnumerator_lexicalMessageMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6967,14 +7118,41 @@ extern const char * kSearchErrorMessage_lexicalMessageMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalMessageMap : public AC_GALGAS_map {
+class GGS_lexicalMessageMap : public GGS_GenericMap <GGS_lexicalMessageMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalMessageMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalMessageMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) ;
-  public: GGS_lexicalMessageMap & operator = (const GGS_lexicalMessageMap & inSource) ;
-  
+//  public: GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) ;
+//  public: GGS_lexicalMessageMap & operator = (const GGS_lexicalMessageMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7066,33 +7244,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalMessageMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalMessageMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lstring mProperty_mLexicalMessage ;
-  public: GGS_bool mProperty_mMessageIsUsed ;
-
-//--- Constructors
-  public: cMapElement_lexicalMessageMap (const GGS_lexicalMessageMap_2E_element & inValue
-                                         COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalMessageMap (const GGS_lstring & inKey,
-                                         const GGS_lstring & in_mLexicalMessage,
-                                         const GGS_bool & in_mMessageIsUsed
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalMessageMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -7574,46 +7725,72 @@ class GGS_lexicalRoutineFormalArgumentList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalRoutineMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalRoutineMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
-  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalRoutineMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
-  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalRoutineMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalRoutineMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalRoutineMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
+
+  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalRoutineMap (const DownEnumerator_lexicalRoutineMap &) = delete ;
+  private: DownEnumerator_lexicalRoutineMap & operator = (const DownEnumerator_lexicalRoutineMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalRoutineMap final {
+  public: UpEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
+  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalRoutineMap (const UpEnumerator_lexicalRoutineMap &) = delete ;
+  private: UpEnumerator_lexicalRoutineMap & operator = (const UpEnumerator_lexicalRoutineMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7621,14 +7798,41 @@ extern const char * kSearchErrorMessage_lexicalRoutineMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalRoutineMap : public AC_GALGAS_map {
+class GGS_lexicalRoutineMap : public GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalRoutineMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalRoutineMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) ;
-  public: GGS_lexicalRoutineMap & operator = (const GGS_lexicalRoutineMap & inSource) ;
-  
+//  public: GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) ;
+//  public: GGS_lexicalRoutineMap & operator = (const GGS_lexicalRoutineMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7723,35 +7927,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalRoutineMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalRoutineMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalRoutineFormalArgumentList mProperty_mLexicalRoutineFormalArgumentList ;
-  public: GGS_stringlist mProperty_mErrorMessageList ;
-  public: GGS_bool mProperty_mIsExtern ;
-
-//--- Constructors
-  public: cMapElement_lexicalRoutineMap (const GGS_lexicalRoutineMap_2E_element & inValue
-                                         COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalRoutineMap (const GGS_lstring & inKey,
-                                         const GGS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
-                                         const GGS_stringlist & in_mErrorMessageList,
-                                         const GGS_bool & in_mIsExtern
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalRoutineMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -8212,48 +8387,75 @@ class GGS_lexicalFunctionFormalArgumentList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalFunctionMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalFunctionMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalFunctionFormalArgumentList current_mLexicalTypeList (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
-  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalFunctionMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lexicalFunctionFormalArgumentList current_mLexicalTypeList (LOCATION_ARGS) const ;
-  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
-  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalFunctionMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalFunctionMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalFunctionMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalFunctionFormalArgumentList current_mLexicalTypeList (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
+
+  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalFunctionMap (const DownEnumerator_lexicalFunctionMap &) = delete ;
+  private: DownEnumerator_lexicalFunctionMap & operator = (const DownEnumerator_lexicalFunctionMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalFunctionMap final {
+  public: UpEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentList current_mLexicalTypeList (LOCATION_ARGS) const ;
+  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
+  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalFunctionMap (const UpEnumerator_lexicalFunctionMap &) = delete ;
+  private: UpEnumerator_lexicalFunctionMap & operator = (const UpEnumerator_lexicalFunctionMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8261,14 +8463,41 @@ extern const char * kSearchErrorMessage_lexicalFunctionMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalFunctionMap : public AC_GALGAS_map {
+class GGS_lexicalFunctionMap : public GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalFunctionMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalFunctionMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) ;
-  public: GGS_lexicalFunctionMap & operator = (const GGS_lexicalFunctionMap & inSource) ;
-  
+//  public: GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) ;
+//  public: GGS_lexicalFunctionMap & operator = (const GGS_lexicalFunctionMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8374,37 +8603,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalFunctionMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalFunctionMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lexicalFunctionFormalArgumentList mProperty_mLexicalTypeList ;
-  public: GGS_lexicalTypeEnum mProperty_mReturnedLexicalType ;
-  public: GGS_string mProperty_mReplacementFunctionName ;
-  public: GGS_bool mProperty_mIsExtern ;
-
-//--- Constructors
-  public: cMapElement_lexicalFunctionMap (const GGS_lexicalFunctionMap_2E_element & inValue
-                                          COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalFunctionMap (const GGS_lstring & inKey,
-                                          const GGS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
-                                          const GGS_lexicalTypeEnum & in_mReturnedLexicalType,
-                                          const GGS_string & in_mReplacementFunctionName,
-                                          const GGS_bool & in_mIsExtern
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalFunctionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -8910,44 +9108,69 @@ class GGS_templateDelimitorList_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @styleMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_styleMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_styleMap (const class GGS_styleMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_styleMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_styleMap (const class GGS_styleMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @styleMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_styleMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_styleMap final {
+//--- Constructor
+  public: DownEnumerator_styleMap (const class GGS_styleMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
+
+  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_styleMap (const DownEnumerator_styleMap &) = delete ;
+  private: DownEnumerator_styleMap & operator = (const DownEnumerator_styleMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_styleMap final {
+  public: UpEnumerator_styleMap (const class GGS_styleMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_styleMap (const UpEnumerator_styleMap &) = delete ;
+  private: UpEnumerator_styleMap & operator = (const UpEnumerator_styleMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8955,14 +9178,41 @@ extern const char * kSearchErrorMessage_styleMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_styleMap : public AC_GALGAS_map {
+class GGS_styleMap : public GGS_GenericMap <GGS_styleMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_styleMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_styleMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_styleMap (const GGS_styleMap & inSource) ;
-  public: GGS_styleMap & operator = (const GGS_styleMap & inSource) ;
-  
+//  public: GGS_styleMap (const GGS_styleMap & inSource) ;
+//  public: GGS_styleMap & operator = (const GGS_styleMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9046,33 +9296,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@styleMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_styleMap : public cMapElement {
-//--- Map attributes
-  public: GGS_lstring mProperty_mComment ;
-  public: GGS_uint mProperty_mStyleIndex ;
-
-//--- Constructors
-  public: cMapElement_styleMap (const GGS_styleMap_2E_element & inValue
-                                COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_styleMap (const GGS_lstring & inKey,
-                                const GGS_lstring & in_mComment,
-                                const GGS_uint & in_mStyleIndex
-                                COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @styleMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -9253,40 +9476,63 @@ class GGS_styleMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalTagMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lexicalTagMap final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_lexicalTagMap (const class GGS_lexicalTagMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalTagMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lexicalTagMap final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_lexicalTagMap (const class GGS_lexicalTagMap & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexicalTagMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTagMap map
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement_lexicalTagMap ;
+#include "GGS_GenericMap.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalTagMap final {
+//--- Constructor
+  public: DownEnumerator_lexicalTagMap (const class GGS_lexicalTagMap & inMap) ;
+
+//--- Accessors
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+
+//--- Current element access
+  public: class GGS_lexicalTagMap_2E_element current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalTagMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_lexicalTagMap (const DownEnumerator_lexicalTagMap &) = delete ;
+  private: DownEnumerator_lexicalTagMap & operator = (const DownEnumerator_lexicalTagMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalTagMap final {
+  public: UpEnumerator_lexicalTagMap (const class GGS_lexicalTagMap & inMap)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalTagMap_2E_element current (LOCATION_ARGS) const ;
+
+
+//--- Private properties
+  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexicalTagMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_lexicalTagMap (const UpEnumerator_lexicalTagMap &) = delete ;
+  private: UpEnumerator_lexicalTagMap & operator = (const UpEnumerator_lexicalTagMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9294,14 +9540,41 @@ extern const char * kSearchErrorMessage_lexicalTagMap_searchKey ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTagMap : public AC_GALGAS_map {
+class GGS_lexicalTagMap : public GGS_GenericMap <GGS_lexicalTagMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalTagMap (void) ;
 
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalTagMap (void) = default ;
+
 //--------------------------------- Handle copy
-  public: GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) ;
-  public: GGS_lexicalTagMap & operator = (const GGS_lexicalTagMap & inSource) ;
-  
+//  public: GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) ;
+//  public: GGS_lexicalTagMap & operator = (const GGS_lexicalTagMap & inSource) ;
+
+//--------------------------------- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Getter locationForKey
+  public: GGS_location getter_locationForKey (const class GGS_string & inKey,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keyList
+  public: GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter keySet
+//  public: GGS_stringset getter_keySet (Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter hasKey
+  public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter count
+  public: GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -9363,29 +9636,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 2: class for element of '@lexicalTagMap' map
 //--------------------------------------------------------------------------------------------------
-
-class cMapElement_lexicalTagMap : public cMapElement {
-//--- Map attributes
-
-//--- Constructors
-  public: cMapElement_lexicalTagMap (const GGS_lexicalTagMap_2E_element & inValue
-                                     COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_lexicalTagMap (const GGS_lstring & inKey
-                                     COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTagMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -12518,4 +12768,83 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalSelectInstructionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSelectInstructionAST_2E_weak : public GGS_lexicalInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_lexicalSelectInstructionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_lexicalSelectInstructionAST_2E_weak (const class GGS_lexicalSelectInstructionAST & inSource) ;
+
+  public: GGS_lexicalSelectInstructionAST_2E_weak & operator = (const class GGS_lexicalSelectInstructionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_lexicalSelectInstructionAST_2E_weak init_nil (void) {
+    GGS_lexicalSelectInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_lexicalSelectInstructionAST bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_lexicalSelectInstructionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSelectInstructionAST_2E_weak extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalSelectInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalSelectInstructionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
 

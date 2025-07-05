@@ -67,7 +67,7 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
   }
 //--- One more entry for the empty string symbol (displayed '$$')
   mStringsArray.appendObject ("") ; // Empty string symbol
-  mTerminalSymbolsCount ++ ;
+  mTerminalSymbolsCount += 1 ;
 //--- Append non terminal symbols from original grammar
   UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {

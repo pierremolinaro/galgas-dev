@@ -2197,7 +2197,7 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
           const GGS_templateGetterCallInExpressionAST temp_34 = this ;
           const GGS_templateGetterCallInExpressionAST temp_35 = this ;
           TC_Array <FixItDescription> fixItArray36 ;
-          appendFixItActions (fixItArray36, EnumFixItKind::fixItReplace, var_getterMap_4788.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 171))) ;
+          appendFixItActions (fixItArray36, EnumFixItKind::fixItReplace, var_getterMap_4788.getter_keyList (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 171))) ;
           inCompiler->emitSemanticError (temp_34.readProperty_mGetterName ().readProperty_location (), GGS_string ("the '@").add_operation (var_receiverTypeName_3946, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 169)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 169)).add_operation (temp_35.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 169)).add_operation (GGS_string ("' getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 169)), fixItArray36  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 168)) ;
           var_getterFormalArgumentTypeList_4889.drop () ; // Release error dropped variable
           var_hasCompilerArgument_4957.drop () ; // Release error dropped variable
@@ -2321,7 +2321,7 @@ void cPtr_templateClassFunctionAST::method_templateExpressionAnalysis (const GGS
       const GGS_templateClassFunctionAST temp_8 = this ;
       const GGS_templateClassFunctionAST temp_9 = this ;
       TC_Array <FixItDescription> fixItArray10 ;
-      appendFixItActions (fixItArray10, EnumFixItKind::fixItReplace, var_classFunctionMap_10590.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 249))) ;
+      appendFixItActions (fixItArray10, EnumFixItKind::fixItReplace, var_classFunctionMap_10590.getter_keyList (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 249))) ;
       inCompiler->emitSemanticError (temp_7.readProperty_mClassFunctionName ().readProperty_location (), GGS_string ("the '@").add_operation (temp_8.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 247)).add_operation (GGS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 247)).add_operation (temp_9.readProperty_mClassFunctionName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 247)).add_operation (GGS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 247)), fixItArray10  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 246)) ;
       var_classFuncFormalArgumentTypeList_10780.drop () ; // Release error dropped variable
       var_hasCompilerArgument_10735.drop () ; // Release error dropped variable
@@ -4149,7 +4149,7 @@ void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (cons
         var_templateInstructionSwitchBranchList_5793.addAssignOperation (enumerator_5903.current_constantList (HERE), var_extractedAssociatedValuesForGeneration_6014, enumerator_5903.current_endOfBranch (HERE).getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 211)), var_instructionList_8708  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 208)) ;
         enumerator_5903.gotoNextObject () ;
       }
-      GGS_stringset var_forgottenConstants_9189 = var_enumType_5570.readProperty_constantMap ().getter_keySet (SOURCE_FILE ("template-switch-instruction.galgas", 215)).substract_operation (var_constantsNamedInSwitchInstruction_5670, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 215)) ;
+      GGS_stringset var_forgottenConstants_9189 = var_enumType_5570.readProperty_constantMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 215)).substract_operation (var_constantsNamedInSwitchInstruction_5670, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 215)) ;
       GalgasBool test_19 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_19) {
         test_19 = GGS_bool (ComparisonKind::greaterThan, var_forgottenConstants_9189.getter_count (SOURCE_FILE ("template-switch-instruction.galgas", 216)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;

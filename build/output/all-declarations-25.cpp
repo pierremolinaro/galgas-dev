@@ -3338,7 +3338,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     GGS_lexicalAttributeListAST joker_16035_1 ; // Joker input parameter
     GGS_lexicalListDeclarationListAST joker_16076 ; // Joker input parameter
     constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (enumerator_15799.current_mLexiqueFileName (HERE), joker_15990, var_terminalMap_16017, joker_16035_3, joker_16035_2, joker_16035_1, var_lexicalStyleListAST_16050, joker_16076, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 465)) ;
-    GGS_stringset var_terminalSymbolSet_16127 = var_terminalMap_16017.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 474)) ;
+    GGS_stringset var_terminalSymbolSet_16127 = var_terminalMap_16017.getter_keySet (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 474)) ;
     UpEnumerator_guiLabelListAST enumerator_16214 (enumerator_15799.current_mLabels (HERE)) ;
     while (enumerator_16214.hasCurrentObject ()) {
       UpEnumerator_terminalLabelListAST enumerator_16251 (enumerator_16214.current_mTerminalList (HERE)) ;

@@ -6012,70 +6012,33 @@ GGS_lexicalSentValueList GGS_lexicalSentValueList::extractObject (const GGS_obje
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_terminalMap::cMapElement_terminalMap (const GGS_terminalMap_2E_element & inValue
-                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mSentAttributeList (inValue.mProperty_mSentAttributeList) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_terminalMap::cMapElement_terminalMap (const GGS_lstring & inKey,
-                                                  const GGS_lexicalSentValueList & in_mSentAttributeList
-                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mSentAttributeList (in_mSentAttributeList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_terminalMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_terminalMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_terminalMap (mProperty_lkey, mProperty_mSentAttributeList COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_terminalMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mSentAttributeList" ":") ;
-  mProperty_mSentAttributeList.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalMap::GGS_terminalMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_terminalMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_terminalMap::GGS_terminalMap (const GGS_terminalMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_terminalMap::GGS_terminalMap (const GGS_terminalMap & inSource) :
+GGS_GenericMap <GGS_terminalMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_terminalMap & GGS_terminalMap::operator = (const GGS_terminalMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_terminalMap & GGS_terminalMap::operator = (const GGS_terminalMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalMap GGS_terminalMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_terminalMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -6083,7 +6046,59 @@ GGS_terminalMap GGS_terminalMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 GGS_terminalMap GGS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_terminalMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_terminalMap::getter_hasKey (const GGS_string & inKey
+                                         COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_terminalMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_terminalMap::getter_locationForKey (const GGS_string & inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_terminalMap::getter_keyList (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6095,13 +6110,13 @@ GGS_terminalMap_2E_element_3F_ GGS_terminalMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_terminalMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_terminalMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_terminalMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mSentAttributeList = p->mProperty_mSentAttributeList ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mSentAttributeList = info->mProperty_mSentAttributeList ;
       result = element ;
     }
   }
@@ -6128,39 +6143,37 @@ GGS_terminalMap GGS_terminalMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalMap::setter_insertKey (GGS_lstring inKey,
+void GGS_terminalMap::setter_insertKey (GGS_lstring inLKey,
                                         GGS_lexicalSentValueList inArgument0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
-  cMapElement_terminalMap * p = nullptr ;
-  macroMyNew (p, cMapElement_terminalMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_terminalMap_2E_element element (inLKey, inArgument0) ;
   const char * kInsertErrorMessage = "the '%K' terminal has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_terminalMap_searchKey = "the '%K' terminal is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalMap::method_searchKey (GGS_lstring inKey,
+void GGS_terminalMap::method_searchKey (GGS_lstring inLKey,
                                         GGS_lexicalSentValueList & outArgument0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) performSearch (inKey,
-                                                                                       inCompiler,
-                                                                                       kSearchErrorMessage_terminalMap_searchKey
-                                                                                       COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' terminal is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_terminalMap) ;
-    outArgument0 = p->mProperty_mSentAttributeList ;
+    outArgument0 = info->mProperty_mSentAttributeList ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6168,94 +6181,110 @@ void GGS_terminalMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalSentValueList GGS_terminalMap::getter_mSentAttributeListForKey (const GGS_string & inKey,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) attributes ;
   GGS_lexicalSentValueList result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_terminalMap) ;
-    result = p->mProperty_mSentAttributeList ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mSentAttributeList ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalMap::setter_setMSentAttributeListForKey (GGS_lexicalSentValueList inAttributeValue,
+void GGS_terminalMap::setter_setMSentAttributeListForKey (GGS_lexicalSentValueList inValue,
                                                           GGS_string inKey,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_terminalMap * p = (cMapElement_terminalMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_terminalMap) ;
-    p->mProperty_mSentAttributeList = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_terminalMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mSentAttributeList = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_terminalMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @terminalMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_terminalMap::DownEnumerator_terminalMap (const GGS_terminalMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_terminalMap::DownEnumerator_terminalMap (const GGS_terminalMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalMap_2E_element DownEnumerator_terminalMap::current (LOCATION_ARGS) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_terminalMap) ;
-  return GGS_terminalMap_2E_element (p->mProperty_lkey, p->mProperty_mSentAttributeList) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_terminalMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSentValueList DownEnumerator_terminalMap::current_mSentAttributeList (LOCATION_ARGS) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_terminalMap) ;
-  return p->mProperty_mSentAttributeList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSentAttributeList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @terminalMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_terminalMap::UpEnumerator_terminalMap (const GGS_terminalMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_terminalMap::UpEnumerator_terminalMap (const GGS_terminalMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalMap_2E_element UpEnumerator_terminalMap::current (LOCATION_ARGS) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_terminalMap) ;
-  return GGS_terminalMap_2E_element (p->mProperty_lkey, p->mProperty_mSentAttributeList) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_terminalMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSentValueList UpEnumerator_terminalMap::current_mSentAttributeList (LOCATION_ARGS) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_terminalMap) ;
-  return p->mProperty_mSentAttributeList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSentAttributeList ;
 }
 
 
@@ -6299,70 +6328,33 @@ GGS_terminalMap GGS_terminalMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GGS_lexicalTypeMap_2E_element & inValue
-                                                        COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GGS_lstring & inKey,
-                                                        const GGS_lexicalTypeEnum & in_mLexicalType
-                                                        COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexicalType (in_mLexicalType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalTypeMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalTypeMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalTypeMap (mProperty_lkey, mProperty_mLexicalType COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalTypeMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexicalType" ":") ;
-  mProperty_mLexicalType.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeMap::GGS_lexicalTypeMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalTypeMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeMap::GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalTypeMap::GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) :
+GGS_GenericMap <GGS_lexicalTypeMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeMap & GGS_lexicalTypeMap::operator = (const GGS_lexicalTypeMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalTypeMap & GGS_lexicalTypeMap::operator = (const GGS_lexicalTypeMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeMap GGS_lexicalTypeMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalTypeMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -6370,7 +6362,59 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 GGS_lexicalTypeMap GGS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalTypeMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalTypeMap::getter_hasKey (const GGS_string & inKey
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalTypeMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalTypeMap::getter_locationForKey (const GGS_string & inKey,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalTypeMap::getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6382,13 +6426,13 @@ GGS_lexicalTypeMap_2E_element_3F_ GGS_lexicalTypeMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTypeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalTypeMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalTypeMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalType = info->mProperty_mLexicalType ;
       result = element ;
     }
   }
@@ -6415,39 +6459,37 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::getter_overriddenMap (Compiler * inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTypeMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalTypeMap::setter_insertKey (GGS_lstring inLKey,
                                            GGS_lexicalTypeEnum inArgument0,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTypeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTypeMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalTypeMap_2E_element element (inLKey, inArgument0) ;
   const char * kInsertErrorMessage = "the '@%K' lexical type is already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalTypeMap_searchKey = "there is no '@%K' lexical type" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalTypeMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalTypeMap::method_searchKey (GGS_lstring inLKey,
                                            GGS_lexicalTypeEnum & outArgument0,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) performSearch (inKey,
-                                                                                             inCompiler,
-                                                                                             kSearchErrorMessage_lexicalTypeMap_searchKey
-                                                                                             COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "there is no '@%K' lexical type" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-    outArgument0 = p->mProperty_mLexicalType ;
+    outArgument0 = info->mProperty_mLexicalType ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6455,94 +6497,110 @@ void GGS_lexicalTypeMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalTypeEnum GGS_lexicalTypeMap::getter_mLexicalTypeForKey (const GGS_string & inKey,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) attributes ;
   GGS_lexicalTypeEnum result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-    result = p->mProperty_mLexicalType ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalTypeMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalType ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTypeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum inAttributeValue,
+void GGS_lexicalTypeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum inValue,
                                                        GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-    p->mProperty_mLexicalType = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalTypeMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalType = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalTypeMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTypeMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalTypeMap::DownEnumerator_lexicalTypeMap (const GGS_lexicalTypeMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalTypeMap::DownEnumerator_lexicalTypeMap (const GGS_lexicalTypeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeMap_2E_element DownEnumerator_lexicalTypeMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-  return GGS_lexicalTypeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalTypeMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum DownEnumerator_lexicalTypeMap::current_mLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-  return p->mProperty_mLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalType ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalTypeMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalTypeMap::UpEnumerator_lexicalTypeMap (const GGS_lexicalTypeMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalTypeMap::UpEnumerator_lexicalTypeMap (const GGS_lexicalTypeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeMap_2E_element UpEnumerator_lexicalTypeMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-  return GGS_lexicalTypeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalTypeMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum UpEnumerator_lexicalTypeMap::current_mLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-  return p->mProperty_mLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalType ;
 }
 
 
@@ -6586,70 +6644,33 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::extractObject (const GGS_object & inObjec
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GGS_lexicalAttributeMap_2E_element & inValue
-                                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GGS_lstring & inKey,
-                                                                  const GGS_lexicalTypeEnum & in_mLexicalType
-                                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexicalType (in_mLexicalType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalAttributeMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalAttributeMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalAttributeMap (mProperty_lkey, mProperty_mLexicalType COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalAttributeMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexicalType" ":") ;
-  mProperty_mLexicalType.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeMap::GGS_lexicalAttributeMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeMap::GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalAttributeMap::GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) :
+GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeMap & GGS_lexicalAttributeMap::operator = (const GGS_lexicalAttributeMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalAttributeMap & GGS_lexicalAttributeMap::operator = (const GGS_lexicalAttributeMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeMap GGS_lexicalAttributeMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalAttributeMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -6657,7 +6678,59 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::init (Compiler * COMMA_LOCATION
 
 GGS_lexicalAttributeMap GGS_lexicalAttributeMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalAttributeMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalAttributeMap::getter_hasKey (const GGS_string & inKey
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalAttributeMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalAttributeMap::getter_locationForKey (const GGS_string & inKey,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalAttributeMap::getter_keyList (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6669,13 +6742,13 @@ GGS_lexicalAttributeMap_2E_element_3F_ GGS_lexicalAttributeMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalAttributeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalAttributeMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalAttributeMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalType = info->mProperty_mLexicalType ;
       result = element ;
     }
   }
@@ -6702,39 +6775,37 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::getter_overriddenMap (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalAttributeMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalAttributeMap::setter_insertKey (GGS_lstring inLKey,
                                                 GGS_lexicalTypeEnum inArgument0,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalAttributeMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalAttributeMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalAttributeMap_2E_element element (inLKey, inArgument0) ;
   const char * kInsertErrorMessage = "the '%K' lexical attribute has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalAttributeMap_searchKey = "the '%K' lexical attribute is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalAttributeMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalAttributeMap::method_searchKey (GGS_lstring inLKey,
                                                 GGS_lexicalTypeEnum & outArgument0,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) performSearch (inKey,
-                                                                                                       inCompiler,
-                                                                                                       kSearchErrorMessage_lexicalAttributeMap_searchKey
-                                                                                                       COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' lexical attribute is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-    outArgument0 = p->mProperty_mLexicalType ;
+    outArgument0 = info->mProperty_mLexicalType ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6742,94 +6813,110 @@ void GGS_lexicalAttributeMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalTypeEnum GGS_lexicalAttributeMap::getter_mLexicalTypeForKey (const GGS_string & inKey,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) attributes ;
   GGS_lexicalTypeEnum result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-    result = p->mProperty_mLexicalType ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalType ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalAttributeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum inAttributeValue,
+void GGS_lexicalAttributeMap::setter_setMLexicalTypeForKey (GGS_lexicalTypeEnum inValue,
                                                             GGS_string inKey,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-    p->mProperty_mLexicalType = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalAttributeMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalType = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalAttributeMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalAttributeMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalAttributeMap::DownEnumerator_lexicalAttributeMap (const GGS_lexicalAttributeMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalAttributeMap::DownEnumerator_lexicalAttributeMap (const GGS_lexicalAttributeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeMap_2E_element DownEnumerator_lexicalAttributeMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-  return GGS_lexicalAttributeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalAttributeMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum DownEnumerator_lexicalAttributeMap::current_mLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-  return p->mProperty_mLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalType ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalAttributeMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalAttributeMap::UpEnumerator_lexicalAttributeMap (const GGS_lexicalAttributeMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalAttributeMap::UpEnumerator_lexicalAttributeMap (const GGS_lexicalAttributeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeMap_2E_element UpEnumerator_lexicalAttributeMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-  return GGS_lexicalAttributeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalAttributeMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum UpEnumerator_lexicalAttributeMap::current_mLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-  return p->mProperty_mLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalType ;
 }
 
 
@@ -7666,84 +7753,33 @@ GGS_terminalList GGS_terminalList::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap_2E_element & inValue
-                                                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mTerminal (inValue.mProperty_mTerminal),
-mProperty_atomicSelection (inValue.mProperty_atomicSelection),
-mProperty_isEndOfTemplateMark (inValue.mProperty_isEndOfTemplateMark) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GGS_lstring & inKey,
-                                                                                  const GGS_lstring & in_mTerminal,
-                                                                                  const GGS_bool & in_atomicSelection,
-                                                                                  const GGS_bool & in_isEndOfTemplateMark
-                                                                                  COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mTerminal (in_mTerminal),
-mProperty_atomicSelection (in_atomicSelection),
-mProperty_isEndOfTemplateMark (in_isEndOfTemplateMark) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalExplicitTokenListMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalExplicitTokenListMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalExplicitTokenListMap (mProperty_lkey, mProperty_mTerminal, mProperty_atomicSelection, mProperty_isEndOfTemplateMark COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalExplicitTokenListMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mTerminal" ":") ;
-  mProperty_mTerminal.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("atomicSelection" ":") ;
-  mProperty_atomicSelection.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("isEndOfTemplateMark" ":") ;
-  mProperty_isEndOfTemplateMark.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap::GGS_lexicalExplicitTokenListMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalExplicitTokenListMap::GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalExplicitTokenListMap::GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) :
+GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalExplicitTokenListMap & GGS_lexicalExplicitTokenListMap::operator = (const GGS_lexicalExplicitTokenListMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalExplicitTokenListMap & GGS_lexicalExplicitTokenListMap::operator = (const GGS_lexicalExplicitTokenListMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -7751,7 +7787,59 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::init (Compiler 
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalExplicitTokenListMap::getter_hasKey (const GGS_string & inKey
+                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalExplicitTokenListMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalExplicitTokenListMap::getter_locationForKey (const GGS_string & inKey,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalExplicitTokenListMap::getter_keyList (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -7763,15 +7851,15 @@ GGS_lexicalExplicitTokenListMap_2E_element_3F_ GGS_lexicalExplicitTokenListMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalExplicitTokenListMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalExplicitTokenListMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mTerminal = p->mProperty_mTerminal ;
-      element.mProperty_atomicSelection = p->mProperty_atomicSelection ;
-      element.mProperty_isEndOfTemplateMark = p->mProperty_isEndOfTemplateMark ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mTerminal = info->mProperty_mTerminal ;
+      element.mProperty_atomicSelection = info->mProperty_atomicSelection ;
+      element.mProperty_isEndOfTemplateMark = info->mProperty_isEndOfTemplateMark ;
       result = element ;
     }
   }
@@ -7798,47 +7886,45 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::getter_overridd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalExplicitTokenListMap::setter_insertKey (GGS_lstring inLKey,
                                                         GGS_lstring inArgument0,
                                                         GGS_bool inArgument1,
                                                         GGS_bool inArgument2,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalExplicitTokenListMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
   const char * kInsertErrorMessage = "the '%K' terminal has been already declared in the list" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey = "the '%K' terminal is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalExplicitTokenListMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalExplicitTokenListMap::method_searchKey (GGS_lstring inLKey,
                                                         GGS_lstring & outArgument0,
                                                         GGS_bool & outArgument1,
                                                         GGS_bool & outArgument2,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) performSearch (inKey,
-                                                                                                                       inCompiler,
-                                                                                                                       kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey
-                                                                                                                       COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' terminal is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    outArgument0 = p->mProperty_mTerminal ;
-    outArgument1 = p->mProperty_atomicSelection ;
-    outArgument2 = p->mProperty_isEndOfTemplateMark ;
+    outArgument0 = info->mProperty_mTerminal ;
+    outArgument1 = info->mProperty_atomicSelection ;
+    outArgument2 = info->mProperty_isEndOfTemplateMark ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -7846,184 +7932,214 @@ void GGS_lexicalExplicitTokenListMap::method_searchKey (GGS_lstring inKey,
 GGS_lstring GGS_lexicalExplicitTokenListMap::getter_mTerminalForKey (const GGS_string & inKey,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) attributes ;
   GGS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    result = p->mProperty_mTerminal ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mTerminal ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalExplicitTokenListMap::getter_atomicSelectionForKey (const GGS_string & inKey,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    result = p->mProperty_atomicSelection ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_atomicSelection ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalExplicitTokenListMap::getter_isEndOfTemplateMarkForKey (const GGS_string & inKey,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    result = p->mProperty_isEndOfTemplateMark ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_isEndOfTemplateMark ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::setter_setMTerminalForKey (GGS_lstring inAttributeValue,
+void GGS_lexicalExplicitTokenListMap::setter_setMTerminalForKey (GGS_lstring inValue,
                                                                  GGS_string inKey,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    p->mProperty_mTerminal = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mTerminal = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::setter_setAtomicSelectionForKey (GGS_bool inAttributeValue,
+void GGS_lexicalExplicitTokenListMap::setter_setAtomicSelectionForKey (GGS_bool inValue,
                                                                        GGS_string inKey,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    p->mProperty_atomicSelection = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_atomicSelection = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMap::setter_setIsEndOfTemplateMarkForKey (GGS_bool inAttributeValue,
+void GGS_lexicalExplicitTokenListMap::setter_setIsEndOfTemplateMarkForKey (GGS_bool inValue,
                                                                            GGS_string inKey,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    p->mProperty_isEndOfTemplateMark = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_isEndOfTemplateMark = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalExplicitTokenListMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalExplicitTokenListMap::DownEnumerator_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalExplicitTokenListMap::DownEnumerator_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap_2E_element DownEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return GGS_lexicalExplicitTokenListMap_2E_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_atomicSelection, p->mProperty_isEndOfTemplateMark) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalExplicitTokenListMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalExplicitTokenListMap::current_mTerminal (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_mTerminal ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mTerminal ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalExplicitTokenListMap::current_atomicSelection (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_atomicSelection ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_atomicSelection ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalExplicitTokenListMap::current_isEndOfTemplateMark (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_isEndOfTemplateMark ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_isEndOfTemplateMark ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalExplicitTokenListMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalExplicitTokenListMap::UpEnumerator_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalExplicitTokenListMap::UpEnumerator_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap_2E_element UpEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return GGS_lexicalExplicitTokenListMap_2E_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_atomicSelection, p->mProperty_isEndOfTemplateMark) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalExplicitTokenListMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalExplicitTokenListMap::current_mTerminal (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_mTerminal ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mTerminal ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalExplicitTokenListMap::current_atomicSelection (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_atomicSelection ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_atomicSelection ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalExplicitTokenListMap::current_isEndOfTemplateMark (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_isEndOfTemplateMark ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_isEndOfTemplateMark ;
 }
 
 
@@ -8363,84 +8479,33 @@ GGS_tokenSortedlist GGS_tokenSortedlist::extractObject (const GGS_object & inObj
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap_2E_element & inValue
-                                                                                        COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mExplicitTokenListMap (inValue.mProperty_mExplicitTokenListMap),
-mProperty_mTokenSortedList (inValue.mProperty_mTokenSortedList),
-mProperty_mShouldBeGenerated (inValue.mProperty_mShouldBeGenerated) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GGS_lstring & inKey,
-                                                                                        const GGS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
-                                                                                        const GGS_tokenSortedlist & in_mTokenSortedList,
-                                                                                        const GGS_bool & in_mShouldBeGenerated
-                                                                                        COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mExplicitTokenListMap (in_mExplicitTokenListMap),
-mProperty_mTokenSortedList (in_mTokenSortedList),
-mProperty_mShouldBeGenerated (in_mShouldBeGenerated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalExplicitTokenListMapMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalExplicitTokenListMapMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalExplicitTokenListMapMap (mProperty_lkey, mProperty_mExplicitTokenListMap, mProperty_mTokenSortedList, mProperty_mShouldBeGenerated COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalExplicitTokenListMapMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mExplicitTokenListMap" ":") ;
-  mProperty_mExplicitTokenListMap.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mTokenSortedList" ":") ;
-  mProperty_mTokenSortedList.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mShouldBeGenerated" ":") ;
-  mProperty_mShouldBeGenerated.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMapMap::GGS_lexicalExplicitTokenListMapMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalExplicitTokenListMapMap::GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalExplicitTokenListMapMap::GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) :
+GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalExplicitTokenListMapMap & GGS_lexicalExplicitTokenListMapMap::operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalExplicitTokenListMapMap & GGS_lexicalExplicitTokenListMapMap::operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMapMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -8448,7 +8513,59 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::init (Com
 
 GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMapMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalExplicitTokenListMapMap::getter_hasKey (const GGS_string & inKey
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalExplicitTokenListMapMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalExplicitTokenListMapMap::getter_locationForKey (const GGS_string & inKey,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalExplicitTokenListMapMap::getter_keyList (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -8460,15 +8577,15 @@ GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ GGS_lexicalExplicitTokenListMa
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalExplicitTokenListMapMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mExplicitTokenListMap = p->mProperty_mExplicitTokenListMap ;
-      element.mProperty_mTokenSortedList = p->mProperty_mTokenSortedList ;
-      element.mProperty_mShouldBeGenerated = p->mProperty_mShouldBeGenerated ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mExplicitTokenListMap = info->mProperty_mExplicitTokenListMap ;
+      element.mProperty_mTokenSortedList = info->mProperty_mTokenSortedList ;
+      element.mProperty_mShouldBeGenerated = info->mProperty_mShouldBeGenerated ;
       result = element ;
     }
   }
@@ -8495,47 +8612,45 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::getter_ov
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalExplicitTokenListMapMap::setter_insertKey (GGS_lstring inLKey,
                                                            GGS_lexicalExplicitTokenListMap inArgument0,
                                                            GGS_tokenSortedlist inArgument1,
                                                            GGS_bool inArgument2,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalExplicitTokenListMapMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalExplicitTokenListMapMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalExplicitTokenListMapMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
   const char * kInsertErrorMessage = "the '%K' token list has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey = "the '%K' token list is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalExplicitTokenListMapMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalExplicitTokenListMapMap::method_searchKey (GGS_lstring inLKey,
                                                            GGS_lexicalExplicitTokenListMap & outArgument0,
                                                            GGS_tokenSortedlist & outArgument1,
                                                            GGS_bool & outArgument2,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) performSearch (inKey,
-                                                                                                                             inCompiler,
-                                                                                                                             kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey
-                                                                                                                             COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' token list is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    outArgument0 = p->mProperty_mExplicitTokenListMap ;
-    outArgument1 = p->mProperty_mTokenSortedList ;
-    outArgument2 = p->mProperty_mShouldBeGenerated ;
+    outArgument0 = info->mProperty_mExplicitTokenListMap ;
+    outArgument1 = info->mProperty_mTokenSortedList ;
+    outArgument2 = info->mProperty_mShouldBeGenerated ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -8543,184 +8658,214 @@ void GGS_lexicalExplicitTokenListMapMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMapMap::getter_mExplicitTokenListMapForKey (const GGS_string & inKey,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
   GGS_lexicalExplicitTokenListMap result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    result = p->mProperty_mExplicitTokenListMap ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mExplicitTokenListMap ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist GGS_lexicalExplicitTokenListMapMap::getter_mTokenSortedListForKey (const GGS_string & inKey,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
   GGS_tokenSortedlist result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    result = p->mProperty_mTokenSortedList ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mTokenSortedList ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalExplicitTokenListMapMap::getter_mShouldBeGeneratedForKey (const GGS_string & inKey,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    result = p->mProperty_mShouldBeGenerated ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mShouldBeGenerated ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::setter_setMExplicitTokenListMapForKey (GGS_lexicalExplicitTokenListMap inAttributeValue,
+void GGS_lexicalExplicitTokenListMapMap::setter_setMExplicitTokenListMapForKey (GGS_lexicalExplicitTokenListMap inValue,
                                                                                 GGS_string inKey,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    p->mProperty_mExplicitTokenListMap = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMapMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mExplicitTokenListMap = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GGS_tokenSortedlist inAttributeValue,
+void GGS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GGS_tokenSortedlist inValue,
                                                                            GGS_string inKey,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    p->mProperty_mTokenSortedList = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMapMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mTokenSortedList = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::setter_setMShouldBeGeneratedForKey (GGS_bool inAttributeValue,
+void GGS_lexicalExplicitTokenListMapMap::setter_setMShouldBeGeneratedForKey (GGS_bool inValue,
                                                                              GGS_string inKey,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    p->mProperty_mShouldBeGenerated = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalExplicitTokenListMapMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mShouldBeGenerated = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalExplicitTokenListMapMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalExplicitTokenListMapMap::DownEnumerator_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalExplicitTokenListMapMap::DownEnumerator_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMapMap_2E_element DownEnumerator_lexicalExplicitTokenListMapMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return GGS_lexicalExplicitTokenListMapMap_2E_element (p->mProperty_lkey, p->mProperty_mExplicitTokenListMap, p->mProperty_mTokenSortedList, p->mProperty_mShouldBeGenerated) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalExplicitTokenListMapMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap DownEnumerator_lexicalExplicitTokenListMapMap::current_mExplicitTokenListMap (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mExplicitTokenListMap ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mExplicitTokenListMap ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist DownEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mTokenSortedList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mTokenSortedList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalExplicitTokenListMapMap::current_mShouldBeGenerated (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mShouldBeGenerated ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mShouldBeGenerated ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalExplicitTokenListMapMap::UpEnumerator_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalExplicitTokenListMapMap::UpEnumerator_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMapMap_2E_element UpEnumerator_lexicalExplicitTokenListMapMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return GGS_lexicalExplicitTokenListMapMap_2E_element (p->mProperty_lkey, p->mProperty_mExplicitTokenListMap, p->mProperty_mTokenSortedList, p->mProperty_mShouldBeGenerated) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalExplicitTokenListMapMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap UpEnumerator_lexicalExplicitTokenListMapMap::current_mExplicitTokenListMap (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mExplicitTokenListMap ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mExplicitTokenListMap ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist UpEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mTokenSortedList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mTokenSortedList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalExplicitTokenListMapMap::current_mShouldBeGenerated (LOCATION_ARGS) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return p->mProperty_mShouldBeGenerated ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mShouldBeGenerated ;
 }
 
 
@@ -8764,77 +8909,33 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::extractOb
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GGS_lexicalMessageMap_2E_element & inValue
-                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexicalMessage (inValue.mProperty_mLexicalMessage),
-mProperty_mMessageIsUsed (inValue.mProperty_mMessageIsUsed) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GGS_lstring & inKey,
-                                                              const GGS_lstring & in_mLexicalMessage,
-                                                              const GGS_bool & in_mMessageIsUsed
-                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexicalMessage (in_mLexicalMessage),
-mProperty_mMessageIsUsed (in_mMessageIsUsed) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalMessageMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalMessageMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalMessageMap (mProperty_lkey, mProperty_mLexicalMessage, mProperty_mMessageIsUsed COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalMessageMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexicalMessage" ":") ;
-  mProperty_mLexicalMessage.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mMessageIsUsed" ":") ;
-  mProperty_mMessageIsUsed.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalMessageMap::GGS_lexicalMessageMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalMessageMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalMessageMap::GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalMessageMap::GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) :
+GGS_GenericMap <GGS_lexicalMessageMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalMessageMap & GGS_lexicalMessageMap::operator = (const GGS_lexicalMessageMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalMessageMap & GGS_lexicalMessageMap::operator = (const GGS_lexicalMessageMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalMessageMap GGS_lexicalMessageMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalMessageMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -8842,7 +8943,59 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::init (Compiler * COMMA_LOCATION_ARG
 
 GGS_lexicalMessageMap GGS_lexicalMessageMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalMessageMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalMessageMap::getter_hasKey (const GGS_string & inKey
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalMessageMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalMessageMap::getter_locationForKey (const GGS_string & inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalMessageMap::getter_keyList (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -8854,15 +9007,37 @@ GGS_lexicalMessageMap_2E_element_3F_ GGS_lexicalMessageMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalMessageMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalMessageMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalMessageMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexicalMessage = p->mProperty_mLexicalMessage ;
-      element.mProperty_mMessageIsUsed = p->mProperty_mMessageIsUsed ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalMessage = info->mProperty_mLexicalMessage ;
+      element.mProperty_mMessageIsUsed = info->mProperty_mMessageIsUsed ;
       result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalMessageMap_2E_element GGS_lexicalMessageMap
+::readSubscript__3F_searchKey (const GGS_lstring & inLKey,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalMessageMap_2E_element result ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      const char * kErrorMessage = "the '%K' message is not declared" ;
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kErrorMessage COMMA_THERE) ;
+    }else{
+      result = info.value () ;
     }
   }
   return result ;
@@ -8888,217 +9063,223 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalMessageMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalMessageMap::setter_insertKey (GGS_lstring inLKey,
                                               GGS_lstring inArgument0,
                                               GGS_bool inArgument1,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalMessageMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalMessageMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalMessageMap_2E_element element (inLKey, inArgument0, inArgument1) ;
   const char * kInsertErrorMessage = "the '%K' message has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalMessageMap_searchKey = "the '%K' message is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalMessageMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalMessageMap::method_searchKey (GGS_lstring inLKey,
                                               GGS_lstring & outArgument0,
                                               GGS_bool & outArgument1,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) performSearch (inKey,
-                                                                                                   inCompiler,
-                                                                                                   kSearchErrorMessage_lexicalMessageMap_searchKey
-                                                                                                   COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' message is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    outArgument0 = p->mProperty_mLexicalMessage ;
-    outArgument1 = p->mProperty_mMessageIsUsed ;
+    outArgument0 = info->mProperty_mLexicalMessage ;
+    outArgument1 = info->mProperty_mMessageIsUsed ;
   }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_lexicalMessageMap_2E_element GGS_lexicalMessageMap
-::readSubscript__3F_searchKey (const class GGS_lstring & inKey,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  GGS_lexicalMessageMap_2E_element result ;
-  if (isValid () && inKey.isValid ()) {
-    const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) performSearch (inKey,
-                                                                                                     inCompiler,
-                                                                                                     kSearchErrorMessage_lexicalMessageMap_searchKey
-                                                                                                     COMMA_THERE) ;
-    if (nullptr != p) {
-      result.mProperty_lkey = p->mProperty_lkey ;
-      result.mProperty_mLexicalMessage = p->mProperty_mLexicalMessage ;
-    result.mProperty_mMessageIsUsed = p->mProperty_mMessageIsUsed ;
-    }
-  }
-  return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalMessageMap::setter_replaceKey (GGS_lexicalMessageMap_2E_element inElement,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  const char * kReplaceErrorMessage = "the '%K' message is not declared" ;
-  cMapElement_lexicalMessageMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalMessageMap (inElement.mProperty_lkey, inElement.mProperty_mLexicalMessage, inElement.mProperty_mMessageIsUsed COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  performReplace (inElement.mProperty_lkey, attributes, kReplaceErrorMessage, inCompiler COMMA_THERE) ;
+  SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info ;
+  if (isValid () && inElement.isValid ()) {
+    const char * kReplaceErrorMessage = "the '%K' message is not declared" ;
+    const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalMessageMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inElement.mProperty_lkey, nearestKeyArray, kReplaceErrorMessage COMMA_THERE) ;
+    }else{
+      node->mSharedInfo = SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>::make (inElement COMMA_THERE) ;
+    }
+  }
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_lexicalMessageMap::getter_mLexicalMessageForKey (const GGS_string & inKey,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) attributes ;
   GGS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    result = p->mProperty_mLexicalMessage ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalMessage ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalMessageMap::getter_mMessageIsUsedForKey (const GGS_string & inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    result = p->mProperty_mMessageIsUsed ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mMessageIsUsed ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalMessageMap::setter_setMLexicalMessageForKey (GGS_lstring inAttributeValue,
+void GGS_lexicalMessageMap::setter_setMLexicalMessageForKey (GGS_lstring inValue,
                                                              GGS_string inKey,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    p->mProperty_mLexicalMessage = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalMessageMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalMessage = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalMessageMap::setter_setMMessageIsUsedForKey (GGS_bool inAttributeValue,
+void GGS_lexicalMessageMap::setter_setMMessageIsUsedForKey (GGS_bool inValue,
                                                             GGS_string inKey,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    p->mProperty_mMessageIsUsed = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalMessageMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mMessageIsUsed = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalMessageMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalMessageMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalMessageMap::DownEnumerator_lexicalMessageMap (const GGS_lexicalMessageMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalMessageMap::DownEnumerator_lexicalMessageMap (const GGS_lexicalMessageMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalMessageMap_2E_element DownEnumerator_lexicalMessageMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return GGS_lexicalMessageMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalMessage, p->mProperty_mMessageIsUsed) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalMessageMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalMessageMap::current_mLexicalMessage (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return p->mProperty_mLexicalMessage ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalMessage ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalMessageMap::current_mMessageIsUsed (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return p->mProperty_mMessageIsUsed ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mMessageIsUsed ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalMessageMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalMessageMap::UpEnumerator_lexicalMessageMap (const GGS_lexicalMessageMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalMessageMap::UpEnumerator_lexicalMessageMap (const GGS_lexicalMessageMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalMessageMap_2E_element UpEnumerator_lexicalMessageMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return GGS_lexicalMessageMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalMessage, p->mProperty_mMessageIsUsed) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalMessageMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalMessageMap::current_mLexicalMessage (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return p->mProperty_mLexicalMessage ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalMessage ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalMessageMap::current_mMessageIsUsed (LOCATION_ARGS) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return p->mProperty_mMessageIsUsed ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mMessageIsUsed ;
 }
 
 
@@ -9719,84 +9900,33 @@ GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::extra
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GGS_lexicalRoutineMap_2E_element & inValue
-                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexicalRoutineFormalArgumentList (inValue.mProperty_mLexicalRoutineFormalArgumentList),
-mProperty_mErrorMessageList (inValue.mProperty_mErrorMessageList),
-mProperty_mIsExtern (inValue.mProperty_mIsExtern) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GGS_lstring & inKey,
-                                                              const GGS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
-                                                              const GGS_stringlist & in_mErrorMessageList,
-                                                              const GGS_bool & in_mIsExtern
-                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexicalRoutineFormalArgumentList (in_mLexicalRoutineFormalArgumentList),
-mProperty_mErrorMessageList (in_mErrorMessageList),
-mProperty_mIsExtern (in_mIsExtern) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalRoutineMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalRoutineMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalRoutineMap (mProperty_lkey, mProperty_mLexicalRoutineFormalArgumentList, mProperty_mErrorMessageList, mProperty_mIsExtern COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalRoutineMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexicalRoutineFormalArgumentList" ":") ;
-  mProperty_mLexicalRoutineFormalArgumentList.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mErrorMessageList" ":") ;
-  mProperty_mErrorMessageList.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mIsExtern" ":") ;
-  mProperty_mIsExtern.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) :
+GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineMap & GGS_lexicalRoutineMap::operator = (const GGS_lexicalRoutineMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalRoutineMap & GGS_lexicalRoutineMap::operator = (const GGS_lexicalRoutineMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineMap GGS_lexicalRoutineMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalRoutineMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -9804,7 +9934,59 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::init (Compiler * COMMA_LOCATION_ARG
 
 GGS_lexicalRoutineMap GGS_lexicalRoutineMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalRoutineMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalRoutineMap::getter_hasKey (const GGS_string & inKey
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalRoutineMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalRoutineMap::getter_locationForKey (const GGS_string & inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalRoutineMap::getter_keyList (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -9816,15 +9998,15 @@ GGS_lexicalRoutineMap_2E_element_3F_ GGS_lexicalRoutineMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalRoutineMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalRoutineMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalRoutineMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexicalRoutineFormalArgumentList = p->mProperty_mLexicalRoutineFormalArgumentList ;
-      element.mProperty_mErrorMessageList = p->mProperty_mErrorMessageList ;
-      element.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalRoutineFormalArgumentList = info->mProperty_mLexicalRoutineFormalArgumentList ;
+      element.mProperty_mErrorMessageList = info->mProperty_mErrorMessageList ;
+      element.mProperty_mIsExtern = info->mProperty_mIsExtern ;
       result = element ;
     }
   }
@@ -9851,47 +10033,45 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
                                               GGS_lexicalRoutineFormalArgumentList inArgument0,
                                               GGS_stringlist inArgument1,
                                               GGS_bool inArgument2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalRoutineMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalRoutineMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalRoutineMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
   const char * kInsertErrorMessage = "the '%K' lexical routine has been already declared" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalRoutineMap_searchKey = "the '%K' lexical routine is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inLKey,
                                               GGS_lexicalRoutineFormalArgumentList & outArgument0,
                                               GGS_stringlist & outArgument1,
                                               GGS_bool & outArgument2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) performSearch (inKey,
-                                                                                                   inCompiler,
-                                                                                                   kSearchErrorMessage_lexicalRoutineMap_searchKey
-                                                                                                   COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' lexical routine is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    outArgument0 = p->mProperty_mLexicalRoutineFormalArgumentList ;
-    outArgument1 = p->mProperty_mErrorMessageList ;
-    outArgument2 = p->mProperty_mIsExtern ;
+    outArgument0 = info->mProperty_mLexicalRoutineFormalArgumentList ;
+    outArgument1 = info->mProperty_mErrorMessageList ;
+    outArgument2 = info->mProperty_mIsExtern ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -9899,184 +10079,214 @@ void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GGS_string & inKey,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) attributes ;
   GGS_lexicalRoutineFormalArgumentList result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    result = p->mProperty_mLexicalRoutineFormalArgumentList ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalRoutineFormalArgumentList ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist GGS_lexicalRoutineMap::getter_mErrorMessageListForKey (const GGS_string & inKey,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) attributes ;
   GGS_stringlist result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    result = p->mProperty_mErrorMessageList ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mErrorMessageList ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalRoutineMap::getter_mIsExternForKey (const GGS_string & inKey,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    result = p->mProperty_mIsExtern ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIsExtern ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GGS_lexicalRoutineFormalArgumentList inAttributeValue,
+void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GGS_lexicalRoutineFormalArgumentList inValue,
                                                                                GGS_string inKey,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    p->mProperty_mLexicalRoutineFormalArgumentList = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalRoutineFormalArgumentList = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GGS_stringlist inAttributeValue,
+void GGS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GGS_stringlist inValue,
                                                                GGS_string inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    p->mProperty_mErrorMessageList = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mErrorMessageList = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_setMIsExternForKey (GGS_bool inAttributeValue,
+void GGS_lexicalRoutineMap::setter_setMIsExternForKey (GGS_bool inValue,
                                                        GGS_string inKey,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    p->mProperty_mIsExtern = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIsExtern = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalRoutineMap::DownEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalRoutineMap::DownEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineMap_2E_element DownEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return GGS_lexicalRoutineMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalRoutineFormalArgumentList, p->mProperty_mErrorMessageList, p->mProperty_mIsExtern) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineFormalArgumentList DownEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mLexicalRoutineFormalArgumentList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist DownEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mErrorMessageList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mIsExtern ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalRoutineMap::UpEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalRoutineMap::UpEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineMap_2E_element UpEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return GGS_lexicalRoutineMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalRoutineFormalArgumentList, p->mProperty_mErrorMessageList, p->mProperty_mIsExtern) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineFormalArgumentList UpEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mLexicalRoutineFormalArgumentList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist UpEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mErrorMessageList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return p->mProperty_mIsExtern ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
 }
 
 
@@ -10625,91 +10835,33 @@ GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::ext
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GGS_lexicalFunctionMap_2E_element & inValue
-                                                                COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mLexicalTypeList (inValue.mProperty_mLexicalTypeList),
-mProperty_mReturnedLexicalType (inValue.mProperty_mReturnedLexicalType),
-mProperty_mReplacementFunctionName (inValue.mProperty_mReplacementFunctionName),
-mProperty_mIsExtern (inValue.mProperty_mIsExtern) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GGS_lstring & inKey,
-                                                                const GGS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
-                                                                const GGS_lexicalTypeEnum & in_mReturnedLexicalType,
-                                                                const GGS_string & in_mReplacementFunctionName,
-                                                                const GGS_bool & in_mIsExtern
-                                                                COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mLexicalTypeList (in_mLexicalTypeList),
-mProperty_mReturnedLexicalType (in_mReturnedLexicalType),
-mProperty_mReplacementFunctionName (in_mReplacementFunctionName),
-mProperty_mIsExtern (in_mIsExtern) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalFunctionMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalFunctionMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalFunctionMap (mProperty_lkey, mProperty_mLexicalTypeList, mProperty_mReturnedLexicalType, mProperty_mReplacementFunctionName, mProperty_mIsExtern COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalFunctionMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLexicalTypeList" ":") ;
-  mProperty_mLexicalTypeList.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mReturnedLexicalType" ":") ;
-  mProperty_mReturnedLexicalType.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mReplacementFunctionName" ":") ;
-  mProperty_mReplacementFunctionName.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mIsExtern" ":") ;
-  mProperty_mIsExtern.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionMap::GGS_lexicalFunctionMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionMap::GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalFunctionMap::GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) :
+GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionMap & GGS_lexicalFunctionMap::operator = (const GGS_lexicalFunctionMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalFunctionMap & GGS_lexicalFunctionMap::operator = (const GGS_lexicalFunctionMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionMap GGS_lexicalFunctionMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalFunctionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -10717,7 +10869,59 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::init (Compiler * COMMA_LOCATION_A
 
 GGS_lexicalFunctionMap GGS_lexicalFunctionMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalFunctionMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalFunctionMap::getter_hasKey (const GGS_string & inKey
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalFunctionMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalFunctionMap::getter_locationForKey (const GGS_string & inKey,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalFunctionMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -10729,16 +10933,16 @@ GGS_lexicalFunctionMap_2E_element_3F_ GGS_lexicalFunctionMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalFunctionMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalFunctionMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalFunctionMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mLexicalTypeList = p->mProperty_mLexicalTypeList ;
-      element.mProperty_mReturnedLexicalType = p->mProperty_mReturnedLexicalType ;
-      element.mProperty_mReplacementFunctionName = p->mProperty_mReplacementFunctionName ;
-      element.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalTypeList = info->mProperty_mLexicalTypeList ;
+      element.mProperty_mReturnedLexicalType = info->mProperty_mReturnedLexicalType ;
+      element.mProperty_mReplacementFunctionName = info->mProperty_mReplacementFunctionName ;
+      element.mProperty_mIsExtern = info->mProperty_mIsExtern ;
       result = element ;
     }
   }
@@ -10765,51 +10969,49 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::getter_overriddenMap (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalFunctionMap::setter_insertKey (GGS_lstring inLKey,
                                                GGS_lexicalFunctionFormalArgumentList inArgument0,
                                                GGS_lexicalTypeEnum inArgument1,
                                                GGS_string inArgument2,
                                                GGS_bool inArgument3,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalFunctionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalFunctionMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalFunctionMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3) ;
   const char * kInsertErrorMessage = "the '%K' lexical function has been already declared" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalFunctionMap_searchKey = "the '%K' lexical function is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inLKey,
                                                GGS_lexicalFunctionFormalArgumentList & outArgument0,
                                                GGS_lexicalTypeEnum & outArgument1,
                                                GGS_string & outArgument2,
                                                GGS_bool & outArgument3,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) performSearch (inKey,
-                                                                                                     inCompiler,
-                                                                                                     kSearchErrorMessage_lexicalFunctionMap_searchKey
-                                                                                                     COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' lexical function is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
     outArgument3.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    outArgument0 = p->mProperty_mLexicalTypeList ;
-    outArgument1 = p->mProperty_mReturnedLexicalType ;
-    outArgument2 = p->mProperty_mReplacementFunctionName ;
-    outArgument3 = p->mProperty_mIsExtern ;
+    outArgument0 = info->mProperty_mLexicalTypeList ;
+    outArgument1 = info->mProperty_mReturnedLexicalType ;
+    outArgument2 = info->mProperty_mReplacementFunctionName ;
+    outArgument3 = info->mProperty_mIsExtern ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -10817,229 +11019,266 @@ void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inKey,
 GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionMap::getter_mLexicalTypeListForKey (const GGS_string & inKey,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) attributes ;
   GGS_lexicalFunctionFormalArgumentList result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    result = p->mProperty_mLexicalTypeList ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalTypeList ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum GGS_lexicalFunctionMap::getter_mReturnedLexicalTypeForKey (const GGS_string & inKey,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) attributes ;
   GGS_lexicalTypeEnum result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    result = p->mProperty_mReturnedLexicalType ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mReturnedLexicalType ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_lexicalFunctionMap::getter_mReplacementFunctionNameForKey (const GGS_string & inKey,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) attributes ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    result = p->mProperty_mReplacementFunctionName ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mReplacementFunctionName ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_lexicalFunctionMap::getter_mIsExternForKey (const GGS_string & inKey,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) attributes ;
   GGS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    result = p->mProperty_mIsExtern ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIsExtern ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GGS_lexicalFunctionFormalArgumentList inAttributeValue,
+void GGS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GGS_lexicalFunctionFormalArgumentList inValue,
                                                                GGS_string inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    p->mProperty_mLexicalTypeList = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalFunctionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalTypeList = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_setMReturnedLexicalTypeForKey (GGS_lexicalTypeEnum inAttributeValue,
+void GGS_lexicalFunctionMap::setter_setMReturnedLexicalTypeForKey (GGS_lexicalTypeEnum inValue,
                                                                    GGS_string inKey,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    p->mProperty_mReturnedLexicalType = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalFunctionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mReturnedLexicalType = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_setMReplacementFunctionNameForKey (GGS_string inAttributeValue,
+void GGS_lexicalFunctionMap::setter_setMReplacementFunctionNameForKey (GGS_string inValue,
                                                                        GGS_string inKey,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    p->mProperty_mReplacementFunctionName = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalFunctionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mReplacementFunctionName = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_setMIsExternForKey (GGS_bool inAttributeValue,
+void GGS_lexicalFunctionMap::setter_setMIsExternForKey (GGS_bool inValue,
                                                         GGS_string inKey,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    p->mProperty_mIsExtern = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_lexicalFunctionMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIsExtern = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalFunctionMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalFunctionMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalFunctionMap::DownEnumerator_lexicalFunctionMap (const GGS_lexicalFunctionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalFunctionMap::DownEnumerator_lexicalFunctionMap (const GGS_lexicalFunctionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionMap_2E_element DownEnumerator_lexicalFunctionMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return GGS_lexicalFunctionMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalTypeList, p->mProperty_mReturnedLexicalType, p->mProperty_mReplacementFunctionName, p->mProperty_mIsExtern) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionFormalArgumentList DownEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mLexicalTypeList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalTypeList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum DownEnumerator_lexicalFunctionMap::current_mReturnedLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mReturnedLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReturnedLexicalType ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_lexicalFunctionMap::current_mReplacementFunctionName (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mReplacementFunctionName ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReplacementFunctionName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool DownEnumerator_lexicalFunctionMap::current_mIsExtern (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mIsExtern ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalFunctionMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalFunctionMap::UpEnumerator_lexicalFunctionMap (const GGS_lexicalFunctionMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalFunctionMap::UpEnumerator_lexicalFunctionMap (const GGS_lexicalFunctionMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionMap_2E_element UpEnumerator_lexicalFunctionMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return GGS_lexicalFunctionMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalTypeList, p->mProperty_mReturnedLexicalType, p->mProperty_mReplacementFunctionName, p->mProperty_mIsExtern) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionFormalArgumentList UpEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mLexicalTypeList ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalTypeList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeEnum UpEnumerator_lexicalFunctionMap::current_mReturnedLexicalType (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mReturnedLexicalType ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReturnedLexicalType ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_lexicalFunctionMap::current_mReplacementFunctionName (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mReplacementFunctionName ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReplacementFunctionName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool UpEnumerator_lexicalFunctionMap::current_mIsExtern (LOCATION_ARGS) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return p->mProperty_mIsExtern ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
 }
 
 
@@ -11660,77 +11899,33 @@ GGS_templateDelimitorList GGS_templateDelimitorList::extractObject (const GGS_ob
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_styleMap::cMapElement_styleMap (const GGS_styleMap_2E_element & inValue
-                                            COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mComment (inValue.mProperty_mComment),
-mProperty_mStyleIndex (inValue.mProperty_mStyleIndex) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_styleMap::cMapElement_styleMap (const GGS_lstring & inKey,
-                                            const GGS_lstring & in_mComment,
-                                            const GGS_uint & in_mStyleIndex
-                                            COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mComment (in_mComment),
-mProperty_mStyleIndex (in_mStyleIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_styleMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_styleMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_styleMap (mProperty_lkey, mProperty_mComment, mProperty_mStyleIndex COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_styleMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mComment" ":") ;
-  mProperty_mComment.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mStyleIndex" ":") ;
-  mProperty_mStyleIndex.description (ioString, inIndentation) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_styleMap::GGS_styleMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_styleMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_styleMap::GGS_styleMap (const GGS_styleMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_styleMap::GGS_styleMap (const GGS_styleMap & inSource) :
+GGS_GenericMap <GGS_styleMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_styleMap & GGS_styleMap::operator = (const GGS_styleMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_styleMap & GGS_styleMap::operator = (const GGS_styleMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_styleMap GGS_styleMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_styleMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -11738,7 +11933,59 @@ GGS_styleMap GGS_styleMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 GGS_styleMap GGS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_styleMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_styleMap::getter_hasKey (const GGS_string & inKey
+                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_styleMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_styleMap::getter_locationForKey (const GGS_string & inKey,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_styleMap::getter_keyList (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -11750,14 +11997,14 @@ GGS_styleMap_2E_element_3F_ GGS_styleMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_styleMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_styleMap * p = (cMapElement_styleMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_styleMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_styleMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mComment = p->mProperty_mComment ;
-      element.mProperty_mStyleIndex = p->mProperty_mStyleIndex ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mComment = info->mProperty_mComment ;
+      element.mProperty_mStyleIndex = info->mProperty_mStyleIndex ;
       result = element ;
     }
   }
@@ -11784,43 +12031,41 @@ GGS_styleMap GGS_styleMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_styleMap::setter_insertKey (GGS_lstring inKey,
+void GGS_styleMap::setter_insertKey (GGS_lstring inLKey,
                                      GGS_lstring inArgument0,
                                      GGS_uint inArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
-  cMapElement_styleMap * p = nullptr ;
-  macroMyNew (p, cMapElement_styleMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_styleMap_2E_element element (inLKey, inArgument0, inArgument1) ;
   const char * kInsertErrorMessage = "the '%K' style is already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_styleMap_searchKey = "the '%K' style is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_styleMap::method_searchKey (GGS_lstring inKey,
+void GGS_styleMap::method_searchKey (GGS_lstring inLKey,
                                      GGS_lstring & outArgument0,
                                      GGS_uint & outArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) performSearch (inKey,
-                                                                                 inCompiler,
-                                                                                 kSearchErrorMessage_styleMap_searchKey
-                                                                                 COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' style is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
     outArgument0.drop () ;
     outArgument1.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    outArgument0 = p->mProperty_mComment ;
-    outArgument1 = p->mProperty_mStyleIndex ;
+    outArgument0 = info->mProperty_mComment ;
+    outArgument1 = info->mProperty_mStyleIndex ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -11828,139 +12073,162 @@ void GGS_styleMap::method_searchKey (GGS_lstring inKey,
 GGS_lstring GGS_styleMap::getter_mCommentForKey (const GGS_string & inKey,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) attributes ;
   GGS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    result = p->mProperty_mComment ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mComment ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_styleMap::getter_mStyleIndexForKey (const GGS_string & inKey,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) attributes ;
   GGS_uint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    result = p->mProperty_mStyleIndex ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mStyleIndex ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_styleMap::setter_setMCommentForKey (GGS_lstring inAttributeValue,
+void GGS_styleMap::setter_setMCommentForKey (GGS_lstring inValue,
                                              GGS_string inKey,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_styleMap * p = (cMapElement_styleMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    p->mProperty_mComment = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_styleMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mComment = inValue ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
 
-void GGS_styleMap::setter_setMStyleIndexForKey (GGS_uint inAttributeValue,
+void GGS_styleMap::setter_setMStyleIndexForKey (GGS_uint inValue,
                                                 GGS_string inKey,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_styleMap * p = (cMapElement_styleMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    p->mProperty_mStyleIndex = inAttributeValue ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    const String key = inKey.stringValue () ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_styleMap_2E_element>> node = nodeForKey (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mStyleIndex = inValue ;
+    }
   }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_styleMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @styleMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_styleMap::DownEnumerator_styleMap (const GGS_styleMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_styleMap::DownEnumerator_styleMap (const GGS_styleMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_styleMap_2E_element DownEnumerator_styleMap::current (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return GGS_styleMap_2E_element (p->mProperty_lkey, p->mProperty_mComment, p->mProperty_mStyleIndex) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_styleMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_styleMap::current_mComment (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return p->mProperty_mComment ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mComment ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint DownEnumerator_styleMap::current_mStyleIndex (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return p->mProperty_mStyleIndex ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mStyleIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @styleMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_styleMap::UpEnumerator_styleMap (const GGS_styleMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_styleMap::UpEnumerator_styleMap (const GGS_styleMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_styleMap_2E_element UpEnumerator_styleMap::current (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return GGS_styleMap_2E_element (p->mProperty_lkey, p->mProperty_mComment, p->mProperty_mStyleIndex) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_styleMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_styleMap::current_mComment (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return p->mProperty_mComment ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mComment ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint UpEnumerator_styleMap::current_mStyleIndex (LOCATION_ARGS) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_styleMap) ;
-  return p->mProperty_mStyleIndex ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mStyleIndex ;
 }
 
 
@@ -12004,63 +12272,33 @@ GGS_styleMap GGS_styleMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GGS_lexicalTagMap_2E_element & inValue
-                                                      COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE) {
-}
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GGS_lstring & inKey
-                                                      COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_lexicalTagMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_lexicalTagMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_lexicalTagMap (mProperty_lkey COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_lexicalTagMap::description (String & /* ioString */, const int32_t /* inIndentation */) const {
-}
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap::GGS_lexicalTagMap (void) :
-AC_GALGAS_map () {
+GGS_GenericMap <GGS_lexicalTagMap_2E_element> () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTagMap::GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
+/* GGS_lexicalTagMap::GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) :
+GGS_GenericMap <GGS_lexicalTagMap_2E_element> (inSource) {
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTagMap & GGS_lexicalTagMap::operator = (const GGS_lexicalTagMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
+/* GGS_lexicalTagMap & GGS_lexicalTagMap::operator = (const GGS_lexicalTagMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return *this ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap GGS_lexicalTagMap::init (Compiler * COMMA_LOCATION_ARGS) {
   GGS_lexicalTagMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
   return result ;
 }
 
@@ -12068,7 +12306,59 @@ GGS_lexicalTagMap GGS_lexicalTagMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 GGS_lexicalTagMap GGS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_lexicalTagMap result ;
-  result.makeNewEmptyMap (THERE) ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalTagMap::getter_hasKey (const GGS_string & inKey
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (contains (inKey.stringValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalTagMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalTagMap::getter_locationForKey (const GGS_string & inKey,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalTagMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lexicalTagMap::getter_keyList (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = keyList (inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -12080,12 +12370,12 @@ GGS_lexicalTagMap_2E_element_3F_ GGS_lexicalTagMap
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTagMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalTagMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
       result = GGS_lexicalTagMap_2E_element_3F_::init_nil () ;
     }else{
       GGS_lexicalTagMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_lkey = info->mProperty_lkey ;
       result = element ;
     }
   }
@@ -12112,85 +12402,92 @@ GGS_lexicalTagMap GGS_lexicalTagMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTagMap::setter_insertKey (GGS_lstring inKey,
+void GGS_lexicalTagMap::setter_insertKey (GGS_lstring inLKey,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
-  cMapElement_lexicalTagMap * p = nullptr ;
-  macroMyNew (p, cMapElement_lexicalTagMap (inKey COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
+  const GGS_lexicalTagMap_2E_element element (inLKey) ;
   const char * kInsertErrorMessage = "the '%K' tag is already declared in %L" ;
   const char * kShadowErrorMessage = "the '%K' tag declaration shadows the tag declared in %L" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const char * kSearchErrorMessage_lexicalTagMap_searchKey = "the '%K' tag is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalTagMap::method_searchKey (GGS_lstring inKey,
+void GGS_lexicalTagMap::method_searchKey (GGS_lstring inLKey,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
-  const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) performSearch (inKey,
-                                                                                           inCompiler,
-                                                                                           kSearchErrorMessage_lexicalTagMap_searchKey
-                                                                                           COMMA_THERE) ;
-  if (nullptr == p) {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalTagMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      TC_UniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' tag is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
   }else{
-    macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
   }
 }
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalTagMap::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    ioString.appendString (" ") ;
+    ioString.appendSigned (count ()) ;
+    ioString.appendString (" element(s)") ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTagMap
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalTagMap::DownEnumerator_lexicalTagMap (const GGS_lexicalTagMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+DownEnumerator_lexicalTagMap::DownEnumerator_lexicalTagMap (const GGS_lexicalTagMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap_2E_element DownEnumerator_lexicalTagMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
-  return GGS_lexicalTagMap_2E_element (p->mProperty_lkey) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lexicalTagMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @lexicalTagMap
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_lexicalTagMap::UpEnumerator_lexicalTagMap (const GGS_lexicalTagMap & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+UpEnumerator_lexicalTagMap::UpEnumerator_lexicalTagMap (const GGS_lexicalTagMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap_2E_element UpEnumerator_lexicalTagMap::current (LOCATION_ARGS) const {
-  const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
-  return GGS_lexicalTagMap_2E_element (p->mProperty_lkey) ;
+  return mInfoArray (mIndex COMMA_THERE).value () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lexicalTagMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
 }
 
 
@@ -16089,6 +16386,128 @@ GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("lexicalSelectInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSelectInstructionAST_2E_weak::objectCompare (const GGS_lexicalSelectInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (void) :
+GGS_lexicalInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak & GGS_lexicalSelectInstructionAST_2E_weak::operator = (const GGS_lexicalSelectInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak (const GGS_lexicalSelectInstructionAST & inSource) :
+GGS_lexicalInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST_2E_weak::unwrappedValue (void) const {
+  GGS_lexicalSelectInstructionAST result ;
+  if (isValid ()) {
+    const cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_lexicalSelectInstructionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST_2E_weak::bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSelectInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalSelectInstructionAST) ;
+      result = GGS_lexicalSelectInstructionAST ((cPtr_lexicalSelectInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalSelectInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ("lexicalSelectInstructionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSelectInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSelectInstructionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSelectInstructionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_lexicalSelectInstructionAST_2E_weak result ;
+  const GGS_lexicalSelectInstructionAST_2E_weak * p = (const GGS_lexicalSelectInstructionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSelectInstructionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSelectInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -445,8 +445,8 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap
       !getterName:"keySet"
       !obsoleteName: ""
-      !returnedTypeName:"stringset"
-      !hasCompilerArgument:false
+      !returnedTypeName: "stringset"
+      !hasCompilerArgument: true
     )
     enterInheritedGetterWithoutArgument (
       !?getterMap
@@ -454,7 +454,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !getterName:"keyList"
       !obsoleteName: ""
       !returnedTypeName:"lstringlist"
-      !hasCompilerArgument:false
+      !hasCompilerArgument: true
     )
     enterInheritedGetterWithArgument (
       !?getterMap
@@ -884,6 +884,7 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.typeForEnumeratedElement
       ![self.mElementTypeEntry identifierRepresentation]
+      ![selfTypeDefinition.features generateCppObjectComparison]
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
@@ -966,6 +967,7 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
     ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
 
   template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
     ?@string TYPE_NAME

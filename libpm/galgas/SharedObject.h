@@ -94,12 +94,6 @@ class SharedObject {
 //MARK: Predeclarations
 //--------------------------------------------------------------------------------------------------
 
-//template <typename T> concept DeriveFromSharedObject = std::is_base_of<SharedObject, T>::value ;
-
-//--------------------------------------------------------------------------------------------------
-
-//template <typename TYPE> class StrongSharedRef ;
-
 template <typename TYPE> class OptionalSharedRef ;
 
 //template <typename TYPE> class WeakSharedRef ;

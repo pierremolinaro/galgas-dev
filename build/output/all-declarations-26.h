@@ -522,7 +522,8 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Co
                                                                         const class GGS_mapAccessorListAST & in_SEARCH_5F_METHOD_5F_LIST,
                                                                         const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                         const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                        const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
+                                                                        const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                        const class GGS_bool & in_GENERATE_5F_COMPARISON
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
