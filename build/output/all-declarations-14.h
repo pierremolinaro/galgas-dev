@@ -2026,6 +2026,11 @@ class GGS_headerCompositionMap : public GGS_GenericMap <GGS_headerCompositionMap
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -2391,6 +2396,11 @@ class GGS_headerRepartitionMap : public GGS_GenericMap <GGS_headerRepartitionMap
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -2732,6 +2742,11 @@ class GGS_projectQualifiedFeatureMap : public GGS_GenericMap <GGS_projectQualifi
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;

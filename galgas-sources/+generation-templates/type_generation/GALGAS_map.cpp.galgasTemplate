@@ -71,6 +71,18 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKeyAtLevel (%?^%const GGS_string & inKey,
+            %!^%const GGS_uint & inLevel
+            %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (containsAtLevel (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {

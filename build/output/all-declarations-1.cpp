@@ -2604,6 +2604,18 @@ GGS_bool GGS_templateVariableMap::getter_hasKey (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_bool GGS_templateVariableMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                        const GGS_uint & inLevel
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (containsAtLevel (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_uint GGS_templateVariableMap::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {

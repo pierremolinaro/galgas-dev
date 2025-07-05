@@ -2082,6 +2082,11 @@ class GGS_templateVariableMap : public GGS_GenericMap <GGS_templateVariableMap_2
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -3303,6 +3308,11 @@ class GGS_unifiedTypeMap : public GGS_GenericMap <GGS_unifiedTypeMap_2E_element>
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -3487,6 +3497,11 @@ class GGS_filewrapperMap : public GGS_GenericMap <GGS_filewrapperMap_2E_element>
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
@@ -3721,6 +3736,11 @@ class GGS_functionMap : public GGS_GenericMap <GGS_functionMap_2E_element> {
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -3920,6 +3940,11 @@ class GGS_grammarMap : public GGS_GenericMap <GGS_grammarMap_2E_element> {
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
@@ -4132,6 +4157,11 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_le
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
@@ -4383,6 +4413,11 @@ class GGS_optionComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_opt
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -4608,6 +4643,11 @@ class GGS_syntaxComponentMap : public GGS_GenericMap <GGS_syntaxComponentMap_2E_
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;
 
@@ -4812,6 +4852,11 @@ class GGS_internalRoutineMap : public GGS_GenericMap <GGS_internalRoutineMap_2E_
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Getter getter_hasKeyAtLevel
+  public: GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                         const GGS_uint & inLevel
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter count
   public: GGS_uint getter_count (LOCATION_ARGS) const ;

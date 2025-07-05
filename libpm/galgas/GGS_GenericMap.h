@@ -502,10 +502,16 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool hasKey (const String & inKey) const {
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> result ;
-    internalRecursiveSearchNode (inKey, mRootNode, result) ;
-    return result.isNotNil () ;
+  private: bool hasKey (const String & inKey, const uint32_t inLevel) const {
+    bool result = false ;
+    if (inLevel == 0) {
+     OptionalSharedRef <GGS_GenericMapNode <INFO>> node ;
+     internalRecursiveSearchNode (inKey, mRootNode, node) ;
+     result = node.isNotNil () ;
+    }else if (mOverriddenRoot.isNotNil ()) {
+      result = mOverriddenRoot->hasKey (inKey, inLevel - 1) ;
+    }
+    return result ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -705,10 +711,22 @@ template <typename INFO> class GGS_GenericMap : public AC_GALGAS_root {
   //   contains
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: bool contains (const String & inKey) const  {
+  public: bool contains (const String & inKey) const {
     bool result = false ;
     if (mSharedRoot.isNotNil ()) {
-      result = mSharedRoot->hasKey (inKey) ;
+      result = mSharedRoot->hasKey (inKey, 0) ;
+    }
+    return result ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const {
+    bool result = false ;
+    if (mSharedRoot.isNotNil ()) {
+      result = mSharedRoot->hasKey (inKey, inLevel) ;
     }
     return result ;
   }
