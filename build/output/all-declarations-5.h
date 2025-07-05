@@ -2887,18 +2887,12 @@ class UpEnumerator_equatableExtensionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_equatableExtensionMap : public GGS_GenericMap <GGS_equatableExtensionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_equatableExtensionMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_equatableExtensionMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_equatableExtensionMap (const GGS_equatableExtensionMap & inSource) ;
-//  public: GGS_equatableExtensionMap & operator = (const GGS_equatableExtensionMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -2912,10 +2906,6 @@ class GGS_equatableExtensionMap : public GGS_GenericMap <GGS_equatableExtensionM
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -7143,22 +7133,12 @@ class UpEnumerator_constantIndexMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_constantIndexMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_constantIndexMap : public GGS_GenericMap <GGS_constantIndexMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_constantIndexMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_constantIndexMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_constantIndexMap (const GGS_constantIndexMap & inSource) ;
-//  public: GGS_constantIndexMap & operator = (const GGS_constantIndexMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -7172,10 +7152,6 @@ class GGS_constantIndexMap : public GGS_GenericMap <GGS_constantIndexMap_2E_elem
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -7658,22 +7634,12 @@ class UpEnumerator_propertyMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_propertyMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_propertyMap : public GGS_GenericMap <GGS_propertyMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_propertyMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_propertyMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_propertyMap (const GGS_propertyMap & inSource) ;
-//  public: GGS_propertyMap & operator = (const GGS_propertyMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -7687,10 +7653,6 @@ class GGS_propertyMap : public GGS_GenericMap <GGS_propertyMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -9257,22 +9219,12 @@ class UpEnumerator_subscriptMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_subscriptMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_subscriptMap : public GGS_GenericMap <GGS_subscriptMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_subscriptMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_subscriptMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_subscriptMap (const GGS_subscriptMap & inSource) ;
-//  public: GGS_subscriptMap & operator = (const GGS_subscriptMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -9286,10 +9238,6 @@ class GGS_subscriptMap : public GGS_GenericMap <GGS_subscriptMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -10325,22 +10273,12 @@ class UpEnumerator_scopeLocalVarMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_scopeLocalVarMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_scopeLocalVarMap : public GGS_GenericMap <GGS_scopeLocalVarMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_scopeLocalVarMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_scopeLocalVarMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_scopeLocalVarMap (const GGS_scopeLocalVarMap & inSource) ;
-//  public: GGS_scopeLocalVarMap & operator = (const GGS_scopeLocalVarMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -10354,10 +10292,6 @@ class GGS_scopeLocalVarMap : public GGS_GenericMap <GGS_scopeLocalVarMap_2E_elem
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -12750,4 +12684,36 @@ class GGS_string extensionGetter_identifierRepresentation (const class GGS_unifi
 class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry & inObject,
                                            class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapEntry baseType' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedTypeMapEntry & inObject,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName (const class GGS_unifiedTypeMapEntry inObject,
+                                        class GGS_stringset & io_ioInclusions,
+                                        class Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName_31_ (const class GGS_unifiedTypeMapEntry inObject,
+                                            class GGS_stringset & io_ioInclusions,
+                                            class Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 

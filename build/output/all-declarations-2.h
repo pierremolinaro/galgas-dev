@@ -4631,22 +4631,12 @@ class UpEnumerator_terminalMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_terminalMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_terminalMap : public GGS_GenericMap <GGS_terminalMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_terminalMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_terminalMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_terminalMap (const GGS_terminalMap & inSource) ;
-//  public: GGS_terminalMap & operator = (const GGS_terminalMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -4660,10 +4650,6 @@ class GGS_terminalMap : public GGS_GenericMap <GGS_terminalMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -4978,22 +4964,12 @@ class UpEnumerator_lexicalTypeMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalTypeMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalTypeMap : public GGS_GenericMap <GGS_lexicalTypeMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalTypeMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalTypeMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) ;
-//  public: GGS_lexicalTypeMap & operator = (const GGS_lexicalTypeMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -5007,10 +4983,6 @@ class GGS_lexicalTypeMap : public GGS_GenericMap <GGS_lexicalTypeMap_2E_element>
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -5325,22 +5297,12 @@ class UpEnumerator_lexicalAttributeMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalAttributeMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalAttributeMap : public GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalAttributeMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalAttributeMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) ;
-//  public: GGS_lexicalAttributeMap & operator = (const GGS_lexicalAttributeMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -5354,10 +5316,6 @@ class GGS_lexicalAttributeMap : public GGS_GenericMap <GGS_lexicalAttributeMap_2
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -6078,22 +6036,12 @@ class UpEnumerator_lexicalExplicitTokenListMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalExplicitTokenListMap : public GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalExplicitTokenListMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalExplicitTokenListMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) ;
-//  public: GGS_lexicalExplicitTokenListMap & operator = (const GGS_lexicalExplicitTokenListMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -6107,10 +6055,6 @@ class GGS_lexicalExplicitTokenListMap : public GGS_GenericMap <GGS_lexicalExplic
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -6741,22 +6685,12 @@ class UpEnumerator_lexicalExplicitTokenListMapMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalExplicitTokenListMapMap : public GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalExplicitTokenListMapMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalExplicitTokenListMapMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
-//  public: GGS_lexicalExplicitTokenListMapMap & operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -6770,10 +6704,6 @@ class GGS_lexicalExplicitTokenListMapMap : public GGS_GenericMap <GGS_lexicalExp
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -7137,22 +7067,12 @@ class UpEnumerator_lexicalMessageMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalMessageMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalMessageMap : public GGS_GenericMap <GGS_lexicalMessageMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalMessageMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalMessageMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) ;
-//  public: GGS_lexicalMessageMap & operator = (const GGS_lexicalMessageMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -7166,10 +7086,6 @@ class GGS_lexicalMessageMap : public GGS_GenericMap <GGS_lexicalMessageMap_2E_el
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -7822,22 +7738,12 @@ class UpEnumerator_lexicalRoutineMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalRoutineMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalRoutineMap : public GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalRoutineMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalRoutineMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) ;
-//  public: GGS_lexicalRoutineMap & operator = (const GGS_lexicalRoutineMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -7851,10 +7757,6 @@ class GGS_lexicalRoutineMap : public GGS_GenericMap <GGS_lexicalRoutineMap_2E_el
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -8492,22 +8394,12 @@ class UpEnumerator_lexicalFunctionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalFunctionMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalFunctionMap : public GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalFunctionMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalFunctionMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) ;
-//  public: GGS_lexicalFunctionMap & operator = (const GGS_lexicalFunctionMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -8521,10 +8413,6 @@ class GGS_lexicalFunctionMap : public GGS_GenericMap <GGS_lexicalFunctionMap_2E_
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -9212,22 +9100,12 @@ class UpEnumerator_styleMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_styleMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_styleMap : public GGS_GenericMap <GGS_styleMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_styleMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_styleMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_styleMap (const GGS_styleMap & inSource) ;
-//  public: GGS_styleMap & operator = (const GGS_styleMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -9241,10 +9119,6 @@ class GGS_styleMap : public GGS_GenericMap <GGS_styleMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -9579,22 +9453,12 @@ class UpEnumerator_lexicalTagMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexicalTagMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexicalTagMap : public GGS_GenericMap <GGS_lexicalTagMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexicalTagMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexicalTagMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) ;
-//  public: GGS_lexicalTagMap & operator = (const GGS_lexicalTagMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -9608,10 +9472,6 @@ class GGS_lexicalTagMap : public GGS_GenericMap <GGS_lexicalTagMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;

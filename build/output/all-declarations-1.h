@@ -2045,22 +2045,12 @@ class UpEnumerator_templateVariableMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_templateVariableMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_templateVariableMap : public GGS_GenericMap <GGS_templateVariableMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_templateVariableMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_templateVariableMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_templateVariableMap (const GGS_templateVariableMap & inSource) ;
-//  public: GGS_templateVariableMap & operator = (const GGS_templateVariableMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -2074,10 +2064,6 @@ class GGS_templateVariableMap : public GGS_GenericMap <GGS_templateVariableMap_2
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -3275,18 +3261,12 @@ class UpEnumerator_unifiedTypeMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_unifiedTypeMap : public GGS_GenericMap <GGS_unifiedTypeMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_unifiedTypeMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_unifiedTypeMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) ;
-//  public: GGS_unifiedTypeMap & operator = (const GGS_unifiedTypeMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -3300,10 +3280,6 @@ class GGS_unifiedTypeMap : public GGS_GenericMap <GGS_unifiedTypeMap_2E_element>
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -3461,22 +3437,12 @@ class UpEnumerator_filewrapperMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_filewrapperMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_filewrapperMap : public GGS_GenericMap <GGS_filewrapperMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_filewrapperMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_filewrapperMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_filewrapperMap (const GGS_filewrapperMap & inSource) ;
-//  public: GGS_filewrapperMap & operator = (const GGS_filewrapperMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -3490,10 +3456,6 @@ class GGS_filewrapperMap : public GGS_GenericMap <GGS_filewrapperMap_2E_element>
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -3699,22 +3661,12 @@ class UpEnumerator_functionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_functionMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_functionMap : public GGS_GenericMap <GGS_functionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_functionMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_functionMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_functionMap (const GGS_functionMap & inSource) ;
-//  public: GGS_functionMap & operator = (const GGS_functionMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -3728,10 +3680,6 @@ class GGS_functionMap : public GGS_GenericMap <GGS_functionMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -3904,22 +3852,12 @@ class UpEnumerator_grammarMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_grammarMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_grammarMap : public GGS_GenericMap <GGS_grammarMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_grammarMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_grammarMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_grammarMap (const GGS_grammarMap & inSource) ;
-//  public: GGS_grammarMap & operator = (const GGS_grammarMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -3933,10 +3871,6 @@ class GGS_grammarMap : public GGS_GenericMap <GGS_grammarMap_2E_element> {
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -4121,22 +4055,12 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_lexiqueComponentMapForSemanticAnalysis_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_lexiqueComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_lexiqueComponentMapForSemanticAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_lexiqueComponentMapForSemanticAnalysis (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_lexiqueComponentMapForSemanticAnalysis (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
-//  public: GGS_lexiqueComponentMapForSemanticAnalysis & operator = (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -4150,10 +4074,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_le
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -4376,22 +4296,12 @@ class UpEnumerator_optionComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_optionComponentMapForSemanticAnalysis_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_optionComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_optionComponentMapForSemanticAnalysis_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_optionComponentMapForSemanticAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_optionComponentMapForSemanticAnalysis (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_optionComponentMapForSemanticAnalysis (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
-//  public: GGS_optionComponentMapForSemanticAnalysis & operator = (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -4405,10 +4315,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public GGS_GenericMap <GGS_opt
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -4606,22 +4512,12 @@ class UpEnumerator_syntaxComponentMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_syntaxComponentMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_syntaxComponentMap : public GGS_GenericMap <GGS_syntaxComponentMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_syntaxComponentMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_syntaxComponentMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_syntaxComponentMap (const GGS_syntaxComponentMap & inSource) ;
-//  public: GGS_syntaxComponentMap & operator = (const GGS_syntaxComponentMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -4635,10 +4531,6 @@ class GGS_syntaxComponentMap : public GGS_GenericMap <GGS_syntaxComponentMap_2E_
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -4816,22 +4708,12 @@ class UpEnumerator_internalRoutineMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_internalRoutineMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_internalRoutineMap : public GGS_GenericMap <GGS_internalRoutineMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_internalRoutineMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_internalRoutineMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_internalRoutineMap (const GGS_internalRoutineMap & inSource) ;
-//  public: GGS_internalRoutineMap & operator = (const GGS_internalRoutineMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -4845,10 +4727,6 @@ class GGS_internalRoutineMap : public GGS_GenericMap <GGS_internalRoutineMap_2E_
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;

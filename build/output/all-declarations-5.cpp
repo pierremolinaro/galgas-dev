@@ -3362,27 +3362,13 @@ GGS_equatableComparableExtension GGS_equatableComparableExtension::extractObject
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @equatableExtensionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_equatableExtensionMap::GGS_equatableExtensionMap (void) :
 GGS_GenericMap <GGS_equatableExtensionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_equatableExtensionMap::GGS_equatableExtensionMap (const GGS_equatableExtensionMap & inSource) :
-GGS_GenericMap <GGS_equatableExtensionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_equatableExtensionMap & GGS_equatableExtensionMap::operator = (const GGS_equatableExtensionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3593,6 +3579,8 @@ void GGS_equatableExtensionMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @equatableExtensionMap
@@ -6371,27 +6359,13 @@ GGS_typeKindEnum GGS_typeKindEnum::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @propertyMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_propertyMap::GGS_propertyMap (void) :
 GGS_GenericMap <GGS_propertyMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_propertyMap::GGS_propertyMap (const GGS_propertyMap & inSource) :
-GGS_GenericMap <GGS_propertyMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_propertyMap & GGS_propertyMap::operator = (const GGS_propertyMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6693,6 +6667,8 @@ void GGS_propertyMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @propertyMap
 //--------------------------------------------------------------------------------------------------
@@ -6813,27 +6789,13 @@ GGS_propertyMap GGS_propertyMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @classFunctionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_classFunctionMap::GGS_classFunctionMap (void) :
 GGS_GenericMap <GGS_classFunctionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_classFunctionMap::GGS_classFunctionMap (const GGS_classFunctionMap & inSource) :
-GGS_GenericMap <GGS_classFunctionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_classFunctionMap & GGS_classFunctionMap::operator = (const GGS_classFunctionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7146,6 +7108,8 @@ void GGS_classFunctionMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @classFunctionMap
 //--------------------------------------------------------------------------------------------------
@@ -7266,27 +7230,13 @@ GGS_classFunctionMap GGS_classFunctionMap::extractObject (const GGS_object & inO
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @getterMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_getterMap::GGS_getterMap (void) :
 GGS_GenericMap <GGS_getterMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_getterMap::GGS_getterMap (const GGS_getterMap & inSource) :
-GGS_GenericMap <GGS_getterMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_getterMap & GGS_getterMap::operator = (const GGS_getterMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7783,6 +7733,8 @@ void GGS_getterMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @getterMap
 //--------------------------------------------------------------------------------------------------
@@ -7951,27 +7903,13 @@ GGS_getterMap GGS_getterMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @setterMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_setterMap::GGS_setterMap (void) :
 GGS_GenericMap <GGS_setterMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_setterMap::GGS_setterMap (const GGS_setterMap & inSource) :
-GGS_GenericMap <GGS_setterMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_setterMap & GGS_setterMap::operator = (const GGS_setterMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8376,6 +8314,8 @@ void GGS_setterMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @setterMap
 //--------------------------------------------------------------------------------------------------
@@ -8520,27 +8460,13 @@ GGS_setterMap GGS_setterMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @instanceMethodMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_instanceMethodMap::GGS_instanceMethodMap (void) :
 GGS_GenericMap <GGS_instanceMethodMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_instanceMethodMap::GGS_instanceMethodMap (const GGS_instanceMethodMap & inSource) :
-GGS_GenericMap <GGS_instanceMethodMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_instanceMethodMap & GGS_instanceMethodMap::operator = (const GGS_instanceMethodMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9015,6 +8941,8 @@ void GGS_instanceMethodMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @instanceMethodMap
 //--------------------------------------------------------------------------------------------------
@@ -9171,27 +9099,13 @@ GGS_instanceMethodMap GGS_instanceMethodMap::extractObject (const GGS_object & i
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @classMethodMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_classMethodMap::GGS_classMethodMap (void) :
 GGS_GenericMap <GGS_classMethodMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_classMethodMap::GGS_classMethodMap (const GGS_classMethodMap & inSource) :
-GGS_GenericMap <GGS_classMethodMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_classMethodMap & GGS_classMethodMap::operator = (const GGS_classMethodMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9458,6 +9372,8 @@ void GGS_classMethodMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @classMethodMap
 //--------------------------------------------------------------------------------------------------
@@ -9566,27 +9482,13 @@ GGS_classMethodMap GGS_classMethodMap::extractObject (const GGS_object & inObjec
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @subscriptMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_subscriptMap::GGS_subscriptMap (void) :
 GGS_GenericMap <GGS_subscriptMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_subscriptMap::GGS_subscriptMap (const GGS_subscriptMap & inSource) :
-GGS_GenericMap <GGS_subscriptMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_subscriptMap & GGS_subscriptMap::operator = (const GGS_subscriptMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9842,6 +9744,8 @@ void GGS_subscriptMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @subscriptMap
@@ -12326,27 +12230,13 @@ GGS_localVarValuation GGS_localVarValuation::extractObject (const GGS_object & i
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @scopeLocalVarMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_scopeLocalVarMap::GGS_scopeLocalVarMap (void) :
 GGS_GenericMap <GGS_scopeLocalVarMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_scopeLocalVarMap::GGS_scopeLocalVarMap (const GGS_scopeLocalVarMap & inSource) :
-GGS_GenericMap <GGS_scopeLocalVarMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_scopeLocalVarMap & GGS_scopeLocalVarMap::operator = (const GGS_scopeLocalVarMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12772,6 +12662,8 @@ void GGS_scopeLocalVarMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @scopeLocalVarMap
@@ -15280,27 +15172,13 @@ void extensionSetter_combineManagerWith (GGS_currentVarManager & ioObject,
 }
 
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @unifiedTypeMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMap::GGS_unifiedTypeMap (void) :
 GGS_GenericMap <GGS_unifiedTypeMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_unifiedTypeMap::GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) :
-GGS_GenericMap <GGS_unifiedTypeMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_unifiedTypeMap & GGS_unifiedTypeMap::operator = (const GGS_unifiedTypeMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15488,6 +15366,8 @@ void GGS_unifiedTypeMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @unifiedTypeMap
@@ -16205,5 +16085,92 @@ GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
 }
 
 
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry baseType'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
+                                                  Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_outBaseType = temp_0 ;
+  bool loop_8355 = true ;
+  while (loop_8355) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      test_1 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).boolEnum () ;
+      loop_8355 = test_1 == GalgasBool::boolTrue ;
+      if (loop_8355) {
+        result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 229)).readProperty_superType () ;
+      }
+    }
+  }
+//---
+  return result_outBaseType ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName (const GGS_unifiedTypeMapEntry inObject,
+                                        GGS_stringset & ioArgument_ioInclusions,
+                                        Compiler * inCompiler
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8648 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 236)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = var_typeDefinition_8648.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 237)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8648.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 237)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 237)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8648.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 238)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName_31_ (const GGS_unifiedTypeMapEntry inObject,
+                                            GGS_stringset & ioArgument_ioInclusions,
+                                            Compiler * inCompiler
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  GGS_unifiedTypeDefinition var_typeDefinition_9002 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 245)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = var_typeDefinition_9002.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 246)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      switch (var_typeDefinition_9002.readProperty_headerKind ().enumValue ()) {
+      case GGS_headerKind::Enumeration::invalid:
+        break ;
+      case GGS_headerKind::Enumeration::enum_noHeader:
+        break ;
+      case GGS_headerKind::Enumeration::enum_oneHeader:
+        {
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9002.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 250)) ;
+        }
+        break ;
+      case GGS_headerKind::Enumeration::enum_twoHeaders:
+        {
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9002.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 252))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 252)) ;
+        }
+        break ;
+      }
+    }
+  }
+}
 
 

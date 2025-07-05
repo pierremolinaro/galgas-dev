@@ -2415,27 +2415,13 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
     inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin_inSemanticContext, io_ioTypeMap, constin_inPredefinedTypes, io_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
   }
 }
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @propertyIndexMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_propertyIndexMap::GGS_propertyIndexMap (void) :
 GGS_GenericMap <GGS_propertyIndexMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_propertyIndexMap::GGS_propertyIndexMap (const GGS_propertyIndexMap & inSource) :
-GGS_GenericMap <GGS_propertyIndexMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_propertyIndexMap & GGS_propertyIndexMap::operator = (const GGS_propertyIndexMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2647,6 +2633,8 @@ void GGS_propertyIndexMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @propertyIndexMap
 //--------------------------------------------------------------------------------------------------
@@ -2743,27 +2731,13 @@ GGS_propertyIndexMap GGS_propertyIndexMap::extractObject (const GGS_object & inO
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @nonterminalLabelMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonterminalLabelMap::GGS_nonterminalLabelMap (void) :
 GGS_GenericMap <GGS_nonterminalLabelMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_nonterminalLabelMap::GGS_nonterminalLabelMap (const GGS_nonterminalLabelMap & inSource) :
-GGS_GenericMap <GGS_nonterminalLabelMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_nonterminalLabelMap & GGS_nonterminalLabelMap::operator = (const GGS_nonterminalLabelMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3065,6 +3039,8 @@ void GGS_nonterminalLabelMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @nonterminalLabelMap
 //--------------------------------------------------------------------------------------------------
@@ -3185,27 +3161,13 @@ GGS_nonterminalLabelMap GGS_nonterminalLabelMap::extractObject (const GGS_object
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @nonterminalMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonterminalMap::GGS_nonterminalMap (void) :
 GGS_GenericMap <GGS_nonterminalMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_nonterminalMap::GGS_nonterminalMap (const GGS_nonterminalMap & inSource) :
-GGS_GenericMap <GGS_nonterminalMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_nonterminalMap & GGS_nonterminalMap::operator = (const GGS_nonterminalMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3416,6 +3378,8 @@ void GGS_nonterminalMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @nonterminalMap
@@ -5514,27 +5478,13 @@ GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::extractObject (const GGS_object
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @uselessEntityLocationMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_uselessEntityLocationMap::GGS_uselessEntityLocationMap (void) :
 GGS_GenericMap <GGS_uselessEntityLocationMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_uselessEntityLocationMap::GGS_uselessEntityLocationMap (const GGS_uselessEntityLocationMap & inSource) :
-GGS_GenericMap <GGS_uselessEntityLocationMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_uselessEntityLocationMap & GGS_uselessEntityLocationMap::operator = (const GGS_uselessEntityLocationMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5764,6 +5714,8 @@ void GGS_uselessEntityLocationMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @uselessEntityLocationMap

@@ -969,8 +969,8 @@ GGS_lstringlist AC_GALGAS_map::getter_keyList (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_location cSharedMapRoot::locationForKey (const GGS_string & inKey,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   if (inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -997,8 +997,8 @@ GGS_location cSharedMapRoot::locationForKey (const GGS_string & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_location AC_GALGAS_map::getter_locationForKey (const GGS_string & inKey,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   if (isValid ()) {
     result = mSharedMap->locationForKey (inKey, inCompiler COMMA_THERE) ;
@@ -1043,8 +1043,8 @@ GGS_uint AC_GALGAS_map::getter_levels (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool cSharedMapRoot::hasKeyAtLevel (const GGS_string & inKey,
-                                           const GGS_uint & inLevel
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
+                                        const GGS_uint & inLevel
+                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (inKey.isValid () && inLevel.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -1057,8 +1057,8 @@ GGS_bool cSharedMapRoot::hasKeyAtLevel (const GGS_string & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool AC_GALGAS_map::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                 const GGS_uint & inLevel
-                                                 COMMA_LOCATION_ARGS) const {
+                                              const GGS_uint & inLevel
+                                              COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
     result = mSharedMap->hasKeyAtLevel (inKey, inLevel COMMA_THERE) ;
@@ -1075,7 +1075,7 @@ GGS_bool AC_GALGAS_map::getter_hasKeyAtLevel (const GGS_string & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool cSharedMapRoot::hasKey (const GGS_string & inKey
-                                    COMMA_UNUSED_LOCATION_ARGS) const {
+                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -1088,7 +1088,7 @@ GGS_bool cSharedMapRoot::hasKey (const GGS_string & inKey
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool AC_GALGAS_map::getter_hasKey (const GGS_string & inKey
-                                          COMMA_LOCATION_ARGS) const {
+                                       COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
     result = mSharedMap->hasKey (inKey COMMA_THERE) ;

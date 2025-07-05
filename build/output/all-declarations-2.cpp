@@ -6012,27 +6012,13 @@ GGS_lexicalSentValueList GGS_lexicalSentValueList::extractObject (const GGS_obje
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @terminalMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalMap::GGS_terminalMap (void) :
 GGS_GenericMap <GGS_terminalMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_terminalMap::GGS_terminalMap (const GGS_terminalMap & inSource) :
-GGS_GenericMap <GGS_terminalMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_terminalMap & GGS_terminalMap::operator = (const GGS_terminalMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6244,6 +6230,8 @@ void GGS_terminalMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @terminalMap
 //--------------------------------------------------------------------------------------------------
@@ -6340,27 +6328,13 @@ GGS_terminalMap GGS_terminalMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalTypeMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTypeMap::GGS_lexicalTypeMap (void) :
 GGS_GenericMap <GGS_lexicalTypeMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalTypeMap::GGS_lexicalTypeMap (const GGS_lexicalTypeMap & inSource) :
-GGS_GenericMap <GGS_lexicalTypeMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalTypeMap & GGS_lexicalTypeMap::operator = (const GGS_lexicalTypeMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6572,6 +6546,8 @@ void GGS_lexicalTypeMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTypeMap
 //--------------------------------------------------------------------------------------------------
@@ -6668,27 +6644,13 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::extractObject (const GGS_object & inObjec
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalAttributeMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeMap::GGS_lexicalAttributeMap (void) :
 GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalAttributeMap::GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) :
-GGS_GenericMap <GGS_lexicalAttributeMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalAttributeMap & GGS_lexicalAttributeMap::operator = (const GGS_lexicalAttributeMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6899,6 +6861,8 @@ void GGS_lexicalAttributeMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalAttributeMap
@@ -7789,27 +7753,13 @@ GGS_terminalList GGS_terminalList::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalExplicitTokenListMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMap::GGS_lexicalExplicitTokenListMap (void) :
 GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalExplicitTokenListMap::GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) :
-GGS_GenericMap <GGS_lexicalExplicitTokenListMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalExplicitTokenListMap & GGS_lexicalExplicitTokenListMap::operator = (const GGS_lexicalExplicitTokenListMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8110,6 +8060,8 @@ void GGS_lexicalExplicitTokenListMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMap
@@ -8527,27 +8479,13 @@ GGS_tokenSortedlist GGS_tokenSortedlist::extractObject (const GGS_object & inObj
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalExplicitTokenListMapMap::GGS_lexicalExplicitTokenListMapMap (void) :
 GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalExplicitTokenListMapMap::GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) :
-GGS_GenericMap <GGS_lexicalExplicitTokenListMapMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalExplicitTokenListMapMap & GGS_lexicalExplicitTokenListMapMap::operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8849,6 +8787,8 @@ void GGS_lexicalExplicitTokenListMapMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
@@ -8969,27 +8909,13 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::extractOb
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalMessageMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalMessageMap::GGS_lexicalMessageMap (void) :
 GGS_GenericMap <GGS_lexicalMessageMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalMessageMap::GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) :
-GGS_GenericMap <GGS_lexicalMessageMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalMessageMap & GGS_lexicalMessageMap::operator = (const GGS_lexicalMessageMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9177,7 +9103,6 @@ void GGS_lexicalMessageMap::method_searchKey (GGS_lstring inLKey,
 void GGS_lexicalMessageMap::setter_replaceKey (GGS_lexicalMessageMap_2E_element inElement,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> info ;
   if (isValid () && inElement.isValid ()) {
     const char * kReplaceErrorMessage = "the '%K' message is not declared" ;
     const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
@@ -9286,6 +9211,8 @@ void GGS_lexicalMessageMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalMessageMap
@@ -9972,27 +9899,13 @@ GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::extra
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (void) :
 GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) :
-GGS_GenericMap <GGS_lexicalRoutineMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalRoutineMap & GGS_lexicalRoutineMap::operator = (const GGS_lexicalRoutineMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10293,6 +10206,8 @@ void GGS_lexicalRoutineMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalRoutineMap
@@ -10919,27 +10834,13 @@ GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::ext
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalFunctionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionMap::GGS_lexicalFunctionMap (void) :
 GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalFunctionMap::GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) :
-GGS_GenericMap <GGS_lexicalFunctionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalFunctionMap & GGS_lexicalFunctionMap::operator = (const GGS_lexicalFunctionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11285,6 +11186,8 @@ void GGS_lexicalFunctionMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalFunctionMap
@@ -11995,27 +11898,13 @@ GGS_templateDelimitorList GGS_templateDelimitorList::extractObject (const GGS_ob
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @styleMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_styleMap::GGS_styleMap (void) :
 GGS_GenericMap <GGS_styleMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_styleMap::GGS_styleMap (const GGS_styleMap & inSource) :
-GGS_GenericMap <GGS_styleMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_styleMap & GGS_styleMap::operator = (const GGS_styleMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12272,6 +12161,8 @@ void GGS_styleMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @styleMap
 //--------------------------------------------------------------------------------------------------
@@ -12380,27 +12271,13 @@ GGS_styleMap GGS_styleMap::extractObject (const GGS_object & inObject,
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalTagMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap::GGS_lexicalTagMap (void) :
 GGS_GenericMap <GGS_lexicalTagMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalTagMap::GGS_lexicalTagMap (const GGS_lexicalTagMap & inSource) :
-GGS_GenericMap <GGS_lexicalTagMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalTagMap & GGS_lexicalTagMap::operator = (const GGS_lexicalTagMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12566,6 +12443,8 @@ void GGS_lexicalTagMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @lexicalTagMap

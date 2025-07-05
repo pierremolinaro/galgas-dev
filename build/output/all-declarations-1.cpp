@@ -2553,27 +2553,13 @@ GGS_templateInstructionIfForGeneration_2E_weak GGS_templateInstructionIfForGener
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @templateVariableMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateVariableMap::GGS_templateVariableMap (void) :
 GGS_GenericMap <GGS_templateVariableMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_templateVariableMap::GGS_templateVariableMap (const GGS_templateVariableMap & inSource) :
-GGS_GenericMap <GGS_templateVariableMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_templateVariableMap & GGS_templateVariableMap::operator = (const GGS_templateVariableMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2829,6 +2815,8 @@ void GGS_templateVariableMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @templateVariableMap

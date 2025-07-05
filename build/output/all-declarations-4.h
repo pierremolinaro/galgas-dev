@@ -5702,22 +5702,12 @@ class UpEnumerator_initializerMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_initializerMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_initializerMap : public GGS_GenericMap <GGS_initializerMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_initializerMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_initializerMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_initializerMap (const GGS_initializerMap & inSource) ;
-//  public: GGS_initializerMap & operator = (const GGS_initializerMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -5731,10 +5721,6 @@ class GGS_initializerMap : public GGS_GenericMap <GGS_initializerMap_2E_element>
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -11554,18 +11540,12 @@ class UpEnumerator_insertMethodMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_insertMethodMap : public GGS_GenericMap <GGS_insertMethodMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_insertMethodMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_insertMethodMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_insertMethodMap (const GGS_insertMethodMap & inSource) ;
-//  public: GGS_insertMethodMap & operator = (const GGS_insertMethodMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -11579,10 +11559,6 @@ class GGS_insertMethodMap : public GGS_GenericMap <GGS_insertMethodMap_2E_elemen
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -11867,18 +11843,12 @@ class UpEnumerator_searchMethodMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_searchMethodMap : public GGS_GenericMap <GGS_searchMethodMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_searchMethodMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_searchMethodMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_searchMethodMap (const GGS_searchMethodMap & inSource) ;
-//  public: GGS_searchMethodMap & operator = (const GGS_searchMethodMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -11892,10 +11862,6 @@ class GGS_searchMethodMap : public GGS_GenericMap <GGS_searchMethodMap_2E_elemen
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;

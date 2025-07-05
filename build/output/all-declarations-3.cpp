@@ -1960,27 +1960,13 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::extractObject (
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @commandLineOptionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionMap::GGS_commandLineOptionMap (void) :
 GGS_GenericMap <GGS_commandLineOptionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_commandLineOptionMap::GGS_commandLineOptionMap (const GGS_commandLineOptionMap & inSource) :
-GGS_GenericMap <GGS_commandLineOptionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_commandLineOptionMap & GGS_commandLineOptionMap::operator = (const GGS_commandLineOptionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2326,6 +2312,8 @@ void GGS_commandLineOptionMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @commandLineOptionMap
@@ -5993,27 +5981,13 @@ GGS_guiCommandLineOptionList GGS_guiCommandLineOptionList::extractObject (const 
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @extensionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMap::GGS_extensionMap (void) :
 GGS_GenericMap <GGS_extensionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionMap::GGS_extensionMap (const GGS_extensionMap & inSource) :
-GGS_GenericMap <GGS_extensionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionMap & GGS_extensionMap::operator = (const GGS_extensionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6243,6 +6217,8 @@ void GGS_extensionMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @extensionMap
@@ -9134,27 +9110,13 @@ GGS_guiAnalysisContext GGS_guiAnalysisContext::extractObject (const GGS_object &
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @optionComponentMapForGeneration
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentMapForGeneration::GGS_optionComponentMapForGeneration (void) :
 GGS_GenericMap <GGS_optionComponentMapForGeneration_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_optionComponentMapForGeneration::GGS_optionComponentMapForGeneration (const GGS_optionComponentMapForGeneration & inSource) :
-GGS_GenericMap <GGS_optionComponentMapForGeneration_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_optionComponentMapForGeneration & GGS_optionComponentMapForGeneration::operator = (const GGS_optionComponentMapForGeneration & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9342,6 +9304,8 @@ void GGS_optionComponentMapForGeneration::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @optionComponentMapForGeneration

@@ -8798,27 +8798,13 @@ GGS_productionRuleListForGrammarAnalysis GGS_productionRuleListForGrammarAnalysi
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @unusedNonTerminalSymbolMapForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::GGS_unusedNonTerminalSymbolMapForGrammarAnalysis (void) :
 GGS_GenericMap <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::GGS_unusedNonTerminalSymbolMapForGrammarAnalysis (const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) :
-GGS_GenericMap <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::operator = (const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9006,6 +8992,8 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::description (String & ioS
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @unusedNonTerminalSymbolMapForGrammarAnalysis
@@ -11094,27 +11082,13 @@ GGS_syntaxComponentListForGrammarAnalysis GGS_syntaxComponentListForGrammarAnaly
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @terminalSymbolsMapForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalSymbolsMapForGrammarAnalysis::GGS_terminalSymbolsMapForGrammarAnalysis (void) :
 GGS_GenericMap <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_terminalSymbolsMapForGrammarAnalysis::GGS_terminalSymbolsMapForGrammarAnalysis (const GGS_terminalSymbolsMapForGrammarAnalysis & inSource) :
-GGS_GenericMap <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_terminalSymbolsMapForGrammarAnalysis & GGS_terminalSymbolsMapForGrammarAnalysis::operator = (const GGS_terminalSymbolsMapForGrammarAnalysis & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11325,6 +11299,8 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @terminalSymbolsMapForGrammarAnalysis
@@ -13365,27 +13341,13 @@ GGS_unifiedTypeMapEntryList extensionGetter_listForKey (const GGS_descendantClas
 
 
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @extensionMethodMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMethodMapForGlobalCheckings::GGS_extensionMethodMapForGlobalCheckings (void) :
 GGS_GenericMap <GGS_extensionMethodMapForGlobalCheckings_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionMethodMapForGlobalCheckings::GGS_extensionMethodMapForGlobalCheckings (const GGS_extensionMethodMapForGlobalCheckings & inSource) :
-GGS_GenericMap <GGS_extensionMethodMapForGlobalCheckings_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionMethodMapForGlobalCheckings & GGS_extensionMethodMapForGlobalCheckings::operator = (const GGS_extensionMethodMapForGlobalCheckings & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13532,6 +13494,8 @@ void GGS_extensionMethodMapForGlobalCheckings::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @extensionMethodMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
@@ -13616,27 +13580,13 @@ GGS_extensionMethodMapForGlobalCheckings GGS_extensionMethodMapForGlobalChecking
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @extensionSetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionSetterMapForGlobalCheckings::GGS_extensionSetterMapForGlobalCheckings (void) :
 GGS_GenericMap <GGS_extensionSetterMapForGlobalCheckings_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionSetterMapForGlobalCheckings::GGS_extensionSetterMapForGlobalCheckings (const GGS_extensionSetterMapForGlobalCheckings & inSource) :
-GGS_GenericMap <GGS_extensionSetterMapForGlobalCheckings_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionSetterMapForGlobalCheckings & GGS_extensionSetterMapForGlobalCheckings::operator = (const GGS_extensionSetterMapForGlobalCheckings & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13783,6 +13733,8 @@ void GGS_extensionSetterMapForGlobalCheckings::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @extensionSetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
@@ -13867,27 +13819,13 @@ GGS_extensionSetterMapForGlobalCheckings GGS_extensionSetterMapForGlobalChecking
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @extensionGetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionGetterMapForGlobalCheckings::GGS_extensionGetterMapForGlobalCheckings (void) :
 GGS_GenericMap <GGS_extensionGetterMapForGlobalCheckings_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionGetterMapForGlobalCheckings::GGS_extensionGetterMapForGlobalCheckings (const GGS_extensionGetterMapForGlobalCheckings & inSource) :
-GGS_GenericMap <GGS_extensionGetterMapForGlobalCheckings_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_extensionGetterMapForGlobalCheckings & GGS_extensionGetterMapForGlobalCheckings::operator = (const GGS_extensionGetterMapForGlobalCheckings & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14033,6 +13971,8 @@ void GGS_extensionGetterMapForGlobalCheckings::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @extensionGetterMapForGlobalCheckings
@@ -15079,4 +15019,50 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_folderDirecto
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProject.galgas", 195)) ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObject,
+                                                const GGS_location constinArgument_inLocation,
+                                                Compiler * inCompiler
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_AccessControlAST temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_AccessControlAST::Enumeration::invalid:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_publicAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_protectedAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_protectedSetAccess:
+    {
+      TC_Array <FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 155)) ;
+    }
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_privateAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_privateSetAccess:
+    {
+      TC_Array <FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas", 158)) ;
+    }
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_fileprivateAccess:
+    break ;
+  case GGS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
+    {
+      GGS_location extractedValue_5217__0 ;
+      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_5217__0) ;
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas", 161)) ;
+    }
+    break ;
+  }
+}
+
 

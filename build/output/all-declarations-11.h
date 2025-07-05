@@ -6941,18 +6941,12 @@ class UpEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public GGS_GenericMap <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_unusedNonTerminalSymbolMapForGrammarAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_unusedNonTerminalSymbolMapForGrammarAnalysis (const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) ;
-//  public: GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & operator = (const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -6966,10 +6960,6 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public GGS_GenericMap <
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -8475,22 +8465,12 @@ class UpEnumerator_terminalSymbolsMapForGrammarAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_terminalSymbolsMapForGrammarAnalysis_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_terminalSymbolsMapForGrammarAnalysis : public GGS_GenericMap <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_terminalSymbolsMapForGrammarAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_terminalSymbolsMapForGrammarAnalysis (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_terminalSymbolsMapForGrammarAnalysis (const GGS_terminalSymbolsMapForGrammarAnalysis & inSource) ;
-//  public: GGS_terminalSymbolsMapForGrammarAnalysis & operator = (const GGS_terminalSymbolsMapForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -8504,10 +8484,6 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public GGS_GenericMap <GGS_term
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -10209,18 +10185,12 @@ class UpEnumerator_extensionMethodMapForGlobalCheckings final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_extensionMethodMapForGlobalCheckings : public GGS_GenericMap <GGS_extensionMethodMapForGlobalCheckings_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_extensionMethodMapForGlobalCheckings (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_extensionMethodMapForGlobalCheckings (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_extensionMethodMapForGlobalCheckings (const GGS_extensionMethodMapForGlobalCheckings & inSource) ;
-//  public: GGS_extensionMethodMapForGlobalCheckings & operator = (const GGS_extensionMethodMapForGlobalCheckings & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -10234,10 +10204,6 @@ class GGS_extensionMethodMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -10522,18 +10488,12 @@ class UpEnumerator_extensionSetterMapForGlobalCheckings final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_extensionSetterMapForGlobalCheckings : public GGS_GenericMap <GGS_extensionSetterMapForGlobalCheckings_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_extensionSetterMapForGlobalCheckings (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_extensionSetterMapForGlobalCheckings (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_extensionSetterMapForGlobalCheckings (const GGS_extensionSetterMapForGlobalCheckings & inSource) ;
-//  public: GGS_extensionSetterMapForGlobalCheckings & operator = (const GGS_extensionSetterMapForGlobalCheckings & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -10547,10 +10507,6 @@ class GGS_extensionSetterMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -10835,18 +10791,12 @@ class UpEnumerator_extensionGetterMapForGlobalCheckings final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
 class GGS_extensionGetterMapForGlobalCheckings : public GGS_GenericMap <GGS_extensionGetterMapForGlobalCheckings_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_extensionGetterMapForGlobalCheckings (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_extensionGetterMapForGlobalCheckings (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_extensionGetterMapForGlobalCheckings (const GGS_extensionGetterMapForGlobalCheckings & inSource) ;
-//  public: GGS_extensionGetterMapForGlobalCheckings & operator = (const GGS_extensionGetterMapForGlobalCheckings & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -10860,10 +10810,6 @@ class GGS_extensionGetterMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -11591,4 +11537,15 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST inObject,
+                                                const class GGS_location constin_inLocation,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 

@@ -10,17 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControlAST checkCompatibilityWithLet'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST inObject,
-                                                const class GGS_location constin_inLocation,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension getter '@AccessControlAST accessControl' (as function)
 //
 //--------------------------------------------------------------------------------------------------

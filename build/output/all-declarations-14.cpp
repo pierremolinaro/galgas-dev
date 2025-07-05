@@ -9680,27 +9680,13 @@ void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_d
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas", 201)) ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @headerCompositionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_headerCompositionMap::GGS_headerCompositionMap (void) :
 GGS_GenericMap <GGS_headerCompositionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_headerCompositionMap::GGS_headerCompositionMap (const GGS_headerCompositionMap & inSource) :
-GGS_GenericMap <GGS_headerCompositionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_headerCompositionMap & GGS_headerCompositionMap::operator = (const GGS_headerCompositionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9957,6 +9943,8 @@ void GGS_headerCompositionMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @headerCompositionMap
 //--------------------------------------------------------------------------------------------------
@@ -10065,27 +10053,13 @@ GGS_headerCompositionMap GGS_headerCompositionMap::extractObject (const GGS_obje
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @headerRepartitionMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_headerRepartitionMap::GGS_headerRepartitionMap (void) :
 GGS_GenericMap <GGS_headerRepartitionMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_headerRepartitionMap::GGS_headerRepartitionMap (const GGS_headerRepartitionMap & inSource) :
-GGS_GenericMap <GGS_headerRepartitionMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_headerRepartitionMap & GGS_headerRepartitionMap::operator = (const GGS_headerRepartitionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10297,6 +10271,8 @@ void GGS_headerRepartitionMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @headerRepartitionMap
 //--------------------------------------------------------------------------------------------------
@@ -10393,27 +10369,13 @@ GGS_headerRepartitionMap GGS_headerRepartitionMap::extractObject (const GGS_obje
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @projectQualifiedFeatureMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_projectQualifiedFeatureMap::GGS_projectQualifiedFeatureMap (void) :
 GGS_GenericMap <GGS_projectQualifiedFeatureMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_projectQualifiedFeatureMap::GGS_projectQualifiedFeatureMap (const GGS_projectQualifiedFeatureMap & inSource) :
-GGS_GenericMap <GGS_projectQualifiedFeatureMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_projectQualifiedFeatureMap & GGS_projectQualifiedFeatureMap::operator = (const GGS_projectQualifiedFeatureMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10624,6 +10586,8 @@ void GGS_projectQualifiedFeatureMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @projectQualifiedFeatureMap

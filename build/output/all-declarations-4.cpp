@@ -7208,27 +7208,13 @@ GGS_typedPropertyList GGS_typedPropertyList::extractObject (const GGS_object & i
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @initializerMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_initializerMap::GGS_initializerMap (void) :
 GGS_GenericMap <GGS_initializerMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_initializerMap::GGS_initializerMap (const GGS_initializerMap & inSource) :
-GGS_GenericMap <GGS_initializerMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_initializerMap & GGS_initializerMap::operator = (const GGS_initializerMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7439,6 +7425,8 @@ void GGS_initializerMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @initializerMap
@@ -15600,27 +15588,13 @@ GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::ext
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @insertMethodMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_insertMethodMap::GGS_insertMethodMap (void) :
 GGS_GenericMap <GGS_insertMethodMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_insertMethodMap::GGS_insertMethodMap (const GGS_insertMethodMap & inSource) :
-GGS_GenericMap <GGS_insertMethodMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_insertMethodMap & GGS_insertMethodMap::operator = (const GGS_insertMethodMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15767,6 +15741,8 @@ void GGS_insertMethodMap::description (String & ioString,
   ioString.appendCString (">") ;
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @insertMethodMap
 //--------------------------------------------------------------------------------------------------
@@ -15851,27 +15827,13 @@ GGS_insertMethodMap GGS_insertMethodMap::extractObject (const GGS_object & inObj
   return result ;
 }
 
-
-
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @searchMethodMap
 //--------------------------------------------------------------------------------------------------
 
 GGS_searchMethodMap::GGS_searchMethodMap (void) :
 GGS_GenericMap <GGS_searchMethodMap_2E_element> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_searchMethodMap::GGS_searchMethodMap (const GGS_searchMethodMap & inSource) :
-GGS_GenericMap <GGS_searchMethodMap_2E_element> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_searchMethodMap & GGS_searchMethodMap::operator = (const GGS_searchMethodMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16017,6 +15979,8 @@ void GGS_searchMethodMap::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @searchMethodMap

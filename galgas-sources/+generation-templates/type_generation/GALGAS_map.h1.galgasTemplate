@@ -66,23 +66,12 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 //--------------------------------------------------------------------------------------------------
 
-%
-for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %extern const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% ;\n\n%
-end
-%//--------------------------------------------------------------------------------------------------
-
 class GGS_%!TYPE_IDENTIFIER% : public GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
-//  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -96,10 +85,6 @@ class GGS_%!TYPE_IDENTIFIER% : public GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIF
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;

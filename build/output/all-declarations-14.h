@@ -1989,22 +1989,12 @@ class UpEnumerator_headerCompositionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_headerCompositionMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_headerCompositionMap : public GGS_GenericMap <GGS_headerCompositionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_headerCompositionMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_headerCompositionMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_headerCompositionMap (const GGS_headerCompositionMap & inSource) ;
-//  public: GGS_headerCompositionMap & operator = (const GGS_headerCompositionMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -2018,10 +2008,6 @@ class GGS_headerCompositionMap : public GGS_GenericMap <GGS_headerCompositionMap
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -2359,22 +2345,12 @@ class UpEnumerator_headerRepartitionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_headerRepartitionMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_headerRepartitionMap : public GGS_GenericMap <GGS_headerRepartitionMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_headerRepartitionMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_headerRepartitionMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_headerRepartitionMap (const GGS_headerRepartitionMap & inSource) ;
-//  public: GGS_headerRepartitionMap & operator = (const GGS_headerRepartitionMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -2388,10 +2364,6 @@ class GGS_headerRepartitionMap : public GGS_GenericMap <GGS_headerRepartitionMap
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -2706,22 +2678,12 @@ class UpEnumerator_projectQualifiedFeatureMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_projectQualifiedFeatureMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_projectQualifiedFeatureMap : public GGS_GenericMap <GGS_projectQualifiedFeatureMap_2E_element> {
 //--------------------------------- Default constructor
   public: GGS_projectQualifiedFeatureMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_projectQualifiedFeatureMap (void) = default ;
-
-//--------------------------------- Handle copy
-//  public: GGS_projectQualifiedFeatureMap (const GGS_projectQualifiedFeatureMap & inSource) ;
-//  public: GGS_projectQualifiedFeatureMap & operator = (const GGS_projectQualifiedFeatureMap & inSource) ;
 
 //--------------------------------- Description
   public: virtual void description (String & ioString,
@@ -2735,10 +2697,6 @@ class GGS_projectQualifiedFeatureMap : public GGS_GenericMap <GGS_projectQualifi
 //--------------------------------- Getter keyList
   public: GGS_lstringlist getter_keyList (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Getter keySet
-//  public: GGS_stringset getter_keySet (Compiler * inCompiler
-//                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Getter hasKey
   public: GGS_bool getter_hasKey (const class GGS_string & inKey COMMA_LOCATION_ARGS) const ;

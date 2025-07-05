@@ -1,46 +1,10 @@
-
-%if GENERATE_COMPARISON then
-%//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (count () < inOperand.count ()) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (count () > inOperand.count ()) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> left = sortedInfoArray () ;
-      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> right = inOperand.sortedInfoArray () ;
-      for (int32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
-        result = left (i COMMA_HERE).value ().objectCompare (right (i COMMA_HERE).value ()) ;
-      }
-    }
-  }
-  return result ;
-}
-
-%end%
-
+//--------------------------------------------------------------------------------------------------
+//  Map type @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
-GGS_GenericMap <GGS_%!ELEMENT_TYPE_IDENTIFIER%> (inSource) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return *this ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -198,7 +162,7 @@ end
 %,\n %!^%Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (inLKey%
-for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
+  for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
   const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;
 %
 if [shadowErrorMessage length] == 0 then
@@ -244,10 +208,9 @@ void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentatio
 %
 end
 
-
-for (mMethodName mErrorMessage) in REMOVE_SETTER_LIST do
+for (mSetterName mErrorMessage) in REMOVE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%?^%GGS_lstring inLKey%
   for (mPropertyTypeEntry 4*) in PROPERTY_LIST do (IDX)
     %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
@@ -278,13 +241,12 @@ for (mMethodName mErrorMessage) in REMOVE_SETTER_LIST do
 end
 
 
-for (mMethodName mErrorMessage) in REPLACE_SETTER_LIST do
+for (mSetterName mErrorMessage) in REPLACE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement,
+void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement,
        %!^%Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) {
-  SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info ;
   if (isValid () && inElement.isValid ()) {
     const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
     const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
@@ -378,6 +340,30 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
   }
   ioString.appendCString (">") ;
 }
+
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> left = sortedInfoArray () ;
+      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> right = inOperand.sortedInfoArray () ;
+      for (int32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        result = left (i COMMA_HERE).value ().objectCompare (right (i COMMA_HERE).value ()) ;
+      }
+    }
+  }
+  return result ;
+}
+
+%end%
 
 //--------------------------------------------------------------------------------------------------
 //  Down Enumerator for @%!TYPE_IDENTIFIER%
