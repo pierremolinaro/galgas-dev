@@ -2158,9 +2158,6 @@ class GGS_templateVariableMap : public GGS_GenericMap <GGS_templateVariableMap_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@templateVariableMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateVariableMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -3357,9 +3354,6 @@ class GGS_unifiedTypeMap : public GGS_GenericMap <GGS_unifiedTypeMap_2E_element>
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@unifiedTypeMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperMap map
 //--------------------------------------------------------------------------------------------------

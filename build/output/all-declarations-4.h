@@ -5804,9 +5804,6 @@ class GGS_initializerMap : public GGS_GenericMap <GGS_initializerMap_2E_element>
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@initializerMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @initializerMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -11627,9 +11624,6 @@ class GGS_insertMethodMap : public GGS_GenericMap <GGS_insertMethodMap_2E_elemen
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@insertMethodMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @insertMethodMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -11929,9 +11923,6 @@ class GGS_searchMethodMap : public GGS_GenericMap <GGS_searchMethodMap_2E_elemen
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@searchMethodMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @searchMethodMap_2E_element struct
 //--------------------------------------------------------------------------------------------------

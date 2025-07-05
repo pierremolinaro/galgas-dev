@@ -2102,9 +2102,6 @@ class GGS_headerCompositionMap : public GGS_GenericMap <GGS_headerCompositionMap
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@headerCompositionMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @headerCompositionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2447,9 +2444,6 @@ class GGS_headerRepartitionMap : public GGS_GenericMap <GGS_headerRepartitionMap
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@headerRepartitionMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @headerRepartitionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2779,9 +2773,6 @@ class GGS_projectQualifiedFeatureMap : public GGS_GenericMap <GGS_projectQualifi
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@projectQualifiedFeatureMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @projectQualifiedFeatureMap_2E_element struct
 //--------------------------------------------------------------------------------------------------

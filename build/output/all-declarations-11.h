@@ -7038,9 +7038,6 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public GGS_GenericMap <
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@unusedNonTerminalSymbolMapForGrammarAnalysis' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -8566,9 +8563,6 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public GGS_GenericMap <GGS_term
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@terminalSymbolsMapForGrammarAnalysis' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @terminalSymbolsMapForGrammarAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -10272,9 +10266,6 @@ class GGS_extensionMethodMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionMethodMapForGlobalCheckings' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionMethodMapForGlobalCheckings_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -10575,9 +10566,6 @@ class GGS_extensionSetterMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionSetterMapForGlobalCheckings' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionSetterMapForGlobalCheckings_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -10877,9 +10865,6 @@ class GGS_extensionGetterMapForGlobalCheckings : public GGS_GenericMap <GGS_exte
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionGetterMapForGlobalCheckings' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionGetterMapForGlobalCheckings_2E_element struct
 //--------------------------------------------------------------------------------------------------

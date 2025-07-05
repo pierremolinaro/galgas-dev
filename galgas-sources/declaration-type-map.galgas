@@ -738,7 +738,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
       !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]
-      !headerKind: .twoHeaders
+      !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
@@ -907,25 +907,6 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method appendDeclaration2
-    ?let @string unused inOutputDirectory
-    ?!@stringset ioInclusionSet
-    !@string outHeader {
-    for (t 4*) in self.mTypedAttributeList do
-      [t addHeaderFileName1 !?ioInclusionSet]
-    end
-    let selfTypeDefinition = [self.mSelfTypeEntry definition]
-    outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader2
-      !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry  identifierRepresentation]
-      !self.mTypedAttributeList
-      ![selfTypeDefinition.features generateCppObjectComparison]
-      ![self.mElementTypeEntry identifierRepresentation]
-    ]
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
                                                !@string outImplementation {
@@ -968,13 +949,6 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
     ?@string ELEMENT_TYPE_IDENTIFIER
     ?@bool GENERATE_COMPARISON
-
-  template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@bool GENERATE_COMPARISON
-    ?@string ELEMENT_TYPE_IDENTIFIER
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER

@@ -369,9 +369,6 @@ class GGS_routineArgumentMap : public GGS_GenericMap <GGS_routineArgumentMap_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineArgumentMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@internalRoutineMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @internalRoutineMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -538,9 +535,6 @@ class GGS_internalRoutineMap_2E_element_3F_ : public AC_GALGAS_root {
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_internalRoutineMap_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@routineArgumentMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @routineArgumentMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -1205,9 +1199,6 @@ class GGS_grammarLabelMap : public GGS_GenericMap <GGS_grammarLabelMap_2E_elemen
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@grammarLabelMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarLabelMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -1374,9 +1365,6 @@ class GGS_grammarLabelMap_2E_element_3F_ : public AC_GALGAS_root {
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@grammarMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -1568,9 +1556,6 @@ class GGS_grammarMap_2E_element_3F_ : public AC_GALGAS_root {
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@functionMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @functionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -1968,9 +1953,6 @@ class GGS_wrapperFileMap : public GGS_GenericMap <GGS_wrapperFileMap_2E_element>
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@wrapperFileMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @wrapperFileMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2365,9 +2347,6 @@ class GGS_wrapperDirectoryMap : public GGS_GenericMap <GGS_wrapperDirectoryMap_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@wrapperDirectoryMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @wrapperDirectoryMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2736,9 +2715,6 @@ class GGS_filewrapperTemplateMap : public GGS_GenericMap <GGS_filewrapperTemplat
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@filewrapperTemplateMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperTemplateMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2917,9 +2893,6 @@ class GGS_filewrapperTemplateMap_2E_element_3F_ : public AC_GALGAS_root {
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@filewrapperMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -3148,9 +3121,6 @@ class GGS_filewrapperMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@optionComponentMapForSemanticAnalysis' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @optionComponentMapForSemanticAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -3365,9 +3335,6 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALGA
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexiqueComponentMapForSemanticAnalysis' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexiqueComponentMapForSemanticAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -3607,9 +3574,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ : public AC_GALG
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@syntaxComponentMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxComponentMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -3972,9 +3936,6 @@ class GGS_extensionInitializerMapForType : public GGS_GenericMap <GGS_extensionI
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionInitializerMapForType' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionInitializerMapForType_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -4313,9 +4274,6 @@ class GGS_extensionInitializerForBuildingContext : public GGS_GenericMap <GGS_ex
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionInitializerForBuildingContext' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionInitializerForBuildingContext_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -4653,9 +4611,6 @@ class GGS_extensionMethodMapForType : public GGS_GenericMap <GGS_extensionMethod
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionMethodMapForType' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionMethodMapForType_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -5007,9 +4962,6 @@ class GGS_extensionMethodMapForBuildingContext : public GGS_GenericMap <GGS_exte
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionMethodMapForBuildingContext' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionMethodMapForBuildingContext_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -5334,9 +5286,6 @@ class GGS_extensionSetterMapForType : public GGS_GenericMap <GGS_extensionSetter
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionSetterMapForType' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionSetterMapForType_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -5675,9 +5624,6 @@ class GGS_extensionSetterMapForBuildingContext : public GGS_GenericMap <GGS_exte
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionSetterMapForBuildingContext' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionSetterMapForBuildingContext_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -6029,9 +5975,6 @@ class GGS_extensionGetterMapForType : public GGS_GenericMap <GGS_extensionGetter
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionGetterMapForType' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionGetterMapForType_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -6395,9 +6338,6 @@ class GGS_extensionGetterMapForBuildingContext : public GGS_GenericMap <GGS_exte
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@extensionGetterMapForBuildingContext' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionGetterMapForBuildingContext_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -6719,9 +6659,6 @@ class GGS_wrapperExtensionMap : public GGS_GenericMap <GGS_wrapperExtensionMap_2
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@wrapperExtensionMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @wrapperExtensionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -10338,9 +10275,6 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public GGS_GenericMap <G
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@nonterminalSymbolLabelMapForGrammarAnalysis' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @nonterminalSymbolLabelMapForGrammarAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -10684,9 +10618,6 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public GGS_GenericMap <GGS_no
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@nonTerminalSymbolMapForGrammarAnalysis' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @nonTerminalSymbolMapForGrammarAnalysis_2E_element struct
 //--------------------------------------------------------------------------------------------------

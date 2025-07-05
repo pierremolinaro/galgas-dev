@@ -528,20 +528,6 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'mapGenerationTemplate mapTypeHeader2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_32_ (class Compiler * inCompiler,
-                                                                        const class GGS_string & in_TYPE_5F_NAME,
-                                                                        const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                        const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                        const class GGS_bool & in_GENERATE_5F_COMPARISON,
-                                                                        const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'mapGenerationTemplate mapTypeSpecificImplementation'
 //
 //--------------------------------------------------------------------------------------------------

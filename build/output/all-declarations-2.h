@@ -4733,9 +4733,6 @@ class GGS_terminalMap : public GGS_GenericMap <GGS_terminalMap_2E_element> {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@terminalMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @terminalMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -5066,9 +5063,6 @@ class GGS_lexicalTypeMap : public GGS_GenericMap <GGS_lexicalTypeMap_2E_element>
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalTypeMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTypeMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -5398,9 +5392,6 @@ class GGS_lexicalAttributeMap : public GGS_GenericMap <GGS_lexicalAttributeMap_2
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalAttributeMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalAttributeMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -6160,9 +6151,6 @@ class GGS_lexicalExplicitTokenListMap : public GGS_GenericMap <GGS_lexicalExplic
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalExplicitTokenListMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -6809,9 +6797,6 @@ class GGS_lexicalExplicitTokenListMapMap : public GGS_GenericMap <GGS_lexicalExp
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalExplicitTokenListMapMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMapMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -7187,9 +7172,6 @@ class GGS_lexicalMessageMap : public GGS_GenericMap <GGS_lexicalMessageMap_2E_el
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalMessageMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalMessageMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -7862,9 +7844,6 @@ class GGS_lexicalRoutineMap : public GGS_GenericMap <GGS_lexicalRoutineMap_2E_el
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalRoutineMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalRoutineMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -8528,9 +8507,6 @@ class GGS_lexicalFunctionMap : public GGS_GenericMap <GGS_lexicalFunctionMap_2E_
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalFunctionMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalFunctionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -9213,9 +9189,6 @@ class GGS_styleMap : public GGS_GenericMap <GGS_styleMap_2E_element> {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@styleMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @styleMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -9543,9 +9516,6 @@ class GGS_lexicalTagMap : public GGS_GenericMap <GGS_lexicalTagMap_2E_element> {
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@lexicalTagMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalTagMap_2E_element struct
 //--------------------------------------------------------------------------------------------------

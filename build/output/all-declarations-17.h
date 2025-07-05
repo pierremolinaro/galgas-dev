@@ -751,12 +751,6 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
            class GGS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method appendDeclaration2
-  public: virtual void method_appendDeclaration_32_ (const class GGS_string arg_inOutputDirectory,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
            class GGS_stringset & arg_ioInclusionSet,

@@ -1517,9 +1517,6 @@ class GGS_propertyIndexMap : public GGS_GenericMap <GGS_propertyIndexMap_2E_elem
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@propertyIndexMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @propertyIndexMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -1878,9 +1875,6 @@ class GGS_nonterminalLabelMap : public GGS_GenericMap <GGS_nonterminalLabelMap_2
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@nonterminalLabelMap' map
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @nonterminalLabelMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -2234,9 +2228,6 @@ class GGS_nonterminalMap : public GGS_GenericMap <GGS_nonterminalMap_2E_element>
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@nonterminalMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @nonterminalMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
@@ -3550,9 +3541,6 @@ class GGS_uselessEntityLocationMap : public GGS_GenericMap <GGS_uselessEntityLoc
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 2: class for element of '@uselessEntityLocationMap' map
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @uselessEntityLocationMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
