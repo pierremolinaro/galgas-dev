@@ -23,7 +23,7 @@
 #include "StringCommandLineOption.h"
 #include "analyzeCommandLineOptions.h"
 #include "F_verbose_output.h"
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
 //                     'GGS_application' class
@@ -339,7 +339,7 @@ GGS_string GGS_application::class_func_commandLineArgumentAtIndex (const GGS_uin
 GGS_stringset GGS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
   GGS_stringset result = GGS_stringset::class_func_emptySet (THERE) ;
   TC_UniqueArray <String> list ;
-  cLexiqueIntrospection::getKeywordListNames (list) ;
+  LexiqueIntrospection::getKeywordListNames (list) ;
   for (int32_t i=0 ; i < list.count () ; i++) {
     result.plusPlusAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
   }
@@ -355,7 +355,7 @@ GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_s
     result = GGS_stringlist::class_func_emptyList (THERE) ;
     TC_UniqueArray <String> list ;
     bool found = false ;
-    cLexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
+    LexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
     for (int32_t i=0 ; i < list.count () ; i++) {
       result.addAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
     }

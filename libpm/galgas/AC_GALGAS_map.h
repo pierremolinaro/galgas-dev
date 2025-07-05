@@ -98,14 +98,6 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Search for 'with' read only instruction
-  public: VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GGS_string & inKey) const ;
-
-  public: VIRTUAL_IN_DEBUG cCollectionElement * readWriteAccessForWithInstructionWithErrorMessage (Compiler * inCompiler,
-                                                                                                   const GGS_lstring & inKey,
-                                                                                                   const char * inSearchErrorMessage
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Search
   protected: VIRTUAL_IN_DEBUG cMapNode * searchEntryInMap (const String & inKey) const ;
 

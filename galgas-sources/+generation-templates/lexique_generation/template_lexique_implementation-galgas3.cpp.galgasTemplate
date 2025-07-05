@@ -6,7 +6,7 @@
 
 #include "unicode_character_cpp.h"
 #include "scanner_actions.h"
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -185,7 +185,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-static cLexiqueIntrospection lexiqueIntrospection_%!LEXIQUE_IDENTIFIER%
+static LexiqueIntrospection lexiqueIntrospection_%!LEXIQUE_IDENTIFIER%
 __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER%) ;
 

@@ -520,7 +520,7 @@ GGS__32_lstringlist GGS__32_lstringlist::extractObject (const GGS_object & inObj
 
 #include "unicode_character_cpp.h"
 #include "scanner_actions.h"
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5214,7 +5214,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
 
 //--------------------------------------------------------------------------------------------------
 
-static cLexiqueIntrospection lexiqueIntrospection_galgasScanner_33_
+static LexiqueIntrospection lexiqueIntrospection_galgasScanner_33_
 __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdentifier_galgasScanner_33_) ;
 

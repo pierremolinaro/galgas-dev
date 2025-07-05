@@ -18,19 +18,19 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 #include "C_galgas_CLI_Options.h"
 #include "Compiler.h"
 #include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 
-static cLexiqueIntrospection * gLexiqueIntrospectionRoot = nullptr ;
+static LexiqueIntrospection * gLexiqueIntrospectionRoot = nullptr ;
 
 //--------------------------------------------------------------------------------------------------
 
-cLexiqueIntrospection::cLexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <String> & ioList),
-                                              Type_getKeywordsForIdentifier getKeywordsForIdentifier) :
+LexiqueIntrospection::LexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <String> & ioList),
+                                            Type_getKeywordsForIdentifier getKeywordsForIdentifier) :
 mNext (gLexiqueIntrospectionRoot),
 mAppendKeywordListNames (appendKeywordListNames),
 mGetKeywordsForIdentifier (getKeywordsForIdentifier) {
@@ -39,9 +39,9 @@ mGetKeywordsForIdentifier (getKeywordsForIdentifier) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outList) {
+void LexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outList) {
   outList.removeAllKeepingCapacity () ;
-  cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
+  LexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
   while (nullptr != p) {
     p->mAppendKeywordListNames (outList) ;
     p = p->mNext ;
@@ -50,12 +50,12 @@ void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outLi
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::getKeywordListForIdentifier (const String & inIdentifier,
-                                                         bool & outFound,
-                                                         TC_UniqueArray <String> & outList) {
+void LexiqueIntrospection::getKeywordListForIdentifier (const String & inIdentifier,
+                                                        bool & outFound,
+                                                        TC_UniqueArray <String> & outList) {
   outFound = false ;
   outList.removeAllKeepingCapacity () ;
-  cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
+  LexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
   while ((nullptr != p) && !outFound) {
     p->mGetKeywordsForIdentifier (inIdentifier, outFound, outList) ;
     p = p->mNext ;
@@ -66,7 +66,7 @@ void cLexiqueIntrospection::getKeywordListForIdentifier (const String & inIdenti
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
+void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
   const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;

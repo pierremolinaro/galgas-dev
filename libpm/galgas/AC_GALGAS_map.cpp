@@ -461,47 +461,6 @@ cMapNode * AC_GALGAS_map::searchEntryInMap (const String & inKey) const {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Search for "with instruction" read only access
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GGS_string & inKey) const {
-  const cCollectionElement * result = nullptr ;
-  if (isValid () && inKey.isValid ()) {
-    cMapNode * node = mSharedMap->findEntryInMap (inKey.stringValue (), mSharedMap) ;
-    if (nullptr != node) {
-      result = node->mAttributes.ptr () ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * AC_GALGAS_map::readWriteAccessForWithInstructionWithErrorMessage (Compiler * inCompiler,
-                                                                                       const GGS_lstring & inKey,
-                                                                                       const char * inSearchErrorMessage
-                                                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement * result = nullptr ;
-  if (isValid () && inKey.isValid ()) {
-    insulate (HERE) ;
-    const String key = inKey.mProperty_string.stringValue () ;
-    cMapNode * node = mSharedMap->findEntryInMap (key, mSharedMap) ;
-    if (nullptr == node) {
-      TC_UniqueArray <String> nearestKeyArray ;
-      mSharedMap->findNearestKey (key, nearestKeyArray) ;
-      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
-    }else{
-      result = node->mAttributes.ptr () ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insert Or Replace
 #endif
 

@@ -213,7 +213,7 @@
    <Unit filename="../libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../libpm/galgas/IndexingDictionary.cpp" />
    <Unit filename="../libpm/galgas/IssueDescriptor.cpp" />
-   <Unit filename="../libpm/galgas/cLexiqueIntrospection.cpp" />
+   <Unit filename="../libpm/galgas/LexiqueIntrospection.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_root.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_list.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_map.cpp" />

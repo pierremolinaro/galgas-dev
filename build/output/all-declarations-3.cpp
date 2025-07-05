@@ -9328,7 +9328,7 @@ GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::extract
 
 #include "unicode_character_cpp.h"
 #include "scanner_actions.h"
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14082,7 +14082,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
 
 //--------------------------------------------------------------------------------------------------
 
-static cLexiqueIntrospection lexiqueIntrospection_galgasScanner_34_
+static LexiqueIntrospection lexiqueIntrospection_galgasScanner_34_
 __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdentifier_galgasScanner_34_) ;
 

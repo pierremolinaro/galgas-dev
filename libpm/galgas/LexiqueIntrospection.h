@@ -34,10 +34,10 @@ typedef void (* Type_getKeywordsForIdentifier) (const String & inIdentifier,
 
 //--------------------------------------------------------------------------------------------------
 
-class cLexiqueIntrospection final {
+class LexiqueIntrospection final {
 //--- Constructor
-  public: cLexiqueIntrospection (Type_appendKeywordListNames appendKeywordListNames,
-                                 Type_getKeywordsForIdentifier getKeywordsForIdentifier) ;
+  public: LexiqueIntrospection (Type_appendKeywordListNames appendKeywordListNames,
+                                Type_getKeywordsForIdentifier getKeywordsForIdentifier) ;
 
 //--- Accessors
   public: static void getKeywordListNames (TC_UniqueArray <String> & outList) ;
@@ -48,11 +48,11 @@ class cLexiqueIntrospection final {
   public: static void handleGetKeywordListOption (class Compiler * inCompiler) ;
 
 //--- No copy
-  private: cLexiqueIntrospection (const cLexiqueIntrospection &) = delete ;
-  private: cLexiqueIntrospection & operator = (const cLexiqueIntrospection &) = delete ;
+  private: LexiqueIntrospection (const LexiqueIntrospection &) = delete ;
+  private: LexiqueIntrospection & operator = (const LexiqueIntrospection &) = delete ;
 
 //--- Private member
-  private: cLexiqueIntrospection * mNext ;
+  private: LexiqueIntrospection * mNext ;
   private: Type_appendKeywordListNames mAppendKeywordListNames ;
   private: Type_getKeywordsForIdentifier mGetKeywordsForIdentifier ;
 } ;

@@ -113,7 +113,7 @@ end
        "Enumerator_range.cpp",
        "IndexingDictionary.cpp",
        "IssueDescriptor.cpp",
-       "cLexiqueIntrospection.cpp",
+       "LexiqueIntrospection.cpp",
        "AC_GALGAS_root.cpp",
        "AC_GALGAS_list.cpp",
        "AC_GALGAS_map.cpp",

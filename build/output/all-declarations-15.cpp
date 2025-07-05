@@ -15385,7 +15385,7 @@ GGS_BuildFileList_2E_element GGS_BuildFileList_2E_element::extractObject (const 
 
 #include "unicode_character_cpp.h"
 #include "scanner_actions.h"
-#include "cLexiqueIntrospection.h"
+#include "LexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15946,7 +15946,7 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const String & /* in
 
 //--------------------------------------------------------------------------------------------------
 
-static cLexiqueIntrospection lexiqueIntrospection_galgasTemplateScanner
+static LexiqueIntrospection lexiqueIntrospection_galgasTemplateScanner
 __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForIdentifier_galgasTemplateScanner) ;
 

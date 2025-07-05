@@ -192,7 +192,7 @@
 		CF305FF12D0D8A2E000A5F79 /* BigSigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E632D0D8A2E000A5F79 /* BigSigned-utilities.cpp */; };
 		CF305FF22D0D8A2E000A5F79 /* DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F7B2D0D8A2E000A5F79 /* DirectedGraph.cpp */; };
 		CF305FF32D0D8A2E000A5F79 /* GALGAS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F202D0D8A2E000A5F79 /* GALGAS_location.cpp */; };
-		CF305FF42D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F082D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp */; };
+		CF305FF42D0D8A2E000A5F79 /* LexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F082D0D8A2E000A5F79 /* LexiqueIntrospection.cpp */; };
 		CF305FF72D0D8A2E000A5F79 /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F892D0D8A2E000A5F79 /* MF_MemoryControl.cpp */; };
 		CF305FF82D0D8A2E000A5F79 /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */; };
 		CF305FF92D0D8A2E000A5F79 /* builtin-command-line-options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC02D0D8A2E000A5F79 /* builtin-command-line-options.cpp */; };
@@ -356,7 +356,7 @@
 		CF8F812C2D0D91490095170B /* BigSigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E632D0D8A2E000A5F79 /* BigSigned-utilities.cpp */; };
 		CF8F812D2D0D91490095170B /* DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F7B2D0D8A2E000A5F79 /* DirectedGraph.cpp */; };
 		CF8F812E2D0D91490095170B /* GALGAS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F202D0D8A2E000A5F79 /* GALGAS_location.cpp */; };
-		CF8F812F2D0D91490095170B /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F082D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp */; };
+		CF8F812F2D0D91490095170B /* LexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F082D0D8A2E000A5F79 /* LexiqueIntrospection.cpp */; };
 		CF8F81302D0D91490095170B /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F892D0D8A2E000A5F79 /* MF_MemoryControl.cpp */; };
 		CF8F81312D0D91490095170B /* SHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */; };
 		CF8F81322D0D91490095170B /* builtin-command-line-options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EC02D0D8A2E000A5F79 /* builtin-command-line-options.cpp */; };
@@ -761,8 +761,8 @@
 		CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexingDictionary.cpp; sourceTree = "<group>"; };
 		CF305F052D0D8A2E000A5F79 /* IssueDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueDescriptor.h; sourceTree = "<group>"; };
 		CF305F062D0D8A2E000A5F79 /* IssueDescriptor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IssueDescriptor.cpp; sourceTree = "<group>"; };
-		CF305F072D0D8A2E000A5F79 /* cLexiqueIntrospection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cLexiqueIntrospection.h; sourceTree = "<group>"; };
-		CF305F082D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cLexiqueIntrospection.cpp; sourceTree = "<group>"; };
+		CF305F072D0D8A2E000A5F79 /* LexiqueIntrospection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LexiqueIntrospection.h; sourceTree = "<group>"; };
+		CF305F082D0D8A2E000A5F79 /* LexiqueIntrospection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LexiqueIntrospection.cpp; sourceTree = "<group>"; };
 		CF305F092D0D8A2E000A5F79 /* cObjectArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cObjectArray.h; sourceTree = "<group>"; };
 		CF305F0A2D0D8A2E000A5F79 /* cObjectArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cObjectArray.cpp; sourceTree = "<group>"; };
 		CF305F0B2D0D8A2E000A5F79 /* ComparisonKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComparisonKind.h; sourceTree = "<group>"; };
@@ -1485,8 +1485,6 @@
 				CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */,
 				CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */,
 				CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */,
-				CF305F072D0D8A2E000A5F79 /* cLexiqueIntrospection.h */,
-				CF305F082D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp */,
 				CF305F092D0D8A2E000A5F79 /* cObjectArray.h */,
 				CF305F0A2D0D8A2E000A5F79 /* cObjectArray.cpp */,
 				CF305F0B2D0D8A2E000A5F79 /* ComparisonKind.h */,
@@ -1537,6 +1535,8 @@
 				CF305F2F2D0D8A2E000A5F79 /* Lexique.h */,
 				CF305F302D0D8A2E000A5F79 /* Lexique.cpp */,
 				CF305F312D0D8A2E000A5F79 /* Lexique-parsing.cpp */,
+				CF305F072D0D8A2E000A5F79 /* LexiqueIntrospection.h */,
+				CF305F082D0D8A2E000A5F79 /* LexiqueIntrospection.cpp */,
 				CF305F322D0D8A2E000A5F79 /* LocationInSource.h */,
 				CF305F332D0D8A2E000A5F79 /* LocationInSource.cpp */,
 				CF305F342D0D8A2E000A5F79 /* ProductionNameDescriptor.h */,
@@ -2022,7 +2022,7 @@
 				CF8F812C2D0D91490095170B /* BigSigned-utilities.cpp in Sources */,
 				CF8F812D2D0D91490095170B /* DirectedGraph.cpp in Sources */,
 				CF8F812E2D0D91490095170B /* GALGAS_location.cpp in Sources */,
-				CF8F812F2D0D91490095170B /* cLexiqueIntrospection.cpp in Sources */,
+				CF8F812F2D0D91490095170B /* LexiqueIntrospection.cpp in Sources */,
 				CF8F81302D0D91490095170B /* MF_MemoryControl.cpp in Sources */,
 				CF8F81312D0D91490095170B /* SHA256.cpp in Sources */,
 				CF8F81322D0D91490095170B /* builtin-command-line-options.cpp in Sources */,
@@ -2340,7 +2340,7 @@
 				CF305FF12D0D8A2E000A5F79 /* BigSigned-utilities.cpp in Sources */,
 				CF305FF22D0D8A2E000A5F79 /* DirectedGraph.cpp in Sources */,
 				CF305FF32D0D8A2E000A5F79 /* GALGAS_location.cpp in Sources */,
-				CF305FF42D0D8A2E000A5F79 /* cLexiqueIntrospection.cpp in Sources */,
+				CF305FF42D0D8A2E000A5F79 /* LexiqueIntrospection.cpp in Sources */,
 				CF305FF72D0D8A2E000A5F79 /* MF_MemoryControl.cpp in Sources */,
 				CF305FF82D0D8A2E000A5F79 /* SHA256.cpp in Sources */,
 				CF305FF92D0D8A2E000A5F79 /* builtin-command-line-options.cpp in Sources */,
