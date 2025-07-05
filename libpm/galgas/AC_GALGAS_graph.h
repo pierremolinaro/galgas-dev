@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -27,9 +27,7 @@
 #include "cCollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//  A C _ G A L G A S _ g r a p h
-//
+//  AC_GALGAS_graph
 //--------------------------------------------------------------------------------------------------
 
 class AC_GALGAS_graph : public AC_GALGAS_root {
@@ -46,7 +44,9 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG uint32_t count (void) const ;
 
 //--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedGraph != nullptr ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return mSharedGraph != nullptr ;
+  }
 
 //--- drop
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -59,30 +59,30 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void makeNewEmptyGraph (LOCATION_ARGS) ;
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_location getter_locationForKey (const GGS_string & inKey,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const GGS_string & inKey,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_addEdge (const GGS_lstring & inSourceNodeKey,
-                                                 const GGS_lstring & inTargetNodeKey
-                                                 COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_addEdge (const class GGS_lstring & inSourceNodeKey,
+                                                const class GGS_lstring & inTargetNodeKey
+                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeEdgesToNode (const GGS_string & inNodeName,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeEdgesToDominators (LOCATION_ARGS) ;
 
@@ -93,17 +93,18 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
 
 //--- Internal methods for handling graph
   protected: VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const AC_GALGAS_graph & inGraph
-                                                            COMMA_LOCATION_ARGS) ;
+                                                           COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void subGraph (AC_GALGAS_graph & outResultingGraph,
-                                              const GGS_lstringlist & inStartNodes,
-                                              const GGS_stringset & inNodesToExclude,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
+                                             const class GGS_lstringlist & inStartNodes,
+                                             const class GGS_stringset & inNodesToExclude,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG capCollectionElementArray graph (void) const ;
@@ -111,42 +112,42 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   private: VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void internalAddNode (const GGS_lstring & inKey,
-                                                     const char * inErrorMessage,
-                                                     const capCollectionElement & inAttributes,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+                                                    const char * inErrorMessage,
+                                                    const capCollectionElement & inAttributes,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_noteNode (const GGS_lstring & inKey
-                                                  COMMA_LOCATION_ARGS) ;
+                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalTopologicalSort (capCollectionElementArray & outSortedList,
-                                                             GGS_lstringlist & outSortedNodeKeyList,
-                                                             capCollectionElementArray & outUnsortedList,
-                                                             GGS_lstringlist & outUnsortedNodeKeyList,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+                                                            GGS_lstringlist & outSortedNodeKeyList,
+                                                            capCollectionElementArray & outUnsortedList,
+                                                            GGS_lstringlist & outUnsortedNodeKeyList,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalFindCircularities (capCollectionElementArray & outInfoList,
-                                                               GGS_lstringlist & outNodeKeyList
-                                                               COMMA_UNUSED_LOCATION_ARGS) const ;
+                                                              GGS_lstringlist & outNodeKeyList
+                                                              COMMA_UNUSED_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (capCollectionElementArray & outSortedList,
-                                                                    GGS_lstringlist & outSortedNodeKeyList
-                                                                    COMMA_LOCATION_ARGS) const ;
+                                                                   GGS_lstringlist & outSortedNodeKeyList
+                                                                   COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (capCollectionElementArray & outSortedList,
-                                                                  GGS_lstringlist & outSortedNodeKeyList
-                                                                  COMMA_LOCATION_ARGS) const ;
+                                                                 GGS_lstringlist & outSortedNodeKeyList
+                                                                 COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
-                                                                       GGS_lstringlist & outSortedNodeKeyList,
-                                                                       capCollectionElementArray & outUnsortedList,
-                                                                       GGS_lstringlist & outUnsortedNodeKeyList,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+                                                                      GGS_lstringlist & outSortedNodeKeyList,
+                                                                      capCollectionElementArray & outUnsortedList,
+                                                                      GGS_lstringlist & outUnsortedNodeKeyList,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
 
@@ -156,4 +157,3 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-#pragma once

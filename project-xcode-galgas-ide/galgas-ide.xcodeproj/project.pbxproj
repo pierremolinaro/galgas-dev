@@ -227,7 +227,6 @@
 		CF30601C2D0D8A2E000A5F79 /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1E2D0D8A2E000A5F79 /* GALGAS_filewrapper.cpp */; };
 		CF30601D2D0D8A2E000A5F79 /* BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ECD2D0D8A2E000A5F79 /* BinaryFileWrite.cpp */; };
 		CF30601E2D0D8A2E000A5F79 /* BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBE2D0D8A2E000A5F79 /* BoolCommandLineOption.cpp */; };
-		CF30601F2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EDC2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp */; };
 		CF3060202D0D8A2E000A5F79 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F722D0D8A2E000A5F79 /* DateTime.cpp */; };
 		CF3060212D0D8A2E000A5F79 /* GALGAS_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F272D0D8A2E000A5F79 /* GALGAS_timer.cpp */; };
 		CF3060222D0D8A2E000A5F79 /* BigSigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E592D0D8A2E000A5F79 /* BigSigned-bit.cpp */; };
@@ -437,7 +436,6 @@
 		CF8F81812D0D91490095170B /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F1E2D0D8A2E000A5F79 /* GALGAS_filewrapper.cpp */; };
 		CF8F81822D0D91490095170B /* BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ECD2D0D8A2E000A5F79 /* BinaryFileWrite.cpp */; };
 		CF8F81832D0D91490095170B /* BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBE2D0D8A2E000A5F79 /* BoolCommandLineOption.cpp */; };
-		CF8F81842D0D91490095170B /* AC_GALGAS_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EDC2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp */; };
 		CF8F81852D0D91490095170B /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F722D0D8A2E000A5F79 /* DateTime.cpp */; };
 		CF8F81862D0D91490095170B /* GALGAS_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F272D0D8A2E000A5F79 /* GALGAS_timer.cpp */; };
 		CF8F81872D0D91490095170B /* BigSigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E592D0D8A2E000A5F79 /* BigSigned-bit.cpp */; };
@@ -717,8 +715,6 @@
 		CF305ED82D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_graph.cpp; sourceTree = "<group>"; };
 		CF305ED92D0D8A2E000A5F79 /* AC_GALGAS_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_list.h; sourceTree = "<group>"; };
 		CF305EDA2D0D8A2E000A5F79 /* AC_GALGAS_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_list.cpp; sourceTree = "<group>"; };
-		CF305EDB2D0D8A2E000A5F79 /* AC_GALGAS_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_map.h; sourceTree = "<group>"; };
-		CF305EDC2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_map.cpp; sourceTree = "<group>"; };
 		CF305EDD2D0D8A2E000A5F79 /* AC_GALGAS_reference_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_reference_class.h; sourceTree = "<group>"; };
 		CF305EDE2D0D8A2E000A5F79 /* AC_GALGAS_reference_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_reference_class.cpp; sourceTree = "<group>"; };
 		CF305EDF2D0D8A2E000A5F79 /* AC_GALGAS_root.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_root.h; sourceTree = "<group>"; };
@@ -1443,8 +1439,6 @@
 				CF305ED82D0D8A2E000A5F79 /* AC_GALGAS_graph.cpp */,
 				CF305ED92D0D8A2E000A5F79 /* AC_GALGAS_list.h */,
 				CF305EDA2D0D8A2E000A5F79 /* AC_GALGAS_list.cpp */,
-				CF305EDB2D0D8A2E000A5F79 /* AC_GALGAS_map.h */,
-				CF305EDC2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp */,
 				CF305EDD2D0D8A2E000A5F79 /* AC_GALGAS_reference_class.h */,
 				CF305EDE2D0D8A2E000A5F79 /* AC_GALGAS_reference_class.cpp */,
 				CF305EDF2D0D8A2E000A5F79 /* AC_GALGAS_root.h */,
@@ -2094,7 +2088,6 @@
 				CF8F81812D0D91490095170B /* GALGAS_filewrapper.cpp in Sources */,
 				CF8F81822D0D91490095170B /* BinaryFileWrite.cpp in Sources */,
 				CF8F81832D0D91490095170B /* BoolCommandLineOption.cpp in Sources */,
-				CF8F81842D0D91490095170B /* AC_GALGAS_map.cpp in Sources */,
 				CF8F81852D0D91490095170B /* DateTime.cpp in Sources */,
 				CF8F81862D0D91490095170B /* GALGAS_timer.cpp in Sources */,
 				CF8F81872D0D91490095170B /* BigSigned-bit.cpp in Sources */,
@@ -2410,7 +2403,6 @@
 				CF30601C2D0D8A2E000A5F79 /* GALGAS_filewrapper.cpp in Sources */,
 				CF30601D2D0D8A2E000A5F79 /* BinaryFileWrite.cpp in Sources */,
 				CF30601E2D0D8A2E000A5F79 /* BoolCommandLineOption.cpp in Sources */,
-				CF30601F2D0D8A2E000A5F79 /* AC_GALGAS_map.cpp in Sources */,
 				CF3060202D0D8A2E000A5F79 /* DateTime.cpp in Sources */,
 				CF3060212D0D8A2E000A5F79 /* GALGAS_timer.cpp in Sources */,
 				CF3060222D0D8A2E000A5F79 /* BigSigned-bit.cpp in Sources */,

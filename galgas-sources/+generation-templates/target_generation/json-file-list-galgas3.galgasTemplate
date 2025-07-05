@@ -114,7 +114,6 @@ end
        "LexiqueIntrospection.cpp",
        "AC_GALGAS_root.cpp",
        "AC_GALGAS_list.cpp",
-       "AC_GALGAS_map.cpp",
        "AC_GALGAS_reference_class.cpp",
        "AC_GALGAS_value_class.cpp",
        "AC_GALGAS_graph.cpp",
