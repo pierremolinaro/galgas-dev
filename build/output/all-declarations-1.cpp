@@ -2605,7 +2605,7 @@ GGS_bool GGS_templateVariableMap::getter_hasKey (const GGS_string & inKey
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (contains (inKey.stringValue ())) ;
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
   }
   return result ;
 }
@@ -2617,7 +2617,7 @@ GGS_bool GGS_templateVariableMap::getter_hasKeyAtLevel (const GGS_string & inKey
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (containsAtLevel (inKey.stringValue (), inLevel.uintValue ())) ;
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
   }
   return result ;
 }
@@ -2627,7 +2627,7 @@ GGS_bool GGS_templateVariableMap::getter_hasKeyAtLevel (const GGS_string & inKey
 GGS_uint GGS_templateVariableMap::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (count ())) ;
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
@@ -2637,7 +2637,7 @@ GGS_uint GGS_templateVariableMap::getter_count (UNUSED_LOCATION_ARGS) const {
 GGS_uint GGS_templateVariableMap::getter_levels (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (levels ()) ;
+    result = GGS_uint (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -2668,7 +2668,8 @@ GGS_lstringlist GGS_templateVariableMap::getter_keyList (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GGS_lstringlist result ;
   if (isValid ()) {
-    result = keyList (inCompiler COMMA_THERE) ;
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
   }
   return result ;
 }
@@ -2706,18 +2707,6 @@ void GGS_templateVariableMap::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateVariableMap::insertOrReplace (const GGS_templateVariableMap_2E_element & inElement
-                                                 COMMA_LOCATION_ARGS) {
-  if (mSharedRoot.isNotNil () && inElement.mProperty_lkey.isValid ()) {
-    insulate (THERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_templateVariableMap_2E_element>> unusedExistingNode ;
-    const bool allowReplacing = true ;
-    mSharedRoot->insertOrReplaceInfo (inElement, allowReplacing, unusedExistingNode COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_templateVariableMap::performInsert (const GGS_templateVariableMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
                                  const char * inShadowErrorMessage,
@@ -2745,39 +2734,6 @@ void GGS_templateVariableMap::performInsert (const GGS_templateVariableMap_2E_el
       }
     }
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element>
-GGS_templateVariableMap::removeAndReturnRemovedInfo (const String & inKey
-                                                       COMMA_LOCATION_ARGS) {
-  if (mSharedRoot.isNotNil ()) {
-    insulate (THERE) ;
-    return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_templateVariableMap::contains (const String & inKey) const {
-  bool result = false ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->hasKey (inKey, 0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_templateVariableMap::containsAtLevel (const String & inKey, const uint32_t inLevel) const {
-  bool result = false ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->hasKey (inKey, inLevel) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2830,50 +2786,6 @@ GGS_templateVariableMap::sortedInfoArray (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_templateVariableMap::keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateVariableMap::makeNewEmptyMapWithMapToOverride (const GGS_templateVariableMap & inOverridenMap
-                                                    COMMA_LOCATION_ARGS) {
-  if (inOverridenMap.isValid ()) {
-    mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (inOverridenMap.mSharedRoot COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateVariableMap::getOverridenMap (GGS_templateVariableMap & ioResult,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const {
-  if (isValid ()) {
-    ioResult.mSharedRoot = mSharedRoot->mOverriddenRoot ;
-    if (ioResult.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-uint32_t GGS_templateVariableMap::levels (void) const {
-  uint32_t result = 0 ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->levels () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_stringset GGS_templateVariableMap::getter_keySet (Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   GGS_stringset result ;
@@ -2918,7 +2830,9 @@ GGS_templateVariableMap_2E_element_3F_ GGS_templateVariableMap
 GGS_templateVariableMap GGS_templateVariableMap::class_func_mapWithMapToOverride (const GGS_templateVariableMap & inMapToOverride
                                                                                   COMMA_LOCATION_ARGS) {
   GGS_templateVariableMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2927,7 +2841,12 @@ GGS_templateVariableMap GGS_templateVariableMap::class_func_mapWithMapToOverride
 GGS_templateVariableMap GGS_templateVariableMap::getter_overriddenMap (Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   GGS_templateVariableMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->mOverriddenRoot ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 

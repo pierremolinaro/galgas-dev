@@ -440,7 +440,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName: "bool"
       !hasCompilerArgument: false
     )
-    enterInheritedGetterWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioTypeMap
       !getterName:"keySet"
