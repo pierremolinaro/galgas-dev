@@ -49,6 +49,8 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.m_ObjectiveC_CompilerOptions = default_build_options.ObjectiveC_CompilerOptions ([])
 #--- Options for Objective-C++ compiling (.mm extension)
   gmf.m_ObjectiveCpp_CompilerOptions = default_build_options.ObjectiveCpp_CompilerOptions ([])
+#--- Options for linker
+#  gmf.mLinkerOptions = ["-ffunction-sections", "-fdata-sections", "-fmerge-all-constants"]
 #--- Run makefile
   gmf.run ()
 

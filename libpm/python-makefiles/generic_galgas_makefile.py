@@ -106,8 +106,8 @@ class GenericGalgasMakefile :
     rule.mDependences.append (self.mJSONfilePath)
     rule.mCommand += self.mLinkerTool
     rule.mCommand += objectFileList
-    rule.mCommand += ["-o", EXECUTABLE]
     rule.mCommand += self.mLinkerOptions
+    rule.mCommand += ["-o", EXECUTABLE]
     postCommand = makefile.PostCommand (self.mStripMessage + " " + EXECUTABLE)
     postCommand.mCommand += self.mStripTool
     postCommand.mCommand.append (EXECUTABLE)
@@ -152,8 +152,8 @@ class GenericGalgasMakefile :
     rule.mDependences.append (self.mJSONfilePath)
     rule.mCommand += self.mLinkerTool
     rule.mCommand += debugObjectFileList
-    rule.mCommand += ["-o", EXECUTABLE_DEBUG]
     rule.mCommand += self.mLinkerOptions
+    rule.mCommand += ["-o", EXECUTABLE_DEBUG]
     make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add Compile rule for sources (lto)
   #--- Object file directory

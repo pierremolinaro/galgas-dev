@@ -1993,10 +1993,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_templateVariableMap final {
 
-//--- Constructor
   public: DownEnumerator_templateVariableMap (const class GGS_templateVariableMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_templateVariableMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -2007,15 +2007,11 @@ class DownEnumerator_templateVariableMap final {
 
   public: class GGS_string current_mCppName (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_templateVariableMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_templateVariableMap (const DownEnumerator_templateVariableMap &) = delete ;
   private: DownEnumerator_templateVariableMap & operator = (const DownEnumerator_templateVariableMap &) = delete ;
 } ;
@@ -2024,6 +2020,8 @@ class DownEnumerator_templateVariableMap final {
 
 class UpEnumerator_templateVariableMap final {
   public: UpEnumerator_templateVariableMap (const class GGS_templateVariableMap & inMap)  ;
+
+  public: ~ UpEnumerator_templateVariableMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -2034,15 +2032,12 @@ class UpEnumerator_templateVariableMap final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
   public: class GGS_string current_mCppName (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_templateVariableMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_templateVariableMap (const UpEnumerator_templateVariableMap &) = delete ;
   private: UpEnumerator_templateVariableMap & operator = (const UpEnumerator_templateVariableMap &) = delete ;
 } ;
@@ -3258,10 +3253,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_unifiedTypeMap final {
 
-//--- Constructor
   public: DownEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_unifiedTypeMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -3270,15 +3265,11 @@ class DownEnumerator_unifiedTypeMap final {
 
   public: class GGS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_unifiedTypeMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_unifiedTypeMap (const DownEnumerator_unifiedTypeMap &) = delete ;
   private: DownEnumerator_unifiedTypeMap & operator = (const DownEnumerator_unifiedTypeMap &) = delete ;
 } ;
@@ -3288,6 +3279,8 @@ class DownEnumerator_unifiedTypeMap final {
 class UpEnumerator_unifiedTypeMap final {
   public: UpEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inMap)  ;
 
+  public: ~ UpEnumerator_unifiedTypeMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
@@ -3296,15 +3289,12 @@ class UpEnumerator_unifiedTypeMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_unifiedTypeMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_unifiedTypeMap (const UpEnumerator_unifiedTypeMap &) = delete ;
   private: UpEnumerator_unifiedTypeMap & operator = (const UpEnumerator_unifiedTypeMap &) = delete ;
 } ;
@@ -3465,10 +3455,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_filewrapperMap final {
 
-//--- Constructor
   public: DownEnumerator_filewrapperMap (const class GGS_filewrapperMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_filewrapperMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -3487,15 +3477,11 @@ class DownEnumerator_filewrapperMap final {
 
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_filewrapperMap (const DownEnumerator_filewrapperMap &) = delete ;
   private: DownEnumerator_filewrapperMap & operator = (const DownEnumerator_filewrapperMap &) = delete ;
 } ;
@@ -3504,6 +3490,8 @@ class DownEnumerator_filewrapperMap final {
 
 class UpEnumerator_filewrapperMap final {
   public: UpEnumerator_filewrapperMap (const class GGS_filewrapperMap & inMap)  ;
+
+  public: ~ UpEnumerator_filewrapperMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -3518,15 +3506,12 @@ class UpEnumerator_filewrapperMap final {
   public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
   public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_filewrapperMap (const UpEnumerator_filewrapperMap &) = delete ;
   private: UpEnumerator_filewrapperMap & operator = (const UpEnumerator_filewrapperMap &) = delete ;
 } ;
@@ -3747,10 +3732,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_functionMap final {
 
-//--- Constructor
   public: DownEnumerator_functionMap (const class GGS_functionMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_functionMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -3763,15 +3748,11 @@ class DownEnumerator_functionMap final {
 
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_functionMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_functionMap (const DownEnumerator_functionMap &) = delete ;
   private: DownEnumerator_functionMap & operator = (const DownEnumerator_functionMap &) = delete ;
 } ;
@@ -3780,6 +3761,8 @@ class DownEnumerator_functionMap final {
 
 class UpEnumerator_functionMap final {
   public: UpEnumerator_functionMap (const class GGS_functionMap & inMap)  ;
+
+  public: ~ UpEnumerator_functionMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -3791,15 +3774,12 @@ class UpEnumerator_functionMap final {
   public: class GGS_functionSignature current_mFunctionSignature (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_mResultType (LOCATION_ARGS) const ;
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_functionMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_functionMap (const UpEnumerator_functionMap &) = delete ;
   private: UpEnumerator_functionMap & operator = (const UpEnumerator_functionMap &) = delete ;
 } ;
@@ -3987,10 +3967,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_grammarMap final {
 
-//--- Constructor
   public: DownEnumerator_grammarMap (const class GGS_grammarMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_grammarMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -4003,15 +3983,11 @@ class DownEnumerator_grammarMap final {
 
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_grammarMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_grammarMap (const DownEnumerator_grammarMap &) = delete ;
   private: DownEnumerator_grammarMap & operator = (const DownEnumerator_grammarMap &) = delete ;
 } ;
@@ -4020,6 +3996,8 @@ class DownEnumerator_grammarMap final {
 
 class UpEnumerator_grammarMap final {
   public: UpEnumerator_grammarMap (const class GGS_grammarMap & inMap)  ;
+
+  public: ~ UpEnumerator_grammarMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -4031,15 +4009,12 @@ class UpEnumerator_grammarMap final {
   public: class GGS_grammarLabelMap current_mLabelMap (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasIndexing (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_grammarMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_grammarMap (const UpEnumerator_grammarMap &) = delete ;
   private: UpEnumerator_grammarMap & operator = (const UpEnumerator_grammarMap &) = delete ;
 } ;
@@ -4227,10 +4202,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
-//--- Constructor
   public: DownEnumerator_lexiqueComponentMapForSemanticAnalysis (const class GGS_lexiqueComponentMapForSemanticAnalysis & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_lexiqueComponentMapForSemanticAnalysis (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -4251,15 +4226,11 @@ class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
   public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_lexiqueComponentMapForSemanticAnalysis (const DownEnumerator_lexiqueComponentMapForSemanticAnalysis &) = delete ;
   private: DownEnumerator_lexiqueComponentMapForSemanticAnalysis & operator = (const DownEnumerator_lexiqueComponentMapForSemanticAnalysis &) = delete ;
 } ;
@@ -4268,6 +4239,8 @@ class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
 class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
   public: UpEnumerator_lexiqueComponentMapForSemanticAnalysis (const class GGS_lexiqueComponentMapForSemanticAnalysis & inMap)  ;
+
+  public: ~ UpEnumerator_lexiqueComponentMapForSemanticAnalysis (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -4283,15 +4256,12 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
   public: class GGS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
   public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
   public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_lexiqueComponentMapForSemanticAnalysis (const UpEnumerator_lexiqueComponentMapForSemanticAnalysis &) = delete ;
   private: UpEnumerator_lexiqueComponentMapForSemanticAnalysis & operator = (const UpEnumerator_lexiqueComponentMapForSemanticAnalysis &) = delete ;
 } ;
@@ -4523,10 +4493,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_optionComponentMapForSemanticAnalysis final {
 
-//--- Constructor
   public: DownEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_optionComponentMapForSemanticAnalysis (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -4543,15 +4513,11 @@ class DownEnumerator_optionComponentMapForSemanticAnalysis final {
 
   public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_optionComponentMapForSemanticAnalysis (const DownEnumerator_optionComponentMapForSemanticAnalysis &) = delete ;
   private: DownEnumerator_optionComponentMapForSemanticAnalysis & operator = (const DownEnumerator_optionComponentMapForSemanticAnalysis &) = delete ;
 } ;
@@ -4560,6 +4526,8 @@ class DownEnumerator_optionComponentMapForSemanticAnalysis final {
 
 class UpEnumerator_optionComponentMapForSemanticAnalysis final {
   public: UpEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inMap)  ;
+
+  public: ~ UpEnumerator_optionComponentMapForSemanticAnalysis (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -4573,15 +4541,12 @@ class UpEnumerator_optionComponentMapForSemanticAnalysis final {
   public: class GGS_commandLineOptionMap current_mUIntOptionMap (LOCATION_ARGS) const ;
   public: class GGS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
   public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_optionComponentMapForSemanticAnalysis (const UpEnumerator_optionComponentMapForSemanticAnalysis &) = delete ;
   private: UpEnumerator_optionComponentMapForSemanticAnalysis & operator = (const UpEnumerator_optionComponentMapForSemanticAnalysis &) = delete ;
 } ;
@@ -4791,10 +4756,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_syntaxComponentMap final {
 
-//--- Constructor
   public: DownEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_syntaxComponentMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -4809,15 +4774,11 @@ class DownEnumerator_syntaxComponentMap final {
 
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_syntaxComponentMap (const DownEnumerator_syntaxComponentMap &) = delete ;
   private: DownEnumerator_syntaxComponentMap & operator = (const DownEnumerator_syntaxComponentMap &) = delete ;
 } ;
@@ -4826,6 +4787,8 @@ class DownEnumerator_syntaxComponentMap final {
 
 class UpEnumerator_syntaxComponentMap final {
   public: UpEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inMap)  ;
+
+  public: ~ UpEnumerator_syntaxComponentMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -4838,15 +4801,12 @@ class UpEnumerator_syntaxComponentMap final {
   public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
   public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_syntaxComponentMap (const UpEnumerator_syntaxComponentMap &) = delete ;
   private: UpEnumerator_syntaxComponentMap & operator = (const UpEnumerator_syntaxComponentMap &) = delete ;
 } ;
@@ -5045,10 +5005,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_internalRoutineMap final {
 
-//--- Constructor
   public: DownEnumerator_internalRoutineMap (const class GGS_internalRoutineMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_internalRoutineMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -5057,15 +5017,11 @@ class DownEnumerator_internalRoutineMap final {
 
   public: class GGS_routineArgumentMap current_mArgumentMap (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_internalRoutineMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_internalRoutineMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_internalRoutineMap (const DownEnumerator_internalRoutineMap &) = delete ;
   private: DownEnumerator_internalRoutineMap & operator = (const DownEnumerator_internalRoutineMap &) = delete ;
 } ;
@@ -5075,6 +5031,8 @@ class DownEnumerator_internalRoutineMap final {
 class UpEnumerator_internalRoutineMap final {
   public: UpEnumerator_internalRoutineMap (const class GGS_internalRoutineMap & inMap)  ;
 
+  public: ~ UpEnumerator_internalRoutineMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
@@ -5083,15 +5041,12 @@ class UpEnumerator_internalRoutineMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_routineArgumentMap current_mArgumentMap (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_internalRoutineMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_internalRoutineMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_internalRoutineMap (const UpEnumerator_internalRoutineMap &) = delete ;
   private: UpEnumerator_internalRoutineMap & operator = (const UpEnumerator_internalRoutineMap &) = delete ;
 } ;

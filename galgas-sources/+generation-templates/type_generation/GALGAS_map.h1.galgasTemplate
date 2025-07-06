@@ -11,10 +11,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
-//--- Constructor
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_%!TYPE_IDENTIFIER% (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -24,16 +24,12 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
-%
-//--- Current element access\n%
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
   private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 } ;
@@ -42,6 +38,8 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inMap)  ;
+
+  public: ~ UpEnumerator_%!TYPE_IDENTIFIER% (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -54,16 +52,13 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
   private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 } ;

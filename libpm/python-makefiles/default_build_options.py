@@ -21,6 +21,7 @@ def allCompilerOptions (platformOptions):
   result.append ("-Wwrite-strings")
   result.append ("-ffunction-sections")
   result.append ("-fdata-sections")
+  result.append ("-fmerge-all-constants")
   return result
 
 #-------------------------------------------------------------------------------

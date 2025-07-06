@@ -25,7 +25,7 @@ def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME,
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "win32"
-  gmf.mLinkerOptions = ["-lComdlg32"]
+  gmf.mLinkerOptions = ["-lComdlg32"] #, "-ffunction-sections", "-fdata-sections", "-fmerge-all-constants"]
   gmf.mExecutableSuffix = ".exe"
   gmf.mBuildDirName = BUILD_DIR_NAME
 #---

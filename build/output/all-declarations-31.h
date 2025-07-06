@@ -137,33 +137,3 @@ GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplemen
                                                                                         const class GGS_string & in_PROJECT_5F_VERSION_5F_STRING
                                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileBeforeClauseGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS_lstringlist & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_prologueEpilogueList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileProgramRulesGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS_lstringlist & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_programRuleList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-

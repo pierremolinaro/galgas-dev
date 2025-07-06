@@ -139,7 +139,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <GGS_GenericMapRoot <INFO>> mOverriddenRoot ;
+  private: OptionalSharedRef <GGS_GenericMapRoot <INFO>> mOverriddenRoot ;
   private: OptionalSharedRef <GGS_GenericMapNode <INFO>> mRootNode ;
   private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
@@ -163,11 +163,16 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   public: GGS_GenericMapRoot (const OptionalSharedRef <GGS_GenericMapRoot <INFO>> & inOverridenMapRoot
                               COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
-  mOverriddenRoot (inOverridenMapRoot),
+  mOverriddenRoot (),
   mRootNode (),
   mCacheSortedArray (),
   mCount (0),
   mCacheSortedArrayIsValid (false) {
+    if (inOverridenMapRoot.isNotNil ()) {
+      auto p = OptionalSharedRef <GGS_GenericMapRoot <INFO>>::make (THERE) ;
+      inOverridenMapRoot->duplicateTo (p COMMA_THERE) ;
+      mOverriddenRoot = p ;
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -184,14 +189,30 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   private: GGS_GenericMapRoot & operator = (const GGS_GenericMapRoot &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Accessors
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: inline int32_t count (void) const { return mCount ; }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: inline OptionalSharedRef <GGS_GenericMapRoot <INFO>> overriddenRoot (void) const {
+    return mOverriddenRoot ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void duplicateTo (OptionalSharedRef <GGS_GenericMapRoot <INFO>> & outNewRoot
-                             COMMA_UNUSED_LOCATION_ARGS) {
+                            COMMA_LOCATION_ARGS) {
     if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray
-      outNewRoot->mRootNode = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (mRootNode COMMA_HERE) ;
+      outNewRoot->mRootNode = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (mRootNode COMMA_THERE) ;
       outNewRoot->mCount = mCount ;
     }
-    outNewRoot->mOverriddenRoot = mOverriddenRoot ;
+    if (mOverriddenRoot.isNotNil ()) {
+      auto p = OptionalSharedRef <GGS_GenericMapRoot <INFO>>::make (THERE) ;
+      mOverriddenRoot->duplicateTo (p COMMA_THERE) ;
+      outNewRoot->mOverriddenRoot = p ;
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -202,12 +223,6 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
       mCacheSortedArray.removeAllKeepingCapacity () ;
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Accessors
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  public: inline int32_t count (void) const { return mCount ; }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Get sorted key array
@@ -268,9 +283,9 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void insertOrReplaceInfo (const INFO & inInfo,
-                                     const bool inAllowReplacing,
-                                     OptionalSharedRef <GGS_GenericMapNode <INFO>> & outExistingNode
-                                     COMMA_LOCATION_ARGS) {
+                                    const bool inAllowReplacing,
+                                    OptionalSharedRef <GGS_GenericMapNode <INFO>> & outExistingNode
+                                    COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
     const String key = inInfo.mProperty_lkey.mProperty_string.stringValue () ;
     internalRecursiveInsert (mRootNode, key, inInfo, inAllowReplacing, outExistingNode) ;
@@ -364,13 +379,13 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Removing: return removed object, or nullptr
+  // Removing: return removed object, or nil
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const String & inKey) {
     macroUniqueSharedObject (this) ;
     bool ioBranchHasBeenRemoved ;
-    auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
+    const auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
     SharedGenericPtrWithValueSemantics <INFO> result ;
     if (removedEntry.isNotNil ()) {
       result = removedEntry->mSharedInfo ;
@@ -466,7 +481,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
         if (ioBranchHasBeenRemoved) {
           infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
         }
-      }else if (comparaison < 0) { // <
+      }else if (comparaison < 0) {
         removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);
         if (ioBranchHasBeenRemoved) {
           supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
@@ -534,28 +549,31 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                               TC_UniqueArray <String> & outNearestKeyArray) const {
     uint32_t bestDistance = UINT32_MAX ;
-    findNearestKeyForNode (inKey, mRootNode, bestDistance, outNearestKeyArray) ;
+    recursiveFindNearestKey (inKey, mRootNode, bestDistance, outNearestKeyArray) ;
+    if (mOverriddenRoot.isNotNil ()) {
+      recursiveFindNearestKey (inKey, mOverriddenRoot->mRootNode, bestDistance, outNearestKeyArray) ;
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void findNearestKeyForNode (const String & inKey,
-                                              const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inCurrentNode,
-                                              uint32_t & ioBestDistance,
-                                              TC_UniqueArray <String> & ioNearestKeyArray) {
+  private: static void recursiveFindNearestKey (const String & inKey,
+                                                const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inCurrentNode,
+                                                uint32_t & ioBestDistance,
+                                                TC_UniqueArray <String> & ioNearestKeyArray) {
     if (inCurrentNode.isNotNil ()) {
       const uint32_t distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;
-      if (ioBestDistance > distance) {
+      if (distance < ioBestDistance) {
         ioBestDistance = distance ;
         ioNearestKeyArray.removeAllKeepingCapacity () ;
         ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
       }else if (ioBestDistance == distance) {
         ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
       }
-      findNearestKeyForNode (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
-      findNearestKeyForNode (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
+      recursiveFindNearestKey (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
+      recursiveFindNearestKey (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
     }
   }
 

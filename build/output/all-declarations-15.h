@@ -692,10 +692,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_headerCompositionMap final {
 
-//--- Constructor
   public: DownEnumerator_headerCompositionMap (const class GGS_headerCompositionMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_headerCompositionMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -706,15 +706,11 @@ class DownEnumerator_headerCompositionMap final {
 
   public: class GGS_string current_mHeaderString (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_headerCompositionMap (const DownEnumerator_headerCompositionMap &) = delete ;
   private: DownEnumerator_headerCompositionMap & operator = (const DownEnumerator_headerCompositionMap &) = delete ;
 } ;
@@ -723,6 +719,8 @@ class DownEnumerator_headerCompositionMap final {
 
 class UpEnumerator_headerCompositionMap final {
   public: UpEnumerator_headerCompositionMap (const class GGS_headerCompositionMap & inMap)  ;
+
+  public: ~ UpEnumerator_headerCompositionMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -733,15 +731,12 @@ class UpEnumerator_headerCompositionMap final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_stringset current_mInclusion (LOCATION_ARGS) const ;
   public: class GGS_string current_mHeaderString (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_headerCompositionMap (const UpEnumerator_headerCompositionMap &) = delete ;
   private: UpEnumerator_headerCompositionMap & operator = (const UpEnumerator_headerCompositionMap &) = delete ;
 } ;
@@ -1097,10 +1092,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_headerRepartitionMap final {
 
-//--- Constructor
   public: DownEnumerator_headerRepartitionMap (const class GGS_headerRepartitionMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_headerRepartitionMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -1109,15 +1104,11 @@ class DownEnumerator_headerRepartitionMap final {
 
   public: class GGS_string current_mHeaderFileName (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_headerRepartitionMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_headerRepartitionMap (const DownEnumerator_headerRepartitionMap &) = delete ;
   private: DownEnumerator_headerRepartitionMap & operator = (const DownEnumerator_headerRepartitionMap &) = delete ;
 } ;
@@ -1127,6 +1118,8 @@ class DownEnumerator_headerRepartitionMap final {
 class UpEnumerator_headerRepartitionMap final {
   public: UpEnumerator_headerRepartitionMap (const class GGS_headerRepartitionMap & inMap)  ;
 
+  public: ~ UpEnumerator_headerRepartitionMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
@@ -1135,15 +1128,12 @@ class UpEnumerator_headerRepartitionMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_string current_mHeaderFileName (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_headerRepartitionMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_headerRepartitionMap (const UpEnumerator_headerRepartitionMap &) = delete ;
   private: UpEnumerator_headerRepartitionMap & operator = (const UpEnumerator_headerRepartitionMap &) = delete ;
 } ;
@@ -1476,10 +1466,10 @@ template <typename INFO> class GGS_GenericMapRoot ;
 
 class DownEnumerator_projectQualifiedFeatureMap final {
 
-//--- Constructor
   public: DownEnumerator_projectQualifiedFeatureMap (const class GGS_projectQualifiedFeatureMap & inMap) ;
 
-//--- Accessors
+  public: ~ DownEnumerator_projectQualifiedFeatureMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
@@ -1488,15 +1478,11 @@ class DownEnumerator_projectQualifiedFeatureMap final {
 
   public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
 
-
-//--- Current element access
   public: class GGS_projectQualifiedFeatureMap_2E_element current (LOCATION_ARGS) const ;
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: DownEnumerator_projectQualifiedFeatureMap (const DownEnumerator_projectQualifiedFeatureMap &) = delete ;
   private: DownEnumerator_projectQualifiedFeatureMap & operator = (const DownEnumerator_projectQualifiedFeatureMap &) = delete ;
 } ;
@@ -1506,6 +1492,8 @@ class DownEnumerator_projectQualifiedFeatureMap final {
 class UpEnumerator_projectQualifiedFeatureMap final {
   public: UpEnumerator_projectQualifiedFeatureMap (const class GGS_projectQualifiedFeatureMap & inMap)  ;
 
+  public: ~ UpEnumerator_projectQualifiedFeatureMap (void) = default ;
+
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
@@ -1514,15 +1502,12 @@ class UpEnumerator_projectQualifiedFeatureMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
-//--- Current element access
   public: class GGS_projectQualifiedFeatureMap_2E_element current (LOCATION_ARGS) const ;
 
 
-//--- Private properties
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-//--- No copy
   private: UpEnumerator_projectQualifiedFeatureMap (const UpEnumerator_projectQualifiedFeatureMap &) = delete ;
   private: UpEnumerator_projectQualifiedFeatureMap & operator = (const UpEnumerator_projectQualifiedFeatureMap &) = delete ;
 } ;
