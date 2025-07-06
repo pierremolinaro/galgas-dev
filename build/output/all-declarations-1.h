@@ -1984,7 +1984,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateVariableMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_templateVariableMap ;
@@ -2108,16 +2107,6 @@ class MapFor_templateVariableMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_templateVariableMap getOverridenMap (void) const {
-    MapRootFor_templateVariableMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_templateVariableMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -2143,6 +2132,7 @@ class MapFor_templateVariableMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_templateVariableMap final {
+
 //--- Constructor
   public: DownEnumerator_templateVariableMap (const class GGS_templateVariableMap & inMap) ;
 
@@ -2199,16 +2189,144 @@ class UpEnumerator_templateVariableMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateVariableMap : public MapFor_templateVariableMap {
+class GGS_templateVariableMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_templateVariableMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_templateVariableMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_templateVariableMap (void) = default ;
+  public: virtual ~ GGS_templateVariableMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_templateVariableMap (const GGS_templateVariableMap & inSource) ;
+  public: GGS_templateVariableMap & operator = (const GGS_templateVariableMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_templateVariableMap (const GGS_templateVariableMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_templateVariableMap & operator = (const GGS_templateVariableMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_templateVariableMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_templateVariableMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_templateVariableMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_templateVariableMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_templateVariableMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_templateVariableMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -3352,7 +3470,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph
 // Phase 1: @unifiedTypeMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_unifiedTypeMap ;
@@ -3476,16 +3593,6 @@ class MapFor_unifiedTypeMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_unifiedTypeMap getOverridenMap (void) const {
-    MapRootFor_unifiedTypeMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_unifiedTypeMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -3511,6 +3618,7 @@ class MapFor_unifiedTypeMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_unifiedTypeMap final {
+
 //--- Constructor
   public: DownEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inMap) ;
 
@@ -3564,16 +3672,144 @@ class UpEnumerator_unifiedTypeMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_unifiedTypeMap : public MapFor_unifiedTypeMap {
+class GGS_unifiedTypeMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_unifiedTypeMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_unifiedTypeMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_unifiedTypeMap (void) = default ;
+  public: virtual ~ GGS_unifiedTypeMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) ;
+  public: GGS_unifiedTypeMap & operator = (const GGS_unifiedTypeMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_unifiedTypeMap & operator = (const GGS_unifiedTypeMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_unifiedTypeMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_unifiedTypeMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_unifiedTypeMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_unifiedTypeMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_unifiedTypeMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_unifiedTypeMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -3662,7 +3898,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
 // Phase 1: @filewrapperMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_filewrapperMap ;
@@ -3786,16 +4021,6 @@ class MapFor_filewrapperMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_filewrapperMap getOverridenMap (void) const {
-    MapRootFor_filewrapperMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_filewrapperMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -3821,6 +4046,7 @@ class MapFor_filewrapperMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_filewrapperMap final {
+
 //--- Constructor
   public: DownEnumerator_filewrapperMap (const class GGS_filewrapperMap & inMap) ;
 
@@ -3889,16 +4115,144 @@ class UpEnumerator_filewrapperMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_filewrapperMap : public MapFor_filewrapperMap {
+class GGS_filewrapperMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_filewrapperMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_filewrapperMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_filewrapperMap (void) = default ;
+  public: virtual ~ GGS_filewrapperMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_filewrapperMap (const GGS_filewrapperMap & inSource) ;
+  public: GGS_filewrapperMap & operator = (const GGS_filewrapperMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_filewrapperMap (const GGS_filewrapperMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_filewrapperMap & operator = (const GGS_filewrapperMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_filewrapperMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_filewrapperMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_filewrapperMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_filewrapperMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_filewrapperMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_filewrapperMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_filewrapperMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -4047,7 +4401,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap ;
 // Phase 1: @functionMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_functionMap ;
@@ -4171,16 +4524,6 @@ class MapFor_functionMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_functionMap getOverridenMap (void) const {
-    MapRootFor_functionMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_functionMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -4206,6 +4549,7 @@ class MapFor_functionMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_functionMap final {
+
 //--- Constructor
   public: DownEnumerator_functionMap (const class GGS_functionMap & inMap) ;
 
@@ -4265,16 +4609,144 @@ class UpEnumerator_functionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_functionMap : public MapFor_functionMap {
+class GGS_functionMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_functionMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_functionMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_functionMap (void) = default ;
+  public: virtual ~ GGS_functionMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_functionMap (const GGS_functionMap & inSource) ;
+  public: GGS_functionMap & operator = (const GGS_functionMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_functionMap (const GGS_functionMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_functionMap & operator = (const GGS_functionMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_functionMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_functionMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_functionMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_functionMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_functionMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_functionMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -4390,7 +4862,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap ;
 // Phase 1: @grammarMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_grammarMap ;
@@ -4514,16 +4985,6 @@ class MapFor_grammarMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_grammarMap getOverridenMap (void) const {
-    MapRootFor_grammarMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_grammarMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -4549,6 +5010,7 @@ class MapFor_grammarMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_grammarMap final {
+
 //--- Constructor
   public: DownEnumerator_grammarMap (const class GGS_grammarMap & inMap) ;
 
@@ -4608,16 +5070,144 @@ class UpEnumerator_grammarMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_grammarMap : public MapFor_grammarMap {
+class GGS_grammarMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_grammarMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_grammarMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_grammarMap (void) = default ;
+  public: virtual ~ GGS_grammarMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_grammarMap (const GGS_grammarMap & inSource) ;
+  public: GGS_grammarMap & operator = (const GGS_grammarMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_grammarMap (const GGS_grammarMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_grammarMap & operator = (const GGS_grammarMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_grammarMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_grammarMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_grammarMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_grammarMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_grammarMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_grammarMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -4733,7 +5323,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap ;
 // Phase 1: @lexiqueComponentMapForSemanticAnalysis map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_lexiqueComponentMapForSemanticAnalysis ;
@@ -4857,16 +5446,6 @@ class MapFor_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_lexiqueComponentMapForSemanticAnalysis getOverridenMap (void) const {
-    MapRootFor_lexiqueComponentMapForSemanticAnalysis result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_lexiqueComponentMapForSemanticAnalysis & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -4892,6 +5471,7 @@ class MapFor_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
+
 //--- Constructor
   public: DownEnumerator_lexiqueComponentMapForSemanticAnalysis (const class GGS_lexiqueComponentMapForSemanticAnalysis & inMap) ;
 
@@ -4963,16 +5543,144 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexiqueComponentMapForSemanticAnalysis : public MapFor_lexiqueComponentMapForSemanticAnalysis {
+class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_lexiqueComponentMapForSemanticAnalysis > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_lexiqueComponentMapForSemanticAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_lexiqueComponentMapForSemanticAnalysis (void) = default ;
+  public: virtual ~ GGS_lexiqueComponentMapForSemanticAnalysis (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_lexiqueComponentMapForSemanticAnalysis (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
+  public: GGS_lexiqueComponentMapForSemanticAnalysis & operator = (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_lexiqueComponentMapForSemanticAnalysis (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_lexiqueComponentMapForSemanticAnalysis & operator = (const GGS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_lexiqueComponentMapForSemanticAnalysis> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_lexiqueComponentMapForSemanticAnalysis & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_lexiqueComponentMapForSemanticAnalysis & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -5132,7 +5840,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMap
 // Phase 1: @optionComponentMapForSemanticAnalysis map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_optionComponentMapForSemanticAnalysis ;
@@ -5256,16 +5963,6 @@ class MapFor_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_optionComponentMapForSemanticAnalysis getOverridenMap (void) const {
-    MapRootFor_optionComponentMapForSemanticAnalysis result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_optionComponentMapForSemanticAnalysis & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -5291,6 +5988,7 @@ class MapFor_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_optionComponentMapForSemanticAnalysis final {
+
 //--- Constructor
   public: DownEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inMap) ;
 
@@ -5356,16 +6054,144 @@ class UpEnumerator_optionComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_optionComponentMapForSemanticAnalysis : public MapFor_optionComponentMapForSemanticAnalysis {
+class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_optionComponentMapForSemanticAnalysis > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_optionComponentMapForSemanticAnalysis (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_optionComponentMapForSemanticAnalysis (void) = default ;
+  public: virtual ~ GGS_optionComponentMapForSemanticAnalysis (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_optionComponentMapForSemanticAnalysis (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
+  public: GGS_optionComponentMapForSemanticAnalysis & operator = (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_optionComponentMapForSemanticAnalysis (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_optionComponentMapForSemanticAnalysis & operator = (const GGS_optionComponentMapForSemanticAnalysis & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_optionComponentMapForSemanticAnalysis_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_optionComponentMapForSemanticAnalysis_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_optionComponentMapForSemanticAnalysis_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_optionComponentMapForSemanticAnalysis> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_optionComponentMapForSemanticAnalysis & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_optionComponentMapForSemanticAnalysis & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -5503,7 +6329,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 // Phase 1: @syntaxComponentMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_syntaxComponentMap ;
@@ -5627,16 +6452,6 @@ class MapFor_syntaxComponentMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_syntaxComponentMap getOverridenMap (void) const {
-    MapRootFor_syntaxComponentMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_syntaxComponentMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -5662,6 +6477,7 @@ class MapFor_syntaxComponentMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_syntaxComponentMap final {
+
 //--- Constructor
   public: DownEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inMap) ;
 
@@ -5724,16 +6540,144 @@ class UpEnumerator_syntaxComponentMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxComponentMap : public MapFor_syntaxComponentMap {
+class GGS_syntaxComponentMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_syntaxComponentMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_syntaxComponentMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_syntaxComponentMap (void) = default ;
+  public: virtual ~ GGS_syntaxComponentMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_syntaxComponentMap (const GGS_syntaxComponentMap & inSource) ;
+  public: GGS_syntaxComponentMap & operator = (const GGS_syntaxComponentMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_syntaxComponentMap (const GGS_syntaxComponentMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_syntaxComponentMap & operator = (const GGS_syntaxComponentMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_syntaxComponentMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_syntaxComponentMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_syntaxComponentMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_syntaxComponentMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_syntaxComponentMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_syntaxComponentMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -5860,7 +6804,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap 
 // Phase 1: @internalRoutineMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
 #include "SharedGenericPtrWithValueSemantics.h"
 
 class MapRootFor_internalRoutineMap ;
@@ -5984,16 +6927,6 @@ class MapFor_internalRoutineMap : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  protected: MapRootFor_internalRoutineMap getOverridenMap (void) const {
-    MapRootFor_internalRoutineMap result ;
-    if (isValid ()) {
-      result = mSharedRoot->mOverriddenRoot ;
-    }
-    return result ;
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   protected: void getOverridenMap (class MapFor_internalRoutineMap & ioResult,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
@@ -6019,6 +6952,7 @@ class MapFor_internalRoutineMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_internalRoutineMap final {
+
 //--- Constructor
   public: DownEnumerator_internalRoutineMap (const class GGS_internalRoutineMap & inMap) ;
 
@@ -6072,16 +7006,144 @@ class UpEnumerator_internalRoutineMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_internalRoutineMap : public MapFor_internalRoutineMap {
+class GGS_internalRoutineMap : public AC_GALGAS_root {
+
+//--------------------------------- Private property
+  private: OptionalSharedRef <MapRootFor_internalRoutineMap > mSharedRoot ;
+
 //--------------------------------- Default constructor
   public: GGS_internalRoutineMap (void) ;
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_internalRoutineMap (void) = default ;
+  public: virtual ~ GGS_internalRoutineMap (void) ;
 
+//--------------------------------- Handle copy
+  public: GGS_internalRoutineMap (const GGS_internalRoutineMap & inSource) ;
+  public: GGS_internalRoutineMap & operator = (const GGS_internalRoutineMap & inSource) ;
+  
 //--------------------------------- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void build (LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: bool isValid (void) const override ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void drop (void) override ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insulate (LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Handle copy
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_internalRoutineMap (const GGS_internalRoutineMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // public: GGS_internalRoutineMap & operator = (const GGS_internalRoutineMap & inSource) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert or replace
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void insertOrReplace (const class GGS_internalRoutineMap_2E_element & inElement
+                                   COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insert
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void performInsert (const class GGS_internalRoutineMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Remove
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: SharedGenericPtrWithValueSemantics <class GGS_internalRoutineMap_2E_element>
+  removeAndReturnRemovedInfo (const String & inKey
+                              COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   contains
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool contains (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   containsAtLevel
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: bool containsAtLevel (const String & inKey, const uint32_t inLevel) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   infoForKey
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: const SharedGenericPtrWithValueSemantics <GGS_internalRoutineMap_2E_element> infoForKey (const String & inKey) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  protected: OptionalSharedRef <class MapNodeFor_internalRoutineMap> nodeForKey (const String & inKey) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: int32_t count (void) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_internalRoutineMap_2E_element>> sortedInfoArray (void) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: GGS_lstringlist keyList (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void makeNewEmptyMapWithMapToOverride (const GGS_internalRoutineMap & inOverridenMap
+                                                    COMMA_LOCATION_ARGS) ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void getOverridenMap (class GGS_internalRoutineMap & ioResult,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+ 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: uint32_t levels (void) const ;
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: GGS_stringset getter_keySet (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected: void findNearestKey (const String & inKey,
+                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 //-- Start of type generic part
@@ -13996,221 +15058,4 @@ class GGS_abstractLexicalRuleAST_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalRuleListAST useLoopLocalVar' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool extensionGetter_useLoopLocalVar (const class GGS_lexicalRuleListAST & inObject,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalImplicitRuleAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalImplicitRuleAST : public GGS_abstractLexicalRuleAST {
-//--------------------------------- Default constructor
-  public: GGS_lexicalImplicitRuleAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_lexicalImplicitRuleAST (const class cPtr_lexicalImplicitRuleAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mListName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lexicalImplicitRuleAST init_21_ (const class GGS_lstring & inOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lexicalImplicitRuleAST extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalImplicitRuleAST class_func_new (const class GGS_lstring & inOperand0,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalImplicitRuleAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @lexicalImplicitRuleAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void lexicalImplicitRuleAST_init_21_ (const class GGS_lstring & inOperand0,
-                                                Compiler * inCompiler) ;
-
-
-//--- Extension getter generateLexicalRuleCode
-  public: virtual class GGS_string getter_generateLexicalRuleCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaCode
-  public: virtual class GGS_string getter_generateObjcCocoaCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaCode
-  public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter lexicalRuleUsesLoopLocalVar
-  public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalRule
-  public: virtual void method_checkLexicalRule (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mListName ;
-
-
-//--- Default constructor
-  public: cPtr_lexicalImplicitRuleAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_lexicalImplicitRuleAST (const GGS_lstring & in_mListName,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalImplicitRuleAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalImplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_lexicalImplicitRuleAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_lexicalImplicitRuleAST_2E_weak (const class GGS_lexicalImplicitRuleAST & inSource) ;
-
-  public: GGS_lexicalImplicitRuleAST_2E_weak & operator = (const class GGS_lexicalImplicitRuleAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_lexicalImplicitRuleAST_2E_weak init_nil (void) {
-    GGS_lexicalImplicitRuleAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_lexicalImplicitRuleAST bang_lexicalImplicitRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_lexicalImplicitRuleAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lexicalImplicitRuleAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalImplicitRuleAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalImplicitRuleAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ;
 
