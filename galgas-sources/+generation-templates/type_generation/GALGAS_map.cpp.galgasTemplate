@@ -3,7 +3,8 @@
 //--------------------------------------------------------------------------------------------------
 
 class MapRootFor_%!TYPE_IDENTIFIER% ;
-class MapFor_%!TYPE_IDENTIFIER% ;
+
+#include "GGS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 //  MapNodeFor_%!TYPE_IDENTIFIER%
@@ -536,255 +537,7 @@ class MapRootFor_%!TYPE_IDENTIFIER% final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class MapFor_%!TYPE_IDENTIFIER% ;
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//  MapFor_%!TYPE_IDENTIFIER%
-//--------------------------------------------------------------------------------------------------
-
-MapFor_%!TYPE_IDENTIFIER%::MapFor_%!TYPE_IDENTIFIER% (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-MapFor_%!TYPE_IDENTIFIER%::~ MapFor_%!TYPE_IDENTIFIER% (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-MapFor_%!TYPE_IDENTIFIER%::MapFor_%!TYPE_IDENTIFIER% (const MapFor_%!TYPE_IDENTIFIER% & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-MapFor_%!TYPE_IDENTIFIER% & MapFor_%!TYPE_IDENTIFIER%::operator = (const MapFor_%!TYPE_IDENTIFIER% & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool MapFor_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
-  if (mSharedRoot.isNotNil ()) {
-    mSharedRoot->invalidateCacheSortedArray () ;
-    if (!mSharedRoot->isUniquelyReferenced ()) {
-      auto p = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (THERE) ;
-      mSharedRoot->duplicateTo (p COMMA_THERE) ;
-      mSharedRoot = p ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::insertOrReplace (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement
-                                                 COMMA_LOCATION_ARGS) {
-  if (mSharedRoot.isNotNil () && inElement.mProperty_lkey.isValid ()) {
-    insulate (THERE) ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> unusedExistingNode ;
-    const bool allowReplacing = true ;
-    mSharedRoot->insertOrReplaceInfo (inElement, allowReplacing, unusedExistingNode COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::performInsert (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    insulate (THERE) ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->mOverriddenRoot.isNotNil ())) {
-      existingNode = mSharedRoot->mOverriddenRoot->searchNode (lkey.mProperty_string.stringValue()) ;
-      if (existingNode.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>
-MapFor_%!TYPE_IDENTIFIER%::removeAndReturnRemovedInfo (const String & inKey
-                                                       COMMA_LOCATION_ARGS) {
-  if (mSharedRoot.isNotNil ()) {
-    insulate (THERE) ;
-    return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool MapFor_%!TYPE_IDENTIFIER%::contains (const String & inKey) const {
-  bool result = false ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->hasKey (inKey, 0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool MapFor_%!TYPE_IDENTIFIER%::containsAtLevel (const String & inKey, const uint32_t inLevel) const {
-  bool result = false ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->hasKey (inKey, inLevel) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>
-MapFor_%!TYPE_IDENTIFIER%::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    const OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> node = mSharedRoot->searchNode (inKey) ;
-    if (node.isNil ()) {
-      return SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
-    }else{
-      return node->mSharedInfo ;
-    }
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%>
-MapFor_%!TYPE_IDENTIFIER%::nodeForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->searchNode (inKey) ;
-  }else{
-    return OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t MapFor_%!TYPE_IDENTIFIER%::count (void) const  {
-  if (mSharedRoot.isNil ()) {
-    return 0 ;
-  }else{
-    return mSharedRoot->count () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
-MapFor_%!TYPE_IDENTIFIER%::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist MapFor_%!TYPE_IDENTIFIER%::keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::makeNewEmptyMapWithMapToOverride (const MapFor_%!TYPE_IDENTIFIER% & inOverridenMap
-                                                    COMMA_LOCATION_ARGS) {
-  if (inOverridenMap.isValid ()) {
-    mSharedRoot = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (inOverridenMap.mSharedRoot COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::getOverridenMap (MapFor_%!TYPE_IDENTIFIER% & ioResult,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const {
-  if (isValid ()) {
-    ioResult.mSharedRoot = mSharedRoot->mOverriddenRoot ;
-    if (ioResult.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-uint32_t MapFor_%!TYPE_IDENTIFIER%::levels (void) const {
-  uint32_t result = 0 ;
-  if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->levels () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset MapFor_%!TYPE_IDENTIFIER%::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void MapFor_%!TYPE_IDENTIFIER%::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 //  Map type @%!TYPE_IDENTIFIER%
@@ -917,7 +670,7 @@ void GGS_%!TYPE_IDENTIFIER%::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -926,7 +679,7 @@ void GGS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (mSharedRoot.isNotNil ()) {
     mSharedRoot->invalidateCacheSortedArray () ;
     if (!mSharedRoot->isUniquelyReferenced ()) {
-      auto p = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (THERE) ;
+      auto p = OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (THERE) ;
       mSharedRoot->duplicateTo (p COMMA_THERE) ;
       mSharedRoot = p ;
     }
@@ -939,7 +692,7 @@ void GGS_%!TYPE_IDENTIFIER%::insertOrReplace (const GGS_%!ELEMENT_TYPE_IDENTIFIE
                                                  COMMA_LOCATION_ARGS) {
   if (mSharedRoot.isNotNil () && inElement.mProperty_lkey.isValid ()) {
     insulate (THERE) ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> unusedExistingNode ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> unusedExistingNode ;
     const bool allowReplacing = true ;
     mSharedRoot->insertOrReplaceInfo (inElement, allowReplacing, unusedExistingNode COMMA_THERE) ;
   }
@@ -954,7 +707,7 @@ void GGS_%!TYPE_IDENTIFIER%::performInsert (const GGS_%!ELEMENT_TYPE_IDENTIFIER%
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
     insulate (THERE) ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> existingNode ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot->insertOrReplaceInfo (
       inElement,
@@ -1014,7 +767,7 @@ bool GGS_%!TYPE_IDENTIFIER%::containsAtLevel (const String & inKey, const uint32
 const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>
 GGS_%!TYPE_IDENTIFIER%::infoForKey (const String & inKey) const {
   if (mSharedRoot.isNotNil ()) {
-    const OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> node = mSharedRoot->searchNode (inKey) ;
+    const OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (inKey) ;
     if (node.isNil ()) {
       return SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
     }else{
@@ -1027,12 +780,12 @@ GGS_%!TYPE_IDENTIFIER%::infoForKey (const String & inKey) const {
 
 //--------------------------------------------------------------------------------------------------
 
-OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%>
+OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
 GGS_%!TYPE_IDENTIFIER%::nodeForKey (const String & inKey) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->searchNode (inKey) ;
   }else{
-    return OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> () ;
+    return OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> () ;
   }
 }
 
@@ -1074,7 +827,7 @@ GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::keyList (Compiler * inCompiler
 void GGS_%!TYPE_IDENTIFIER%::makeNewEmptyMapWithMapToOverride (const GGS_%!TYPE_IDENTIFIER% & inOverridenMap
                                                     COMMA_LOCATION_ARGS) {
   if (inOverridenMap.isValid ()) {
-    mSharedRoot = OptionalSharedRef <MapRootFor_%!TYPE_IDENTIFIER%>::make (inOverridenMap.mSharedRoot COMMA_THERE) ;
+    mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (inOverridenMap.mSharedRoot COMMA_THERE) ;
   }
 }
 
@@ -1284,7 +1037,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%
   if (isValid () && inElement.isValid ()) {
     const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
     const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> node = nodeForKey (key) ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = nodeForKey (key) ;
     if (node.isNil ()) {
       TC_UniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
@@ -1345,7 +1098,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharac
   if (isValid () && inKey.isValid ()) {
     insulate (THERE) ;
     const String key = inKey.stringValue () ;
-    OptionalSharedRef <MapNodeFor_%!TYPE_IDENTIFIER%> node = nodeForKey (key) ;
+    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = nodeForKey (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;

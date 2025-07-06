@@ -974,6 +974,7 @@
 		CF93BABC2D0D8CFD006DF788 /* SLR_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SLR_computations.cpp; sourceTree = "<group>"; };
 		CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
+		CFA6E6932E1A8BB400C39E75 /* GGS_GenericMapRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGS_GenericMapRoot.h; sourceTree = "<group>"; };
 		CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
@@ -1517,6 +1518,7 @@
 				CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */,
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
 				CF00BE042E116075007B987F /* GGS_GenericDictionary.h */,
+				CFA6E6932E1A8BB400C39E75 /* GGS_GenericMapRoot.h */,
 				CF6B7E302E119DB60056916E /* GGS_GenericSortedList.h */,
 				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
 				CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */,
