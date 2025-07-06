@@ -469,6 +469,12 @@
 		CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */; };
 		CFAE1C222D1C36C7001FDE69 /* SWIFT_Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */; };
 		CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */; };
+		CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
+		CFCCF1AB2E1A7D7A00B0A689 /* all-declarations-35.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A92E1A7D7A00B0A689 /* all-declarations-35.cpp */; };
+		CFCCF1AC2E1A7D7A00B0A689 /* all-declarations-34.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A72E1A7D7A00B0A689 /* all-declarations-34.cpp */; };
+		CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
+		CFCCF1AE2E1A7D7A00B0A689 /* all-declarations-35.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A92E1A7D7A00B0A689 /* all-declarations-35.cpp */; };
+		CFCCF1AF2E1A7D7A00B0A689 /* all-declarations-34.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A72E1A7D7A00B0A689 /* all-declarations-34.cpp */; };
 		CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */; };
 		CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */; };
 		CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */; };
@@ -972,7 +978,12 @@
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
 		CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_BuildLogViewRuler.swift; sourceTree = "<group>"; };
-		CFC40C932E13CFBC0082B014 /* GGS_GenericMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGS_GenericMap.h; sourceTree = "<group>"; };
+		CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
+		CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
+		CFCCF1A62E1A7D7A00B0A689 /* all-declarations-34.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-34.h"; sourceTree = "<group>"; };
+		CFCCF1A72E1A7D7A00B0A689 /* all-declarations-34.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-34.cpp"; sourceTree = "<group>"; };
+		CFCCF1A82E1A7D7A00B0A689 /* all-declarations-35.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-35.h"; sourceTree = "<group>"; };
+		CFCCF1A92E1A7D7A00B0A689 /* all-declarations-35.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-35.cpp"; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -1506,7 +1517,6 @@
 				CF305F2B2D0D8A2E000A5F79 /* galgas-input-output.h */,
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
 				CF00BE042E116075007B987F /* GGS_GenericDictionary.h */,
-				CFC40C932E13CFBC0082B014 /* GGS_GenericMap.h */,
 				CF6B7E302E119DB60056916E /* GGS_GenericSortedList.h */,
 				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
 				CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */,
@@ -1628,6 +1638,12 @@
 		CF3060312D0D8AC8000A5F79 /* Generated by GALGAS */ = {
 			isa = PBXGroup;
 			children = (
+				CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */,
+				CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */,
+				CFCCF1A62E1A7D7A00B0A689 /* all-declarations-34.h */,
+				CFCCF1A72E1A7D7A00B0A689 /* all-declarations-34.cpp */,
+				CFCCF1A82E1A7D7A00B0A689 /* all-declarations-35.h */,
+				CFCCF1A92E1A7D7A00B0A689 /* all-declarations-35.cpp */,
 				CF3060322D0D8B2B000A5F79 /* all-declarations.h */,
 				CF3060332D0D8B2B000A5F79 /* all-declarations-0.h */,
 				CF3060342D0D8B2B000A5F79 /* all-declarations-0.cpp */,
@@ -1966,6 +1982,9 @@
 				CF8F81052D0D91490095170B /* UInt32Set.cpp in Sources */,
 				CF8F81062D0D91490095170B /* C_galgas_quiet_option.cpp in Sources */,
 				CF8F81072D0D91490095170B /* BigUnsigned-subtract.cpp in Sources */,
+				CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */,
+				CFCCF1AE2E1A7D7A00B0A689 /* all-declarations-35.cpp in Sources */,
+				CFCCF1AF2E1A7D7A00B0A689 /* all-declarations-34.cpp in Sources */,
 				CF8F81082D0D91490095170B /* AC_GALGAS_enumAssociatedValues.cpp in Sources */,
 				CF8F81092D0D91490095170B /* GALGAS_uint.cpp in Sources */,
 				CF8F810A2D0D91490095170B /* BigSigned-print.cpp in Sources */,
@@ -2281,6 +2300,9 @@
 				CF305FC22D0D8A2E000A5F79 /* UInt32Set.cpp in Sources */,
 				CF305FC32D0D8A2E000A5F79 /* C_galgas_quiet_option.cpp in Sources */,
 				CF305FC42D0D8A2E000A5F79 /* BigUnsigned-subtract.cpp in Sources */,
+				CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */,
+				CFCCF1AB2E1A7D7A00B0A689 /* all-declarations-35.cpp in Sources */,
+				CFCCF1AC2E1A7D7A00B0A689 /* all-declarations-34.cpp in Sources */,
 				CF305FC62D0D8A2E000A5F79 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */,
 				CF305FC72D0D8A2E000A5F79 /* GALGAS_uint.cpp in Sources */,
 				CF305FC82D0D8A2E000A5F79 /* BigSigned-print.cpp in Sources */,
