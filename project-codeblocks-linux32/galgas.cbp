@@ -74,8 +74,6 @@
   <Linker>
   </Linker>
   <Unit filename="../libpm/galgas/C_galgas_quiet_option.cpp" />
-  <Unit filename="../build/output/all-declarations-35.cpp" />
-  <Unit filename="../build/output/all-declarations-34.cpp" />
   <Unit filename="../build/output/all-declarations-33.cpp" />
   <Unit filename="../build/output/all-declarations-32.cpp" />
   <Unit filename="../build/output/all-declarations-31.cpp" />
