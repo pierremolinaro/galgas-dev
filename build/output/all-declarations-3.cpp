@@ -3102,7 +3102,7 @@ static int32_t compareForSorting_commandLineOptionSortedList (const GGS_commandL
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionSortedList::GGS_commandLineOptionSortedList (void) :
-GGS_GenericSortedList <GGS_commandLineOptionSortedList_2E_element> () {
+mSharedArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3117,16 +3117,19 @@ GGS_uint GGS_commandLineOptionSortedList::getter_count (UNUSED_LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionSortedList::plusPlusAssignOperation (const GGS_commandLineOptionSortedList_2E_element & inValue
+void GGS_commandLineOptionSortedList::plusPlusAssignOperation (const GGS_commandLineOptionSortedList_2E_element & inElement
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  insertObject (inValue, compareForSorting_commandLineOptionSortedList) ;
+  if (isValid () && inElement.isValid ()) {
+    mSharedArray.appendObject (inElement) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_commandLineOptionSortedList) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
   GGS_commandLineOptionSortedList result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -3134,7 +3137,7 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::class_func_empt
 
 GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_commandLineOptionSortedList result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -3148,7 +3151,7 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::class_func_sort
                                                                                                  COMMA_LOCATION_ARGS) {
   GGS_commandLineOptionSortedList result = class_func_emptySortedList (THERE) ;
   const GGS_commandLineOptionSortedList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-  result.insertObject (newElement, compareForSorting_commandLineOptionSortedList) ;
+  result.plusPlusAssignOperation (newElement COMMA_THERE) ;
   return result ;
 }
 
@@ -3159,9 +3162,9 @@ void GGS_commandLineOptionSortedList::addAssignOperation (const GGS_string & inO
                                                           const GGS_string & inOperand2,
                                                           const GGS_string & inOperand3,
                                                           const GGS_string & inOperand4
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+                                                          COMMA_LOCATION_ARGS) {
   const GGS_commandLineOptionSortedList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-  insertObject (newElement, compareForSorting_commandLineOptionSortedList) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3172,17 +3175,22 @@ void GGS_commandLineOptionSortedList::setter_insert (const GGS_string inOperand0
                                                      const GGS_string inOperand3,
                                                      const GGS_string inOperand4,
                                                      Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+                                                     COMMA_LOCATION_ARGS) {
   const GGS_commandLineOptionSortedList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-  insertObject (newElement, compareForSorting_commandLineOptionSortedList) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionSortedList::plusAssignOperation (const GGS_commandLineOptionSortedList inOperand,
+void GGS_commandLineOptionSortedList::plusAssignOperation (const GGS_commandLineOptionSortedList inSortedList,
                                                            Compiler * /* inCompiler */
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  appendSortedList (inOperand, compareForSorting_commandLineOptionSortedList) ;
+  if (isValid () && inSortedList.isValid ()) {
+    for (int32_t i=0 ; i<inSortedList.count () ; i++) {
+      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
+    }
+    mSharedArray.quickSortUsingFunction (compareForSorting_commandLineOptionSortedList) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3194,15 +3202,21 @@ void GGS_commandLineOptionSortedList::setter_popSmallest (GGS_string & outOperan
                                                           GGS_string & outOperand4,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  GGS_commandLineOptionSortedList_2E_element removedElement ;
-  removeFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mOptionIdentifier ;
-    outOperand1 = removedElement.mProperty_mOptionChar ;
-    outOperand2 = removedElement.mProperty_mOptionString ;
-    outOperand3 = removedElement.mProperty_mComment ;
-    outOperand4 = removedElement.mProperty_mDefaultValue ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mOptionIdentifier ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mOptionChar ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mOptionString ;
+      outOperand3 = mSharedArray (0 COMMA_HERE).mProperty_mComment ;
+      outOperand4 = mSharedArray (0 COMMA_HERE).mProperty_mDefaultValue ;
+      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -3220,15 +3234,21 @@ void GGS_commandLineOptionSortedList::setter_popGreatest (GGS_string & outOperan
                                                           GGS_string & outOperand4,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  GGS_commandLineOptionSortedList_2E_element removedElement ;
-  removeLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mOptionIdentifier ;
-    outOperand1 = removedElement.mProperty_mOptionChar ;
-    outOperand2 = removedElement.mProperty_mOptionString ;
-    outOperand3 = removedElement.mProperty_mComment ;
-    outOperand4 = removedElement.mProperty_mDefaultValue ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mOptionIdentifier ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mOptionChar ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mOptionString ;
+      outOperand3 = mSharedArray.lastObject (HERE).mProperty_mComment ;
+      outOperand4 = mSharedArray.lastObject (HERE).mProperty_mDefaultValue ;
+      mSharedArray.removeLastObject (HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -3246,15 +3266,20 @@ void GGS_commandLineOptionSortedList::method_smallest (GGS_string & outOperand0,
                                                        GGS_string & outOperand4,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionSortedList_2E_element removedElement ;
-  getFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mOptionIdentifier ;
-    outOperand1 = removedElement.mProperty_mOptionChar ;
-    outOperand2 = removedElement.mProperty_mOptionString ;
-    outOperand3 = removedElement.mProperty_mComment ;
-    outOperand4 = removedElement.mProperty_mDefaultValue ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mOptionIdentifier ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mOptionChar ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mOptionString ;
+      outOperand3 = mSharedArray (0 COMMA_HERE).mProperty_mComment ;
+      outOperand4 = mSharedArray (0 COMMA_HERE).mProperty_mDefaultValue ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -3272,15 +3297,20 @@ void GGS_commandLineOptionSortedList::method_greatest (GGS_string & outOperand0,
                                                        GGS_string & outOperand4,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionSortedList_2E_element removedElement ;
-  getLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mOptionIdentifier ;
-    outOperand1 = removedElement.mProperty_mOptionChar ;
-    outOperand2 = removedElement.mProperty_mOptionString ;
-    outOperand3 = removedElement.mProperty_mComment ;
-    outOperand4 = removedElement.mProperty_mDefaultValue ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mOptionIdentifier ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mOptionChar ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mOptionString ;
+      outOperand3 = mSharedArray.lastObject (HERE).mProperty_mComment ;
+      outOperand4 = mSharedArray.lastObject (HERE).mProperty_mDefaultValue ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -16472,130 +16502,6 @@ String Lexique_galgasScanner_34_::styleNameForIndex (const uint32_t inStyleIndex
       "commentStyle"
     } ;
     result = kStyleArray [inStyleIndex] ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @predefinedTypeAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_predefinedTypeAST::objectCompare (const GGS_predefinedTypeAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_predefinedTypeAST::GGS_predefinedTypeAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-
-void cPtr_predefinedTypeAST::
-predefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
-                                            const GGS_string & in_mPredefinedTypeName,
-                                            Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_predefinedTypeAST::GGS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_predefinedTypeAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeAST::readProperty_mPredefinedTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_predefinedTypeAST * p = (cPtr_predefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_predefinedTypeAST) ;
-    return p->mProperty_mPredefinedTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @predefinedTypeAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_predefinedTypeAST::cPtr_predefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mPredefinedTypeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_predefinedTypeAST::cPtr_predefinedTypeAST (const GGS_bool & in_isPredefined,
-                                                const GGS_string & in_mPredefinedTypeName,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mPredefinedTypeName () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_predefinedTypeAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties ("mPredefinedTypeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @predefinedTypeAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ("predefinedTypeAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_predefinedTypeAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_predefinedTypeAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_predefinedTypeAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_predefinedTypeAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_predefinedTypeAST GGS_predefinedTypeAST::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_predefinedTypeAST result ;
-  const GGS_predefinedTypeAST * p = (const GGS_predefinedTypeAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_predefinedTypeAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("predefinedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }

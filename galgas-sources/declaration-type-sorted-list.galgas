@@ -170,40 +170,6 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
-//  //--- Add element
-//    var @propertyInCollectionListAST structAttributeList = @()
-//    structAttributeList +=
-//      !mutability: .constantProperty
-//      !self.mKeyTypeName
-//      !["key" nowhere]
-//      !.publicAccess
-//      !hasSelector: false
-//      !initialization: .none
-//    for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
-//      structAttributeList +=
-//        !mutability: .constantProperty
-//        !qualifiedTypeAST
-//        !mPropertyName
-//        !.publicAccess
-//        !hasSelector: hasSelector
-//        !initialization: .none
-//    end
-//    let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
-//    ioDeclarations.mDeclarationList += !@structDeclarationAST {
-//      !isPredefined: self.isPredefined
-//      !elementTypeName
-//      !structAttributeList
-//      !enumeratedElementTypeName: ""
-//      !comparison: if self.equatable then .equatable else .none end
-//      !isUsefullStruct: true
-//    }
-//  //--- Add optional element
-//    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override method addAssociatedElement
     ?!@galgasDeclarationAST ioDeclarations {
     var @propertyInCollectionListAST structAttributeList = @()
@@ -276,7 +242,7 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Readers
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-    enterInheritedGetterWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioTypeMap
       !getterName:"count"
@@ -354,7 +320,7 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: true
     )
   //--- features
-    var features = @typeFeatures.plusAssignOperatorWithExpression | .doNotGenererateObjectCompare
+    var features = @typeFeatures.plusAssignOperatorWithExpression
     if self.equatable then
       features |= .equatable
     end
@@ -506,7 +472,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypeDefinition.isConcrete
     !selfTypeDefinition.initializerMap
     !selfTypeDefinition.classFunctionMap
@@ -533,7 +499,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let elementTypeDefinition = [self.mListElementTypeIndex definition]
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
     ![self.mSelfTypeEntry identifierRepresentation]

@@ -925,7 +925,6 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
-		CF6B7E302E119DB60056916E /* GGS_GenericSortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGS_GenericSortedList.h; sourceTree = "<group>"; };
 		CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DisplayDescriptor.swift; sourceTree = "<group>"; };
 		CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DocumentController.swift; sourceTree = "<group>"; };
 		CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+syntax-coloring.swift"; sourceTree = "<group>"; };
@@ -1511,7 +1510,6 @@
 				CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */,
 				CF00BE042E116075007B987F /* GGS_GenericDictionary.h */,
 				CFA6E6932E1A8BB400C39E75 /* GGS_GenericMapRoot.h */,
-				CF6B7E302E119DB60056916E /* GGS_GenericSortedList.h */,
 				CF305F032D0D8A2E000A5F79 /* IndexingDictionary.h */,
 				CF305F042D0D8A2E000A5F79 /* IndexingDictionary.cpp */,
 				CF305F052D0D8A2E000A5F79 /* IssueDescriptor.h */,

@@ -6497,10 +6497,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 // Phase 1: @tokenSortedlist sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericSortedList.h"
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_tokenSortedlist final {
 //--- Constructor
   public: DownEnumerator_tokenSortedlist (const class GGS_tokenSortedlist & inEnumeratedObject) ;
@@ -6557,12 +6553,40 @@ class UpEnumerator_tokenSortedlist final {
 // Phase 1: @tokenSortedlist sorted list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_tokenSortedlist final : public GGS_GenericSortedList <GGS_tokenSortedlist_2E_element> {
+class GGS_tokenSortedlist final : public AC_GALGAS_root {
+
+//--- Private property
+  private: TC_Array <GGS_tokenSortedlist_2E_element> mSharedArray ;
+
 //--- Default constructor
   public: GGS_tokenSortedlist (void) ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+//--- Destructor
+  public: virtual ~ GGS_tokenSortedlist (void) = default ;
 
+//--- Handle copy
+  public: GGS_tokenSortedlist (const GGS_tokenSortedlist &) = default ;
+  public: GGS_tokenSortedlist & operator = (const GGS_tokenSortedlist &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
+
+//--- Count
+  public: inline int32_t count (void) const { return mSharedArray.count () ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_tokenSortedlist_2E_element> sortedElementArray (void) const {
+    if (isValid ()) {
+      return mSharedArray ;
+    }else{
+      return TC_Array <GGS_tokenSortedlist_2E_element> () ;
+    }
+  }
+
+//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
@@ -6639,6 +6663,8 @@ class GGS_tokenSortedlist final : public GGS_GenericSortedList <GGS_tokenSortedl
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

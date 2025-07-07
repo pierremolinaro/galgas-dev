@@ -1641,10 +1641,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSy
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericSortedList.h"
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final {
 //--- Constructor
   public: DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject) ;
@@ -1701,12 +1697,40 @@ class UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final {
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public GGS_GenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> {
+class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS_root {
+
+//--- Private property
+  private: TC_Array <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> mSharedArray ;
+
 //--- Default constructor
   public: GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+//--- Destructor
+  public: virtual ~ GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) = default ;
 
+//--- Handle copy
+  public: GGS_nonTerminalSymbolSortedListForGrammarAnalysis (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis &) = default ;
+  public: GGS_nonTerminalSymbolSortedListForGrammarAnalysis & operator = (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
+
+//--- Count
+  public: inline int32_t count (void) const { return mSharedArray.count () ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> sortedElementArray (void) const {
+    if (isValid ()) {
+      return mSharedArray ;
+    }else{
+      return TC_Array <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () ;
+    }
+  }
+
+//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
@@ -1783,6 +1807,8 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public GGS_Gener
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

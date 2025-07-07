@@ -2,10 +2,6 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericSortedList.h"
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
   public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
@@ -64,12 +60,40 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " sorted list"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% final : public GGS_GenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
+
+//--- Private property
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+
 //--- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+//--- Destructor
+  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) = default ;
 
+//--- Handle copy
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% &) = default ;
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
+
+//--- Count
+  public: inline int32_t count (void) const { return mSharedArray.count () ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> sortedElementArray (void) const {
+    if (isValid ()) {
+      return mSharedArray ;
+    }else{
+      return TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
+    }
+  }
+
+//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 

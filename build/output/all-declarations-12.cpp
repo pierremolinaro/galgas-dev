@@ -2292,7 +2292,7 @@ static int32_t compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis (
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis::GGS_nonTerminalSymbolSortedListForGrammarAnalysis (void) :
-GGS_GenericSortedList <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () {
+mSharedArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2307,16 +2307,19 @@ GGS_uint GGS_nonTerminalSymbolSortedListForGrammarAnalysis::getter_count (UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inValue
+void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inElement
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  insertObject (inValue, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  if (isValid () && inElement.isValid ()) {
+    mSharedArray.appendObject (inElement) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -2324,7 +2327,7 @@ GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedLis
 
 GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedListForGrammarAnalysis::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -2336,7 +2339,7 @@ GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedLis
                                                                                                                                      COMMA_LOCATION_ARGS) {
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis result = class_func_emptySortedList (THERE) ;
   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  result.insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  result.plusPlusAssignOperation (newElement COMMA_THERE) ;
   return result ;
 }
 
@@ -2345,9 +2348,9 @@ GGS_nonTerminalSymbolSortedListForGrammarAnalysis GGS_nonTerminalSymbolSortedLis
 void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::addAssignOperation (const GGS_lstring & inOperand0,
                                                                             const GGS_uint & inOperand1,
                                                                             const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+                                                                            COMMA_LOCATION_ARGS) {
   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2356,17 +2359,22 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_insert (const GGS
                                                                        const GGS_uint inOperand1,
                                                                        const GGS_nonterminalSymbolLabelMapForGrammarAnalysis inOperand2,
                                                                        Compiler * /* inCompiler */
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                                                       COMMA_LOCATION_ARGS) {
   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  insertObject (newElement, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
+void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inSortedList,
                                                                              Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  appendSortedList (inOperand, compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  if (isValid () && inSortedList.isValid ()) {
+    for (int32_t i=0 ; i<inSortedList.count () ; i++) {
+      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
+    }
+    mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedListForGrammarAnalysis) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2376,13 +2384,19 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popSmallest (GGS_
                                                                             GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
-  removeFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
-    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
-    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalSymbol ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalIndex ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mNonterminalSymbolParametersMap ;
+      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -2396,13 +2410,19 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_popGreatest (GGS_
                                                                             GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
-  removeLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
-    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
-    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalSymbol ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalIndex ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mNonterminalSymbolParametersMap ;
+      mSharedArray.removeLastObject (HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -2416,13 +2436,18 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_smallest (GGS_lst
                                                                          GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
-  getFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
-    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
-    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalSymbol ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mNonTerminalIndex ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mNonterminalSymbolParametersMap ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -2436,13 +2461,18 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis::method_greatest (GGS_lst
                                                                          GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element removedElement ;
-  getLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mNonTerminalSymbol ;
-    outOperand1 = removedElement.mProperty_mNonTerminalIndex ;
-    outOperand2 = removedElement.mProperty_mNonterminalSymbolParametersMap ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalSymbol ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mNonTerminalIndex ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mNonterminalSymbolParametersMap ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;

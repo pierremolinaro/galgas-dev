@@ -22,10 +22,32 @@ static int32_t compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYP
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-GGS_GenericSortedList <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () {
+mSharedArray () {
 }
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+    ComparisonResult result = ComparisonResult::invalid ;
+    if (isValid () && inOperand.isValid ()) {
+      if (count () < inOperand.count ()) {
+        result = ComparisonResult::firstOperandLowerThanSecond ;
+      }else if (count () > inOperand.count ()) {
+        result = ComparisonResult::firstOperandGreaterThanSecond ;
+      }else{
+        result = ComparisonResult::operandEqual ;
+        for (int32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+          const GGS_%!ELEMENT_TYPE_IDENTIFIER% left = mSharedArray (i COMMA_HERE) ;
+          const GGS_%!ELEMENT_TYPE_IDENTIFIER% right = inOperand.mSharedArray (i COMMA_HERE) ;
+          result = left.objectCompare (right) ;
+        }
+      }
+    }
+    return result ;
+  }
+
+%end%//--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
@@ -37,16 +59,19 @@ GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
+void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement
       %!^%COMMA_UNUSED_LOCATION_ARGS) {
-  insertObject (inValue, compareForSorting_%!TYPE_IDENTIFIER%) ;
+  if (isValid () && inElement.isValid ()) {
+    mSharedArray.appendObject (inElement) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -54,7 +79,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptySortedList (UNUSE
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -73,7 +98,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%
   between %, %
   end
   %) ;
-  result.insertObject (newElement, compareForSorting_%!TYPE_IDENTIFIER%) ;
+  result.plusPlusAssignOperation (newElement COMMA_THERE) ;
   return result ;
 }
 
@@ -85,14 +110,14 @@ void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
   between %,\n%!^
   end
 %
-    %!^%COMMA_UNUSED_LOCATION_ARGS) {
+    %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
   %) ;
-  insertObject (newElement, compareForSorting_%!TYPE_IDENTIFIER%) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -102,22 +127,27 @@ void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^
   do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
 %Compiler * /* inCompiler */
-    %!^%COMMA_UNUSED_LOCATION_ARGS) {
+    %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
   %) ;
-  insertObject (newElement, compareForSorting_%!TYPE_IDENTIFIER%) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inSortedList,
                           %!^%Compiler * /* inCompiler */
                           %!^%COMMA_UNUSED_LOCATION_ARGS) {
-  appendSortedList (inOperand, compareForSorting_%!TYPE_IDENTIFIER%) ;
+  if (isValid () && inSortedList.isValid ()) {
+    for (int32_t i=0 ; i<inSortedList.count () ; i++) {
+      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
+    }
+    mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -128,14 +158,19 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
   end
            %Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% removedElement ;
-  removeFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-%
- for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %    outOperand%![IDX string] % = removedElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  end
-%  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+ end
+%      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
 % for (5*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
@@ -150,14 +185,19 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
   end
            %Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% removedElement ;
-  removeLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-%
- for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %    outOperand%![IDX string] % = removedElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  end
-%  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+ end
+%      mSharedArray.removeLastObject (HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
 % for (5*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
@@ -172,14 +212,18 @@ void GGS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   end
      %Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% removedElement ;
-  getFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-%
- for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %    outOperand%![IDX string] % = removedElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  end
-%  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+ end
+%      found = true ;
+    }
+  }
+  if (!found) {
 % for (5*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
@@ -194,14 +238,18 @@ void GGS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   end
      %Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% removedElement ;
-  getLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-%
- for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %    outOperand%![IDX string] % = removedElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  end
-%  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+ end
+%      found = true ;
+    }
+  }
+  if (!found) {
 % for (5*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end

@@ -8926,7 +8926,7 @@ static int32_t compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_e
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist::GGS_tokenSortedlist (void) :
-GGS_GenericSortedList <GGS_tokenSortedlist_2E_element> () {
+mSharedArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8941,16 +8941,19 @@ GGS_uint GGS_tokenSortedlist::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_tokenSortedlist::plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inValue
+void GGS_tokenSortedlist::plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inElement
                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  insertObject (inValue, compareForSorting_tokenSortedlist) ;
+  if (isValid () && inElement.isValid ()) {
+    mSharedArray.appendObject (inElement) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_tokenSortedlist) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_tokenSortedlist GGS_tokenSortedlist::class_func_emptySortedList (UNUSED_LOCATION_ARGS) {
   GGS_tokenSortedlist result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -8958,7 +8961,7 @@ GGS_tokenSortedlist GGS_tokenSortedlist::class_func_emptySortedList (UNUSED_LOCA
 
 GGS_tokenSortedlist GGS_tokenSortedlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_tokenSortedlist result ;
-  result.build () ;
+  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
@@ -8970,7 +8973,7 @@ GGS_tokenSortedlist GGS_tokenSortedlist::class_func_sortedListWithValue (const G
                                                                          COMMA_LOCATION_ARGS) {
   GGS_tokenSortedlist result = class_func_emptySortedList (THERE) ;
   const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  result.insertObject (newElement, compareForSorting_tokenSortedlist) ;
+  result.plusPlusAssignOperation (newElement COMMA_THERE) ;
   return result ;
 }
 
@@ -8979,9 +8982,9 @@ GGS_tokenSortedlist GGS_tokenSortedlist::class_func_sortedListWithValue (const G
 void GGS_tokenSortedlist::addAssignOperation (const GGS_uint & inOperand0,
                                               const GGS_string & inOperand1,
                                               const GGS_string & inOperand2
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+                                              COMMA_LOCATION_ARGS) {
   const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  insertObject (newElement, compareForSorting_tokenSortedlist) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8990,17 +8993,22 @@ void GGS_tokenSortedlist::setter_insert (const GGS_uint inOperand0,
                                          const GGS_string inOperand1,
                                          const GGS_string inOperand2,
                                          Compiler * /* inCompiler */
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                         COMMA_LOCATION_ARGS) {
   const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  insertObject (newElement, compareForSorting_tokenSortedlist) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_tokenSortedlist::plusAssignOperation (const GGS_tokenSortedlist inOperand,
+void GGS_tokenSortedlist::plusAssignOperation (const GGS_tokenSortedlist inSortedList,
                                                Compiler * /* inCompiler */
                                                COMMA_UNUSED_LOCATION_ARGS) {
-  appendSortedList (inOperand, compareForSorting_tokenSortedlist) ;
+  if (isValid () && inSortedList.isValid ()) {
+    for (int32_t i=0 ; i<inSortedList.count () ; i++) {
+      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
+    }
+    mSharedArray.quickSortUsingFunction (compareForSorting_tokenSortedlist) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9010,13 +9018,19 @@ void GGS_tokenSortedlist::setter_popSmallest (GGS_uint & outOperand0,
                                               GGS_string & outOperand2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  GGS_tokenSortedlist_2E_element removedElement ;
-  removeFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mLength ;
-    outOperand1 = removedElement.mProperty_mName ;
-    outOperand2 = removedElement.mProperty_mTerminalName ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mTerminalName ;
+      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -9030,13 +9044,19 @@ void GGS_tokenSortedlist::setter_popGreatest (GGS_uint & outOperand0,
                                               GGS_string & outOperand2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  GGS_tokenSortedlist_2E_element removedElement ;
-  removeLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mLength ;
-    outOperand1 = removedElement.mProperty_mName ;
-    outOperand2 = removedElement.mProperty_mTerminalName ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mTerminalName ;
+      mSharedArray.removeLastObject (HERE) ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -9050,13 +9070,18 @@ void GGS_tokenSortedlist::method_smallest (GGS_uint & outOperand0,
                                            GGS_string & outOperand2,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
-  GGS_tokenSortedlist_2E_element removedElement ;
-  getFirst (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mLength ;
-    outOperand1 = removedElement.mProperty_mName ;
-    outOperand2 = removedElement.mProperty_mTerminalName ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
+      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
+      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mTerminalName ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -9070,13 +9095,18 @@ void GGS_tokenSortedlist::method_greatest (GGS_uint & outOperand0,
                                            GGS_string & outOperand2,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
-  GGS_tokenSortedlist_2E_element removedElement ;
-  getLast (removedElement, inCompiler COMMA_THERE) ;
-  if (removedElement.isValid ()) {
-    outOperand0 = removedElement.mProperty_mLength ;
-    outOperand1 = removedElement.mProperty_mName ;
-    outOperand2 = removedElement.mProperty_mTerminalName ;
-  }else{
+  bool found = false ;
+  if (isValid ()) {
+    if (count () == 0) {
+      inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
+    }else{
+      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
+      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
+      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mTerminalName ;
+      found = true ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
