@@ -106,9 +106,6 @@ class GGS_wrapperExtensionMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_wrapperExtensionMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -118,10 +115,7 @@ class GGS_wrapperExtensionMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_wrapperExtensionMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_wrapperExtensionMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -3750,9 +3744,6 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -3762,10 +3753,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -4127,9 +4115,6 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -4139,10 +4124,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -6438,9 +6420,6 @@ class GGS_propertyIndexMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_propertyIndexMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -6450,10 +6429,7 @@ class GGS_propertyIndexMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_propertyIndexMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_propertyIndexMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -6818,9 +6794,6 @@ class GGS_nonterminalLabelMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_nonterminalLabelMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -6830,10 +6803,7 @@ class GGS_nonterminalLabelMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_nonterminalLabelMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_nonterminalLabelMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -7238,9 +7208,6 @@ class GGS_nonterminalMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_nonterminalMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -7250,10 +7217,7 @@ class GGS_nonterminalMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_nonterminalMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -8590,9 +8554,6 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_uselessEntityLocationMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -8602,10 +8563,7 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_uselessEntityLocationMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_uselessEntityLocationMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -9622,4 +9580,83 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @addExpressionNoOverflowAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_addExpressionNoOverflowAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_addExpressionNoOverflowAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_addExpressionNoOverflowAST_2E_weak (const class GGS_addExpressionNoOverflowAST & inSource) ;
+
+  public: GGS_addExpressionNoOverflowAST_2E_weak & operator = (const class GGS_addExpressionNoOverflowAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_addExpressionNoOverflowAST_2E_weak init_nil (void) {
+    GGS_addExpressionNoOverflowAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_addExpressionNoOverflowAST bang_addExpressionNoOverflowAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_addExpressionNoOverflowAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_addExpressionNoOverflowAST_2E_weak extractObject (const GGS_object & inObject,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_addExpressionNoOverflowAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_addExpressionNoOverflowAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2E_weak ;
 

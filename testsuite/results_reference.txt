@@ -181,26 +181,26 @@ LOGGING str2: <list @stringlist (5 objects):
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of map
-LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' 
+LOGGING m: <map @aMap (1 object):
+|-at 0: key 'g'
 | | value:<@uint:37>>
-LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' 
+LOGGING m: <map @aMap (1 object):
+|-at 0: key 'g'
 | | value:<@uint:56>>
-LOGGING mm: <map @aMap (0 object): 
-| override #1 (1 object): 
-|-at 0: key 'g' 
+LOGGING mm: <map @aMap (0 object):
+|  override #1 (1 object):
+|-at 0: key 'g'
 | | value:<@uint:56>>
 LOGGING v: <@uint:56>
-LOGGING mm: <map @aMap (1 object): 
-|-at 0: key 'g' 
+LOGGING mm: <map @aMap (1 object):
+|-at 0: key 'g'
 | | value:<@uint:11>
-| override #1 (1 object): 
-|-at 0: key 'g' 
+|  override #1 (1 object):
+|-at 0: key 'g'
 | | value:<@uint:56>>
 LOGGING v: <@uint:11>
-LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' 
+LOGGING m: <map @aMap (1 object):
+|-at 0: key 'g'
 | | value:<@uint:56>>
 LOGGING levelCount: <@uint:1>
 LOGGING hasKeyAtLevel: <@bool:true>
@@ -554,7 +554,7 @@ PGCD = 8936582237915716659950962253358945635793453256935559
 7
 5
 *************************************** end of reference classe test
-LOGGING a: <map @myMap (1 object): 
-|-at 0: key 'var' 
+LOGGING a: <map @myMap (1 object):
+|-at 0: key 'var'
 | | value:<@string:"Hello">>
 No warning, no error.

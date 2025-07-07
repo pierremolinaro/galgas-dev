@@ -2540,9 +2540,6 @@ class GGS_routineArgumentMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_routineArgumentMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -2552,10 +2549,7 @@ class GGS_routineArgumentMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_routineArgumentMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -3425,9 +3419,6 @@ class GGS_grammarLabelMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_grammarLabelMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -3437,10 +3428,7 @@ class GGS_grammarLabelMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_grammarLabelMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -4190,9 +4178,6 @@ class GGS_wrapperFileMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_wrapperFileMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -4202,10 +4187,7 @@ class GGS_wrapperFileMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_wrapperFileMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -4639,9 +4621,6 @@ class GGS_wrapperDirectoryMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_wrapperDirectoryMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -4651,10 +4630,7 @@ class GGS_wrapperDirectoryMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_wrapperDirectoryMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -5062,9 +5038,6 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_filewrapperTemplateMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -5074,10 +5047,7 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_filewrapperTemplateMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -6343,9 +6313,6 @@ class GGS_extensionInitializerMapForType : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionInitializerMapForType_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -6355,10 +6322,7 @@ class GGS_extensionInitializerMapForType : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionInitializerMapForType_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -6712,9 +6676,6 @@ class GGS_extensionInitializerForBuildingContext : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionInitializerForBuildingContext_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -6724,10 +6685,7 @@ class GGS_extensionInitializerForBuildingContext : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionInitializerForBuildingContext_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -7097,9 +7055,6 @@ class GGS_extensionMethodMapForType : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionMethodMapForType_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -7109,10 +7064,7 @@ class GGS_extensionMethodMapForType : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionMethodMapForType_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -7488,9 +7440,6 @@ class GGS_extensionMethodMapForBuildingContext : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionMethodMapForBuildingContext_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -7500,10 +7449,7 @@ class GGS_extensionMethodMapForBuildingContext : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionMethodMapForBuildingContext_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -7870,9 +7816,6 @@ class GGS_extensionSetterMapForType : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionSetterMapForType_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -7882,10 +7825,7 @@ class GGS_extensionSetterMapForType : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForType_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionSetterMapForType_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -8239,9 +8179,6 @@ class GGS_extensionSetterMapForBuildingContext : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionSetterMapForBuildingContext_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -8251,10 +8188,7 @@ class GGS_extensionSetterMapForBuildingContext : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionSetterMapForBuildingContext_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -8627,9 +8561,6 @@ class GGS_extensionGetterMapForType : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionGetterMapForType_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -8639,10 +8570,7 @@ class GGS_extensionGetterMapForType : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForType_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionGetterMapForType_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -9040,9 +8968,6 @@ class GGS_extensionGetterMapForBuildingContext : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_extensionGetterMapForBuildingContext_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -9052,10 +8977,7 @@ class GGS_extensionGetterMapForBuildingContext : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_extensionGetterMapForBuildingContext_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  

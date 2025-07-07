@@ -773,9 +773,6 @@ class GGS_headerCompositionMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_headerCompositionMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -785,10 +782,7 @@ class GGS_headerCompositionMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_headerCompositionMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -1170,9 +1164,6 @@ class GGS_headerRepartitionMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_headerRepartitionMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -1182,10 +1173,7 @@ class GGS_headerRepartitionMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_headerRepartitionMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  
@@ -1544,9 +1532,6 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_root {
 
 
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_projectQualifiedFeatureMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
@@ -1556,10 +1541,7 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_projectQualifiedFeatureMap_2E_element>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  

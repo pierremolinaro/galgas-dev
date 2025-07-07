@@ -99,9 +99,6 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 %end%
 
-//--- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
-
 //--- performInsert
   protected: void performInsert (const class GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement,
                                  const char * inInsertErrorMessage,
@@ -111,10 +108,7 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
  
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> infoForKey (const String & inKey) const ;
-
-//--- nodeForKey
-  protected: OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> nodeForKey (const String & inKey) const ;
-  
+ 
 //--- Count
   public: int32_t count (void) const ;
  

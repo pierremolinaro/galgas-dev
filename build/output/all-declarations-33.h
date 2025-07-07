@@ -152,6 +152,7 @@ extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFil
 extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -449,6 +450,63 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lt
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
+                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME,
+                                                                                                                 const class GGS_string & in_BUILD_5F_DIR_5F_NAME
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_arm64_linux_on_mac'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'
 //
 //--------------------------------------------------------------------------------------------------
@@ -577,35 +635,11 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_bui
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgas3MinGWOnMacOSXTarget??buildDirName?'
+//Routine 'generateMakefileMinGWOnMacOSXTarget??buildDirName?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgas_33_MinGWOnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                            const class GGS_string constinArgument1,
-                                                                            const class GGS_string constinArgument2,
-                                                                            class Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgas3MakefileUnixTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgas_33_MakefileUnixTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                           const class GGS_string constinArgument1,
-                                                                           const class GGS_string constinArgument2,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgas3MakefileMacTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgas_33_MakefileMacTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+void routine_generateMakefileMinGWOnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
                                                                           const class GGS_string constinArgument1,
                                                                           const class GGS_string constinArgument2,
                                                                           class Compiler * inCompiler
@@ -613,25 +647,61 @@ void routine_generateGalgas_33_MakefileMacTarget_3F__3F_buildDirName_3F_ (const 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgas3Linux32OnMacOSXTarget??buildDirName?'
+//Routine 'generateMakefileUnixTarget??buildDirName?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                    const class GGS_string constinArgument1,
-                                                                                    const class GGS_string constinArgument2,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+void routine_generateMakefileUnixTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                 const class GGS_string constinArgument1,
+                                                                 const class GGS_string constinArgument2,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgas3Linux64OnMacOSXTarget??buildDirName?'
+//Routine 'generateMakefileMacTarget??buildDirName?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                    const class GGS_string constinArgument1,
-                                                                                    const class GGS_string constinArgument2,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+void routine_generateMakefileMacTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                const class GGS_string constinArgument1,
+                                                                const class GGS_string constinArgument2,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileLinux32OnMacOSXTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileLinux_33__32_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                                  const class GGS_string constinArgument1,
+                                                                                  const class GGS_string constinArgument2,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateMakefileLinux64OnMacOSXTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateMakefileLinux_36__34_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                                  const class GGS_string constinArgument1,
+                                                                                  const class GGS_string constinArgument2,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateArm64LinuxMakefileTarget??buildDirName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
+                                                                             const class GGS_string constinArgument1,
+                                                                             const class GGS_string constinArgument2,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 

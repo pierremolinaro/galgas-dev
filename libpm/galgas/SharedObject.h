@@ -91,6 +91,102 @@ class SharedObject {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+//   macroValidSharedObject                                                                      
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroValidSharedObject(OBJECT,TYPE) { \
+    macroValidPointer (OBJECT) ; \
+    macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+  }
+#else
+  #define macroValidSharedObject(OBJECT,TYPE)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//   macroValidSharedObjectThere                                                                 
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroValidSharedObjectThere(OBJECT,TYPE) { \
+    macroValidPointerThere (OBJECT) ; \
+    macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+  }
+#else
+  #define macroValidSharedObjectThere(OBJECT,TYPE)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//   macroNullOrValidSharedObject                                                                
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroNullOrValidSharedObject(OBJECT,TYPE) \
+    if (nullptr != (OBJECT)) { \
+      macroValidPointer (OBJECT) ; \
+      macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+    }
+#else
+  #define macroNullOrValidSharedObject(OBJECT,TYPE)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//   macroNullOrValidSharedObjectThere                                                           
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroNullOrValidSharedObjectThere(OBJECT,TYPE) \
+    if (nullptr != (OBJECT)) { \
+      macroValidPointerThere (OBJECT) ; \
+      macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
+    }
+#else
+  #define macroNullOrValidSharedObjectThere(OBJECT,TYPE)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//   macroAssignSharedObject                                                                     
+//--------------------------------------------------------------------------------------------------
+
+#define macroAssignSharedObject(TARGET_PTR,SOURCE_PTR) \
+  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
+
+//--------------------------------------------------------------------------------------------------
+//   macroAssignSharedObjectThere                                                                
+//--------------------------------------------------------------------------------------------------
+
+#define macroAssignSharedObjectThere(TARGET_PTR,SOURCE_PTR) \
+  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
+
+//--------------------------------------------------------------------------------------------------
+//   macroDetachSharedObject                                                                     
+//--------------------------------------------------------------------------------------------------
+
+#define macroDetachSharedObject(PTR) \
+  { SharedObject::release (PTR) ; PTR = nullptr ; }
+
+//--------------------------------------------------------------------------------------------------
+//   macroDetachSharedObjectThere                                                                
+//--------------------------------------------------------------------------------------------------
+
+#define macroDetachSharedObjectThere(PTR) \
+  { SharedObject::release (PTR) ; PTR = nullptr ; }
+
+//--------------------------------------------------------------------------------------------------
+//   macroUniqueSharedObject                                                                     
+//--------------------------------------------------------------------------------------------------
+
+#define macroUniqueSharedObject(PTR) \
+  { macroAssert ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
+
+//--------------------------------------------------------------------------------------------------
+//   macroUniqueSharedObjectThere                                                                
+//--------------------------------------------------------------------------------------------------
+
+#define macroUniqueSharedObjectThere(PTR) \
+  { macroAssertThere ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
+
+//--------------------------------------------------------------------------------------------------
 //MARK: Predeclarations
 //--------------------------------------------------------------------------------------------------
 
@@ -228,6 +324,19 @@ template <typename TYPE> class OptionalSharedRef {
     OptionalSharedRef <TYPE> result ;
     macroMyNew (result.mSharedPtr, TYPE (std::forward<_Args>(__args)...)) ;
     return result ;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Insulate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public: void insulate (LOCATION_ARGS) {
+    if ((mSharedPtr != nullptr) && !mSharedPtr->isUniquelyReferenced ()) {
+      TYPE * newPtr = nullptr ;
+      macroMyNew (newPtr, TYPE (mSharedPtr COMMA_THERE)) ;
+      macroAssignSharedObject (mSharedPtr, newPtr) ;
+      macroDetachSharedObject (newPtr) ;
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -838,101 +947,5 @@ template <typename TYPE> class OptionalSharedRef {
 //  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //} ;
-
-//--------------------------------------------------------------------------------------------------
-//   macroValidSharedObject                                                                      
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroValidSharedObject(OBJECT,TYPE) { \
-    macroValidPointer (OBJECT) ; \
-    macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-  }
-#else
-  #define macroValidSharedObject(OBJECT,TYPE)
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//   macroValidSharedObjectThere                                                                 
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroValidSharedObjectThere(OBJECT,TYPE) { \
-    macroValidPointerThere (OBJECT) ; \
-    macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-  }
-#else
-  #define macroValidSharedObjectThere(OBJECT,TYPE)
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//   macroNullOrValidSharedObject                                                                
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroNullOrValidSharedObject(OBJECT,TYPE) \
-    if (nullptr != (OBJECT)) { \
-      macroValidPointer (OBJECT) ; \
-      macroAssert (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-    }
-#else
-  #define macroNullOrValidSharedObject(OBJECT,TYPE)
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//   macroNullOrValidSharedObjectThere                                                           
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroNullOrValidSharedObjectThere(OBJECT,TYPE) \
-    if (nullptr != (OBJECT)) { \
-      macroValidPointerThere (OBJECT) ; \
-      macroAssertThere (dynamic_cast <const TYPE *> (OBJECT) != nullptr, "'"#OBJECT"' is not an instance of '"#TYPE" *'", 0, 0) ; \
-    }
-#else
-  #define macroNullOrValidSharedObjectThere(OBJECT,TYPE)
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//   macroAssignSharedObject                                                                     
-//--------------------------------------------------------------------------------------------------
-
-#define macroAssignSharedObject(TARGET_PTR,SOURCE_PTR) \
-  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
-
-//--------------------------------------------------------------------------------------------------
-//   macroAssignSharedObjectThere                                                                
-//--------------------------------------------------------------------------------------------------
-
-#define macroAssignSharedObjectThere(TARGET_PTR,SOURCE_PTR) \
-  { SharedObject::retain (SOURCE_PTR) ; SharedObject::release (TARGET_PTR) ; TARGET_PTR = SOURCE_PTR ; }
-
-//--------------------------------------------------------------------------------------------------
-//   macroDetachSharedObject                                                                     
-//--------------------------------------------------------------------------------------------------
-
-#define macroDetachSharedObject(PTR) \
-  { SharedObject::release (PTR) ; PTR = nullptr ; }
-
-//--------------------------------------------------------------------------------------------------
-//   macroDetachSharedObjectThere                                                                
-//--------------------------------------------------------------------------------------------------
-
-#define macroDetachSharedObjectThere(PTR) \
-  { SharedObject::release (PTR) ; PTR = nullptr ; }
-
-//--------------------------------------------------------------------------------------------------
-//   macroUniqueSharedObject                                                                     
-//--------------------------------------------------------------------------------------------------
-
-#define macroUniqueSharedObject(PTR) \
-  { macroAssert ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
-
-//--------------------------------------------------------------------------------------------------
-//   macroUniqueSharedObjectThere                                                                
-//--------------------------------------------------------------------------------------------------
-
-#define macroUniqueSharedObjectThere(PTR) \
-  { macroAssertThere ((PTR)->isUniquelyReferenced (), "isUniquelyReferenced () is false", 0, 0) ; }
 
 //--------------------------------------------------------------------------------------------------

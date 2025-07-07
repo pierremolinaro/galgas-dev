@@ -57,6 +57,13 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
   template build_release_win32_on_mac "makefile-win32-on-macosx/build+release.py.galgasTemplate"
   template build_lto_win32_on_mac "makefile-win32-on-macosx/build+lto.py.galgasTemplate"
 
+  template clean_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+debug.py.galgasTemplate"
+  template build_release_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+lto.py.galgasTemplate"
+
   template codeblocks_project "project-codeblocks.cbp.galgasTemplate"
     ?@string PROJECT_NAME
     ?@stringlist TOOL_CPP_FILE_LIST
@@ -178,7 +185,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgas3MinGWOnMacOSXTarget
+private proc generateMakefileMinGWOnMacOSXTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName {
@@ -198,7 +205,7 @@ private proc generateGalgas3MinGWOnMacOSXTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgas3MakefileUnixTarget
+private proc generateMakefileUnixTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName {
@@ -216,7 +223,7 @@ private proc generateGalgas3MakefileUnixTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgas3MakefileMacTarget
+private proc generateMakefileMacTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName {
@@ -234,7 +241,7 @@ private proc generateGalgas3MakefileMacTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgas3Linux32OnMacOSXTarget
+private proc generateMakefileLinux32OnMacOSXTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName {
@@ -251,7 +258,7 @@ private proc generateGalgas3Linux32OnMacOSXTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgas3Linux64OnMacOSXTarget
+private proc generateMakefileLinux64OnMacOSXTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName {
@@ -263,6 +270,22 @@ private proc generateGalgas3Linux64OnMacOSXTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
+  [@string deleteFileIfExists !dir + "/makefile"]
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateArm64LinuxMakefileTarget ?let @string inProjectDirectory
+                                              ?buildDirName: let @string inBuildDirectoryName
+                                              ?let @string inProjectName {
+  let @string dir = inProjectDirectory + "/makefile-arm64-linux-on-macosx"
+  [dir makeDirectory]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac !inProjectName !inBuildDirectoryName] writeToExecutableFileWhenDifferentContents !dir +"/build.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_release_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
@@ -359,6 +382,7 @@ proc updateGalgasTargets
   availableGenerationFeatures ++= "makefile-unix"
   availableGenerationFeatures ++= "makefile-x86linux32-on-macosx"
   availableGenerationFeatures ++= "makefile-x86linux64-on-macosx"
+  availableGenerationFeatures ++= "makefile-arm64-linux-on-macosx"
   availableGenerationFeatures ++= "makefile-win32-on-macosx"
   availableGenerationFeatures ++= "MacOS"
   availableGenerationFeatures ++= "MacSwiftApp"
@@ -403,19 +427,22 @@ proc updateGalgasTargets
   end
 //--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
-    generateGalgas3MakefileMacTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileMacTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-unix"] then
-    generateGalgas3MakefileUnixTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileUnixTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux32-on-macosx"] then
-    generateGalgas3Linux32OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileLinux32OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux64-on-macosx"] then
-    generateGalgas3Linux64OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileLinux64OnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+  end
+  if [generationFeatures hasKey !"makefile-arm64-linux-on-macosx"] then
+    generateArm64LinuxMakefileTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-win32-on-macosx"] then
-    generateGalgas3MinGWOnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
+    generateMakefileMinGWOnMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
   if [generationFeatures hasKey !"codeblocks-windows"] then
     generateGalgasCodeBlocksWindowsTarget (

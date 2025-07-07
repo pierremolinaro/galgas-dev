@@ -589,8 +589,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 201)) {
-    static const char * syntaxErrorMessageArray [201] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 202)) {
+    static const char * syntaxErrorMessageArray [202] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -727,6 +727,7 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '%makefile-unix' keyword",
         "the '%makefile-x86linux32-on-macosx' keyword",
         "the '%makefile-x86linux64-on-macosx' keyword",
+        "the '%makefile-arm64-linux-on-macosx' keyword",
         "the '%makefile-win32-on-macosx' keyword",
         "the '%nonAtomicSelection' keyword",
         "the '%once' keyword",
@@ -1817,6 +1818,40 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__macC
   TO_UNICODE ('n'),
 } ;
 
+//--- Unicode string for '$makefile-arm64-linux-on-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('6'),
+  TO_UNICODE ('4'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('x'),
+} ;
+
 //--- Unicode string for '$makefile-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__makefile_2D_macosx = {
   TO_UNICODE ('m'),
@@ -2577,7 +2612,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 31 ;
+static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 32 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attributeKeyWordList [ktable_size_galgasScanner_33__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__from, Lexique_galgasScanner_33_::kToken__25_from),
@@ -2610,7 +2645,8 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__generatedInSeparateFile, Lexique_galgasScanner_33_::kToken__25_generatedInSeparateFile),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx)
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx, Lexique_galgasScanner_33_::kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx)
 } ;
 
 int32_t Lexique_galgasScanner_33_::search_into_attributeKeyWordList (const String & inSearchedString) {
@@ -3510,6 +3546,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%makefile-x86linux64-on-macosx") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%makefile-arm64-linux-on-macosx") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx:
@@ -4939,6 +4980,7 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("%makefile-unix") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%makefile-x86linux32-on-macosx") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%makefile-x86linux64-on-macosx") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("%makefile-arm64-linux-on-macosx") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%makefile-win32-on-macosx") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%nonAtomicSelection") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("%once") COMMA_HERE) ;
@@ -5052,6 +5094,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("makefile-win32-on-macosx") ;
     ioList.appendObject ("makefile-x86linux32-on-macosx") ;
     ioList.appendObject ("makefile-x86linux64-on-macosx") ;
+    ioList.appendObject ("makefile-arm64-linux-on-macosx") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
   if (inIdentifier == "galgasScanner3:galgasDelimitorsList") {
@@ -5223,7 +5266,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [201] = {0,
+  static const uint32_t kTerminalSymbolStyles [202] = {0,
     0 /* galgasScanner3_1_identifier */,
     7 /* galgasScanner3_1_double_2E_xxx */,
     6 /* galgasScanner3_1_literalInt */,
@@ -5360,6 +5403,7 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     11 /* galgasScanner3_1__25_makefile_2D_unix */,
     11 /* galgasScanner3_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
     11 /* galgasScanner3_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
+    11 /* galgasScanner3_1__25_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
     11 /* galgasScanner3_1__25_makefile_2D_win_33__32__2D_on_2D_macosx */,
     11 /* galgasScanner3_1__25_nonAtomicSelection */,
     11 /* galgasScanner3_1__25_once */,

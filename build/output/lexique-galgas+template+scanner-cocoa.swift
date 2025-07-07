@@ -164,6 +164,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %makefile-unix */,
   false /* %makefile-x86linux32-on-macosx */,
   false /* %makefile-x86linux64-on-macosx */,
+  false /* %makefile-arm64-linux-on-macosx */,
   false /* %makefile-win32-on-macosx */,
   false /* %nonAtomicSelection */,
   false /* %once */,
@@ -357,7 +358,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [200] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [201] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -494,6 +495,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [200] = {
   NO /* %makefile-unix */,
   NO /* %makefile-x86linux32-on-macosx */,
   NO /* %makefile-x86linux64-on-macosx */,
+  NO /* %makefile-arm64-linux-on-macosx */,
   NO /* %makefile-win32-on-macosx */,
   NO /* %nonAtomicSelection */,
   NO /* %once */,
