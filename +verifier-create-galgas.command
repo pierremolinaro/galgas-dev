@@ -12,6 +12,8 @@ echo "---------------- CREATE PROJECT --------------------------" &&
 cd ${DIR} && ${GALGAS} --create-project=${TEST} &&
 echo "---------------- GALGAS COMPILE --------------------------" &&
 ${GALGAS} --output-html-grammar-file --Werror ${DIR}/${TEST}/+${TEST}.galgasProject &&
+echo "---------------- MAKE arm64 Linux --------------------------" &&
+cd ${DIR}/${TEST}/makefile-arm64-linux-on-macosx && /usr/bin/python3 ./build.py &&
 echo "---------------- XCODE BUILD --------------------------" &&
 cd ${DIR}/${TEST}/xcode-project && /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -alltargets &&
 echo "---------------- MAKE i386 Linux --------------------------" &&
