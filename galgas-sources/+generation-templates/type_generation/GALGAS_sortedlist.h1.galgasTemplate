@@ -81,6 +81,10 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 //--- Drop
   public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
 
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
 //--- Count
   public: inline int32_t count (void) const { return mSharedArray.count () ; }
  
@@ -92,8 +96,4 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
       return TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> () ;
     }
   }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
 

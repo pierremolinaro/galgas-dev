@@ -143,6 +143,7 @@ void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIE
                           %!^%Compiler * /* inCompiler */
                           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inSortedList.isValid ()) {
+    mSharedArray.setCapacity (mSharedArray.capacity () + inSortedList.mSharedArray.capacity ()) ;
     for (int32_t i=0 ; i<inSortedList.count () ; i++) {
       mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
     }

@@ -55,7 +55,6 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 

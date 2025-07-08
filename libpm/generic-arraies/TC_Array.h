@@ -93,8 +93,17 @@ template <typename ELEMENT> class TC_Array final {
   friend void swap <ELEMENT> (TC_Array <ELEMENT> & ioOperand1,
                               TC_Array <ELEMENT> & ioOperand2) ;
 
-//--- Methods for setting capacity
+//--- Method for setting capacity
   public: void setCapacity (const int32_t inNewCapacity) ;
+
+//--- Get allocated capacity
+  public: int32_t capacity (void) const {
+    int32_t result = 0 ;
+    if (nullptr != mSharedArray) {
+      result = mSharedArray->mUniqueArray.capacity () ;
+    }
+    return result ;
+  }
 
 //--- Get Count
   public: inline int32_t count (void) const ;

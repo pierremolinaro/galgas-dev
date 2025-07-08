@@ -9,6 +9,2099 @@
 #include "all-declarations-11.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @repeatInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_repeatInstructionForGeneration_2E_weak : public GGS_syntaxInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_repeatInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_repeatInstructionForGeneration_2E_weak (const class GGS_repeatInstructionForGeneration & inSource) ;
+
+  public: GGS_repeatInstructionForGeneration_2E_weak & operator = (const class GGS_repeatInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_repeatInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_repeatInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_repeatInstructionForGeneration bang_repeatInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_repeatInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_repeatInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_repeatInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_repeatInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selectInstruction reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selectInstruction : public GGS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_selectInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selectInstruction (const class cPtr_selectInstruction * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_listOfSyntaxInstructionList readProperty_mSelectBranchList (void) const ;
+
+  public: class GGS_location readProperty_mEndOf_5F_select_5F_instruction (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selectInstruction init_21__21__21_ (const class GGS_location & inOperand0,
+                                                         const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                         const class GGS_location & inOperand2,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selectInstruction extractObject (const GGS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selectInstruction class_func_new (const class GGS_location & inOperand0,
+                                                             const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                             const class GGS_location & inOperand2,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selectInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selectInstruction class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selectInstruction_init_21__21__21_ (const class GGS_location & inOperand0,
+                                                   const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                   const class GGS_location & inOperand2,
+                                                   Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_bool arg_inHasTranslateFeature,
+           const class GGS_terminalMap arg_inTerminalMap,
+           const class GGS_string arg_inLexiqueName,
+           const class GGS_nonterminalMap arg_inNonterminalMap,
+           const class GGS_string arg_inComponentName,
+           const class GGS_stringset arg_inIndexNameSet,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_listOfSyntaxInstructionList mProperty_mSelectBranchList ;
+  public: GGS_location mProperty_mEndOf_5F_select_5F_instruction ;
+
+
+//--- Default constructor
+  public: cPtr_selectInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selectInstruction (const GGS_location & in_mInstructionLocation,
+                                  const GGS_listOfSyntaxInstructionList & in_mSelectBranchList,
+                                  const GGS_location & in_mEndOf_5F_select_5F_instruction,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selectInstruction_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selectInstruction_2E_weak : public GGS_syntaxInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selectInstruction_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selectInstruction_2E_weak (const class GGS_selectInstruction & inSource) ;
+
+  public: GGS_selectInstruction_2E_weak & operator = (const class GGS_selectInstruction & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selectInstruction_2E_weak init_nil (void) {
+    GGS_selectInstruction_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selectInstruction bang_selectInstruction_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selectInstruction unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selectInstruction_2E_weak extractObject (const GGS_object & inObject,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selectInstruction_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selectInstruction_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selectInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selectInstructionForGeneration : public GGS_syntaxInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_selectInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selectInstructionForGeneration (const class cPtr_selectInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mSyntaxComponentName (void) const ;
+
+  public: class GGS_uint readProperty_mChoiceIndex (void) const ;
+
+  public: class GGS_listOfSemanticInstructionListForGeneration readProperty_mListOfSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selectInstructionForGeneration init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                          const class GGS_string & inOperand1,
+                                                                          const class GGS_uint & inOperand2,
+                                                                          const class GGS_listOfSemanticInstructionListForGeneration & inOperand3,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selectInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selectInstructionForGeneration class_func_new (const class GGS_location & inOperand0,
+                                                                          const class GGS_string & inOperand1,
+                                                                          const class GGS_uint & inOperand2,
+                                                                          const class GGS_listOfSemanticInstructionListForGeneration & inOperand3,
+                                                                          class Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selectInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selectInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selectInstructionForGeneration_init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                    const class GGS_string & inOperand1,
+                                                                    const class GGS_uint & inOperand2,
+                                                                    const class GGS_listOfSemanticInstructionListForGeneration & inOperand3,
+                                                                    Compiler * inCompiler) ;
+
+
+//--- Extension getter compareInstructionSyntaxSignature
+  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSyntaxSignature
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mSyntaxComponentName ;
+  public: GGS_uint mProperty_mChoiceIndex ;
+  public: GGS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
+
+
+//--- Default constructor
+  public: cPtr_selectInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selectInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                               const GGS_string & in_mSyntaxComponentName,
+                                               const GGS_uint & in_mChoiceIndex,
+                                               const GGS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selectInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selectInstructionForGeneration_2E_weak : public GGS_syntaxInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selectInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selectInstructionForGeneration_2E_weak (const class GGS_selectInstructionForGeneration & inSource) ;
+
+  public: GGS_selectInstructionForGeneration_2E_weak & operator = (const class GGS_selectInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selectInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_selectInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selectInstructionForGeneration bang_selectInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selectInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selectInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selectInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selectInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @terminalCheckInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_terminalCheckInstructionAST : public GGS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_terminalCheckInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_terminalCheckInstructionAST (const class cPtr_terminalCheckInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mTerminalName (void) const ;
+
+  public: class GGS_actualInputParameterListAST readProperty_mActualInputParameterList (void) const ;
+
+  public: class GGS__32_lstringlist readProperty_mIndexingKeyList (void) const ;
+
+  public: class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (void) const ;
+
+  public: class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationToken (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_terminalCheckInstructionAST init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                               const class GGS_lstring & inOperand1,
+                                                                               const class GGS_actualInputParameterListAST & inOperand2,
+                                                                               const class GGS__32_lstringlist & inOperand3,
+                                                                               const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
+                                                                               const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_terminalCheckInstructionAST extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_terminalCheckInstructionAST class_func_new (const class GGS_location & inOperand0,
+                                                                       const class GGS_lstring & inOperand1,
+                                                                       const class GGS_actualInputParameterListAST & inOperand2,
+                                                                       const class GGS__32_lstringlist & inOperand3,
+                                                                       const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
+                                                                       const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_terminalCheckInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @terminalCheckInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_terminalCheckInstructionAST : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void terminalCheckInstructionAST_init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                         const class GGS_lstring & inOperand1,
+                                                                         const class GGS_actualInputParameterListAST & inOperand2,
+                                                                         const class GGS__32_lstringlist & inOperand3,
+                                                                         const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
+                                                                         const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                         Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_bool arg_inHasTranslateFeature,
+           const class GGS_terminalMap arg_inTerminalMap,
+           const class GGS_string arg_inLexiqueName,
+           const class GGS_nonterminalMap arg_inNonterminalMap,
+           const class GGS_string arg_inComponentName,
+           const class GGS_stringset arg_inIndexNameSet,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mTerminalName ;
+  public: GGS_actualInputParameterListAST mProperty_mActualInputParameterList ;
+  public: GGS__32_lstringlist mProperty_mIndexingKeyList ;
+  public: GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  public: GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationToken ;
+
+
+//--- Default constructor
+  public: cPtr_terminalCheckInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_terminalCheckInstructionAST (const GGS_location & in_mInstructionLocation,
+                                            const GGS_lstring & in_mTerminalName,
+                                            const GGS_actualInputParameterListAST & in_mActualInputParameterList,
+                                            const GGS__32_lstringlist & in_mIndexingKeyList,
+                                            const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+                                            const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @terminalCheckInstructionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_terminalCheckInstructionAST_2E_weak : public GGS_syntaxInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_terminalCheckInstructionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_terminalCheckInstructionAST_2E_weak (const class GGS_terminalCheckInstructionAST & inSource) ;
+
+  public: GGS_terminalCheckInstructionAST_2E_weak & operator = (const class GGS_terminalCheckInstructionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_terminalCheckInstructionAST_2E_weak init_nil (void) {
+    GGS_terminalCheckInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_terminalCheckInstructionAST bang_terminalCheckInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_terminalCheckInstructionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_terminalCheckInstructionAST_2E_weak extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_terminalCheckInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_terminalCheckInstructionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @abstractSyntaxInstructionForGrammarAnalysis reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_reference_class {
+//--------------------------------- Default constructor
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mStartLocation (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_abstractSyntaxInstructionForGrammarAnalysis init_21_ (const class GGS_location & inOperand0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_abstractSyntaxInstructionForGrammarAnalysis extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ;
+
+#include "separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h"
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @abstractSyntaxInstructionForGrammarAnalysis_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak : public AC_GALGAS_weak_reference {
+//--------------------------------- Default constructor
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (const class GGS_abstractSyntaxInstructionForGrammarAnalysis & inSource) ;
+
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak & operator = (const class GGS_abstractSyntaxInstructionForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak init_nil (void) {
+    GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis bang_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_abstractSyntaxInstructionForGrammarAnalysis unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @terminalCheckInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_terminalCheckInstructionForGeneration : public GGS_syntaxInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_terminalCheckInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_terminalCheckInstructionForGeneration (const class cPtr_terminalCheckInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mTerminalName (void) const ;
+
+  public: class GGS_string readProperty_mLexiqueIdentifier (void) const ;
+
+  public: class GGS_terminalCheckAssignementList readProperty_mTerminalCheckAssignementList (void) const ;
+
+  public: class GGS__32_lstringlist readProperty_mIndexingKeyList (void) const ;
+
+  public: class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (void) const ;
+
+  public: class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationToken (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_terminalCheckInstructionForGeneration init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                             const class GGS_lstring & inOperand1,
+                                                                                             const class GGS_string & inOperand2,
+                                                                                             const class GGS_terminalCheckAssignementList & inOperand3,
+                                                                                             const class GGS__32_lstringlist & inOperand4,
+                                                                                             const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                                             const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_terminalCheckInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_terminalCheckInstructionForGeneration class_func_new (const class GGS_location & inOperand0,
+                                                                                 const class GGS_lstring & inOperand1,
+                                                                                 const class GGS_string & inOperand2,
+                                                                                 const class GGS_terminalCheckAssignementList & inOperand3,
+                                                                                 const class GGS__32_lstringlist & inOperand4,
+                                                                                 const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                                 const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
+                                                                                 class Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_terminalCheckInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @terminalCheckInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void terminalCheckInstructionForGeneration_init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                       const class GGS_lstring & inOperand1,
+                                                                                       const class GGS_string & inOperand2,
+                                                                                       const class GGS_terminalCheckAssignementList & inOperand3,
+                                                                                       const class GGS__32_lstringlist & inOperand4,
+                                                                                       const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
+                                                                                       const class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
+                                                                                       Compiler * inCompiler) ;
+
+
+//--- Extension getter compareInstructionSyntaxSignature
+  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSyntaxSignature
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mTerminalName ;
+  public: GGS_string mProperty_mLexiqueIdentifier ;
+  public: GGS_terminalCheckAssignementList mProperty_mTerminalCheckAssignementList ;
+  public: GGS__32_lstringlist mProperty_mIndexingKeyList ;
+  public: GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  public: GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationToken ;
+
+
+//--- Default constructor
+  public: cPtr_terminalCheckInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_terminalCheckInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                                      const GGS_lstring & in_mTerminalName,
+                                                      const GGS_string & in_mLexiqueIdentifier,
+                                                      const GGS_terminalCheckAssignementList & in_mTerminalCheckAssignementList,
+                                                      const GGS__32_lstringlist & in_mIndexingKeyList,
+                                                      const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+                                                      const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @terminalCheckInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_terminalCheckInstructionForGeneration_2E_weak : public GGS_syntaxInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_terminalCheckInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_terminalCheckInstructionForGeneration_2E_weak (const class GGS_terminalCheckInstructionForGeneration & inSource) ;
+
+  public: GGS_terminalCheckInstructionForGeneration_2E_weak & operator = (const class GGS_terminalCheckInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_terminalCheckInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_terminalCheckInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_terminalCheckInstructionForGeneration bang_terminalCheckInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_terminalCheckInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_terminalCheckInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_terminalCheckInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_terminalCheckInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseLoopInstruction reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseLoopInstruction : public GGS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_parseLoopInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_parseLoopInstruction (const class cPtr_parseLoopInstruction * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_semanticExpressionAST readProperty_mVariantExpression (void) const ;
+
+  public: class GGS_location readProperty_mEndOfVariantExpression (void) const ;
+
+  public: class GGS_semanticExpressionAST readProperty_mWhileExpression (void) const ;
+
+  public: class GGS_location readProperty_mEndOfWhileExpression (void) const ;
+
+  public: class GGS_syntaxInstructionList readProperty_mDoInstructionList (void) const ;
+
+  public: class GGS_location readProperty_mEndOfInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_parseLoopInstruction init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                            const class GGS_semanticExpressionAST & inOperand1,
+                                                                            const class GGS_location & inOperand2,
+                                                                            const class GGS_semanticExpressionAST & inOperand3,
+                                                                            const class GGS_location & inOperand4,
+                                                                            const class GGS_syntaxInstructionList & inOperand5,
+                                                                            const class GGS_location & inOperand6,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseLoopInstruction extractObject (const GGS_object & inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseLoopInstruction class_func_new (const class GGS_location & inOperand0,
+                                                                const class GGS_semanticExpressionAST & inOperand1,
+                                                                const class GGS_location & inOperand2,
+                                                                const class GGS_semanticExpressionAST & inOperand3,
+                                                                const class GGS_location & inOperand4,
+                                                                const class GGS_syntaxInstructionList & inOperand5,
+                                                                const class GGS_location & inOperand6,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseLoopInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstruction ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @parseLoopInstruction class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void parseLoopInstruction_init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                      const class GGS_semanticExpressionAST & inOperand1,
+                                                                      const class GGS_location & inOperand2,
+                                                                      const class GGS_semanticExpressionAST & inOperand3,
+                                                                      const class GGS_location & inOperand4,
+                                                                      const class GGS_syntaxInstructionList & inOperand5,
+                                                                      const class GGS_location & inOperand6,
+                                                                      Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_bool arg_inHasTranslateFeature,
+           const class GGS_terminalMap arg_inTerminalMap,
+           const class GGS_string arg_inLexiqueName,
+           const class GGS_nonterminalMap arg_inNonterminalMap,
+           const class GGS_string arg_inComponentName,
+           const class GGS_stringset arg_inIndexNameSet,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_semanticExpressionAST mProperty_mVariantExpression ;
+  public: GGS_location mProperty_mEndOfVariantExpression ;
+  public: GGS_semanticExpressionAST mProperty_mWhileExpression ;
+  public: GGS_location mProperty_mEndOfWhileExpression ;
+  public: GGS_syntaxInstructionList mProperty_mDoInstructionList ;
+  public: GGS_location mProperty_mEndOfInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_parseLoopInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_parseLoopInstruction (const GGS_location & in_mInstructionLocation,
+                                     const GGS_semanticExpressionAST & in_mVariantExpression,
+                                     const GGS_location & in_mEndOfVariantExpression,
+                                     const GGS_semanticExpressionAST & in_mWhileExpression,
+                                     const GGS_location & in_mEndOfWhileExpression,
+                                     const GGS_syntaxInstructionList & in_mDoInstructionList,
+                                     const GGS_location & in_mEndOfInstructionList,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseLoopInstruction_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseLoopInstruction_2E_weak : public GGS_syntaxInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_parseLoopInstruction_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_parseLoopInstruction_2E_weak (const class GGS_parseLoopInstruction & inSource) ;
+
+  public: GGS_parseLoopInstruction_2E_weak & operator = (const class GGS_parseLoopInstruction & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_parseLoopInstruction_2E_weak init_nil (void) {
+    GGS_parseLoopInstruction_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_parseLoopInstruction bang_parseLoopInstruction_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_parseLoopInstruction unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseLoopInstruction_2E_weak extractObject (const GGS_object & inObject,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseLoopInstruction_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseLoopInstruction_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstruction_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseLoopInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseLoopInstructionForGeneration : public GGS_syntaxInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_parseLoopInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_parseLoopInstructionForGeneration (const class cPtr_parseLoopInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_semanticExpressionForGeneration readProperty_mVariantExpression (void) const ;
+
+  public: class GGS_semanticExpressionForGeneration readProperty_mWhileExpression (void) const ;
+
+  public: class GGS_semanticInstructionListForGeneration readProperty_mInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_parseLoopInstructionForGeneration init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                             const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                             const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                             const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseLoopInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseLoopInstructionForGeneration class_func_new (const class GGS_location & inOperand0,
+                                                                             const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                             const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                             const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseLoopInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @parseLoopInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void parseLoopInstructionForGeneration_init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                       const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                       const class GGS_semanticExpressionForGeneration & inOperand2,
+                                                                       const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                       Compiler * inCompiler) ;
+
+
+//--- Extension method appendSyntaxSignature
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_semanticExpressionForGeneration mProperty_mVariantExpression ;
+  public: GGS_semanticExpressionForGeneration mProperty_mWhileExpression ;
+  public: GGS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_parseLoopInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_parseLoopInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                                  const GGS_semanticExpressionForGeneration & in_mVariantExpression,
+                                                  const GGS_semanticExpressionForGeneration & in_mWhileExpression,
+                                                  const GGS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseLoopInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseLoopInstructionForGeneration_2E_weak : public GGS_syntaxInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_parseLoopInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_parseLoopInstructionForGeneration_2E_weak (const class GGS_parseLoopInstructionForGeneration & inSource) ;
+
+  public: GGS_parseLoopInstructionForGeneration_2E_weak & operator = (const class GGS_parseLoopInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_parseLoopInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_parseLoopInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_parseLoopInstructionForGeneration bang_parseLoopInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_parseLoopInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseLoopInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseLoopInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseLoopInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseRewindInstruction reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseRewindInstruction : public GGS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_parseRewindInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_parseRewindInstruction (const class cPtr_parseRewindInstruction * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_listOfSyntaxInstructionList readProperty_mParseRewindBranchList (void) const ;
+
+  public: class GGS_location readProperty_mEndOfParseDoInstruction (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_parseRewindInstruction init_21__21__21_ (const class GGS_location & inOperand0,
+                                                              const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                              const class GGS_location & inOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseRewindInstruction extractObject (const GGS_object & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseRewindInstruction class_func_new (const class GGS_location & inOperand0,
+                                                                  const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                                  const class GGS_location & inOperand2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseRewindInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruction ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @parseRewindInstruction class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void parseRewindInstruction_init_21__21__21_ (const class GGS_location & inOperand0,
+                                                        const class GGS_listOfSyntaxInstructionList & inOperand1,
+                                                        const class GGS_location & inOperand2,
+                                                        Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_bool arg_inHasTranslateFeature,
+           const class GGS_terminalMap arg_inTerminalMap,
+           const class GGS_string arg_inLexiqueName,
+           const class GGS_nonterminalMap arg_inNonterminalMap,
+           const class GGS_string arg_inComponentName,
+           const class GGS_stringset arg_inIndexNameSet,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_listOfSyntaxInstructionList mProperty_mParseRewindBranchList ;
+  public: GGS_location mProperty_mEndOfParseDoInstruction ;
+
+
+//--- Default constructor
+  public: cPtr_parseRewindInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_parseRewindInstruction (const GGS_location & in_mInstructionLocation,
+                                       const GGS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
+                                       const GGS_location & in_mEndOfParseDoInstruction,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseRewindInstruction_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseRewindInstruction_2E_weak : public GGS_syntaxInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_parseRewindInstruction_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_parseRewindInstruction_2E_weak (const class GGS_parseRewindInstruction & inSource) ;
+
+  public: GGS_parseRewindInstruction_2E_weak & operator = (const class GGS_parseRewindInstruction & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_parseRewindInstruction_2E_weak init_nil (void) {
+    GGS_parseRewindInstruction_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_parseRewindInstruction bang_parseRewindInstruction_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_parseRewindInstruction unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseRewindInstruction_2E_weak extractObject (const GGS_object & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseRewindInstruction_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseRewindInstruction_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruction_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseRewindInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseRewindInstructionForGeneration : public GGS_syntaxInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_parseRewindInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_parseRewindInstructionForGeneration (const class cPtr_parseRewindInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_listOfSemanticInstructionListForGeneration readProperty_mListOfSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_parseRewindInstructionForGeneration init_21__21_ (const class GGS_location & inOperand0,
+                                                                       const class GGS_listOfSemanticInstructionListForGeneration & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseRewindInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseRewindInstructionForGeneration class_func_new (const class GGS_location & inOperand0,
+                                                                               const class GGS_listOfSemanticInstructionListForGeneration & inOperand1,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseRewindInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @parseRewindInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void parseRewindInstructionForGeneration_init_21__21_ (const class GGS_location & inOperand0,
+                                                                 const class GGS_listOfSemanticInstructionListForGeneration & inOperand1,
+                                                                 Compiler * inCompiler) ;
+
+
+//--- Extension method appendSyntaxSignature
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
+
+
+//--- Default constructor
+  public: cPtr_parseRewindInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_parseRewindInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                                    const GGS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseRewindInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseRewindInstructionForGeneration_2E_weak : public GGS_syntaxInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_parseRewindInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_parseRewindInstructionForGeneration_2E_weak (const class GGS_parseRewindInstructionForGeneration & inSource) ;
+
+  public: GGS_parseRewindInstructionForGeneration_2E_weak & operator = (const class GGS_parseRewindInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_parseRewindInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_parseRewindInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_parseRewindInstructionForGeneration bang_parseRewindInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_parseRewindInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseRewindInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseRewindInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseRewindInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @parseWhenInstruction reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_parseWhenInstruction : public GGS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_parseWhenInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_parseWhenInstruction (const class cPtr_parseWhenInstruction * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_semanticExpressionAST readProperty_mWhenExpression (void) const ;
+
+  public: class GGS_location readProperty_mEndOfWhenExpression (void) const ;
+
+  public: class GGS_syntaxInstructionList readProperty_mWhenInstructionList (void) const ;
+
+  public: class GGS_location readProperty_mEndOfWhenInstructionList (void) const ;
+
+  public: class GGS_syntaxInstructionList readProperty_mElseInstructionList (void) const ;
+
+  public: class GGS_location readProperty_mEndOfElseInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_parseWhenInstruction init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                            const class GGS_semanticExpressionAST & inOperand1,
+                                                                            const class GGS_location & inOperand2,
+                                                                            const class GGS_syntaxInstructionList & inOperand3,
+                                                                            const class GGS_location & inOperand4,
+                                                                            const class GGS_syntaxInstructionList & inOperand5,
+                                                                            const class GGS_location & inOperand6,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_parseWhenInstruction extractObject (const GGS_object & inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_parseWhenInstruction class_func_new (const class GGS_location & inOperand0,
+                                                                const class GGS_semanticExpressionAST & inOperand1,
+                                                                const class GGS_location & inOperand2,
+                                                                const class GGS_syntaxInstructionList & inOperand3,
+                                                                const class GGS_location & inOperand4,
+                                                                const class GGS_syntaxInstructionList & inOperand5,
+                                                                const class GGS_location & inOperand6,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_parseWhenInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstruction ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @parseWhenInstruction class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void parseWhenInstruction_init_21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                      const class GGS_semanticExpressionAST & inOperand1,
+                                                                      const class GGS_location & inOperand2,
+                                                                      const class GGS_syntaxInstructionList & inOperand3,
+                                                                      const class GGS_location & inOperand4,
+                                                                      const class GGS_syntaxInstructionList & inOperand5,
+                                                                      const class GGS_location & inOperand6,
+                                                                      Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_bool arg_inHasTranslateFeature,
+           const class GGS_terminalMap arg_inTerminalMap,
+           const class GGS_string arg_inLexiqueName,
+           const class GGS_nonterminalMap arg_inNonterminalMap,
+           const class GGS_string arg_inComponentName,
+           const class GGS_stringset arg_inIndexNameSet,
+           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_semanticExpressionAST mProperty_mWhenExpression ;
+  public: GGS_location mProperty_mEndOfWhenExpression ;
+  public: GGS_syntaxInstructionList mProperty_mWhenInstructionList ;
+  public: GGS_location mProperty_mEndOfWhenInstructionList ;
+  public: GGS_syntaxInstructionList mProperty_mElseInstructionList ;
+  public: GGS_location mProperty_mEndOfElseInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_parseWhenInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_parseWhenInstruction (const GGS_location & in_mInstructionLocation,
+                                     const GGS_semanticExpressionAST & in_mWhenExpression,
+                                     const GGS_location & in_mEndOfWhenExpression,
+                                     const GGS_syntaxInstructionList & in_mWhenInstructionList,
+                                     const GGS_location & in_mEndOfWhenInstructionList,
+                                     const GGS_syntaxInstructionList & in_mElseInstructionList,
+                                     const GGS_location & in_mEndOfElseInstructionList,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @parseWhenInstruction_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -709,44 +2802,103 @@ class GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr
 // Phase 1: @syntaxInstructionListForGrammarAnalysis list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_syntaxInstructionListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_syntaxInstructionListForGrammarAnalysis (const class GGS_syntaxInstructionListForGrammarAnalysis & inEnumeratedObject) ;
+class DownEnumerator_syntaxInstructionListForGrammarAnalysis final {
+  public: DownEnumerator_syntaxInstructionListForGrammarAnalysis (const class GGS_syntaxInstructionListForGrammarAnalysis & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_syntaxInstructionListForGrammarAnalysis (void) = default ;
 
-  public: class GGS_abstractSyntaxInstructionForGrammarAnalysis current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxInstructionListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_syntaxInstructionListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_syntaxInstructionListForGrammarAnalysis (const class GGS_syntaxInstructionListForGrammarAnalysis & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_abstractSyntaxInstructionForGrammarAnalysis current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_syntaxInstructionListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_syntaxInstructionListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_syntaxInstructionListForGrammarAnalysis (const DownEnumerator_syntaxInstructionListForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_syntaxInstructionListForGrammarAnalysis & operator = (const DownEnumerator_syntaxInstructionListForGrammarAnalysis &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxInstructionListForGrammarAnalysis list
+
+class UpEnumerator_syntaxInstructionListForGrammarAnalysis final {
+  public: UpEnumerator_syntaxInstructionListForGrammarAnalysis (const class GGS_syntaxInstructionListForGrammarAnalysis & inList)  ;
+
+  public: ~ UpEnumerator_syntaxInstructionListForGrammarAnalysis (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_abstractSyntaxInstructionForGrammarAnalysis current_mInstruction (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_syntaxInstructionListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_syntaxInstructionListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_syntaxInstructionListForGrammarAnalysis (const UpEnumerator_syntaxInstructionListForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_syntaxInstructionListForGrammarAnalysis & operator = (const UpEnumerator_syntaxInstructionListForGrammarAnalysis &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @syntaxInstructionListForGrammarAnalysis list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_syntaxInstructionListForGrammarAnalysis_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_syntaxInstructionListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_syntaxInstructionListForGrammarAnalysis (void) = default ;
+
+//--- Copy
+  public: GGS_syntaxInstructionListForGrammarAnalysis (const GGS_syntaxInstructionListForGrammarAnalysis &) = default ;
+  public: GGS_syntaxInstructionListForGrammarAnalysis & operator = (const GGS_syntaxInstructionListForGrammarAnalysis &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_syntaxInstructionListForGrammarAnalysis_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_syntaxInstructionListForGrammarAnalysis subList (const int32_t inStart,
+                                                                const int32_t inLength,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_syntaxInstructionListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction
                                                  COMMA_LOCATION_ARGS) ;
@@ -830,9 +2982,13 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_abstractSyntaxInstructionForGrammarAnalysis getter_mInstructionAtIndex (const class GGS_uint & constinOperand0,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_syntaxInstructionListForGrammarAnalysis getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                                       Compiler * inCompiler
@@ -944,29 +3100,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionLi
 // Phase 1: @productionRuleListForGrammarAnalysis list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_productionRuleListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_productionRuleListForGrammarAnalysis (const class GGS_productionRuleListForGrammarAnalysis & inEnumeratedObject) ;
+class DownEnumerator_productionRuleListForGrammarAnalysis final {
+  public: DownEnumerator_productionRuleListForGrammarAnalysis (const class GGS_productionRuleListForGrammarAnalysis & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_productionRuleListForGrammarAnalysis (void) = default ;
 
-  public: class GGS_lstring current_mLeftNonterminalSymbol (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mLeftNonterminalSymbolIndex (LOCATION_ARGS) const ;
-  public: class GGS_syntaxInstructionListForGrammarAnalysis current_mInstructionList (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mProductionIndex (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_productionRuleListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_productionRuleListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_productionRuleListForGrammarAnalysis (const class GGS_productionRuleListForGrammarAnalysis & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_lstring current_mLeftNonterminalSymbol (LOCATION_ARGS) const ;
   public: class GGS_uint current_mLeftNonterminalSymbolIndex (LOCATION_ARGS) const ;
@@ -974,20 +3119,90 @@ class UpEnumerator_productionRuleListForGrammarAnalysis final : public cGenericA
   public: class GGS_uint current_mProductionIndex (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_productionRuleListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_productionRuleListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_productionRuleListForGrammarAnalysis (const DownEnumerator_productionRuleListForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_productionRuleListForGrammarAnalysis & operator = (const DownEnumerator_productionRuleListForGrammarAnalysis &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @productionRuleListForGrammarAnalysis list
+
+class UpEnumerator_productionRuleListForGrammarAnalysis final {
+  public: UpEnumerator_productionRuleListForGrammarAnalysis (const class GGS_productionRuleListForGrammarAnalysis & inList)  ;
+
+  public: ~ UpEnumerator_productionRuleListForGrammarAnalysis (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_lstring current_mLeftNonterminalSymbol (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mLeftNonterminalSymbolIndex (LOCATION_ARGS) const ;
+  public: class GGS_syntaxInstructionListForGrammarAnalysis current_mInstructionList (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mProductionIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_productionRuleListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_productionRuleListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_productionRuleListForGrammarAnalysis (const UpEnumerator_productionRuleListForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_productionRuleListForGrammarAnalysis & operator = (const UpEnumerator_productionRuleListForGrammarAnalysis &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @productionRuleListForGrammarAnalysis list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_productionRuleListForGrammarAnalysis_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_productionRuleListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_productionRuleListForGrammarAnalysis (void) = default ;
+
+//--- Copy
+  public: GGS_productionRuleListForGrammarAnalysis (const GGS_productionRuleListForGrammarAnalysis &) = default ;
+  public: GGS_productionRuleListForGrammarAnalysis & operator = (const GGS_productionRuleListForGrammarAnalysis &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_productionRuleListForGrammarAnalysis_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_productionRuleListForGrammarAnalysis subList (const int32_t inStart,
+                                                             const int32_t inLength,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_productionRuleListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mLeftNonterminalSymbol,
                                                  const class GGS_uint & in_mLeftNonterminalSymbolIndex,
@@ -1116,6 +3331,8 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_syntaxInstructionListForGrammarAnalysis getter_mInstructionListAtIndex (const class GGS_uint & constinOperand0,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const ;
@@ -1131,6 +3348,8 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GGS_uint getter_mProductionIndexAtIndex (const class GGS_uint & constinOperand0,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_productionRuleListForGrammarAnalysis getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                                    Compiler * inCompiler
@@ -1324,7 +3543,6 @@ class UpEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_uint current_mNonTerminalIndex (LOCATION_ARGS) const ;
   public: class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-
 
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
@@ -1718,6 +3936,10 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
 //--- Drop
   public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
 
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
 //--- Count
   public: inline int32_t count (void) const { return mSharedArray.count () ; }
  
@@ -1729,10 +3951,6 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
       return TC_Array <GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element> () ;
     }
   }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
 
 //-- Start of type generic part
 
@@ -2074,44 +4292,103 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalInstruct
 // Phase 1: @branchListForGrammarAnalysis list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_branchListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_branchListForGrammarAnalysis (const class GGS_branchListForGrammarAnalysis & inEnumeratedObject) ;
+class DownEnumerator_branchListForGrammarAnalysis final {
+  public: DownEnumerator_branchListForGrammarAnalysis (const class GGS_branchListForGrammarAnalysis & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_branchListForGrammarAnalysis (void) = default ;
 
-  public: class GGS_syntaxInstructionListForGrammarAnalysis current_mSyntaxInstructionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_branchListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_branchListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_branchListForGrammarAnalysis (const class GGS_branchListForGrammarAnalysis & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_syntaxInstructionListForGrammarAnalysis current_mSyntaxInstructionList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_branchListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_branchListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_branchListForGrammarAnalysis (const DownEnumerator_branchListForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_branchListForGrammarAnalysis & operator = (const DownEnumerator_branchListForGrammarAnalysis &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @branchListForGrammarAnalysis list
+
+class UpEnumerator_branchListForGrammarAnalysis final {
+  public: UpEnumerator_branchListForGrammarAnalysis (const class GGS_branchListForGrammarAnalysis & inList)  ;
+
+  public: ~ UpEnumerator_branchListForGrammarAnalysis (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_syntaxInstructionListForGrammarAnalysis current_mSyntaxInstructionList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_branchListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_branchListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_branchListForGrammarAnalysis (const UpEnumerator_branchListForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_branchListForGrammarAnalysis & operator = (const UpEnumerator_branchListForGrammarAnalysis &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @branchListForGrammarAnalysis list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_branchListForGrammarAnalysis : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_branchListForGrammarAnalysis : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_branchListForGrammarAnalysis_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_branchListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_branchListForGrammarAnalysis (void) = default ;
+
+//--- Copy
+  public: GGS_branchListForGrammarAnalysis (const GGS_branchListForGrammarAnalysis &) = default ;
+  public: GGS_branchListForGrammarAnalysis & operator = (const GGS_branchListForGrammarAnalysis &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_branchListForGrammarAnalysis_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_branchListForGrammarAnalysis subList (const int32_t inStart,
+                                                     const int32_t inLength,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_branchListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList
                                                  COMMA_LOCATION_ARGS) ;
@@ -2195,9 +4472,13 @@ class GGS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_syntaxInstructionListForGrammarAnalysis getter_mSyntaxInstructionListAtIndex (const class GGS_uint & constinOperand0,
                                                                                                                    Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_branchListForGrammarAnalysis getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                            Compiler * inCompiler
@@ -2595,46 +4876,105 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 // Phase 1: @syntaxComponentListForGrammarAnalysis list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_syntaxComponentListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_syntaxComponentListForGrammarAnalysis (const class GGS_syntaxComponentListForGrammarAnalysis & inEnumeratedObject) ;
+class DownEnumerator_syntaxComponentListForGrammarAnalysis final {
+  public: DownEnumerator_syntaxComponentListForGrammarAnalysis (const class GGS_syntaxComponentListForGrammarAnalysis & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_syntaxComponentListForGrammarAnalysis (void) = default ;
 
-  public: class GGS_productionRuleListForGrammarAnalysis current_mProductionRulesList (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxComponentListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_syntaxComponentListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_syntaxComponentListForGrammarAnalysis (const class GGS_syntaxComponentListForGrammarAnalysis & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_productionRuleListForGrammarAnalysis current_mProductionRulesList (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_syntaxComponentListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_syntaxComponentListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_syntaxComponentListForGrammarAnalysis (const DownEnumerator_syntaxComponentListForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_syntaxComponentListForGrammarAnalysis & operator = (const DownEnumerator_syntaxComponentListForGrammarAnalysis &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxComponentListForGrammarAnalysis list
+
+class UpEnumerator_syntaxComponentListForGrammarAnalysis final {
+  public: UpEnumerator_syntaxComponentListForGrammarAnalysis (const class GGS_syntaxComponentListForGrammarAnalysis & inList)  ;
+
+  public: ~ UpEnumerator_syntaxComponentListForGrammarAnalysis (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_productionRuleListForGrammarAnalysis current_mProductionRulesList (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_syntaxComponentListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_syntaxComponentListForGrammarAnalysis_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_syntaxComponentListForGrammarAnalysis (const UpEnumerator_syntaxComponentListForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_syntaxComponentListForGrammarAnalysis & operator = (const UpEnumerator_syntaxComponentListForGrammarAnalysis &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @syntaxComponentListForGrammarAnalysis list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_syntaxComponentListForGrammarAnalysis_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_syntaxComponentListForGrammarAnalysis (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_syntaxComponentListForGrammarAnalysis (void) = default ;
+
+//--- Copy
+  public: GGS_syntaxComponentListForGrammarAnalysis (const GGS_syntaxComponentListForGrammarAnalysis &) = default ;
+  public: GGS_syntaxComponentListForGrammarAnalysis & operator = (const GGS_syntaxComponentListForGrammarAnalysis &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_syntaxComponentListForGrammarAnalysis_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_syntaxComponentListForGrammarAnalysis subList (const int32_t inStart,
+                                                              const int32_t inLength,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_syntaxComponentListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_productionRuleListForGrammarAnalysis & in_mProductionRulesList,
                                                  const class GGS_lstring & in_mSyntaxComponentName
@@ -2733,6 +5073,8 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_productionRuleListForGrammarAnalysis getter_mProductionRulesListAtIndex (const class GGS_uint & constinOperand0,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) const ;
@@ -2740,6 +5082,8 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mSyntaxComponentNameAtIndex (const class GGS_uint & constinOperand0,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_syntaxComponentListForGrammarAnalysis getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                                     Compiler * inCompiler
@@ -2909,7 +5253,6 @@ class UpEnumerator_terminalSymbolsMapForGrammarAnalysis final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_uint current_mTerminalIndex (LOCATION_ARGS) const ;
   public: class GGS_terminalSymbolsMapForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-
 
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
@@ -3263,44 +5606,103 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GGS_syntaxInstruc
 // Phase 1: @rowList list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_rowList final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_rowList (const class GGS_rowList & inEnumeratedObject) ;
+class DownEnumerator_rowList final {
+  public: DownEnumerator_rowList (const class GGS_rowList & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_rowList (void) = default ;
 
-  public: class GGS__32_stringlist current_columns (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_rowList_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_rowList final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_rowList (const class GGS_rowList & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS__32_stringlist current_columns (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_rowList_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_rowList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_rowList (const DownEnumerator_rowList &) = delete ;
+  private: DownEnumerator_rowList & operator = (const DownEnumerator_rowList &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @rowList list
+
+class UpEnumerator_rowList final {
+  public: UpEnumerator_rowList (const class GGS_rowList & inList)  ;
+
+  public: ~ UpEnumerator_rowList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS__32_stringlist current_columns (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_rowList_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_rowList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_rowList (const UpEnumerator_rowList &) = delete ;
+  private: UpEnumerator_rowList & operator = (const UpEnumerator_rowList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @rowList list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_rowList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_rowList : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_rowList_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_rowList (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_rowList (void) = default ;
+
+//--- Copy
+  public: GGS_rowList (const GGS_rowList &) = default ;
+  public: GGS_rowList & operator = (const GGS_rowList &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_rowList_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_rowList subList (const int32_t inStart,
+                                const int32_t inLength,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_rowList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS__32_stringlist & in_columns
                                                  COMMA_LOCATION_ARGS) ;
@@ -3387,6 +5789,10 @@ class GGS_rowList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GGS__32_stringlist getter_columnsAtIndex (const class GGS_uint & constinOperand0,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_rowList getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                       Compiler * inCompiler
@@ -3550,44 +5956,103 @@ class GGS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInst
 // Phase 1: @programListForGeneration list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_programListForGeneration final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_programListForGeneration (const class GGS_programListForGeneration & inEnumeratedObject) ;
+class DownEnumerator_programListForGeneration final {
+  public: DownEnumerator_programListForGeneration (const class GGS_programListForGeneration & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_programListForGeneration (void) = default ;
 
-  public: class GGS_semanticDeclarationForGeneration current_mDeclaration (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_programListForGeneration_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_programListForGeneration final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_programListForGeneration (const class GGS_programListForGeneration & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_semanticDeclarationForGeneration current_mDeclaration (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_programListForGeneration_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_programListForGeneration_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_programListForGeneration (const DownEnumerator_programListForGeneration &) = delete ;
+  private: DownEnumerator_programListForGeneration & operator = (const DownEnumerator_programListForGeneration &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @programListForGeneration list
+
+class UpEnumerator_programListForGeneration final {
+  public: UpEnumerator_programListForGeneration (const class GGS_programListForGeneration & inList)  ;
+
+  public: ~ UpEnumerator_programListForGeneration (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_semanticDeclarationForGeneration current_mDeclaration (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_programListForGeneration_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_programListForGeneration_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_programListForGeneration (const UpEnumerator_programListForGeneration &) = delete ;
+  private: UpEnumerator_programListForGeneration & operator = (const UpEnumerator_programListForGeneration &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @programListForGeneration list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_programListForGeneration : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_programListForGeneration : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_programListForGeneration_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_programListForGeneration (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_programListForGeneration (void) = default ;
+
+//--- Copy
+  public: GGS_programListForGeneration (const GGS_programListForGeneration &) = default ;
+  public: GGS_programListForGeneration & operator = (const GGS_programListForGeneration &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_programListForGeneration_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_programListForGeneration subList (const int32_t inStart,
+                                                 const int32_t inLength,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_programListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_semanticDeclarationForGeneration & in_mDeclaration
                                                  COMMA_LOCATION_ARGS) ;
@@ -3671,9 +6136,13 @@ class GGS_programListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_semanticDeclarationForGeneration getter_mDeclarationAtIndex (const class GGS_uint & constinOperand0,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_programListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                        Compiler * inCompiler
@@ -4665,7 +7134,6 @@ class UpEnumerator_extensionMethodMapForGlobalCheckings final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_extensionMethodMapForGlobalCheckings_2E_element current (LOCATION_ARGS) const ;
 
-
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
@@ -5002,7 +7470,6 @@ class UpEnumerator_extensionSetterMapForGlobalCheckings final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_extensionSetterMapForGlobalCheckings_2E_element current (LOCATION_ARGS) const ;
-
 
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
@@ -5341,7 +7808,6 @@ class UpEnumerator_extensionGetterMapForGlobalCheckings final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_extensionGetterMapForGlobalCheckings_2E_element current (LOCATION_ARGS) const ;
 
-
   private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
@@ -5635,46 +8101,105 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 // Phase 1: @galgas_33_QualifiedFeatureList list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_galgas_33_QualifiedFeatureList final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_galgas_33_QualifiedFeatureList (const class GGS_galgas_33_QualifiedFeatureList & inEnumeratedObject) ;
+class DownEnumerator_galgas_33_QualifiedFeatureList final {
+  public: DownEnumerator_galgas_33_QualifiedFeatureList (const class GGS_galgas_33_QualifiedFeatureList & inList) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: ~ DownEnumerator_galgas_33_QualifiedFeatureList (void) = default ;
 
-  public: class GGS_lstring current_mFeatureName (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_galgas_33_QualifiedFeatureList_2E_element current (LOCATION_ARGS) const ;
-} ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-//--------------------------------------------------------------------------------------------------
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-class UpEnumerator_galgas_33_QualifiedFeatureList final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_galgas_33_QualifiedFeatureList (const class GGS_galgas_33_QualifiedFeatureList & inEnumeratedObject) ;
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
   public: class GGS_lstring current_mFeatureName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_galgas_33_QualifiedFeatureList_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_galgas_33_QualifiedFeatureList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_galgas_33_QualifiedFeatureList (const DownEnumerator_galgas_33_QualifiedFeatureList &) = delete ;
+  private: DownEnumerator_galgas_33_QualifiedFeatureList & operator = (const DownEnumerator_galgas_33_QualifiedFeatureList &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @galgas3QualifiedFeatureList list
+
+class UpEnumerator_galgas_33_QualifiedFeatureList final {
+  public: UpEnumerator_galgas_33_QualifiedFeatureList (const class GGS_galgas_33_QualifiedFeatureList & inList)  ;
+
+  public: ~ UpEnumerator_galgas_33_QualifiedFeatureList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_lstring current_mFeatureName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_galgas_33_QualifiedFeatureList_2E_element current (LOCATION_ARGS) const ;
+
+  private: TC_Array <GGS_galgas_33_QualifiedFeatureList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_galgas_33_QualifiedFeatureList (const UpEnumerator_galgas_33_QualifiedFeatureList &) = delete ;
+  private: UpEnumerator_galgas_33_QualifiedFeatureList & operator = (const UpEnumerator_galgas_33_QualifiedFeatureList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @galgas3QualifiedFeatureList list
 //--------------------------------------------------------------------------------------------------
 
-class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
+class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_root {
+//--- Private property
+  private: TC_Array <GGS_galgas_33_QualifiedFeatureList_2E_element> mArray ;
+
+//--- Default constructor
   public: GGS_galgas_33_QualifiedFeatureList (void) ;
 
-//--------------------------------- List constructor by graph
+//--- Destructor
+  public: virtual ~ GGS_galgas_33_QualifiedFeatureList (void) = default ;
+
+//--- Copy
+  public: GGS_galgas_33_QualifiedFeatureList (const GGS_galgas_33_QualifiedFeatureList &) = default ;
+  public: GGS_galgas_33_QualifiedFeatureList & operator = (const GGS_galgas_33_QualifiedFeatureList &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : TC_Array <GGS_galgas_33_QualifiedFeatureList_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_galgas_33_QualifiedFeatureList subList (const int32_t inStart,
+                                                       const int32_t inLength,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor by graph
   public: GGS_galgas_33_QualifiedFeatureList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor
+//--- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mFeatureName,
                                                  const class GGS_lstring & in_mFeatureValue
@@ -5773,6 +8298,8 @@ class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mFeatureNameAtIndex (const class GGS_uint & constinOperand0,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
@@ -5780,6 +8307,8 @@ class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mFeatureValueAtIndex (const class GGS_uint & constinOperand0,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_range getter_range (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_galgas_33_QualifiedFeatureList getter_subListFromIndex (const class GGS_uint & constinOperand0,
                                                                                              Compiler * inCompiler
@@ -6731,1172 +9260,4 @@ extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
 //--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//Parser class 'galgas3ParameterArgumentSyntax' declaration
-//
-//--------------------------------------------------------------------------------------------------
-
-class cParser_galgas_33_ParameterArgumentSyntax {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_33_ParameterArgumentSyntax (void) { }
-
-//--- Non terminal declarations
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                      class GGS_actualParameterListAST & outArgument1,
-                                                                      class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                     class GGS_semanticExpressionAST & outArgument1,
-                                                     class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                               class GGS_formalInputParameterListAST & outArgument1,
-                                                                               class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                   class GGS_formalInputParameterListAST & outArgument1,
-                                                                                   class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                          class GGS_formalParameterListAST & outArgument1,
-                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__ (class GGS_lstringlist & outArgument0,
-                                                                  class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                             class GGS_lstring & outArgument1,
-                                                             class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__34__i0_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                         GGS_formalParameterListAST & outArgument1,
-                                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__34__i0_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__34__i0_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     GGS_actualParameterListAST & outArgument1,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                              GGS_formalInputParameterListAST & outArgument1,
-                                                                                                              Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__i3_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                  GGS_formalInputParameterListAST & outArgument1,
-                                                                                                                  Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__i3_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__i3_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_ (GGS_lstringlist & outArgument0,
-                                                                                                 Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i5_ (GGS_lstringlist & outArgument0,
-                                                                                                 Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i5_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i5_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_0 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_1 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_2 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_3 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_4 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_5 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_6 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_7 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_8 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_9 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_10 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_11 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_12 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_13 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_14 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_15 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_16 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_17 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_18 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_19 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_20 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_21 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_22 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_23 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_24 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_25 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_26 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_27 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_28 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_29 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_30 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_31 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_32 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_33 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_34 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_35 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_36 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_37 (Lexique_galgasScanner_33_ *) = 0 ;
-
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Parser class 'galgas3InstructionsSyntax' declaration
-//
-//--------------------------------------------------------------------------------------------------
-
-class cParser_galgas_33_InstructionsSyntax {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_33_InstructionsSyntax (void) { }
-
-//--- Non terminal declarations
-  protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                               class GGS_actualInputParameterListAST & outArgument1,
-                                                                               class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                      class GGS_actualParameterListAST & outArgument1,
-                                                                      class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_else_5F_or_5F_default_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                             class GGS_semanticInstructionListAST & outArgument1,
-                                                             class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_else_5F_or_5F_default_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_else_5F_or_5F_default_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_instruction_5F_branch_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                             class GGS_castInstructionBranchListAST & ioArgument1,
-                                                             class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_instruction_5F_branch_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_cast_5F_instruction_5F_branch_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                           class GGS_CommaSeparatedExpressionList & outArgument1,
-                                                                           class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_comma_5F_separated_5F_expression_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                      class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                     class GGS_semanticExpressionAST & outArgument1,
-                                                     class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_or_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                           class GGS_semanticExpressionAST & outArgument1,
-                                                           class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_or_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_5F_or_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_element_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                             class GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
-                                                             class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_element_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_element_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                          class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                               class GGS_formalInputParameterListAST & outArgument1,
-                                                                               class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                   class GGS_formalInputParameterListAST & outArgument1,
-                                                                                   class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                          class GGS_formalParameterListAST & outArgument1,
-                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__34__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_function_5F_declaration_5F_ggs_33__ (const class GGS_bool constinArgument0,
-                                                                  const class GGS_bool constinArgument1,
-                                                                  const class GGS_bool constinArgument2,
-                                                                  const class GGS_lstring constinArgument3,
-                                                                  class GGS_galgasDeclarationAST & ioArgument4,
-                                                                  class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_function_5F_declaration_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_function_5F_declaration_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                              const class GGS_location constinArgument1,
-                                                              const class GGS_actualParameterListAST constinArgument2,
-                                                              const class GGS_lstring constinArgument3,
-                                                              const class GGS_lstring constinArgument4,
-                                                              class GGS_semanticInstructionAST & outArgument5,
-                                                              class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                          const class GGS_location constinArgument1,
-                                                                          const class GGS_lstring constinArgument2,
-                                                                          const class GGS_lstring constinArgument3,
-                                                                          class GGS_semanticInstructionAST & outArgument4,
-                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_if_5F_instruction_5F_core_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                         class GGS_semanticInstructionAST & outArgument1,
-                                                         class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_if_5F_instruction_5F_core_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_if_5F_instruction_5F_core_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_issue_5F_fixit_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                              class GGS_fixitListAST & outArgument1,
-                                              class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_issue_5F_fixit_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_issue_5F_fixit_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                       class GGS_actualOutputArgumentList & outArgument1,
-                                                                                       class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                       class GGS_actualOutputArgumentList & outArgument1,
-                                                                       class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                           class GGS_actualOutputArgumentList & outArgument1,
-                                                                           class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          const class GGS_bool constinArgument1,
-                                                                                          class GGS_semanticInstructionAST & outArgument2,
-                                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                  class GGS_semanticInstructionAST & outArgument1,
-                                                                  class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                     const class GGS_bool constinArgument1,
-                                                                     class GGS_semanticInstructionAST & outArgument2,
-                                                                     class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_list_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                          class GGS_semanticInstructionListAST & outArgument1,
-                                                                          class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_list_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_switch_5F_case_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                              class GGS__5B_lstring_5D_ & outArgument1,
-                                              class GGS_switchExtractedValuesListAST & outArgument2,
-                                              class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_switch_5F_case_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_switch_5F_case_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_syntax_5F_directed_5F_translation_5F_result_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                           class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument1,
-                                                                           class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_syntax_5F_directed_5F_translation_5F_result_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_syntax_5F_directed_5F_translation_5F_result_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                             class GGS_lstring & outArgument1,
-                                                             class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                    GGS_semanticInstructionListAST & outArgument1,
-                                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i2_ (const GGS_bool constinArgument0,
-                                                                                            const GGS_bool constinArgument1,
-                                                                                            const GGS_bool constinArgument2,
-                                                                                            const GGS_lstring constinArgument3,
-                                                                                            GGS_galgasDeclarationAST & ioArgument4,
-                                                                                            Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i2_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i2_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i3_ (const GGS_bool constinArgument0,
-                                                                                            const GGS_bool constinArgument1,
-                                                                                            const GGS_bool constinArgument2,
-                                                                                            const GGS_lstring constinArgument3,
-                                                                                            GGS_galgasDeclarationAST & ioArgument4,
-                                                                                            Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i3_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_function_5F_declaration_5F_ggs_33__i3_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i6_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument1,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i6_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i6_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i7_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                         GGS_actualInputParameterListAST & outArgument1,
-                                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i7_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i7_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i8_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i8_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i8_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i9_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i9_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i9_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i10_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                 Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i10_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i10_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i11_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i11_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i11_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i12_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i12_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i12_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i13_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                        GGS_castInstructionBranchListAST & ioArgument1,
-                                                                                        Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i13_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i13_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                        GGS_semanticInstructionListAST & outArgument1,
-                                                                                        Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i15_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i15_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i15_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i16_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i16_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i16_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i18_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                     const GGS_bool constinArgument1,
-                                                                                                                     GGS_semanticInstructionAST & outArgument2,
-                                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i18_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i18_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i19_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                                  GGS_actualOutputArgumentList & outArgument1,
-                                                                                                                  Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i19_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__i19_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i20_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i20_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i20_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i21_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS_fixitListAST & outArgument1,
-                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i21_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i21_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i22_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                        GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
-                                                                                        Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                        GGS_forInstructionEnumeratedObjectElementListAST & ioArgument1,
-                                                                                        Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i28_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i28_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i28_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i29_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i29_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i29_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                         const GGS_location constinArgument1,
-                                                                                         const GGS_actualParameterListAST constinArgument2,
-                                                                                         const GGS_lstring constinArgument3,
-                                                                                         const GGS_lstring constinArgument4,
-                                                                                         GGS_semanticInstructionAST & outArgument5,
-                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                         const GGS_location constinArgument1,
-                                                                                         const GGS_actualParameterListAST constinArgument2,
-                                                                                         const GGS_lstring constinArgument3,
-                                                                                         const GGS_lstring constinArgument4,
-                                                                                         GGS_semanticInstructionAST & outArgument5,
-                                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i32_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i32_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i32_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i33_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     const GGS_location constinArgument1,
-                                                                                                     const GGS_lstring constinArgument2,
-                                                                                                     const GGS_lstring constinArgument3,
-                                                                                                     GGS_semanticInstructionAST & outArgument4,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i33_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i33_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i34_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                     const GGS_location constinArgument1,
-                                                                                                     const GGS_lstring constinArgument2,
-                                                                                                     const GGS_lstring constinArgument3,
-                                                                                                     GGS_semanticInstructionAST & outArgument4,
-                                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i34_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_5F_obsolete_i34_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i35_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i36_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i37_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                const GGS_bool constinArgument1,
-                                                                                                GGS_semanticInstructionAST & outArgument2,
-                                                                                                Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i37_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i37_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i38_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i38_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i38_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i39_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                      GGS_CommaSeparatedExpressionList & outArgument1,
-                                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i39_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_comma_5F_separated_5F_expression_5F_ggs_33__i39_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i40_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                    GGS_semanticInstructionAST & outArgument1,
-                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i40_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i40_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i41_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i41_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i41_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i42_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i43_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i43_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i43_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i44_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i44_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i44_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i45_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i46_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i47_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i48_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i49_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i49_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i49_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i50_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i51_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i52_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i52_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i52_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i53_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i53_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i53_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i54_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i55_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i56_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i56_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i56_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i57_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i57_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i57_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i58_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i59_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i60_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i61_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS__5B_lstring_5D_ & outArgument1,
-                                                                         GGS_switchExtractedValuesListAST & outArgument2,
-                                                                         Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i61_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_switch_5F_case_i61_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i62_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i62_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i62_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i63_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i63_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i63_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i64_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i64_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i64_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i65_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i65_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i65_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i66_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i66_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i66_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i67_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                             GGS_semanticInstructionAST & outArgument1,
-                                                                                             Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i67_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i67_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_0 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_1 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_2 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_3 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_4 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_5 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_6 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_7 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_8 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_9 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_10 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_11 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_12 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_13 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_14 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_15 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_16 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_17 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_18 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_19 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_20 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_21 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_22 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_23 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_24 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_25 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_26 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_27 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_28 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_29 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_30 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_31 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_32 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_33 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_34 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_35 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_36 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_37 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_38 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_39 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_40 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_41 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_42 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_43 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_44 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_45 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_46 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_47 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_48 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_49 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_50 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_51 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_52 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_53 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_54 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_55 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_56 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_57 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_58 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_59 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_60 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_61 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_62 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_63 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_64 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_65 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_66 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_67 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_68 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_69 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_70 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_71 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_72 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_73 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_74 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_75 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_76 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_InstructionsSyntax_77 (Lexique_galgasScanner_33_ *) = 0 ;
-
-
-} ;
 

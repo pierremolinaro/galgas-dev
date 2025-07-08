@@ -223,7 +223,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ]
 //--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  enterInheritedGetterWithoutArgument (
+  enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
     !getterName:"count"
@@ -231,7 +231,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
-  enterInheritedGetterWithoutArgument (
+  enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
     !getterName:"range"
@@ -379,7 +379,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 //--- features
-  var features = @typeFeatures.plusAssignOperatorWithExpression | .infixAddOperator | .doNotGenererateObjectCompare
+  var features = @typeFeatures.plusAssignOperatorWithExpression | .infixAddOperator
   if self.equatable then
     features |= .equatable
   end
@@ -420,7 +420,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 override method @listDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
@@ -519,27 +519,7 @@ class @listTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedAttributeList
 }
 
-//································································································
-
-filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
-}{
-}{
-  template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
-    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
-
-  template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@string ELEMENT_TYPE_IDENTIFIER
-    ?@bool GENERATE_COMPARISON
-}
-
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -552,6 +532,8 @@ override method @listTypeForGeneration appendDeclaration1
     !self.mTypedAttributeList
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.typeForEnumeratedElement
+    ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
@@ -572,7 +554,7 @@ override method @listTypeForGeneration appendDeclaration1
   ]
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
 override method @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
@@ -592,6 +574,28 @@ override method @listTypeForGeneration appendSpecificImplementation
     ![selfTypeDefinition.features generateCppObjectComparison]
   ]
  }
+
+//--------------------------------------------------------------------------------------------------
+
+filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+
+  template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+}
 
 //--------------------------------------------------------------------------------------------------
 

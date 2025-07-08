@@ -18,6 +18,890 @@
             endingLineNumber = "589"
             landmarkName = "recursiveFindNearestKey(inKey, inCurrentNode, ioBestDistance, ioNearestKeyArray)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - c25b89ab0c6baf45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_commandLineOptionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_commandLineOptionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - eab9c30e2e25798a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 17160803736b848b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_optionComponentMapForGeneration_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_optionComponentMapForGeneration_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - d2dc556186a4f5ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_constantIndexMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_constantIndexMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - d4bb86c35a1c71ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_internalRoutineMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_internalRoutineMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 4cf912018c1748a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_routineArgumentMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_routineArgumentMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 633837e53d2f94f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_grammarLabelMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_grammarLabelMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 551f218b4d89f256"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_grammarMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_grammarMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 2f497f3306ce3bb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_functionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_functionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 18377f9f47079bb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_wrapperFileMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_wrapperFileMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 7d7d71d44e419ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_wrapperDirectoryMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_wrapperDirectoryMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - ebf358506f7ee88b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_filewrapperTemplateMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_filewrapperTemplateMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 554aaa8dcd32289b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_filewrapperMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_filewrapperMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - ecefb8316ffb04ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_optionComponentMapForSemanticAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_optionComponentMapForSemanticAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 554296db53f96c84"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexiqueComponentMapForSemanticAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexiqueComponentMapForSemanticAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 1ebe8f40ed1b9c97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_syntaxComponentMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_syntaxComponentMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 8a864993386829e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionInitializerMapForType_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionInitializerMapForType_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 36919029ca5829d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionInitializerForBuildingContext_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionInitializerForBuildingContext_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 5ad5a755a9253490"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionMethodMapForType_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionMethodMapForType_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionMethodMapForBuildingContext_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionMethodMapForBuildingContext_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 5ad5a755a9253490"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionSetterMapForType_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionSetterMapForType_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionSetterMapForBuildingContext_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionSetterMapForBuildingContext_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 5ad5a755a9253490"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionGetterMapForType_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionGetterMapForType_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionGetterMapForBuildingContext_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionGetterMapForBuildingContext_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 1e22ede44391ffa9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_templateVariableMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_templateVariableMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 68c663af2dedc740"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_terminalMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_terminalMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - de7a6c35079091b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalTypeMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalTypeMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 7c0b80159f7fc542"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalAttributeMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalAttributeMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b5007001be48dcaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalExplicitTokenListMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalExplicitTokenListMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - bfcbc808ac2c80a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalExplicitTokenListMapMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalExplicitTokenListMapMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - cbc8c14f46e9894b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalMessageMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalMessageMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 2534c73a3ebd57ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalRoutineMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalRoutineMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - def639f0485c83be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalFunctionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalFunctionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 86432c4c24f24e4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_styleMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_styleMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 763fcd87773a564e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_lexicalTagMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_lexicalTagMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - aaa5caf93189c096"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_initializerMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_initializerMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 38512c2c13f414a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_insertMethodMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_insertMethodMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - bc2084e0550dd347"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_searchMethodMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_searchMethodMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 40b6c83a5a7fbba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_equatableExtensionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_equatableExtensionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - fbed7a3593d89699"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_propertyMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_propertyMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - ec12ea58c73e05bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_classFunctionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_classFunctionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 334697f204c2124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_getterMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_getterMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 3d08b5d94d4580d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_setterMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_setterMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 1d1f00a3a9ef77bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_instanceMethodMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_instanceMethodMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 7f79532c7439bf41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_classMethodMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_classMethodMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 4cac4cd970c40e88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_subscriptMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_subscriptMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 273177925570d46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_scopeLocalVarMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_scopeLocalVarMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 3073c8103ab8189d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_wrapperExtensionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_wrapperExtensionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 58232611d898a3d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - f15129c6ae64d2fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 4b27ea6670372993"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_propertyIndexMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_propertyIndexMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - f5ae3e85adc33281"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_nonterminalLabelMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_nonterminalLabelMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - ddd394984278b28b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_nonterminalMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_nonterminalMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 88cf5b4b188c7d00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_uselessEntityLocationMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_uselessEntityLocationMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 995136a39637c3b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_unifiedTypeMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_unifiedTypeMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 5ebd4c0cc2871151"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_headerCompositionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_headerCompositionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 701706547e942d49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_headerRepartitionMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_headerRepartitionMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 59dcd70a2e8b408e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_projectQualifiedFeatureMap_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_projectQualifiedFeatureMap_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - 14aa2257044d86e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b775181b8c9d0088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_terminalSymbolsMapForGrammarAnalysis_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_terminalSymbolsMapForGrammarAnalysis_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionMethodMapForGlobalCheckings_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionMethodMapForGlobalCheckings_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionSetterMapForGlobalCheckings_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionSetterMapForGlobalCheckings_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+               <Location
+                  uuid = "0DCD3ABB-F51F-4189-BDCD-DE904F631706 - b48a83ca029aa9da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGS_GenericMapRoot&lt;GGS_extensionGetterMapForGlobalCheckings_2E_element&gt;::recursiveFindNearestKey(String const&amp;, OptionalSharedRef&lt;GGS_GenericMapNode&lt;GGS_extensionGetterMapForGlobalCheckings_2E_element&gt;&gt; const&amp;, unsigned int&amp;, TC_UniqueArray&lt;String&gt;&amp;)"
+                  moduleName = "galgas-debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/dev-git/galgas-dev/libpm/galgas/GGS_GenericMapRoot.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "589"
+                  endingLineNumber = "589">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

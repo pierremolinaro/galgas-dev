@@ -664,7 +664,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Features
     var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
-             | .doNotGenererateObjectCompare // | .infixAddOperator
+             | .doNotGenererateObjectCompare
     if self.equatable then
       features |= .equatable
     end

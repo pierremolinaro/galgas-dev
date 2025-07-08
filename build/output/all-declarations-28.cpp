@@ -8,6 +8,206 @@
 #include "all-declarations-28.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension method '@optionalTypeForGeneration appendSpecificImplementation'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_optionalTypeForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
+                                                                          GGS_stringset & ioArgument_ioInclusionSet,
+                                                                          GGS_string & outArgument_outImplementation,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_optionalTypeForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_unwrappedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 219)) ;
+  const GGS_optionalTypeForGeneration temp_1 = this ;
+  extensionMethod_addHeaderFileName (temp_1.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 220)) ;
+  GalgasBool test_2 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_2) {
+    const GGS_optionalTypeForGeneration temp_3 = this ;
+    test_2 = temp_3.readProperty_weakType ().getter_isNull (SOURCE_FILE ("declaration-type-optional.galgas", 221)).operator_not (SOURCE_FILE ("declaration-type-optional.galgas", 221)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_2) {
+      const GGS_optionalTypeForGeneration temp_4 = this ;
+      extensionMethod_addHeaderFileName (temp_4.readProperty_weakType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 222)) ;
+    }
+  }
+  const GGS_optionalTypeForGeneration temp_5 = this ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_10097 = extensionGetter_definition (temp_5.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 224)) ;
+  const GGS_optionalTypeForGeneration temp_6 = this ;
+  const GGS_optionalTypeForGeneration temp_7 = this ;
+  const GGS_optionalTypeForGeneration temp_8 = this ;
+  GGS_string temp_9 ;
+  const GalgasBool test_10 = temp_8.readProperty_weakType ().getter_isNull (SOURCE_FILE ("declaration-type-optional.galgas", 230)).boolEnum () ;
+  if (GalgasBool::boolTrue == test_10) {
+    temp_9 = GGS_string::makeEmptyString () ;
+  }else if (GalgasBool::boolFalse == test_10) {
+    const GGS_optionalTypeForGeneration temp_11 = this ;
+    temp_9 = extensionGetter_identifierRepresentation (temp_11.readProperty_weakType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 230)) ;
+  }
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_10097.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_6.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 227)), extensionGetter_identifierRepresentation (temp_7.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 228)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_10097.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 229)), temp_9 COMMA_SOURCE_FILE ("declaration-type-optional.galgas", 225))) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'optionalTypeGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+//--- All files of '' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_optionalTypeGenerationTemplate_0 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of '' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_optionalTypeGenerationTemplate_0 [1] = {
+  nullptr
+} ;
+
+//--- Directory ''
+
+const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate (
+  "",
+  0,
+  gWrapperAllFiles_optionalTypeGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_optionalTypeGenerationTemplate_0
+) ;
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (Compiler * inCompiler,
+                                                                                      const GGS_string & in_TYPE_5F_NAME,
+                                                                                      const GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                      const GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                      const GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string (" Phase 1: ").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_optional.h1.galgasTemplate", 2)).add_operation (GGS_string (" optional"), inCompiler COMMA_SOURCE_FILE ("GALGAS_optional.h1.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" : public AC_GALGAS_root {\n//--------------------------------- Private property\n  private: GGS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" mValue ;\n  private: OptionalState mState ;\n\n//--------------------------------- Default constructor\n  public: GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void) ;\n\n//--------------------------------- Constructor from unwrapped type\n  public: GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (const GGS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & inSource) ;\n\n//--------------------------------- Constructor from weak type\n") ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::notEqual, in_WEAK_5F_TYPE_5F_IDENTIFIER.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" (const class GGS_") ;
+    result.appendString (in_WEAK_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inSource) ;") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n//--------------------------------- nil initializer\n  public: static GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" init_nil (void) ;\n\n  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }\n\n  public: bool isValuated (void) const ;\n  public: inline GGS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" unwrappedValue (void) const {\n    return mValue ;\n  }\n\n//--------------------------------- GALGAS read only properties\n  public: inline GGS_bool readProperty_isNil (void) const {\n    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;\n  }\n\n  public: inline GGS_bool readProperty_isSome (void) const {\n    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;\n  }\n\n  \n//--- Methods that every type should implement\n  public: virtual bool isValid (void) const override ;\n  \n  public: virtual void drop (void) override ;\n\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n") ;
+  return GGS_string (result) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (Compiler * inCompiler,
+                                                                                                  const GGS_string & /* in_TYPE_5F_NAME */,
+                                                                                                  const GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                  const GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                                  const GGS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                                  const GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string ("Optional @").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_optional.cpp.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void) :\nAC_GALGAS_root (),\nmValue (),\nmState (OptionalState::invalid) {\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (const GGS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & inSource) :\nAC_GALGAS_root (),\nmValue (inSource),\nmState (OptionalState::valuated) {\n}\n\n") ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::notEqual, in_WEAK_5F_TYPE_5F_IDENTIFIER.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("::GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" (const GGS_") ;
+    result.appendString (in_WEAK_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inSource) :\nAC_GALGAS_root (),\nmValue (),\nmState (OptionalState::invalid) {\n  if (inSource.isValid ()) {\n    const acStrongPtr_class * p = inSource.ptr () ;\n    if (p == nullptr) {\n      mState = OptionalState::isNil ;\n    }else{\n      mValue = * ((GGS_") ;
+    result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" *) p) ;\n      mState = OptionalState::valuated ;\n    }\n  }\n}\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::init_nil (void) {\n  GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" result ;\n  result.mState = OptionalState::isNil ;\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nbool GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::isValid (void) const {\n  bool result = false ;\n  switch (mState) {\n  case OptionalState::invalid :\n    break ;\n  case OptionalState::isNil :\n    result = true ;\n    break ;\n  case OptionalState::valuated :\n    result = mValue.isValid () ;\n    break ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nbool GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::isValuated (void) const {\n  return (mState == OptionalState::valuated) && mValue.isValid () ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::drop (void) {\n  mState = OptionalState::invalid ;\n  mValue = GGS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" () ;\n}\n\n") ;
+  const GalgasBool test_1 = in_GENERATE_5F_COMPARISON.boolEnum () ;
+  switch (test_1) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------------------------------------------------------------------------\n\nComparisonResult GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("::objectCompare (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const {\n  ComparisonResult result = ComparisonResult::invalid ;\n  if (isValid () && inOperand.isValid ()) {\n    if (mState < inOperand.mState) {\n      result = ComparisonResult::firstOperandLowerThanSecond ;\n    }else if (mState > inOperand.mState) {\n      result = ComparisonResult::firstOperandGreaterThanSecond ;\n    }else if (mState == OptionalState::valuated) {\n      result = mValue.objectCompare (inOperand.mValue) ;\n    }else{\n      result = ComparisonResult::operandEqual ;\n    }\n  }\n  return result ;\n}\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::description (") ;
+  columnMarker = result.currentColumn () ;
+  result.appendString ("String & ioString,\n     ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("const int32_t inIndentation) const {\n  ioString.appendCString (\"<optional @\") ;\n  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;\n  ioString.appendCString (\": \") ;\n  switch (mState) {\n  case OptionalState::invalid :\n    ioString.appendCString (\"invalid\") ;\n    break ;\n  case OptionalState::isNil :\n    ioString.appendCString (\"nil\") ;\n    break ;\n  case OptionalState::valuated :\n    mValue.description (ioString, inIndentation) ;\n    break ;\n  }\n  ioString.appendCString (\">\") ;\n}\n\n") ;
+  return GGS_string (result) ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@sortedListDeclarationAST enterDeclarationInGraph'
 //--------------------------------------------------------------------------------------------------
 
@@ -442,11 +642,11 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & operator = (const GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" &) = default ;\n\n//--- Is valid\n  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }\n\n//--- Drop\n  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }\n\n//--- Count\n  public: inline int32_t count (void) const { return mSharedArray.count () ; }\n \n//--- sortedElementArray\n  public : TC_Array <GGS_") ;
+  result.appendString (" &) = default ;\n\n//--- Is valid\n  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }\n\n//--- Drop\n  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }\n\n//--- Description\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n//--- Count\n  public: inline int32_t count (void) const { return mSharedArray.count () ; }\n \n//--- sortedElementArray\n  public : TC_Array <GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("> sortedElementArray (void) const {\n    if (isValid ()) {\n      return mSharedArray ;\n    }else{\n      return TC_Array <GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString ("> () ;\n    }\n  }\n\n//--- Description\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n") ;
+  result.appendString ("> () ;\n    }\n  }\n\n") ;
   return GGS_string (result) ;
 }
 
@@ -680,190 +880,190 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecif
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("Compiler * /* inCompiler */\n                          ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inSortedList.isValid ()) {\n    for (int32_t i=0 ; i<inSortedList.count () ; i++) {\n      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;\n    }\n    mSharedArray.quickSortUsingFunction (compareForSorting_") ;
+  result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inSortedList.isValid ()) {\n    mSharedArray.setCapacity (mSharedArray.capacity () + inSortedList.mSharedArray.capacity ()) ;\n    for (int32_t i=0 ; i<inSortedList.count () ; i++) {\n      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;\n    }\n    mSharedArray.quickSortUsingFunction (compareForSorting_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (") ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::setter_popSmallest (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_6453_IDX (0) ;
+  GGS_uint index_6551_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_6453 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_6453.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_6551 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_6551.hasCurrentObject ()) {
       result.appendString ("GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_6453.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 157)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_6551.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 158)).stringValue ()) ;
       result.appendString (" & outOperand") ;
-      result.appendString (index_6453_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 157)).stringValue ()) ;
+      result.appendString (index_6551_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 158)).stringValue ()) ;
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      enumerator_6453.gotoNextObject () ;
-      index_6453_IDX.increment () ;
+      enumerator_6551.gotoNextObject () ;
+      index_6551_IDX.increment () ;
     }
   }
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) {\n  bool found = false ;\n  if (isValid ()) {\n    if (count () == 0) {\n      inCompiler->onTheFlyRunTimeError (\"'popSmallest' method invoked on an empty list\" COMMA_THERE) ;\n    }else{\n") ;
-  GGS_uint index_6895_IDX (0) ;
+  GGS_uint index_6993_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_6895 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_6895.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_6993 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_6993.hasCurrentObject ()) {
       result.appendString ("      outOperand") ;
-      result.appendString (index_6895_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 167)).stringValue ()) ;
+      result.appendString (index_6993_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 168)).stringValue ()) ;
       result.appendString (" = mSharedArray (0 COMMA_HERE).mProperty_") ;
-      result.appendString (enumerator_6895.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 167)).stringValue ()) ;
+      result.appendString (enumerator_6993.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 168)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_6895.gotoNextObject () ;
-      index_6895_IDX.increment () ;
+      enumerator_6993.gotoNextObject () ;
+      index_6993_IDX.increment () ;
     }
   }
   result.appendString ("      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;\n      found = true ;\n    }\n  }\n  if (!found) {\n") ;
-  GGS_uint index_7169_IDX (0) ;
+  GGS_uint index_7267_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_7169 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_7169.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_7267 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_7267.hasCurrentObject ()) {
       result.appendString ("    outOperand") ;
-      result.appendString (index_7169_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 175)).stringValue ()) ;
+      result.appendString (index_7267_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 176)).stringValue ()) ;
       result.appendString (".drop () ;\n") ;
-      enumerator_7169.gotoNextObject () ;
-      index_7169_IDX.increment () ;
+      enumerator_7267.gotoNextObject () ;
+      index_7267_IDX.increment () ;
     }
   }
   result.appendString ("  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::setter_popGreatest (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_7483_IDX (0) ;
+  GGS_uint index_7581_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_7483 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_7483.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_7581 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_7581.hasCurrentObject ()) {
       result.appendString ("GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_7483.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 184)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_7581.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 185)).stringValue ()) ;
       result.appendString (" & outOperand") ;
-      result.appendString (index_7483_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 184)).stringValue ()) ;
+      result.appendString (index_7581_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 185)).stringValue ()) ;
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      enumerator_7483.gotoNextObject () ;
-      index_7483_IDX.increment () ;
+      enumerator_7581.gotoNextObject () ;
+      index_7581_IDX.increment () ;
     }
   }
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) {\n  bool found = false ;\n  if (isValid ()) {\n    if (count () == 0) {\n      inCompiler->onTheFlyRunTimeError (\"'popGreatest' method invoked on an empty list\" COMMA_THERE) ;\n    }else{\n") ;
-  GGS_uint index_7925_IDX (0) ;
+  GGS_uint index_8023_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_7925 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_7925.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_8023 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_8023.hasCurrentObject ()) {
       result.appendString ("      outOperand") ;
-      result.appendString (index_7925_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 194)).stringValue ()) ;
+      result.appendString (index_8023_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 195)).stringValue ()) ;
       result.appendString (" = mSharedArray.lastObject (HERE).mProperty_") ;
-      result.appendString (enumerator_7925.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 194)).stringValue ()) ;
+      result.appendString (enumerator_8023.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 195)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_7925.gotoNextObject () ;
-      index_7925_IDX.increment () ;
+      enumerator_8023.gotoNextObject () ;
+      index_8023_IDX.increment () ;
     }
   }
   result.appendString ("      mSharedArray.removeLastObject (HERE) ;\n      found = true ;\n    }\n  }\n  if (!found) {\n") ;
-  GGS_uint index_8191_IDX (0) ;
+  GGS_uint index_8289_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_8191 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_8191.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_8289 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_8289.hasCurrentObject ()) {
       result.appendString ("    outOperand") ;
-      result.appendString (index_8191_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 202)).stringValue ()) ;
+      result.appendString (index_8289_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 203)).stringValue ()) ;
       result.appendString (".drop () ;\n") ;
-      enumerator_8191.gotoNextObject () ;
-      index_8191_IDX.increment () ;
+      enumerator_8289.gotoNextObject () ;
+      index_8289_IDX.increment () ;
     }
   }
   result.appendString ("  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::method_smallest (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_8502_IDX (0) ;
+  GGS_uint index_8600_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_8502 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_8502.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_8600 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_8600.hasCurrentObject ()) {
       result.appendString ("GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_8502.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 211)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_8600.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 212)).stringValue ()) ;
       result.appendString (" & outOperand") ;
-      result.appendString (index_8502_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 211)).stringValue ()) ;
+      result.appendString (index_8600_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 212)).stringValue ()) ;
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      enumerator_8502.gotoNextObject () ;
-      index_8502_IDX.increment () ;
+      enumerator_8600.gotoNextObject () ;
+      index_8600_IDX.increment () ;
     }
   }
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) const {\n  bool found = false ;\n  if (isValid ()) {\n    if (count () == 0) {\n      inCompiler->onTheFlyRunTimeError (\"'smallest' method invoked on an empty list\" COMMA_THERE) ;\n    }else{\n") ;
-  GGS_uint index_8937_IDX (0) ;
+  GGS_uint index_9035_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_8937 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_8937.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_9035 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_9035.hasCurrentObject ()) {
       result.appendString ("      outOperand") ;
-      result.appendString (index_8937_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 221)).stringValue ()) ;
+      result.appendString (index_9035_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 222)).stringValue ()) ;
       result.appendString (" = mSharedArray (0 COMMA_HERE).mProperty_") ;
-      result.appendString (enumerator_8937.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 221)).stringValue ()) ;
+      result.appendString (enumerator_9035.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 222)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_8937.gotoNextObject () ;
-      index_8937_IDX.increment () ;
+      enumerator_9035.gotoNextObject () ;
+      index_9035_IDX.increment () ;
     }
   }
   result.appendString ("      found = true ;\n    }\n  }\n  if (!found) {\n") ;
-  GGS_uint index_9155_IDX (0) ;
+  GGS_uint index_9253_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_9155 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_9155.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_9253 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_9253.hasCurrentObject ()) {
       result.appendString ("    outOperand") ;
-      result.appendString (index_9155_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 228)).stringValue ()) ;
+      result.appendString (index_9253_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 229)).stringValue ()) ;
       result.appendString (".drop () ;\n") ;
-      enumerator_9155.gotoNextObject () ;
-      index_9155_IDX.increment () ;
+      enumerator_9253.gotoNextObject () ;
+      index_9253_IDX.increment () ;
     }
   }
   result.appendString ("  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::method_greatest (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_9443_IDX (0) ;
+  GGS_uint index_9541_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_9443 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_9443.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_9541 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_9541.hasCurrentObject ()) {
       result.appendString ("GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_9443.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 237)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_9541.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 238)).stringValue ()) ;
       result.appendString (" & outOperand") ;
-      result.appendString (index_9443_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 237)).stringValue ()) ;
+      result.appendString (index_9541_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 238)).stringValue ()) ;
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      enumerator_9443.gotoNextObject () ;
-      index_9443_IDX.increment () ;
+      enumerator_9541.gotoNextObject () ;
+      index_9541_IDX.increment () ;
     }
   }
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) const {\n  bool found = false ;\n  if (isValid ()) {\n    if (count () == 0) {\n      inCompiler->onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n    }else{\n") ;
-  GGS_uint index_9878_IDX (0) ;
+  GGS_uint index_9976_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_9878 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_9878.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_9976 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_9976.hasCurrentObject ()) {
       result.appendString ("      outOperand") ;
-      result.appendString (index_9878_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 247)).stringValue ()) ;
+      result.appendString (index_9976_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 248)).stringValue ()) ;
       result.appendString (" = mSharedArray.lastObject (HERE).mProperty_") ;
-      result.appendString (enumerator_9878.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 247)).stringValue ()) ;
+      result.appendString (enumerator_9976.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 248)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_9878.gotoNextObject () ;
-      index_9878_IDX.increment () ;
+      enumerator_9976.gotoNextObject () ;
+      index_9976_IDX.increment () ;
     }
   }
   result.appendString ("      found = true ;\n    }\n  }\n  if (!found) {\n") ;
-  GGS_uint index_10099_IDX (0) ;
+  GGS_uint index_10197_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_10099 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_10099.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_10197 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_10197.hasCurrentObject ()) {
       result.appendString ("    outOperand") ;
-      result.appendString (index_10099_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 254)).stringValue ()) ;
+      result.appendString (index_10197_IDX.getter_string (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 255)).stringValue ()) ;
       result.appendString (".drop () ;\n") ;
-      enumerator_10099.gotoNextObject () ;
-      index_10099_IDX.increment () ;
+      enumerator_10197.gotoNextObject () ;
+      index_10197_IDX.increment () ;
     }
   }
   result.appendString ("  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
@@ -883,21 +1083,21 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecif
   result.appendString (" DownEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::current (LOCATION_ARGS) const {\n  return mElementArray (mIndex COMMA_THERE) ;\n}\n\n") ;
-  GGS_uint index_11417_IDX (0) ;
+  GGS_uint index_11515_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_11417 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_11417.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_11515 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_11515.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_11417.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 288)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_11515.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 289)).stringValue ()) ;
       result.appendString (" DownEnumerator_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::current_") ;
-      result.appendString (enumerator_11417.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 288)).stringValue ()) ;
+      result.appendString (enumerator_11515.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 289)).stringValue ()) ;
       result.appendString (" (LOCATION_ARGS) const {\n  return mElementArray (mIndex COMMA_THERE).mProperty_") ;
-      result.appendString (enumerator_11417.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 289)).stringValue ()) ;
+      result.appendString (enumerator_11515.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 290)).stringValue ()) ;
       result.appendString (" ;\n}\n\n") ;
-      enumerator_11417.gotoNextObject () ;
-      index_11417_IDX.increment () ;
+      enumerator_11515.gotoNextObject () ;
+      index_11515_IDX.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n// Up Enumerator for @") ;
@@ -915,21 +1115,21 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecif
   result.appendString (" UpEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::current (LOCATION_ARGS) const {\n  return mElementArray (mIndex COMMA_THERE) ;\n}\n\n") ;
-  GGS_uint index_12575_IDX (0) ;
+  GGS_uint index_12673_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    UpEnumerator_typedPropertyList enumerator_12575 (in_ATTRIBUTE_5F_LIST) ;
-    while (enumerator_12575.hasCurrentObject ()) {
+    UpEnumerator_typedPropertyList enumerator_12673 (in_ATTRIBUTE_5F_LIST) ;
+    while (enumerator_12673.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_12575.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 309)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_12673.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 310)).stringValue ()) ;
       result.appendString (" UpEnumerator_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::current_") ;
-      result.appendString (enumerator_12575.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 309)).stringValue ()) ;
+      result.appendString (enumerator_12673.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 310)).stringValue ()) ;
       result.appendString (" (LOCATION_ARGS) const {\n  return mElementArray (mIndex COMMA_THERE).mProperty_") ;
-      result.appendString (enumerator_12575.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 310)).stringValue ()) ;
+      result.appendString (enumerator_12673.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_sortedlist.cpp.galgasTemplate", 311)).stringValue ()) ;
       result.appendString (" ;\n}\n\n") ;
-      enumerator_12575.gotoNextObject () ;
-      index_12575_IDX.increment () ;
+      enumerator_12673.gotoNextObject () ;
+      index_12673_IDX.increment () ;
     }
   }
   result.appendString ("\n\n") ;
@@ -8043,224 +8243,4 @@ void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_
   }
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (GGS_classMethodMap & ioArgument_ioClassMethodMap,
-                                                                                                                                                                                         GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                                                                                                                                         const GGS_string constinArgument_inClassMethodName,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentTypeName_31_,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentName_31_,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentTypeName_32_,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentName_32_,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentTypeName_33_,
-                                                                                                                                                                                         const GGS_string constinArgument_inArgumentName_33_,
-                                                                                                                                                                                         const GGS_bool constinArgument_inHasCompilerArgument,
-                                                                                                                                                                                         Compiler * inCompiler
-                                                                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formalParameterSignature var_argList_2619 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_unifiedTypeMapEntry var_argumentTypeIndex_31__2718 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgumentTypeName_31_, var_argumentTypeIndex_31__2718, inCompiler COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 59)) ;
-  }
-  var_argList_2619.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 60)), var_argumentTypeIndex_31__2718, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 60)), constinArgument_inArgumentName_31_  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 60)) ;
-  GGS_unifiedTypeMapEntry var_argumentTypeIndex_32__2908 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgumentTypeName_32_, var_argumentTypeIndex_32__2908, inCompiler COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 62)) ;
-  }
-  var_argList_2619.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 63)), var_argumentTypeIndex_32__2908, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 63)), constinArgument_inArgumentName_32_  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 63)) ;
-  GGS_unifiedTypeMapEntry var_argumentTypeIndex_33__3098 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgumentTypeName_33_, var_argumentTypeIndex_33__3098, inCompiler COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 65)) ;
-  }
-  var_argList_2619.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 66)), var_argumentTypeIndex_33__3098, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 66)), constinArgument_inArgumentName_33_  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 66)) ;
-  {
-  ioArgument_ioClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (constinArgument_inClassMethodName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 68)), inCompiler COMMA_HERE), var_argList_2619, constinArgument_inHasCompilerArgument COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 68)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (GGS_classMethodMap & ioArgument_ioClassMethodMap,
-                                                                                                       GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                                                       const GGS_string constinArgument_inClassMethodName,
-                                                                                                       const GGS_string constinArgument_inStringArgumentName,
-                                                                                                       const GGS_bool constinArgument_inHasCompilerArgument,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_argumentTypeIndex_3729 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_argumentTypeIndex_3729, inCompiler COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 80)) ;
-  }
-  GGS_formalParameterSignature var_argList_3780 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  var_argList_3780.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 82)), var_argumentTypeIndex_3729, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 82)), constinArgument_inStringArgumentName  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 82)) ;
-  {
-  ioArgument_ioClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (constinArgument_inClassMethodName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 84)), inCompiler COMMA_HERE), var_argList_3780, constinArgument_inHasCompilerArgument COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 83)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'routineMangledName'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring function_routineMangledName (const GGS_lstring & constinArgument_inRoutineName,
-                                         const GGS_formalParameterSignature & constinArgument_inRoutineFormalParameters,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring result_result ; // Returned variable
-  GGS_string var_str_1470 = constinArgument_inRoutineName.readProperty_string () ;
-  UpEnumerator_formalParameterSignature enumerator_1516 (constinArgument_inRoutineFormalParameters) ;
-  while (enumerator_1516.hasCurrentObject ()) {
-    switch (enumerator_1516.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
-    case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
-      {
-        var_str_1470.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 29)) ;
-      }
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
-      {
-        var_str_1470.plusAssignOperation(GGS_string ("&"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 31)) ;
-      }
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
-      {
-        var_str_1470.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 33)) ;
-      }
-      break ;
-    }
-    var_str_1470.plusAssignOperation(enumerator_1516.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 35)) ;
-    enumerator_1516.gotoNextObject () ;
-  }
-  result_result = GGS_lstring::init_21__21_ (var_str_1470, constinArgument_inRoutineName.readProperty_location (), inCompiler COMMA_HERE) ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const C_galgas_type_descriptor * functionArgs_routineMangledName [3] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  & kTypeDescriptor_GALGAS_formalParameterSignature,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_routineMangledName (Compiler * inCompiler,
-                                                                const cObjectArray & inEffectiveParameterArray,
-                                                                const GGS_location & /* inErrorLocation */
-                                                                COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  const GGS_formalParameterSignature operand1 = GGS_formalParameterSignature::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                                                             inCompiler
-                                                                                             COMMA_THERE) ;
-  return function_routineMangledName (operand0,
-                                      operand1,
-                                      inCompiler
-                                      COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_routineMangledName ("routineMangledName",
-                                                                    functionWithGenericHeader_routineMangledName,
-                                                                    & kTypeDescriptor_GALGAS_lstring,
-                                                                    2,
-                                                                    functionArgs_routineMangledName) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'routineArgumentFromFormalParameters'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string function_routineArgumentFromFormalParameters (const GGS_formalParameterSignature & constinArgument_inRoutineFormalParameters,
-                                                         Compiler * inCompiler
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  result_result = GGS_string ("(") ;
-  UpEnumerator_formalParameterSignature enumerator_2086 (constinArgument_inRoutineFormalParameters) ;
-  while (enumerator_2086.hasCurrentObject ()) {
-    switch (enumerator_2086.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
-    case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
-      {
-        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 48)) ;
-      }
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
-      {
-        result_result.plusAssignOperation(GGS_string ("!\?"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 50)) ;
-      }
-      break ;
-    case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
-      {
-        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 52)) ;
-      }
-      break ;
-    }
-    result_result.plusAssignOperation(enumerator_2086.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 54)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 54)) ;
-    enumerator_2086.gotoNextObject () ;
-    if (enumerator_2086.hasCurrentObject ()) {
-      result_result.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 56)) ;
-    }
-  }
-  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 58)) ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const C_galgas_type_descriptor * functionArgs_routineArgumentFromFormalParameters [2] = {
-  & kTypeDescriptor_GALGAS_formalParameterSignature,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_routineArgumentFromFormalParameters (Compiler * inCompiler,
-                                                                                 const cObjectArray & inEffectiveParameterArray,
-                                                                                 const GGS_location & /* inErrorLocation */
-                                                                                 COMMA_LOCATION_ARGS) {
-  const GGS_formalParameterSignature operand0 = GGS_formalParameterSignature::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                                                             inCompiler
-                                                                                             COMMA_THERE) ;
-  return function_routineArgumentFromFormalParameters (operand0,
-                                                       inCompiler
-                                                       COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_routineArgumentFromFormalParameters ("routineArgumentFromFormalParameters",
-                                                                                     functionWithGenericHeader_routineArgumentFromFormalParameters,
-                                                                                     & kTypeDescriptor_GALGAS_string,
-                                                                                     1,
-                                                                                     functionArgs_routineArgumentFromFormalParameters) ;
 
