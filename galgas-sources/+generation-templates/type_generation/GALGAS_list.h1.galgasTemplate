@@ -24,7 +24,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
+  private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -55,7 +55,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
+  private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -68,7 +68,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
+  private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mArray ;
 
 //--- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
@@ -94,7 +94,7 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> sortedElementArray (void) const {
     return mArray ;
   }
 

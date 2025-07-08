@@ -192,7 +192,7 @@ String UInt128::decimalString (void) const {
     result.appendCString ("0") ;
   }else{
     UInt128 value = *this ;
-    TC_UniqueArray <uint32_t> values ;
+    GenericUniqueArray <uint32_t> values ;
     while (! value.isZero ()) {
       uint32_t remainder = 0 ;
       value.divideBy (1000, remainder) ;

@@ -523,7 +523,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CF00A29F2E12F5D3005B4882 /* TC_UniqueArray2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray2.h; sourceTree = "<group>"; };
+		CF00A29F2E12F5D3005B4882 /* GenericUniqueMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUniqueMatrix.h; sourceTree = "<group>"; };
 		CF00BE042E116075007B987F /* GALGAS_GenericDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GALGAS_GenericDictionary.h; sourceTree = "<group>"; };
 		CF00BE052E116075007B987F /* SharedGenericPtrWithValueSemantics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedGenericPtrWithValueSemantics.h; sourceTree = "<group>"; };
 		CF00BE062E116075007B987F /* SharedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObject.h; sourceTree = "<group>"; };
@@ -798,8 +798,8 @@
 		CF305F372D0D8A2E000A5F79 /* SourceTextInString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceTextInString.h; sourceTree = "<group>"; };
 		CF305F382D0D8A2E000A5F79 /* SourceTextInString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SourceTextInString.cpp; sourceTree = "<group>"; };
 		CF305F392D0D8A2E000A5F79 /* TemplateDelimiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemplateDelimiter.h; sourceTree = "<group>"; };
-		CF305F3B2D0D8A2E000A5F79 /* TC_Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
-		CF305F3C2D0D8A2E000A5F79 /* TC_UniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
+		CF305F3B2D0D8A2E000A5F79 /* GenericArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericArray.h; sourceTree = "<group>"; };
+		CF305F3C2D0D8A2E000A5F79 /* GenericUniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUniqueArray.h; sourceTree = "<group>"; };
 		CF305F3F2D0D8A2E000A5F79 /* License */ = {isa = PBXFileReference; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		CF305F5A2D0D8A2E000A5F79 /* AbstractOutputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractOutputStream.h; sourceTree = "<group>"; };
 		CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractOutputStream.cpp; sourceTree = "<group>"; };
@@ -1533,9 +1533,9 @@
 		CF305F3E2D0D8A2E000A5F79 /* generic-arraies */ = {
 			isa = PBXGroup;
 			children = (
-				CF00A29F2E12F5D3005B4882 /* TC_UniqueArray2.h */,
-				CF305F3B2D0D8A2E000A5F79 /* TC_Array.h */,
-				CF305F3C2D0D8A2E000A5F79 /* TC_UniqueArray.h */,
+				CF305F3B2D0D8A2E000A5F79 /* GenericArray.h */,
+				CF305F3C2D0D8A2E000A5F79 /* GenericUniqueArray.h */,
+				CF00A29F2E12F5D3005B4882 /* GenericUniqueMatrix.h */,
 			);
 			path = "generic-arraies";
 			sourceTree = "<group>";

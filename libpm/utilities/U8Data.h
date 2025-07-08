@@ -22,13 +22,13 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_Array.h"
+#include "GenericArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
 class U8Data final {
 //--- Data
-  private: TC_Array <uint8_t> mBinaryData ;
+  private: GenericArray <uint8_t> mBinaryData ;
 
 //--- Constructors
   public: U8Data (void) ;

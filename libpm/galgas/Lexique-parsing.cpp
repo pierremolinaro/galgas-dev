@@ -65,7 +65,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                const int32_t* inFirstProductionIndexArray,
                                                const int32_t* inDecisionTableArray,
                                                const int32_t* inDecisionTableIndexArray,
-                                               const TC_Array <int32_t> & inErrorStack,
+                                               const GenericArray <int32_t> & inErrorStack,
                                                const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     String m = getMessageForTerminal (inTerminal) ;
@@ -79,7 +79,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
   }
   bool accept = false ;
   int32_t programCounter = inErrorProgramCounter ;
-  TC_Array <int32_t> stack = inErrorStack ;
+  GenericArray <int32_t> stack = inErrorStack ;
   bool loop = true ;
   while (loop) {
     const int32_t instruction = inProductionArray [programCounter] ;
@@ -133,7 +133,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
             }
             if (found) {
               int32_t newProgramCounter = programCounter ;
-              TC_Array <int32_t> newStack = stack ;
+              GenericArray <int32_t> newStack = stack ;
               newStack.appendObject (newProgramCounter) ;
               newProgramCounter = inProductionIndexArray [inFirstProductionIndexArray [reachedNonterminal] + choice] ;
               accept = acceptTerminalForErrorSignaling (inTerminal,
@@ -175,18 +175,18 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
 
 void Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                         const int32_t inErrorStackCount,
-                                                        const TC_Array <int32_t> & inStack,
-                                                        const TC_Array <int32_t> & inErrorStack,
+                                                        const GenericArray <int32_t> & inStack,
+                                                        const GenericArray <int32_t> & inErrorStack,
                                                         const int32_t* inProductionArray,
                                                         const int32_t* inProductionIndexArray,
                                                         const int32_t* inFirstProductionIndexArray,
                                                         const int32_t* inDecisionTableArray,
                                                         const int32_t* inDecisionTableIndexArray,
-                                                        TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
+                                                        GenericUniqueArray <int32_t> & outExpectedTerminalsArray) {
 //--- First, go to the next non terminal, terminal or end of productions rules
   int32_t programCounter = inErrorProgramCounter ;
   const int32_t countToCopy = inErrorStackCount - inErrorStack.count () ;
-  TC_Array <int32_t> errorStack (inErrorStackCount COMMA_HERE) ;
+  GenericArray <int32_t> errorStack (inErrorStackCount COMMA_HERE) ;
   for (int32_t i=0 ; i<countToCopy ; i++) {
     errorStack.appendObject (inStack (i COMMA_HERE)) ;
   }
@@ -346,7 +346,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
        && (sourceFilePath ().deletingPathExtension ().length () > 0) ;
     String syntaxTreeDescriptionString ;
-    TC_Array <uint32_t> productionUniqueNameStack ;
+    GenericArray <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
@@ -360,9 +360,9 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
     if (executionModeIsSyntaxAnalysisOnly ()) {
       gCout.appendCString ("*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n") ;
     }
-    TC_UniqueArray <int32_t> listForSecondPassParsing ;
-    TC_Array <int32_t> stack (10000 COMMA_HERE) ;
-    TC_Array <int32_t> errorStack ;
+    GenericUniqueArray <int32_t> listForSecondPassParsing ;
+    GenericArray <int32_t> stack (10000 COMMA_HERE) ;
+    GenericArray <int32_t> errorStack ;
     int32_t errorStackCount = 0 ;
     bool loop = tokenPtr != nullptr ;
     result = true ;
@@ -503,7 +503,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
             }
             listForSecondPassParsing.appendObject (choice + 1) ;
           }else{ // Syntax error
-            TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
+            GenericUniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
             buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                       errorStackCount,
                                                       stack,
@@ -554,7 +554,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
           if (TRACE_LL1_PARSING ()) {
             gCout.appendCString ("ERROR: TOKEN NOT EXPECTED\n") ; gCout.flush () ;
           }
-          TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
+          GenericUniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
           buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                     errorStackCount,
                                                     stack,
@@ -591,7 +591,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
         loop = false ;
       }else{ // We reach the end of text, but current terminal is not "end of text"
       //--- This is a syntax error
-        TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
+        GenericUniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
         buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                   errorStackCount,
                                                   stack,
@@ -641,7 +641,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
 
 static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpectedTerminal,
                                                            const int32_t inExpectedAction,
-                                                           const TC_Array <int32_t> & inSLRstack,
+                                                           const GenericArray <int32_t> & inSLRstack,
                                                            const int32_t * inActionTableArray,
                                                            const uint32_t * inActionTableIndexArray,
                                                            const int32_t * * inSuccessorTableArray,
@@ -649,7 +649,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
   bool accept = inExpectedAction > 1 ; // accept if it is a shift action
   if (! accept) {
     int32_t actionCode = inExpectedAction ;
-    TC_Array <int32_t> stack (inSLRstack) ; // Duplicate stack
+    GenericArray <int32_t> stack (inSLRstack) ; // Duplicate stack
     bool loop = true ;
     while (loop) {
     //--- Perform reduce action
@@ -717,7 +717,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
        && (sourceFilePath ().deletingPathExtension () != "") ;
     String syntaxTreeDescriptionString ;
-    TC_Array <String> shiftedElementStack ;
+    GenericArray <String> shiftedElementStack ;
     shiftedElementStack.appendObject ("TOP") ;
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
@@ -726,13 +726,13 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
                                              "  size =\"4,4\";\n") ;
     }
   //--- Perform first pass
-    TC_UniqueArray <TC_UniqueArray <int32_t> > executionList (100 COMMA_HERE) ;
+    GenericUniqueArray <GenericUniqueArray <int32_t> > executionList (100 COMMA_HERE) ;
     executionList.appendDefaultObjectUsingSwap () ;
 
-    TC_Array <int32_t> stack (10000 COMMA_HERE) ;
+    GenericArray <int32_t> stack (10000 COMMA_HERE) ;
     stack.appendObject (0) ; // Enter initial state
     int32_t errorSignalingUselessEntryOnTopOfStack = 0 ;
-    TC_Array <int32_t> poppedErrors (1000 COMMA_HERE)  ;
+    GenericArray <int32_t> poppedErrors (1000 COMMA_HERE)  ;
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
 
@@ -894,7 +894,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         result = false ;
         loop = false ;
       //--- Build error stack
-        TC_Array <int32_t> actualErrorStack (stack.count () + poppedErrors.count () COMMA_HERE) ;
+        GenericArray <int32_t> actualErrorStack (stack.count () + poppedErrors.count () COMMA_HERE) ;
         for (int32_t i=0 ; i<(stack.count () - errorSignalingUselessEntryOnTopOfStack) ; i++) {
           actualErrorStack.appendObject (stack (i COMMA_HERE)) ;
         }
@@ -902,7 +902,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
           actualErrorStack.appendObject (poppedErrors (i COMMA_HERE)) ;
         }
       //---
-        TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
+        GenericUniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
         const int32_t currentErrorState = actualErrorStack.lastObject (HERE) ;
         actionTable = & (inActionTableArray [inActionTableIndexArray [currentErrorState]]) ;
         while ((* actionTable) >= 0) {

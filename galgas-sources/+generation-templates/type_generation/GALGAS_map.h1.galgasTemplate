@@ -26,7 +26,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -54,7 +54,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -111,9 +111,9 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 

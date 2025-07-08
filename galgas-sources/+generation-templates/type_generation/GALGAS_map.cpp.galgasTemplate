@@ -191,12 +191,12 @@ int32_t GGS_%!TYPE_IDENTIFIER%::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>
 GGS_%!TYPE_IDENTIFIER%::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> () ;
   }
 }
 
@@ -215,7 +215,7 @@ GGS_stringset GGS_%!TYPE_IDENTIFIER%::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -257,7 +257,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
       result = info.value () ;
     }else{
       const char * kErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kErrorMessage COMMA_THERE) ;
     }
@@ -329,7 +329,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentatio
     const String key = inLKey.mProperty_string.stringValue () ;
     info = infoForKey (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       const char * kSearchErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
@@ -363,7 +363,7 @@ for (mSetterName mErrorMessage) in REMOVE_SETTER_LIST do
     mSharedRoot.insulate (THERE) ;
     info = mSharedRoot->removeAndReturnRemovedInfo (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kRemoveErrorMessage COMMA_THERE) ;
     }
@@ -394,7 +394,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%
     mSharedRoot.insulate (HERE) ;
     OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (
         inElement.mProperty_lkey,
@@ -477,7 +477,7 @@ end
 
 %//--------------------------------------------------------------------------------------------------
 
-static void GGS_%!TYPE_IDENTIFIER%_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> & inArray,
+static void GGS_%!TYPE_IDENTIFIER%_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -513,7 +513,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> array = sortedInfoArray () ;
     GGS_%!TYPE_IDENTIFIER%_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -545,8 +545,8 @@ ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIF
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
-      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> left = sortedInfoArray () ;
-      const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> right = inOperand.sortedInfoArray () ;
+      const GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> left = sortedInfoArray () ;
+      const GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> right = inOperand.sortedInfoArray () ;
       for (int32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
         result = left (i COMMA_HERE).value ().objectCompare (right (i COMMA_HERE).value ()) ;
       }

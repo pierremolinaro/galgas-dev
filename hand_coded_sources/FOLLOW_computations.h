@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,12 +44,12 @@ FOLLOW_computations (const PureBNFproductionsList & inPureBNFproductions,
                      HTMLString & ioHTMLFileContents,
                      const bool inPopulateHTMLHelperString,
                      const GrammarVocabulary & inVocabulary,
-                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                     const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const BinaryDecisionDiagramRelation & inUsefulSymbols,
                      const BinaryDecisionDiagramRelation & inFIRSTsets,
                      const BinaryDecisionDiagramRelation & inNonterminalSymbolsFollowedByEmpty,
                      BinaryDecisionDiagramRelation & outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
+                     GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) ;
 

@@ -158,7 +158,7 @@ class Lexique : public Compiler {
   protected: void lexicalWarning (const String & messageAlerte COMMA_LOCATION_ARGS) ;
 
 //--- Handling syntax error
-  private: void parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
+  private: void parsingError (const GenericUniqueArray <int32_t> & inExpectedTerminalsArray,
                               const cToken * inPreviousTokenPtr,
                               const cToken * inCurrentTokenPtr,
                               const int32_t inCurrentTokenCode
@@ -211,14 +211,14 @@ class Lexique : public Compiler {
 
   private: void buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                           const int32_t inErrorStackCount,
-                                                          const TC_Array <int32_t> & inCurrentStack,
-                                                          const TC_Array <int32_t> & inErrorStack,
+                                                          const GenericArray <int32_t> & inCurrentStack,
+                                                          const GenericArray <int32_t> & inErrorStack,
                                                           const int32_t * inProductionArray,
                                                           const int32_t * inProductionIndexArray,
                                                           const int32_t * inFirstProductionIndexArray,
                                                           const int32_t * inDecisionTableArray,
                                                           const int32_t * inDecisionTableIndexArray,
-                                                          TC_UniqueArray <int32_t> & outExpectedTerminalsArray) ;
+                                                          GenericUniqueArray <int32_t> & outExpectedTerminalsArray) ;
 
   private: bool acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const int32_t * inProductionArray,
@@ -226,7 +226,7 @@ class Lexique : public Compiler {
                                                  const int32_t * inFirstProductionIndexArray,
                                                  const int32_t * inDecisionTableArray,
                                                  const int32_t * inDecisionTableIndexArray,
-                                                 const TC_Array <int32_t> & inErrorStack,
+                                                 const GenericArray <int32_t> & inErrorStack,
                                                  const int32_t inErrorProgramCounter) ;
 
 //--- Perform bottom up parsing (called by SLR and LR(1) parsers)
@@ -240,7 +240,7 @@ class Lexique : public Compiler {
   protected: virtual bool parseLexicalToken (void) = 0 ;
 
 //--- Execution array built during first pass, and used by second pass parsing
-  private: TC_UniqueArray <int32_t> mArrayForSecondPassParsing ;
+  private: GenericUniqueArray <int32_t> mArrayForSecondPassParsing ;
   private: int32_t mIndexForSecondPassParsing ;
 
 //--- Latex string (for --mode=latex command line option)

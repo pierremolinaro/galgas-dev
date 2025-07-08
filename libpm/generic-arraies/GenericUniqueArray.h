@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//            Declaration and implementation of the template class 'TC_UniqueArray'
+//            Declaration and implementation of the template class 'GenericUniqueArray'
 //
 //  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR.
 //
@@ -34,14 +34,14 @@
 //   Template class predeclaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_UniqueArray ;
+template <typename ELEMENT> class GenericUniqueArray ;
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_UniqueArray <ELEMENT> classes
+//   swap function for GenericUniqueArray <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> void swap (TC_UniqueArray <ELEMENT> & ioOperand1,
-                                       TC_UniqueArray <ELEMENT> & ioOperand2) ;
+template <typename ELEMENT> void swap (GenericUniqueArray <ELEMENT> & ioOperand1,
+                                       GenericUniqueArray <ELEMENT> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -52,28 +52,28 @@ template <typename ELEMENT> using CompareFunction = int32_t (*) (const ELEMENT &
 //   Template class declaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_UniqueArray final {
+template <typename ELEMENT> class GenericUniqueArray final {
 //--- Default Constructor
-  public: TC_UniqueArray (void) ;
+  public: GenericUniqueArray (void) ;
 
 //--- Allocation Constructor (empty array)
-  public: TC_UniqueArray (const int32_t inCapacity
+  public: GenericUniqueArray (const int32_t inCapacity
                           COMMA_LOCATION_ARGS) ;
 
 //--- Allocation Constructor (array initialized with inValue)
-  public: TC_UniqueArray (const int32_t inCapacity,
+  public: GenericUniqueArray (const int32_t inCapacity,
                           const ELEMENT & inRepeatedValue
                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual Destructor
-  public: ~TC_UniqueArray (void) ;
+  public: ~GenericUniqueArray (void) ;
 
 //--- No copy
-  private: TC_UniqueArray (const TC_UniqueArray <ELEMENT> &) = delete ;
-  private: TC_UniqueArray <ELEMENT> & operator = (const TC_UniqueArray <ELEMENT> &) = delete ;
+  private: GenericUniqueArray (const GenericUniqueArray <ELEMENT> &) = delete ;
+  private: GenericUniqueArray <ELEMENT> & operator = (const GenericUniqueArray <ELEMENT> &) = delete ;
 
 //--- Copy
-  public: void copyTo (TC_UniqueArray <ELEMENT> & outArray) const ;
+  public: void copyTo (GenericUniqueArray <ELEMENT> & outArray) const ;
 
 //--- Get Count
   public: inline int32_t count (void) const { return mCount ; }
@@ -103,9 +103,9 @@ template <typename ELEMENT> class TC_UniqueArray final {
   public: const ELEMENT * unsecureBufferPointer (void) const { return mArray ; }
 
 //--- Comparisons (based on == operator on objects)
-  public: bool operator == (const TC_UniqueArray <ELEMENT> & inOperand) const ;
+  public: bool operator == (const GenericUniqueArray <ELEMENT> & inOperand) const ;
 
-  public: inline bool operator != (const TC_UniqueArray <ELEMENT> & inOperand) const {
+  public: inline bool operator != (const GenericUniqueArray <ELEMENT> & inOperand) const {
     return ! ((*this) == inOperand) ;
   }
 
@@ -122,7 +122,7 @@ template <typename ELEMENT> class TC_UniqueArray final {
   public: void appendObjectUsingSwap (ELEMENT & ioValue) ;
   public: void appendDefaultObjectUsingSwap (void) ;
   public: void appendObjects (const int32_t inCount, const ELEMENT & inValue) ; // inValue is copied
-  public: void appendObjectsFromArray (const TC_UniqueArray <ELEMENT> & inObjectArray) ; // New objects are copied
+  public: void appendObjectsFromArray (const GenericUniqueArray <ELEMENT> & inObjectArray) ; // New objects are copied
 
 //--- Force entry
   public: void forceObjectAtIndex (const int32_t inIndex,
@@ -131,7 +131,7 @@ template <typename ELEMENT> class TC_UniqueArray final {
 
 //--- Prepend object
   public: void prependObject (const ELEMENT & inValue) ; // inValue is copied
-  public: void prependObjects (const TC_UniqueArray <ELEMENT> & inObjectArray) ; // Values are copied
+  public: void prependObjects (const GenericUniqueArray <ELEMENT> & inObjectArray) ; // Values are copied
 
 //--- Insert objects at index (0 <= index <= count)
   public: void insertObjectAtIndex (const ELEMENT & inValue,
@@ -241,15 +241,15 @@ template <typename ELEMENT> class TC_UniqueArray final {
   public: const ELEMENT * unsafeArrayPointer (void) const ;
 
 //--- swap
-  friend void swap <ELEMENT> (TC_UniqueArray <ELEMENT> & ioOperand1,
-                           TC_UniqueArray <ELEMENT> & ioOperand2) ;
+  friend void swap <ELEMENT> (GenericUniqueArray <ELEMENT> & ioOperand1,
+                           GenericUniqueArray <ELEMENT> & ioOperand2) ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_UniqueArray <ELEMENT>::TC_UniqueArray (void) :
+GenericUniqueArray <ELEMENT>::GenericUniqueArray (void) :
 mArray ((ELEMENT *) nullptr),
 mCount (0),
 mCapacity (0) {
@@ -258,7 +258,7 @@ mCapacity (0) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_UniqueArray <ELEMENT>::TC_UniqueArray (const int32_t inCapacity
+GenericUniqueArray <ELEMENT>::GenericUniqueArray (const int32_t inCapacity
                                           COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0),
@@ -275,7 +275,7 @@ mCapacity (0) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_UniqueArray <ELEMENT>::TC_UniqueArray (const int32_t inCapacity,
+GenericUniqueArray <ELEMENT>::GenericUniqueArray (const int32_t inCapacity,
                                           const ELEMENT & inRepeatedValue
                                           COMMA_LOCATION_ARGS) :
 mArray (nullptr),
@@ -297,7 +297,7 @@ mCapacity (0) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
+void GenericUniqueArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
                                                    const int32_t inDataLength) {
   macroMyDeleteArray (mArray) ;
   mArray = ioDataPtr ;
@@ -309,7 +309,7 @@ void TC_UniqueArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
+void GenericUniqueArray <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
                                                       const int32_t inDataLength) {
   for (int32_t i=0 ; i<inDataLength ; i++) {
     appendObject (inDataPtr [i]) ;
@@ -319,21 +319,21 @@ void TC_UniqueArray <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_UniqueArray <ELEMENT>::~TC_UniqueArray (void) {
+GenericUniqueArray <ELEMENT>::~GenericUniqueArray (void) {
   macroMyDeleteArray (mArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeAllKeepingCapacity (void) {
+void GenericUniqueArray <ELEMENT>::removeAllKeepingCapacity (void) {
   mCount = 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::copyTo (TC_UniqueArray <ELEMENT> & outArray) const {
+void GenericUniqueArray <ELEMENT>::copyTo (GenericUniqueArray <ELEMENT> & outArray) const {
   outArray.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mCount ; i++) {
     outArray.appendObject (mArray [i]) ;
@@ -343,7 +343,7 @@ void TC_UniqueArray <ELEMENT>::copyTo (TC_UniqueArray <ELEMENT> & outArray) cons
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
+void GenericUniqueArray <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
   if (mCapacity < inNewCapacity) {
     int32_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
     while (newCapacity < inNewCapacity) {
@@ -362,7 +362,7 @@ void TC_UniqueArray <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::forceObjectAtIndex (const int32_t inIndex,
+void GenericUniqueArray <ELEMENT>::forceObjectAtIndex (const int32_t inIndex,
                                                    const ELEMENT & inValue,
                                                    const ELEMENT & inDefaultValue) {
 //--- Realloc if necessary
@@ -383,7 +383,7 @@ void TC_UniqueArray <ELEMENT>::forceObjectAtIndex (const int32_t inIndex,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::setCapacityUsingSwap (const int32_t inNewCapacity) {
+void GenericUniqueArray <ELEMENT>::setCapacityUsingSwap (const int32_t inNewCapacity) {
   if (mCapacity < inNewCapacity) {
     int32_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
     while (newCapacity < inNewCapacity) {
@@ -402,7 +402,7 @@ void TC_UniqueArray <ELEMENT>::setCapacityUsingSwap (const int32_t inNewCapacity
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeAll (void) {
+void GenericUniqueArray <ELEMENT>::removeAll (void) {
   mCount = 0 ;
   macroMyDeleteArray (mArray) ;
   mCapacity = 0 ;
@@ -411,7 +411,7 @@ void TC_UniqueArray <ELEMENT>::removeAll (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
+void GenericUniqueArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
   if (mCount >= mCapacity) {
     setCapacity (mCount + 1 + mCount / 2) ;
   }
@@ -422,7 +422,7 @@ void TC_UniqueArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendObjects (const int32_t inCount,
+void GenericUniqueArray <ELEMENT>::appendObjects (const int32_t inCount,
                                               const ELEMENT & inValue) {
   if (inCount > 0) {
     const int32_t newCount = mCount + inCount ;
@@ -437,7 +437,7 @@ void TC_UniqueArray <ELEMENT>::appendObjects (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendObjectUsingSwap (ELEMENT & ioValue) {
+void GenericUniqueArray <ELEMENT>::appendObjectUsingSwap (ELEMENT & ioValue) {
   setCapacityUsingSwap (mCount + 1) ;
   swap (mArray [mCount], ioValue) ;
   mCount ++ ;
@@ -446,7 +446,7 @@ void TC_UniqueArray <ELEMENT>::appendObjectUsingSwap (ELEMENT & ioValue) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendDefaultObjectUsingSwap (void) {
+void GenericUniqueArray <ELEMENT>::appendDefaultObjectUsingSwap (void) {
   setCapacityUsingSwap (mCount + 1) ;
   ELEMENT value ;
   swap (mArray [mCount], value) ;
@@ -456,7 +456,7 @@ void TC_UniqueArray <ELEMENT>::appendDefaultObjectUsingSwap (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::appendObjectsFromArray (const TC_UniqueArray <ELEMENT> & inObjectArray) {
+void GenericUniqueArray <ELEMENT>::appendObjectsFromArray (const GenericUniqueArray <ELEMENT> & inObjectArray) {
   if (inObjectArray.mCount > 0) {
     setCapacity (mCount + inObjectArray.mCount) ;
     for (int32_t i=0 ; i<inObjectArray.mCount ; i++) {
@@ -470,7 +470,7 @@ void TC_UniqueArray <ELEMENT>::appendObjectsFromArray (const TC_UniqueArray <ELE
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename ELEMENT>
-  void TC_UniqueArray <ELEMENT>::checkIndexForInsertion (const int32_t inIndex
+  void GenericUniqueArray <ELEMENT>::checkIndexForInsertion (const int32_t inIndex
                                                          COMMA_LOCATION_ARGS) const {
     macroAssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
     macroAssertThere (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
@@ -480,7 +480,7 @@ void TC_UniqueArray <ELEMENT>::appendObjectsFromArray (const TC_UniqueArray <ELE
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::prependObjects (const TC_UniqueArray <ELEMENT> & inObjectArray) { // Values are copied
+void GenericUniqueArray <ELEMENT>::prependObjects (const GenericUniqueArray <ELEMENT> & inObjectArray) { // Values are copied
   const int32_t n = inObjectArray.mCount ;
   if (n > 0) {
     setCapacity (mCount + n) ;
@@ -497,7 +497,7 @@ void TC_UniqueArray <ELEMENT>::prependObjects (const TC_UniqueArray <ELEMENT> & 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::prependObject (const ELEMENT & inValue) { // inValue is copied
+void GenericUniqueArray <ELEMENT>::prependObject (const ELEMENT & inValue) { // inValue is copied
   setCapacity (mCount + 1) ;
   for (int32_t i = mCount ; i > 0 ; i--) {
     mArray [i] = mArray [i-1] ;
@@ -508,7 +508,7 @@ void TC_UniqueArray <ELEMENT>::prependObject (const ELEMENT & inValue) { // inVa
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inValue,
+void GenericUniqueArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inValue,
                                                     const int32_t inIndex
                                                     COMMA_LOCATION_ARGS) { // inValue is copied
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -525,7 +525,7 @@ void TC_UniqueArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inValue,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
+void GenericUniqueArray <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
                                                      const ELEMENT & inValue,
                                                      const int32_t inStartingIndex
                                                      COMMA_LOCATION_ARGS) { // inValue is copied
@@ -547,7 +547,7 @@ void TC_UniqueArray <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::insertObjectUsingSwap (ELEMENT & ioValue,
+void GenericUniqueArray <ELEMENT>::insertObjectUsingSwap (ELEMENT & ioValue,
                                                       const int32_t inIndex
                                                       COMMA_LOCATION_ARGS) { // inValue is copied
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -564,7 +564,7 @@ void TC_UniqueArray <ELEMENT>::insertObjectUsingSwap (ELEMENT & ioValue,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::insertObjectsUsingExchangeAndClear (const int32_t inCount,
+void GenericUniqueArray <ELEMENT>::insertObjectsUsingExchangeAndClear (const int32_t inCount,
                                                                    const int32_t inStartingIndex
                                                                    COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
@@ -585,7 +585,7 @@ void TC_UniqueArray <ELEMENT>::insertObjectsUsingExchangeAndClear (const int32_t
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeLastObject (LOCATION_ARGS) {
+void GenericUniqueArray <ELEMENT>::removeLastObject (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
@@ -595,7 +595,7 @@ void TC_UniqueArray <ELEMENT>::removeLastObject (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeLastObjects (const int32_t inCount
+void GenericUniqueArray <ELEMENT>::removeLastObjects (const int32_t inCount
                                                   COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -608,7 +608,7 @@ void TC_UniqueArray <ELEMENT>::removeLastObjects (const int32_t inCount
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::exchangeObjectAtIndexes (const int32_t inIndex1,
+void GenericUniqueArray <ELEMENT>::exchangeObjectAtIndexes (const int32_t inIndex1,
                                                         const int32_t inIndex2
                                                         COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -623,7 +623,7 @@ void TC_UniqueArray <ELEMENT>::exchangeObjectAtIndexes (const int32_t inIndex1,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
+void GenericUniqueArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
                                                     COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -637,7 +637,7 @@ void TC_UniqueArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
+void GenericUniqueArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
                                                      const int32_t inStartingIndex
                                                      COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
@@ -655,7 +655,7 @@ void TC_UniqueArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-int32_t TC_UniqueArray <ELEMENT>::indexOfFirstObjectEqualTo (const ELEMENT & inValue) const {
+int32_t GenericUniqueArray <ELEMENT>::indexOfFirstObjectEqualTo (const ELEMENT & inValue) const {
   int32_t result = -1 ;
   for (int32_t i=0 ; (i<mCount) && (result < 0) ; i++) {
     if (mArray [i] == inValue) {
@@ -669,7 +669,7 @@ int32_t TC_UniqueArray <ELEMENT>::indexOfFirstObjectEqualTo (const ELEMENT & inV
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename ELEMENT>
-  void TC_UniqueArray <ELEMENT>::checkIndex (const int32_t inIndex
+  void GenericUniqueArray <ELEMENT>::checkIndex (const int32_t inIndex
                                              COMMA_LOCATION_ARGS) const {
     macroAssertThere (inIndex >= 0, "inIndex (%lld) < 0", inIndex, 0) ;
     macroAssertThere (inIndex < mCount, "inIndex (%lld) >= mCount (%lld)", inIndex, mCount) ;
@@ -679,7 +679,7 @@ int32_t TC_UniqueArray <ELEMENT>::indexOfFirstObjectEqualTo (const ELEMENT & inV
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
+void GenericUniqueArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
                                                  const int32_t inIndex
                                                  COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -693,7 +693,7 @@ void TC_UniqueArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::incrementAtIndex (const int32_t inIndex
+void GenericUniqueArray <ELEMENT>::incrementAtIndex (const int32_t inIndex
                                                  COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -704,7 +704,7 @@ void TC_UniqueArray <ELEMENT>::incrementAtIndex (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::decrementAtIndex (const int32_t inIndex
+void GenericUniqueArray <ELEMENT>::decrementAtIndex (const int32_t inIndex
                                                  COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -715,7 +715,7 @@ void TC_UniqueArray <ELEMENT>::decrementAtIndex (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT & TC_UniqueArray <ELEMENT>::operator () (const int32_t inIndex
+ELEMENT & GenericUniqueArray <ELEMENT>::operator () (const int32_t inIndex
                                                  COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -726,7 +726,7 @@ ELEMENT & TC_UniqueArray <ELEMENT>::operator () (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT & TC_UniqueArray <ELEMENT>::operator () (const int32_t inIndex
+ELEMENT & GenericUniqueArray <ELEMENT>::operator () (const int32_t inIndex
                                                  COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -737,7 +737,7 @@ ELEMENT & TC_UniqueArray <ELEMENT>::operator () (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT TC_UniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) const {
+ELEMENT GenericUniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
@@ -747,7 +747,7 @@ ELEMENT TC_UniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT & TC_UniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) {
+ELEMENT & GenericUniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
@@ -759,7 +759,7 @@ ELEMENT & TC_UniqueArray <ELEMENT>::lastObject (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::internalSortArrayUsingOperators (const int32_t inFirst,
+void GenericUniqueArray<ELEMENT>::internalSortArrayUsingOperators (const int32_t inFirst,
                                                                const int32_t inLast) {
 //--- Sort using 'quick sort' algorithm
   if (inFirst < inLast) {
@@ -785,7 +785,7 @@ void TC_UniqueArray<ELEMENT>::internalSortArrayUsingOperators (const int32_t inF
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::sortArrayUsingComparisonOperators (void) {
+void GenericUniqueArray<ELEMENT>::sortArrayUsingComparisonOperators (void) {
   internalSortArrayUsingOperators (0, mCount - 1) ;
 }
 
@@ -794,7 +794,7 @@ void TC_UniqueArray<ELEMENT>::sortArrayUsingComparisonOperators (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::internalReverseSortArrayUsingOperators (const int32_t inFirst,
+void GenericUniqueArray<ELEMENT>::internalReverseSortArrayUsingOperators (const int32_t inFirst,
                                                                       const int32_t inLast) {
 //--- Reverse sort using 'quick sort' algorithm
   if (inFirst < inLast) {
@@ -820,7 +820,7 @@ void TC_UniqueArray<ELEMENT>::internalReverseSortArrayUsingOperators (const int3
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::reverseSortArrayUsingComparisonOperators (void) {
+void GenericUniqueArray<ELEMENT>::reverseSortArrayUsingComparisonOperators (void) {
   internalReverseSortArrayUsingOperators (0, mCount - 1) ;
 }
 
@@ -829,7 +829,7 @@ void TC_UniqueArray<ELEMENT>::reverseSortArrayUsingComparisonOperators (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::internalSortArrayUsingCompareMethod (const int32_t inFirst,
+void GenericUniqueArray<ELEMENT>::internalSortArrayUsingCompareMethod (const int32_t inFirst,
                                                                    const int32_t inLast) {
 //--- Sort using 'quick sort' algorithm
   if (inFirst < inLast) {
@@ -855,7 +855,7 @@ void TC_UniqueArray<ELEMENT>::internalSortArrayUsingCompareMethod (const int32_t
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::sortArrayUsingCompareMethod (void) {
+void GenericUniqueArray<ELEMENT>::sortArrayUsingCompareMethod (void) {
   internalSortArrayUsingCompareMethod (0, mCount - 1) ;
 }
 
@@ -864,7 +864,7 @@ void TC_UniqueArray<ELEMENT>::sortArrayUsingCompareMethod (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::internalReverseSortArrayUsingCompareMethod (const int32_t inFirst,
+void GenericUniqueArray<ELEMENT>::internalReverseSortArrayUsingCompareMethod (const int32_t inFirst,
                                                                           const int32_t inLast) {
 //--- Reverse sort using 'quick sort' algorithm
   if (inFirst < inLast) {
@@ -890,7 +890,7 @@ void TC_UniqueArray<ELEMENT>::internalReverseSortArrayUsingCompareMethod (const 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::reverseSortArrayUsingCompareMethod (void) {
+void GenericUniqueArray<ELEMENT>::reverseSortArrayUsingCompareMethod (void) {
   internalReverseSortArrayUsingCompareMethod (0, mCount - 1) ;
 }
 
@@ -899,7 +899,7 @@ void TC_UniqueArray<ELEMENT>::reverseSortArrayUsingCompareMethod (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::internalSortArrayUsingFunction (const int32_t inFirst,
+void GenericUniqueArray<ELEMENT>::internalSortArrayUsingFunction (const int32_t inFirst,
                                                               const int32_t inLast,
                                                               CompareFunction <ELEMENT> inCompareFunction) {
 //--- Sort using 'quick sort' algorithm
@@ -926,7 +926,7 @@ void TC_UniqueArray<ELEMENT>::internalSortArrayUsingFunction (const int32_t inFi
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray<ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void GenericUniqueArray<ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   if (inCompareFunction != nullptr) {
     internalSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
@@ -937,7 +937,7 @@ void TC_UniqueArray<ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::internalReverseSortArrayUsingFunction (const int32_t inFirst,
+void GenericUniqueArray <ELEMENT>::internalReverseSortArrayUsingFunction (const int32_t inFirst,
                                                                       const int32_t inLast,
                                                                       CompareFunction <ELEMENT> inCompareFunction) {
 //--- Reverse sort using 'quick sort' algorithm
@@ -964,7 +964,7 @@ void TC_UniqueArray <ELEMENT>::internalReverseSortArrayUsingFunction (const int3
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void GenericUniqueArray <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   if (inCompareFunction != nullptr) {
     internalReverseSortArrayUsingFunction (0, mCount - 1, inCompareFunction) ;
   }
@@ -975,7 +975,7 @@ void TC_UniqueArray <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <E
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-bool TC_UniqueArray<ELEMENT>::operator == (const TC_UniqueArray <ELEMENT> & inOperand) const {
+bool GenericUniqueArray<ELEMENT>::operator == (const GenericUniqueArray <ELEMENT> & inOperand) const {
   bool areEqual = mCount == inOperand.mCount ;
   for (int32_t i=0 ; (i<mCount) && areEqual ; i++) {
     areEqual = mArray [i] == inOperand.mArray [i] ;
@@ -988,7 +988,7 @@ bool TC_UniqueArray<ELEMENT>::operator == (const TC_UniqueArray <ELEMENT> & inOp
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-bool TC_UniqueArray <ELEMENT>::containsObjectEqualTo (const ELEMENT & inObject) const {
+bool GenericUniqueArray <ELEMENT>::containsObjectEqualTo (const ELEMENT & inObject) const {
   bool hasObject = false ;
   for (int32_t i=0 ; (i<mCount) && ! hasObject ; i++) {
     hasObject += mArray [i] == inObject ;
@@ -999,16 +999,16 @@ bool TC_UniqueArray <ELEMENT>::containsObjectEqualTo (const ELEMENT & inObject) 
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-const ELEMENT * TC_UniqueArray <ELEMENT>::unsafeArrayPointer (void) const {
+const ELEMENT * GenericUniqueArray <ELEMENT>::unsafeArrayPointer (void) const {
   return mArray ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_UniqueArray <ELEMENT> classes
+//   swap function for GenericUniqueArray <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> void swap (TC_UniqueArray <ELEMENT> & ioOperand1,
-                                       TC_UniqueArray <ELEMENT> & ioOperand2) {
+template <typename ELEMENT> void swap (GenericUniqueArray <ELEMENT> & ioOperand1,
+                                       GenericUniqueArray <ELEMENT> & ioOperand2) {
   swap (ioOperand1.mCount, ioOperand2.mCount) ;
   swap (ioOperand1.mCapacity, ioOperand2.mCapacity) ;
   swap (ioOperand1.mArray, ioOperand2.mArray) ;

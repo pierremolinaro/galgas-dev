@@ -156,7 +156,7 @@ GGS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (TC_UniqueArray <String> & %
+static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (GenericUniqueArray <String> & %
 if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
@@ -169,7 +169,7 @@ end
 
 static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const String & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* inIdentifier */% else %inIdentifier% end%,
      %!^%bool & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioFound */% else %ioFound% end%,
-     %!^%TC_UniqueArray <String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
+     %!^%GenericUniqueArray <String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do

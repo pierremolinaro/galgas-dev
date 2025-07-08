@@ -41,11 +41,11 @@
 static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
                                const BinaryDecisionDiagramRelation & inNonterminalSymbolsFollowedByEmpty,
                                const GrammarVocabulary & inVocabulary,
-                               const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
+                               const GenericUniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
                                const BinaryDecisionDiagramRelation & inFIRSTsets,
                                const int32_t inTerminalSymbolsCount,
                                BinaryDecisionDiagramRelation & outFOLLOWsets,
-                               TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
+                               GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFOLLOWarray,
                                int32_t & outIterationsCount) {
   BinaryDecisionDiagramRelation directFollowers (inFIRSTsets.configuration(), false) ;
   directFollowers.addVariable ("last", inFIRSTsets.configuration().typeForVariable(0 COMMA_HERE)) ;
@@ -115,7 +115,7 @@ static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
   outFOLLOWsets = outFOLLOWsets.relationByDeletingLastVariable (HERE) ;
 
 //--- FOLLOW sets, given with an array
-  { TC_UniqueArray <TC_UniqueArray <uint64_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
+  { GenericUniqueArray <GenericUniqueArray <uint64_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray (outFOLLOWarray COMMA_HERE) ;
@@ -124,7 +124,7 @@ static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
 //--------------------------------------------------------------------------------------------------
 
 static void
-printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
+printFOLLOWsets (const GenericUniqueArray <GenericUniqueArray <uint64_t> > & inFOLLOWarray,
                  const GrammarVocabulary & inVocabulary,
                  HTMLString & inHTMLfile,
                  const uint64_t inValuesCount,
@@ -220,7 +220,7 @@ checkFOLLOWsets (HTMLString & ioHTMLFileContents,
       ioHTMLFileContents.appendCString (" an empty FOLLOW :\n") ;
       ioHTMLFileContents.addRawData ("</span></p>") ;
 
-      TC_UniqueArray <uint64_t> array ;
+      GenericUniqueArray <uint64_t> array ;
       ntErreurSuivants.getValueArray (array) ;
       ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
       for (int32_t i=0 ; i < array.count () ; i++) {
@@ -243,12 +243,12 @@ void FOLLOW_computations (const PureBNFproductionsList & inPureBNFproductions,
                           HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
                           const GrammarVocabulary & inVocabulary,
-                          const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                          const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                           const BinaryDecisionDiagramRelation & inUsefulSymbols,
                           const BinaryDecisionDiagramRelation & inFIRSTsets,
                           const BinaryDecisionDiagramRelation & inNonterminalSymbolsFollowedByEmpty,
                           BinaryDecisionDiagramRelation & outFOLLOWsets,
-                          TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
+                          GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFOLLOWarray,
                           bool & outOk,
                           const bool inVerboseOptionOn) {
 //--- Console display

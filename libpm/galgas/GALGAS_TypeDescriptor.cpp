@@ -51,7 +51,7 @@ mSuperclassDescriptor (inSuperClassDescriptor) {
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_TypeDescriptor::recursiveGetSortedTypeList (GALGAS_TypeDescriptor * inRoot,
-                                                        TC_UniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) {
+                                                        GenericUniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) {
   if (nullptr != inRoot) {
     recursiveGetSortedTypeList (inRoot->mPreviousType, ioTypeList) ;
     ioTypeList.appendObject (inRoot) ;
@@ -61,7 +61,7 @@ void GALGAS_TypeDescriptor::recursiveGetSortedTypeList (GALGAS_TypeDescriptor * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_TypeDescriptor::typeListRoot (TC_UniqueArray <GALGAS_TypeDescriptor *> & outTypeList) {
+void GALGAS_TypeDescriptor::typeListRoot (GenericUniqueArray <GALGAS_TypeDescriptor *> & outTypeList) {
   recursiveGetSortedTypeList (gGalgasTypeListRoot, outTypeList) ;
 }
 

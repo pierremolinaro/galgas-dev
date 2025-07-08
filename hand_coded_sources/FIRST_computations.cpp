@@ -36,7 +36,7 @@
 
 static BinaryDecisionDiagramRelation
 computeFIRSTsets (const PureBNFproductionsList & inProductionRules,
-                  const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
+                  const GenericUniqueArray <bool> & inVocabularyDerivingInEmptyString,
                   const int32_t inTerminalSymbolsCount,
                   const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                   int32_t & outIterationsCount) {
@@ -83,7 +83,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const GrammarVocabulary & inVocabulary,
                           const BinaryDecisionDiagramRelation & inUsefulSymbols,
                           const BinaryDecisionDiagramRelation & inFIRSTsets,
-                          TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
+                          GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
                           const bool inVerboseOptionOn) {
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
@@ -160,7 +160,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
       ioHTMLFileContents.appendCString (" nonterminal symbol") ;
       ioHTMLFileContents.appendString ((ntInErrorCount>1) ? " has" : "s have") ;
       ioHTMLFileContents.appendCString (" an empty FIRST :") ;
-      TC_UniqueArray <uint64_t> errorArray_relation ;
+      GenericUniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
       ioHTMLFileContents.addRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
@@ -191,10 +191,10 @@ FIRST_computations (const PureBNFproductionsList & inPureBNFproductions,
                     HTMLString & ioHTMLFileContents,
                     const bool inPopulateHTMLHelperString,
                     const GrammarVocabulary & inVocabulary,
-                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                    const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const BinaryDecisionDiagramRelation & inVocabularyDerivingToEmpty,
                     const BinaryDecisionDiagramRelation & inUsefulSymbols,
-                    TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
+                    GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFIRSTarray,
                     BinaryDecisionDiagramRelation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) {

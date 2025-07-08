@@ -77,7 +77,7 @@ static bool
 check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
                      const BinaryDecisionDiagramRelation & inFIRSTsets,
                      const BinaryDecisionDiagramRelation & inFOLLOWsets,
-                     const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
+                     const GenericUniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const GrammarVocabulary & inVocabulary,
                      HTMLString & ioHTMLFileContents,
                      const bool inPopulateHTMLHelperString,
@@ -138,7 +138,7 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
             }
           }
           if (inPopulateHTMLHelperString) {
-            TC_UniqueArray <uint64_t> array ;
+            GenericUniqueArray <uint64_t> array ;
             p.derivationFirst ().getValueArray (array) ;
             for (int32_t k=0 ; k < array.count () ; k++) {
               const uint64_t symbol = array (k COMMA_HERE) ;
@@ -327,10 +327,10 @@ printProductions (const PureBNFproductionsList & inPureBNFproductions,
                   const int32_t inNonterminalIndex,
                   int16_t & ioProductionIndex,
                   bool & ioFirst,
-                  TC_UniqueArray <int16_t> & ioProductionRulesIndex,
-                  TC_UniqueArray <String> & ioProductionRulesTitle,
-                  TC_UniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
-                  TC_UniqueArray <int16_t> & ioFirstProductionRuleIndex,
+                  GenericUniqueArray <int16_t> & ioProductionRulesIndex,
+                  GenericUniqueArray <String> & ioProductionRulesTitle,
+                  GenericUniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
+                  GenericUniqueArray <int16_t> & ioFirstProductionRuleIndex,
                   AbstractOutputStream & inCppFile) {
   ioFirstProductionRuleIndex.appendObject ((int16_t) ioProductionRulesIndex.count ()) ;
   const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
@@ -396,7 +396,7 @@ printDecisionTable (const PureBNFproductionsList & inPureBNFproductions,
                     const String & inLexiqueName,
                     const int32_t inNonterminalIndex,
                     int16_t & ioDecisionTableIndex,
-                    TC_UniqueArray <int16_t> & ioProductionDecisionTableIndex,
+                    GenericUniqueArray <int16_t> & ioProductionDecisionTableIndex,
                     AbstractOutputStream & inCppFile) {
   ioProductionDecisionTableIndex.appendObject (ioDecisionTableIndex) ;
   inCppFile.appendCString ("// At index ") ;
@@ -415,7 +415,7 @@ printDecisionTable (const PureBNFproductionsList & inPureBNFproductions,
       inCppFile.appendCString ("\n") ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         GrammarProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
-        TC_UniqueArray <uint64_t> array ;
+        GenericUniqueArray <uint64_t> array ;
         p.derivationFirst ().getValueArray (array) ;
         for (int32_t i=0 ; i < array.count () ; i++) {
           const uint64_t symbol = array (i COMMA_HERE) ;
@@ -461,10 +461,10 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
 
 //--- Generate LL(1) tables
   const int32_t productionsCount = inPureBNFproductions.mProductionArray.count () ;
-  TC_UniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
-  TC_UniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
-  TC_UniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
-  TC_UniqueArray <String> productionRulesTitle (500 COMMA_HERE) ;
+  GenericUniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
+  GenericUniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
+  GenericUniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
+  GenericUniqueArray <String> productionRulesTitle (500 COMMA_HERE) ;
 
   ioCppFileContents.appendCppTitleComment ("LL(1) PRODUCTION RULES") ;
   ioCppFileContents.appendCString ("static const int32_t gProductions_") ;
@@ -551,7 +551,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
   ioCppFileContents.appendCString ("0} ;\n\n") ;
 
 //--- Generate decision tables
-  TC_UniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
+  GenericUniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   ioCppFileContents.appendCString ("static const int32_t gDecision_") ;
   ioCppFileContents.appendString (inTargetFileName) ;
@@ -881,7 +881,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                              "        message.appendString (filePath) ;\n"
                              "        message.appendString (\"' file exists, but cannot be read\") ;\n"
                              "        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
+                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;\n"
                              "      }\n"
                              "      macroDetachSharedObject (scanner) ;\n"
                              "    }else{\n"
@@ -890,7 +890,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                              "      message.appendString (filePath) ;\n"
                              "      message.appendString (\"' file does not exist\") ;\n"
                              "      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
+                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;
@@ -1022,7 +1022,7 @@ LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const GrammarVocabulary & inVocabulary,
-                  const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                  const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const BinaryDecisionDiagramRelation & inFIRSTsets,
                   const BinaryDecisionDiagramRelation & inFOLLOWsets,
                   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,

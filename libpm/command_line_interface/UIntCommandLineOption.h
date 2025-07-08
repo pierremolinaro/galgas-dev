@@ -57,7 +57,7 @@ class UIntCommandLineOption final : public AbstractCommandLineOption {
   public: static void printUIntOptions (void) ;
 
 //--- Option introspection
-  public: static void getUIntOptionNameList (TC_UniqueArray <String> & outArray) ;
+  public: static void getUIntOptionNameList (GenericUniqueArray <String> & outArray) ;
 
   public: static utf32 getUIntOptionInvocationLetter (const String & inDomainName,
                                                       const String & inIdentifier) ;

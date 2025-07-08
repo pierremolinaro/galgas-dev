@@ -120,7 +120,7 @@ void BoolCommandLineOption::printBoolOptions (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void BoolCommandLineOption::getBoolOptionNameList (TC_UniqueArray <String> & outArray) {
+void BoolCommandLineOption::getBoolOptionNameList (GenericUniqueArray <String> & outArray) {
   BoolCommandLineOption * p = gFirstBoolCommand ;
   while (p != nullptr) {
     if (p->mVisibleInGalgas) {

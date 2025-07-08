@@ -31,7 +31,7 @@
 
 void analyzeCommandLineOptions (const int argv,
                                 const char* * argc,
-                                TC_UniqueArray <String> & outSourceFileArray,
+                                GenericUniqueArray <String> & outSourceFileArray,
                                 const char* * inExtensions,
                                 const char* * inHelpMessages,
                                 void print_tool_help_message (void)) ;

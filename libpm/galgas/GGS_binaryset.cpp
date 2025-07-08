@@ -415,7 +415,7 @@ void GGS_binaryset::description (String & ioString,
     }else if (mBDD.isTrue ()){
       ioString.appendCString ("true") ;
     }else{
-      TC_UniqueArray <String> stringArray ;
+      GenericUniqueArray <String> stringArray ;
       mBDD.buildCompressedBigEndianStringValueArray (stringArray COMMA_HERE) ;
       for (int32_t i=0 ; i<stringArray.count () ; i++) {
         if (i != 0) {
@@ -602,7 +602,7 @@ GGS_bigint GGS_binaryset::getter_bigValueCount (const GGS_uint & inVariableCount
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ GGS_binaryset::getter_compressedValueCount (UNUSED_LOCATION_ARGS) const {
-  TC_UniqueArray <String> valuesArray ;
+  GenericUniqueArray <String> valuesArray ;
   mBDD.buildCompressedLittleEndianStringValueArray (valuesArray COMMA_HERE) ;
   return GGS_uint_36__34_ ((uint32_t) valuesArray.count ()) ;
 }
@@ -613,7 +613,7 @@ GGS_uint_36__34_list GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint
                                                                         COMMA_LOCATION_ARGS) const {
   GGS_uint_36__34_list result ;
   if (isValid () && inVariableCount.isValid ()) {
-    TC_UniqueArray <uint64_t> valuesArray ;
+    GenericUniqueArray <uint64_t> valuesArray ;
     mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
     result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
@@ -632,7 +632,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueListWithNameList (const GGS_uint
                                                                         COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid () && inVariableCount.isValid () && inStringList.isValid ()) {
-    TC_UniqueArray <uint64_t> valuesArray ;
+    GenericUniqueArray <uint64_t> valuesArray ;
     mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
     result = GGS_stringlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
@@ -662,7 +662,7 @@ GGS_stringlist GGS_binaryset::getter_compressedStringValueList (const GGS_uint &
       message.appendCString ("); it should be greater or equal") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      TC_UniqueArray <String> valuesArray ;
+      GenericUniqueArray <String> valuesArray ;
       mBDD.buildCompressedBigEndianStringValueArray (valuesArray, variableCount COMMA_THERE) ;
       result = GGS_stringlist::class_func_emptyList (THERE) ;
       for (int32_t i=0 ; i<valuesArray.count () ; i++) {
@@ -680,7 +680,7 @@ GGS_stringlist GGS_binaryset::getter_stringValueList (const GGS_uint & inVariabl
                                                             COMMA_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid () && inVariableCount.isValid ()) {
-    TC_UniqueArray <String> valuesArray ;
+    GenericUniqueArray <String> valuesArray ;
     mBDD.buildBigEndianStringValueArray (valuesArray, inVariableCount.uintValue ()) ;
     result = GGS_stringlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
@@ -748,8 +748,8 @@ GGS_string GGS_binaryset::getter_print (const GGS_stringlist & inVariableList,
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
-    TC_UniqueArray <String> variablesNames ;
-    TC_UniqueArray <int32_t> bitCounts ;
+    GenericUniqueArray <String> variablesNames ;
+    GenericUniqueArray <int32_t> bitCounts ;
     UpEnumerator_stringlist variableEnumerator (inVariableList) ;
     UpEnumerator_uintlist bddCountEnumerator (inBDDCount) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
@@ -805,7 +805,7 @@ GGS_string GGS_binaryset::getter_graphviz (const GGS_stringlist & inBitNameList
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inBitNameList.isValid ()) {
-    TC_UniqueArray <String> bitNameArray ;
+    GenericUniqueArray <String> bitNameArray ;
     UpEnumerator_stringlist variableEnumerator (inBitNameList) ;
     while (variableEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;

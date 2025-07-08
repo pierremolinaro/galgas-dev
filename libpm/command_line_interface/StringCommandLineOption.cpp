@@ -169,7 +169,7 @@ PrologueEpilogue gReleaseString (nullptr, StringCommandLineOption::releaseString
 
 //--------------------------------------------------------------------------------------------------
 
-void StringCommandLineOption::getStringOptionNameList (TC_UniqueArray <String> & outArray) {
+void StringCommandLineOption::getStringOptionNameList (GenericUniqueArray <String> & outArray) {
   StringCommandLineOption * p = gFirstStringOption ;
   while (p != nullptr) {
     outArray.appendObject (p->mDomainName) ;

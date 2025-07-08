@@ -167,7 +167,7 @@ void GrammarVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
 //--------------------------------------------------------------------------------------------------
 
 BinaryDecisionDiagramRelationSingleType GrammarVocabulary::getVocabularyBDDType (void) const {
-  TC_UniqueArray <String> constantNameArray ;
+  GenericUniqueArray <String> constantNameArray ;
   for (int32_t i=0 ; i<mTerminalSymbolsCount ; i++) {
     constantNameArray.appendObject (String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
   }

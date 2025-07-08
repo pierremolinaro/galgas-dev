@@ -40,8 +40,8 @@ class StringListCommandLineOption final : public AbstractCommandLineOption {
 
 //--- Attributes
   private: StringListCommandLineOption * mNext ;
-  public: TC_Array <String> mValue ;
-  public: inline TC_Array <String> readProperty_value (void) const { return mValue ; }
+  public: GenericArray <String> mValue ;
+  public: inline GenericArray <String> readProperty_value (void) const { return mValue ; }
 
 //--- Static methods
   public: static void setStringListOptionForCommandChar (const String & inCommandCommandLineOptionString,
@@ -57,7 +57,7 @@ class StringListCommandLineOption final : public AbstractCommandLineOption {
   public: static void releaseStrings (void) ; // Called at the end of main routine
 
 //--- Option introspection
-  public: static void getStringOptionNameList (TC_UniqueArray <String> & outArray) ;
+  public: static void getStringOptionNameList (GenericUniqueArray <String> & outArray) ;
 
   public: static utf32 getStringOptionInvocationLetter (const String & inDomainName,
                                                        const String & inIdentifier) ;

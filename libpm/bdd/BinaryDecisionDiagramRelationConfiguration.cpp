@@ -72,9 +72,9 @@ class PrivateVariablesInRelationConfiguration : public SharedObject {
   #endif
 
 //--- Attributes
-  private: TC_UniqueArray <uint32_t> mBDDStartIndexArray ;
-  private: TC_UniqueArray <String> mVariableNameArray ;
-  private: TC_UniqueArray <BinaryDecisionDiagramRelationSingleType> mVariableTypeArray ;
+  private: GenericUniqueArray <uint32_t> mBDDStartIndexArray ;
+  private: GenericUniqueArray <String> mVariableNameArray ;
+  private: GenericUniqueArray <BinaryDecisionDiagramRelationSingleType> mVariableTypeArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

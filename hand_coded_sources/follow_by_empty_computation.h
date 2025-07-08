@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,7 +44,7 @@ follow_by_empty_computations (const PureBNFproductionsList & inPureBNFproduction
                               HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
                               const GrammarVocabulary & inVocabulary,
-                              const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                              const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) ;
 

@@ -53,7 +53,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const PureBNFproductionsList & i
 static void
 printNonterminalSymbolsHavingEmptyDerivation (const BinaryDecisionDiagramRelation & inNonterminalSymbolsHavingEmptyDerivation,
                                               HTMLString & inHTMLfile) {
-  TC_UniqueArray <uint64_t> valueArray ;
+  GenericUniqueArray <uint64_t> valueArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getValueArray (valueArray) ;
   const int32_t n = valueArray.count () ;
   inHTMLfile.addRawData ("<p><a name=\"empty_strings\"></a>") ;
@@ -84,16 +84,16 @@ printNonterminalSymbolsHavingEmptyDerivation (const BinaryDecisionDiagramRelatio
 static BinaryDecisionDiagramRelation
 computeNonterminalDerivingInEmptyString (const PureBNFproductionsList & inProductionRules,
                                          const BinaryDecisionDiagramRelation & inNonTerminalHavingEmptyDerivation,
-                                         TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide,
+                                         GenericUniqueArray <bool> & outVocabulaireSeDerivantEnVide,
                                          const uint32_t inAllSymbolsCount,
                                          int32_t & outIterationsCount) {
   const int32_t productionCount = inProductionRules.mProductionArray.count () ;
 
-  { TC_UniqueArray <bool> tempo ((int32_t) inAllSymbolsCount, false COMMA_HERE) ;
+  { GenericUniqueArray <bool> tempo ((int32_t) inAllSymbolsCount, false COMMA_HERE) ;
     swap (tempo, outVocabulaireSeDerivantEnVide) ;
   }
 
-  TC_UniqueArray <bool> productionTraitee (productionCount, false COMMA_HERE) ;
+  GenericUniqueArray <bool> productionTraitee (productionCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
   bool onProgresse = true ;
@@ -155,7 +155,7 @@ printNonterminalDerivingInEmptyString (const BinaryDecisionDiagramRelation & inV
       ioHTMLFileContents.appendUnsigned (n) ;
       ioHTMLFileContents.appendCString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
       ioHTMLFileContents.addRawData ("</p>") ;
-      TC_UniqueArray <uint64_t> nonTerminalArray ;
+      GenericUniqueArray <uint64_t> nonTerminalArray ;
       newNonterminal.getValueArray (nonTerminalArray) ;
       int32_t index = 0 ;
       ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
@@ -185,7 +185,7 @@ BinaryDecisionDiagramRelation
 empty_strings_computations (const PureBNFproductionsList & inPureBNFproductions,
                             HTMLString & ioHTMLFileContents,
                             const bool inPopulateHTMLstring,
-                            TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
+                            GenericUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) {
 //--- Console display

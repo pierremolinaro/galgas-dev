@@ -44,7 +44,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
                                              const int32_t inOriginalGrammarSymbolCount,
-                                             TC_UniqueArray <int32_t> & ioInstructionsList) const = 0 ;
+                                             GenericUniqueArray <int32_t> & ioInstructionsList) const = 0 ;
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                         const int32_t inOriginalGrammarSymbolCount,

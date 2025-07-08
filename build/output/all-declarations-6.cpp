@@ -911,12 +911,12 @@ int32_t GGS_scopeLocalVarMap::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>>
 GGS_scopeLocalVarMap::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> () ;
   }
 }
 
@@ -935,7 +935,7 @@ GGS_stringset GGS_scopeLocalVarMap::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_scopeLocalVarMap::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -1020,7 +1020,7 @@ void GGS_scopeLocalVarMap::method_searchKey (GGS_lstring inLKey,
     const String key = inLKey.mProperty_string.stringValue () ;
     info = infoForKey (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       const char * kSearchErrorMessage = "there is no '%K' local variable" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
@@ -1057,7 +1057,7 @@ void GGS_scopeLocalVarMap::setter_removeKey (GGS_lstring inLKey,
     mSharedRoot.insulate (THERE) ;
     info = mSharedRoot->removeAndReturnRemovedInfo (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kRemoveErrorMessage COMMA_THERE) ;
     }
@@ -1278,7 +1278,7 @@ void GGS_scopeLocalVarMap::setter_setMStateForKey (GGS_localVarValuation inValue
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_scopeLocalVarMap_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> & inArray,
+static void GGS_scopeLocalVarMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -1327,7 +1327,7 @@ void GGS_scopeLocalVarMap::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_scopeLocalVarMap_2E_element>> array = sortedInfoArray () ;
     GGS_scopeLocalVarMap_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_scopeLocalVarMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -2960,7 +2960,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const GGS_currentVarMana
   if (GalgasBool::boolTrue == test_4) {
     test_4 = var_fullyInitialized_18718.operator_not (SOURCE_FILE ("variable-manager.galgas", 429)).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
+      GenericArray <FixItDescription> fixItArray5 ;
       inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("invalid call, self is not fully initialized"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 430)) ;
     }
   }
@@ -3026,7 +3026,7 @@ void extensionSetter_neutralAccess (GGS_localVarMapListForLLVM & ioObject,
     const GGS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 479)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 480)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 480)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 480)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -3104,12 +3104,12 @@ void extensionSetter_searchForDropAccess (GGS_currentVarManager & ioObject,
     if (GalgasBool::boolTrue == test_4) {
       test_4 = var_found_22764.boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
-        TC_Array <FixItDescription> fixItArray5 ;
+        GenericArray <FixItDescription> fixItArray5 ;
         inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 520)).add_operation (GGS_string ("' is not declared in current scope, but in an overrided scope"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 520)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 520)) ;
       }
     }
     if (GalgasBool::boolFalse == test_4) {
-      TC_Array <FixItDescription> fixItArray6 ;
+      GenericArray <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 522)).add_operation (GGS_string ("' is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 522)), fixItArray6  COMMA_SOURCE_FILE ("variable-manager.galgas", 522)) ;
     }
   }
@@ -3188,7 +3188,7 @@ void extensionSetter_writeAccessInSubMap (GGS_localVarMapListForLLVM & ioObject,
     const GGS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 577)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 578)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 578)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 578)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -3266,7 +3266,7 @@ void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_1) {
         test_1 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 616)) COMMA_SOURCE_FILE ("variable-manager.galgas", 616)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
-          TC_Array <FixItDescription> fixItArray2 ;
+          GenericArray <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 617)) ;
         }
       }
@@ -3274,7 +3274,7 @@ void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_3) {
         test_3 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 619)) COMMA_SOURCE_FILE ("variable-manager.galgas", 619)).boolEnum () ;
         if (GalgasBool::boolTrue == test_3) {
-          TC_Array <FixItDescription> fixItArray4 ;
+          GenericArray <FixItDescription> fixItArray4 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 620)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 620)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 620)) ;
           ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 621)) ;
         }
@@ -3288,7 +3288,7 @@ void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
           }
           test_5 = test_6.boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
-            TC_Array <FixItDescription> fixItArray7 ;
+            GenericArray <FixItDescription> fixItArray7 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 623)).add_operation (GGS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 623)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 623)) ;
           }
         }
@@ -3304,7 +3304,7 @@ void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_8) {
         test_8 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 628)) COMMA_SOURCE_FILE ("variable-manager.galgas", 628)).boolEnum () ;
         if (GalgasBool::boolTrue == test_8) {
-          TC_Array <FixItDescription> fixItArray9 ;
+          GenericArray <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 629)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 629)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 629)) ;
           ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 630)) ;
         }
@@ -3392,7 +3392,7 @@ void extensionSetter_readAccess (GGS_localVarMapListForLLVM & ioObject,
     const GGS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 677)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 678)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 678)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 678)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -3460,7 +3460,7 @@ void extensionSetter_readTransition (GGS_localVarValuation & ioObject,
     {
       GGS_bool extractedValue_31456__0 ;
       temp_0.getAssociatedValuesFor_declared (extractedValue_31456__0) ;
-      TC_Array <FixItDescription> fixItArray1 ;
+      GenericArray <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 705)).add_operation (GGS_string ("' used before being initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 705)), fixItArray1  COMMA_SOURCE_FILE ("variable-manager.galgas", 705)) ;
       ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 706)) ;
     }
@@ -3472,7 +3472,7 @@ void extensionSetter_readTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_2) {
         test_2 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 709)) COMMA_SOURCE_FILE ("variable-manager.galgas", 709)).boolEnum () ;
         if (GalgasBool::boolTrue == test_2) {
-          TC_Array <FixItDescription> fixItArray3 ;
+          GenericArray <FixItDescription> fixItArray3 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 710)) ;
         }
       }
@@ -3484,7 +3484,7 @@ void extensionSetter_readTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_4) {
         test_4 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 713)) COMMA_SOURCE_FILE ("variable-manager.galgas", 713)).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          TC_Array <FixItDescription> fixItArray5 ;
+          GenericArray <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 714)) ;
         }
       }
@@ -3496,7 +3496,7 @@ void extensionSetter_readTransition (GGS_localVarValuation & ioObject,
       if (GalgasBool::boolTrue == test_6) {
         test_6 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 717)) COMMA_SOURCE_FILE ("variable-manager.galgas", 717)).boolEnum () ;
         if (GalgasBool::boolTrue == test_6) {
-          TC_Array <FixItDescription> fixItArray7 ;
+          GenericArray <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 718)) ;
         }
       }
@@ -3578,7 +3578,7 @@ void extensionSetter_readWriteAccess (GGS_localVarMapListForLLVM & ioObject,
     const GGS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 768)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 769)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 769)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 769)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -3680,7 +3680,7 @@ void extensionSetter_closeScope (GGS_currentVarManager & ioObject,
     const GGS_currentVarManager temp_2 = ioObject ;
     test_1 = GGS_bool (ComparisonKind::equal, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 818)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray3 ;
+      GenericArray <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 819)) ;
     }
   }
@@ -3743,7 +3743,7 @@ void extensionMethod_checkFinalState (const GGS_localVarValuation inObject,
       if (GalgasBool::boolTrue == test_1) {
         test_1 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 854)) COMMA_SOURCE_FILE ("variable-manager.galgas", 854)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
-          TC_Array <FixItDescription> fixItArray2 ;
+          GenericArray <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 855)).add_operation (GGS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 855)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 855)) ;
         }
       }
@@ -3752,12 +3752,12 @@ void extensionMethod_checkFinalState (const GGS_localVarValuation inObject,
         if (GalgasBool::boolTrue == test_3) {
           test_3 = extractedValue_38215_usedInOtherBlock_0.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            TC_Array <FixItDescription> fixItArray4 ;
+            GenericArray <FixItDescription> fixItArray4 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 857)).add_operation (GGS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 857)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 857)) ;
           }
         }
         if (GalgasBool::boolFalse == test_3) {
-          TC_Array <FixItDescription> fixItArray5 ;
+          GenericArray <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 859)).add_operation (GGS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 859)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 859)) ;
         }
       }
@@ -3769,7 +3769,7 @@ void extensionMethod_checkFinalState (const GGS_localVarValuation inObject,
       if (GalgasBool::boolTrue == test_6) {
         test_6 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 862)) COMMA_SOURCE_FILE ("variable-manager.galgas", 862)).boolEnum () ;
         if (GalgasBool::boolTrue == test_6) {
-          TC_Array <FixItDescription> fixItArray7 ;
+          GenericArray <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 863)).add_operation (GGS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 863)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 863)) ;
         }
       }
@@ -3778,7 +3778,7 @@ void extensionMethod_checkFinalState (const GGS_localVarValuation inObject,
         if (GalgasBool::boolTrue == test_8) {
           test_8 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 864)) COMMA_SOURCE_FILE ("variable-manager.galgas", 864)).operator_not (SOURCE_FILE ("variable-manager.galgas", 864)).boolEnum () ;
           if (GalgasBool::boolTrue == test_8) {
-            TC_Array <FixItDescription> fixItArray9 ;
+            GenericArray <FixItDescription> fixItArray9 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 865)).add_operation (GGS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 865)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 865)) ;
           }
         }
@@ -3791,7 +3791,7 @@ void extensionMethod_checkFinalState (const GGS_localVarValuation inObject,
       if (GalgasBool::boolTrue == test_10) {
         test_10 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 868)) COMMA_SOURCE_FILE ("variable-manager.galgas", 868)).operator_not (SOURCE_FILE ("variable-manager.galgas", 868)).boolEnum () ;
         if (GalgasBool::boolTrue == test_10) {
-          TC_Array <FixItDescription> fixItArray11 ;
+          GenericArray <FixItDescription> fixItArray11 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 869)).add_operation (GGS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 869)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 869)) ;
         }
       }
@@ -4087,7 +4087,7 @@ void extensionSetter_combineManagerWith (GGS_currentVarManager & ioObject,
   if (GalgasBool::boolTrue == test_4) {
     test_4 = GGS_bool (ComparisonKind::notEqual, var_s_43088.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
+      GenericArray <FixItDescription> fixItArray5 ;
       inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("convergence error:").add_operation (var_s_43088, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 998)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 998)) ;
     }
   }
@@ -4287,12 +4287,12 @@ int32_t GGS_unifiedTypeMap::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>>
 GGS_unifiedTypeMap::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> () ;
   }
 }
 
@@ -4311,7 +4311,7 @@ GGS_stringset GGS_unifiedTypeMap::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_unifiedTypeMap::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -4415,7 +4415,7 @@ void GGS_unifiedTypeMap::setter_setMElementForKey (GGS_unifiedTypeMapElementClas
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_unifiedTypeMap_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> & inArray,
+static void GGS_unifiedTypeMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -4448,7 +4448,7 @@ void GGS_unifiedTypeMap::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> array = sortedInfoArray () ;
     GGS_unifiedTypeMap_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -4679,7 +4679,7 @@ GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTy
       }
     }
     if (GalgasBool::boolFalse == test_1) {
-      TC_Array <FixItDescription> fixItArray3 ;
+      GenericArray <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
       result_result.drop () ; // Release error dropped variable
     }
@@ -4756,7 +4756,7 @@ void extensionSetter_insertType (GGS_unifiedTypeMap & ioObject,
         {
           GGS_unifiedTypeDefinition extractedValue_4089__0 ;
           var_node_4000.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4089__0) ;
-          TC_Array <FixItDescription> fixItArray2 ;
+          GenericArray <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GGS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 101)) ;
         }
         break ;
@@ -4807,7 +4807,7 @@ GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeM
         break ;
       case GGS_typeDefinition::Enumeration::enum_unsolved:
         {
-          TC_Array <FixItDescription> fixItArray2 ;
+          GenericArray <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 120)) ;
           result_result.drop () ; // Release error dropped variable
         }
@@ -4816,7 +4816,7 @@ GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeM
     }
   }
   if (GalgasBool::boolFalse == test_0) {
-    TC_Array <FixItDescription> fixItArray3 ;
+    GenericArray <FixItDescription> fixItArray3 ;
     inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)) ;
     result_result.drop () ; // Release error dropped variable
   }
@@ -5103,7 +5103,7 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
     break ;
   case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
     {
-      TC_Array <FixItDescription> fixItArray1 ;
+      GenericArray <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 197)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 197)) ;
       result_result.drop () ; // Release error dropped variable
     }
@@ -5124,7 +5124,7 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
             break ;
           case GGS_typeDefinition::Enumeration::enum_unsolved:
             {
-              TC_Array <FixItDescription> fixItArray3 ;
+              GenericArray <FixItDescription> fixItArray3 ;
               inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 202)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 202)) ;
               result_result.drop () ; // Release error dropped variable
             }
@@ -5140,7 +5140,7 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
         }
       }
       if (GalgasBool::boolFalse == test_2) {
-        TC_Array <FixItDescription> fixItArray4 ;
+        GenericArray <FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 207)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)) ;
         result_result.drop () ; // Release error dropped variable
       }

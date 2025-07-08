@@ -855,9 +855,9 @@ String FileManager::absolutePathFromPath (const String & inPath,
 
 String FileManager::relativePathFromPath (const String & inPath,
                                           const String & inFromPath) {
-  TC_UniqueArray <String> absoluteReferencePathComponents ;
+  GenericUniqueArray <String> absoluteReferencePathComponents ;
   absolutePathFromCurrentDirectory (inFromPath.standardizedPath ()).componentsSeparatedByString("/", absoluteReferencePathComponents) ;
-  TC_UniqueArray <String> absoluteReceiverPathComponents ;
+  GenericUniqueArray <String> absoluteReceiverPathComponents ;
   absolutePathFromCurrentDirectory (inPath.standardizedPath ()).componentsSeparatedByString("/", absoluteReceiverPathComponents) ;
   String result ;
   int32_t idx = 0 ;
@@ -987,7 +987,7 @@ String FileManager::deleteFile (const String & inFilePath) {
 static String recursiveSearchInDirectory (const String & inStartSearchPath,
                                             const String & inFileName,
                                             const int32_t inDirectoriesToExcludeCount,
-                                            const TC_UniqueArray <String> & inDirectoriesToExclude) {
+                                            const GenericUniqueArray <String> & inDirectoriesToExclude) {
   String result ;
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
@@ -1031,7 +1031,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
 
 String FileManager::findFileInDirectory (const String & inDirectoryPath,
                                              const String & inFileName,
-                                             const TC_UniqueArray <String> & inDirectoriesToExclude) {
+                                             const GenericUniqueArray <String> & inDirectoriesToExclude) {
   const int32_t directoriesToExcludeCount = inDirectoriesToExclude.count () ;
   return recursiveSearchInDirectory (inDirectoryPath, inFileName, directoriesToExcludeCount, inDirectoriesToExclude) ;
 }
@@ -1046,7 +1046,7 @@ String FileManager::findFileInDirectory (const String & inDirectoryPath,
 
 static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
                                               const String & inExtension,
-                                              TC_UniqueArray <String> & outFoundFilePathes) {
+                                              GenericUniqueArray <String> & outFoundFilePathes) {
 //--- Iterate throught directory
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
@@ -1073,7 +1073,7 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
 
 void FileManager::findAllFilesInDirectoryFromExtension (const String & inDirectoryPath,
                                                           const String & inExtension,
-                                                          TC_UniqueArray <String> & outFoundFilePathes) {
+                                                          GenericUniqueArray <String> & outFoundFilePathes) {
   if (directoryExists (inDirectoryPath)) {
     recursiveFindAllFilesInDirectory (inDirectoryPath, inExtension, outFoundFilePathes) ;
   }

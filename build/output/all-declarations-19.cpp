@@ -908,7 +908,7 @@ GGS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Co
     break ;
   case GGS_typeDefinition::Enumeration::enum_unsolved:
     {
-      TC_Array <FixItDescription> fixItArray1 ;
+      GenericArray <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 167)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 167)) ;
       result_result.drop () ; // Release error dropped variable
     }
@@ -980,7 +980,7 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
       }else if (GalgasBool::boolFalse == test_7) {
         temp_6 = GGS_string::makeEmptyString () ;
       }
-      TC_Array <FixItDescription> fixItArray8 ;
+      GenericArray <FixItDescription> fixItArray8 ;
       inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GGS_string (" formal argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (GGS_string (" but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (temp_4.getter_count (SOURCE_FILE ("actual-parameters.galgas", 43)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 42)).add_operation (GGS_string (" argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 43)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 43)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 39)) ;
       outArgument_outActualParameterListForGeneration.drop () ; // Release error dropped variable
     }
@@ -6773,7 +6773,7 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
         if (GalgasBool::boolTrue == test_5) {
           test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4387.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
-            TC_Array <FixItDescription> fixItArray6 ;
+            GenericArray <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas", 121)) ;
             outArgument_outRoutineSignature.drop () ; // Release error dropped variable
             outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
@@ -6787,7 +6787,7 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
             var_s_5438.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5535.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
             enumerator_5535.gotoNextObject () ;
           }
-          TC_Array <FixItDescription> fixItArray7 ;
+          GenericArray <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5438, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
@@ -6797,7 +6797,7 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
     }
   }
   if (GalgasBool::boolFalse == test_0) {
-    TC_Array <FixItDescription> fixItArray8 ;
+    GenericArray <FixItDescription> fixItArray8 ;
     inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the '").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 135)).add_operation (GGS_string ("' routine is not declared"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 135)), fixItArray8  COMMA_SOURCE_FILE ("routineMap.galgas", 134)) ;
     outArgument_outRoutineSignature.drop () ; // Release error dropped variable
     outArgument_outIsFilePrivate.drop () ; // Release error dropped variable

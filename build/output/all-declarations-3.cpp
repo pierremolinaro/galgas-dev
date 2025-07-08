@@ -6192,12 +6192,12 @@ int32_t GGS_commandLineOptionMap::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>>
 GGS_commandLineOptionMap::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> () ;
   }
 }
 
@@ -6216,7 +6216,7 @@ GGS_stringset GGS_commandLineOptionMap::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_commandLineOptionMap::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -6298,7 +6298,7 @@ void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inLKey,
     const String key = inLKey.mProperty_string.stringValue () ;
     info = infoForKey (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       const char * kSearchErrorMessage = "the '%K' command line option is not declared" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
@@ -6478,7 +6478,7 @@ void GGS_commandLineOptionMap::setter_setMDefaultValueForKey (GGS_string inValue
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_commandLineOptionMap_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> & inArray,
+static void GGS_commandLineOptionMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -6523,7 +6523,7 @@ void GGS_commandLineOptionMap::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_commandLineOptionMap_2E_element>> array = sortedInfoArray () ;
     GGS_commandLineOptionMap_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_commandLineOptionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -11235,12 +11235,12 @@ int32_t GGS_extensionMap::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>>
 GGS_extensionMap::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> () ;
   }
 }
 
@@ -11259,7 +11259,7 @@ GGS_stringset GGS_extensionMap::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionMap::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -11405,7 +11405,7 @@ void GGS_extensionMap::setter_setMIndexForKey (GGS_uint inValue,
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_extensionMap_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> & inArray,
+static void GGS_extensionMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -11442,7 +11442,7 @@ void GGS_extensionMap::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> array = sortedInfoArray () ;
     GGS_extensionMap_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_extensionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -15131,12 +15131,12 @@ int32_t GGS_optionComponentMapForGeneration::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>>
 GGS_optionComponentMapForGeneration::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> () ;
   }
 }
 
@@ -15155,7 +15155,7 @@ GGS_stringset GGS_optionComponentMapForGeneration::getter_keySet (Compiler * inC
 //--------------------------------------------------------------------------------------------------
 
 void GGS_optionComponentMapForGeneration::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -15259,7 +15259,7 @@ void GGS_optionComponentMapForGeneration::setter_setMGuiComponentContextForKey (
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_optionComponentMapForGeneration_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> & inArray,
+static void GGS_optionComponentMapForGeneration_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -15292,7 +15292,7 @@ void GGS_optionComponentMapForGeneration::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> array = sortedInfoArray () ;
     GGS_optionComponentMapForGeneration_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_optionComponentMapForGeneration_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -20008,7 +20008,7 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_galgasScanner_34_ (TC_UniqueArray <String> & ioList) {
+static void getKeywordLists_galgasScanner_34_ (GenericUniqueArray <String> & ioList) {
   ioList.appendObject ("galgasScanner4:attributeKeyWordList") ;
   ioList.appendObject ("galgasScanner4:galgasDelimitorsList") ;
   ioList.appendObject ("galgasScanner4:galgasKeyWordList") ;
@@ -20018,7 +20018,7 @@ static void getKeywordLists_galgasScanner_34_ (TC_UniqueArray <String> & ioList)
 
 static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentifier,
                                                         bool & ioFound,
-                                                        TC_UniqueArray <String> & ioList) {
+                                                        GenericUniqueArray <String> & ioList) {
   if (inIdentifier == "galgasScanner4:attributeKeyWordList") {
     ioFound = true ;
     ioList.appendObject ("from") ;

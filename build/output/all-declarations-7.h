@@ -120,7 +120,7 @@ class DownEnumerator_listOfSyntaxInstructionList final {
 //--- Current element access
   public: class GGS_listOfSyntaxInstructionList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
+  private: GenericArray <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_listOfSyntaxInstructionList (const DownEnumerator_listOfSyntaxInstructionList &) = delete ;
@@ -147,7 +147,7 @@ class UpEnumerator_listOfSyntaxInstructionList final {
 //--- Current element access
   public: class GGS_listOfSyntaxInstructionList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
+  private: GenericArray <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_listOfSyntaxInstructionList (const UpEnumerator_listOfSyntaxInstructionList &) = delete ;
@@ -160,7 +160,7 @@ class UpEnumerator_listOfSyntaxInstructionList final {
 
 class GGS_listOfSyntaxInstructionList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
+  private: GenericArray <GGS_listOfSyntaxInstructionList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_listOfSyntaxInstructionList (void) ;
@@ -186,7 +186,7 @@ class GGS_listOfSyntaxInstructionList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_listOfSyntaxInstructionList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_listOfSyntaxInstructionList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -955,7 +955,7 @@ class DownEnumerator_galgas_33_SyntaxComponentListAST final {
 //--- Current element access
   public: class GGS_galgas_33_SyntaxComponentListAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
+  private: GenericArray <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_galgas_33_SyntaxComponentListAST (const DownEnumerator_galgas_33_SyntaxComponentListAST &) = delete ;
@@ -985,7 +985,7 @@ class UpEnumerator_galgas_33_SyntaxComponentListAST final {
 //--- Current element access
   public: class GGS_galgas_33_SyntaxComponentListAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
+  private: GenericArray <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_galgas_33_SyntaxComponentListAST (const UpEnumerator_galgas_33_SyntaxComponentListAST &) = delete ;
@@ -998,7 +998,7 @@ class UpEnumerator_galgas_33_SyntaxComponentListAST final {
 
 class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
+  private: GenericArray <GGS_galgas_33_SyntaxComponentListAST_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_galgas_33_SyntaxComponentListAST (void) ;
@@ -1024,7 +1024,7 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_galgas_33_SyntaxComponentListAST_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_galgas_33_SyntaxComponentListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -1382,7 +1382,7 @@ class DownEnumerator_prologueEpilogueList final {
 //--- Current element access
   public: class GGS_prologueEpilogueList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_prologueEpilogueList_2E_element> mArray ;
+  private: GenericArray <GGS_prologueEpilogueList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_prologueEpilogueList (const DownEnumerator_prologueEpilogueList &) = delete ;
@@ -1409,7 +1409,7 @@ class UpEnumerator_prologueEpilogueList final {
 //--- Current element access
   public: class GGS_prologueEpilogueList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_prologueEpilogueList_2E_element> mArray ;
+  private: GenericArray <GGS_prologueEpilogueList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_prologueEpilogueList (const UpEnumerator_prologueEpilogueList &) = delete ;
@@ -1422,7 +1422,7 @@ class UpEnumerator_prologueEpilogueList final {
 
 class GGS_prologueEpilogueList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_prologueEpilogueList_2E_element> mArray ;
+  private: GenericArray <GGS_prologueEpilogueList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_prologueEpilogueList (void) ;
@@ -1448,7 +1448,7 @@ class GGS_prologueEpilogueList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_prologueEpilogueList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_prologueEpilogueList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -1718,7 +1718,7 @@ class DownEnumerator_programRuleList final {
 //--- Current element access
   public: class GGS_programRuleList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_programRuleList_2E_element> mArray ;
+  private: GenericArray <GGS_programRuleList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_programRuleList (const DownEnumerator_programRuleList &) = delete ;
@@ -1750,7 +1750,7 @@ class UpEnumerator_programRuleList final {
 //--- Current element access
   public: class GGS_programRuleList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_programRuleList_2E_element> mArray ;
+  private: GenericArray <GGS_programRuleList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_programRuleList (const UpEnumerator_programRuleList &) = delete ;
@@ -1763,7 +1763,7 @@ class UpEnumerator_programRuleList final {
 
 class GGS_programRuleList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_programRuleList_2E_element> mArray ;
+  private: GenericArray <GGS_programRuleList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_programRuleList (void) ;
@@ -1789,7 +1789,7 @@ class GGS_programRuleList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_programRuleList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_programRuleList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -2377,7 +2377,7 @@ class DownEnumerator_optionalMethodSignature final {
 //--- Current element access
   public: class GGS_optionalMethodSignature_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_optionalMethodSignature_2E_element> mArray ;
+  private: GenericArray <GGS_optionalMethodSignature_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_optionalMethodSignature (const DownEnumerator_optionalMethodSignature &) = delete ;
@@ -2406,7 +2406,7 @@ class UpEnumerator_optionalMethodSignature final {
 //--- Current element access
   public: class GGS_optionalMethodSignature_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_optionalMethodSignature_2E_element> mArray ;
+  private: GenericArray <GGS_optionalMethodSignature_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_optionalMethodSignature (const UpEnumerator_optionalMethodSignature &) = delete ;
@@ -2419,7 +2419,7 @@ class UpEnumerator_optionalMethodSignature final {
 
 class GGS_optionalMethodSignature : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_optionalMethodSignature_2E_element> mArray ;
+  private: GenericArray <GGS_optionalMethodSignature_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_optionalMethodSignature (void) ;
@@ -2445,7 +2445,7 @@ class GGS_optionalMethodSignature : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_optionalMethodSignature_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_optionalMethodSignature_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -4015,7 +4015,7 @@ class DownEnumerator_routineArgumentMap final {
 
   public: class GGS_routineArgumentMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_routineArgumentMap (const DownEnumerator_routineArgumentMap &) = delete ;
@@ -4040,7 +4040,7 @@ class UpEnumerator_routineArgumentMap final {
   public: class GGS_bool current_mIsFilePrivate (LOCATION_ARGS) const ;
   public: class GGS_routineArgumentMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_routineArgumentMap (const UpEnumerator_routineArgumentMap &) = delete ;
@@ -4093,11 +4093,11 @@ class GGS_routineArgumentMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -4568,7 +4568,7 @@ class DownEnumerator_acceptableParameterList final {
 //--- Current element access
   public: class GGS_acceptableParameterList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_acceptableParameterList_2E_element> mArray ;
+  private: GenericArray <GGS_acceptableParameterList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_acceptableParameterList (const DownEnumerator_acceptableParameterList &) = delete ;
@@ -4595,7 +4595,7 @@ class UpEnumerator_acceptableParameterList final {
 //--- Current element access
   public: class GGS_acceptableParameterList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_acceptableParameterList_2E_element> mArray ;
+  private: GenericArray <GGS_acceptableParameterList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_acceptableParameterList (const UpEnumerator_acceptableParameterList &) = delete ;
@@ -4608,7 +4608,7 @@ class UpEnumerator_acceptableParameterList final {
 
 class GGS_acceptableParameterList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_acceptableParameterList_2E_element> mArray ;
+  private: GenericArray <GGS_acceptableParameterList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_acceptableParameterList (void) ;
@@ -4634,7 +4634,7 @@ class GGS_acceptableParameterList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_acceptableParameterList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_acceptableParameterList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -4956,7 +4956,7 @@ class DownEnumerator_grammarLabelMap final {
 
   public: class GGS_grammarLabelMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_grammarLabelMap (const DownEnumerator_grammarLabelMap &) = delete ;
@@ -4980,7 +4980,7 @@ class UpEnumerator_grammarLabelMap final {
   public: class GGS_formalParameterSignature current_mLabelSignature (LOCATION_ARGS) const ;
   public: class GGS_grammarLabelMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_grammarLabelMap (const UpEnumerator_grammarLabelMap &) = delete ;
@@ -5033,11 +5033,11 @@ class GGS_grammarLabelMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -5710,7 +5710,7 @@ class DownEnumerator_wrapperFileMap final {
 
   public: class GGS_wrapperFileMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_wrapperFileMap (const DownEnumerator_wrapperFileMap &) = delete ;
@@ -5737,7 +5737,7 @@ class UpEnumerator_wrapperFileMap final {
   public: class GGS_uint current_mWrapperFileIndex (LOCATION_ARGS) const ;
   public: class GGS_wrapperFileMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_wrapperFileMap (const UpEnumerator_wrapperFileMap &) = delete ;
@@ -5790,11 +5790,11 @@ class GGS_wrapperFileMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperFileMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -6152,7 +6152,7 @@ class DownEnumerator_wrapperDirectoryMap final {
 
   public: class GGS_wrapperDirectoryMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_wrapperDirectoryMap (const DownEnumerator_wrapperDirectoryMap &) = delete ;
@@ -6178,7 +6178,7 @@ class UpEnumerator_wrapperDirectoryMap final {
   public: class GGS_uint current_mWrapperDirectoryIndex (LOCATION_ARGS) const ;
   public: class GGS_wrapperDirectoryMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_wrapperDirectoryMap (const UpEnumerator_wrapperDirectoryMap &) = delete ;
@@ -6231,11 +6231,11 @@ class GGS_wrapperDirectoryMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -6568,7 +6568,7 @@ class DownEnumerator_filewrapperTemplateMap final {
 
   public: class GGS_filewrapperTemplateMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_filewrapperTemplateMap (const DownEnumerator_filewrapperTemplateMap &) = delete ;
@@ -6593,7 +6593,7 @@ class UpEnumerator_filewrapperTemplateMap final {
   public: class GGS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
   public: class GGS_filewrapperTemplateMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_filewrapperTemplateMap (const UpEnumerator_filewrapperTemplateMap &) = delete ;
@@ -6646,11 +6646,11 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -7842,7 +7842,7 @@ class DownEnumerator_extensionInitializerMapForType final {
 
   public: class GGS_extensionInitializerMapForType_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_extensionInitializerMapForType (const DownEnumerator_extensionInitializerMapForType &) = delete ;
@@ -7866,7 +7866,7 @@ class UpEnumerator_extensionInitializerMapForType final {
   public: class GGS_formalInputParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
   public: class GGS_extensionInitializerMapForType_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_extensionInitializerMapForType (const UpEnumerator_extensionInitializerMapForType &) = delete ;
@@ -7919,11 +7919,11 @@ class GGS_extensionInitializerMapForType : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -8203,7 +8203,7 @@ class DownEnumerator_extensionInitializerForBuildingContext final {
 
   public: class GGS_extensionInitializerForBuildingContext_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_extensionInitializerForBuildingContext (const DownEnumerator_extensionInitializerForBuildingContext &) = delete ;
@@ -8227,7 +8227,7 @@ class UpEnumerator_extensionInitializerForBuildingContext final {
   public: class GGS_extensionInitializerMapForType current_mExtensionInitializerMapForType (LOCATION_ARGS) const ;
   public: class GGS_extensionInitializerForBuildingContext_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_extensionInitializerForBuildingContext (const UpEnumerator_extensionInitializerForBuildingContext &) = delete ;
@@ -8280,11 +8280,11 @@ class GGS_extensionInitializerForBuildingContext : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -8579,7 +8579,7 @@ class DownEnumerator_extensionMethodMapForType final {
 
   public: class GGS_extensionMethodMapForType_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_extensionMethodMapForType (const DownEnumerator_extensionMethodMapForType &) = delete ;
@@ -8604,7 +8604,7 @@ class UpEnumerator_extensionMethodMapForType final {
   public: class GGS_methodQualifier current_mQualifier (LOCATION_ARGS) const ;
   public: class GGS_extensionMethodMapForType_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_extensionMethodMapForType (const UpEnumerator_extensionMethodMapForType &) = delete ;
@@ -8657,11 +8657,11 @@ class GGS_extensionMethodMapForType : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 

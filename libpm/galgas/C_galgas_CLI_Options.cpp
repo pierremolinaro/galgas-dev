@@ -109,7 +109,7 @@ static String gModeIndexingOutputFilePath ;
 
 void setExecutionMode (String & outErrorMessage) {
   const String mode = gOption_galgas_5F_builtin_5F_options_mode.mValue ;
-  TC_UniqueArray <String> modeComponents ;
+  GenericUniqueArray <String> modeComponents ;
   mode.componentsSeparatedByString (":", modeComponents) ;
   if (mode == "") {
     gExecutionMode = kExecutionModeNormal ;

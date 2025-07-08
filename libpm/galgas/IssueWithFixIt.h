@@ -24,7 +24,7 @@
 
 #include "LocationInSource.h"
 #include "String-class.h"
-#include "TC_Array.h"
+#include "GenericArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -70,35 +70,35 @@ class IssueWithFixIt final {
 //--- Constructor
   public: IssueWithFixIt (const LocationInSource & inStartLocation,
                           const LocationInSource & inEndLocation,
-                          const TC_Array <FixItDescription> & inFixItArray) ;
+                          const GenericArray <FixItDescription> & inFixItArray) ;
 
 //--- Properties
   public: const LocationInSource mStartLocation ;
   public: const LocationInSource mEndLocation ;
-  public: const TC_Array <FixItDescription> mFixItArray ;
+  public: const GenericArray <FixItDescription> mFixItArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_stringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_lstringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_string & inString) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_stringset & inStringSet) ;
 

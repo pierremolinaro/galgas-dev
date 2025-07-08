@@ -9965,12 +9965,12 @@ int32_t GGS_initializerMap::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>>
 GGS_initializerMap::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> () ;
   }
 }
 
@@ -9989,7 +9989,7 @@ GGS_stringset GGS_initializerMap::getter_keySet (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_initializerMap::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -10062,7 +10062,7 @@ void GGS_initializerMap::method_searchKey (GGS_lstring inLKey,
     const String key = inLKey.mProperty_string.stringValue () ;
     info = infoForKey (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       const char * kSearchErrorMessage = "the '%K' initializer is not declared" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
@@ -10116,7 +10116,7 @@ void GGS_initializerMap::setter_setMArgumentTypeListForKey (GGS_functionSignatur
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_initializerMap_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> & inArray,
+static void GGS_initializerMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -10149,7 +10149,7 @@ void GGS_initializerMap::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> array = sortedInfoArray () ;
     GGS_initializerMap_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_initializerMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;

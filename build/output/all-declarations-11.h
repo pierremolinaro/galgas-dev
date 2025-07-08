@@ -3365,7 +3365,7 @@ class DownEnumerator_CommaSeparatedExpressionList final {
 //--- Current element access
   public: class GGS_CommaSeparatedExpressionList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
+  private: GenericArray <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_CommaSeparatedExpressionList (const DownEnumerator_CommaSeparatedExpressionList &) = delete ;
@@ -3391,7 +3391,7 @@ class UpEnumerator_CommaSeparatedExpressionList final {
 //--- Current element access
   public: class GGS_CommaSeparatedExpressionList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
+  private: GenericArray <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_CommaSeparatedExpressionList (const UpEnumerator_CommaSeparatedExpressionList &) = delete ;
@@ -3404,7 +3404,7 @@ class UpEnumerator_CommaSeparatedExpressionList final {
 
 class GGS_CommaSeparatedExpressionList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
+  private: GenericArray <GGS_CommaSeparatedExpressionList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_CommaSeparatedExpressionList (void) ;
@@ -3430,7 +3430,7 @@ class GGS_CommaSeparatedExpressionList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_CommaSeparatedExpressionList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_CommaSeparatedExpressionList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -3805,7 +3805,7 @@ class DownEnumerator_ifTestListForGeneration final {
 //--- Current element access
   public: class GGS_ifTestListForGeneration_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_ifTestListForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_ifTestListForGeneration_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_ifTestListForGeneration (const DownEnumerator_ifTestListForGeneration &) = delete ;
@@ -3831,7 +3831,7 @@ class UpEnumerator_ifTestListForGeneration final {
 //--- Current element access
   public: class GGS_ifTestListForGeneration_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_ifTestListForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_ifTestListForGeneration_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_ifTestListForGeneration (const UpEnumerator_ifTestListForGeneration &) = delete ;
@@ -3844,7 +3844,7 @@ class UpEnumerator_ifTestListForGeneration final {
 
 class GGS_ifTestListForGeneration : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_ifTestListForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_ifTestListForGeneration_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_ifTestListForGeneration (void) ;
@@ -3870,7 +3870,7 @@ class GGS_ifTestListForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_ifTestListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_ifTestListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -6132,7 +6132,7 @@ class DownEnumerator_logListAST final {
 //--- Current element access
   public: class GGS_logListAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_logListAST_2E_element> mArray ;
+  private: GenericArray <GGS_logListAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_logListAST (const DownEnumerator_logListAST &) = delete ;
@@ -6159,7 +6159,7 @@ class UpEnumerator_logListAST final {
 //--- Current element access
   public: class GGS_logListAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_logListAST_2E_element> mArray ;
+  private: GenericArray <GGS_logListAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_logListAST (const UpEnumerator_logListAST &) = delete ;
@@ -6172,7 +6172,7 @@ class UpEnumerator_logListAST final {
 
 class GGS_logListAST : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_logListAST_2E_element> mArray ;
+  private: GenericArray <GGS_logListAST_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_logListAST (void) ;
@@ -6198,7 +6198,7 @@ class GGS_logListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_logListAST_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_logListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -11808,7 +11808,7 @@ class DownEnumerator_switchBranchesAST final {
 //--- Current element access
   public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_switchBranchesAST_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_switchBranchesAST (const DownEnumerator_switchBranchesAST &) = delete ;
@@ -11837,7 +11837,7 @@ class UpEnumerator_switchBranchesAST final {
 //--- Current element access
   public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_switchBranchesAST_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_switchBranchesAST (const UpEnumerator_switchBranchesAST &) = delete ;
@@ -11850,7 +11850,7 @@ class UpEnumerator_switchBranchesAST final {
 
 class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_switchBranchesAST_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_switchBranchesAST (void) ;
@@ -11876,7 +11876,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_switchBranchesAST_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_switchBranchesAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -12418,7 +12418,7 @@ class DownEnumerator_switchBranchesForGeneration final {
 //--- Current element access
   public: class GGS_switchBranchesForGeneration_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_switchBranchesForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_switchBranchesForGeneration (const DownEnumerator_switchBranchesForGeneration &) = delete ;
@@ -12447,7 +12447,7 @@ class UpEnumerator_switchBranchesForGeneration final {
 //--- Current element access
   public: class GGS_switchBranchesForGeneration_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_switchBranchesForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_switchBranchesForGeneration (const UpEnumerator_switchBranchesForGeneration &) = delete ;
@@ -12460,7 +12460,7 @@ class UpEnumerator_switchBranchesForGeneration final {
 
 class GGS_switchBranchesForGeneration : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_switchBranchesForGeneration_2E_element> mArray ;
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_switchBranchesForGeneration (void) ;
@@ -12486,7 +12486,7 @@ class GGS_switchBranchesForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_switchBranchesForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_switchBranchesForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 

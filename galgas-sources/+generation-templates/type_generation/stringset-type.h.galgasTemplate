@@ -39,7 +39,7 @@ class SharedStringMapNode final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
-                                            TC_Array <String> & ioStringArray) ;
+                                            GenericArray <String> & ioStringArray) ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -97,7 +97,7 @@ class SharedStringMap final {
 
   public: String rootNodeKey (void) const ;
 
-  public: TC_Array <String> sortedKeyArray (void) const ;
+  public: GenericArray <String> sortedKeyArray (void) const ;
 
 } ;
 
@@ -115,7 +115,7 @@ class UpEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <String> mStringArray ;
+  private: const GenericArray <String> mStringArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -138,7 +138,7 @@ class DownEnumerator_stringset final {
   public: class GGS_string current (LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: const TC_Array <String> mStringArray ;
+  private: const GenericArray <String> mStringArray ;
   private: int32_t mIndex ;
 
 //--- No copy

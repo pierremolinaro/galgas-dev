@@ -83,7 +83,7 @@ class BinaryDecisionDiagramRelationSingleType::InternalType : public SharedObjec
 class PrivateEnumeratedTypeInRelation final : public BinaryDecisionDiagramRelationSingleType::InternalType {
 //--- Constructor
   public: PrivateEnumeratedTypeInRelation (const String & inTypeName,
-                                       const TC_UniqueArray <String> & inConstantNameArray
+                                       const GenericUniqueArray <String> & inConstantNameArray
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Accessors
@@ -96,19 +96,19 @@ class PrivateEnumeratedTypeInRelation final : public BinaryDecisionDiagramRelati
     return mConstantNameArray ((int32_t) inIndex COMMA_THERE) ;
   }
 
-  public: inline bool isConstantArrayEqualTo (const TC_UniqueArray <String> & inConstantNameArray) const {
+  public: inline bool isConstantArrayEqualTo (const GenericUniqueArray <String> & inConstantNameArray) const {
     return mConstantNameArray == inConstantNameArray ;
   }
 
 //--- Attributes
-  private: TC_UniqueArray <String> mConstantNameArray ;
+  private: GenericUniqueArray <String> mConstantNameArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 PrivateEnumeratedTypeInRelation::
 PrivateEnumeratedTypeInRelation (const String & inTypeName,
-                                 const TC_UniqueArray <String> & inConstantNameArray
+                                 const GenericUniqueArray <String> & inConstantNameArray
                                  COMMA_LOCATION_ARGS) :
 InternalType (inTypeName, bitCountForCount ((uint32_t) inConstantNameArray.count ()) COMMA_THERE),
 mConstantNameArray () {
@@ -119,7 +119,7 @@ mConstantNameArray () {
 
 BinaryDecisionDiagramRelationSingleType::
 BinaryDecisionDiagramRelationSingleType (const String & inTypeName,
-                                         const TC_UniqueArray <String> & inConstantNameArray
+                                         const GenericUniqueArray <String> & inConstantNameArray
                                          COMMA_LOCATION_ARGS) :
 mTypePtr (nullptr) {
 //--- Check type is unique

@@ -37,7 +37,7 @@ class cIndexEntryNode final {
   public: cIndexEntryNode * mSupPtr ;
   public: int32_t mBalance ;
   public: const String mKey ;
-  public: TC_UniqueArray <String> mDescriptorArray ;
+  public: GenericUniqueArray <String> mDescriptorArray ;
 
 //--- Constructor
   public: cIndexEntryNode (const String & inKey) ;

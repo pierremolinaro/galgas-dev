@@ -82,14 +82,14 @@ class FileManager final {
 
   public: static String findFileInDirectory (const String & inDirectoryPath,
                                                 const String & inFileName,
-                                                const TC_UniqueArray <String> & inDirectoriesToExclude) ;
+                                                const GenericUniqueArray <String> & inDirectoriesToExclude) ;
 
 //--- Find all files in directory and subdirectories that respond to a given extension
 //    Initial directory is got from receiver value. If it is not a directory, this method does nothing.
 //    Found files are appended to outFoundFilePathes.
   public: static void findAllFilesInDirectoryFromExtension (const String & inDirectoryPath,
                                                             const String & inExtension,
-                                                            TC_UniqueArray <String> & outFoundFilePathes) ;
+                                                            GenericUniqueArray <String> & outFoundFilePathes) ;
 
 //--- Path handling
   public: static bool isAbsolutePath (const String & inPath) ;

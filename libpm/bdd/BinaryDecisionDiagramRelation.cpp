@@ -200,7 +200,7 @@ bool BinaryDecisionDiagramRelation::containsValue (const int32_t inVariableIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagramRelation::getValueArray (TC_UniqueArray <uint64_t> & outArray) const {
+void BinaryDecisionDiagramRelation::getValueArray (GenericUniqueArray <uint64_t> & outArray) const {
   mBDD.buildValue64Array (outArray, mConfiguration.bitCount ()) ;
 }
 
@@ -214,7 +214,7 @@ uint64_t BinaryDecisionDiagramRelation::value64Count (void) const {
 //   getArray
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagramRelation::getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray
+void BinaryDecisionDiagramRelation::getArray (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray
                            COMMA_LOCATION_ARGS) const {
   macroAssertThere (variableCount () == 2,
                   "BinaryDecisionDiagramRelation::getArray error: variableCount () == %lld != 2",

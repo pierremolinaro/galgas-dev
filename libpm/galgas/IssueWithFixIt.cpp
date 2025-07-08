@@ -48,7 +48,7 @@ mFixItArray () {
 
 IssueWithFixIt::IssueWithFixIt (const LocationInSource & inStartLocation,
                                     const LocationInSource & inEndLocation,
-                                    const TC_Array <FixItDescription> & inFixItArray) :
+                                    const GenericArray <FixItDescription> & inFixItArray) :
 mStartLocation (inStartLocation),
 mEndLocation (inEndLocation),
 mFixItArray (inFixItArray) {
@@ -80,7 +80,7 @@ mFixItArray (inFixItArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_stringlist & inList) {
   UpEnumerator_stringlist enumerator (inList) ;
@@ -93,7 +93,7 @@ void appendFixItActions (TC_Array <FixItDescription> & ioArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_lstringlist & inList) {
   UpEnumerator_lstringlist enumerator (inList) ;
@@ -106,7 +106,7 @@ void appendFixItActions (TC_Array <FixItDescription> & ioArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_stringset & inStringSet) {
   UpEnumerator_stringset enumerator (inStringSet) ;
@@ -119,7 +119,7 @@ void appendFixItActions (TC_Array <FixItDescription> & ioArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <FixItDescription> & ioArray,
+void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_string & inString) {
   const String s = inString.stringValue () ;

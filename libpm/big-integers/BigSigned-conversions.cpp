@@ -119,13 +119,13 @@ uint32_t BigSigned::requiredBitCountForUnsignedRepresentation (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void BigSigned::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+void BigSigned::extractBytesForUnsignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const {
   mUnsigned.extractBytesForUnsignedRepresentation (outValue) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void BigSigned::extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+void BigSigned::extractBytesForSignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const {
   if (mUnsigned.isZero ()) {
     outValue.appendObject (0) ;
   }else if (mIsPositive) {

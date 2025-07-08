@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_Array.h"
+#include "GenericArray.h"
 #include "UInt32Set.h"
 #include "String-class.h"
 
@@ -57,11 +57,11 @@ class DirectedGraph final {
 //--- Accessors
   public: uint32_t unusedNodeIndex (void) const ;
 
-  public: String graphvizString (const TC_UniqueArray <String> & inNodeNameArray) const ;
+  public: String graphvizString (const GenericUniqueArray <String> & inNodeNameArray) const ;
   
-  public: void getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const ;
+  public: void getNodeBoolArray (GenericUniqueArray <bool> & outNodes) const ;
   
-  public: void getNodeValueArray (TC_UniqueArray <uint32_t> & outNodes) const ;
+  public: void getNodeValueArray (GenericUniqueArray <uint32_t> & outNodes) const ;
   
   public: bool isNodeDefined (const uint32_t inNodeIndex) const ;
   
@@ -69,26 +69,26 @@ class DirectedGraph final {
   
   public: uint32_t edgeCount (void) const ;
   
-  public: void getNodesWithNoPredecessor (TC_UniqueArray <uint32_t> & outNodes) const ;
+  public: void getNodesWithNoPredecessor (GenericUniqueArray <uint32_t> & outNodes) const ;
   
-  public: void getNodesWithNoSuccessor (TC_UniqueArray <uint32_t> & outNodes) const ;
+  public: void getNodesWithNoSuccessor (GenericUniqueArray <uint32_t> & outNodes) const ;
   
-  public: void getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t> & outNodes) const ;
+  public: void getNodesInvolvedInCircularities (GenericUniqueArray <uint32_t> & outNodes) const ;
   
-  public: void getDominators (TC_UniqueArray <UInt32Set> & outDominators
+  public: void getDominators (GenericUniqueArray <UInt32Set> & outDominators
                                COMMA_LOCATION_ARGS) const ;
   
   public: void removeEdgesToDominator (LOCATION_ARGS) ;
   
   public: void removeEdgesToNode (const uint32_t inNodeIndex COMMA_LOCATION_ARGS) ;
   
-  public: void getEdges (TC_UniqueArray <cEdge> & outEdges) const ;
+  public: void getEdges (GenericUniqueArray <cEdge> & outEdges) const ;
   
-  public: void topologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
-                                 TC_UniqueArray <uint32_t> & outUnsortedNodes) const ;
+  public: void topologicalSort (GenericUniqueArray <uint32_t> & outSortedNodes,
+                                 GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
   
-  public: void depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & outSortedNodes,
-                                           TC_UniqueArray <uint32_t> & outUnsortedNodes) const ;
+  public: void depthFirstTopologicalSort (GenericUniqueArray <uint32_t> & outSortedNodes,
+                                           GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
   
   public: DirectedGraph reversedGraph (void) const ;
   
@@ -101,8 +101,8 @@ class DirectedGraph final {
 
 //--- Attributes
   private: UInt32Set mNodes ;
-  private: TC_Array <UInt32Set> mEdges ;
-  private: TC_Array <UInt32Set> mReverseEdges ;
+  private: GenericArray <UInt32Set> mEdges ;
+  private: GenericArray <UInt32Set> mReverseEdges ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

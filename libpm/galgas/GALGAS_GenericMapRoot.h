@@ -90,7 +90,7 @@ template <typename INFO> class GenericMapNode final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateInfoArray (const OptionalSharedRef <GenericMapNode> & inNode,
-                                          TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
+                                          GenericArray <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
       ioNodeArray.appendObject (inNode->mSharedInfo) ;
@@ -141,7 +141,7 @@ template <typename INFO> class GenericMapRoot final : public SharedObject {
 
   private: OptionalSharedRef <GenericMapRoot <INFO>> mOverriddenRoot ;
   private: OptionalSharedRef <GenericMapNode <INFO>> mRootNode ;
-  private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
   private: bool mCacheSortedArrayIsValid ;
 
@@ -225,11 +225,11 @@ template <typename INFO> class GenericMapRoot final : public SharedObject {
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
+  public: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
     if (mCacheSortedArrayIsValid) {
       return mCacheSortedArray ;
     }else{
-      TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
+      GenericArray <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
       GenericMapNode <INFO>::populateInfoArray (mRootNode, array) ;
       mCacheSortedArray = array ;
       mCacheSortedArrayIsValid = true ;
@@ -563,7 +563,7 @@ template <typename INFO> class GenericMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void findNearestKey (const String & inKey,
-                               TC_UniqueArray <String> & outNearestKeyArray) const {
+                               GenericUniqueArray <String> & outNearestKeyArray) const {
     uint32_t bestDistance = UINT32_MAX ;
     recursiveFindNearestKey (inKey, mRootNode, bestDistance, outNearestKeyArray) ;
     if (mOverriddenRoot.isNotNil ()) {
@@ -576,7 +576,7 @@ template <typename INFO> class GenericMapRoot final : public SharedObject {
   private: static void recursiveFindNearestKey (const String & inKey,
                                                 const OptionalSharedRef <GenericMapNode <INFO>> & inCurrentNode,
                                                 uint32_t & ioBestDistance,
-                                                TC_UniqueArray <String> & ioNearestKeyArray) {
+                                                GenericUniqueArray <String> & ioNearestKeyArray) {
     if (inCurrentNode.isNotNil ()) {
       const uint32_t distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;
       if (distance < ioBestDistance) {

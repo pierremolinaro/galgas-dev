@@ -304,7 +304,7 @@ static const cRegularFileWrapper * findFileInDirectory (const cDirectoryWrapper 
 
 static const cDirectoryWrapper * getDirectory (const String & inDirectory,
                                                const cDirectoryWrapper * inRootDirectoryPtr) {
-  TC_UniqueArray <String> componentArray ;
+  GenericUniqueArray <String> componentArray ;
   inDirectory.componentsSeparatedByString ("/", componentArray) ;
   const cDirectoryWrapper * dir = inRootDirectoryPtr ;
   for (int32_t i=1 ; i<componentArray.count () ; i++) {
@@ -443,7 +443,7 @@ GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPat
       absolutePath.appendString (path) ;
     }
   //--- Normalize path
-    TC_UniqueArray <String> componentArray ;
+    GenericUniqueArray <String> componentArray ;
     absolutePath.componentsSeparatedByString ("/", componentArray) ;
   //--- Remove empty components (but the first one)
     int32_t componentIndex = 1 ;

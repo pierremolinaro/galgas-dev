@@ -36,16 +36,16 @@
 
 static void
 computeNonterminalFollowedByEmpty (const PureBNFproductionsList & inProductionRules,
-                                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                                   const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const GrammarVocabulary & inVocabulary,
                                    BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
                                    int32_t & outIterationsCount) {
   const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
-  TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
+  GenericUniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
   vocabularyFollowedByEmpty_Array.setObjectAtIndex (true, inVocabulary.getStartSymbol () COMMA_HERE) ;
 
   const int32_t productionsCount = inProductionRules.mProductionArray.count () ;
-  TC_UniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
+  GenericUniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
   bool loop = true ;
@@ -102,7 +102,7 @@ displayNonterminalSymbolsFollowedByEmpty (const BinaryDecisionDiagramRelation & 
        ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
     ioHTMLFileContents.addRawData ("</p>") ;
-    TC_UniqueArray <uint64_t> array ;
+    GenericUniqueArray <uint64_t> array ;
     inVocabularyFollowedByEmpty.getValueArray (array) ;
     ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
     for (int32_t i=0 ; i < array.count () ; i++) {
@@ -127,7 +127,7 @@ follow_by_empty_computations (const PureBNFproductionsList & inPureBNFproduction
                               HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
                               const GrammarVocabulary & inVocabulary,
-                              const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                              const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) {
 //--- Console display

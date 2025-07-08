@@ -95,7 +95,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
 
 //--------------------- Compute array of used symbols declared as unused by user
   UpEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar) ;
-  TC_UniqueArray <String> usedSymbolDeclaredAsUnusedArray ;
+  GenericUniqueArray <String> usedSymbolDeclaredAsUnusedArray ;
   while (currentNT.hasCurrentObject ()) {
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
     if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
@@ -107,7 +107,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   }
 
 //---------------------------------------------- Compute array of unused symbols
-  TC_UniqueArray <uint64_t> unusedSymbolArrayForWarning ;
+  GenericUniqueArray <uint64_t> unusedSymbolArrayForWarning ;
   uselessSymbolsForWarning.getValueArray (unusedSymbolArrayForWarning) ;
 //---------------------------------------------------------- Print in HTML file  
   ioHTMLFileContents.addRawData ("<p>") ;

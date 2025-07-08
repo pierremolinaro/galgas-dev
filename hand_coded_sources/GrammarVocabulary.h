@@ -99,8 +99,8 @@ class GrammarVocabulary final {
   private: GrammarVocabulary & operator = (GrammarVocabulary &) = delete ;
 
 //--- Private properties
-  private: TC_UniqueArray <String> mStringsArray ;
-  private: TC_UniqueArray <bool> mGenerateChoiceArray ;
+  private: GenericUniqueArray <String> mStringsArray ;
+  private: GenericUniqueArray <bool> mGenerateChoiceArray ;
   private: int32_t mTerminalSymbolsCount ;
   private: int32_t mOriginalGrammarSymbolsCount ;
   private: int32_t mStartSymbol ;

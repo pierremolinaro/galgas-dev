@@ -26,11 +26,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-typedef void (* Type_appendKeywordListNames) (TC_UniqueArray <String> & ioList) ;
+typedef void (* Type_appendKeywordListNames) (GenericUniqueArray <String> & ioList) ;
 
 typedef void (* Type_getKeywordsForIdentifier) (const String & inIdentifier,
                                                 bool & ioFound,
-                                                TC_UniqueArray <String> & ioList) ;
+                                                GenericUniqueArray <String> & ioList) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,10 +40,10 @@ class LexiqueIntrospection final {
                                 Type_getKeywordsForIdentifier getKeywordsForIdentifier) ;
 
 //--- Accessors
-  public: static void getKeywordListNames (TC_UniqueArray <String> & outList) ;
+  public: static void getKeywordListNames (GenericUniqueArray <String> & outList) ;
   public: static void getKeywordListForIdentifier (const String & inIdentifier,
                                                    bool & outFound,
-                                                   TC_UniqueArray <String> & outList) ;
+                                                   GenericUniqueArray <String> & outList) ;
 
   public: static void handleGetKeywordListOption (class Compiler * inCompiler) ;
 

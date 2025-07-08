@@ -60,7 +60,7 @@ class StringCommandLineOption final : public AbstractCommandLineOption {
   public: static void releaseStrings (void) ; // Called at the end of main routine
 
 //--- Option introspection
-  public: static void getStringOptionNameList (TC_UniqueArray <String> & outArray) ;
+  public: static void getStringOptionNameList (GenericUniqueArray <String> & outArray) ;
 
   public: static utf32 getStringOptionInvocationLetter (const String & inDomainName,
                                                         const String & inIdentifier) ;

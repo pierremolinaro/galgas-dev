@@ -253,7 +253,7 @@ void signalParsingError (Compiler * inCompiler,
                          const LocationInSource & inPreviousTokenEndLocation,
                          const IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
-                         const TC_UniqueArray <String> & inAcceptedTokenNames
+                         const GenericUniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount += 1 ;
@@ -292,7 +292,7 @@ void signalParsingError (Compiler * inCompiler,
 void signalExtractError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const IssueWithFixIt & inIssue,
-                         const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
+                         const GenericUniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count

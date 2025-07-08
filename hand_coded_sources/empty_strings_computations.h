@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ class BinaryDecisionDiagramRelationConfiguration ;
 BinaryDecisionDiagramRelation empty_strings_computations (const PureBNFproductionsList & inPureBNFproductions,
                                        HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
-                                       TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
+                                       GenericUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                                        const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                                        const bool inVerboseOptionOn) ;
 

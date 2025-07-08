@@ -939,7 +939,7 @@ static void generateFile (const String & inStartPath,
                           Compiler * inCompiler) {
   bool ok = true ;
 //--- File exists ?
-  const TC_UniqueArray <String> directoriesToExclude ;
+  const GenericUniqueArray <String> directoriesToExclude ;
   const String fullPathName = FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
   if (fullPathName.length () == 0) { // No, does not exist
     U8Data currentData ; currentData.appendString (inContents) ;
@@ -993,7 +993,7 @@ void GGS_string::class_method_generateFileWithPattern (GGS_string inStartPath,
     && (inMakeExecutable.isValid ())
   ;
   if (built) {
-    TC_UniqueArray <String> directoriesToExclude ;
+    GenericUniqueArray <String> directoriesToExclude ;
     inCompiler->generateFileWithPatternFromPathes (
       inStartPath.mString,
       directoriesToExclude,

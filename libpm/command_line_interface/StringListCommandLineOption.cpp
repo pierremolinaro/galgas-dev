@@ -173,7 +173,7 @@ PrologueEpilogue gReleaseStringList (nullptr, StringListCommandLineOption::relea
 
 //--------------------------------------------------------------------------------------------------
 
-void StringListCommandLineOption::getStringOptionNameList (TC_UniqueArray <String> & outArray) {
+void StringListCommandLineOption::getStringOptionNameList (GenericUniqueArray <String> & outArray) {
   StringListCommandLineOption * p = gFirstStringListOption ;
   while (p != nullptr) {
     outArray.appendObject (p->mDomainName) ;

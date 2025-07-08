@@ -391,7 +391,7 @@ bool BinaryDecisionDiagram::containsValue64 (const uint64_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 static bool recursiveContainsValue (const uint32_t inBDD,
-                                    const TC_Array <bool> & inValue,
+                                    const GenericArray <bool> & inValue,
                                     const uint32_t inFirstBit,
                                     const uint32_t inLastBitPlusOne) {
   bool result ;
@@ -422,7 +422,7 @@ static bool recursiveContainsValue (const uint32_t inBDD,
 
 //--------------------------------------------------------------------------------------------------
 
-bool BinaryDecisionDiagram::containsValue (const TC_Array <bool> & inValue,
+bool BinaryDecisionDiagram::containsValue (const GenericArray <bool> & inValue,
                            const uint32_t inFirstBit,
                            const uint32_t inBitCount) const {
   return recursiveContainsValue (mBDDvalue,
@@ -563,10 +563,10 @@ uint32_t BinaryDecisionDiagram::getBDDnodesCount (void) const {
 
 class cBuildArrayForSet : public C_bdd_value_traversing {
 //--- Attributs
-  protected: TC_UniqueArray <bool> & mArray ;
+  protected: GenericUniqueArray <bool> & mArray ;
 
 //--- Constructeur
-  public: cBuildArrayForSet (TC_UniqueArray <bool> & outArray) ;
+  public: cBuildArrayForSet (GenericUniqueArray <bool> & outArray) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
   public: virtual void action (const bool * inValuesArray,
@@ -575,7 +575,7 @@ class cBuildArrayForSet : public C_bdd_value_traversing {
 
 //--------------------------------------------------------------------------------------------------
 
-cBuildArrayForSet::cBuildArrayForSet (TC_UniqueArray <bool> & outArray) :
+cBuildArrayForSet::cBuildArrayForSet (GenericUniqueArray <bool> & outArray) :
 mArray (outArray) {
 }
 
@@ -592,7 +592,7 @@ void cBuildArrayForSet::action (const bool * inValuesArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagram::getBoolArray (TC_UniqueArray <bool> & outArray,
+void BinaryDecisionDiagram::getBoolArray (GenericUniqueArray <bool> & outArray,
                           const uint32_t inMaxValues,
                           const uint32_t inBitSize) const {
   outArray.removeAllKeepingCapacity () ;
@@ -775,12 +775,12 @@ transitiveClosure (const uint32_t inBitSize,
 
 class cBuildArrayForRelation2 : public C_bdd_value_traversing {
 //--- Attributes
-  protected: TC_UniqueArray <TC_UniqueArray <uint64_t> > & mArray ;
+  protected: GenericUniqueArray <GenericUniqueArray <uint64_t> > & mArray ;
   protected: uint32_t mBitsSize1 ;
 
 //--- Constructor
   public:
-  cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
+  cBuildArrayForRelation2 (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray,
                            const uint32_t inBitsSize1) ;
 
 //--- Virtual method called for every value
@@ -790,7 +790,7 @@ class cBuildArrayForRelation2 : public C_bdd_value_traversing {
 
 //--------------------------------------------------------------------------------------------------
 
-cBuildArrayForRelation2::cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
+cBuildArrayForRelation2::cBuildArrayForRelation2 (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray,
                                                   const uint32_t inBitsSize1) :
 mArray (outArray),
 mBitsSize1 (inBitsSize1) {
@@ -813,7 +813,7 @@ void cBuildArrayForRelation2::action (const bool * inValuesArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagram::getArray2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
+void BinaryDecisionDiagram::getArray2 (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray,
                        const uint32_t inMaxValueCount,
                        const uint32_t inBitSize1,
                        const uint32_t inBitSize2) const {
@@ -956,7 +956,7 @@ swap201 (const uint32_t inBitSize1,
 //--------------------------------------------------------------------------------------------------
 
 static void printLineWithSeparator (AbstractOutputStream & outputStream,
-                                    const TC_UniqueArray <char> & inValueArray) {
+                                    const GenericUniqueArray <char> & inValueArray) {
   for (int32_t i=inValueArray.count () - 1 ; i>=0 ; i--) {
     if ((i % 4) == 3) {
       outputStream.appendCString (" ") ;
@@ -970,7 +970,7 @@ static void printLineWithSeparator (AbstractOutputStream & outputStream,
 
 static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
                                         const uint32_t inValue,
-                                        TC_UniqueArray <char> & inDisplayString,
+                                        GenericUniqueArray <char> & inDisplayString,
                                         uint32_t inVariableIndex) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -1023,7 +1023,7 @@ void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream) const {
   }else{
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
+    GenericUniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
     internalPrintWithSeparator (outputStream,
                                 mBDDvalue,
                                 displayString,
@@ -1084,9 +1084,9 @@ void BinaryDecisionDiagram::printWithHeader (AbstractOutputStream & outputStream
 //--------------------------------------------------------------------------------------------------
 
 static void printLineWithSeparator (AbstractOutputStream & outputStream,
-                                    const TC_UniqueArray <int32_t> & inValueSeparation,
-                                    const TC_UniqueArray <int32_t> & inBitCounts,
-                                    const TC_UniqueArray <char> & inValueArray) {
+                                    const GenericUniqueArray <int32_t> & inValueSeparation,
+                                    const GenericUniqueArray <int32_t> & inBitCounts,
+                                    const GenericUniqueArray <char> & inValueArray) {
   int32_t bitIndex = inValueArray.count () - 1 ;
   for (int32_t i=0 ; i<inBitCounts.count () ; i++) {
     outputStream.appendCString (" ") ;
@@ -1102,10 +1102,10 @@ static void printLineWithSeparator (AbstractOutputStream & outputStream,
 //--------------------------------------------------------------------------------------------------
 
 static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
-                                        const TC_UniqueArray <int32_t> & inValueSeparation,
-                                        const TC_UniqueArray <int32_t> & inBitCounts,
+                                        const GenericUniqueArray <int32_t> & inValueSeparation,
+                                        const GenericUniqueArray <int32_t> & inBitCounts,
                                         const uint32_t inValue,
-                                        TC_UniqueArray <char> & inDisplayString,
+                                        GenericUniqueArray <char> & inDisplayString,
                                         uint32_t inVariableIndex) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -1151,11 +1151,11 @@ static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream,
-                   const TC_UniqueArray <String> & inVariablesNames,
-                   const TC_UniqueArray <int32_t> & inBitCounts) const {
+                   const GenericUniqueArray <String> & inVariablesNames,
+                   const GenericUniqueArray <int32_t> & inBitCounts) const {
 //--- Build separators
-  TC_UniqueArray <int32_t> variableNameSeparation ;
-  TC_UniqueArray <int32_t> valuesSeparation ;
+  GenericUniqueArray <int32_t> variableNameSeparation ;
+  GenericUniqueArray <int32_t> valuesSeparation ;
   for (int32_t i=0 ; i<inVariablesNames.count () ; i++) {
     const int32_t variableLength = inVariablesNames (i COMMA_HERE).length () ;
     const int32_t bitCount = inBitCounts (i COMMA_HERE) ;
@@ -1177,8 +1177,8 @@ void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream,
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream,
-                   const TC_UniqueArray <int32_t> & inValueSeparation,
-                   const TC_UniqueArray <int32_t> & inBitCounts,
+                   const GenericUniqueArray <int32_t> & inValueSeparation,
+                   const GenericUniqueArray <int32_t> & inBitCounts,
                    const int32_t inPrefixedSpaceCount) const {
   if (mBDDvalue == 0) {
     outputStream.appendString (String::spaces (inPrefixedSpaceCount)) ;
@@ -1191,7 +1191,7 @@ void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream,
     for (int32_t i=0 ; i<inBitCounts.count () ; i++) {
       totalBitCount += (uint32_t) inBitCounts (i COMMA_HERE) ;
     }
-    TC_UniqueArray <char> displayString ((int32_t) totalBitCount, 'X' COMMA_HERE) ;
+    GenericUniqueArray <char> displayString ((int32_t) totalBitCount, 'X' COMMA_HERE) ;
     internalPrintWithSeparator (outputStream,
                                 inValueSeparation,
                                 inBitCounts,
@@ -1212,7 +1212,7 @@ void BinaryDecisionDiagram::print (AbstractOutputStream & outputStream,
 static void buildGraphvizRepresentation (String & ioString,
                                          const String & inSourceNode,
                                          const uint32_t inBDDValue,
-                                         const TC_UniqueArray <String> & inBitNames) {
+                                         const GenericUniqueArray <String> & inBitNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inBDDValue COMMA_HERE) ;
   const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
   const String node = String ("N") + stringWithUnsigned (nodeIndex) ;
@@ -1270,7 +1270,7 @@ String BinaryDecisionDiagram::graphvizRepresentation (void) const {
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     varCount = ((int32_t) gNodeArray [nodeIndex].mVariableIndex) + 1 ;
   }
-  TC_UniqueArray <String> bitNames ;
+  GenericUniqueArray <String> bitNames ;
   for (int32_t i=0 ; i<varCount ; i++) {
     bitNames.appendObject (stringWithSigned (i)) ;
   }
@@ -1279,7 +1279,7 @@ String BinaryDecisionDiagram::graphvizRepresentation (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String BinaryDecisionDiagram::graphvizRepresentationWithNames (const TC_UniqueArray <String> & inBitNames) const {
+String BinaryDecisionDiagram::graphvizRepresentationWithNames (const GenericUniqueArray <String> & inBitNames) const {
   unmarkAllExistingBDDnodes () ;
   String result ;
   result.appendCString ("digraph G {\n") ;
@@ -1308,7 +1308,7 @@ String BinaryDecisionDiagram::graphvizRepresentationWithNames (const TC_UniqueAr
 static void internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
                                                        String & ioDisplayString,
                                                        uint32_t inVariableIndex,
-                                                       TC_UniqueArray <String> & outStringArray
+                                                       GenericUniqueArray <String> & outStringArray
                                                        COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -1354,7 +1354,7 @@ static void internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::
-buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray
+buildCompressedLittleEndianStringValueArray (GenericUniqueArray <String> & outStringArray
                                              COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
@@ -1369,7 +1369,7 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outString
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::
-buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+buildCompressedLittleEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                              const uint32_t inVariableCount
                                              COMMA_LOCATION_ARGS) const {
   String displayString ;
@@ -1385,7 +1385,7 @@ static void internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
                                                     String & ioDisplayString,
                                                     uint32_t inVariableIndex,
                                                     const uint32_t inTotalVariableCountMinusOne,
-                                                    TC_UniqueArray <String> & outStringArray
+                                                    GenericUniqueArray <String> & outStringArray
                                                     COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -1431,7 +1431,7 @@ static void internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::
-buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray
+buildCompressedBigEndianStringValueArray (GenericUniqueArray <String> & outStringArray
                                           COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
@@ -1446,7 +1446,7 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArr
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::
-buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+buildCompressedBigEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                  const uint32_t inVariableCount
                                  COMMA_LOCATION_ARGS) const {
   String displayString ;
@@ -1706,8 +1706,8 @@ static void internalValueCount64UsingCache (const uint32_t inValue,
                                             const uint32_t inVariableCount,
                                             uint64_t & nombreDirect,
                                             uint64_t & nombreComplement,
-                                            TC_UniqueArray <uint64_t> & ioDirectCacheArray,
-                                            TC_UniqueArray <uint64_t> & ioComplementCacheArray
+                                            GenericUniqueArray <uint64_t> & ioDirectCacheArray,
+                                            GenericUniqueArray <uint64_t> & ioComplementCacheArray
                                             COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
@@ -1741,8 +1741,8 @@ static void internalValueCount64UsingCache (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 uint64_t BinaryDecisionDiagram::valueCount64UsingCache (const uint32_t inVariableCount,
-                                        TC_UniqueArray <uint64_t> & ioDirectCacheArray,
-                                        TC_UniqueArray <uint64_t> & ioComplementCacheArray) const {
+                                        GenericUniqueArray <uint64_t> & ioDirectCacheArray,
+                                        GenericUniqueArray <uint64_t> & ioComplementCacheArray) const {
   uint64_t nombreDirect = 0 ;
   uint64_t nombreComplement = 0 ;
   internalValueCount64UsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
@@ -1803,8 +1803,8 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
                                              const uint32_t inVariableCount,
                                              UInt128 & nombreDirect,
                                              UInt128 & nombreComplement,
-                                             TC_UniqueArray <UInt128> & ioDirectCacheArray,
-                                             TC_UniqueArray <UInt128> & ioComplementCacheArray
+                                             GenericUniqueArray <UInt128> & ioDirectCacheArray,
+                                             GenericUniqueArray <UInt128> & ioComplementCacheArray
                                              COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
@@ -1838,8 +1838,8 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 UInt128 BinaryDecisionDiagram::valueCount128UsingCache (const uint32_t inVariableCount,
-                                          TC_UniqueArray <UInt128> & ioDirectCacheArray,
-                                          TC_UniqueArray <UInt128> & ioComplementCacheArray) const {
+                                          GenericUniqueArray <UInt128> & ioDirectCacheArray,
+                                          GenericUniqueArray <UInt128> & ioComplementCacheArray) const {
   UInt128 nombreDirect = 0 ;
   UInt128 nombreComplement = 0 ;
   internalValueCount128UsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
@@ -1897,8 +1897,8 @@ static void internalValueCountUsingCache (const uint32_t inValue,
                                           const uint32_t inVariableCount,
                                           BigSigned & nombreDirect,
                                           BigSigned & nombreComplement,
-                                          TC_UniqueArray <BigSigned> & ioDirectCacheArray,
-                                          TC_UniqueArray <BigSigned> & ioComplementCacheArray
+                                          GenericUniqueArray <BigSigned> & ioDirectCacheArray,
+                                          GenericUniqueArray <BigSigned> & ioComplementCacheArray
                                           COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
@@ -1932,8 +1932,8 @@ static void internalValueCountUsingCache (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 BigSigned BinaryDecisionDiagram::valueCountUsingCache (const uint32_t inVariableCount,
-                                      TC_UniqueArray <BigSigned> & ioDirectCacheArray,
-                                      TC_UniqueArray <BigSigned> & ioComplementCacheArray) const {
+                                      GenericUniqueArray <BigSigned> & ioDirectCacheArray,
+                                      GenericUniqueArray <BigSigned> & ioComplementCacheArray) const {
   BigSigned nombreDirect ;
   BigSigned nombreComplement ;
   internalValueCountUsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
@@ -3155,7 +3155,7 @@ void BinaryDecisionDiagram::printBDDpackageOperationsSummary (AbstractOutputStre
   inStream.appendCString (" (") ;
   inStream.appendUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
   inStream.appendCString (" MB)\n") ;
-  TC_UniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
+  GenericUniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
     int32_t length = 0 ;
     uint32_t nodeIndex = gCollisionMap [i] ;
@@ -3256,9 +3256,9 @@ void BinaryDecisionDiagram::traverseBDDvalues (C_bdd_value_traversing & inTraver
 //--------------------------------------------------------------------------------------------------
 
 class C_build_values64_array : public C_bdd_value_traversing {
-  private: TC_UniqueArray <uint64_t> * mPtr ;
+  private: GenericUniqueArray <uint64_t> * mPtr ;
 
-  public: inline C_build_values64_array (TC_UniqueArray <uint64_t> * inPtr) :
+  public: inline C_build_values64_array (GenericUniqueArray <uint64_t> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -3284,7 +3284,7 @@ void C_build_values64_array::action (const bool * tableauDesValeurs,
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagram::buildValue64Array (TC_UniqueArray <uint64_t> & outValuesArray,
+void BinaryDecisionDiagram::buildValue64Array (GenericUniqueArray <uint64_t> & outValuesArray,
                                const uint32_t inVariableCount) const {
   macroAssert(inVariableCount < 64, "inVariableCount == %ld >= 64", (int64_t) inVariableCount, 0) ;
   outValuesArray.removeAllKeepingCapacity () ;
@@ -3304,9 +3304,9 @@ void BinaryDecisionDiagram::buildValue64Array (TC_UniqueArray <uint64_t> & outVa
 //--------------------------------------------------------------------------------------------------
 
 class C_build_values_array : public C_bdd_value_traversing {
-  private: TC_UniqueArray <TC_Array <bool> > * mPtr ;
+  private: GenericUniqueArray <GenericArray <bool> > * mPtr ;
 
-  public: inline C_build_values_array (TC_UniqueArray <TC_Array <bool> > * inPtr) :
+  public: inline C_build_values_array (GenericUniqueArray <GenericArray <bool> > * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -3323,7 +3323,7 @@ class C_build_values_array : public C_bdd_value_traversing {
 
 void C_build_values_array::action (const bool * tableauDesValeurs,
                                    const uint32_t inVariableCount) {
-  TC_Array <bool> value ;
+  GenericArray <bool> value ;
   for (uint32_t i=0 ; i<inVariableCount ; i++) {
     value.appendObject (tableauDesValeurs [i]) ;
   }
@@ -3332,7 +3332,7 @@ void C_build_values_array::action (const bool * tableauDesValeurs,
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagram::buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
+void BinaryDecisionDiagram::buildValueArray (GenericUniqueArray <GenericArray <bool> > & outValuesArray,
                              const uint32_t inVariableCount) const {
   outValuesArray.removeAllKeepingCapacity () ;
   C_build_values_array builder (& outValuesArray) ;
@@ -3351,9 +3351,9 @@ void BinaryDecisionDiagram::buildValueArray (TC_UniqueArray <TC_Array <bool> > &
 //--------------------------------------------------------------------------------------------------
 
 class cLittleEndianStringValueBuilder : public C_bdd_value_traversing {
-  private: TC_UniqueArray <String> * mPtr ;
+  private: GenericUniqueArray <String> * mPtr ;
 
-  public: cLittleEndianStringValueBuilder (TC_UniqueArray <String> * inPtr) :
+  public: cLittleEndianStringValueBuilder (GenericUniqueArray <String> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -3381,7 +3381,7 @@ action (const bool * tableauDesValeurs,
 //--------------------------------------------------------------------------------------------------
 
 void BinaryDecisionDiagram::
-buildLittleEndianStringValueArray (TC_UniqueArray <String> & outValuesArray,
+buildLittleEndianStringValueArray (GenericUniqueArray <String> & outValuesArray,
                                    const uint32_t inVariableCount) const {
   outValuesArray.removeAllKeepingCapacity () ;
   cLittleEndianStringValueBuilder builder (& outValuesArray) ;
@@ -3394,9 +3394,9 @@ buildLittleEndianStringValueArray (TC_UniqueArray <String> & outValuesArray,
 //--------------------------------------------------------------------------------------------------
 
 class cBuildBigEndianStringValueArray : public C_bdd_value_traversing {
-  private: TC_UniqueArray <String> * mPtr ;
+  private: GenericUniqueArray <String> * mPtr ;
 
-  public: cBuildBigEndianStringValueArray (TC_UniqueArray <String> * inPtr) :
+  public: cBuildBigEndianStringValueArray (GenericUniqueArray <String> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -3422,7 +3422,7 @@ void cBuildBigEndianStringValueArray::action (const bool * tableauDesValeurs,
 
 //--------------------------------------------------------------------------------------------------
 
-void BinaryDecisionDiagram::buildBigEndianStringValueArray (TC_UniqueArray <String> & outValuesArray,
+void BinaryDecisionDiagram::buildBigEndianStringValueArray (GenericUniqueArray <String> & outValuesArray,
                                             const uint32_t inVariableCount) const {
   outValuesArray.removeAllKeepingCapacity () ;
   cBuildBigEndianStringValueArray builder (& outValuesArray) ;
@@ -3472,7 +3472,7 @@ queryStringValue (LOCATION_ARGS) const {
   if (isTrue ()) {
     s.appendCString ("X") ;
   }else if (! isFalse ()) {
-    TC_UniqueArray <String> stringArray ;
+    GenericUniqueArray <String> stringArray ;
     buildCompressedBigEndianStringValueArray (stringArray COMMA_THERE) ;
     if (stringArray.count () > 0) {
       s.appendString (stringArray (0 COMMA_HERE)) ;

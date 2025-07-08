@@ -79,11 +79,11 @@ class BinaryDecisionDiagramRelation final {
                               const uint64_t inValue
                               COMMA_LOCATION_ARGS) const ;
 
-  public: void getValueArray (TC_UniqueArray <uint64_t> & outArray) const ;
+  public: void getValueArray (GenericUniqueArray <uint64_t> & outArray) const ;
 
   public: uint64_t value64Count (void) const ;
 
-  public: void getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray
+  public: void getArray (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray
                          COMMA_LOCATION_ARGS) const ;
 
   public: BinaryDecisionDiagramRelation relationByDeletingLastVariable (LOCATION_ARGS) const ;

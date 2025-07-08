@@ -38,7 +38,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class PrivateEmbeddedString final : public SharedObject {
-  private: TC_UniqueArray <utf32> mCharArray ;
+  private: GenericUniqueArray <utf32> mCharArray ;
   private: char * mUTF8CString ; // Zero terminated string
 
   public: PrivateEmbeddedString (const int32_t inCapacity COMMA_LOCATION_ARGS) ;
@@ -592,7 +592,7 @@ void String::insertCharacterAtIndex (const utf32 inChar,
 //   G E T    L I N E S    A R R A Y
 //--------------------------------------------------------------------------------------------------
 
-void String::linesArray (TC_UniqueArray <String> & outStringArray) const {
+void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
   const int32_t currentStringLength = length () ;
   if (currentStringLength > 0) {
     int32_t index = outStringArray.count () ;

@@ -171,7 +171,7 @@ void UIntCommandLineOption::printUIntOptions (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void UIntCommandLineOption::getUIntOptionNameList (TC_UniqueArray <String> & outArray) {
+void UIntCommandLineOption::getUIntOptionNameList (GenericUniqueArray <String> & outArray) {
   UIntCommandLineOption * p = gFirstIntOption ;
   while (p != nullptr) {
     outArray.appendObject (p->mDomainName) ;

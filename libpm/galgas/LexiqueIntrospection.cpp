@@ -29,7 +29,7 @@ static LexiqueIntrospection * gLexiqueIntrospectionRoot = nullptr ;
 
 //--------------------------------------------------------------------------------------------------
 
-LexiqueIntrospection::LexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <String> & ioList),
+LexiqueIntrospection::LexiqueIntrospection (void (*appendKeywordListNames) (GenericUniqueArray <String> & ioList),
                                             Type_getKeywordsForIdentifier getKeywordsForIdentifier) :
 mNext (gLexiqueIntrospectionRoot),
 mAppendKeywordListNames (appendKeywordListNames),
@@ -39,7 +39,7 @@ mGetKeywordsForIdentifier (getKeywordsForIdentifier) {
 
 //--------------------------------------------------------------------------------------------------
 
-void LexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outList) {
+void LexiqueIntrospection::getKeywordListNames (GenericUniqueArray <String> & outList) {
   outList.removeAllKeepingCapacity () ;
   LexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
   while (nullptr != p) {
@@ -52,7 +52,7 @@ void LexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outLis
 
 void LexiqueIntrospection::getKeywordListForIdentifier (const String & inIdentifier,
                                                         bool & outFound,
-                                                        TC_UniqueArray <String> & outList) {
+                                                        GenericUniqueArray <String> & outList) {
   outFound = false ;
   outList.removeAllKeepingCapacity () ;
   LexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
@@ -75,7 +75,7 @@ void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
     gCout.appendCString ("=") ;
     gCout.appendString (option) ;
     gCout.appendCString ("\":\n") ;
-    TC_UniqueArray <String> components ;
+    GenericUniqueArray <String> components ;
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {
       String message = "invalid option ; should be \"--" ;
@@ -95,7 +95,7 @@ void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
       const String prefix = components (3 COMMA_HERE) ;
       const String postfix = components (4 COMMA_HERE) ;
       const String identifier = components (0 COMMA_HERE) + ":" + components (1 COMMA_HERE) ;
-      TC_UniqueArray <String> nameList ;
+      GenericUniqueArray <String> nameList ;
       bool found = false ;
       getKeywordListForIdentifier (identifier, found, nameList) ;
       if (!found) {
@@ -104,7 +104,7 @@ void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
         message.appendCString ("=") ;
         message.appendString (optionFormat + "\", ") ;
         message.appendCString ("available values for \"lexique_name:list_name\" are:") ;
-        TC_UniqueArray <String> keywordListNames ; getKeywordListNames (keywordListNames) ;
+        GenericUniqueArray <String> keywordListNames ; getKeywordListNames (keywordListNames) ;
         for (int32_t i=0 ; i<keywordListNames.count () ; i++) {
           message.appendCString ("  - ") ;
           message.appendString (keywordListNames (i COMMA_HERE)) ;

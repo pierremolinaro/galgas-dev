@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,7 +44,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
                   const GrammarVocabulary & inVocabulary,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
-                  const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
+                  const GenericUniqueArray <GenericUniqueArray <uint64_t> > & inFOLLOWarray,
                   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,

@@ -42,7 +42,7 @@ class DownEnumerator_XCodeAppTargetList final {
 //--- Current element access
   public: class GGS_XCodeAppTargetList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeAppTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeAppTargetList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_XCodeAppTargetList (const DownEnumerator_XCodeAppTargetList &) = delete ;
@@ -81,7 +81,7 @@ class UpEnumerator_XCodeAppTargetList final {
 //--- Current element access
   public: class GGS_XCodeAppTargetList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeAppTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeAppTargetList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_XCodeAppTargetList (const UpEnumerator_XCodeAppTargetList &) = delete ;
@@ -94,7 +94,7 @@ class UpEnumerator_XCodeAppTargetList final {
 
 class GGS_XCodeAppTargetList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_XCodeAppTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeAppTargetList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_XCodeAppTargetList (void) ;
@@ -120,7 +120,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_XCodeAppTargetList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_XCodeAppTargetList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -758,7 +758,7 @@ class DownEnumerator_BuildFileList final {
 //--- Current element access
   public: class GGS_BuildFileList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_BuildFileList_2E_element> mArray ;
+  private: GenericArray <GGS_BuildFileList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_BuildFileList (const DownEnumerator_BuildFileList &) = delete ;
@@ -786,7 +786,7 @@ class UpEnumerator_BuildFileList final {
 //--- Current element access
   public: class GGS_BuildFileList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_BuildFileList_2E_element> mArray ;
+  private: GenericArray <GGS_BuildFileList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_BuildFileList (const UpEnumerator_BuildFileList &) = delete ;
@@ -799,7 +799,7 @@ class UpEnumerator_BuildFileList final {
 
 class GGS_BuildFileList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_BuildFileList_2E_element> mArray ;
+  private: GenericArray <GGS_BuildFileList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_BuildFileList (void) ;
@@ -825,7 +825,7 @@ class GGS_BuildFileList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_BuildFileList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_BuildFileList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 

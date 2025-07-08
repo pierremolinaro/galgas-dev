@@ -68,7 +68,7 @@ GrammarProduction::GrammarProduction (const String & inSourceFileName,
                                       const int32_t inDefinitionLine,
                                       const int32_t inColumnDefinition,
                                       const int32_t inLeftNonTerminalIndex,
-                                      TC_UniqueArray <int32_t> & ioDerivation, // Swap
+                                      GenericUniqueArray <int32_t> & ioDerivation, // Swap
                                       const uint32_t inProductionIndex) :
 mSourceFileName (inSourceFileName),
 mLineDefinition (inDefinitionLine),
@@ -327,7 +327,7 @@ analyzeGrammar (Compiler * inCompiler,
   }else if (inGrammarClass.mProperty_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    TC_Array <FixItDescription> fixItArray ;
+    GenericArray <FixItDescription> fixItArray ;
     fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "LL1")) ;
     fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "SLR")) ;
     fixItArray.appendObject (FixItDescription (EnumFixItKind::fixItReplace, "LR1")) ;
@@ -455,7 +455,7 @@ analyzeGrammar (Compiler * inCompiler,
                                  verboseOptionOn) ;
   }
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
-  TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
+  GenericUniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   BinaryDecisionDiagramRelation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
@@ -466,7 +466,7 @@ analyzeGrammar (Compiler * inCompiler,
                                                             verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
-  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray ;
+  GenericUniqueArray <GenericUniqueArray <uint64_t> > FIRSTarray ;
   BinaryDecisionDiagramRelation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
@@ -497,7 +497,7 @@ analyzeGrammar (Compiler * inCompiler,
                                   verboseOptionOn) ;
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
-  TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
+  GenericUniqueArray <GenericUniqueArray <uint64_t> > FOLLOWarray ;
   BinaryDecisionDiagramRelation FOLLOWsets ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
@@ -610,7 +610,7 @@ analyzeGrammar (Compiler * inCompiler,
       errorMessage.appendCString ("errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging") ;
     }
-    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
     String s ;
     s.appendCString ("OK ; no error, but warning(s) step(s)") ;

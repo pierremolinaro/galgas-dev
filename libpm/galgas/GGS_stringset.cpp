@@ -77,7 +77,7 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 void GGS_stringset::addAssignOperation (const GGS_stringset & inOperand
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && (inOperand.isValid ())) {
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
       plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_THERE)) COMMA_THERE) ;
@@ -105,8 +105,8 @@ GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_stringset::class_func_emptySet (THERE) ;
-    const TC_Array <String> array1 = mSharedMap.sortedKeyArray () ;
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array1 = mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx1 = 0 ;
     int32_t idx2 = 0 ;
     while ((idx1 < array1.count ()) && (idx2 < array2.count ())) {
@@ -134,7 +134,7 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
       result.plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
@@ -150,7 +150,7 @@ void GGS_stringset::plusAssignOperation (const GGS_stringset inOperand,
                                          Compiler *
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     int32_t idx2 = 0 ;
     while (idx2 < array2.count ()) {
       plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_HERE)) COMMA_HERE) ;
@@ -169,7 +169,7 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array2.count () ; i++) {
       OptionalSharedRef <SharedStringMapNode> removedNode ;
       result.mSharedMap.removeAndReturnRemovedNode (array2 (i COMMA_HERE), removedNode COMMA_THERE) ;
@@ -184,7 +184,7 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
-    const TC_Array <String> array = mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array = mSharedMap.sortedKeyArray () ;
     for (int32_t i=0 ; i<array.count () ; i++) {
       result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
     }
@@ -236,8 +236,8 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const TC_Array <String> array1 = mSharedMap.sortedKeyArray () ;
-    const TC_Array <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array1 = mSharedMap.sortedKeyArray () ;
+    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
     if (array1.count () < array2.count ()) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (array1.count () > array2.count ()) {
@@ -402,7 +402,7 @@ mKey (inNodePtr->mKey) {
 //--------------------------------------------------------------------------------------------------
 
 void SharedStringMapNode::populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,
-                                               TC_Array <String> & ioStringArray) {
+                                               GenericArray <String> & ioStringArray) {
   if (inNode.isNotNil ()) {
     populateStringArray (inNode->mInfPtr, ioStringArray) ;
     ioStringArray.appendObject (inNode->mKey) ;
@@ -468,8 +468,8 @@ class SharedStringMapRoot final : public SharedObject {
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <String> sortedKeyArray (void) const {
-    TC_Array <String> array ;
+  public: GenericArray <String> sortedKeyArray (void) const {
+    GenericArray <String> array ;
     SharedStringMapNode::populateStringArray (mRootNode, array) ;
     return array ;
   }
@@ -782,11 +782,11 @@ void SharedStringMap::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <String> SharedStringMap::sortedKeyArray (void) const {
+GenericArray <String> SharedStringMap::sortedKeyArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedKeyArray () ;
   }else{
-    return TC_Array <String> () ;
+    return GenericArray <String> () ;
   }
 }
 

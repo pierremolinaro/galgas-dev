@@ -1840,14 +1840,14 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <String> & /* ioList */) {
+static void getKeywordLists_galgasTemplateScanner (GenericUniqueArray <String> & /* ioList */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 static void getKeywordsForIdentifier_galgasTemplateScanner (const String & /* inIdentifier */,
                                                             bool & /* ioFound */,
-                                                            TC_UniqueArray <String> & /* ioList */) {
+                                                            GenericUniqueArray <String> & /* ioList */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5369,7 +5369,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
   if (GalgasBool::boolTrue == test_0) {
     test_0 = GGS_bool (ComparisonKind::equal, var_n_2562.objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      TC_Array <FixItDescription> fixItArray1 ;
+      GenericArray <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_2540.readProperty_location (), GGS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 54)) ;
     }
   }
@@ -5550,7 +5550,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
     GGS_location var_startLocation_4453 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 114)) ;
     GGS_lstring var_prefixString_4517 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)) ;
-    TC_Array <FixItDescription> fixItArray1 ;
+    GenericArray <FixItDescription> fixItArray1 ;
     appendFixItActions (fixItArray1, EnumFixItKind::fixItReplace, GGS_string::makeEmptyString ()) ;
     inCompiler->emitSemanticError (var_prefixString_4517.readProperty_location ().getter_union (var_startLocation_4453, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 116)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 116)) ;
   } break ;

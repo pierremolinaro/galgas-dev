@@ -173,7 +173,7 @@ GGS_object GGS_function::getter_invoke (const GGS_objectlist & inObjectList,
     errorMessage.appendString ((argumentsArray.count () > 1) ? "s" : "") ;
     errorMessage.appendCString (", but its header requires ") ;
     errorMessage.appendUnsigned (mFunctionDescriptor->mParameterCount) ;
-    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_THERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
   for (uint32_t i=0 ; (i<mFunctionDescriptor->mParameterCount) && ok ; i++) {
@@ -197,7 +197,7 @@ GGS_object GGS_function::getter_invoke (const GGS_objectlist & inObjectList,
         errorMessage.appendCString ("', but the function header requires an instance of '@") ;
         errorMessage.appendString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
         errorMessage.appendCString ("'") ;
-        inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_THERE) ;
       }
     }
   }

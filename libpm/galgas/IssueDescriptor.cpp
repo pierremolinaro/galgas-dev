@@ -96,7 +96,7 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
   result.appendSigned (mEndColumn - mStartColumn + 1) ;
 //--- message
   result.appendString (",\"message\":[") ;
-  TC_UniqueArray <String> lines ;
+  GenericUniqueArray <String> lines ;
   inMessage.componentsSeparatedByString ("\n", lines) ;
   bool first = true ;
   for (int32_t i = 0 ; i < lines.count() ; i++) {

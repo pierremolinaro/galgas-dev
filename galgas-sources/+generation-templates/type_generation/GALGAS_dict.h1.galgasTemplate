@@ -24,7 +24,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy
@@ -50,7 +50,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (UNUSED_LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mInfoArray ;
   private: int32_t mIndex ;
 
 //--- No copy

@@ -5178,7 +5178,7 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_galgasScanner_33_ (TC_UniqueArray <String> & ioList) {
+static void getKeywordLists_galgasScanner_33_ (GenericUniqueArray <String> & ioList) {
   ioList.appendObject ("galgasScanner3:attributeKeyWordList") ;
   ioList.appendObject ("galgasScanner3:galgasDelimitorsList") ;
   ioList.appendObject ("galgasScanner3:galgasKeyWordList") ;
@@ -5188,7 +5188,7 @@ static void getKeywordLists_galgasScanner_33_ (TC_UniqueArray <String> & ioList)
 
 static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentifier,
                                                         bool & ioFound,
-                                                        TC_UniqueArray <String> & ioList) {
+                                                        GenericUniqueArray <String> & ioList) {
   if (inIdentifier == "galgasScanner3:attributeKeyWordList") {
     ioFound = true ;
     ioList.appendObject ("from") ;

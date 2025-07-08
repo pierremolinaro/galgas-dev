@@ -33,7 +33,7 @@ class cGraphNode {
   public: const uint32_t mNodeID ;
   public: capCollectionElement mAttributes ;
   public: GGS_location mDefinitionLocation ;
-  public: TC_UniqueArray <GGS_location> mReferenceLocationArray ;
+  public: GenericUniqueArray <GGS_location> mReferenceLocationArray ;
   public: bool mIsDefined ;
 
 //--- Constructors
@@ -66,7 +66,7 @@ class cSharedGraph : public SharedObject {
   private: cGraphNode * mRoot ;
   public: inline const cGraphNode * root (void) const { return mRoot ; }
   private: DirectedGraph mDirectedGraph ;
-  private: TC_UniqueArray <cGraphNode *> mNodeArray ;
+  private: GenericUniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Constructor
   public: cSharedGraph (LOCATION_ARGS) ;
@@ -211,7 +211,7 @@ mIsDefined (inNode->mIsDefined) {
 //--------------------------------------------------------------------------------------------------
 
 static void buildNodeArray (cGraphNode * inNode,
-                            TC_UniqueArray <cGraphNode *> & ioNodeArray) {
+                            GenericUniqueArray <cGraphNode *> & ioNodeArray) {
   if (nullptr != inNode) {
     macroAssert (ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) == nullptr, "ioNodeArray (%lld COMMA_HERE) != nullptr", inNode->mNodeID, 0) ;
     ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) = inNode ;
@@ -253,7 +253,7 @@ void cSharedGraph::description (String & ioString,
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cSharedGraph::checkGraph (LOCATION_ARGS) const {
-    TC_UniqueArray <cGraphNode *> nodeArray (mNodeArray.count () COMMA_HERE) ;
+    GenericUniqueArray <cGraphNode *> nodeArray (mNodeArray.count () COMMA_HERE) ;
     nodeArray.appendObjects (mNodeArray.count (), nullptr) ;
     buildNodeArray (mRoot, nodeArray) ;
     macroAssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
@@ -416,7 +416,7 @@ GGS_location cSharedGraph::locationForKey (const String & inKey,
   if (!ok) {
     inCompiler->emitSemanticError (GGS_location (),
                                    String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
-                                   TC_Array <FixItDescription> ()
+                                   GenericArray <FixItDescription> ()
                                    COMMA_THERE) ;
   }
   return result ;
@@ -563,7 +563,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
       message.appendCString ("' is not a declared node, cannot start from it") ;
       inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mProperty_location,
                                      message,
-                                     TC_Array <FixItDescription> ()
+                                     GenericArray <FixItDescription> ()
                                      COMMA_THERE) ;
     }else{
       startNodeSet.add (nodePtr->mNodeID) ;
@@ -591,7 +591,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     nodesToExcludeSet
   ) ;
 //--- Enter nodes
-  TC_UniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
+  GenericUniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
@@ -605,7 +605,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                                        COMMA_THERE) ;
   }
 //--- Enter edges
-  TC_UniqueArray <cEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
+  GenericUniqueArray <cEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
   for (int32_t i=0 ; i<edgeArray.count () ; i++) {
     const uint32_t sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
     const cGraphNode * sourceNodePtr = mNodeArray ((int32_t) sourceNodeIndex COMMA_THERE) ;
@@ -942,7 +942,7 @@ void AC_GALGAS_graph::setter_addEdge (const GGS_lstring & inSourceNodeKey,
 //--------------------------------------------------------------------------------------------------
 
 String cSharedGraph::getter_graphviz (void) const {
-  TC_UniqueArray <String> nodeNameArray ;
+  GenericUniqueArray <String> nodeNameArray ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     nodeNameArray.appendObject (mNodeArray (i COMMA_HERE)->mKey) ;
   }
@@ -969,7 +969,7 @@ GGS_string AC_GALGAS_graph::getter_graphviz (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 void cSharedGraph::edges (GGS__32_stringlist & ioList) const {
-  TC_UniqueArray <cEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
+  GenericUniqueArray <cEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
   for (int32_t i=0 ; i<edgeArray.count () ; i++) {
     const cEdge edge = edgeArray (i COMMA_HERE) ;
     ioList.addAssignOperation (mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
@@ -1058,7 +1058,7 @@ GGS_stringlist AC_GALGAS_graph::getter_undefinedNodeKeyList (LOCATION_ARGS) cons
 
 void cSharedGraph::internalFindCircularities (capCollectionElementArray & outInfoList,
                                               GGS_lstringlist & outNodeKeyList) const {
-  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
   outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
@@ -1094,7 +1094,7 @@ void AC_GALGAS_graph::internalFindCircularities (capCollectionElementArray & out
 
 void cSharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
                                                    GGS_lstringlist & outNodeKeyList) const {
-  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
   outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
@@ -1130,7 +1130,7 @@ void AC_GALGAS_graph::internalNodesWithNoPredecessor (capCollectionElementArray 
 
 void cSharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
                                                  GGS_lstringlist & outNodeKeyList) const {
-  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAllObjects() ;
   outNodeKeyList = GGS_lstringlist::class_func_emptyList (HERE) ;
@@ -1168,8 +1168,8 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
                                             GGS_lstringlist & outSortedNodeKeyList,
                                             capCollectionElementArray & outUnsortedList,
                                             GGS_lstringlist & outUnsortedNodeKeyList) const {
-  TC_UniqueArray <uint32_t> sortedNodes ;
-  TC_UniqueArray <uint32_t> unsortedNodes ;
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
   mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
@@ -1238,8 +1238,8 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
                                                       GGS_lstringlist & outSortedNodeKeyList,
                                                       capCollectionElementArray & outUnsortedList,
                                                       GGS_lstringlist & outUnsortedNodeKeyList) const {
-  TC_UniqueArray <uint32_t> sortedNodes ;
-  TC_UniqueArray <uint32_t> unsortedNodes ;
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
   mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAllObjects() ;
@@ -1391,7 +1391,7 @@ void AC_GALGAS_graph::setter_removeEdgesToDominators (LOCATION_ARGS) {
 
 void cSharedGraph::removeEdgesToDominators (LOCATION_ARGS) {
 //--- Find start nodes
-  TC_UniqueArray <uint32_t> startNodes ; mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
+  GenericUniqueArray <uint32_t> startNodes ; mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
 //--- Add a dummy start node for handling case where there several start nodes
   const uint32_t dummyNodeIndex = mDirectedGraph.unusedNodeIndex () ;
 //--- Add edges from dummy node to start nodes

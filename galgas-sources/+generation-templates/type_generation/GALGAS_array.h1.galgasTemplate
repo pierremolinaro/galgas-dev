@@ -24,7 +24,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
 
 //---- Properties
-  private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
   private: int32_t mCurrent ;
 } ;
 
@@ -52,7 +52,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
 
 //---- Properties
-  private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
   private: int32_t mCurrent ;
 } ;
 
@@ -60,7 +60,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
 
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;

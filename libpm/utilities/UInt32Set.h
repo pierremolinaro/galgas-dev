@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_Array.h"
+#include "GenericArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -49,9 +49,9 @@ class UInt32Set final {
   public: bool operator != (const UInt32Set & inOther) const ;
 
 //--- Accessors
-  public: void getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) const ;
+  public: void getBoolValueArray (GenericUniqueArray <bool> & outBoolValueArray) const ;
   
-  public: void getValueArray (TC_UniqueArray <uint32_t> & outValueArray) const ;
+  public: void getValueArray (GenericUniqueArray <uint32_t> & outValueArray) const ;
   
   public: bool contains (const uint32_t inNodeIndex) const ;
   
@@ -64,7 +64,7 @@ class UInt32Set final {
   }
   
 //--- Attributes
-  private: TC_Array <uint64_t> mDefinition ;
+  private: GenericArray <uint64_t> mDefinition ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: void check (void) const ;

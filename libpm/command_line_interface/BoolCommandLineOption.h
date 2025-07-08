@@ -57,7 +57,7 @@ class BoolCommandLineOption final : public AbstractCommandLineOption {
   public: static void printBoolOptions (void) ;
 
 //--- Option introspection
-  public: static void getBoolOptionNameList (TC_UniqueArray <String> & outArray) ;
+  public: static void getBoolOptionNameList (GenericUniqueArray <String> & outArray) ;
 
   public: static utf32 getBoolOptionInvocationLetter (const String & inDomainName,
                                                       const String & inIdentifier) ;

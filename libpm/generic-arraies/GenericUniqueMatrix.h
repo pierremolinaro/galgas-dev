@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Declaration and implementation of the template class 'TC_UniqueArray2'
+//  Declaration and implementation of the template class 'GenericUniqueMatrix'
 //
 //  It implements a generic two dimensions dynamic sized array.
 //
@@ -35,28 +35,28 @@
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_UniqueArray2 ;
+template <typename ELEMENT> class GenericUniqueMatrix ;
 
-template <typename ELEMENT> void swap (TC_UniqueArray2 <ELEMENT> & ioOperand1,
-                                       TC_UniqueArray2 <ELEMENT> & ioOperand2) ;
+template <typename ELEMENT> void swap (GenericUniqueMatrix <ELEMENT> & ioOperand1,
+                                       GenericUniqueMatrix <ELEMENT> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_UniqueArray2 final {
+template <typename ELEMENT> class GenericUniqueMatrix final {
   protected: ELEMENT * mArray ;
   protected: int32_t mCurrentRowCount ;
   protected: int32_t mCurrentColumnCount ;
 
 //--- Constructor
-  public: TC_UniqueArray2 (const int32_t inRowCount,
-                           const int32_t inColumnCount) ;
+  public: GenericUniqueMatrix (const int32_t inRowCount,
+                               const int32_t inColumnCount) ;
 
 //--- Destructor
-  public: ~TC_UniqueArray2 (void) ;
+  public: ~GenericUniqueMatrix (void) ;
 
 //--- No copy
-  private: TC_UniqueArray2 (TC_UniqueArray2 <ELEMENT> & inSource) = delete ;
-  private: TC_UniqueArray2 <ELEMENT> & operator = (TC_UniqueArray2 <ELEMENT> & inSource) = delete ;
+  private: GenericUniqueMatrix (GenericUniqueMatrix <ELEMENT> & inSource) = delete ;
+  private: GenericUniqueMatrix <ELEMENT> & operator = (GenericUniqueMatrix <ELEMENT> & inSource) = delete ;
 
 //--- Get Row and Column count
   public: inline int32_t rowCount (void) const { return mCurrentRowCount ; }
@@ -93,8 +93,8 @@ template <typename ELEMENT> class TC_UniqueArray2 final {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Exchange
-  friend void swap <ELEMENT> (TC_UniqueArray2 <ELEMENT> & ioOperand1,
-                              TC_UniqueArray2 <ELEMENT> & ioOperand2) ;
+  friend void swap <ELEMENT> (GenericUniqueMatrix <ELEMENT> & ioOperand1,
+                              GenericUniqueMatrix <ELEMENT> & ioOperand2) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -102,9 +102,8 @@ template <typename ELEMENT> class TC_UniqueArray2 final {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_UniqueArray2 <ELEMENT>::
-TC_UniqueArray2 (const int32_t inRowCount,
-                 const int32_t inColumnCount) :
+GenericUniqueMatrix <ELEMENT>::GenericUniqueMatrix (const int32_t inRowCount,
+                                                    const int32_t inColumnCount) :
 mArray (nullptr),
 mCurrentRowCount (0),
 mCurrentColumnCount (0) {
@@ -117,8 +116,7 @@ mCurrentColumnCount (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT>
-TC_UniqueArray2 <ELEMENT>::~TC_UniqueArray2 (void) {
+template <typename ELEMENT> GenericUniqueMatrix <ELEMENT>::~GenericUniqueMatrix (void) {
   macroMyDeleteArray (mArray) ;
 }
 
@@ -126,9 +124,9 @@ TC_UniqueArray2 <ELEMENT>::~TC_UniqueArray2 (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename ELEMENT>
-  ELEMENT & TC_UniqueArray2 <ELEMENT>::operator () (const int32_t inRowIndex,
-                                                    const int32_t inColumnIndex
-                                                    COMMA_LOCATION_ARGS) {
+  ELEMENT & GenericUniqueMatrix <ELEMENT>::operator () (const int32_t inRowIndex,
+                                                        const int32_t inColumnIndex
+                                                        COMMA_LOCATION_ARGS) {
     return mArray [long2size_t (inRowIndex, inColumnIndex COMMA_THERE)] ;
   }
 #endif
@@ -137,9 +135,9 @@ TC_UniqueArray2 <ELEMENT>::~TC_UniqueArray2 (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename ELEMENT>
-  const ELEMENT & TC_UniqueArray2 <ELEMENT>::operator () (const int32_t inRowIndex,
-                                                          const int32_t inColumnIndex
-                                                          COMMA_LOCATION_ARGS) const {
+  const ELEMENT & GenericUniqueMatrix <ELEMENT>::operator () (const int32_t inRowIndex,
+                                                              const int32_t inColumnIndex
+                                                              COMMA_LOCATION_ARGS) const {
     return mArray [long2size_t (inRowIndex, inColumnIndex COMMA_THERE)] ;
   }
 #endif
@@ -147,8 +145,8 @@ TC_UniqueArray2 <ELEMENT>::~TC_UniqueArray2 (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void swap (TC_UniqueArray2 <ELEMENT> & ioOperand1,
-           TC_UniqueArray2 <ELEMENT> & ioOperand2) {
+void swap (GenericUniqueMatrix <ELEMENT> & ioOperand1,
+           GenericUniqueMatrix <ELEMENT> & ioOperand2) {
   swap (ioOperand1.mArray, ioOperand2.mArray) ;
   swap (ioOperand1.mCurrentRowCount, ioOperand2.mCurrentRowCount) ;
   swap (ioOperand1.mCurrentColumnCount, ioOperand2.mCurrentColumnCount) ;
@@ -158,10 +156,10 @@ void swap (TC_UniqueArray2 <ELEMENT> & ioOperand1,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_UniqueArray2 <ELEMENT>::setObjectAtIndexes (const ELEMENT & inObject,
-                                                    const int32_t inRowIndex,
-                                                    const int32_t inColumnIndex
-                                                    COMMA_LOCATION_ARGS) {
+void GenericUniqueMatrix <ELEMENT>::setObjectAtIndexes (const ELEMENT & inObject,
+                                                        const int32_t inRowIndex,
+                                                        const int32_t inColumnIndex
+                                                        COMMA_LOCATION_ARGS) {
   const size_t idx = long2size_t (inRowIndex, inColumnIndex COMMA_THERE) ;
   if (nullptr != mArray) {
     mArray [idx] = inObject ;

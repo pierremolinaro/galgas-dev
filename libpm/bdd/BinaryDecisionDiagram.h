@@ -24,8 +24,8 @@
 
 #include "M_machine.h"
 #include "UInt128.h"
-#include "TC_UniqueArray.h"
-#include "TC_Array.h"
+#include "GenericUniqueArray.h"
+#include "GenericArray.h"
 #include "BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -134,16 +134,16 @@ class BinaryDecisionDiagram final {
   public: BigSigned valueCount (const uint32_t inVariableCount) const ;
 
   public: uint64_t valueCount64UsingCache (const uint32_t inVariableCount,
-                                           TC_UniqueArray <uint64_t> & ioDirectCacheArray,
-                                           TC_UniqueArray <uint64_t> & ioComplementCacheArray) const ;
+                                           GenericUniqueArray <uint64_t> & ioDirectCacheArray,
+                                           GenericUniqueArray <uint64_t> & ioComplementCacheArray) const ;
 
   public: UInt128 valueCount128UsingCache (const uint32_t inVariableCount,
-                                           TC_UniqueArray <UInt128> & ioDirectCacheArray,
-                                           TC_UniqueArray <UInt128> & ioComplementCacheArray) const ;
+                                           GenericUniqueArray <UInt128> & ioDirectCacheArray,
+                                           GenericUniqueArray <UInt128> & ioComplementCacheArray) const ;
 
   public: BigSigned valueCountUsingCache (const uint32_t inVariableCount,
-                                          TC_UniqueArray <BigSigned> & ioDirectCacheArray,
-                                          TC_UniqueArray <BigSigned> & ioComplementCacheArray) const ;
+                                          GenericUniqueArray <BigSigned> & ioDirectCacheArray,
+                                          GenericUniqueArray <BigSigned> & ioComplementCacheArray) const ;
 
 //--- Return highest bit index + 1
   public: uint32_t significantVariableCount (void) const ;
@@ -167,7 +167,7 @@ class BinaryDecisionDiagram final {
                                 const uint32_t inFirstBit,
                                 const uint32_t inBitCount) const ;
 
-  public: bool containsValue (const TC_Array <bool> & inValue,
+  public: bool containsValue (const GenericArray <bool> & inValue,
                               const uint32_t inFirstBit,
                               const uint32_t inBitCount) const ;
 
@@ -180,7 +180,7 @@ class BinaryDecisionDiagram final {
   public: BinaryDecisionDiagram translate (const uint32_t inVariableCount,
                            const uint32_t inTranslation) const ;
 
-  public: void getBoolArray (TC_UniqueArray <bool> & outArray,
+  public: void getBoolArray (GenericUniqueArray <bool> & outArray,
                              const uint32_t inMaxValues,
                              const uint32_t inBitSize) const ;
 
@@ -206,7 +206,7 @@ class BinaryDecisionDiagram final {
   public: BinaryDecisionDiagram transitiveClosure (const uint32_t inBitSize,
                                    int32_t * outIterationCount) const ;
 
-  public: void getArray2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
+  public: void getArray2 (GenericUniqueArray <GenericUniqueArray <uint64_t> > & outArray,
                           const uint32_t inMaxValueCount,
                           const uint32_t inBitSize1,
                           const uint32_t inBitSize2) const ;
@@ -236,7 +236,7 @@ class BinaryDecisionDiagram final {
 
 //--- Printing
   public: String graphvizRepresentation (void) const ;
-  public: String graphvizRepresentationWithNames (const TC_UniqueArray <String> & inBitNames) const ;
+  public: String graphvizRepresentationWithNames (const GenericUniqueArray <String> & inBitNames) const ;
 
   public: void print (AbstractOutputStream & outputStream) const ;
 
@@ -245,26 +245,26 @@ class BinaryDecisionDiagram final {
   public: void printWithHeader (AbstractOutputStream & outputStream) const ;
 
   public: void print (AbstractOutputStream & outputStream,
-                       const TC_UniqueArray <String> & inVariablesNames,
-                       const TC_UniqueArray <int32_t> & inBitCounts) const ;
+                       const GenericUniqueArray <String> & inVariablesNames,
+                       const GenericUniqueArray <int32_t> & inBitCounts) const ;
 
   public: void print (AbstractOutputStream & outputStream,
-                       const TC_UniqueArray <int32_t> & inValueSeparation,
-                       const TC_UniqueArray <int32_t> & inBitCounts,
+                       const GenericUniqueArray <int32_t> & inValueSeparation,
+                       const GenericUniqueArray <int32_t> & inBitCounts,
                        const int32_t inPrefixedSpaceCount) const ;
 
 //--- Buid string compressed representation
-  public: void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray
+  public: void buildCompressedLittleEndianStringValueArray (GenericUniqueArray <String> & outStringArray
                                                              COMMA_LOCATION_ARGS) const ;
 
-  public: void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+  public: void buildCompressedLittleEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                                              const uint32_t inVariableCount
                                                              COMMA_LOCATION_ARGS) const ;
 
-  public: void buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray
+  public: void buildCompressedBigEndianStringValueArray (GenericUniqueArray <String> & outStringArray
                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: void buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+  public: void buildCompressedBigEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                                           const uint32_t inVariableCount
                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -278,16 +278,16 @@ class BinaryDecisionDiagram final {
   public:  void checkBDDIsWellFormed (LOCATION_ARGS) ;
 
 //--- Traversing BDD : build an array containing all values
-  public: void buildValue64Array (TC_UniqueArray <uint64_t> & outValuesArray,
+  public: void buildValue64Array (GenericUniqueArray <uint64_t> & outValuesArray,
                                    const uint32_t inVariableCount) const ;
 
-  public: void buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
+  public: void buildValueArray (GenericUniqueArray <GenericArray <bool> > & outValuesArray,
                                   const uint32_t inVariableCount) const ;
 
-  public: void buildLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+  public: void buildLittleEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                                    const uint32_t inVariableCount) const ;
 
-  public: void buildBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
+  public: void buildBigEndianStringValueArray (GenericUniqueArray <String> & outStringArray,
                                                 const uint32_t inVariableCount) const ;
 
   public: String queryStringValue (LOCATION_ARGS) const ;

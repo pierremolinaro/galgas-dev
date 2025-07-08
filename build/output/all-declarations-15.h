@@ -1952,7 +1952,7 @@ class DownEnumerator_headerCompositionMap final {
 
   public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_headerCompositionMap (const DownEnumerator_headerCompositionMap &) = delete ;
@@ -1977,7 +1977,7 @@ class UpEnumerator_headerCompositionMap final {
   public: class GGS_string current_mHeaderString (LOCATION_ARGS) const ;
   public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_headerCompositionMap (const UpEnumerator_headerCompositionMap &) = delete ;
@@ -2030,11 +2030,11 @@ class GGS_headerCompositionMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -2342,7 +2342,7 @@ class DownEnumerator_headerRepartitionMap final {
 
   public: class GGS_headerRepartitionMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_headerRepartitionMap (const DownEnumerator_headerRepartitionMap &) = delete ;
@@ -2366,7 +2366,7 @@ class UpEnumerator_headerRepartitionMap final {
   public: class GGS_string current_mHeaderFileName (LOCATION_ARGS) const ;
   public: class GGS_headerRepartitionMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_headerRepartitionMap (const UpEnumerator_headerRepartitionMap &) = delete ;
@@ -2419,11 +2419,11 @@ class GGS_headerRepartitionMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -2708,7 +2708,7 @@ class DownEnumerator_projectQualifiedFeatureMap final {
 
   public: class GGS_projectQualifiedFeatureMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_projectQualifiedFeatureMap (const DownEnumerator_projectQualifiedFeatureMap &) = delete ;
@@ -2732,7 +2732,7 @@ class UpEnumerator_projectQualifiedFeatureMap final {
   public: class GGS_lstring current_mFeatureValue (LOCATION_ARGS) const ;
   public: class GGS_projectQualifiedFeatureMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_projectQualifiedFeatureMap (const UpEnumerator_projectQualifiedFeatureMap &) = delete ;
@@ -2785,11 +2785,11 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_root {
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const ;
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
@@ -3072,7 +3072,7 @@ class DownEnumerator_XCodeGroupList final {
 //--- Current element access
   public: class GGS_XCodeGroupList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeGroupList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeGroupList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_XCodeGroupList (const DownEnumerator_XCodeGroupList &) = delete ;
@@ -3101,7 +3101,7 @@ class UpEnumerator_XCodeGroupList final {
 //--- Current element access
   public: class GGS_XCodeGroupList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeGroupList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeGroupList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_XCodeGroupList (const UpEnumerator_XCodeGroupList &) = delete ;
@@ -3114,7 +3114,7 @@ class UpEnumerator_XCodeGroupList final {
 
 class GGS_XCodeGroupList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_XCodeGroupList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeGroupList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_XCodeGroupList (void) ;
@@ -3140,7 +3140,7 @@ class GGS_XCodeGroupList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_XCodeGroupList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_XCodeGroupList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -3476,7 +3476,7 @@ class DownEnumerator_XCodeToolTargetList final {
 //--- Current element access
   public: class GGS_XCodeToolTargetList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeToolTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeToolTargetList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: DownEnumerator_XCodeToolTargetList (const DownEnumerator_XCodeToolTargetList &) = delete ;
@@ -3512,7 +3512,7 @@ class UpEnumerator_XCodeToolTargetList final {
 //--- Current element access
   public: class GGS_XCodeToolTargetList_2E_element current (LOCATION_ARGS) const ;
 
-  private: TC_Array <GGS_XCodeToolTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeToolTargetList_2E_element> mArray ;
   private: int32_t mIndex ;
 
   private: UpEnumerator_XCodeToolTargetList (const UpEnumerator_XCodeToolTargetList &) = delete ;
@@ -3525,7 +3525,7 @@ class UpEnumerator_XCodeToolTargetList final {
 
 class GGS_XCodeToolTargetList : public AC_GALGAS_root {
 //--- Private property
-  private: TC_Array <GGS_XCodeToolTargetList_2E_element> mArray ;
+  private: GenericArray <GGS_XCodeToolTargetList_2E_element> mArray ;
 
 //--- Default constructor
   public: GGS_XCodeToolTargetList (void) ;
@@ -3551,7 +3551,7 @@ class GGS_XCodeToolTargetList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : inline TC_Array <GGS_XCodeToolTargetList_2E_element> sortedElementArray (void) const {
+  public : inline GenericArray <GGS_XCodeToolTargetList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 

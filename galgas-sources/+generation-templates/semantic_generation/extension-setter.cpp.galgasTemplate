@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%> gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% ;
+static GenericUniqueArray <extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%> gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% ;
 
 //--------------------------------------------------------------------------------------------------
 

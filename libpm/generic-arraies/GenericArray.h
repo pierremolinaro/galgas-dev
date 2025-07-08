@@ -22,20 +22,20 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 //   Template class predeclaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_Array ;
+template <typename ELEMENT> class GenericArray ;
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_Array <ELEMENT> classes
+//   swap function for GenericArray <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> void swap (TC_Array <ELEMENT> & ioOperand1,
-                                       TC_Array <ELEMENT> & ioOperand2) ;
+template <typename ELEMENT> void swap (GenericArray <ELEMENT> & ioOperand1,
+                                       GenericArray <ELEMENT> & ioOperand2) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -63,35 +63,35 @@ template <typename ELEMENT> class InternalSharedArray final : public SharedObjec
   }
 
 //--- Property
-  public: TC_UniqueArray <ELEMENT> mUniqueArray ;
+  public: GenericUniqueArray <ELEMENT> mUniqueArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //   Template class declaration
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> class TC_Array final {
+template <typename ELEMENT> class GenericArray final {
 //--- Default Constructor
-  public: TC_Array (void) ;
+  public: GenericArray (void) ;
 
 //--- Destructor
-  public: ~ TC_Array (void) ;
+  public: ~ GenericArray (void) ;
 
 //--- Allocation Constructor (empty array)
-  public: TC_Array (const int32_t inCapacity COMMA_LOCATION_ARGS) ;
+  public: GenericArray (const int32_t inCapacity COMMA_LOCATION_ARGS) ;
 
 //--- Allocation Constructor (array initialized with inValue)
-  public: TC_Array (const int32_t inCount,
+  public: GenericArray (const int32_t inCount,
                     const ELEMENT & inValue COMMA_LOCATION_ARGS) ;
 
 //--- Handle Copy
-  public: TC_Array (const TC_Array <ELEMENT> &) ;
-  public: TC_Array <ELEMENT> & operator = (const TC_Array <ELEMENT> &) ;
+  public: GenericArray (const GenericArray <ELEMENT> &) ;
+  public: GenericArray <ELEMENT> & operator = (const GenericArray <ELEMENT> &) ;
   private: void insulate (void) ;
 
 //--- swap
-  friend void swap <ELEMENT> (TC_Array <ELEMENT> & ioOperand1,
-                              TC_Array <ELEMENT> & ioOperand2) ;
+  friend void swap <ELEMENT> (GenericArray <ELEMENT> & ioOperand1,
+                              GenericArray <ELEMENT> & ioOperand2) ;
 
 //--- Method for setting capacity
   public: void setCapacity (const int32_t inNewCapacity) ;
@@ -152,9 +152,9 @@ template <typename ELEMENT> class TC_Array final {
   public: void removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) ;
 
 //--- Comparisons (based on == operator on objects)
-  public: bool operator == (const TC_Array <ELEMENT> & inOperand) const ;
+  public: bool operator == (const GenericArray <ELEMENT> & inOperand) const ;
 
-  public: inline bool operator != (const TC_Array <ELEMENT> & inOperand) const {
+  public: inline bool operator != (const GenericArray <ELEMENT> & inOperand) const {
     return ! ((*this) == inOperand) ;
   }
 
@@ -191,7 +191,7 @@ template <typename ELEMENT> class TC_Array final {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT>::TC_Array (void) :
+GenericArray <ELEMENT>::GenericArray (void) :
 mSharedArray (nullptr) {
 }
 
@@ -200,7 +200,7 @@ mSharedArray (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT>::~ TC_Array (void) {
+GenericArray <ELEMENT>::~ GenericArray (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 
@@ -209,7 +209,7 @@ TC_Array <ELEMENT>::~ TC_Array (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT>::TC_Array (const int32_t inCapacity COMMA_LOCATION_ARGS) :
+GenericArray <ELEMENT>::GenericArray (const int32_t inCapacity COMMA_LOCATION_ARGS) :
 mSharedArray (nullptr) {
   macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inCapacity COMMA_THERE)) ;
 }
@@ -219,7 +219,7 @@ mSharedArray (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT>::TC_Array (const int32_t inCount,
+GenericArray <ELEMENT>::GenericArray (const int32_t inCount,
                               const ELEMENT & inValue
                               COMMA_LOCATION_ARGS) :
 mSharedArray (nullptr) {
@@ -231,7 +231,7 @@ mSharedArray (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT>::TC_Array (const TC_Array <ELEMENT> & inOperand) :
+GenericArray <ELEMENT>::GenericArray (const GenericArray <ELEMENT> & inOperand) :
 mSharedArray (nullptr) {
   macroAssignSharedObject (mSharedArray, inOperand.mSharedArray) ;
 }
@@ -241,7 +241,7 @@ mSharedArray (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-TC_Array <ELEMENT> & TC_Array <ELEMENT>::operator = (const TC_Array <ELEMENT> & inOperand) {
+GenericArray <ELEMENT> & GenericArray <ELEMENT>::operator = (const GenericArray <ELEMENT> & inOperand) {
   if (mSharedArray != inOperand.mSharedArray) {
     macroAssignSharedObject (mSharedArray, inOperand.mSharedArray) ;
   }
@@ -249,11 +249,11 @@ TC_Array <ELEMENT> & TC_Array <ELEMENT>::operator = (const TC_Array <ELEMENT> & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//   swap function for TC_Array <ELEMENT> classes
+//   swap function for GenericArray <ELEMENT> classes
 //--------------------------------------------------------------------------------------------------
 
-template <typename ELEMENT> void swap (TC_Array <ELEMENT> & ioOperand1,
-                                       TC_Array <ELEMENT> & ioOperand2) {
+template <typename ELEMENT> void swap (GenericArray <ELEMENT> & ioOperand1,
+                                       GenericArray <ELEMENT> & ioOperand2) {
   swap (ioOperand1.mSharedArray, ioOperand2.mSharedArray) ;
 }
 
@@ -262,7 +262,7 @@ template <typename ELEMENT> void swap (TC_Array <ELEMENT> & ioOperand1,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-int32_t TC_Array <ELEMENT>::count (void) const {
+int32_t GenericArray <ELEMENT>::count (void) const {
   int32_t result = 0 ;
   if (nullptr != mSharedArray) {
     result = mSharedArray->mUniqueArray.count () ;
@@ -275,7 +275,7 @@ int32_t TC_Array <ELEMENT>::count (void) const {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-const ELEMENT * TC_Array <ELEMENT>::unsafeArrayPointer (void) const {
+const ELEMENT * GenericArray <ELEMENT>::unsafeArrayPointer (void) const {
   const ELEMENT * result = 0 ;
   if (nullptr != mSharedArray) {
     result = mSharedArray->mUniqueArray.unsafeArrayPointer () ;
@@ -288,7 +288,7 @@ const ELEMENT * TC_Array <ELEMENT>::unsafeArrayPointer (void) const {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::insulate (void) {
+void GenericArray <ELEMENT>::insulate (void) {
   if ((nullptr != mSharedArray) && !mSharedArray->isUniquelyReferenced ()) {
     InternalSharedArray <ELEMENT> * p = nullptr ;
     macroMyNew (p, InternalSharedArray <ELEMENT> ()) ;
@@ -303,7 +303,7 @@ void TC_Array <ELEMENT>::insulate (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::appendObject (const ELEMENT & inValue) {
+void GenericArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
@@ -315,7 +315,7 @@ void TC_Array <ELEMENT>::appendObject (const ELEMENT & inValue) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::appendObjects (const int32_t inCount,
+void GenericArray <ELEMENT>::appendObjects (const int32_t inCount,
                                         const ELEMENT & inValue) { // inValue is copied
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
@@ -330,7 +330,7 @@ void TC_Array <ELEMENT>::appendObjects (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
+void GenericArray <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
                                                const ELEMENT & inValue, // inValue is copied
                                                const int32_t inStartingIndex
                                                COMMA_LOCATION_ARGS) {
@@ -349,7 +349,7 @@ void TC_Array <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeAll (void) {
+void GenericArray <ELEMENT>::removeAll (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 
@@ -358,7 +358,7 @@ void TC_Array <ELEMENT>::removeAll (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT & TC_Array <ELEMENT>::operator () (const int32_t inIndex
+ELEMENT & GenericArray <ELEMENT>::operator () (const int32_t inIndex
                                            COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
@@ -372,7 +372,7 @@ ELEMENT & TC_Array <ELEMENT>::operator () (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT TC_Array <ELEMENT>::operator () (const int32_t inIndex
+ELEMENT GenericArray <ELEMENT>::operator () (const int32_t inIndex
                                          COMMA_LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray (inIndex COMMA_THERE) ;
@@ -383,7 +383,7 @@ ELEMENT TC_Array <ELEMENT>::operator () (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) const {
+ELEMENT GenericArray <ELEMENT>::lastObject (LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray.lastObject (THERE) ;
 }
@@ -391,7 +391,7 @@ ELEMENT TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-ELEMENT & TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) {
+ELEMENT & GenericArray <ELEMENT>::lastObject (LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
@@ -406,7 +406,7 @@ ELEMENT & TC_Array <ELEMENT>::lastObject (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeLastObject (LOCATION_ARGS) {
+void GenericArray <ELEMENT>::removeLastObject (LOCATION_ARGS) {
   insulate () ;
   macroValidPointer (mSharedArray) ;
   mSharedArray->mUniqueArray.removeLastObject (THERE) ;
@@ -417,7 +417,7 @@ void TC_Array <ELEMENT>::removeLastObject (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeLastObjects (const int32_t inCount
+void GenericArray <ELEMENT>::removeLastObjects (const int32_t inCount
                                             COMMA_LOCATION_ARGS) {
   insulate () ;
   macroValidPointer (mSharedArray) ;
@@ -429,7 +429,7 @@ void TC_Array <ELEMENT>::removeLastObjects (const int32_t inCount
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeAllKeepingCapacity (void) {
+void GenericArray <ELEMENT>::removeAllKeepingCapacity (void) {
   if (nullptr != mSharedArray) {
     insulate () ;
     mSharedArray->mUniqueArray.removeAllKeepingCapacity () ;
@@ -441,7 +441,7 @@ void TC_Array <ELEMENT>::removeAllKeepingCapacity (void) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-bool TC_Array <ELEMENT>::operator == (const TC_Array <ELEMENT> & inOperand) const {
+bool GenericArray <ELEMENT>::operator == (const GenericArray <ELEMENT> & inOperand) const {
   bool result = mSharedArray == inOperand.mSharedArray ;
   if (!result && (mSharedArray != nullptr) && (inOperand.mSharedArray != nullptr)) {
     result = mSharedArray->mUniqueArray == inOperand.mSharedArray->mUniqueArray ;
@@ -454,7 +454,7 @@ bool TC_Array <ELEMENT>::operator == (const TC_Array <ELEMENT> & inOperand) cons
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
+void GenericArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
                                              const int32_t inDataLength) {
   if (nullptr != mSharedArray) {
     macroDetachSharedObject (mSharedArray) ;
@@ -468,7 +468,7 @@ void TC_Array <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
+void GenericArray <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
                                                 const int32_t inDataLength) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
@@ -483,7 +483,7 @@ void TC_Array <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
+void GenericArray <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inNewCapacity COMMA_HERE)) ;
   }else{
@@ -497,7 +497,7 @@ void TC_Array <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
+void GenericArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
                                               COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
@@ -507,7 +507,7 @@ void TC_Array <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
+void GenericArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
                                                const int32_t inStartingIndex
                                                COMMA_LOCATION_ARGS) {
   insulate () ;
@@ -520,7 +520,7 @@ void TC_Array <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
+void GenericArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
                                            const int32_t inIndex
                                            COMMA_LOCATION_ARGS) {
   insulate () ;
@@ -533,7 +533,7 @@ void TC_Array <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
 //--------------------------------------------------------------------------------------------------
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
+void GenericArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
                                               const int32_t inIndex  // inValue is copied
                                               COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
@@ -549,7 +549,7 @@ void TC_Array <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
 //--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void GenericArray <ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   insulate () ;
   if (mSharedArray != nullptr) {
     mSharedArray->mUniqueArray.quickSortUsingFunction (inCompareFunction) ;
@@ -561,7 +561,7 @@ void TC_Array <ELEMENT>::quickSortUsingFunction (CompareFunction <ELEMENT> inCom
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
 
 template <typename ELEMENT>
-void TC_Array <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
+void GenericArray <ELEMENT>::reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) {
   insulate () ;
   if (mSharedArray != nullptr) {
     mSharedArray->mUniqueArray.reverseQuickSortUsingFunction (inCompareFunction) ;

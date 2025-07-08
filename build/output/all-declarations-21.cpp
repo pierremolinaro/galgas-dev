@@ -8564,7 +8564,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
         message.appendString (filePath) ;
         message.appendString ("' file exists, but cannot be read") ;
         const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
@@ -8573,7 +8573,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
       message.appendString (filePath) ;
       message.appendString ("' file does not exist") ;
       const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
     }
   }
 }
@@ -52357,7 +52357,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
         message.appendString (filePath) ;
         message.appendString ("' file exists, but cannot be read") ;
         const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
@@ -52366,7 +52366,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
       message.appendString (filePath) ;
       message.appendString ("' file does not exist") ;
       const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
     }
   }
 }

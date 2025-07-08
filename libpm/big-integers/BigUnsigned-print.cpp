@@ -42,7 +42,7 @@ String BigUnsigned::decimalString (void) const {
     result = "0" ;
   }else{
     BigUnsigned number = *this ;
-    TC_UniqueArray <ChunkUInt> decimalValueArray ;
+    GenericUniqueArray <ChunkUInt> decimalValueArray ;
     while (!number.isZero ()) {
       const ChunkUInt divisor = greatestPowerOf10 ;
       const BigUnsignedQuotientU64Remainder r = number.dividingByChunkUInt (divisor) ;
@@ -144,7 +144,7 @@ String BigUnsigned::bitString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void BigUnsigned::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+void BigUnsigned::extractBytesForUnsignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const {
   outValue.removeAll () ;
   const size_t n = u8Count () ;
   if (n == 0) {

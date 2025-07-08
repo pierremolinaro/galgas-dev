@@ -937,7 +937,7 @@ void extensionSetter_addGroupWithFiles (GGS_XcodeProjectDescriptor & ioObject,
                           }
                         }
                         if (GalgasBool::boolFalse == test_16) {
-                          TC_Array <FixItDescription> fixItArray17 ;
+                          GenericArray <FixItDescription> fixItArray17 ;
                           inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 312)), GGS_string ("unhandled extension for file '").add_operation (enumerator_9934.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 312)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 312)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 312)) ;
                         }
                       }

@@ -126,7 +126,7 @@ fixNewNonterminalSymbols (GrammarVocabulary & /* ioVocabulary */,
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
+                      GenericUniqueArray <int32_t> & ioInstructionsList) const {
   ioInstructionsList.appendObject ((int32_t) mProperty_mTerminalSymbolIndex.uintValue ()) ;
 }
 
@@ -135,7 +135,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
+                      GenericUniqueArray <int32_t> & ioInstructionsList) const {
 
   ioInstructionsList.appendObject ((int32_t) (mProperty_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
 }
@@ -145,7 +145,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
 void cPtr_selectInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
+                      GenericUniqueArray <int32_t> & ioInstructionsList) const {
   const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
   ioInstructionsList.appendObject ((int32_t) idx) ;
 }
@@ -155,7 +155,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
+                      GenericUniqueArray <int32_t> & ioInstructionsList) const {
   UpEnumerator_branchListForGrammarAnalysis firstBranch (mProperty_mRepeatBranchList) ;
   UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (HERE)) ;
   while (instruction.hasCurrentObject ()) {
@@ -196,7 +196,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 
  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
-    TC_UniqueArray <int32_t> derivation ;
+    GenericUniqueArray <int32_t> derivation ;
     UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
     while (instruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
@@ -274,7 +274,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList) ;
   currentBranch.gotoNextObject () ;
   while (currentBranch.hasCurrentObject ()) {
-    TC_UniqueArray <int32_t> derivation ;
+    GenericUniqueArray <int32_t> derivation ;
   //--- insert branch instructions
     UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
     while (instruction.hasCurrentObject ()) {
@@ -389,7 +389,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
   while (currentComponent.hasCurrentObject ()) {
     UpEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
     while (currentRule.hasCurrentObject ()) {
-      TC_UniqueArray <int32_t> derivation ;
+      GenericUniqueArray <int32_t> derivation ;
       UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE)) ;
       while (instruction.hasCurrentObject ()) {
         cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
@@ -442,7 +442,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- Augment grammar by a new non terminal symbol (denoted <>), and...
   ioVocabulary.addAugmentedSymbol () ;
 //--- ... add the production <> -> <start_symbol>
-  { TC_UniqueArray <int32_t> derivation ;
+  { GenericUniqueArray <int32_t> derivation ;
     derivation.appendObject ((int32_t) ioVocabulary.getStartSymbol ()) ;
     GrammarProduction p ("",
                    0,
@@ -533,16 +533,16 @@ void PureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymb
   const int32_t nombreProductions = mProductionArray.count () ;
 
 //--- Construire les tableaux d'indices
-  { TC_UniqueArray <int32_t> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
+  { GenericUniqueArray <int32_t> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndicePremiereProduction, temp) ;
   }
-  { TC_UniqueArray <int32_t> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
+  { GenericUniqueArray <int32_t> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndiceDerniereProduction, temp) ;
   }
 
 //--- Construire le tableau indiquant si une production a ete traitee et le tableau des indirections
-  TC_UniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
-  { TC_UniqueArray <int32_t> temp (nombreProductions, -1 COMMA_HERE) ;
+  GenericUniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
+  { GenericUniqueArray <int32_t> temp (nombreProductions, -1 COMMA_HERE) ;
     swap (tableauIndirectionProduction, temp) ;
   }
 

@@ -22,7 +22,7 @@ class BinaryDecisionDiagramRelationSingleType final {
 
 //--- Constructor with an enumerated type
   public: BinaryDecisionDiagramRelationSingleType (const String & inTypeName,
-                                                   const TC_UniqueArray <String> & inConstantNameArray
+                                                   const GenericUniqueArray <String> & inConstantNameArray
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Constructor with an unsigned type

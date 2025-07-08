@@ -42,7 +42,7 @@ class GrammarProduction {
   private: int32_t mLineDefinition ;
   private: int32_t mColumnDefinition ;
   private: int32_t mLeftNonTerminalIndex ;
-  private: TC_UniqueArray <int32_t> mDerivation ;
+  private: GenericUniqueArray <int32_t> mDerivation ;
   public: BinaryDecisionDiagramRelation mDerivationFirst ;
   private: uint32_t mProductionIndex ;
 
@@ -53,7 +53,7 @@ class GrammarProduction {
                              const int32_t inDefinitionLine,
                              const int32_t inColumnDefinition,
                              const int32_t inLeftNonTerminalIndex,
-                             TC_UniqueArray <int32_t> & ioDerivation, // Swap
+                             GenericUniqueArray <int32_t> & ioDerivation, // Swap
                              const uint32_t inProductionIndex) ;
 
   public: GrammarProduction (const String & inSourceFileName,
@@ -100,14 +100,14 @@ class GrammarProduction {
 //--------------------------------------------------------------------------------------------------
 
 class PureBNFproductionsList final {
-  public: TC_UniqueArray <GrammarProduction> mProductionArray ;
-  public: TC_UniqueArray <int32_t> tableauIndicePremiereProduction ;
-  public: TC_UniqueArray <int32_t> tableauIndiceDerniereProduction ;
-  public: TC_UniqueArray <int32_t> tableauIndirectionProduction ;
+  public: GenericUniqueArray <GrammarProduction> mProductionArray ;
+  public: GenericUniqueArray <int32_t> tableauIndicePremiereProduction ;
+  public: GenericUniqueArray <int32_t> tableauIndiceDerniereProduction ;
+  public: GenericUniqueArray <int32_t> tableauIndirectionProduction ;
 
-  public: TC_UniqueArray <int32_t> mFirstProductionIndex ;
-  public: TC_UniqueArray <int32_t> mLastProductionIndex ;
-  public: TC_UniqueArray <int32_t> mProductionIndex ;
+  public: GenericUniqueArray <int32_t> mFirstProductionIndex ;
+  public: GenericUniqueArray <int32_t> mLastProductionIndex ;
+  public: GenericUniqueArray <int32_t> mProductionIndex ;
 
   public: void buildProductionsArray (const int32_t inTerminalSymbolsCount,
                                       const int32_t inNonTerminalSymbolsCount) ;

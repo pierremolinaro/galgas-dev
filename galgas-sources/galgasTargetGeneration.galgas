@@ -1079,9 +1079,9 @@ proc updateGalgasTargets
       !groupName:"Generic Arraies"
       !groupPath:"generic-arraies"
       !fileNames: @[
-        "TC_Array.h",
-        "TC_UniqueArray.h",
-        "TC_UniqueArray2.h"
+        "GenericArray.h",
+        "GenericUniqueArray.h",
+        "GenericUniqueMatrix.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

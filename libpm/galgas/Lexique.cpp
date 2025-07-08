@@ -495,7 +495,7 @@ void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 void Lexique::lexicalError (const String & inLexicalErrorMessage
                             COMMA_LOCATION_ARGS) {
-  signalLexicalError (this, sourceText (), IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
+  signalLexicalError (this, sourceText (), IssueWithFixIt (mCurrentLocation, mCurrentLocation, GenericArray <FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
   }
@@ -508,7 +508,7 @@ void Lexique::lexicalError (const String & inLexicalErrorMessage
 //
 //--------------------------------------------------------------------------------------------------
 
-void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
+void Lexique::parsingError (const GenericUniqueArray <int32_t> & inExpectedTerminalsArray,
                             const cToken * inPreviousTokenPtr,
                             const cToken * inCurrentTokenPtr,
                             const int32_t inCurrentTokenCode
@@ -516,7 +516,7 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
 //--- Build error message
   String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
   const int32_t expectedTerminalsCount = inExpectedTerminalsArray.count () ;
-  TC_UniqueArray <String> expectedTokenNames (expectedTerminalsCount, String () COMMA_HERE) ;
+  GenericUniqueArray <String> expectedTokenNames (expectedTerminalsCount, String () COMMA_HERE) ;
   for (int32_t i=0 ; i<expectedTerminalsCount ; i++) {
     expectedTokenNames (i COMMA_HERE) = getMessageForTerminal (inExpectedTerminalsArray (i COMMA_HERE)) ;
   }
@@ -527,7 +527,7 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
     this,
     sourceText (),
     (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
-    IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <FixItDescription> ()),
+    IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, GenericArray <FixItDescription> ()),
     foundTokenMessage,
     expectedTokenNames
     COMMA_THERE
@@ -547,7 +547,7 @@ void Lexique::lexicalWarning (const String & inLexicalWarningMessage
   signalLexicalWarning (
     this,
     sourceText (),
-    IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()),
+    IssueWithFixIt (mCurrentLocation, mCurrentLocation, GenericArray <FixItDescription> ()),
     inLexicalWarningMessage
     COMMA_THERE
   ) ;
@@ -747,7 +747,7 @@ void Lexique::enterProduction (const char * inProductionName,
                                const char * inTag) {
 //--- If Debug is not running, check if trigger list contains non terminal
   if (! mDebugIsRunning) {
-    TC_UniqueArray <String> stringArray ;
+    GenericUniqueArray <String> stringArray ;
     mTriggerNonTerminalSymbolList.componentsSeparatedByString (inProductionName, stringArray) ;
     mDebugIsRunning = stringArray.count () > 1 ;
   }

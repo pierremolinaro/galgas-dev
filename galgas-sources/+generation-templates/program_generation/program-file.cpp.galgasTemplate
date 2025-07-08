@@ -52,7 +52,7 @@ const char * projectVersionString (void) {
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
-  TC_UniqueArray <String> sourceFilesArray ;
+  GenericUniqueArray <String> sourceFilesArray ;
   analyzeCommandLineOptions (inArgc, inArgv,
                              sourceFilesArray,
                              kSourceFileExtensions,

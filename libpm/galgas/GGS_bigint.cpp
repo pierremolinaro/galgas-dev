@@ -209,7 +209,7 @@ GGS_sint GGS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
 GGS_uintlist GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const {
   GGS_uintlist result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
@@ -224,7 +224,7 @@ GGS_uintlist GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_A
 GGS_uintlist GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARGS) const {
   GGS_uintlist result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
@@ -239,7 +239,7 @@ GGS_uintlist GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARG
 GGS_uintlist GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const {
   GGS_uintlist result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, 0) ;
@@ -263,7 +263,7 @@ GGS_uintlist GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATI
 GGS_uintlist GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION_ARGS) const {
   GGS_uintlist result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
@@ -287,7 +287,7 @@ GGS_uintlist GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION
 GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {
   GGS_uint_36__34_list result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, 0) ;
@@ -309,7 +309,7 @@ GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation
 GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {
   GGS_uint_36__34_list result ;
   if (isValid ()) {
-    TC_UniqueArray <uint8_t> valueArray ;
+    GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;

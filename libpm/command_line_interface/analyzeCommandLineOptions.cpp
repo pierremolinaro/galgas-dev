@@ -264,7 +264,7 @@ static void option_beginning_with_double_minus_sign (const String & inCommand,
 //--------------------------------------------------------------------------------------------------
 
 static void analyze_one_option (const String & inCommand,
-                                TC_UniqueArray <String> & outSourceFileArray,
+                                GenericUniqueArray <String> & outSourceFileArray,
                                 bool & outOk) {
   const int32_t optionLength = inCommand.length () ;
   bool found = false ;
@@ -317,7 +317,7 @@ static void analyze_one_option (const String & inCommand,
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
-  static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <String> & outSourceFileArray,
+  static void getSourceFileFromWin32OpenDialog (GenericUniqueArray <String> & outSourceFileArray,
                                                 const char * * inExtensionArray) {
     char szFile[260] ;       // buffer for file name
     OPENFILENAME ofn ;
@@ -379,7 +379,7 @@ static void analyze_one_option (const String & inCommand,
 
 void analyzeCommandLineOptions (const int argv,
                                 const char * * argc,
-                                TC_UniqueArray <String> & outSourceFileArray,
+                                GenericUniqueArray <String> & outSourceFileArray,
                                 const char* * inExtensionArray,
                                 const char* * inHelpMessageArray,
                                 void print_tool_help_message (void)) {

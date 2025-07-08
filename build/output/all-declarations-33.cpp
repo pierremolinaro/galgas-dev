@@ -136,7 +136,7 @@ void routine_compileSemanticDeclarationsGalgas_26__26__3F_galgas_34__3F__3F__3F_
   }
   UpEnumerator_lstringlist enumerator_4482 (extensionGetter_unsolvedEntryList (outArgument_outTypeMap, inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 91))) ;
   while (enumerator_4482.hasCurrentObject ()) {
-    TC_Array <FixItDescription> fixItArray2 ;
+    GenericArray <FixItDescription> fixItArray2 ;
     inCompiler->emitSemanticError (enumerator_4482.current (HERE).readProperty_mValue ().readProperty_location (), GGS_string ("the '@").add_operation (enumerator_4482.current (HERE).readProperty_mValue ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 92)).add_operation (GGS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 92)), fixItArray2  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 92)) ;
     enumerator_4482.gotoNextObject () ;
   }
@@ -210,11 +210,11 @@ void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const
     if (GalgasBool::boolTrue == test_1) {
       UpEnumerator_lstringlist enumerator_7648 (var_semanticTypePrecedenceGraph_6324.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 159))) ;
       while (enumerator_7648.hasCurrentObject ()) {
-        TC_Array <FixItDescription> fixItArray2 ;
+        GenericArray <FixItDescription> fixItArray2 ;
         inCompiler->emitSemanticError (enumerator_7648.current (HERE).readProperty_mValue ().readProperty_location (), GGS_string ("the '").add_operation (enumerator_7648.current (HERE).readProperty_mValue ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 160)).add_operation (GGS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 160)), fixItArray2  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 160)) ;
         enumerator_7648.gotoNextObject () ;
       }
-      TC_Array <FixItDescription> fixItArray3 ;
+      GenericArray <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inEndOfProjectSourceFile, GGS_string ("semantic analysis not performed, due to undefined type error(s)"), fixItArray3  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 162)) ;
       outArgument_outSemanticContext.drop () ; // Release error dropped variable
       outArgument_outSortedSemanticDeclarationListAST.drop () ; // Release error dropped variable
@@ -236,7 +236,7 @@ void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const
           var_s_8186.plusAssignOperation(GGS_string ("\n-  ").add_operation (callExtensionGetter_keyRepresentation ((const cPtr_semanticDeclarationAST *) enumerator_8360.current (HERE).readProperty_mSemanticDeclaration ().ptr (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 175)), inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 175)) ;
           enumerator_8360.gotoNextObject () ;
         }
-        TC_Array <FixItDescription> fixItArray5 ;
+        GenericArray <FixItDescription> fixItArray5 ;
         inCompiler->emitSemanticError (constinArgument_inEndOfProjectSourceFile, var_s_8186, fixItArray5  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 177)) ;
         outArgument_outSemanticContext.drop () ; // Release error dropped variable
         outArgument_outTypeMap.drop () ; // Release error dropped variable
@@ -412,7 +412,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_3) {
               test_3 = GGS_bool (ComparisonKind::notEqual, var_headerIncludes_31__13273.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_3) {
-                TC_Array <FixItDescription> fixItArray4 ;
+                GenericArray <FixItDescription> fixItArray4 ;
                 inCompiler->emitSemanticError (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 331)).readProperty_location (), GGS_string ("'noHeader' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 332)).add_operation (GGS_string ("' declaration, and 'headerIncludes1' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 332)), fixItArray4  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 331)) ;
               }
             }
@@ -420,7 +420,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_5) {
               test_5 = GGS_bool (ComparisonKind::notEqual, var_headerIncludes_32__13757.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_5) {
-                TC_Array <FixItDescription> fixItArray6 ;
+                GenericArray <FixItDescription> fixItArray6 ;
                 inCompiler->emitSemanticError (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 335)).readProperty_location (), GGS_string ("'noHeader' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 336)).add_operation (GGS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 336)), fixItArray6  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 335)) ;
               }
             }
@@ -432,7 +432,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_7) {
               test_7 = GGS_bool (ComparisonKind::equal, var_headerIncludes_31__13273.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_7) {
-                TC_Array <FixItDescription> fixItArray8 ;
+                GenericArray <FixItDescription> fixItArray8 ;
                 inCompiler->emitSemanticError (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 340)).readProperty_location (), GGS_string ("'oneHeader' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 341)).add_operation (GGS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 341)), fixItArray8  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 340)) ;
               }
             }
@@ -440,7 +440,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_9) {
               test_9 = GGS_bool (ComparisonKind::notEqual, var_headerIncludes_32__13757.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_9) {
-                TC_Array <FixItDescription> fixItArray10 ;
+                GenericArray <FixItDescription> fixItArray10 ;
                 inCompiler->emitSemanticWarning (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 344)).readProperty_location (), GGS_string ("'oneHeader' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 345)).add_operation (GGS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 345)), fixItArray10  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 344)) ;
               }
             }
@@ -452,7 +452,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_11) {
               test_11 = GGS_bool (ComparisonKind::equal, var_headerIncludes_31__13273.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_11) {
-                TC_Array <FixItDescription> fixItArray12 ;
+                GenericArray <FixItDescription> fixItArray12 ;
                 inCompiler->emitSemanticWarning (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 349)).readProperty_location (), GGS_string ("'twoHeaders' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 350)).add_operation (GGS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 350)), fixItArray12  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 349)) ;
               }
             }
@@ -460,7 +460,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GGS_string constinArgume
             if (GalgasBool::boolTrue == test_13) {
               test_13 = GGS_bool (ComparisonKind::equal, var_headerIncludes_32__13757.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
               if (GalgasBool::boolTrue == test_13) {
-                TC_Array <FixItDescription> fixItArray14 ;
+                GenericArray <FixItDescription> fixItArray14 ;
                 inCompiler->emitSemanticWarning (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 353)).readProperty_location (), GGS_string ("'twoHeaders' setting for the '").add_operation (enumerator_13026.current (HERE).readProperty_infoMessage (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 354)).add_operation (GGS_string ("' declaration, and 'headerIncludes2' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 354)), fixItArray14  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 353)) ;
               }
             }
@@ -3489,7 +3489,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       if (GalgasBool::boolTrue == test_2) {
         test_2 = GGS_bool (ComparisonKind::equal, var_entry_19670.readProperty_mFeatureValue ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_2) {
-          TC_Array <FixItDescription> fixItArray3 ;
+          GenericArray <FixItDescription> fixItArray3 ;
           inCompiler->emitSemanticError (var_entry_19670.readProperty_mFeatureValue ().readProperty_location (), GGS_string ("the %macCodeSign attribute should not be empty"), fixItArray3  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 344)) ;
           var_macCodeSign_19649.drop () ; // Release error dropped variable
         }
@@ -3514,7 +3514,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       if (GalgasBool::boolTrue == test_5) {
         test_5 = GGS_bool (ComparisonKind::equal, var_entry_20095.readProperty_mFeatureValue ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_5) {
-          TC_Array <FixItDescription> fixItArray6 ;
+          GenericArray <FixItDescription> fixItArray6 ;
           inCompiler->emitSemanticError (var_entry_20095.readProperty_mFeatureValue ().readProperty_location (), GGS_string ("the %MacOSDeployment attribute should not be empty"), fixItArray6  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 355)) ;
           var_MACOSX_5F_DEPLOYMENT_5F_TARGET_20061.drop () ; // Release error dropped variable
         }
@@ -3539,7 +3539,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       if (GalgasBool::boolTrue == test_8) {
         test_8 = GGS_bool (ComparisonKind::equal, var_entry_20552.readProperty_mFeatureValue ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_8) {
-          TC_Array <FixItDescription> fixItArray9 ;
+          GenericArray <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (var_entry_20552.readProperty_mFeatureValue ().readProperty_location (), GGS_string ("the libpm path should not be empty"), fixItArray9  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 366)) ;
           var_libpmPath_20533.drop () ; // Release error dropped variable
         }
@@ -3580,7 +3580,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
         if (GalgasBool::boolTrue == test_11) {
           test_11 = var_generationFeatures_21809.getter_hasKey (enumerator_21920.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 394)).boolEnum () ;
           if (GalgasBool::boolTrue == test_11) {
-            TC_Array <FixItDescription> fixItArray12 ;
+            GenericArray <FixItDescription> fixItArray12 ;
             inCompiler->emitSemanticError (enumerator_21920.current_mValue (HERE).readProperty_location (), GGS_string ("duplicate '").add_operation (enumerator_21920.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 395)).add_operation (GGS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 395)), fixItArray12  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 395)) ;
           }
         }
@@ -3592,7 +3592,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
             if (GalgasBool::boolTrue == test_14) {
               test_14 = GGS_bool (ComparisonKind::notEqual, var_xcodeProject_21879.objectCompare (GGS_xcodeProject::class_func_none (SOURCE_FILE ("galgasTargetGeneration.galgas", 399)))).boolEnum () ;
               if (GalgasBool::boolTrue == test_14) {
-                TC_Array <FixItDescription> fixItArray15 ;
+                GenericArray <FixItDescription> fixItArray15 ;
                 inCompiler->emitSemanticError (enumerator_21920.current_mValue (HERE).readProperty_location (), GGS_string ("duplicated XCode setting"), fixItArray15  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 400)) ;
               }
             }
@@ -3608,7 +3608,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
               if (GalgasBool::boolTrue == test_17) {
                 test_17 = GGS_bool (ComparisonKind::notEqual, var_xcodeProject_21879.objectCompare (GGS_xcodeProject::class_func_none (SOURCE_FILE ("galgasTargetGeneration.galgas", 404)))).boolEnum () ;
                 if (GalgasBool::boolTrue == test_17) {
-                  TC_Array <FixItDescription> fixItArray18 ;
+                  GenericArray <FixItDescription> fixItArray18 ;
                   inCompiler->emitSemanticError (enumerator_21920.current_mValue (HERE).readProperty_location (), GGS_string ("duplicated XCode setting"), fixItArray18  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 405)) ;
                 }
               }
@@ -3628,7 +3628,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
         var_s_22600.addAssignOperation (GGS_string ("%").add_operation (enumerator_22619.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 414))  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 414)) ;
         enumerator_22619.gotoNextObject () ;
       }
-      TC_Array <FixItDescription> fixItArray19 ;
+      GenericArray <FixItDescription> fixItArray19 ;
       appendFixItActions (fixItArray19, EnumFixItKind::fixItReplace, var_s_22600) ;
       inCompiler->emitSemanticError (enumerator_21920.current_mValue (HERE).readProperty_location (), GGS_string ("unknown '").add_operation (enumerator_21920.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 416)).add_operation (GGS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 416)), fixItArray19  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 416)) ;
     }
@@ -3642,7 +3642,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
     }
     test_20 = test_21.boolEnum () ;
     if (GalgasBool::boolTrue == test_20) {
-      TC_Array <FixItDescription> fixItArray22 ;
+      GenericArray <FixItDescription> fixItArray22 ;
       inCompiler->emitSemanticError (var_macCodeSign_19649.readProperty_location (), GGS_string ("the %macCodeSign attribute implies the definition of an OS X target system: \"%MacOS\""), fixItArray22  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 421)) ;
     }
   }
@@ -3652,7 +3652,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
     if (GalgasBool::boolTrue == test_23) {
       test_23 = constinArgument_inProjectQualifiedFeatureMap.getter_hasKey (GGS_string ("applicationBundleBase") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 425)).operator_not (SOURCE_FILE ("galgasTargetGeneration.galgas", 425)).boolEnum () ;
       if (GalgasBool::boolTrue == test_23) {
-        TC_Array <FixItDescription> fixItArray24 ;
+        GenericArray <FixItDescription> fixItArray24 ;
         inCompiler->emitSemanticWarning (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 426)), GGS_string ("For a MacOS target, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"), fixItArray24  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 426)) ;
       }
     }
@@ -4303,9 +4303,9 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       }
       {
       GGS_stringset temp_58 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1084)) ;
-      temp_58.plusPlusAssignOperation (GGS_string ("TC_Array.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1082)) ;
-      temp_58.plusPlusAssignOperation (GGS_string ("TC_UniqueArray.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1083)) ;
-      temp_58.plusPlusAssignOperation (GGS_string ("TC_UniqueArray2.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1084)) ;
+      temp_58.plusPlusAssignOperation (GGS_string ("GenericArray.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1082)) ;
+      temp_58.plusPlusAssignOperation (GGS_string ("GenericUniqueArray.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1083)) ;
+      temp_58.plusPlusAssignOperation (GGS_string ("GenericUniqueMatrix.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1084)) ;
       extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Generic Arraies"), GGS_string ("generic-arraies"), temp_58, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_groupRef_37313, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1078)) ;
       }
       var_libpmReferenceGroupList_37410.addAssignOperation (var_groupRef_37313  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1095)) ;
@@ -4530,85 +4530,85 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Utilities"), GGS_string ("utilities"), temp_69, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_groupRef_37313, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1335)) ;
       }
       var_libpmReferenceGroupList_37410.addAssignOperation (var_groupRef_37313  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1379)) ;
-      GGS_string var_libpmGroupRef_61415 ;
+      GGS_string var_libpmGroupRef_61427 ;
       {
-      extensionSetter_addGroup (var_xcodeProject_28676, GGS_string ("libpm"), GGS_string ("../").add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)).add_operation (GGS_string ("/libpm"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)), var_libpmReferenceGroupList_37410, var_libpmGroupRef_61415, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)) ;
+      extensionSetter_addGroup (var_xcodeProject_28676, GGS_string ("libpm"), GGS_string ("../").add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)).add_operation (GGS_string ("/libpm"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)), var_libpmReferenceGroupList_37410, var_libpmGroupRef_61427, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1381)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_libpmGroupRef_61415, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1382)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_libpmGroupRef_61427, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1382)) ;
       }
-      GGS_string var_resourcesGroupRef_61970 ;
+      GGS_string var_resourcesGroupRef_61982 ;
       {
       GGS_stringset temp_70 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1387)) ;
       temp_70.plusPlusAssignOperation (GGS_string ("Info.plist")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1387)) ;
-      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Resources"), GGS_string ("."), temp_70, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_resourcesGroupRef_61970, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1384)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Resources"), GGS_string ("."), temp_70, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_resourcesGroupRef_61982, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1384)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_resourcesGroupRef_61970, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1397)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_resourcesGroupRef_61982, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1397)) ;
       }
-      GGS_string var_userResourcesGroupRef_62587 ;
+      GGS_string var_userResourcesGroupRef_62599 ;
       {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("User Resources"), GGS_string ("userResources"), GGS_stringset::class_func_setWithStringList (var_resourceFiles_28314  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1402)), var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_userResourcesGroupRef_62587, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1399)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("User Resources"), GGS_string ("userResources"), GGS_stringset::class_func_setWithStringList (var_resourceFiles_28314  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1402)), var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_userResourcesGroupRef_62599, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1399)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_userResourcesGroupRef_62587, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1412)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_userResourcesGroupRef_62599, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1412)) ;
       }
-      GGS_string var_frameworkGroupRef_63260 ;
+      GGS_string var_frameworkGroupRef_63272 ;
       {
       GGS_stringset temp_71 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1419)) ;
       temp_71.plusPlusAssignOperation (GGS_string ("AppKit.framework")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1418)) ;
       temp_71.plusPlusAssignOperation (GGS_string ("Cocoa.framework")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1419)) ;
-      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Frameworks for App"), GGS_string ("/System/Library/Frameworks"), temp_71, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_frameworkGroupRef_63260, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1414)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28676, GGS_string ("Frameworks for App"), GGS_string ("/System/Library/Frameworks"), temp_71, var_buildCFileRefListForTool_34756, var_buildCppFileRefListForTool_34807, var_m_5F_FileRefList_34860, var_mm_5F_FileRefList_34900, var_swift_5F_FileRefList_34941, var_frameworksFileRefList_34985, var_resourceFileBuildRefs_35033, var_frameworkGroupRef_63272, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1414)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_frameworkGroupRef_63260, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1430)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28676, var_frameworkGroupRef_63272, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1430)) ;
       }
-      GGS_stringlist var_codeSigningSettingList_63405 ;
+      GGS_stringlist var_codeSigningSettingList_63417 ;
       GalgasBool test_72 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_72) {
         test_72 = GGS_bool (ComparisonKind::equal, var_macCodeSign_19649.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_72) {
           GGS_stringlist temp_73 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1434)) ;
           temp_73.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("CODE_SIGN_IDENTITY = \"-\""), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1434)) ;
-          var_codeSigningSettingList_63405 = temp_73 ;
+          var_codeSigningSettingList_63417 = temp_73 ;
         }
       }
       if (GalgasBool::boolFalse == test_72) {
-        GGS_stringlist var_components_63550 = var_macCodeSign_19649.readProperty_string ().getter_componentsSeparatedByString (GGS_string (":") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1436)) ;
+        GGS_stringlist var_components_63562 = var_macCodeSign_19649.readProperty_string ().getter_componentsSeparatedByString (GGS_string (":") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1436)) ;
         GalgasBool test_74 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_74) {
-          test_74 = GGS_bool (ComparisonKind::notEqual, var_components_63550.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1437)).objectCompare (GGS_uint (uint32_t (2U)))).boolEnum () ;
+          test_74 = GGS_bool (ComparisonKind::notEqual, var_components_63562.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1437)).objectCompare (GGS_uint (uint32_t (2U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_74) {
-            TC_Array <FixItDescription> fixItArray75 ;
+            GenericArray <FixItDescription> fixItArray75 ;
             inCompiler->emitSemanticError (var_macCodeSign_19649.readProperty_location (), GGS_string ("the %macCodeSign attribute associated string should be \"key:value\""), fixItArray75  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1438)) ;
-            var_codeSigningSettingList_63405.drop () ; // Release error dropped variable
+            var_codeSigningSettingList_63417.drop () ; // Release error dropped variable
           }
         }
         if (GalgasBool::boolFalse == test_74) {
           GalgasBool test_76 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_76) {
-            test_76 = GGS_bool (ComparisonKind::equal, var_components_63550.getter_mValueAtIndex (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1439)).objectCompare (GGS_string ("MacDeveloper"))).boolEnum () ;
+            test_76 = GGS_bool (ComparisonKind::equal, var_components_63562.getter_mValueAtIndex (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1439)).objectCompare (GGS_string ("MacDeveloper"))).boolEnum () ;
             if (GalgasBool::boolTrue == test_76) {
               GGS_stringlist temp_77 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)) ;
               temp_77.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("CODE_SIGN_IDENTITY = \"Mac Developer\""), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1441)) ;
-              temp_77.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_components_63550.getter_mValueAtIndex (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)) ;
-              var_codeSigningSettingList_63405 = temp_77 ;
+              temp_77.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_components_63562.getter_mValueAtIndex (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)) ;
+              var_codeSigningSettingList_63417 = temp_77 ;
             }
           }
           if (GalgasBool::boolFalse == test_76) {
             GalgasBool test_78 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_78) {
-              test_78 = GGS_bool (ComparisonKind::equal, var_components_63550.getter_mValueAtIndex (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1444)).objectCompare (GGS_string ("Certificate"))).boolEnum () ;
+              test_78 = GGS_bool (ComparisonKind::equal, var_components_63562.getter_mValueAtIndex (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1444)).objectCompare (GGS_string ("Certificate"))).boolEnum () ;
               if (GalgasBool::boolTrue == test_78) {
                 GGS_stringlist temp_79 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)) ;
-                temp_79.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("CODE_SIGN_IDENTITY = \"").add_operation (var_components_63550.getter_mValueAtIndex (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)) ;
-                var_codeSigningSettingList_63405 = temp_79 ;
+                temp_79.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("CODE_SIGN_IDENTITY = \"").add_operation (var_components_63562.getter_mValueAtIndex (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1445)) ;
+                var_codeSigningSettingList_63417 = temp_79 ;
               }
             }
             if (GalgasBool::boolFalse == test_78) {
-              TC_Array <FixItDescription> fixItArray80 ;
+              GenericArray <FixItDescription> fixItArray80 ;
               inCompiler->emitSemanticError (var_macCodeSign_19649.readProperty_location (), GGS_string ("the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'"), fixItArray80  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1447)) ;
-              var_codeSigningSettingList_63405.drop () ; // Release error dropped variable
+              var_codeSigningSettingList_63417.drop () ; // Release error dropped variable
             }
           }
         }
@@ -4618,28 +4618,28 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       temp_81.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1453)) ;
       temp_81.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_WARN_UNUSED_PARAMETER = YES"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1454)) ;
       temp_81.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("PRODUCT_BUNDLE_IDENTIFIER = \"").add_operation (var_applicationBundleBase_26723, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1455)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1455)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1455)).add_operation (GGS_string (".tool\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1455)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1455)) ;
-      GGS_stringlist var_settingList_64429 = temp_81.add_operation (var_codeSigningSettingList_63405, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1456)) ;
+      GGS_stringlist var_settingList_64441 = temp_81.add_operation (var_codeSigningSettingList_63417, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1456)) ;
       GalgasBool test_82 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_82) {
         test_82 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inHandCodedLinkToolFileList.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1457)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_82) {
-          GGS_string var_s_64792 = GGS_string ("OTHER_LDFLAGS=(") ;
-          UpEnumerator_stringlist enumerator_64825 (constinArgument_inHandCodedLinkToolFileList) ;
-          while (enumerator_64825.hasCurrentObject ()) {
-            var_s_64792.plusAssignOperation(GGS_string ("\"").add_operation (enumerator_64825.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)) ;
-            enumerator_64825.gotoNextObject () ;
-            if (enumerator_64825.hasCurrentObject ()) {
-              var_s_64792.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1461)) ;
+          GGS_string var_s_64804 = GGS_string ("OTHER_LDFLAGS=(") ;
+          UpEnumerator_stringlist enumerator_64837 (constinArgument_inHandCodedLinkToolFileList) ;
+          while (enumerator_64837.hasCurrentObject ()) {
+            var_s_64804.plusAssignOperation(GGS_string ("\"").add_operation (enumerator_64837.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1460)) ;
+            enumerator_64837.gotoNextObject () ;
+            if (enumerator_64837.hasCurrentObject ()) {
+              var_s_64804.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1461)) ;
             }
           }
-          var_s_64792.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1463)) ;
-          var_settingList_64429.addAssignOperation (var_s_64792  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1464)) ;
+          var_s_64804.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1463)) ;
+          var_settingList_64441.addAssignOperation (var_s_64804  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1464)) ;
         }
       }
-      GGS_string var_releaseTargetRef_65302 ;
-      GGS_string var_releaseProductFileRef_65345 ;
+      GGS_string var_releaseTargetRef_65314 ;
+      GGS_string var_releaseProductFileRef_65357 ;
       {
-      extensionSetter_addToolTarget (var_xcodeProject_28676, constinArgument_inTargetName.add_operation (GGS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1467)), constinArgument_inTargetName, var_buildCFileRefListForTool_34756.add_operation (var_buildCppFileRefListForTool_34807, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1469)).add_operation (var_mm_5F_FileRefList_34900, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1469)), var_toolFrameworksFileRefList_35840, var_settingList_64429, var_releaseTargetRef_65302, var_releaseProductFileRef_65345, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1466)) ;
+      extensionSetter_addToolTarget (var_xcodeProject_28676, constinArgument_inTargetName.add_operation (GGS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1467)), constinArgument_inTargetName, var_buildCFileRefListForTool_34756.add_operation (var_buildCppFileRefListForTool_34807, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1469)).add_operation (var_mm_5F_FileRefList_34900, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1469)), var_toolFrameworksFileRefList_35840, var_settingList_64441, var_releaseTargetRef_65314, var_releaseProductFileRef_65357, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1466)) ;
       }
       GGS_stringlist temp_83 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)) ;
       temp_83.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1477)) ;
@@ -4647,33 +4647,33 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       temp_83.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1479)) ;
       temp_83.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_WARN_UNUSED_PARAMETER = YES"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1480)) ;
       temp_83.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("PRODUCT_BUNDLE_IDENTIFIER = \"").add_operation (var_applicationBundleBase_26723, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)).add_operation (GGS_string (".tooldebug\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1481)) ;
-      var_settingList_64429 = temp_83.add_operation (var_codeSigningSettingList_63405, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1482)) ;
+      var_settingList_64441 = temp_83.add_operation (var_codeSigningSettingList_63417, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1482)) ;
       GalgasBool test_84 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_84) {
         test_84 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inHandCodedLinkToolFileList.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1483)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_84) {
-          GGS_string var_s_65801 = GGS_string ("OTHER_LDFLAGS=(") ;
-          UpEnumerator_stringlist enumerator_65834 (constinArgument_inHandCodedLinkToolFileList) ;
-          while (enumerator_65834.hasCurrentObject ()) {
-            var_s_65801.plusAssignOperation(GGS_string ("\"").add_operation (enumerator_65834.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)) ;
-            enumerator_65834.gotoNextObject () ;
-            if (enumerator_65834.hasCurrentObject ()) {
-              var_s_65801.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1487)) ;
+          GGS_string var_s_65813 = GGS_string ("OTHER_LDFLAGS=(") ;
+          UpEnumerator_stringlist enumerator_65846 (constinArgument_inHandCodedLinkToolFileList) ;
+          while (enumerator_65846.hasCurrentObject ()) {
+            var_s_65813.plusAssignOperation(GGS_string ("\"").add_operation (enumerator_65846.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1486)) ;
+            enumerator_65846.gotoNextObject () ;
+            if (enumerator_65846.hasCurrentObject ()) {
+              var_s_65813.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1487)) ;
             }
           }
-          var_s_65801.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1489)) ;
-          var_settingList_64429.addAssignOperation (var_s_65801  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1490)) ;
+          var_s_65813.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1489)) ;
+          var_settingList_64441.addAssignOperation (var_s_65813  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1490)) ;
         }
       }
-      GGS_string var_debugTargetRef_66326 ;
-      GGS_string var_debugProductFileRef_66367 ;
+      GGS_string var_debugTargetRef_66338 ;
+      GGS_string var_debugProductFileRef_66379 ;
       {
-      extensionSetter_addToolTarget (var_xcodeProject_28676, constinArgument_inTargetName.add_operation (GGS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1493)), constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1494)), var_buildCFileRefListForTool_34756.add_operation (var_buildCppFileRefListForTool_34807, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1495)).add_operation (var_mm_5F_FileRefList_34900, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1495)), var_toolFrameworksFileRefList_35840, var_settingList_64429, var_debugTargetRef_66326, var_debugProductFileRef_66367, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1492)) ;
+      extensionSetter_addToolTarget (var_xcodeProject_28676, constinArgument_inTargetName.add_operation (GGS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1493)), constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1494)), var_buildCFileRefListForTool_34756.add_operation (var_buildCppFileRefListForTool_34807, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1495)).add_operation (var_mm_5F_FileRefList_34900, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1495)), var_toolFrameworksFileRefList_35840, var_settingList_64441, var_debugTargetRef_66338, var_debugProductFileRef_66379, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1492)) ;
       }
       GGS_stringlist temp_85 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1504)) ;
       temp_85.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1503)) ;
       temp_85.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1504)) ;
-      GGS_stringlist var_cocoaConfigurationSettingList_66438 = temp_85.add_operation (var_codeSigningSettingList_63405, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1505)) ;
+      GGS_stringlist var_cocoaConfigurationSettingList_66450 = temp_85.add_operation (var_codeSigningSettingList_63417, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1505)) ;
       {
       GGS_string temp_86 ;
       const GalgasBool test_87 = var_isSwiftApp_26575.boolEnum () ;
@@ -4697,13 +4697,13 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
         temp_90 = var_m_5F_FileRefList_34860.add_operation (var_m_5F_handCodedSourceFileRefForAppList_33212, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1514)) ;
       }
       GGS_stringlist temp_92 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1519)) ;
-      temp_92.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_releaseTargetRef_65302, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1519)) ;
-      temp_92.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_debugTargetRef_66326, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1519)) ;
+      temp_92.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_releaseTargetRef_65314, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1519)) ;
+      temp_92.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_debugTargetRef_66338, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1519)) ;
       GGS__32_stringlist temp_93 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)) ;
-      temp_93.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_releaseProductFileRef_65345, constinArgument_inTargetName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)) ;
-      temp_93.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_debugProductFileRef_66367, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)) ;
-      GGS_string joker_67460 ; // Joker input parameter
-      extensionSetter_addAppTarget (var_xcodeProject_28676, temp_86, temp_88, temp_90, var_frameworksFileRefList_34985.add_operation (var_appFrameworksFileRefList_34043, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1516)), var_resourceFileBuildRefs_35033.add_operation (var_resource_5F_handCodedResourceFileRefForAppList_33273, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1517)), var_cocoaConfigurationSettingList_66438, temp_92, temp_93, joker_67460, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1506)) ;
+      temp_93.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_releaseProductFileRef_65357, constinArgument_inTargetName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)) ;
+      temp_93.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_debugProductFileRef_66379, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1520)) ;
+      GGS_string joker_67472 ; // Joker input parameter
+      extensionSetter_addAppTarget (var_xcodeProject_28676, temp_86, temp_88, temp_90, var_frameworksFileRefList_34985.add_operation (var_appFrameworksFileRefList_34043, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1516)), var_resourceFileBuildRefs_35033.add_operation (var_resource_5F_handCodedResourceFileRefForAppList_33273, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1517)), var_cocoaConfigurationSettingList_66450, temp_92, temp_93, joker_67472, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1506)) ;
       }
       extensionMethod_generateAtPath (var_xcodeProject_28676, var_dir_26622.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1525)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1525)).add_operation (GGS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1525)), var_newIntermediateFilePath_28426, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1524)) ;
     }
@@ -4846,7 +4846,7 @@ static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSou
   if (GalgasBool::boolTrue == test_1) {
     test_1 = GGS_bool (ComparisonKind::equal, var_candidateProjectFiles_3144.getter_count (SOURCE_FILE ("galgasProgram.galgas", 79)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), GGS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgasProgram.galgas", 80)) ;
     }
   }
@@ -4861,7 +4861,7 @@ static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSou
           var_s_3421.plusAssignOperation(GGS_string ("\n  - ").add_operation (enumerator_3491.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 84)), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 84)) ;
           enumerator_3491.gotoNextObject () ;
         }
-        TC_Array <FixItDescription> fixItArray4 ;
+        GenericArray <FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), var_s_3421, fixItArray4  COMMA_SOURCE_FILE ("galgasProgram.galgas", 86)) ;
       }
     }
@@ -4892,7 +4892,7 @@ static void routine_programRule_5F__31_ (const GGS_lstring constinArgument_inSou
   if (GalgasBool::boolTrue == test_1) {
     test_1 = GGS_bool (ComparisonKind::equal, var_candidateProjectFiles_4318.getter_count (SOURCE_FILE ("galgasProgram.galgas", 105)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), GGS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgasProgram.galgas", 106)) ;
     }
   }
@@ -4907,7 +4907,7 @@ static void routine_programRule_5F__31_ (const GGS_lstring constinArgument_inSou
           var_s_4592.plusAssignOperation(GGS_string ("\n  - ").add_operation (enumerator_4662.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 110)), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 110)) ;
           enumerator_4662.gotoNextObject () ;
         }
-        TC_Array <FixItDescription> fixItArray4 ;
+        GenericArray <FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), var_s_4592, fixItArray4  COMMA_SOURCE_FILE ("galgasProgram.galgas", 112)) ;
       }
     }
@@ -4973,7 +4973,7 @@ static void routine_programRule_5F__34_ (const GGS_lstring constinArgument_inPro
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
-  TC_UniqueArray <String> sourceFilesArray ;
+  GenericUniqueArray <String> sourceFilesArray ;
   analyzeCommandLineOptions (inArgc, inArgv,
                              sourceFilesArray,
                              kSourceFileExtensions,

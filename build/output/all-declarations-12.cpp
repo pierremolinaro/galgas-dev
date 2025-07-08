@@ -6550,12 +6550,12 @@ int32_t GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>
 GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> () ;
   }
 }
 
@@ -6574,7 +6574,7 @@ GGS_stringset GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_keySet (C
 //--------------------------------------------------------------------------------------------------
 
 void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -6678,7 +6678,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalInd
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> & inArray,
+static void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -6711,7 +6711,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::description (String & ioS
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
     GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -9291,12 +9291,12 @@ int32_t GGS_terminalSymbolsMapForGrammarAnalysis::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>
 GGS_terminalSymbolsMapForGrammarAnalysis::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> () ;
   }
 }
 
@@ -9315,7 +9315,7 @@ GGS_stringset GGS_terminalSymbolsMapForGrammarAnalysis::getter_keySet (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_terminalSymbolsMapForGrammarAnalysis::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -9388,7 +9388,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::method_searchKey (GGS_lstring inL
     const String key = inLKey.mProperty_string.stringValue () ;
     info = infoForKey (key) ;
     if (info.isNil ()) {
-      TC_UniqueArray <String> nearestKeyArray ;
+      GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       const char * kSearchErrorMessage = "the terminal symbol '$%K$' is not declared" ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
@@ -9442,7 +9442,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::setter_setMTerminalIndexForKey (G
 }
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_terminalSymbolsMapForGrammarAnalysis_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> & inArray,
+static void GGS_terminalSymbolsMapForGrammarAnalysis_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -9475,7 +9475,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
     GGS_terminalSymbolsMapForGrammarAnalysis_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -11967,12 +11967,12 @@ int32_t GGS_extensionMethodMapForGlobalCheckings::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>>
 GGS_extensionMethodMapForGlobalCheckings::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> () ;
   }
 }
 
@@ -11991,7 +11991,7 @@ GGS_stringset GGS_extensionMethodMapForGlobalCheckings::getter_keySet (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionMethodMapForGlobalCheckings::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -12053,7 +12053,7 @@ void GGS_extensionMethodMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
 
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_extensionMethodMapForGlobalCheckings_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> & inArray,
+static void GGS_extensionMethodMapForGlobalCheckings_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -12082,7 +12082,7 @@ void GGS_extensionMethodMapForGlobalCheckings::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionMethodMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -12381,12 +12381,12 @@ int32_t GGS_extensionSetterMapForGlobalCheckings::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>>
 GGS_extensionSetterMapForGlobalCheckings::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> () ;
   }
 }
 
@@ -12405,7 +12405,7 @@ GGS_stringset GGS_extensionSetterMapForGlobalCheckings::getter_keySet (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionSetterMapForGlobalCheckings::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -12467,7 +12467,7 @@ void GGS_extensionSetterMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
 
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_extensionSetterMapForGlobalCheckings_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> & inArray,
+static void GGS_extensionSetterMapForGlobalCheckings_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -12496,7 +12496,7 @@ void GGS_extensionSetterMapForGlobalCheckings::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionSetterMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -12795,12 +12795,12 @@ int32_t GGS_extensionGetterMapForGlobalCheckings::count (void) const  {
 
 //--------------------------------------------------------------------------------------------------
 
-TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>>
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>>
 GGS_extensionGetterMapForGlobalCheckings::sortedInfoArray (void) const {
   if (mSharedRoot.isNotNil ()) {
     return mSharedRoot->sortedInfoArray () ;
   }else{
-    return TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> () ;
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> () ;
   }
 }
 
@@ -12819,7 +12819,7 @@ GGS_stringset GGS_extensionGetterMapForGlobalCheckings::getter_keySet (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionGetterMapForGlobalCheckings::findNearestKey (const String & inKey,
-                                  TC_UniqueArray <String> & outNearestKeyArray) const {
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
   mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
 }
 
@@ -12881,7 +12881,7 @@ void GGS_extensionGetterMapForGlobalCheckings::setter_insertKey (GGS_lstring inL
 
 //--------------------------------------------------------------------------------------------------
 
-static void GGS_extensionGetterMapForGlobalCheckings_internalDescription (const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> & inArray,
+static void GGS_extensionGetterMapForGlobalCheckings_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
   const int32_t n = inArray.count () ;
@@ -12910,7 +12910,7 @@ void GGS_extensionGetterMapForGlobalCheckings::description (String & ioString,
   ioString.appendCString ("<map @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionGetterMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
     OptionalSharedRef <GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
@@ -14136,7 +14136,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
     break ;
   case GGS_AccessControlAST::Enumeration::enum_protectedSetAccess:
     {
-      TC_Array <FixItDescription> fixItArray1 ;
+      GenericArray <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 155)) ;
     }
     break ;
@@ -14144,7 +14144,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
     break ;
   case GGS_AccessControlAST::Enumeration::enum_privateSetAccess:
     {
-      TC_Array <FixItDescription> fixItArray2 ;
+      GenericArray <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas", 158)) ;
     }
     break ;
@@ -14154,7 +14154,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
     {
       GGS_location extractedValue_5217__0 ;
       temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_5217__0) ;
-      TC_Array <FixItDescription> fixItArray3 ;
+      GenericArray <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas", 161)) ;
     }
     break ;
@@ -14248,7 +14248,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray1 ;
+          GenericArray <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 210)) ;
         }
         break ;
@@ -14279,7 +14279,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_4) {
             test_4 = var_ok_7360.operator_not (SOURCE_FILE ("accessControl.galgas", 218)).boolEnum () ;
             if (GalgasBool::boolTrue == test_4) {
-              TC_Array <FixItDescription> fixItArray5 ;
+              GenericArray <FixItDescription> fixItArray5 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 219)) ;
             }
           }
@@ -14297,7 +14297,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray6 ;
+          GenericArray <FixItDescription> fixItArray6 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray6  COMMA_SOURCE_FILE ("accessControl.galgas", 225)) ;
         }
         break ;
@@ -14328,7 +14328,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_9) {
             test_9 = var_ok_8034.operator_not (SOURCE_FILE ("accessControl.galgas", 233)).boolEnum () ;
             if (GalgasBool::boolTrue == test_9) {
-              TC_Array <FixItDescription> fixItArray10 ;
+              GenericArray <FixItDescription> fixItArray10 ;
               inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray10  COMMA_SOURCE_FILE ("accessControl.galgas", 234)) ;
             }
           }
@@ -14346,7 +14346,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray11 ;
+          GenericArray <FixItDescription> fixItArray11 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray11  COMMA_SOURCE_FILE ("accessControl.galgas", 240)) ;
         }
         break ;
@@ -14359,7 +14359,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_12) {
             test_12 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8476_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 242)).objectCompare (extensionGetter_typeName (extractedValue_8653_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 242)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_12) {
-              TC_Array <FixItDescription> fixItArray13 ;
+              GenericArray <FixItDescription> fixItArray13 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray13  COMMA_SOURCE_FILE ("accessControl.galgas", 243)) ;
             }
           }
@@ -14377,7 +14377,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray14 ;
+          GenericArray <FixItDescription> fixItArray14 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray14  COMMA_SOURCE_FILE ("accessControl.galgas", 249)) ;
         }
         break ;
@@ -14390,7 +14390,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_15) {
             test_15 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8873_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 251)).objectCompare (extensionGetter_typeName (extractedValue_9058_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 251)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_15) {
-              TC_Array <FixItDescription> fixItArray16 ;
+              GenericArray <FixItDescription> fixItArray16 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray16  COMMA_SOURCE_FILE ("accessControl.galgas", 252)) ;
             }
           }
@@ -14407,7 +14407,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
       if (GalgasBool::boolTrue == test_17) {
         test_17 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9284_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 256)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 256)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_17) {
-          TC_Array <FixItDescription> fixItArray18 ;
+          GenericArray <FixItDescription> fixItArray18 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray18  COMMA_SOURCE_FILE ("accessControl.galgas", 257)) ;
         }
       }
@@ -14421,7 +14421,7 @@ void extensionMethod_checkSetAccess (const GGS_AccessControl inObject,
       if (GalgasBool::boolTrue == test_19) {
         test_19 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9512_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_19) {
-          TC_Array <FixItDescription> fixItArray20 ;
+          GenericArray <FixItDescription> fixItArray20 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate(set)' qualifier)"), fixItArray20  COMMA_SOURCE_FILE ("accessControl.galgas", 261)) ;
         }
       }
@@ -14461,7 +14461,7 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray1 ;
+          GenericArray <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 277)) ;
         }
         break ;
@@ -14492,7 +14492,7 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_4) {
             test_4 = var_ok_10311.operator_not (SOURCE_FILE ("accessControl.galgas", 285)).boolEnum () ;
             if (GalgasBool::boolTrue == test_4) {
-              TC_Array <FixItDescription> fixItArray5 ;
+              GenericArray <FixItDescription> fixItArray5 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 286)) ;
             }
           }
@@ -14510,7 +14510,7 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
         break ;
       case GGS_selfAvailability::Enumeration::enum_none:
         {
-          TC_Array <FixItDescription> fixItArray6 ;
+          GenericArray <FixItDescription> fixItArray6 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray6  COMMA_SOURCE_FILE ("accessControl.galgas", 292)) ;
         }
         break ;
@@ -14523,7 +14523,7 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
           if (GalgasBool::boolTrue == test_7) {
             test_7 = GGS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_10746_declaringType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 294)).objectCompare (extensionGetter_typeName (extractedValue_10923_currentType_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 294)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_7) {
-              TC_Array <FixItDescription> fixItArray8 ;
+              GenericArray <FixItDescription> fixItArray8 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("accessControl.galgas", 295)) ;
             }
           }
@@ -14540,7 +14540,7 @@ void extensionMethod_checkGetAccess (const GGS_AccessControl inObject,
       if (GalgasBool::boolTrue == test_9) {
         test_9 = GGS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_11144_declaringLocation_0, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_9) {
-          TC_Array <FixItDescription> fixItArray10 ;
+          GenericArray <FixItDescription> fixItArray10 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GGS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray10  COMMA_SOURCE_FILE ("accessControl.galgas", 300)) ;
         }
       }

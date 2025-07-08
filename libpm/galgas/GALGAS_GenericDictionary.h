@@ -87,7 +87,7 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateInfoArray (const OptionalSharedRef <GenericDictionaryNode> & inNode,
-                                          TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
+                                          GenericArray <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
       ioNodeArray.appendObject (inNode->mSharedInfo) ;
@@ -114,7 +114,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mRootNode ;
-  private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
   private: bool mCacheSortedArrayIsValid ;
 
@@ -172,11 +172,11 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
+  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
     if (mCacheSortedArrayIsValid) {
       return mCacheSortedArray ;
     }else{
-      TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
+      GenericArray <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
       GenericDictionaryNode <KEY, INFO>::populateInfoArray (mRootNode, array) ;
       mCacheSortedArray = array ;
       mCacheSortedArrayIsValid = true ;
@@ -631,11 +631,11 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
+  public: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->sortedInfoArray () ;
     }else{
-      return TC_Array <SharedGenericPtrWithValueSemantics <INFO>> () ;
+      return GenericArray <SharedGenericPtrWithValueSemantics <INFO>> () ;
     }
   }
 

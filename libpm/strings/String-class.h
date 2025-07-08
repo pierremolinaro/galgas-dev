@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "M_SourceLocation.h"
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 #include "M_machine.h"
 #include "ConsoleOut.h"
 #include "U8Data.h"
@@ -182,7 +182,7 @@ class String : public AbstractOutputStream {
   public: uint32_t LevenshteinDistanceFromString (const String & inOtherString) const ;
 
 //--- Get lines array
-  public: void linesArray (TC_UniqueArray <String> & outStringArray) const ;
+  public: void linesArray (GenericUniqueArray <String> & outStringArray) const ;
 
 //--- Get line from index
   public: class LineColumnContents lineAndColumnFromIndex (const int32_t inIndex) const ;
@@ -229,10 +229,10 @@ class String : public AbstractOutputStream {
 
 //--- Returns an array containing substrings from the receiver that have been divided by separator
   public: void componentsSeparatedByString (const String & inSeparator,
-                                            TC_UniqueArray <String> & outResult) const ;
+                                            GenericUniqueArray <String> & outResult) const ;
 
 //--- Recompose a string from components
-  public: static String componentsJoinedByString (const TC_UniqueArray <String> & inComponentArray,
+  public: static String componentsJoinedByString (const GenericUniqueArray <String> & inComponentArray,
                                                   const String & inSeparator) ;
 
 //--- Interprets the receiver as a path, returning the receiver's extension

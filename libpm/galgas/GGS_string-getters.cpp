@@ -706,7 +706,7 @@ GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string 
   GGS_stringlist result ;
   if (inSeparator.isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
-    TC_UniqueArray <String> components ;
+    GenericUniqueArray <String> components ;
     mString.componentsSeparatedByString (inSeparator.mString, components) ;
     for (int32_t i=0 ; i<components.count () ; i++) {
       result.addAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;

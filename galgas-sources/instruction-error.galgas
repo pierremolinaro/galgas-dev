@@ -415,7 +415,7 @@ method @fixitListForGeneration generateFixIt
 {
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "TC_Array <FixItDescription> " + outFixItArrayCppName + " ;\n"
+  ioGeneratedCode += "GenericArray <FixItDescription> " + outFixItArrayCppName + " ;\n"
   for (element) in self do
     switch (element)
     case fixItRemove :

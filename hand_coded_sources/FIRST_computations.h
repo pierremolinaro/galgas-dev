@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,10 +44,10 @@ FIRST_computations (const PureBNFproductionsList & inPureBNFproductions,
                     HTMLString & ioHTMLFileContents,
                     const bool inPopulateHTMLHelperString,
                     const GrammarVocabulary & inVocabulary,
-                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                    const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const BinaryDecisionDiagramRelation & inVocabularyDerivingToEmpty,
                     const BinaryDecisionDiagramRelation & inUsefulSymbols,
-                    TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
+                    GenericUniqueArray <GenericUniqueArray <uint64_t> > & outFIRSTarray,
                     BinaryDecisionDiagramRelation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) ;

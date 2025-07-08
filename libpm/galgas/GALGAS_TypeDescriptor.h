@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -44,7 +44,7 @@ class GALGAS_TypeDescriptor final {
                               const GALGAS_TypeDescriptor * inSuperClassDescriptor) ;
 
 //--- Get Type list
-  public: static void typeListRoot (TC_UniqueArray <GALGAS_TypeDescriptor *> & outTypeList) ;
+  public: static void typeListRoot (GenericUniqueArray <GALGAS_TypeDescriptor *> & outTypeList) ;
   
 //--- No copy
   private: GALGAS_TypeDescriptor (const GALGAS_TypeDescriptor &) = delete ;
@@ -60,7 +60,7 @@ class GALGAS_TypeDescriptor final {
   private: static void rotateRight (GALGAS_TypeDescriptor * & ioRootPtr) ;
 
   public: static void recursiveGetSortedTypeList (GALGAS_TypeDescriptor * inRoot,
-                                                  TC_UniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) ;
+                                                  GenericUniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

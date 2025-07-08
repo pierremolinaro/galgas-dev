@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const GrammarVocabulary & inVocabulary,
-                  const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                  const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const BinaryDecisionDiagramRelation & inFIRSTsets,
                   const BinaryDecisionDiagramRelation & inFOLLOWsets,
                   const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
