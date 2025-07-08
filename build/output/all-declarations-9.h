@@ -98,7 +98,7 @@ class GGS_ruleDeclarationList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_ruleDeclarationList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_ruleDeclarationList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -109,7 +109,7 @@ class GGS_ruleDeclarationList : public AC_GALGAS_root {
                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_ruleDeclarationList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -7795,7 +7795,7 @@ class GGS_collectionValueElementList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_collectionValueElementList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_collectionValueElementList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -7806,7 +7806,7 @@ class GGS_collectionValueElementList : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_collectionValueElementList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -8329,7 +8329,7 @@ class GGS_collectionValueElementListForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_collectionValueElementListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_collectionValueElementListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -8340,7 +8340,7 @@ class GGS_collectionValueElementListForGeneration : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_collectionValueElementListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor

@@ -454,7 +454,7 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_formalInputParameterListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_formalInputParameterListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -465,7 +465,7 @@ class GGS_formalInputParameterListAST : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_formalInputParameterListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -2447,7 +2447,7 @@ class GGS_functionSignature : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_functionSignature_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_functionSignature_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -2458,7 +2458,7 @@ class GGS_functionSignature : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_functionSignature (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -2739,7 +2739,7 @@ class GGS_enumerationDescriptorList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_enumerationDescriptorList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_enumerationDescriptorList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -2750,7 +2750,7 @@ class GGS_enumerationDescriptorList : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_enumerationDescriptorList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -7182,7 +7182,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_propertyInCollectionListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_propertyInCollectionListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -7193,7 +7193,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_propertyInCollectionListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -8790,7 +8790,7 @@ class GGS_typedPropertyList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_typedPropertyList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_typedPropertyList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -8801,7 +8801,7 @@ class GGS_typedPropertyList : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_typedPropertyList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -10083,7 +10083,7 @@ class GGS_enumConstantList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_enumConstantList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_enumConstantList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -10094,7 +10094,7 @@ class GGS_enumConstantList : public AC_GALGAS_root {
                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_enumConstantList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -10726,7 +10726,7 @@ class GGS_enumConstantListForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_enumConstantListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_enumConstantListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -10737,7 +10737,7 @@ class GGS_enumConstantListForGeneration : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_enumConstantListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -10967,7 +10967,7 @@ class GGS_associatedValueDescriptorList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_associatedValueDescriptorList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_associatedValueDescriptorList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -10978,7 +10978,7 @@ class GGS_associatedValueDescriptorList : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_associatedValueDescriptorList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -11394,7 +11394,7 @@ class GGS_typeNameFormalParameterNameList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_typeNameFormalParameterNameList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_typeNameFormalParameterNameList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -11405,7 +11405,7 @@ class GGS_typeNameFormalParameterNameList : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_typeNameFormalParameterNameList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -11754,7 +11754,7 @@ class GGS_externTypeConstructorList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_externTypeConstructorList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_externTypeConstructorList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -11765,7 +11765,7 @@ class GGS_externTypeConstructorList : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -12056,7 +12056,7 @@ class GGS_externTypeGetterList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_externTypeGetterList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_externTypeGetterList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -12067,7 +12067,7 @@ class GGS_externTypeGetterList : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_externTypeGetterList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -12418,7 +12418,7 @@ class GGS_externTypeSetterList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_externTypeSetterList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_externTypeSetterList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -12429,7 +12429,7 @@ class GGS_externTypeSetterList : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_externTypeSetterList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -12665,7 +12665,7 @@ class GGS_formalParameterListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_formalParameterListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_formalParameterListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -12676,7 +12676,7 @@ class GGS_formalParameterListAST : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_formalParameterListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -13270,7 +13270,7 @@ class GGS_externTypeMethodList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_externTypeMethodList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_externTypeMethodList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -13281,7 +13281,7 @@ class GGS_externTypeMethodList : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_externTypeMethodList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor

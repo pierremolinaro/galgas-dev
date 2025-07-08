@@ -1967,7 +1967,7 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalSendSearchListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalSendSearchListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -1978,7 +1978,7 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_root {
                                                  COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalSendSearchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -2855,7 +2855,7 @@ class GGS_lexicalWhileBranchListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalWhileBranchListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalWhileBranchListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -2866,7 +2866,7 @@ class GGS_lexicalWhileBranchListAST : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalWhileBranchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -3186,7 +3186,7 @@ class GGS_lexicalSelectBranchListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalSelectBranchListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalSelectBranchListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -3197,7 +3197,7 @@ class GGS_lexicalSelectBranchListAST : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalSelectBranchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -3693,7 +3693,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalFunctionCallActualArgumentListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalFunctionCallActualArgumentListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -3704,7 +3704,7 @@ class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalFunctionCallActualArgumentListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -5200,7 +5200,7 @@ class GGS_lexicalSentValueList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalSentValueList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalSentValueList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -5211,7 +5211,7 @@ class GGS_lexicalSentValueList : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalSentValueList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -6671,7 +6671,7 @@ class GGS_terminalList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_terminalList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_terminalList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -6682,7 +6682,7 @@ class GGS_terminalList : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_terminalList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -7518,7 +7518,6 @@ class UpEnumerator_tokenSortedlist final {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_tokenSortedlist final : public AC_GALGAS_root {
-
 //--- Private property
   private: TC_Array <GGS_tokenSortedlist_2E_element> mSharedArray ;
 
@@ -8657,7 +8656,7 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalRoutineFormalArgumentList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalRoutineFormalArgumentList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -8668,7 +8667,7 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalRoutineFormalArgumentList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -9438,7 +9437,7 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_lexicalFunctionFormalArgumentList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_lexicalFunctionFormalArgumentList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -9449,7 +9448,7 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_lexicalFunctionFormalArgumentList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -10216,7 +10215,7 @@ class GGS_templateDelimitorList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_templateDelimitorList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_templateDelimitorList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -10227,7 +10226,7 @@ class GGS_templateDelimitorList : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_templateDelimitorList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor

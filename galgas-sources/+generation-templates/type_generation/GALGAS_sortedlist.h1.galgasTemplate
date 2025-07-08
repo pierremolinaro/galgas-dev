@@ -61,7 +61,6 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
-
 //--- Private property
   private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
 

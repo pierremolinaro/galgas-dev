@@ -120,7 +120,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_XCodeAppTargetList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_XCodeAppTargetList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -131,7 +131,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_root {
                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_XCodeAppTargetList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -825,7 +825,7 @@ class GGS_BuildFileList : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_BuildFileList_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_BuildFileList_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -836,7 +836,7 @@ class GGS_BuildFileList : public AC_GALGAS_root {
                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_BuildFileList (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor

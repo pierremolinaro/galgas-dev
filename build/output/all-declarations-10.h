@@ -5301,7 +5301,7 @@ class GGS_castInstructionBranchListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_castInstructionBranchListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_castInstructionBranchListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -5312,7 +5312,7 @@ class GGS_castInstructionBranchListAST : public AC_GALGAS_root {
                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_castInstructionBranchListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -5942,7 +5942,7 @@ class GGS_castInstructionBranchListForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_castInstructionBranchListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_castInstructionBranchListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -5953,7 +5953,7 @@ class GGS_castInstructionBranchListForGeneration : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_castInstructionBranchListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -8774,7 +8774,7 @@ class GGS_fixitListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_fixitListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_fixitListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -8785,7 +8785,7 @@ class GGS_fixitListAST : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_fixitListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -9874,7 +9874,7 @@ class GGS_fixitListForGeneration : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_fixitListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_fixitListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -9885,7 +9885,7 @@ class GGS_fixitListForGeneration : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_fixitListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -10418,7 +10418,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -10429,7 +10429,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_forInstructionEnumeratedObjectElementListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -11580,7 +11580,7 @@ class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_forInstructionEnumeratedObjectListAST_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_forInstructionEnumeratedObjectListAST_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -11591,7 +11591,7 @@ class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_root {
                                                               COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_forInstructionEnumeratedObjectListAST (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
@@ -12218,7 +12218,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_roo
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -12229,7 +12229,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_roo
                                                                         COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_forInstructionEnumeratedObjectListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor

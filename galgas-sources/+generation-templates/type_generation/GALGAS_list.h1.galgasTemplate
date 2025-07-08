@@ -94,7 +94,7 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
  
 //--- sortedElementArray
-  public : TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> sortedElementArray (void) const {
+  public : inline TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> sortedElementArray (void) const {
     return mArray ;
   }
 
@@ -105,7 +105,7 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
                 %!^%COMMA_LOCATION_ARGS) const ;
 
 
-//--- List constructor by graph
+//--- List constructor for graph
   public: GGS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
