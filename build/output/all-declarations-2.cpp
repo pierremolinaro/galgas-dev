@@ -603,8 +603,6 @@ class cCollectionElement_sentLexicalAttributeListAST : public cCollectionElement
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_sentLexicalAttributeListAST (const GGS_sentLexicalAttributeListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -1221,8 +1219,6 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
                                                       const GGS_bool & in_isEndOfTemplateMark
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalListEntryListAST (const GGS_lexicalListEntryListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -2912,8 +2908,6 @@ class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -3993,8 +3987,6 @@ class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalWhileBranchListAST (const GGS_lexicalWhileBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4609,8 +4601,6 @@ class cCollectionElement_lexicalSelectBranchListAST : public cCollectionElement 
                                                          const GGS_lexicalInstructionListAST & in_mSelectInstructionList
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalSelectBranchListAST (const GGS_lexicalSelectBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -5445,8 +5435,6 @@ class cCollectionElement_lexicalFunctionCallActualArgumentListAST : public cColl
   public: cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument
                                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GGS_lexicalFunctionCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -7213,8 +7201,6 @@ class cCollectionElement_lexicalSentValueList : public cCollectionElement {
                                                    const GGS_lexicalTypeEnum & in_mLexicalType
                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalSentValueList (const GGS_lexicalSentValueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -9395,8 +9381,6 @@ class cCollectionElement_terminalList : public cCollectionElement {
                                            const GGS_uint & in_mStyleIndex
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_terminalList (const GGS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -12481,8 +12465,6 @@ class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionEl
                                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -13791,8 +13773,6 @@ class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionE
                                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -15086,8 +15066,6 @@ class cCollectionElement_templateDelimitorList : public cCollectionElement {
                                                     const GGS_bool & in_mPreservesStartDelimiter
                                                     COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateDelimitorList (const GGS_templateDelimitorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

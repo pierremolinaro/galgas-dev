@@ -20,8 +20,6 @@ class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -636,8 +634,6 @@ class cCollectionElement_listOfSyntaxInstructionList : public cCollectionElement
                                                           const GGS_location & in_mEndOf_5F_instructions
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_listOfSyntaxInstructionList (const GGS_listOfSyntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -1501,8 +1497,6 @@ class cCollectionElement_galgas_33_SyntaxComponentListAST : public cCollectionEl
                                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_galgas_33_SyntaxComponentListAST (const GGS_galgas_33_SyntaxComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -2346,8 +2340,6 @@ class cCollectionElement_prologueEpilogueList : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_prologueEpilogueList (const GGS_prologueEpilogueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -2967,8 +2959,6 @@ class cCollectionElement_programRuleList : public cCollectionElement {
                                               const GGS_location & in_mEndOfInstructionList
                                               COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_programRuleList (const GGS_programRuleList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -4501,8 +4491,6 @@ class cCollectionElement_optionalMethodSignature : public cCollectionElement {
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_optionalMethodSignature (const GGS_optionalMethodSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -5271,8 +5259,6 @@ class cCollectionElement_formalParameterSignature : public cCollectionElement {
                                                        const GGS_string & in_mFormalArgumentName
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_formalParameterSignature (const GGS_formalParameterSignature_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -8135,8 +8121,6 @@ class cCollectionElement_acceptableParameterList : public cCollectionElement {
                                                       const GGS_bool & in_mIsFilePrivate
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_acceptableParameterList (const GGS_acceptableParameterList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

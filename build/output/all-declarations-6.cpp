@@ -1505,8 +1505,6 @@ class cCollectionElement_localVarMapListForLLVM : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_localVarMapListForLLVM (const GGS_localVarMapListForLLVM_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -2246,8 +2244,6 @@ class cCollectionElement_openedOverrideList : public cCollectionElement {
   public: cCollectionElement_openedOverrideList (const GGS_overrideKind & in_mOverrideKind
                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_openedOverrideList (const GGS_openedOverrideList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -5263,8 +5259,6 @@ class cCollectionElement_actualParameterListAST : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_actualParameterListAST (const GGS_actualParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -8262,8 +8256,6 @@ class cCollectionElement_galgas_33_SyntaxExtensionListAST : public cCollectionEl
                                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_galgas_33_SyntaxExtensionListAST (const GGS_galgas_33_SyntaxExtensionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -10362,8 +10354,6 @@ class cCollectionElement_actualInputParameterListAST : public cCollectionElement
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_actualInputParameterListAST (const GGS_actualInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -11447,8 +11437,6 @@ class cCollectionElement_semanticDeclarationListAST : public cCollectionElement 
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_semanticDeclarationListAST (const GGS_semanticDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -12356,8 +12344,6 @@ class cCollectionElement_formalTemplateInputParameterListAST : public cCollectio
                                                                   COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -13125,8 +13111,6 @@ class cCollectionElement_filewrapperTemplateListAST : public cCollectionElement 
                                                          const GGS_formalTemplateInputParameterListAST & in_mFilewrapperTemplateFormalInputParameters
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_filewrapperTemplateListAST (const GGS_filewrapperTemplateListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -13940,8 +13924,6 @@ class cCollectionElement_syntaxInstructionList : public cCollectionElement {
                                                     COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_syntaxInstructionList (const GGS_syntaxInstructionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -14481,8 +14463,6 @@ class cCollectionElement_nonTerminalLabelListAST : public cCollectionElement {
                                                       const GGS_location & in_mEndOfArgumentLocation
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_nonTerminalLabelListAST (const GGS_nonTerminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -15175,8 +15155,6 @@ class cCollectionElement_nonterminalDeclarationListAST : public cCollectionEleme
                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -15794,8 +15772,6 @@ class cCollectionElement_syntaxRuleLabelListAST : public cCollectionElement {
                                                      const GGS_location & in_mEndOfInstructionList
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_syntaxRuleLabelListAST (const GGS_syntaxRuleLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

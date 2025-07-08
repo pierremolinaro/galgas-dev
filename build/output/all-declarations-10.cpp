@@ -6363,8 +6363,6 @@ class cCollectionElement_castInstructionBranchListAST : public cCollectionElemen
                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_castInstructionBranchListAST (const GGS_castInstructionBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -7574,8 +7572,6 @@ class cCollectionElement_castInstructionBranchListForGeneration : public cCollec
                                                                      const GGS_semanticInstructionListForGeneration & in_mInstructionList
                                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_castInstructionBranchListForGeneration (const GGS_castInstructionBranchListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -10338,8 +10334,6 @@ class cCollectionElement_fixitListAST : public cCollectionElement {
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_fixitListAST (const GGS_fixitListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -11543,8 +11537,6 @@ class cCollectionElement_fixitListForGeneration : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_fixitListForGeneration (const GGS_fixitListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -12269,8 +12261,6 @@ class cCollectionElement_forInstructionEnumeratedObjectElementListAST : public c
                                                                            const GGS_lstring & in_mOptionalConstantName
                                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -13784,8 +13774,6 @@ class cCollectionElement_forInstructionEnumeratedObjectListAST : public cCollect
                                                                     COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -14566,8 +14554,6 @@ class cCollectionElement_forInstructionEnumeratedObjectListForGeneration : publi
                                                                               const GGS_string & in_mEnumeratorCppName
                                                                               COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

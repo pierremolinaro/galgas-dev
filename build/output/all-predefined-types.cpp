@@ -108,9 +108,6 @@ class cCollectionElement_stringlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_stringlist (const GGS_stringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -145,14 +142,6 @@ cCollectionElement * cCollectionElement_stringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_stringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_stringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_stringlist * operand = (cCollectionElement_stringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_stringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -838,9 +827,6 @@ class cCollectionElement_lstringlist : public cCollectionElement {
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lstringlist (const GGS_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -875,14 +861,6 @@ cCollectionElement * cCollectionElement_lstringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_lstringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_lstringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lstringlist * operand = (cCollectionElement_lstringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lstringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1591,9 +1569,6 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
                                              COMMA_LOCATION_ARGS) ;
   public: cCollectionElement__32_stringlist (const GGS__32_stringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -1629,14 +1604,6 @@ cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement__32_stringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement__32_stringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement__32_stringlist * operand = (cCollectionElement__32_stringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement__32_stringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2717,9 +2684,6 @@ class cCollectionElement_functionlist : public cCollectionElement {
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_functionlist (const GGS_functionlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -2754,14 +2718,6 @@ cCollectionElement * cCollectionElement_functionlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_functionlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_functionlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_functionlist * operand = (cCollectionElement_functionlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_functionlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3287,9 +3243,6 @@ class cCollectionElement_luintlist : public cCollectionElement {
                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_luintlist (const GGS_luintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -3324,14 +3277,6 @@ cCollectionElement * cCollectionElement_luintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_luintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_luintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_luintlist * operand = (cCollectionElement_luintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_luintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3999,9 +3944,6 @@ class cCollectionElement_objectlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_objectlist (const GGS_objectlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4036,14 +3978,6 @@ cCollectionElement * cCollectionElement_objectlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_objectlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_objectlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_objectlist * operand = (cCollectionElement_objectlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_objectlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4569,9 +4503,6 @@ class cCollectionElement_typelist : public cCollectionElement {
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_typelist (const GGS_typelist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4606,14 +4537,6 @@ cCollectionElement * cCollectionElement_typelist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_typelist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_typelist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_typelist * operand = (cCollectionElement_typelist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_typelist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5139,9 +5062,6 @@ class cCollectionElement_uintlist : public cCollectionElement {
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uintlist (const GGS_uintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -5176,14 +5096,6 @@ cCollectionElement * cCollectionElement_uintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_uintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_uintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_uintlist * operand = (cCollectionElement_uintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_uintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5709,9 +5621,6 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uint_36__34_list (const GGS_uint_36__34_list_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -5746,14 +5655,6 @@ cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_uint_36__34_list (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_uint_36__34_list * operand = (cCollectionElement_uint_36__34_list *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_uint_36__34_list) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6279,9 +6180,6 @@ class cCollectionElement_bigintlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_bigintlist (const GGS_bigintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6316,14 +6214,6 @@ cCollectionElement * cCollectionElement_bigintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_bigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_bigintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_bigintlist * operand = (cCollectionElement_bigintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_bigintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6849,9 +6739,6 @@ class cCollectionElement_lbigintlist : public cCollectionElement {
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lbigintlist (const GGS_lbigintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6886,14 +6773,6 @@ cCollectionElement * cCollectionElement_lbigintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_lbigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lbigintlist * operand = (cCollectionElement_lbigintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lbigintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------

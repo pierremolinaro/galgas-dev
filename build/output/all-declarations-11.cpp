@@ -2655,8 +2655,6 @@ class cCollectionElement_CommaSeparatedExpressionList : public cCollectionElemen
                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_CommaSeparatedExpressionList (const GGS_CommaSeparatedExpressionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -3759,8 +3757,6 @@ class cCollectionElement_ifTestListForGeneration : public cCollectionElement {
   public: cCollectionElement_ifTestListForGeneration (const GGS_ifTestForGeneration & in_mExpression
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_ifTestListForGeneration (const GGS_ifTestListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -5844,8 +5840,6 @@ class cCollectionElement_logListAST : public cCollectionElement {
                                          const GGS_semanticExpressionAST & in_mLogExpression
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_logListAST (const GGS_logListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -12600,8 +12594,6 @@ class cCollectionElement_switchBranchesAST : public cCollectionElement {
                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_switchBranchesAST (const GGS_switchBranchesAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -13735,8 +13727,6 @@ class cCollectionElement_switchBranchesForGeneration : public cCollectionElement
                                                           const GGS_semanticInstructionListForGeneration & in_mInstructions
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_switchBranchesForGeneration (const GGS_switchBranchesForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

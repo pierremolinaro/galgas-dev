@@ -3460,8 +3460,6 @@ class cCollectionElement_semanticExpressionListForGeneration : public cCollectio
                                                                   COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_semanticExpressionListForGeneration (const GGS_semanticExpressionListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4528,9 +4526,6 @@ class cCollectionElement_unifiedTypeMapEntryList : public cCollectionElement {
                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_unifiedTypeMapEntryList (const GGS_unifiedTypeMapEntryList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4565,14 +4560,6 @@ cCollectionElement * cCollectionElement_unifiedTypeMapEntryList::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_unifiedTypeMapEntryList (mObject.mProperty_mEntry COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_unifiedTypeMapEntryList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_unifiedTypeMapEntryList * operand = (cCollectionElement_unifiedTypeMapEntryList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_unifiedTypeMapEntryList) ;
-  return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5661,8 +5648,6 @@ class cCollectionElement_actualParameterListForGeneration : public cCollectionEl
                                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_actualParameterListForGeneration (const GGS_actualParameterListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6731,8 +6716,6 @@ class cCollectionElement_listOfSemanticInstructionListForGeneration : public cCo
                                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_listOfSemanticInstructionListForGeneration (const GGS_listOfSemanticInstructionListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -7681,8 +7664,6 @@ class cCollectionElement_semanticDeclarationListForGeneration : public cCollecti
                                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_semanticDeclarationListForGeneration (const GGS_semanticDeclarationListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -8297,8 +8278,6 @@ class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement
                                                           const GGS_lstring & in_mGalgasTypeNameForGrammarAnalysis
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_signatureForGrammarAnalysis (const GGS_signatureForGrammarAnalysis_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -9966,8 +9945,6 @@ class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_nonTerminalToAddList (const GGS_nonTerminalToAddList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -10583,8 +10560,6 @@ class cCollectionElement_terminalCheckAssignementList : public cCollectionElemen
                                                            const GGS_string & in_mSourceLexicalAttributeName
                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_terminalCheckAssignementList (const GGS_terminalCheckAssignementList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -11520,8 +11495,6 @@ class cCollectionElement_filewrapperTemplateListForGeneration : public cCollecti
                                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_filewrapperTemplateListForGeneration (const GGS_filewrapperTemplateListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -12371,8 +12344,6 @@ class cCollectionElement_localConstantList : public cCollectionElement {
                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_localConstantList (const GGS_localConstantList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -13140,8 +13111,6 @@ class cCollectionElement_localInitializedVariableList : public cCollectionElemen
                                                            const GGS_string & in_mCppName
                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_localInitializedVariableList (const GGS_localInitializedVariableList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -15650,8 +15619,6 @@ class cCollectionElement_ruleLabelImplementationList : public cCollectionElement
                                                           const GGS_semanticInstructionListForGeneration & in_mInstructionListForGeneration
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_ruleLabelImplementationList (const GGS_ruleLabelImplementationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

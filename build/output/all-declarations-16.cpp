@@ -32,8 +32,6 @@ class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_XCodeAppTargetList (const GGS_XCodeAppTargetList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -1561,8 +1559,6 @@ class cCollectionElement_BuildFileList : public cCollectionElement {
                                             const GGS_string & in_mBuildReference
                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_BuildFileList (const GGS_BuildFileList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

@@ -21,8 +21,6 @@ class cCollectionElement_ruleDeclarationList : public cCollectionElement {
                                                   COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_ruleDeclarationList (const GGS_ruleDeclarationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6334,8 +6332,6 @@ class cCollectionElement_actualOutputArgumentList : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_actualOutputArgumentList (const GGS_actualOutputArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -9418,8 +9414,6 @@ class cCollectionElement_collectionValueElementList : public cCollectionElement 
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_collectionValueElementList (const GGS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -10156,8 +10150,6 @@ class cCollectionElement_collectionValueElementListForGeneration : public cColle
                                                                       const GGS_location & in_location
                                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

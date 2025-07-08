@@ -20,8 +20,6 @@ class cCollectionElement__32_lstringlist : public cCollectionElement {
                                               COMMA_LOCATION_ARGS) ;
   public: cCollectionElement__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -5843,8 +5841,6 @@ class cCollectionElement_templateInstructionListAST : public cCollectionElement 
                                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateInstructionListAST (const GGS_templateInstructionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6604,8 +6600,6 @@ class cCollectionElement_templateExpressionListAST : public cCollectionElement {
                                                         const GGS_location & in_mEndOfExpressionLocation
                                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateExpressionListAST (const GGS_templateExpressionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -17019,8 +17013,6 @@ class cCollectionElement_templateInstructionIfBranchListAST : public cCollection
                                                                  const GGS_templateInstructionListAST & in_mInstructionList
                                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_templateInstructionIfBranchListAST (const GGS_templateInstructionIfBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

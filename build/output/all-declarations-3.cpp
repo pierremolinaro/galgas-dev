@@ -2596,8 +2596,6 @@ class cCollectionElement_lexicalRoutineCallActualArgumentListAST : public cColle
                                                                       COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GGS_lexicalRoutineCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -4140,8 +4138,6 @@ class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
                                                        const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_commandLineOptionListAST (const GGS_commandLineOptionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -6316,8 +6312,6 @@ class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_guiSimpleAttributeListAST (const GGS_guiSimpleAttributeListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -6933,8 +6927,6 @@ class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement
                                                           const GGS_lstring & in_mValue
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_guiCompoundAttributeListAST (const GGS_guiCompoundAttributeListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -7627,8 +7619,6 @@ class cCollectionElement_terminalLabelListAST : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_terminalLabelListAST (const GGS_terminalLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -8244,8 +8234,6 @@ class cCollectionElement_guiLabelListAST : public cCollectionElement {
                                               const GGS_location & in_mLocation
                                               COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_guiLabelListAST (const GGS_guiLabelListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -8939,8 +8927,6 @@ class cCollectionElement_withLexiqueListAST : public cCollectionElement {
                                                  const GGS_guiCompoundAttributeListAST & in_mCompoundAttributes
                                                  COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_withLexiqueListAST (const GGS_withLexiqueListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -9711,8 +9697,6 @@ class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
                                                        const GGS_string & in_mComment
                                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_guiCommandLineOptionList (const GGS_guiCommandLineOptionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -11087,8 +11071,6 @@ class cCollectionElement_textMacroList : public cCollectionElement {
                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_textMacroList (const GGS_textMacroList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -11708,8 +11690,6 @@ class cCollectionElement_importedLexiqueList : public cCollectionElement {
                                                   const GGS_lexicalStyleListAST & in_mLexicalStyleList
                                                   COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_importedLexiqueList (const GGS_importedLexiqueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -12706,8 +12686,6 @@ class cCollectionElement_projectIndexingDescriptorList : public cCollectionEleme
                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_projectIndexingDescriptorList (const GGS_projectIndexingDescriptorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -13325,8 +13303,6 @@ class cCollectionElement_galgasGUIComponentListAST : public cCollectionElement {
                                                         const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
                                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_galgasGUIComponentListAST (const GGS_galgasGUIComponentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;

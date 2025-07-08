@@ -15,10 +15,6 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 !^%COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-%if GENERATE_COMPARISON then
-%  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-%end%
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -75,18 +71,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   return result ;
 }
 
-%if GENERATE_COMPARISON then
-%//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-%
-end
-%//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // List type @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
