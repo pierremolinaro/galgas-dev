@@ -9,6 +9,222 @@
 #include "all-declarations-5.h"
 
 //--------------------------------------------------------------------------------------------------
+//   enum headerKind
+//--------------------------------------------------------------------------------------------------
+
+class GGS_headerKind : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_headerKind (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_noHeader,
+    enum_oneHeader,
+    enum_twoHeaders
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_headerKind extractObject (const GGS_object & inObject,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_headerKind class_func_noHeader (LOCATION_ARGS) ;
+
+  public: static class GGS_headerKind class_func_oneHeader (LOCATION_ARGS) ;
+
+  public: static class GGS_headerKind class_func_twoHeaders (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_headerKind & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNoHeader (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isOneHeader (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isTwoHeaders (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerKind ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@typeKindEnum string' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_string (const class GGS_typeKindEnum & inObject,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@typeFeatures generateCppObjectComparison' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool extensionGetter_generateCppObjectComparison (const class GGS_typeFeatures & inObject,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @localVariableAttributes boolset
+//--------------------------------------------------------------------------------------------------
+
+class GGS_localVariableAttributes : public AC_GALGAS_root {
+//--------------------------------- Properties
+  private: uint64_t mFlags ;
+  private: bool mIsValid ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+
+//--------------------------------- Default constructor
+  public: GGS_localVariableAttributes (void) ;
+
+//--------------------------------- Private constructor
+  private: GGS_localVariableAttributes (const uint64_t inFlags) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_localVariableAttributes init (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_localVariableAttributes extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_localVariableAttributes class_func_acceptInitializedStateAsFinalState (LOCATION_ARGS) ;
+
+  public: static class GGS_localVariableAttributes class_func_acceptReadStateAsFinalState (LOCATION_ARGS) ;
+
+  public: static class GGS_localVariableAttributes class_func_rejectDeclaredStateAsFinalState (LOCATION_ARGS) ;
+
+  public: static class GGS_localVariableAttributes class_func_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) ;
+
+  public: static class GGS_localVariableAttributes class_func_suggestDeclareUnusedParameterAsUnused (LOCATION_ARGS) ;
+
+  public: static class GGS_localVariableAttributes class_func_warnsOnAnyAcces (LOCATION_ARGS) ;
+
+//--------------------------------- &= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void andAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- |= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void orAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ^= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void xorAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void minusAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public: VIRTUAL_IN_DEBUG GGS_localVariableAttributes operator_and (const GGS_localVariableAttributes & inOperand
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: VIRTUAL_IN_DEBUG GGS_localVariableAttributes operator_or (const GGS_localVariableAttributes & inOperand
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: VIRTUAL_IN_DEBUG GGS_localVariableAttributes operator_xor (const GGS_localVariableAttributes & inOperand
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: VIRTUAL_IN_DEBUG GGS_localVariableAttributes operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- - operator
+  public: VIRTUAL_IN_DEBUG GGS_localVariableAttributes substract_operation (const GGS_localVariableAttributes & inOperand,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_contains (const class GGS_localVariableAttributes & constinOperand0
+                                                           COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableAttributes ;
+
+//--------------------------------------------------------------------------------------------------
 //   enum localVarValuation
 //--------------------------------------------------------------------------------------------------
 
@@ -13126,94 +13342,4 @@ class GGS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxRuleListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxRuleListAST_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_mNonterminalName ;
-  public: inline GGS_lstring readProperty_mNonterminalName (void) const {
-    return mProperty_mNonterminalName ;
-  }
-
-  public: GGS_syntaxRuleLabelListAST mProperty_mLabelList ;
-  public: inline GGS_syntaxRuleLabelListAST readProperty_mLabelList (void) const {
-    return mProperty_mLabelList ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_syntaxRuleListAST_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMNonterminalName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mNonterminalName = inValue ;
-  }
-
-  public: inline void setter_setMLabelList (const GGS_syntaxRuleLabelListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLabelList = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_syntaxRuleListAST_2E_element (const GGS_lstring & in_mNonterminalName,
-                                            const GGS_syntaxRuleLabelListAST & in_mLabelList) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_syntaxRuleListAST_2E_element (const GGS_syntaxRuleListAST_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_syntaxRuleListAST_2E_element & operator = (const GGS_syntaxRuleListAST_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_syntaxRuleListAST_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
-                                                                const class GGS_syntaxRuleLabelListAST & inOperand1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_syntaxRuleListAST_2E_element extractObject (const GGS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_syntaxRuleListAST_2E_element class_func_new (const class GGS_lstring & inOperand0,
-                                                                        const class GGS_syntaxRuleLabelListAST & inOperand1,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ;
 

@@ -110,7 +110,7 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--- Element constructor
   public: static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
-  for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
     do %,\n%!^%const class GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%

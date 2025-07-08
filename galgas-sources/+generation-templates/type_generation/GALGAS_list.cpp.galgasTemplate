@@ -7,7 +7,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 //--- Class functions
   public: cCollectionElement_%!TYPE_IDENTIFIER% (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
     do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName identifierRepresentation]
     between %,\n%!^
   end
@@ -32,7 +32,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
     do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName identifierRepresentation]
     between %,\n%!^
   end
@@ -40,7 +40,7 @@ cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?
 !^%COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (%
-for (* propertyName 3*) in ATTRIBUTE_LIST
+for (* propertyName 3*) in PROPERTY_LIST
   do %in_%![propertyName identifierRepresentation]
   between %, %
 end
@@ -52,7 +52,7 @@ end
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (%
-for (* propertyName 3*) in ATTRIBUTE_LIST
+for (* propertyName 3*) in PROPERTY_LIST
   do %inElement.mProperty_%![propertyName identifierRepresentation]
   between %, %
 end
@@ -70,7 +70,7 @@ bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
-    for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+    for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
       do %mObject.mProperty_%![propertyName identifierRepresentation]
       between %, %
     end
@@ -82,7 +82,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 void cCollectionElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {
 %
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do
     %  ioString.appendNewLine () ;\n%
     %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
     %  ioString.appendCString (%![propertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
@@ -119,7 +119,7 @@ mArray () {
     cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) v.ptr () ;
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
     const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (%
-    for (* mPropertyName 3*) in ATTRIBUTE_LIST
+    for (* mPropertyName 3*) in PROPERTY_LIST
     do %p->mObject.mProperty_%![mPropertyName identifierRepresentation]
     between %, %
     end
@@ -131,14 +131,14 @@ mArray () {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
-  for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
     do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) {
   cCollectionElement_%!TYPE_IDENTIFIER% * p = nullptr ;
   macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
-  for (* mPropertyName 3*) in ATTRIBUTE_LIST
+  for (* mPropertyName 3*) in PROPERTY_LIST
   do %in_%![mPropertyName identifierRepresentation]
   between %, %
   end
@@ -169,8 +169,33 @@ GGS_range GGS_%!TYPE_IDENTIFIER%::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & /* ioString */,
-      %!^%const int32_t /* inIndentation */) const {
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+      %!^%const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+%
+for (* mPropertyName 3*) in PROPERTY_LIST do
+%      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("%![mPropertyName string]%:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation + 1) ;
+%end
+%    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -201,13 +226,13 @@ void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TY
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_listWithValue (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %const GGS_%![propertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (%
-    for (5*) in ATTRIBUTE_LIST
+    for (5*) in PROPERTY_LIST
     do (IDX) %inOperand%![IDX string]
     between %, %
     end
@@ -223,14 +248,14 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_listWithValue (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
-  for (mPropertyTypeEntry 4*) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry 4*) in PROPERTY_LIST
   do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
 %
     %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (5*) in ATTRIBUTE_LIST
+  for (5*) in PROPERTY_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -241,14 +266,14 @@ void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %const GGS_%![propertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,%
   between %\n%!^
   end
   %\n%!^%Compiler * /* inCompiler */%
   %\n%!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (5*) in ATTRIBUTE_LIST
+  for (5*) in PROPERTY_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -261,14 +286,14 @@ void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %const GGS_%![propertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
    %const GGS_uint inInsertionIndex,\n%!^
    %Compiler * inCompiler\n%!^
    %COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (5*) in ATTRIBUTE_LIST
+  for (5*) in PROPERTY_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -290,7 +315,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %GGS_%![propertyTypeEntry identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
    %const GGS_uint inRemoveIndex,\n%!^
@@ -302,7 +327,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
     if (idx < mArray.count ()) {
       removed = true ;
 %
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+ for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %      outOperand%![IDX string] % = mArray (idx COMMA_HERE).mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
 %      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
@@ -315,7 +340,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
     }
   }
   if (!removed) {
-%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
 end%  }
 }
@@ -323,7 +348,7 @@ end%  }
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %GGS_%![propertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %Compiler * inCompiler
@@ -333,7 +358,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
     if (mArray.count () > 0) {
       removed = true ;
 %
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+ for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %      outOperand%![IDX string] % = mArray (0 COMMA_THERE).mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
 %      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
@@ -343,7 +368,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
     }
   }
   if (!removed) {
-%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
 end%  }
 }
@@ -351,7 +376,7 @@ end%  }
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %GGS_%![propertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %Compiler * inCompiler
@@ -361,7 +386,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
     if (mArray.count () > 0) {
       removed = true ;
 %
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+ for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %      outOperand%![IDX string] % = mArray.lastObject (HERE).mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
 %      mArray.removeLastObject (HERE) ;
@@ -371,7 +396,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
     }
   }
   if (!removed) {
-%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
 end%  }
 }
@@ -379,7 +404,7 @@ end%  }
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_first (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %GGS_%![propertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %Compiler * inCompiler
@@ -389,7 +414,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_first (%?^
     if (mArray.count () > 0) {
       found = true ;
 %
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+ for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %      outOperand%![IDX string] % = mArray (0 COMMA_THERE).mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
 %    }else{
@@ -398,7 +423,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_first (%?^
     }
   }
   if (!found) {
-%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
 end%  }
 }
@@ -406,7 +431,7 @@ end%  }
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_last (%?^
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
+  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST
   do (IDX) %GGS_%![propertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %Compiler * inCompiler
@@ -416,7 +441,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_last (%?^
     if (mArray.count () > 0) {
       found = true ;
 %
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+ for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %      outOperand%![IDX string] % = mArray.lastObject (HERE).mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
 %    }else{
@@ -425,7 +450,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_last (%?^
     }
   }
   if (!found) {
-%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
 end%  }
 }
@@ -527,7 +552,7 @@ void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIE
 }
 
 %
-for (propertyTypeEntry propertyName * hasSetter *) in ATTRIBUTE_LIST do (IDX)
+for (propertyTypeEntry propertyName * hasSetter *) in PROPERTY_LIST do (IDX)
   if hasSetter then
   %//--------------------------------------------------------------------------------------------------\n\n%
   %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inOperand,
@@ -609,7 +634,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCAT
   return mArray (mIndex COMMA_THERE) ;
 }
 
-%for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  return mArray (mIndex COMMA_THERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -632,7 +657,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATIO
   return mArray (mIndex COMMA_THERE) ;
 }
 
-%for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  return mArray (mIndex COMMA_THERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%

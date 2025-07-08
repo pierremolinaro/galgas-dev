@@ -12,7 +12,6 @@
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
-#include "AC_GALGAS_list.h"
 #include "AC_GALGAS_reference_class.h"
 #include "AC_GALGAS_value_class.h"
 #include "AC_GALGAS_enumAssociatedValues.h"

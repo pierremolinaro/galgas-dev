@@ -583,7 +583,7 @@ filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
   template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@typedPropertyList PROPERTY_LIST
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
     ?@string ELEMENT_TYPE_IDENTIFIER
@@ -592,7 +592,7 @@ filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
   template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@typedPropertyList PROPERTY_LIST
     ?@string ELEMENT_TYPE_IDENTIFIER
     ?@bool GENERATE_COMPARISON
 }

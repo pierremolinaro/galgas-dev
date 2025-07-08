@@ -8,6 +8,648 @@
 #include "all-declarations-3.h"
 
 //--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const cPtr_lexicalInstructionAST * inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GGS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_lexicalInstructionUsesLoopLocalVariable (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateLexicalRuleCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateLexicalRuleCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                        const GGS_string in_inScannerClassName,
+                                                        const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateLexicalRuleCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const cPtr_abstractLexicalRuleAST * inObject,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  GGS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_lexicalRuleUsesLoopLocalVar (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalExpressionAST generateObjcCocoaConditionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateObjcCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
+                                                               const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateObjcCocoaConditionCode (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalExpressionAST generateSwiftCocoaConditionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
+                                                                const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaConditionCode (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateObjcCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateObjcCocoaRoutineOrFunctionArgument (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaRoutineOrFunctionArgument (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalSendDefaultActionAST generateObjcCocoaDefaultSendCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateObjcCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+                                                                 const GGS_string in_inScannerClassName,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateObjcCocoaDefaultSendCode (in_inScannerClassName, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+                                                                  const GGS_string in_inScannerClassName,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaDefaultSendCode (in_inScannerClassName, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalInstructionAST generateObjcCocoaInstructionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateObjcCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+                                                                 const GGS_string in_inScannerClassName,
+                                                                 const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateObjcCocoaInstructionCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalInstructionAST generateSwiftCocoaInstructionCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+                                                                  const GGS_string in_inScannerClassName,
+                                                                  const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaInstructionCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateObjcCocoaCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateObjcCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                      const GGS_string in_inScannerClassName,
+                                                      const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateObjcCocoaCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateSwiftCocoaCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string callExtensionGetter_generateSwiftCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                       const GGS_string in_inScannerClassName,
+                                                       const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_generateSwiftCocoaCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum cppTypeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_cppTypeName (const GGS_lexicalTypeEnum & inObject,
+                                        Compiler *
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("String") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("utf32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("uint32_t") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("uint64_t") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("int32_t") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("int64_t") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("double") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("BigSigned") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum appendMethodName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_appendMethodName (const GGS_lexicalTypeEnum & inObject,
+                                             Compiler *
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("appendStringAsCLiteralStringConstant") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("appendChar") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("appendUnsigned") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("appendUnsigned") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("appendSigned") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("appendSigned") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("appendDouble") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("appendStringAsCLiteralStringConstant") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum appendArgumentOfMethod'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_appendArgumentOfMethod (const GGS_lexicalTypeEnum & inObject,
+                                                   Compiler *
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string (".decimalString ()") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum initialization'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_initialization (const GGS_lexicalTypeEnum & inObject,
+                                           Compiler *
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string (".removeAllKeepingCapacity ()") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string (" = TO_UNICODE (0)") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string (" = 0.0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string (" = BigSigned ()") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum cocoaTypeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_cocoaTypeName (const GGS_lexicalTypeEnum & inObject,
+                                          Compiler *
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("NSMutableString *") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("UInt64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("SInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("SInt64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("double") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("NSMutableString *") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum swiftTypeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
+                                          Compiler *
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("String") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("UInt64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("Int32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("Int64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("Double") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("String") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTypeEnum & inObject,
+                                                             Compiler *
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bool result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_bool (false) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_bool (false) ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
 //  Extension Getter '@lexicalTypeEnum cocoaInitializationCode'
 //--------------------------------------------------------------------------------------------------
 
@@ -2401,8 +3043,30 @@ GGS_range GGS_lexicalRoutineCallActualArgumentListAST::getter_range (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineCallActualArgumentListAST::description (String & /* ioString */,
-                                                               const int32_t /* inIndentation */) const {
+void GGS_lexicalRoutineCallActualArgumentListAST::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLexicalRoutineActualArgument:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLexicalRoutineActualArgument.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3972,8 +4636,54 @@ GGS_range GGS_commandLineOptionListAST::getter_range (UNUSED_LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_commandLineOptionListAST::description (String & /* ioString */,
-                                                const int32_t /* inIndentation */) const {
+void GGS_commandLineOptionListAST::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionTypeName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionTypeName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionInternalName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionInternalName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionInvocationLetter:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionInvocationLetter.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionInvocationString:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionInvocationString.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionComment:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionComment.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionDefaultValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionDefaultValue.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionDefaultValueKind:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionDefaultValueKind.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6107,8 +6817,34 @@ GGS_range GGS_guiSimpleAttributeListAST::getter_range (UNUSED_LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiSimpleAttributeListAST::description (String & /* ioString */,
-                                                 const int32_t /* inIndentation */) const {
+void GGS_guiSimpleAttributeListAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mKey:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mKey.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6721,8 +7457,38 @@ GGS_range GGS_guiCompoundAttributeListAST::getter_range (UNUSED_LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCompoundAttributeListAST::description (String & /* ioString */,
-                                                   const int32_t /* inIndentation */) const {
+void GGS_guiCompoundAttributeListAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mKey:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mKey.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mAttributeName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mAttributeName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7398,8 +8164,34 @@ GGS_range GGS_terminalLabelListAST::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_terminalLabelListAST::description (String & /* ioString */,
-                                            const int32_t /* inIndentation */) const {
+void GGS_terminalLabelListAST::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mTerminal:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mTerminal.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mDisplayFlags:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mDisplayFlags.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8012,8 +8804,38 @@ GGS_range GGS_guiLabelListAST::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiLabelListAST::description (String & /* ioString */,
-                                       const int32_t /* inIndentation */) const {
+void GGS_guiLabelListAST::description (String & ioString,
+                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLeadingCharacterStrippedCount:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLeadingCharacterStrippedCount.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mTerminalList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mTerminalList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLocation:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLocation.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8703,8 +9525,42 @@ GGS_range GGS_withLexiqueListAST::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_withLexiqueListAST::description (String & /* ioString */,
-                                          const int32_t /* inIndentation */) const {
+void GGS_withLexiqueListAST::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLexiqueFileName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLexiqueFileName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLabels:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLabels.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mSimpleAttributes:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mSimpleAttributes.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mCompoundAttributes:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mCompoundAttributes.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9471,8 +10327,46 @@ GGS_range GGS_guiCommandLineOptionList::getter_range (UNUSED_LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiCommandLineOptionList::description (String & /* ioString */,
-                                                const int32_t /* inIndentation */) const {
+void GGS_guiCommandLineOptionList::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionComponent:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionComponent.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionIdentifier:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionIdentifier.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionChar:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionChar.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOptionString:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOptionString.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mComment:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mComment.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10818,8 +11712,34 @@ GGS_range GGS_textMacroList::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_textMacroList::description (String & /* ioString */,
-                                     const int32_t /* inIndentation */) const {
+void GGS_textMacroList::description (String & ioString,
+                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mKey:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mKey.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mContents:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mContents.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11460,8 +12380,54 @@ GGS_range GGS_importedLexiqueList::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_importedLexiqueList::description (String & /* ioString */,
-                                           const int32_t /* inIndentation */) const {
+void GGS_importedLexiqueList::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLexiqueClassName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLexiqueClassName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mIndex:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mIndex.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mBlockComment:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mBlockComment.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mTitle:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mTitle.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mTextMacroList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mTextMacroList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLabels:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLabels.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLexicalStyleList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLexicalStyleList.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12417,8 +13383,34 @@ GGS_range GGS_projectIndexingDescriptorList::getter_range (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_projectIndexingDescriptorList::description (String & /* ioString */,
-                                                     const int32_t /* inIndentation */) const {
+void GGS_projectIndexingDescriptorList::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mProjectFileExtension:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mProjectFileExtension.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("indexingPathSuffix:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_indexingPathSuffix.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13045,8 +14037,46 @@ GGS_range GGS_galgasGUIComponentListAST::getter_range (UNUSED_LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgasGUIComponentListAST::description (String & /* ioString */,
-                                                 const int32_t /* inIndentation */) const {
+void GGS_galgasGUIComponentListAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mGUIComponentName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mGUIComponentName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mImportedOptionList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mImportedOptionList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mGlobalSimpleAttributeList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mGlobalSimpleAttributeList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mWithLexiqueList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mWithLexiqueList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mProjectIndexingDescriptorList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mProjectIndexingDescriptorList.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

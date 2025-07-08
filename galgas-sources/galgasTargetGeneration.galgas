@@ -1164,8 +1164,6 @@ proc updateGalgasTargets
         "AC_GALGAS_enumAssociatedValues.h",
         "AC_GALGAS_graph.cpp",
         "AC_GALGAS_graph.h",
-        "AC_GALGAS_list.cpp",
-        "AC_GALGAS_list.h",
         "AC_GALGAS_root.cpp",
         "AC_GALGAS_root.h",
         "AC_GALGAS_weak_reference.cpp",

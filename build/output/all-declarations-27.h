@@ -386,7 +386,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
 GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class Compiler * inCompiler,
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                          const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
                                                                           const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                           const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                           const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
@@ -402,7 +402,7 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class 
 GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_NAME,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                      const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
                                                                                       const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                       const class GGS_bool & in_GENERATE_5F_COMPARISON
                                                                                       COMMA_LOCATION_ARGS) ;

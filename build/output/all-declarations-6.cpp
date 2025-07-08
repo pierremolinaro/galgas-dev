@@ -8,6 +8,502 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
+//  Enum headerKind
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind::GGS_headerKind (void) :
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind GGS_headerKind::class_func_noHeader (UNUSED_LOCATION_ARGS) {
+  GGS_headerKind result ;
+  result.mEnum = Enumeration::enum_noHeader ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind GGS_headerKind::class_func_oneHeader (UNUSED_LOCATION_ARGS) {
+  GGS_headerKind result ;
+  result.mEnum = Enumeration::enum_oneHeader ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind GGS_headerKind::class_func_twoHeaders (UNUSED_LOCATION_ARGS) {
+  GGS_headerKind result ;
+  result.mEnum = Enumeration::enum_twoHeaders ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_headerKind [4] = {
+  "(not built)",
+  "noHeader",
+  "oneHeader",
+  "twoHeaders"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_headerKind::getter_isNoHeader (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_noHeader == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_headerKind::getter_isOneHeader (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_oneHeader == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_headerKind::getter_isTwoHeaders (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_twoHeaders == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_headerKind::description (String & ioString,
+                                  const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<enum @headerKind: ") ;
+  ioString.appendCString (gEnumNameArrayFor_headerKind [size_t (mEnum)]) ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_headerKind::objectCompare (const GGS_headerKind & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @headerKind generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerKind ("headerKind",
+                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_headerKind::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_headerKind ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_headerKind::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_headerKind (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_headerKind GGS_headerKind::extractObject (const GGS_object & inObject,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  GGS_headerKind result ;
+  const GGS_headerKind * p = (const GGS_headerKind *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_headerKind *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("headerKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@typeKindEnum string'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
+                                   Compiler *
+                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_typeKindEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_typeKindEnum::Enumeration::invalid:
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_classType:
+    {
+      GGS_bool extractedValue_3778_isReference_0 ;
+      temp_0.getAssociatedValuesFor_classType (extractedValue_3778_isReference_0) ;
+      GGS_string temp_1 ;
+      const GalgasBool test_2 = extractedValue_3778_isReference_0.boolEnum () ;
+      if (GalgasBool::boolTrue == test_2) {
+        temp_1 = GGS_string ("reference class") ;
+      }else if (GalgasBool::boolFalse == test_2) {
+        temp_1 = GGS_string ("value class") ;
+      }
+      result_result = temp_1 ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_enumType:
+    {
+      GGS_constantIndexMap extractedValue_3884__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3884__0) ;
+      result_result = GGS_string ("enumeration") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_listType:
+    {
+      result_result = GGS_string ("list") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_sortedListType:
+    {
+      result_result = GGS_string ("sorted list") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_mapType:
+    {
+      result_result = GGS_string ("map") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_sharedMapType:
+    {
+      result_result = GGS_string ("shared map") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_sharedMapEntryType:
+    {
+      result_result = GGS_string ("shared map entry") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_listMapType:
+    {
+      result_result = GGS_string ("list map") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_structType:
+    {
+      result_result = GGS_string ("struct") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_boolsetType:
+    {
+      result_result = GGS_string ("boolset") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_graphType:
+    {
+      result_result = GGS_string ("graph") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_otherType:
+    {
+      result_result = GGS_string ("other") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_externType:
+    {
+      result_result = GGS_string ("extern") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_packageType:
+    {
+      result_result = GGS_string ("package") ;
+    }
+    break ;
+  case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
+    {
+      GGS_unifiedTypeMapEntry extractedValue_4473__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4473__0) ;
+      result_result = GGS_string ("weak reference") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@typeFeatures generateCppObjectComparison'
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & inObject,
+                                                      Compiler *
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bool result_result ; // Returned variable
+  const GGS_typeFeatures temp_0 = inObject ;
+  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 146)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)) ;
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes::GGS_localVariableAttributes (void) :
+AC_GALGAS_root (),
+mFlags (0),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes::GGS_localVariableAttributes (const uint64_t inFlags) :
+AC_GALGAS_root (),
+mFlags (inFlags),
+mIsValid (true) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (0) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 0) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_rejectDeclaredStateAsFinalState (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 1) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 2) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 3) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_warnsOnAnyAcces (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 4) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (UNUSED_LOCATION_ARGS) {
+  return GGS_localVariableAttributes (uint64_t (1) << 5) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_localVariableAttributes::isValid (void) const {
+  return mIsValid ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_localVariableAttributes::getter_contains (const GGS_localVariableAttributes & inOperand
+                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GGS_bool ((mFlags & inOperand.mFlags) != 0) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_localVariableAttributes::andAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                      class Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_localVariableAttributes::orAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                     class Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags |= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_localVariableAttributes::xorAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                      class Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags ^= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_localVariableAttributes::minusAssignOperation (const GGS_localVariableAttributes inOperand,
+                                                        class Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= ~ inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::operator_or (const GGS_localVariableAttributes & inOperand
+                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_localVariableAttributes result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_localVariableAttributes (mFlags | inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::operator_and (const GGS_localVariableAttributes & inOperand
+                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_localVariableAttributes result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_localVariableAttributes (mFlags & inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::operator_xor (const GGS_localVariableAttributes & inOperand
+                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_localVariableAttributes result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_localVariableAttributes (mFlags ^ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::substract_operation (const GGS_localVariableAttributes & inOperand,
+                                                                              Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_localVariableAttributes result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_localVariableAttributes (mFlags & ~ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_localVariableAttributes result ;
+  if (mIsValid) {
+    result = GGS_localVariableAttributes (uint64_t (0x3F) ^ mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_localVariableAttributes::description (String & ioString,
+                                               const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<boolset @localVariableAttributes:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    if ((mFlags & (uint64_t (1) << 0)) != 0) {
+      ioString.appendCString (" rejectWriteInInitializedAndReadStates") ;
+    }
+    if ((mFlags & (uint64_t (1) << 1)) != 0) {
+      ioString.appendCString (" rejectDeclaredStateAsFinalState") ;
+    }
+    if ((mFlags & (uint64_t (1) << 2)) != 0) {
+      ioString.appendCString (" acceptInitializedStateAsFinalState") ;
+    }
+    if ((mFlags & (uint64_t (1) << 3)) != 0) {
+      ioString.appendCString (" acceptReadStateAsFinalState") ;
+    }
+    if ((mFlags & (uint64_t (1) << 4)) != 0) {
+      ioString.appendCString (" warnsOnAnyAcces") ;
+    }
+    if ((mFlags & (uint64_t (1) << 5)) != 0) {
+      ioString.appendCString (" suggestDeclareUnusedParameterAsUnused") ;
+    }
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @localVariableAttributes generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableAttributes ("localVariableAttributes",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_localVariableAttributes::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_localVariableAttributes ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_localVariableAttributes::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_localVariableAttributes (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_localVariableAttributes GGS_localVariableAttributes::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_localVariableAttributes result ;
+  const GGS_localVariableAttributes * p = (const GGS_localVariableAttributes *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_localVariableAttributes *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("localVariableAttributes", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //  Enum localVarValuation
 //--------------------------------------------------------------------------------------------------
 
@@ -1114,8 +1610,30 @@ GGS_range GGS_localVarMapListForLLVM::getter_range (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_localVarMapListForLLVM::description (String & /* ioString */,
-                                              const int32_t /* inIndentation */) const {
+void GGS_localVarMapListForLLVM::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mMap:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mMap.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1846,8 +2364,30 @@ GGS_range GGS_openedOverrideList::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_openedOverrideList::description (String & /* ioString */,
-                                          const int32_t /* inIndentation */) const {
+void GGS_openedOverrideList::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mOverrideKind:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mOverrideKind.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4852,8 +5392,30 @@ GGS_range GGS_actualParameterListAST::getter_range (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualParameterListAST::description (String & /* ioString */,
-                                              const int32_t /* inIndentation */) const {
+void GGS_actualParameterListAST::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mActualParameter:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mActualParameter.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7853,8 +8415,38 @@ GGS_range GGS_galgas_33_SyntaxExtensionListAST::getter_range (UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgas_33_SyntaxExtensionListAST::description (String & /* ioString */,
-                                                        const int32_t /* inIndentation */) const {
+void GGS_galgas_33_SyntaxExtensionListAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mSyntaxComponentName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mSyntaxComponentName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mNonterminalDeclarationList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mNonterminalDeclarationList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mRuleList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mRuleList.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9937,8 +10529,34 @@ GGS_range GGS_actualInputParameterListAST::getter_range (UNUSED_LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_actualInputParameterListAST::description (String & /* ioString */,
-                                                   const int32_t /* inIndentation */) const {
+void GGS_actualInputParameterListAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mActualSelector:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mActualSelector.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mInputParameter:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mInputParameter.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11006,8 +11624,30 @@ GGS_range GGS_semanticDeclarationListAST::getter_range (UNUSED_LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticDeclarationListAST::description (String & /* ioString */,
-                                                  const int32_t /* inIndentation */) const {
+void GGS_semanticDeclarationListAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mSemanticDeclaration:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mSemanticDeclaration.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11923,8 +12563,42 @@ GGS_range GGS_formalTemplateInputParameterListAST::getter_range (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formalTemplateInputParameterListAST::description (String & /* ioString */,
-                                                           const int32_t /* inIndentation */) const {
+void GGS_formalTemplateInputParameterListAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalTemplateSelector:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalTemplateSelector.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArgumentTypeName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArgumentTypeName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArgumentName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArgumentName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mIsUnused:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mIsUnused.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12677,8 +13351,38 @@ GGS_range GGS_filewrapperTemplateListAST::getter_range (UNUSED_LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_filewrapperTemplateListAST::description (String & /* ioString */,
-                                                  const int32_t /* inIndentation */) const {
+void GGS_filewrapperTemplateListAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFilewrapperTemplateName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFilewrapperTemplateName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFilewrapperTemplatePath:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFilewrapperTemplatePath.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFilewrapperTemplateFormalInputParameters:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13469,8 +14173,30 @@ GGS_range GGS_syntaxInstructionList::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxInstructionList::description (String & /* ioString */,
-                                             const int32_t /* inIndentation */) const {
+void GGS_syntaxInstructionList::description (String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mInstruction:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mInstruction.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14013,8 +14739,38 @@ GGS_range GGS_nonTerminalLabelListAST::getter_range (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalLabelListAST::description (String & /* ioString */,
-                                               const int32_t /* inIndentation */) const {
+void GGS_nonTerminalLabelListAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLabelName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLabelName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArgumentList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArgumentList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mEndOfArgumentLocation:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mEndOfArgumentLocation.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14690,8 +15446,34 @@ GGS_range GGS_nonterminalDeclarationListAST::getter_range (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonterminalDeclarationListAST::description (String & /* ioString */,
-                                                     const int32_t /* inIndentation */) const {
+void GGS_nonterminalDeclarationListAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mNonterminalName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mNonterminalName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLabels:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLabels.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15318,8 +16100,46 @@ GGS_range GGS_syntaxRuleLabelListAST::getter_range (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleLabelListAST::description (String & /* ioString */,
-                                              const int32_t /* inIndentation */) const {
+void GGS_syntaxRuleLabelListAST::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mLabelName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mLabelName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArguments:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArguments.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mEndOfArgumentLocation:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mEndOfArgumentLocation.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mSyntaxInstructionList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mSyntaxInstructionList.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mEndOfInstructionList:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mEndOfInstructionList.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16006,613 +16826,6 @@ GGS_syntaxRuleLabelListAST GGS_syntaxRuleLabelListAST::extractObject (const GGS_
       result = *p ;
     }else{
       inCompiler->castError ("syntaxRuleLabelListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@syntaxRuleListAST' list
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
-  public: GGS_syntaxRuleListAST_2E_element mObject ;
-
-//--- Class functions
-  public: cCollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
-                                                const GGS_syntaxRuleLabelListAST & in_mLabelList
-                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_syntaxRuleListAST::cCollectionElement_syntaxRuleListAST (const GGS_lstring & in_mNonterminalName,
-                                                                            const GGS_syntaxRuleLabelListAST & in_mLabelList
-                                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mNonterminalName, in_mLabelList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_syntaxRuleListAST::cCollectionElement_syntaxRuleListAST (const GGS_syntaxRuleListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabelList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_syntaxRuleListAST::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_syntaxRuleListAST::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_syntaxRuleListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabelList COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_syntaxRuleListAST::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mNonterminalName" ":") ;
-  mObject.mProperty_mNonterminalName.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mLabelList" ":") ;
-  mObject.mProperty_mLabelList.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @syntaxRuleListAST
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST::GGS_syntaxRuleListAST (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST::GGS_syntaxRuleListAST (const capCollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_syntaxRuleListAST * p = (cCollectionElement_syntaxRuleListAST *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_syntaxRuleListAST) ;
-    const GGS_syntaxRuleListAST_2E_element element (p->mObject.mProperty_mNonterminalName, p->mObject.mProperty_mLabelList) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                       const GGS_lstring & in_mNonterminalName,
-                                                       const GGS_syntaxRuleLabelListAST & in_mLabelList
-                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement_syntaxRuleListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_syntaxRuleListAST (in_mNonterminalName, in_mLabelList COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_syntaxRuleListAST::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_syntaxRuleListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::description (String & /* ioString */,
-                                         const int32_t /* inIndentation */) const {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_syntaxRuleListAST result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxRuleListAST result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::plusPlusAssignOperation (const GGS_syntaxRuleListAST_2E_element & inValue
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                                       const GGS_syntaxRuleLabelListAST & inOperand1
-                                                                       COMMA_LOCATION_ARGS) {
-  const GGS_syntaxRuleListAST_2E_element element (inOperand0, inOperand1) ;
-  GGS_syntaxRuleListAST result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::addAssignOperation (const GGS_lstring & inOperand0,
-                                                const GGS_syntaxRuleLabelListAST & inOperand1
-                                                COMMA_LOCATION_ARGS) {
-  const GGS_syntaxRuleListAST_2E_element newElement (inOperand0, inOperand1) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_append (const GGS_lstring inOperand0,
-                                           const GGS_syntaxRuleLabelListAST inOperand1,
-                                           Compiler * /* inCompiler */
-                                           COMMA_LOCATION_ARGS) {
-  const GGS_syntaxRuleListAST_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                                  const GGS_syntaxRuleLabelListAST inOperand1,
-                                                  const GGS_uint inInsertionIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  const GGS_syntaxRuleListAST_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                                  GGS_syntaxRuleLabelListAST & outOperand1,
-                                                  const GGS_uint inRemoveIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mLabelList ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_popFirst (GGS_lstring & outOperand0,
-                                             GGS_syntaxRuleLabelListAST & outOperand1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLabelList ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_popLast (GGS_lstring & outOperand0,
-                                            GGS_syntaxRuleLabelListAST & outOperand1,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLabelList ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::method_first (GGS_lstring & outOperand0,
-                                          GGS_syntaxRuleLabelListAST & outOperand1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLabelList ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::method_last (GGS_lstring & outOperand0,
-                                         GGS_syntaxRuleLabelListAST & outOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLabelList ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::add_operation (const GGS_syntaxRuleListAST & inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::subList (const int32_t inStart,
-                                                      const int32_t inLength,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::getter_subListWithRange (const GGS_range & inRange,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::plusAssignOperation (const GGS_syntaxRuleListAST inList,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_setMNonterminalNameAtIndex (GGS_lstring inOperand,
-                                                               GGS_uint inIndex,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mNonterminalName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_lstring GGS_syntaxRuleListAST::getter_mNonterminalNameAtIndex (const GGS_uint & inIndex,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  GGS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mNonterminalName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxRuleListAST::setter_setMLabelListAtIndex (GGS_syntaxRuleLabelListAST inOperand,
-                                                         GGS_uint inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mLabelList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_syntaxRuleLabelListAST GGS_syntaxRuleListAST::getter_mLabelListAtIndex (const GGS_uint & inIndex,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleLabelListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mLabelList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @syntaxRuleListAST
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_syntaxRuleListAST::DownEnumerator_syntaxRuleListAST (const GGS_syntaxRuleListAST & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST_2E_element DownEnumerator_syntaxRuleListAST::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_syntaxRuleListAST::current_mNonterminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mNonterminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleLabelListAST DownEnumerator_syntaxRuleListAST::current_mLabelList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLabelList ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @syntaxRuleListAST
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_syntaxRuleListAST::UpEnumerator_syntaxRuleListAST (const GGS_syntaxRuleListAST & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST_2E_element UpEnumerator_syntaxRuleListAST::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_syntaxRuleListAST::current_mNonterminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mNonterminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleLabelListAST UpEnumerator_syntaxRuleListAST::current_mLabelList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLabelList ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxRuleListAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleListAST ("syntaxRuleListAST",
-                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_syntaxRuleListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxRuleListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_syntaxRuleListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_syntaxRuleListAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxRuleListAST::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_syntaxRuleListAST result ;
-  const GGS_syntaxRuleListAST * p = (const GGS_syntaxRuleListAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_syntaxRuleListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxRuleListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

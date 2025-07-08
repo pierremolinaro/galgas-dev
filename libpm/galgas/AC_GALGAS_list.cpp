@@ -21,6 +21,7 @@
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
+#include "AC_GALGAS_list.h"
 
 //--------------------------------------------------------------------------------------------------
 

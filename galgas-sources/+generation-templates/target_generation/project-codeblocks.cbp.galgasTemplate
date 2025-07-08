@@ -181,7 +181,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/IssueDescriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/LexiqueIntrospection.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_root.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_list.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_reference_class.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_value_class.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_graph.cpp" />
