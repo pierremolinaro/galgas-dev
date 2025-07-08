@@ -128,9 +128,6 @@ class capCollectionElementArray final {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const ;
 
-//--- Compare
-  public: ComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
-
 //--- Internal
   private: void insulateOrCreate (void) ;
 

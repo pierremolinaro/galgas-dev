@@ -316,3 +316,6 @@ project-codeblocks-linux64/galgas-debug
 makefile-macosx/arm64/galgas-lto
 makefile-macosx/universal/galgas-lto
 makefile-macosx/x86_64/galgas-lto
+makefile-arm64-linux-on-macosx/galgas
+makefile-arm64-linux-on-macosx/galgas
+makefile-arm64-linux-on-macosx/galgas-debug

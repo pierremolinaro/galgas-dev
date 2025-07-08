@@ -5600,30 +5600,30 @@
     sourceTree = "<group>";
   };
 
-  4C23A4D7EA11331E7C00E73C /* TC_Array.h */ = {
+  4C23A4D7EA11331E7C00E73C /* GenericArray.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "TC_Array.h";
-    path = "TC_Array.h";
+    name = "GenericArray.h";
+    path = "GenericArray.h";
     sourceTree = "<group>";
   };
 
-  5B85900908DB6CAE92723617 /* TC_UniqueArray.h */ = {
+  5B85900908DB6CAE92723617 /* GenericUniqueArray.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "TC_UniqueArray.h";
-    path = "TC_UniqueArray.h";
+    name = "GenericUniqueArray.h";
+    path = "GenericUniqueArray.h";
     sourceTree = "<group>";
   };
 
-  B76F7C5A0BF619F979C6CF36 /* TC_UniqueArray2.h */ = {
+  B76F7C5A0BF619F979C6CF36 /* GenericUniqueMatrix.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "TC_UniqueArray2.h";
-    path = "TC_UniqueArray2.h";
+    name = "GenericUniqueMatrix.h";
+    path = "GenericUniqueMatrix.h";
     sourceTree = "<group>";
   };
 

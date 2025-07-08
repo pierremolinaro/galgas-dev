@@ -42,16 +42,8 @@ class cCollectionElement : public SharedObject {
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const = 0 ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * /* inOperand */) const {
-    return ComparisonResult::invalid ;
-  }
-
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) = 0 ;
-
-//--- Description
-//  public: virtual void description (String & ioString, const int32_t inIndentation) const = 0 ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
