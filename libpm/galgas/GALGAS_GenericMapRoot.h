@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GGS_GenericMapRoot.h
+//  GenericMapRoot.h
 //  galgas-ide
 //
 //  Created by Pierre Molinaro on 1/07/2025, ..., 2025 Pierre Molinaro.
@@ -28,27 +28,27 @@
 //  Predeclarations
 //--------------------------------------------------------------------------------------------------
 
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
-//  GGS_GenericMapNode
+//  GenericMapNode
 //--------------------------------------------------------------------------------------------------
 
-template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
+template <typename INFO> class GenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericMapNode <INFO>> mInfPtr ;
-  private: OptionalSharedRef <GGS_GenericMapNode <INFO>> mSupPtr ;
+  private: OptionalSharedRef <GenericMapNode <INFO>> mInfPtr ;
+  private: OptionalSharedRef <GenericMapNode <INFO>> mSupPtr ;
   public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;
   private: String mKey ;
   private: int32_t mBalance ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericMapNode (const String & inKey,
-                              const INFO & inInfo
-                              COMMA_LOCATION_ARGS) :
+  public: GenericMapNode (const String & inKey,
+                          const INFO & inInfo
+                          COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
@@ -60,12 +60,12 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~GGS_GenericMapNode (void) = default ;
+  public: ~GenericMapNode (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericMapNode (const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inNodePtr
-                              COMMA_LOCATION_ARGS) :
+  public: GenericMapNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr
+                          COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
@@ -73,10 +73,10 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
   mKey (inNodePtr->mKey),
   mBalance (inNodePtr->mBalance) {
     if (inNodePtr->mInfPtr.isNotNil ()) {
-      mInfPtr = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
+      mInfPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
     }
     if (inNodePtr->mSupPtr.isNotNil ()) {
-      mSupPtr = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
+      mSupPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
     }
   }
 
@@ -84,12 +84,12 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: GGS_GenericMapNode (const GGS_GenericMapNode &) = delete ;
-  private: GGS_GenericMapNode & operator = (const GGS_GenericMapNode &) = delete ;
+  private: GenericMapNode (const GenericMapNode &) = delete ;
+  private: GenericMapNode & operator = (const GenericMapNode &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateInfoArray (const OptionalSharedRef <GGS_GenericMapNode> & inNode,
+  private: static void populateInfoArray (const OptionalSharedRef <GenericMapNode> & inNode,
                                           TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
@@ -100,7 +100,7 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateKeyList (const OptionalSharedRef <GGS_GenericMapNode> & inNode,
+  private: static void populateKeyList (const OptionalSharedRef <GenericMapNode> & inNode,
                                         GGS_lstringlist & ioList) {
     if (inNode.isNotNil ()) {
       populateKeyList (inNode->mInfPtr, ioList) ;
@@ -111,7 +111,7 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateKeySetFromNode (const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inNode,
+  private: static void populateKeySetFromNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNode,
                                                Compiler * inCompiler,
                                                GGS_stringset & ioSet) {
     if (inNode.isNotNil ()) {
@@ -123,24 +123,24 @@ template <typename INFO> class GGS_GenericMapNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class GGS_GenericMapRoot <INFO> ;
+  friend class GenericMapRoot <INFO> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//MARK:  GGS_GenericMapRoot
+//MARK:  GenericMapRoot
 //--------------------------------------------------------------------------------------------------
 
-template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
+template <typename INFO> class GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericMapRoot <INFO>> mOverriddenRoot ;
-  private: OptionalSharedRef <GGS_GenericMapNode <INFO>> mRootNode ;
+  private: OptionalSharedRef <GenericMapRoot <INFO>> mOverriddenRoot ;
+  private: OptionalSharedRef <GenericMapNode <INFO>> mRootNode ;
   private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
   private: bool mCacheSortedArrayIsValid ;
@@ -149,7 +149,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericMapRoot (LOCATION_ARGS) :
+  public: GenericMapRoot (LOCATION_ARGS) :
   SharedObject (THERE),
   mOverriddenRoot (),
   mRootNode (),
@@ -160,8 +160,8 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericMapRoot (const OptionalSharedRef <GGS_GenericMapRoot <INFO>> & inOverridenMapRoot
-                              COMMA_LOCATION_ARGS) :
+  public: GenericMapRoot (const OptionalSharedRef <GenericMapRoot <INFO>> & inOverridenMapRoot
+                          COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mOverriddenRoot (inOverridenMapRoot),
   mRootNode (),
@@ -174,8 +174,8 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // Constructor for duplication
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericMapRoot (const GGS_GenericMapRoot <INFO> * inSourcePtr
-                              COMMA_LOCATION_ARGS) :
+  public: GenericMapRoot (const GenericMapRoot <INFO> * inSourcePtr
+                          COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mOverriddenRoot (inSourcePtr->mOverriddenRoot),
   mRootNode (),
@@ -183,7 +183,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   mCount (inSourcePtr->mCount),
   mCacheSortedArrayIsValid (false) {
     if (inSourcePtr->mRootNode.isNotNil ()) {
-      mRootNode = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (inSourcePtr->mRootNode COMMA_THERE) ;
+      mRootNode = OptionalSharedRef <GenericMapNode <INFO>>::make (inSourcePtr->mRootNode COMMA_THERE) ;
     }
   }
 
@@ -191,14 +191,14 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ GGS_GenericMapRoot (void) = default ;
+  public: virtual ~ GenericMapRoot (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: GGS_GenericMapRoot (const GGS_GenericMapRoot &) = delete ;
-  private: GGS_GenericMapRoot & operator = (const GGS_GenericMapRoot &) = delete ;
+  private: GenericMapRoot (const GenericMapRoot &) = delete ;
+  private: GenericMapRoot & operator = (const GenericMapRoot &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Accessors
@@ -208,7 +208,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: inline OptionalSharedRef <GGS_GenericMapRoot <INFO>> overriddenRoot (void) const {
+  public: inline OptionalSharedRef <GenericMapRoot <INFO>> overriddenRoot (void) const {
     return mOverriddenRoot ;
   }
 
@@ -230,7 +230,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
       return mCacheSortedArray ;
     }else{
       TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
-      GGS_GenericMapNode <INFO>::populateInfoArray (mRootNode, array) ;
+      GenericMapNode <INFO>::populateInfoArray (mRootNode, array) ;
       mCacheSortedArray = array ;
       mCacheSortedArrayIsValid = true ;
       return array ;
@@ -240,24 +240,24 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void populateKeyList (GGS_lstringlist & ioList) const {
-    GGS_GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;
+    GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void populateKeySet (GGS_stringset & ioSet,
                                   Compiler * inCompiler) const {
-    GGS_GenericMapNode <INFO>::populateKeySetFromNode (mRootNode, inCompiler, ioSet) ;
+    GenericMapNode <INFO>::populateKeySetFromNode (mRootNode, inCompiler, ioSet) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <GGS_GenericMapNode <INFO>> searchNode (const String & inKey) {
+  public: OptionalSharedRef <GenericMapNode <INFO>> searchNode (const String & inKey) {
     macroUniqueSharedObject (this) ;
     invalidateCacheSortedArray () ;
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> result = internalSearchNode (inKey, mRootNode) ;
+    OptionalSharedRef <GenericMapNode <INFO>> result = internalSearchNode (inKey, mRootNode) ;
     if (result.isNil () && mOverriddenRoot.isNotNil ()) {
       mOverriddenRoot.insulate (HERE) ;
       result = mOverriddenRoot->searchNode (inKey) ;
@@ -269,7 +269,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   public: SharedGenericPtrWithValueSemantics <INFO> infoForKey (const String & inKey) const {
     SharedGenericPtrWithValueSemantics <INFO> result ;
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;
+    OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;
     if (node.isNotNil ()) {
       result = node->mSharedInfo ;
     }else if (mOverriddenRoot.isNotNil ()) {
@@ -296,7 +296,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   public: void insertOrReplaceInfo (const INFO & inInfo,
                                     const bool inAllowReplacing,
-                                    OptionalSharedRef <GGS_GenericMapNode <INFO>> & outExistingNode
+                                    OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode
                                     COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
     invalidateCacheSortedArray () ;
@@ -306,7 +306,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRootPtr) {
+  private: static void rotateLeft (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {
     if (ioRootPtr->mSupPtr->mBalance >= 0) {
       ioRootPtr->mBalance += 1 ;
     }else{
@@ -324,7 +324,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRootPtr) {
+  private: static void rotateRight (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {
     if (ioRootPtr->mInfPtr->mBalance > 0) {
       ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;
     }else{
@@ -340,14 +340,14 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRootPtr,
+  private: bool internalRecursiveInsert (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr,
                                          const String & inKey,
                                          const INFO & inInfo,
                                          const bool inAllowReplacing,
-                                         OptionalSharedRef <GGS_GenericMapNode <INFO>> & outExistingNode) {
+                                         OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode) {
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
-      ioRootPtr = OptionalSharedRef <GGS_GenericMapNode <INFO>>::make (inKey, inInfo COMMA_HERE) ;
+      ioRootPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inKey, inInfo COMMA_HERE) ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -409,7 +409,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRoot,
+  private: static void supBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -438,7 +438,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRoot,
+  private: static void infBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -= 1 ;
     switch (ioRoot->mBalance) {
@@ -467,8 +467,8 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRoot,
-                                           OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioElement,
+  private: static void getPreviousElement (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,
+                                           OptionalSharedRef <GenericMapNode <INFO>> & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr.isNil ()) {
       ioElement = ioRoot ;
@@ -484,10 +484,10 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericMapNode <INFO>> internalRemoveEntry (const String & inKeyToRemove,
-                                     OptionalSharedRef <GGS_GenericMapNode <INFO>> & ioRoot,
+  private: OptionalSharedRef <GenericMapNode <INFO>> internalRemoveEntry (const String & inKeyToRemove,
+                                     OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,
                                      bool & ioBranchHasBeenRemoved) {
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> removedNode ;
+    OptionalSharedRef <GenericMapNode <INFO>> removedNode ;
     if (ioRoot.isNotNil ()) {
       const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
       if (comparaison > 0) {
@@ -511,7 +511,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
           ioBranchHasBeenRemoved = true ;
         }else{
           removedNode = ioRoot ;
-          OptionalSharedRef <GGS_GenericMapNode <INFO>> p = ioRoot ;
+          OptionalSharedRef <GenericMapNode <INFO>> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
           p->mSupPtr.setToNil () ;
@@ -532,7 +532,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   public: bool hasKey (const String & inKey, const uint32_t inLevel) const {
     bool result = false ;
     if (inLevel == 0) {
-     const OptionalSharedRef <GGS_GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;
+     const OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;
      result = node.isNotNil () ;
     }else if (mOverriddenRoot.isNotNil ()) {
       result = mOverriddenRoot->hasKey (inKey, inLevel - 1) ;
@@ -542,11 +542,11 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static OptionalSharedRef <GGS_GenericMapNode <INFO>>
+  private: static OptionalSharedRef <GenericMapNode <INFO>>
   internalSearchNode (const String & inKey,
-                      const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inNodePtr) {
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> result ;
-    OptionalSharedRef <GGS_GenericMapNode <INFO>> currentNode = inNodePtr ;
+                      const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr) {
+    OptionalSharedRef <GenericMapNode <INFO>> result ;
+    OptionalSharedRef <GenericMapNode <INFO>> currentNode = inNodePtr ;
     while (result.isNil () && currentNode.isNotNil ()) {
       const int32_t comparaison = currentNode->mKey.compare (inKey) ;
       if (comparaison > 0) {
@@ -574,7 +574,7 @@ template <typename INFO> class GGS_GenericMapRoot final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void recursiveFindNearestKey (const String & inKey,
-                                                const OptionalSharedRef <GGS_GenericMapNode <INFO>> & inCurrentNode,
+                                                const OptionalSharedRef <GenericMapNode <INFO>> & inCurrentNode,
                                                 uint32_t & ioBestDistance,
                                                 TC_UniqueArray <String> & ioNearestKeyArray) {
     if (inCurrentNode.isNotNil ()) {

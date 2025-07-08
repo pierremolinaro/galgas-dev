@@ -104,7 +104,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
 }
 
@@ -137,12 +137,12 @@ acPtr_class * cPtr_templateInstructionExpressionForGeneration::duplicate (Compil
 //     @templateInstructionExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ("templateInstructionExpressionForGeneration",
-                                                                                                  & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ("templateInstructionExpressionForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
 }
 
@@ -317,12 +317,12 @@ void GGS_semanticContext::description (String & ioString,
 //     @semanticContext generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ("semanticContext",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticContext ("semanticContext",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_semanticContext::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_semanticContext::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticContext ;
 }
 
@@ -562,7 +562,7 @@ mProperty_mStringListSortedList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionComponentForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionComponentForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionComponentForGeneration ;
 }
 
@@ -614,12 +614,12 @@ acPtr_class * cPtr_optionComponentForGeneration::duplicate (Compiler * inCompile
 //     @optionComponentForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration ("optionComponentForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentForGeneration ("optionComponentForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionComponentForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionComponentForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionComponentForGeneration ;
 }
 
@@ -736,12 +736,12 @@ GGS_optionComponentForGeneration GGS_optionComponentForGeneration_2E_weak::bang_
 //     @optionComponentForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ("optionComponentForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ("optionComponentForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionComponentForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionComponentForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ;
 }
 
@@ -875,7 +875,7 @@ mProperty_elementType () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_arrayTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_arrayTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_arrayTypeForGeneration ;
 }
 
@@ -910,12 +910,12 @@ acPtr_class * cPtr_arrayTypeForGeneration::duplicate (Compiler * inCompiler COMM
 //     @arrayTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ("arrayTypeForGeneration",
-                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ("arrayTypeForGeneration",
+                                                                           & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_arrayTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_arrayTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_arrayTypeForGeneration ;
 }
 
@@ -1032,12 +1032,12 @@ GGS_arrayTypeForGeneration GGS_arrayTypeForGeneration_2E_weak::bang_arrayTypeFor
 //     @arrayTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ("arrayTypeForGeneration.weak",
-                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ("arrayTypeForGeneration.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_arrayTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_arrayTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ;
 }
 
@@ -1273,12 +1273,12 @@ void GGS_analysisContext::description (String & ioString,
 //     @analysisContext generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_analysisContext ("analysisContext",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_analysisContext ("analysisContext",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_analysisContext::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_analysisContext::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_analysisContext ;
 }
 
@@ -1494,12 +1494,12 @@ void GGS_templateAnalysisContext::description (String & ioString,
 //     @templateAnalysisContext generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateAnalysisContext::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateAnalysisContext::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateAnalysisContext ;
 }
 
@@ -7748,7 +7748,7 @@ PrologueEpilogue gEpilogueForOnceFunction_buildLexicalTypeMap (nullptr,
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_buildLexicalTypeMap [1] = {
+static const GALGAS_TypeDescriptor * functionArgs_buildLexicalTypeMap [1] = {
   nullptr
 } ;
 

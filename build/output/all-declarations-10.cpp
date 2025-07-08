@@ -93,12 +93,12 @@ GGS_multiplicationExpressionAST GGS_multiplicationExpressionAST_2E_weak::bang_mu
 //     @multiplicationExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ("multiplicationExpressionAST.weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ("multiplicationExpressionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_multiplicationExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_multiplicationExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ;
 }
 
@@ -266,7 +266,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_multiplicationExpressionNoOverflowAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_multiplicationExpressionNoOverflowAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ;
 }
 
@@ -305,12 +305,12 @@ acPtr_class * cPtr_multiplicationExpressionNoOverflowAST::duplicate (Compiler * 
 //     @multiplicationExpressionNoOverflowAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ("multiplicationExpressionNoOverflowAST",
-                                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ("multiplicationExpressionNoOverflowAST",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_multiplicationExpressionNoOverflowAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_multiplicationExpressionNoOverflowAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ;
 }
 
@@ -427,12 +427,12 @@ GGS_multiplicationExpressionNoOverflowAST GGS_multiplicationExpressionNoOverflow
 //     @multiplicationExpressionNoOverflowAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ("multiplicationExpressionNoOverflowAST.weak",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ("multiplicationExpressionNoOverflowAST.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_multiplicationExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_multiplicationExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ;
 }
 
@@ -600,7 +600,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_divisionExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_divisionExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionAST ;
 }
 
@@ -639,12 +639,12 @@ acPtr_class * cPtr_divisionExpressionAST::duplicate (Compiler * inCompiler COMMA
 //     @divisionExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST ("divisionExpressionAST",
-                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_divisionExpressionAST ("divisionExpressionAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_divisionExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_divisionExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionAST ;
 }
 
@@ -761,12 +761,12 @@ GGS_divisionExpressionAST GGS_divisionExpressionAST_2E_weak::bang_divisionExpres
 //     @divisionExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ("divisionExpressionAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ("divisionExpressionAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_divisionExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_divisionExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ;
 }
 
@@ -934,7 +934,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_divisionExpressionNoOverflowAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_divisionExpressionNoOverflowAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ;
 }
 
@@ -973,12 +973,12 @@ acPtr_class * cPtr_divisionExpressionNoOverflowAST::duplicate (Compiler * inComp
 //     @divisionExpressionNoOverflowAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ("divisionExpressionNoOverflowAST",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ("divisionExpressionNoOverflowAST",
+                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_divisionExpressionNoOverflowAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_divisionExpressionNoOverflowAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ;
 }
 
@@ -1095,12 +1095,12 @@ GGS_divisionExpressionNoOverflowAST GGS_divisionExpressionNoOverflowAST_2E_weak:
 //     @divisionExpressionNoOverflowAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ("divisionExpressionNoOverflowAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ("divisionExpressionNoOverflowAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_divisionExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_divisionExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ;
 }
 
@@ -1268,7 +1268,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_moduloExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_moduloExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_moduloExpressionAST ;
 }
 
@@ -1307,12 +1307,12 @@ acPtr_class * cPtr_moduloExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 //     @moduloExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST ("moduloExpressionAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_moduloExpressionAST ("moduloExpressionAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_moduloExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_moduloExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_moduloExpressionAST ;
 }
 
@@ -1429,12 +1429,12 @@ GGS_moduloExpressionAST GGS_moduloExpressionAST_2E_weak::bang_moduloExpressionAS
 //     @moduloExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ("moduloExpressionAST.weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ("moduloExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_moduloExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_moduloExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ;
 }
 
@@ -1582,7 +1582,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_notExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_notExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionAST ;
 }
 
@@ -1618,12 +1618,12 @@ acPtr_class * cPtr_notExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 //     @notExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST ("notExpressionAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_notExpressionAST ("notExpressionAST",
+                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_notExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_notExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionAST ;
 }
 
@@ -1740,12 +1740,12 @@ GGS_notExpressionAST GGS_notExpressionAST_2E_weak::bang_notExpressionAST_2E_weak
 //     @notExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ("notExpressionAST.weak",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ("notExpressionAST.weak",
+                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_notExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_notExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ;
 }
 
@@ -1862,12 +1862,12 @@ GGS_notExpressionForGeneration GGS_notExpressionForGeneration_2E_weak::bang_notE
 //     @notExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration_2E_weak ("notExpressionForGeneration.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_notExpressionForGeneration_2E_weak ("notExpressionForGeneration.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_notExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_notExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionForGeneration_2E_weak ;
 }
 
@@ -2035,7 +2035,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_orExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_orExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orExpressionAST ;
 }
 
@@ -2074,12 +2074,12 @@ acPtr_class * cPtr_orExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCAT
 //     @orExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionAST ("orExpressionAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orExpressionAST ("orExpressionAST",
+                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orExpressionAST ;
 }
 
@@ -2196,12 +2196,12 @@ GGS_orExpressionAST GGS_orExpressionAST_2E_weak::bang_orExpressionAST_2E_weak (C
 //     @orExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionAST_2E_weak ("orExpressionAST.weak",
-                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orExpressionAST_2E_weak ("orExpressionAST.weak",
+                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orExpressionAST_2E_weak ;
 }
 
@@ -2369,7 +2369,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_orShortExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_orShortExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionAST ;
 }
 
@@ -2408,12 +2408,12 @@ acPtr_class * cPtr_orShortExpressionAST::duplicate (Compiler * inCompiler COMMA_
 //     @orShortExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionAST ("orShortExpressionAST",
-                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orShortExpressionAST ("orShortExpressionAST",
+                                                                         & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orShortExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orShortExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionAST ;
 }
 
@@ -2530,12 +2530,12 @@ GGS_orShortExpressionAST GGS_orShortExpressionAST_2E_weak::bang_orShortExpressio
 //     @orShortExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionAST_2E_weak ("orShortExpressionAST.weak",
-                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orShortExpressionAST_2E_weak ("orShortExpressionAST.weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orShortExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orShortExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionAST_2E_weak ;
 }
 
@@ -2703,7 +2703,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_xorExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_xorExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_xorExpressionAST ;
 }
 
@@ -2742,12 +2742,12 @@ acPtr_class * cPtr_xorExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 //     @xorExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST ("xorExpressionAST",
-                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xorExpressionAST ("xorExpressionAST",
+                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_xorExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_xorExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_xorExpressionAST ;
 }
 
@@ -2864,12 +2864,12 @@ GGS_xorExpressionAST GGS_xorExpressionAST_2E_weak::bang_xorExpressionAST_2E_weak
 //     @xorExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST_2E_weak ("xorExpressionAST.weak",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xorExpressionAST_2E_weak ("xorExpressionAST.weak",
+                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_xorExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_xorExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_xorExpressionAST_2E_weak ;
 }
 
@@ -3037,7 +3037,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_closedSliceExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_closedSliceExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionAST ;
 }
 
@@ -3076,12 +3076,12 @@ acPtr_class * cPtr_closedSliceExpressionAST::duplicate (Compiler * inCompiler CO
 //     @closedSliceExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST ("closedSliceExpressionAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST ("closedSliceExpressionAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_closedSliceExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_closedSliceExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionAST ;
 }
 
@@ -3198,12 +3198,12 @@ GGS_closedSliceExpressionAST GGS_closedSliceExpressionAST_2E_weak::bang_closedSl
 //     @closedSliceExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST_2E_weak ("closedSliceExpressionAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST_2E_weak ("closedSliceExpressionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_closedSliceExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_closedSliceExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionAST_2E_weak ;
 }
 
@@ -3371,7 +3371,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_openedSliceExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_openedSliceExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionAST ;
 }
 
@@ -3410,12 +3410,12 @@ acPtr_class * cPtr_openedSliceExpressionAST::duplicate (Compiler * inCompiler CO
 //     @openedSliceExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST ("openedSliceExpressionAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST ("openedSliceExpressionAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_openedSliceExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_openedSliceExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionAST ;
 }
 
@@ -3532,12 +3532,12 @@ GGS_openedSliceExpressionAST GGS_openedSliceExpressionAST_2E_weak::bang_openedSl
 //     @openedSliceExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST_2E_weak ("openedSliceExpressionAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST_2E_weak ("openedSliceExpressionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_openedSliceExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_openedSliceExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionAST_2E_weak ;
 }
 
@@ -3654,12 +3654,12 @@ GGS_orShortExpressionForGeneration GGS_orShortExpressionForGeneration_2E_weak::b
 //     @orShortExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration_2E_weak ("orShortExpressionForGeneration.weak",
-                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration_2E_weak ("orShortExpressionForGeneration.weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orShortExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orShortExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration_2E_weak ;
 }
 
@@ -3776,12 +3776,12 @@ GGS_openedSliceExpressionForGeneration GGS_openedSliceExpressionForGeneration_2E
 //     @openedSliceExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration_2E_weak ("openedSliceExpressionForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration_2E_weak ("openedSliceExpressionForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_openedSliceExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_openedSliceExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration_2E_weak ;
 }
 
@@ -3898,12 +3898,12 @@ GGS_closedSliceExpressionForGeneration GGS_closedSliceExpressionForGeneration_2E
 //     @closedSliceExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration_2E_weak ("closedSliceExpressionForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration_2E_weak ("closedSliceExpressionForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_closedSliceExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_closedSliceExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration_2E_weak ;
 }
 
@@ -4114,7 +4114,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_tildeExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_tildeExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionAST ;
 }
 
@@ -4150,12 +4150,12 @@ acPtr_class * cPtr_tildeExpressionAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @tildeExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionAST ("tildeExpressionAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tildeExpressionAST ("tildeExpressionAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_tildeExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_tildeExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionAST ;
 }
 
@@ -4272,12 +4272,12 @@ GGS_tildeExpressionAST GGS_tildeExpressionAST_2E_weak::bang_tildeExpressionAST_2
 //     @tildeExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionAST_2E_weak ("tildeExpressionAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tildeExpressionAST_2E_weak ("tildeExpressionAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_tildeExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_tildeExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionAST_2E_weak ;
 }
 
@@ -4394,12 +4394,12 @@ GGS_tildeExpressionForGeneration GGS_tildeExpressionForGeneration_2E_weak::bang_
 //     @tildeExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration_2E_weak ("tildeExpressionForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration_2E_weak ("tildeExpressionForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_tildeExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_tildeExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionForGeneration_2E_weak ;
 }
 
@@ -4547,7 +4547,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_unaryMinusExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_unaryMinusExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionAST ;
 }
 
@@ -4583,12 +4583,12 @@ acPtr_class * cPtr_unaryMinusExpressionAST::duplicate (Compiler * inCompiler COM
 //     @unaryMinusExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST ("unaryMinusExpressionAST",
-                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST ("unaryMinusExpressionAST",
+                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryMinusExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryMinusExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionAST ;
 }
 
@@ -4705,12 +4705,12 @@ GGS_unaryMinusExpressionAST GGS_unaryMinusExpressionAST_2E_weak::bang_unaryMinus
 //     @unaryMinusExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST_2E_weak ("unaryMinusExpressionAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST_2E_weak ("unaryMinusExpressionAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryMinusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryMinusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionAST_2E_weak ;
 }
 
@@ -4827,12 +4827,12 @@ GGS_unaryMinusExpressionForGeneration GGS_unaryMinusExpressionForGeneration_2E_w
 //     @unaryMinusExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration_2E_weak ("unaryMinusExpressionForGeneration.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration_2E_weak ("unaryMinusExpressionForGeneration.weak",
+                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryMinusExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryMinusExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration_2E_weak ;
 }
 
@@ -4980,7 +4980,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_unaryPlusExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_unaryPlusExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryPlusExpressionAST ;
 }
 
@@ -5016,12 +5016,12 @@ acPtr_class * cPtr_unaryPlusExpressionAST::duplicate (Compiler * inCompiler COMM
 //     @unaryPlusExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST ("unaryPlusExpressionAST",
-                                                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST ("unaryPlusExpressionAST",
+                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryPlusExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryPlusExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryPlusExpressionAST ;
 }
 
@@ -5138,12 +5138,12 @@ GGS_unaryPlusExpressionAST GGS_unaryPlusExpressionAST_2E_weak::bang_unaryPlusExp
 //     @unaryPlusExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST_2E_weak ("unaryPlusExpressionAST.weak",
-                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST_2E_weak ("unaryPlusExpressionAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryPlusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryPlusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryPlusExpressionAST_2E_weak ;
 }
 
@@ -5291,7 +5291,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_unaryWrappingMinusExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_unaryWrappingMinusExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ;
 }
 
@@ -5327,12 +5327,12 @@ acPtr_class * cPtr_unaryWrappingMinusExpressionAST::duplicate (Compiler * inComp
 //     @unaryWrappingMinusExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ("unaryWrappingMinusExpressionAST",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ("unaryWrappingMinusExpressionAST",
+                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryWrappingMinusExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryWrappingMinusExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ;
 }
 
@@ -5449,12 +5449,12 @@ GGS_unaryWrappingMinusExpressionAST GGS_unaryWrappingMinusExpressionAST_2E_weak:
 //     @unaryWrappingMinusExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST_2E_weak ("unaryWrappingMinusExpressionAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST_2E_weak ("unaryWrappingMinusExpressionAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryWrappingMinusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryWrappingMinusExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST_2E_weak ;
 }
 
@@ -5571,12 +5571,12 @@ GGS_unaryWrappingMinusExpressionForGeneration GGS_unaryWrappingMinusExpressionFo
 //     @unaryWrappingMinusExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration_2E_weak ("unaryWrappingMinusExpressionForGeneration.weak",
-                                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration_2E_weak ("unaryWrappingMinusExpressionForGeneration.weak",
+                                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryWrappingMinusExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryWrappingMinusExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration_2E_weak ;
 }
 
@@ -5719,12 +5719,12 @@ ComparisonResult GGS_selfMutability::objectCompare (const GGS_selfMutability & i
 //     @selfMutability generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMutability ("selfMutability",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfMutability ("selfMutability",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfMutability::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selfMutability::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfMutability ;
 }
 
@@ -5921,12 +5921,12 @@ ComparisonResult GGS_selfAvailability::objectCompare (const GGS_selfAvailability
 //     @selfAvailability generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability ("selfAvailability",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAvailability ("selfAvailability",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfAvailability::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selfAvailability::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfAvailability ;
 }
 
@@ -6067,12 +6067,12 @@ GGS_assignmentInstructionAST GGS_assignmentInstructionAST_2E_weak::bang_assignme
 //     @assignmentInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionAST_2E_weak ("assignmentInstructionAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionAST_2E_weak ("assignmentInstructionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_assignmentInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_assignmentInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionAST_2E_weak ;
 }
 
@@ -6189,12 +6189,12 @@ GGS_selfPropertyAssignmentInstructionAST GGS_selfPropertyAssignmentInstructionAS
 //     @selfPropertyAssignmentInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST_2E_weak ("selfPropertyAssignmentInstructionAST.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST_2E_weak ("selfPropertyAssignmentInstructionAST.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfPropertyAssignmentInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selfPropertyAssignmentInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST_2E_weak ;
 }
 
@@ -6311,12 +6311,12 @@ GGS_assignmentInstructionForGeneration GGS_assignmentInstructionForGeneration_2E
 //     @assignmentInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration_2E_weak ("assignmentInstructionForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration_2E_weak ("assignmentInstructionForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_assignmentInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_assignmentInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration_2E_weak ;
 }
 
@@ -7187,12 +7187,12 @@ GGS_location UpEnumerator_castInstructionBranchListAST::current_mEndOfInstructio
 //     @castInstructionBranchListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST ("castInstructionBranchListAST",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST ("castInstructionBranchListAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_castInstructionBranchListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_castInstructionBranchListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_castInstructionBranchListAST ;
 }
 
@@ -7386,7 +7386,7 @@ mProperty_mEndOfCastInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_structuredCastInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_structuredCastInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionAST ;
 }
 
@@ -7430,12 +7430,12 @@ acPtr_class * cPtr_structuredCastInstructionAST::duplicate (Compiler * inCompile
 //     @structuredCastInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST ("structuredCastInstructionAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST ("structuredCastInstructionAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structuredCastInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structuredCastInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionAST ;
 }
 
@@ -7552,12 +7552,12 @@ GGS_structuredCastInstructionAST GGS_structuredCastInstructionAST_2E_weak::bang_
 //     @structuredCastInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST_2E_weak ("structuredCastInstructionAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST_2E_weak ("structuredCastInstructionAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structuredCastInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structuredCastInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionAST_2E_weak ;
 }
 
@@ -8347,12 +8347,12 @@ GGS_semanticInstructionListForGeneration UpEnumerator_castInstructionBranchListF
 //     @castInstructionBranchListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ("castInstructionBranchListForGeneration",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ("castInstructionBranchListForGeneration",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_castInstructionBranchListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_castInstructionBranchListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ;
 }
 
@@ -8469,12 +8469,12 @@ GGS_structuredCastInstructionForGeneration GGS_structuredCastInstructionForGener
 //     @structuredCastInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration_2E_weak ("structuredCastInstructionForGeneration.weak",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration_2E_weak ("structuredCastInstructionForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structuredCastInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structuredCastInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration_2E_weak ;
 }
 
@@ -8653,12 +8653,12 @@ void GGS_opAssignmentOperator::description (String & ioString,
 //     @opAssignmentOperator generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignmentOperator ("opAssignmentOperator",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_opAssignmentOperator ("opAssignmentOperator",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_opAssignmentOperator::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_opAssignmentOperator::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignmentOperator ;
 }
 
@@ -8885,12 +8885,12 @@ GGS_opAssignExpressionInstructionAST GGS_opAssignExpressionInstructionAST_2E_wea
 //     @opAssignExpressionInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2E_weak ("opAssignExpressionInstructionAST.weak",
-                                                                                                & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2E_weak ("opAssignExpressionInstructionAST.weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_opAssignExpressionInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_opAssignExpressionInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2E_weak ;
 }
 
@@ -9007,12 +9007,12 @@ GGS_plusEqualElementsInstructionAST GGS_plusEqualElementsInstructionAST_2E_weak:
 //     @plusEqualElementsInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST_2E_weak ("plusEqualElementsInstructionAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST_2E_weak ("plusEqualElementsInstructionAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusEqualElementsInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusEqualElementsInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST_2E_weak ;
 }
 
@@ -9129,12 +9129,12 @@ GGS_plusPlusEqualElementInstructionAST GGS_plusPlusEqualElementInstructionAST_2E
 //     @plusPlusEqualElementInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST_2E_weak ("plusPlusEqualElementInstructionAST.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST_2E_weak ("plusPlusEqualElementInstructionAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusPlusEqualElementInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusPlusEqualElementInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST_2E_weak ;
 }
 
@@ -9362,7 +9362,7 @@ mProperty_mExpressionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_plusEqualnstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_plusEqualnstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ;
 }
 
@@ -9410,12 +9410,12 @@ acPtr_class * cPtr_plusEqualnstructionForGeneration::duplicate (Compiler * inCom
 //     @plusEqualnstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ("plusEqualnstructionForGeneration",
-                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ("plusEqualnstructionForGeneration",
+                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusEqualnstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusEqualnstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ;
 }
 
@@ -9532,12 +9532,12 @@ GGS_plusEqualnstructionForGeneration GGS_plusEqualnstructionForGeneration_2E_wea
 //     @plusEqualnstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration_2E_weak ("plusEqualnstructionForGeneration.weak",
-                                                                                                & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration_2E_weak ("plusEqualnstructionForGeneration.weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusEqualnstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusEqualnstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration_2E_weak ;
 }
 
@@ -9654,12 +9654,12 @@ GGS_opAssignInstructionForGeneration GGS_opAssignInstructionForGeneration_2E_wea
 //     @opAssignInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2E_weak ("opAssignInstructionForGeneration.weak",
-                                                                                                & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2E_weak ("opAssignInstructionForGeneration.weak",
+                                                                                             & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_opAssignInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_opAssignInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2E_weak ;
 }
 
@@ -9776,12 +9776,12 @@ GGS_plusPlusAssignInstructionForGeneration GGS_plusPlusAssignInstructionForGener
 //     @plusPlusAssignInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration_2E_weak ("plusPlusAssignInstructionForGeneration.weak",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration_2E_weak ("plusPlusAssignInstructionForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusPlusAssignInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusPlusAssignInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration_2E_weak ;
 }
 
@@ -9915,7 +9915,7 @@ mProperty_mDropList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_dropInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_dropInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dropInstructionAST ;
 }
 
@@ -9950,12 +9950,12 @@ acPtr_class * cPtr_dropInstructionAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @dropInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dropInstructionAST ("dropInstructionAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dropInstructionAST ("dropInstructionAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dropInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dropInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dropInstructionAST ;
 }
 
@@ -10072,12 +10072,12 @@ GGS_dropInstructionAST GGS_dropInstructionAST_2E_weak::bang_dropInstructionAST_2
 //     @dropInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dropInstructionAST_2E_weak ("dropInstructionAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dropInstructionAST_2E_weak ("dropInstructionAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dropInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dropInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dropInstructionAST_2E_weak ;
 }
 
@@ -10342,12 +10342,12 @@ void GGS_fixitElementAST::description (String & ioString,
 //     @fixitElementAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST ("fixitElementAST",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementAST ("fixitElementAST",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_fixitElementAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_fixitElementAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_fixitElementAST ;
 }
 
@@ -10894,12 +10894,12 @@ GGS_fixitElementAST UpEnumerator_fixitListAST::current_mElement (LOCATION_ARGS) 
 //     @fixitListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ("fixitListAST",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListAST ("fixitListAST",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_fixitListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_fixitListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_fixitListAST ;
 }
 
@@ -11093,7 +11093,7 @@ mProperty_mFixitListAST () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_errorInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_errorInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionAST ;
 }
 
@@ -11137,12 +11137,12 @@ acPtr_class * cPtr_errorInstructionAST::duplicate (Compiler * inCompiler COMMA_L
 //     @errorInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST ("errorInstructionAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_errorInstructionAST ("errorInstructionAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_errorInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_errorInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionAST ;
 }
 
@@ -11259,12 +11259,12 @@ GGS_errorInstructionAST GGS_errorInstructionAST_2E_weak::bang_errorInstructionAS
 //     @errorInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST_2E_weak ("errorInstructionAST.weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_errorInstructionAST_2E_weak ("errorInstructionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_errorInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_errorInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionAST_2E_weak ;
 }
 
@@ -11559,12 +11559,12 @@ void GGS_fixitElementForGeneration::description (String & ioString,
 //     @fixitElementForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration ("fixitElementForGeneration",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration ("fixitElementForGeneration",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_fixitElementForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_fixitElementForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_fixitElementForGeneration ;
 }
 
@@ -12111,12 +12111,12 @@ GGS_fixitElementForGeneration UpEnumerator_fixitListForGeneration::current_mElem
 //     @fixitListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGeneration ("fixitListForGeneration",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListForGeneration ("fixitListForGeneration",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_fixitListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_fixitListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_fixitListForGeneration ;
 }
 
@@ -12296,12 +12296,12 @@ GGS_errorInstructionForGeneration GGS_errorInstructionForGeneration_2E_weak::ban
 //     @errorInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration_2E_weak ("errorInstructionForGeneration.weak",
-                                                                                             & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration_2E_weak ("errorInstructionForGeneration.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_errorInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_errorInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionForGeneration_2E_weak ;
 }
 
@@ -13010,12 +13010,12 @@ GGS_lstring UpEnumerator_forInstructionEnumeratedObjectElementListAST::current_m
 //     @forInstructionEnumeratedObjectElementListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ("forInstructionEnumeratedObjectElementListAST",
-                                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ("forInstructionEnumeratedObjectElementListAST",
+                                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionEnumeratedObjectElementListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionEnumeratedObjectElementListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ;
 }
 
@@ -13108,12 +13108,12 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 //     @abstractEnumeratedCollectionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST ("abstractEnumeratedCollectionAST",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST ("abstractEnumeratedCollectionAST",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractEnumeratedCollectionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractEnumeratedCollectionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST ;
 }
 
@@ -13230,12 +13230,12 @@ GGS_abstractEnumeratedCollectionAST GGS_abstractEnumeratedCollectionAST_2E_weak:
 //     @abstractEnumeratedCollectionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak ("abstractEnumeratedCollectionAST.weak",
-                                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak ("abstractEnumeratedCollectionAST.weak",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractEnumeratedCollectionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractEnumeratedCollectionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak ;
 }
 
@@ -13352,12 +13352,12 @@ GGS_enumeratedCollectionImplicitVarInExpAST GGS_enumeratedCollectionImplicitVarI
 //     @enumeratedCollectionImplicitVarInExpAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST_2E_weak ("enumeratedCollectionImplicitVarInExpAST.weak",
-                                                                                                       & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST_2E_weak ("enumeratedCollectionImplicitVarInExpAST.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST_2E_weak ;
 }
 
@@ -13474,12 +13474,12 @@ GGS_enumeratedCollectionVarInExpAST GGS_enumeratedCollectionVarInExpAST_2E_weak:
 //     @enumeratedCollectionVarInExpAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ("enumeratedCollectionVarInExpAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ("enumeratedCollectionVarInExpAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionVarInExpAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionVarInExpAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ;
 }
 
@@ -13667,7 +13667,7 @@ mProperty_mEndOfEnumerationExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionCstListInExpAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_enumeratedCollectionCstListInExpAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ;
 }
 
@@ -13709,12 +13709,12 @@ acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (Compiler * in
 //     @enumeratedCollectionCstListInExpAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ("enumeratedCollectionCstListInExpAST",
-                                                                                           & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ("enumeratedCollectionCstListInExpAST",
+                                                                                        & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionCstListInExpAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionCstListInExpAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ;
 }
 
@@ -13831,12 +13831,12 @@ GGS_enumeratedCollectionCstListInExpAST GGS_enumeratedCollectionCstListInExpAST_
 //     @enumeratedCollectionCstListInExpAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST_2E_weak ("enumeratedCollectionCstListInExpAST.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST_2E_weak ("enumeratedCollectionCstListInExpAST.weak",
+                                                                                                & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionCstListInExpAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionCstListInExpAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST_2E_weak ;
 }
 
@@ -14464,12 +14464,12 @@ GGS_abstractEnumeratedCollectionAST UpEnumerator_forInstructionEnumeratedObjectL
 //     @forInstructionEnumeratedObjectListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ("forInstructionEnumeratedObjectListAST",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ("forInstructionEnumeratedObjectListAST",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionEnumeratedObjectListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionEnumeratedObjectListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ;
 }
 
@@ -14586,12 +14586,12 @@ GGS_forInstructionAST GGS_forInstructionAST_2E_weak::bang_forInstructionAST_2E_w
 //     @forInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ("forInstructionAST.weak",
-                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ("forInstructionAST.weak",
+                                                                              & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ;
 }
 
@@ -15343,12 +15343,12 @@ GGS_string UpEnumerator_forInstructionEnumeratedObjectListForGeneration::current
 //     @forInstructionEnumeratedObjectListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ("forInstructionEnumeratedObjectListForGeneration",
-                                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ("forInstructionEnumeratedObjectListForGeneration",
+                                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionEnumeratedObjectListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionEnumeratedObjectListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ;
 }
 
@@ -15465,12 +15465,12 @@ GGS_forInstructionForGeneration GGS_forInstructionForGeneration_2E_weak::bang_fo
 //     @forInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ("forInstructionForGeneration.weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ("forInstructionForGeneration.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ;
 }
 
@@ -15587,12 +15587,12 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult GGS_abstractGramma
 //     @abstractGrammarInstructionSyntaxDirectedTranslationResult.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak ("abstractGrammarInstructionSyntaxDirectedTranslationResult.weak",
-                                                                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak ("abstractGrammarInstructionSyntaxDirectedTranslationResult.weak",
+                                                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak ;
 }
 
@@ -15696,7 +15696,7 @@ cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (inCompiler COMMA
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ;
 }
 
@@ -15726,12 +15726,12 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::duplic
 //     @grammarInstructionSyntaxDirectedTranslationResultNone generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ("grammarInstructionSyntaxDirectedTranslationResultNone",
-                                                                                                             & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ("grammarInstructionSyntaxDirectedTranslationResultNone",
+                                                                                                          & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultNone::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultNone::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ;
 }
 
@@ -15848,12 +15848,12 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultNone GGS_grammarInstruction
 //     @grammarInstructionSyntaxDirectedTranslationResultNone.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultNone.weak",
-                                                                                                                     & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultNone.weak",
+                                                                                                                  & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak ;
 }
 
@@ -15981,7 +15981,7 @@ mProperty_mLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ;
 }
 
@@ -16014,12 +16014,12 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::duplic
 //     @grammarInstructionSyntaxDirectedTranslationDropResult generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ("grammarInstructionSyntaxDirectedTranslationDropResult",
-                                                                                                             & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ("grammarInstructionSyntaxDirectedTranslationDropResult",
+                                                                                                          & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationDropResult::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationDropResult::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ;
 }
 
@@ -16136,12 +16136,12 @@ GGS_grammarInstructionSyntaxDirectedTranslationDropResult GGS_grammarInstruction
 //     @grammarInstructionSyntaxDirectedTranslationDropResult.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak ("grammarInstructionSyntaxDirectedTranslationDropResult.weak",
-                                                                                                                     & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak ("grammarInstructionSyntaxDirectedTranslationDropResult.weak",
+                                                                                                                  & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak ;
 }
 

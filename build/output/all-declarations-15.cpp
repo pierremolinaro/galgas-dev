@@ -9684,7 +9684,7 @@ void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_d
 //  Map type @headerCompositionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9816,7 +9816,7 @@ void GGS_headerCompositionMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_headerCompositionMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_headerCompositionMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_headerCompositionMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9827,7 +9827,7 @@ void GGS_headerCompositionMap::performInsert (const GGS_headerCompositionMap_2E_
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_headerCompositionMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_headerCompositionMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -9929,7 +9929,7 @@ GGS_headerCompositionMap GGS_headerCompositionMap::class_func_mapWithMapToOverri
                                                                                     COMMA_LOCATION_ARGS) {
   GGS_headerCompositionMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_headerCompositionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_headerCompositionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -10036,7 +10036,7 @@ void GGS_headerCompositionMap::setter_setMInclusionForKey (GGS_stringset inValue
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_headerCompositionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_headerCompositionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -10056,7 +10056,7 @@ void GGS_headerCompositionMap::setter_setMHeaderStringForKey (GGS_string inValue
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_headerCompositionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_headerCompositionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -10108,7 +10108,7 @@ void GGS_headerCompositionMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> array = sortedInfoArray () ;
     GGS_headerCompositionMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_headerCompositionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_headerCompositionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -10200,12 +10200,12 @@ GGS_string UpEnumerator_headerCompositionMap::current_mHeaderString (LOCATION_AR
 //     @headerCompositionMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_headerCompositionMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_headerCompositionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_headerCompositionMap ;
 }
 
@@ -10240,7 +10240,7 @@ GGS_headerCompositionMap GGS_headerCompositionMap::extractObject (const GGS_obje
 //  Map type @headerRepartitionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10372,7 +10372,7 @@ void GGS_headerRepartitionMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_headerRepartitionMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_headerRepartitionMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_headerRepartitionMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10383,7 +10383,7 @@ void GGS_headerRepartitionMap::performInsert (const GGS_headerRepartitionMap_2E_
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_headerRepartitionMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_headerRepartitionMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -10484,7 +10484,7 @@ GGS_headerRepartitionMap GGS_headerRepartitionMap::class_func_mapWithMapToOverri
                                                                                     COMMA_LOCATION_ARGS) {
   GGS_headerRepartitionMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_headerRepartitionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_headerRepartitionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -10567,7 +10567,7 @@ void GGS_headerRepartitionMap::setter_setMHeaderFileNameForKey (GGS_string inVal
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_headerRepartitionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_headerRepartitionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -10615,7 +10615,7 @@ void GGS_headerRepartitionMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_headerRepartitionMap_2E_element>> array = sortedInfoArray () ;
     GGS_headerRepartitionMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_headerRepartitionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_headerRepartitionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -10695,12 +10695,12 @@ GGS_string UpEnumerator_headerRepartitionMap::current_mHeaderFileName (LOCATION_
 //     @headerRepartitionMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_headerRepartitionMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_headerRepartitionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_headerRepartitionMap ;
 }
 
@@ -10735,7 +10735,7 @@ GGS_headerRepartitionMap GGS_headerRepartitionMap::extractObject (const GGS_obje
 //  Map type @projectQualifiedFeatureMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10867,7 +10867,7 @@ void GGS_projectQualifiedFeatureMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_projectQualifiedFeatureMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10878,7 +10878,7 @@ void GGS_projectQualifiedFeatureMap::performInsert (const GGS_projectQualifiedFe
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_projectQualifiedFeatureMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_projectQualifiedFeatureMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -10979,7 +10979,7 @@ GGS_projectQualifiedFeatureMap GGS_projectQualifiedFeatureMap::class_func_mapWit
                                                                                                 COMMA_LOCATION_ARGS) {
   GGS_projectQualifiedFeatureMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -11062,7 +11062,7 @@ void GGS_projectQualifiedFeatureMap::setter_setMFeatureValueForKey (GGS_lstring 
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_projectQualifiedFeatureMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_projectQualifiedFeatureMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -11110,7 +11110,7 @@ void GGS_projectQualifiedFeatureMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_projectQualifiedFeatureMap_2E_element>> array = sortedInfoArray () ;
     GGS_projectQualifiedFeatureMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_projectQualifiedFeatureMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -11190,12 +11190,12 @@ GGS_lstring UpEnumerator_projectQualifiedFeatureMap::current_mFeatureValue (LOCA
 //     @projectQualifiedFeatureMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_projectQualifiedFeatureMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_projectQualifiedFeatureMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ;
 }
 
@@ -11985,12 +11985,12 @@ GGS_stringlist UpEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_ARGS
 //     @XCodeGroupList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_XCodeGroupList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_XCodeGroupList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_XCodeGroupList ;
 }
 
@@ -13347,12 +13347,12 @@ GGS_string UpEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (LO
 //     @XCodeToolTargetList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_XCodeToolTargetList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_XCodeToolTargetList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_XCodeToolTargetList ;
 }
 

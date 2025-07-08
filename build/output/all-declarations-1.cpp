@@ -124,7 +124,7 @@ mProperty_mElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionIfAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionIfAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
 }
 
@@ -160,12 +160,12 @@ acPtr_class * cPtr_templateInstructionIfAST::duplicate (Compiler * inCompiler CO
 //     @templateInstructionIfAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
-                                                                                & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
+                                                                             & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
 }
 
@@ -282,12 +282,12 @@ GGS_templateInstructionIfAST GGS_templateInstructionIfAST_2E_weak::bang_template
 //     @templateInstructionIfAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2E_weak ("templateInstructionIfAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2E_weak ("templateInstructionIfAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfAST_2E_weak ;
 }
 
@@ -380,12 +380,12 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 //     @templateInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
 }
 
@@ -502,12 +502,12 @@ GGS_templateInstructionForGeneration GGS_templateInstructionForGeneration_2E_wea
 //     @templateInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ("templateInstructionForGeneration.weak",
-                                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ("templateInstructionForGeneration.weak",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
 }
 
@@ -624,12 +624,12 @@ GGS_templateInstructionExpressionForGeneration GGS_templateInstructionExpression
 //     @templateInstructionExpressionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ("templateInstructionExpressionForGeneration.weak",
-                                                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ("templateInstructionExpressionForGeneration.weak",
+                                                                                                       & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ;
 }
 
@@ -1176,12 +1176,12 @@ GGS_templateInstructionForGeneration UpEnumerator_templateInstructionListForGene
 //     @templateInstructionListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ("templateInstructionListForGeneration",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ("templateInstructionListForGeneration",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
 }
 
@@ -1298,12 +1298,12 @@ GGS_templateBlockInstructionForGeneration GGS_templateBlockInstructionForGenerat
 //     @templateBlockInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2E_weak ("templateBlockInstructionForGeneration.weak",
-                                                                                                     & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2E_weak ("templateBlockInstructionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateBlockInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateBlockInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2E_weak ;
 }
 
@@ -1407,7 +1407,7 @@ cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionGetColumnLocationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
 }
 
@@ -1437,12 +1437,12 @@ acPtr_class * cPtr_templateInstructionGetColumnLocationForGeneration::duplicate 
 //     @templateInstructionGetColumnLocationForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ("templateInstructionGetColumnLocationForGeneration",
-                                                                                                         & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ("templateInstructionGetColumnLocationForGeneration",
+                                                                                                      & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionGetColumnLocationForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionGetColumnLocationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
 }
 
@@ -1559,12 +1559,12 @@ GGS_templateInstructionGetColumnLocationForGeneration GGS_templateInstructionGet
 //     @templateInstructionGetColumnLocationForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2E_weak ("templateInstructionGetColumnLocationForGeneration.weak",
-                                                                                                                 & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2E_weak ("templateInstructionGetColumnLocationForGeneration.weak",
+                                                                                                              & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionGetColumnLocationForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionGetColumnLocationForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2E_weak ;
 }
 
@@ -1668,7 +1668,7 @@ cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionGotoColumnLocationForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionGotoColumnLocationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
 }
 
@@ -1698,12 +1698,12 @@ acPtr_class * cPtr_templateInstructionGotoColumnLocationForGeneration::duplicate
 //     @templateInstructionGotoColumnLocationForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ("templateInstructionGotoColumnLocationForGeneration",
-                                                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ("templateInstructionGotoColumnLocationForGeneration",
+                                                                                                       & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionGotoColumnLocationForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionGotoColumnLocationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
 }
 
@@ -1820,12 +1820,12 @@ GGS_templateInstructionGotoColumnLocationForGeneration GGS_templateInstructionGo
 //     @templateInstructionGotoColumnLocationForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2E_weak ("templateInstructionGotoColumnLocationForGeneration.weak",
-                                                                                                                  & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2E_weak ("templateInstructionGotoColumnLocationForGeneration.weak",
+                                                                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2E_weak ;
 }
 
@@ -2453,12 +2453,12 @@ GGS_templateInstructionListForGeneration UpEnumerator_templateInstructionIfBranc
 //     @templateInstructionIfBranchListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration ("templateInstructionIfBranchListForGeneration",
-                                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration ("templateInstructionIfBranchListForGeneration",
+                                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfBranchListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfBranchListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration ;
 }
 
@@ -2606,7 +2606,7 @@ mProperty_mElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionIfForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionIfForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ;
 }
 
@@ -2642,12 +2642,12 @@ acPtr_class * cPtr_templateInstructionIfForGeneration::duplicate (Compiler * inC
 //     @templateInstructionIfForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ("templateInstructionIfForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ("templateInstructionIfForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ;
 }
 
@@ -2764,12 +2764,12 @@ GGS_templateInstructionIfForGeneration GGS_templateInstructionIfForGeneration_2E
 //     @templateInstructionIfForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration_2E_weak ("templateInstructionIfForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration_2E_weak ("templateInstructionIfForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfForGeneration_2E_weak ;
 }
 
@@ -2804,7 +2804,7 @@ GGS_templateInstructionIfForGeneration_2E_weak GGS_templateInstructionIfForGener
 //  Map type @templateVariableMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2936,7 +2936,7 @@ void GGS_templateVariableMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateVariableMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2947,7 +2947,7 @@ void GGS_templateVariableMap::performInsert (const GGS_templateVariableMap_2E_el
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_templateVariableMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_templateVariableMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -3049,7 +3049,7 @@ GGS_templateVariableMap GGS_templateVariableMap::class_func_mapWithMapToOverride
                                                                                   COMMA_LOCATION_ARGS) {
   GGS_templateVariableMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_templateVariableMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -3156,7 +3156,7 @@ void GGS_templateVariableMap::setter_setMTypeForKey (GGS_unifiedTypeMapEntry inV
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_templateVariableMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_templateVariableMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -3176,7 +3176,7 @@ void GGS_templateVariableMap::setter_setMCppNameForKey (GGS_string inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_templateVariableMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_templateVariableMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -3228,7 +3228,7 @@ void GGS_templateVariableMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_templateVariableMap_2E_element>> array = sortedInfoArray () ;
     GGS_templateVariableMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_templateVariableMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_templateVariableMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -3320,12 +3320,12 @@ GGS_string UpEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) co
 //     @templateVariableMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap ("templateVariableMap",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVariableMap ("templateVariableMap",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateVariableMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateVariableMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateVariableMap ;
 }
 
@@ -3484,12 +3484,12 @@ ComparisonResult GGS_unifiedTypeMapEntry::objectCompare (const GGS_unifiedTypeMa
 //     @unifiedTypeMapEntry generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry ("unifiedTypeMapEntry",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry ("unifiedTypeMapEntry",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unifiedTypeMapEntry::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unifiedTypeMapEntry::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unifiedTypeMapEntry ;
 }
 
@@ -3853,12 +3853,12 @@ void GGS_predefinedTypes::description (String & ioString,
 //     @predefinedTypes generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypes ("predefinedTypes",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_predefinedTypes ("predefinedTypes",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_predefinedTypes::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_predefinedTypes::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_predefinedTypes ;
 }
 
@@ -3997,12 +3997,12 @@ GGS_templateGetterCallInExpressionAST GGS_templateGetterCallInExpressionAST_2E_w
 //     @templateGetterCallInExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ("templateGetterCallInExpressionAST.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ("templateGetterCallInExpressionAST.weak",
+                                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateGetterCallInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ;
 }
 
@@ -4279,12 +4279,12 @@ GGS_unifiedTypeMapEntry UpEnumerator__5B_unifiedTypeMapEntry_5D_::current (LOCAT
 //     @[unifiedTypeMapEntry] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_unifiedTypeMapEntry_5D_ ("[unifiedTypeMapEntry]",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_unifiedTypeMapEntry_5D_ ("[unifiedTypeMapEntry]",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__5B_unifiedTypeMapEntry_5D_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__5B_unifiedTypeMapEntry_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_unifiedTypeMapEntry_5D_ ;
 }
 
@@ -4512,12 +4512,12 @@ void GGS_templateInstructionForEnumerationAST::description (String & ioString,
 //     @templateInstructionForEnumerationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST ("templateInstructionForEnumerationAST",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST ("templateInstructionForEnumerationAST",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionForEnumerationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionForEnumerationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST ;
 }
 
@@ -4634,12 +4634,12 @@ GGS_templateInstructionForeachAST GGS_templateInstructionForeachAST_2E_weak::ban
 //     @templateInstructionForeachAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ("templateInstructionForeachAST.weak",
-                                                                                             & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ("templateInstructionForeachAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionForeachAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionForeachAST_2E_weak ;
 }
 
@@ -4756,12 +4756,12 @@ GGS_templateInstructionForeachForGeneration GGS_templateInstructionForeachForGen
 //     @templateInstructionForeachForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ("templateInstructionForeachForGeneration.weak",
-                                                                                                       & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ("templateInstructionForeachForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionForeachForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionForeachForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ;
 }
 
@@ -5038,12 +5038,12 @@ GGS_lstring UpEnumerator__5B_lstring_5D_::current (LOCATION_ARGS) const {
 //     @[lstring] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_lstring_5D_ ("[lstring]",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lstring_5D_ ("[lstring]",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__5B_lstring_5D_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__5B_lstring_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_lstring_5D_ ;
 }
 
@@ -5833,12 +5833,12 @@ GGS_location UpEnumerator_templateInstructionSwitchBranchListAST::current_endOfB
 //     @templateInstructionSwitchBranchListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST ("templateInstructionSwitchBranchListAST",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST ("templateInstructionSwitchBranchListAST",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionSwitchBranchListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchBranchListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST ;
 }
 
@@ -6547,12 +6547,12 @@ GGS_bool UpEnumerator_switchExtractedValuesListAST::current_mMarkedAsUnused (LOC
 //     @switchExtractedValuesListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST ("switchExtractedValuesListAST",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST ("switchExtractedValuesListAST",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_switchExtractedValuesListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_switchExtractedValuesListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_switchExtractedValuesListAST ;
 }
 
@@ -6720,7 +6720,7 @@ mProperty_templateInstructionSwitchBranchList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_templateInstructionSwitchAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_templateInstructionSwitchAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchAST ;
 }
 
@@ -6759,12 +6759,12 @@ acPtr_class * cPtr_templateInstructionSwitchAST::duplicate (Compiler * inCompile
 //     @templateInstructionSwitchAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST ("templateInstructionSwitchAST",
-                                                                                    & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST ("templateInstructionSwitchAST",
+                                                                                 & kTypeDescriptor_GALGAS_templateInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionSwitchAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchAST ;
 }
 
@@ -6881,12 +6881,12 @@ GGS_templateInstructionSwitchAST GGS_templateInstructionSwitchAST_2E_weak::bang_
 //     @templateInstructionSwitchAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ("templateInstructionSwitchAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ("templateInstructionSwitchAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionSwitchAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ;
 }
 
@@ -7676,12 +7676,12 @@ GGS_templateInstructionListForGeneration UpEnumerator_templateInstructionSwitchB
 //     @templateInstructionSwitchBranchListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ("templateInstructionSwitchBranchListForGeneration",
-                                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ("templateInstructionSwitchBranchListForGeneration",
+                                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionSwitchBranchListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchBranchListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ;
 }
 
@@ -8390,12 +8390,12 @@ GGS_string UpEnumerator_extractedAssociatedValuesForGeneration::current_name (LO
 //     @extractedAssociatedValuesForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration ("extractedAssociatedValuesForGeneration",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration ("extractedAssociatedValuesForGeneration",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extractedAssociatedValuesForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extractedAssociatedValuesForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration ;
 }
 
@@ -8512,12 +8512,12 @@ GGS_templateInstructionSwitchForGeneration GGS_templateInstructionSwitchForGener
 //     @templateInstructionSwitchForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ("templateInstructionSwitchForGeneration.weak",
-                                                                                                      & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ("templateInstructionSwitchForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionSwitchForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ;
 }
 
@@ -8632,12 +8632,12 @@ mProperty_isPredefined () {
 //     @semanticDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationAST ("semanticDeclarationAST",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST ("semanticDeclarationAST",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_semanticDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticDeclarationAST ;
 }
 
@@ -9508,12 +9508,12 @@ GGS_lstring UpEnumerator_templateDelimitorListAST::current_mEndString (LOCATION_
 //     @templateDelimitorListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorListAST ("templateDelimitorListAST",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateDelimitorListAST ("templateDelimitorListAST",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateDelimitorListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateDelimitorListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateDelimitorListAST ;
 }
 
@@ -10222,12 +10222,12 @@ GGS_lstring UpEnumerator_templateReplacementListAST::current_mReplacementFunctio
 //     @templateReplacementListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacementListAST ("templateReplacementListAST",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateReplacementListAST ("templateReplacementListAST",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateReplacementListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateReplacementListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateReplacementListAST ;
 }
 
@@ -10855,12 +10855,12 @@ GGS_lstring UpEnumerator_lexicalAttributeListAST::current_mName (LOCATION_ARGS) 
 //     @lexicalAttributeListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST ("lexicalAttributeListAST",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST ("lexicalAttributeListAST",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalAttributeListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalAttributeListAST ;
 }
 
@@ -11488,12 +11488,12 @@ GGS_lstring UpEnumerator_lexicalStyleListAST::current_mComment (LOCATION_ARGS) c
 //     @lexicalStyleListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST ("lexicalStyleListAST",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStyleListAST ("lexicalStyleListAST",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalStyleListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalStyleListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalStyleListAST ;
 }
 
@@ -12445,12 +12445,12 @@ GGS_bool UpEnumerator_terminalDeclarationListAST::current_isEndOfTemplateMark (L
 //     @terminalDeclarationListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST ("terminalDeclarationListAST",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST ("terminalDeclarationListAST",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalDeclarationListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalDeclarationListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalDeclarationListAST ;
 }
 
@@ -13078,12 +13078,12 @@ GGS_lstring UpEnumerator_lexicalMessageDeclarationListAST::current_mMessageValue
 //     @lexicalMessageDeclarationListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ("lexicalMessageDeclarationListAST",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ("lexicalMessageDeclarationListAST",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalMessageDeclarationListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalMessageDeclarationListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ;
 }
 
@@ -13954,12 +13954,12 @@ GGS_lexicalListEntryListAST UpEnumerator_lexicalListDeclarationListAST::current_
 //     @lexicalListDeclarationListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ("lexicalListDeclarationListAST",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ("lexicalListDeclarationListAST",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalListDeclarationListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalListDeclarationListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ;
 }
 
@@ -14506,12 +14506,12 @@ GGS_abstractLexicalRuleAST UpEnumerator_lexicalRuleListAST::current_mLexicalRule
 //     @lexicalRuleListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST ("lexicalRuleListAST",
-                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRuleListAST ("lexicalRuleListAST",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalRuleListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalRuleListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalRuleListAST ;
 }
 
@@ -15139,12 +15139,12 @@ GGS_lstring UpEnumerator_indexingListAST::current_mIndexComment (LOCATION_ARGS) 
 //     @indexingListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ("indexingListAST",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_indexingListAST ("indexingListAST",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_indexingListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_indexingListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_indexingListAST ;
 }
 
@@ -15261,12 +15261,12 @@ GGS_semanticDeclarationAST GGS_semanticDeclarationAST_2E_weak::bang_semanticDecl
 //     @semanticDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ("semanticDeclarationAST.weak",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ("semanticDeclarationAST.weak",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
 }
 
@@ -15383,12 +15383,12 @@ GGS_templateLexiqueComponentAST GGS_templateLexiqueComponentAST_2E_weak::bang_te
 //     @templateLexiqueComponentAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLexiqueComponentAST_2E_weak ("templateLexiqueComponentAST.weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateLexiqueComponentAST_2E_weak ("templateLexiqueComponentAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateLexiqueComponentAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateLexiqueComponentAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateLexiqueComponentAST_2E_weak ;
 }
 
@@ -15481,12 +15481,12 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 //     @lexicalExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAST ("lexicalExpressionAST",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExpressionAST ("lexicalExpressionAST",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExpressionAST ;
 }
 
@@ -15603,12 +15603,12 @@ GGS_lexicalExpressionAST GGS_lexicalExpressionAST_2E_weak::bang_lexicalExpressio
 //     @lexicalExpressionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak ("lexicalExpressionAST.weak",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak ("lexicalExpressionAST.weak",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak ;
 }
 
@@ -15701,12 +15701,12 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 //     @lexicalInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionAST ("lexicalInstructionAST",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalInstructionAST ("lexicalInstructionAST",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalInstructionAST ;
 }
 
@@ -15823,12 +15823,12 @@ GGS_lexicalInstructionAST GGS_lexicalInstructionAST_2E_weak::bang_lexicalInstruc
 //     @lexicalInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak ("lexicalInstructionAST.weak",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak ("lexicalInstructionAST.weak",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak ;
 }
 
@@ -16375,12 +16375,12 @@ GGS_lexicalInstructionAST UpEnumerator_lexicalInstructionListAST::current_mInstr
 //     @lexicalInstructionListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST ("lexicalInstructionListAST",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST ("lexicalInstructionListAST",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalInstructionListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalInstructionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalInstructionListAST ;
 }
 

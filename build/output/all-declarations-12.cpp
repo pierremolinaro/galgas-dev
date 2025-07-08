@@ -150,7 +150,7 @@ mProperty_mFixitListAST () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_warningInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_warningInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_warningInstructionAST ;
 }
 
@@ -191,12 +191,12 @@ acPtr_class * cPtr_warningInstructionAST::duplicate (Compiler * inCompiler COMMA
 //     @warningInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionAST ("warningInstructionAST",
-                                                                             & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionAST ("warningInstructionAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_warningInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_warningInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_warningInstructionAST ;
 }
 
@@ -313,12 +313,12 @@ GGS_warningInstructionAST GGS_warningInstructionAST_2E_weak::bang_warningInstruc
 //     @warningInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionAST_2E_weak ("warningInstructionAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionAST_2E_weak ("warningInstructionAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_warningInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_warningInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_warningInstructionAST_2E_weak ;
 }
 
@@ -435,12 +435,12 @@ GGS_warningInstructionForGeneration GGS_warningInstructionForGeneration_2E_weak:
 //     @warningInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration_2E_weak ("warningInstructionForGeneration.weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration_2E_weak ("warningInstructionForGeneration.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_warningInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_warningInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_warningInstructionForGeneration_2E_weak ;
 }
 
@@ -557,12 +557,12 @@ GGS_nonterminalCallInstruction GGS_nonterminalCallInstruction_2E_weak::bang_nont
 //     @nonterminalCallInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalCallInstruction_2E_weak ("nonterminalCallInstruction.weak",
-                                                                                          & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalCallInstruction_2E_weak ("nonterminalCallInstruction.weak",
+                                                                                       & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonterminalCallInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonterminalCallInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonterminalCallInstruction_2E_weak ;
 }
 
@@ -756,7 +756,7 @@ mProperty_mGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_nonterminalInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_nonterminalInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ;
 }
 
@@ -800,12 +800,12 @@ acPtr_class * cPtr_nonterminalInstructionForGeneration::duplicate (Compiler * in
 //     @nonterminalInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ("nonterminalInstructionForGeneration",
-                                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ("nonterminalInstructionForGeneration",
+                                                                                        & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonterminalInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonterminalInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ;
 }
 
@@ -922,12 +922,12 @@ GGS_nonterminalInstructionForGeneration GGS_nonterminalInstructionForGeneration_
 //     @nonterminalInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration_2E_weak ("nonterminalInstructionForGeneration.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration_2E_weak ("nonterminalInstructionForGeneration.weak",
+                                                                                                & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonterminalInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonterminalInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration_2E_weak ;
 }
 
@@ -1121,7 +1121,7 @@ mProperty_mEndOf_5F_repeat_5F_instruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_repeatInstruction::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_repeatInstruction::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstruction ;
 }
 
@@ -1165,12 +1165,12 @@ acPtr_class * cPtr_repeatInstruction::duplicate (Compiler * inCompiler COMMA_LOC
 //     @repeatInstruction generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction ("repeatInstruction",
-                                                                         & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstruction ("repeatInstruction",
+                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstruction::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstruction::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstruction ;
 }
 
@@ -1287,12 +1287,12 @@ GGS_repeatInstruction GGS_repeatInstruction_2E_weak::bang_repeatInstruction_2E_w
 //     @repeatInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction_2E_weak ("repeatInstruction.weak",
-                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstruction_2E_weak ("repeatInstruction.weak",
+                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstruction_2E_weak ;
 }
 
@@ -1506,7 +1506,7 @@ mProperty_mListOfSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_repeatInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_repeatInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
 }
 
@@ -1553,12 +1553,12 @@ acPtr_class * cPtr_repeatInstructionForGeneration::duplicate (Compiler * inCompi
 //     @repeatInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration ("repeatInstructionForGeneration",
-                                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration ("repeatInstructionForGeneration",
+                                                                                   & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
 }
 
@@ -1675,12 +1675,12 @@ GGS_repeatInstructionForGeneration GGS_repeatInstructionForGeneration_2E_weak::b
 //     @repeatInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration_2E_weak ("repeatInstructionForGeneration.weak",
-                                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration_2E_weak ("repeatInstructionForGeneration.weak",
+                                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGeneration_2E_weak ;
 }
 
@@ -1834,7 +1834,7 @@ mProperty_mEndOf_5F_select_5F_instruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selectInstruction::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_selectInstruction::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstruction ;
 }
 
@@ -1872,12 +1872,12 @@ acPtr_class * cPtr_selectInstruction::duplicate (Compiler * inCompiler COMMA_LOC
 //     @selectInstruction generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction ("selectInstruction",
-                                                                         & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstruction ("selectInstruction",
+                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstruction::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstruction::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstruction ;
 }
 
@@ -1994,12 +1994,12 @@ GGS_selectInstruction GGS_selectInstruction_2E_weak::bang_selectInstruction_2E_w
 //     @selectInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction_2E_weak ("selectInstruction.weak",
-                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstruction_2E_weak ("selectInstruction.weak",
+                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstruction_2E_weak ;
 }
 
@@ -2173,7 +2173,7 @@ mProperty_mListOfSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selectInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_selectInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
 }
 
@@ -2214,12 +2214,12 @@ acPtr_class * cPtr_selectInstructionForGeneration::duplicate (Compiler * inCompi
 //     @selectInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ("selectInstructionForGeneration",
-                                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ("selectInstructionForGeneration",
+                                                                                   & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
 }
 
@@ -2336,12 +2336,12 @@ GGS_selectInstructionForGeneration GGS_selectInstructionForGeneration_2E_weak::b
 //     @selectInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration_2E_weak ("selectInstructionForGeneration.weak",
-                                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration_2E_weak ("selectInstructionForGeneration.weak",
+                                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGeneration_2E_weak ;
 }
 
@@ -2458,12 +2458,12 @@ GGS_terminalCheckInstructionAST GGS_terminalCheckInstructionAST_2E_weak::bang_te
 //     @terminalCheckInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionAST_2E_weak ("terminalCheckInstructionAST.weak",
-                                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalCheckInstructionAST_2E_weak ("terminalCheckInstructionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalCheckInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalCheckInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalCheckInstructionAST_2E_weak ;
 }
 
@@ -2578,12 +2578,12 @@ mProperty_mStartLocation () {
 //     @abstractSyntaxInstructionForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ("abstractSyntaxInstructionForGrammarAnalysis",
-                                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ("abstractSyntaxInstructionForGrammarAnalysis",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractSyntaxInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractSyntaxInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ;
 }
 
@@ -2700,12 +2700,12 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis GGS_abstractSyntaxInstructionFor
 //     @abstractSyntaxInstructionForGrammarAnalysis.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak ("abstractSyntaxInstructionForGrammarAnalysis.weak",
-                                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak ("abstractSyntaxInstructionForGrammarAnalysis.weak",
+                                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak ;
 }
 
@@ -2822,12 +2822,12 @@ GGS_terminalCheckInstructionForGeneration GGS_terminalCheckInstructionForGenerat
 //     @terminalCheckInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration_2E_weak ("terminalCheckInstructionForGeneration.weak",
-                                                                                                     & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration_2E_weak ("terminalCheckInstructionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalCheckInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalCheckInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration_2E_weak ;
 }
 
@@ -3061,7 +3061,7 @@ mProperty_mEndOfInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_parseLoopInstruction::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_parseLoopInstruction::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseLoopInstruction ;
 }
 
@@ -3111,12 +3111,12 @@ acPtr_class * cPtr_parseLoopInstruction::duplicate (Compiler * inCompiler COMMA_
 //     @parseLoopInstruction generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstruction ("parseLoopInstruction",
-                                                                            & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseLoopInstruction ("parseLoopInstruction",
+                                                                         & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseLoopInstruction::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseLoopInstruction::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseLoopInstruction ;
 }
 
@@ -3233,12 +3233,12 @@ GGS_parseLoopInstruction GGS_parseLoopInstruction_2E_weak::bang_parseLoopInstruc
 //     @parseLoopInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstruction_2E_weak ("parseLoopInstruction.weak",
-                                                                                    & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseLoopInstruction_2E_weak ("parseLoopInstruction.weak",
+                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseLoopInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseLoopInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseLoopInstruction_2E_weak ;
 }
 
@@ -3355,12 +3355,12 @@ GGS_parseLoopInstructionForGeneration GGS_parseLoopInstructionForGeneration_2E_w
 //     @parseLoopInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration_2E_weak ("parseLoopInstructionForGeneration.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration_2E_weak ("parseLoopInstructionForGeneration.weak",
+                                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseLoopInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseLoopInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration_2E_weak ;
 }
 
@@ -3514,7 +3514,7 @@ mProperty_mEndOfParseDoInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_parseRewindInstruction::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_parseRewindInstruction::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstruction ;
 }
 
@@ -3552,12 +3552,12 @@ acPtr_class * cPtr_parseRewindInstruction::duplicate (Compiler * inCompiler COMM
 //     @parseRewindInstruction generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruction ("parseRewindInstruction",
-                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseRewindInstruction ("parseRewindInstruction",
+                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseRewindInstruction::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseRewindInstruction::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstruction ;
 }
 
@@ -3674,12 +3674,12 @@ GGS_parseRewindInstruction GGS_parseRewindInstruction_2E_weak::bang_parseRewindI
 //     @parseRewindInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruction_2E_weak ("parseRewindInstruction.weak",
-                                                                                      & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseRewindInstruction_2E_weak ("parseRewindInstruction.weak",
+                                                                                   & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseRewindInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseRewindInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstruction_2E_weak ;
 }
 
@@ -3813,7 +3813,7 @@ mProperty_mListOfSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_parseRewindInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_parseRewindInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
 }
 
@@ -3848,12 +3848,12 @@ acPtr_class * cPtr_parseRewindInstructionForGeneration::duplicate (Compiler * in
 //     @parseRewindInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ("parseRewindInstructionForGeneration",
-                                                                                           & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ("parseRewindInstructionForGeneration",
+                                                                                        & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseRewindInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseRewindInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
 }
 
@@ -3970,12 +3970,12 @@ GGS_parseRewindInstructionForGeneration GGS_parseRewindInstructionForGeneration_
 //     @parseRewindInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration_2E_weak ("parseRewindInstructionForGeneration.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration_2E_weak ("parseRewindInstructionForGeneration.weak",
+                                                                                                & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseRewindInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseRewindInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration_2E_weak ;
 }
 
@@ -4209,7 +4209,7 @@ mProperty_mEndOfElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_parseWhenInstruction::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_parseWhenInstruction::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseWhenInstruction ;
 }
 
@@ -4259,12 +4259,12 @@ acPtr_class * cPtr_parseWhenInstruction::duplicate (Compiler * inCompiler COMMA_
 //     @parseWhenInstruction generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstruction ("parseWhenInstruction",
-                                                                            & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseWhenInstruction ("parseWhenInstruction",
+                                                                         & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseWhenInstruction::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseWhenInstruction::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseWhenInstruction ;
 }
 
@@ -4381,12 +4381,12 @@ GGS_parseWhenInstruction GGS_parseWhenInstruction_2E_weak::bang_parseWhenInstruc
 //     @parseWhenInstruction.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstruction_2E_weak ("parseWhenInstruction.weak",
-                                                                                    & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseWhenInstruction_2E_weak ("parseWhenInstruction.weak",
+                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseWhenInstruction_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseWhenInstruction_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseWhenInstruction_2E_weak ;
 }
 
@@ -4503,12 +4503,12 @@ GGS_parseWhenInstructionForGeneration GGS_parseWhenInstructionForGeneration_2E_w
 //     @parseWhenInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration_2E_weak ("parseWhenInstructionForGeneration.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration_2E_weak ("parseWhenInstructionForGeneration.weak",
+                                                                                              & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_parseWhenInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_parseWhenInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration_2E_weak ;
 }
 
@@ -4642,7 +4642,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_syntaxSendInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_syntaxSendInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxSendInstructionAST ;
 }
 
@@ -4677,12 +4677,12 @@ acPtr_class * cPtr_syntaxSendInstructionAST::duplicate (Compiler * inCompiler CO
 //     @syntaxSendInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructionAST ("syntaxSendInstructionAST",
-                                                                                & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxSendInstructionAST ("syntaxSendInstructionAST",
+                                                                             & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxSendInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxSendInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxSendInstructionAST ;
 }
 
@@ -4799,12 +4799,12 @@ GGS_syntaxSendInstructionAST GGS_syntaxSendInstructionAST_2E_weak::bang_syntaxSe
 //     @syntaxSendInstructionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructionAST_2E_weak ("syntaxSendInstructionAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxSendInstructionAST_2E_weak ("syntaxSendInstructionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_syntaxInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxSendInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxSendInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxSendInstructionAST_2E_weak ;
 }
 
@@ -4921,12 +4921,12 @@ GGS_syntaxSendInstructionForGeneration GGS_syntaxSendInstructionForGeneration_2E
 //     @syntaxSendInstructionForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration_2E_weak ("syntaxSendInstructionForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration_2E_weak ("syntaxSendInstructionForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxSendInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxSendInstructionForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration_2E_weak ;
 }
 
@@ -5526,12 +5526,12 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis UpEnumerator_syntaxInstructionLi
 //     @syntaxInstructionListForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis ("syntaxInstructionListForGrammarAnalysis",
-                                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis ("syntaxInstructionListForGrammarAnalysis",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxInstructionListForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxInstructionListForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis ;
 }
 
@@ -6321,12 +6321,12 @@ GGS_uint UpEnumerator_productionRuleListForGrammarAnalysis::current_mProductionI
 //     @productionRuleListForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis ("productionRuleListForGrammarAnalysis",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis ("productionRuleListForGrammarAnalysis",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_productionRuleListForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_productionRuleListForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis ;
 }
 
@@ -6361,7 +6361,7 @@ GGS_productionRuleListForGrammarAnalysis GGS_productionRuleListForGrammarAnalysi
 //  Map type @unusedNonTerminalSymbolMapForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6493,7 +6493,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6504,7 +6504,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::performInsert (const GGS_
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -6605,7 +6605,7 @@ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis GGS_unusedNonTerminalSymbolMapF
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GGS_unusedNonTerminalSymbolMapForGrammarAnalysis result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -6665,7 +6665,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalInd
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -6713,7 +6713,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::description (String & ioS
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
     GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -6793,12 +6793,12 @@ GGS_uint UpEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis::current_mNon
 //     @unusedNonTerminalSymbolMapForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ("unusedNonTerminalSymbolMapForGrammarAnalysis",
-                                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ("unusedNonTerminalSymbolMapForGrammarAnalysis",
+                                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 }
 
@@ -7117,12 +7117,12 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis UpEnumerator_nonTerminalSymbolSo
 //     @nonTerminalSymbolSortedListForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ("nonTerminalSymbolSortedListForGrammarAnalysis",
-                                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ("nonTerminalSymbolSortedListForGrammarAnalysis",
+                                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonTerminalSymbolSortedListForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonTerminalSymbolSortedListForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 }
 
@@ -7239,12 +7239,12 @@ GGS_nonTerminalInstructionForGrammarAnalysis GGS_nonTerminalInstructionForGramma
 //     @nonTerminalInstructionForGrammarAnalysis.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis_2E_weak ("nonTerminalInstructionForGrammarAnalysis.weak",
-                                                                                                        & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis_2E_weak ("nonTerminalInstructionForGrammarAnalysis.weak",
+                                                                                                     & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonTerminalInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonTerminalInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis_2E_weak ;
 }
 
@@ -7791,12 +7791,12 @@ GGS_syntaxInstructionListForGrammarAnalysis UpEnumerator_branchListForGrammarAna
 //     @branchListForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchListForGrammarAnalysis ("branchListForGrammarAnalysis",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_branchListForGrammarAnalysis ("branchListForGrammarAnalysis",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_branchListForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_branchListForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_branchListForGrammarAnalysis ;
 }
 
@@ -7950,7 +7950,7 @@ mProperty_mAddedNonTerminalSymbolIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selectInstructionForGrammarAnalysis::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_selectInstructionForGrammarAnalysis::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ;
 }
 
@@ -7988,12 +7988,12 @@ acPtr_class * cPtr_selectInstructionForGrammarAnalysis::duplicate (Compiler * in
 //     @selectInstructionForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ("selectInstructionForGrammarAnalysis",
-                                                                                           & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ("selectInstructionForGrammarAnalysis",
+                                                                                        & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ;
 }
 
@@ -8110,12 +8110,12 @@ GGS_selectInstructionForGrammarAnalysis GGS_selectInstructionForGrammarAnalysis_
 //     @selectInstructionForGrammarAnalysis.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis_2E_weak ("selectInstructionForGrammarAnalysis.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis_2E_weak ("selectInstructionForGrammarAnalysis.weak",
+                                                                                                & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selectInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selectInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis_2E_weak ;
 }
 
@@ -8269,7 +8269,7 @@ mProperty_mAddedNonTerminalSymbolIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_repeatInstructionForGrammarAnalysis::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_repeatInstructionForGrammarAnalysis::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ;
 }
 
@@ -8307,12 +8307,12 @@ acPtr_class * cPtr_repeatInstructionForGrammarAnalysis::duplicate (Compiler * in
 //     @repeatInstructionForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ("repeatInstructionForGrammarAnalysis",
-                                                                                           & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ("repeatInstructionForGrammarAnalysis",
+                                                                                        & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ;
 }
 
@@ -8429,12 +8429,12 @@ GGS_repeatInstructionForGrammarAnalysis GGS_repeatInstructionForGrammarAnalysis_
 //     @repeatInstructionForGrammarAnalysis.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis_2E_weak ("repeatInstructionForGrammarAnalysis.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis_2E_weak ("repeatInstructionForGrammarAnalysis.weak",
+                                                                                                & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_repeatInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_repeatInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis_2E_weak ;
 }
 
@@ -9062,12 +9062,12 @@ GGS_lstring UpEnumerator_syntaxComponentListForGrammarAnalysis::current_mSyntaxC
 //     @syntaxComponentListForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentListForGrammarAnalysis ("syntaxComponentListForGrammarAnalysis",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentListForGrammarAnalysis ("syntaxComponentListForGrammarAnalysis",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxComponentListForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxComponentListForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxComponentListForGrammarAnalysis ;
 }
 
@@ -9102,7 +9102,7 @@ GGS_syntaxComponentListForGrammarAnalysis GGS_syntaxComponentListForGrammarAnaly
 //  Map type @terminalSymbolsMapForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9234,7 +9234,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_terminalSymbolsMapForGrammarAnalysis::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9245,7 +9245,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::performInsert (const GGS_terminal
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -9346,7 +9346,7 @@ GGS_terminalSymbolsMapForGrammarAnalysis GGS_terminalSymbolsMapForGrammarAnalysi
                                                                                                                     COMMA_LOCATION_ARGS) {
   GGS_terminalSymbolsMapForGrammarAnalysis result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -9429,7 +9429,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::setter_setMTerminalIndexForKey (G
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -9477,7 +9477,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
     GGS_terminalSymbolsMapForGrammarAnalysis_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -9557,12 +9557,12 @@ GGS_uint UpEnumerator_terminalSymbolsMapForGrammarAnalysis::current_mTerminalInd
 //     @terminalSymbolsMapForGrammarAnalysis generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis ("terminalSymbolsMapForGrammarAnalysis",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis ("terminalSymbolsMapForGrammarAnalysis",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalSymbolsMapForGrammarAnalysis::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalSymbolsMapForGrammarAnalysis::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis ;
 }
 
@@ -10172,12 +10172,12 @@ GGS__32_stringlist UpEnumerator_rowList::current_columns (LOCATION_ARGS) const {
 //     @rowList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList ("rowList",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_rowList ("rowList",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_rowList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_rowList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_rowList ;
 }
 
@@ -10841,12 +10841,12 @@ GGS_semanticDeclarationForGeneration UpEnumerator_programListForGeneration::curr
 //     @programListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGeneration ("programListForGeneration",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programListForGeneration ("programListForGeneration",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_programListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_programListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_programListForGeneration ;
 }
 
@@ -11055,7 +11055,7 @@ void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lst
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GGS_GenericDictionaryNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
+    OptionalSharedRef <GenericDictionaryNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setMListForKey in dict: the key does not exist" ;
@@ -11126,12 +11126,12 @@ GGS_genericExtensionMethodListMapDictionary_2E_element DownEnumerator_genericExt
 //     @genericExtensionMethodListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ("genericExtensionMethodListMapDictionary",
-                                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ("genericExtensionMethodListMapDictionary",
+                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_genericExtensionMethodListMapDictionary::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_genericExtensionMethodListMapDictionary::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ;
 }
 
@@ -11240,12 +11240,12 @@ void GGS_genericExtensionMethodListMap::description (String & ioString,
 //     @genericExtensionMethodListMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap ("genericExtensionMethodListMap",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap ("genericExtensionMethodListMap",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_genericExtensionMethodListMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_genericExtensionMethodListMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_genericExtensionMethodListMap ;
 }
 
@@ -11525,7 +11525,7 @@ void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS_unified
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GGS_GenericDictionaryNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
+    OptionalSharedRef <GenericDictionaryNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot setTypeListForKey in dict: the key does not exist" ;
@@ -11596,12 +11596,12 @@ GGS_descendantClassListMapDictionary_2E_element DownEnumerator_descendantClassLi
 //     @descendantClassListMapDictionary generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMapDictionary ("descendantClassListMapDictionary",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_descendantClassListMapDictionary ("descendantClassListMapDictionary",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_descendantClassListMapDictionary::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_descendantClassListMapDictionary::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_descendantClassListMapDictionary ;
 }
 
@@ -11710,12 +11710,12 @@ void GGS_descendantClassListMap::description (String & ioString,
 //     @descendantClassListMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMap ("descendantClassListMap",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_descendantClassListMap ("descendantClassListMap",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_descendantClassListMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_descendantClassListMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_descendantClassListMap ;
 }
 
@@ -11778,7 +11778,7 @@ GGS_unifiedTypeMapEntryList extensionGetter_listForKey (const GGS_descendantClas
 //  Map type @extensionMethodMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11910,7 +11910,7 @@ void GGS_extensionMethodMapForGlobalCheckings::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionMethodMapForGlobalCheckings::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11921,7 +11921,7 @@ void GGS_extensionMethodMapForGlobalCheckings::performInsert (const GGS_extensio
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_extensionMethodMapForGlobalCheckings_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_extensionMethodMapForGlobalCheckings_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -12021,7 +12021,7 @@ GGS_extensionMethodMapForGlobalCheckings GGS_extensionMethodMapForGlobalChecking
                                                                                                                     COMMA_LOCATION_ARGS) {
   GGS_extensionMethodMapForGlobalCheckings result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -12084,7 +12084,7 @@ void GGS_extensionMethodMapForGlobalCheckings::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionMethodMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_extensionMethodMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -12152,12 +12152,12 @@ GGS_lstring UpEnumerator_extensionMethodMapForGlobalCheckings::current_lkey (LOC
 //     @extensionMethodMapForGlobalCheckings generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ("extensionMethodMapForGlobalCheckings",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ("extensionMethodMapForGlobalCheckings",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMethodMapForGlobalCheckings::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMethodMapForGlobalCheckings::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ;
 }
 
@@ -12192,7 +12192,7 @@ GGS_extensionMethodMapForGlobalCheckings GGS_extensionMethodMapForGlobalChecking
 //  Map type @extensionSetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12324,7 +12324,7 @@ void GGS_extensionSetterMapForGlobalCheckings::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionSetterMapForGlobalCheckings::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12335,7 +12335,7 @@ void GGS_extensionSetterMapForGlobalCheckings::performInsert (const GGS_extensio
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_extensionSetterMapForGlobalCheckings_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_extensionSetterMapForGlobalCheckings_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -12435,7 +12435,7 @@ GGS_extensionSetterMapForGlobalCheckings GGS_extensionSetterMapForGlobalChecking
                                                                                                                     COMMA_LOCATION_ARGS) {
   GGS_extensionSetterMapForGlobalCheckings result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -12498,7 +12498,7 @@ void GGS_extensionSetterMapForGlobalCheckings::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionSetterMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_extensionSetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -12566,12 +12566,12 @@ GGS_lstring UpEnumerator_extensionSetterMapForGlobalCheckings::current_lkey (LOC
 //     @extensionSetterMapForGlobalCheckings generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ("extensionSetterMapForGlobalCheckings",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ("extensionSetterMapForGlobalCheckings",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionSetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionSetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ;
 }
 
@@ -12606,7 +12606,7 @@ GGS_extensionSetterMapForGlobalCheckings GGS_extensionSetterMapForGlobalChecking
 //  Map type @extensionGetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12738,7 +12738,7 @@ void GGS_extensionGetterMapForGlobalCheckings::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_extensionGetterMapForGlobalCheckings::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12749,7 +12749,7 @@ void GGS_extensionGetterMapForGlobalCheckings::performInsert (const GGS_extensio
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_extensionGetterMapForGlobalCheckings_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_extensionGetterMapForGlobalCheckings_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -12849,7 +12849,7 @@ GGS_extensionGetterMapForGlobalCheckings GGS_extensionGetterMapForGlobalChecking
                                                                                                                     COMMA_LOCATION_ARGS) {
   GGS_extensionGetterMapForGlobalCheckings result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -12912,7 +12912,7 @@ void GGS_extensionGetterMapForGlobalCheckings::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> array = sortedInfoArray () ;
     GGS_extensionGetterMapForGlobalCheckings_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_extensionGetterMapForGlobalCheckings_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -12980,12 +12980,12 @@ GGS_lstring UpEnumerator_extensionGetterMapForGlobalCheckings::current_lkey (LOC
 //     @extensionGetterMapForGlobalCheckings generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ("extensionGetterMapForGlobalCheckings",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ("extensionGetterMapForGlobalCheckings",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionGetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionGetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ;
 }
 
@@ -13613,12 +13613,12 @@ GGS_lstring UpEnumerator_galgas_33_QualifiedFeatureList::current_mFeatureValue (
 //     @galgas3QualifiedFeatureList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_QualifiedFeatureList ("galgas3QualifiedFeatureList",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_QualifiedFeatureList ("galgas3QualifiedFeatureList",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_galgas_33_QualifiedFeatureList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_galgas_33_QualifiedFeatureList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_QualifiedFeatureList ;
 }
 

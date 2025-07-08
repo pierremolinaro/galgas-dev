@@ -39,7 +39,7 @@
 class GGS_location ;
 class GGS_string ;
 class GGS_lstring ;
-class C_galgas_type_descriptor ;
+class GALGAS_TypeDescriptor ;
 
 //--------------------------------------------------------------------------------------------------
 //                 Compiler class
@@ -154,38 +154,38 @@ class Compiler : public SharedObject {
 
 //--- Emit a warning
   public: void emitSemanticWarning (const GGS_location & inWarningLocation,
-                                     const GGS_string & inWarningMessage,
-                                     const TC_Array <FixItDescription> & inFixItArray
-                                     COMMA_LOCATION_ARGS) ;
+                                    const GGS_string & inWarningMessage,
+                                    const TC_Array <FixItDescription> & inFixItArray
+                                    COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error
   public: void emitSemanticError (const GGS_location & inErrorLocation,
-                                   const GGS_string & inErrorMessage,
-                                   const TC_Array <FixItDescription> & inFixItArray
-                                   COMMA_LOCATION_ARGS) ;
+                                  const GGS_string & inErrorMessage,
+                                  const TC_Array <FixItDescription> & inFixItArray
+                                  COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K espace sequence
   public: void semanticErrorWith_K_message (const GGS_lstring & inKey,
-                                             TC_UniqueArray <String> & ioNearestKeyArray,
-                                             const char * in_K_ErrorMessage
-                                             COMMA_LOCATION_ARGS) ;
+                                            TC_UniqueArray <String> & ioNearestKeyArray,
+                                            const char * in_K_ErrorMessage
+                                            COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K and %L espace sequences
   public: void semanticErrorWith_K_L_message (const GGS_lstring & inKey,
-                                               const char * in_K_L_ErrorMessage,
-                                               const GGS_location & inExistingKeyLocation
-                                               COMMA_LOCATION_ARGS) ;
+                                              const char * in_K_L_ErrorMessage,
+                                              const GGS_location & inExistingKeyLocation
+                                              COMMA_LOCATION_ARGS) ;
 
 //--- Emit an warning message with an error message that contains %K and %L espace sequences
   public: void semanticWarningWith_K_L_message (const GGS_lstring & inKey,
-                                                 const char * in_K_L_ErrorMessage,
-                                                 const GGS_location & inExistingKeyLocation
-                                                 COMMA_LOCATION_ARGS) ;
+                                                const char * in_K_L_ErrorMessage,
+                                                const GGS_location & inExistingKeyLocation
+                                                COMMA_LOCATION_ARGS) ;
 
 //--- Cast error
   public: void castError (const String & inTargetTypeName,
-                           const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
-                           COMMA_LOCATION_ARGS) ;
+                          const GALGAS_TypeDescriptor * inObjectDynamicTypeDescriptor
+                          COMMA_LOCATION_ARGS) ;
 
 //--- File read logging
   public: static bool performLogFileRead (void) ;

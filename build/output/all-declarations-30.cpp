@@ -817,7 +817,7 @@ GGS_lstring function_getterNameForUsefulEntitiesGraph (const GGS_string & consti
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_getterNameForUsefulEntitiesGraph [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_getterNameForUsefulEntitiesGraph [3] = {
   & kTypeDescriptor_GALGAS_string,
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
@@ -870,7 +870,7 @@ GGS_lstring function_setterNameForUsefulEntitiesGraph (const GGS_string & consti
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_setterNameForUsefulEntitiesGraph [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_setterNameForUsefulEntitiesGraph [3] = {
   & kTypeDescriptor_GALGAS_string,
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
@@ -923,7 +923,7 @@ GGS_lstring function_methodNameForUsefulEntitiesGraph (const GGS_string & consti
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_methodNameForUsefulEntitiesGraph [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_methodNameForUsefulEntitiesGraph [3] = {
   & kTypeDescriptor_GALGAS_string,
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
@@ -976,7 +976,7 @@ GGS_lstring function_initializerNameForUsefulEntitiesGraph (const GGS_lstring & 
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_initializerNameForUsefulEntitiesGraph [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_initializerNameForUsefulEntitiesGraph [3] = {
   & kTypeDescriptor_GALGAS_lstring,
   & kTypeDescriptor_GALGAS_string,
   nullptr
@@ -1028,7 +1028,7 @@ GGS_lstring function_equatableNameForUsefulEntitiesGraph (const GGS_lstring & co
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_equatableNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_equatableNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1075,7 +1075,7 @@ GGS_lstring function_lexiqueNameForUsefulEntitiesGraph (const GGS_lstring & cons
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_lexiqueNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_lexiqueNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1122,7 +1122,7 @@ GGS_lstring function_grammarNameForUsefulEntitiesGraph (const GGS_lstring & cons
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_grammarNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_grammarNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1169,7 +1169,7 @@ GGS_lstring function_syntaxNameForUsefulEntitiesGraph (const GGS_lstring & const
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_syntaxNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_syntaxNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1216,7 +1216,7 @@ GGS_lstring function_optionNameForUsefulEntitiesGraph (const GGS_lstring & const
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_optionNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_optionNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1263,7 +1263,7 @@ GGS_lstring function_filewrapperNameForUsefulEntitiesGraph (const GGS_lstring & 
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_filewrapperNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_filewrapperNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1311,7 +1311,7 @@ GGS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const GGS_ls
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_filewrapperTemplateNameForUsefulEntitiesGraph [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_filewrapperTemplateNameForUsefulEntitiesGraph [3] = {
   & kTypeDescriptor_GALGAS_lstring,
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
@@ -1363,7 +1363,7 @@ GGS_lstring function_functionNameForUsefulEntitiesGraph (const GGS_lstring & con
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_functionNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_functionNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1410,7 +1410,7 @@ GGS_lstring function_procedureNameForUsefulEntitiesGraph (const GGS_lstring & co
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_procedureNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_procedureNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1457,7 +1457,7 @@ GGS_lstring function_typeNameForUsefulEntitiesGraph (const GGS_lstring & constin
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_typeNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_typeNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -1504,7 +1504,7 @@ GGS_lstring function_afterNameForUsefulEntitiesGraph (const GGS_location & const
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_afterNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_afterNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_location,
   nullptr
 } ;
@@ -1551,7 +1551,7 @@ GGS_lstring function_beforeNameForUsefulEntitiesGraph (const GGS_location & cons
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_beforeNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_beforeNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_location,
   nullptr
 } ;
@@ -1598,7 +1598,7 @@ GGS_lstring function_rootRuleNameForUsefulEntitiesGraph (const GGS_lstring & con
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_rootRuleNameForUsefulEntitiesGraph [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_rootRuleNameForUsefulEntitiesGraph [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;

@@ -490,7 +490,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_XCodeAppTargetList ;
   friend class DownEnumerator_XCodeAppTargetList ;
@@ -499,7 +499,7 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeAppTargetList ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @XCodeAppTargetList_2E_element struct
@@ -727,13 +727,13 @@ class GGS_XCodeAppTargetList_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeAppTargetList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @BuildFileList list enumerator
@@ -986,7 +986,7 @@ class GGS_BuildFileList : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_BuildFileList ;
   friend class DownEnumerator_BuildFileList ;
@@ -995,7 +995,7 @@ class GGS_BuildFileList : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_BuildFileList ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @BuildFileList_2E_element struct
@@ -1091,13 +1091,13 @@ class GGS_BuildFileList_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_BuildFileList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum xcodeProject
@@ -1175,11 +1175,11 @@ class GGS_xcodeProject : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xcodeProject ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProject ;
 

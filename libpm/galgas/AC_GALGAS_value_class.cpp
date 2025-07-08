@@ -20,13 +20,13 @@
 
 #include "AC_GALGAS_value_class.h"
 #include "acPtr_class.h"
-#include "C_galgas_type_descriptor.h"
+#include "GALGAS_TypeDescriptor.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * AC_GALGAS_value_class::dynamicTypeDescriptor (void) const {
-  const C_galgas_type_descriptor * result = nullptr ;
+const GALGAS_TypeDescriptor * AC_GALGAS_value_class::dynamicTypeDescriptor (void) const {
+  const GALGAS_TypeDescriptor * result = nullptr ;
   if (nullptr != mObjectPtr) {
     result = mObjectPtr->classDescriptor () ;
   }

@@ -30,37 +30,37 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_galgas_type_descriptor final {
+class GALGAS_TypeDescriptor final {
 //--- Attributes
-  private: C_galgas_type_descriptor * mNextType ;
-  private: C_galgas_type_descriptor * mPreviousType ;
+  private: GALGAS_TypeDescriptor * mNextType ;
+  private: GALGAS_TypeDescriptor * mPreviousType ;
   private: int32_t mBalance ;
   public: const char * const mGalgasTypeName ; // Without the leading '@'
   public: const int32_t mSlotID ;
-  public: const C_galgas_type_descriptor * mSuperclassDescriptor ;
+  public: const GALGAS_TypeDescriptor * mSuperclassDescriptor ;
 
 //--- Constructor
-  public: C_galgas_type_descriptor (const char * inGalgasTypeName,
-                                     const C_galgas_type_descriptor * inSuperClassDescriptor) ;
+  public: GALGAS_TypeDescriptor (const char * inGalgasTypeName,
+                              const GALGAS_TypeDescriptor * inSuperClassDescriptor) ;
 
 //--- Get Type list
-  public: static void typeListRoot (TC_UniqueArray <C_galgas_type_descriptor *> & outTypeList) ;
+  public: static void typeListRoot (TC_UniqueArray <GALGAS_TypeDescriptor *> & outTypeList) ;
   
 //--- No copy
-  private: C_galgas_type_descriptor (const C_galgas_type_descriptor &) = delete ;
-  private: C_galgas_type_descriptor & operator = (const C_galgas_type_descriptor &) = delete ;
+  private: GALGAS_TypeDescriptor (const GALGAS_TypeDescriptor &) = delete ;
+  private: GALGAS_TypeDescriptor & operator = (const GALGAS_TypeDescriptor &) = delete ;
 
 //--- Internal methods
-  private: static void recursiveInsert (C_galgas_type_descriptor * & ioRoot,
-                                         C_galgas_type_descriptor * inDescriptor,
-                                         bool & ioExtension) ;
+  private: static void recursiveInsert (GALGAS_TypeDescriptor * & ioRoot,
+                                        GALGAS_TypeDescriptor * inDescriptor,
+                                        bool & ioExtension) ;
 
-  private: static void rotateLeft (C_galgas_type_descriptor * & ioRootPtr) ;
+  private: static void rotateLeft (GALGAS_TypeDescriptor * & ioRootPtr) ;
 
-  private: static void rotateRight (C_galgas_type_descriptor * & ioRootPtr) ;
+  private: static void rotateRight (GALGAS_TypeDescriptor * & ioRootPtr) ;
 
-  public: static void recursiveGetSortedTypeList (C_galgas_type_descriptor * inRoot,
-                                                   TC_UniqueArray <C_galgas_type_descriptor *> & ioTypeList) ;
+  public: static void recursiveGetSortedTypeList (GALGAS_TypeDescriptor * inRoot,
+                                                  TC_UniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

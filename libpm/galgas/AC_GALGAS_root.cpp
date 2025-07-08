@@ -46,7 +46,7 @@ GGS_string AC_GALGAS_root::getter_description (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * AC_GALGAS_root::dynamicTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * AC_GALGAS_root::dynamicTypeDescriptor (void) const {
   return staticTypeDescriptor () ;
 }
 

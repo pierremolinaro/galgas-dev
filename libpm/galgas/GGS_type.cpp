@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -34,7 +34,7 @@ mTypeDescriptor (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_type::GGS_type (const C_galgas_type_descriptor * inTypeReference) :
+GGS_type::GGS_type (const GALGAS_TypeDescriptor * inTypeReference) :
 AC_GALGAS_root (),
 mTypeDescriptor (inTypeReference) {
 }
@@ -75,8 +75,8 @@ void GGS_type::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GGS_typelist GGS_type::class_func_typeList (LOCATION_ARGS) {
-  TC_UniqueArray <C_galgas_type_descriptor *> typeList ;
-  C_galgas_type_descriptor::typeListRoot (typeList) ;
+  TC_UniqueArray <GALGAS_TypeDescriptor *> typeList ;
+  GALGAS_TypeDescriptor::typeListRoot (typeList) ;
   GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
     result.addAssignOperation (GGS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;

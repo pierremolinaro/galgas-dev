@@ -170,7 +170,7 @@ mProperty_optionalClassTypeOrNull () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_weakReferenceTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_weakReferenceTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
 }
 
@@ -214,12 +214,12 @@ acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (Compiler * inCompi
 //     @weakReferenceTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ("weakReferenceTypeForGeneration",
-                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ("weakReferenceTypeForGeneration",
+                                                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_weakReferenceTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_weakReferenceTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
 }
 
@@ -336,12 +336,12 @@ GGS_weakReferenceTypeForGeneration GGS_weakReferenceTypeForGeneration_2E_weak::b
 //     @weakReferenceTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2E_weak ("weakReferenceTypeForGeneration.weak",
-                                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2E_weak ("weakReferenceTypeForGeneration.weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_weakReferenceTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_weakReferenceTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2E_weak ;
 }
 
@@ -477,12 +477,12 @@ void GGS_associatedValue::description (String & ioString,
 //     @associatedValue generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_associatedValue ("associatedValue",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_associatedValue ("associatedValue",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_associatedValue::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_associatedValue::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_associatedValue ;
 }
 
@@ -656,7 +656,7 @@ mProperty_comparison () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_enumDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_enumDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumDeclarationAST ;
 }
 
@@ -697,12 +697,12 @@ acPtr_class * cPtr_enumDeclarationAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @enumDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST ("enumDeclarationAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumDeclarationAST ("enumDeclarationAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumDeclarationAST ;
 }
 
@@ -856,7 +856,7 @@ mProperty_associatedValuesTypes () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_enumTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_enumTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumTypeForGeneration ;
 }
 
@@ -894,12 +894,12 @@ acPtr_class * cPtr_enumTypeForGeneration::duplicate (Compiler * inCompiler COMMA
 //     @enumTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration ("enumTypeForGeneration",
-                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumTypeForGeneration ("enumTypeForGeneration",
+                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumTypeForGeneration ;
 }
 
@@ -1016,12 +1016,12 @@ GGS_enumTypeForGeneration GGS_enumTypeForGeneration_2E_weak::bang_enumTypeForGen
 //     @enumTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration_2E_weak ("enumTypeForGeneration.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumTypeForGeneration_2E_weak ("enumTypeForGeneration.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumTypeForGeneration_2E_weak ;
 }
 
@@ -1297,7 +1297,7 @@ mProperty_mExternTypeMethodList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_externTypeDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_externTypeDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
 }
 
@@ -1350,12 +1350,12 @@ acPtr_class * cPtr_externTypeDeclarationAST::duplicate (Compiler * inCompiler CO
 //     @externTypeDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ("externTypeDeclarationAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ("externTypeDeclarationAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
 }
 
@@ -1529,7 +1529,7 @@ mProperty_mCppClassCode () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_externTypeDeclarationForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_externTypeDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
 }
 
@@ -1570,12 +1570,12 @@ acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (Compiler * inC
 //     @externTypeDeclarationForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ("externTypeDeclarationForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ("externTypeDeclarationForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeDeclarationForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
 }
 
@@ -1692,12 +1692,12 @@ GGS_externTypeDeclarationForGeneration GGS_externTypeDeclarationForGeneration_2E
 //     @externTypeDeclarationForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2E_weak ("externTypeDeclarationForGeneration.weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2E_weak ("externTypeDeclarationForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration_2E_weak ;
 }
 
@@ -1871,7 +1871,7 @@ mProperty_mInsertModifierList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_graphDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_graphDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationAST ;
 }
 
@@ -1912,12 +1912,12 @@ acPtr_class * cPtr_graphDeclarationAST::duplicate (Compiler * inCompiler COMMA_L
 //     @graphDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST ("graphDeclarationAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationAST ("graphDeclarationAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationAST ;
 }
 
@@ -2091,7 +2091,7 @@ mProperty_mInsertModifierList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_graphDeclarationForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_graphDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
 }
 
@@ -2132,12 +2132,12 @@ acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (Compiler * inCompil
 //     @graphDeclarationForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ("graphDeclarationForGeneration",
-                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration ("graphDeclarationForGeneration",
+                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphDeclarationForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
 }
 
@@ -2254,12 +2254,12 @@ GGS_graphDeclarationForGeneration GGS_graphDeclarationForGeneration_2E_weak::ban
 //     @graphDeclarationForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration_2E_weak ("graphDeclarationForGeneration.weak",
-                                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationForGeneration_2E_weak ("graphDeclarationForGeneration.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration_2E_weak ;
 }
 
@@ -2453,7 +2453,7 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_listDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_listDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listDeclarationAST ;
 }
 
@@ -2497,12 +2497,12 @@ acPtr_class * cPtr_listDeclarationAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @listDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_listDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_listDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listDeclarationAST ;
 }
 
@@ -2656,7 +2656,7 @@ mProperty_mTypedAttributeList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_listTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_listTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
 }
 
@@ -2694,12 +2694,12 @@ acPtr_class * cPtr_listTypeForGeneration::duplicate (Compiler * inCompiler COMMA
 //     @listTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
-                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
+                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_listTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_listTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
 }
 
@@ -2816,12 +2816,12 @@ GGS_listTypeForGeneration GGS_listTypeForGeneration_2E_weak::bang_listTypeForGen
 //     @listTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2E_weak ("listTypeForGeneration.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2E_weak ("listTypeForGeneration.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_listTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_listTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listTypeForGeneration_2E_weak ;
 }
 
@@ -3015,7 +3015,7 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_dictDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_dictDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictDeclarationAST ;
 }
 
@@ -3059,12 +3059,12 @@ acPtr_class * cPtr_dictDeclarationAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @dictDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST ("dictDeclarationAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictDeclarationAST ("dictDeclarationAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dictDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dictDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictDeclarationAST ;
 }
 
@@ -3278,7 +3278,7 @@ mProperty_mOptionalElementTypeEntry () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_dictTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_dictTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictTypeForGeneration ;
 }
 
@@ -3325,12 +3325,12 @@ acPtr_class * cPtr_dictTypeForGeneration::duplicate (Compiler * inCompiler COMMA
 //     @dictTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration ("dictTypeForGeneration",
-                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictTypeForGeneration ("dictTypeForGeneration",
+                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dictTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dictTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictTypeForGeneration ;
 }
 
@@ -3447,12 +3447,12 @@ GGS_dictTypeForGeneration GGS_dictTypeForGeneration_2E_weak::bang_dictTypeForGen
 //     @dictTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration_2E_weak ("dictTypeForGeneration.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictTypeForGeneration_2E_weak ("dictTypeForGeneration.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dictTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dictTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictTypeForGeneration_2E_weak ;
 }
 
@@ -3746,7 +3746,7 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_mapDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_mapDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapDeclarationAST ;
 }
 
@@ -3805,12 +3805,12 @@ acPtr_class * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOC
 //     @mapDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST ("mapDeclarationAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapDeclarationAST ("mapDeclarationAST",
+                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapDeclarationAST ;
 }
 
@@ -4124,7 +4124,7 @@ mProperty_mOptionalElementTypeEntry () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_mapTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_mapTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapTypeForGeneration ;
 }
 
@@ -4186,12 +4186,12 @@ acPtr_class * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler COMMA_
 //     @mapTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapTypeForGeneration ("mapTypeForGeneration",
-                                                                            & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapTypeForGeneration ("mapTypeForGeneration",
+                                                                         & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapTypeForGeneration ;
 }
 
@@ -4308,12 +4308,12 @@ GGS_mapTypeForGeneration GGS_mapTypeForGeneration_2E_weak::bang_mapTypeForGenera
 //     @mapTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapTypeForGeneration_2E_weak ("mapTypeForGeneration.weak",
-                                                                                    & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapTypeForGeneration_2E_weak ("mapTypeForGeneration.weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapTypeForGeneration_2E_weak ;
 }
 
@@ -4487,7 +4487,7 @@ mProperty_isUsefull () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionalTypeDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionalTypeDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ;
 }
 
@@ -4528,12 +4528,12 @@ acPtr_class * cPtr_optionalTypeDeclarationAST::duplicate (Compiler * inCompiler 
 //     @optionalTypeDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ("optionalTypeDeclarationAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ("optionalTypeDeclarationAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionalTypeDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionalTypeDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ;
 }
 
@@ -4687,7 +4687,7 @@ mProperty_weakType () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionalTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionalTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeForGeneration ;
 }
 
@@ -4725,12 +4725,12 @@ acPtr_class * cPtr_optionalTypeForGeneration::duplicate (Compiler * inCompiler C
 //     @optionalTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeForGeneration ("optionalTypeForGeneration",
-                                                                                 & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeForGeneration ("optionalTypeForGeneration",
+                                                                              & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionalTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionalTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeForGeneration ;
 }
 
@@ -4847,12 +4847,12 @@ GGS_optionalTypeForGeneration GGS_optionalTypeForGeneration_2E_weak::bang_option
 //     @optionalTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeForGeneration_2E_weak ("optionalTypeForGeneration.weak",
-                                                                                         & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeForGeneration_2E_weak ("optionalTypeForGeneration.weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionalTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionalTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeForGeneration_2E_weak ;
 }
 
@@ -5046,7 +5046,7 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_sortedListDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_sortedListDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
 }
 
@@ -5090,12 +5090,12 @@ acPtr_class * cPtr_sortedListDeclarationAST::duplicate (Compiler * inCompiler CO
 //     @sortedListDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ("sortedListDeclarationAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ("sortedListDeclarationAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
 }
 
@@ -5269,7 +5269,7 @@ mProperty_mSortDescriptorList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_sortedListTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_sortedListTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListTypeForGeneration ;
 }
 
@@ -5310,12 +5310,12 @@ acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (Compiler * inCompiler
 //     @sortedListTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration ("sortedListTypeForGeneration",
-                                                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration ("sortedListTypeForGeneration",
+                                                                                & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListTypeForGeneration ;
 }
 
@@ -5432,12 +5432,12 @@ GGS_sortedListTypeForGeneration GGS_sortedListTypeForGeneration_2E_weak::bang_so
 //     @sortedListTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration_2E_weak ("sortedListTypeForGeneration.weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListTypeForGeneration_2E_weak ("sortedListTypeForGeneration.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListTypeForGeneration_2E_weak ;
 }
 
@@ -5651,7 +5651,7 @@ mProperty_isUsefullStruct () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_structDeclarationAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_structDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structDeclarationAST ;
 }
 
@@ -5698,12 +5698,12 @@ acPtr_class * cPtr_structDeclarationAST::duplicate (Compiler * inCompiler COMMA_
 //     @structDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
-                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
+                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structDeclarationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structDeclarationAST ;
 }
 
@@ -5917,7 +5917,7 @@ mProperty_synthetizeAnInitializer () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_structTypeForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_structTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration ;
 }
 
@@ -5964,12 +5964,12 @@ acPtr_class * cPtr_structTypeForGeneration::duplicate (Compiler * inCompiler COM
 //     @structTypeForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGeneration ("structTypeForGeneration",
-                                                                               & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structTypeForGeneration ("structTypeForGeneration",
+                                                                            & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structTypeForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration ;
 }
 
@@ -6086,12 +6086,12 @@ GGS_structTypeForGeneration GGS_structTypeForGeneration_2E_weak::bang_structType
 //     @structTypeForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGeneration_2E_weak ("structTypeForGeneration.weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structTypeForGeneration_2E_weak ("structTypeForGeneration.weak",
+                                                                                    & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration_2E_weak ;
 }
 
@@ -6285,7 +6285,7 @@ mProperty_mAbstractExtensionGetterReturnedTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
@@ -6329,12 +6329,12 @@ acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (Compiler * inCompiler 
 //     @abstractExtensionGetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionGetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
@@ -6534,7 +6534,7 @@ mProperty_mAbstractExtensionGetterFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionGetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ;
 }
 
@@ -6580,12 +6580,12 @@ acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (Compiler * i
 //     @abstractExtensionGetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ("abstractExtensionGetterForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ("abstractExtensionGetterForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionGetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ;
 }
 
@@ -6702,12 +6702,12 @@ GGS_abstractExtensionGetterForGeneration GGS_abstractExtensionGetterForGeneratio
 //     @abstractExtensionGetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2E_weak ("abstractExtensionGetterForGeneration.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2E_weak ("abstractExtensionGetterForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2E_weak ;
 }
 
@@ -6881,7 +6881,7 @@ mProperty_mAbstractExtensionMethodFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
@@ -6922,12 +6922,12 @@ acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (Compiler * inCompiler 
 //     @abstractExtensionMethodAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionMethodAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
@@ -7107,7 +7107,7 @@ mProperty_mAbstractExtensionMethodFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionMethodForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
 }
 
@@ -7150,12 +7150,12 @@ acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (Compiler * i
 //     @abstractExtensionMethodForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ("abstractExtensionMethodForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ("abstractExtensionMethodForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionMethodForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
 }
 
@@ -7272,12 +7272,12 @@ GGS_abstractExtensionMethodForGeneration GGS_abstractExtensionMethodForGeneratio
 //     @abstractExtensionMethodForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2E_weak ("abstractExtensionMethodForGeneration.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2E_weak ("abstractExtensionMethodForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2E_weak ;
 }
 
@@ -7451,7 +7451,7 @@ mProperty_mAbstractExtensionSetterFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionSetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 }
 
@@ -7492,12 +7492,12 @@ acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (Compiler * inCompiler 
 //     @abstractExtensionSetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ("abstractExtensionSetterAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ("abstractExtensionSetterAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionSetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 }
 
@@ -7677,7 +7677,7 @@ mProperty_mAbstractExtensionSetterFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_abstractExtensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
@@ -7720,12 +7720,12 @@ acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (Compiler * i
 //     @abstractExtensionSetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionSetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
@@ -7842,12 +7842,12 @@ GGS_abstractExtensionSetterForGeneration GGS_abstractExtensionSetterForGeneratio
 //     @abstractExtensionSetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2E_weak ("abstractExtensionSetterForGeneration.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2E_weak ("abstractExtensionSetterForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2E_weak ;
 }
 
@@ -8001,7 +8001,7 @@ mProperty_mExtension () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_equatableExtensionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_equatableExtensionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionAST ;
 }
 
@@ -8039,12 +8039,12 @@ acPtr_class * cPtr_equatableExtensionAST::duplicate (Compiler * inCompiler COMMA
 //     @equatableExtensionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST ("equatableExtensionAST",
-                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionAST ("equatableExtensionAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableExtensionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableExtensionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionAST ;
 }
 
@@ -8318,7 +8318,7 @@ mProperty_mEndOfReaderLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 
@@ -8374,12 +8374,12 @@ acPtr_class * cPtr_extensionGetterAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @extensionGetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionGetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 
@@ -8659,7 +8659,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
 }
 
@@ -8717,12 +8717,12 @@ acPtr_class * cPtr_extensionGetterForGeneration::duplicate (Compiler * inCompile
 //     @extensionGetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionGetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
 }
 
@@ -8839,12 +8839,12 @@ GGS_extensionGetterForGeneration GGS_extensionGetterForGeneration_2E_weak::bang_
 //     @extensionGetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration_2E_weak ("extensionGetterForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration_2E_weak ("extensionGetterForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration_2E_weak ;
 }
 
@@ -9078,7 +9078,7 @@ mProperty_mEndOfMethodLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodAST ;
 }
 
@@ -9128,12 +9128,12 @@ acPtr_class * cPtr_extensionMethodAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @extensionMethodAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMethodAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodAST ;
 }
 
@@ -9373,7 +9373,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionMethodForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
 }
 
@@ -9425,12 +9425,12 @@ acPtr_class * cPtr_extensionMethodForGeneration::duplicate (Compiler * inCompile
 //     @extensionMethodForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration ("extensionMethodForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration ("extensionMethodForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMethodForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
 }
 
@@ -9547,12 +9547,12 @@ GGS_extensionMethodForGeneration GGS_extensionMethodForGeneration_2E_weak::bang_
 //     @extensionMethodForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2E_weak ("extensionMethodForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2E_weak ("extensionMethodForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration_2E_weak ;
 }
 
@@ -9786,7 +9786,7 @@ mProperty_mEndOfSetterDeclarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
@@ -9836,12 +9836,12 @@ acPtr_class * cPtr_extensionSetterAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @extensionSetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionSetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
@@ -10081,7 +10081,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
 }
 
@@ -10133,12 +10133,12 @@ acPtr_class * cPtr_extensionSetterForGeneration::duplicate (Compiler * inCompile
 //     @extensionSetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionSetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
 }
 
@@ -10255,12 +10255,12 @@ GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration_2E_weak::bang_
 //     @extensionSetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ("extensionSetterForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ("extensionSetterForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ;
 }
 
@@ -10454,7 +10454,7 @@ mProperty_mEndOfInitializerLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_initializerAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_initializerAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerAST ;
 }
 
@@ -10498,12 +10498,12 @@ acPtr_class * cPtr_initializerAST::duplicate (Compiler * inCompiler COMMA_LOCATI
 //     @initializerAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST ("initializerAST",
-                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerAST ("initializerAST",
+                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_initializerAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_initializerAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerAST ;
 }
 
@@ -10723,7 +10723,7 @@ mProperty_semanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionInitializerForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_extensionInitializerForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
 }
 
@@ -10772,12 +10772,12 @@ acPtr_class * cPtr_extensionInitializerForGeneration::duplicate (Compiler * inCo
 //     @extensionInitializerForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration ("extensionInitializerForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration ("extensionInitializerForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionInitializerForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionInitializerForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
 }
 
@@ -10894,12 +10894,12 @@ GGS_extensionInitializerForGeneration GGS_extensionInitializerForGeneration_2E_w
 //     @extensionInitializerForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ("extensionInitializerForGeneration.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ("extensionInitializerForGeneration.weak",
+                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionInitializerForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionInitializerForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ;
 }
 
@@ -11093,7 +11093,7 @@ mProperty_mAbstractExtensionGetterReturnedTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingAbstractExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
 }
 
@@ -11137,12 +11137,12 @@ acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (Compiler * i
 //     @overridingAbstractExtensionGetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionGetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
 }
 
@@ -11316,7 +11316,7 @@ mProperty_mOverridingExtensionMethodFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingAbstractExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
 }
 
@@ -11357,12 +11357,12 @@ acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (Compiler * i
 //     @overridingAbstractExtensionMethodAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionMethodAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
 }
 
@@ -11536,7 +11536,7 @@ mProperty_mOverridingExtensionSetterFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingAbstractExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
@@ -11577,12 +11577,12 @@ acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (Compiler * i
 //     @overridingAbstractExtensionSetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionSetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
@@ -11856,7 +11856,7 @@ mProperty_mEndOfReaderLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingExtensionGetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
 }
 
@@ -11912,12 +11912,12 @@ acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (Compiler * inCompile
 //     @overridingExtensionGetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ("overridingExtensionGetterAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ("overridingExtensionGetterAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionGetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
 }
 
@@ -12197,7 +12197,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overrideExtensionGetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overrideExtensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
 }
 
@@ -12255,12 +12255,12 @@ acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (Compiler * i
 //     @overrideExtensionGetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ("overrideExtensionGetterForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ("overrideExtensionGetterForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overrideExtensionGetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overrideExtensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
 }
 
@@ -12377,12 +12377,12 @@ GGS_overrideExtensionGetterForGeneration GGS_overrideExtensionGetterForGeneratio
 //     @overrideExtensionGetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2E_weak ("overrideExtensionGetterForGeneration.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2E_weak ("overrideExtensionGetterForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overrideExtensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overrideExtensionGetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2E_weak ;
 }
 
@@ -12616,7 +12616,7 @@ mProperty_mEndOfMethodLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingExtensionMethodAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
 }
 
@@ -12666,12 +12666,12 @@ acPtr_class * cPtr_overridingExtensionMethodAST::duplicate (Compiler * inCompile
 //     @overridingExtensionMethodAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST ("overridingExtensionMethodAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST ("overridingExtensionMethodAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionMethodAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
 }
 
@@ -12911,7 +12911,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingExtensionMethodForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingExtensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
 }
 
@@ -12963,12 +12963,12 @@ acPtr_class * cPtr_overridingExtensionMethodForGeneration::duplicate (Compiler *
 //     @overridingExtensionMethodForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ("overridingExtensionMethodForGeneration",
-                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ("overridingExtensionMethodForGeneration",
+                                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionMethodForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
 }
 
@@ -13085,12 +13085,12 @@ GGS_overridingExtensionMethodForGeneration GGS_overridingExtensionMethodForGener
 //     @overridingExtensionMethodForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2E_weak ("overridingExtensionMethodForGeneration.weak",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2E_weak ("overridingExtensionMethodForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionMethodForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2E_weak ;
 }
 
@@ -13324,7 +13324,7 @@ mProperty_mEndOfSetterDeclarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingExtensionSetterAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
 }
 
@@ -13374,12 +13374,12 @@ acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (Compiler * inCompile
 //     @overridingExtensionSetterAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST ("overridingExtensionSetterAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST ("overridingExtensionSetterAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionSetterAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
 }
 
@@ -13619,7 +13619,7 @@ mProperty_mSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingExtensionSetterForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_overridingExtensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
 }
 
@@ -13671,12 +13671,12 @@ acPtr_class * cPtr_overridingExtensionSetterForGeneration::duplicate (Compiler *
 //     @overridingExtensionSetterForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ("overridingExtensionSetterForGeneration",
-                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ("overridingExtensionSetterForGeneration",
+                                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionSetterForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
 }
 
@@ -13793,12 +13793,12 @@ GGS_overridingExtensionSetterForGeneration GGS_overridingExtensionSetterForGener
 //     @overridingExtensionSetterForGeneration.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2E_weak ("overridingExtensionSetterForGeneration.weak",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2E_weak ("overridingExtensionSetterForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2E_weak ;
 }
 
@@ -14186,12 +14186,12 @@ void GGS_unifiedTypeDefinition::description (String & ioString,
 //     @unifiedTypeDefinition generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeDefinition ("unifiedTypeDefinition",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeDefinition ("unifiedTypeDefinition",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unifiedTypeDefinition::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unifiedTypeDefinition::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unifiedTypeDefinition ;
 }
 

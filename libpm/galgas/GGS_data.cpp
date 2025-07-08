@@ -19,7 +19,6 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "capCollectionElement.h"
 #include "cCollectionElement.h"
 #include "Compiler.h"
 #include "galgas-input-output.h"

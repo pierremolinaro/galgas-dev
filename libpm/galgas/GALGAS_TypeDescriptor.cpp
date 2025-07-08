@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_galgas_type_descriptor.h"
+#include "GALGAS_TypeDescriptor.h"
 #include "String-class.h"
 #include "galgas-input-output.h"
 
@@ -27,24 +27,16 @@
 #include <string.h>
 
 //--------------------------------------------------------------------------------------------------
-//
 //  GALGAS type reference (for type introspection)
-//
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ======== C_galgas_type_descriptor
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-static C_galgas_type_descriptor * gGalgasTypeListRoot = nullptr ;
+static GALGAS_TypeDescriptor * gGalgasTypeListRoot = nullptr ;
 static int32_t gSlotID = 0 ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_galgas_type_descriptor::C_galgas_type_descriptor (const char * inGalgasTypeName,
-                                                    const C_galgas_type_descriptor * inSuperClassDescriptor) :
+GALGAS_TypeDescriptor::GALGAS_TypeDescriptor (const char * inGalgasTypeName,
+                                              const GALGAS_TypeDescriptor * inSuperClassDescriptor) :
 mNextType (nullptr),
 mPreviousType (nullptr),
 mBalance (0),
@@ -58,8 +50,8 @@ mSuperclassDescriptor (inSuperClassDescriptor) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_galgas_type_descriptor::recursiveGetSortedTypeList (C_galgas_type_descriptor * inRoot,
-                                                           TC_UniqueArray <C_galgas_type_descriptor *> & ioTypeList) {
+void GALGAS_TypeDescriptor::recursiveGetSortedTypeList (GALGAS_TypeDescriptor * inRoot,
+                                                        TC_UniqueArray <GALGAS_TypeDescriptor *> & ioTypeList) {
   if (nullptr != inRoot) {
     recursiveGetSortedTypeList (inRoot->mPreviousType, ioTypeList) ;
     ioTypeList.appendObject (inRoot) ;
@@ -69,7 +61,7 @@ void C_galgas_type_descriptor::recursiveGetSortedTypeList (C_galgas_type_descrip
 
 //--------------------------------------------------------------------------------------------------
 
-void C_galgas_type_descriptor::typeListRoot (TC_UniqueArray <C_galgas_type_descriptor *> & outTypeList) {
+void GALGAS_TypeDescriptor::typeListRoot (TC_UniqueArray <GALGAS_TypeDescriptor *> & outTypeList) {
   recursiveGetSortedTypeList (gGalgasTypeListRoot, outTypeList) ;
 }
 
@@ -81,8 +73,8 @@ void C_galgas_type_descriptor::typeListRoot (TC_UniqueArray <C_galgas_type_descr
 
 //--------------------------------------------------------------------------------------------------
 
-void C_galgas_type_descriptor::rotateLeft (C_galgas_type_descriptor * & ioRootPtr) {
-  C_galgas_type_descriptor * b = ioRootPtr->mNextType ;
+void GALGAS_TypeDescriptor::rotateLeft (GALGAS_TypeDescriptor * & ioRootPtr) {
+  GALGAS_TypeDescriptor * b = ioRootPtr->mNextType ;
   ioRootPtr->mNextType = b->mPreviousType ;
   b->mPreviousType = ioRootPtr;
 
@@ -102,8 +94,8 @@ void C_galgas_type_descriptor::rotateLeft (C_galgas_type_descriptor * & ioRootPt
 
 //--------------------------------------------------------------------------------------------------
 
-void C_galgas_type_descriptor::rotateRight (C_galgas_type_descriptor * & ioRootPtr) {
-  C_galgas_type_descriptor * b = ioRootPtr->mPreviousType ;
+void GALGAS_TypeDescriptor::rotateRight (GALGAS_TypeDescriptor * & ioRootPtr) {
+  GALGAS_TypeDescriptor * b = ioRootPtr->mPreviousType ;
   ioRootPtr->mPreviousType = b->mNextType ;
   b->mNextType = ioRootPtr ;
 
@@ -122,9 +114,9 @@ void C_galgas_type_descriptor::rotateRight (C_galgas_type_descriptor * & ioRootP
 
 //--------------------------------------------------------------------------------------------------
 
-void C_galgas_type_descriptor::recursiveInsert (C_galgas_type_descriptor * & ioRootPtr,
-                                                C_galgas_type_descriptor * inDescriptor,
-                                                bool & ioExtension) {
+void GALGAS_TypeDescriptor::recursiveInsert (GALGAS_TypeDescriptor * & ioRootPtr,
+                                             GALGAS_TypeDescriptor * inDescriptor,
+                                             bool & ioExtension) {
   if (ioRootPtr == nullptr) {
     ioExtension = true ;
     ioRootPtr = inDescriptor ;

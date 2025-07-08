@@ -164,7 +164,7 @@ mProperty_locationForOldStyleCollectionInitializerError () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_classFuncExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_classFuncExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFuncExpressionAST ;
 }
 
@@ -206,12 +206,12 @@ acPtr_class * cPtr_classFuncExpressionAST::duplicate (Compiler * inCompiler COMM
 //     @classFuncExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ("classFuncExpressionAST",
-                                                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ("classFuncExpressionAST",
+                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classFuncExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classFuncExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFuncExpressionAST ;
 }
 
@@ -431,7 +431,7 @@ mProperty_requiredTypes () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_classFuncExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_classFuncExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ;
 }
 
@@ -480,12 +480,12 @@ acPtr_class * cPtr_classFuncExpressionForGeneration::duplicate (Compiler * inCom
 //     @classFuncExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ("classFuncExpressionForGeneration",
-                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ("classFuncExpressionForGeneration",
+                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classFuncExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classFuncExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ;
 }
 
@@ -645,7 +645,7 @@ mProperty_mReceiverTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_bangExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_bangExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bangExpressionForGeneration ;
 }
 
@@ -685,12 +685,12 @@ acPtr_class * cPtr_bangExpressionForGeneration::duplicate (Compiler * inCompiler
 //     @bangExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration ("bangExpressionForGeneration",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration ("bangExpressionForGeneration",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bangExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bangExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bangExpressionForGeneration ;
 }
 
@@ -858,7 +858,7 @@ mProperty_mEndOfCollectionValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_collectionValueAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_collectionValueAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_collectionValueAST ;
 }
 
@@ -897,12 +897,12 @@ acPtr_class * cPtr_collectionValueAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @collectionValueAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST ("collectionValueAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueAST ("collectionValueAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_collectionValueAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_collectionValueAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_collectionValueAST ;
 }
 
@@ -1042,7 +1042,7 @@ mProperty_expressionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_expressionCollectionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_expressionCollectionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration ;
 }
 
@@ -1079,12 +1079,12 @@ acPtr_class * cPtr_expressionCollectionForGeneration::duplicate (Compiler * inCo
 //     @expressionCollectionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration ("expressionCollectionForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration ("expressionCollectionForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_expressionCollectionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_expressionCollectionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration ;
 }
 
@@ -1212,7 +1212,7 @@ mProperty_mFilewrapperName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperObjectInstanciationInExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperObjectInstanciationInExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ;
 }
 
@@ -1245,12 +1245,12 @@ acPtr_class * cPtr_filewrapperObjectInstanciationInExpressionAST::duplicate (Com
 //     @filewrapperObjectInstanciationInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ("filewrapperObjectInstanciationInExpressionAST",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ("filewrapperObjectInstanciationInExpressionAST",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperObjectInstanciationInExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperObjectInstanciationInExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ;
 }
 
@@ -1398,7 +1398,7 @@ mProperty_mFilewrapperPath () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperInExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperInExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST ;
 }
 
@@ -1434,12 +1434,12 @@ acPtr_class * cPtr_filewrapperInExpressionAST::duplicate (Compiler * inCompiler 
 //     @filewrapperInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST ("filewrapperInExpressionAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST ("filewrapperInExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperInExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperInExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST ;
 }
 
@@ -1607,7 +1607,7 @@ mProperty_mExpressions () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperTemplateInExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperTemplateInExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ;
 }
 
@@ -1646,12 +1646,12 @@ acPtr_class * cPtr_filewrapperTemplateInExpressionAST::duplicate (Compiler * inC
 //     @filewrapperTemplateInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ("filewrapperTemplateInExpressionAST",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ("filewrapperTemplateInExpressionAST",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperTemplateInExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperTemplateInExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ;
 }
 
@@ -1811,7 +1811,7 @@ mProperty_mFilewrapperPath () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ;
 }
 
@@ -1851,12 +1851,12 @@ acPtr_class * cPtr_filewrapperInExpressionForGeneration::duplicate (Compiler * i
 //     @filewrapperInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ("filewrapperInExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ("filewrapperInExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ;
 }
 
@@ -2036,7 +2036,7 @@ mProperty_mActualOutputParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperTemplateInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperTemplateInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
 }
 
@@ -2079,12 +2079,12 @@ acPtr_class * cPtr_filewrapperTemplateInExpressionForGeneration::duplicate (Comp
 //     @filewrapperTemplateInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ("filewrapperTemplateInExpressionForGeneration",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ("filewrapperTemplateInExpressionForGeneration",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperTemplateInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperTemplateInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
 }
 
@@ -2264,7 +2264,7 @@ mProperty_mIsTextFile () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperStaticPathInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperStaticPathInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ;
 }
 
@@ -2307,12 +2307,12 @@ acPtr_class * cPtr_filewrapperStaticPathInExpressionForGeneration::duplicate (Co
 //     @filewrapperStaticPathInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ("filewrapperStaticPathInExpressionForGeneration",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ("filewrapperStaticPathInExpressionForGeneration",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperStaticPathInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperStaticPathInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ;
 }
 
@@ -2492,7 +2492,7 @@ mProperty_mElseExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_ifExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_ifExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ifExpressionForGeneration ;
 }
 
@@ -2535,12 +2535,12 @@ acPtr_class * cPtr_ifExpressionForGeneration::duplicate (Compiler * inCompiler C
 //     @ifExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration ("ifExpressionForGeneration",
-                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration ("ifExpressionForGeneration",
+                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ifExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_ifExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ifExpressionForGeneration ;
 }
 
@@ -2688,7 +2688,7 @@ mProperty_mLexiqueGetterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_lexiqueIntrospectionExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_lexiqueIntrospectionExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ;
 }
 
@@ -2724,12 +2724,12 @@ acPtr_class * cPtr_lexiqueIntrospectionExpressionAST::duplicate (Compiler * inCo
 //     @lexiqueIntrospectionExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ("lexiqueIntrospectionExpressionAST",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ("lexiqueIntrospectionExpressionAST",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexiqueIntrospectionExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexiqueIntrospectionExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ;
 }
 
@@ -2889,7 +2889,7 @@ mProperty_mLexiqueGetterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_lexiqueIntrospectionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_lexiqueIntrospectionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ;
 }
 
@@ -2929,12 +2929,12 @@ acPtr_class * cPtr_lexiqueIntrospectionForGeneration::duplicate (Compiler * inCo
 //     @lexiqueIntrospectionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ("lexiqueIntrospectionForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ("lexiqueIntrospectionForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexiqueIntrospectionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexiqueIntrospectionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ;
 }
 
@@ -3062,7 +3062,7 @@ mProperty_mCharacter () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalCharExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalCharExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalCharExpressionAST ;
 }
 
@@ -3095,12 +3095,12 @@ acPtr_class * cPtr_literalCharExpressionAST::duplicate (Compiler * inCompiler CO
 //     @literalCharExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionAST ("literalCharExpressionAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalCharExpressionAST ("literalCharExpressionAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalCharExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalCharExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalCharExpressionAST ;
 }
 
@@ -3240,7 +3240,7 @@ mProperty_mCharacter () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalCharExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalCharExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
 }
 
@@ -3277,12 +3277,12 @@ acPtr_class * cPtr_literalCharExpressionForGeneration::duplicate (Compiler * inC
 //     @literalCharExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ("literalCharExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ("literalCharExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalCharExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalCharExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
 }
 
@@ -3410,7 +3410,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalDoubleExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalDoubleExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalDoubleExpressionAST ;
 }
 
@@ -3443,12 +3443,12 @@ acPtr_class * cPtr_literalDoubleExpressionAST::duplicate (Compiler * inCompiler 
 //     @literalDoubleExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST ("literalDoubleExpressionAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST ("literalDoubleExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalDoubleExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalDoubleExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalDoubleExpressionAST ;
 }
 
@@ -3588,7 +3588,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalDoubleExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalDoubleExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
 }
 
@@ -3625,12 +3625,12 @@ acPtr_class * cPtr_literalDoubleExpressionForGeneration::duplicate (Compiler * i
 //     @literalDoubleExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ("literalDoubleExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ("literalDoubleExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalDoubleExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalDoubleExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
 }
 
@@ -3758,7 +3758,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalBigIntExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalBigIntExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
 }
 
@@ -3791,12 +3791,12 @@ acPtr_class * cPtr_literalBigIntExpressionAST::duplicate (Compiler * inCompiler 
 //     @literalBigIntExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST ("literalBigIntExpressionAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST ("literalBigIntExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalBigIntExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalBigIntExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
 }
 
@@ -3936,7 +3936,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalUIntExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalUIntExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ;
 }
 
@@ -3973,12 +3973,12 @@ acPtr_class * cPtr_literalUIntExpressionForGeneration::duplicate (Compiler * inC
 //     @literalUIntExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ("literalUIntExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ("literalUIntExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalUIntExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalUIntExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ;
 }
 
@@ -4118,7 +4118,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalUInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalUInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
 }
 
@@ -4155,12 +4155,12 @@ acPtr_class * cPtr_literalUInt_36__34_ExpressionForGeneration::duplicate (Compil
 //     @literalUInt64ExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ("literalUInt64ExpressionForGeneration",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ("literalUInt64ExpressionForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalUInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalUInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
 }
 
@@ -4300,7 +4300,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalSIntExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalSIntExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
 }
 
@@ -4337,12 +4337,12 @@ acPtr_class * cPtr_literalSIntExpressionForGeneration::duplicate (Compiler * inC
 //     @literalSIntExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ("literalSIntExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ("literalSIntExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalSIntExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalSIntExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
 }
 
@@ -4482,7 +4482,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalSInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalSInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
 }
 
@@ -4519,12 +4519,12 @@ acPtr_class * cPtr_literalSInt_36__34_ExpressionForGeneration::duplicate (Compil
 //     @literalSInt64ExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalSInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalSInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
 }
 
@@ -4664,7 +4664,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalBigIntExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalBigIntExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
 }
 
@@ -4701,12 +4701,12 @@ acPtr_class * cPtr_literalBigIntExpressionForGeneration::duplicate (Compiler * i
 //     @literalBigIntExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ("literalBigIntExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ("literalBigIntExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalBigIntExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalBigIntExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
 }
 
@@ -4846,7 +4846,7 @@ mProperty_mString () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalStringExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalStringExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ;
 }
 
@@ -4883,12 +4883,12 @@ acPtr_class * cPtr_literalStringExpressionForGeneration::duplicate (Compiler * i
 //     @literalStringExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ("literalStringExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ("literalStringExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalStringExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalStringExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ;
 }
 
@@ -5016,7 +5016,7 @@ mProperty_mLiteralTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalTypeInExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalTypeInExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalTypeInExpressionAST ;
 }
 
@@ -5049,12 +5049,12 @@ acPtr_class * cPtr_literalTypeInExpressionAST::duplicate (Compiler * inCompiler 
 //     @literalTypeInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST ("literalTypeInExpressionAST",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST ("literalTypeInExpressionAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalTypeInExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalTypeInExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalTypeInExpressionAST ;
 }
 
@@ -5194,7 +5194,7 @@ mProperty_mLiteralType () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_literalTypeInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_literalTypeInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ;
 }
 
@@ -5231,12 +5231,12 @@ acPtr_class * cPtr_literalTypeInExpressionForGeneration::duplicate (Compiler * i
 //     @literalTypeInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ("literalTypeInExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ("literalTypeInExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_literalTypeInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_literalTypeInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ;
 }
 
@@ -5376,7 +5376,7 @@ mProperty_mSelfCppName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selfInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_selfInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfInExpressionForGeneration ;
 }
 
@@ -5413,12 +5413,12 @@ acPtr_class * cPtr_selfInExpressionForGeneration::duplicate (Compiler * inCompil
 //     @selfInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration ("selfInExpressionForGeneration",
-                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration ("selfInExpressionForGeneration",
+                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selfInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfInExpressionForGeneration ;
 }
 
@@ -5538,7 +5538,7 @@ cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler C
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_nilExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_nilExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nilExpressionForGeneration ;
 }
 
@@ -5572,12 +5572,12 @@ acPtr_class * cPtr_nilExpressionForGeneration::duplicate (Compiler * inCompiler 
 //     @nilExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionForGeneration ("nilExpressionForGeneration",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nilExpressionForGeneration ("nilExpressionForGeneration",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nilExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nilExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nilExpressionForGeneration ;
 }
 
@@ -5745,7 +5745,7 @@ mProperty_mOptionGetterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionExpressionAST ;
 }
 
@@ -5784,12 +5784,12 @@ acPtr_class * cPtr_optionExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 //     @optionExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST ("optionExpressionAST",
-                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionExpressionAST ("optionExpressionAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionExpressionAST ;
 }
 
@@ -5969,7 +5969,7 @@ mProperty_mOptionEntryName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionValueExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionValueExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ;
 }
 
@@ -6012,12 +6012,12 @@ acPtr_class * cPtr_optionValueExpressionForGeneration::duplicate (Compiler * inC
 //     @optionValueExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ("optionValueExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ("optionValueExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionValueExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionValueExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ;
 }
 
@@ -6197,7 +6197,7 @@ mProperty_mOptionEntryName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionCharExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionCharExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ;
 }
 
@@ -6240,12 +6240,12 @@ acPtr_class * cPtr_optionCharExpressionForGeneration::duplicate (Compiler * inCo
 //     @optionCharExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ("optionCharExpressionForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ("optionCharExpressionForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionCharExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionCharExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ;
 }
 
@@ -6425,7 +6425,7 @@ mProperty_mOptionEntryName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionStringExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionStringExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
 }
 
@@ -6468,12 +6468,12 @@ acPtr_class * cPtr_optionStringExpressionForGeneration::duplicate (Compiler * in
 //     @optionStringExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ("optionStringExpressionForGeneration",
-                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ("optionStringExpressionForGeneration",
+                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionStringExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionStringExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
 }
 
@@ -6653,7 +6653,7 @@ mProperty_mOptionEntryName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_optionCommentExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_optionCommentExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ;
 }
 
@@ -6696,12 +6696,12 @@ acPtr_class * cPtr_optionCommentExpressionForGeneration::duplicate (Compiler * i
 //     @optionCommentExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ("optionCommentExpressionForGeneration",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ("optionCommentExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionCommentExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionCommentExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ;
 }
 
@@ -6821,7 +6821,7 @@ cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler C
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_trueExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_trueExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_trueExpressionForGeneration ;
 }
 
@@ -6855,12 +6855,12 @@ acPtr_class * cPtr_trueExpressionForGeneration::duplicate (Compiler * inCompiler
 //     @trueExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionForGeneration ("trueExpressionForGeneration",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_trueExpressionForGeneration ("trueExpressionForGeneration",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_trueExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_trueExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_trueExpressionForGeneration ;
 }
 
@@ -6980,7 +6980,7 @@ cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler C
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_falseExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_falseExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_falseExpressionForGeneration ;
 }
 
@@ -7014,12 +7014,12 @@ acPtr_class * cPtr_falseExpressionForGeneration::duplicate (Compiler * inCompile
 //     @falseExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionForGeneration ("falseExpressionForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_falseExpressionForGeneration ("falseExpressionForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_falseExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_falseExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_falseExpressionForGeneration ;
 }
 
@@ -7175,7 +7175,7 @@ mProperty_mVarName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_varInExpressionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_varInExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_varInExpressionAST ;
 }
 
@@ -7208,12 +7208,12 @@ acPtr_class * cPtr_varInExpressionAST::duplicate (Compiler * inCompiler COMMA_LO
 //     @varInExpressionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionAST ("varInExpressionAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varInExpressionAST ("varInExpressionAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_varInExpressionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_varInExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_varInExpressionAST ;
 }
 
@@ -7373,7 +7373,7 @@ mProperty_mNameForCheckingFormalParameterUsing () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_varInExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_varInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_varInExpressionForGeneration ;
 }
 
@@ -7413,12 +7413,12 @@ acPtr_class * cPtr_varInExpressionForGeneration::duplicate (Compiler * inCompile
 //     @varInExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionForGeneration ("varInExpressionForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varInExpressionForGeneration ("varInExpressionForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_varInExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_varInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_varInExpressionForGeneration ;
 }
 
@@ -7558,7 +7558,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_notExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_notExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionForGeneration ;
 }
 
@@ -7595,12 +7595,12 @@ acPtr_class * cPtr_notExpressionForGeneration::duplicate (Compiler * inCompiler 
 //     @notExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ("notExpressionForGeneration",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ("notExpressionForGeneration",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_notExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_notExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_notExpressionForGeneration ;
 }
 
@@ -7760,7 +7760,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_orShortExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_orShortExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
 }
 
@@ -7800,12 +7800,12 @@ acPtr_class * cPtr_orShortExpressionForGeneration::duplicate (Compiler * inCompi
 //     @orShortExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration ("orShortExpressionForGeneration",
-                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration ("orShortExpressionForGeneration",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_orShortExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_orShortExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
 }
 
@@ -7965,7 +7965,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_openedSliceExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_openedSliceExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
 }
 
@@ -8005,12 +8005,12 @@ acPtr_class * cPtr_openedSliceExpressionForGeneration::duplicate (Compiler * inC
 //     @openedSliceExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ("openedSliceExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ("openedSliceExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_openedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_openedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
 }
 
@@ -8170,7 +8170,7 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_closedSliceExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_closedSliceExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
 }
 
@@ -8210,12 +8210,12 @@ acPtr_class * cPtr_closedSliceExpressionForGeneration::duplicate (Compiler * inC
 //     @closedSliceExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ("closedSliceExpressionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ("closedSliceExpressionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_closedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_closedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
 }
 
@@ -8355,7 +8355,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_tildeExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_tildeExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionForGeneration ;
 }
 
@@ -8392,12 +8392,12 @@ acPtr_class * cPtr_tildeExpressionForGeneration::duplicate (Compiler * inCompile
 //     @tildeExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration ("tildeExpressionForGeneration",
-                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration ("tildeExpressionForGeneration",
+                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_tildeExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_tildeExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tildeExpressionForGeneration ;
 }
 
@@ -8537,7 +8537,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_unaryMinusExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_unaryMinusExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration ;
 }
 
@@ -8574,12 +8574,12 @@ acPtr_class * cPtr_unaryMinusExpressionForGeneration::duplicate (Compiler * inCo
 //     @unaryMinusExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration ("unaryMinusExpressionForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration ("unaryMinusExpressionForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryMinusExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryMinusExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration ;
 }
 
@@ -8719,7 +8719,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_unaryWrappingMinusExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_unaryWrappingMinusExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
 }
 
@@ -8756,12 +8756,12 @@ acPtr_class * cPtr_unaryWrappingMinusExpressionForGeneration::duplicate (Compile
 //     @unaryWrappingMinusExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ("unaryWrappingMinusExpressionForGeneration",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ("unaryWrappingMinusExpressionForGeneration",
+                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unaryWrappingMinusExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unaryWrappingMinusExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
 }
 
@@ -8967,7 +8967,7 @@ mProperty_mSourceExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_assignmentInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_assignmentInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionAST ;
 }
 
@@ -9008,12 +9008,12 @@ acPtr_class * cPtr_assignmentInstructionAST::duplicate (Compiler * inCompiler CO
 //     @assignmentInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionAST ("assignmentInstructionAST",
-                                                                                & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionAST ("assignmentInstructionAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_assignmentInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_assignmentInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionAST ;
 }
 
@@ -9187,7 +9187,7 @@ mProperty_mSourceExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_selfPropertyAssignmentInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_selfPropertyAssignmentInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
 }
 
@@ -9228,12 +9228,12 @@ acPtr_class * cPtr_selfPropertyAssignmentInstructionAST::duplicate (Compiler * i
 //     @selfPropertyAssignmentInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ("selfPropertyAssignmentInstructionAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ("selfPropertyAssignmentInstructionAST",
+                                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_selfPropertyAssignmentInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_selfPropertyAssignmentInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
 }
 
@@ -9481,7 +9481,7 @@ mProperty_mSourceLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_assignmentInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_assignmentInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
 }
 
@@ -9532,12 +9532,12 @@ acPtr_class * cPtr_assignmentInstructionForGeneration::duplicate (Compiler * inC
 //     @assignmentInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ("assignmentInstructionForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ("assignmentInstructionForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_assignmentInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_assignmentInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
 }
 
@@ -9705,7 +9705,7 @@ mProperty_mElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_structuredCastInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_structuredCastInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
 }
 
@@ -9744,12 +9744,12 @@ acPtr_class * cPtr_structuredCastInstructionForGeneration::duplicate (Compiler *
 //     @structuredCastInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ("structuredCastInstructionForGeneration",
-                                                                                              & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ("structuredCastInstructionForGeneration",
+                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structuredCastInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structuredCastInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
 }
 
@@ -10018,7 +10018,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_opAssignExpressionInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_opAssignExpressionInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST ;
 }
 
@@ -10065,12 +10065,12 @@ acPtr_class * cPtr_opAssignExpressionInstructionAST::duplicate (Compiler * inCom
 //     @opAssignExpressionInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST ("opAssignExpressionInstructionAST",
-                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST ("opAssignExpressionInstructionAST",
+                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_opAssignExpressionInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_opAssignExpressionInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST ;
 }
 
@@ -10264,7 +10264,7 @@ mProperty_mExpressions () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_plusEqualElementsInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_plusEqualElementsInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ;
 }
 
@@ -10308,12 +10308,12 @@ acPtr_class * cPtr_plusEqualElementsInstructionAST::duplicate (Compiler * inComp
 //     @plusEqualElementsInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ("plusEqualElementsInstructionAST",
-                                                                                       & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ("plusEqualElementsInstructionAST",
+                                                                                    & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusEqualElementsInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusEqualElementsInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ;
 }
 
@@ -10507,7 +10507,7 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_plusPlusEqualElementInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_plusPlusEqualElementInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST ;
 }
 
@@ -10551,12 +10551,12 @@ acPtr_class * cPtr_plusPlusEqualElementInstructionAST::duplicate (Compiler * inC
 //     @plusPlusEqualElementInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST ("plusPlusEqualElementInstructionAST",
-                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST ("plusPlusEqualElementInstructionAST",
+                                                                                       & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusPlusEqualElementInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusPlusEqualElementInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST ;
 }
 
@@ -10804,7 +10804,7 @@ mProperty_mGeneratedMethod () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_opAssignInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_opAssignInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignInstructionForGeneration ;
 }
 
@@ -10855,12 +10855,12 @@ acPtr_class * cPtr_opAssignInstructionForGeneration::duplicate (Compiler * inCom
 //     @opAssignInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration ("opAssignInstructionForGeneration",
-                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration ("opAssignInstructionForGeneration",
+                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_opAssignInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_opAssignInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_opAssignInstructionForGeneration ;
 }
 
@@ -11088,7 +11088,7 @@ mProperty_mSourceExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_plusPlusAssignInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_plusPlusAssignInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration ;
 }
 
@@ -11136,12 +11136,12 @@ acPtr_class * cPtr_plusPlusAssignInstructionForGeneration::duplicate (Compiler *
 //     @plusPlusAssignInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration ("plusPlusAssignInstructionForGeneration",
-                                                                                              & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration ("plusPlusAssignInstructionForGeneration",
+                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_plusPlusAssignInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_plusPlusAssignInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_plusPlusAssignInstructionForGeneration ;
 }
 
@@ -11349,7 +11349,7 @@ mProperty_mFixitListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_errorInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_errorInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionForGeneration ;
 }
 
@@ -11394,12 +11394,12 @@ acPtr_class * cPtr_errorInstructionForGeneration::duplicate (Compiler * inCompil
 //     @errorInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration ("errorInstructionForGeneration",
-                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration ("errorInstructionForGeneration",
+                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_errorInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_errorInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_errorInstructionForGeneration ;
 }
 
@@ -11567,7 +11567,7 @@ mProperty_mEndOfAnonymousEnumeration () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionImplicitVarInExpAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_enumeratedCollectionImplicitVarInExpAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
 }
 
@@ -11606,12 +11606,12 @@ acPtr_class * cPtr_enumeratedCollectionImplicitVarInExpAST::duplicate (Compiler 
 //     @enumeratedCollectionImplicitVarInExpAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ("enumeratedCollectionImplicitVarInExpAST",
-                                                                                               & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ("enumeratedCollectionImplicitVarInExpAST",
+                                                                                            & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionImplicitVarInExpAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionImplicitVarInExpAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
 }
 
@@ -11799,7 +11799,7 @@ mProperty_mEndOfEnumerationExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionVarInExpAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_enumeratedCollectionVarInExpAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
 }
 
@@ -11841,12 +11841,12 @@ acPtr_class * cPtr_enumeratedCollectionVarInExpAST::duplicate (Compiler * inComp
 //     @enumeratedCollectionVarInExpAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ("enumeratedCollectionVarInExpAST",
-                                                                                       & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ("enumeratedCollectionVarInExpAST",
+                                                                                    & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumeratedCollectionVarInExpAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumeratedCollectionVarInExpAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
 }
 
@@ -12220,7 +12220,7 @@ mProperty_mEndOf_5F_foreach_5F_instruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_forInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_forInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionAST ;
 }
 
@@ -12291,12 +12291,12 @@ acPtr_class * cPtr_forInstructionAST::duplicate (Compiler * inCompiler COMMA_LOC
 //     @forInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST ("forInstructionAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionAST ("forInstructionAST",
+                                                                      & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionAST ;
 }
 
@@ -12564,7 +12564,7 @@ mProperty_mAfterInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_forInstructionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_forInstructionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 }
 
@@ -12618,12 +12618,12 @@ acPtr_class * cPtr_forInstructionForGeneration::duplicate (Compiler * inCompiler
 //     @forInstructionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration ("forInstructionForGeneration",
-                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionForGeneration ("forInstructionForGeneration",
+                                                                                & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_forInstructionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_forInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 }
 
@@ -12751,7 +12751,7 @@ mProperty_mActualParameterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ;
 }
 
@@ -12784,12 +12784,12 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::dupli
 //     @grammarInstructionSyntaxDirectedTranslationResultInVar generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ("grammarInstructionSyntaxDirectedTranslationResultInVar",
-                                                                                                              & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ("grammarInstructionSyntaxDirectedTranslationResultInVar",
+                                                                                                           & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInVar::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInVar::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ;
 }
 
@@ -12937,7 +12937,7 @@ mProperty_mActualParameterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ;
 }
 
@@ -12973,12 +12973,12 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVa
 //     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar",
-                                                                                                                      & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar",
+                                                                                                                   & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ;
 }
 
@@ -13126,7 +13126,7 @@ mProperty_mActualParameterName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ;
 }
 
@@ -13162,12 +13162,12 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredCo
 //     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst",
-                                                                                                                        & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst",
+                                                                                                                     & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ;
 }
 
@@ -13401,7 +13401,7 @@ mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInFileInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInFileInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInFileInstructionAST ;
 }
 
@@ -13451,12 +13451,12 @@ acPtr_class * cPtr_grammarInFileInstructionAST::duplicate (Compiler * inCompiler
 //     @grammarInFileInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST ("grammarInFileInstructionAST",
-                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST ("grammarInFileInstructionAST",
+                                                                                & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInFileInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInFileInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInFileInstructionAST ;
 }
 
@@ -13730,7 +13730,7 @@ mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInStringInstructionAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInStringInstructionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
 }
 
@@ -13786,12 +13786,12 @@ acPtr_class * cPtr_grammarInStringInstructionAST::duplicate (Compiler * inCompil
 //     @grammarInStringInstructionAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST ("grammarInStringInstructionAST",
-                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST ("grammarInStringInstructionAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInStringInstructionAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInStringInstructionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
 }
 
@@ -14059,7 +14059,7 @@ mProperty_mSyntaxDirectedTranslationResultVarName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionWithSourceFileForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionWithSourceFileForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
 }
 
@@ -14113,12 +14113,12 @@ acPtr_class * cPtr_grammarInstructionWithSourceFileForGeneration::duplicate (Com
 //     @grammarInstructionWithSourceFileForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ("grammarInstructionWithSourceFileForGeneration",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ("grammarInstructionWithSourceFileForGeneration",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionWithSourceFileForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionWithSourceFileForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
 }
 
@@ -14406,7 +14406,7 @@ mProperty_mSyntaxDirectedTranslationResultVarName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_grammarInstructionWithSourceExpressionForGeneration::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_grammarInstructionWithSourceExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
 }
 
@@ -14463,12 +14463,12 @@ acPtr_class * cPtr_grammarInstructionWithSourceExpressionForGeneration::duplicat
 //     @grammarInstructionWithSourceExpressionForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ("grammarInstructionWithSourceExpressionForGeneration",
-                                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ("grammarInstructionWithSourceExpressionForGeneration",
+                                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_grammarInstructionWithSourceExpressionForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_grammarInstructionWithSourceExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
 }
 

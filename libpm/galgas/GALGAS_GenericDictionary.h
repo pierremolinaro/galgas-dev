@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GGS_GenericDictionary.h
+//  GenericDictionary.h
 //  galgas-ide
 //
 //  Created by Pierre Molinaro on 26/06/2025, ..., 2025 Pierre Molinaro.
@@ -28,25 +28,25 @@
 //  Predeclarations
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot ;
-template <typename KEY, typename INFO> class GGS_GenericDictionary ;
+template <typename KEY, typename INFO> class GenericDictionaryRoot ;
+template <typename KEY, typename INFO> class GenericDictionary ;
 
 //--------------------------------------------------------------------------------------------------
-//  GGS_GenericDictionaryNode
+//  GenericDictionaryNode
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GGS_GenericDictionaryNode final : public SharedObject {
+template <typename KEY, typename INFO> class GenericDictionaryNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> mInfPtr ;
-  private: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> mSupPtr ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mInfPtr ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mSupPtr ;
   public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;
   private: int32_t mBalance ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionaryNode (const INFO & inInfo
+  public: GenericDictionaryNode (const INFO & inInfo
                                 COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
@@ -58,11 +58,11 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryNode final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: ~GGS_GenericDictionaryNode (void) = default ;
+  public: ~GenericDictionaryNode (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionaryNode (const OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & inNodePtr
+  public: GenericDictionaryNode (const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & inNodePtr
                                      COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
@@ -70,10 +70,10 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryNode final : p
   mSharedInfo (inNodePtr->mSharedInfo),
   mBalance (inNodePtr->mBalance) {
     if (inNodePtr->mInfPtr.isNotNil ()) {
-      mInfPtr = OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
+      mInfPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
     }
     if (inNodePtr->mSupPtr.isNotNil ()) {
-      mSupPtr = OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
+      mSupPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
     }
   }
 
@@ -81,12 +81,12 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryNode final : p
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: GGS_GenericDictionaryNode (const GGS_GenericDictionaryNode &) = delete ;
-  private: GGS_GenericDictionaryNode & operator = (const GGS_GenericDictionaryNode &) = delete ;
+  private: GenericDictionaryNode (const GenericDictionaryNode &) = delete ;
+  private: GenericDictionaryNode & operator = (const GenericDictionaryNode &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void populateInfoArray (const OptionalSharedRef <GGS_GenericDictionaryNode> & inNode,
+  private: static void populateInfoArray (const OptionalSharedRef <GenericDictionaryNode> & inNode,
                                           TC_Array <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
@@ -97,23 +97,23 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryNode final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class GGS_GenericDictionaryRoot <KEY, INFO> ;
+  friend class GenericDictionaryRoot <KEY, INFO> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//MARK:  GGS_GenericDictionaryRoot
+//MARK:  GenericDictionaryRoot
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : public SharedObject {
+template <typename KEY, typename INFO> class GenericDictionaryRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> mRootNode ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mRootNode ;
   private: TC_Array <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
   private: int32_t mCount ;
   private: bool mCacheSortedArrayIsValid ;
@@ -122,7 +122,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
   // Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionaryRoot (LOCATION_ARGS) :
+  public: GenericDictionaryRoot (LOCATION_ARGS) :
   SharedObject (THERE),
   mRootNode (),
   mCacheSortedArray (),
@@ -134,21 +134,21 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
   // Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ GGS_GenericDictionaryRoot (void) = default ;
+  public: virtual ~ GenericDictionaryRoot (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // No copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: GGS_GenericDictionaryRoot (const GGS_GenericDictionaryRoot &) = delete ;
-  private: GGS_GenericDictionaryRoot & operator = (const GGS_GenericDictionaryRoot &) = delete ;
+  private: GenericDictionaryRoot (const GenericDictionaryRoot &) = delete ;
+  private: GenericDictionaryRoot & operator = (const GenericDictionaryRoot &) = delete ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: void duplicateTo (OptionalSharedRef <GGS_GenericDictionaryRoot <KEY, INFO>> & outNewRoot
+  private: void duplicateTo (OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>> & outNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray
-      outNewRoot->mRootNode = OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>>::make (mRootNode COMMA_HERE) ;
+      outNewRoot->mRootNode = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (mRootNode COMMA_HERE) ;
       outNewRoot->mCount = mCount ;
     }
   }
@@ -177,7 +177,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
       return mCacheSortedArray ;
     }else{
       TC_Array <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
-      GGS_GenericDictionaryNode <KEY, INFO>::populateInfoArray (mRootNode, array) ;
+      GenericDictionaryNode <KEY, INFO>::populateInfoArray (mRootNode, array) ;
       mCacheSortedArray = array ;
       mCacheSortedArrayIsValid = true ;
       return array ;
@@ -188,8 +188,8 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> searchNode (const KEY & inKey) const {
-    OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> result ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> searchNode (const KEY & inKey) const {
+    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result ;
   }
@@ -207,7 +207,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
+  private: static void rotateLeft (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
     if (ioRootPtr->mSupPtr->mBalance >= 0) {
       ioRootPtr->mBalance += 1 ;
     }else{
@@ -225,7 +225,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
+  private: static void rotateRight (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
     if (ioRootPtr->mInfPtr->mBalance > 0) {
       ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;
     }else{
@@ -241,12 +241,12 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRootPtr,
+  private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr,
                                          const KEY & inKey,
                                          const INFO & inInfo) {
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
-      ioRootPtr = OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>>::make (inInfo COMMA_HERE) ;
+      ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inInfo COMMA_HERE) ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -311,7 +311,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: static void supBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -340,7 +340,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: static void infBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -= 1 ;
     switch (ioRoot->mBalance) {
@@ -369,8 +369,8 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRoot,
-                                           OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioElement,
+  private: static void getPreviousElement (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
+                                           OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr.isNil ()) {
       ioElement = ioRoot ;
@@ -386,10 +386,10 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> internalRemoveEntry (const KEY & inKeyToRemove,
-                                     OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> internalRemoveEntry (const KEY & inKeyToRemove,
+                                     OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
                                      bool & ioBranchHasBeenRemoved) {
-    OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> removedNode ;
+    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> removedNode ;
     if (ioRoot.isNotNil ()) {
       const ComparisonResult comparaison = ioRoot->mSharedInfo->mProperty_key.objectCompare (inKeyToRemove) ;
       switch (comparaison) {
@@ -416,7 +416,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
           ioBranchHasBeenRemoved = true ;
         }else{
           removedNode = ioRoot ;
-          OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> p = ioRoot ;
+          OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
           p->mSupPtr.setToNil () ;
@@ -438,7 +438,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: bool hasKey (const KEY & inKey) const {
-    OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> result ;
+    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result.isNotNil () ;
   }
@@ -446,8 +446,8 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void internalRecursiveSearchNode (const KEY & inKey,
-                            const OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & inNodePtr,
-                            OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> & outInfoPtr) {
+                            const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & inNodePtr,
+                            OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & outInfoPtr) {
     if (inNodePtr.isNotNil ()) {
       const ComparisonResult comparaison = inNodePtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
@@ -471,27 +471,27 @@ template <typename KEY, typename INFO> class GGS_GenericDictionaryRoot final : p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class GGS_GenericDictionary <KEY, INFO> ;
+  friend class GenericDictionary <KEY, INFO> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//  GGS_GenericDictionary
+//  GenericDictionary
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_GALGAS_root {
+template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GGS_GenericDictionaryRoot <KEY, INFO> > mSharedRoot ;
+  private: OptionalSharedRef <GenericDictionaryRoot <KEY, INFO> > mSharedRoot ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Default constructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionary () :
+  public: GenericDictionary () :
   mSharedRoot () {
   }
 
@@ -499,14 +499,14 @@ template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_G
   //   Destructor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: virtual ~ GGS_GenericDictionary (void) = default ;
+  public: virtual ~ GenericDictionary (void) = default ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Build
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void build (LOCATION_ARGS) {
-    mSharedRoot = OptionalSharedRef <GGS_GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
+    mSharedRoot = OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -529,7 +529,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_G
     if (mSharedRoot.isNotNil ()) {
       mSharedRoot->invalidateCacheSortedArray () ;
       if (!mSharedRoot->isUniquelyReferenced ()) {
-        auto p = OptionalSharedRef <GGS_GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
+        auto p = OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
         mSharedRoot->duplicateTo (p COMMA_THERE) ;
         mSharedRoot = p ;
       }
@@ -540,13 +540,13 @@ template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_G
   //   Handle copy
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionary (const GGS_GenericDictionary & inSource) :
+  public: GenericDictionary (const GenericDictionary & inSource) :
   mSharedRoot (inSource.mSharedRoot) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GGS_GenericDictionary & operator = (const GGS_GenericDictionary & inSource) {
+  public: GenericDictionary & operator = (const GenericDictionary & inSource) {
     mSharedRoot = inSource.mSharedRoot ;
     return * this ;
   }
@@ -596,7 +596,7 @@ template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_G
 
   public: const SharedGenericPtrWithValueSemantics <INFO> infoForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
-      const OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> node = mSharedRoot->searchNode (inKey) ;
+      const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> node = mSharedRoot->searchNode (inKey) ;
       if (node.isNil ()) {
         return SharedGenericPtrWithValueSemantics <INFO> () ;
       }else{
@@ -611,11 +611,11 @@ template <typename KEY, typename INFO> class GGS_GenericDictionary : public AC_G
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> nodeForKey (const KEY & inKey) const {
+  public: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> nodeForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->searchNode (inKey) ;
     }else{
-      return OptionalSharedRef <GGS_GenericDictionaryNode <KEY, INFO>> () ;
+      return OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> () ;
     }
   }
 

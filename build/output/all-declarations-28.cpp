@@ -1189,7 +1189,7 @@ PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForStruct (nullptr,
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_forbiddenKeysForStruct [1] = {
+static const GALGAS_TypeDescriptor * functionArgs_forbiddenKeysForStruct [1] = {
   nullptr
 } ;
 
@@ -7505,7 +7505,7 @@ PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (nullptr,
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_generateFewHeaderFiles [1] = {
+static const GALGAS_TypeDescriptor * functionArgs_generateFewHeaderFiles [1] = {
   nullptr
 } ;
 

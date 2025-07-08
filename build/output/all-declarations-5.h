@@ -82,13 +82,13 @@ class GGS_externTypeDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @externTypeDeclarationAST class
@@ -179,7 +179,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -254,13 +254,13 @@ class GGS_externTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @graphInsertModifierList list enumerator
@@ -492,7 +492,7 @@ class GGS_graphInsertModifierList : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_graphInsertModifierList ;
   friend class DownEnumerator_graphInsertModifierList ;
@@ -501,7 +501,7 @@ class GGS_graphInsertModifierList : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphInsertModifierList ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @graphInsertModifierList_2E_element struct
@@ -585,13 +585,13 @@ class GGS_graphInsertModifierList_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @graphDeclarationAST reference class
@@ -651,13 +651,13 @@ class GGS_graphDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @graphDeclarationAST class
@@ -736,7 +736,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -811,13 +811,13 @@ class GGS_graphDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @listDeclarationAST reference class
@@ -881,13 +881,13 @@ class GGS_listDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @listDeclarationAST class
@@ -973,7 +973,7 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -1048,13 +1048,13 @@ class GGS_listDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @dictDeclarationAST reference class
@@ -1118,13 +1118,13 @@ class GGS_dictDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @dictDeclarationAST class
@@ -1210,7 +1210,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -1285,13 +1285,13 @@ class GGS_dictDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertSetterListAST list enumerator
@@ -1544,7 +1544,7 @@ class GGS_insertSetterListAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_insertSetterListAST ;
   friend class DownEnumerator_insertSetterListAST ;
@@ -1553,7 +1553,7 @@ class GGS_insertSetterListAST : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertSetterListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertSetterListAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertSetterListAST_2E_element struct
@@ -1649,13 +1649,13 @@ class GGS_insertSetterListAST_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertSetterListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertSetterListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @mapAccessorListAST list enumerator
@@ -1887,7 +1887,7 @@ class GGS_mapAccessorListAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_mapAccessorListAST ;
   friend class DownEnumerator_mapAccessorListAST ;
@@ -1896,7 +1896,7 @@ class GGS_mapAccessorListAST : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAccessorListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapAccessorListAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @mapAccessorListAST_2E_element struct
@@ -1980,13 +1980,13 @@ class GGS_mapAccessorListAST_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAccessorListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapAccessorListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertOrReplaceDeclarationListAST list enumerator
@@ -2197,7 +2197,7 @@ class GGS_insertOrReplaceDeclarationListAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_insertOrReplaceDeclarationListAST ;
   friend class DownEnumerator_insertOrReplaceDeclarationListAST ;
@@ -2206,7 +2206,7 @@ class GGS_insertOrReplaceDeclarationListAST : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertOrReplaceDeclarationListAST_2E_element struct
@@ -2278,13 +2278,13 @@ class GGS_insertOrReplaceDeclarationListAST_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertMethodMap map
@@ -2292,8 +2292,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDecl
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2346,7 +2345,7 @@ class UpEnumerator_insertMethodMap final {
 class GGS_insertMethodMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_insertMethodMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_insertMethodMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_insertMethodMap (void) ;
@@ -2457,7 +2456,7 @@ class GGS_insertMethodMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_insertMethodMap ;
   friend class DownEnumerator_insertMethodMap ;
@@ -2466,7 +2465,7 @@ class GGS_insertMethodMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @insertMethodMap_2E_element struct
@@ -2538,13 +2537,13 @@ class GGS_insertMethodMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: insertMethodMap.element? optional
@@ -2615,13 +2614,13 @@ class GGS_insertMethodMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @searchMethodMap map
@@ -2629,8 +2628,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2683,7 +2681,7 @@ class UpEnumerator_searchMethodMap final {
 class GGS_searchMethodMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_searchMethodMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_searchMethodMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_searchMethodMap (void) ;
@@ -2794,7 +2792,7 @@ class GGS_searchMethodMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_searchMethodMap ;
   friend class DownEnumerator_searchMethodMap ;
@@ -2803,7 +2801,7 @@ class GGS_searchMethodMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @searchMethodMap_2E_element struct
@@ -2875,13 +2873,13 @@ class GGS_searchMethodMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: searchMethodMap.element? optional
@@ -2952,13 +2950,13 @@ class GGS_searchMethodMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @mapDeclarationAST reference class
@@ -3042,13 +3040,13 @@ class GGS_mapDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @mapDeclarationAST class
@@ -3149,7 +3147,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3224,13 +3222,13 @@ class GGS_mapDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak 
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @optionalTypeDeclarationAST reference class
@@ -3290,13 +3288,13 @@ class GGS_optionalTypeDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @optionalTypeDeclarationAST class
@@ -3379,7 +3377,7 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3454,13 +3452,13 @@ class GGS_optionalTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sortedListSortDescriptorListAST list enumerator
@@ -3692,7 +3690,7 @@ class GGS_sortedListSortDescriptorListAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_sortedListSortDescriptorListAST ;
   friend class DownEnumerator_sortedListSortDescriptorListAST ;
@@ -3701,7 +3699,7 @@ class GGS_sortedListSortDescriptorListAST : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sortedListSortDescriptorListAST_2E_element struct
@@ -3785,13 +3783,13 @@ class GGS_sortedListSortDescriptorListAST_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sortedListDeclarationAST reference class
@@ -3855,13 +3853,13 @@ class GGS_sortedListDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @sortedListDeclarationAST class
@@ -3947,7 +3945,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4022,13 +4020,13 @@ class GGS_sortedListDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sortDescriptorListForGeneration list enumerator
@@ -4281,7 +4279,7 @@ class GGS_sortDescriptorListForGeneration : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_sortDescriptorListForGeneration ;
   friend class DownEnumerator_sortDescriptorListForGeneration ;
@@ -4290,7 +4288,7 @@ class GGS_sortDescriptorListForGeneration : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sortDescriptorListForGeneration_2E_element struct
@@ -4386,13 +4384,13 @@ class GGS_sortDescriptorListForGeneration_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @structDeclarationAST reference class
@@ -4460,13 +4458,13 @@ class GGS_structDeclarationAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @structDeclarationAST class
@@ -4551,7 +4549,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4626,13 +4624,13 @@ class GGS_structDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_we
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractExtensionGetterAST reference class
@@ -4696,13 +4694,13 @@ class GGS_abstractExtensionGetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @abstractExtensionGetterAST class
@@ -4799,7 +4797,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4874,13 +4872,13 @@ class GGS_abstractExtensionGetterAST_2E_weak : public GGS_semanticDeclarationAST
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @formalInputParameterListForGeneration list enumerator
@@ -5175,7 +5173,7 @@ class GGS_formalInputParameterListForGeneration : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_formalInputParameterListForGeneration ;
   friend class DownEnumerator_formalInputParameterListForGeneration ;
@@ -5184,7 +5182,7 @@ class GGS_formalInputParameterListForGeneration : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @formalInputParameterListForGeneration_2E_element struct
@@ -5304,13 +5302,13 @@ class GGS_formalInputParameterListForGeneration_2E_element : public AC_GALGAS_ro
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractExtensionMethodAST reference class
@@ -5370,13 +5368,13 @@ class GGS_abstractExtensionMethodAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @abstractExtensionMethodAST class
@@ -5470,7 +5468,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5545,13 +5543,13 @@ class GGS_abstractExtensionMethodAST_2E_weak : public GGS_semanticDeclarationAST
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @formalParameterListForGeneration list enumerator
@@ -5846,7 +5844,7 @@ class GGS_formalParameterListForGeneration : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_formalParameterListForGeneration ;
   friend class DownEnumerator_formalParameterListForGeneration ;
@@ -5855,7 +5853,7 @@ class GGS_formalParameterListForGeneration : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @formalParameterListForGeneration_2E_element struct
@@ -5975,13 +5973,13 @@ class GGS_formalParameterListForGeneration_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractExtensionSetterAST reference class
@@ -6041,13 +6039,13 @@ class GGS_abstractExtensionSetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @abstractExtensionSetterAST class
@@ -6141,7 +6139,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -6216,13 +6214,13 @@ class GGS_abstractExtensionSetterAST_2E_weak : public GGS_semanticDeclarationAST
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum equatableComparableExtension
@@ -6293,13 +6291,13 @@ class GGS_equatableComparableExtension : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableComparableExtension ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableComparableExtension ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @equatableExtensionMap map
@@ -6307,8 +6305,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableComparable
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6364,7 +6361,7 @@ class UpEnumerator_equatableExtensionMap final {
 class GGS_equatableExtensionMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_equatableExtensionMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_equatableExtensionMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_equatableExtensionMap (void) ;
@@ -6490,7 +6487,7 @@ class GGS_equatableExtensionMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_equatableExtensionMap ;
   friend class DownEnumerator_equatableExtensionMap ;
@@ -6499,7 +6496,7 @@ class GGS_equatableExtensionMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @equatableExtensionMap_2E_element struct
@@ -6583,13 +6580,13 @@ class GGS_equatableExtensionMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: equatableExtensionMap.element? optional
@@ -6660,13 +6657,13 @@ class GGS_equatableExtensionMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @equatableExtensionAST reference class
@@ -6722,13 +6719,13 @@ class GGS_equatableExtensionAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @equatableExtensionAST class
@@ -6804,7 +6801,7 @@ class cPtr_equatableExtensionAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -6879,13 +6876,13 @@ class GGS_equatableExtensionAST_2E_weak : public GGS_semanticDeclarationAST_2E_w
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionListAST list enumerator
@@ -7096,7 +7093,7 @@ class GGS_semanticInstructionListAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_semanticInstructionListAST ;
   friend class DownEnumerator_semanticInstructionListAST ;
@@ -7105,7 +7102,7 @@ class GGS_semanticInstructionListAST : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxInstructionAST reference class
@@ -7150,13 +7147,13 @@ class GGS_syntaxInstructionAST : public AC_GALGAS_reference_class {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @syntaxInstructionAST class
@@ -7214,7 +7211,7 @@ class cPtr_syntaxInstructionAST : public acStrongPtr_class {
                                     const int32_t inIndentation) const override = 0 ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -7259,13 +7256,13 @@ class GGS_semanticInstructionAST : public GGS_syntaxInstructionAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @semanticInstructionAST class
@@ -7335,7 +7332,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
                                     const int32_t inIndentation) const override = 0 ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -7409,13 +7406,13 @@ class GGS_semanticInstructionListAST_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionGetterAST reference class
@@ -7495,13 +7492,13 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @extensionGetterAST class
@@ -7610,7 +7607,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -7685,13 +7682,13 @@ class GGS_extensionGetterAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionListForGeneration list enumerator
@@ -7902,7 +7899,7 @@ class GGS_semanticInstructionListForGeneration : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_semanticInstructionListForGeneration ;
   friend class DownEnumerator_semanticInstructionListForGeneration ;
@@ -7911,7 +7908,7 @@ class GGS_semanticInstructionListForGeneration : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionForGeneration reference class
@@ -7953,13 +7950,13 @@ class GGS_semanticInstructionForGeneration : public AC_GALGAS_reference_class {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @semanticInstructionForGeneration class
@@ -8006,7 +8003,7 @@ class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
                                     const int32_t inIndentation) const override = 0 ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -8080,13 +8077,13 @@ class GGS_semanticInstructionListForGeneration_2E_element : public AC_GALGAS_roo
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionMethodAST reference class
@@ -8158,13 +8155,13 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @extensionMethodAST class
@@ -8267,7 +8264,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -8342,13 +8339,13 @@ class GGS_extensionMethodAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @extensionSetterAST reference class
@@ -8420,13 +8417,13 @@ class GGS_extensionSetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @extensionSetterAST class
@@ -8529,7 +8526,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -8604,13 +8601,13 @@ class GGS_extensionSetterAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @initializerAST reference class
@@ -8674,13 +8671,13 @@ class GGS_initializerAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @initializerAST class
@@ -8762,7 +8759,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -8837,13 +8834,13 @@ class GGS_initializerAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingAbstractExtensionGetterAST reference class
@@ -8907,13 +8904,13 @@ class GGS_overridingAbstractExtensionGetterAST : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingAbstractExtensionGetterAST class
@@ -9010,7 +9007,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -9085,13 +9082,13 @@ class GGS_overridingAbstractExtensionGetterAST_2E_weak : public GGS_semanticDecl
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingAbstractExtensionMethodAST reference class
@@ -9151,13 +9148,13 @@ class GGS_overridingAbstractExtensionMethodAST : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingAbstractExtensionMethodAST class
@@ -9251,7 +9248,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -9326,13 +9323,13 @@ class GGS_overridingAbstractExtensionMethodAST_2E_weak : public GGS_semanticDecl
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingAbstractExtensionSetterAST reference class
@@ -9392,13 +9389,13 @@ class GGS_overridingAbstractExtensionSetterAST : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingAbstractExtensionSetterAST class
@@ -9492,7 +9489,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -9567,13 +9564,13 @@ class GGS_overridingAbstractExtensionSetterAST_2E_weak : public GGS_semanticDecl
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingExtensionGetterAST reference class
@@ -9653,13 +9650,13 @@ class GGS_overridingExtensionGetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingExtensionGetterAST class
@@ -9768,7 +9765,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -9843,13 +9840,13 @@ class GGS_overridingExtensionGetterAST_2E_weak : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingExtensionMethodAST reference class
@@ -9921,13 +9918,13 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingExtensionMethodAST class
@@ -10030,7 +10027,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -10105,13 +10102,13 @@ class GGS_overridingExtensionMethodAST_2E_weak : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overridingExtensionSetterAST reference class
@@ -10183,13 +10180,13 @@ class GGS_overridingExtensionSetterAST : public GGS_semanticDeclarationAST {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 2: pointer class for @overridingExtensionSetterAST class
@@ -10292,7 +10289,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -10367,13 +10364,13 @@ class GGS_overridingExtensionSetterAST_2E_weak : public GGS_semanticDeclarationA
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum typeKindEnum
@@ -10537,13 +10534,13 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @typeKindEnum_2E_classType struct
@@ -10617,13 +10614,13 @@ class GGS_typeKindEnum_2E_classType : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: typeKindEnum.classType? optional
@@ -10696,13 +10693,13 @@ class GGS_typeKindEnum_2E_classType_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @constantIndexMap map
@@ -10710,8 +10707,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_cla
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10770,7 +10766,7 @@ class UpEnumerator_constantIndexMap final {
 class GGS_constantIndexMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_constantIndexMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_constantIndexMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_constantIndexMap (void) ;
@@ -10910,7 +10906,7 @@ class GGS_constantIndexMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_constantIndexMap ;
   friend class DownEnumerator_constantIndexMap ;
@@ -10919,7 +10915,7 @@ class GGS_constantIndexMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantIndexMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_constantIndexMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @typeKindEnum_2E_enumType struct
@@ -10993,13 +10989,13 @@ class GGS_typeKindEnum_2E_enumType : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: typeKindEnum.enumType? optional
@@ -11072,13 +11068,13 @@ class GGS_typeKindEnum_2E_enumType_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @typeKindEnum_2E_weakReferenceType struct
@@ -11152,13 +11148,13 @@ class GGS_typeKindEnum_2E_weakReferenceType : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: typeKindEnum.weakReferenceType? optional
@@ -11231,13 +11227,13 @@ class GGS_typeKindEnum_2E_weakReferenceType_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @propertyMap map
@@ -11245,8 +11241,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_wea
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11308,7 +11303,7 @@ class UpEnumerator_propertyMap final {
 class GGS_propertyMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_propertyMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_propertyMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_propertyMap (void) ;
@@ -11456,7 +11451,7 @@ class GGS_propertyMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_propertyMap ;
   friend class DownEnumerator_propertyMap ;
@@ -11465,7 +11460,7 @@ class GGS_propertyMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum AccessControl
@@ -11611,13 +11606,13 @@ class GGS_AccessControl : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControl ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @propertyMap_2E_element struct
@@ -11725,13 +11720,13 @@ class GGS_propertyMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: propertyMap.element? optional
@@ -11802,13 +11797,13 @@ class GGS_propertyMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @classFunctionMap_2E_element struct
@@ -11916,13 +11911,13 @@ class GGS_classFunctionMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: classFunctionMap.element? optional
@@ -11993,13 +11988,13 @@ class GGS_classFunctionMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum methodKind
@@ -12072,13 +12067,13 @@ class GGS_methodKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodKind ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_methodKind ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum methodQualifier
@@ -12176,13 +12171,13 @@ class GGS_methodQualifier : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodQualifier ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_methodQualifier ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @getterMap_2E_element struct
@@ -12338,13 +12333,13 @@ class GGS_getterMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: getterMap.element? optional
@@ -12415,13 +12410,13 @@ class GGS_getterMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @formalParameterSignature list enumerator
@@ -12695,7 +12690,7 @@ class GGS_formalParameterSignature : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_formalParameterSignature ;
   friend class DownEnumerator_formalParameterSignature ;
@@ -12704,7 +12699,7 @@ class GGS_formalParameterSignature : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSignature ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterSignature ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @setterMap_2E_element struct
@@ -12836,13 +12831,13 @@ class GGS_setterMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: setterMap.element? optional
@@ -12913,13 +12908,13 @@ class GGS_setterMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @instanceMethodMap_2E_element struct
@@ -13063,13 +13058,13 @@ class GGS_instanceMethodMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: instanceMethodMap.element? optional
@@ -13140,13 +13135,13 @@ class GGS_instanceMethodMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @classMethodMap_2E_element struct
@@ -13242,13 +13237,13 @@ class GGS_classMethodMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: classMethodMap.element? optional
@@ -13319,13 +13314,13 @@ class GGS_classMethodMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @subscriptMap map
@@ -13333,8 +13328,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2E_e
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13393,7 +13387,7 @@ class UpEnumerator_subscriptMap final {
 class GGS_subscriptMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_subscriptMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_subscriptMap (void) ;
@@ -13530,7 +13524,7 @@ class GGS_subscriptMap : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
   friend class UpEnumerator_subscriptMap ;
   friend class DownEnumerator_subscriptMap ;
@@ -13539,7 +13533,7 @@ class GGS_subscriptMap : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @subscriptMap_2E_element struct
@@ -13635,13 +13629,13 @@ class GGS_subscriptMap_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: subscriptMap.element? optional
@@ -13712,13 +13706,13 @@ class GGS_subscriptMap_2E_element_3F_ : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @enumerationDescriptorList_2E_element struct
@@ -13802,13 +13796,13 @@ class GGS_enumerationDescriptorList_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumerationDescriptorList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @functionSignature_2E_element struct
@@ -13916,11 +13910,11 @@ class GGS_functionSignature_2E_element : public AC_GALGAS_root {
 
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionSignature_2E_element ;
 

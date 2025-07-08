@@ -48,7 +48,7 @@ class cPtr_weakReference_proxy final : public acPtr_class {
     return ComparisonResult::invalid ;
   }
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const ;
 
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
   public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;

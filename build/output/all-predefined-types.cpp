@@ -20,12 +20,12 @@ mProperty_lkey (inLKey) {
 //     @location generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ("location",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ("location",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_location::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_location::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_location ;
 }
 
@@ -60,12 +60,12 @@ GGS_location GGS_location::extractObject (const GGS_object & inObject,
 //     @stringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringlist ;
 }
 
@@ -642,12 +642,12 @@ GGS_string UpEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 //     @string generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ("string",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_string::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_string ;
 }
 
@@ -682,12 +682,12 @@ GGS_string GGS_string::extractObject (const GGS_object & inObject,
 //     @bool generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ("bool",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ("bool",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bool::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bool::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bool ;
 }
 
@@ -722,12 +722,12 @@ GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
 //     @uint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ("uint",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ("uint",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint ;
 }
 
@@ -762,12 +762,12 @@ GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
 //     @stringset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ("stringset",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ("stringset",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringset::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringset::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringset ;
 }
 
@@ -802,12 +802,12 @@ GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
 //     @lstringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist ;
 }
 
@@ -1384,12 +1384,12 @@ GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 //     @char generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ("char",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_char ("char",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_char::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_char::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_char ;
 }
 
@@ -1424,12 +1424,12 @@ GGS_char GGS_char::extractObject (const GGS_object & inObject,
 //     @lbool generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ("lbool",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ("lbool",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbool::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbool::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbool ;
 }
 
@@ -1566,12 +1566,12 @@ void GGS_lbool::description (String & ioString,
 //     @2stringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__32_stringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__32_stringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist ;
 }
 
@@ -2229,12 +2229,12 @@ GGS_string UpEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const
 //     @double generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ("double",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_double::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_double ;
 }
 
@@ -2269,12 +2269,12 @@ GGS_double GGS_double::extractObject (const GGS_object & inObject,
 //     @uint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_ ;
 }
 
@@ -2309,12 +2309,12 @@ GGS_uint_36__34_ GGS_uint_36__34_::extractObject (const GGS_object & inObject,
 //     @sint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ("sint",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint ("sint",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint ;
 }
 
@@ -2349,12 +2349,12 @@ GGS_sint GGS_sint::extractObject (const GGS_object & inObject,
 //     @sint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_ ;
 }
 
@@ -2389,12 +2389,12 @@ GGS_sint_36__34_ GGS_sint_36__34_::extractObject (const GGS_object & inObject,
 //     @bigint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ("bigint",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint ("bigint",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigint ;
 }
 
@@ -2429,12 +2429,12 @@ GGS_bigint GGS_bigint::extractObject (const GGS_object & inObject,
 //     @binaryset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_binaryset::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_binaryset::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binaryset ;
 }
 
@@ -2469,12 +2469,12 @@ GGS_binaryset GGS_binaryset::extractObject (const GGS_object & inObject,
 //     @data generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ("data",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_data ("data",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_data::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_data::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_data ;
 }
 
@@ -2509,12 +2509,12 @@ GGS_data GGS_data::extractObject (const GGS_object & inObject,
 //     @filewrapper generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapper::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapper::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapper ;
 }
 
@@ -2549,12 +2549,12 @@ GGS_filewrapper GGS_filewrapper::extractObject (const GGS_object & inObject,
 //     @function generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ("function",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_function ("function",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_function::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_function::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_function ;
 }
 
@@ -2589,12 +2589,12 @@ GGS_function GGS_function::extractObject (const GGS_object & inObject,
 //     @object generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ("object",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_object ("object",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_object::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_object::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_object ;
 }
 
@@ -2629,12 +2629,12 @@ GGS_object GGS_object::extractObject (const GGS_object & inObject,
 //     @timer generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ("timer",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timer ("timer",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_timer::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_timer::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timer ;
 }
 
@@ -2669,12 +2669,12 @@ GGS_timer GGS_timer::extractObject (const GGS_object & inObject,
 //     @type generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ("type",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_type ("type",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_type::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_type::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_type ;
 }
 
@@ -2709,12 +2709,12 @@ GGS_type GGS_type::extractObject (const GGS_object & inObject,
 //     @functionlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionlist ;
 }
 
@@ -3291,12 +3291,12 @@ GGS_function UpEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 //     @luintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luintlist ;
 }
 
@@ -3873,12 +3873,12 @@ GGS_luint UpEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 //     @luint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ("luint",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint ("luint",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luint ;
 }
 
@@ -4015,12 +4015,12 @@ void GGS_luint::description (String & ioString,
 //     @objectlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectlist ;
 }
 
@@ -4597,12 +4597,12 @@ GGS_object UpEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 //     @typelist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ("typelist",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typelist ("typelist",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typelist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typelist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typelist ;
 }
 
@@ -5179,12 +5179,12 @@ GGS_type UpEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 //     @uintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintlist ;
 }
 
@@ -5761,12 +5761,12 @@ GGS_uint UpEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 //     @uint64list generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_list::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_list::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_list ;
 }
 
@@ -6343,12 +6343,12 @@ GGS_uint_36__34_ UpEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) c
 //     @bigintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintlist ;
 }
 
@@ -6925,12 +6925,12 @@ GGS_bigint UpEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 //     @lbigintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigintlist ;
 }
 
@@ -7507,12 +7507,12 @@ GGS_lbigint UpEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 //     @lsint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ("lsint",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint ("lsint",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lsint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lsint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lsint ;
 }
 
@@ -7649,12 +7649,12 @@ void GGS_lsint::description (String & ioString,
 //     @lsint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
 }
 
@@ -7791,12 +7791,12 @@ void GGS_lsint_36__34_::description (String & ioString,
 //     @luint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luint_36__34_ ;
 }
 
@@ -7933,12 +7933,12 @@ void GGS_luint_36__34_::description (String & ioString,
 //     @range generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ("range",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_range ("range",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_range::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_range::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_range ;
 }
 
@@ -8075,12 +8075,12 @@ void GGS_range::description (String & ioString,
 //     @bigint? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigint_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigint_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigint_3F_ ;
 }
 
@@ -8210,12 +8210,12 @@ void GGS_bigint_3F_::description (String & ioString,
 //     @functionlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2E_element ("functionlist.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionlist_2E_element ("functionlist.element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionlist_2E_element ;
 }
 
@@ -8337,12 +8337,12 @@ void GGS_functionlist_2E_element::description (String & ioString,
 //     @luintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2E_element ("luintlist.element",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luintlist_2E_element ("luintlist.element",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luintlist_2E_element ;
 }
 
@@ -8464,12 +8464,12 @@ void GGS_luintlist_2E_element::description (String & ioString,
 //     @objectlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2E_element ("objectlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectlist_2E_element ("objectlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectlist_2E_element ;
 }
 
@@ -8591,12 +8591,12 @@ void GGS_objectlist_2E_element::description (String & ioString,
 //     @stringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2E_element ("stringlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist_2E_element ("stringlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringlist_2E_element ;
 }
 
@@ -8718,12 +8718,12 @@ void GGS_stringlist_2E_element::description (String & ioString,
 //     @typelist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2E_element ("typelist.element",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typelist_2E_element ("typelist.element",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typelist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typelist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typelist_2E_element ;
 }
 
@@ -8845,12 +8845,12 @@ void GGS_typelist_2E_element::description (String & ioString,
 //     @uintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2E_element ("uintlist.element",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintlist_2E_element ("uintlist.element",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintlist_2E_element ;
 }
 
@@ -8972,12 +8972,12 @@ void GGS_uintlist_2E_element::description (String & ioString,
 //     @uint64list.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ("uint64list.element",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ("uint64list.element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_list_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_list_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ;
 }
 
@@ -9099,12 +9099,12 @@ void GGS_uint_36__34_list_2E_element::description (String & ioString,
 //     @bigintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist_2E_element ("bigintlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintlist_2E_element ("bigintlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintlist_2E_element ;
 }
 
@@ -9226,12 +9226,12 @@ void GGS_bigintlist_2E_element::description (String & ioString,
 //     @2stringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2stringlist.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2stringlist.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__32_stringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__32_stringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist_2E_element ;
 }
 
@@ -9368,12 +9368,12 @@ void GGS__32_stringlist_2E_element::description (String & ioString,
 //     @lstring generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ("lstring",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstring ("lstring",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstring::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstring::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstring ;
 }
 
@@ -9510,12 +9510,12 @@ void GGS_lstring::description (String & ioString,
 //     @lbigint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigint ;
 }
 
@@ -9652,12 +9652,12 @@ void GGS_lbigint::description (String & ioString,
 //     @lchar generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lchar ("lchar",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ("lchar",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lchar::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lchar::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lchar ;
 }
 
@@ -9794,12 +9794,12 @@ void GGS_lchar::description (String & ioString,
 //     @ldouble generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ldouble::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_ldouble::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ldouble ;
 }
 
@@ -9936,12 +9936,12 @@ void GGS_ldouble::description (String & ioString,
 //     @lstringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstringlist.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstringlist.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist_2E_element ;
 }
 
@@ -10063,12 +10063,12 @@ void GGS_lstringlist_2E_element::description (String & ioString,
 //     @lbigintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ("lbigintlist.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ("lbigintlist.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigintlist_2E_element ;
 }
 

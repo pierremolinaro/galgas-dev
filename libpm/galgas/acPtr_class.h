@@ -28,7 +28,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class String ;
-class C_galgas_type_descriptor ;
+class GALGAS_TypeDescriptor ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ class acPtr_class : public SharedObject {
     return ComparisonResult::invalid ;
   }
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const = 0 ;
 
   public: virtual acPtr_class * duplicate (class Compiler * COMMA_UNUSED_LOCATION_ARGS) const = 0 ;
 } ;

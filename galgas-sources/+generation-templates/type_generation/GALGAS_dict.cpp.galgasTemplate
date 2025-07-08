@@ -205,7 +205,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GGS_GenericDictionaryNode <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedNode = nodeForKey (inKey) ;
+    OptionalSharedRef <GenericDictionaryNode <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
      const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;

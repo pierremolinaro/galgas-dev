@@ -27,7 +27,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class String ;
-class C_galgas_type_descriptor ;
+class GALGAS_TypeDescriptor ;
 class acPtr_class ;
 
 //--------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ class AC_GALGAS_value_class : public AC_GALGAS_root { // AC_GALGAS_value_class e
   protected: AC_GALGAS_value_class & operator = (const AC_GALGAS_value_class & inSource) ;
 
 //--- Dynamic Type Descriptor
-  public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
+  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;
 
   public: virtual void description (String & ioString,
                                      const int32_t inIndentation) const ;

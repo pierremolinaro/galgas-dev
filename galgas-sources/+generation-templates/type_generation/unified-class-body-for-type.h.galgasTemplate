@@ -413,7 +413,7 @@ end
 %
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 %
 
 if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
@@ -426,6 +426,6 @@ if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 
 %

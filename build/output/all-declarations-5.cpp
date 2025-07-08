@@ -93,12 +93,12 @@ GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST_2E_weak::bang_externTy
 //     @externTypeDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ("externTypeDeclarationAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ("externTypeDeclarationAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ;
 }
 
@@ -726,12 +726,12 @@ GGS_lstring UpEnumerator_graphInsertModifierList::current_mInsertErrorMessage (L
 //     @graphInsertModifierList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList ("graphInsertModifierList",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphInsertModifierList ("graphInsertModifierList",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphInsertModifierList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphInsertModifierList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphInsertModifierList ;
 }
 
@@ -848,12 +848,12 @@ GGS_graphDeclarationAST GGS_graphDeclarationAST_2E_weak::bang_graphDeclarationAS
 //     @graphDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ("graphDeclarationAST.weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ("graphDeclarationAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ;
 }
 
@@ -970,12 +970,12 @@ GGS_listDeclarationAST GGS_listDeclarationAST_2E_weak::bang_listDeclarationAST_2
 //     @listDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ("listDeclarationAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ("listDeclarationAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_listDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_listDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ;
 }
 
@@ -1092,12 +1092,12 @@ GGS_dictDeclarationAST GGS_dictDeclarationAST_2E_weak::bang_dictDeclarationAST_2
 //     @dictDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ("dictDeclarationAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ("dictDeclarationAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dictDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dictDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ;
 }
 
@@ -1806,12 +1806,12 @@ GGS_lstring UpEnumerator_insertSetterListAST::current_mShadowErrorMessage (LOCAT
 //     @insertSetterListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertSetterListAST ("insertSetterListAST",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertSetterListAST ("insertSetterListAST",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertSetterListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertSetterListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertSetterListAST ;
 }
 
@@ -2439,12 +2439,12 @@ GGS_lstring UpEnumerator_mapAccessorListAST::current_mErrorMessage (LOCATION_ARG
 //     @mapAccessorListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAccessorListAST ("mapAccessorListAST",
-                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapAccessorListAST ("mapAccessorListAST",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapAccessorListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapAccessorListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapAccessorListAST ;
 }
 
@@ -2991,12 +2991,12 @@ GGS_location UpEnumerator_insertOrReplaceDeclarationListAST::current_mInsertOrRe
 //     @insertOrReplaceDeclarationListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
-                                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertOrReplaceDeclarationListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertOrReplaceDeclarationListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ;
 }
 
@@ -3031,7 +3031,7 @@ GGS_insertOrReplaceDeclarationListAST GGS_insertOrReplaceDeclarationListAST::ext
 //  Map type @insertMethodMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3163,7 +3163,7 @@ void GGS_insertMethodMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_insertMethodMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_insertMethodMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_insertMethodMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3174,7 +3174,7 @@ void GGS_insertMethodMap::performInsert (const GGS_insertMethodMap_2E_element & 
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_insertMethodMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_insertMethodMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -3274,7 +3274,7 @@ GGS_insertMethodMap GGS_insertMethodMap::class_func_mapWithMapToOverride (const 
                                                                           COMMA_LOCATION_ARGS) {
   GGS_insertMethodMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_insertMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_insertMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -3337,7 +3337,7 @@ void GGS_insertMethodMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_insertMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_insertMethodMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_insertMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_insertMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -3405,12 +3405,12 @@ GGS_lstring UpEnumerator_insertMethodMap::current_lkey (LOCATION_ARGS) const {
 //     @insertMethodMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ("insertMethodMap",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap ("insertMethodMap",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertMethodMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertMethodMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertMethodMap ;
 }
 
@@ -3445,7 +3445,7 @@ GGS_insertMethodMap GGS_insertMethodMap::extractObject (const GGS_object & inObj
 //  Map type @searchMethodMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3577,7 +3577,7 @@ void GGS_searchMethodMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_searchMethodMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_searchMethodMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_searchMethodMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3588,7 +3588,7 @@ void GGS_searchMethodMap::performInsert (const GGS_searchMethodMap_2E_element & 
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_searchMethodMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_searchMethodMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -3688,7 +3688,7 @@ GGS_searchMethodMap GGS_searchMethodMap::class_func_mapWithMapToOverride (const 
                                                                           COMMA_LOCATION_ARGS) {
   GGS_searchMethodMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_searchMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_searchMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -3751,7 +3751,7 @@ void GGS_searchMethodMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_searchMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_searchMethodMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_searchMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_searchMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -3819,12 +3819,12 @@ GGS_lstring UpEnumerator_searchMethodMap::current_lkey (LOCATION_ARGS) const {
 //     @searchMethodMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ("searchMethodMap",
-                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap ("searchMethodMap",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_searchMethodMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_searchMethodMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_searchMethodMap ;
 }
 
@@ -3941,12 +3941,12 @@ GGS_mapDeclarationAST GGS_mapDeclarationAST_2E_weak::bang_mapDeclarationAST_2E_w
 //     @mapDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ("mapDeclarationAST.weak",
-                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ("mapDeclarationAST.weak",
+                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ;
 }
 
@@ -4063,12 +4063,12 @@ GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST_2E_weak::bang_opti
 //     @optionalTypeDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ("optionalTypeDeclarationAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ("optionalTypeDeclarationAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionalTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionalTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ;
 }
 
@@ -4696,12 +4696,12 @@ GGS_bool UpEnumerator_sortedListSortDescriptorListAST::current_mAscending (LOCAT
 //     @sortedListSortDescriptorListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListSortDescriptorListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListSortDescriptorListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ;
 }
 
@@ -4818,12 +4818,12 @@ GGS_sortedListDeclarationAST GGS_sortedListDeclarationAST_2E_weak::bang_sortedLi
 //     @sortedListDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ("sortedListDeclarationAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ("sortedListDeclarationAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ;
 }
 
@@ -5532,12 +5532,12 @@ GGS_bool UpEnumerator_sortDescriptorListForGeneration::current_mAscendingOrder (
 //     @sortDescriptorListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ("sortDescriptorListForGeneration",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ("sortDescriptorListForGeneration",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortDescriptorListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortDescriptorListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ;
 }
 
@@ -5654,12 +5654,12 @@ GGS_structDeclarationAST GGS_structDeclarationAST_2E_weak::bang_structDeclaratio
 //     @structDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ("structDeclarationAST.weak",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ("structDeclarationAST.weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ;
 }
 
@@ -5776,12 +5776,12 @@ GGS_abstractExtensionGetterAST GGS_abstractExtensionGetterAST_2E_weak::bang_abst
 //     @abstractExtensionGetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ("abstractExtensionGetterAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ("abstractExtensionGetterAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ;
 }
 
@@ -6652,12 +6652,12 @@ GGS_bool UpEnumerator_formalInputParameterListForGeneration::current_mIsConstant
 //     @formalInputParameterListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ("formalInputParameterListForGeneration",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ("formalInputParameterListForGeneration",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalInputParameterListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalInputParameterListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ;
 }
 
@@ -6774,12 +6774,12 @@ GGS_abstractExtensionMethodAST GGS_abstractExtensionMethodAST_2E_weak::bang_abst
 //     @abstractExtensionMethodAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ("abstractExtensionMethodAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ("abstractExtensionMethodAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ;
 }
 
@@ -7650,12 +7650,12 @@ GGS_string UpEnumerator_formalParameterListForGeneration::current_mFormalArgumen
 //     @formalParameterListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ("formalParameterListForGeneration",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ("formalParameterListForGeneration",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalParameterListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalParameterListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalParameterListForGeneration ;
 }
 
@@ -7772,12 +7772,12 @@ GGS_abstractExtensionSetterAST GGS_abstractExtensionSetterAST_2E_weak::bang_abst
 //     @abstractExtensionSetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ("abstractExtensionSetterAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ("abstractExtensionSetterAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_abstractExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_abstractExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ;
 }
 
@@ -7871,12 +7871,12 @@ void GGS_equatableComparableExtension::description (String & ioString,
 //     @equatableComparableExtension generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableComparableExtension ("equatableComparableExtension",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableComparableExtension ("equatableComparableExtension",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableComparableExtension::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableComparableExtension::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableComparableExtension ;
 }
 
@@ -7911,7 +7911,7 @@ GGS_equatableComparableExtension GGS_equatableComparableExtension::extractObject
 //  Map type @equatableExtensionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8043,7 +8043,7 @@ void GGS_equatableExtensionMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_equatableExtensionMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_equatableExtensionMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_equatableExtensionMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8054,7 +8054,7 @@ void GGS_equatableExtensionMap::performInsert (const GGS_equatableExtensionMap_2
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_equatableExtensionMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_equatableExtensionMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -8155,7 +8155,7 @@ GGS_equatableExtensionMap GGS_equatableExtensionMap::class_func_mapWithMapToOver
                                                                                       COMMA_LOCATION_ARGS) {
   GGS_equatableExtensionMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_equatableExtensionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_equatableExtensionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -8239,7 +8239,7 @@ void GGS_equatableExtensionMap::setter_setMExtensionForKey (GGS_equatableCompara
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_equatableExtensionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_equatableExtensionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -8287,7 +8287,7 @@ void GGS_equatableExtensionMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_equatableExtensionMap_2E_element>> array = sortedInfoArray () ;
     GGS_equatableExtensionMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_equatableExtensionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_equatableExtensionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -8367,12 +8367,12 @@ GGS_equatableComparableExtension UpEnumerator_equatableExtensionMap::current_mEx
 //     @equatableExtensionMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap ("equatableExtensionMap",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap ("equatableExtensionMap",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableExtensionMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableExtensionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionMap ;
 }
 
@@ -8489,12 +8489,12 @@ GGS_equatableExtensionAST GGS_equatableExtensionAST_2E_weak::bang_equatableExten
 //     @equatableExtensionAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ("equatableExtensionAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ("equatableExtensionAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableExtensionAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableExtensionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ;
 }
 
@@ -9041,12 +9041,12 @@ GGS_semanticInstructionAST UpEnumerator_semanticInstructionListAST::current_mIns
 //     @semanticInstructionListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ("semanticInstructionListAST",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ("semanticInstructionListAST",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_semanticInstructionListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_semanticInstructionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticInstructionListAST ;
 }
 
@@ -9163,12 +9163,12 @@ GGS_extensionGetterAST GGS_extensionGetterAST_2E_weak::bang_extensionGetterAST_2
 //     @extensionGetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ("extensionGetterAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ("extensionGetterAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ;
 }
 
@@ -9715,12 +9715,12 @@ GGS_semanticInstructionForGeneration UpEnumerator_semanticInstructionListForGene
 //     @semanticInstructionListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ("semanticInstructionListForGeneration",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ("semanticInstructionListForGeneration",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_semanticInstructionListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_semanticInstructionListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ;
 }
 
@@ -9837,12 +9837,12 @@ GGS_extensionMethodAST GGS_extensionMethodAST_2E_weak::bang_extensionMethodAST_2
 //     @extensionMethodAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ("extensionMethodAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ("extensionMethodAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ;
 }
 
@@ -9959,12 +9959,12 @@ GGS_extensionSetterAST GGS_extensionSetterAST_2E_weak::bang_extensionSetterAST_2
 //     @extensionSetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ("extensionSetterAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ("extensionSetterAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ;
 }
 
@@ -10081,12 +10081,12 @@ GGS_initializerAST GGS_initializerAST_2E_weak::bang_initializerAST_2E_weak (Comp
 //     @initializerAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST_2E_weak ("initializerAST.weak",
-                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerAST_2E_weak ("initializerAST.weak",
+                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_initializerAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_initializerAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerAST_2E_weak ;
 }
 
@@ -10203,12 +10203,12 @@ GGS_overridingAbstractExtensionGetterAST GGS_overridingAbstractExtensionGetterAS
 //     @overridingAbstractExtensionGetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ("overridingAbstractExtensionGetterAST.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ("overridingAbstractExtensionGetterAST.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ;
 }
 
@@ -10325,12 +10325,12 @@ GGS_overridingAbstractExtensionMethodAST GGS_overridingAbstractExtensionMethodAS
 //     @overridingAbstractExtensionMethodAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ("overridingAbstractExtensionMethodAST.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ("overridingAbstractExtensionMethodAST.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ;
 }
 
@@ -10447,12 +10447,12 @@ GGS_overridingAbstractExtensionSetterAST GGS_overridingAbstractExtensionSetterAS
 //     @overridingAbstractExtensionSetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ("overridingAbstractExtensionSetterAST.weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ("overridingAbstractExtensionSetterAST.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingAbstractExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingAbstractExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ;
 }
 
@@ -10569,12 +10569,12 @@ GGS_overridingExtensionGetterAST GGS_overridingExtensionGetterAST_2E_weak::bang_
 //     @overridingExtensionGetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ("overridingExtensionGetterAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ("overridingExtensionGetterAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionGetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ;
 }
 
@@ -10691,12 +10691,12 @@ GGS_overridingExtensionMethodAST GGS_overridingExtensionMethodAST_2E_weak::bang_
 //     @overridingExtensionMethodAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ("overridingExtensionMethodAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ("overridingExtensionMethodAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionMethodAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ;
 }
 
@@ -10813,12 +10813,12 @@ GGS_overridingExtensionSetterAST GGS_overridingExtensionSetterAST_2E_weak::bang_
 //     @overridingExtensionSetterAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ("overridingExtensionSetterAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ("overridingExtensionSetterAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_overridingExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_overridingExtensionSetterAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ;
 }
 
@@ -11286,12 +11286,12 @@ ComparisonResult GGS_typeKindEnum::objectCompare (const GGS_typeKindEnum & inOpe
 //     @typeKindEnum generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum ("typeKindEnum",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum ("typeKindEnum",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeKindEnum::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeKindEnum::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeKindEnum ;
 }
 
@@ -11326,7 +11326,7 @@ GGS_typeKindEnum GGS_typeKindEnum::extractObject (const GGS_object & inObject,
 //  Map type @propertyMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11458,7 +11458,7 @@ void GGS_propertyMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_propertyMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_propertyMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_propertyMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11469,7 +11469,7 @@ void GGS_propertyMap::performInsert (const GGS_propertyMap_2E_element & inElemen
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_propertyMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_propertyMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -11572,7 +11572,7 @@ GGS_propertyMap GGS_propertyMap::class_func_mapWithMapToOverride (const GGS_prop
                                                                   COMMA_LOCATION_ARGS) {
   GGS_propertyMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_propertyMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_propertyMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -11703,7 +11703,7 @@ void GGS_propertyMap::setter_setMAccessControlForKey (GGS_AccessControl inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -11723,7 +11723,7 @@ void GGS_propertyMap::setter_setMIsConstantForKey (GGS_bool inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -11743,7 +11743,7 @@ void GGS_propertyMap::setter_setMPropertyTypeForKey (GGS_unifiedTypeMapEntry inV
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_propertyMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -11799,7 +11799,7 @@ void GGS_propertyMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_propertyMap_2E_element>> array = sortedInfoArray () ;
     GGS_propertyMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_propertyMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_propertyMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -11903,12 +11903,12 @@ GGS_unifiedTypeMapEntry UpEnumerator_propertyMap::current_mPropertyType (LOCATIO
 //     @propertyMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap ("propertyMap",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap ("propertyMap",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyMap ;
 }
 
@@ -11943,7 +11943,7 @@ GGS_propertyMap GGS_propertyMap::extractObject (const GGS_object & inObject,
 //  Map type @classFunctionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12075,7 +12075,7 @@ void GGS_classFunctionMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classFunctionMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_classFunctionMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_classFunctionMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12086,7 +12086,7 @@ void GGS_classFunctionMap::performInsert (const GGS_classFunctionMap_2E_element 
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classFunctionMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_classFunctionMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -12189,7 +12189,7 @@ GGS_classFunctionMap GGS_classFunctionMap::class_func_mapWithMapToOverride (cons
                                                                             COMMA_LOCATION_ARGS) {
   GGS_classFunctionMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_classFunctionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_classFunctionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -12259,7 +12259,7 @@ void GGS_classFunctionMap::setter_insertOrReplace (GGS_lstring inLKey,
                                                    GGS_unifiedTypeMapEntry inArgument2
                                                    COMMA_LOCATION_ARGS) {
   const GGS_classFunctionMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  OptionalSharedRef <GGS_GenericMapNode <GGS_classFunctionMap_2E_element>> unusedExistingNode ;
+  OptionalSharedRef <GenericMapNode <GGS_classFunctionMap_2E_element>> unusedExistingNode ;
   const bool allowReplacing = true ;
   mSharedRoot.insulate (THERE) ;
   mSharedRoot->insertOrReplaceInfo (element, allowReplacing, unusedExistingNode COMMA_THERE) ;
@@ -12334,7 +12334,7 @@ void GGS_classFunctionMap::setter_setMArgumentTypeListForKey (GGS_functionSignat
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -12354,7 +12354,7 @@ void GGS_classFunctionMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValu
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -12374,7 +12374,7 @@ void GGS_classFunctionMap::setter_setMReturnedTypeForKey (GGS_unifiedTypeMapEntr
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_classFunctionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -12430,7 +12430,7 @@ void GGS_classFunctionMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_classFunctionMap_2E_element>> array = sortedInfoArray () ;
     GGS_classFunctionMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_classFunctionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_classFunctionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -12534,12 +12534,12 @@ GGS_unifiedTypeMapEntry UpEnumerator_classFunctionMap::current_mReturnedType (LO
 //     @classFunctionMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap ("classFunctionMap",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap ("classFunctionMap",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classFunctionMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classFunctionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFunctionMap ;
 }
 
@@ -12574,7 +12574,7 @@ GGS_classFunctionMap GGS_classFunctionMap::extractObject (const GGS_object & inO
 //  Map type @getterMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12706,7 +12706,7 @@ void GGS_getterMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_getterMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_getterMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_getterMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12717,7 +12717,7 @@ void GGS_getterMap::performInsert (const GGS_getterMap_2E_element & inElement,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -12824,7 +12824,7 @@ GGS_getterMap GGS_getterMap::class_func_mapWithMapToOverride (const GGS_getterMa
                                                               COMMA_LOCATION_ARGS) {
   GGS_getterMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_getterMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_getterMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -12914,7 +12914,7 @@ void GGS_getterMap::setter_insertOrReplace (GGS_lstring inLKey,
                                             GGS_string inArgument6
                                             COMMA_LOCATION_ARGS) {
   const GGS_getterMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6) ;
-  OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> unusedExistingNode ;
+  OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> unusedExistingNode ;
   const bool allowReplacing = true ;
   mSharedRoot.insulate (THERE) ;
   mSharedRoot->insertOrReplaceInfo (element, allowReplacing, unusedExistingNode COMMA_THERE) ;
@@ -13069,7 +13069,7 @@ void GGS_getterMap::setter_setMKindForKey (GGS_methodKind inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13089,7 +13089,7 @@ void GGS_getterMap::setter_setMArgumentTypeListForKey (GGS_functionSignature inV
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13109,7 +13109,7 @@ void GGS_getterMap::setter_setMDeclarationLocationForKey (GGS_location inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13129,7 +13129,7 @@ void GGS_getterMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13149,7 +13149,7 @@ void GGS_getterMap::setter_setMReturnedTypeForKey (GGS_unifiedTypeMapEntry inVal
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13169,7 +13169,7 @@ void GGS_getterMap::setter_setMQualifierForKey (GGS_methodQualifier inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13189,7 +13189,7 @@ void GGS_getterMap::setter_setMGetterNameThatObsoletesInvokationNameForKey (GGS_
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_getterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13261,7 +13261,7 @@ void GGS_getterMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_getterMap_2E_element>> array = sortedInfoArray () ;
     GGS_getterMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_getterMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_getterMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -13413,12 +13413,12 @@ GGS_string UpEnumerator_getterMap::current_mGetterNameThatObsoletesInvokationNam
 //     @getterMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap ("getterMap",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap ("getterMap",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_getterMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_getterMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_getterMap ;
 }
 
@@ -13453,7 +13453,7 @@ GGS_getterMap GGS_getterMap::extractObject (const GGS_object & inObject,
 //  Map type @setterMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13585,7 +13585,7 @@ void GGS_setterMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_setterMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_setterMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_setterMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13596,7 +13596,7 @@ void GGS_setterMap::performInsert (const GGS_setterMap_2E_element & inElement,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -13701,7 +13701,7 @@ GGS_setterMap GGS_setterMap::class_func_mapWithMapToOverride (const GGS_setterMa
                                                               COMMA_LOCATION_ARGS) {
   GGS_setterMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_setterMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_setterMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -13781,7 +13781,7 @@ void GGS_setterMap::setter_insertOrReplace (GGS_lstring inLKey,
                                             GGS_string inArgument4
                                             COMMA_LOCATION_ARGS) {
   const GGS_setterMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4) ;
-  OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> unusedExistingNode ;
+  OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> unusedExistingNode ;
   const bool allowReplacing = true ;
   mSharedRoot.insulate (THERE) ;
   mSharedRoot->insertOrReplaceInfo (element, allowReplacing, unusedExistingNode COMMA_THERE) ;
@@ -13896,7 +13896,7 @@ void GGS_setterMap::setter_setMKindForKey (GGS_methodKind inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13916,7 +13916,7 @@ void GGS_setterMap::setter_setMParameterListForKey (GGS_formalParameterSignature
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13936,7 +13936,7 @@ void GGS_setterMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13956,7 +13956,7 @@ void GGS_setterMap::setter_setMQualifierForKey (GGS_methodQualifier inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -13976,7 +13976,7 @@ void GGS_setterMap::setter_setMErrorMessageForKey (GGS_string inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_setterMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14040,7 +14040,7 @@ void GGS_setterMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_setterMap_2E_element>> array = sortedInfoArray () ;
     GGS_setterMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_setterMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_setterMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -14168,12 +14168,12 @@ GGS_string UpEnumerator_setterMap::current_mErrorMessage (LOCATION_ARGS) const {
 //     @setterMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap ("setterMap",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap ("setterMap",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_setterMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_setterMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_setterMap ;
 }
 
@@ -14208,7 +14208,7 @@ GGS_setterMap GGS_setterMap::extractObject (const GGS_object & inObject,
 //  Map type @instanceMethodMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14340,7 +14340,7 @@ void GGS_instanceMethodMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_instanceMethodMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_instanceMethodMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_instanceMethodMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14351,7 +14351,7 @@ void GGS_instanceMethodMap::performInsert (const GGS_instanceMethodMap_2E_elemen
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -14457,7 +14457,7 @@ GGS_instanceMethodMap GGS_instanceMethodMap::class_func_mapWithMapToOverride (co
                                                                               COMMA_LOCATION_ARGS) {
   GGS_instanceMethodMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_instanceMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_instanceMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -14698,7 +14698,7 @@ void GGS_instanceMethodMap::setter_setMKindForKey (GGS_methodKind inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14718,7 +14718,7 @@ void GGS_instanceMethodMap::setter_setMParameterListForKey (GGS_formalParameterS
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14738,7 +14738,7 @@ void GGS_instanceMethodMap::setter_setMDeclarationLocationForKey (GGS_location i
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14758,7 +14758,7 @@ void GGS_instanceMethodMap::setter_setMHasCompilerArgumentForKey (GGS_bool inVal
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14778,7 +14778,7 @@ void GGS_instanceMethodMap::setter_setMQualifierForKey (GGS_methodQualifier inVa
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14798,7 +14798,7 @@ void GGS_instanceMethodMap::setter_setMErrorMessageForKey (GGS_string inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_instanceMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -14866,7 +14866,7 @@ void GGS_instanceMethodMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_instanceMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_instanceMethodMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_instanceMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_instanceMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -15006,12 +15006,12 @@ GGS_string UpEnumerator_instanceMethodMap::current_mErrorMessage (LOCATION_ARGS)
 //     @instanceMethodMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap ("instanceMethodMap",
-                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap ("instanceMethodMap",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_instanceMethodMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_instanceMethodMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_instanceMethodMap ;
 }
 
@@ -15046,7 +15046,7 @@ GGS_instanceMethodMap GGS_instanceMethodMap::extractObject (const GGS_object & i
 //  Map type @classMethodMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15178,7 +15178,7 @@ void GGS_classMethodMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classMethodMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_classMethodMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_classMethodMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15189,7 +15189,7 @@ void GGS_classMethodMap::performInsert (const GGS_classMethodMap_2E_element & in
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classMethodMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_classMethodMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -15291,7 +15291,7 @@ GGS_classMethodMap GGS_classMethodMap::class_func_mapWithMapToOverride (const GG
                                                                         COMMA_LOCATION_ARGS) {
   GGS_classMethodMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_classMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_classMethodMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -15356,7 +15356,7 @@ void GGS_classMethodMap::setter_insertOrReplace (GGS_lstring inLKey,
                                                  GGS_bool inArgument1
                                                  COMMA_LOCATION_ARGS) {
   const GGS_classMethodMap_2E_element element (inLKey, inArgument0, inArgument1) ;
-  OptionalSharedRef <GGS_GenericMapNode <GGS_classMethodMap_2E_element>> unusedExistingNode ;
+  OptionalSharedRef <GenericMapNode <GGS_classMethodMap_2E_element>> unusedExistingNode ;
   const bool allowReplacing = true ;
   mSharedRoot.insulate (THERE) ;
   mSharedRoot->insertOrReplaceInfo (element, allowReplacing, unusedExistingNode COMMA_THERE) ;
@@ -15411,7 +15411,7 @@ void GGS_classMethodMap::setter_setMParameterListForKey (GGS_formalParameterSign
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_classMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -15431,7 +15431,7 @@ void GGS_classMethodMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValue,
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_classMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_classMethodMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -15483,7 +15483,7 @@ void GGS_classMethodMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_classMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_classMethodMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_classMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_classMethodMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -15575,12 +15575,12 @@ GGS_bool UpEnumerator_classMethodMap::current_mHasCompilerArgument (LOCATION_ARG
 //     @classMethodMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap ("classMethodMap",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap ("classMethodMap",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classMethodMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classMethodMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classMethodMap ;
 }
 
@@ -15615,7 +15615,7 @@ GGS_classMethodMap GGS_classMethodMap::extractObject (const GGS_object & inObjec
 //  Map type @subscriptMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15747,7 +15747,7 @@ void GGS_subscriptMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_subscriptMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_subscriptMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15758,7 +15758,7 @@ void GGS_subscriptMap::performInsert (const GGS_subscriptMap_2E_element & inElem
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_subscriptMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -15860,7 +15860,7 @@ GGS_subscriptMap GGS_subscriptMap::class_func_mapWithMapToOverride (const GGS_su
                                                                     COMMA_LOCATION_ARGS) {
   GGS_subscriptMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_subscriptMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -15967,7 +15967,7 @@ void GGS_subscriptMap::setter_setArgumentTypeListForKey (GGS_functionSignature i
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -15987,7 +15987,7 @@ void GGS_subscriptMap::setter_setValueTypeForKey (GGS_unifiedTypeMapEntry inValu
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -16039,7 +16039,7 @@ void GGS_subscriptMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> array = sortedInfoArray () ;
     GGS_subscriptMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_subscriptMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -16131,12 +16131,12 @@ GGS_unifiedTypeMapEntry UpEnumerator_subscriptMap::current_valueType (LOCATION_A
 //     @subscriptMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_subscriptMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_subscriptMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_subscriptMap ;
 }
 
@@ -16764,12 +16764,12 @@ GGS_string UpEnumerator_enumerationDescriptorList::current_mEnumerationName (LOC
 //     @enumerationDescriptorList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList ("enumerationDescriptorList",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumerationDescriptorList ("enumerationDescriptorList",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumerationDescriptorList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumerationDescriptorList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumerationDescriptorList ;
 }
 
@@ -17274,12 +17274,12 @@ void GGS_typeFeatures::description (String & ioString,
 //     @typeFeatures generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeFeatures ("typeFeatures",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeFeatures ("typeFeatures",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeFeatures::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeFeatures::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeFeatures ;
 }
 
@@ -18069,12 +18069,12 @@ GGS_bool UpEnumerator_functionSignature::current_isConstant (LOCATION_ARGS) cons
 //     @functionSignature generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature ("functionSignature",
-                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionSignature ("functionSignature",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionSignature::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionSignature::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionSignature ;
 }
 

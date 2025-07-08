@@ -26,21 +26,20 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 %//--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GGS_lstring inKey%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments do (IDX)
+  for (* mFormalArgumentType 2*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments do (IDX)
     %,\n%!^%GGS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
   end
   %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
+  for (4*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
   do (IDX) %, inArgument_%![IDX string]
   end
   % COMMA_THERE) ;
   const char * kErrorMessage = %![mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
   internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
 }
-
 %
 end
 %

@@ -40,14 +40,14 @@ void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%
 %//--- Find setter
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const GALGAS_TypeDescriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = nullptr ;
     if (classIndex < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
       f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (nullptr == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       const GALGAS_TypeDescriptor * p = info->mSuperclassDescriptor ;
        while ((nullptr == f) && (nullptr != p)) {
          if (p->mSlotID < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
            f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;

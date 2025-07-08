@@ -4,8 +4,7 @@
 
 #include "SharedGenericPtrWithValueSemantics.h"
 
-template <typename INFO> class GGS_GenericMapNode ;
-template <typename INFO> class GGS_GenericMapRoot ;
+template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -67,7 +66,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mSharedRoot ;
 
 //--- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;

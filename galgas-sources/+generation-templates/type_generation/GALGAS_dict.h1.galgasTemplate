@@ -2,7 +2,7 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " dictionary enumerator"%
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericDictionary.h"
+#include "GALGAS_GenericDictionary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //%!" Phase 1: @" + TYPE_NAME + " dict"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% final : public GGS_GenericDictionary <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
+class GGS_%!TYPE_IDENTIFIER% final : public GenericDictionary <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%> {
 
 //--------------------------------- Virtual destructor
   public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) = default ;

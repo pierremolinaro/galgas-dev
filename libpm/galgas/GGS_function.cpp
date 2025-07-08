@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "C_galgas_function_descriptor.h"
-#include "C_galgas_type_descriptor.h"
+#include "GALGAS_TypeDescriptor.h"
 #include "Compiler.h"
 #include "cObjectArray.h"
 
@@ -180,7 +180,7 @@ GGS_object GGS_function::getter_invoke (const GGS_objectlist & inObjectList,
     const GGS_object parameter = argumentsArray.objectAtIndex (i COMMA_HERE) ;
     ok = parameter.isValid () ;
     if (ok) {
-      const C_galgas_type_descriptor * t = parameter.getter_objectStaticType (HERE).typeValue () ;
+      const GALGAS_TypeDescriptor * t = parameter.getter_objectStaticType (HERE).typeValue () ;
       ok = t == mFunctionDescriptor->mFormalParameterTypeList [i] ;
       while ((! ok) && (nullptr != t->mSuperclassDescriptor)) {
         t = t->mSuperclassDescriptor ;

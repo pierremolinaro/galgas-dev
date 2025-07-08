@@ -90,7 +90,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const AC_GALGAS_graph & inOperand) const ;
 
 //--- introspection
-  public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override = 0 ;
 
 //--- Description
   public: VIRTUAL_IN_DEBUG void description (String & ioString,

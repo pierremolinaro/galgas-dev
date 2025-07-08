@@ -199,7 +199,7 @@
    <Unit filename="../libpm/galgas/Lexique-parsing.cpp" />
    <Unit filename="../libpm/galgas/LocationInSource.cpp" />
    <Unit filename="../libpm/galgas/SourceTextInString.cpp" />
-   <Unit filename="../libpm/galgas/C_galgas_type_descriptor.cpp" />
+   <Unit filename="../libpm/galgas/GALGAS_TypeDescriptor.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_function_descriptor.cpp" />
    <Unit filename="../libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_class_inspector.cpp" />
@@ -224,26 +224,26 @@
    <Unit filename="../libpm/galgas/AC_GALGAS_weak_reference.cpp" />
    <Unit filename="../libpm/galgas/cPtr_object.cpp" />
    <Unit filename="../libpm/galgas/scanner_actions.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_application.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_bigint.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_binaryset.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_bool.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_char.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_data.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_double.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_filewrapper.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_function.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_location.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_sint.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_sint64.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_string.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_string-getters.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_stringset.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_type.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_object.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_uint.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_timer.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_uint64.cpp" />
+   <Unit filename="../libpm/galgas/GGS_application.cpp" />
+   <Unit filename="../libpm/galgas/GGS_bigint.cpp" />
+   <Unit filename="../libpm/galgas/GGS_binaryset.cpp" />
+   <Unit filename="../libpm/galgas/GGS_bool.cpp" />
+   <Unit filename="../libpm/galgas/GGS_char.cpp" />
+   <Unit filename="../libpm/galgas/GGS_data.cpp" />
+   <Unit filename="../libpm/galgas/GGS_double.cpp" />
+   <Unit filename="../libpm/galgas/GGS_filewrapper.cpp" />
+   <Unit filename="../libpm/galgas/GGS_function.cpp" />
+   <Unit filename="../libpm/galgas/GGS_location.cpp" />
+   <Unit filename="../libpm/galgas/GGS_sint.cpp" />
+   <Unit filename="../libpm/galgas/GGS_sint64.cpp" />
+   <Unit filename="../libpm/galgas/GGS_string.cpp" />
+   <Unit filename="../libpm/galgas/GGS_string-getters.cpp" />
+   <Unit filename="../libpm/galgas/GGS_stringset.cpp" />
+   <Unit filename="../libpm/galgas/GGS_type.cpp" />
+   <Unit filename="../libpm/galgas/GGS_object.cpp" />
+   <Unit filename="../libpm/galgas/GGS_uint.cpp" />
+   <Unit filename="../libpm/galgas/GGS_timer.cpp" />
+   <Unit filename="../libpm/galgas/GGS_uint64.cpp" />
   <Extensions>
    <code_completion />
    <envvars />

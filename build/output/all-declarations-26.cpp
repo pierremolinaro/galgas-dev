@@ -4498,7 +4498,7 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesI
 GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("\n#pragma once\n\n//--------------------------------------------------------------------------------------------------\n\n#include \"AC_GALGAS_root.h\"\n#include \"C_galgas_type_descriptor.h\"\n#include \"ComparisonResult.h\"\n#include \"ComparisonKind.h\"\n#include \"EnumerationOrder.h\"\n#include \"cGenericAbstractEnumerator.h\"\n#include \"Enumerator_range.h\"\n#include \"String-class.h\"\n#include \"Timer.h\"\n#include \"AC_GALGAS_reference_class.h\"\n#include \"AC_GALGAS_value_class.h\"\n#include \"AC_GALGAS_enumAssociatedValues.h\"\n#include \"AC_GALGAS_graph.h\"\n#include \"acStrongPtr_class.h\"\n#include \"cPtr_weakReference_proxy.h\"\n#include \"AC_GALGAS_weak_reference.h\"\n#include \"BoolCommandLineOption.h\"\n#include \"UIntCommandLineOption.h\"\n#include \"StringCommandLineOption.h\"\n#include \"StringListCommandLineOption.h\"\n#include \"PrologueEpilogue.h\"\n#include \"BigSigned.h\"\n\n//--------------------------------------------------------------------------------------------------\n\nclass Compiler ;\n") ;
+  result.appendString ("\n#pragma once\n\n//--------------------------------------------------------------------------------------------------\n\n#include \"AC_GALGAS_root.h\"\n#include \"GALGAS_TypeDescriptor.h\"\n#include \"ComparisonResult.h\"\n#include \"ComparisonKind.h\"\n#include \"EnumerationOrder.h\"\n#include \"cGenericAbstractEnumerator.h\"\n#include \"Enumerator_range.h\"\n#include \"String-class.h\"\n#include \"Timer.h\"\n#include \"AC_GALGAS_reference_class.h\"\n#include \"AC_GALGAS_value_class.h\"\n#include \"AC_GALGAS_enumAssociatedValues.h\"\n#include \"AC_GALGAS_graph.h\"\n#include \"acStrongPtr_class.h\"\n#include \"cPtr_weakReference_proxy.h\"\n#include \"AC_GALGAS_weak_reference.h\"\n#include \"BoolCommandLineOption.h\"\n#include \"UIntCommandLineOption.h\"\n#include \"StringCommandLineOption.h\"\n#include \"StringListCommandLineOption.h\"\n#include \"PrologueEpilogue.h\"\n#include \"BigSigned.h\"\n\n//--------------------------------------------------------------------------------------------------\n\nclass Compiler ;\n") ;
   return GGS_string (result) ;
 }
 
@@ -4628,7 +4628,7 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_function_5F_type
 GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @type type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_type : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: const C_galgas_type_descriptor * mTypeDescriptor ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const override { return nullptr != mTypeDescriptor ; }\n  public: inline void drop (void) override { mTypeDescriptor = nullptr ; }\n  public: inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }\n\n//--------------------------------- Default constructor\n  public: GGS_type (void) ;\n\n//--------------------------------- Destructor (virtual in debug mode)\n  public: virtual ~ GGS_type (void) ;\n\n//--------------------------------- Handle copy\n  public: GGS_type (const GGS_type & inSource) ;\n  public: GGS_type & operator = (const GGS_type & inSource) ;\n\n//--------------------------------- Native constructor\n  public: GGS_type (const C_galgas_type_descriptor * inValue) ;\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @type type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_type : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: const GALGAS_TypeDescriptor * mTypeDescriptor ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const override { return nullptr != mTypeDescriptor ; }\n  public: inline void drop (void) override { mTypeDescriptor = nullptr ; }\n  public: inline const GALGAS_TypeDescriptor * typeValue (void) const { return mTypeDescriptor ; }\n\n//--------------------------------- Default constructor\n  public: GGS_type (void) ;\n\n//--------------------------------- Destructor (virtual in debug mode)\n  public: virtual ~ GGS_type (void) ;\n\n//--------------------------------- Handle copy\n  public: GGS_type (const GGS_type & inSource) ;\n  public: GGS_type & operator = (const GGS_type & inSource) ;\n\n//--------------------------------- Native constructor\n  public: GGS_type (const GALGAS_TypeDescriptor * inValue) ;\n\n") ;
   return GGS_string (result) ;
 }
 
@@ -7433,7 +7433,7 @@ GGS_lstring function_makeEmbeddedTypeLName (const GGS_lstring & constinArgument_
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeEmbeddedTypeLName [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedTypeLName [3] = {
   & kTypeDescriptor_GALGAS_lstring,
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
@@ -7486,7 +7486,7 @@ GGS_string function_makeEmbeddedTypeName (const GGS_string & constinArgument_inO
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeEmbeddedTypeName [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedTypeName [3] = {
   & kTypeDescriptor_GALGAS_string,
   & kTypeDescriptor_GALGAS_string,
   nullptr
@@ -7538,7 +7538,7 @@ GGS_string function_makeOptionalTypeName (const GGS_string & constinArgument_inT
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeOptionalTypeName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeOptionalTypeName [2] = {
   & kTypeDescriptor_GALGAS_string,
   nullptr
 } ;
@@ -7586,7 +7586,7 @@ GGS_lstring function_makeOptionalTypeLName (const GGS_lstring & constinArgument_
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeOptionalTypeLName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeOptionalTypeLName [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -7633,7 +7633,7 @@ GGS_string function_makeEmbeddedElementTypeName (const GGS_string & constinArgum
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeEmbeddedElementTypeName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedElementTypeName [2] = {
   & kTypeDescriptor_GALGAS_string,
   nullptr
 } ;
@@ -7680,7 +7680,7 @@ GGS_lstring function_makeEmbeddedElementTypeLName (const GGS_lstring & constinAr
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeEmbeddedElementTypeLName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedElementTypeLName [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -7727,7 +7727,7 @@ GGS_string function_makeArrayTypeName (const GGS_string & constinArgument_inType
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeArrayTypeName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeArrayTypeName [2] = {
   & kTypeDescriptor_GALGAS_string,
   nullptr
 } ;
@@ -7774,7 +7774,7 @@ GGS_lstring function_makeArrayTypeLName (const GGS_lstring & constinArgument_inT
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeArrayTypeLName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeArrayTypeLName [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;
@@ -7821,7 +7821,7 @@ GGS_string function_makeWeakTypeName (const GGS_string & constinArgument_inTypeN
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeWeakTypeName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeWeakTypeName [2] = {
   & kTypeDescriptor_GALGAS_string,
   nullptr
 } ;
@@ -7868,7 +7868,7 @@ GGS_lstring function_makeWeakTypeLName (const GGS_lstring & constinArgument_inTy
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_makeWeakTypeLName [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_makeWeakTypeLName [2] = {
   & kTypeDescriptor_GALGAS_lstring,
   nullptr
 } ;

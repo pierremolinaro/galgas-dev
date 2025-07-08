@@ -22,13 +22,13 @@
 #include "cPtr_weakReference_proxy.h"
 #include "AC_GALGAS_reference_class.h"
 #include "acStrongPtr_class.h"
-#include "C_galgas_type_descriptor.h"
+#include "GALGAS_TypeDescriptor.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * AC_GALGAS_weak_reference::dynamicTypeDescriptor (void) const {
-  const C_galgas_type_descriptor * result = nullptr ;
+const GALGAS_TypeDescriptor * AC_GALGAS_weak_reference::dynamicTypeDescriptor (void) const {
+  const GALGAS_TypeDescriptor * result = nullptr ;
   if (nullptr != mProxyPtr) {
     result = mProxyPtr->classDescriptor () ;
   }
@@ -114,7 +114,7 @@ void AC_GALGAS_weak_reference::description (String & ioString,
     if (proxy == nullptr) {
       ioString.appendCString ("nil") ;
     }else{
-      const C_galgas_type_descriptor * descriptor = proxy->classDescriptor () ;
+      const GALGAS_TypeDescriptor * descriptor = proxy->classDescriptor () ;
       ioString.appendCString ("instance of @") ;
       ioString.appendString (descriptor->mGalgasTypeName) ;
     }

@@ -33,9 +33,9 @@ static C_galgas_function_descriptor * gGalgasFunctionListRoot = nullptr ;
 C_galgas_function_descriptor::
 C_galgas_function_descriptor (const char * inFunctionName,
                               const functionPrototypeForIntrospection inFunctionPointer,
-                              const C_galgas_type_descriptor * inResultType,
+                              const GALGAS_TypeDescriptor * inResultType,
                               const uint32_t inParameterCount,
-                              const C_galgas_type_descriptor * * inParameterTypeList) :
+                              const GALGAS_TypeDescriptor * * inParameterTypeList) :
 mNextFunction (gGalgasFunctionListRoot),
 mFunctionName (inFunctionName),
 mFunctionPointer (inFunctionPointer),

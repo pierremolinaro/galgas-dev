@@ -29,7 +29,7 @@
 class Compiler ;
 class GGS_location ;
 class GGS_object ;
-class C_galgas_type_descriptor ;
+class GALGAS_TypeDescriptor ;
 class GGS_objectlist ;
 class cObjectArray ;
 
@@ -55,16 +55,16 @@ class C_galgas_function_descriptor {
   public: const C_galgas_function_descriptor * mNextFunction ;
   public: const char * mFunctionName ;
   public: const functionPrototypeForIntrospection mFunctionPointer ;
-  public: const C_galgas_type_descriptor * mResultType ;
+  public: const GALGAS_TypeDescriptor * mResultType ;
   public: const uint32_t mParameterCount ;
-  public: const C_galgas_type_descriptor * * mFormalParameterTypeList ;
+  public: const GALGAS_TypeDescriptor * * mFormalParameterTypeList ;
 
 //--- Constructor
   public: C_galgas_function_descriptor (const char * inFunctionName,
-                                         const functionPrototypeForIntrospection inFunctionPointer,
-                                         const C_galgas_type_descriptor * inResultType,
-                                         const uint32_t inParameterCount,
-                                         const C_galgas_type_descriptor * * inParameterTypeList) ;
+                                        const functionPrototypeForIntrospection inFunctionPointer,
+                                        const GALGAS_TypeDescriptor * inResultType,
+                                        const uint32_t inParameterCount,
+                                        const GALGAS_TypeDescriptor * * inParameterTypeList) ;
 
 //--- 
   public: static C_galgas_function_descriptor * functionListRoot (void) ;

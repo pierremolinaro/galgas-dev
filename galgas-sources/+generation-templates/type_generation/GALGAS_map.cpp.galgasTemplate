@@ -2,7 +2,7 @@
 //  Map type @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -134,7 +134,7 @@ void GGS_%!TYPE_IDENTIFIER%::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -145,7 +145,7 @@ void GGS_%!TYPE_IDENTIFIER%::performInsert (const GGS_%!ELEMENT_TYPE_IDENTIFIER%
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -273,7 +273,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (
        %!^%COMMA_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -392,7 +392,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%
     const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
     const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       TC_UniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
@@ -419,7 +419,7 @@ if HAS_INSERT_OR_REPLACE then
   %\n %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (inLKey%
   for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
-  OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> unusedExistingNode ;
+  OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> unusedExistingNode ;
   const bool allowReplacing = true ;
   mSharedRoot.insulate (THERE) ;
   mSharedRoot->insertOrReplaceInfo (element, allowReplacing, unusedExistingNode COMMA_THERE) ;
@@ -461,7 +461,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName capitalizingFirstCharac
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -515,7 +515,7 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> array = sortedInfoArray () ;
     GGS_%!TYPE_IDENTIFIER%_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;

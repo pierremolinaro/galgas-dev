@@ -292,12 +292,12 @@ void GGS_XcodeProjectDescriptor::description (String & ioString,
 //     @XcodeProjectDescriptor generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ("XcodeProjectDescriptor",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ("XcodeProjectDescriptor",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_XcodeProjectDescriptor::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_XcodeProjectDescriptor::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
 }
 
@@ -1160,12 +1160,12 @@ void GGS__32_lstringlist_2E_element::description (String & ioString,
 //     @2lstringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ("2lstringlist.element",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ("2lstringlist.element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__32_lstringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__32_lstringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_lstringlist_2E_element ;
 }
 
@@ -1301,12 +1301,12 @@ void GGS_templateExpressionListAST_2E_element::description (String & ioString,
 //     @templateExpressionListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionListAST_2E_element ("templateExpressionListAST.element",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateExpressionListAST_2E_element ("templateExpressionListAST.element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateExpressionListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateExpressionListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateExpressionListAST_2E_element ;
 }
 
@@ -1430,12 +1430,12 @@ void GGS_templateInstructionIfBranchListForGeneration_2E_element::description (S
 //     @templateInstructionIfBranchListForGeneration.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration_2E_element ("templateInstructionIfBranchListForGeneration.element",
-                                                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration_2E_element ("templateInstructionIfBranchListForGeneration.element",
+                                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateInstructionIfBranchListForGeneration_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfBranchListForGeneration_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration_2E_element ;
 }
 
@@ -1571,12 +1571,12 @@ void GGS_templateVariableMap_2E_element::description (String & ioString,
 //     @templateVariableMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element ("templateVariableMap.element",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element ("templateVariableMap.element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateVariableMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateVariableMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateVariableMap_2E_element ;
 }
 
@@ -1689,12 +1689,12 @@ void GGS_templateVariableMap_2E_element_3F_::description (String & ioString,
 //     @templateVariableMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element_3F_ ("templateVariableMap.element?",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVariableMap_2E_element_3F_ ("templateVariableMap.element?",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateVariableMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateVariableMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateVariableMap_2E_element_3F_ ;
 }
 
@@ -1854,12 +1854,12 @@ void GGS_templateDelimitorListAST_2E_element::description (String & ioString,
 //     @templateDelimitorListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorListAST_2E_element ("templateDelimitorListAST.element",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateDelimitorListAST_2E_element ("templateDelimitorListAST.element",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateDelimitorListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateDelimitorListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateDelimitorListAST_2E_element ;
 }
 
@@ -1995,12 +1995,12 @@ void GGS_templateReplacementListAST_2E_element::description (String & ioString,
 //     @templateReplacementListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacementListAST_2E_element ("templateReplacementListAST.element",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateReplacementListAST_2E_element ("templateReplacementListAST.element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateReplacementListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateReplacementListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateReplacementListAST_2E_element ;
 }
 
@@ -2124,12 +2124,12 @@ void GGS_lexicalMessageDeclarationListAST_2E_element::description (String & ioSt
 //     @lexicalMessageDeclarationListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST_2E_element ("lexicalMessageDeclarationListAST.element",
-                                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST_2E_element ("lexicalMessageDeclarationListAST.element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalMessageDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalMessageDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST_2E_element ;
 }
 
@@ -2253,12 +2253,12 @@ void GGS_lexicalAttributeListAST_2E_element::description (String & ioString,
 //     @lexicalAttributeListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST_2E_element ("lexicalAttributeListAST.element",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST_2E_element ("lexicalAttributeListAST.element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalAttributeListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalAttributeListAST_2E_element ;
 }
 
@@ -2382,12 +2382,12 @@ void GGS_lexicalStyleListAST_2E_element::description (String & ioString,
 //     @lexicalStyleListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST_2E_element ("lexicalStyleListAST.element",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStyleListAST_2E_element ("lexicalStyleListAST.element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalStyleListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalStyleListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalStyleListAST_2E_element ;
 }
 
@@ -2559,12 +2559,12 @@ void GGS_terminalDeclarationListAST_2E_element::description (String & ioString,
 //     @terminalDeclarationListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST_2E_element ("terminalDeclarationListAST.element",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST_2E_element ("terminalDeclarationListAST.element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalDeclarationListAST_2E_element ;
 }
 
@@ -2712,12 +2712,12 @@ void GGS_lexicalListEntryListAST_2E_element::description (String & ioString,
 //     @lexicalListEntryListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListEntryListAST_2E_element ("lexicalListEntryListAST.element",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalListEntryListAST_2E_element ("lexicalListEntryListAST.element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalListEntryListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalListEntryListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalListEntryListAST_2E_element ;
 }
 
@@ -2841,12 +2841,12 @@ void GGS_sentLexicalAttributeListAST_2E_element::description (String & ioString,
 //     @sentLexicalAttributeListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttributeListAST_2E_element ("sentLexicalAttributeListAST.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sentLexicalAttributeListAST_2E_element ("sentLexicalAttributeListAST.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sentLexicalAttributeListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sentLexicalAttributeListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sentLexicalAttributeListAST_2E_element ;
 }
 
@@ -3006,12 +3006,12 @@ void GGS_lexicalListDeclarationListAST_2E_element::description (String & ioStrin
 //     @lexicalListDeclarationListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST_2E_element ("lexicalListDeclarationListAST.element",
-                                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST_2E_element ("lexicalListDeclarationListAST.element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalListDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalListDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalListDeclarationListAST_2E_element ;
 }
 
@@ -3135,12 +3135,12 @@ void GGS_lexicalSendSearchListAST_2E_element::description (String & ioString,
 //     @lexicalSendSearchListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ("lexicalSendSearchListAST.element",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ("lexicalSendSearchListAST.element",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalSendSearchListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalSendSearchListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ;
 }
 
@@ -3264,12 +3264,12 @@ void GGS_indexingListAST_2E_element::description (String & ioString,
 //     @indexingListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST_2E_element ("indexingListAST.element",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_indexingListAST_2E_element ("indexingListAST.element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_indexingListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_indexingListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_indexingListAST_2E_element ;
 }
 
@@ -3405,12 +3405,12 @@ void GGS_lexicalSentValueList_2E_element::description (String & ioString,
 //     @lexicalSentValueList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueList_2E_element ("lexicalSentValueList.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSentValueList_2E_element ("lexicalSentValueList.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalSentValueList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalSentValueList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalSentValueList_2E_element ;
 }
 
@@ -3534,12 +3534,12 @@ void GGS_terminalMap_2E_element::description (String & ioString,
 //     @terminalMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap_2E_element ("terminalMap.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalMap_2E_element ("terminalMap.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalMap_2E_element ;
 }
 
@@ -3652,12 +3652,12 @@ void GGS_terminalMap_2E_element_3F_::description (String & ioString,
 //     @terminalMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ("terminalMap.element?",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ("terminalMap.element?",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ;
 }
 
@@ -3781,12 +3781,12 @@ void GGS_lexicalTypeMap_2E_element::description (String & ioString,
 //     @lexicalTypeMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element ("lexicalTypeMap.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element ("lexicalTypeMap.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalTypeMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalTypeMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element ;
 }
 
@@ -3899,12 +3899,12 @@ void GGS_lexicalTypeMap_2E_element_3F_::description (String & ioString,
 //     @lexicalTypeMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element_3F_ ("lexicalTypeMap.element?",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element_3F_ ("lexicalTypeMap.element?",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalTypeMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalTypeMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTypeMap_2E_element_3F_ ;
 }
 
@@ -4028,12 +4028,12 @@ void GGS_lexicalAttributeMap_2E_element::description (String & ioString,
 //     @lexicalAttributeMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element ("lexicalAttributeMap.element",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element ("lexicalAttributeMap.element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalAttributeMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element ;
 }
 
@@ -4146,12 +4146,12 @@ void GGS_lexicalAttributeMap_2E_element_3F_::description (String & ioString,
 //     @lexicalAttributeMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element_3F_ ("lexicalAttributeMap.element?",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element_3F_ ("lexicalAttributeMap.element?",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalAttributeMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalAttributeMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalAttributeMap_2E_element_3F_ ;
 }
 
@@ -4323,12 +4323,12 @@ void GGS_terminalList_2E_element::description (String & ioString,
 //     @terminalList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList_2E_element ("terminalList.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalList_2E_element ("terminalList.element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalList_2E_element ;
 }
 
@@ -4476,12 +4476,12 @@ void GGS_lexicalExplicitTokenListMap_2E_element::description (String & ioString,
 //     @lexicalExplicitTokenListMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element ("lexicalExplicitTokenListMap.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element ("lexicalExplicitTokenListMap.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element ;
 }
 
@@ -4594,12 +4594,12 @@ void GGS_lexicalExplicitTokenListMap_2E_element_3F_::description (String & ioStr
 //     @lexicalExplicitTokenListMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ ("lexicalExplicitTokenListMap.element?",
-                                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ ("lexicalExplicitTokenListMap.element?",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ ;
 }
 
@@ -4747,12 +4747,12 @@ void GGS_lexicalExplicitTokenListMapMap_2E_element::description (String & ioStri
 //     @lexicalExplicitTokenListMapMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element ("lexicalExplicitTokenListMapMap.element",
-                                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element ("lexicalExplicitTokenListMapMap.element",
+                                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMapMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMapMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element ;
 }
 
@@ -4865,12 +4865,12 @@ void GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::description (String & io
 //     @lexicalExplicitTokenListMapMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ("lexicalExplicitTokenListMapMap.element?",
-                                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ("lexicalExplicitTokenListMapMap.element?",
+                                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMapMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ ;
 }
 
@@ -5006,12 +5006,12 @@ void GGS_lexicalMessageMap_2E_element::description (String & ioString,
 //     @lexicalMessageMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element ("lexicalMessageMap.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element ("lexicalMessageMap.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalMessageMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalMessageMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element ;
 }
 
@@ -5124,12 +5124,12 @@ void GGS_lexicalMessageMap_2E_element_3F_::description (String & ioString,
 //     @lexicalMessageMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ("lexicalMessageMap.element?",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ("lexicalMessageMap.element?",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalMessageMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalMessageMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ;
 }
 
@@ -5277,12 +5277,12 @@ void GGS_lexicalRoutineMap_2E_element::description (String & ioString,
 //     @lexicalRoutineMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ("lexicalRoutineMap.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ("lexicalRoutineMap.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalRoutineMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ;
 }
 
@@ -5395,12 +5395,12 @@ void GGS_lexicalRoutineMap_2E_element_3F_::description (String & ioString,
 //     @lexicalRoutineMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element_3F_ ("lexicalRoutineMap.element?",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element_3F_ ("lexicalRoutineMap.element?",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalRoutineMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalRoutineMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element_3F_ ;
 }
 
@@ -5560,12 +5560,12 @@ void GGS_lexicalFunctionMap_2E_element::description (String & ioString,
 //     @lexicalFunctionMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element ("lexicalFunctionMap.element",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element ("lexicalFunctionMap.element",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalFunctionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element ;
 }
 
@@ -5678,12 +5678,12 @@ void GGS_lexicalFunctionMap_2E_element_3F_::description (String & ioString,
 //     @lexicalFunctionMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element_3F_ ("lexicalFunctionMap.element?",
-                                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element_3F_ ("lexicalFunctionMap.element?",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalFunctionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalFunctionMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionMap_2E_element_3F_ ;
 }
 
@@ -5819,12 +5819,12 @@ void GGS_templateDelimitorList_2E_element::description (String & ioString,
 //     @templateDelimitorList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorList_2E_element ("templateDelimitorList.element",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateDelimitorList_2E_element ("templateDelimitorList.element",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_templateDelimitorList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_templateDelimitorList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateDelimitorList_2E_element ;
 }
 
@@ -5960,12 +5960,12 @@ void GGS_styleMap_2E_element::description (String & ioString,
 //     @styleMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap_2E_element ("styleMap.element",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_styleMap_2E_element ("styleMap.element",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_styleMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_styleMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_styleMap_2E_element ;
 }
 
@@ -6078,12 +6078,12 @@ void GGS_styleMap_2E_element_3F_::description (String & ioString,
 //     @styleMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap_2E_element_3F_ ("styleMap.element?",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_styleMap_2E_element_3F_ ("styleMap.element?",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_styleMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_styleMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_styleMap_2E_element_3F_ ;
 }
 
@@ -6195,12 +6195,12 @@ void GGS_lexicalTagMap_2E_element::description (String & ioString,
 //     @lexicalTagMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2E_element ("lexicalTagMap.element",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTagMap_2E_element ("lexicalTagMap.element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalTagMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalTagMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTagMap_2E_element ;
 }
 
@@ -6313,12 +6313,12 @@ void GGS_lexicalTagMap_2E_element_3F_::description (String & ioString,
 //     @lexicalTagMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2E_element_3F_ ("lexicalTagMap.element?",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTagMap_2E_element_3F_ ("lexicalTagMap.element?",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lexicalTagMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lexicalTagMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTagMap_2E_element_3F_ ;
 }
 
@@ -6502,12 +6502,12 @@ void GGS_commandLineOptionListAST_2E_element::description (String & ioString,
 //     @commandLineOptionListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST_2E_element ("commandLineOptionListAST.element",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_commandLineOptionListAST_2E_element ("commandLineOptionListAST.element",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_commandLineOptionListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_commandLineOptionListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_commandLineOptionListAST_2E_element ;
 }
 
@@ -6667,12 +6667,12 @@ void GGS_commandLineOptionMap_2E_element::description (String & ioString,
 //     @commandLineOptionMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element ("commandLineOptionMap.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element ("commandLineOptionMap.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_commandLineOptionMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_commandLineOptionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element ;
 }
 
@@ -6785,12 +6785,12 @@ void GGS_commandLineOptionMap_2E_element_3F_::description (String & ioString,
 //     @commandLineOptionMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element_3F_ ("commandLineOptionMap.element?",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element_3F_ ("commandLineOptionMap.element?",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_commandLineOptionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_commandLineOptionMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element_3F_ ;
 }
 
@@ -6914,12 +6914,12 @@ void GGS_guiSimpleAttributeListAST_2E_element::description (String & ioString,
 //     @guiSimpleAttributeListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2E_element ("guiSimpleAttributeListAST.element",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2E_element ("guiSimpleAttributeListAST.element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_guiSimpleAttributeListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_guiSimpleAttributeListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2E_element ;
 }
 
@@ -7055,12 +7055,12 @@ void GGS_guiCompoundAttributeListAST_2E_element::description (String & ioString,
 //     @guiCompoundAttributeListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2E_element ("guiCompoundAttributeListAST.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2E_element ("guiCompoundAttributeListAST.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_guiCompoundAttributeListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_guiCompoundAttributeListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2E_element ;
 }
 
@@ -7184,12 +7184,12 @@ void GGS_terminalLabelListAST_2E_element::description (String & ioString,
 //     @terminalLabelListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAST_2E_element ("terminalLabelListAST.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalLabelListAST_2E_element ("terminalLabelListAST.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_terminalLabelListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_terminalLabelListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalLabelListAST_2E_element ;
 }
 
@@ -7337,12 +7337,12 @@ void GGS_withLexiqueListAST_2E_element::description (String & ioString,
 //     @withLexiqueListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST_2E_element ("withLexiqueListAST.element",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_withLexiqueListAST_2E_element ("withLexiqueListAST.element",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_withLexiqueListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_withLexiqueListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_withLexiqueListAST_2E_element ;
 }
 
@@ -7478,12 +7478,12 @@ void GGS_extensionMap_2E_element::description (String & ioString,
 //     @extensionMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2E_element ("extensionMap.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMap_2E_element ("extensionMap.element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMap_2E_element ;
 }
 
@@ -7596,12 +7596,12 @@ void GGS_extensionMap_2E_element_3F_::description (String & ioString,
 //     @extensionMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2E_element_3F_ ("extensionMap.element?",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMap_2E_element_3F_ ("extensionMap.element?",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_extensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_extensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMap_2E_element_3F_ ;
 }
 
@@ -7725,12 +7725,12 @@ void GGS_projectIndexingDescriptorList_2E_element::description (String & ioStrin
 //     @projectIndexingDescriptorList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectIndexingDescriptorList_2E_element ("projectIndexingDescriptorList.element",
-                                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_projectIndexingDescriptorList_2E_element ("projectIndexingDescriptorList.element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_projectIndexingDescriptorList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_projectIndexingDescriptorList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_projectIndexingDescriptorList_2E_element ;
 }
 
@@ -7890,12 +7890,12 @@ void GGS_galgasGUIComponentListAST_2E_element::description (String & ioString,
 //     @galgasGUIComponentListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgasGUIComponentListAST_2E_element ("galgasGUIComponentListAST.element",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgasGUIComponentListAST_2E_element ("galgasGUIComponentListAST.element",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_galgasGUIComponentListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_galgasGUIComponentListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgasGUIComponentListAST_2E_element ;
 }
 
@@ -8019,12 +8019,12 @@ void GGS_optionComponentMapForGeneration_2E_element::description (String & ioStr
 //     @optionComponentMapForGeneration.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element ("optionComponentMapForGeneration.element",
-                                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element ("optionComponentMapForGeneration.element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionComponentMapForGeneration_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionComponentMapForGeneration_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element ;
 }
 
@@ -8137,12 +8137,12 @@ void GGS_optionComponentMapForGeneration_2E_element_3F_::description (String & i
 //     @optionComponentMapForGeneration.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element_3F_ ("optionComponentMapForGeneration.element?",
-                                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element_3F_ ("optionComponentMapForGeneration.element?",
+                                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionComponentMapForGeneration_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionComponentMapForGeneration_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2E_element_3F_ ;
 }
 
@@ -8314,12 +8314,12 @@ void GGS_propertyInCollectionListAST_2E_element::description (String & ioString,
 //     @propertyInCollectionListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ("propertyInCollectionListAST.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ("propertyInCollectionListAST.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyInCollectionListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyInCollectionListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ;
 }
 
@@ -8443,12 +8443,12 @@ void GGS_enumConstantList_2E_element::description (String & ioString,
 //     @enumConstantList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList_2E_element ("enumConstantList.element",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumConstantList_2E_element ("enumConstantList.element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumConstantList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumConstantList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumConstantList_2E_element ;
 }
 
@@ -8584,12 +8584,12 @@ void GGS_typeNameFormalParameterNameList_2E_element::description (String & ioStr
 //     @typeNameFormalParameterNameList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2E_element ("typeNameFormalParameterNameList.element",
-                                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2E_element ("typeNameFormalParameterNameList.element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeNameFormalParameterNameList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeNameFormalParameterNameList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2E_element ;
 }
 
@@ -8725,12 +8725,12 @@ void GGS_externTypeGetterList_2E_element::description (String & ioString,
 //     @externTypeGetterList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList_2E_element ("externTypeGetterList.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeGetterList_2E_element ("externTypeGetterList.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeGetterList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeGetterList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeGetterList_2E_element ;
 }
 
@@ -8854,12 +8854,12 @@ void GGS_externTypeSetterList_2E_element::description (String & ioString,
 //     @externTypeSetterList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterList_2E_element ("externTypeSetterList.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeSetterList_2E_element ("externTypeSetterList.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeSetterList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeSetterList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeSetterList_2E_element ;
 }
 
@@ -8995,12 +8995,12 @@ void GGS_externTypeMethodList_2E_element::description (String & ioString,
 //     @externTypeMethodList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList_2E_element ("externTypeMethodList.element",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeMethodList_2E_element ("externTypeMethodList.element",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeMethodList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeMethodList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeMethodList_2E_element ;
 }
 
@@ -9124,12 +9124,12 @@ void GGS_graphInsertModifierList_2E_element::description (String & ioString,
 //     @graphInsertModifierList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ("graphInsertModifierList.element",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ("graphInsertModifierList.element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_graphInsertModifierList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_graphInsertModifierList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_graphInsertModifierList_2E_element ;
 }
 
@@ -9265,12 +9265,12 @@ void GGS_insertSetterListAST_2E_element::description (String & ioString,
 //     @insertSetterListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertSetterListAST_2E_element ("insertSetterListAST.element",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertSetterListAST_2E_element ("insertSetterListAST.element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertSetterListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertSetterListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertSetterListAST_2E_element ;
 }
 
@@ -9394,12 +9394,12 @@ void GGS_mapAccessorListAST_2E_element::description (String & ioString,
 //     @mapAccessorListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAccessorListAST_2E_element ("mapAccessorListAST.element",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_mapAccessorListAST_2E_element ("mapAccessorListAST.element",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_mapAccessorListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_mapAccessorListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_mapAccessorListAST_2E_element ;
 }
 
@@ -9511,12 +9511,12 @@ void GGS_insertMethodMap_2E_element::description (String & ioString,
 //     @insertMethodMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element ("insertMethodMap.element",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element ("insertMethodMap.element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertMethodMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertMethodMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertMethodMap_2E_element ;
 }
 
@@ -9629,12 +9629,12 @@ void GGS_insertMethodMap_2E_element_3F_::description (String & ioString,
 //     @insertMethodMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element_3F_ ("insertMethodMap.element?",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_insertMethodMap_2E_element_3F_ ("insertMethodMap.element?",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_insertMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_insertMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_insertMethodMap_2E_element_3F_ ;
 }
 
@@ -9746,12 +9746,12 @@ void GGS_searchMethodMap_2E_element::description (String & ioString,
 //     @searchMethodMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element ("searchMethodMap.element",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element ("searchMethodMap.element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_searchMethodMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_searchMethodMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_searchMethodMap_2E_element ;
 }
 
@@ -9864,12 +9864,12 @@ void GGS_searchMethodMap_2E_element_3F_::description (String & ioString,
 //     @searchMethodMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element_3F_ ("searchMethodMap.element?",
-                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_searchMethodMap_2E_element_3F_ ("searchMethodMap.element?",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_searchMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_searchMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_searchMethodMap_2E_element_3F_ ;
 }
 
@@ -9993,12 +9993,12 @@ void GGS_sortedListSortDescriptorListAST_2E_element::description (String & ioStr
 //     @sortedListSortDescriptorListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2E_element ("sortedListSortDescriptorListAST.element",
-                                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2E_element ("sortedListSortDescriptorListAST.element",
+                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sortedListSortDescriptorListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sortedListSortDescriptorListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2E_element ;
 }
 
@@ -10122,12 +10122,12 @@ void GGS_equatableExtensionMap_2E_element::description (String & ioString,
 //     @equatableExtensionMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ("equatableExtensionMap.element",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ("equatableExtensionMap.element",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableExtensionMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableExtensionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element ;
 }
 
@@ -10240,12 +10240,12 @@ void GGS_equatableExtensionMap_2E_element_3F_::description (String & ioString,
 //     @equatableExtensionMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ("equatableExtensionMap.element?",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ("equatableExtensionMap.element?",
+                                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_equatableExtensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_equatableExtensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_equatableExtensionMap_2E_element_3F_ ;
 }
 
@@ -10381,12 +10381,12 @@ void GGS_subscriptMap_2E_element::description (String & ioString,
 //     @subscriptMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element ("subscriptMap.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element ("subscriptMap.element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_subscriptMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_subscriptMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_subscriptMap_2E_element ;
 }
 
@@ -10499,12 +10499,12 @@ void GGS_subscriptMap_2E_element_3F_::description (String & ioString,
 //     @subscriptMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element_3F_ ("subscriptMap.element?",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap_2E_element_3F_ ("subscriptMap.element?",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_subscriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_subscriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_subscriptMap_2E_element_3F_ ;
 }
 
@@ -10676,12 +10676,12 @@ void GGS_scopeLocalVarMap_2E_element::description (String & ioString,
 //     @scopeLocalVarMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element ("scopeLocalVarMap.element",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element ("scopeLocalVarMap.element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_scopeLocalVarMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_scopeLocalVarMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element ;
 }
 
@@ -10794,12 +10794,12 @@ void GGS_scopeLocalVarMap_2E_element_3F_::description (String & ioString,
 //     @scopeLocalVarMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element_3F_ ("scopeLocalVarMap.element?",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element_3F_ ("scopeLocalVarMap.element?",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_scopeLocalVarMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_scopeLocalVarMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element_3F_ ;
 }
 
@@ -10923,12 +10923,12 @@ void GGS_unifiedTypeMap_2E_element::description (String & ioString,
 //     @unifiedTypeMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element ("unifiedTypeMap.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element ("unifiedTypeMap.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unifiedTypeMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unifiedTypeMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element ;
 }
 
@@ -11041,12 +11041,12 @@ void GGS_unifiedTypeMap_2E_element_3F_::description (String & ioString,
 //     @unifiedTypeMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element_3F_ ("unifiedTypeMap.element?",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element_3F_ ("unifiedTypeMap.element?",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_unifiedTypeMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_unifiedTypeMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_unifiedTypeMap_2E_element_3F_ ;
 }
 
@@ -11158,12 +11158,12 @@ void GGS_typeDefinition_2E_solved::description (String & ioString,
 //     @typeDefinition.solved generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ("typeDefinition.solved",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ("typeDefinition.solved",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeDefinition_2E_solved::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeDefinition_2E_solved::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeDefinition_2E_solved ;
 }
 
@@ -11276,12 +11276,12 @@ void GGS_typeDefinition_2E_solved_3F_::description (String & ioString,
 //     @typeDefinition.solved? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved_3F_ ("typeDefinition.solved?",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved_3F_ ("typeDefinition.solved?",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeDefinition_2E_solved_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeDefinition_2E_solved_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeDefinition_2E_solved_3F_ ;
 }
 
@@ -11441,12 +11441,12 @@ void GGS_formalParameterListAST_2E_element::description (String & ioString,
 //     @formalParameterListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListAST_2E_element ("formalParameterListAST.element",
-                                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListAST_2E_element ("formalParameterListAST.element",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalParameterListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalParameterListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalParameterListAST_2E_element ;
 }
 
@@ -11606,12 +11606,12 @@ void GGS_formalInputParameterListAST_2E_element::description (String & ioString,
 //     @formalInputParameterListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ("formalInputParameterListAST.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ("formalInputParameterListAST.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalInputParameterListAST_2E_element ;
 }
 
@@ -11735,12 +11735,12 @@ void GGS_actualInputParameterListAST_2E_element::description (String & ioString,
 //     @actualInputParameterListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ("actualInputParameterListAST.element",
-                                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ("actualInputParameterListAST.element",
+                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_actualInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_actualInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_actualInputParameterListAST_2E_element ;
 }
 
@@ -11888,12 +11888,12 @@ void GGS_formalTemplateInputParameterListAST_2E_element::description (String & i
 //     @formalTemplateInputParameterListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2E_element ("formalTemplateInputParameterListAST.element",
-                                                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2E_element ("formalTemplateInputParameterListAST.element",
+                                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalTemplateInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalTemplateInputParameterListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2E_element ;
 }
 
@@ -12029,12 +12029,12 @@ void GGS_filewrapperTemplateListAST_2E_element::description (String & ioString,
 //     @filewrapperTemplateListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ("filewrapperTemplateListAST.element",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ("filewrapperTemplateListAST.element",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperTemplateListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperTemplateListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2E_element ;
 }
 
@@ -12170,12 +12170,12 @@ void GGS_nonTerminalLabelListAST_2E_element::description (String & ioString,
 //     @nonTerminalLabelListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ("nonTerminalLabelListAST.element",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ("nonTerminalLabelListAST.element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonTerminalLabelListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonTerminalLabelListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ;
 }
 
@@ -12299,12 +12299,12 @@ void GGS_nonterminalDeclarationListAST_2E_element::description (String & ioStrin
 //     @nonterminalDeclarationListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2E_element ("nonterminalDeclarationListAST.element",
-                                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2E_element ("nonterminalDeclarationListAST.element",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_nonterminalDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_nonterminalDeclarationListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2E_element ;
 }
 
@@ -12464,12 +12464,12 @@ void GGS_syntaxRuleLabelListAST_2E_element::description (String & ioString,
 //     @syntaxRuleLabelListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ("syntaxRuleLabelListAST.element",
-                                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ("syntaxRuleLabelListAST.element",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxRuleLabelListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxRuleLabelListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ;
 }
 
@@ -12593,12 +12593,12 @@ void GGS_syntaxRuleListAST_2E_element::description (String & ioString,
 //     @syntaxRuleListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ("syntaxRuleListAST.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ("syntaxRuleListAST.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_syntaxRuleListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_syntaxRuleListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_syntaxRuleListAST_2E_element ;
 }
 
@@ -12758,12 +12758,12 @@ void GGS_galgas_33_SyntaxComponentListAST_2E_element::description (String & ioSt
 //     @galgas3SyntaxComponentListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2E_element ("galgas3SyntaxComponentListAST.element",
-                                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2E_element ("galgas3SyntaxComponentListAST.element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_galgas_33_SyntaxComponentListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxComponentListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2E_element ;
 }
 
@@ -12899,12 +12899,12 @@ void GGS_galgas_33_SyntaxExtensionListAST_2E_element::description (String & ioSt
 //     @galgas3SyntaxExtensionListAST.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ("galgas3SyntaxExtensionListAST.element",
-                                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ("galgas3SyntaxExtensionListAST.element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_galgas_33_SyntaxExtensionListAST_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxExtensionListAST_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2E_element ;
 }
 
@@ -13088,12 +13088,12 @@ void GGS_programRuleList_2E_element::description (String & ioString,
 //     @programRuleList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList_2E_element ("programRuleList.element",
-                                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programRuleList_2E_element ("programRuleList.element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_programRuleList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_programRuleList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_programRuleList_2E_element ;
 }
 
@@ -13241,12 +13241,12 @@ void GGS_functionSignature_2E_element::description (String & ioString,
 //     @functionSignature.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature_2E_element ("functionSignature.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionSignature_2E_element ("functionSignature.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionSignature_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionSignature_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionSignature_2E_element ;
 }
 
@@ -13394,12 +13394,12 @@ void GGS_classFunctionMap_2E_element::description (String & ioString,
 //     @classFunctionMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element ("classFunctionMap.element",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element ("classFunctionMap.element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classFunctionMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classFunctionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFunctionMap_2E_element ;
 }
 
@@ -13512,12 +13512,12 @@ void GGS_classFunctionMap_2E_element_3F_::description (String & ioString,
 //     @classFunctionMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ("classFunctionMap.element?",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ("classFunctionMap.element?",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classFunctionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classFunctionMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFunctionMap_2E_element_3F_ ;
 }
 
@@ -13641,12 +13641,12 @@ void GGS_initializerMap_2E_element::description (String & ioString,
 //     @initializerMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap_2E_element ("initializerMap.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerMap_2E_element ("initializerMap.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_initializerMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_initializerMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerMap_2E_element ;
 }
 
@@ -13759,12 +13759,12 @@ void GGS_initializerMap_2E_element_3F_::description (String & ioString,
 //     @initializerMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ("initializerMap.element?",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ("initializerMap.element?",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_initializerMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_initializerMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerMap_2E_element_3F_ ;
 }
 
@@ -13912,12 +13912,12 @@ void GGS_optionalMethodSignature_2E_element::description (String & ioString,
 //     @optionalMethodSignature.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ("optionalMethodSignature.element",
-                                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ("optionalMethodSignature.element",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_optionalMethodSignature_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_optionalMethodSignature_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionalMethodSignature_2E_element ;
 }
 
@@ -14113,12 +14113,12 @@ void GGS_getterMap_2E_element::description (String & ioString,
 //     @getterMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2E_element ("getterMap.element",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element ("getterMap.element",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_getterMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_getterMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_getterMap_2E_element ;
 }
 
@@ -14231,12 +14231,12 @@ void GGS_getterMap_2E_element_3F_::description (String & ioString,
 //     @getterMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ("getterMap.element?",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ("getterMap.element?",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_getterMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_getterMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_getterMap_2E_element_3F_ ;
 }
 
@@ -14384,12 +14384,12 @@ void GGS_formalParameterSignature_2E_element::description (String & ioString,
 //     @formalParameterSignature.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ("formalParameterSignature.element",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ("formalParameterSignature.element",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalParameterSignature_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalParameterSignature_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ;
 }
 
@@ -14561,12 +14561,12 @@ void GGS_setterMap_2E_element::description (String & ioString,
 //     @setterMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2E_element ("setterMap.element",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element ("setterMap.element",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_setterMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_setterMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_setterMap_2E_element ;
 }
 
@@ -14679,12 +14679,12 @@ void GGS_setterMap_2E_element_3F_::description (String & ioString,
 //     @setterMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ("setterMap.element?",
-                                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ("setterMap.element?",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_setterMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_setterMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_setterMap_2E_element_3F_ ;
 }
 
@@ -14868,12 +14868,12 @@ void GGS_instanceMethodMap_2E_element::description (String & ioString,
 //     @instanceMethodMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ("instanceMethodMap.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ("instanceMethodMap.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_instanceMethodMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_instanceMethodMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_instanceMethodMap_2E_element ;
 }
 
@@ -14986,12 +14986,12 @@ void GGS_instanceMethodMap_2E_element_3F_::description (String & ioString,
 //     @instanceMethodMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ("instanceMethodMap.element?",
-                                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ("instanceMethodMap.element?",
+                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_instanceMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_instanceMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_instanceMethodMap_2E_element_3F_ ;
 }
 
@@ -15127,12 +15127,12 @@ void GGS_classMethodMap_2E_element::description (String & ioString,
 //     @classMethodMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ("classMethodMap.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ("classMethodMap.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classMethodMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classMethodMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classMethodMap_2E_element ;
 }
 
@@ -15245,12 +15245,12 @@ void GGS_classMethodMap_2E_element_3F_::description (String & ioString,
 //     @classMethodMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ("classMethodMap.element?",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ("classMethodMap.element?",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classMethodMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ;
 }
 
@@ -15410,12 +15410,12 @@ void GGS_typedPropertyList_2E_element::description (String & ioString,
 //     @typedPropertyList.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList_2E_element ("typedPropertyList.element",
-                                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedPropertyList_2E_element ("typedPropertyList.element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typedPropertyList_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typedPropertyList_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typedPropertyList_2E_element ;
 }
 
@@ -15563,12 +15563,12 @@ void GGS_propertyMap_2E_element::description (String & ioString,
 //     @propertyMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap_2E_element ("propertyMap.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap_2E_element ("propertyMap.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyMap_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyMap_2E_element ;
 }
 

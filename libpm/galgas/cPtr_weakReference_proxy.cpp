@@ -39,8 +39,8 @@ cPtr_weakReference_proxy::~ cPtr_weakReference_proxy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_weakReference_proxy::classDescriptor (void) const {
-  const C_galgas_type_descriptor * result = nullptr ;
+const GALGAS_TypeDescriptor * cPtr_weakReference_proxy::classDescriptor (void) const {
+  const GALGAS_TypeDescriptor * result = nullptr ;
   if (mStrongObjectPtr != nullptr) {
     result = mStrongObjectPtr->classDescriptor () ;
   }

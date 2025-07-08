@@ -95,12 +95,12 @@ mProperty_mPredefinedTypeName () {
 //     @predefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ("predefinedTypeAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_predefinedTypeAST ("predefinedTypeAST",
+                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_predefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_predefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_predefinedTypeAST ;
 }
 
@@ -393,12 +393,12 @@ GGS_formalInputParameterListAST UpEnumerator__5B_formalInputParameterListAST_5D_
 //     @[formalInputParameterListAST] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_formalInputParameterListAST_5D_ ("[formalInputParameterListAST]",
-                                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalInputParameterListAST_5D_ ("[formalInputParameterListAST]",
+                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__5B_formalInputParameterListAST_5D_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__5B_formalInputParameterListAST_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_formalInputParameterListAST_5D_ ;
 }
 
@@ -1269,12 +1269,12 @@ GGS_bool UpEnumerator_formalInputParameterListAST::current_mIsConstant (LOCATION
 //     @formalInputParameterListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListAST ("formalInputParameterListAST",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterListAST ("formalInputParameterListAST",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalInputParameterListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalInputParameterListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalInputParameterListAST ;
 }
 
@@ -1654,12 +1654,12 @@ GGS_predefinedTypeAST GGS_predefinedTypeAST_2E_weak::bang_predefinedTypeAST_2E_w
 //     @predefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak ("predefinedTypeAST.weak",
-                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak ("predefinedTypeAST.weak",
+                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_predefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_predefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak ;
 }
 
@@ -1779,7 +1779,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_applicationPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_applicationPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
 }
 
@@ -1813,12 +1813,12 @@ acPtr_class * cPtr_applicationPredefinedTypeAST::duplicate (Compiler * inCompile
 //     @applicationPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ("applicationPredefinedTypeAST",
-                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ("applicationPredefinedTypeAST",
+                                                                                 & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_applicationPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_applicationPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
 }
 
@@ -1935,12 +1935,12 @@ GGS_applicationPredefinedTypeAST GGS_applicationPredefinedTypeAST_2E_weak::bang_
 //     @applicationPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ("applicationPredefinedTypeAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ("applicationPredefinedTypeAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_applicationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_applicationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST_2E_weak ;
 }
 
@@ -2060,7 +2060,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_bigintPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_bigintPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ;
 }
 
@@ -2094,12 +2094,12 @@ acPtr_class * cPtr_bigintPredefinedTypeAST::duplicate (Compiler * inCompiler COM
 //     @bigintPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ("bigintPredefinedTypeAST",
-                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ("bigintPredefinedTypeAST",
+                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ;
 }
 
@@ -2216,12 +2216,12 @@ GGS_bigintPredefinedTypeAST GGS_bigintPredefinedTypeAST_2E_weak::bang_bigintPred
 //     @bigintPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_weak ("bigintPredefinedTypeAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_weak ("bigintPredefinedTypeAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_weak ;
 }
 
@@ -2341,7 +2341,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_binarysetPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_binarysetPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
 }
 
@@ -2375,12 +2375,12 @@ acPtr_class * cPtr_binarysetPredefinedTypeAST::duplicate (Compiler * inCompiler 
 //     @binarysetPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ("binarysetPredefinedTypeAST",
-                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ("binarysetPredefinedTypeAST",
+                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_binarysetPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_binarysetPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
 }
 
@@ -2497,12 +2497,12 @@ GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST_2E_weak::bang_bina
 //     @binarysetPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ("binarysetPredefinedTypeAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ("binarysetPredefinedTypeAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_binarysetPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_binarysetPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ;
 }
 
@@ -2622,7 +2622,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_boolPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_boolPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_boolPredefinedTypeAST ;
 }
 
@@ -2656,12 +2656,12 @@ acPtr_class * cPtr_boolPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @boolPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST ("boolPredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST ("boolPredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_boolPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_boolPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_boolPredefinedTypeAST ;
 }
 
@@ -2778,12 +2778,12 @@ GGS_boolPredefinedTypeAST GGS_boolPredefinedTypeAST_2E_weak::bang_boolPredefined
 //     @boolPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST_2E_weak ("boolPredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_boolPredefinedTypeAST_2E_weak ("boolPredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_boolPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_boolPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_boolPredefinedTypeAST_2E_weak ;
 }
 
@@ -2903,7 +2903,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_charPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_charPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_charPredefinedTypeAST ;
 }
 
@@ -2937,12 +2937,12 @@ acPtr_class * cPtr_charPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @charPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST ("charPredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST ("charPredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_charPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_charPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_charPredefinedTypeAST ;
 }
 
@@ -3059,12 +3059,12 @@ GGS_charPredefinedTypeAST GGS_charPredefinedTypeAST_2E_weak::bang_charPredefined
 //     @charPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST_2E_weak ("charPredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_charPredefinedTypeAST_2E_weak ("charPredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_charPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_charPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_charPredefinedTypeAST_2E_weak ;
 }
 
@@ -3184,7 +3184,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_dataPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_dataPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dataPredefinedTypeAST ;
 }
 
@@ -3218,12 +3218,12 @@ acPtr_class * cPtr_dataPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @dataPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST ("dataPredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST ("dataPredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dataPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dataPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dataPredefinedTypeAST ;
 }
 
@@ -3340,12 +3340,12 @@ GGS_dataPredefinedTypeAST GGS_dataPredefinedTypeAST_2E_weak::bang_dataPredefined
 //     @dataPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST_2E_weak ("dataPredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dataPredefinedTypeAST_2E_weak ("dataPredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_dataPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_dataPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_dataPredefinedTypeAST_2E_weak ;
 }
 
@@ -3465,7 +3465,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_doublePredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_doublePredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_doublePredefinedTypeAST ;
 }
 
@@ -3499,12 +3499,12 @@ acPtr_class * cPtr_doublePredefinedTypeAST::duplicate (Compiler * inCompiler COM
 //     @doublePredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST ("doublePredefinedTypeAST",
-                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST ("doublePredefinedTypeAST",
+                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_doublePredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_doublePredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_doublePredefinedTypeAST ;
 }
 
@@ -3621,12 +3621,12 @@ GGS_doublePredefinedTypeAST GGS_doublePredefinedTypeAST_2E_weak::bang_doublePred
 //     @doublePredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST_2E_weak ("doublePredefinedTypeAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_doublePredefinedTypeAST_2E_weak ("doublePredefinedTypeAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_doublePredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_doublePredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_doublePredefinedTypeAST_2E_weak ;
 }
 
@@ -3746,7 +3746,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_filewrapperPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_filewrapperPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ;
 }
 
@@ -3780,12 +3780,12 @@ acPtr_class * cPtr_filewrapperPredefinedTypeAST::duplicate (Compiler * inCompile
 //     @filewrapperPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ("filewrapperPredefinedTypeAST",
-                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ("filewrapperPredefinedTypeAST",
+                                                                                 & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ;
 }
 
@@ -3902,12 +3902,12 @@ GGS_filewrapperPredefinedTypeAST GGS_filewrapperPredefinedTypeAST_2E_weak::bang_
 //     @filewrapperPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST_2E_weak ("filewrapperPredefinedTypeAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST_2E_weak ("filewrapperPredefinedTypeAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapperPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapperPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST_2E_weak ;
 }
 
@@ -4027,7 +4027,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_functionPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_functionPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPredefinedTypeAST ;
 }
 
@@ -4061,12 +4061,12 @@ acPtr_class * cPtr_functionPredefinedTypeAST::duplicate (Compiler * inCompiler C
 //     @functionPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST ("functionPredefinedTypeAST",
-                                                                                 & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST ("functionPredefinedTypeAST",
+                                                                              & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPredefinedTypeAST ;
 }
 
@@ -4183,12 +4183,12 @@ GGS_functionPredefinedTypeAST GGS_functionPredefinedTypeAST_2E_weak::bang_functi
 //     @functionPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2E_weak ("functionPredefinedTypeAST.weak",
-                                                                                         & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2E_weak ("functionPredefinedTypeAST.weak",
+                                                                                      & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2E_weak ;
 }
 
@@ -4308,7 +4308,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_locationPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_locationPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
 }
 
@@ -4342,12 +4342,12 @@ acPtr_class * cPtr_locationPredefinedTypeAST::duplicate (Compiler * inCompiler C
 //     @locationPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST ("locationPredefinedTypeAST",
-                                                                                 & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST ("locationPredefinedTypeAST",
+                                                                              & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_locationPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_locationPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
 }
 
@@ -4464,12 +4464,12 @@ GGS_locationPredefinedTypeAST GGS_locationPredefinedTypeAST_2E_weak::bang_locati
 //     @locationPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ("locationPredefinedTypeAST.weak",
-                                                                                         & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ("locationPredefinedTypeAST.weak",
+                                                                                      & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_locationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_locationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ;
 }
 
@@ -4589,7 +4589,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_objectPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_objectPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectPredefinedTypeAST ;
 }
 
@@ -4623,12 +4623,12 @@ acPtr_class * cPtr_objectPredefinedTypeAST::duplicate (Compiler * inCompiler COM
 //     @objectPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST ("objectPredefinedTypeAST",
-                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST ("objectPredefinedTypeAST",
+                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectPredefinedTypeAST ;
 }
 
@@ -4745,12 +4745,12 @@ GGS_objectPredefinedTypeAST GGS_objectPredefinedTypeAST_2E_weak::bang_objectPred
 //     @objectPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST_2E_weak ("objectPredefinedTypeAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST_2E_weak ("objectPredefinedTypeAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectPredefinedTypeAST_2E_weak ;
 }
 
@@ -4870,7 +4870,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_stringsetPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_stringsetPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ;
 }
 
@@ -4904,12 +4904,12 @@ acPtr_class * cPtr_stringsetPredefinedTypeAST::duplicate (Compiler * inCompiler 
 //     @stringsetPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ("stringsetPredefinedTypeAST",
-                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ("stringsetPredefinedTypeAST",
+                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringsetPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringsetPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ;
 }
 
@@ -5026,12 +5026,12 @@ GGS_stringsetPredefinedTypeAST GGS_stringsetPredefinedTypeAST_2E_weak::bang_stri
 //     @stringsetPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST_2E_weak ("stringsetPredefinedTypeAST.weak",
-                                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST_2E_weak ("stringsetPredefinedTypeAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringsetPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringsetPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST_2E_weak ;
 }
 
@@ -5151,7 +5151,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_sintPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_sintPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
 }
 
@@ -5185,12 +5185,12 @@ acPtr_class * cPtr_sintPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @sintPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ("sintPredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ("sintPredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sintPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sintPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
 }
 
@@ -5307,12 +5307,12 @@ GGS_sintPredefinedTypeAST GGS_sintPredefinedTypeAST_2E_weak::bang_sintPredefined
 //     @sintPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ("sintPredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ("sintPredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ;
 }
 
@@ -5432,7 +5432,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_sint_36__34_PredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_sint_36__34_PredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ;
 }
 
@@ -5466,12 +5466,12 @@ acPtr_class * cPtr_sint_36__34_PredefinedTypeAST::duplicate (Compiler * inCompil
 //     @sint64PredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ("sint64PredefinedTypeAST",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ("sint64PredefinedTypeAST",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint_36__34_PredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint_36__34_PredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ;
 }
 
@@ -5588,12 +5588,12 @@ GGS_sint_36__34_PredefinedTypeAST GGS_sint_36__34_PredefinedTypeAST_2E_weak::ban
 //     @sint64PredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST_2E_weak ("sint64PredefinedTypeAST.weak",
-                                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST_2E_weak ("sint64PredefinedTypeAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint_36__34_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint_36__34_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST_2E_weak ;
 }
 
@@ -5713,7 +5713,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_stringPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_stringPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringPredefinedTypeAST ;
 }
 
@@ -5747,12 +5747,12 @@ acPtr_class * cPtr_stringPredefinedTypeAST::duplicate (Compiler * inCompiler COM
 //     @stringPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST ("stringPredefinedTypeAST",
-                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST ("stringPredefinedTypeAST",
+                                                                            & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringPredefinedTypeAST ;
 }
 
@@ -5869,12 +5869,12 @@ GGS_stringPredefinedTypeAST GGS_stringPredefinedTypeAST_2E_weak::bang_stringPred
 //     @stringPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST_2E_weak ("stringPredefinedTypeAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST_2E_weak ("stringPredefinedTypeAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringPredefinedTypeAST_2E_weak ;
 }
 
@@ -5994,7 +5994,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_timerPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_timerPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timerPredefinedTypeAST ;
 }
 
@@ -6028,12 +6028,12 @@ acPtr_class * cPtr_timerPredefinedTypeAST::duplicate (Compiler * inCompiler COMM
 //     @timerPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST ("timerPredefinedTypeAST",
-                                                                              & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST ("timerPredefinedTypeAST",
+                                                                           & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_timerPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_timerPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timerPredefinedTypeAST ;
 }
 
@@ -6150,12 +6150,12 @@ GGS_timerPredefinedTypeAST GGS_timerPredefinedTypeAST_2E_weak::bang_timerPredefi
 //     @timerPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST_2E_weak ("timerPredefinedTypeAST.weak",
-                                                                                      & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST_2E_weak ("timerPredefinedTypeAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_timerPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_timerPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timerPredefinedTypeAST_2E_weak ;
 }
 
@@ -6275,7 +6275,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_typePredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_typePredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typePredefinedTypeAST ;
 }
 
@@ -6309,12 +6309,12 @@ acPtr_class * cPtr_typePredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @typePredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST ("typePredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST ("typePredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typePredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typePredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typePredefinedTypeAST ;
 }
 
@@ -6431,12 +6431,12 @@ GGS_typePredefinedTypeAST GGS_typePredefinedTypeAST_2E_weak::bang_typePredefined
 //     @typePredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST_2E_weak ("typePredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST_2E_weak ("typePredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typePredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typePredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typePredefinedTypeAST_2E_weak ;
 }
 
@@ -6556,7 +6556,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_uintPredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_uintPredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintPredefinedTypeAST ;
 }
 
@@ -6590,12 +6590,12 @@ acPtr_class * cPtr_uintPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 //     @uintPredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST ("uintPredefinedTypeAST",
-                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST ("uintPredefinedTypeAST",
+                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintPredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintPredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintPredefinedTypeAST ;
 }
 
@@ -6712,12 +6712,12 @@ GGS_uintPredefinedTypeAST GGS_uintPredefinedTypeAST_2E_weak::bang_uintPredefined
 //     @uintPredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST_2E_weak ("uintPredefinedTypeAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST_2E_weak ("uintPredefinedTypeAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintPredefinedTypeAST_2E_weak ;
 }
 
@@ -6837,7 +6837,7 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_uint_36__34_PredefinedTypeAST::classDescriptor (void) const {
+const GALGAS_TypeDescriptor * cPtr_uint_36__34_PredefinedTypeAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ;
 }
 
@@ -6871,12 +6871,12 @@ acPtr_class * cPtr_uint_36__34_PredefinedTypeAST::duplicate (Compiler * inCompil
 //     @uint64PredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ("uint64PredefinedTypeAST",
-                                                                                     & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ("uint64PredefinedTypeAST",
+                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_PredefinedTypeAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_PredefinedTypeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ;
 }
 
@@ -6993,12 +6993,12 @@ GGS_uint_36__34_PredefinedTypeAST GGS_uint_36__34_PredefinedTypeAST_2E_weak::ban
 //     @uint64PredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2E_weak ("uint64PredefinedTypeAST.weak",
-                                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2E_weak ("uint64PredefinedTypeAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2E_weak ;
 }
 
@@ -7109,12 +7109,12 @@ void GGS_propertyMutability::description (String & ioString,
 //     @propertyMutability generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMutability ("propertyMutability",
-                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMutability ("propertyMutability",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyMutability::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyMutability::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyMutability ;
 }
 
@@ -7273,12 +7273,12 @@ ComparisonResult GGS_propertyInCollectionInitializationAST::objectCompare (const
 //     @propertyInCollectionInitializationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ("propertyInCollectionInitializationAST",
-                                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ("propertyInCollectionInitializationAST",
+                                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyInCollectionInitializationAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyInCollectionInitializationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ;
 }
 
@@ -8230,12 +8230,12 @@ GGS_propertyInCollectionInitializationAST UpEnumerator_propertyInCollectionListA
 //     @propertyInCollectionListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_propertyInCollectionListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_propertyInCollectionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyInCollectionListAST ;
 }
 
@@ -8494,12 +8494,12 @@ void GGS_AccessControlAST::description (String & ioString,
 //     @AccessControlAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST ("AccessControlAST",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControlAST ("AccessControlAST",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_AccessControlAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_AccessControlAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_AccessControlAST ;
 }
 
@@ -8616,12 +8616,12 @@ GGS_arrayTypeDeclarationAST GGS_arrayTypeDeclarationAST_2E_weak::bang_arrayTypeD
 //     @arrayTypeDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeDeclarationAST_2E_weak ("arrayTypeDeclarationAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeDeclarationAST_2E_weak ("arrayTypeDeclarationAST.weak",
+                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_arrayTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_arrayTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_arrayTypeDeclarationAST_2E_weak ;
 }
 
@@ -8738,12 +8738,12 @@ GGS_boolsetDeclarationAST GGS_boolsetDeclarationAST_2E_weak::bang_boolsetDeclara
 //     @boolsetDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST_2E_weak ("boolsetDeclarationAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST_2E_weak ("boolsetDeclarationAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_boolsetDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_boolsetDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_boolsetDeclarationAST_2E_weak ;
 }
 
@@ -8860,12 +8860,12 @@ GGS_classDeclarationAST GGS_classDeclarationAST_2E_weak::bang_classDeclarationAS
 //     @classDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST_2E_weak ("classDeclarationAST.weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classDeclarationAST_2E_weak ("classDeclarationAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_classDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_classDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classDeclarationAST_2E_weak ;
 }
 
@@ -9736,12 +9736,12 @@ GGS_bool UpEnumerator_typedPropertyList::current_hasSelector (LOCATION_ARGS) con
 //     @typedPropertyList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList ("typedPropertyList",
-                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedPropertyList ("typedPropertyList",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typedPropertyList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typedPropertyList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typedPropertyList ;
 }
 
@@ -9776,7 +9776,7 @@ GGS_typedPropertyList GGS_typedPropertyList::extractObject (const GGS_object & i
 //  Map type @initializerMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GGS_GenericMapRoot.h"
+#include "GALGAS_GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9908,7 +9908,7 @@ void GGS_initializerMap::drop (void)  {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_initializerMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_initializerMap_2E_element>>::make (THERE) ;
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_initializerMap_2E_element>>::make (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9919,7 +9919,7 @@ void GGS_initializerMap::performInsert (const GGS_initializerMap_2E_element & in
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GGS_GenericMapNode <GGS_initializerMap_2E_element>> existingNode ;
+    OptionalSharedRef <GenericMapNode <GGS_initializerMap_2E_element>> existingNode ;
     const bool allowReplacing = false ;
     mSharedRoot.insulate (THERE) ;
     mSharedRoot->insertOrReplaceInfo (
@@ -10020,7 +10020,7 @@ GGS_initializerMap GGS_initializerMap::class_func_mapWithMapToOverride (const GG
                                                                         COMMA_LOCATION_ARGS) {
   GGS_initializerMap result ;
   if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GGS_GenericMapRoot <GGS_initializerMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_initializerMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
   }
   return result ;
 }
@@ -10103,7 +10103,7 @@ void GGS_initializerMap::setter_setMArgumentTypeListForKey (GGS_functionSignatur
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GGS_GenericMapNode <GGS_initializerMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    OptionalSharedRef <GenericMapNode <GGS_initializerMap_2E_element>> node = mSharedRoot->searchNode (key) ;
     if (node.isNil ()) {
       String message = "cannot write property in map: the '" ;
       message.appendString (key) ;
@@ -10151,7 +10151,7 @@ void GGS_initializerMap::description (String & ioString,
   if (isValid ()) {
     const TC_Array <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> array = sortedInfoArray () ;
     GGS_initializerMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GGS_GenericMapRoot <GGS_initializerMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    OptionalSharedRef <GenericMapRoot <GGS_initializerMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
     uint32_t idx = 0 ;
     while (subRoot.isNotNil ()) {
      idx += 1 ;
@@ -10231,12 +10231,12 @@ GGS_functionSignature UpEnumerator_initializerMap::current_mArgumentTypeList (LO
 //     @initializerMap generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap ("initializerMap",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_initializerMap ("initializerMap",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_initializerMap::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_initializerMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_initializerMap ;
 }
 
@@ -10353,12 +10353,12 @@ GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST_2E_weak::bang_we
 //     @weakReferenceDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2E_weak ("weakReferenceDeclarationAST.weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2E_weak ("weakReferenceDeclarationAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_weakReferenceDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_weakReferenceDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2E_weak ;
 }
 
@@ -10635,12 +10635,12 @@ GGS_associatedValue UpEnumerator__5B_associatedValue_5D_::current (LOCATION_ARGS
 //     @[associatedValue] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_associatedValue_5D_ ("[associatedValue]",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_associatedValue_5D_ ("[associatedValue]",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__5B_associatedValue_5D_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__5B_associatedValue_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_associatedValue_5D_ ;
 }
 
@@ -11268,12 +11268,12 @@ GGS__5B_associatedValue_5D_ UpEnumerator_enumConstantList::current_associatedVal
 //     @enumConstantList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ("enumConstantList",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumConstantList ("enumConstantList",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumConstantList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumConstantList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumConstantList ;
 }
 
@@ -11384,12 +11384,12 @@ void GGS_structComparison::description (String & ioString,
 //     @structComparison generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structComparison ("structComparison",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structComparison ("structComparison",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_structComparison::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_structComparison::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structComparison ;
 }
 
@@ -11506,12 +11506,12 @@ GGS_enumDeclarationAST GGS_enumDeclarationAST_2E_weak::bang_enumDeclarationAST_2
 //     @enumDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST_2E_weak ("enumDeclarationAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumDeclarationAST_2E_weak ("enumDeclarationAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumDeclarationAST_2E_weak ;
 }
 
@@ -12139,12 +12139,12 @@ GGS_associatedValueDescriptorList UpEnumerator_enumConstantListForGeneration::cu
 //     @enumConstantListForGeneration generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration ("enumConstantListForGeneration",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration ("enumConstantListForGeneration",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_enumConstantListForGeneration::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_enumConstantListForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_enumConstantListForGeneration ;
 }
 
@@ -12802,12 +12802,12 @@ GGS_string UpEnumerator_associatedValueDescriptorList::current_name (LOCATION_AR
 //     @associatedValueDescriptorList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_associatedValueDescriptorList ("associatedValueDescriptorList",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_associatedValueDescriptorList ("associatedValueDescriptorList",
+                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_associatedValueDescriptorList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_associatedValueDescriptorList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_associatedValueDescriptorList ;
 }
 
@@ -13516,12 +13516,12 @@ GGS_lstring UpEnumerator_typeNameFormalParameterNameList::current_mFormalParamet
 //     @typeNameFormalParameterNameList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
-                                                                                       nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
+                                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typeNameFormalParameterNameList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typeNameFormalParameterNameList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ;
 }
 
@@ -14068,12 +14068,12 @@ GGS_typeNameFormalParameterNameList UpEnumerator_externTypeConstructorList::curr
 //     @externTypeConstructorList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeConstructorList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeConstructorList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeConstructorList ;
 }
 
@@ -14782,12 +14782,12 @@ GGS_typeNameFormalParameterNameList UpEnumerator_externTypeGetterList::current_m
 //     @externTypeGetterList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeGetterList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeGetterList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeGetterList ;
 }
 
@@ -15415,12 +15415,12 @@ GGS_formalParameterListAST UpEnumerator_externTypeSetterList::current_mFormalPar
 //     @externTypeSetterList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterList ("externTypeSetterList",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeSetterList ("externTypeSetterList",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeSetterList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeSetterList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeSetterList ;
 }
 
@@ -16291,12 +16291,12 @@ GGS_bool UpEnumerator_formalParameterListAST::current_mIsUnused (LOCATION_ARGS) 
 //     @formalParameterListAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListAST ("formalParameterListAST",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterListAST ("formalParameterListAST",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_formalParameterListAST::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_formalParameterListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formalParameterListAST ;
 }
 
@@ -17005,12 +17005,12 @@ GGS_location UpEnumerator_externTypeMethodList::current_mDeclarationLocation (LO
 //     @externTypeMethodList generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList ("externTypeMethodList",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeMethodList ("externTypeMethodList",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_externTypeMethodList::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_externTypeMethodList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externTypeMethodList ;
 }
 

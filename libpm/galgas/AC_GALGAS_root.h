@@ -36,7 +36,7 @@ class GGS_object ;
 class GGS_type ;
 class GGS_string ;
 class String ;
-class C_galgas_type_descriptor ;
+class GALGAS_TypeDescriptor ;
 
 //--------------------------------------------------------------------------------------------------
 //   SOURCE FILE                                                                                 
@@ -76,9 +76,9 @@ class AC_GALGAS_root {
   
   public: virtual void drop (void) = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
+  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;
 
   public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 

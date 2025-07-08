@@ -268,8 +268,8 @@ void Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void Compiler::castError (const String & inTargetTypeName,
-                            const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
-                            COMMA_LOCATION_ARGS) {
+                          const GALGAS_TypeDescriptor * inObjectDynamicTypeDescriptor
+                          COMMA_LOCATION_ARGS) {
   String m = "cannot cast an @" ;
   m.appendString (inObjectDynamicTypeDescriptor->mGalgasTypeName) ;
   m.appendCString (" to an @") ;

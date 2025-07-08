@@ -349,7 +349,7 @@ GGS_stringset GGS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------*
 
 GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier
-                                                                            COMMA_LOCATION_ARGS) {
+                                                                     COMMA_LOCATION_ARGS) {
   GGS_stringlist result ;
   if (inIdentifier.isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;

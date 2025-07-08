@@ -4,12 +4,12 @@
 
 class GGS_type : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: const C_galgas_type_descriptor * mTypeDescriptor ;
+  private: const GALGAS_TypeDescriptor * mTypeDescriptor ;
 
 //--------------------------------- Accessors
   public: inline bool isValid (void) const override { return nullptr != mTypeDescriptor ; }
   public: inline void drop (void) override { mTypeDescriptor = nullptr ; }
-  public: inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }
+  public: inline const GALGAS_TypeDescriptor * typeValue (void) const { return mTypeDescriptor ; }
 
 //--------------------------------- Default constructor
   public: GGS_type (void) ;
@@ -22,7 +22,7 @@ class GGS_type : public AC_GALGAS_root {
   public: GGS_type & operator = (const GGS_type & inSource) ;
 
 //--------------------------------- Native constructor
-  public: GGS_type (const C_galgas_type_descriptor * inValue) ;
+  public: GGS_type (const GALGAS_TypeDescriptor * inValue) ;
 
 %
 

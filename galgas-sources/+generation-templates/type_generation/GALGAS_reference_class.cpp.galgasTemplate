@@ -191,7 +191,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
 %
 if not IS_ABSTRACT then
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
+  %const GALGAS_TypeDescriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%
   if [ALL_PROPERTY_LIST count] == 0 then

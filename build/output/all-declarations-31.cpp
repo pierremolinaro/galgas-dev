@@ -6264,7 +6264,7 @@ GGS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionLi
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_syntaxSignatureOfInstructionList [3] = {
+static const GALGAS_TypeDescriptor * functionArgs_syntaxSignatureOfInstructionList [3] = {
   & kTypeDescriptor_GALGAS_string,
   & kTypeDescriptor_GALGAS_semanticInstructionListForGeneration,
   nullptr
@@ -6379,7 +6379,7 @@ GGS_bool function_compareSyntaxSignature (const GGS_semanticInstructionListForGe
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_compareSyntaxSignature [4] = {
+static const GALGAS_TypeDescriptor * functionArgs_compareSyntaxSignature [4] = {
   & kTypeDescriptor_GALGAS_semanticInstructionListForGeneration,
   & kTypeDescriptor_GALGAS_semanticInstructionListForGeneration,
   & kTypeDescriptor_GALGAS_location,
@@ -6494,7 +6494,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (cons
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_transformLabelMap [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_transformLabelMap [2] = {
   & kTypeDescriptor_GALGAS_nonTerminalLabelListAST,
   nullptr
 } ;
@@ -7302,7 +7302,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
 //  Function introspection                                                                       
 //--------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_escapeForTex [2] = {
+static const GALGAS_TypeDescriptor * functionArgs_escapeForTex [2] = {
   & kTypeDescriptor_GALGAS_string,
   nullptr
 } ;
