@@ -409,19 +409,6 @@ ComparisonResult capCollectionElementArray::compareCollectionElementArray (const
 
 //--------------------------------------------------------------------------------------------------
 
-void capCollectionElementArray::description (String & ioString,
-                                             const int32_t inIndentation) const {
-  for (uint32_t i=0 ; i<count () ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendCString ("|-at ") ;
-    ioString.appendUnsigned (i) ;
-    mSharedRoot->mArray [i].description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void capCollectionElementArray::subListToIndex (capCollectionElementArray & outSubList,
                                                 const uint32_t inIndex,
                                                 bool & outOk,

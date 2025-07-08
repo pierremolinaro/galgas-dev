@@ -116,9 +116,6 @@ class cCollectionElement_stringlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -148,15 +145,6 @@ cCollectionElement * cCollectionElement_stringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_stringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -858,9 +846,6 @@ class cCollectionElement_lstringlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -890,15 +875,6 @@ cCollectionElement * cCollectionElement_lstringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_lstringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_lstringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1623,9 +1599,6 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1656,19 +1629,6 @@ cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement__32_stringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement__32_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue0" ":") ;
-  mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue1" ":") ;
-  mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2765,9 +2725,6 @@ class cCollectionElement_functionlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2797,15 +2754,6 @@ cCollectionElement * cCollectionElement_functionlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_functionlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_functionlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3347,9 +3295,6 @@ class cCollectionElement_luintlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3379,15 +3324,6 @@ cCollectionElement * cCollectionElement_luintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_luintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_luintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4071,9 +4007,6 @@ class cCollectionElement_objectlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4103,15 +4036,6 @@ cCollectionElement * cCollectionElement_objectlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_objectlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_objectlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4653,9 +4577,6 @@ class cCollectionElement_typelist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4685,15 +4606,6 @@ cCollectionElement * cCollectionElement_typelist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_typelist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_typelist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5235,9 +5147,6 @@ class cCollectionElement_uintlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5267,15 +5176,6 @@ cCollectionElement * cCollectionElement_uintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_uintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_uintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5817,9 +5717,6 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5849,15 +5746,6 @@ cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_uint_36__34_list (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_uint_36__34_list::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6399,9 +6287,6 @@ class cCollectionElement_bigintlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6431,15 +6316,6 @@ cCollectionElement * cCollectionElement_bigintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_bigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_bigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6981,9 +6857,6 @@ class cCollectionElement_lbigintlist : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7013,15 +6886,6 @@ cCollectionElement * cCollectionElement_lbigintlist::copy (void) {
   cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_lbigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_lbigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------

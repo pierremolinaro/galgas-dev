@@ -99,13 +99,3 @@ void capCollectionElement::insulate (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void capCollectionElement::description (String & ioString, const int32_t inIndentation) const {
-  if (nullptr == mPtr) {
-    ioString.appendCString ("NULL") ;
-  }else{
-    mPtr->description (ioString, inIndentation) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------

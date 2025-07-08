@@ -24,9 +24,6 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -77,18 +74,6 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   % COMMA_HERE)) ;
   return result ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {
-%
-  for (propertyTypeEntry propertyName 3*) in PROPERTY_LIST do
-    %  ioString.appendNewLine () ;\n%
-    %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString.appendCString (%![propertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
-    %  mObject.mProperty_%![propertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
-  end
-%}
 
 %if GENERATE_COMPARISON then
 %//--------------------------------------------------------------------------------------------------

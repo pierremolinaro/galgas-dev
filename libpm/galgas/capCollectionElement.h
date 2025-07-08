@@ -67,9 +67,6 @@ class capCollectionElement final {
 
 //--- Method that returns a copy of current object
   public: capCollectionElement copy (void) ;
-
-//--- Description
- public: void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
