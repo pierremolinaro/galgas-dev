@@ -28,10 +28,20 @@
 
 //--------------------------------------------------------------------------------------------------
 
-typedef struct {
-  uint32_t mSource ;
-  uint32_t mTarget ;
-} cEdge ;
+class GraphEdge final {
+  public: uint32_t mSource ;
+  public: uint32_t mTarget ;
+
+  public: GraphEdge (void) :
+  mSource (UINT32_MAX),
+  mTarget (UINT32_MAX) {
+  }
+
+  public: GraphEdge (const uint32_t inSource, const uint32_t inTarget) :
+  mSource (inSource),
+  mTarget (inTarget) {
+  }
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -50,7 +60,7 @@ class DirectedGraph final {
   public: void removeNode (const uint32_t inNodeIndex) ;
 
   public: void addEdge (const uint32_t inSourceNodeIndex,
-                         const uint32_t inTargetNodeIndex) ;
+                        const uint32_t inTargetNodeIndex) ;
 
   public: void print (void) const ;
 
@@ -76,25 +86,25 @@ class DirectedGraph final {
   public: void getNodesInvolvedInCircularities (GenericUniqueArray <uint32_t> & outNodes) const ;
   
   public: void getDominators (GenericUniqueArray <UInt32Set> & outDominators
-                               COMMA_LOCATION_ARGS) const ;
+                              COMMA_LOCATION_ARGS) const ;
   
   public: void removeEdgesToDominator (LOCATION_ARGS) ;
   
   public: void removeEdgesToNode (const uint32_t inNodeIndex COMMA_LOCATION_ARGS) ;
   
-  public: void getEdges (GenericUniqueArray <cEdge> & outEdges) const ;
+  public: void getEdges (GenericUniqueArray <GraphEdge> & outEdges) const ;
   
   public: void topologicalSort (GenericUniqueArray <uint32_t> & outSortedNodes,
-                                 GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
+                                GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
   
   public: void depthFirstTopologicalSort (GenericUniqueArray <uint32_t> & outSortedNodes,
-                                           GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
+                                          GenericUniqueArray <uint32_t> & outUnsortedNodes) const ;
   
   public: DirectedGraph reversedGraph (void) const ;
   
   public: DirectedGraph subGraphFromNodes (const UInt32Set & inStartNodes,
-                                              const UInt32Set & inNodesToExclude) const ;
-  
+                                           const UInt32Set & inNodesToExclude) const ;
+
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: void checkGraph (LOCATION_ARGS) const ;
   #endif

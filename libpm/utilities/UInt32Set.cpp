@@ -22,6 +22,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
+#include <algorithm>
+
+//--------------------------------------------------------------------------------------------------
+
 UInt32Set::UInt32Set (void) :
 mDefinition () {
 }
@@ -40,7 +44,7 @@ void UInt32Set::add (const uint32_t inNodeIndex) {
   while (idx >= mDefinition.count ()) {
     mDefinition.appendObject (0) ;
   }
-  mDefinition (idx COMMA_HERE) |= ((uint64_t) 1) << (inNodeIndex & 63) ;
+  mDefinition (idx COMMA_HERE) |= uint64_t (1) << (inNodeIndex & 63) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     check () ;
   #endif
@@ -49,9 +53,9 @@ void UInt32Set::add (const uint32_t inNodeIndex) {
 //--------------------------------------------------------------------------------------------------
 
 void UInt32Set::remove (const uint32_t inNodeIndex) {
-  const int32_t idx = (int32_t) (inNodeIndex >> 6) ;
+  const int32_t idx = int32_t (inNodeIndex >> 6) ;
   if (idx < mDefinition.count ()) {
-    mDefinition (idx COMMA_HERE) &= ~ (((uint64_t) 1) << (inNodeIndex & 63)) ;
+    mDefinition (idx COMMA_HERE) &= ~ (uint64_t (1) << (inNodeIndex & 63)) ;
     while ((mDefinition.count () > 0) && (mDefinition.lastObject (HERE) == 0)) {
       mDefinition.removeLastObject (HERE) ;
     }
@@ -67,7 +71,7 @@ void UInt32Set::getBoolValueArray (GenericUniqueArray <bool> & outBoolValueArray
   outBoolValueArray.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mDefinition.count () ; i++) {
     for (uint32_t j=0 ; j<64 ; j++) {
-      outBoolValueArray.appendObject ((mDefinition (i COMMA_HERE) & (((uint64_t) 1) << j)) != 0) ;
+      outBoolValueArray.appendObject ((mDefinition (i COMMA_HERE) & (uint64_t (1) << j)) != 0) ;
     }
   }
 //---
@@ -83,7 +87,7 @@ void UInt32Set::getValueArray (GenericUniqueArray <uint32_t> & outValueArray) co
   uint32_t idx = 0 ;
   for (int32_t i=0 ; i<mDefinition.count () ; i++) {
     for (uint32_t j=0 ; j<64 ; j++) {
-      const bool exists = (mDefinition (i COMMA_HERE) & (((uint64_t) 1) << j)) != 0 ;
+      const bool exists = (mDefinition (i COMMA_HERE) & (uint64_t (1) << j)) != 0 ;
       if (exists) {
         outValueArray.appendObject (idx) ;
       }
@@ -165,14 +169,8 @@ void UInt32Set::operator |= (const UInt32Set & inOther) {
 
 //--------------------------------------------------------------------------------------------------
 
-static inline int32_t minSInt32 (const int32_t inA, const int32_t inB) {
-  return (inA < inB) ? inA : inB ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void UInt32Set::operator -= (const UInt32Set & inOther) {
-  const int32_t n = minSInt32 (mDefinition.count (), inOther.mDefinition.count ()) ;
+  const int32_t n = std::min (mDefinition.count (), inOther.mDefinition.count ()) ;
   for (int32_t i=0 ; i<n ; i++) {
     mDefinition (i COMMA_HERE) &= ~ inOther.mDefinition (i COMMA_HERE) ;
   }
@@ -197,7 +195,7 @@ bool UInt32Set::operator == (const UInt32Set & inOther) const {
 //--------------------------------------------------------------------------------------------------
 
 bool UInt32Set::operator != (const UInt32Set & inOther) const {
-  return ! (*this == inOther) ;
+  return !(*this == inOther) ;
 }
 
 //--------------------------------------------------------------------------------------------------

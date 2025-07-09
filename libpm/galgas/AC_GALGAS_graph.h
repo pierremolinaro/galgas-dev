@@ -32,7 +32,7 @@
 
 class AC_GALGAS_graph : public AC_GALGAS_root {
 //--- Private Data member
-  private: class cSharedGraph * mSharedGraph ;
+  private: class SharedGraph * mSharedGraph ;
 
 //--- Default constructor
   public: AC_GALGAS_graph (void) ;
@@ -153,7 +153,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GGS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
 
-  friend class cSharedGraph ;
+  friend class SharedGraph ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2013, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 2013, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -189,12 +189,12 @@ String DirectedGraph::graphvizString (const GenericUniqueArray <String> & inNode
 
 //--------------------------------------------------------------------------------------------------
 
-void DirectedGraph::getEdges (GenericUniqueArray <cEdge> & outEdges) const {
+void DirectedGraph::getEdges (GenericUniqueArray <GraphEdge> & outEdges) const {
   outEdges.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     GenericUniqueArray <uint32_t> targetList ; mEdges (i COMMA_HERE).getValueArray (targetList) ;
     for (int32_t j=0 ; j<targetList.count () ; j++) {
-      const cEdge edge = {(uint32_t) i, targetList (j COMMA_HERE)} ;
+      const GraphEdge edge (uint32_t (i), targetList (j COMMA_HERE)) ;
       outEdges.appendObject (edge) ;
     }
   }
