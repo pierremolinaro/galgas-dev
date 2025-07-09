@@ -252,7 +252,7 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
 //  try fm.removeItem (atPath: DISTRIBUTION_DIR + "/galgas-dev/testsuite")
 //-------------------- Vérifier la création de projet
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.py", [])
 //-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])

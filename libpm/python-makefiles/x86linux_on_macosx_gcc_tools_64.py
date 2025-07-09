@@ -1,13 +1,12 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
-
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForLinux64OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   executable = makefile.find_executable ("x86_64-linux-gnu-gcc")
@@ -53,4 +52,4 @@ def buildForLinux64OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAM
 #--- Run makefile
   gmf.run ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------

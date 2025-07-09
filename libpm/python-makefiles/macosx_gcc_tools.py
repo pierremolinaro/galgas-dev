@@ -1,13 +1,12 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
-
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForMacOSintel (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
@@ -49,7 +48,7 @@ def buildForMacOSintel (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GO
 #--- Run makefile
   gmf.run ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForMacOSarm64 (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
@@ -91,7 +90,7 @@ def buildForMacOSarm64 (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GO
 #--- Run makefile
   gmf.run ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForMacOSFat (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
 #--- Make object
@@ -131,11 +130,11 @@ def buildForMacOSFat (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL
 #--- Run jobs
   make.runGoal (maxParallelJobs, displayCommands)
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForMacOS (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   buildForMacOSarm64 (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands)
   buildForMacOSintel (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands)
   buildForMacOSFat   (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands)
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------

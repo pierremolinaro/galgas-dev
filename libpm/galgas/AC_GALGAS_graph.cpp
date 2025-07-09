@@ -388,8 +388,8 @@ bool SharedGraph::isNodeDefined (const String & inKey) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_location AC_GALGAS_graph::getter_locationForKey (const GGS_string & inKey,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   if (isValid () && inKey.isValid ()) {
     result = mSharedGraph->locationForKey (inKey.stringValue (), inCompiler COMMA_THERE) ;
@@ -400,8 +400,8 @@ GGS_location AC_GALGAS_graph::getter_locationForKey (const GGS_string & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_location SharedGraph::locationForKey (const String & inKey,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   bool found = false ;
   bool ok = false ;
@@ -414,10 +414,12 @@ GGS_location SharedGraph::locationForKey (const String & inKey,
     }
   }
   if (!ok) {
-    inCompiler->emitSemanticError (GGS_location (),
-                                   String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
-                                   GenericArray <FixItDescription> ()
-                                   COMMA_THERE) ;
+    inCompiler->emitSemanticError (
+      GGS_location (),
+      String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
+      GenericArray <FixItDescription> ()
+      COMMA_THERE
+    ) ;
   }
   return result ;
 }
@@ -488,7 +490,7 @@ GGS_lstringlist AC_GALGAS_graph::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 static const GraphNode * findNode (const String & inKey,
-                                    const GraphNode * inNode) {
+                                   const GraphNode * inNode) {
   const GraphNode * result = nullptr ;
   while ((nullptr != inNode) && (result == nullptr)) {
     const int32_t r = inKey.compare (inNode->mKey) ;
@@ -548,10 +550,10 @@ capCollectionElementArray AC_GALGAS_graph::graph (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
-                             const GGS_lstringlist & inStartNodes,
-                             const GGS_stringset & inNodesToExclude,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const {
+                            const GGS_lstringlist & inStartNodes,
+                            const GGS_stringset & inNodesToExclude,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   UInt32Set startNodeSet ;
   UpEnumerator_lstringlist enumerator1 (inStartNodes) ;
@@ -561,10 +563,12 @@ void SharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
       String message ("subgraphFromNodes: '") ;
       message.appendString (enumerator1.current_mValue (THERE).mProperty_string.stringValue()) ;
       message.appendCString ("' is not a declared node, cannot start from it") ;
-      inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mProperty_location,
-                                     message,
-                                     GenericArray <FixItDescription> ()
-                                     COMMA_THERE) ;
+      inCompiler->emitSemanticError (
+        enumerator1.current_mValue (THERE).mProperty_location,
+        message,
+        GenericArray <FixItDescription> ()
+        COMMA_THERE
+      ) ;
     }else{
       startNodeSet.add (nodePtr->mNodeID) ;
     }
@@ -598,11 +602,13 @@ void SharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     GGS_lstring lkey ;
     lkey.mProperty_string = nodePtr->mKey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
-    outResultingGraph.internalAddNode (lkey,
-                                       "subgraphFromNodes Internal error",
-                                       nodePtr->mAttributes,
-                                       inCompiler
-                                       COMMA_THERE) ;
+    outResultingGraph.internalAddNode (
+      lkey,
+      "subgraphFromNodes Internal error",
+      nodePtr->mAttributes,
+      inCompiler
+      COMMA_THERE
+    ) ;
   }
 //--- Enter edges
   GenericUniqueArray <GraphEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
@@ -630,11 +636,13 @@ void AC_GALGAS_graph::subGraph (AC_GALGAS_graph & outResultingGraph,
                                 COMMA_LOCATION_ARGS) const {
   if (isValid () && inStartNodes.isValid () && inNodesToExclude.isValid ()) {
     outResultingGraph.makeNewEmptyGraph (THERE) ;
-    mSharedGraph->subGraph (outResultingGraph,
-                            inStartNodes,
-                            inNodesToExclude,
-                            inCompiler
-                            COMMA_THERE) ;
+    mSharedGraph->subGraph (
+      outResultingGraph,
+      inStartNodes,
+      inNodesToExclude,
+      inCompiler
+      COMMA_THERE
+    ) ;
   }
 }
 
@@ -714,7 +722,7 @@ static void rotateLeft (GraphNode * & ioRootPtr) {
   b->mInfPtr = ioRootPtr;
 
   if (b->mBalance >= 0) {
-    ioRootPtr->mBalance++ ;
+    ioRootPtr->mBalance += 1 ;
   }else{
     ioRootPtr->mBalance += 1 - b->mBalance ;
   }
@@ -722,7 +730,7 @@ static void rotateLeft (GraphNode * & ioRootPtr) {
   if (ioRootPtr->mBalance > 0) {
     b->mBalance += ioRootPtr->mBalance + 1 ;
   }else{
-    b->mBalance++ ;
+    b->mBalance += 1 ;
   }
   ioRootPtr = b ;
 }
@@ -737,10 +745,10 @@ static void rotateRight (GraphNode * & ioRootPtr) {
   if (b->mBalance > 0) {
     ioRootPtr->mBalance += -b->mBalance - 1 ;
   }else{
-    ioRootPtr->mBalance-- ;
+    ioRootPtr->mBalance -= 1 ;
   }
   if (ioRootPtr->mBalance >= 0) {
-    b->mBalance-- ;
+    b->mBalance -= 1 ;
   }else{
     b->mBalance += ioRootPtr->mBalance - 1 ;
   }
@@ -765,8 +773,8 @@ mIsDefined (false) {
 //--------------------------------------------------------------------------------------------------
 
 GraphNode * SharedGraph::internalInsert (GraphNode * & ioRootPtr,
-                                           const String & inKey,
-                                           bool & ioExtension) {
+                                         const String & inKey,
+                                         bool & ioExtension) {
   GraphNode * matchingEntry = nullptr ;
   if (ioRootPtr == nullptr) {
     macroMyNew (ioRootPtr, GraphNode (inKey, (uint32_t) mNodeArray.count ())) ;
@@ -829,10 +837,10 @@ GraphNode * SharedGraph::findOrAddNodeForKey (const String & inKey) {
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph::internalAddNode (const GGS_lstring & inKey,
-                                    const char * inErrorMessage,
-                                    const capCollectionElement & inAttributes,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
+                                   const char * inErrorMessage,
+                                   const capCollectionElement & inAttributes,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) {
   GraphNode * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
   if (node->mAttributes.ptr () == nullptr) { // Node exists, but is undefined
     node->mAttributes = inAttributes ;
@@ -901,9 +909,9 @@ void AC_GALGAS_graph::setter_noteNode (const GGS_lstring & inKey
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph::addEdge (const String & inSourceNodeKey,
-                            const GGS_location & inSourceNodeLocation,
-                            const String & inTargetNodeKey,
-                            const GGS_location & inTargetNodeLocation) {
+                           const GGS_location & inSourceNodeLocation,
+                           const String & inTargetNodeKey,
+                           const GGS_location & inTargetNodeLocation) {
   GraphNode * sourceNode = findOrAddNodeForKey (inSourceNodeKey) ;
   macroValidPointer (sourceNode) ;
   GraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
@@ -916,8 +924,8 @@ void SharedGraph::addEdge (const String & inSourceNodeKey,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_graph::setter_addEdge (const GGS_lstring & inSourceNodeKey,
-                                        const GGS_lstring & inTargetNodeKey
-                                        COMMA_UNUSED_LOCATION_ARGS) {
+                                      const GGS_lstring & inTargetNodeKey
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
     insulateGraph (HERE) ;
     macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;

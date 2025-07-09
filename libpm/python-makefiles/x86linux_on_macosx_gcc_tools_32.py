@@ -1,13 +1,12 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
-
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   executable = makefile.find_executable ("i686-linux-gnu-gcc")
@@ -28,9 +27,9 @@ def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAM
   gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "x86linux32"
   gmf.mBuildDirName = BUILD_DIR_NAME
-#--
+#---
   gmf.mCompilerTool = ["i686-linux-gnu-gcc"]
-  gmf.mLinkerTool = ["i686-linux-gnu-g++"] #, "-static-libgcc", "-Wl,--gc-sections"]
+  gmf.mLinkerTool = ["i686-linux-gnu-g++"]
   gmf.mStripTool = ["i686-linux-gnu-strip", "--strip-all"]
   gmf.mCompilationMessage = "Compiling for i686 Linux"
   gmf.mLinkingMessage = "Linking for i686 Linux"
@@ -53,4 +52,4 @@ def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAM
 #--- Run makefile
   gmf.run ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------

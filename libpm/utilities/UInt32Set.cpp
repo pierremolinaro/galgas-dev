@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  UInt32Set : algorithms on sets of uint32_t                                                   
+//  UInt32Set : algorithms on sets of uint32_t
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
-//  Copyright (C) 2013, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 2013, ..., 2015 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -76,10 +76,10 @@ void UInt32Set::getBoolValueArray (GenericUniqueArray <bool> & outBoolValueArray
   }
 //---
   while ((outBoolValueArray.count () > 0) && ! outBoolValueArray.lastObject (HERE)) {
-    outBoolValueArray.removeLastObject (HERE) ;  
+    outBoolValueArray.removeLastObject (HERE) ;
   }
 }
-  
+
 //--------------------------------------------------------------------------------------------------
 
 void UInt32Set::getValueArray (GenericUniqueArray <uint32_t> & outValueArray) const {
@@ -95,7 +95,7 @@ void UInt32Set::getValueArray (GenericUniqueArray <uint32_t> & outValueArray) co
     }
   }
 }
-  
+
 //--------------------------------------------------------------------------------------------------
 
 bool UInt32Set::contains (const uint32_t inNodeIndex) const {
@@ -109,7 +109,7 @@ bool UInt32Set::contains (const uint32_t inNodeIndex) const {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t UInt32Set::firstValueNotIsSet (void) const {
+uint32_t UInt32Set::firstValueNotInSet (void) const {
   uint32_t result = 0 ;
   if (mDefinition.count () > 0) {
     result = 64 * (((uint32_t) mDefinition.count ()) - 1) ;
@@ -138,7 +138,7 @@ uint32_t UInt32Set::count (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void UInt32Set::operator &= (const UInt32Set & inOther) {
+void UInt32Set::operator &= (const UInt32Set inOther) {
   while (mDefinition.count () > inOther.mDefinition.count ()) {
     mDefinition.removeLastObject (HERE) ;
   }
@@ -155,7 +155,7 @@ void UInt32Set::operator &= (const UInt32Set & inOther) {
 
 //--------------------------------------------------------------------------------------------------
 
-void UInt32Set::operator |= (const UInt32Set & inOther) {
+void UInt32Set::operator |= (const UInt32Set inOther) {
   while (mDefinition.count () < inOther.mDefinition.count ()) {
     mDefinition.appendObject (0) ;
   }
@@ -169,7 +169,7 @@ void UInt32Set::operator |= (const UInt32Set & inOther) {
 
 //--------------------------------------------------------------------------------------------------
 
-void UInt32Set::operator -= (const UInt32Set & inOther) {
+void UInt32Set::operator -= (const UInt32Set inOther) {
   const int32_t n = std::min (mDefinition.count (), inOther.mDefinition.count ()) ;
   for (int32_t i=0 ; i<n ; i++) {
     mDefinition (i COMMA_HERE) &= ~ inOther.mDefinition (i COMMA_HERE) ;

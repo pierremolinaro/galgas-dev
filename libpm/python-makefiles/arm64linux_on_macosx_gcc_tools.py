@@ -1,12 +1,12 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def buildForArm64LinuxOnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   executable = makefile.find_executable ("aarch64-linux-gnu-gcc")
@@ -48,4 +48,4 @@ def buildForArm64LinuxOnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_
 #--- Run makefile
   gmf.run ()
 
-#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------

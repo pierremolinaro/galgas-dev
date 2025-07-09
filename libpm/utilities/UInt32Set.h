@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  UInt32Set : algorithms on sets of uint32_t                                                   
+//  UInt32Set : algorithms on sets of uint32_t
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
-//  Copyright (C) 2013, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2013, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -38,11 +38,11 @@ class UInt32Set final {
 
   public: void remove (const uint32_t inNodeIndex) ;
 
-  public: void operator &= (const UInt32Set & inOther) ;
+  public: void operator &= (const UInt32Set inOther) ;
 
-  public: void operator |= (const UInt32Set & inOther) ;
+  public: void operator |= (const UInt32Set inOther) ;
 
-  public: void operator -= (const UInt32Set & inOther) ;
+  public: void operator -= (const UInt32Set inOther) ;
 
   public: bool operator == (const UInt32Set & inOther) const ;
 
@@ -50,19 +50,19 @@ class UInt32Set final {
 
 //--- Accessors
   public: void getBoolValueArray (GenericUniqueArray <bool> & outBoolValueArray) const ;
-  
+
   public: void getValueArray (GenericUniqueArray <uint32_t> & outValueArray) const ;
-  
+
   public: bool contains (const uint32_t inNodeIndex) const ;
-  
-  public: uint32_t firstValueNotIsSet (void) const ;
-  
+
+  public: uint32_t firstValueNotInSet (void) const ;
+
   public: uint32_t count (void) const ;
-  
+
   public: inline bool isEmpty (void) const {
     return mDefinition.count () == 0 ;
   }
-  
+
 //--- Attributes
   private: GenericArray <uint64_t> mDefinition ;
 
