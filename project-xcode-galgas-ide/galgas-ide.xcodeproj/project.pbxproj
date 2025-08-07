@@ -71,7 +71,7 @@
 		CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA752D552D3A000DE9C4 /* AutoLayoutLabel.swift */; };
 		CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA4A2D552D3A000DE9C4 /* EBSimpleObserver.swift */; };
 		CF08BAC12D552D3A000DE9C4 /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA442D552D3A000DE9C4 /* EBObservedObject.swift */; };
-		CF08BAC22D552D3A000DE9C4 /* VerticalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */; };
+		CF08BAC22D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */; };
 		CF08BAC32D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA372D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift */; };
 		CF08BAC42D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA6C2D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift */; };
 		CF08BAC52D552D3A000DE9C4 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA102D552D3A000DE9C4 /* Spacing.swift */; };
@@ -538,7 +538,7 @@
 		CF08BA0F2D552D3A000DE9C4 /* SimpleBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBlockView.swift; sourceTree = "<group>"; };
 		CF08BA102D552D3A000DE9C4 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		CF08BA112D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentInHorizontalStack.swift; sourceTree = "<group>"; };
-		CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStretchingResistance.swift; sourceTree = "<group>"; };
+		CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ΩVerticalStretchingResistance.swift"; sourceTree = "<group>"; };
 		CF08BA142D552D3A000DE9C4 /* EBGenericReadWritePropertyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBGenericReadWritePropertyController.swift; sourceTree = "<group>"; };
 		CF08BA152D552D3A000DE9C4 /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF08BA162D552D3A000DE9C4 /* multiple-binding-controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "multiple-binding-controllers.swift"; sourceTree = "<group>"; };
@@ -1040,7 +1040,7 @@
 				CF08BA0F2D552D3A000DE9C4 /* SimpleBlockView.swift */,
 				CF08BA102D552D3A000DE9C4 /* Spacing.swift */,
 				CF08BA112D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift */,
-				CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */,
+				CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -2184,7 +2184,7 @@
 				CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */,
 				CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */,
 				CF08BAC12D552D3A000DE9C4 /* EBObservedObject.swift in Sources */,
-				CF08BAC22D552D3A000DE9C4 /* VerticalStretchingResistance.swift in Sources */,
+				CF08BAC22D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift in Sources */,
 				CF08BAC32D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift in Sources */,
 				CF08BAC42D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift in Sources */,
 				CF08BAC52D552D3A000DE9C4 /* Spacing.swift in Sources */,

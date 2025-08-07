@@ -548,7 +548,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   @IBAction func useSelectionForFindInFiles (_ inSender : Any?) {
     let idx = self.mSelectedTabIndex
-    if (idx >= 0) && (idx < self.mTabArray.count) {
+    if idx >= 0, idx < self.mTabArray.count {
       let tab = self.mTabArray [idx]
       let selection = tab.selectedString
       if !selection.isEmpty {
@@ -598,7 +598,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       var found = false
       for idx in 0 ..< self.mTabArray.count {
         let dd = self.mTabArray [idx]
-        if !found && (dd.fileURL == url) {
+        if !found, dd.fileURL == url {
           self.selectTab (atIndex: idx)
           found = true
         }
@@ -676,7 +676,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       //--- Set autolayout view to panel
         panel.setRootView (mainView)
         RunLoop.current.run (until: Date ()) 
-
         self.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
           if inResponse == .stop {
             DispatchQueue.main.async {

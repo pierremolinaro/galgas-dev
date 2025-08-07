@@ -18,7 +18,7 @@ class SWIFT_DocumentController : NSDocumentController {
 
   override func openDocument (withContentsOf inURL : URL,
                               display inDisplay : Bool,
-                              completionHandler inCompletionHandler : @escaping @Sendable (NSDocument?, Bool, (any Error)?) -> Void) {
+                              completionHandler inCompletionHandler : @escaping (NSDocument?, Bool, (any Error)?) -> Void) {
     super.openDocument (withContentsOf: inURL, display: false) { (inDocument : NSDocument?, alreadyOpened : Bool, error : Error?) in
       if inDisplay, let document = inDocument as? SWIFT_SingleDocument {
         DispatchQueue.main.async {

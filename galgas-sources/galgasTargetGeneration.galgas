@@ -836,7 +836,7 @@ proc updateGalgasTargets
           "base/SimpleBlockView.swift",
           "base/Spacing.swift",
           "base/VerticalAlignmentInHorizontalStack.swift",
-          "base/VerticalStretchingResistance.swift",
+          "base/ΩVerticalStretchingResistance.swift",
           "binding-controllers/EBGenericReadWritePropertyController.swift",
           "binding-controllers/EBObservablePropertyController.swift",
           "binding-controllers/multiple-binding-controllers.swift",
