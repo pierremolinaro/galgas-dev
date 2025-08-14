@@ -98,6 +98,8 @@ final class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mDebug = false
+  private let mVerboseDebug = false
   private var mTokenArray = [SWIFT_Token] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -254,9 +256,7 @@ end
   private var mColorFor_template : Color = .gray
   private var mBoldFor_template : Bool = false
   private var mItalicFor_template : Bool = false
-  private var mTokenColorArray = [Color] ()
-  private var mTokenBoldArray = [Bool] ()
-  private var mTokenItalicArray = [Bool] ()
+  private var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -343,26 +343,62 @@ end
         ioStyleDidChange = true
       }
     }
-  //--- Build token color array
-    self.mTokenColorArray = []
-    self.mTokenBoldArray = []
-    self.mTokenItalicArray = []
+  //--- Build token attribute array
+    if ioStyleDidChange {
+      let fontManager = NSFontManager.shared
+      let boldFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .boldFontMask)
+      let italicFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .italicFontMask)
+      let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
+      self.mTokenAttributeArray.removeAll (keepingCapacity: true)
+      var attributes = [NSAttributedString.Key : Any] ()
 %for (identifier *) in LEXICAL_STYLE_LIST do
-%    self.mTokenColorArray.append (self.mColorFor_%!identifier.string%)
-    self.mTokenBoldArray.append (self.mBoldFor_%!identifier.string%)
-    self.mTokenItalicArray.append (self.mItalicFor_%!identifier.string%)
+%    //--- Attributes for %!identifier.string%
+      if self.mColorFor_%!identifier.string% != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_%!identifier.string%)
+      }
+      if self.mBoldFor_%!identifier.string% && self.mItalicFor_%!identifier.string% {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_%!identifier.string% {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_%!identifier.string% {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
 %end
-%    self.mTokenColorArray.append (self.mColorFor_lexical_error)
-    self.mTokenBoldArray.append (self.mBoldFor_lexical_error)
-    self.mTokenItalicArray.append (self.mItalicFor_lexical_error)
-    self.mTokenColorArray.append (self.mColorFor_template)
-    self.mTokenBoldArray.append (self.mBoldFor_template)
-    self.mTokenItalicArray.append (self.mItalicFor_template)
+%    //--- Lexical error
+      if self.mColorFor_lexical_error != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_lexical_error)
+      }
+      if self.mBoldFor_lexical_error && self.mItalicFor_lexical_error {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_lexical_error {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_lexical_error {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Template
+      if self.mColorFor_template != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_template)
+      }
+      if self.mBoldFor_template && self.mItalicFor_template {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_template {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_template {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {
+    if self.mDebug { Swift.print ("performLexicalColoringAfterUserDefaultChange") }
+    let start = Date ()
     var styleDidChange = false
     self.updateTokenStyleArrays (&styleDidChange)
     if styleDidChange {
@@ -371,6 +407,7 @@ end
     //---- Apply default attributes
       let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
+      inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
       inTextStorage.font = defaultFont
       let ps = NSMutableParagraphStyle ()
@@ -381,39 +418,18 @@ end
         .paragraphStyle : ps
       ]
       inTextStorage.setAttributes (defaultAttributes, range: fullRange)
-    //--- Enumerate tokens
-      let fontManager = NSFontManager.shared
+    //--- Apply styles
       for token in self.mTokenArray {
         let idx = Int (self.styleIndexFor (token: token.tokenCode))
-        if idx > 0 {
-          let color = self.mTokenColorArray [idx - 1]
-          if color != self.mDefaultColor {
-            inTextStorage.addAttribute (
-              .foregroundColor,
-              value: NSColor (color),
-              range: token.range
-            )
-          }
-          if self.mTokenBoldArray [idx - 1] || self.mTokenItalicArray [idx - 1] {
-            var font = defaultFont
-            if self.mTokenBoldArray [idx - 1] {
-              font = fontManager.convert (font, toHaveTrait: .boldFontMask)
-            }
-            if self.mTokenItalicArray [idx - 1] {
-              font = fontManager.convert (font, toHaveTrait: .italicFontMask)
-            }
-            inTextStorage.addAttribute (.font, value: font, range: token.range)
-          }
+        if idx > 0, let attributes = self.mTokenAttributeArray [idx - 1] {
+          inTextStorage.addAttributes (attributes, range: token.range)
         }
       }
+      inTextStorage.endEditing ()
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
+    if self.mDebug { Swift.print ("  done: \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms") }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private let mDebug = false
-  private let mVerboseDebug = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -512,6 +528,7 @@ end
       let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
       let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
+      inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
       let ps = NSMutableParagraphStyle ()
       ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
@@ -522,7 +539,7 @@ end
       ]
       if self.mVerboseDebug { Swift.print ("Apply default attributes \(modifiedRange)") }
       inTextStorage.setAttributes (defaultAttributes, range: modifiedRange)
-      let fontManager = NSFontManager.shared
+    //--- Apply styles
       var idx = 0
       stop = false
       while idx < self.mTokenArray.count, !stop { // Apply token styles
@@ -532,32 +549,12 @@ end
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0 {
-            if self.mVerboseDebug {
-               Swift.print ("  apply attributes \(token.range)", terminator: "")
-               Swift.print (" '\(nsString.substring (with: token.range))'")
-            }
-            let color = self.mTokenColorArray [styleIndex - 1]
-            if color != self.mDefaultColor {
-              inTextStorage.addAttribute (
-                .foregroundColor,
-                value: NSColor (color),
-                range: token.range
-              )
-            }
-            if self.mTokenBoldArray [styleIndex - 1] || self.mTokenItalicArray [styleIndex - 1] {
-              var font = defaultFont
-              if self.mTokenBoldArray [styleIndex - 1] {
-                font = fontManager.convert (font, toHaveTrait: .boldFontMask)
-              }
-              if self.mTokenItalicArray [styleIndex - 1] {
-                font = fontManager.convert (font, toHaveTrait: .italicFontMask)
-              }
-              inTextStorage.addAttribute (.font, value: font, range: token.range)
-            }
+          if styleIndex > 0, let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+            inTextStorage.addAttributes (attributes, range: token.range)
           }
         }
       }
+      inTextStorage.endEditing ()
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
     if self.mDebug { Swift.print ("  Adding attributes: \(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms") }

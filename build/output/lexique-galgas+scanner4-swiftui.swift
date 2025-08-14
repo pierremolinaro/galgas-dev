@@ -276,6 +276,8 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mDebug = false
+  private let mVerboseDebug = false
   private var mTokenArray = [SWIFT_Token] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -901,9 +903,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
   private var mColorFor_template : Color = .gray
   private var mBoldFor_template : Bool = false
   private var mItalicFor_template : Bool = false
-  private var mTokenColorArray = [Color] ()
-  private var mTokenBoldArray = [Bool] ()
-  private var mTokenItalicArray = [Bool] ()
+  private var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1208,57 +1208,203 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
         ioStyleDidChange = true
       }
     }
-  //--- Build token color array
-    self.mTokenColorArray = []
-    self.mTokenBoldArray = []
-    self.mTokenItalicArray = []
-    self.mTokenColorArray.append (self.mColorFor_keywordsStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_keywordsStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_keywordsStyle)
-    self.mTokenColorArray.append (self.mColorFor_delimitersStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_delimitersStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_delimitersStyle)
-    self.mTokenColorArray.append (self.mColorFor_selectorStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_selectorStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_selectorStyle)
-    self.mTokenColorArray.append (self.mColorFor_terminalStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_terminalStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_terminalStyle)
-    self.mTokenColorArray.append (self.mColorFor_nonTerminalStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_nonTerminalStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_nonTerminalStyle)
-    self.mTokenColorArray.append (self.mColorFor_integerStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_integerStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_integerStyle)
-    self.mTokenColorArray.append (self.mColorFor_floatStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_floatStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_floatStyle)
-    self.mTokenColorArray.append (self.mColorFor_characterStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_characterStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_characterStyle)
-    self.mTokenColorArray.append (self.mColorFor_stringStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_stringStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_stringStyle)
-    self.mTokenColorArray.append (self.mColorFor_typeNameStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_typeNameStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_typeNameStyle)
-    self.mTokenColorArray.append (self.mColorFor_attributeStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_attributeStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_attributeStyle)
-    self.mTokenColorArray.append (self.mColorFor_commentStyle)
-    self.mTokenBoldArray.append (self.mBoldFor_commentStyle)
-    self.mTokenItalicArray.append (self.mItalicFor_commentStyle)
-    self.mTokenColorArray.append (self.mColorFor_lexical_error)
-    self.mTokenBoldArray.append (self.mBoldFor_lexical_error)
-    self.mTokenItalicArray.append (self.mItalicFor_lexical_error)
-    self.mTokenColorArray.append (self.mColorFor_template)
-    self.mTokenBoldArray.append (self.mBoldFor_template)
-    self.mTokenItalicArray.append (self.mItalicFor_template)
+  //--- Build token attribute array
+    if ioStyleDidChange {
+      let fontManager = NSFontManager.shared
+      let boldFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .boldFontMask)
+      let italicFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .italicFontMask)
+      let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
+      self.mTokenAttributeArray.removeAll (keepingCapacity: true)
+      var attributes = [NSAttributedString.Key : Any] ()
+    //--- Attributes for keywordsStyle
+      if self.mColorFor_keywordsStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_keywordsStyle)
+      }
+      if self.mBoldFor_keywordsStyle && self.mItalicFor_keywordsStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_keywordsStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_keywordsStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for delimitersStyle
+      if self.mColorFor_delimitersStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_delimitersStyle)
+      }
+      if self.mBoldFor_delimitersStyle && self.mItalicFor_delimitersStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_delimitersStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_delimitersStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for selectorStyle
+      if self.mColorFor_selectorStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_selectorStyle)
+      }
+      if self.mBoldFor_selectorStyle && self.mItalicFor_selectorStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_selectorStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_selectorStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for terminalStyle
+      if self.mColorFor_terminalStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_terminalStyle)
+      }
+      if self.mBoldFor_terminalStyle && self.mItalicFor_terminalStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_terminalStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_terminalStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for nonTerminalStyle
+      if self.mColorFor_nonTerminalStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_nonTerminalStyle)
+      }
+      if self.mBoldFor_nonTerminalStyle && self.mItalicFor_nonTerminalStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_nonTerminalStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_nonTerminalStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for integerStyle
+      if self.mColorFor_integerStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_integerStyle)
+      }
+      if self.mBoldFor_integerStyle && self.mItalicFor_integerStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_integerStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_integerStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for floatStyle
+      if self.mColorFor_floatStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_floatStyle)
+      }
+      if self.mBoldFor_floatStyle && self.mItalicFor_floatStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_floatStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_floatStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for characterStyle
+      if self.mColorFor_characterStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_characterStyle)
+      }
+      if self.mBoldFor_characterStyle && self.mItalicFor_characterStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_characterStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_characterStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for stringStyle
+      if self.mColorFor_stringStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_stringStyle)
+      }
+      if self.mBoldFor_stringStyle && self.mItalicFor_stringStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_stringStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_stringStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for typeNameStyle
+      if self.mColorFor_typeNameStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_typeNameStyle)
+      }
+      if self.mBoldFor_typeNameStyle && self.mItalicFor_typeNameStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_typeNameStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_typeNameStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for attributeStyle
+      if self.mColorFor_attributeStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_attributeStyle)
+      }
+      if self.mBoldFor_attributeStyle && self.mItalicFor_attributeStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_attributeStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_attributeStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Attributes for commentStyle
+      if self.mColorFor_commentStyle != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_commentStyle)
+      }
+      if self.mBoldFor_commentStyle && self.mItalicFor_commentStyle {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_commentStyle {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_commentStyle {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Lexical error
+      if self.mColorFor_lexical_error != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_lexical_error)
+      }
+      if self.mBoldFor_lexical_error && self.mItalicFor_lexical_error {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_lexical_error {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_lexical_error {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Template
+      if self.mColorFor_template != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_template)
+      }
+      if self.mBoldFor_template && self.mItalicFor_template {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_template {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_template {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {
+    if self.mDebug { Swift.print ("performLexicalColoringAfterUserDefaultChange") }
+    let start = Date ()
     var styleDidChange = false
     self.updateTokenStyleArrays (&styleDidChange)
     if styleDidChange {
@@ -1267,6 +1413,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
     //---- Apply default attributes
       let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
+      inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
       inTextStorage.font = defaultFont
       let ps = NSMutableParagraphStyle ()
@@ -1277,39 +1424,18 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
         .paragraphStyle : ps
       ]
       inTextStorage.setAttributes (defaultAttributes, range: fullRange)
-    //--- Enumerate tokens
-      let fontManager = NSFontManager.shared
+    //--- Apply styles
       for token in self.mTokenArray {
         let idx = Int (self.styleIndexFor (token: token.tokenCode))
-        if idx > 0 {
-          let color = self.mTokenColorArray [idx - 1]
-          if color != self.mDefaultColor {
-            inTextStorage.addAttribute (
-              .foregroundColor,
-              value: NSColor (color),
-              range: token.range
-            )
-          }
-          if self.mTokenBoldArray [idx - 1] || self.mTokenItalicArray [idx - 1] {
-            var font = defaultFont
-            if self.mTokenBoldArray [idx - 1] {
-              font = fontManager.convert (font, toHaveTrait: .boldFontMask)
-            }
-            if self.mTokenItalicArray [idx - 1] {
-              font = fontManager.convert (font, toHaveTrait: .italicFontMask)
-            }
-            inTextStorage.addAttribute (.font, value: font, range: token.range)
-          }
+        if idx > 0, let attributes = self.mTokenAttributeArray [idx - 1] {
+          inTextStorage.addAttributes (attributes, range: token.range)
         }
       }
+      inTextStorage.endEditing ()
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
+    if self.mDebug { Swift.print ("  done: \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms") }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private let mDebug = false
-  private let mVerboseDebug = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1408,6 +1534,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
       let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
       let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
+      inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
       let ps = NSMutableParagraphStyle ()
       ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
@@ -1418,7 +1545,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
       ]
       if self.mVerboseDebug { Swift.print ("Apply default attributes \(modifiedRange)") }
       inTextStorage.setAttributes (defaultAttributes, range: modifiedRange)
-      let fontManager = NSFontManager.shared
+    //--- Apply styles
       var idx = 0
       stop = false
       while idx < self.mTokenArray.count, !stop { // Apply token styles
@@ -1428,32 +1555,12 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0 {
-            if self.mVerboseDebug {
-               Swift.print ("  apply attributes \(token.range)", terminator: "")
-               Swift.print (" '\(nsString.substring (with: token.range))'")
-            }
-            let color = self.mTokenColorArray [styleIndex - 1]
-            if color != self.mDefaultColor {
-              inTextStorage.addAttribute (
-                .foregroundColor,
-                value: NSColor (color),
-                range: token.range
-              )
-            }
-            if self.mTokenBoldArray [styleIndex - 1] || self.mTokenItalicArray [styleIndex - 1] {
-              var font = defaultFont
-              if self.mTokenBoldArray [styleIndex - 1] {
-                font = fontManager.convert (font, toHaveTrait: .boldFontMask)
-              }
-              if self.mTokenItalicArray [styleIndex - 1] {
-                font = fontManager.convert (font, toHaveTrait: .italicFontMask)
-              }
-              inTextStorage.addAttribute (.font, value: font, range: token.range)
-            }
+          if styleIndex > 0, let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+            inTextStorage.addAttributes (attributes, range: token.range)
           }
         }
       }
+      inTextStorage.endEditing ()
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
     if self.mDebug { Swift.print ("  Adding attributes: \(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms") }
