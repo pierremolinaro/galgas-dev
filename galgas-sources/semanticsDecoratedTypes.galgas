@@ -330,6 +330,7 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
   public let @string mObjcCocoaHeader
   public let @string mObjcCocoaImplementation
   public let @string mSwiftCocoaImplementation
+  public let @string mSwiftUIImplementation
 }
 
 //--------------------------------------------------------------------------------------------------

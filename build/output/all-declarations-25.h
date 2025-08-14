@@ -809,6 +809,27 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementati
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (class Compiler * inCompiler,
+                                                                                         const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                         const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                         const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                         const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                         const class GGS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                         const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                         const class GGS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                         const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                         const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                         const class GGS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                         const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
+                                                                                         const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'lexiqueNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
@@ -935,10 +956,16 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImpl
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'printPredefinedLexicalActions'
+//Filewrapper template 'templateLexiqueGenerationTemplates swiftuiImplementationZone'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_printPredefinedLexicalActions (class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftuiImplementationZone (class Compiler * inCompiler,
+                                                                                             const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                             const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                             const class GGS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                             const class GGS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                             const class GGS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                             const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                             COMMA_LOCATION_ARGS) ;
 

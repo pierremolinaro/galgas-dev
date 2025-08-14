@@ -7544,20 +7544,21 @@ GGS_semanticDeclarationWithHeaderForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_lexiqueDeclarationForGeneration GGS_lexiqueDeclarationForGeneration::
-init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                                 const GGS_string & in_implementationCppFileName,
-                                                                                 const GGS_string & in_mLexiqueName,
-                                                                                 const GGS_string & in_mSuperLexiqueName,
-                                                                                 const GGS_string & in_mHeaderContents,
-                                                                                 const GGS_string & in_mCppContents,
-                                                                                 const GGS_string & in_mObjcCocoaHeader,
-                                                                                 const GGS_string & in_mObjcCocoaImplementation,
-                                                                                 const GGS_string & in_mSwiftCocoaImplementation,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) {
+init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
+                                                                                     const GGS_string & in_implementationCppFileName,
+                                                                                     const GGS_string & in_mLexiqueName,
+                                                                                     const GGS_string & in_mSuperLexiqueName,
+                                                                                     const GGS_string & in_mHeaderContents,
+                                                                                     const GGS_string & in_mCppContents,
+                                                                                     const GGS_string & in_mObjcCocoaHeader,
+                                                                                     const GGS_string & in_mObjcCocoaImplementation,
+                                                                                     const GGS_string & in_mSwiftCocoaImplementation,
+                                                                                     const GGS_string & in_mSwiftUIImplementation,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_lexiqueDeclarationForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_lexiqueDeclarationForGeneration (inCompiler COMMA_THERE)) ;
-  object->lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ (in_generateHeader, in_implementationCppFileName, in_mLexiqueName, in_mSuperLexiqueName, in_mHeaderContents, in_mCppContents, in_mObjcCocoaHeader, in_mObjcCocoaImplementation, in_mSwiftCocoaImplementation, inCompiler) ;
+  object->lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (in_generateHeader, in_implementationCppFileName, in_mLexiqueName, in_mSuperLexiqueName, in_mHeaderContents, in_mCppContents, in_mObjcCocoaHeader, in_mObjcCocoaImplementation, in_mSwiftCocoaImplementation, in_mSwiftUIImplementation, inCompiler) ;
   const GGS_lexiqueDeclarationForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7566,16 +7567,17 @@ init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ 
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueDeclarationForGeneration::
-lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                                                                 const GGS_string & in_implementationCppFileName,
-                                                                                                                 const GGS_string & in_mLexiqueName,
-                                                                                                                 const GGS_string & in_mSuperLexiqueName,
-                                                                                                                 const GGS_string & in_mHeaderContents,
-                                                                                                                 const GGS_string & in_mCppContents,
-                                                                                                                 const GGS_string & in_mObjcCocoaHeader,
-                                                                                                                 const GGS_string & in_mObjcCocoaImplementation,
-                                                                                                                 const GGS_string & in_mSwiftCocoaImplementation,
-                                                                                                                 Compiler * /* inCompiler */) {
+lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const GGS_bool & in_generateHeader,
+                                                                                                                     const GGS_string & in_implementationCppFileName,
+                                                                                                                     const GGS_string & in_mLexiqueName,
+                                                                                                                     const GGS_string & in_mSuperLexiqueName,
+                                                                                                                     const GGS_string & in_mHeaderContents,
+                                                                                                                     const GGS_string & in_mCppContents,
+                                                                                                                     const GGS_string & in_mObjcCocoaHeader,
+                                                                                                                     const GGS_string & in_mObjcCocoaImplementation,
+                                                                                                                     const GGS_string & in_mSwiftCocoaImplementation,
+                                                                                                                     const GGS_string & in_mSwiftUIImplementation,
+                                                                                                                     Compiler * /* inCompiler */) {
   mProperty_generateHeader = in_generateHeader ;
   mProperty_implementationCppFileName = in_implementationCppFileName ;
   mProperty_mLexiqueName = in_mLexiqueName ;
@@ -7585,6 +7587,7 @@ lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileN
   mProperty_mObjcCocoaHeader = in_mObjcCocoaHeader ;
   mProperty_mObjcCocoaImplementation = in_mObjcCocoaImplementation ;
   mProperty_mSwiftCocoaImplementation = in_mSwiftCocoaImplementation ;
+  mProperty_mSwiftUIImplementation = in_mSwiftUIImplementation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7604,10 +7607,11 @@ GGS_lexiqueDeclarationForGeneration GGS_lexiqueDeclarationForGeneration::class_f
                                                                                          const GGS_string & in_mObjcCocoaHeader,
                                                                                          const GGS_string & in_mObjcCocoaImplementation,
                                                                                          const GGS_string & in_mSwiftCocoaImplementation,
+                                                                                         const GGS_string & in_mSwiftUIImplementation,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   GGS_lexiqueDeclarationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexiqueDeclarationForGeneration (in_generateHeader, in_implementationCppFileName, in_mLexiqueName, in_mSuperLexiqueName, in_mHeaderContents, in_mCppContents, in_mObjcCocoaHeader, in_mObjcCocoaImplementation, in_mSwiftCocoaImplementation,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexiqueDeclarationForGeneration (in_generateHeader, in_implementationCppFileName, in_mLexiqueName, in_mSuperLexiqueName, in_mHeaderContents, in_mCppContents, in_mObjcCocoaHeader, in_mObjcCocoaImplementation, in_mSwiftCocoaImplementation, in_mSwiftUIImplementation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -7696,6 +7700,18 @@ GGS_string GGS_lexiqueDeclarationForGeneration::readProperty_mSwiftCocoaImplemen
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_lexiqueDeclarationForGeneration::readProperty_mSwiftUIImplementation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_lexiqueDeclarationForGeneration * p = (cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueDeclarationForGeneration) ;
+    return p->mProperty_mSwiftUIImplementation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @lexiqueDeclarationForGeneration class
 //--------------------------------------------------------------------------------------------------
 
@@ -7707,7 +7723,8 @@ mProperty_mHeaderContents (),
 mProperty_mCppContents (),
 mProperty_mObjcCocoaHeader (),
 mProperty_mObjcCocoaImplementation (),
-mProperty_mSwiftCocoaImplementation () {
+mProperty_mSwiftCocoaImplementation (),
+mProperty_mSwiftUIImplementation () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7721,6 +7738,7 @@ cPtr_lexiqueDeclarationForGeneration::cPtr_lexiqueDeclarationForGeneration (cons
                                                                             const GGS_string & in_mObjcCocoaHeader,
                                                                             const GGS_string & in_mObjcCocoaImplementation,
                                                                             const GGS_string & in_mSwiftCocoaImplementation,
+                                                                            const GGS_string & in_mSwiftUIImplementation,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
@@ -7730,7 +7748,8 @@ mProperty_mHeaderContents (),
 mProperty_mCppContents (),
 mProperty_mObjcCocoaHeader (),
 mProperty_mObjcCocoaImplementation (),
-mProperty_mSwiftCocoaImplementation () {
+mProperty_mSwiftCocoaImplementation (),
+mProperty_mSwiftUIImplementation () {
   mProperty_generateHeader = in_generateHeader ;
   mProperty_implementationCppFileName = in_implementationCppFileName ;
   mProperty_mLexiqueName = in_mLexiqueName ;
@@ -7740,6 +7759,7 @@ mProperty_mSwiftCocoaImplementation () {
   mProperty_mObjcCocoaHeader = in_mObjcCocoaHeader ;
   mProperty_mObjcCocoaImplementation = in_mObjcCocoaImplementation ;
   mProperty_mSwiftCocoaImplementation = in_mSwiftCocoaImplementation ;
+  mProperty_mSwiftUIImplementation = in_mSwiftUIImplementation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7768,6 +7788,8 @@ void cPtr_lexiqueDeclarationForGeneration::description (String & ioString,
   mProperty_mObjcCocoaImplementation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSwiftCocoaImplementation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSwiftUIImplementation.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -7775,7 +7797,7 @@ void cPtr_lexiqueDeclarationForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexiqueDeclarationForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mLexiqueName, mProperty_mSuperLexiqueName, mProperty_mHeaderContents, mProperty_mCppContents, mProperty_mObjcCocoaHeader, mProperty_mObjcCocoaImplementation, mProperty_mSwiftCocoaImplementation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueDeclarationForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mLexiqueName, mProperty_mSuperLexiqueName, mProperty_mHeaderContents, mProperty_mCppContents, mProperty_mObjcCocoaHeader, mProperty_mObjcCocoaImplementation, mProperty_mSwiftCocoaImplementation, mProperty_mSwiftUIImplementation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7792,6 +7814,7 @@ acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (Compiler * inComp
     mProperty_mObjcCocoaHeader.printNonNullClassInstanceProperties ("mObjcCocoaHeader") ;
     mProperty_mObjcCocoaImplementation.printNonNullClassInstanceProperties ("mObjcCocoaImplementation") ;
     mProperty_mSwiftCocoaImplementation.printNonNullClassInstanceProperties ("mSwiftCocoaImplementation") ;
+    mProperty_mSwiftUIImplementation.printNonNullClassInstanceProperties ("mSwiftUIImplementation") ;
   }
 #endif
 

@@ -249,6 +249,3 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 } */
 
 //--------------------------------------------------------------------------------------------------
-
-// @end
-

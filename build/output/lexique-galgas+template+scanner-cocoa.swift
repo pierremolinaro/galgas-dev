@@ -617,9 +617,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [201] = {
 } */
 
 //--------------------------------------------------------------------------------------------------
-
-// @end
-
 //--- START OF USER ZONE 2
 
 

@@ -1,0 +1,697 @@
+//--------------------------------------------------------------------------------------------------
+//   LEXIQUE %!LEXIQUE_CLASS_NAME%
+//--------------------------------------------------------------------------------------------------
+
+import SwiftUI
+import AppKit
+
+//--------------------------------------------------------------------------------------------------
+
+struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage("FontFor_%!LEXIQUE_CLASS_NAME%")
+  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+
+  @AppStorage("LineHeightFor_%!LEXIQUE_CLASS_NAME%")
+  private var mLineHeight : Int = 12
+
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%")
+  private var mDefaultColor : Color = .black
+
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mColorFor_%!identifier.string% : Color = .black
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mBoldFor_%!identifier.string% : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mItalicFor_%!identifier.string% : Bool = false
+
+%end%
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mColorFor_lexical_error : Color = .red
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mBoldFor_lexical_error : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mItalicFor_lexical_error : Bool = false
+
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mColorFor_template : Color = .gray
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mBoldFor_template : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mItalicFor_template : Bool = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var body : some View {
+    Form {
+      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
+      Picker("Line Height", selection: self.$mLineHeight) {
+        Text("1.0").tag(10)
+        Text("1.1").tag(11)
+        Text("1.2").tag(12)
+        Text("1.5").tag(15)
+        Text("1.7").tag(17)
+        Text("2.0").tag(20)
+      }.pickerStyle(.automatic)
+      ColorPicker ("Default Color", selection: self.$mDefaultColor)
+%for (identifier comment) in LEXICAL_STYLE_LIST do
+%      LabeledContent (%![comment.string utf8RepresentationEscapingQuestionMark]%) {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_%!identifier.string%).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_%!identifier.string%)
+          Toggle ("Italic", isOn: self.$mItalicFor_%!identifier.string%)
+        }
+      }
+%end%      LabeledContent ("Lexical Error") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
+          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
+        }
+      }
+      LabeledContent ("Template") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_template)
+          Toggle ("Italic", isOn: self.$mItalicFor_template)
+        }
+      }
+    }.padding (20)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mTokenArray = [SWIFT_Token] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func selectionRange (forProposedRange inProposedSelectionRange : NSRange,
+                                granularity inGranularity : NSSelectionGranularity,
+                                nsTextViewComputedRange inTextViewComputedRange : NSRange) -> NSRange {
+    var result = inTextViewComputedRange
+    switch inGranularity {
+    case .selectByCharacter :
+      ()
+    case .selectByWord :
+      var found = false
+      var idx = 0
+      while idx < self.mTokenArray.count, !found {
+        let token = self.mTokenArray [idx]
+        idx += 1
+        let tokenRange = token.range
+        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)
+           && (tokenRange.location <= inProposedSelectionRange.location)
+        if found, self.atomicSelectionFor (token: token.tokenCode) {
+          result = tokenRange
+        }
+      }
+    case .selectByParagraph :
+      var found = false
+      var idx = 0
+      while idx < self.mTokenArray.count, !found {
+        let token = self.mTokenArray [idx]
+        idx += 1
+        let tokenRange = token.range
+        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)
+           && (tokenRange.location <= inProposedSelectionRange.location)
+        if found {
+          result = tokenRange
+        }
+      }
+    @unknown default:
+      ()
+    }
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Scanner
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%
+  for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
+    %  private var mLexicalAttribute_%!lkey.string% : %![mLexicalType swiftTypeName]% = %![mLexicalType swiftInitializationCode]%\n%
+  end
+%
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func lexiqueIdentifier () -> String {
+    return %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func isTemplateLexique () -> Bool {
+    return %![[TEMPLATE_DELIMITOR_LIST count] > 0 cString]%
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func terminalVocabularyCount () -> Int {
+    return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count] string]%
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {
+    let kTerminalSymbolStyles : [UInt8] = [
+      0, // Default
+%
+for (mTerminalName 4* mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %      %![mStyleIndex string]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]%\n%
+end
+%      %![[LEXICAL_STYLE_LIST count]+1 string]%, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
+      %![[LEXICAL_STYLE_LIST count]+2 string]%  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
+    ]
+    return kTerminalSymbolStyles [Int (inTokenIndex)]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {
+    let kTerminalAtomicSelection : [Bool] = [
+      false, // Default
+%
+for (mTerminalName 3* mAtomicSelection *) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %      %![mAtomicSelection cString]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]%\n%
+end
+%      false, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
+      false  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
+    ]
+    return kTerminalAtomicSelection [Int (inTokenIndex)]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func indexingTitles () -> [String] {
+%
+if [INDEXING_LIST count] > 0 then
+%    return [
+%
+  for (mIndexName mIndexComment) in INDEXING_LIST
+    do %      %![mIndexComment utf8RepresentationEscapingQuestionMark]% /* %!mIndexName.string% */%
+    between %,\n%
+  end
+%
+    ]
+%else
+%
+    return []
+%
+end
+%  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  S T Y L E S
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func styleCount () -> UInt8 {
+    return %![[LEXICAL_STYLE_LIST count] string]%
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func styleNameFor (styleIndex inIndex : UInt8) -> String {
+    return %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex: inIndex)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+    return %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex: inIndex)
+  }
+
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+  private var mLineHeight : Int = 12
+  private var mDefaultColor : Color = .black
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%  private var mColorFor_%!identifier.string% : Color = .black
+  private var mBoldFor_%!identifier.string% : Bool = false
+  private var mItalicFor_%!identifier.string% : Bool = false
+%end
+%  private var mColorFor_lexical_error : Color = .red
+  private var mBoldFor_lexical_error : Bool = false
+  private var mItalicFor_lexical_error : Bool = false
+  private var mColorFor_template : Color = .gray
+  private var mBoldFor_template : Bool = false
+  private var mItalicFor_template : Bool = false
+  private var mTokenColorArray = [Color] ()
+  private var mTokenBoldArray = [Bool] ()
+  private var mTokenItalicArray = [Bool] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+    ioStyleDidChange = false
+    let ud = UserDefaults.standard
+    if let s = ud.string (forKey: "FontFor_galgasScanner3"), let v = CustomFont (rawValue: s) {
+      if self.mFont != v {
+        self.mFont = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "LineHeightFor_galgasScanner3"), let v = Int (s) {
+      if self.mLineHeight != v {
+        self.mLineHeight = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "ColorFor_galgasScanner3"), let v = Color (rawValue: s) {
+      if self.mDefaultColor != v {
+        self.mDefaultColor = v
+        ioStyleDidChange = true
+      }
+    }
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"), let v = Color (rawValue: s) {
+      if self.mColorFor_%!identifier.string% != v {
+        self.mColorFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+      if self.mBoldFor_%!identifier.string% != v {
+        self.mBoldFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+      if self.mItalicFor_%!identifier.string% != v {
+        self.mItalicFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+%end
+%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error"), let v = Color (rawValue: s) {
+      if self.mColorFor_lexical_error != v {
+        self.mColorFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+      if self.mBoldFor_lexical_error != v {
+        self.mBoldFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+      if self.mItalicFor_lexical_error != v {
+        self.mItalicFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_template"), let v = Color (rawValue: s) {
+      if self.mColorFor_template != v {
+        self.mColorFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template")
+      if self.mBoldFor_template != v {
+        self.mBoldFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
+      if self.mItalicFor_template != v {
+        self.mItalicFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+  //--- Build token color array
+    self.mTokenColorArray = []
+    self.mTokenBoldArray = []
+    self.mTokenItalicArray = []
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%    self.mTokenColorArray.append (self.mColorFor_%!identifier.string%)
+    self.mTokenBoldArray.append (self.mBoldFor_%!identifier.string%)
+    self.mTokenItalicArray.append (self.mItalicFor_%!identifier.string%)
+%end
+%    self.mTokenColorArray.append (self.mColorFor_lexical_error)
+    self.mTokenBoldArray.append (self.mBoldFor_lexical_error)
+    self.mTokenItalicArray.append (self.mItalicFor_lexical_error)
+    self.mTokenColorArray.append (self.mColorFor_template)
+    self.mTokenBoldArray.append (self.mBoldFor_template)
+    self.mTokenItalicArray.append (self.mItalicFor_template)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {
+    var styleDidChange = false
+    self.updateTokenStyleArrays (&styleDidChange)
+    if styleDidChange {
+      let nsString = inTextStorage.string as NSString
+      let fullRange = NSRange (location: 0, length: nsString.length)
+    //---- Apply default attributes
+      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      inTextStorage.delegate = nil // NSTextStorageDelegate
+      let defaultFont = self.mFont.nsFont
+      inTextStorage.font = defaultFont
+      let ps = NSMutableParagraphStyle ()
+      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      let defaultAttributes : [NSAttributedString.Key : Any] = [
+        .font: defaultFont,
+        .foregroundColor: NSColor (self.mDefaultColor),
+        .paragraphStyle : ps
+      ]
+      inTextStorage.setAttributes (defaultAttributes, range: fullRange)
+    //--- Enumerate tokens
+      let fontManager = NSFontManager.shared
+      for token in self.mTokenArray {
+        let idx = Int (self.styleIndexFor (token: token.tokenCode))
+        if idx > 0 {
+          let color = self.mTokenColorArray [idx - 1]
+          if color != self.mDefaultColor {
+            inTextStorage.addAttribute (
+              .foregroundColor,
+              value: NSColor (color),
+              range: token.range
+            )
+          }
+          if self.mTokenBoldArray [idx - 1] || self.mTokenItalicArray [idx - 1] {
+            var font = defaultFont
+            if self.mTokenBoldArray [idx - 1] {
+              font = fontManager.convert (font, toHaveTrait: .boldFontMask)
+            }
+            if self.mTokenItalicArray [idx - 1] {
+              font = fontManager.convert (font, toHaveTrait: .italicFontMask)
+            }
+            inTextStorage.addAttribute (.font, value: font, range: token.range)
+          }
+        }
+      }
+      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mDebug = false
+  private let mVerboseDebug = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,
+                                                   editedRange inEditedRange : NSRange,
+                                                   changeInLength inDelta : Int) {
+    if self.mDebug { Swift.print ("performLexicalAnalysisAndColoring \(inEditedRange), delta \(inDelta)") }
+    let nsString = inTextStorage.string as NSString
+  //---
+    var savedTokenCount = 0
+    var found = false
+    while savedTokenCount < self.mTokenArray.count, !found {
+      if self.mTokenArray [savedTokenCount].range.upperBound < inEditedRange.location {
+        savedTokenCount += 1
+      }else{
+        found = true
+      }
+    }
+    if self.mDebug { Swift.print ("  savedTokenCount \(savedTokenCount), currently \(self.mTokenArray.count) tokens") }
+  //--- Eliminate tokens beyond end of source string
+    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {
+      if self.mVerboseDebug { Swift.print ("Remove last token \(lastToken.range), beyond end") }
+      _ = self.mTokenArray.removeLast ()
+    }
+    if self.mDebug { Swift.print ("  Eliminate token beyond end: \(self.mTokenArray.count) tokens") }
+  //--- Translater les tokens suivants
+    var i = savedTokenCount + 1
+    while i < self.mTokenArray.count {
+      let token = self.mTokenArray [i]
+      let newToken = SWIFT_Token (
+        range: NSRange (location: token.range.location + inDelta, length: token.range.length),
+        tokenCode: token.tokenCode,
+        templateDelimiterIndex: token.templateDelimiterIndex
+      )
+      self.mTokenArray [i] = newToken
+      i += 1
+    }
+  //--- Eliminate tokens beyond end of source string
+    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {
+      if self.mVerboseDebug { Swift.print ("Remove last token \(lastToken.range), beyond end") }
+      _ = self.mTokenArray.removeLast ()
+    }
+    if self.mDebug { Swift.print ("  Eliminate token beyond end, after delta correction: \(self.mTokenArray.count) tokens") }
+  //--- Perform lexical analysis
+    let start = Date ()
+    if savedTokenCount == 0 {
+      self.resetScannerLocation (withString: nsString)
+    }else{
+      self.resetScanner (
+        sourceString: nsString,
+        location: self.mTokenArray [savedTokenCount-1].range.upperBound,
+        templateDelimiterIndex : self.mTokenArray [savedTokenCount-1].templateDelimiterIndex
+      )
+    }
+    if self.mDebug { Swift.print ("  Scanning start location: \(self.currentLocation)") }
+    var stop = false
+    var insertionIndex = savedTokenCount
+    while self.currentLocation < nsString.length, !stop {
+      let token : SWIFT_Token = self.parseLexicalTokenForLexicalColoring ()
+      if token.tokenCode > 0 { // For eliminating separators
+        if self.mVerboseDebug { Swift.print ("  -> new token \(token.range) '\(nsString.substring (with: token.range))'") }
+      //--- Eliminate previous tokens before new token location
+        if insertionIndex < self.mTokenArray.count,
+              self.mTokenArray [insertionIndex] == token,
+              token.range.location > inEditedRange.upperBound {
+          if self.mVerboseDebug { Swift.print ("    stop at \(insertionIndex)") }
+          stop = true
+        }else{
+          while insertionIndex < self.mTokenArray.count,
+                self.mTokenArray [insertionIndex].range.lowerBound <= token.range.location {
+            if self.mVerboseDebug { Swift.print ("    remove token \(self.mTokenArray [insertionIndex].range) at \(insertionIndex)") }
+            self.mTokenArray.remove (at: insertionIndex)
+          }
+          if insertionIndex == self.mTokenArray.count {
+            if self.mVerboseDebug { Swift.print ("    append token \(token.range) at \(insertionIndex)") }
+            self.mTokenArray.append (token)
+            insertionIndex += 1
+          }else{
+            if self.mVerboseDebug {  Swift.print ("    insert token \(token.range) at \(insertionIndex)") }
+            self.mTokenArray.insert (token, at: insertionIndex)
+            insertionIndex += 1
+          }
+        }
+      }
+    }
+    if self.mDebug { Swift.print ("  Lexical analysis time: \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms") }
+  //---- Apply default attributes
+    let modificationStart = min (inEditedRange.location, (savedTokenCount == 0) ? 0 : self.mTokenArray [savedTokenCount - 1].range.upperBound)
+    let modificationEnd = max (inEditedRange.upperBound, (insertionIndex == self.mTokenArray.count)
+       ? nsString.length
+       : self.mTokenArray [insertionIndex].range.upperBound
+    )
+    if self.mDebug { Swift.print ("  Attributes will change from char index \(modificationStart) to \(modificationEnd)") }
+    let start2 = Date ()
+    if modificationStart < modificationEnd {
+      let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
+      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      inTextStorage.delegate = nil // NSTextStorageDelegate
+      let defaultFont = self.mFont.nsFont
+      let ps = NSMutableParagraphStyle ()
+      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      let defaultAttributes : [NSAttributedString.Key : Any] = [
+        .font: defaultFont,
+        .foregroundColor: NSColor (self.mDefaultColor),
+        .paragraphStyle : ps
+      ]
+      if self.mVerboseDebug { Swift.print ("Apply default attributes \(modifiedRange)") }
+      inTextStorage.setAttributes (defaultAttributes, range: modifiedRange)
+      let fontManager = NSFontManager.shared
+      var idx = 0
+      stop = false
+      while idx < self.mTokenArray.count, !stop { // Apply token styles
+        let token = self.mTokenArray [idx]
+        idx += 1
+        if token.range.lowerBound >= modifiedRange.upperBound {
+          stop = true
+        }else if token.range.upperBound > modifiedRange.lowerBound {
+          let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
+          if styleIndex > 0 {
+            if self.mVerboseDebug {
+               Swift.print ("  apply attributes \(token.range)", terminator: "")
+               Swift.print (" '\(nsString.substring (with: token.range))'")
+            }
+            let color = self.mTokenColorArray [styleIndex - 1]
+            if color != self.mDefaultColor {
+              inTextStorage.addAttribute (
+                .foregroundColor,
+                value: NSColor (color),
+                range: token.range
+              )
+            }
+            if self.mTokenBoldArray [styleIndex - 1] || self.mTokenItalicArray [styleIndex - 1] {
+              var font = defaultFont
+              if self.mTokenBoldArray [styleIndex - 1] {
+                font = fontManager.convert (font, toHaveTrait: .boldFontMask)
+              }
+              if self.mTokenItalicArray [styleIndex - 1] {
+                font = fontManager.convert (font, toHaveTrait: .italicFontMask)
+              }
+              inTextStorage.addAttribute (.font, value: font, range: token.range)
+            }
+          }
+        }
+      }
+      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
+    }
+    if self.mDebug { Swift.print ("  Adding attributes: \(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms") }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Lexical analysis
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+    var loop = true
+    var scanningOk = true
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %    self.mLexicalAttribute_%!lkey.string% = %![mLexicalType swiftInitializationCode]%\n%
+  end
+%    var tokenCode : UInt16 = 0
+    let startLocation = self.currentLocation
+%
+  block 4 :
+    for (lexicalRule) in LEXICAL_RULE_LIST do
+      ![lexicalRule generateSwiftCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+%if self.testForInputChar (0) { // End of source text ?
+      tokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+    }else{ // Unknown input character
+      tokenCode = %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
+      self.advance ()
+    }
+    return SWIFT_Token (
+      range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
+      tokenCode: tokenCode,
+      templateDelimiterIndex: self.mEndTemplateDelimiterIndex
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+%  for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalTokenListMap do
+    if tokenList_mShouldBeGenerated then
+      %//--------------------------------------------------------------------------------------------------\n%
+      %//             Key words table '%!tokenList_lkey.string%'      \n%
+      %//--------------------------------------------------------------------------------------------------\n\n%
+      %fileprivate let kDictionary_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% : [String : UInt16] = [\n%
+        for (* name terminalName) in tokenList_mTokenSortedList
+        do %  %![name utf8RepresentationEscapingQuestionMark]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
+        between %,\n%
+        end
+      %\n]\n\n%
+      %fileprivate func search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (_ inSearchedString : String) -> UInt16 {\n%
+      %  return kDictionary_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% [inSearchedString, default: %!LEXIQUE_CLASS_NAME%_1_]\n%
+      %}\n\n%
+    end
+  end
+%
+
+//--------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
+  return "%!LEXIQUE_CLASS_NAME%"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "Default Style", // 0
+%
+for (* mComment) in LEXICAL_STYLE_LIST do (idx)
+  %    %![mComment.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
+end
+%    "Lexical error", // %![[LEXICAL_STYLE_LIST count]+1 string]%
+    "Template" // %![[LEXICAL_STYLE_LIST count]+2 string]%
+  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "%!LEXIQUE_CLASS_NAME%", // 0
+%for (mName *) in LEXICAL_STYLE_LIST do (idx)
+  %    %![LEXIQUE_CLASS_NAME + "-" + mName.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
+end
+%    %![LEXIQUE_CLASS_NAME + ".ERROR" utf8RepresentationEscapingQuestionMark]%, // %![[LEXICAL_STYLE_LIST count]+1 string]%
+    %![LEXIQUE_CLASS_NAME + ".TEMPLATE" utf8RepresentationEscapingQuestionMark]% // %![[LEXICAL_STYLE_LIST count]+2 string]%
+  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Replacements
+//--------------------------------------------------------------------------------------------------
+
+%if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
+%fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
+%
+for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
+  do %  %![mMatchString utf8RepresentationEscapingQuestionMark]
+  between %,\n%
+end%
+]
+%end%
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Delimiters
+//--------------------------------------------------------------------------------------------------
+
+%if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList count] > 0 then
+%fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
+%
+for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
+  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %![mEndString utf8RepresentationEscapingQuestionMark]%, discardStartString: %
+      ![not mPreservesStartDelimiter cString]
+      %)%
+  between %,\n%
+end%
+]
+%end%
+
+//--------------------------------------------------------------------------------------------------
+//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
+//--------------------------------------------------------------------------------------------------
+
+let %!LEXIQUE_CLASS_NAME %_1_ : UInt16 = 0
+%
+for (mTerminalName 5*) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %let %!LEXIQUE_CLASS_NAME %_1_%![mTerminalName.string identifierRepresentation]% : UInt16 = %![idx+1 string]%\n%
+end
+%let %!LEXIQUE_CLASS_NAME %_2_ERROR : UInt16 = %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]%
+let %!LEXIQUE_CLASS_NAME %_2_TEMPLATE : UInt16 = %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]%
+
+//--------------------------------------------------------------------------------------------------
+

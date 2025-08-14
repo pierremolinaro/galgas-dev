@@ -1089,6 +1089,21 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalStyleListAST
       !self.mTemplateDelimitorListAST
     ]
+  //--- SwiftUI implementation
+    let swiftUIImplementation = [filewrapper lexiqueGenerationTemplates.swiftUIImplementationZone2
+      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"
+      !self.mLexiqueComponentName.string
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
+      !self.mLexicalRuleListAST
+      !lexiqueAnalysisContext
+      !self.mTemplateReplacementListAST
+      !self.mIndexingListAST
+      !self.mLexicalStyleListAST
+      !self.mTemplateDelimitorListAST
+    ]
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
@@ -1102,6 +1117,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !objCocoaHeader
         !objCocoaImplementation
         !swiftCocoaImplementation
+        !swiftUIImplementation
       }
   end
 }
@@ -1154,6 +1170,20 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
 
   template swiftCocoaImplementationZone2 "lexique_cocoa_implementation.swift.galgasTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+
+  template swiftUIImplementationZone2 "lexique_swiftui_implementation.swift.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP

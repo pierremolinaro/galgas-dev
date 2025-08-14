@@ -374,51 +374,5 @@ end
   end
 %
 
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//               P A R S E    L E X I C A L    T O K E N
-//
-//--------------------------------------------------------------------------------------------------
-
-/* - (void) parseLexicalTokenForLexicalColoring {
-  BOOL scanningOk = YES ;
-  mTokenCode = 0 ;
-  while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-%
-  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
-      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
-      if (foundEndDelimitor) {
-        mMatchedTemplateDelimiterIndex = -1 ;
-      }
-    }
-    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      %if [TEMPLATE_REPLACEMENT_LIST count] > 0 then%
-      [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      %end%
-      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      if (mMatchedTemplateDelimiterIndex < 0) {
-        [self advance] ;
-        mTokenCode = -2 ;
-      }
-    }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
-      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
-    }
-    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
-      mMatchedTemplateDelimiterIndex = -1 ;
-    }%else
-%    scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;%end %
-  }
-//--- Error ?
-  if (! scanningOk) {
-    mTokenCode = -1 ;
-  }
-}
-
-*/
-
 //--------------------------------------------------------------------------------------------------
 

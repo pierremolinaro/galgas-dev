@@ -433,6 +433,15 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !templateDelimitorList
       !self.mTemplateReplacementList
     ]
+  //--- SwiftUI implementation
+    let swiftuiImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftuiImplementationZone
+      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-swiftui"
+      !self.mLexiqueComponentName.string
+      !self.mLexiqueSuperComponentName.string
+      !terminalList
+      !templateDelimitorList
+      !self.mTemplateReplacementList
+    ]
   //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
@@ -446,6 +455,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
         !objcCocoaHeader
         !objcCocoaImplementation
         !swiftCocoaImplementation
+        !swiftuiImplementation
       }
   end
 }
@@ -484,6 +494,14 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 
   template swiftCocoaImplementationZone "template_lexique_cocoa_implementation.swift.galgasTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
+    ?@string LEXIQUE_CLASS_NAME
+    ?@string SUPER_LEXIQUE_CLASS_NAME
+    ?@terminalList TERMINAL_LIST
+    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+
+  template swiftuiImplementationZone "template_lexique_swiftui_implementation.swift.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@string SUPER_LEXIQUE_CLASS_NAME

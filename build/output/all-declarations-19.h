@@ -824,20 +824,23 @@ class GGS_lexiqueDeclarationForGeneration : public GGS_semanticDeclarationWithHe
 
   public: class GGS_string readProperty_mSwiftCocoaImplementation (void) const ;
 
+  public: class GGS_string readProperty_mSwiftUIImplementation (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_lexiqueDeclarationForGeneration init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                      const class GGS_string & inOperand1,
-                                                                                                                                      const class GGS_string & inOperand2,
-                                                                                                                                      const class GGS_string & inOperand3,
-                                                                                                                                      const class GGS_string & inOperand4,
-                                                                                                                                      const class GGS_string & inOperand5,
-                                                                                                                                      const class GGS_string & inOperand6,
-                                                                                                                                      const class GGS_string & inOperand7,
-                                                                                                                                      const class GGS_string & inOperand8,
-                                                                                                                                      Compiler * inCompiler
-                                                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS_lexiqueDeclarationForGeneration init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                                                          const class GGS_string & inOperand1,
+                                                                                                                                          const class GGS_string & inOperand2,
+                                                                                                                                          const class GGS_string & inOperand3,
+                                                                                                                                          const class GGS_string & inOperand4,
+                                                                                                                                          const class GGS_string & inOperand5,
+                                                                                                                                          const class GGS_string & inOperand6,
+                                                                                                                                          const class GGS_string & inOperand7,
+                                                                                                                                          const class GGS_string & inOperand8,
+                                                                                                                                          const class GGS_string & inOperand9,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -857,6 +860,7 @@ class GGS_lexiqueDeclarationForGeneration : public GGS_semanticDeclarationWithHe
                                                                            const class GGS_string & inOperand6,
                                                                            const class GGS_string & inOperand7,
                                                                            const class GGS_string & inOperand8,
+                                                                           const class GGS_string & inOperand9,
                                                                            class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -893,16 +897,17 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
   #endif
 
 //--------------------------------- Initializers
-  public: void lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                const class GGS_string & inOperand1,
-                                                                                                                                const class GGS_string & inOperand2,
-                                                                                                                                const class GGS_string & inOperand3,
-                                                                                                                                const class GGS_string & inOperand4,
-                                                                                                                                const class GGS_string & inOperand5,
-                                                                                                                                const class GGS_string & inOperand6,
-                                                                                                                                const class GGS_string & inOperand7,
-                                                                                                                                const class GGS_string & inOperand8,
-                                                                                                                                Compiler * inCompiler) ;
+  public: void lexiqueDeclarationForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                                                    const class GGS_string & inOperand1,
+                                                                                                                                    const class GGS_string & inOperand2,
+                                                                                                                                    const class GGS_string & inOperand3,
+                                                                                                                                    const class GGS_string & inOperand4,
+                                                                                                                                    const class GGS_string & inOperand5,
+                                                                                                                                    const class GGS_string & inOperand6,
+                                                                                                                                    const class GGS_string & inOperand7,
+                                                                                                                                    const class GGS_string & inOperand8,
+                                                                                                                                    const class GGS_string & inOperand9,
+                                                                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension getter headerKind
@@ -934,6 +939,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
   public: GGS_string mProperty_mObjcCocoaHeader ;
   public: GGS_string mProperty_mObjcCocoaImplementation ;
   public: GGS_string mProperty_mSwiftCocoaImplementation ;
+  public: GGS_string mProperty_mSwiftUIImplementation ;
 
 
 //--- Default constructor
@@ -949,6 +955,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
                                                 const GGS_string & in_mObjcCocoaHeader,
                                                 const GGS_string & in_mObjcCocoaImplementation,
                                                 const GGS_string & in_mSwiftCocoaImplementation,
+                                                const GGS_string & in_mSwiftUIImplementation,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
