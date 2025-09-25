@@ -220,8 +220,8 @@ mSharedArray (nullptr) {
 
 template <typename ELEMENT>
 GenericArray <ELEMENT>::GenericArray (const int32_t inCount,
-                              const ELEMENT & inValue
-                              COMMA_LOCATION_ARGS) :
+                                      const ELEMENT & inValue
+                                      COMMA_LOCATION_ARGS) :
 mSharedArray (nullptr) {
   macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> (inCount, inValue COMMA_THERE)) ;
 }
@@ -316,7 +316,7 @@ void GenericArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::appendObjects (const int32_t inCount,
-                                        const ELEMENT & inValue) { // inValue is copied
+                                            const ELEMENT & inValue) { // inValue is copied
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
       macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
@@ -331,9 +331,9 @@ void GenericArray <ELEMENT>::appendObjects (const int32_t inCount,
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::insertObjectsAtIndex (const int32_t inCount,
-                                               const ELEMENT & inValue, // inValue is copied
-                                               const int32_t inStartingIndex
-                                               COMMA_LOCATION_ARGS) {
+                                                   const ELEMENT & inValue, // inValue is copied
+                                                   const int32_t inStartingIndex
+                                                   COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
     if (nullptr == mSharedArray) {
       macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
@@ -359,7 +359,7 @@ void GenericArray <ELEMENT>::removeAll (void) {
 
 template <typename ELEMENT>
 ELEMENT & GenericArray <ELEMENT>::operator () (const int32_t inIndex
-                                           COMMA_LOCATION_ARGS) {
+                                               COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
@@ -373,7 +373,7 @@ ELEMENT & GenericArray <ELEMENT>::operator () (const int32_t inIndex
 
 template <typename ELEMENT>
 ELEMENT GenericArray <ELEMENT>::operator () (const int32_t inIndex
-                                         COMMA_LOCATION_ARGS) const {
+                                             COMMA_LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray (inIndex COMMA_THERE) ;
 }
@@ -418,7 +418,7 @@ void GenericArray <ELEMENT>::removeLastObject (LOCATION_ARGS) {
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::removeLastObjects (const int32_t inCount
-                                            COMMA_LOCATION_ARGS) {
+                                                COMMA_LOCATION_ARGS) {
   insulate () ;
   macroValidPointer (mSharedArray) ;
   mSharedArray->mUniqueArray.removeLastObjects (inCount COMMA_THERE) ;
@@ -455,7 +455,7 @@ bool GenericArray <ELEMENT>::operator == (const GenericArray <ELEMENT> & inOpera
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
-                                             const int32_t inDataLength) {
+                                                 const int32_t inDataLength) {
   if (nullptr != mSharedArray) {
     macroDetachSharedObject (mSharedArray) ;
   }
@@ -469,7 +469,7 @@ void GenericArray <ELEMENT>::setDataFromPointer (ELEMENT * & ioDataPtr,
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::appendDataFromPointer (const ELEMENT * inDataPtr,
-                                                const int32_t inDataLength) {
+                                                    const int32_t inDataLength) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT> ()) ;
   }else{
@@ -498,7 +498,7 @@ void GenericArray <ELEMENT>::setCapacity (const int32_t inNewCapacity) {
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
-                                              COMMA_LOCATION_ARGS) {
+                                                  COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.removeObjectAtIndex (inIndex COMMA_THERE) ;
@@ -508,8 +508,8 @@ void GenericArray <ELEMENT>::removeObjectAtIndex (const int32_t inIndex
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
-                                               const int32_t inStartingIndex
-                                               COMMA_LOCATION_ARGS) {
+                                                   const int32_t inStartingIndex
+                                                   COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.removeObjectsAtIndex (inCount, inStartingIndex COMMA_THERE) ;
@@ -521,8 +521,8 @@ void GenericArray <ELEMENT>::removeObjectsAtIndex (const int32_t inCount,
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
-                                           const int32_t inIndex
-                                           COMMA_LOCATION_ARGS) {
+                                               const int32_t inIndex
+                                               COMMA_LOCATION_ARGS) {
   insulate () ;
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.setObjectAtIndex (inObject, inIndex COMMA_THERE) ;
@@ -534,8 +534,8 @@ void GenericArray <ELEMENT>::setObjectAtIndex (const ELEMENT & inObject,
 
 template <typename ELEMENT>
 void GenericArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
-                                              const int32_t inIndex  // inValue is copied
-                                              COMMA_LOCATION_ARGS) {
+                                                  const int32_t inIndex  // inValue is copied
+                                                  COMMA_LOCATION_ARGS) {
   if (nullptr == mSharedArray) {
     macroMyNew (mSharedArray, InternalSharedArray <ELEMENT>) ;
   }else{

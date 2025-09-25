@@ -94,6 +94,12 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
 
 //--------------------------------------------------------------------------------------------------
 
+#Preview {
+  SettingViewFor_%!LEXIQUE_CLASS_NAME% ()
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -479,7 +485,7 @@ end
       self.resetScannerLocation (withString: nsString)
     }else{
       self.resetScanner (
-        sourceString: nsString,
+        withString: nsString,
         location: self.mTokenArray [savedTokenCount-1].range.upperBound,
         templateDelimiterIndex : self.mTokenArray [savedTokenCount-1].templateDelimiterIndex
       )

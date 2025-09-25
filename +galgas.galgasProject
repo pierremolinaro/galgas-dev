@@ -282,7 +282,7 @@ project (4:0:0) -> "galgas" {
 
   "galgas-sources/galgasSemanticDeclarationCompilation.galgas"
 
-  "galgas-sources/XcodeProjectNewGeneration.galgas"
+  "galgas-sources/XcodeProjectGeneration.galgas"
   "galgas-sources/galgasTargetGeneration.galgas"
 
 //--- Hand coded sources

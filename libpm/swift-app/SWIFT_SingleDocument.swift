@@ -246,7 +246,7 @@ import AppKit
       self.mTextStorage.beginEditing ()
       self.computeLexicalColoring (editedRange: inEditedRange, changeInLength: inDelta)
       self.mTextStorage.endEditing ()
-      if self.mActivateTimerOnChange && (nil == self.mTimerForAutosaving) {
+      if self.mActivateTimerOnChange, nil == self.mTimerForAutosaving {
         let timer = Timer (
           timeInterval: 5.0,
           target: self,

@@ -17,35 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-enum @optionDefaultValueEnumAST %equatable {
-  case noDefaultValue
-  case unsignedDefaultValue
-  case stringDefaultValue
-}
-
-//--------------------------------------------------------------------------------------------------
-
-list @commandLineOptionListAST {
-  public let @lstring mOptionTypeName
-  public let @lstring mOptionInternalName
-  public let @lchar mOptionInvocationLetter
-  public let @lstring mOptionInvocationString
-  public let @lstring mOptionComment
-  public let @lstring mOptionDefaultValue
-  public let @optionDefaultValueEnumAST mOptionDefaultValueKind
-}
-
-//--------------------------------------------------------------------------------------------------
-
-class @optionComponentDeclarationAST : @semanticDeclarationAST {
-  public let @lstring mOptionComponentName
-  public let @commandLineOptionListAST mOptions
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -85,16 +56,16 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     var defaultValue = @lstring {!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
-      optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
+      optionDefaultValueKind = .noDefaultValue
     or
       $default$
       select
         $"string"$ ? defaultValue
-        optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
+        optionDefaultValueKind = .stringDefaultValue
       or
         $literalInt$ ?let v
-        defaultValue = @lstring {![v.bigint string] !v.location}
-        optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
+        defaultValue = @{![v.bigint string] !v.location}
+        optionDefaultValueKind = .unsignedDefaultValue
       end
     end
     ioCommandLineOptionList +=
@@ -108,6 +79,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -174,177 +146,210 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! ENTER IN GRAPH
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override method @optionComponentDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
-{
-  ioExtensionOverrideDefinitionList += !self
+enum @optionDefaultValueEnumAST %equatable {
+  case noDefaultValue
+  case unsignedDefaultValue
+  case stringDefaultValue
 }
 
 //--------------------------------------------------------------------------------------------------
-//! ENTER IN CONTEXT
+
+list @commandLineOptionListAST {
+  public let @lstring mOptionTypeName
+  public let @lstring mOptionInternalName
+  public let @lchar mOptionInvocationLetter
+  public let @lstring mOptionInvocationString
+  public let @lstring mOptionComment
+  public let @lstring mOptionDefaultValue
+  public let @optionDefaultValueEnumAST mOptionDefaultValueKind
+}
+
 //--------------------------------------------------------------------------------------------------
 
-override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap unused ioTypeMap
-  ?!@semanticContext ioSemanticContext
-{
-  var @commandLineOptionMap boolOptionMap = @()
-  var @commandLineOptionMap uintOptionMap = @()
-  var @commandLineOptionMap stringOptionMap = @()
-  var @commandLineOptionMap stringListOptionMap = @()
-  var optionNameSet = @stringset.emptySet
-  for (mOptionTypeName mOptionInternalName mOptionInvocationLetter mOptionInvocationString mOptionComment mOptionDefaultValue mOptionDefaultValueKind) in self.mOptions do
-    if [optionNameSet hasKey !mOptionInternalName.string] then
-      error mOptionInternalName: "the '" + mOptionInternalName.string + "' command line option has been already declared"
-    elsif mOptionTypeName.string == "bool" then
-      [!?boolOptionMap insertKey
-        !mOptionInternalName
-        !mOptionInvocationLetter.char
-        !mOptionInvocationString.string
-        !mOptionComment.string
-        !"false"
-      ]
-      if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
-        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is always false)"
+class @optionComponentDeclarationAST : @semanticDeclarationAST {
+  public let @lstring mOptionComponentName
+  public let @commandLineOptionListAST mOptions
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+  {
+    ioExtensionOverrideDefinitionList += !self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method enterDeclarationInSemanticContext
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap unused ioTypeMap
+    ?!@semanticContext ioSemanticContext
+  {
+    var @commandLineOptionMap boolOptionMap = @()
+    var @commandLineOptionMap uintOptionMap = @()
+    var @commandLineOptionMap stringOptionMap = @()
+    var @commandLineOptionMap stringListOptionMap = @()
+    var optionNameSet = @stringset.emptySet
+    for anOption in self.mOptions do
+      if [optionNameSet hasKey !anOption.mOptionInternalName.string] then
+        error anOption.mOptionInternalName
+        : "the '" + anOption.mOptionInternalName.string
+        + "' command line option has been already declared"
+      elsif anOption.mOptionTypeName.string == "bool" then
+        [!?boolOptionMap insertKey
+          !anOption.mOptionInternalName
+          !anOption.mOptionInvocationLetter.char
+          !anOption.mOptionInvocationString.string
+          !anOption.mOptionComment.string
+          !"false"
+        ]
+        if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
+          error anOption.mOptionDefaultValue
+          :"an @bool option cannot have a default value (default value is always false)"
+        end
+      elsif anOption.mOptionTypeName.string == "uint" then
+        [!?uintOptionMap insertKey
+          !anOption.mOptionInternalName
+          !anOption.mOptionInvocationLetter.char
+          !anOption.mOptionInvocationString.string
+          !anOption.mOptionComment.string
+          !if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
+        ]
+        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
+          error anOption.mOptionDefaultValue
+          :"an @uint option default value cannot be an @string value"
+        end
+      elsif anOption.mOptionTypeName.string == "string" then
+        [!?stringOptionMap insertKey
+          !anOption.mOptionInternalName
+          !anOption.mOptionInvocationLetter.char
+          !anOption.mOptionInvocationString.string
+          !anOption.mOptionComment.string
+          !anOption.mOptionDefaultValue.string
+        ]
+        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
+          error anOption.mOptionDefaultValue
+          :"an @string option default value cannot be an @uint value"
+        end
+      elsif anOption.mOptionTypeName.string == "stringlist" then
+        [!?stringListOptionMap insertKey
+          !anOption.mOptionInternalName
+          !anOption.mOptionInvocationLetter.char
+          !anOption.mOptionInvocationString.string
+          !anOption.mOptionComment.string
+          !anOption.mOptionDefaultValue.string
+        ]
+        if anOption.mOptionDefaultValueKind != .noDefaultValue then
+          error anOption.mOptionDefaultValue
+          :"an @stringlist option cannot accept default value"
+        end
+      else
+        error anOption.mOptionTypeName
+        : "only the @bool, @uint or @string types are allowed here"
       end
-    elsif mOptionTypeName.string == "uint" then
-      [!?uintOptionMap insertKey
-        !mOptionInternalName
-        !mOptionInvocationLetter.char
-        !mOptionInvocationString.string
-        !mOptionComment.string
-        !if mOptionDefaultValue.string == "" then "0" else mOptionDefaultValue.string end
-      ]
-      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
-        error mOptionDefaultValue:"an @uint option default value cannot be an @string value"
-      end
-    elsif mOptionTypeName.string == "string" then
-      [!?stringOptionMap insertKey
-        !mOptionInternalName
-        !mOptionInvocationLetter.char
-        !mOptionInvocationString.string
-        !mOptionComment.string
-        !mOptionDefaultValue.string
-      ]
-      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
-        error mOptionDefaultValue:"an @string option default value cannot be an @uint value"
-      end
-    elsif mOptionTypeName.string == "stringlist" then
-      [!?stringListOptionMap insertKey
-        !mOptionInternalName
-        !mOptionInvocationLetter.char
-        !mOptionInvocationString.string
-        !mOptionComment.string
-        !mOptionDefaultValue.string
-      ]
-      if mOptionDefaultValueKind != .noDefaultValue then
-        error mOptionDefaultValue:"an @stringlist option cannot accept default value"
-      end
-    else
-      error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
+      optionNameSet ++= anOption.mOptionInternalName.string
     end
-    optionNameSet ++= mOptionInternalName.string
-  end
-//--- Insert option
-  [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
-    !self.mOptionComponentName
-    !self.isPredefined
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-    !stringListOptionMap
-  ]
-}
+  //--- Insert option
+    [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
+      !self.mOptionComponentName
+      !self.isPredefined
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+      !stringListOptionMap
+    ]
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! SEMANTIC ANALYSIS
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @optionComponentDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
-//--- Useful entities graph
-  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-//---
-  [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-    !self.mOptionComponentName
-    ?let @bool optionIsPredefined
-    ?let @commandLineOptionMap boolOptionMap
-    ?let @commandLineOptionMap uintOptionMap
-    ?let @commandLineOptionMap stringOptionMap
-    ?let @commandLineOptionMap stringListOptionMap
-  ]
-//--- Sort options
-  var @commandLineOptionSortedList boolOptionSortedList = @()
-  for anOption in boolOptionMap do
-    boolOptionSortedList +=
-      !anOption.lkey.string
-      !anOption.mOptionChar
-      !anOption.mOptionString
-      !anOption.mComment
-      !anOption.mDefaultValue
-  end
-  var @commandLineOptionSortedList uintOptionSortedList = @()
-  for anOption in uintOptionMap do
-    uintOptionSortedList +=
-      !anOption.lkey.string
-      !anOption.mOptionChar
-      !anOption.mOptionString
-      !anOption.mComment
-      !anOption.mDefaultValue
-  end
-  var @commandLineOptionSortedList stringOptionSortedList = @()
-  for anOption in stringOptionMap do
-    stringOptionSortedList +=
-      !anOption.lkey.string
-      !anOption.mOptionChar
-      !anOption.mOptionString
-      !anOption.mComment
-      !anOption.mDefaultValue
-  end
-  var @commandLineOptionSortedList stringListOptionSortedList = @()
-  for anOption in stringListOptionMap do
-    stringListOptionSortedList +=
-      !anOption.lkey.string
-      !anOption.mOptionChar
-      !anOption.mOptionString
-      !anOption.mComment
-      !anOption.mDefaultValue
-  end
-//--- Enter filewrapper in generated list
-  ioSemanticDeclarationListForGeneration +=
-    !infoMessage: "option " + self.mOptionComponentName
-    !@optionComponentForGeneration {
-      !generateHeader: true // Generate Cpp header file
-      !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
-      !optionIsPredefined
-      !self.mOptionComponentName.string
-      !boolOptionSortedList
-      !uintOptionSortedList
-      !stringOptionSortedList
-      !stringListOptionSortedList
-    }
+  override method semanticAnalysis
+    ?!@lstringlist unused ioUsefulnessRootEntities
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @string unused inProductDirectory
+    ?let @semanticContext inSemanticContext
+                                  ?!@unifiedTypeMap unused ioTypeMap
+    ?let @predefinedTypes unused inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  {
+  //--- Useful entities graph
+    let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  //---
+    [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
+      !self.mOptionComponentName
+      ?let @bool optionIsPredefined
+      ?let @commandLineOptionMap boolOptionMap
+      ?let @commandLineOptionMap uintOptionMap
+      ?let @commandLineOptionMap stringOptionMap
+      ?let @commandLineOptionMap stringListOptionMap
+    ]
+  //--- Sort options
+    var @commandLineOptionSortedList boolOptionSortedList = @()
+    for anOption in boolOptionMap do
+      boolOptionSortedList +=
+        !anOption.lkey.string
+        !anOption.mOptionChar
+        !anOption.mOptionString
+        !anOption.mComment
+        !anOption.mDefaultValue
+    end
+    var @commandLineOptionSortedList uintOptionSortedList = @()
+    for anOption in uintOptionMap do
+      uintOptionSortedList +=
+        !anOption.lkey.string
+        !anOption.mOptionChar
+        !anOption.mOptionString
+        !anOption.mComment
+        !anOption.mDefaultValue
+    end
+    var @commandLineOptionSortedList stringOptionSortedList = @()
+    for anOption in stringOptionMap do
+      stringOptionSortedList +=
+        !anOption.lkey.string
+        !anOption.mOptionChar
+        !anOption.mOptionString
+        !anOption.mComment
+        !anOption.mDefaultValue
+    end
+    var @commandLineOptionSortedList stringListOptionSortedList = @()
+    for anOption in stringListOptionMap do
+      stringListOptionSortedList +=
+        !anOption.lkey.string
+        !anOption.mOptionChar
+        !anOption.mOptionString
+        !anOption.mComment
+        !anOption.mDefaultValue
+    end
+  //--- Enter filewrapper in generated list
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "option " + self.mOptionComponentName
+      !@optionComponentForGeneration {
+        !generateHeader: true // Generate Cpp header file
+        !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
+        !optionIsPredefined
+        !self.mOptionComponentName.string
+        !boolOptionSortedList
+        !uintOptionSortedList
+        !stringOptionSortedList
+        !stringListOptionSortedList
+      }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -358,129 +363,130 @@ class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneratio
   public let @commandLineOptionSortedList mUIntOptionSortedList
   public let @commandLineOptionSortedList mStringOptionSortedList
   public let @commandLineOptionSortedList mStringListSortedList
-}
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override getter @optionComponentForGeneration isPredefined -> @bool {
-  result = self.mIsPredefined
-}
+  override getter isPredefined -> @bool {
+    result = self.mIsPredefined
+  }
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override getter @optionComponentForGeneration headerKind -> @headerKind {
-  result = if self.mIsPredefined then .noHeader else .oneHeader end
-}
+  override getter headerKind -> @headerKind {
+    result = if self.mIsPredefined then .noHeader else .oneHeader end
+  }
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override method @optionComponentForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-{
-  if self.mIsPredefined then
-    outHeader = ""
-  else
-    outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
-      !self.mOptionComponentName
-      !self.mBoolOptionSortedList
-      !self.mUIntOptionSortedList
-      !self.mStringOptionSortedList
-      !self.mStringListSortedList
-    ]
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override method @optionComponentForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
-  if self.mIsPredefined then
-    outImplementation = ""
-  else
-    ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
-    outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
-      !self.mOptionComponentName
-      !self.mBoolOptionSortedList
-      !self.mUIntOptionSortedList
-      !self.mStringOptionSortedList
-      !self.mStringListSortedList
-    ]
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override method @optionComponentForGeneration appendSpecificFiles
-  ?let @string inProductDirectory
-  ?!@stringset ioAllProductFileSet
-  ?!objc: @stringlist ioObjcAppProductFileList
-  ?!swift: @stringlist ioSwiftAppProductFileList
-{
-//--- Generate Cocoa header
-  if @uint.errorCount == 0 && not self.mIsPredefined then
-    ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-        !self.mOptionComponentName
-      ]
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-        !self.mOptionComponentName
-      ]
-      !makeExecutable:false
-    ]
-  //--- Generate Cocoa Implementation
-    ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-    ioObjcAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
-        !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
+  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+                                     !@string outHeader {
+    if self.mIsPredefined then
+      outHeader = ""
+    else
+      outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
         !self.mOptionComponentName
         !self.mBoolOptionSortedList
         !self.mUIntOptionSortedList
         !self.mStringOptionSortedList
         !self.mStringListSortedList
       ]
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // User Zone 3
-      !makeExecutable:false
-    ]
-  //--- Generate Swift Cocoa Implementation
-    ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-    ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
-        !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method appendSpecificImplementation
+    ?let @unifiedTypeMap unused inTypeMap
+    ?!@stringset ioInclusionSet
+    !@string outImplementation
+  {
+    if self.mIsPredefined then
+      outImplementation = ""
+    else
+      ioInclusionSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation]
+      outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
         !self.mOptionComponentName
         !self.mBoolOptionSortedList
         !self.mUIntOptionSortedList
         !self.mStringOptionSortedList
         !self.mStringListSortedList
       ]
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // User Zone 3
-      !makeExecutable:false
-    ]
- end
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override method appendSpecificFiles
+    ?let @string inProductDirectory
+    ?!@stringset ioAllProductFileSet
+    ?!objc: @stringlist ioObjcAppProductFileList
+    ?!swift: @stringlist ioSwiftAppProductFileList
+  {
+  //--- Generate Cocoa header
+    if @uint.errorCount == 0 && not self.mIsPredefined then
+      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+      [@string generateFileWithPattern
+        !startPath:inProductDirectory
+        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+        !lineComment:"//"
+        !header:"" // Header
+        !defaultUserZone1:"\n\n" // Defaut user zone1
+        !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+          !self.mOptionComponentName
+        ]
+        !defaultUserZone2:"\n\n" // Defaut user zone2
+        !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+          !self.mOptionComponentName
+        ]
+        !makeExecutable:false
+      ]
+    //--- Generate Cocoa Implementation
+      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+      ioObjcAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+      [@string generateFileWithPattern
+        !startPath:inProductDirectory
+        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+        !lineComment:"//"
+        !header:"" // Header
+        !defaultUserZone1:"\n\n" // Defaut user zone1
+        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
+          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
+          !self.mOptionComponentName
+          !self.mBoolOptionSortedList
+          !self.mUIntOptionSortedList
+          !self.mStringOptionSortedList
+          !self.mStringListSortedList
+        ]
+        !defaultUserZone2:"\n\n" // Defaut user zone2
+        !generatedZone3:"\n\n" // User Zone 3
+        !makeExecutable:false
+      ]
+    //--- Generate Swift Cocoa Implementation
+      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+      ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+      [@string generateFileWithPattern
+        !startPath:inProductDirectory
+        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+        !lineComment:"//"
+        !header:"" // Header
+        !defaultUserZone1:"\n\n" // Defaut user zone1
+        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
+          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
+          !self.mOptionComponentName
+          !self.mBoolOptionSortedList
+          !self.mUIntOptionSortedList
+          !self.mStringOptionSortedList
+          !self.mStringListSortedList
+        ]
+        !defaultUserZone2:"\n\n" // Defaut user zone2
+        !generatedZone3:"\n\n" // User Zone 3
+        !makeExecutable:false
+      ]
+   end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

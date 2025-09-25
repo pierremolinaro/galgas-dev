@@ -55,11 +55,11 @@
 		CF08BAAF2D552D3A000DE9C4 /* AutoLayoutBorderLessTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA622D552D3A000DE9C4 /* AutoLayoutBorderLessTabView.swift */; };
 		CF08BAB02D552D3A000DE9C4 /* AutoLayoutTableView-column-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA6E2D552D3A000DE9C4 /* AutoLayoutTableView-column-String.swift */; };
 		CF08BAB12D552D3A000DE9C4 /* AutoLayoutStaticLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA782D552D3A000DE9C4 /* AutoLayoutStaticLabel.swift */; };
-		CF08BAB22D552D3A000DE9C4 /* ΩHorizontalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA0B2D552D3A000DE9C4 /* ΩHorizontalStretchingResistance.swift */; };
+		CF08BAB22D552D3A000DE9C4 /* HorizontalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA0B2D552D3A000DE9C4 /* HorizontalStretchingResistance.swift */; };
 		CF08BAB32D552D3A000DE9C4 /* InternalCocoaScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA4F2D552D3A000DE9C4 /* InternalCocoaScrollView.swift */; };
 		CF08BAB42D552D3A000DE9C4 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA0E2D552D3A000DE9C4 /* Margin.swift */; };
 		CF08BAB52D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA0A2D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift */; };
-		CF08BAB62D552D3A000DE9C4 /* ΩVerticalAlignmentInHorizontalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA112D552D3A000DE9C4 /* ΩVerticalAlignmentInHorizontalStack.swift */; };
+		CF08BAB62D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA112D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift */; };
 		CF08BAB72D552D3A000DE9C4 /* AutoLayoutHorizontalSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA532D552D3A000DE9C4 /* AutoLayoutHorizontalSplitView.swift */; };
 		CF08BAB82D552D3A000DE9C4 /* BaseTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA632D552D3A000DE9C4 /* BaseTabView.swift */; };
 		CF08BAB92D552D3A000DE9C4 /* EBTransientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA4C2D552D3A000DE9C4 /* EBTransientProperty.swift */; };
@@ -71,7 +71,7 @@
 		CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA752D552D3A000DE9C4 /* AutoLayoutLabel.swift */; };
 		CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA4A2D552D3A000DE9C4 /* EBSimpleObserver.swift */; };
 		CF08BAC12D552D3A000DE9C4 /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA442D552D3A000DE9C4 /* EBObservedObject.swift */; };
-		CF08BAC22D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */; };
+		CF08BAC22D552D3A000DE9C4 /* VerticalStretchingResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */; };
 		CF08BAC32D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA372D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift */; };
 		CF08BAC42D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA6C2D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift */; };
 		CF08BAC52D552D3A000DE9C4 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA102D552D3A000DE9C4 /* Spacing.swift */; };
@@ -531,14 +531,14 @@
 		CF08BA082D552D3A000DE9C4 /* BaseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseControl.swift; sourceTree = "<group>"; };
 		CF08BA092D552D3A000DE9C4 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CF08BA0A2D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignmentInVerticalStack.swift; sourceTree = "<group>"; };
-		CF08BA0B2D552D3A000DE9C4 /* ΩHorizontalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ΩHorizontalStretchingResistance.swift"; sourceTree = "<group>"; };
+		CF08BA0B2D552D3A000DE9C4 /* HorizontalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStretchingResistance.swift; sourceTree = "<group>"; };
 		CF08BA0C2D552D3A000DE9C4 /* InvalidatedLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidatedLayoutDelegate.swift; sourceTree = "<group>"; };
 		CF08BA0D2D552D3A000DE9C4 /* LayoutFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutFeatures.swift; sourceTree = "<group>"; };
 		CF08BA0E2D552D3A000DE9C4 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 		CF08BA0F2D552D3A000DE9C4 /* SimpleBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBlockView.swift; sourceTree = "<group>"; };
 		CF08BA102D552D3A000DE9C4 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		CF08BA112D552D3A000DE9C4 /* ΩVerticalAlignmentInHorizontalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ΩVerticalAlignmentInHorizontalStack.swift"; sourceTree = "<group>"; };
-		CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ΩVerticalStretchingResistance.swift"; sourceTree = "<group>"; };
+		CF08BA112D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentInHorizontalStack.swift; sourceTree = "<group>"; };
+		CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStretchingResistance.swift; sourceTree = "<group>"; };
 		CF08BA142D552D3A000DE9C4 /* EBGenericReadWritePropertyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBGenericReadWritePropertyController.swift; sourceTree = "<group>"; };
 		CF08BA152D552D3A000DE9C4 /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF08BA162D552D3A000DE9C4 /* multiple-binding-controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "multiple-binding-controllers.swift"; sourceTree = "<group>"; };
@@ -1033,14 +1033,14 @@
 				CF08BA082D552D3A000DE9C4 /* BaseControl.swift */,
 				CF08BA092D552D3A000DE9C4 /* BaseView.swift */,
 				CF08BA0A2D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift */,
-				CF08BA0B2D552D3A000DE9C4 /* ΩHorizontalStretchingResistance.swift */,
+				CF08BA0B2D552D3A000DE9C4 /* HorizontalStretchingResistance.swift */,
 				CF08BA0C2D552D3A000DE9C4 /* InvalidatedLayoutDelegate.swift */,
 				CF08BA0D2D552D3A000DE9C4 /* LayoutFeatures.swift */,
 				CF08BA0E2D552D3A000DE9C4 /* Margin.swift */,
 				CF08BA0F2D552D3A000DE9C4 /* SimpleBlockView.swift */,
 				CF08BA102D552D3A000DE9C4 /* Spacing.swift */,
-				CF08BA112D552D3A000DE9C4 /* ΩVerticalAlignmentInHorizontalStack.swift */,
-				CF08BA122D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift */,
+				CF08BA112D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift */,
+				CF08BA122D552D3A000DE9C4 /* VerticalStretchingResistance.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -1277,12 +1277,12 @@
 			children = (
 				CF08BA132D552D3A000DE9C4 /* base */,
 				CF08BA182D552D3A000DE9C4 /* binding-controllers */,
-				CF08BA1C2D552D3A000DE9C4 /* button */,
 				CF08BA1E2D552D3A000DE9C4 /* color-well */,
 				CF08BA242D552D3A000DE9C4 /* debug */,
 				CF08BA322D552D3A000DE9C4 /* extension-for-property-protocol */,
 				CF08BA342D552D3A000DE9C4 /* grid */,
 				CF08BA392D552D3A000DE9C4 /* outline-view */,
+				CF08BA1C2D552D3A000DE9C4 /* button */,
 				CF08BA3D2D552D3A000DE9C4 /* popup-button */,
 				CF08BA3F2D552D3A000DE9C4 /* progress-indicator */,
 				CF08BA4D2D552D3A000DE9C4 /* property-generic-classes */,
@@ -2167,11 +2167,11 @@
 				CF08BAAF2D552D3A000DE9C4 /* AutoLayoutBorderLessTabView.swift in Sources */,
 				CF08BAB02D552D3A000DE9C4 /* AutoLayoutTableView-column-String.swift in Sources */,
 				CF08BAB12D552D3A000DE9C4 /* AutoLayoutStaticLabel.swift in Sources */,
-				CF08BAB22D552D3A000DE9C4 /* ΩHorizontalStretchingResistance.swift in Sources */,
+				CF08BAB22D552D3A000DE9C4 /* HorizontalStretchingResistance.swift in Sources */,
 				CF08BAB32D552D3A000DE9C4 /* InternalCocoaScrollView.swift in Sources */,
 				CF08BAB42D552D3A000DE9C4 /* Margin.swift in Sources */,
 				CF08BAB52D552D3A000DE9C4 /* HorizontalAlignmentInVerticalStack.swift in Sources */,
-				CF08BAB62D552D3A000DE9C4 /* ΩVerticalAlignmentInHorizontalStack.swift in Sources */,
+				CF08BAB62D552D3A000DE9C4 /* VerticalAlignmentInHorizontalStack.swift in Sources */,
 				CF08BAB72D552D3A000DE9C4 /* AutoLayoutHorizontalSplitView.swift in Sources */,
 				CF08BAB82D552D3A000DE9C4 /* BaseTabView.swift in Sources */,
 				CF08BAB92D552D3A000DE9C4 /* EBTransientProperty.swift in Sources */,
@@ -2184,7 +2184,7 @@
 				CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */,
 				CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */,
 				CF08BAC12D552D3A000DE9C4 /* EBObservedObject.swift in Sources */,
-				CF08BAC22D552D3A000DE9C4 /* ΩVerticalStretchingResistance.swift in Sources */,
+				CF08BAC22D552D3A000DE9C4 /* VerticalStretchingResistance.swift in Sources */,
 				CF08BAC32D552D3A000DE9C4 /* OutlineViewClickableChildProtocol.swift in Sources */,
 				CF08BAC42D552D3A000DE9C4 /* AutoLayoutTableView-column-NSImage.swift in Sources */,
 				CF08BAC52D552D3A000DE9C4 /* Spacing.swift in Sources */,

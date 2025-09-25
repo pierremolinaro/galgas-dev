@@ -272,6 +272,12 @@ struct SettingViewFor_galgasScanner4 : View {
 
 //--------------------------------------------------------------------------------------------------
 
+#Preview {
+  SettingViewFor_galgasScanner4 ()
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1485,7 +1491,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
       self.resetScannerLocation (withString: nsString)
     }else{
       self.resetScanner (
-        sourceString: nsString,
+        withString: nsString,
         location: self.mTokenArray [savedTokenCount-1].range.upperBound,
         templateDelimiterIndex : self.mTokenArray [savedTokenCount-1].templateDelimiterIndex
       )

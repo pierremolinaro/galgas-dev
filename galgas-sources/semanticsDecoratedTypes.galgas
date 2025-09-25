@@ -318,23 +318,6 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 
 //--------------------------------------------------------------------------------------------------
 //
-//    L E X I Q U E    D E C L A R A T I O N
-//
-//--------------------------------------------------------------------------------------------------
-
-class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public let @string mLexiqueName
-  public let @string mSuperLexiqueName
-  public let @string mHeaderContents
-  public let @string mCppContents
-  public let @string mObjcCocoaHeader
-  public let @string mObjcCocoaImplementation
-  public let @string mSwiftCocoaImplementation
-  public let @string mSwiftUIImplementation
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //   A C T I O N ,    M E T H O D    S I G N A T U R E
 //
 //--------------------------------------------------------------------------------------------------
