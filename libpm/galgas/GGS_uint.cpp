@@ -404,7 +404,7 @@ GGS_uint GGS_uint::getter_lsbIndex (Compiler * inCompiler
   }else{
     uint32_t idx = 0 ;
     while ((v != 0) && ((v & 1) == 0)) {
-      idx ++ ;
+      idx += 1 ;
       v >>= 1 ;
     }
     result = GGS_uint (idx) ;
@@ -427,13 +427,13 @@ GGS_bool GGS_uint::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uint::increment_operation_no_overflow (void) {
-  mUIntValue ++ ;
+  mUIntValue += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uint::decrement_operation_no_overflow (void) {
-  mUIntValue -- ;
+  mUIntValue -= 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -445,7 +445,7 @@ void GGS_uint::increment_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@uint ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mUIntValue ++ ;
+      mUIntValue += 1 ;
     }
   }
 }

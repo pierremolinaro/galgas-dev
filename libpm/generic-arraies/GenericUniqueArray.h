@@ -416,7 +416,7 @@ void GenericUniqueArray <ELEMENT>::appendObject (const ELEMENT & inValue) {
     setCapacity (mCount + 1 + mCount / 2) ;
   }
   mArray [mCount] = inValue ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -440,7 +440,7 @@ template <typename ELEMENT>
 void GenericUniqueArray <ELEMENT>::appendObjectUsingSwap (ELEMENT & ioValue) {
   setCapacityUsingSwap (mCount + 1) ;
   swap (mArray [mCount], ioValue) ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -519,7 +519,7 @@ void GenericUniqueArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inValue,
     mArray [i] = mArray [i-1] ;
   }
   mArray [inIndex] = inValue ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -558,7 +558,7 @@ void GenericUniqueArray <ELEMENT>::insertObjectUsingSwap (ELEMENT & ioValue,
     swap (mArray [i], mArray [i-1]) ;
   }
   swap (mArray [inIndex], ioValue) ;
-  mCount ++ ;
+  mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -698,7 +698,7 @@ void GenericUniqueArray <ELEMENT>::incrementAtIndex (const int32_t inIndex
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
   #endif
-  mArray [inIndex] ++ ;
+  mArray [inIndex] += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -709,7 +709,7 @@ void GenericUniqueArray <ELEMENT>::decrementAtIndex (const int32_t inIndex
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
   #endif
-  mArray [inIndex] -- ;
+  mArray [inIndex] -= 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -767,10 +767,10 @@ void GenericUniqueArray<ELEMENT>::internalSortArrayUsingOperators (const int32_t
     int32_t j = inLast ;
     while (i < j) {
       while ((i < inLast) && (mArray [i] <= mArray [inFirst])) {
-        i ++ ;
+        i += 1 ;
       }
       while ((j > inFirst) && (mArray [j] >= mArray [inFirst])) {
-        j -- ;
+        j -= 1 ;
       }
       if (i < j) {
         swap (mArray [i], mArray [j]) ;

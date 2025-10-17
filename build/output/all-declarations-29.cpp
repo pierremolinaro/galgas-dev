@@ -2754,7 +2754,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS_lstringlis
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticAnalysis.galgas", 746)) ;
         }
         if (loop_33118) {
-          variant_33118 -- ;
+          variant_33118 -= 1 ;
           var_nonTerminalToAddList_30784.addAssignOperation (enumerator_30856.current_mValue (HERE).readProperty_string (), var_i_33108  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 747)) ;
           var_i_33108.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 748)) ;
         }
@@ -4598,7 +4598,7 @@ void cPtr_syntaxDeclarationForGeneration::method_appendDeclaration_31_ (GGS_stri
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticGeneration.galgas", 146)) ;
       }
       if (loop_6180) {
-        variant_6180 -- ;
+        variant_6180 -= 1 ;
         var_selectMethodList_6122.addAssignOperation (var_idx_6168  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 148)) ;
         var_idx_6168.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 149)) ;
       }
@@ -5283,7 +5283,7 @@ void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const GGS_unifi
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticGeneration.galgas", 662)) ;
       }
       if (loop_27558) {
-        variant_27558 -- ;
+        variant_27558 -= 1 ;
         GalgasBool test_0 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_0) {
           test_0 = extensionGetter_definition (var_baseType_27501, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 663)).readProperty_superType ().getter_isNull (SOURCE_FILE ("semanticGeneration.galgas", 663)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 663)).boolEnum () ;

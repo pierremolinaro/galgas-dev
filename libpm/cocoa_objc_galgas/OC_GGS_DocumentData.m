@@ -52,7 +52,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     NSUInteger idx = 0 ;
     BOOL found = NO ;
     while ((idx < sourceStringLength) && ! found) {
-      lineIndex ++ ;
+      lineIndex += 1 ;
       if (inLine == lineIndex) {
         found = YES ;
       }else{

@@ -176,7 +176,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::bddWithConstants (const uint32_t * 
         result = find_or_add (idx, 0, result COMMA_HERE) ;
       }
       v >>= 1 ;
-      idx ++ ;
+      idx += 1 ;
     }
   }
   return BinaryDecisionDiagram (result) ;
@@ -462,12 +462,12 @@ BinaryDecisionDiagram BinaryDecisionDiagram::BDDWithPredicateString (const Strin
         const utf32 c = s.charAtIndex (i COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '0') {
           v &= BinaryDecisionDiagram ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), false) ;
-          bitIndex ++ ;
+          bitIndex += 1 ;
         }else if (UNICODE_VALUE (c) == '1') {
           v &= BinaryDecisionDiagram ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), true) ;
-          bitIndex ++ ;
+          bitIndex += 1 ;
         }else if (UNICODE_VALUE (c) == 'X') {
-          bitIndex ++ ;
+          bitIndex += 1 ;
         }
       }
       result |= v ;
@@ -475,7 +475,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::BDDWithPredicateString (const Strin
     if (stringIndex < stringLength) {
       ok = UNICODE_VALUE (cc) == '|' ;
       macroAssertThere (ok, "BDD predicate string syntax error at character index %lld", stringIndex, 0) ;
-      stringIndex ++ ;
+      stringIndex += 1 ;
     }
   }
   if (! ok) {
@@ -630,7 +630,7 @@ static uint32_t internalRecursiveUpdateRelation (const uint32_t inValue,
       uint32_t preceeding = (uint32_t) (inTranslationVector [var - 1] + 1) ;
       while (preceeding < inTranslationVector [var]) {
         result = internalITEoperation (find_or_add (preceeding, 1, 0 COMMA_HERE), result, 0) ;
-        preceeding ++ ;
+        preceeding += 1 ;
       }
     }
   }
@@ -663,7 +663,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::updateRelation (const uint32_t * in
     for (int32_t i=0 ; i<inRelationCardinality ; i++) {
       for (uint32_t j=0 ; j<* (inRelationBitCurrentCount [i]) ; j++) {
         translationVector [idx] = (uint32_t) ((((uint32_t) newIdx) + j) & UINT16_MAX) ;
-        idx ++ ;
+        idx += 1 ;
       }
       newIdx += inRelationBitNeededCount [i] ;
     }
@@ -678,7 +678,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::updateRelation (const uint32_t * in
       - inRelationBitNeededCount [inRelationCardinality - 1]) ;
     while (finalTranslatedIndex < newNeededTotalBitCount) {
       result = find_or_add (finalTranslatedIndex, result, 0 COMMA_HERE) ;
-      finalTranslatedIndex ++ ;
+      finalTranslatedIndex += 1 ;
     }
     macroMyDeleteArray (translationVector) ;
   }
@@ -735,7 +735,7 @@ accessibleStates (const BinaryDecisionDiagram & inInitialStateSet,
   int32_t iterationCount = 0 ;
   do{
     v = accessible ;
-    iterationCount ++ ;
+    iterationCount += 1 ;
     accessibleY = accessible.translate (inBitSize, inBitSize) ;
     accessible |= (accessibleY & edgeYX).existsOnBitsAfterNumber (inBitSize) ;
   }while (v != accessible) ;
@@ -760,7 +760,7 @@ transitiveClosure (const uint32_t inBitSize,
   int32_t iterationCount = 0 ;
   do{
     v = closure ;
-    iterationCount ++ ;
+    iterationCount += 1 ;
     XZclosure = closure.swap021 (inBitSize, inBitSize, inBitSize) ;
     ZYclosure = closure.swap210 (inBitSize, inBitSize, inBitSize) ;
     closure |= (XZclosure & ZYclosure).existsOnBitsAfterNumber (bitCount2) ;
@@ -982,7 +982,7 @@ static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
       inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
-      inVariableIndex -- ;
+      inVariableIndex -= 1 ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
@@ -1042,7 +1042,7 @@ void BinaryDecisionDiagram::printHeader (AbstractOutputStream & outputStream) co
     int32_t n = var ;
     int32_t divisor = 1 ;
     while (n > 0) {
-      digitCount ++ ;
+      digitCount += 1 ;
       n /= 10 ;
       divisor *= 10 ;
     }
@@ -1093,7 +1093,7 @@ static void printLineWithSeparator (AbstractOutputStream & outputStream,
     outputStream.appendString (String::spaces (inValueSeparation (i COMMA_HERE))) ;
     for (int32_t j=0 ; j<inBitCounts (i COMMA_HERE) ; j++) {
       outputStream.appendASCIIChar (inValueArray (bitIndex COMMA_HERE)) ;
-      bitIndex -- ;
+      bitIndex -= 1 ;
     }
   }
   outputStream.appendNewLine () ;
@@ -1117,7 +1117,7 @@ static void internalPrintWithSeparator (AbstractOutputStream & outputStream,
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
       inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
-      inVariableIndex -- ;
+      inVariableIndex -= 1 ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
@@ -1320,7 +1320,7 @@ static void internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
       ioDisplayString.setCharAtIndex (TO_UNICODE ('X'), (int32_t) inVariableIndex COMMA_THERE) ;
-      inVariableIndex -- ;
+      inVariableIndex -= 1 ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
@@ -1397,7 +1397,7 @@ static void internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
       ioDisplayString.setCharAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - inVariableIndex) COMMA_THERE) ;
-      inVariableIndex -- ;
+      inVariableIndex -= 1 ;
     }
   //--- Branche Zero
     const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
@@ -1489,7 +1489,7 @@ static void sortValueArray (uint64_t * ioValueArray,
     for (int32_t i=inLeftIndex ; i<inRightIndex ; i++) {
       if (ioValueArray [i] <= pivotValue) {
         swapValueArray (ioValueArray, i, storeIndex) ;
-        storeIndex ++ ;
+        storeIndex += 1 ;
       }
     }
     swapValueArray (ioValueArray, inRightIndex, storeIndex) ;
@@ -1535,7 +1535,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::buildBDDFromValueList (uint64_t * i
       uint64_t mask = 1UL << (inBitCount - 1) ;
       int32_t firstDifferentBit = ((int32_t) inBitCount) - 1 ;
       while ((firstDifferentBit >= 0) && (((currentTransition ^ referenceValue) & mask) == 0)) {
-        firstDifferentBit -- ;
+        firstDifferentBit -= 1 ;
         mask >>=1 ;
       }
       if (firstDifferentBit >= 0) {
@@ -2189,7 +2189,7 @@ static void enterInSingleOperandOperationCache (const uint32_t inOperand,
   gSingleOperandOperationCacheMap [idx].mResult = inResult ;
 //--- Realloc cache ?
   if (entryWasUnused) {
-    gSingleOperandOperationCacheMapUsedEntryCount ++ ;
+    gSingleOperandOperationCacheMapUsedEntryCount += 1 ;
     if (gSingleOperandOperationCacheExpandable && ((gSingleOperandOperationCacheMapUsedEntryCount + gSingleOperandOperationCacheMapUsedEntryCount / 4) > gSingleOperandOperationMapSize)) {
       reallocSingleOperandOperationCache (gSingleOperandOperationMapSize + 1) ;
     }
@@ -2220,7 +2220,7 @@ static uint32_t internalForAllOnBitRange (const uint32_t inValue,
   uint32_t result = complement ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= (inFirstBit + inBitCount)) {
@@ -2236,7 +2236,7 @@ static uint32_t internalForAllOnBitRange (const uint32_t inValue,
          internalForAllOnBitRange (gNodeArray [nodeIndex].mTHEN ^ complement, inFirstBit, inBitCount)) ;
     }else{
       result = inValue ;
-      gSingleOperandOperationCacheTrivialOperationCount ++ ;
+      gSingleOperandOperationCacheTrivialOperationCount += 1 ;
     }
   }
   return result ;
@@ -2250,7 +2250,7 @@ static uint32_t operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inVal
   uint32_t result = complement ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var > numeroBit) {
@@ -2264,7 +2264,7 @@ static uint32_t operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inVal
       result = internalANDoperation (gNodeArray [nodeIndex].mELSE ^ complement, gNodeArray [nodeIndex].mTHEN ^ complement) ;
     }else{ // var < numeroBit
       result = inValue ;
-      gSingleOperandOperationCacheTrivialOperationCount ++ ;
+      gSingleOperandOperationCacheTrivialOperationCount += 1 ;
     }
   }
   return result ;
@@ -2330,14 +2330,14 @@ static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else{
     const uint32_t complement = inValue & 1 ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     macroAssertThere (var < inBDDvariablesCount, "var (%lld) < inBDDvariablesCount (%lld)", var, inBDDvariablesCount) ;
     if (var < inNoChangeIndex) {
       result = inValue ;
-      gSingleOperandOperationCacheTrivialOperationCount ++ ;
+      gSingleOperandOperationCacheTrivialOperationCount += 1 ;
     }else if (! searchInSingleOperandOperationCache (inValue, result)) {
       result = internalITEoperation (
         find_or_add (vecteurSubstitutionBool [var], 1, 0 COMMA_HERE),
@@ -2361,9 +2361,9 @@ BinaryDecisionDiagram BinaryDecisionDiagram::substitution (const uint32_t * inSu
   uint32_t noChangeIndex = 0 ;
   for (uint32_t i=0 ; estIdentite && (i<inBDDvariablesCount) ; i++) {
     estIdentite = inSubstitutionArray [i] == i ;
-    noChangeIndex ++ ;
+    noChangeIndex += 1 ;
   }
-  noChangeIndex -- ;
+  noChangeIndex -= 1 ;
   return BinaryDecisionDiagram (estIdentite ? mBDDvalue : internalRecursiveSubstitution (mBDDvalue, inSubstitutionArray, noChangeIndex, inBDDvariablesCount COMMA_THERE)) ;
 }
 
@@ -2543,7 +2543,7 @@ static uint32_t internalLeftShift (const uint32_t inValue,
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
     const uint32_t complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex + inLeftShiftCount,
@@ -2577,10 +2577,10 @@ static uint32_t internalRightShift (const uint32_t inValue,
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else if (gNodeArray [nodeIndex].mVariableIndex < inRightShiftCount) {
     result = 1 ;
-    gSingleOperandOperationCacheTrivialOperationCount ++ ;
+    gSingleOperandOperationCacheTrivialOperationCount += 1 ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
     const uint32_t complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex - inRightShiftCount,
@@ -2715,7 +2715,7 @@ static uint32_t addNewNode (const cBDDnode inNode) {
     }
   }
  //--- Retrieve a free node
-  gCurrentNodeCount ++ ;
+  gCurrentNodeCount += 1 ;
   gNodeArray [gCurrentNodeCount] = inNode ;
 //--- Enter in hash map
   const uint64_t hashCode = nodeHashCode (inNode) ;
@@ -2849,7 +2849,7 @@ uint32_t BinaryDecisionDiagram::getBDDinstancesCount (void) {
   uint32_t n = 0 ;
   BinaryDecisionDiagram * p = gFirstBDD ;
   while (p != nullptr) {
-    n ++ ;
+    n += 1 ;
     p = p->mPtrToNextBDD ;
   }
   return n ;
@@ -2917,7 +2917,7 @@ void BinaryDecisionDiagram::markAndSweepUnusedNodes (void) {
       macroAssert ((elseBranch >> 1) < nodeIndex, "(elseBranch [%lld] >> 1) < nodeIndex [%lld]", elseBranch >> 1, nodeIndex) ;
       const uint32_t newThenBranch = (gNodeArray [thenBranch >> 1].mAuxiliary << 1) | (thenBranch & 1) ;
       const uint32_t newElseBranch = (gNodeArray [elseBranch >> 1].mAuxiliary << 1) | (elseBranch & 1) ;
-      newNodeCount ++ ;
+      newNodeCount += 1 ;
       gNodeArray [newNodeCount].mTHEN = newThenBranch ;
       gNodeArray [newNodeCount].mELSE = newElseBranch ;
       gNodeArray [newNodeCount].mVariableIndex = var ;
@@ -3160,7 +3160,7 @@ void BinaryDecisionDiagram::printBDDpackageOperationsSummary (AbstractOutputStre
     int32_t length = 0 ;
     uint32_t nodeIndex = gCollisionMap [i] ;
     while (0 != nodeIndex) {
-      length ++ ;
+      length += 1 ;
       nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
     }
     if (entrySizeArray.count () > length) {
@@ -3210,7 +3210,7 @@ parcoursBDDinterneParValeur (const uint32_t inValue,
                              uint32_t variableCourante,
                              const uint32_t inVariableCount) {
   if (variableCourante != 0) {
-    variableCourante -- ;
+    variableCourante -= 1 ;
     if (inValue == 1) {
       tableauDesValeurs [variableCourante] = false ;
       parcoursBDDinterneParValeur (inValue, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
@@ -3625,7 +3625,7 @@ static void enterInANDOperationCache (const uint32_t inOperand1,
   gANDOperationCacheResultMap [idx] = inResult ;
 //--- Realloc cache ?
   if (entryWasUnused) {
-    gANDOperationCacheMapUsedEntryCount ++ ;
+    gANDOperationCacheMapUsedEntryCount += 1 ;
     if (gANDOperationCacheExpandable &&
         ((gANDOperationCacheMapUsedEntryCount + gANDOperationCacheMapUsedEntryCount / 4) > gANDOperationMapSize)) {
       const uint32_t newSize = getPrimeGreaterThan (gANDOperationMapSize + 1) ;
@@ -3689,19 +3689,19 @@ uint32_t internalANDoperation (const uint32_t opf,
   }
 //--- Test trivial 1 : and (0, g) -> 0
   if (f == 0) {
-    gANDOperationCacheTrivialOperationCount ++ ;
+    gANDOperationCacheTrivialOperationCount += 1 ;
     result = 0 ;
 //--- Test trivial 2 : and (1, g) -> g
   }else if (f == 1) {
-    gANDOperationCacheTrivialOperationCount ++ ;
+    gANDOperationCacheTrivialOperationCount += 1 ;
     result = g ;
 //--- Test trivial 3 : and (f, f) -> f
   }else if (f == g) {
-    gANDOperationCacheTrivialOperationCount ++ ;
+    gANDOperationCacheTrivialOperationCount += 1 ;
     result = g ;
 //--- Test trivial 3 : and (f, ~f) -> 0
   }else if ((f ^ g) == 1) {
-    gANDOperationCacheTrivialOperationCount ++ ;
+    gANDOperationCacheTrivialOperationCount += 1 ;
     result = 0 ;
 //--- Effectuer le calcul
   }else if (! searchInANDOperationCache (f, g, result)) {

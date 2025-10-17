@@ -1364,7 +1364,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
         ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame) &&
         (! [key isEqualToString:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"]) &&
         (! [key isEqualToString:@"PMConvert_HTAB_To_SPACE_AtStartUp"])) {
-      n ++ ;
+      n += 1 ;
       // NSLog (@"key '%@'", key) ;
     }
   }

@@ -91,7 +91,7 @@ void UInt32Set::getValueArray (GenericUniqueArray <uint32_t> & outValueArray) co
       if (exists) {
         outValueArray.appendObject (idx) ;
       }
-      idx ++ ;
+      idx += 1 ;
     }
   }
 }
@@ -115,7 +115,7 @@ uint32_t UInt32Set::firstValueNotInSet (void) const {
     result = 64 * (((uint32_t) mDefinition.count ()) - 1) ;
     uint64_t v = mDefinition.lastObject (HERE) ;
     while (v != 0) {
-      result ++ ;
+      result += 1 ;
       v >>= 1 ;
     }
   }

@@ -51,7 +51,7 @@ computeNonterminalFollowedByEmpty (const PureBNFproductionsList & inProductionRu
   bool loop = true ;
   while (loop) {
     loop = false ;
-    outIterationsCount ++ ;
+    outIterationsCount += 1 ;
     for (int32_t i=0 ; i<productionsCount ; i++) {
       const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionIsHandled (i COMMA_HERE)) {

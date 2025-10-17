@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2011, ..., 2014 Pierre Molinaro.
 //
@@ -81,7 +81,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    init                                                                                       
+//    init
 //--------------------------------------------------------------------------------------------------
 
 - (instancetype) init {
@@ -103,7 +103,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    awakeFromNib                                                                               
+//    awakeFromNib
 //--------------------------------------------------------------------------------------------------
 
 - (void) awakeFromNib {
@@ -153,7 +153,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    applicationWillTerminateAction:                                                            
+//    applicationWillTerminateAction:
 //--------------------------------------------------------------------------------------------------
 
 - (void) applicationWillTerminateAction: (NSNotification *) inNotification {
@@ -171,7 +171,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    triggerRefreshAllocationStatsDisplay                                                       
+//    triggerRefreshAllocationStatsDisplay
 //--------------------------------------------------------------------------------------------------
 
 - (void) triggerRefreshAllocationStatsDisplay {
@@ -204,7 +204,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    refreshAllocationStats                                                                     
+//    refreshAllocationStats
 //--------------------------------------------------------------------------------------------------
 
 - (void) refreshAllocationStats {
@@ -237,7 +237,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    refreshTimerDidFire:                                                                       
+//    refreshTimerDidFire:
 //--------------------------------------------------------------------------------------------------
 
 #if ! __has_feature(objc_arc)
@@ -248,7 +248,7 @@ void showAllocationStatsWindow (void) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//    collectExhaustively:                                                                       
+//    collectExhaustively:
 //--------------------------------------------------------------------------------------------------
 
 #if ! __has_feature(objc_arc)
@@ -258,7 +258,7 @@ void showAllocationStatsWindow (void) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//    didChangeValueForKey:                                                                      
+//    didChangeValueForKey:
 //--------------------------------------------------------------------------------------------------
 
 - (void) didChangeValueForKey: (NSString *) inKey {
@@ -269,13 +269,13 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    pmNoteObjectAllocation:                                                                    
+//    pmNoteObjectAllocation:
 //--------------------------------------------------------------------------------------------------
 
 - (void) pmNoteObjectAllocation: (NSObject *) inObject {
   [mLock lock] ;
-    mLiveAllocatedObjectCount ++ ;
-    mLiveTotalObjectCount ++ ;
+    mLiveAllocatedObjectCount += 1 ;
+    mLiveTotalObjectCount += 1 ;
     NSString * objectClassName = inObject.className ;
     [mAllocatedObjectCountByClass addObject:objectClassName] ;
     [mTotalAllocatedObjectCountByClass addObject:objectClassName] ;
@@ -284,12 +284,12 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    pmNoteObjectDeallocation:                                                                  
+//    pmNoteObjectDeallocation:
 //--------------------------------------------------------------------------------------------------
 
 - (void) pmNoteObjectDeallocation: (NSObject *) inObject {
   [mLock lock] ;
-    mLiveAllocatedObjectCount -- ;
+    mLiveAllocatedObjectCount -= 1 ;
     NSString * objectClassName = inObject.className ;
     [mAllocatedObjectCountByClass removeObject:objectClassName] ;
   [mLock unlock] ;
@@ -297,7 +297,7 @@ void showAllocationStatsWindow (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//    T A B L E   V I E W    D A T A    S O U R C E                                              
+//    T A B L E   V I E W    D A T A    S O U R C E
 //--------------------------------------------------------------------------------------------------
 
 - (id) tableView: (NSTableView *) aTableView

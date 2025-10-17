@@ -769,7 +769,7 @@ void Lexique::enterProduction (const char * inProductionName,
       message.appendCString ("'") ;
     }
     ggs_printMessage (message COMMA_HERE) ;
-    mDebugDepthCounter ++ ;
+    mDebugDepthCounter += 1 ;
   }
 }
 
@@ -777,7 +777,7 @@ void Lexique::enterProduction (const char * inProductionName,
 
 void Lexique::exitProduction (void) {
   if (mDebugIsRunning) {
-    mDebugDepthCounter -- ;
+    mDebugDepthCounter -= 1 ;
     mDebugIsRunning = mDebugDepthCounter > 0 ;
   }
 }

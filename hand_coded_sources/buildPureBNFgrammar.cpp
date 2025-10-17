@@ -66,7 +66,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (Grammar
                                      inSyntaxComponentName,
                                      ioCount,
                                      true) ;
-  ioCount ++ ;
+  ioCount += 1 ;
 
   UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
@@ -87,7 +87,7 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (Grammar
                                      inSyntaxComponentName,
                                      ioCount,
                                      true) ;
-  ioCount ++ ;
+  ioCount += 1 ;
 
   UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
@@ -558,13 +558,13 @@ void PureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymb
       for (int32_t j=i+1 ; j<nombreProductions ; j++) {
         GrammarProduction & pj = mProductionArray (j COMMA_HERE) ;
         if (p.leftNonTerminalIndex () == pj.leftNonTerminalIndex ()) {
-          indiceIndirection ++ ;
+          indiceIndirection += 1 ;
           tableauIndirectionProduction.setObjectAtIndex (j, indiceIndirection COMMA_HERE) ;
           productionTraitee.setObjectAtIndex (true, j COMMA_HERE) ;
         }
       }
       tableauIndiceDerniereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
-      indiceIndirection ++ ;
+      indiceIndirection += 1 ;
     }
   }
 }

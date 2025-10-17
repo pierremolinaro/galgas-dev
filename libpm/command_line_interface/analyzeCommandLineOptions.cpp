@@ -133,7 +133,7 @@ static void print_help (const int argv,
 
   int32_t extensionIndex = 0 ;
   while (inExtensionArray [extensionIndex] != nullptr) {
-    extensionIndex ++ ;
+    extensionIndex += 1 ;
   }
   gCout.setConsoleForeColor (kMagentaForeColor) ;
   gCout.setConsoleTextAttribute (kBoldTextAttribute) ;
@@ -160,7 +160,7 @@ static void print_help (const int argv,
     }
     gCout.appendCString (inHelpMessageArray [extensionIndex]) ;
     gCout.appendNewLine () ; ;
-    extensionIndex ++ ;
+    extensionIndex += 1 ;
   }
 }
 
@@ -338,7 +338,7 @@ static void analyze_one_option (const String & inCommand,
       }
       strcat (filterString, "*.") ;
       strcat (filterString, inExtensionArray [filterIndex]) ;
-      filterIndex ++ ;
+      filterIndex += 1 ;
     }
     char filter [1000] ;
     const char zero = '\0' ;

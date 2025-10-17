@@ -99,7 +99,7 @@ computeNonterminalDerivingInEmptyString (const PureBNFproductionsList & inProduc
   bool onProgresse = true ;
   while (onProgresse) {
     onProgresse = false ;
-    outIterationsCount ++ ;
+    outIterationsCount += 1 ;
     for (int32_t i=0 ; i<productionCount ; i++) {
       const GrammarProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionTraitee (i COMMA_HERE)) {
@@ -163,7 +163,7 @@ printNonterminalDerivingInEmptyString (const BinaryDecisionDiagramRelation & inV
         if (nonTerminalArray (i COMMA_HERE)) {
           ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
           ioHTMLFileContents.appendSigned (index) ;
-          index ++ ;
+          index += 1 ;
           ioHTMLFileContents.addRawData ("</td><td><code>") ;
           ioHTMLFileContents.appendString (newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE)) ;
           ioHTMLFileContents.addRawData ("</code></td></tr>") ;

@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2009, ..., 2010 Pierre Molinaro.
 //
@@ -21,7 +21,7 @@
 #import "unicode_character_m.h"
 
 //--------------------------------------------------------------------------------------------------
-//   OC_GGS_TemplateDelimiter                                                                    
+//   OC_GGS_TemplateDelimiter
 //--------------------------------------------------------------------------------------------------
 
 @implementation OC_GGS_TemplateDelimiter
@@ -53,7 +53,7 @@
 //#define DEBUG_MESSAGES
 
 //--------------------------------------------------------------------------------------------------
-//   OC_Lexique                                                                                  
+//   OC_Lexique
 //--------------------------------------------------------------------------------------------------
 
 @implementation OC_Lexique
@@ -89,7 +89,7 @@
   // NSLog (@"mCurrentLocation %d, [mSourceString length] %u", mCurrentLocation, [mSourceString length]) ;
   if ((mCurrentLocation + 1) < [mSourceString length]) {
     mPreviousChar = mCurrentChar ;
-    mCurrentLocation ++ ;
+    mCurrentLocation += 1 ;
     mCurrentChar = [mSourceString characterAtIndex:mCurrentLocation] ;
   }else{
     mCurrentLocation = [mSourceString length] ;
@@ -116,23 +116,23 @@
       mPreviousChar = [mSourceString characterAtIndex:mCurrentLocation-1] ;
       mCurrentChar = [mSourceString characterAtIndex:mCurrentLocation] ;
     }
-    idx ++ ;
+    idx += 1 ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 - (void) saveScanningPoint: (scanningPointStructForCocoa *) outScanningPoint {
-  outScanningPoint->mPreviousChar = mPreviousChar ; 
-  outScanningPoint->mCurrentChar = mCurrentChar ; 
+  outScanningPoint->mPreviousChar = mPreviousChar ;
+  outScanningPoint->mCurrentChar = mCurrentChar ;
   outScanningPoint->mCurrentLocation = mCurrentLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 - (void) restoreScanningPoint: (scanningPointStructForCocoa *) inScanningPoint {
-  mPreviousChar = inScanningPoint->mPreviousChar ; 
-  mCurrentChar = inScanningPoint->mCurrentChar ; 
+  mPreviousChar = inScanningPoint->mPreviousChar ;
+  mCurrentChar = inScanningPoint->mCurrentChar ;
   mCurrentLocation = inScanningPoint->mCurrentLocation ;
 }
 
@@ -219,7 +219,7 @@
 - (SInt32) findTemplateDelimiterIndex: (NSArray *) inTemplateDelimiterArray { // Array of OC_GGS_TemplateDelimiter
   SInt32 templateIndex = 0 ;
   BOOL found = NO ;
-  
+
   while ((templateIndex < (SInt32) inTemplateDelimiterArray.count) && ! found) {
     OC_GGS_TemplateDelimiter * td = [inTemplateDelimiterArray objectAtIndex:(NSUInteger) templateIndex] ;
     found = [self
@@ -413,7 +413,7 @@
       SInt32 currentIndex = 0 ;
       while (nil != [self styleIdentifierForStyleIndex:currentIndex]) {
         [styleIndexDictionary setObject:[NSNumber numberWithInt:currentIndex] forKey:[self styleIdentifierForStyleIndex:currentIndex]] ;
-        currentIndex ++ ;
+        currentIndex += 1 ;
       }
    //---
       NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:pathForCustomDictionary] ;
@@ -481,7 +481,7 @@
     *outLowerIndexToRedrawInStyleArray -= 2 ;
     if ([self isTemplateLexique]) {
       while (((*outLowerIndexToRedrawInStyleArray) > 0) && ([[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray)] matchedTemplateDelimiterIndex] < 0)) {
-        (*outLowerIndexToRedrawInStyleArray) -- ;
+        (*outLowerIndexToRedrawInStyleArray) -= 1 ;
       }
     }
     mCurrentLocation = [[ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] range].location ;
@@ -520,7 +520,7 @@
     OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;
     [token translateRange:inChangeInLength] ;
   }
-//--- Parse 
+//--- Parse
   *outUpperIndexToRedrawInStyleArray = *outLowerIndexToRedrawInStyleArray ;
   search = YES ;
   mCurrentChar = [mSourceString characterAtIndex: mCurrentLocation] ;
@@ -550,7 +550,7 @@
         NSLog (@"  error -> insertAtIndex:%ld, range %lu, %lu", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
-      (*outUpperIndexToRedrawInStyleArray) ++ ;
+      (*outUpperIndexToRedrawInStyleArray) += 1 ;
     }else if ((mTokenCode > 0) && ((* outUpperIndexToRedrawInStyleArray) >= (SInt32) [ioStyledRangeArray count])) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [[OC_Token alloc]
@@ -563,13 +563,13 @@
         NSLog (@"  token -> insertObject:atIndex:%ld", * outUpperIndexToRedrawInStyleArray) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
-      (*outUpperIndexToRedrawInStyleArray) ++ ;
+      (*outUpperIndexToRedrawInStyleArray) += 1 ;
     }else if (mTokenCode > 0) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) *outUpperIndexToRedrawInStyleArray] ;
       if (NSEqualRanges (range, [token range]) && (mTokenCode == (SInt32) [token tokenCode])) {
         search = NO ;
-        (*outUpperIndexToRedrawInStyleArray) ++ ;
+        (*outUpperIndexToRedrawInStyleArray) += 1 ;
       }else{
         token = [[OC_Token alloc]
           initWithTokenCode:(NSUInteger) mTokenCode
@@ -581,7 +581,7 @@
           NSLog (@"  token -> insertObject:atIndex:%ld", * outUpperIndexToRedrawInStyleArray) ;
         #endif
         [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
-        (*outUpperIndexToRedrawInStyleArray) ++ ;
+        (*outUpperIndexToRedrawInStyleArray) += 1 ;
       }
     }
   //--- Delete style items before current location
@@ -597,7 +597,7 @@
   }
 //---
   *outEraseRangeEnd = (NSInteger) mCurrentLocation ;
-  (*outUpperIndexToRedrawInStyleArray) -- ;
+  (*outUpperIndexToRedrawInStyleArray) -= 1 ;
 //--- Display token list
   #ifdef DEBUG_MESSAGES
     NSLog (@"New token list (%lu elements):", [ioStyledRangeArray count]) ;
@@ -692,7 +692,7 @@ NSInteger searchStringInTable (NSString * inSearchedString,
   NSInteger result = 0 ;
   NSUInteger idx = inTableSize ;
   while ((idx > 0) && (result == 0)) {
-    idx -- ;
+    idx -= 1 ;
     if (strcmp (cString, inTable [idx].mEntry) == 0) {
       result = inTable [idx].mTokenCode ;
     }
@@ -707,7 +707,7 @@ NSInteger searchStringInTable (NSString * inSearchedString,
 
 //--------------------------------------------------------------------------------------------------
 //
-//   P R E D E F I N E D    S C A N N E R    A C T I O N S                                       
+//   P R E D E F I N E D    S C A N N E R    A C T I O N S
 //
 //--------------------------------------------------------------------------------------------------
 

@@ -74,7 +74,7 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
           uint32_t idx = 0 ;
           while (! completed) {
             const uint8_t nameCode = gPartNameConstruction [entry] ;
-            entry ++ ;
+            entry += 1 ;
             idx = (idx << 6) | (nameCode & 0x3F) ;
             switch (nameCode & 0xC0) {
             case 0 : // Prefix
@@ -128,7 +128,7 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
           uint32_t idx = 0 ;
           while (! completed) {
             const uint8_t nameCode = gPartNameConstruction [entry] ;
-            entry ++ ;
+            entry += 1 ;
             idx = (idx << 6) | (nameCode & 0x3F) ;
             switch (nameCode & 0xC0) {
             case 0 : // Prefix
@@ -594,7 +594,7 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
                                   bool & ioOK) {
     uint32_t result = 0 ;
     uint32_t c = inDataString [ioIndex] ;
-    ioIndex ++ ;
+    ioIndex += 1 ;
     ioOK = true ;
     if ((c & 0x80) == 0) {
       result = c ;
@@ -604,7 +604,7 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
       c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
-        ioIndex ++ ;
+        ioIndex += 1 ;
         result |= c & 0x3F ;
       }
     }else if ((c & 0xF0) == 0xE0) {
@@ -613,12 +613,12 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
       c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
-        ioIndex ++ ;
+        ioIndex += 1 ;
         result |= (c & 0x3F) << 6 ;
         c = inDataString [ioIndex] ;
         if (ioOK) {
           ioOK &= ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
-          ioIndex ++ ;
+          ioIndex += 1 ;
           result |= c & 0x3F ;
         }
       }
@@ -627,17 +627,17 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
       c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
-        ioIndex ++ ;
+        ioIndex += 1 ;
         result |= (c & 0x3F) << 12 ;
         c = inDataString [ioIndex] ;
         ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
         if (ioOK) {
-          ioIndex ++ ;
+          ioIndex += 1 ;
           result |= (c & 0x3F) << 6 ;
           c = inDataString [ioIndex] ;
           ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
           if (ioOK) {
-            ioIndex ++ ;
+            ioIndex += 1 ;
             result |= c & 0x3F ;
           }
         }

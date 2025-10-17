@@ -621,7 +621,7 @@ analyzeGrammar (Compiler * inCompiler,
         s.appendSigned (i) ;
       }
       warningFlag >>= 1 ;
-      i ++ ;
+      i += 1 ;
     }
     outHTMLHelperFileContents.appendTitleComment (s, "title") ;
     String warningMessage  ;

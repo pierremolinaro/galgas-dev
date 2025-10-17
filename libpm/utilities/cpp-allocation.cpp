@@ -74,7 +74,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void prologueForNew (void) {
-    gAllocProloguePendings ++ ;
+    gAllocProloguePendings += 1 ;
   }
 #endif
 
@@ -84,9 +84,9 @@
   void * operator new (size_t inSizeInBytes) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (gAllocProloguePendings <= 0) {
-        gBlockAllocatedWithoutUsingMacroMyNew ++ ;
+        gBlockAllocatedWithoutUsingMacroMyNew += 1 ;
       }
-      gAllocProloguePendings -- ;
+      gAllocProloguePendings -= 1 ;
     #endif
     void * result = nullptr ;
     if (inSizeInBytes > 0) {
@@ -95,8 +95,8 @@
         throw std::bad_alloc () ;
       }
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentObjectCount ++ ;
-        gAllocatedObjectCount ++ ;
+        gCurrentObjectCount += 1 ;
+        gAllocatedObjectCount += 1 ;
       #endif
     }
     return result ;
@@ -109,9 +109,9 @@
   void * operator new [] (size_t inSizeInBytes) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (gAllocProloguePendings <= 0) {
-        gBlockAllocatedWithoutUsingMacroMyNewArray ++ ;
+        gBlockAllocatedWithoutUsingMacroMyNewArray += 1 ;
       }
-      gAllocProloguePendings -- ;
+      gAllocProloguePendings -= 1 ;
     #endif
     void * result = nullptr ;
     if (inSizeInBytes > 0) {
@@ -120,8 +120,8 @@
         throw std::bad_alloc () ;
       }
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentArrayCount ++ ;
-        gAllocatedArrayCount ++ ;
+        gCurrentArrayCount += 1 ;
+        gAllocatedArrayCount += 1 ;
       #endif
     }
     return result ;
@@ -135,7 +135,7 @@
     if (inPointer != nullptr) {
       ::myFreeRoutine (inPointer) ;
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentObjectCount -- ;
+        gCurrentObjectCount -= 1 ;
       #endif
     } 
   }
@@ -148,7 +148,7 @@
     if (inPointer != nullptr) {
       ::myFreeRoutine (inPointer) ;
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentArrayCount -- ;
+        gCurrentArrayCount -= 1 ;
       #endif
     }
   }
@@ -161,7 +161,7 @@
     if (inPointer != nullptr) {
       ::myFreeRoutine (inPointer) ;
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentArrayCount -- ;
+        gCurrentArrayCount -= 1 ;
       #endif
     }
   }
@@ -174,7 +174,7 @@
     if (inPointer != nullptr) {
       ::myFreeRoutine (inPointer) ;
       #ifdef REGISTER_ALLOCATION_STATS
-        gCurrentArrayCount -- ;
+        gCurrentArrayCount -= 1 ;
       #endif
     }
   }

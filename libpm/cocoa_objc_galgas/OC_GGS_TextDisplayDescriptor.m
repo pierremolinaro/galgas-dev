@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2011, ..., 2016 Pierre Molinaro.
 //
@@ -274,7 +274,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //--------------------------------------------------------------------------------------------------
 //
-//        G O T O    L I N E    A N D     C O L U M N                                            
+//        G O T O    L I N E    A N D     C O L U M N
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -288,7 +288,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   NSRange range = [sourceString lineRangeForRange: NSMakeRange (0, 0)] ;
   NSUInteger lastStartOfLine = 0 ;
   while ((currentLine < inLine) && (range.length > 0)) {
-    currentLine ++ ;
+    currentLine += 1 ;
     lastStartOfLine = range.location ;
     range = [sourceString lineRangeForRange: NSMakeRange (NSMaxRange (range), 0)] ;
   }
@@ -435,7 +435,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     if ([lineString compare:spaceString options:NSLiteralSearch range:NSMakeRange (0, twoSpaceLength)] == NSOrderedSame) {
       [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, twoSpaceLength) withString:@""] ;
     //--- Examen du nombre de caractères à l'intérieur de la sélection
-      const NSInteger withinSelectionCharacterCount = 
+      const NSInteger withinSelectionCharacterCount =
         (NSInteger) imin (currentLineRange.location + twoSpaceLength, finalSelectedRange.location + finalSelectedRange.length)
       -
         (NSInteger) imax (currentLineRange.location, finalSelectedRange.location) ;

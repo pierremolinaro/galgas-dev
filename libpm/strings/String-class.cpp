@@ -610,7 +610,7 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
         case 0x2028 : // LS: Line Separator
         case 0x2029 : // PS: Paragraph Separator
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           break ;
         case '\n' : // LF
           state = kGotLineFeed ;
@@ -629,11 +629,11 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
           break ;
         case '\r' : // CR
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           break ;
         default: // Other character
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           outStringArray (index COMMA_HERE).appendChar (c) ;
           state = kAppendToCurrentLine ;
         }
@@ -642,16 +642,16 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
         switch (UNICODE_VALUE (c)) {
         case '\n' : // LF
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           break ;
         case '\r' : // CR
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           state = kGotCarriageReturn ;
           break ;
         default: // Other character
           outStringArray.appendObject (String ()) ;
-          index ++ ;
+          index += 1 ;
           outStringArray (index COMMA_HERE).appendChar (c) ;
           state = kAppendToCurrentLine ;
         }
@@ -703,15 +703,15 @@ bool String::parseUTF8 (const U8Data & inDataString,
         outString.appendChar (TO_UNICODE ('\n')) ;
       }
       foundCR = false ;
-      idx ++ ;
+      idx += 1 ;
     }else if (c == 0x0D) { // CR
       outString.appendChar (TO_UNICODE ('\n')) ;
       foundCR = true ;
-      idx ++ ;
+      idx += 1 ;
     }else if ((c & 0x80) == 0) { // ASCII Character
       outString.appendChar (TO_UNICODE (c)) ;
       foundCR = false ;
-      idx ++ ;
+      idx += 1 ;
     }else{
       const utf32 uc = utf32CharacterForPointer (inDataString.unsafeDataPointer (), idx, inDataString.count (), ok) ;
       switch (UNICODE_VALUE (uc)) {

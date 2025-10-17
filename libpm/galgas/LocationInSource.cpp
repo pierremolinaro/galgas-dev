@@ -38,12 +38,12 @@ void LocationInSource::gotoNextLocation (void) {
     const utf32 currentChar = mSourceText.sourceString ().charAtIndex (mIndex COMMA_HERE) ;
     const bool previousCharWasEndOfLine = UNICODE_VALUE (currentChar) == '\n' ;
     if (previousCharWasEndOfLine) {
-      mLineNumber ++ ;
+      mLineNumber += 1 ;
       mColumnNumber = 1 ;
     }else{
-      mColumnNumber ++ ;
+      mColumnNumber += 1 ;
     }
-    mIndex ++ ;
+    mIndex += 1 ;
   }
 }
 

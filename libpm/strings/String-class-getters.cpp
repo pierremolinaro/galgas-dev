@@ -71,9 +71,9 @@ LineColumnContents String::lineAndColumnFromIndex (const int32_t inIndex) const 
       }
       if (idx < inIndex) {
         parseLine = true ;
-        idx ++ ; // Pass '\n'
+        idx += 1 ; // Pass '\n'
         startOfLineIndex = idx ;
-        lineNumber ++ ;
+        lineNumber += 1 ;
       }
     }
   //---
@@ -417,7 +417,7 @@ uint32_t String::currentColumn (void) const {
   for (int32_t i=receiver_length-1 ; (i>=0) && ! found ; i--) {
     found = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) == '\n' ;
     if (! found) {
-      result ++ ;
+      result += 1 ;
     }
   }
   return result ;
@@ -451,7 +451,7 @@ void String::convertToUInt32 (uint32_t & outResult,
   int32_t idx = 0 ;
   while ((idx < length ()) && outOk) {
     const utf32 c = charAtIndex (idx COMMA_HERE) ;
-    idx ++ ;
+    idx += 1 ;
     const uint32_t r = outResult ;
     outResult = outResult * 10 + (UNICODE_VALUE (c) - '0') ;
     outOk = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') && (r <= outResult) ;
@@ -470,7 +470,7 @@ void String::convertToUInt64 (uint64_t & outResult,
   int32_t idx = 0 ;
   while ((idx < length ()) && outOk) {
     const utf32 c = charAtIndex (idx COMMA_HERE) ;
-    idx ++ ;
+    idx += 1 ;
     const uint64_t r = outResult ;
     outResult = outResult * 10 + (UNICODE_VALUE (c) - '0') ;
     outOk = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') && (r <= outResult) ;
@@ -499,7 +499,7 @@ void String::convertToSInt32 (int32_t & outResult,
   outOk = length () > 0 ;
   while ((idx < length ()) && outOk) {
     const utf32 c = charAtIndex (idx COMMA_HERE) ;
-    idx ++ ;
+    idx += 1 ;
     const uint32_t r = decimalUnsignedValue ;
     decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
     outOk = r < decimalUnsignedValue ;
@@ -541,7 +541,7 @@ void String::convertToSInt64 (int64_t & outResult,
   outOk = length () > 0 ;
   while ((idx < length ()) && outOk) {
     const utf32 c = charAtIndex (idx COMMA_HERE) ;
-    idx ++ ;
+    idx += 1 ;
     const uint64_t r = decimalUnsignedValue ;
     decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
     outOk = r < decimalUnsignedValue ;
@@ -576,26 +576,26 @@ void String::convertToDouble (double & outDoubleValue,
     const utf32 c = charAtIndex (idx COMMA_HERE) ;
     if (UNICODE_VALUE (c) == '-') {
       positive = false ;
-      idx ++ ;
+      idx += 1 ;
     }else if (UNICODE_VALUE (c) == '+') {
-      idx ++ ;
+      idx += 1 ;
     }
   }
 //--- Mantissa
   while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
     outDoubleValue *= 10.0 ;
     outDoubleValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
-    idx ++ ;
+    idx += 1 ;
   }
 //--- Fractional part
   double divisor = 1.0 ;
   if ((idx < length ()) && (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) == '.')) { // Dot
-    idx ++ ;
+    idx += 1 ;
     while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
       divisor *= 10.0 ;
       outDoubleValue *= 10.0 ;
       outDoubleValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
-      idx ++ ;
+      idx += 1 ;
     }
   }
   outDoubleValue /= divisor ;
@@ -603,23 +603,23 @@ void String::convertToDouble (double & outDoubleValue,
   if (idx < length ()) {
     switch (UNICODE_VALUE (charAtIndex (idx COMMA_HERE))) {
     case 'E' : case 'e' : case 'd' : case 'D' : {
-      idx ++ ;
+      idx += 1 ;
     //--- Exponent sign
       bool exponentIsPositive = true ;
       if (idx < length ()) {
         const utf32 c = charAtIndex (idx COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '-') {
           exponentIsPositive = false ;
-          idx ++ ;
+          idx += 1 ;
         }else if (UNICODE_VALUE (c) == '+') {
-          idx ++ ;
+          idx += 1 ;
         }
       }
       double exponentValue = 0.0 ;
       while ((idx < length ()) && isdigit ((int) UNICODE_VALUE (charAtIndex (idx COMMA_HERE)))) {
         exponentValue *= 10.0 ;
         exponentValue += (double) (UNICODE_VALUE (charAtIndex (idx COMMA_HERE)) - '0') ;
-        idx ++ ;
+        idx += 1 ;
       }
       outDoubleValue *= ::pow (10.0, exponentIsPositive ? exponentValue : - exponentValue) ;
     }
@@ -1200,7 +1200,7 @@ String String::standardizedPath (void) const {
       if (componentArray (componentIndex COMMA_HERE).length () == 0) {
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Remove '.' components
@@ -1209,7 +1209,7 @@ String String::standardizedPath (void) const {
       if (componentArray (componentIndex COMMA_HERE) == ".") {
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Remove '..' components
@@ -1223,7 +1223,7 @@ String String::standardizedPath (void) const {
           componentIndex = 1 ;
         }
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Recompose path

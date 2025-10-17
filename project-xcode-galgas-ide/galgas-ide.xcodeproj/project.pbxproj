@@ -848,7 +848,6 @@
 		CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrologueEpilogue.cpp; sourceTree = "<group>"; };
 		CF305F8C2D0D8A2E000A5F79 /* SHA256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHA256.h; sourceTree = "<group>"; };
 		CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SHA256.cpp; sourceTree = "<group>"; };
-		CF305F902D0D8A2E000A5F79 /* switch-fallthrough.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
 		CF305F912D0D8A2E000A5F79 /* TF_Swap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF305F922D0D8A2E000A5F79 /* U8Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = U8Data.h; sourceTree = "<group>"; };
 		CF305F932D0D8A2E000A5F79 /* U8Data.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = U8Data.cpp; sourceTree = "<group>"; };
@@ -1611,7 +1610,6 @@
 				CF305F8B2D0D8A2E000A5F79 /* PrologueEpilogue.cpp */,
 				CF305F8C2D0D8A2E000A5F79 /* SHA256.h */,
 				CF305F8D2D0D8A2E000A5F79 /* SHA256.cpp */,
-				CF305F902D0D8A2E000A5F79 /* switch-fallthrough.h */,
 				CF305F912D0D8A2E000A5F79 /* TF_Swap.h */,
 				CF305F922D0D8A2E000A5F79 /* U8Data.h */,
 				CF305F932D0D8A2E000A5F79 /* U8Data.cpp */,

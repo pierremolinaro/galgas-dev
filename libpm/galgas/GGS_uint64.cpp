@@ -63,7 +63,7 @@ GGS_uint_36__34_ GGS_uint_36__34_::class_func_uint_36__34_MaskWithCompressedBitS
       v <<= 1 ;
       const utf32 c = inBitString.stringValue ().charAtIndex (i COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '1') || (UNICODE_VALUE (c) == '0')) {
-        v ++ ;
+        v += 1 ;
       }else if (UNICODE_VALUE (c) != 'X') {
         ok = false ;
       }
@@ -325,13 +325,13 @@ GGS_uint_36__34_ GGS_uint_36__34_::divide_operation_no_ovf (const GGS_uint_36__3
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uint_36__34_::increment_operation_no_overflow (void) {
-  mUInt64Value ++ ;
+  mUInt64Value += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uint_36__34_::decrement_operation_no_overflow (void) {
-  mUInt64Value -- ;
+  mUInt64Value -= 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -343,7 +343,7 @@ void GGS_uint_36__34_::increment_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@uint64 ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mUInt64Value ++ ;
+      mUInt64Value += 1 ;
     }
   }
 }
@@ -357,7 +357,7 @@ void GGS_uint_36__34_::decrement_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@uint64 -- operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mUInt64Value -- ;
+      mUInt64Value -= 1 ;
     }
   }
 }

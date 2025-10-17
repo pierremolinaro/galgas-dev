@@ -201,13 +201,13 @@ void GGS_sint::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_sint::increment_operation_no_overflow (void) {
-  mSIntValue ++ ;
+  mSIntValue += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_sint::decrement_operation_no_overflow (void) {
-  mSIntValue -- ;
+  mSIntValue -= 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ void GGS_sint::increment_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@sint ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mSIntValue ++ ;
+      mSIntValue += 1 ;
     }
   }
 }
@@ -233,7 +233,7 @@ void GGS_sint::decrement_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@sint -- operation underflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mSIntValue -- ;
+      mSIntValue -= 1 ;
     }
   }
 }

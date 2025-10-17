@@ -32,7 +32,7 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
   uint32_t characterCount = 0 ;
   for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
     if (isUnicodeCharacterAssigned (TO_UNICODE (codePoint)) && inFunction (TO_UNICODE (codePoint))) {
-      characterCount ++ ;
+      characterCount += 1 ;
     }
   }
   printf ("Function '%s' (%u characters):\n", inFunctionName, characterCount) ;

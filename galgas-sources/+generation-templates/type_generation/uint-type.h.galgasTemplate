@@ -11,7 +11,7 @@ class GGS_uint : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
   public: inline uint32_t uintValue (void) const { return mUIntValue ; }
-  public: inline void increment (void) { mUIntValue ++ ; }
+  public: inline void increment (void) { mUIntValue += 1 ; }
 
 //--------------------------------- Default constructor
   public: GGS_uint (void) ;

@@ -76,7 +76,7 @@ static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
       do{
         const BinaryDecisionDiagramRelation t (lastOfProduction.configuration (), 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
         d.orWith (t COMMA_HERE) ;
-        j -- ;
+        j -= 1 ;
       }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.derivationAtIndex (j+1 COMMA_HERE) COMMA_HERE)) ;
       lastOfProduction.orWith (left.andOp (d COMMA_HERE) COMMA_HERE) ;
     }
@@ -97,7 +97,7 @@ static void computeFOLLOWsets (const PureBNFproductionsList & inProductionRules,
   BinaryDecisionDiagramRelation v = outFOLLOWsets ;
   outIterationsCount = 0 ;
   do{
-    v = outFOLLOWsets ; outIterationsCount ++ ;
+    v = outFOLLOWsets ; outIterationsCount += 1 ;
     outFOLLOWsets = constant ;
     const BinaryDecisionDiagramRelation t = v.swap210 (HERE) ;
     outFOLLOWsets.orWith ((lastOfProduction.andOp (t COMMA_HERE)).exitsOnVariable (2 COMMA_HERE) COMMA_HERE) ;

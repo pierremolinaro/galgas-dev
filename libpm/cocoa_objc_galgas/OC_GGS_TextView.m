@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2011, ..., 2021 Pierre Molinaro.
 //
@@ -39,7 +39,7 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//       I N I T                                                                                 
+//       I N I T
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -279,8 +279,8 @@
         while ((spacesToInsert > 0)
             && (characterAfterSelection < (NSInteger) self.string.length)
             && ([self.string characterAtIndex:(NSUInteger)characterAfterSelection] == ' ')) {
-          characterAfterSelection ++ ;
-          spacesToInsert -- ;
+          characterAfterSelection += 1 ;
+          spacesToInsert -= 1 ;
         }
         if (spacesToInsert == 0) {
           spacesToInsert = alignment ;
@@ -303,8 +303,8 @@
         NSMutableString * stringToInsert = [NSMutableString new] ;
         [stringToInsert appendString: @"\n"] ;
         while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
-          currentLineRange.location ++ ;
-          currentLineRange.length -- ;
+          currentLineRange.location += 1 ;
+          currentLineRange.length -= 1 ;
           [stringToInsert appendString: @" "] ;
         }
         [self insertText:stringToInsert] ;

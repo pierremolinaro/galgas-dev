@@ -184,7 +184,7 @@ void capCollectionElementArray::appendObject (const capCollectionElement & inObj
   macroUniqueSharedObject (mSharedRoot) ;
   macroAssert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
   mSharedRoot->mArray [mSharedRoot->mCount] = inObject ;
-  mSharedRoot->mCount ++ ;
+  mSharedRoot->mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -201,7 +201,7 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
       mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;
     }
     mSharedRoot->mArray [inInsertionIndex] = inObject ;
-    mSharedRoot->mCount ++ ;
+    mSharedRoot->mCount += 1 ;
   }else{
     String s ("insertAtIndex: insertion index (") ;
     s.appendUnsigned (inInsertionIndex) ;
@@ -226,7 +226,7 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
     for (uint32_t i=inIndex + 1 ; i<mSharedRoot->mCount ; i++) {
       mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;
     }
-    mSharedRoot->mCount -- ;
+    mSharedRoot->mCount -= 1 ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }else{
     String s ("removeObjectAtIndex: index (") ;
@@ -253,7 +253,7 @@ void capCollectionElementArray::removeFirstObject (capCollectionElement & outObj
     for (uint32_t i=1 ; i<mSharedRoot->mCount ; i++) {
       mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;
     }
-    mSharedRoot->mCount -- ;
+    mSharedRoot->mCount -= 1 ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }
 }
@@ -282,7 +282,7 @@ void capCollectionElementArray::removeLastObject (capCollectionElement & outObje
     String s = "removeLastObject: empty list" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    mSharedRoot->mCount -- ;
+    mSharedRoot->mCount -= 1 ;
     outObject = mSharedRoot->mArray [mSharedRoot->mCount] ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }
@@ -348,7 +348,7 @@ void capCollectionElementArray::removeObjectAtIndex (const uint32_t inIndex) {
   for (uint32_t i=inIndex+1 ; i<mSharedRoot->mCount ; i++) {
     mSharedRoot->mArray [i - 1] = mSharedRoot->mArray [i] ;
   }
-  mSharedRoot->mCount -- ;
+  mSharedRoot->mCount -= 1 ;
   mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
 }
 
@@ -362,7 +362,7 @@ void capCollectionElementArray::predendObject (const capCollectionElement & inOb
     mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;
   }
   mSharedRoot->mArray [0] = inObject ;
-  mSharedRoot->mCount ++ ;
+  mSharedRoot->mCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------

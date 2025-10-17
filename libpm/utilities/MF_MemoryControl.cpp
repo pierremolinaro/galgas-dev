@@ -72,8 +72,8 @@
   void * allocAndRegisterPODArray (const size_t inSize COMMA_LOCATION_ARGS) {
     void * ptr = myAllocRoutine (inSize) ;
     registerPointerDescriptor (ptr, kAllocatedByMacroMyNewPODArray COMMA_THERE) ;
-    gAllocatedPODArrayCount ++ ;
-    gExistingPODArrayCount ++ ;
+    gAllocatedPODArrayCount += 1 ;
+    gExistingPODArrayCount += 1 ;
     return ptr ;
   }
 #endif
@@ -91,13 +91,13 @@
     }
     void * ptr = realloc (inPointer, inSize) ;
     registerPointerDescriptor (ptr, kAllocatedByMacroMyNewPODArray COMMA_THERE) ;
-    gReallocatedPODArrayCount ++ ;
+    gReallocatedPODArrayCount += 1 ;
     if (ptr != inPointer) {
       if (inPointer == nullptr) {
-        gAllocatedPODArrayCount ++ ;
-        gExistingPODArrayCount ++ ;
+        gAllocatedPODArrayCount += 1 ;
+        gExistingPODArrayCount += 1 ;
       }else{
-        gPointerChangedOnPODArrayReallocationCount ++ ;
+        gPointerChangedOnPODArrayReallocationCount += 1 ;
       }
     }
     return ptr ;
@@ -109,7 +109,7 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void routineFreePODArrayPointer (void * inPointer COMMA_LOCATION_ARGS) {
     if (inPointer != nullptr) {
-      gExistingPODArrayCount -- ;
+      gExistingPODArrayCount -= 1 ;
       myFreeRoutine (inPointer) ;
       unregisterPointer (inPointer, kAllocatedByMacroMyNewPODArray COMMA_THERE) ;
       #ifdef TRACE_DELETE
@@ -265,14 +265,14 @@
     b->mInfPtr = ioPtr;
   //--- recalculer l'equilibrage
     if (b->mBalance >= 0) {
-      ioPtr->mBalance ++ ;
+      ioPtr->mBalance += 1 ;
     }else{
       ioPtr->mBalance += 1 - b->mBalance ;
     }
     if (ioPtr->mBalance > 0) {
       b->mBalance += ioPtr->mBalance + 1 ;
     }else{
-      b->mBalance ++ ;
+      b->mBalance += 1 ;
     }
     ioPtr = b ;
   }
@@ -290,10 +290,10 @@
     if (b->mBalance > 0) {
       ioPtr->mBalance -= 1 + b->mBalance ;
     }else{
-      ioPtr->mBalance -- ;
+      ioPtr->mBalance -= 1 ;
     }
     if (ioPtr->mBalance >= 0) {
-      b->mBalance -- ;
+      b->mBalance -= 1 ;
     }else{
       b->mBalance += ioPtr->mBalance - 1 ;
     }
@@ -307,7 +307,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void supBranchDecreased (cPointerDescriptor * & ioPtr, bool & h) {
-    ioPtr->mBalance ++ ;
+    ioPtr->mBalance += 1 ;
     switch (ioPtr->mBalance) {
     case 0:
       break;
@@ -337,7 +337,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void infBranchDecreased (cPointerDescriptor * & ioPtr, bool & h) {
-    ioPtr->mBalance -- ;
+    ioPtr->mBalance -= 1 ;
     switch (ioPtr->mBalance) {
     case 0:
       break;
@@ -460,7 +460,7 @@
       case kLeftKeyGreater:
         insertInBalancedBinaryTree (ioRoot->mSupPtr, inNewKey, ioAlreadyExists, ioPointerNewElement, ioExtension);
         if (ioExtension) {
-          ioRoot->mBalance -- ;
+          ioRoot->mBalance -= 1 ;
           switch (ioRoot->mBalance) {
           case 0:
             ioExtension = false;
@@ -528,8 +528,8 @@
       bool ioAlreadyExists = false ;
       bool ioExtension = false ;
       cPointerDescriptor * ioPointerNewElement = nullptr ;
-      gPointersCurrentCount ++ ;
-      gCreatedPointersCount ++ ;
+      gPointersCurrentCount += 1 ;
+      gCreatedPointersCount += 1 ;
       insertInBalancedBinaryTree (gPointerDescriptorTreeRoot [hashCodeForPointer(inPointerToRegister)], inPointerToRegister, ioAlreadyExists, ioPointerNewElement, ioExtension);
       if (ioAlreadyExists) {
         runtime_error_routine ("(detectee par " __FILE__ ") Le pointeur existe deja", 0, 0, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
@@ -622,7 +622,7 @@
         break ;
       }
       myFreeRoutine (pointerToDelete) ;
-      gPointersCurrentCount -- ;
+      gPointersCurrentCount -= 1 ;
     }
   }
 #endif

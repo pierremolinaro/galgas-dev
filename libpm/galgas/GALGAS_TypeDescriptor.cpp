@@ -43,7 +43,7 @@ mBalance (0),
 mGalgasTypeName (inGalgasTypeName),
 mSlotID (gSlotID),
 mSuperclassDescriptor (inSuperClassDescriptor) {
-  gSlotID ++ ;
+  gSlotID += 1 ;
   bool extension = false ; // Unused here
   recursiveInsert (gGalgasTypeListRoot, this, extension) ;
 }

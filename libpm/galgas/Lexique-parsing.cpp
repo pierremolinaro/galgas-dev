@@ -83,7 +83,7 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
   bool loop = true ;
   while (loop) {
     const int32_t instruction = inProductionArray [programCounter] ;
-    programCounter ++ ;
+    programCounter += 1 ;
     if (instruction > 0) { // We reach a terminal
       const int32_t reachedTerminal = (int32_t) (instruction - 1) ;
       accept = reachedTerminal == inTerminal ;
@@ -145,10 +145,10 @@ bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                         newStack,
                                                         newProgramCounter) ;
             }
-            nonTerminalEntry ++ ;
+            nonTerminalEntry += 1 ;
           }
-          nonTerminalEntry ++ ;
-          choice ++ ;
+          nonTerminalEntry += 1 ;
+          choice += 1 ;
         }
       }
     }else if (stack.count () > 0) { // We reach a END OF PRODUCTION
@@ -304,9 +304,9 @@ void Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorPro
           }
           outExpectedTerminalsArray.appendObject (inDecisionTableArray [nonTerminalEntry]) ;
         }
-        nonTerminalEntry ++ ;
+        nonTerminalEntry += 1 ;
       }
-      nonTerminalEntry ++ ;
+      nonTerminalEntry += 1 ;
     }
   }
   if (TRACE_LL1_PARSING ()) {
@@ -399,7 +399,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
       }
     //--- Get instruction to do
       const int32_t instruction = inProductionArray [programCounter] ;
-      programCounter ++ ;
+      programCounter += 1 ;
     //--- Instruction is non terminal call ?
       if (instruction < 0) {
       //--- Get entry of nonterminal symbol to parse
@@ -419,7 +419,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
           stack.appendObject (programCounter) ;
           programCounter = inProductionIndexArray [inFirstProductionIndexArray [nonTerminalToParse]] ;
           if (produceSyntaxTree) {
-            uniqueProductionNameIndex ++ ;
+            uniqueProductionNameIndex += 1 ;
             syntaxTreeDescriptionString.appendCString ("  NT") ;
             syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
             syntaxTreeDescriptionString.appendCString (" [label=\"") ;
@@ -443,7 +443,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
             gCout.appendCString ("', line ") ;
             gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mLineNumber) ;
             gCout.appendNewLine () ;
-            indentationForParseOnly ++ ;
+            indentationForParseOnly += 1 ;
           }
         }else{ //--- There are several choices : find the one to do
           if (TRACE_LL1_PARSING ()) {
@@ -465,17 +465,17 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
                 gCout.appendNewLine () ;
                 gCout.flush () ;
               }
-              nonTerminalEntry ++ ;
+              nonTerminalEntry += 1 ;
             }
-            choice ++ ;
-            nonTerminalEntry ++ ;
+            choice += 1 ;
+            nonTerminalEntry += 1 ;
           }
         //--- Found : call production rule
           if (found) {
             stack.appendObject (programCounter) ;
             programCounter = inProductionIndexArray [inFirstProductionIndexArray [nonTerminalToParse] + choice] ;
             if (produceSyntaxTree) {
-              uniqueProductionNameIndex ++ ;
+              uniqueProductionNameIndex += 1 ;
               syntaxTreeDescriptionString.appendCString ("  NT") ;
               syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
               syntaxTreeDescriptionString.appendCString (" [label=\"") ;
@@ -499,7 +499,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
               gCout.appendCString ("', line ") ;
               gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mLineNumber) ;
               gCout.appendNewLine () ;
-              indentationForParseOnly ++ ;
+              indentationForParseOnly += 1 ;
             }
             listForSecondPassParsing.appendObject (choice + 1) ;
           }else{ // Syntax error
@@ -545,7 +545,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
             syntaxTreeDescriptionString.appendCString (" -> T") ;
             syntaxTreeDescriptionString.appendUnsigned (uniqueTerminalIndex) ;
             syntaxTreeDescriptionString.appendCString (";\n") ;
-            uniqueTerminalIndex ++ ;
+            uniqueTerminalIndex += 1 ;
           }
           errorStackCount = stack.count () ;
           errorStack.removeAllKeepingCapacity () ;
@@ -584,7 +584,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
           productionUniqueNameStack.removeLastObject (HERE) ;
         }
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          indentationForParseOnly -- ;
+          indentationForParseOnly -= 1 ;
         }
     //--- End of start symbol analysis
       }else if (currentToken == 0) { // We got the "end of text" non terminal : ok
@@ -665,7 +665,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
       int32_t newCurrentState = -1 ;
       while ((newCurrentState < 0) && ((* successorTable) >= 0)) {
         if ((* successorTable) == nonTerminal) {
-          successorTable ++ ;
+          successorTable += 1 ;
           newCurrentState = (* successorTable) ;
         }
         successorTable += 2 ;
@@ -680,7 +680,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
       actionCode = 0 ;
       while (((* actionTable) >= 0) && (actionCode == 0)) {
         if ((* actionTable) == inExpectedTerminal) {
-          actionTable ++ ;
+          actionTable += 1 ;
           actionCode = (* actionTable) ;
         }
         actionTable += 2 ;
@@ -793,7 +793,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
           syntaxTreeDescriptionString.appendStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
           syntaxTreeDescriptionString.appendCString ("];\n") ;
           shiftedElementStack.appendObject (terminalUniqueName) ;
-          uniqueTerminalIndex ++ ;
+          uniqueTerminalIndex += 1 ;
         }
       //--- Parse Only : print terminal symbol
         if (executionModeIsSyntaxAnalysisOnly ()) {
@@ -822,7 +822,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         const int32_t stackReduceSize = 2 * reduceSize ;
         for (int32_t i=0 ; i<stackReduceSize ; i++) {
           if (errorSignalingUselessEntryOnTopOfStack > 0) {
-            errorSignalingUselessEntryOnTopOfStack -- ;
+            errorSignalingUselessEntryOnTopOfStack -= 1 ;
           }else{
             poppedErrors.appendObject (stack.lastObject (HERE)) ;
           }
@@ -845,7 +845,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         int32_t newCurrentState = -1 ;
         while ((newCurrentState < 0) && ((* successorTable) >= 0)) {
           if ((* successorTable) == nonTerminal) {
-            successorTable ++ ;
+            successorTable += 1 ;
             newCurrentState = (* successorTable) ;
           }
           successorTable += 2 ;
@@ -864,7 +864,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
           syntaxTreeDescriptionString.appendString (inNonTerminalSymbolNameArray [nonTerminal]) ;
           syntaxTreeDescriptionString.appendCString ("\", shape=box];\n") ;
           shiftedElementStack.appendObject (uniqueProductionName) ;
-          currentProductionName ++ ;
+          currentProductionName += 1 ;
         }
         if (executionModeIsSyntaxAnalysisOnly ()) {
           gCout.appendCString ("  [S") ;

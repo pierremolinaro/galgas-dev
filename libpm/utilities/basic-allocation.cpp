@@ -147,7 +147,7 @@ void myFreeRoutine (void * inPointer) {
     malloc_debug (4) ;
   #endif
   int32_t * p = (int32_t *) inPointer ;
-  p -- ;
+  p -= 1 ;
   cBlock * ptr = (cBlock *) p ;
   if (ptr->mTag == 0) {
     ptr->mNext = gFreeList ;
@@ -195,14 +195,14 @@ void myFreeRoutine (void * inPointer) {
     b->mInfPtr = a;
   //--- recalculer l'equilibrage 
     if (b->mBalance >= 0) {
-      a->mBalance ++ ;
+      a->mBalance += 1 ;
     }else{
       a->mBalance = (int16_t) (a->mBalance + 1 - b->mBalance) ;
     }
     if (a->mBalance > 0) {
       b->mBalance = (int16_t) (b->mBalance + a->mBalance + 1) ;
     }else{
-      b->mBalance ++ ;
+      b->mBalance += 1 ;
     }
     a = b ;
   } 
@@ -220,10 +220,10 @@ void myFreeRoutine (void * inPointer) {
     if (b->mBalance > 0) {
       a->mBalance = (int16_t) (a->mBalance - b->mBalance - 1) ;
     }else{
-      a->mBalance -- ;
+      a->mBalance -= 1 ;
     }
     if (a->mBalance >= 0) {
-      b->mBalance -- ;
+      b->mBalance -= 1 ;
     }else{
       b->mBalance = (int16_t) (b->mBalance + a->mBalance - 1) ;
     }
@@ -249,7 +249,7 @@ void myFreeRoutine (void * inPointer) {
       if (ioRoot->mAllocatedSize < inAllocatedSize) {
         internalNoteAllocatedSize (ioRoot->mSupPtr, inAllocatedSize, ioExtension) ;
         if (ioExtension) {
-          ioRoot->mBalance -- ;
+          ioRoot->mBalance -= 1 ;
           switch (ioRoot->mBalance) {
           case 0:
             ioExtension = false;
@@ -285,7 +285,7 @@ void myFreeRoutine (void * inPointer) {
           }
         }
       }else{
-        ioRoot->mCount ++ ;
+        ioRoot->mCount += 1 ;
         ioExtension = false;
       }
     }
@@ -316,7 +316,7 @@ void myFreeRoutine (void * inPointer) {
       internalVisitNode (inRoot->mInfPtr, ioNodeCount) ;
       printf ("|%11lu |%13u |\n", inRoot->mAllocatedSize, inRoot->mCount) ;
       internalVisitNode (inRoot->mSupPtr, ioNodeCount) ;
-      ioNodeCount ++ ;
+      ioNodeCount += 1 ;
     }
   }
 #endif

@@ -212,7 +212,7 @@ void GGS_sint_36__34_::increment_operation (Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("@sint64 ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
-      mSInt64Value ++ ;
+      mSInt64Value += 1 ;
     }
   }
 }
@@ -220,7 +220,7 @@ void GGS_sint_36__34_::increment_operation (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_sint_36__34_::increment_operation_no_overflow (void) {
-  mSInt64Value ++ ;
+  mSInt64Value += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------

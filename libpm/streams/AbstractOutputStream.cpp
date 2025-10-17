@@ -402,7 +402,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
       ioStream.appendCString ("\"\n  \"") ;
       currentColumn = 0 ;
     }
-    currentColumn ++ ;
+    currentColumn += 1 ;
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
     case '\0' :

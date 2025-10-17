@@ -157,7 +157,7 @@ check_LL1_condition (const PureBNFproductionsList & inPureBNFproductions,
             const BinaryDecisionDiagramRelation rK = inPureBNFproductions.mProductionArray (numeroProductionK COMMA_HERE).derivationFirst () ;
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
-              nombreDeConflits ++ ;
+              nombreDeConflits += 1 ;
               if (inPopulateHTMLHelperString) {
                 ioHTMLFileContents.addRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
                 ioHTMLFileContents.appendCString ("***** Conflict between the productions ") ;
@@ -242,7 +242,7 @@ void cEcrireNonTerminal::action (const bool * tableauDesValeurs,
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
-  aIndice ++ ;
+  aIndice += 1 ;
   if (aIndice == 2) {
     mFichierBNF.appendCString ("\n") ;
     aIndice = 0 ;
@@ -410,7 +410,7 @@ printDecisionTable (const PureBNFproductionsList & inPureBNFproductions,
     if (firstProduction == lastProduction) { // Only one production, no choice
       inCppFile.appendCString (" only one production, no choice\n"
                            "  -1,\n") ;
-      ioDecisionTableIndex ++ ;
+      ioDecisionTableIndex += 1 ;
     }else{ // Several productions : generate decision table
       inCppFile.appendCString ("\n") ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
@@ -429,10 +429,10 @@ printDecisionTable (const PureBNFproductionsList & inPureBNFproductions,
         inCppFile.appendSigned ((int32_t)(j - firstProduction + 1)) ;
         inCppFile.appendCString ("\n") ;
         ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst ().value64Count ()) ;
-        ioDecisionTableIndex ++ ;
+        ioDecisionTableIndex += 1 ;
       }
       inCppFile.appendCString ("  -1,\n") ;
-      ioDecisionTableIndex ++ ;
+      ioDecisionTableIndex += 1 ;
     }
    }else{
     inCppFile.appendCString (" no production\n") ;
@@ -666,7 +666,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendSigned (numeroParametre) ;
         }
         parametre.gotoNextObject () ;
-        numeroParametre ++ ;
+        numeroParametre += 1 ;
         ioCppFileContents.appendCString (",\n                                ") ;
       }
       if (inSyntaxDirectedTranslationVarName.length () > 0) {
@@ -813,7 +813,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendCString (" parameter_") ;
           ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         ioCppFileContents.appendCString ("\n                                ") ;
         ioCppFileContents.appendString ( "COMMA_LOCATION_ARGS) {\n"
@@ -862,7 +862,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents.appendCString (", ") ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
@@ -935,7 +935,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendCString (" parameter_") ;
           ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         ioCppFileContents.appendCString ("\n                                ") ;
         ioCppFileContents.appendCString ("COMMA_UNUSED_LOCATION_ARGS) {\n"
@@ -979,7 +979,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents.appendCString (", ") ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;

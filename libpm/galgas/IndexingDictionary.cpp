@@ -124,7 +124,7 @@ cIndexEntryNode * IndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRoot
     if (comparaison > 0) {
       result = findOrAddEntry (ioRootPtr->mInfPtr, inKey, ioExtension) ;
       if (ioExtension) {
-        ioRootPtr->mBalance ++ ;
+        ioRootPtr->mBalance += 1 ;
         if (ioRootPtr->mBalance == 0) {
           ioExtension = false;
         }else if (ioRootPtr->mBalance == 2) {

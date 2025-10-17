@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2001, ..., 2013 Pierre Molinaro.
 //
@@ -162,7 +162,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       }
     }
     idx = lineRange.location + lineRange.length ;
-    lineIndex ++ ;
+    lineIndex += 1 ;
   }
 //--- Images
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;

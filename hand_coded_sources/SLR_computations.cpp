@@ -375,11 +375,11 @@ static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
   if (ptr->mBalance < 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
-  ioPtr->mBalance ++ ;
+  ioPtr->mBalance += 1 ;
   if (ioPtr->mBalance > 0) {
     ptr->mBalance += ioPtr->mBalance ;
   }
-  ptr->mBalance ++ ;
+  ptr->mBalance += 1 ;
   ioPtr = ptr ;
 }
 
@@ -398,7 +398,7 @@ static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
   if (ptr->mBalance > 0) {
     ioPtr->mBalance -= ptr->mBalance ;
   }
-  ioPtr->mBalance -- ;
+  ioPtr->mBalance -= 1 ;
   if (ioPtr->mBalance < 0) {
     ptr->mBalance += ioPtr->mBalance ;
   }
@@ -429,7 +429,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
                                         outExtension) ;
       macroValidPointer (ioRootPointer) ;
       if (outExtension) {
-        ioRootPointer->mBalance -- ;
+        ioRootPointer->mBalance -= 1 ;
         switch (ioRootPointer->mBalance) {
         case 0:
           outExtension = false;
@@ -456,7 +456,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
                                         outExtension) ;
       macroValidPointer (ioRootPointer) ;
       if (outExtension) {
-        ioRootPointer->mBalance ++ ;
+        ioRootPointer->mBalance += 1 ;
         switch (ioRootPointer->mBalance) {
         case 0:
           outExtension = false;
@@ -751,7 +751,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       }
     }
     ioCppFileContents.appendCString ("\n, BOTTOM_UP_END") ;
-    startIndex ++ ;
+    startIndex += 1 ;
   }
   ioCppFileContents.appendCString ("} ;\n\n"
                                "static const uint32_t gActionTableIndex_") ;
@@ -780,7 +780,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
   const int32_t transitionsCount = inTransitionList.count () ;
   for (int32_t i=0 ; i<transitionsCount ; i++) {
     if (inTransitionList (i COMMA_HERE).action () >= columnsCount) {
-      stateSuccessorsCount (inTransitionList (i COMMA_HERE).sourceState () COMMA_HERE) ++ ;
+      stateSuccessorsCount (inTransitionList (i COMMA_HERE).sourceState () COMMA_HERE) += 1 ;
     }
   }
 
@@ -826,7 +826,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       ioCppFileContents.appendCString ("\n  ") ;
       itemInSameLineCount = 0 ;
     }
-    itemInSameLineCount ++ ;
+    itemInSameLineCount += 1 ;
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
       ioCppFileContents.appendCString ("nullptr") ;
     }else{
@@ -1002,7 +1002,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
         }
         parametre.gotoNextObject () ;
         ioCppFileContents.appendCString (",\n                                ") ;
-        numeroParametre ++ ;
+        numeroParametre += 1 ;
       }
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
         ioCppFileContents.appendCString ("String & ") ;
@@ -1174,7 +1174,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendCString (" parameter_") ;
           ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         ioCppFileContents.appendCString ("\n                                COMMA_LOCATION_ARGS) {\n");
         ioCppFileContents.appendCString ("  if (inFilePath.isValid ()) {\n"
@@ -1219,7 +1219,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents.appendCString (", ") ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
@@ -1287,7 +1287,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendCString (" parameter_") ;
           ioCppFileContents.appendSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         ioCppFileContents.appendCString ("\n                                COMMA_UNUSED_LOCATION_ARGS) {\n"
                                      "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
@@ -1330,7 +1330,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendSigned (numeroParametre) ;
           ioCppFileContents.appendCString (", ") ;
           parametre.gotoNextObject () ;
-          numeroParametre ++ ;
+          numeroParametre += 1 ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
@@ -1534,7 +1534,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
         ioHTMLFileContents.addRawData ("</code></td></tr>") ;
       }
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = DecisionTableElement::shiftDecision (targetState) ;
-      shiftActions ++ ;
+      shiftActions += 1 ;
     }
   }
 //--- Reduce actions
@@ -1607,7 +1607,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
 //--- Successors
   for (int32_t t=0 ; t<transitionList.count () ; t++) {
     if (transitionList (t COMMA_HERE).action () >= terminalSymbolsCount) {
-      successorEntries ++ ;
+      successorEntries += 1 ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents.appendCString ("Successor [S") ;

@@ -788,7 +788,7 @@ GraphNode * SharedGraph::internalInsert (GraphNode * & ioRootPtr,
     if (comparaison > 0) {
       matchingEntry = internalInsert (ioRootPtr->mInfPtr, inKey, ioExtension) ;
       if (ioExtension) {
-        ioRootPtr->mBalance ++ ;
+        ioRootPtr->mBalance += 1 ;
         if (ioRootPtr->mBalance == 0) {
           ioExtension = false;
         }else if (ioRootPtr->mBalance == 2) {

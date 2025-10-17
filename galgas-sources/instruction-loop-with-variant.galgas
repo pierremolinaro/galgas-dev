@@ -274,7 +274,7 @@ override method @loopInstructionWithVariantForGeneration generateInstruction
                      "  " + compilerCppName () + "->loopRunTimeVariantError (" + [self.mInstructionLocation sourceFile] + ") ;\n"
                      "}\n"
                    + "if (" + loopVar + ") {\n"
-  ioGeneratedCode += "  " + variantVar + " -- ;\n"
+  ioGeneratedCode += "  " + variantVar + " -= 1 ;\n"
   generateInstructionList (
     !?ioInclusionSet
     !self.mSecondInstructions

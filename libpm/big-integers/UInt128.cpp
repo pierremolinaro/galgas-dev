@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.
 //                                           
 //  MIT License
 //                                           
@@ -89,9 +89,9 @@ void UInt128::setBitAtIndex (const bool inValue, const uint32_t inIndex) {
 //--------------------------------------------------------------------------------------------------
 
 UInt128 & UInt128::operator ++ (void) {
-  mLow ++ ;
+  mLow += 1 ;
   if (0 == mLow) {
-    mHigh ++ ;
+    mHigh += 1 ;
   }
   return *this ;
 }
@@ -100,9 +100,9 @@ UInt128 & UInt128::operator ++ (void) {
 
 UInt128 & UInt128::operator -- (void) {
   if (0 == mLow) {
-    mHigh -- ;
+    mHigh -= 1 ;
   }
-  mLow -- ;
+  mLow -= 1 ;
   return *this ;
 }
 

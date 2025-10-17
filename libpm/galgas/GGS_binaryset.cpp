@@ -88,7 +88,7 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_
       String s ;
       while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
         s.appendChar (cc) ;
-        stringIndex ++ ;
+        stringIndex += 1 ;
         if (stringIndex < stringLength) {
           cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
         }
@@ -100,19 +100,19 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_
           const utf32 c = s.charAtIndex (i COMMA_HERE) ;
           if (UNICODE_VALUE (c) == '0') {
             v &= BinaryDecisionDiagram (bitIndex, false) ;
-            bitIndex ++ ;
+            bitIndex += 1 ;
           }else if (UNICODE_VALUE (c) == '1') {
             v &= BinaryDecisionDiagram (bitIndex, true) ;
-            bitIndex ++ ;
+            bitIndex += 1 ;
           }else if (UNICODE_VALUE (c) == 'X') {
-            bitIndex ++ ;
+            bitIndex += 1 ;
           }
         }
         resultBDD |= v ;
       }
       if (stringIndex < stringLength) {
         ok = UNICODE_VALUE (cc) == '|' ;
-        stringIndex ++ ;
+        stringIndex += 1 ;
       }
     }
     if (ok) {
@@ -780,7 +780,7 @@ GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS_uintlist & inTransf
     while (enumerator.hasCurrentObject ()) {
       const uint32_t value = enumerator.current_mValue (HERE).uintValue () ;
       substitutionArray [idx] = value ;
-      idx ++ ;
+      idx += 1 ;
       enumerator.gotoNextObject () ;
     }
     result = GGS_binaryset (mBDD.substitution (substitutionArray, idx COMMA_THERE)) ;

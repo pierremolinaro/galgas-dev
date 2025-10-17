@@ -50,8 +50,8 @@
   mPtrToNextObject (nullptr),
   mRetainCount (0) {
   //--- Enter current object in instance list
-    gCreationIndex ++ ;
-    gObjectCurrentCount ++ ;
+    gCreationIndex += 1 ;
+    gObjectCurrentCount += 1 ;
     mPtrToNextObject = nullptr ;
     if (gLastObject == nullptr) {
       gFirstObject = this ;
@@ -82,7 +82,7 @@
       nextObject->mPtrToPreviousObject = previousObject ;
     }
   //--- Decrement object count
-    gObjectCurrentCount -- ;
+    gObjectCurrentCount -= 1 ;
   }
 #endif
 

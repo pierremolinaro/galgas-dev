@@ -3306,7 +3306,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
                       inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-comma-separated-expression.galgas", 261)) ;
                     }
                     if (loop_9673) {
-                      variant_9673 -- ;
+                      variant_9673 -= 1 ;
                       var_t_9582 = extensionGetter_definition (var_t_9582, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 263)).readProperty_superType () ;
                       var_found_9617 = GGS_bool (ComparisonKind::equal, var_t_9582.objectCompare (var_analyzedExpression_7664.readProperty_mResultType ())) ;
                     }
@@ -3401,7 +3401,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS_CommaSeparatedExpr
                       inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-comma-separated-expression.galgas", 315)) ;
                     }
                     if (loop_11871) {
-                      variant_11871 -- ;
+                      variant_11871 -= 1 ;
                       var_t_11574 = extensionGetter_definition (var_t_11574, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas", 317)).readProperty_superType () ;
                       GalgasBool test_15 = GalgasBool::boolTrue ;
                       if (GalgasBool::boolTrue == test_15) {

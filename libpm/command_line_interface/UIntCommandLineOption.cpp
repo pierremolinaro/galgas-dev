@@ -93,7 +93,7 @@ setUIntOptionForCommandString (const String & inCommandCommandLineOptionString,
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && !found) {
       found = inCommandCommandLineOptionString.charAtIndex (equalSignIndex COMMA_HERE) == '=' ;
       if (! found) {
-        equalSignIndex ++ ;
+        equalSignIndex += 1 ;
       }
     }
     outCommandLineOptionStringIsValid = found && (equalSignIndex > 0) && (equalSignIndex < (optionLength - 1)) ;

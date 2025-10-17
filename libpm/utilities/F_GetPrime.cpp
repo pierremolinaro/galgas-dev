@@ -73,7 +73,7 @@ uint32_t getPrimeGreaterThan (const uint32_t inValue) {
   bool notFound = true ;
   while (notFound && (i<ARRAY_SIZE)) {
     notFound = inValue > array [i] ;
-    i ++ ;
+    i += 1 ;
   }
   return array [i - 1] ;
 }

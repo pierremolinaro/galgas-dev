@@ -81,7 +81,7 @@ void StringListCommandLineOption::setStringListOptionForCommandString (const Str
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && ! outFound) {
       outFound = UNICODE_VALUE (inCommandString.charAtIndex (equalSignIndex COMMA_HERE)) == '=' ;
       if (! outFound) {
-        equalSignIndex ++ ;
+        equalSignIndex += 1 ;
       }
     }
     outCommandLineOptionStringIsValid = outFound && (equalSignIndex > 0) && (equalSignIndex < (optionLength - 1)) ;

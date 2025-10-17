@@ -69,9 +69,9 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
     if (sourceTextLength > 0) {
       while (currentLine < inLocation.lineNumber ()) {
         if (UNICODE_VALUE (mObject->mSourceString.readCharOrNul (index COMMA_HERE)) == '\n') {
-          currentLine ++ ;
+          currentLine += 1 ;
         }
-        index ++ ;
+        index += 1 ;
       }
     }
   //--- Get error line text

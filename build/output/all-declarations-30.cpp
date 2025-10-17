@@ -2330,7 +2330,7 @@ void cPtr_testDynamicClassInExpressionAST::method_analyzeSemanticExpression (con
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("expression-is-as.galgas", 175)) ;
           }
           if (loop_6337) {
-            variant_6337 -- ;
+            variant_6337 -= 1 ;
             var_t_6270 = extensionGetter_definition (var_t_6270, inCompiler COMMA_SOURCE_FILE ("expression-is-as.galgas", 177)).readProperty_superType () ;
             var_found_6297 = GGS_bool (ComparisonKind::equal, var_t_6270.objectCompare (var_expression_5970.readProperty_mResultType ())) ;
           }
@@ -2405,7 +2405,7 @@ void cPtr_castInExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("expression-is-as.galgas", 233)) ;
           }
           if (loop_8628) {
-            variant_8628 -- ;
+            variant_8628 -= 1 ;
             var_t_8565 = extensionGetter_definition (var_t_8565, inCompiler COMMA_SOURCE_FILE ("expression-is-as.galgas", 235)).readProperty_superType () ;
             var_found_8588 = GGS_bool (ComparisonKind::equal, var_t_8565.objectCompare (var_expression_8268.readProperty_mResultType ())) ;
           }
@@ -3276,7 +3276,7 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("expression-getter-call.galgas", 310)) ;
           }
           if (loop_15260) {
-            variant_15260 -- ;
+            variant_15260 -= 1 ;
             GalgasBool test_5 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_5) {
               test_5 = extensionGetter_definition (var_baseType_15122, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 311)).readProperty_superType ().getter_isNull (SOURCE_FILE ("expression-getter-call.galgas", 311)).operator_not (SOURCE_FILE ("expression-getter-call.galgas", 311)).boolEnum () ;
@@ -4685,7 +4685,7 @@ void cPtr_filewrapperInExpressionAST::method_analyzeSemanticExpression (const GG
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("expression-primary-filewrapper.galgas", 292)) ;
       }
       if (loop_12197) {
-        variant_12197 -- ;
+        variant_12197 -= 1 ;
         GGS_string var_directoryName_12312 ;
         {
         var_directoryList_11017.setter_popFirst (var_directoryName_12312, inCompiler COMMA_SOURCE_FILE ("expression-primary-filewrapper.galgas", 294)) ;
@@ -6709,7 +6709,7 @@ void routine_checkAssignmentTypes_3F__3F__3F_ (const GGS_unifiedTypeMapEntry con
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 82)) ;
       }
       if (loop_3491) {
-        variant_3491 -- ;
+        variant_3491 -= 1 ;
         var_sourceType_3419 = extensionGetter_definition (var_sourceType_3419, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 83)).readProperty_superType () ;
         var_ok_3457 = GGS_bool (ComparisonKind::equal, constinArgument_inTargetType.objectCompare (var_sourceType_3419)) ;
       }
@@ -6739,7 +6739,7 @@ void routine_checkAssignmentTypes_3F__3F__3F_ (const GGS_unifiedTypeMapEntry con
               inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 89)) ;
             }
             if (loop_3847) {
-              variant_3847 -- ;
+              variant_3847 -= 1 ;
               var_sourceType_3419 = extensionGetter_definition (var_sourceType_3419, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 90)).readProperty_superType () ;
               var_ok_3457 = GGS_bool (ComparisonKind::equal, var_weakRefType_3687.readProperty_referenceType ().objectCompare (var_sourceType_3419)) ;
             }
@@ -6901,7 +6901,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const GG
               inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 176)) ;
             }
             if (loop_7871) {
-              variant_7871 -- ;
+              variant_7871 -= 1 ;
               var_sourceType_7841 = extensionGetter_definition (var_sourceType_7841, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 177)).readProperty_superType () ;
               var_handled_5116 = GGS_bool (ComparisonKind::equal, var_targetUnwrappedTypeName_7691.objectCompare (extensionGetter_typeName (var_sourceType_7841, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)))) ;
             }
@@ -6929,7 +6929,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const GG
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 185)) ;
           }
           if (loop_8249) {
-            variant_8249 -- ;
+            variant_8249 -= 1 ;
             var_sourceType_8155 = extensionGetter_definition (var_sourceType_8155, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 186)).readProperty_superType () ;
             var_ok_8189 = GGS_bool (ComparisonKind::equal, constinArgument_inTargetType.objectCompare (var_sourceType_8155)) ;
           }
@@ -6959,7 +6959,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const GG
                   inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 192)) ;
                 }
                 if (loop_8633) {
-                  variant_8633 -- ;
+                  variant_8633 -= 1 ;
                   var_sourceType_8155 = extensionGetter_definition (var_sourceType_8155, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 193)).readProperty_superType () ;
                   var_ok_8189 = GGS_bool (ComparisonKind::equal, extensionGetter_typeName (var_targetWeakRef_8453.readProperty_referenceType (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 194)).objectCompare (extensionGetter_typeName (var_sourceType_8155, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 194)))) ;
                 }
@@ -7059,7 +7059,7 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const GGS
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 261)) ;
         }
         if (loop_11534) {
-          variant_11534 -- ;
+          variant_11534 -= 1 ;
           var_rightType_11455 = extensionGetter_definition (var_rightType_11455, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 262)).readProperty_superType () ;
           var_ok_11497 = GGS_bool (ComparisonKind::equal, var_leftResultType_11015.objectCompare (var_rightType_11455)) ;
         }
@@ -7613,7 +7613,7 @@ void cPtr_structuredCastInstructionAST::method_analyzeSemanticInstruction (const
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-cast.galgas", 177)) ;
         }
         if (loop_7317) {
-          variant_7317 -- ;
+          variant_7317 -= 1 ;
           var_t_7250 = extensionGetter_definition (var_t_7250, inCompiler COMMA_SOURCE_FILE ("instruction-cast.galgas", 179)).readProperty_superType () ;
           var_found_7273 = GGS_bool (ComparisonKind::equal, var_t_7250.objectCompare (var_castExpression_6751.readProperty_mResultType ())) ;
         }

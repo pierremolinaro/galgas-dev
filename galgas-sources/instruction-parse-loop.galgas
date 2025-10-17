@@ -248,7 +248,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "if (" + whileVarCppName + ".isValidAndTrue ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += loopVar + " = true ;\n"
-  ioGeneratedCode += variantVar + " -- ; // Decrement variant\n"
+  ioGeneratedCode += variantVar + " -= 1 ; // Decrement variant\n"
   ioGeneratedCode += "const C_parsingContext parsingContext = " + compilerCppName () + "->parsingContext () ;\n"
   generateInstructionList (
     !?ioInclusionSet

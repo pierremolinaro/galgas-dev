@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2003, ..., 2023 Pierre Molinaro.
 //
@@ -356,7 +356,7 @@
 //---
   [mFoundEntryTreeController unbind:@"contentArray"] ;
   [mFoundEntryTreeController
-    removeObserver:self 
+    removeObserver:self
     forKeyPath:@"selectionIndexPath"
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"count"]
@@ -514,7 +514,7 @@
     [rootPath appendFormat:@"/%@", [[cells objectAtIndex:i] title]] ;
   }
   NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
-  NSString * path = [NSString stringWithFormat:@"%@/%@", rootPath, [[cells objectAtIndex:clickedCellIndex] title]] ; 
+  NSString * path = [NSString stringWithFormat:@"%@/%@", rootPath, [[cells objectAtIndex:clickedCellIndex] title]] ;
   [ws selectFile:path inFileViewerRootedAtPath:rootPath] ;
 }
 
@@ -694,10 +694,10 @@
   [scroller setIssueArray:mIssueArray] ;
 //---
   if (inIsError) {
-    mErrorCount ++ ;
+    mErrorCount += 1 ;
     mErrorCountTextField.stringValue = [NSString stringWithFormat:@"%lu", mErrorCount] ;
   }else{
-    mWarningCount ++ ;
+    mWarningCount += 1 ;
     mWarningCountTextField.stringValue = [NSString stringWithFormat:@"%lu", mWarningCount] ;
   }
 }
@@ -722,15 +722,15 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSString * component = [messageArray objectAtIndex:i] ;
     NSUInteger idx = 0 ;
     while ((idx < component.length) && ([component characterAtIndex:idx] == '[')) {
-      idx ++ ;
+      idx += 1 ;
       NSUInteger code = 0 ;
       while ((idx < component.length) && isdigit ([component characterAtIndex:idx])) {
         code *= 10 ;
         code += [component characterAtIndex:idx] - '0' ;
-        idx ++ ;
+        idx += 1 ;
       }
       if ((idx < component.length) && ([component characterAtIndex:idx] == 'm')) {
-        idx ++ ;
+        idx += 1 ;
       }
       switch (code) {
       case  0 :
@@ -874,7 +874,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   BOOL ok = NO ;
   NSUInteger idx = mBufferedOutputData.length ;
   while ((! ok) && (idx > 0)) {
-    idx -- ;
+    idx -= 1 ;
     const NSRange range = {idx, 1} ;
     uint16 c ;
     [mBufferedOutputData getBytes:& c range:range] ;
@@ -1119,11 +1119,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //--- A selection is available ?
   BOOL ok = (selection.location != NSNotFound) ;
   if (ok && (selection.length > 1) && ([sourceString characterAtIndex:selection.location] == '\"')) {
-    selection.location ++ ;
-    selection.length -- ;
+    selection.location += 1 ;
+    selection.length -= 1 ;
   }
   if (ok && (selection.length > 1) && ([sourceString characterAtIndex:selection.location + selection.length - 1] == '\"')) {
-    selection.length -- ;
+    selection.length -= 1 ;
   }
 //--- Check there is end of line within the selection
   if (ok) {
@@ -1139,8 +1139,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         && ([sourceString characterAtIndex:idx] != '\r')
         && ([sourceString characterAtIndex:idx] != '\n')
         && ([sourceString characterAtIndex:idx] != '\"')) {
-      idx ++ ;
-      selection.length ++ ;
+      idx += 1 ;
+      selection.length += 1 ;
     }
   }
 //--- If ok, advance selection until a '\r', '\n' or a '"'
@@ -1150,9 +1150,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         && ([sourceString characterAtIndex:idx] != '\r')
         && ([sourceString characterAtIndex:idx] != '\n')
         && ([sourceString characterAtIndex:idx] != '\"')) {
-      idx -- ;
-      selection.location -- ;
-      selection.length ++ ;
+      idx -= 1 ;
+      selection.location -= 1 ;
+      selection.length += 1 ;
     }
   }
 //---
@@ -1376,7 +1376,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   NSFileManager * fm = [NSFileManager new] ;
   NSArray * contents = [fm contentsOfDirectoryAtPath: inDirectoryFullPath error:nil] ;
   if (nil == contents) {
-  
+
   }else{
     for (NSString * subPath in contents) {
       if ('.' != [subPath characterAtIndex: 0]) {
@@ -1442,7 +1442,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   ] ;
   [ioFoundEntries addObject:d] ;
 //---
-  mResultCount ++ ;
+  mResultCount += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1496,7 +1496,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       changeInLength:inChangeInLength
     ] ;
   }
-} 
+}
 
 //--------------------------------------------------------------------------------------------------
 

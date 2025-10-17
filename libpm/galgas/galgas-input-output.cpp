@@ -296,7 +296,7 @@ void signalExtractError (Compiler * inCompiler,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Print extract error

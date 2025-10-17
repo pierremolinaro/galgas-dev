@@ -3421,7 +3421,7 @@ void cPtr_extensionGetterForGeneration::method_appendSpecificImplementation (con
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-getter.galgas", 446)) ;
         }
         if (loop_19203) {
-          variant_19203 -- ;
+          variant_19203 -= 1 ;
           GalgasBool test_16 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_16) {
             test_16 = extensionGetter_definition (var_baseType_19134, inCompiler COMMA_SOURCE_FILE ("extension-getter.galgas", 447)).readProperty_superType ().getter_isNull (SOURCE_FILE ("extension-getter.galgas", 447)).operator_not (SOURCE_FILE ("extension-getter.galgas", 447)).boolEnum () ;
@@ -3783,7 +3783,7 @@ void cPtr_extensionMethodForGeneration::method_appendSpecificImplementation (con
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-method.galgas", 401)) ;
         }
         if (loop_17717) {
-          variant_17717 -- ;
+          variant_17717 -= 1 ;
           GalgasBool test_13 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_13) {
             test_13 = extensionGetter_definition (var_baseType_17652, inCompiler COMMA_SOURCE_FILE ("extension-method.galgas", 402)).readProperty_superType ().getter_isNull (SOURCE_FILE ("extension-method.galgas", 402)).operator_not (SOURCE_FILE ("extension-method.galgas", 402)).boolEnum () ;
@@ -4088,7 +4088,7 @@ void cPtr_extensionSetterForGeneration::method_appendSpecificImplementation (con
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-setter.galgas", 396)) ;
         }
         if (loop_17077) {
-          variant_17077 -- ;
+          variant_17077 -= 1 ;
           GalgasBool test_12 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_12) {
             test_12 = extensionGetter_definition (var_baseType_17012, inCompiler COMMA_SOURCE_FILE ("extension-setter.galgas", 397)).readProperty_superType ().getter_isNull (SOURCE_FILE ("extension-setter.galgas", 397)).operator_not (SOURCE_FILE ("extension-setter.galgas", 397)).boolEnum () ;
@@ -4713,7 +4713,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_semanticAnalysis (GGS_lst
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 249)) ;
       }
       if (loop_10960) {
-        variant_10960 -- ;
+        variant_10960 -= 1 ;
         GalgasBool test_8 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_8) {
           const GGS_overridingAbstractExtensionGetterAST temp_9 = this ;
@@ -4913,7 +4913,7 @@ void cPtr_overridingAbstractExtensionMethodAST::method_semanticAnalysis (GGS_lst
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 223)) ;
       }
       if (loop_10064) {
-        variant_10064 -- ;
+        variant_10064 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingAbstractExtensionMethodAST temp_8 = this ;
@@ -5091,7 +5091,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_semanticAnalysis (GGS_lst
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 186)) ;
       }
       if (loop_8433) {
-        variant_8433 -- ;
+        variant_8433 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingAbstractExtensionSetterAST temp_8 = this ;
@@ -5292,7 +5292,7 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GGS_lstringlist
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-getter.galgas", 303)) ;
       }
       if (loop_12756) {
-        variant_12756 -- ;
+        variant_12756 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingExtensionGetterAST temp_8 = this ;
@@ -5553,7 +5553,7 @@ void cPtr_overridingExtensionMethodAST::method_semanticAnalysis (GGS_lstringlist
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-method.galgas", 247)) ;
       }
       if (loop_11003) {
-        variant_11003 -- ;
+        variant_11003 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingExtensionMethodAST temp_8 = this ;
@@ -5817,7 +5817,7 @@ void cPtr_overridingExtensionSetterAST::method_semanticAnalysis (GGS_lstringlist
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-setter.galgas", 167)) ;
       }
       if (loop_8031) {
-        variant_8031 -- ;
+        variant_8031 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingExtensionSetterAST temp_8 = this ;
@@ -5952,7 +5952,7 @@ void cPtr_overridingExtensionSetterForGeneration::method_appendSpecificImplement
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-setter.galgas", 289)) ;
       }
       if (loop_13415) {
-        variant_13415 -- ;
+        variant_13415 -= 1 ;
         GalgasBool test_6 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_6) {
           test_6 = extensionGetter_definition (var_baseType_13354, inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 290)).readProperty_superType ().getter_isNull (SOURCE_FILE ("extension-overriding-setter.galgas", 290)).operator_not (SOURCE_FILE ("extension-overriding-setter.galgas", 290)).boolEnum () ;

@@ -5269,7 +5269,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("template-for-instruction.galgas", 56)) ;
       }
       if (loop_2663) {
-        variant_2663 -- ;
+        variant_2663 -= 1 ;
         ioArgument_ioElementList.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas", 57))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 57)) ;
         var_n_2562.minusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 58)) ;
       }

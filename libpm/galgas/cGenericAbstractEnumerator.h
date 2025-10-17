@@ -49,7 +49,7 @@ class cGenericAbstractEnumerator {
 
 //--- 
   public: inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public: inline void gotoNextObject (void) { mIndex ++ ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
   public: inline void rewind (void) { mIndex = 0 ; }
   protected: const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
 

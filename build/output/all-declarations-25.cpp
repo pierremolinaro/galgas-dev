@@ -1945,7 +1945,7 @@ void routine_projectCreation_3F_ (const GGS_string constinArgument_inProjectPath
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("projectCreation.galgas", 72)) ;
           }
           if (loop_4393) {
-            variant_4393 -- ;
+            variant_4393 -= 1 ;
             GGS_char var_c_4482 = var_projectName_4256.getter_characterAtIndex (var_idx_4381, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 74)) ;
             var_ok_4318 = var_c_4482.getter_isalnum (SOURCE_FILE ("projectCreation.galgas", 75)).operator_or (GGS_bool (ComparisonKind::equal, var_c_4482.objectCompare (GGS_char (TO_UNICODE (95)))) COMMA_SOURCE_FILE ("projectCreation.galgas", 75)) ;
             var_idx_4381.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 76)) ;
@@ -2673,7 +2673,7 @@ void cPtr_templateTestDynamicClassAST::method_templateExpressionAnalysis (const 
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("templateAnalysis.galgas", 612)) ;
           }
           if (loop_25137) {
-            variant_25137 -- ;
+            variant_25137 -= 1 ;
             var_t_25070 = extensionGetter_definition (var_t_25070, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 614)).readProperty_superType () ;
             var_found_25097 = GGS_bool (ComparisonKind::equal, var_t_25070.objectCompare (var_expression_24770.readProperty_mResultType ())) ;
           }

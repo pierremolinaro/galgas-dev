@@ -301,7 +301,7 @@ static bool parseUTF16BE (const U8Data & inDataString,
   bool foundUTF16prefix = false ;
   for (int32_t i=inOffset ; (i<inDataString.count ()) && ok ; i+=2) {
     uint32_t n = inDataString (i COMMA_HERE) ;
-    i ++ ;
+    i += 1 ;
     n <<= 8 ;
     n |= inDataString (i COMMA_HERE) ;
     if ((n & 0xDC00) == 0xD800) {
@@ -507,7 +507,7 @@ static bool searchForEncodingTagAndParse (const U8Data & inDataString,
     }else{
       firstLine [index] = (char) inDataString (index COMMA_HERE) ;
     }
-    index ++ ;
+    index += 1 ;
   }
   if (! eol) {
     firstLine [index] = '\0' ;
@@ -544,7 +544,7 @@ static void parseASCIIWithReplacementCharacter (const U8Data & inDataString,
   int32_t index = 0 ;
   while (index < inDataString.count ()) {
     const uint8_t c = inDataString (index COMMA_HERE) ;
-    index ++ ;
+    index += 1 ;
     if (c == 0x0A) { // LF
       if (! foundCR) {
         outString.appendChar (TO_UNICODE ('\n')) ;
@@ -864,7 +864,7 @@ String FileManager::relativePathFromPath (const String & inPath,
   while ((idx < absoluteReferencePathComponents.count ())
       && (idx < absoluteReceiverPathComponents.count ())
       && (absoluteReferencePathComponents (idx COMMA_HERE) == absoluteReceiverPathComponents (idx COMMA_HERE))) {
-    idx ++ ;
+    idx += 1 ;
   }
   for (int32_t i=idx ; i<absoluteReferencePathComponents.count () ; i++) {
     result.appendCString ("../") ;

@@ -96,7 +96,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
     if ((* mFiles)->mIsTextFile == inEnumerateTextFile) {
       ioList.addAssignOperation (GGS_string (path) COMMA_HERE) ;
     }
-    mFiles ++ ;
+    mFiles += 1 ;
   }
 //--- Walk throught directories
   const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
@@ -105,7 +105,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
     path.appendString ((* mDirs)->mDirectoryName) ;
     path.appendCString ("/") ;
     internalEnumerateFiles (* * mDirs, path, inEnumerateTextFile, ioList) ;
-    mDirs ++ ;
+    mDirs += 1 ;
   }
 }
 
@@ -145,7 +145,7 @@ static void internalEnumerateDirectories (const cDirectoryWrapper & inDirectory,
     path.appendString ((* mDirs)->mDirectoryName) ;
     path.appendCString ("/") ;
     internalEnumerateDirectories (* * mDirs, path, ioList) ;
-    mDirs ++ ;
+    mDirs += 1 ;
   }
 }
 
@@ -174,7 +174,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
       path.appendString ((* mFiles)->mName) ;
       ioList.addAssignOperation (GGS_string (path) COMMA_HERE) ;
     }
-    mFiles ++ ;
+    mFiles += 1 ;
   }
 //--- Walk throught directories
   const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
@@ -183,7 +183,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
     path.appendString ((* mDirs)->mDirectoryName) ;
     path.appendCString ("/") ;
     internalEnumerateFilesWithExtension (* * mDirs, path, ioList, inExtension) ;
-    mDirs ++ ;
+    mDirs += 1 ;
   }
 }
 
@@ -451,7 +451,7 @@ GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPat
       if (componentArray (componentIndex COMMA_HERE).length () == 0) {
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Remove '.' components
@@ -460,7 +460,7 @@ GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPat
       if (componentArray (componentIndex COMMA_HERE) == ".") {
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Remove '..' components
@@ -470,10 +470,10 @@ GGS_string GGS_filewrapper::getter_absolutePathForPath (const GGS_string & inPat
       validPath = (componentIndex > 1) || (componentArray (1 COMMA_HERE) != "..") ;
       if (validPath && (componentArray (componentIndex COMMA_HERE) == "..")) {
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
-        componentIndex -- ;
+        componentIndex -= 1 ;
         componentArray.removeObjectAtIndex (componentIndex COMMA_HERE) ;
       }else{
-        componentIndex ++ ;
+        componentIndex += 1 ;
       }
     }
   //--- Error ?
@@ -504,7 +504,7 @@ GGS_stringlist GGS_filewrapper::getter_directoriesAtPath (const GGS_string & inP
         const cDirectoryWrapper * * dirs = dir->mDirectories ;
         while ((*dirs) != nullptr) {
           result.addAssignOperation (GGS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
-          dirs ++ ;
+          dirs += 1 ;
         }
       }
     }
@@ -529,7 +529,7 @@ GGS_stringlist GGS_filewrapper::getter_textFilesAtPath (const GGS_string & inPat
           if ((*files)->mIsTextFile) {
             result.addAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;
           }
-          files ++ ;
+          files += 1 ;
         }
       }
     }
@@ -554,7 +554,7 @@ GGS_stringlist GGS_filewrapper::getter_binaryFilesAtPath (const GGS_string & inP
           if (! (*files)->mIsTextFile) {
             result.addAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;
           }
-          files ++ ;
+          files += 1 ;
         }
       }
     }
