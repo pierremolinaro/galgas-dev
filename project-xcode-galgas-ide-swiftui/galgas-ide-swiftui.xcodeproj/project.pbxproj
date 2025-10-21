@@ -164,6 +164,7 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
+		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF8F80DF2D0D90C90095170B /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF8ED3C2D0D81C1006B2A3C /* galgas */; };
 		CF8F80E42D0D91490095170B /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
@@ -356,7 +357,7 @@
 		CFD719C82E7309F6007736B6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719AD2E7307FB007736B6 /* Application.swift */; };
 		CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C22E730970007736B6 /* SWIFT_Token.swift */; };
 		CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */; };
-		CFD719CD2E730A10007736B6 /* MyTextSyntaxColoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C52E73099F007736B6 /* MyTextSyntaxColoringView.swift */; };
+		CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */; };
 		CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */; };
 		CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */; };
 		CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B02E73085C007736B6 /* AllocationDebugView.swift */; };
@@ -697,6 +698,7 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
+		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CF8F80D92D0D8F250095170B /* grammarCompilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grammarCompilation.h; sourceTree = "<group>"; };
 		CF8F80DA2D0D8F250095170B /* separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
@@ -750,7 +752,7 @@
 		CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Scanner.swift; sourceTree = "<group>"; };
 		CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
 		CFD719C22E730970007736B6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
-		CFD719C52E73099F007736B6 /* MyTextSyntaxColoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextSyntaxColoringView.swift; sourceTree = "<group>"; };
+		CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextSyntaxColoringView.swift; sourceTree = "<group>"; };
 		CFD71A472E730CF8007736B6 /* ProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocumentView.swift; sourceTree = "<group>"; };
 		CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+RawRepresentable.swift"; sourceTree = "<group>"; };
@@ -1252,12 +1254,13 @@
 		CFD719922E730780007736B6 /* swiftui-app */ = {
 			isa = PBXGroup;
 			children = (
+				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
 				CFD719B02E73085C007736B6 /* AllocationDebugView.swift */,
 				CFD719AD2E7307FB007736B6 /* Application.swift */,
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
-				CFD719C52E73099F007736B6 /* MyTextSyntaxColoringView.swift */,
+				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
@@ -1361,7 +1364,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					CF8F80E22D0D91490095170B = {
 						LastSwiftMigration = 2600;
@@ -1601,7 +1604,8 @@
 				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */,
-				CFD719CD2E730A10007736B6 /* MyTextSyntaxColoringView.swift in Sources */,
+				CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */,
+				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
 				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
 				CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */,
@@ -1906,6 +1910,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";

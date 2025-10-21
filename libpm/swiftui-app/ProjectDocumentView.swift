@@ -31,7 +31,7 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body : some View {
-    MyTextSyntaxColoringView (self.mSharedTextModel)
+    SWIFT_TextSyntaxColoringView (self.mSharedTextModel)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
