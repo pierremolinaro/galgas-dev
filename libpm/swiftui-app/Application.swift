@@ -40,7 +40,7 @@ extension Notification.Name {
 
   var body : some Scene {
     DocumentGroup (newDocument: ProjectDocument()) { file in
-      ProjectDocumentView (document: file.$document)
+      ProjectDocumentView (document: file.$document, fileURL: file.fileURL!)
     }
     .commands { MyUndoRedoCommands () }
     .commands {
@@ -95,12 +95,10 @@ extension Notification.Name {
 
   private func replaceUndoRedoCommands () -> some Commands {
     CommandGroup (replacing: .undoRedo) {
-      Button ("My Undo") { NotificationCenter.default.post (name: .myUndoCommand, object: nil) }
+      Button ("Undo") { NotificationCenter.default.post (name: .myUndoCommand, object: nil) }
       .keyboardShortcut ("z", modifiers: .command)
-//      .disabled (!self.mCanUndo)
-      Button ("My Redo") { NotificationCenter.default.post (name: .myRedoCommand, object: nil) }
+      Button ("Redo") { NotificationCenter.default.post (name: .myRedoCommand, object: nil) }
       .keyboardShortcut ("z", modifiers: [.shift, .command])
-//      .disabled (!self.mCanRedo)
     }
   }
 

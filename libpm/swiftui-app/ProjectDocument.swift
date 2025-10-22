@@ -22,6 +22,7 @@ struct ProjectDocument : FileDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static var readableContentTypes : [UTType] { [.galgas3Project] }
+//  @Environment(\.fileURL) private var fileURL
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MODEL
