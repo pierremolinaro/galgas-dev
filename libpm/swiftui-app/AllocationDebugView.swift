@@ -20,39 +20,41 @@ let DISPLAY_FILTER = "allocationDebug:statsDisplayFilter"
 //    Public routines
 //--------------------------------------------------------------------------------------------------
 
-#if DEBUG
+//#if DEBUG
   nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
     let objectType : AnyObject.Type = type (of: inObject)
     DispatchQueue.main.async {
       AllocationState.shared.enterAllocation (objectType)
     }
   }
-#endif
+//#endif
 
 //--------------------------------------------------------------------------------------------------
 
-#if DEBUG
+//#if DEBUG
   nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
     let objectType : AnyObject.Type = type (of: inObject)
     DispatchQueue.main.async {
       AllocationState.shared.enterDeallocation (objectType)
     }
   }
-#endif
+//#endif
 
 //--------------------------------------------------------------------------------------------------
 
 final class AllocationState : ObservableObject {
-  private let mEnableAllocationAtLaunch = UserDefaults.standard.bool (forKey: ENABLE_ALLOCATION_DEBUG)
+  @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationAtLaunch : Bool = false
+  @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
+
   @Published var mCurrentlyAllocated : Int = 0
   @Published var mTotalAllocated : Int = 0
+  @Published var mAllocationArray = [EBAllocationItemDisplay] ()
+
   private var mPendingAllocatedObjectClasses = [AnyObject.Type] ([])
   private var mPendingDeallocatedObjectClasses = [AnyObject.Type] ([])
   private var mTotalAllocatedObjectCountByClass = [String : Int] ()
   private var mLiveObjectCountByClass = [String : Int] ()
   private var mSnapShotDictionary = [String : Int] ()
-  @Published var mAllocationArray = [EBAllocationItemDisplay] ()
-  @AppStorage(DISPLAY_FILTER) var mDisplayFilter = 0
 
   static let shared = AllocationState ()
 
@@ -179,6 +181,7 @@ struct AllocationDebugView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @AppStorage(ENABLE_ALLOCATION_DEBUG) private var mEnableAllocationDebug = true
+  @AppStorage(DISPLAY_FILTER) private var mDisplayFilter = 0
   @AppStorage(ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH) private var mVisibleAtLaunch = true
   @ObservedObject var mAllocs = AllocationState.shared
 
@@ -200,11 +203,11 @@ struct AllocationDebugView : View {
       }.padding ([.leading, .trailing, .top], 8.0)
       HStack {
         Button ("Snap Shot") { self.mAllocs.performSnapShotAction () }
-        Picker("Display", selection: self.mAllocs.$mDisplayFilter) {
+        Picker("Display", selection: self.$mDisplayFilter) {
           Text("All Classes").tag(0)
           Text("Allocated Classes").tag(1)
           Text("Differences with Snap Shot").tag(2)
-        }.onChange (of: self.mAllocs.mDisplayFilter) { self.mAllocs.triggerRefreshDisplay () }
+        }.onChange (of: self.mDisplayFilter) { self.mAllocs.triggerRefreshDisplay () }
         Spacer ()
         Text ("Currently Allocated").bold (true)
         Text ("\(self.mAllocs.mCurrentlyAllocated)").bold (true)

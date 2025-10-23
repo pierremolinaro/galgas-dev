@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate var gSourceDocumentArray = [SWIFT_SourceDocument] ()
+//fileprivate var gSourceDocumentArray = [SWIFT_SourceDocument] ()
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ struct ProjectDocumentView : View {
     self.mProjectFileURL = inFileURL
     self.mProjectSharedTextModel = SWIFT_SharedTextModel (
       scanner: ScannerFor_galgasScanner3 (),
-      stringBinding: inDocumentBinding.mString
+      string: inDocumentBinding.mString.wrappedValue
     )
     self._mRootDirectoryNode = StateObject (
       wrappedValue: SWIFT_RootDirectoryNode (
@@ -95,7 +95,7 @@ struct ProjectDocumentView : View {
     }else{
       SWIFT_TextSyntaxColoringView (
         id: SWIFT_FileNodeID (url: self.mProjectFileURL),
-        self.mProjectSharedTextModel,
+        self._mProjectSharedTextModel,
         currentSettings: self.mProjectTextSyntaxViewCurrentSettings
       )
     }

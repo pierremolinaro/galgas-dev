@@ -24,12 +24,19 @@ extension Notification.Name {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Environment(\.openWindow) private var openWindow
-  private let mAllocationWindowVisibleAtLaunch : Bool
+  @Environment(\.scenePhase) private var scenePhase
+
+//  private let mAllocationWindowVisibleAtLaunch : Bool
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    self.mAllocationWindowVisibleAtLaunch = UserDefaults.standard.bool (forKey: ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH)
+//    self.mAllocationWindowVisibleAtLaunch = UserDefaults.standard.bool (forKey: ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH)
+//    if self.mAllocationWindowVisibleAtLaunch {
+////      DispatchQueue.main.async {
+////        self.openWindow (id: "AllocationDebug")
+////      }
+//    }
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -41,28 +48,22 @@ extension Notification.Name {
     .commands { MyUndoRedoCommands () }
     .commands {
       CommandMenu ("Find") {
-        Button("Find…") {
-          self.sendTextFinderAction (.showFindInterface)
-        }.keyboardShortcut("f", modifiers: .command)
-        Button("Find Next") {
-          self.sendTextFinderAction (.nextMatch)
-        }.keyboardShortcut("g", modifiers: .command)
-        Button("Find Previous") {
-          self.sendTextFinderAction (.previousMatch)
-        }.keyboardShortcut ("g", modifiers: [.shift, .command])
+        Button ("Find…") { self.sendTextFinderAction (.showFindInterface) }
+        .keyboardShortcut("f", modifiers: .command)
+        Button ("Find Next") { self.sendTextFinderAction (.nextMatch) }
+        .keyboardShortcut("g", modifiers: .command)
+        Button ("Find Previous") { self.sendTextFinderAction (.previousMatch) }
+        .keyboardShortcut ("g", modifiers: [.shift, .command])
         Divider()
-        Button("Enter Selection") {
-          self.sendTextFinderAction (.setSearchString)
-        }.keyboardShortcut("e", modifiers: .command)
+        Button ("Enter Selection") { self.sendTextFinderAction (.setSearchString) }
+        .keyboardShortcut("e", modifiers: .command)
         Divider()
-        Button("Find and Replace…") {
-          self.sendTextFinderAction (.showReplaceInterface)
-        }.keyboardShortcut("r", modifiers: .command)
+        Button ("Find and Replace…") { self.sendTextFinderAction (.showReplaceInterface) }
+        .keyboardShortcut("r", modifiers: .command)
       }
       CommandMenu ("Debug") {
-        Button("Show Allocation Debug") {
-          self.openWindow (id: "AllocationDebug")
-        }.keyboardShortcut(",", modifiers: [.command, .control])
+        Button ("Show Allocation Debug") { self.openWindow (id: "AllocationDebug") }
+        .keyboardShortcut(",", modifiers: [.command, .control])
       }
     }
     Settings {
@@ -71,8 +72,15 @@ extension Notification.Name {
     WindowGroup (id: "AllocationDebug") {
       AllocationDebugView ()
       .navigationTitle ("Allocation Debug")
-      .frame (minWidth: 400, minHeight: 300)
+      .frame (minWidth: 800, minHeight: 400)
     }
+//    .onChange (of: scenePhase) { (newPhase, oldPhase) in
+//      print ("Phase \(newPhase)")
+//      if newPhase == .active {
+//        self.openWindow (id: "AllocationDebug")
+//      }
+//    }
+//    .task { self.openWindow (id: "AllocationDebug") }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -97,7 +105,6 @@ extension Notification.Name {
       .keyboardShortcut ("z", modifiers: [.shift, .command])
     }
   }
-
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -18,30 +18,30 @@ extension UTType {
 
 //--------------------------------------------------------------------------------------------------
 
-struct SWIFT_SourceDocument {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  let mID : UUID
-  var mSharedTextModel : SWIFT_SharedTextModel? = nil
-  @State private var mSourceString : String = ""
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (id inID : UUID, url inURL : URL) {
-    self.mID = inID
-    self.mSourceString = ""
-    self.mSharedTextModel = SWIFT_SharedTextModel (
-      scanner: ScannerFor_galgasScanner3 (),
-      stringBinding : self.$mSourceString
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//struct SWIFT_SourceDocument {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  let mID : UUID
+//  var mSharedTextModel : SWIFT_SharedTextModel? = nil
+//  @State private var mSourceString : String = ""
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  init (id inID : UUID, url inURL : URL) {
+//    self.mID = inID
+//    self.mSourceString = ""
+//    self.mSharedTextModel = SWIFT_SharedTextModel (
+//      scanner: ScannerFor_galgasScanner3 (),
+//      string : self.$mSourceString
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------

@@ -25,18 +25,16 @@ struct SWIFT_TextSyntaxColoringView : View {
 
  // @ObservedObject, sinon les @Published ne sont pas observées
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
+  @ObservedObject private var mTextSyntaxViewCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings
+
   private let mSourceFileID : SWIFT_FileNodeID
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ObservedObject private var mTextSyntaxViewCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   init (id inID : SWIFT_FileNodeID,
-        _ inSharedTextModel : SWIFT_SharedTextModel,
+        _ inSharedTextModel : ObservedObject <SWIFT_SharedTextModel>,
         currentSettings inCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings) {
-    self.mSharedTextModel = inSharedTextModel
+    self._mSharedTextModel = inSharedTextModel
     self.mTextSyntaxViewCurrentSettings = inCurrentSettings
     self.mSourceFileID = inID
   }
@@ -53,6 +51,7 @@ struct SWIFT_TextSyntaxColoringView : View {
 //        Spacer ()
 //      }.padding (8)
     VSplitView {
+      TextEditor (text: self.$mSharedTextModel.mDocumentString)
       SWIFT_LexicalHilitingTextEditor (
         id: self.mSourceFileID,
         self.mSharedTextModel,

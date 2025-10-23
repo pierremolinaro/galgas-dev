@@ -137,17 +137,31 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
   //MARK: Source text dictionary
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mSourceTextDictionary : [SWIFT_FileNodeID : SourceChangeTracker] = [:]
+  private var mSourceTextDictionary : [SWIFT_FileNodeID : ObservedObject <SWIFT_SharedTextModel>] = [:]
   private var mSourceSettingsDictionary : [SWIFT_FileNodeID : SWIFT_TextSyntaxViewCurrentSettings] = [:]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> SWIFT_SharedTextModel {
+  func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> ObservedObject <SWIFT_SharedTextModel> {
     print ("findOrAddSourceText forNodeID \(inID)")
     if let stm = self.mSourceTextDictionary [inID] {
       return stm
     }else{
-      let stm = SourceChangeTracker (fileID: inID, rootNode: self)
+      let initialSourceString : String
+      if let fileURL = self.fileURL (forID: inID),
+         let data = try? Data (contentsOf: fileURL),
+         let str = String (data: data, encoding: .utf8) {
+        initialSourceString = str
+      }else{
+        initialSourceString = "Read Error"
+      }
+      let stm = ObservedObject (
+        wrappedValue: SWIFT_SharedTextModel (
+          scanner: ScannerFor_galgasScanner3 (),
+          string: initialSourceString
+        )
+      )
+//      let stm = SourceChangeTracker (fileID: inID, rootNode: self)
       self.mSourceTextDictionary [inID] = stm
       return stm
     }
@@ -168,40 +182,57 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class SourceChangeTracker : SWIFT_SharedTextModel, Identifiable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private weak var mRootNode : SWIFT_RootDirectoryNode? = nil
-  private let mFileNodeID : SWIFT_FileNodeID
-  private var mSourceString : Binding <String>
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (fileID inFileID: SWIFT_FileNodeID,
-        rootNode inRootNode : SWIFT_RootDirectoryNode) {
-    self.mFileNodeID = inFileID
-    self.mRootNode = inRootNode
-    if let fileURL = inRootNode.fileURL (forID: inFileID),
-       let data = try? Data (contentsOf: fileURL),
-       let str = String (data: data, encoding: .utf8) {
-      self.mSourceString = .constant (str)
-    }else{
-      self.mSourceString = .constant ("")
+  subscript (sourceSettingsForNodeID inID : SWIFT_FileNodeID) -> SWIFT_TextSyntaxViewCurrentSettings {
+    get {
+      if let stm = self.mSourceSettingsDictionary [inID] {
+        return stm
+      }else{
+        let stm = SWIFT_TextSyntaxViewCurrentSettings ()
+        self.mSourceSettingsDictionary [inID] = stm
+        return stm
+      }
     }
-    super.init (
-      scanner: ScannerFor_galgasScanner3 (),
-      stringBinding: self.mSourceString
-    )
+    set (newValue) {
+      self.mSourceSettingsDictionary [inID] = newValue
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
+//--------------------------------------------------------------------------------------------------
+
+//final class SourceChangeTracker : SWIFT_SharedTextModel, Identifiable {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private weak var mRootNode : SWIFT_RootDirectoryNode? = nil
+//  private let mFileNodeID : SWIFT_FileNodeID
+//  private var mSourceString : Binding <String>
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  init (fileID inFileID: SWIFT_FileNodeID,
+//        rootNode inRootNode : SWIFT_RootDirectoryNode) {
+//    self.mFileNodeID = inFileID
+//    self.mRootNode = inRootNode
+//    if let fileURL = inRootNode.fileURL (forID: inFileID),
+//       let data = try? Data (contentsOf: fileURL),
+//       let str = String (data: data, encoding: .utf8) {
+//      self.mSourceString = .constant (str)
+//    }else{
+//      self.mSourceString = .constant ("")
+//    }
+//    super.init (
+//      scanner: ScannerFor_galgasScanner3 (),
+//      string: self.mSourceString
+//    )
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//}
 
 //--------------------------------------------------------------------------------------------------
 
