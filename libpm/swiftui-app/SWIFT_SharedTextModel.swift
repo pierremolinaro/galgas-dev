@@ -12,13 +12,13 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDelegate {
+class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mScanner : SWIFT_Scanner
   private let mTextStorage = NSTextStorage ()
-  @Binding var mDocumentString : String
+  @Binding var mDocumentStringBinding : String
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -33,7 +33,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
   init (scanner inScanner : SWIFT_Scanner,
         stringBinding inStringBinding : Binding <String>) {
     self.mScanner = inScanner
-    self._mDocumentString = inStringBinding
+    self._mDocumentStringBinding = inStringBinding
     super.init ()
     noteObjectAllocation (self)
  //--- Add UndoManager observers
@@ -211,11 +211,14 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   private var mSharedTextModel : SWIFT_SharedTextModel
   var mSelectionBinding : Binding <NSRange>
   fileprivate let mTextView : InternalNSTextView
+  private let mSourceFileID : SWIFT_FileNodeID
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inSharedTextModel : SWIFT_SharedTextModel,
+  init (id inID : SWIFT_FileNodeID,
+        _ inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>) {
+    self.mSourceFileID = inID
     self.mSharedTextModel = inSharedTextModel
     self.mTextView = inSharedTextModel.createAndConfigureTextView ()
     self.mSelectionBinding = inSelectionBinding
@@ -276,6 +279,8 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   func updateNSView (_ inUnusedScrollView : NSScrollView,
                      context inContext : Context) {
+ //   self.mTextView.setNeedsDisplay (self.mTextView.bounds)
+   _ = self.mSourceFileID
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

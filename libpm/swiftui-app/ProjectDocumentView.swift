@@ -77,18 +77,24 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private var detailView : some View {
-    if let fileNodeID = self.mSingleSelection, let fileURL = self.mRootDirectoryNode.fileURL (forID: fileNodeID) {
-      VStack {
-        Spacer ()
-        VStack {
-          Spacer ()
-          Text (fileURL.path())
-          Spacer ()
-        }
-        Spacer ()
-      }
+    if let fileNodeID = self.mSingleSelection {
+      SWIFT_TextSyntaxColoringView (
+        id: fileNodeID,
+        self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID),
+        currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
+      )
+//      VStack {
+//        Spacer ()
+//        VStack {
+//          Spacer ()
+//          Text (fileURL.path())
+//          Spacer ()
+//        }
+//        Spacer ()
+//      }
     }else{
       SWIFT_TextSyntaxColoringView (
+        id: SWIFT_FileNodeID (url: self.mProjectFileURL),
         self.mProjectSharedTextModel,
         currentSettings: self.mProjectTextSyntaxViewCurrentSettings
       )

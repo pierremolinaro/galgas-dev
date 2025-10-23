@@ -12,7 +12,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-class SWIFT_FileNode : Identifiable, ObservableObject {
+final class SWIFT_FileNode : Identifiable, ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -40,6 +40,13 @@ class SWIFT_FileNode : Identifiable, ObservableObject {
     if self.isDirectory {
       self.loadChildren ()
     }
+    noteObjectAllocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -6,13 +6,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-import Foundation
+import SwiftUI
 import Combine
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-class SWIFT_RootDirectoryNode : ObservableObject {
+final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -27,6 +27,7 @@ class SWIFT_RootDirectoryNode : ObservableObject {
     self.mChildren = []
     self.loadChildren ()
     self.startMonitoring ()
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,6 +35,7 @@ class SWIFT_RootDirectoryNode : ObservableObject {
   @MainActor deinit { // Stop monitoring
     print ("deinit")
     self.stopMonitoring ()
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -132,7 +134,94 @@ class SWIFT_RootDirectoryNode : ObservableObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Source text dictionary
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mSourceTextDictionary : [SWIFT_FileNodeID : SourceChangeTracker] = [:]
+  private var mSourceSettingsDictionary : [SWIFT_FileNodeID : SWIFT_TextSyntaxViewCurrentSettings] = [:]
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> SWIFT_SharedTextModel {
+    print ("findOrAddSourceText forNodeID \(inID)")
+    if let stm = self.mSourceTextDictionary [inID] {
+      return stm
+    }else{
+      let stm = SourceChangeTracker (fileID: inID, rootNode: self)
+      self.mSourceTextDictionary [inID] = stm
+      return stm
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func findOrAddSourceSettings (forNodeID inID : SWIFT_FileNodeID) -> SWIFT_TextSyntaxViewCurrentSettings {
+    print ("sourceSettingsDictionary forNodeID \(inID)")
+    if let stm = self.mSourceSettingsDictionary [inID] {
+      return stm
+    }else{
+      let stm = SWIFT_TextSyntaxViewCurrentSettings ()
+      self.mSourceSettingsDictionary [inID] = stm
+      return stm
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
+//--------------------------------------------------------------------------------------------------
+
+final class SourceChangeTracker : SWIFT_SharedTextModel, Identifiable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private weak var mRootNode : SWIFT_RootDirectoryNode? = nil
+  private let mFileNodeID : SWIFT_FileNodeID
+  private var mSourceString : Binding <String>
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (fileID inFileID: SWIFT_FileNodeID,
+        rootNode inRootNode : SWIFT_RootDirectoryNode) {
+    self.mFileNodeID = inFileID
+    self.mRootNode = inRootNode
+    if let fileURL = inRootNode.fileURL (forID: inFileID),
+       let data = try? Data (contentsOf: fileURL),
+       let str = String (data: data, encoding: .utf8) {
+      self.mSourceString = .constant (str)
+    }else{
+      self.mSourceString = .constant ("")
+    }
+    super.init (
+      scanner: ScannerFor_galgasScanner3 (),
+      stringBinding: self.mSourceString
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//final class SourceChangeTracker : ObservableObject {
+//
+//  private weak var mRootNode : SWIFT_RootDirectoryNode? = nil
+//  private let mFileNodeID : SWIFT_FileNodeID
+//  @Published var mSourceString : String = ""
+//
+//  init (fileID inFileID: SWIFT_FileNodeID,
+//        rootNode inRootNode : SWIFT_RootDirectoryNode) {
+//    self.mFileNodeID = inFileID
+//    self.mRootNode = inRootNode
+//    if let fileURL = inRootNode.fileURL (forID: inFileID),
+//       let data = try? Data (contentsOf: fileURL),
+//       let str = String (data: data, encoding: .utf8) {
+//      self.mSourceString = str
+//    }
+//  }
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
