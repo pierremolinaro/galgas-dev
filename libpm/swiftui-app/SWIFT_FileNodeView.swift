@@ -20,11 +20,11 @@ struct SWIFT_FileNodeView : View {
 
   @State private var mShowFileOperationError = false
   @State private var mErrorMessage = ""
-  @Binding private var mSelectionBinding : UUID?
+  @Binding private var mSelectionBinding : SWIFT_FileNodeID?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (node inNode : SWIFT_FileNode, selection inSelectionBinding : Binding <UUID?>) {
+  init (node inNode : SWIFT_FileNode, selection inSelectionBinding : Binding <SWIFT_FileNodeID?>) {
     self.mNode = inNode
     self._mSelectionBinding = inSelectionBinding
   }
@@ -34,13 +34,9 @@ struct SWIFT_FileNodeView : View {
   var body : some View {
     if self.mNode.isDirectory {
       DisclosureGroup (isExpanded: self.$mNode.mIsExpanded) {
-        if let children = self.mNode.mChildren {
-          ForEach (children, id: \.self.id) { child in
-            SWIFT_FileNodeView (node: child, selection: self.$mSelectionBinding)
-            .padding (.leading, 4)
-          }
-        }else{
-          ProgressView ().onAppear { self.mNode.loadChildren () }
+        ForEach (self.mNode.mChildren, id: \.self.id) { child in
+          SWIFT_FileNodeView (node: child, selection: self.$mSelectionBinding)
+          .padding (.leading, 4)
         }
       } label: {
         self.rowView ()
@@ -53,14 +49,20 @@ struct SWIFT_FileNodeView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private func rowView () -> some View {
-    HStack {
-      self.fileIcon (for: self.mNode.mURL)
-      if self.mNode.mIsRenaming {
-        self.fileNameEditor ()
-      }else{
-        Text (self.mNode.mURL.lastPathComponent)
+    VStack {
+      HStack {
+        self.fileIcon (for: self.mNode.mURL)
+        if self.mNode.mIsRenaming {
+          self.fileNameEditor ()
+        }else{
+          Text (verbatim: "\(self.mNode.mURL.lastPathComponent)")
+        }
+        Spacer()
       }
-      Spacer()
+//      HStack {
+//        Text (verbatim: self.mNode.id.description)
+//        Spacer ()
+//      }
     }
     .onTapGesture (count: 1) {
       if self.mSelectionBinding != self.mNode.id {
@@ -85,7 +87,7 @@ struct SWIFT_FileNodeView : View {
     TextField ("", text: self.$mTemporaryNameForRenaming, onCommit: {
       if !self.mTemporaryNameForRenaming.isEmpty,
              self.mTemporaryNameForRenaming != self.mNode.mURL.lastPathComponent {
-        (self.mShowFileOperationError, self.mErrorMessage) = self.mNode.rename (to: self.mTemporaryNameForRenaming)
+        self.rename (to: self.mTemporaryNameForRenaming)
       }
       self.mNode.mIsRenaming = false
     })
@@ -95,21 +97,15 @@ struct SWIFT_FileNodeView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private func contextMenuItems () -> some View {
-    Button ("Reveal in Finder" ) { self.mNode.revealInFinder () }
+    Button ("Reveal in Finder" ) { self.revealInFinder () }
     Divider ()
-    Button ("New Empty File" ) { self.mNode.newEmptyFile () }
-    Button ("New Folder" ) {
-      (self.mShowFileOperationError, self.mErrorMessage) = self.mNode.newFolder ()
-    }
+    Button ("New Empty File" ) { self.newEmptyFile () }
+    Button ("New Folder" ) { self.newFolder () }
     Divider ()
     Button ("Rename…" ) { self.mNode.mIsRenaming = true }
-    Button ("Duplicate" ) {
-      (self.mShowFileOperationError, self.mErrorMessage) = self.mNode.duplicate ()
-    }
+    Button ("Duplicate" ) { self.duplicate () }
     Divider ()
-    Button ("Move to Trash", role: .destructive) {
-      (self.mShowFileOperationError, self.mErrorMessage) = self.mNode.moveToTrash ()
-    }
+    Button ("Move to Trash", role: .destructive) { self.moveToTrash () }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,6 +170,138 @@ struct SWIFT_FileNodeView : View {
       }
     }
     return found
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: File operations
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func rename (to inNewName : String) {
+    let newURL = self.mNode.mURL.deletingLastPathComponent().appendingPathComponent (inNewName)
+    do{
+      try FileManager.default.moveItem (at: self.mNode.mURL, to: newURL)
+    }catch{
+      self.mShowFileOperationError = true
+      self.mErrorMessage = error.localizedDescription
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func moveToTrash () {
+    do{
+      try FileManager.default.trashItem (at: self.mNode.mURL, resultingItemURL: nil)
+    }catch{
+      self.mShowFileOperationError = true
+      self.mErrorMessage = error.localizedDescription
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func duplicate () {
+    do{
+      let fileManager = FileManager.default
+
+      // 1. Vérifie que le fichier existe
+      guard fileManager.fileExists (atPath: self.mNode.mURL.path) else {
+        throw NSError (domain: "DuplicateError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Fichier non trouvé."])
+      }
+
+      let directory = self.mNode.mURL.deletingLastPathComponent ()
+      let fileExtension = self.mNode.mURL.pathExtension
+      let baseFilename = self.mNode.mURL.deletingPathExtension ().lastPathComponent
+      let copyLabel = "copy"
+      var copyName = "\(baseFilename)-\(copyLabel)"
+      var destinationURL = directory.appendingPathComponent(copyName).appendingPathExtension(fileExtension)
+
+      var copyIndex = 2
+
+      // 2. Incrémente si fichier déjà existant
+      while fileManager.fileExists (atPath: destinationURL.path) {
+        copyName = "\(baseFilename)-\(copyLabel)-\(copyIndex)"
+        destinationURL = directory.appendingPathComponent(copyName).appendingPathExtension(fileExtension)
+        copyIndex += 1
+      }
+
+      // 3. Copie le fichier
+      try fileManager.copyItem (at: self.mNode.mURL, to: destinationURL)
+      let duplicatedFileID = SWIFT_FileNodeID (url: destinationURL)
+      DispatchQueue.main.async {
+        self.mSelectionBinding = duplicatedFileID
+      }
+    }catch{
+      self.mShowFileOperationError = true
+      self.mErrorMessage = error.localizedDescription
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func revealInFinder () {
+    NSWorkspace.shared.activateFileViewerSelecting ([self.mNode.mURL])
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func newEmptyFile () {
+    let fileManager = FileManager.default
+
+    let directory = self.mNode.mURL.deletingLastPathComponent()
+    let fileExtension = self.mNode.mURL.pathExtension
+    let newFileLabel = "untitled"
+    var newFileName = "\(newFileLabel)"
+    var destinationURL = directory.appendingPathComponent(newFileName).appendingPathExtension(fileExtension)
+
+    var index = 2
+
+    // 2. Incrémente si fichier déjà existant
+    while fileManager.fileExists (atPath: destinationURL.path) {
+      newFileName = "\(newFileLabel)\(index)"
+      destinationURL = directory.appendingPathComponent(newFileName).appendingPathExtension(fileExtension)
+      index += 1
+    }
+
+    // 3. Copie le fichier
+    fileManager.createFile (atPath: destinationURL.path, contents: nil)
+  //--- Select the new file
+    let newFileID = SWIFT_FileNodeID (url: destinationURL)
+    DispatchQueue.main.async {
+      self.mSelectionBinding = newFileID
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func newFolder () {
+    let fileManager = FileManager.default
+
+    let directory = self.mNode.mURL.deletingLastPathComponent ()
+    let newFolderLabel = "untitled"
+    var newFolderName = "\(newFolderLabel)"
+    var destinationURL = directory.appendingPathComponent (newFolderName)
+
+    var index = 2
+
+    // 2. Incrémente si fichier déjà existant
+    while fileManager.fileExists (atPath: destinationURL.path) {
+      newFolderName = "\(newFolderLabel)\(index)"
+      destinationURL = directory.appendingPathComponent(newFolderName)
+      index += 1
+    }
+
+    // 3. Copie le fichier
+    do{
+      try fileManager.createDirectory (at: destinationURL, withIntermediateDirectories: false)
+    //--- Select the new folder
+      let newFolderID = SWIFT_FileNodeID (url: destinationURL)
+      DispatchQueue.main.async {
+        self.mSelectionBinding = newFolderID
+      }
+    }catch{
+      self.mShowFileOperationError = true
+      self.mErrorMessage = error.localizedDescription
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -23,10 +23,6 @@ extension Notification.Name {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  @ObservedObject var mSharedTextModel = SWIFT_SharedTextModel (
-//    scanner: ScannerFor_galgasScanner3 (),
-//    string: SOURCE_STRING
-//  )
   @Environment(\.openWindow) private var openWindow
   private let mAllocationWindowVisibleAtLaunch : Bool
 

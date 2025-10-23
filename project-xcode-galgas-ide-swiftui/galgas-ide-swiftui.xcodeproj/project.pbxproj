@@ -164,6 +164,10 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
+		CF4476DF2EA96E5C0065CC16 /* SWIFT_SourceDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */; };
+		CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */; };
+		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
+		CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */; };
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */; };
 		CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */; };
@@ -700,6 +704,10 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
+		CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceDocument.swift; sourceTree = "<group>"; };
+		CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_RootDirectoryNode.swift; sourceTree = "<group>"; };
+		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
+		CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeID.swift; sourceTree = "<group>"; };
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNode.swift; sourceTree = "<group>"; };
 		CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeView.swift; sourceTree = "<group>"; };
@@ -1263,15 +1271,19 @@
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
-				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
-				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
+				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
+				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
+				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
+				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
 				CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
+				CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */,
 				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
 				CFD719C22E730970007736B6 /* SWIFT_Token.swift */,
+				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
 				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
 			);
 			path = "swiftui-app";
@@ -1603,6 +1615,8 @@
 			files = (
 				CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */,
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
+				CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */,
+				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
 				CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */,
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,
 				CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */,
@@ -1610,6 +1624,7 @@
 				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */,
+				CF4476DF2EA96E5C0065CC16 /* SWIFT_SourceDocument.swift in Sources */,
 				CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */,
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
@@ -1618,6 +1633,7 @@
 				CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */,
 				CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */,
 				CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */,
+				CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2036,8 +2052,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CONFIGURATION_IS_DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
 			};
 			name = Debug;
 		};
@@ -2065,8 +2081,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = CONFIGURATION_IS_RELEASE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
 			};
 			name = Release;
 		};

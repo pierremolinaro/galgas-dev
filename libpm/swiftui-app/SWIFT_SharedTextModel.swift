@@ -30,17 +30,12 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (scanner inScanner : SWIFT_Scanner, stringBinding inStringBinding : Binding <String>) {
+  init (scanner inScanner : SWIFT_Scanner,
+        stringBinding inStringBinding : Binding <String>) {
     self.mScanner = inScanner
     self._mDocumentString = inStringBinding
     super.init ()
     noteObjectAllocation (self)
-//     NotificationCenter.default.addObserver (
-//      self,
-//      selector: #selector (Self.textStorageDidProcessEditingNotification),
-//      name: NSTextStorage.didProcessEditingNotification,
-//      object: self.mTextStorage
-//    )
  //--- Add UndoManager observers
     NotificationCenter.default.addObserver (
       self,
@@ -139,7 +134,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func textViewIsDeiniting (_ inTextView : InternalNSTextView) {
-//    print ("textViewIsDeiniting")
     if let lm = inTextView.layoutManager {
       while lm.textContainers.count > 0 {
         lm.removeTextContainer (at: 0)
@@ -175,19 +169,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func replaceUndoRedoCommands () -> some Commands {
-//    CommandGroup (replacing: .undoRedo) {
-//      Button ("My Undo") { self.undo () }
-//      .keyboardShortcut ("z", modifiers: .command)
-//      .disabled (!self.mCanUndo)
-//      Button ("My Redo") { self.redo () }
-//      .keyboardShortcut ("z", modifiers: [.shift, .command])
-//      .disabled (!self.mCanRedo)
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func selectionRange (forProposedRange inProposedSelectionRange : NSRange,
                        granularity inGranularity : NSSelectionGranularity,
                        nsTextViewComputedRange inTextViewComputedRange : NSRange) -> NSRange {
@@ -204,20 +185,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func textStorage (_ textStorage: NSTextStorage,
-//                    willProcessEditing inEditedMask : NSTextStorageEditActions,
-//                    range inEditedRange : NSRange,
-//                    changeInLength inDelta : Int) { // NSTextStorageDelegate
-//    let textStorageString = self.mTextStorage.string
-//    if self.mDocumentString != textStorageString {
-////      DispatchQueue.main.async {
-//        self.mDocumentString = textStorageString
-////      }
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func textStorage (_ textStorage: NSTextStorage,
                     didProcessEditing inEditedMask : NSTextStorageEditActions,
                     range inEditedRange : NSRange,
@@ -229,23 +196,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
         changeInLength: inDelta
       )
     }
-//    let textStorageString = self.mTextStorage.string
-//    if self.mDocumentString != textStorageString {
-////      DispatchQueue.main.async {
-////        self.mDocumentString = textStorageString
-////      }
-//    }
   }
-
-//  @objc private func textStorageDidProcessEditingNotification () {
-//    print ("textStorageDidProcessEditingNotification")
-//    let textStorageString = self.mTextStorage.string
-//    if self.mDocumentString != textStorageString {
-////      DispatchQueue.main.async {
-//        self.mDocumentString = textStorageString
-////      }
-//    }
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -258,13 +209,16 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSharedTextModel : SWIFT_SharedTextModel
+  var mSelectionBinding : Binding <NSRange>
   fileprivate let mTextView : InternalNSTextView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inSharedTextModel : SWIFT_SharedTextModel) {
+  init (_ inSharedTextModel : SWIFT_SharedTextModel,
+        selectionBinding inSelectionBinding : Binding <NSRange>) {
     self.mSharedTextModel = inSharedTextModel
     self.mTextView = inSharedTextModel.createAndConfigureTextView ()
+    self.mSelectionBinding = inSelectionBinding
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -309,6 +263,12 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     rulerView.scrollView = scrollView
     scrollView.verticalRulerView = rulerView
     scrollView.rulersVisible = true
+  //--- Restore selection
+    self.mTextView.selectedRange = self.mSelectionBinding.wrappedValue
+    DispatchQueue.main.async {
+      self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
+    }
+  //---
     return scrollView
   }
 
@@ -347,6 +307,9 @@ class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelegate {
   func textViewDidChangeSelection (_ inUnusedNotification : Notification) {  // NSTextViewDelegate
 //    Swift.print ("textViewDidChangeSelection")
     self.mParent.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
+    DispatchQueue.main.async {
+      self.mParent.mSelectionBinding.wrappedValue = self.mParent.mTextView.selectedRange
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

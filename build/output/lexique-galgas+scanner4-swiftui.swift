@@ -1417,7 +1417,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
       let nsString = inTextStorage.string as NSString
       let fullRange = NSRange (location: 0, length: nsString.length)
     //---- Apply default attributes
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
@@ -1538,7 +1538,7 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
     let start2 = Date ()
     if modificationStart < modificationEnd {
       let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
