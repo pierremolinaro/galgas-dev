@@ -142,28 +142,23 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> ObservedObject <SWIFT_SharedTextModel> {
+  func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> ObservedObject <SWIFT_SharedTextModel>? {
     print ("findOrAddSourceText forNodeID \(inID)")
     if let stm = self.mSourceTextDictionary [inID] {
       return stm
-    }else{
-      let initialSourceString : String
-      if let fileURL = self.fileURL (forID: inID),
-         let data = try? Data (contentsOf: fileURL),
-         let str = String (data: data, encoding: .utf8) {
-        initialSourceString = str
-      }else{
-        initialSourceString = "Read Error"
-      }
+    }else if let fileURL = self.fileURL (forID: inID),
+             let data = try? Data (contentsOf: fileURL),
+             let str = String (data: data, encoding: .utf8) {
       let stm = ObservedObject (
         wrappedValue: SWIFT_SharedTextModel (
           scanner: ScannerFor_galgasScanner3 (),
-          string: initialSourceString
+          string: str
         )
       )
-//      let stm = SourceChangeTracker (fileID: inID, rootNode: self)
       self.mSourceTextDictionary [inID] = stm
       return stm
+    }else{
+      return nil
     }
   }
 
@@ -182,20 +177,20 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  subscript (sourceSettingsForNodeID inID : SWIFT_FileNodeID) -> SWIFT_TextSyntaxViewCurrentSettings {
-    get {
-      if let stm = self.mSourceSettingsDictionary [inID] {
-        return stm
-      }else{
-        let stm = SWIFT_TextSyntaxViewCurrentSettings ()
-        self.mSourceSettingsDictionary [inID] = stm
-        return stm
-      }
-    }
-    set (newValue) {
-      self.mSourceSettingsDictionary [inID] = newValue
-    }
-  }
+//  subscript (sourceSettingsForNodeID inID : SWIFT_FileNodeID) -> SWIFT_TextSyntaxViewCurrentSettings {
+//    get {
+//      if let stm = self.mSourceSettingsDictionary [inID] {
+//        return stm
+//      }else{
+//        let stm = SWIFT_TextSyntaxViewCurrentSettings ()
+//        self.mSourceSettingsDictionary [inID] = stm
+//        return stm
+//      }
+//    }
+//    set (newValue) {
+//      self.mSourceSettingsDictionary [inID] = newValue
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

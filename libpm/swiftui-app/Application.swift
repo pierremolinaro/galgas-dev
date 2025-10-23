@@ -74,13 +74,6 @@ extension Notification.Name {
       .navigationTitle ("Allocation Debug")
       .frame (minWidth: 800, minHeight: 400)
     }
-//    .onChange (of: scenePhase) { (newPhase, oldPhase) in
-//      print ("Phase \(newPhase)")
-//      if newPhase == .active {
-//        self.openWindow (id: "AllocationDebug")
-//      }
-//    }
-//    .task { self.openWindow (id: "AllocationDebug") }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -78,20 +78,15 @@ struct ProjectDocumentView : View {
 
   @ViewBuilder private var detailView : some View {
     if let fileNodeID = self.mSingleSelection {
-      SWIFT_TextSyntaxColoringView (
-        id: fileNodeID,
-        self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID),
-        currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
-      )
-//      VStack {
-//        Spacer ()
-//        VStack {
-//          Spacer ()
-//          Text (fileURL.path())
-//          Spacer ()
-//        }
-//        Spacer ()
-//      }
+      if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
+        SWIFT_TextSyntaxColoringView (
+          id: fileNodeID,
+          stm,
+          currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
+        )
+      }else{
+        EmptyView ()
+      }
     }else{
       SWIFT_TextSyntaxColoringView (
         id: SWIFT_FileNodeID (url: self.mProjectFileURL),
@@ -100,28 +95,6 @@ struct ProjectDocumentView : View {
       )
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func findOrAddTextModel (forID inFileNodeID : UUID) -> SWIFT_SharedTextModel? {
-//    if let fileURL = self.mRootNode.fileURL (forID: inFileNodeID) {
-//    //--- Find document
-//      var idx = 0
-//      var found = false
-//      while !found, idx < gSourceDocumentArray.count {
-//        found = gSourceDocumentArray [idx].mID == inFileNodeID
-//        idx += 1
-//      }
-////      if !found {
-////        let config = try FileDocument.ReadConfiguration (file: FileWrapper (url: fileURL, options: []))
-////        let newDocument = try SWIFT_SourceDocument (configuration: config)
-////
-////
-////      }
-//    }else{
-//      return nil
-//    }
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

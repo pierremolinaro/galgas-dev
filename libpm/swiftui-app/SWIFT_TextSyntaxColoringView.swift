@@ -23,7 +23,6 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
- // @ObservedObject, sinon les @Published ne sont pas observées
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
   @ObservedObject private var mTextSyntaxViewCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings
 
@@ -42,16 +41,8 @@ struct SWIFT_TextSyntaxColoringView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body: some View {
-//    VStack {
-//      HStack {
-//        Button ("Undo") { self.mSharedTextModel.undo () }
-//        .disabled (!self.mSharedTextModel.canUndo)
-//        Button ("Redo") { self.mSharedTextModel.redo () }
-//        .disabled (!self.mSharedTextModel.canRedo)
-//        Spacer ()
-//      }.padding (8)
     VSplitView {
-      TextEditor (text: self.$mSharedTextModel.mDocumentString)
+//      TextEditor (text: self.$mSharedTextModel.mDocumentString)
       SWIFT_LexicalHilitingTextEditor (
         id: self.mSourceFileID,
         self.mSharedTextModel,

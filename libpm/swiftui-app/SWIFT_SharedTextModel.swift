@@ -12,7 +12,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDelegate {
+final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
