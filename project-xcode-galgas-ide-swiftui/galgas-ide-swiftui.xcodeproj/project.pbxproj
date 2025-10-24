@@ -356,6 +356,7 @@
 		CF93BACB2D0D8CFD006DF788 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAAD2D0D8CFD006DF788 /* FIRST_computations.cpp */; };
 		CF93BACC2D0D8CFD006DF788 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */; };
 		CF93BACD2D0D8CFD006DF788 /* GrammarVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB42D0D8CFD006DF788 /* GrammarVocabulary.cpp */; };
+		CFA8408A2EAB7B9D0003A046 /* SWIFT_TextSyntaxViewCurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA840892EAB7B9A0003A046 /* SWIFT_TextSyntaxViewCurrentSettings.swift */; };
 		CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
 		CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
 		CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */; };
@@ -750,6 +751,7 @@
 		CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
 		CFA6E6932E1A8BB400C39E75 /* GALGAS_GenericMapRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GALGAS_GenericMapRoot.h; sourceTree = "<group>"; };
+		CFA840892EAB7B9A0003A046 /* SWIFT_TextSyntaxViewCurrentSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextSyntaxViewCurrentSettings.swift; sourceTree = "<group>"; };
 		CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
 		CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
@@ -1282,6 +1284,7 @@
 				CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */,
 				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
+				CFA840892EAB7B9A0003A046 /* SWIFT_TextSyntaxViewCurrentSettings.swift */,
 				CFD719C22E730970007736B6 /* SWIFT_Token.swift */,
 				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
 				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
@@ -1634,6 +1637,7 @@
 				CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */,
 				CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */,
 				CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */,
+				CFA8408A2EAB7B9D0003A046 /* SWIFT_TextSyntaxViewCurrentSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

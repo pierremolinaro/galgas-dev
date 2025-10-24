@@ -27,6 +27,7 @@ extension Notification.Name {
   @Environment(\.scenePhase) private var scenePhase
 
 //  private let mAllocationWindowVisibleAtLaunch : Bool
+  @State private var mAllocationWindowIsPresented = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -56,14 +57,19 @@ extension Notification.Name {
         .keyboardShortcut ("g", modifiers: [.shift, .command])
         Divider()
         Button ("Enter Selection") { self.sendTextFinderAction (.setSearchString) }
-        .keyboardShortcut("e", modifiers: .command)
+        .keyboardShortcut ("e", modifiers: .command)
         Divider()
         Button ("Find and Replace…") { self.sendTextFinderAction (.showReplaceInterface) }
-        .keyboardShortcut("r", modifiers: .command)
+        .keyboardShortcut ("r", modifiers: .command)
       }
       CommandMenu ("Debug") {
-        Button ("Show Allocation Debug") { self.openWindow (id: "AllocationDebug") }
-        .keyboardShortcut(",", modifiers: [.command, .control])
+        Button ("Show Allocation Debug") {
+          if !self.mAllocationWindowIsPresented {
+            self.mAllocationWindowIsPresented = true
+            self.openWindow (id: "AllocationDebug")
+          }
+        }
+        .keyboardShortcut (",", modifiers: [.command, .option])
       }
     }
     Settings {

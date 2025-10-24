@@ -11,43 +11,36 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-final class SWIFT_TextSyntaxViewCurrentSettings : ObservableObject {
-  @Published var mBottomViewIsVisible = false
-  @Published var mTopViewSelection = NSRange ()
-  @Published var mBottomViewSelection = NSRange ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct SWIFT_TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
-  @ObservedObject private var mTextSyntaxViewCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings
-
-  private let mSourceFileID : SWIFT_FileNodeID
+  @Binding private var mTextSyntaxViewCurrentSettingsBinding : SWIFT_TextSyntaxViewCurrentSettings
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (id inID : SWIFT_FileNodeID,
-        _ inSharedTextModel : ObservedObject <SWIFT_SharedTextModel>,
-        currentSettings inCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings) {
-    self._mSharedTextModel = inSharedTextModel
-    self.mTextSyntaxViewCurrentSettings = inCurrentSettings
-    self.mSourceFileID = inID
+  init (model inSharedTextModel : SWIFT_SharedTextModel,
+        currentSettings inCurrentSettingsBinding : Binding <SWIFT_TextSyntaxViewCurrentSettings>) {
+    self.mSharedTextModel = inSharedTextModel
+    self._mTextSyntaxViewCurrentSettingsBinding = inCurrentSettingsBinding
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mTopViewSelection : NSRange = NSRange ()
+  @State private var mBottomViewSelection : NSRange = NSRange ()
 
   var body: some View {
     VSplitView {
 //      TextEditor (text: self.$mSharedTextModel.mDocumentString)
       SWIFT_LexicalHilitingTextEditor (
-        id: self.mSourceFileID,
-        self.mSharedTextModel,
-        selectionBinding: self.$mTextSyntaxViewCurrentSettings.mTopViewSelection
+        model: self.mSharedTextModel,
+        selectionBinding: self.$mTopViewSelection
+//        selectionBinding: self.$mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection
       )
+      .onAppear { self.mTopViewSelection = self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection }
+//      .onChange (of: self.mTopViewSelection) { self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection = self.mTopViewSelection }
       .focusedValue (
         \.activeView,
         ActiveViewKeyStructValue (
@@ -56,19 +49,19 @@ struct SWIFT_TextSyntaxColoringView : View {
           canRedo: self.mSharedTextModel.canRedo
         )
       )
-      .conditionalOverlay (condition: !self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible, alignment: .topTrailing) {
+      .conditionalOverlay (condition: !self.mTextSyntaxViewCurrentSettingsBinding.mBottomViewIsVisible, alignment: .topTrailing) {
         HStack {
-          Button ("+") { self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible = true }
+          Button ("+") { self.mTextSyntaxViewCurrentSettingsBinding.mBottomViewIsVisible = true }
           Spacer ().frame (width: 15)
         }
       }
-      if self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible {
+      if self.mTextSyntaxViewCurrentSettingsBinding.mBottomViewIsVisible {
         VStack {
           Spacer ().frame (height: 12)
           SWIFT_LexicalHilitingTextEditor (
-            id: self.mSourceFileID,
-            self.mSharedTextModel,
-            selectionBinding: self.$mTextSyntaxViewCurrentSettings.mBottomViewSelection
+            model: self.mSharedTextModel,
+            selectionBinding: self.$mBottomViewSelection
+//            selectionBinding: self.$mTextSyntaxViewCurrentSettingsBinding.mBottomViewSelection
           )
           .focusedValue (
             \.activeView,
@@ -80,7 +73,7 @@ struct SWIFT_TextSyntaxColoringView : View {
           )
           .overlay (alignment: .topTrailing) {
             HStack {
-              Button ("-") { self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible = false }
+              Button ("-") { self.mTextSyntaxViewCurrentSettingsBinding.mBottomViewIsVisible = false }
               Spacer ().frame (width: 15)
             }
           }

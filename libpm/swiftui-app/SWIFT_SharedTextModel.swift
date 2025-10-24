@@ -8,17 +8,20 @@
 
 import SwiftUI
 import Combine
-import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDelegate {
+final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mScanner : SWIFT_Scanner
   private let mTextStorage = NSTextStorage ()
-  @Published var mDocumentString : String
+  var mDocumentString : String {
+    didSet {
+      print ("Document string changed")
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -110,7 +113,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func createAndConfigureTextView () -> InternalNSTextView {
-//    print ("createAndConfigureTextView")
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
     layoutManager.allowsNonContiguousLayout = true
@@ -135,7 +137,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func textViewIsDeiniting (_ inTextView : InternalNSTextView) {
-    print ("textViewIsDeiniting")
     if let lm = inTextView.layoutManager {
       while lm.textContainers.count > 0 {
         lm.removeTextContainer (at: 0)
@@ -198,6 +199,9 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, NSTextStorageDel
         changeInLength: inDelta
       )
     }
+    if self.mDocumentString != self.mTextStorage.string {
+      self.mDocumentString = self.mTextStorage.string
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,19 +214,15 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mSelectionBinding : Binding <NSRange>
-  fileprivate let mTextView : InternalNSTextView
-  private let mSourceFileID : SWIFT_FileNodeID
+  @Binding private var mSelectionBinding : NSRange
+  private let mTextView : InternalNSTextView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (id inID : SWIFT_FileNodeID,
-        _ inSharedTextModel : SWIFT_SharedTextModel,
+  init (model inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>) {
-    print ("init SWIFT_LexicalHilitingTextEditor \(inID)")
-    self.mSourceFileID = inID
     self.mTextView = inSharedTextModel.createAndConfigureTextView ()
-    self.mSelectionBinding = inSelectionBinding
+    self._mSelectionBinding = inSelectionBinding
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,7 +234,6 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func makeNSView (context inContext : Context) -> NSScrollView {
-    print ("makeNSView \(self.mSourceFileID)")
     self.mTextView.allowsUndo = true
     self.mTextView.isRichText = true
     self.mTextView.isAutomaticDataDetectionEnabled = false
@@ -256,7 +255,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     self.mTextView.autoresizingMask = [.width]
     self.mTextView.delegate = inContext.coordinator
   //--- ScrollView
-    let scrollView = NSScrollView ()
+    let scrollView = InternalNSScrollView ()
     scrollView.documentView = self.mTextView
     scrollView.hasVerticalScroller = true
     scrollView.autohidesScrollers = true
@@ -269,7 +268,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     scrollView.verticalRulerView = rulerView
     scrollView.rulersVisible = true
   //--- Restore selection
-    self.mTextView.selectedRange = self.mSelectionBinding.wrappedValue
+    self.mTextView.selectedRange = self.mSelectionBinding
     DispatchQueue.main.async {
       self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
     }
@@ -281,9 +280,15 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   func updateNSView (_ inUnusedScrollView : NSScrollView,
                      context inContext : Context) {
- //   self.mTextView.setNeedsDisplay (self.mTextView.bounds)
-    print ("updateNSView \(self.mSourceFileID)")
-    _ = self.mSourceFileID
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func selectionRangeDidChange () {
+    self.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
+    if self.mSelectionBinding != self.mTextView.selectedRange {
+      self.mSelectionBinding = self.mTextView.selectedRange
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -292,9 +297,38 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
 //--------------------------------------------------------------------------------------------------
 
-class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelegate {
+fileprivate final class InternalNSScrollView : NSScrollView {
 
-  let mParent : SWIFT_LexicalHilitingTextEditor
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init () {
+    super.init (frame: .zero)
+    noteObjectAllocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init? (coder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelegate {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mParent : SWIFT_LexicalHilitingTextEditor
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -313,11 +347,7 @@ class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func textViewDidChangeSelection (_ inUnusedNotification : Notification) {  // NSTextViewDelegate
-//    Swift.print ("textViewDidChangeSelection")
-    self.mParent.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
-    DispatchQueue.main.async {
-      self.mParent.mSelectionBinding.wrappedValue = self.mParent.mTextView.selectedRange
-    }
+    self.mParent.selectionRangeDidChange ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -330,8 +360,8 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mSharedTextModel : SWIFT_SharedTextModel
-  private var mUndoManager : UndoManager
+  private weak var mSharedTextModel : SWIFT_SharedTextModel?
+  private weak var mUndoManager : UndoManager?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -353,15 +383,13 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor deinit {
-    print ("deinit InternalNSTextView")
-    self.mSharedTextModel.textViewIsDeiniting (self)
+    self.mSharedTextModel?.textViewIsDeiniting (self)
     noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var undoManager : UndoManager? {
-//    Swift.print ("InternalNSTextView.undoManager \(self.mUndoManager?.description ?? "nil")")
     return self.mUndoManager
   }
 
@@ -407,11 +435,13 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
     )
     var range = nsTextViewComputedRange
 
-    range = self.mSharedTextModel.selectionRange (
-      forProposedRange: inProposedSelectionRange,
-      granularity: inGranularity,
-      nsTextViewComputedRange: nsTextViewComputedRange
-    )
+    if let model = self.mSharedTextModel {
+      range = model.selectionRange (
+        forProposedRange: inProposedSelectionRange,
+        granularity: inGranularity,
+        nsTextViewComputedRange: nsTextViewComputedRange
+      )
+    }
     return range
   }
 
