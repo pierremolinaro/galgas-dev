@@ -12,13 +12,13 @@ struct ProjectDocumentView : View {
 
   @Binding private var mDocument : ProjectDocument
   private let mProjectFileURL : URL
-  @StateObject var mProjectSharedTextModel : SWIFT_SharedTextModel
-  @StateObject private var mProjectTextSyntaxViewCurrentSettings = SWIFT_TextSyntaxViewCurrentSettings ()
+  @StateObject var mProjectTextModel : SWIFT_SharedTextModel
+//  @StateObject var mSourceTextModel = SWIFT_SharedTextModel (scanner: ScannerFor_galgasScanner3 (), string: "")
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
-  @State private var mSingleSelection : SWIFT_FileNodeID?
+  @State private var mSelectedFileNodeID : SWIFT_FileNodeID?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -30,8 +30,7 @@ struct ProjectDocumentView : View {
       scanner: ScannerFor_galgasScanner3 (),
       string: inDocumentBinding.mString.wrappedValue
     )
-    self._mProjectSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
-//    self.mCurrentSharedTextModel = projectSharedTextModel
+    self._mProjectTextModel = StateObject (wrappedValue: projectSharedTextModel)
     self._mRootDirectoryNode = StateObject (
       wrappedValue: SWIFT_RootDirectoryNode (
         url: inFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources")
@@ -47,10 +46,6 @@ struct ProjectDocumentView : View {
       .navigationSplitViewColumnWidth (min: 150, ideal: 250, max: 500)
     }detail: {
       self.detailView
-//      SWIFT_TextSyntaxColoringView (
-//        model: self.mProjectSharedTextModel,
-//        currentSettings: self.$mProjectTextSyntaxViewCurrentSettings
-//      )
     }
   }
 
@@ -58,18 +53,14 @@ struct ProjectDocumentView : View {
 
   @ViewBuilder private var sidebarView : some View {
     VStack {
-      Button ("Project") { self.mSingleSelection = nil }
+      Button ("Project") { self.mSelectedFileNodeID = nil }
       ScrollViewReader { (proxy : ScrollViewProxy) in
-        List (selection: self.$mSingleSelection) {
+        List (selection: self.$mSelectedFileNodeID) {
           ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
-            SWIFT_FileNodeView (node: child, selection: self.$mSingleSelection)
+            SWIFT_FileNodeView (node: child, selection: self.$mSelectedFileNodeID)
           }
         }
-        .onChange (of: self.mSingleSelection) { (_, newValue) in
-          if let selectedID = newValue {
-            DispatchQueue.main.async { proxy.scrollTo (selectedID, anchor: .center) }
-          }
-        }
+        .onChange (of: self.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
         .listStyle (.sidebar)
         .frame (minWidth: 400, minHeight: 500)
       }
@@ -79,33 +70,22 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private var detailView : some View {
-    if let fileNodeID = self.mSingleSelection {
+    if let fileNodeID = self.mSelectedFileNodeID {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
-        SWIFT_TextSyntaxColoringView (
-          model: stm,
-          currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
-        )
+        SWIFT_TextSyntaxColoringView (model: stm).id (fileNodeID)
       }else{
         EmptyView ()
       }
     }else{
-      SWIFT_TextSyntaxColoringView (
-        model: self.mProjectSharedTextModel,
-        currentSettings: self.mProjectTextSyntaxViewCurrentSettings
-      )
+      SWIFT_TextSyntaxColoringView (model: self.mProjectTextModel)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func fileSelectionDidChange (_ inProxy : ScrollViewProxy) {
-    if let selectedID = self.mSingleSelection {
-      DispatchQueue.main.async {
-        inProxy.scrollTo (selectedID, anchor: .center)
-      }
-//      self.mCurrentSharedTextModel = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: selectedID)
-    }else{
-
+    if let selectedID = self.mSelectedFileNodeID {
+      DispatchQueue.main.async { inProxy.scrollTo (selectedID, anchor: .center) }
     }
   }
 

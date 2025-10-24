@@ -16,14 +16,11 @@ struct SWIFT_TextSyntaxColoringView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
-  @ObservedObject private var mTextSyntaxViewCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (model inSharedTextModel : SWIFT_SharedTextModel,
-        currentSettings inCurrentSettings : SWIFT_TextSyntaxViewCurrentSettings) {
+  init (model inSharedTextModel : SWIFT_SharedTextModel) {
     self.mSharedTextModel = inSharedTextModel
-    self.mTextSyntaxViewCurrentSettings = inCurrentSettings
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,7 +31,7 @@ struct SWIFT_TextSyntaxColoringView : View {
       SWIFT_LexicalHilitingTextEditor (
         model: self.mSharedTextModel,
 //        selectionBinding: self.$mTopViewSelection
-        selectionBinding: self.$mTextSyntaxViewCurrentSettings.mTopViewSelection
+        selectionBinding: self.$mSharedTextModel.mTopViewSelection
       )
 //      .onAppear { self.mTopViewSelection = self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection }
 //      .onChange (of: self.mTopViewSelection) { self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection = self.mTopViewSelection }
@@ -46,19 +43,19 @@ struct SWIFT_TextSyntaxColoringView : View {
           canRedo: self.mSharedTextModel.canRedo
         )
       )
-      .conditionalOverlay (condition: !self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible, alignment: .topTrailing) {
+      .conditionalOverlay (condition: !self.mSharedTextModel.mBottomViewIsVisible, alignment: .topTrailing) {
         HStack {
-          Button ("+") { self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible = true }
+          Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
           Spacer ().frame (width: 15)
         }
       }
-      if self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible {
+      if self.mSharedTextModel.mBottomViewIsVisible {
         VStack {
           Spacer ().frame (height: 12)
           SWIFT_LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
 //            selectionBinding: self.$mBottomViewSelection
-            selectionBinding: self.$mTextSyntaxViewCurrentSettings.mBottomViewSelection
+            selectionBinding: self.$mSharedTextModel.mBottomViewSelection
           )
           .focusedValue (
             \.activeView,
@@ -70,7 +67,7 @@ struct SWIFT_TextSyntaxColoringView : View {
           )
           .overlay (alignment: .topTrailing) {
             HStack {
-              Button ("-") { self.mTextSyntaxViewCurrentSettings.mBottomViewIsVisible = false }
+              Button ("-") { self.mSharedTextModel.mBottomViewIsVisible = false }
               Spacer ().frame (width: 15)
             }
           }

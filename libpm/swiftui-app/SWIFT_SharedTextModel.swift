@@ -33,9 +33,9 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  @Published var mBottomViewIsVisible = false
-//  var mTopViewSelection = NSRange () // Pas de @Published
-//  var mBottomViewSelection = NSRange () // Pas de @Published
+  @Published var mBottomViewIsVisible = false
+  var mTopViewSelection = NSRange () // Pas de @Published
+  var mBottomViewSelection = NSRange () // Pas de @Published
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
