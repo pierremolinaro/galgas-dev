@@ -33,6 +33,12 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//  @Published var mBottomViewIsVisible = false
+//  var mTopViewSelection = NSRange () // Pas de @Published
+//  var mBottomViewSelection = NSRange () // Pas de @Published
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (scanner inScanner : SWIFT_Scanner,
         string inString : String) {
     self.mScanner = inScanner

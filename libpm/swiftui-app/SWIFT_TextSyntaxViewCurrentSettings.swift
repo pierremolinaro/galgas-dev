@@ -11,11 +11,10 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-struct SWIFT_TextSyntaxViewCurrentSettings : Identifiable {
-  let id = UUID ()
-  @State var mBottomViewIsVisible = false
-  @State var mTopViewSelection = NSRange ()
-  @State var mBottomViewSelection = NSRange ()
+final class SWIFT_TextSyntaxViewCurrentSettings : ObservableObject {
+  @Published var mBottomViewIsVisible = false
+  var mTopViewSelection = NSRange () // Pas de @Published
+  var mBottomViewSelection = NSRange () // Pas de @Published
 }
 
 //--------------------------------------------------------------------------------------------------

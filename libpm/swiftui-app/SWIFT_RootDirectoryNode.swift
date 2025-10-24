@@ -33,7 +33,6 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor deinit { // Stop monitoring
-    print ("deinit")
     self.stopMonitoring ()
     noteObjectDeallocation (self)
   }

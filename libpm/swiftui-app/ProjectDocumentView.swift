@@ -1,11 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
+import Combine
 import UniformTypeIdentifiers
-
-//--------------------------------------------------------------------------------------------------
-
-//fileprivate var gSourceDocumentArray = [SWIFT_SourceDocument] ()
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,7 +13,7 @@ struct ProjectDocumentView : View {
   @Binding private var mDocument : ProjectDocument
   private let mProjectFileURL : URL
   @StateObject var mProjectSharedTextModel : SWIFT_SharedTextModel
-  @State private var mProjectTextSyntaxViewCurrentSettings = SWIFT_TextSyntaxViewCurrentSettings ()
+  @StateObject private var mProjectTextSyntaxViewCurrentSettings = SWIFT_TextSyntaxViewCurrentSettings ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -27,7 +24,6 @@ struct ProjectDocumentView : View {
 
   init (document inDocumentBinding : Binding <ProjectDocument>,
         fileURL inFileURL : URL) {
-    print ("INIT ProjectDocumentView")
     self._mDocument = inDocumentBinding
     self.mProjectFileURL = inFileURL
     let projectSharedTextModel = SWIFT_SharedTextModel (
@@ -83,21 +79,21 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private var detailView : some View {
-//    if let fileNodeID = self.mSingleSelection {
-//      if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
-//        SWIFT_TextSyntaxColoringView (
-//          model: stm,
-//          currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
-//        )
-//      }else{
-//        EmptyView ()
-//      }
-//    }else{
+    if let fileNodeID = self.mSingleSelection {
+      if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
+        SWIFT_TextSyntaxColoringView (
+          model: stm,
+          currentSettings: self.mRootDirectoryNode.findOrAddSourceSettings (forNodeID: fileNodeID)
+        )
+      }else{
+        EmptyView ()
+      }
+    }else{
       SWIFT_TextSyntaxColoringView (
         model: self.mProjectSharedTextModel,
-        currentSettings: self.$mProjectTextSyntaxViewCurrentSettings
+        currentSettings: self.mProjectTextSyntaxViewCurrentSettings
       )
-//    }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
