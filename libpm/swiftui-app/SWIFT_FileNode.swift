@@ -70,6 +70,15 @@ final class SWIFT_FileNode : Identifiable, ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func buildNodeIDSet (_ ioNodeIDSet : inout Set <SWIFT_FileNodeID>) {
+    ioNodeIDSet.insert (self.id)
+    for child in self.mChildren {
+      child.buildNodeIDSet (&ioNodeIDSet)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   var isDirectory : Bool {
     var isDir: ObjCBool = false
     FileManager.default.fileExists (atPath: self.mURL.path, isDirectory: &isDir)
@@ -79,15 +88,15 @@ final class SWIFT_FileNode : Identifiable, ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func fileURL (forID inID : SWIFT_FileNodeID) -> URL? {
-    if self.isDirectory {
+    if self.id == inID {
+      return self.mURL
+    }else if self.isDirectory {
       for child in self.mChildren {
         if let url = child.fileURL (forID: inID) {
           return url
         }
       }
       return nil
-    }else if self.id == inID {
-      return self.mURL
     }else{
       return nil
     }

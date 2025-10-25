@@ -164,7 +164,6 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
-		CF4476DF2EA96E5C0065CC16 /* SWIFT_SourceDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */; };
 		CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */; };
 		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
 		CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */; };
@@ -704,7 +703,6 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
-		CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceDocument.swift; sourceTree = "<group>"; };
 		CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_RootDirectoryNode.swift; sourceTree = "<group>"; };
 		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
 		CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeID.swift; sourceTree = "<group>"; };
@@ -752,8 +750,6 @@
 		CFA6E6932E1A8BB400C39E75 /* GALGAS_GenericMapRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GALGAS_GenericMapRoot.h; sourceTree = "<group>"; };
 		CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
 		CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
-		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
-		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
 		CFD719AD2E7307FB007736B6 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		CFD719B02E73085C007736B6 /* AllocationDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationDebugView.swift; sourceTree = "<group>"; };
@@ -1200,9 +1196,7 @@
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF8F81BF2D0DADF40095170B /* gui-cocoa.swift */,
-				CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */,
 				CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */,
-				CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */,
 				CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */,
 				CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */,
 				CFD719B52E7308E8007736B6 /* lexique-galgas+template+scanner-swiftui.swift */,
@@ -1279,7 +1273,6 @@
 				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
 				CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
-				CF4476DE2EA96E500065CC16 /* SWIFT_SourceDocument.swift */,
 				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
 				CFD719C22E730970007736B6 /* SWIFT_Token.swift */,
@@ -1624,7 +1617,6 @@
 				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */,
-				CF4476DF2EA96E5C0065CC16 /* SWIFT_SourceDocument.swift in Sources */,
 				CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */,
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,

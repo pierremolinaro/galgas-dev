@@ -13,12 +13,10 @@ struct ProjectDocumentView : View {
   @Binding private var mDocument : ProjectDocument
   private let mProjectFileURL : URL
   @StateObject var mProjectTextModel : SWIFT_SharedTextModel
-//  @StateObject var mSourceTextModel = SWIFT_SharedTextModel (scanner: ScannerFor_galgasScanner3 (), string: "")
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
-  @State private var mSelectedFileNodeID : SWIFT_FileNodeID?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,11 +29,10 @@ struct ProjectDocumentView : View {
       string: inDocumentBinding.mString.wrappedValue
     )
     self._mProjectTextModel = StateObject (wrappedValue: projectSharedTextModel)
-    self._mRootDirectoryNode = StateObject (
-      wrappedValue: SWIFT_RootDirectoryNode (
-        url: inFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources")
-      )
+    let rootDirectoryNode = SWIFT_RootDirectoryNode (
+      url: inFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources")
     )
+    self._mRootDirectoryNode = StateObject (wrappedValue: rootDirectoryNode)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,14 +50,14 @@ struct ProjectDocumentView : View {
 
   @ViewBuilder private var sidebarView : some View {
     VStack {
-      Button ("Project") { self.mSelectedFileNodeID = nil }
+      Button ("Project") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
       ScrollViewReader { (proxy : ScrollViewProxy) in
-        List (selection: self.$mSelectedFileNodeID) {
+        List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
           ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
-            SWIFT_FileNodeView (node: child, selection: self.$mSelectedFileNodeID)
+            SWIFT_FileNodeView (node: child, selection: self.$mRootDirectoryNode.mSelectedFileNodeID)
           }
         }
-        .onChange (of: self.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
+        .onChange (of: self.mRootDirectoryNode.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
         .listStyle (.sidebar)
         .frame (minWidth: 400, minHeight: 500)
       }
@@ -70,7 +67,7 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private var detailView : some View {
-    if let fileNodeID = self.mSelectedFileNodeID {
+    if let fileNodeID = self.mRootDirectoryNode.mSelectedFileNodeID {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
         SWIFT_TextSyntaxColoringView (model: stm).id (fileNodeID)
       }else{
@@ -84,7 +81,7 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func fileSelectionDidChange (_ inProxy : ScrollViewProxy) {
-    if let selectedID = self.mSelectedFileNodeID {
+    if let selectedID = self.mRootDirectoryNode.mSelectedFileNodeID {
       DispatchQueue.main.async { inProxy.scrollTo (selectedID, anchor: .center) }
     }
   }

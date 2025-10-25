@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Combine
-import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,6 +17,7 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   @Published var mURL : URL
   @Published private(set) var mChildren : [SWIFT_FileNode]
+  @Published var mSelectedFileNodeID : SWIFT_FileNodeID? = nil
   private var mStream : FSEventStreamRef? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -25,9 +25,9 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
   init (url inURL : URL) {
     self.mURL = inURL
     self.mChildren = []
+    noteObjectAllocation (self)
     self.loadChildren ()
     self.startMonitoring ()
-    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,6 +53,24 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
     }catch{
       print("Erreur lors de la lecture du dossier: \(error)")
       self.mChildren = []
+    }
+    var nodeIDSet = Set <SWIFT_FileNodeID> ()
+    self.buildNodeIDSet (&nodeIDSet)
+    if let fileNodeID = self.mSelectedFileNodeID, !nodeIDSet.contains (fileNodeID) {
+      self.mSelectedFileNodeID = nil
+    }
+    for nodeID in self.mSourceTextDictionary.keys {
+      if !nodeIDSet.contains (nodeID) {
+        self.mSourceTextDictionary [nodeID] = nil
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func buildNodeIDSet (_ ioNodeIDSet : inout Set <SWIFT_FileNodeID>) {
+    for child in self.mChildren {
+      child.buildNodeIDSet (&ioNodeIDSet)
     }
   }
 
@@ -141,7 +159,6 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func findOrAddSourceText (forNodeID inID : SWIFT_FileNodeID) -> SWIFT_SharedTextModel? {
-    print ("findOrAddSourceText forNodeID \(inID)")
     if let stm = self.mSourceTextDictionary [inID] {
       return stm
     }else if let fileURL = self.fileURL (forID: inID),

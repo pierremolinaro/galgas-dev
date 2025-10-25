@@ -24,7 +24,8 @@ struct SWIFT_FileNodeView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (node inNode : SWIFT_FileNode, selection inSelectionBinding : Binding <SWIFT_FileNodeID?>) {
+  init (node inNode : SWIFT_FileNode,
+        selection inSelectionBinding : Binding <SWIFT_FileNodeID?>) {
     self.mNode = inNode
     self._mSelectionBinding = inSelectionBinding
   }

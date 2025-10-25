@@ -43,7 +43,7 @@ extension Notification.Name {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body : some Scene {
-    DocumentGroup (newDocument: ProjectDocument()) { file in
+    DocumentGroup (newDocument: ProjectDocument ()) { file in
       ProjectDocumentView (document: file.$document, fileURL: file.fileURL!)
     }
     .commands { MyUndoRedoCommands () }
