@@ -20,7 +20,8 @@ final class SWIFT_FileNode : Identifiable, ObservableObject {
   @Published var mURL : URL
   @Published private(set) var mChildren : [SWIFT_FileNode] = []
   @Published var mIsRenaming : Bool = false
-  private weak var mRootNode : SWIFT_RootDirectoryNode?
+  @Published var mIsEdited : Bool = false
+  private(set) weak var mRootNode : SWIFT_RootDirectoryNode?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -99,6 +100,18 @@ final class SWIFT_FileNode : Identifiable, ObservableObject {
       return nil
     }else{
       return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func propagateFileEditionState (_ inEditedFileIDSet : Set <SWIFT_FileNodeID>) {
+     let edited = inEditedFileIDSet.contains (self.id)
+     if self.mIsEdited != edited {
+       DispatchQueue.main.async { self.mIsEdited = edited }
+     }
+     for child in self.mChildren {
+       child.propagateFileEditionState (inEditedFileIDSet)
     }
   }
 

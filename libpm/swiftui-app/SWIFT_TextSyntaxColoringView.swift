@@ -30,11 +30,8 @@ struct SWIFT_TextSyntaxColoringView : View {
 //      TextEditor (text: self.$mSharedTextModel.mDocumentString)
       SWIFT_LexicalHilitingTextEditor (
         model: self.mSharedTextModel,
-//        selectionBinding: self.$mTopViewSelection
         selectionBinding: self.$mSharedTextModel.mTopViewSelection
       )
-//      .onAppear { self.mTopViewSelection = self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection }
-//      .onChange (of: self.mTopViewSelection) { self.mTextSyntaxViewCurrentSettingsBinding.mTopViewSelection = self.mTopViewSelection }
       .focusedValue (
         \.activeView,
         ActiveViewKeyStructValue (
@@ -54,7 +51,6 @@ struct SWIFT_TextSyntaxColoringView : View {
           Spacer ().frame (height: 12)
           SWIFT_LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
-//            selectionBinding: self.$mBottomViewSelection
             selectionBinding: self.$mSharedTextModel.mBottomViewSelection
           )
           .focusedValue (

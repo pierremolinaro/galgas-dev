@@ -1,5 +1,5 @@
 
-import AppKit
+import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 //                           Template Replacements
@@ -49,20 +49,241 @@ end%
 
 //--------------------------------------------------------------------------------------------------
 
-func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
+/* func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
   return "%!LEXIQUE_CLASS_NAME%"
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S
-//--------------------------------------------------------------------------------------------------
 
-class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
+struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func isTemplateLexique () -> Bool {
-    return true
+  @AppStorage("FontFor_%!LEXIQUE_CLASS_NAME%")
+  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+
+  @AppStorage("LineHeightFor_%!LEXIQUE_CLASS_NAME%")
+  private var mLineHeight : Int = 12
+
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%")
+  private var mDefaultColor : Color = .black
+
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mColorFor_%!identifier.string% : Color = .black
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mBoldFor_%!identifier.string% : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+  private var mItalicFor_%!identifier.string% : Bool = false
+
+%end%
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mColorFor_lexical_error : Color = .red
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mBoldFor_lexical_error : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+  private var mItalicFor_lexical_error : Bool = false
+
+  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mColorFor_template : Color = .gray
+
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mBoldFor_template : Bool = false
+
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
+  private var mItalicFor_template : Bool = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var body : some View {
+    Form {
+      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
+      Picker("Line Height", selection: self.$mLineHeight) {
+        Text("1.0").tag(10)
+        Text("1.1").tag(11)
+        Text("1.2").tag(12)
+        Text("1.5").tag(15)
+        Text("1.7").tag(17)
+        Text("2.0").tag(20)
+      }.pickerStyle(.automatic)
+      ColorPicker ("Default Color", selection: self.$mDefaultColor)
+%for (identifier comment) in LEXICAL_STYLE_LIST do
+%      LabeledContent (%![comment.string utf8RepresentationEscapingQuestionMark]%) {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_%!identifier.string%).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_%!identifier.string%)
+          Toggle ("Italic", isOn: self.$mItalicFor_%!identifier.string%)
+        }
+      }
+%end%      LabeledContent ("Lexical Error") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
+          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
+        }
+      }
+      LabeledContent ("Template") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_template)
+          Toggle ("Italic", isOn: self.$mItalicFor_template)
+        }
+      }
+    }.padding (20)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   Template Scanner Class
+//--------------------------------------------------------------------------------------------------
+
+class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func isTemplateLexique () -> Bool { true }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+    ioStyleDidChange = false
+    let ud = UserDefaults.standard
+    if let s = ud.string (forKey: "FontFor_%!LEXIQUE_CLASS_NAME%"), let v = CustomFont (rawValue: s) {
+      if self.mFont != v {
+        self.mFont = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "LineHeightFor_%!LEXIQUE_CLASS_NAME%"), let v = Int (s) {
+      if self.mLineHeight != v {
+        self.mLineHeight = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%"), let v = Color (rawValue: s) {
+      if self.mDefaultColor != v {
+        self.mDefaultColor = v
+        ioStyleDidChange = true
+      }
+    }
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"), let v = Color (rawValue: s) {
+      if self.mColorFor_%!identifier.string% != v {
+        self.mColorFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+      if self.mBoldFor_%!identifier.string% != v {
+        self.mBoldFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
+      if self.mItalicFor_%!identifier.string% != v {
+        self.mItalicFor_%!identifier.string% = v
+        ioStyleDidChange = true
+      }
+    }
+%end
+%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error"), let v = Color (rawValue: s) {
+      if self.mColorFor_lexical_error != v {
+        self.mColorFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+      if self.mBoldFor_lexical_error != v {
+        self.mBoldFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
+      if self.mItalicFor_lexical_error != v {
+        self.mItalicFor_lexical_error = v
+        ioStyleDidChange = true
+      }
+    }
+    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_template"), let v = Color (rawValue: s) {
+      if self.mColorFor_template != v {
+        self.mColorFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template")
+      if self.mBoldFor_template != v {
+        self.mBoldFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
+      if self.mItalicFor_template != v {
+        self.mItalicFor_template = v
+        ioStyleDidChange = true
+      }
+    }
+  //--- Build token attribute array
+    if ioStyleDidChange {
+      let fontManager = NSFontManager.shared
+      let boldFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .boldFontMask)
+      let italicFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .italicFontMask)
+      let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
+      self.mTokenAttributeArray.removeAll (keepingCapacity: true)
+      var attributes = [NSAttributedString.Key : Any] ()
+%for (identifier *) in LEXICAL_STYLE_LIST do
+%    //--- Attributes for %!identifier.string%
+      if self.mColorFor_%!identifier.string% != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_%!identifier.string%)
+      }
+      if self.mBoldFor_%!identifier.string% && self.mItalicFor_%!identifier.string% {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_%!identifier.string% {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_%!identifier.string% {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+%end
+%    //--- Lexical error
+      if self.mColorFor_lexical_error != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_lexical_error)
+      }
+      if self.mBoldFor_lexical_error && self.mItalicFor_lexical_error {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_lexical_error {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_lexical_error {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+      attributes.removeAll (keepingCapacity: true)
+    //--- Template
+      if self.mColorFor_template != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_template)
+      }
+      if self.mBoldFor_template && self.mItalicFor_template {
+        attributes [.font] = boldItalicFont
+      }else if self.mBoldFor_template {
+        attributes [.font] = boldFont
+      }else if self.mItalicFor_template {
+        attributes [.font] = italicFont
+      }
+      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -71,7 +292,8 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 
   override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
     let startLocation = self.currentLocation
-    if let idx = self.mEndTemplateDelimiterIndex, self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
+    if let idx = self.mEndTemplateDelimiterIndex,
+       self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
       self.mEndTemplateDelimiterIndex = nil
     }
     if self.mEndTemplateDelimiterIndex != nil {
@@ -96,156 +318,10 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
       )
     }
   }
-//    var styleIndex : UInt8 = 0
-//    var tokenCode : UInt16 = 0
-//    let startLocation = self.currentLocation
-//    while styleIndex == 0, self.currentChar != 0 {
-//      let tokenStartLocation = self.currentLocation
-//      if let idx = matchedTemplateDelimiterIndex, !kTemplateDefinitionArray_galgasTemplateScanner [idx].startString.isEmpty {
-//        let foundEndDelimitor = self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true)
-//        if foundEndDelimitor {
-//          matchedTemplateDelimiterIndex = nil
-//        }
-//      }
-//      while matchedTemplateDelimiterIndex != nil, self.currentChar != 0 {
-//        self.searchForReplacementPattern (kTemplateReplacementArray_galgasTemplateScanner)
-//        matchedTemplateDelimiterIndex = self.findTemplateDelimiterIndex (kTemplateDefinitionArray_galgasTemplateScanner)
-//        if matchedTemplateDelimiterIndex == nil {
-//          self.advance ()
-//          styleIndex = -2
-//        }
-//      }
-//      if matchedTemplateDelimiterIndex != nil, styleIndex == 0, self.currentChar != 0 {
-//        let s = super.parseLexicalTokenForLexicalColoring ()
-//        styleIndex = s.styleIndex
-//        tokenCode = s.token
-//      }
-//      if styleIndex > 0, kEndOfScriptInTemplateArray_galgasTemplateScanner [Int (styleIndex) - 1] {
-//        matchedTemplateDelimiterIndex = nil
-//      }
-//    //--- Error ?
-////      if !scanningOk {
-////        styleIndex = Int8 (self.styleCount ())
-////        self.advance ()
-////      }
-//    }
-//  }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //--------------------------------------------------------------------------------------------------
-//                           init
-//--------------------------------------------------------------------------------------------------
 
-/* - (instancetype) init {
-  self = [super init] ;
-  if (self) {
-    noteObjectAllocation (self) ;
-  }
-% if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-%  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
-%    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
-  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
-      if [mEndString count] == 0 then
-        %nil%
-      else
-        %@%![mEndString utf8RepresentationEscapingQuestionMark]
-      end
-      % discardStartString:%
-      ![not mPreservesStartDelimiter ocString]
-      %],\n%
-  end
-  %      nil\n%
-  %    ] ;\n%
-  %  }\n%
-  end
-  if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
-  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
-  %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8RepresentationEscapingQuestionMark]%,\n%
-  end
-  %      nil\n%
-  %    ] ;\n%
-  %  }\n%
-  end
-%  return self ;
-}
-*/
-
-//--------------------------------------------------------------------------------------------------
-
-/* - (void) dealloc {
-  noteObjectDeallocation (self) ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-//            Terminal Symbols as end of script in template mark
-//--------------------------------------------------------------------------------------------------
-
-/*
-% for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST
-    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[TERMINAL_LIST count] string]%] = {\n%
-    do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
-    between %,\n%
-    after %\n} ;\n%
-  end
-% */
-
-//--------------------------------------------------------------------------------------------------
-//               P A R S E    L E X I C A L    T O K E N
-//--------------------------------------------------------------------------------------------------
-
-/* - (void) parseLexicalTokenForLexicalColoring {
-  BOOL scanningOk = YES ;
-  mTokenCode = 0 ;
-  while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-    mTokenStartLocation = mCurrentLocation ;
-    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
-      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
-      if (foundEndDelimitor) {
-        mMatchedTemplateDelimiterIndex = -1 ;
-      }
-    }
-    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      if (mMatchedTemplateDelimiterIndex < 0) {
-        [self advance] ;
-        mTokenCode = -2 ;
-      }
-    }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
-      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
-    }
-    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
-      mMatchedTemplateDelimiterIndex = -1 ;
-    }
-  //--- Error ?
-    if (! scanningOk) {
-      mTokenCode = -1 ;
-      [self advance] ;
-    }
-  }
-}
-*/ 
-//--------------------------------------------------------------------------------------------------
-//                I S    T E M P L A T E    L E X I Q U E
-//--------------------------------------------------------------------------------------------------
-
-/* - (BOOL) isTemplateLexique {
-  return YES ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-//         L E X I Q U E   I D E N T I F I E R
-//--------------------------------------------------------------------------------------------------
-
-/* - (NSString *) lexiqueIdentifier {
-  return @"%!LEXIQUE_CLASS_NAME%" ;
-} */
-
-//--------------------------------------------------------------------------------------------------

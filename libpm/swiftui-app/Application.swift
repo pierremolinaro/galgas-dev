@@ -12,19 +12,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
+
+//--------------------------------------------------------------------------------------------------
+
 extension Notification.Name {
-  static let myUndoCommand = Notification.Name ("my.undo.command")
-  static let myRedoCommand = Notification.Name ("my.redo.command")
+  static let mySaveAllCommand = Notification.Name ("my.save.all.command")
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @main struct Application : App {
 
+//  @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Environment(\.openWindow) private var openWindow
-  @Environment(\.scenePhase) private var scenePhase
+//  @Environment(\.scenePhase) private var scenePhase
 
 //  private let mAllocationWindowVisibleAtLaunch : Bool
   @State private var mAllocationWindowIsPresented = false
@@ -46,7 +51,32 @@ extension Notification.Name {
     DocumentGroup (newDocument: ProjectDocument ()) { file in
       ProjectDocumentView (document: file.$document, fileURL: file.fileURL!)
     }
+    Settings {
+      SettingsView ()
+    }
+    WindowGroup (id: "AllocationDebug") {
+      AllocationDebugView ()
+      .navigationTitle ("Allocation Debug")
+      .frame (minWidth: 800, minHeight: 400)
+    }
+  //--- Undo / Redo commands
     .commands { MyUndoRedoCommands () }
+  //--- Quit COMMAND
+    .commands {
+      CommandGroup (replacing: .appTermination) {
+        Divider ()
+        Button ("Quit \(NSRunningApplication.current.localizedName ?? "??")") { self.handleQuitCommand () }
+        .keyboardShortcut ("q", modifiers: .command)
+      }
+    }
+  //--- Save All Command
+    .commands {
+      CommandGroup (before: .saveItem) {
+        Button ("Save All") { self.handleSaveAllCommand () }
+        .keyboardShortcut ("s", modifiers: [.shift, .command])
+      }
+    }
+  //--- Find Menu
     .commands {
       CommandMenu ("Find") {
         Button ("Find…") { self.sendTextFinderAction (.showFindInterface) }
@@ -62,6 +92,9 @@ extension Notification.Name {
         Button ("Find and Replace…") { self.sendTextFinderAction (.showReplaceInterface) }
         .keyboardShortcut ("r", modifiers: .command)
       }
+    }
+  //--- Debug Menu
+    .commands {
       CommandMenu ("Debug") {
         Button ("Show Allocation Debug") {
           if !self.mAllocationWindowIsPresented {
@@ -72,14 +105,23 @@ extension Notification.Name {
         .keyboardShortcut (",", modifiers: [.command, .option])
       }
     }
-    Settings {
-      SettingViewFor_galgasScanner3 ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func handleQuitCommand () {
+    self.handleSaveAllCommand ()
+  //--- L'instruction suivante va diffuser la notification NSApplication.willTerminateNotification
+    NSApplication.shared.terminate (nil)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func handleSaveAllCommand () {
+    for document in NSDocumentController.shared.documents {
+      document.save (nil) // Sauve les projets
     }
-    WindowGroup (id: "AllocationDebug") {
-      AllocationDebugView ()
-      .navigationTitle ("Allocation Debug")
-      .frame (minWidth: 800, minHeight: 400)
-    }
+    NotificationCenter.default.post (name: .mySaveAllCommand, object: nil)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -96,23 +138,37 @@ extension Notification.Name {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func replaceUndoRedoCommands () -> some Commands {
-    CommandGroup (replacing: .undoRedo) {
-      Button ("Undo") { NotificationCenter.default.post (name: .myUndoCommand, object: nil) }
-      .keyboardShortcut ("z", modifiers: .command)
-      Button ("Redo") { NotificationCenter.default.post (name: .myRedoCommand, object: nil) }
-      .keyboardShortcut ("z", modifiers: [.shift, .command])
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------
 
+//final class AppDelegate : NSObject, NSApplicationDelegate {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  func applicationDidFinishLaunching (_ inNotification : Notification) {
+//    print ("Finish Launching")
+////    NSApp.openWindow (id: "AllocationDebug")
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  func applicationShouldTerminate (_ inSender : NSApplication) -> NSApplication.TerminateReply {
+//    print ("Terminate")
+//        // Récupérer la fenêtre active et son document
+//    return .terminateNow
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//}
+
+//--------------------------------------------------------------------------------------------------
+
 struct MyUndoRedoCommands : Commands {
-    @FocusedValue(\.activeView) var activeView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @FocusedValue(\.activeView) var activeView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

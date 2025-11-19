@@ -52,18 +52,17 @@ struct SWIFT_FileNodeView : View {
   @ViewBuilder private func rowView () -> some View {
     VStack {
       HStack {
+        if self.mNode.mIsEdited {
+          Text ("●")
+        }
         self.fileIcon (for: self.mNode.mURL)
         if self.mNode.mIsRenaming {
           self.fileNameEditor ()
         }else{
           Text (verbatim: "\(self.mNode.mURL.lastPathComponent)")
         }
-        Spacer()
+        Spacer ()
       }
-//      HStack {
-//        Text (verbatim: self.mNode.id.description)
-//        Spacer ()
-//      }
     }
     .onTapGesture (count: 1) {
       if self.mSelectionBinding != self.mNode.id {
@@ -181,6 +180,8 @@ struct SWIFT_FileNodeView : View {
     let newURL = self.mNode.mURL.deletingLastPathComponent().appendingPathComponent (inNewName)
     do{
       try FileManager.default.moveItem (at: self.mNode.mURL, to: newURL)
+      let renamedFileID = SWIFT_FileNodeID (url: newURL)
+      self.mNode.mRootNode?.loadChildrenAndSelect (renamedFileID)
     }catch{
       self.mShowFileOperationError = true
       self.mErrorMessage = error.localizedDescription
@@ -228,9 +229,7 @@ struct SWIFT_FileNodeView : View {
       // 3. Copie le fichier
       try fileManager.copyItem (at: self.mNode.mURL, to: destinationURL)
       let duplicatedFileID = SWIFT_FileNodeID (url: destinationURL)
-      DispatchQueue.main.async {
-        self.mSelectionBinding = duplicatedFileID
-      }
+      self.mNode.mRootNode?.loadChildrenAndSelect (duplicatedFileID)
     }catch{
       self.mShowFileOperationError = true
       self.mErrorMessage = error.localizedDescription
@@ -267,9 +266,7 @@ struct SWIFT_FileNodeView : View {
     fileManager.createFile (atPath: destinationURL.path, contents: nil)
   //--- Select the new file
     let newFileID = SWIFT_FileNodeID (url: destinationURL)
-    DispatchQueue.main.async {
-      self.mSelectionBinding = newFileID
-    }
+    self.mNode.mRootNode?.loadChildrenAndSelect (newFileID)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -296,9 +293,7 @@ struct SWIFT_FileNodeView : View {
       try fileManager.createDirectory (at: destinationURL, withIntermediateDirectories: false)
     //--- Select the new folder
       let newFolderID = SWIFT_FileNodeID (url: destinationURL)
-      DispatchQueue.main.async {
-        self.mSelectionBinding = newFolderID
-      }
+      self.mNode.mRootNode?.loadChildrenAndSelect (newFolderID)
     }catch{
       self.mShowFileOperationError = true
       self.mErrorMessage = error.localizedDescription

@@ -28,30 +28,22 @@ func indexingDescriptorDictionary () -> [String : String] {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //                       Command Line Options                                                    
-//
 //--------------------------------------------------------------------------------------------------
 
 func enterOptions () -> [SWIFT_CommandLineOption] {
   var array = [SWIFT_CommandLineOption] ()
   array += enterOptionsFor_galgas_5F_cli_5F_options ()
-  array.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    type: .bool,
-    identifier: "quiet_output",
-    commandChar: "q",
-    commandString: "quiet",
-    comment: "Quiet output"
-  ))
-/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"quiet_output"
-    commandChar:'q'
-    commandString:@"quiet"
-    comment:@"Quiet output"
-    defaultValue:@""
-  ] ; */
+  array.append (
+    SWIFT_CommandLineOption (
+      domainName: "galgas_cli_options",
+      type: .bool,
+      identifier: "quiet_output",
+      commandChar: "q",
+      commandString: "quiet",
+      comment: "Quiet output"
+    )
+  )
   return array
 }
 

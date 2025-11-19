@@ -1,0 +1,79 @@
+
+import SwiftUI
+
+//--------------------------------------------------------------------------------------------------
+//    Project file extensions
+//--------------------------------------------------------------------------------------------------
+
+func indexingDescriptorDictionary () -> [String : String] {
+%if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
+% return [:]
+%
+else
+%  return [%
+for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList do
+  %  "%!projectFileExtension.string%" : "%!indexingPathSuffix.string%",%
+end  
+%]
+%
+end
+%}
+
+//--------------------------------------------------------------------------------------------------
+//   Global functions
+//--------------------------------------------------------------------------------------------------
+
+@MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
+  var result : SWIFT_Scanner? = nil\n%
+for (lkey mLexiqueName *) in GUI_CONTEXT.mExtensionMap
+  before %  if%
+  do % inExtension == %![lkey utf8RepresentationEscapingQuestionMark]% {\n%
+     %    result = ScannerFor_%!mLexiqueName% ()\n%
+  between %  }else if%
+  after %  }\n%
+end
+%  return result
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/* @MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {%
+if [GUI_CONTEXT.mWithLexiqueList count] == 0 then%
+  return []
+%else%
+  return [
+%for (mLexiqueClassName mIndex 5*) in GUI_CONTEXT.mWithLexiqueList
+  do %    SettingViewFor_%!mLexiqueClassName% ()%
+  between %,\n%
+end
+%
+  ]
+%end
+%} */
+
+//--------------------------------------------------------------------------------------------------
+
+struct SettingsView : View {
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ViewBuilder var body : some View {
+    TabView {
+%for (lexiqueClassName 2* title 3*) in GUI_CONTEXT.mWithLexiqueList
+  do %      SettingViewFor_%!lexiqueClassName% ().tabItem { Text ("%!title%") }\n%
+end
+%    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+/* func buildRunOption () -> String {
+  return "%!GUI_CONTEXT.mBuildRunOption%"
+} */
+
+//--------------------------------------------------------------------------------------------------
+

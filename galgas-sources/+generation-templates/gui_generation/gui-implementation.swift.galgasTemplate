@@ -44,9 +44,7 @@ end
 %}
 
 //--------------------------------------------------------------------------------------------------
-//
 //                       Command Line Options                                                    
-//
 //--------------------------------------------------------------------------------------------------
 
 func enterOptions () -> [SWIFT_CommandLineOption] {
@@ -56,39 +54,27 @@ for (mValue) in GUI_CONTEXT.mImportedOptionComponentList do
 end
 
 if QUIET_OUTPUT_BY_DEFAULT then
-%  array.append (SWIFT_CommandLineOption (\n%
-%    domainName: "galgas_cli_options",\n%
-%    type: .bool,\n%
-%    identifier: "verbose_output",\n%
-%    commandChar: "v",\n%
-%    commandString: "verbose",\n%
-%    comment: "Verbose output"\n%
-%  ))\n%
-%/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
-%    initWithDomainName:@"galgas_cli_options"\n%
-%    identifier:@"verbose_output"\n%
-%    commandChar:'v'\n%
-%    commandString:@"verbose"\n%
-%    comment:@"Verbose output"\n%
-%    defaultValue:@""\n%
-%  ] ; */\n%
+%  array.append (\n%
+%    SWIFT_CommandLineOption (\n%
+%      domainName: "galgas_cli_options",\n%
+%      type: .bool,\n%
+%      identifier: "verbose_output",\n%
+%      commandChar: "v",\n%
+%      commandString: "verbose",\n%
+%      comment: "Verbose output"\n%
+%    )\n%
+%  )\n%
 else
-%  array.append (SWIFT_CommandLineOption (\n%
-%    domainName: "galgas_cli_options",\n%
-%    type: .bool,\n%
-%    identifier: "quiet_output",\n%
-%    commandChar: "q",\n%
-%    commandString: "quiet",\n%
-%    comment: "Quiet output"\n%
-%  ))\n%
-%/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
-%    initWithDomainName:@"galgas_cli_options"\n%
-%    identifier:@"quiet_output"\n%
-%    commandChar:'q'\n%
-%    commandString:@"quiet"\n%
-%    comment:@"Quiet output"\n%
-%    defaultValue:@""\n%
-%  ] ; */\n%
+%  array.append (\n%
+%    SWIFT_CommandLineOption (\n%
+%      domainName: "galgas_cli_options",\n%
+%      type: .bool,\n%
+%      identifier: "quiet_output",\n%
+%      commandChar: "q",\n%
+%      commandString: "quiet",\n%
+%      comment: "Quiet output"\n%
+%    )\n%
+%  )\n%
 end
 %  return array
 }

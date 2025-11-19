@@ -191,6 +191,17 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'guiGenerationTemplates swiftui_gui_implementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (class Compiler * inCompiler,
+                                                                                        const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                        const class GGS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'addExtensions????&&??isClass&&&&?acceptSetters'
 //
 //--------------------------------------------------------------------------------------------------
@@ -883,34 +894,4 @@ class GGS_string function_makeEmbeddedTypeName (const class GGS_string & constin
 class GGS_string function_makeOptionalTypeName (const class GGS_string & constinArgument0,
                                                 class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeEmbeddedElementTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeEmbeddedElementTypeName (const class GGS_string & constinArgument0,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeEmbeddedElementTypeLName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring & constinArgument0,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeArrayTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeArrayTypeName (const class GGS_string & constinArgument0,
-                                             class Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 

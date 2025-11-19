@@ -68,6 +68,13 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func loadChildrenAndSelect (_ inNodeID : SWIFT_FileNodeID) {
+    self.loadChildren ()
+    self.mSelectedFileNodeID = inNodeID
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func buildNodeIDSet (_ ioNodeIDSet : inout Set <SWIFT_FileNodeID>) {
     for child in self.mChildren {
       child.buildNodeIDSet (&ioNodeIDSet)
@@ -165,13 +172,84 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
              let data = try? Data (contentsOf: fileURL),
              let str = String (data: data, encoding: .utf8) {
       let stm = SWIFT_SharedTextModel (
-        scanner: ScannerFor_galgasScanner3 (),
-        string: str
+        scanner: scannerFor (extension: fileURL.pathExtension),
+        initialString: str
       )
+      stm.setWriteFileCallback { str in self.scheduleSave (forNodeID: inID, contents: str) }
       self.mSourceTextDictionary [inID] = stm
       return stm
     }else{
       return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func fileLastPathComponent (forNodeID inID : SWIFT_FileNodeID) -> String {
+    if let fileURL = self.fileURL (forID: inID) {
+      fileURL.lastPathComponent
+    }else{
+      "?"
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Saving
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mScheduledSaveDictionary : [SWIFT_FileNodeID : String] = [:]
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func scheduleSave (forNodeID inID : SWIFT_FileNodeID, contents inString : String) {
+    if self.mScheduledSaveDictionary [inID] == nil {
+      DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) { self.saveFile (forNodeID: inID) }
+    //--- Trigger a change for updating file saving status
+      self.mSelectedFileNodeID = self.mSelectedFileNodeID
+      self.mScheduledSaveDictionary [inID] = inString
+      let keySet = Set (self.mScheduledSaveDictionary.keys)
+      for child in self.mChildren {
+        child.propagateFileEditionState (keySet)
+      }
+    }else{
+      self.mScheduledSaveDictionary [inID] = inString
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func saveFile (forNodeID inID : SWIFT_FileNodeID) {
+    if let fileURL = self.fileURL (forID: inID),
+       let str = self.mScheduledSaveDictionary [inID],
+       let data = str.data (using: .utf8) {
+      try? data.write (to: fileURL)
+    }
+    self.mScheduledSaveDictionary [inID] = nil
+    let keySet = Set (self.mScheduledSaveDictionary.keys)
+    for child in self.mChildren {
+      child.propagateFileEditionState (keySet)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func isFileEdited (forNodeID inID : SWIFT_FileNodeID) -> Bool {
+    return self.mScheduledSaveDictionary [inID] != nil
+  }
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func saveAllEditedFiles () {
+    for (fileID, str) in self.mScheduledSaveDictionary {
+      if let fileURL = self.fileURL (forID: fileID),
+         let data = str.data (using: .utf8) {
+        try? data.write (to: fileURL)
+      }
+    }
+    self.mScheduledSaveDictionary.removeAll ()
+    for child in self.mChildren {
+      child.propagateFileEditionState (Set ())
     }
   }
 

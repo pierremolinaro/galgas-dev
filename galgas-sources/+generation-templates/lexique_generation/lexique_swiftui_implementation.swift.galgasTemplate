@@ -3,7 +3,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -100,7 +99,7 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
 
 //--------------------------------------------------------------------------------------------------
 
-final class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
+class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -248,40 +247,40 @@ end
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-  private var mLineHeight : Int = 12
-  private var mDefaultColor : Color = .black
+  final var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+  final var mLineHeight : Int = 12
+  final var mDefaultColor : Color = .black
 %for (identifier *) in LEXICAL_STYLE_LIST do
-%  private var mColorFor_%!identifier.string% : Color = .black
-  private var mBoldFor_%!identifier.string% : Bool = false
-  private var mItalicFor_%!identifier.string% : Bool = false
+%  final var mColorFor_%!identifier.string% : Color = .black
+  final var mBoldFor_%!identifier.string% : Bool = false
+  final var mItalicFor_%!identifier.string% : Bool = false
 %end
-%  private var mColorFor_lexical_error : Color = .red
-  private var mBoldFor_lexical_error : Bool = false
-  private var mItalicFor_lexical_error : Bool = false
-  private var mColorFor_template : Color = .gray
-  private var mBoldFor_template : Bool = false
-  private var mItalicFor_template : Bool = false
-  private var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
+%  final var mColorFor_lexical_error : Color = .red
+  final var mBoldFor_lexical_error : Bool = false
+  final var mItalicFor_lexical_error : Bool = false
+  final var mColorFor_template : Color = .gray
+  final var mBoldFor_template : Bool = false
+  final var mItalicFor_template : Bool = false
+  final var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+  func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
     ioStyleDidChange = false
     let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_galgasScanner3"), let v = CustomFont (rawValue: s) {
+    if let s = ud.string (forKey: "FontFor_%!LEXIQUE_CLASS_NAME%"), let v = CustomFont (rawValue: s) {
       if self.mFont != v {
         self.mFont = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "LineHeightFor_galgasScanner3"), let v = Int (s) {
+    if let s = ud.string (forKey: "LineHeightFor_%!LEXIQUE_CLASS_NAME%"), let v = Int (s) {
       if self.mLineHeight != v {
         self.mLineHeight = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_galgasScanner3"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%"), let v = Color (rawValue: s) {
       if self.mDefaultColor != v {
         self.mDefaultColor = v
         ioStyleDidChange = true
@@ -411,7 +410,7 @@ end
       let nsString = inTextStorage.string as NSString
       let fullRange = NSRange (location: 0, length: nsString.length)
     //---- Apply default attributes
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
@@ -532,7 +531,7 @@ end
     let start2 = Date ()
     if modificationStart < modificationEnd {
       let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont

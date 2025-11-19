@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -278,7 +277,7 @@ struct SettingViewFor_galgasScanner4 : View {
 
 //--------------------------------------------------------------------------------------------------
 
-final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
+class ScannerFor_galgasScanner4 : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -864,71 +863,71 @@ final class ScannerFor_galgasScanner4 : SWIFT_Scanner {
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-  private var mLineHeight : Int = 12
-  private var mDefaultColor : Color = .black
-  private var mColorFor_keywordsStyle : Color = .black
-  private var mBoldFor_keywordsStyle : Bool = false
-  private var mItalicFor_keywordsStyle : Bool = false
-  private var mColorFor_delimitersStyle : Color = .black
-  private var mBoldFor_delimitersStyle : Bool = false
-  private var mItalicFor_delimitersStyle : Bool = false
-  private var mColorFor_selectorStyle : Color = .black
-  private var mBoldFor_selectorStyle : Bool = false
-  private var mItalicFor_selectorStyle : Bool = false
-  private var mColorFor_terminalStyle : Color = .black
-  private var mBoldFor_terminalStyle : Bool = false
-  private var mItalicFor_terminalStyle : Bool = false
-  private var mColorFor_nonTerminalStyle : Color = .black
-  private var mBoldFor_nonTerminalStyle : Bool = false
-  private var mItalicFor_nonTerminalStyle : Bool = false
-  private var mColorFor_integerStyle : Color = .black
-  private var mBoldFor_integerStyle : Bool = false
-  private var mItalicFor_integerStyle : Bool = false
-  private var mColorFor_floatStyle : Color = .black
-  private var mBoldFor_floatStyle : Bool = false
-  private var mItalicFor_floatStyle : Bool = false
-  private var mColorFor_characterStyle : Color = .black
-  private var mBoldFor_characterStyle : Bool = false
-  private var mItalicFor_characterStyle : Bool = false
-  private var mColorFor_stringStyle : Color = .black
-  private var mBoldFor_stringStyle : Bool = false
-  private var mItalicFor_stringStyle : Bool = false
-  private var mColorFor_typeNameStyle : Color = .black
-  private var mBoldFor_typeNameStyle : Bool = false
-  private var mItalicFor_typeNameStyle : Bool = false
-  private var mColorFor_attributeStyle : Color = .black
-  private var mBoldFor_attributeStyle : Bool = false
-  private var mItalicFor_attributeStyle : Bool = false
-  private var mColorFor_commentStyle : Color = .black
-  private var mBoldFor_commentStyle : Bool = false
-  private var mItalicFor_commentStyle : Bool = false
-  private var mColorFor_lexical_error : Color = .red
-  private var mBoldFor_lexical_error : Bool = false
-  private var mItalicFor_lexical_error : Bool = false
-  private var mColorFor_template : Color = .gray
-  private var mBoldFor_template : Bool = false
-  private var mItalicFor_template : Bool = false
-  private var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
+  final var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+  final var mLineHeight : Int = 12
+  final var mDefaultColor : Color = .black
+  final var mColorFor_keywordsStyle : Color = .black
+  final var mBoldFor_keywordsStyle : Bool = false
+  final var mItalicFor_keywordsStyle : Bool = false
+  final var mColorFor_delimitersStyle : Color = .black
+  final var mBoldFor_delimitersStyle : Bool = false
+  final var mItalicFor_delimitersStyle : Bool = false
+  final var mColorFor_selectorStyle : Color = .black
+  final var mBoldFor_selectorStyle : Bool = false
+  final var mItalicFor_selectorStyle : Bool = false
+  final var mColorFor_terminalStyle : Color = .black
+  final var mBoldFor_terminalStyle : Bool = false
+  final var mItalicFor_terminalStyle : Bool = false
+  final var mColorFor_nonTerminalStyle : Color = .black
+  final var mBoldFor_nonTerminalStyle : Bool = false
+  final var mItalicFor_nonTerminalStyle : Bool = false
+  final var mColorFor_integerStyle : Color = .black
+  final var mBoldFor_integerStyle : Bool = false
+  final var mItalicFor_integerStyle : Bool = false
+  final var mColorFor_floatStyle : Color = .black
+  final var mBoldFor_floatStyle : Bool = false
+  final var mItalicFor_floatStyle : Bool = false
+  final var mColorFor_characterStyle : Color = .black
+  final var mBoldFor_characterStyle : Bool = false
+  final var mItalicFor_characterStyle : Bool = false
+  final var mColorFor_stringStyle : Color = .black
+  final var mBoldFor_stringStyle : Bool = false
+  final var mItalicFor_stringStyle : Bool = false
+  final var mColorFor_typeNameStyle : Color = .black
+  final var mBoldFor_typeNameStyle : Bool = false
+  final var mItalicFor_typeNameStyle : Bool = false
+  final var mColorFor_attributeStyle : Color = .black
+  final var mBoldFor_attributeStyle : Bool = false
+  final var mItalicFor_attributeStyle : Bool = false
+  final var mColorFor_commentStyle : Color = .black
+  final var mBoldFor_commentStyle : Bool = false
+  final var mItalicFor_commentStyle : Bool = false
+  final var mColorFor_lexical_error : Color = .red
+  final var mBoldFor_lexical_error : Bool = false
+  final var mItalicFor_lexical_error : Bool = false
+  final var mColorFor_template : Color = .gray
+  final var mBoldFor_template : Bool = false
+  final var mItalicFor_template : Bool = false
+  final var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+  func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
     ioStyleDidChange = false
     let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_galgasScanner3"), let v = CustomFont (rawValue: s) {
+    if let s = ud.string (forKey: "FontFor_galgasScanner4"), let v = CustomFont (rawValue: s) {
       if self.mFont != v {
         self.mFont = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "LineHeightFor_galgasScanner3"), let v = Int (s) {
+    if let s = ud.string (forKey: "LineHeightFor_galgasScanner4"), let v = Int (s) {
       if self.mLineHeight != v {
         self.mLineHeight = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_galgasScanner3"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_galgasScanner4"), let v = Color (rawValue: s) {
       if self.mDefaultColor != v {
         self.mDefaultColor = v
         ioStyleDidChange = true

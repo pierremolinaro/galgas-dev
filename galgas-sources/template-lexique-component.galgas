@@ -441,6 +441,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !terminalList
       !templateDelimitorList
       !self.mTemplateReplacementList
+      !lexicalStyleListAST
     ]
   //---
     ioSemanticDeclarationListForGeneration +=
@@ -508,6 +509,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@terminalList TERMINAL_LIST
     ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
 }
 
 //--------------------------------------------------------------------------------------------------
