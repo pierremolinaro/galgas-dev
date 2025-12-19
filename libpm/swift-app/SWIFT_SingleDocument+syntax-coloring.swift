@@ -86,28 +86,14 @@ extension SWIFT_SingleDocument {
       }
     //--- Set default attributes to edited range
       DEBUG_PRINT ("  ➁ Set default attributes to edited range")
-      let fontManager = NSFontManager.shared
-      var font = fontManager.convert (
-        tokenizer.font.propval,
-        toHaveTrait: tokenizer.bold (forStyle: 0).propval ? .boldFontMask : .unboldFontMask
-      )
-      font = fontManager.convert (
-        font,
-        toHaveTrait: tokenizer.italic (forStyle: 0).propval ? .italicFontMask : .unitalicFontMask
-      )
-      let ps = NSMutableParagraphStyle ()
-      ps.lineHeightMultiple = CGFloat (tokenizer.lineHeight.propval) / 10.0
-      let defaultAttributes : [NSAttributedString.Key : Any] = [
-        .foregroundColor : tokenizer.color (forStyle: 0).propval,
-        .font : font,
-        .paragraphStyle : ps
-      ]
       let modifiedRange =  NSRange (
         location: firstEditedLocation,
         length: afterLastEditedLocation - firstEditedLocation
       )
       DEBUG_PRINT ("    --> range \(modifiedRange)")
-      self.mTextStorage.addAttributes (defaultAttributes, range: modifiedRange)
+      if !self.mStyleAttributeArray.isEmpty {
+        self.mTextStorage.setAttributes (self.mStyleAttributeArray [0], range: modifiedRange)
+      }
     //--- Loop over edited range for scanning tokens
       DEBUG_PRINT ("  ➂ Loop over edited range for scanning tokens, firstEditedLocation \(firstEditedLocation)")
       var templateDelimiterIndex : Int? = nil
@@ -124,11 +110,6 @@ extension SWIFT_SingleDocument {
       while loop, tokenizer.currentLocation < nsString.length {
         let newToken : SWIFT_Token = tokenizer.parseLexicalTokenForLexicalColoring ()
         if newToken.tokenCode > 0 {
-//          while tokenRangeInsertionIndex < self.mTokenRangeArray.count,
-//                (newToken.range.location + newToken.range.length) > NSMaxRange (self.mTokenRangeArray [tokenRangeInsertionIndex].range) {
-//            DEBUG_PRINT ("  removed at \(tokenRangeInsertionIndex), range \(self.mTokenRangeArray [tokenRangeInsertionIndex].range)")
-//            self.mTokenRangeArray.remove (at: tokenRangeInsertionIndex)
-//          }
           if tokenRangeInsertionIndex < self.mTokenRangeArray.count,
                    newToken == self.mTokenRangeArray [tokenRangeInsertionIndex] {
             loop = false
@@ -138,8 +119,8 @@ extension SWIFT_SingleDocument {
             tokenRangeInsertionIndex += 1
             afterLastEditedLocation = max (afterLastEditedLocation, newToken.range.location + newToken.range.length)
             let styleIndex = tokenizer.styleIndexFor (token: newToken.tokenCode)
-            if styleIndex > 0 {
-              attributesArray.append ((tokenizer.attributes (fromStyleIndex: styleIndex), newToken.range))
+            if styleIndex > 0, styleIndex < (self.mStyleAttributeArray.count - 1) {
+              attributesArray.append ((self.mStyleAttributeArray [Int (styleIndex) + 1], newToken.range))
             }
           }
         }
@@ -166,7 +147,7 @@ extension SWIFT_SingleDocument {
       self.updateEntryPopUpButtons (tokenizer.popupListData ())
     //--- Check that range array is correct
       DEBUG_PRINT ("  ➅ Check that range array is correct")
-//      self.checkTokenArrayIsCorrect ()
+  //    self.checkTokenArrayIsCorrect ()
     //--- Done
       DEBUG_PRINT ("computeLexicalColoring DONE")
     }

@@ -92,6 +92,7 @@ import AppKit
       }
       self.mDisplayStyleChangeObserver.mEventCallBack = { [weak self] in
         if let me = self {
+          me.updateStyleAttributes ()
           me.mTextStorage.beginEditing ()
           me.computeLexicalColoring (
             editedRange: NSRange (location: 0, length: me.mTextStorage.length),
@@ -104,6 +105,41 @@ import AppKit
         }
       }
       self.setTextWithoutActivatingTimer (str)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Font styles
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var mStyleAttributeArray = [[NSAttributedString.Key : Any]] ()
+
+  private func updateStyleAttributes () {
+    self.mStyleAttributeArray.removeAll ()
+    guard let tokenizer = self.mTokenizer else { return }
+    let fontManager = NSFontManager.shared
+  //--- Default attributes
+    var font = fontManager.convert (tokenizer.font.propval)
+    font = fontManager.convert (
+      font,
+      toHaveTrait: tokenizer.bold (forStyle: 0).propval ? .boldFontMask : .unboldFontMask
+    )
+    font = fontManager.convert (
+      font,
+      toHaveTrait: tokenizer.italic (forStyle: 0).propval ? .italicFontMask : .unitalicFontMask
+    )
+    let ps = NSMutableParagraphStyle ()
+    ps.lineHeightMultiple = CGFloat (tokenizer.lineHeight.propval) / 10.0
+    let defaultAttributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : tokenizer.color (forStyle: 0).propval,
+      .font : font,
+      .paragraphStyle : ps
+    ]
+    self.mStyleAttributeArray.append (defaultAttributes)
+  //--- Styles
+    for idx : UInt8 in 0 ..< (tokenizer.styleCount () + 3) {
+      let at = tokenizer.attributes (fromStyleIndex: idx)
+      self.mStyleAttributeArray.append (at)
     }
   }
 
