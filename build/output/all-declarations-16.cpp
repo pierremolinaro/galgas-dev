@@ -2257,14 +2257,6 @@ GGS_xcodeProject GGS_xcodeProject::class_func_none (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_xcodeProject GGS_xcodeProject::class_func_objcApp (UNUSED_LOCATION_ARGS) {
-  GGS_xcodeProject result ;
-  result.mEnum = Enumeration::enum_objcApp ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_xcodeProject GGS_xcodeProject::class_func_swiftApp (UNUSED_LOCATION_ARGS) {
   GGS_xcodeProject result ;
   result.mEnum = Enumeration::enum_swiftApp ;
@@ -2277,12 +2269,9 @@ GGS_xcodeProject GGS_xcodeProject::class_func_swiftApp (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_xcodeProject [4] = {
+static const char * gEnumNameArrayFor_xcodeProject [3] = {
   "(not built)",
   "none",
-  "objcApp",
   "swiftApp"
 } ;
 
@@ -2290,12 +2279,6 @@ static const char * gEnumNameArrayFor_xcodeProject [4] = {
 
 GGS_bool GGS_xcodeProject::getter_isNone (UNUSED_LOCATION_ARGS) const {
   return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_xcodeProject::getter_isObjcApp (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_objcApp == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------

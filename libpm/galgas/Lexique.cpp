@@ -94,8 +94,7 @@ mLatexNextCharacterToEnterIndex (0) {
   if (inSourceFileName.length () > 0) {
     logFileRead (inSourceFileName) ;
     bool ok = false ;
-    PMTextFileEncoding textFileEncoding ;
-    const String sourceString = FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
+    const String sourceString = FileManager::stringWithContentOfFile (inSourceFileName, ok) ;
     if (ok) {
       const SourceTextInString source (sourceString,
                                          inSourceFileName,

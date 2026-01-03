@@ -1111,7 +1111,6 @@ class GGS_xcodeProject : public AC_GALGAS_root {
   public: enum class Enumeration {
     invalid,
     enum_none,
-    enum_objcApp,
     enum_swiftApp
   } ;
   
@@ -1148,8 +1147,6 @@ class GGS_xcodeProject : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_xcodeProject class_func_none (LOCATION_ARGS) ;
 
-  public: static class GGS_xcodeProject class_func_objcApp (LOCATION_ARGS) ;
-
   public: static class GGS_xcodeProject class_func_swiftApp (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1165,8 +1162,6 @@ class GGS_xcodeProject : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNone (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isObjcApp (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_bool getter_isSwiftApp (LOCATION_ARGS) const ;
 

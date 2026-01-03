@@ -51,37 +51,7 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-typedef enum {
-  kUTF_8_FileEncoding,
-  kUTF_16BE_FileEncoding,
-  kUTF_16LE_FileEncoding,
-  kUTF_32BE_FileEncoding,
-  kUTF_32LE_FileEncoding,
-  kISO_8859_1_FileEncoding,
-  kISO_8859_10_FileEncoding,
-  kISO_8859_11_FileEncoding,
-  kISO_8859_13_FileEncoding,
-  kISO_8859_14_FileEncoding,
-  kISO_8859_15_FileEncoding,
-  kISO_8859_16_FileEncoding,
-  kISO_8859_2_FileEncoding,
-  kISO_8859_3_FileEncoding,
-  kISO_8859_4_FileEncoding,
-  kISO_8859_5_FileEncoding,
-  kISO_8859_6_FileEncoding,
-  kISO_8859_7_FileEncoding,
-  kISO_8859_8_FileEncoding,
-  kISO_8859_9_FileEncoding,
-  kCP1252_FileEncoding,
-  kCP437_DOS_FileEncoding,
-  kMacRoman_FileEncoding
-} PMTextFileEncoding ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//      Fully dynamic character string : String                                                
-//
+//      Fully dynamic character string : String
 //--------------------------------------------------------------------------------------------------
 
 class String : public AbstractOutputStream {

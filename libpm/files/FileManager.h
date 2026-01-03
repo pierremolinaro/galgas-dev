@@ -45,28 +45,27 @@ class FileManager final {
 
 //--- Read binary file at once
   public: static bool binaryDataWithContentOfFile (const String & inFilePath,
-                                                    U8Data & outBinaryData) ;
+                                                   U8Data & outBinaryData) ;
 
 //--- Read text file at once
   public: static String stringWithContentOfFile (const String & inFilePath) ;
 
   public: static String stringWithContentOfFile (const String & inFilePath,
-                                                    PMTextFileEncoding & outTextFileEncoding,
-                                                    bool & outOk) ;
+                                                 bool & outOk) ;
 
 //--- Write string to file
   public: static bool writeStringToFile (const String & inString,
-                                          const String & inFilePath) ;
+                                         const String & inFilePath) ;
 
   public: static bool writeStringToExecutableFile (const String & inString,
-                                                    const String & inFilePath) ;
+                                                   const String & inFilePath) ;
 
 //--- Write data to file
   public: static bool writeBinaryDataToFile (const U8Data & inBinaryData,
-                                              const String & inFilePath) ;
+                                             const String & inFilePath) ;
 
   public: static bool writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
-                                                        const String & inFilePath) ;
+                                                       const String & inFilePath) ;
 
 //--- Delete file (returns an empty string on success, or a string describing the error)
   public: static String deleteFile (const String & inFilePath) ;
@@ -81,8 +80,8 @@ class FileManager final {
   public: static String removeDirectory (const String & inDirectoryPath) ;
 
   public: static String findFileInDirectory (const String & inDirectoryPath,
-                                                const String & inFileName,
-                                                const GenericUniqueArray <String> & inDirectoriesToExclude) ;
+                                             const String & inFileName,
+                                             const GenericUniqueArray <String> & inDirectoriesToExclude) ;
 
 //--- Find all files in directory and subdirectories that respond to a given extension
 //    Initial directory is got from receiver value. If it is not a directory, this method does nothing.

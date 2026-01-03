@@ -815,10 +815,8 @@
 		CF305F672D0D8A2E000A5F79 /* String-class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "String-class.h"; sourceTree = "<group>"; };
 		CF305F682D0D8A2E000A5F79 /* String-class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class.cpp"; sourceTree = "<group>"; };
 		CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class-getters.cpp"; sourceTree = "<group>"; };
-		CF305F6A2D0D8A2E000A5F79 /* unicode_character_base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_base.h; sourceTree = "<group>"; };
-		CF305F6B2D0D8A2E000A5F79 /* unicode_character_cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_cpp.h; sourceTree = "<group>"; };
+		CF305F6A2D0D8A2E000A5F79 /* unicode_character_cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_cpp.h; sourceTree = "<group>"; };
 		CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unicode_character_cpp.cpp; sourceTree = "<group>"; };
-		CF305F6D2D0D8A2E000A5F79 /* unicode_character_implementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_implementation.h; sourceTree = "<group>"; };
 		CF305F712D0D8A2E000A5F79 /* DateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateTime.h; sourceTree = "<group>"; };
 		CF305F722D0D8A2E000A5F79 /* DateTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DateTime.cpp; sourceTree = "<group>"; };
 		CF305F732D0D8A2E000A5F79 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -1562,10 +1560,8 @@
 				CF305F672D0D8A2E000A5F79 /* String-class.h */,
 				CF305F682D0D8A2E000A5F79 /* String-class.cpp */,
 				CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */,
-				CF305F6A2D0D8A2E000A5F79 /* unicode_character_base.h */,
-				CF305F6B2D0D8A2E000A5F79 /* unicode_character_cpp.h */,
+				CF305F6A2D0D8A2E000A5F79 /* unicode_character_cpp.h */,
 				CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */,
-				CF305F6D2D0D8A2E000A5F79 /* unicode_character_implementation.h */,
 			);
 			path = strings;
 			sourceTree = "<group>";

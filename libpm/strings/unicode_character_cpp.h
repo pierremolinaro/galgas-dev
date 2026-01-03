@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2008 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,15 +22,83 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "string_encodings.h"
-#include "M_machine.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class String ;
+//--- Character assigned ?
+bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacterCode) ;
+
+//--- Returns character name, or empty string if not assigned
+String unicodeName (const utf32 inUnicodeCharacter) ;
+
+//--- Returns to lower letter, or returns argument
+utf32 unicodeToLower (const utf32 inUnicodeCharacter) ;
+
+//--- Returns to upper letter, or returns argument
+utf32 unicodeToUpper (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode letter
+bool isUnicodeLetter (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode mark
+bool isUnicodeMark (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode number
+bool isUnicodeNumber (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode decimal digit
+bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter) ;
+
+//--- Returns decimal value, or zero
+uint32_t unicodeDecimalValue (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if ascii hex digit
+bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter) ;
+
+//--- Returns hex value, or zero
+uint32_t ASCIIHexValue (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode separator
+bool isUnicodeSeparator (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode command
+bool isUnicodeCommand (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode punctuation
+bool isUnicodePunctuation (const utf32 inUnicodeCharacter) ;
+
+//--- Returns true if unicode symbol
+bool isUnicodeSymbol (const utf32 inUnicodeCharacter) ;
+
+//--- Returns the number of bytes needed for encoding this character in UTF8
+uint32_t utf8Length (const utf32 inUnicodeCharacter) ;
 
 //--------------------------------------------------------------------------------------------------
 
-#include "unicode_character_base.h"
+extern const utf32 UNICODE_REPLACEMENT_CHARACTER ;
+extern const utf32 UNICODE_MAX_LEGAL_UTF32_CHARACTER ;
+
+//--- Returns true if unicode letter
+bool isRestrictedUnicodeLetter (const utf32 inUnicodeCharacter) ;
+
+//--------------------------------------------------------------------------------------------------
+
+//--- Decode HTML in string, return Unicode (or NULL if not found)
+utf32 unicodeCharacterFromHTMLSequence (const String & inString) ;
+
+//--------------------------------------------------------------------------------------------------
+
+//utf32 unicodeCharacterForSingleByteCharacter (const char inChar, const PMStringEncoding inStringEncoding) ;
+
+//char singleByteCharacterForUnicodeCharacter (const utf32 inUnicodeChar, const PMStringEncoding inStringEncoding) ;
+
+int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequence [5]) ;
+
+//--- inEndOfStringPtr points just beyond the last available byte
+utf32 utf32CharacterForPointer (const uint8_t * inDataString,
+                                int32_t & ioIndex,
+                                const int32_t inLength,
+                                bool & ioOK) ;
 
 //--------------------------------------------------------------------------------------------------
