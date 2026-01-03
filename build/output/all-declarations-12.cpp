@@ -13703,7 +13703,7 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_folderDirecto
   if (GalgasBool::boolTrue == test_0) {
     GGS_bool test_1 = GGS_bool (ComparisonKind::greaterThan, var_relativeDirectory_6276.readProperty_string ().getter_count (SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_uint (uint32_t (0U)))) ;
     if (GalgasBool::boolTrue == test_1.boolEnum ()) {
-      test_1 = GGS_bool (ComparisonKind::notEqual, var_relativeDirectory_6276.readProperty_string ().getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_char (TO_UNICODE (47)))) ;
+      test_1 = GGS_bool (ComparisonKind::notEqual, var_relativeDirectory_6276.readProperty_string ().getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgasProject.galgas", 183)).objectCompare (GGS_char (utf32 (47)))) ;
     }
     test_0 = test_1.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {

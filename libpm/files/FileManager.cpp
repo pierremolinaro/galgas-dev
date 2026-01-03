@@ -21,7 +21,7 @@
 #include "FileManager.h"
 #include "TextFileWrite.h"
 #include "BinaryFileWrite.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -70,9 +70,9 @@
     const int32_t pathLength = inFilePath.length () ;
     int32_t firstChar = 0 ;
     if ((pathLength > 3)
-     && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)))
-     && (UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)) == ':')
-     && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '\\')) {
+     && isalpha ((int) inFilePath.charAtIndex (0 COMMA_HERE).u32 ())
+     && (inFilePath.charAtIndex (1 COMMA_HERE).u32 () == ':')
+     && (inFilePath.charAtIndex (2 COMMA_HERE).u32 () == '\\')) {
       result.appendCString ("/") ;
       result.appendChar (inFilePath.charAtIndex (0 COMMA_HERE)) ;
       result.appendCString ("/") ;
@@ -80,7 +80,7 @@
     }
     for (int32_t i=firstChar ; i<pathLength ; i++) {
       const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
-      if (UNICODE_VALUE (c) == '\\') {
+      if (c.u32 () == '\\') {
         result.appendCString ("/") ;
       }else{
         result.appendChar (c) ;
@@ -118,16 +118,16 @@
       const int32_t fileLength = inFilePath.length () ;
       int32_t firstChar = 0 ;
       if ((fileLength > 3)
-       && (UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)))
-       && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '/')) {
+       && (inFilePath.charAtIndex (0 COMMA_HERE).u32 () == '/')
+       && isalpha ((int) inFilePath.charAtIndex (1 COMMA_HERE).u32 ())
+       && (inFilePath.charAtIndex (2 COMMA_HERE).u32 () == '/')) {
         winPath.appendChar (inFilePath.charAtIndex (1 COMMA_HERE)) ;
         winPath.appendCString (":\\") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
         const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
-        winPath.appendChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c) ;
+        winPath.appendChar ((c.u32 () == '/') ? TO_UNICODE ('\\') : c) ;
       }
     return winPath ;
   }
@@ -444,7 +444,7 @@ String FileManager::removeDirectory (const String & inDirectoryPath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::isAbsolutePath (const String & inPath) {
-  return (inPath.length () > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/') ;
+  return (inPath.length () > 0) && (inPath.charAtIndex (0 COMMA_HERE).u32 () == '/') ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -452,7 +452,7 @@ bool FileManager::isAbsolutePath (const String & inPath) {
 String FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
   const int32_t stringLength = inPath.length () ;
   String result ;
-  if ((stringLength > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/')) {
+  if ((stringLength > 0) && (inPath.charAtIndex (0 COMMA_HERE).u32 () == '/')) {
     result = inPath ;
   }else{
     result = currentDirectory () + "/" + inPath ;
@@ -469,11 +469,11 @@ String FileManager::absolutePathFromPath (const String & inPath,
                                           const String & inFromPath) {
   const int32_t pathLength = inPath.length () ;
   String result ;
-  if ((pathLength > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/')) {
+  if ((pathLength > 0) && (inPath.charAtIndex (0 COMMA_HERE).u32 () == '/')) {
     result = inPath ;
   }else{
     result = absolutePathFromCurrentDirectory (inFromPath) ;
-    if (UNICODE_VALUE (result.lastChar (HERE)) != '/') {
+    if (result.lastChar (HERE).u32 () != '/') {
       result.appendChar (TO_UNICODE ('/')) ;
     }
     result.appendString (inPath) ;
@@ -637,7 +637,7 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
           if (FileManager::directoryExistsWithNativePath (name)) {
             bool dirOk = true ;
             for (int32_t i=0 ; (i<inDirectoriesToExcludeCount) && dirOk ; i++) {
-              if (UNICODE_VALUE (inDirectoriesToExclude (i COMMA_HERE).charAtIndex (0 COMMA_HERE)) == '.') {
+              if (inDirectoriesToExclude (i COMMA_HERE).charAtIndex (0 COMMA_HERE).u32 () == '.') {
                 const char * dotPtr = strrchr (current->d_name, '.') ;
                 dirOk = (dotPtr == nullptr) || (inDirectoriesToExclude (i COMMA_HERE).compare (dotPtr) != 0) ;
               }else{

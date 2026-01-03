@@ -20,7 +20,7 @@
 
 #include "TextFileWrite.h"
 #include "DateTime.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------

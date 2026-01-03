@@ -29,7 +29,7 @@
 #include "basic-allocation.h"
 #include "PrologueEpilogue.h"
 #include "analyzeCommandLineOptions.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "acStrongPtr_class.h"
 
 //--------------------------------------------------------------------------------------------------

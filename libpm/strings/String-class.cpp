@@ -27,7 +27,8 @@
 #include "MF_MemoryControl.h"
 #include "md5.h"
 #include "SharedObject.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -188,7 +189,7 @@ const char * PrivateEmbeddedString::cString (void) {
     int32_t idx = 0 ;
     for (int32_t i = 0 ; i < length () ; i++) {
       char buffer [5] ;
-      const int32_t n = UTF8StringFromUTF32Character (UNICODE_VALUE (charAtIndex (i COMMA_HERE)), buffer) ;
+      const int32_t n = UTF8StringFromUTF32Character (charAtIndex (i COMMA_HERE).u32 (), buffer) ;
       for (int32_t j = 0 ; j < n ; j++) {
         if (allocatedSize == idx) {
           allocatedSize += allocatedSize / 2 ;
@@ -370,7 +371,7 @@ bool String::containsChar (const utf32 inCharacter) const {
   bool found = false ;
   if (nullptr != mEmbeddedString) {
     for (int32_t i=0 ; (i < length ()) && !found ; i++) {
-      found = UNICODE_VALUE (charAtIndex (i COMMA_HERE)) == UNICODE_VALUE (inCharacter) ;
+      found = charAtIndex (i COMMA_HERE) == inCharacter ;
     }
   }
   return found ;
@@ -388,9 +389,9 @@ bool String::containsCharInRange (const utf32 inFirstCharacter,
     macroValidSharedObject (mEmbeddedString, PrivateEmbeddedString) ;
     for (int32_t i=0 ; (i < mEmbeddedString->length ()) && !found ; i++) {
       found =
-        (UNICODE_VALUE (charAtIndex (i COMMA_HERE)) >= UNICODE_VALUE (inFirstCharacter))
+        (charAtIndex (i COMMA_HERE).u32 () >= inFirstCharacter.u32 ())
       &&
-        (UNICODE_VALUE (charAtIndex (i COMMA_HERE)) <= UNICODE_VALUE (inLastCharacter))
+        (charAtIndex (i COMMA_HERE).u32 () <= inLastCharacter.u32 ())
       ;
     }
   }
@@ -603,7 +604,7 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
       const utf32 c = charAtIndex (i COMMA_HERE) ;
       switch (state) {
       case kAppendToCurrentLine :
-        switch (UNICODE_VALUE (c)) {
+        switch (c.u32 ()) {
         case 0x000B : // VT: Vertical Tab
         case 0x000C : // FF: Form Feed
         case 0x0085 : // NEL: Next Line
@@ -623,7 +624,7 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
         }
         break ;
       case kGotCarriageReturn :
-        switch (UNICODE_VALUE (c)) {
+        switch (c.u32 ()) {
         case '\n' : // LF
           state = kGotLineFeed ;
           break ;
@@ -639,7 +640,7 @@ void String::linesArray (GenericUniqueArray <String> & outStringArray) const {
         }
         break ;
       case kGotLineFeed :
-        switch (UNICODE_VALUE (c)) {
+        switch (c.u32 ()) {
         case '\n' : // LF
           outStringArray.appendObject (String ()) ;
           index += 1 ;
@@ -714,7 +715,7 @@ bool String::parseUTF8 (const U8Data & inDataString,
       idx += 1 ;
     }else{
       const utf32 uc = utf32CharacterForPointer (inDataString.unsafeDataPointer (), idx, inDataString.count (), ok) ;
-      switch (UNICODE_VALUE (uc)) {
+      switch (uc.u32 ()) {
       case 0x000B : // VT: Vertical Tab
       case 0x000C : // FF: Form Feed
       case 0x0085 : // NEL: Next Line

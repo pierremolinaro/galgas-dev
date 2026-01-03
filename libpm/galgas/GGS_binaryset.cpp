@@ -86,7 +86,7 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_
     while ((stringIndex < stringLength) && ok) {
       utf32 cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
       String s ;
-      while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
+      while ((stringIndex < stringLength) && ((cc.u32 () == '0') || (cc.u32 () == '1') || (cc.u32 () == 'X') || (cc.u32 () == ' '))) {
         s.appendChar (cc) ;
         stringIndex += 1 ;
         if (stringIndex < stringLength) {
@@ -98,20 +98,20 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_
         uint32_t bitIndex = 0 ;
         for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
           const utf32 c = s.charAtIndex (i COMMA_HERE) ;
-          if (UNICODE_VALUE (c) == '0') {
+          if (c.u32 () == '0') {
             v &= BinaryDecisionDiagram (bitIndex, false) ;
             bitIndex += 1 ;
-          }else if (UNICODE_VALUE (c) == '1') {
+          }else if (c.u32 () == '1') {
             v &= BinaryDecisionDiagram (bitIndex, true) ;
             bitIndex += 1 ;
-          }else if (UNICODE_VALUE (c) == 'X') {
+          }else if (c.u32 () == 'X') {
             bitIndex += 1 ;
           }
         }
         resultBDD |= v ;
       }
       if (stringIndex < stringLength) {
-        ok = UNICODE_VALUE (cc) == '|' ;
+        ok = cc.u32 () == '|' ;
         stringIndex += 1 ;
       }
     }

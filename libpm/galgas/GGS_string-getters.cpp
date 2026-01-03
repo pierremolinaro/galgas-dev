@@ -23,7 +23,7 @@
 #include "Compiler.h"
 #include "F_mainForLIBPM.h"
 #include "analyzeCommandLineOptions.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "galgas-input-output.h"
 #include "FileManager.h"
 #include "BinaryFileWrite.h"
@@ -400,7 +400,7 @@ GGS_string GGS_string::getter_absolutePathFromPath (const GGS_string & inBasePat
     const String path = mString ;
     const int32_t stringLength = path.length () ;
     String r ;
-    if ((stringLength > 0) && (UNICODE_VALUE (path.charAtIndex (0 COMMA_HERE)) == '/')) {
+    if ((stringLength > 0) && (path.charAtIndex (0 COMMA_HERE).u32 () == '/')) {
       r = path ;
     }else{
       r = inBasePath.mString ;
@@ -1187,14 +1187,14 @@ GGS_bool GGS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) const {
     int32_t idx = 0 ;
     if (ok) {
       const utf32 c = mString.charAtIndex (0 COMMA_HERE) ;
-      if ((UNICODE_VALUE (c) == '+') || (UNICODE_VALUE (c) == '-')) {
+      if ((c.u32 () == '+') || (c.u32 () == '-')) {
         idx = 1 ;
       }
     }
     while ((idx < mString.length ()) && ok) {
       const utf32 c = mString.charAtIndex (idx COMMA_HERE) ;
       idx += 1 ;
-      ok = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
+      ok = (c.u32 () >= '0') && (c.u32 () <= '9') ;
     }
     result = GGS_bool (ok) ;
   }

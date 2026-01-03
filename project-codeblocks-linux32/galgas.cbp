@@ -172,7 +172,7 @@
    <Unit filename="../libpm/streams/AbstractOutputStream.cpp" />
    <Unit filename="../libpm/streams/ColoredConsole.cpp" />
    <Unit filename="../libpm/streams/ConsoleOut.cpp" />
-   <Unit filename="../libpm/strings/unicode_character_cpp.cpp" />
+   <Unit filename="../libpm/strings/utf32.cpp" />
    <Unit filename="../libpm/strings/String-class-getters.cpp" />
    <Unit filename="../libpm/strings/String-class.cpp" />
    <Unit filename="../libpm/strings/HTMLString.cpp" />

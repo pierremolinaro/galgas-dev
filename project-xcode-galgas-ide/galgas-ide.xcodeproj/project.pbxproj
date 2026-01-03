@@ -122,7 +122,7 @@
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
 		CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */; };
 		CF305F9A2D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */; };
-		CF305F9E2D0D8A2E000A5F79 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */; };
+		CF305F9E2D0D8A2E000A5F79 /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* utf32.cpp */; };
 		CF305F9F2D0D8A2E000A5F79 /* AC_GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE02D0D8A2E000A5F79 /* AC_GALGAS_root.cpp */; };
 		CF305FA22D0D8A2E000A5F79 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F242D0D8A2E000A5F79 /* GGS_string.cpp */; };
 		CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
@@ -282,7 +282,7 @@
 		CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
 		CF8F80E62D0D91490095170B /* galgas-input-output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */; };
 		CF8F80E72D0D91490095170B /* AC_GALGAS_value_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */; };
-		CF8F80E82D0D91490095170B /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */; };
+		CF8F80E82D0D91490095170B /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* utf32.cpp */; };
 		CF8F80E92D0D91490095170B /* AC_GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE02D0D8A2E000A5F79 /* AC_GALGAS_root.cpp */; };
 		CF8F80EA2D0D91490095170B /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F242D0D8A2E000A5F79 /* GGS_string.cpp */; };
 		CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
@@ -806,7 +806,7 @@
 		CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColoredConsole.cpp; sourceTree = "<group>"; };
 		CF305F5E2D0D8A2E000A5F79 /* ConsoleOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsoleOut.h; sourceTree = "<group>"; };
 		CF305F5F2D0D8A2E000A5F79 /* ConsoleOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleOut.cpp; sourceTree = "<group>"; };
-		CF305F612D0D8A2E000A5F79 /* cUnicodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cUnicodeData.h; sourceTree = "<group>"; };
+		CF305F612D0D8A2E000A5F79 /* unicode-data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
 		CF305F622D0D8A2E000A5F79 /* HTMLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLString.h; sourceTree = "<group>"; };
 		CF305F632D0D8A2E000A5F79 /* HTMLString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLString.cpp; sourceTree = "<group>"; };
 		CF305F642D0D8A2E000A5F79 /* print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print.h; sourceTree = "<group>"; };
@@ -815,8 +815,8 @@
 		CF305F672D0D8A2E000A5F79 /* String-class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "String-class.h"; sourceTree = "<group>"; };
 		CF305F682D0D8A2E000A5F79 /* String-class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class.cpp"; sourceTree = "<group>"; };
 		CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class-getters.cpp"; sourceTree = "<group>"; };
-		CF305F6A2D0D8A2E000A5F79 /* unicode_character_cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_cpp.h; sourceTree = "<group>"; };
-		CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unicode_character_cpp.cpp; sourceTree = "<group>"; };
+		CF305F6A2D0D8A2E000A5F79 /* utf32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf32.h; sourceTree = "<group>"; };
+		CF305F6C2D0D8A2E000A5F79 /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
 		CF305F712D0D8A2E000A5F79 /* DateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateTime.h; sourceTree = "<group>"; };
 		CF305F722D0D8A2E000A5F79 /* DateTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DateTime.cpp; sourceTree = "<group>"; };
 		CF305F732D0D8A2E000A5F79 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -1551,7 +1551,6 @@
 		CF305F702D0D8A2E000A5F79 /* strings */ = {
 			isa = PBXGroup;
 			children = (
-				CF305F612D0D8A2E000A5F79 /* cUnicodeData.h */,
 				CF305F622D0D8A2E000A5F79 /* HTMLString.h */,
 				CF305F632D0D8A2E000A5F79 /* HTMLString.cpp */,
 				CF305F642D0D8A2E000A5F79 /* print.h */,
@@ -1560,8 +1559,9 @@
 				CF305F672D0D8A2E000A5F79 /* String-class.h */,
 				CF305F682D0D8A2E000A5F79 /* String-class.cpp */,
 				CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */,
-				CF305F6A2D0D8A2E000A5F79 /* unicode_character_cpp.h */,
-				CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */,
+				CF305F612D0D8A2E000A5F79 /* unicode-data.h */,
+				CF305F6A2D0D8A2E000A5F79 /* utf32.h */,
+				CF305F6C2D0D8A2E000A5F79 /* utf32.cpp */,
 			);
 			path = strings;
 			sourceTree = "<group>";
@@ -1924,7 +1924,7 @@
 				CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF8F80E62D0D91490095170B /* galgas-input-output.cpp in Sources */,
 				CF8F80E72D0D91490095170B /* AC_GALGAS_value_class.cpp in Sources */,
-				CF8F80E82D0D91490095170B /* unicode_character_cpp.cpp in Sources */,
+				CF8F80E82D0D91490095170B /* utf32.cpp in Sources */,
 				CF8F80E92D0D91490095170B /* AC_GALGAS_root.cpp in Sources */,
 				CF8F80EA2D0D91490095170B /* GGS_string.cpp in Sources */,
 				CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */,
@@ -2239,7 +2239,7 @@
 				CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */,
 				CF305F9A2D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp in Sources */,
-				CF305F9E2D0D8A2E000A5F79 /* unicode_character_cpp.cpp in Sources */,
+				CF305F9E2D0D8A2E000A5F79 /* utf32.cpp in Sources */,
 				CF305F9F2D0D8A2E000A5F79 /* AC_GALGAS_root.cpp in Sources */,
 				CF305FA22D0D8A2E000A5F79 /* GGS_string.cpp in Sources */,
 				CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */,

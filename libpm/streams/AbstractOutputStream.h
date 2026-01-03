@@ -25,6 +25,7 @@
 #include "macroAssert.h"
 #include "M_machine.h"
 #include "string_encodings.h"
+#include "utf32.h"
 
 //--------------------------------------------------------------------------------------------------
 

@@ -283,13 +283,13 @@ static void analyze_one_option (const String & inCommand,
   }
 //--- Look for a file
   if (! found) {
-    if (UNICODE_VALUE (inCommand.charAtIndex (0 COMMA_HERE)) != '-') {
+    if (inCommand.charAtIndex (0 COMMA_HERE).u32 () != '-') {
       String fileName ;
       #if COMPILE_FOR_WINDOWS == 1
         const int32_t fileLength = inCommand.length () ;
         int32_t firstChar = 0 ;
         if ((fileLength > 3)
-         && isalpha (int (UNICODE_VALUE (inCommand.charAtIndex (0 COMMA_HERE))))
+         && isalpha (int (inCommand.charAtIndex (0 COMMA_HERE).u32 ()))
          && (inCommand.charAtIndex (1 COMMA_HERE) == ':')
          && (inCommand.charAtIndex (2 COMMA_HERE) == '\\')) {
           fileName.appendCString ("/") ;
@@ -299,7 +299,7 @@ static void analyze_one_option (const String & inCommand,
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
           const utf32 c = inCommand.charAtIndex (i COMMA_HERE) ;
-          fileName.appendChar ((UNICODE_VALUE (c) == '\\') ? '/' : c) ;
+          fileName.appendChar ((c.u32 () == '\\') ? '/' : c) ;
         }
       #else
         fileName = inCommand ;

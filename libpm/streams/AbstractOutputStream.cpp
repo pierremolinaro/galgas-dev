@@ -21,7 +21,7 @@
 #include "AbstractOutputStream.h"
 #include "String-class.h"
 #include "DateTime.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -81,7 +81,7 @@ void AbstractOutputStream::performAppendCharacter (const utf32 inCharacter) {
       }
     }
     handleAppendCharacter (inCharacter) ;
-    mStartingLine = UNICODE_VALUE (inCharacter) == '\n' ;
+    mStartingLine = inCharacter.u32 () == '\n' ;
   }
 }
 
@@ -121,10 +121,10 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inStri
   for (int32_t i=0 ; i < inString.length () ; i++) {
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
     appendCString ("\n  TO_UNICODE (") ;
-    if (isprint (int (UNICODE_VALUE (c)))) {
+    if (isprint (int (c.u32 ()))) {
       appendStringAsCLiteralCharConstant (c) ;
     }else{
-      appendUnsigned (UNICODE_VALUE (c)) ;
+      appendUnsigned (c.u32 ()) ;
     }
     appendCString ("),") ;
   }
@@ -404,7 +404,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
     }
     currentColumn += 1 ;
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
-    switch (UNICODE_VALUE (c)) {
+    switch (c.u32 ()) {
     case '\0' :
       break ;
     case '\a' :
@@ -460,7 +460,7 @@ internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (AbstractOutputStr
     }
     currentColumn += 1 ;
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
-    switch (UNICODE_VALUE (c)) {
+    switch (c.u32 ()) {
     case '\0' :
       break ;
     case '\a' :
@@ -495,7 +495,7 @@ internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (AbstractOutputStr
       ioStream.appendCString ("\\\"") ;
       break ;
     default :
-      if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
+      if ((c.u32 () >= ' ') && (c.u32 () < 127)) {
         ioStream.appendChar (c) ;
       }else{
         char buffer [5] ;
@@ -558,7 +558,7 @@ void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
-  switch (UNICODE_VALUE (c)) {
+  switch (c.u32 ()) {
   case '\0' :
     appendCString ("'\\0'") ;
     break ;
@@ -596,12 +596,12 @@ void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
     appendCString ("'\\\?'") ;
     break ;
   default :
-    if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) <= '~')) {
+    if ((c.u32 () >= ' ') && (c.u32 () <= '~')) {
       appendCString ("'") ;
       appendChar (c) ;
       appendCString ("'") ;
     }else{
-      appendUnsigned (UNICODE_VALUE (c)) ;
+      appendUnsigned (c.u32 ()) ;
     }
     break ;
   }

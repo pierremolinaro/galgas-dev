@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "scanner_actions.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "BigSigned.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -46,14 +46,14 @@ void scanner_routine_enterHexDigitIntoASCIIcharacter (Lexique & inLexique,
                                                       const utf32 inChar,
                                                       const char * inErrorCodeGreaterThan255,
                                                       const char * inErrorNotHexDigitCharacter) {
-  if (isxdigit ((int) UNICODE_VALUE (inChar))) {
-    uint32_t tempo = UNICODE_VALUE (ioValue) << 4 ;
-    if ((UNICODE_VALUE (inChar) >= '0') && (UNICODE_VALUE (inChar) <= '9')) {
-      tempo += UNICODE_VALUE (inChar) - '0' ;
-    }else if ((UNICODE_VALUE (inChar) >= 'A') && (UNICODE_VALUE (inChar) <= 'F')) {
-      tempo += UNICODE_VALUE (inChar) + 10 - 'A' ;
+  if (isxdigit (int (inChar.u32 ()))) {
+    uint32_t tempo = ioValue.u32 () << 4 ;
+    if ((inChar.u32 () >= '0') && (inChar.u32 () <= '9')) {
+      tempo += inChar.u32 () - '0' ;
+    }else if ((inChar.u32 () >= 'A') && (inChar.u32 () <= 'F')) {
+      tempo += inChar.u32 () + 10 - 'A' ;
     }else{
-      tempo += UNICODE_VALUE (inChar) + 10 - 'a' ;
+      tempo += inChar.u32 () + 10 - 'a' ;
     }
     if (tempo > 255) {
       inLexique.lexicalError (inErrorCodeGreaterThan255 LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -72,10 +72,10 @@ void scanner_routine_enterDigitIntoASCIIcharacter (Lexique & inLexique,
                                                    const utf32 inChar,
                                                    const char * inErrorCodeGreaterThan255,
                                                    const char * inErrorNotDigitCharacter) {
-  if ((UNICODE_VALUE (inChar) >= '0') && (UNICODE_VALUE (inChar) <= '9')) {
-    uint32_t tempo = UNICODE_VALUE (ioValue) ;
+  if ((inChar.u32 () >= '0') && (inChar.u32 () <= '9')) {
+    uint32_t tempo = ioValue.u32 () ;
     tempo *= 10  ;
-    tempo += UNICODE_VALUE (inChar) - '0' ;
+    tempo += inChar.u32 () - '0' ;
     if (tempo > 255) {
       inLexique.lexicalError (inErrorCodeGreaterThan255 LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
@@ -199,10 +199,10 @@ void scanner_routine_enterDigitIntoUInt (Lexique & inLexique,
                                          uint32_t & inValue,
                                          const char * inNumberTooLargeError,
                                          const char * inCharacterIsNotDecimalDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '9')) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    const uint32_t digit = inCharacter.u32 () - '0' ;
     const uint32_t max = UINT32_MAX / 10 ;
     if (inValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -221,10 +221,10 @@ void scanner_routine_enterDigitIntoUInt64 (Lexique & inLexique,
                                            uint64_t & ioValue,
                                            const char * inNumberTooLargeError,
                                            const char * inCharacterIsNotDecimalDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '9')) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint64_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    const uint64_t digit = inCharacter.u32 () - '0' ;
     const uint64_t max = UINT64_MAX / 10 ;
     if (ioValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -243,15 +243,15 @@ void scanner_routine_enterHexDigitIntoUInt (Lexique & inLexique,
                                             uint32_t & ioValue,
                                             const char * inNumberTooLargeError,
                                             const char * inCharacterIsNotHexDigitError) {
-  bool carOk = (UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9') ;
-  uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+  bool carOk = (inCharacter.u32 () >= '0') && (inCharacter.u32 () <= '9') ;
+  uint32_t digit = inCharacter.u32 () - '0' ;
   if (! carOk) {
-    carOk = (UNICODE_VALUE (inCharacter) >= 'A') && (UNICODE_VALUE (inCharacter) <= 'F') ;
-    digit = UNICODE_VALUE (inCharacter) - 'A' + 10 ;
+    carOk = (inCharacter.u32 () >= 'A') && (inCharacter.u32 () <= 'F') ;
+    digit = inCharacter.u32 () - 'A' + 10 ;
   }
   if (! carOk) {
-    carOk = (UNICODE_VALUE (inCharacter) >= 'a') && (UNICODE_VALUE (inCharacter) <= 'f') ;
-    digit = UNICODE_VALUE (inCharacter) - 'a' + 10 ;
+    carOk = (inCharacter.u32 () >= 'a') && (inCharacter.u32 () <= 'f') ;
+    digit = inCharacter.u32 () - 'a' + 10 ;
   }
   if (! carOk) {
     inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -272,15 +272,15 @@ void scanner_routine_enterHexDigitIntoUInt64 (Lexique & inLexique,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
                                               const char * inCharacterIsNotHexDigitError) {
-  bool carOk = (UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9') ;
-  uint64_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+  bool carOk = (inCharacter.u32 () >= '0') && (inCharacter.u32 () <= '9') ;
+  uint64_t digit = inCharacter.u32 () - '0' ;
   if (! carOk) {
-    carOk = (UNICODE_VALUE (inCharacter) >= 'A') && (UNICODE_VALUE (inCharacter) <= 'F') ;
-    digit = UNICODE_VALUE (inCharacter) - 'A' + 10 ;
+    carOk = (inCharacter.u32 () >= 'A') && (inCharacter.u32 () <= 'F') ;
+    digit = inCharacter.u32 () - 'A' + 10 ;
   }
   if (! carOk) {
-    carOk = (UNICODE_VALUE (inCharacter) >= 'a') && (UNICODE_VALUE (inCharacter) <= 'f') ;
-    digit = UNICODE_VALUE (inCharacter) - 'a' + 10 ;
+    carOk = (inCharacter.u32 () >= 'a') && (inCharacter.u32 () <= 'f') ;
+    digit = inCharacter.u32 () - 'a' + 10 ;
   }
   if (! carOk) {
     inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -306,11 +306,11 @@ void scanner_routine_convertDecimalStringIntoUInt (Lexique & inLexique,
   const uint32_t max = UINT32_MAX / 10 ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
     const utf32 c = inDecimalString.charAtIndex (i COMMA_HERE) ;
-    if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
+    if ((c.u32 () < '0') || (c.u32 () > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
     }else{
-      const uint32_t digit = (uint32_t) (UNICODE_VALUE (c) - '0') ;
+      const uint32_t digit = (uint32_t) (c.u32 () - '0') ;
       if (outValue > max) {
         inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
         ok = false ;
@@ -335,10 +335,10 @@ void scanner_routine_convertDecimalStringIntoSInt (Lexique & inLexique,
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
     const utf32 c = inDecimalString.charAtIndex (i COMMA_HERE) ;
-    if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
+    if ((c.u32 () < '0') || (c.u32 () > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const int32_t digit = (int32_t) (UNICODE_VALUE (c) - '0') ;
+      const int32_t digit = (int32_t) (c.u32 () - '0') ;
       const int32_t max = INT32_MAX / 10 ;
       if (outValue > max) {
         inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -364,10 +364,10 @@ void scanner_routine_convertDecimalStringIntoUInt64 (Lexique & inLexique,
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
     const utf32 c = inDecimalString.charAtIndex (i COMMA_HERE) ;
-    if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
+    if ((c.u32 () < '0') || (c.u32 () > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const uint64_t digit = (uint64_t) (UNICODE_VALUE (c) - '0') ;
+      const uint64_t digit = (uint64_t) (c.u32 () - '0') ;
       const uint64_t max = UINT64_MAX / 10 ;
       if (outValue > max) {
         inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -393,10 +393,10 @@ void scanner_routine_convertDecimalStringIntoSInt64 (Lexique & inLexique,
   bool ok = true ;
   for (int32_t i=0 ; (i<inDecimalString.length ()) && ok ; i++) {
     const utf32 c = inDecimalString.charAtIndex (i COMMA_HERE) ;
-    if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
+    if ((c.u32 () < '0') || (c.u32 () > '9')) {
       inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const int64_t digit = (int64_t) (UNICODE_VALUE (c) - '0') ;
+      const int64_t digit = (int64_t) (c.u32 () - '0') ;
       const int64_t max = INT64_MAX / 10 ;
       if (outValue > max) {
         inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -424,14 +424,14 @@ void scanner_routine_enterBinDigitIntoUInt (Lexique & inLexique,
                                             uint32_t & inValue,
                                             const char * inNumberTooLargeError,
                                             const char * inCharacterIsNotBinDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '1')) {
     inLexique.lexicalError (inCharacterIsNotBinDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
     const uint32_t max = UINT32_MAX >> 1 ;
     if (inValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const uint32_t bit = UNICODE_VALUE (inCharacter) - '0' ;
+      const uint32_t bit = inCharacter.u32 () - '0' ;
       inValue = (inValue << 1) | bit ;
     }
   }
@@ -444,14 +444,14 @@ void scanner_routine_enterBinDigitIntoUInt64 (Lexique & inLexique,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
                                               const char * inCharacterIsNotBinDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '1')) {
     inLexique.lexicalError (inCharacterIsNotBinDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
     const uint64_t max = UINT64_MAX >> 1 ;
     if (ioValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const uint64_t bit = (uint64_t) (UNICODE_VALUE (inCharacter) - '0') ;
+      const uint64_t bit = (uint64_t) (inCharacter.u32 () - '0') ;
       ioValue = (ioValue << 1) | bit ;
     }
   }
@@ -470,14 +470,14 @@ void scanner_routine_enterOctDigitIntoUInt (Lexique & inLexique,
                                             uint32_t & inValue,
                                             const char * inNumberTooLargeError,
                                             const char * inCharacterIsNotOctDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '7')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '7')) {
     inLexique.lexicalError (inCharacterIsNotOctDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
     const uint32_t max = UINT32_MAX >> 3 ;
     if (inValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const uint32_t octVal = UNICODE_VALUE (inCharacter) - '0' ;
+      const uint32_t octVal = inCharacter.u32 () - '0' ;
       inValue = (inValue << 3) | octVal ;
     }
   }
@@ -490,14 +490,14 @@ void scanner_routine_enterOctDigitIntoUInt64 (Lexique & inLexique,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
                                               const char * inCharacterIsNotOctDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '7')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '7')) {
     inLexique.lexicalError (inCharacterIsNotOctDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
     const uint64_t max = UINT64_MAX >> 3 ;
     if (ioValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      const uint64_t octVal = UNICODE_VALUE (inCharacter) - '0' ;
+      const uint64_t octVal = inCharacter.u32 () - '0' ;
       ioValue = (ioValue << 3) | octVal ;
     }
   }
@@ -566,14 +566,14 @@ void scanner_routine_convertHexStringIntoUInt (Lexique & inLexique,
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
-    }else if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-      const uint32_t digit = (uint32_t) (UNICODE_VALUE (c) - '0') ;
+    }else if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+      const uint32_t digit = (uint32_t) (c.u32 () - '0') ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
-      const uint32_t digit = (uint32_t) (UNICODE_VALUE (c) - 'A' + 10) ;
+    }else if ((c.u32 () >= 'A') && (c.u32 () <= 'F')) {
+      const uint32_t digit = (uint32_t) (c.u32 () - 'A' + 10) ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'a') && (UNICODE_VALUE (c) <= 'f')) {
-      const uint32_t digit = (uint32_t) (UNICODE_VALUE (c) - 'a' + 10) ;
+    }else if ((c.u32 () >= 'a') && (c.u32 () <= 'f')) {
+      const uint32_t digit = (uint32_t) (c.u32 () - 'a' + 10) ;
       outValue = (outValue << 4) + digit ;
     }else{
       inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -597,14 +597,14 @@ void scanner_routine_convertHexStringIntoUInt64 (Lexique & inLexique,
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
-    }else if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-      const uint64_t digit = (uint64_t) (UNICODE_VALUE (c) - '0') ;
+    }else if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+      const uint64_t digit = (uint64_t) (c.u32 () - '0') ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
-      const uint64_t digit = (uint64_t) (UNICODE_VALUE (c) - 'A' + 10) ;
+    }else if ((c.u32 () >= 'A') && (c.u32 () <= 'F')) {
+      const uint64_t digit = (uint64_t) (c.u32 () - 'A' + 10) ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'a') && (UNICODE_VALUE (c) <= 'f')) {
-      const uint64_t digit = (uint64_t) (UNICODE_VALUE (c) - 'a' + 10) ;
+    }else if ((c.u32 () >= 'a') && (c.u32 () <= 'f')) {
+      const uint64_t digit = (uint64_t) (c.u32 () - 'a' + 10) ;
       outValue = (outValue << 4) + digit ;
     }else{
       inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -628,14 +628,14 @@ void scanner_routine_convertHexStringIntoSInt (Lexique & inLexique,
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
-    }else if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-      const int32_t digit = (int32_t) (UNICODE_VALUE (c) - '0') ;
+    }else if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+      const int32_t digit = (int32_t) (c.u32 () - '0') ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
-      const int32_t digit = (int32_t) (UNICODE_VALUE (c) - 'A' + 10) ;
+    }else if ((c.u32 () >= 'A') && (c.u32 () <= 'F')) {
+      const int32_t digit = (int32_t) (c.u32 () - 'A' + 10) ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'a') && (UNICODE_VALUE (c) <= 'f')) {
-      const int32_t digit = (int32_t) (UNICODE_VALUE (c) - 'a' + 10) ;
+    }else if ((c.u32 () >= 'a') && (c.u32 () <= 'f')) {
+      const int32_t digit = (int32_t) (c.u32 () - 'a' + 10) ;
       outValue = (outValue << 4) + digit ;
     }else{
       inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -659,14 +659,14 @@ void scanner_routine_convertHexStringIntoSInt64 (Lexique & inLexique,
     if (outValue > max) {
       inLexique.lexicalError (inNumberTooLargeError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
       ok = false ;
-    }else if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-      const int64_t digit = (int64_t) (UNICODE_VALUE (c) - '0') ;
+    }else if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+      const int64_t digit = (int64_t) (c.u32 () - '0') ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
-      const int64_t digit = (int64_t) (UNICODE_VALUE (c) - 'A' + 10) ;
+    }else if ((c.u32 () >= 'A') && (c.u32 () <= 'F')) {
+      const int64_t digit = (int64_t) (c.u32 () - 'A' + 10) ;
       outValue = (outValue << 4) + digit ;
-    }else if ((UNICODE_VALUE (c) >= 'a') && (UNICODE_VALUE (c) <= 'f')) {
-      const int64_t digit = (int64_t) (UNICODE_VALUE (c) - 'a' + 10) ;
+    }else if ((c.u32 () >= 'a') && (c.u32 () <= 'f')) {
+      const int64_t digit = (int64_t) (c.u32 () - 'a' + 10) ;
       outValue = (outValue << 4) + digit ;
     }else{
       inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -701,7 +701,7 @@ void scanner_routine_convertHTMLSequenceToUnicodeCharacter (Lexique & inLexique,
                                                             utf32 & outUnicodeCharacter,
                                                             const char * inUnassignedHTMLSequenceError) {
   outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
-  if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
+  if (outUnicodeCharacter.u32 () == 0) {
     inLexique.lexicalError (inUnassignedHTMLSequenceError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
   ioStringValue.removeAllKeepingCapacity () ;
@@ -714,18 +714,18 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
                                          String & ioTemplateString) {
   if (inElementString.length () == 0) {
     inLexique.lexicalError ("the escape sequence '&#...;' contains no character(s)" COMMA_HERE) ;
-  }else if ((UNICODE_VALUE (inElementString.charAtIndex (0 COMMA_HERE)) == 'x') || (UNICODE_VALUE (inElementString.charAtIndex (0 COMMA_HERE)) == 'X')) {
+  }else if ((inElementString.charAtIndex (0 COMMA_HERE).u32 () == 'x') || (inElementString.charAtIndex (0 COMMA_HERE).u32 () == 'X')) {
     bool ok = true ;
     uint32_t code = 0 ;
     for (int32_t i=1 ; (i<inElementString.length ()) && ok ; i++) {
       code <<= 4 ;
       const utf32 c = inElementString.charAtIndex (i COMMA_HERE) ;
-      if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-        code += UNICODE_VALUE (c) - '0' ;
-      }else if ((UNICODE_VALUE (c) >= 'A') && (UNICODE_VALUE (c) <= 'F')) {
-        code += UNICODE_VALUE (c) + 10 - 'A' ;
-      }else if ((UNICODE_VALUE (c) >= 'a') && (UNICODE_VALUE (c) <= 'f')) {
-        code += UNICODE_VALUE (c) + 10 - 'a' ;
+      if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+        code += c.u32 () - '0' ;
+      }else if ((c.u32 () >= 'A') && (c.u32 () <= 'F')) {
+        code += c.u32 () + 10 - 'A' ;
+      }else if ((c.u32 () >= 'a') && (c.u32 () <= 'f')) {
+        code += c.u32 () + 10 - 'a' ;
       }else{
         ok = false ;
         inLexique.lexicalError ("the escape sequence '&#...;' contains non hexadecimal character(s)" COMMA_HERE) ;
@@ -742,8 +742,8 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
     for (int32_t i=0 ; (i<inElementString.length ()) && ok ; i++) {
       code *= 10 ;
       const utf32 c = inElementString.charAtIndex (i COMMA_HERE) ;
-      if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
-        code += UNICODE_VALUE (c) - '0' ;
+      if ((c.u32 () >= '0') && (c.u32 () <= '9')) {
+        code += c.u32 () - '0' ;
       }else{
         ok = false ;
         inLexique.lexicalError ("the escape sequence '&#...;' contains non decimal character(s)" COMMA_HERE) ;
@@ -782,10 +782,10 @@ void scanner_routine_enterDecimalDigitIntoBigInt (Lexique & inLexique,
                                                   const utf32 inCharacter,
                                                   BigSigned & ioBigInt,
                                                   const char * inCharacterIsNotDecimalDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '9')) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
+    const uint8_t digit = uint8_t (inCharacter.u32 () - '0') ;
     ioBigInt *= 10 ;
     ioBigInt += digit ;
   }
@@ -798,16 +798,16 @@ void scanner_routine_enterHexDigitIntoBigInt (Lexique & inLexique,
                                               BigSigned & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) {
 
-  if ((UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9')) {
-    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
+  if ((inCharacter.u32 () >= '0') && (inCharacter.u32 () <= '9')) {
+    const uint8_t digit = uint8_t (inCharacter.u32 () - '0') ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
-  }else if ((UNICODE_VALUE (inCharacter) >= 'A') && (UNICODE_VALUE (inCharacter) <= 'F')) {
-    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - 'A' + 10) ;
+  }else if ((inCharacter.u32 () >= 'A') && (inCharacter.u32 () <= 'F')) {
+    const uint8_t digit = uint8_t (inCharacter.u32 () - 'A' + 10) ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
-  }else if ((UNICODE_VALUE (inCharacter) >= 'a') && (UNICODE_VALUE (inCharacter) <= 'f')) {
-    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - 'a' + 10) ;
+  }else if ((inCharacter.u32 () >= 'a') && (inCharacter.u32 () <= 'f')) {
+    const uint8_t digit = uint8_t (inCharacter.u32 () - 'a' + 10) ;
     ioBigInt *= 16 ;
     ioBigInt += digit ;
   }else{
@@ -853,10 +853,10 @@ void scanner_routine_enterBinaryDigitIntoBigInt (Lexique & inLexique,
                                                  const utf32 inCharacter,
                                                  BigSigned & ioBigInt,
                                                  const char * inCharacterIsNotBinaryDigitError) {
-  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
+  if ((inCharacter.u32 () < '0') || (inCharacter.u32 () > '1')) {
     inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
-    const uint8_t digit = uint8_t (UNICODE_VALUE (inCharacter) - '0') ;
+    const uint8_t digit = uint8_t (inCharacter.u32 () - '0') ;
     ioBigInt *= 2 ;
     ioBigInt += digit ;
   }

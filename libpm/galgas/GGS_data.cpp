@@ -22,7 +22,7 @@
 #include "cCollectionElement.h"
 #include "Compiler.h"
 #include "galgas-input-output.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "C_galgas_CLI_Options.h"
 #include "BinaryFileWrite.h"
 #include "F_verbose_output.h"

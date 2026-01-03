@@ -125,7 +125,7 @@ void setExecutionMode (String & outErrorMessage) {
     gModeLatexSuffixString = modeComponents (1 COMMA_HERE) ;
     bool ok = true ;
     for (int32_t i=0 ; (i<gModeLatexSuffixString.length ()) && ok ; i++) {
-      const uint32_t c = UNICODE_VALUE (gModeLatexSuffixString.charAtIndex (i COMMA_HERE)) ;
+      const uint32_t c = gModeLatexSuffixString.charAtIndex (i COMMA_HERE).u32 () ;
       ok = ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')) ;
     }
     if (! ok) {

@@ -51,7 +51,7 @@ void BoolCommandLineOption::setBoolOptionForCommandChar (const utf32 inCommandCh
   outFound = false ;
   BoolCommandLineOption * p = gFirstBoolCommand ;
   while ((p != nullptr) && ! outFound) {
-    if (uint32_t (p->mCommandChar) == UNICODE_VALUE (inCommandChar)) {
+    if (uint32_t (p->mCommandChar) == inCommandChar.u32 ()) {
       outFound = true ;
       p->mValue = true ;
     }

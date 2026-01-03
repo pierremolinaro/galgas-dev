@@ -193,7 +193,7 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//         Assertion for checking if a pointer is NULL
+//         Assertion for checking if a pointer is nullptr
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -211,7 +211,7 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//         Assertion for checking if a pointer is not NULL
+//         Assertion for checking if a pointer is not nullptr
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS

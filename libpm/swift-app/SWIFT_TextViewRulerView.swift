@@ -158,27 +158,6 @@ final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//- (void) mouseDown: (NSEvent *) inMouseDownEvent {
-////--- Note: ruler view and text view are both flipped
-//  NSTextView * textView = self.scrollView.documentView ;
-//  NSLayoutManager * lm = textView.layoutManager ;
-//  const NSPoint locationInView = [self convertPoint:inMouseDownEvent.locationInWindow fromView:nil] ;
-//  BOOL found = NO ;
-//  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
-//    PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
-//    if (issue.locationInSourceStringStatus != kLocationInSourceStringInvalid) {
-//      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.startLocationInSourceString effectiveRange:NULL] ;
-//      const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
-//      const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
-//      if (NSPointInRect (locationInView, rImage)) {
-//        found = YES ;
-//        [issue scrollAndSelectErrorMessage] ;
-//      }
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------

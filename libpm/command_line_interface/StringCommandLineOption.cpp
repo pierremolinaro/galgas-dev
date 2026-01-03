@@ -60,7 +60,7 @@ void StringCommandLineOption::setStringOptionForCommandChar (const String & inCo
   if (outCommandLineOptionStringIsValid) {
     StringCommandLineOption * p = gFirstStringOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = UNICODE_VALUE (inCommandString.charAtIndex (0 COMMA_HERE)) == uint32_t (p->mCommandChar) ;
+      outFound = inCommandString.charAtIndex (0 COMMA_HERE).u32 () == uint32_t (p->mCommandChar) ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
         p->mValue.appendString (inCommandString.subStringFromIndex (2)) ;
@@ -82,7 +82,7 @@ void StringCommandLineOption::setStringOptionForCommandString (const String & in
   if (outCommandLineOptionStringIsValid) {
     outFound = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && ! outFound) {
-      outFound = UNICODE_VALUE (inCommandString.charAtIndex (equalSignIndex COMMA_HERE)) == '=' ;
+      outFound = inCommandString.charAtIndex (equalSignIndex COMMA_HERE).u32 () == '=' ;
       if (! outFound) {
         equalSignIndex += 1 ;
       }

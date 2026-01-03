@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2002, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "ConsoleOut.h"
-#include "unicode_character_cpp.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

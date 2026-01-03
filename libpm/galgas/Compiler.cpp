@@ -337,11 +337,11 @@ void Compiler::semanticErrorWith_K_message (const GGS_lstring & inKey,
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
-      if (UNICODE_VALUE (c) == 'K') {
+      if (c.u32 () == 'K') {
         message.appendString (key) ;
       }
       perCentFound = false ;
-    }else if (UNICODE_VALUE (c) == '%') {
+    }else if (c.u32 () == '%') {
       perCentFound = true ;
     }else{
       message.appendChar (c) ;
@@ -372,9 +372,9 @@ void Compiler::semanticErrorWith_K_L_message (const GGS_lstring & inKey,
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
-      if (UNICODE_VALUE (c) == 'K') {
+      if (c.u32 () == 'K') {
         message.appendString (key) ;
-      }else if (UNICODE_VALUE (c) == 'L') {
+      }else if (c.u32 () == 'L') {
         if (!inExistingKeyLocation.isValid ()) {
           message.appendCString ("<<unknown>>") ;
         }else if (inExistingKeyLocation.getter_isNowhere (HERE).boolEnum () == GalgasBool::boolTrue) {
@@ -384,7 +384,7 @@ void Compiler::semanticErrorWith_K_L_message (const GGS_lstring & inKey,
         }
       }
       perCentFound = false ;
-    }else if (UNICODE_VALUE (c) == '%') {
+    }else if (c.u32 () == '%') {
       perCentFound = true ;
     }else{
       message.appendChar (c) ;
@@ -410,13 +410,13 @@ void Compiler::semanticWarningWith_K_L_message (const GGS_lstring & inKey,
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
-      if (UNICODE_VALUE (c) == 'K') {
+      if (c.u32 () == 'K') {
         message.appendString (key) ;
-      }else if (UNICODE_VALUE (c) == 'L') {
+      }else if (c.u32 () == 'L') {
         message.appendString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;
       }
       perCentFound = false ;
-    }else if (UNICODE_VALUE (c) == '%') {
+    }else if (c.u32 () == '%') {
       perCentFound = true ;
     }else{
       message.appendChar (c) ;

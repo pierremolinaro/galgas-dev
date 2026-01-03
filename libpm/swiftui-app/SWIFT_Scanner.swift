@@ -955,26 +955,6 @@ fileprivate func unicodeCharacterFromHTMLSequence (_ inString : String) -> UInt3
     idx += 1
   }
   return 0 // Means not found
-
-//  if let idx = kHTMLtoUnicodeConversionArray.firstIndex (where: { $0.0 == inString }) {
-//   return idx
-//  }else{
-//    return 0 // Means not found
-//  }
-//  var lowIndex = 0
-//  int32_t highIndex = kHTMLtoUnicodeConversionTableSize - 1 ;
-//  while ((highIndex >= lowIndex) && (UNICODE_VALUE (result) == 0)) {
-//    const int32_t newIndex = (highIndex + lowIndex) / 2 ;
-//    const NSInteger c = [inString compare:[NSString stringWithCString:kHTMLtoUnicodeCocoaConversionArray [newIndex].mDefinition encoding:NSASCIIStringEncoding]] ;
-//    if (c > 0) {
-//      lowIndex = newIndex + 1 ;
-//    }else if (c < 0) {
-//      highIndex = newIndex - 1 ;
-//    }else{
-//      result = TO_UNICODE (kHTMLtoUnicodeCocoaConversionArray [newIndex].mUnicodeCharacter) ;
-//    }
-//  }
-//  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

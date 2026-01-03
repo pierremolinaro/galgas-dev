@@ -18,12 +18,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "U8Data.h"
-#include "unicode_character_cpp.h"
+#include <string.h>
 
 //--------------------------------------------------------------------------------------------------
 
-#include <string.h>
+#include "U8Data.h"
+#include "utf32.h"
+#include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -81,9 +82,9 @@ void U8Data::appendString (const String & inString) {
 //--------------------------------------------------------------------------------------------------
 
 void U8Data::appendUTF32Character (const utf32 inUnicodeChar) {
-  uint32_t codePoint = UNICODE_VALUE (inUnicodeChar) ;
-  if (codePoint > UNICODE_VALUE (UNICODE_MAX_LEGAL_UTF32_CHARACTER)) {
-    codePoint = UNICODE_VALUE (UNICODE_REPLACEMENT_CHARACTER) ;
+  uint32_t codePoint = inUnicodeChar.u32 () ;
+  if (codePoint > UNICODE_MAX_LEGAL_UTF32_CHARACTER.u32 ()) {
+    codePoint = UNICODE_REPLACEMENT_CHARACTER.u32 () ;
   }
   if (codePoint < 0x80) {
     appendByte ((uint8_t) (codePoint & 255)) ;

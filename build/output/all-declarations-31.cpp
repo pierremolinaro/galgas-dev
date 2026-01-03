@@ -7202,7 +7202,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
     GGS_char var_c_1984 = constinArgument_inString.getter_characterAtIndex (enumerator_1971.current (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 40)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (95)))).boolEnum () ;
+      test_0 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (95)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
         result_result.plusAssignOperation(GGS_string ("\\_"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 42)) ;
       }
@@ -7210,7 +7210,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
     if (GalgasBool::boolFalse == test_0) {
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (123)))).boolEnum () ;
+        test_1 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (123)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
           result_result.plusAssignOperation(GGS_string ("\\{"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 44)) ;
         }
@@ -7218,7 +7218,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
       if (GalgasBool::boolFalse == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (125)))).boolEnum () ;
+          test_2 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (125)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
             result_result.plusAssignOperation(GGS_string ("\\}"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 46)) ;
           }
@@ -7226,7 +7226,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
         if (GalgasBool::boolFalse == test_2) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (38)))).boolEnum () ;
+            test_3 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (38)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
               result_result.plusAssignOperation(GGS_string ("\\&"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 48)) ;
             }
@@ -7234,7 +7234,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
           if (GalgasBool::boolFalse == test_3) {
             GalgasBool test_4 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_4) {
-              test_4 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (35)))).boolEnum () ;
+              test_4 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (35)))).boolEnum () ;
               if (GalgasBool::boolTrue == test_4) {
                 result_result.plusAssignOperation(GGS_string ("\\#"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 50)) ;
               }
@@ -7242,7 +7242,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
             if (GalgasBool::boolFalse == test_4) {
               GalgasBool test_5 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_5) {
-                test_5 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (36)))).boolEnum () ;
+                test_5 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (36)))).boolEnum () ;
                 if (GalgasBool::boolTrue == test_5) {
                   result_result.plusAssignOperation(GGS_string ("\\$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 52)) ;
                 }
@@ -7250,7 +7250,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
               if (GalgasBool::boolFalse == test_5) {
                 GalgasBool test_6 = GalgasBool::boolTrue ;
                 if (GalgasBool::boolTrue == test_6) {
-                  test_6 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (94)))).boolEnum () ;
+                  test_6 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
                   if (GalgasBool::boolTrue == test_6) {
                     result_result.plusAssignOperation(GGS_string ("\\verb=^="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 54)) ;
                   }
@@ -7258,7 +7258,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
                 if (GalgasBool::boolFalse == test_6) {
                   GalgasBool test_7 = GalgasBool::boolTrue ;
                   if (GalgasBool::boolTrue == test_7) {
-                    test_7 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (37)))).boolEnum () ;
+                    test_7 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (37)))).boolEnum () ;
                     if (GalgasBool::boolTrue == test_7) {
                       result_result.plusAssignOperation(GGS_string ("\\verb=%="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 56)) ;
                     }
@@ -7266,7 +7266,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
                   if (GalgasBool::boolFalse == test_7) {
                     GalgasBool test_8 = GalgasBool::boolTrue ;
                     if (GalgasBool::boolTrue == test_8) {
-                      test_8 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (126)))).boolEnum () ;
+                      test_8 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (126)))).boolEnum () ;
                       if (GalgasBool::boolTrue == test_8) {
                         result_result.plusAssignOperation(GGS_string ("$\\sim$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 58)) ;
                       }
@@ -7274,7 +7274,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
                     if (GalgasBool::boolFalse == test_8) {
                       GalgasBool test_9 = GalgasBool::boolTrue ;
                       if (GalgasBool::boolTrue == test_9) {
-                        test_9 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (TO_UNICODE (94)))).boolEnum () ;
+                        test_9 = GGS_bool (ComparisonKind::equal, var_c_1984.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
                         if (GalgasBool::boolTrue == test_9) {
                           result_result.plusAssignOperation(GGS_string ("$\\wedge$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 60)) ;
                         }

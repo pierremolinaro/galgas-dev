@@ -22,7 +22,7 @@
 #include "Lexique.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "C_galgas_CLI_Options.h"
 #include "IndexingDictionary.h"
 #include "FileManager.h"

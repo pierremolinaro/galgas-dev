@@ -102,7 +102,7 @@ void HTMLString::handleAppendUTF8Array (const char * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void HTMLString::handleAppendCharacter (const utf32 inCharacter) {
-  switch (UNICODE_VALUE (inCharacter)) {
+  switch (inCharacter.u32 ()) {
   case '<' :
     super::handleAppendUTF8Array ("&lt;", 4) ;
     break ;

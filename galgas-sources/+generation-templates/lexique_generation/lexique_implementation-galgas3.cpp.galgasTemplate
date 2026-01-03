@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "scanner_actions.h"
 #include "LexiqueIntrospection.h"
 
@@ -113,11 +113,11 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
       break ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
-   %      s.appendChar (TO_UNICODE ('$')) ;\n%
+   %      s.appendChar (utf32 ('$')) ;\n%
    %      s.appendCString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
-   %      s.appendChar (TO_UNICODE ('$')) ;\n%
+   %      s.appendChar (utf32 ('$')) ;\n%
    for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
-     %      s.appendChar (TO_UNICODE (' ')) ;\n%
+     %      s.appendChar (utf32 (' ')) ;\n%
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end
    %      break ;\n%
@@ -200,7 +200,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQ
       ![mLexicalRule generateLexicalRuleCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
-%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+%if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
       token.mTokenCode = kToken_ ; // Empty string code
     }else{ // Unknown input character
       unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -220,19 +220,19 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQ
 bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
 %
   if [TEMPLATE_DELIMITOR_LIST count] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0)
      && (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
-     && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+     && (mCurrentChar.u32 () != '\0')) {
       const bool foundEndDelimitor = testForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
                                                                true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
     }
-    while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar.u32 () != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
         replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
@@ -256,7 +256,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
         advance () ;
       }
     }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar.u32 () != '\0')) {
       internalParseLexicalToken (token) ;
     }
     if ((token.mTokenCode > 0) && %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
@@ -266,7 +266,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   %    internalParseLexicalToken (token) ;%
   end%
   }
-  if (UNICODE_VALUE (mCurrentChar) == '\0') {
+  if (mCurrentChar.u32 () == '\0') {
     token.mTokenCode = 0 ;
     enterToken (token) ;
   }

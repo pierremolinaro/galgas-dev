@@ -110,7 +110,7 @@ void HTMLFileWrite::handleAppendUTF8Array (const char * inCharArray,
 //--------------------------------------------------------------------------------------------------
 
 void HTMLFileWrite::handleAppendCharacter (const utf32 inCharacter) {
-  switch (UNICODE_VALUE (inCharacter)) {
+  switch (inCharacter.u32 ()) {
   case '<' :
     Super::handleAppendUTF8Array ("&lt;", 4) ;
     break ;

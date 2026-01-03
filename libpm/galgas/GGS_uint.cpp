@@ -21,7 +21,7 @@
 #include "all-predefined-types.h"
 #include "Compiler.h"
 #include "galgas-input-output.h"
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "galgas-random.h"
 
 //--------------------------------------------------------------------------------------------------

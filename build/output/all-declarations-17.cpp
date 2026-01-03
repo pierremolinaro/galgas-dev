@@ -1170,7 +1170,7 @@ GGS_BuildFileList_2E_element GGS_BuildFileList_2E_element::extractObject (const 
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "scanner_actions.h"
 #include "LexiqueIntrospection.h"
 
@@ -1463,17 +1463,17 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [201] = {
 bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
   cTokenFor_galgasTemplateScanner token ;
   token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     if ((mMatchedTemplateDelimiterIndex >= 0)
         && (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
-        && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+        && (mCurrentChar.u32 () != '\0')) {
       const bool foundEndDelimitor = testForInputUTF32String (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
                                                                true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
     }
-    while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar.u32 () != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
         replacementIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateReplacementArray, 3) ;
@@ -1497,14 +1497,14 @@ bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
         advance () ;
       }
     }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar.u32 () != '\0')) {
       internalParseLexicalToken (token) ;
     }
     if ((token.mTokenCode > 0) && galgasTemplateScanner_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
       mMatchedTemplateDelimiterIndex = -1 ;
     }
   }
-  if (UNICODE_VALUE (mCurrentChar) == '\0') {
+  if (mCurrentChar.u32 () == '\0') {
     token.mTokenCode = 0 ;
     enterToken (token) ;
   }

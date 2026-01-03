@@ -68,14 +68,14 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
     int32_t currentLine = 1 ;
     if (sourceTextLength > 0) {
       while (currentLine < inLocation.lineNumber ()) {
-        if (UNICODE_VALUE (mObject->mSourceString.readCharOrNul (index COMMA_HERE)) == '\n') {
+        if (mObject->mSourceString.readCharOrNul (index COMMA_HERE).u32 () == '\n') {
           currentLine += 1 ;
         }
         index += 1 ;
       }
     }
   //--- Get error line text
-    for (int32_t i=index ; (i<sourceTextLength) && (UNICODE_VALUE (mObject->mSourceString.readCharOrNul (i COMMA_HERE)) != '\n') ; i++) {
+    for (int32_t i=index ; (i<sourceTextLength) && (mObject->mSourceString.readCharOrNul (i COMMA_HERE).u32 () != '\n') ; i++) {
       const utf32 character = mObject->mSourceString.charAtIndex (i COMMA_HERE) ;
       errorLine.appendChar (character) ;
     }

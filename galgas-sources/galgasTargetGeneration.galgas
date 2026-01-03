@@ -1182,12 +1182,10 @@ proc updateGalgasTargets
         "String-class-getters.cpp",
         "String-class.cpp",
         "String-class.h",
-        "cUnicodeData.h",
         "string_encodings.h",
-        "unicode_character_cpp.cpp",
-        "unicode_character_cpp.h",
-        "unicode_character_m.h",
-        "unicode_character_m.m",
+        "unicode-data.h",
+        "utf32.cpp",
+        "utf32.h",
         "print.cpp",
         "print.h"
       ]

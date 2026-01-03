@@ -43,7 +43,7 @@ end
        "AbstractOutputStream.cpp",
        "ColoredConsole.cpp",
        "ConsoleOut.cpp",
-       "unicode_character_cpp.cpp",
+       "utf32.cpp",
        "String-class-getters.cpp",
        "String-class.cpp",
        "HTMLString.cpp",

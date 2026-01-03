@@ -448,7 +448,7 @@ BinaryDecisionDiagram BinaryDecisionDiagram::BDDWithPredicateString (const Strin
   while ((stringIndex < stringLength) && ok) {
     utf32 cc = inPredicateStringValue.charAtIndex (stringIndex COMMA_HERE) ;
     String s ;
-    while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
+    while ((stringIndex < stringLength) && ((cc.u32 () == '0') || (cc.u32 () == '1') || (cc.u32 () == 'X') || (cc.u32 () == ' '))) {
       s.appendChar (cc) ;
       stringIndex += 1 ;
       if (stringIndex < stringLength) {
@@ -460,20 +460,20 @@ BinaryDecisionDiagram BinaryDecisionDiagram::BDDWithPredicateString (const Strin
       int32_t bitIndex = 0 ;
       for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
         const utf32 c = s.charAtIndex (i COMMA_HERE) ;
-        if (UNICODE_VALUE (c) == '0') {
+        if (c.u32 () == '0') {
           v &= BinaryDecisionDiagram ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), false) ;
           bitIndex += 1 ;
-        }else if (UNICODE_VALUE (c) == '1') {
+        }else if (c.u32 () == '1') {
           v &= BinaryDecisionDiagram ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), true) ;
           bitIndex += 1 ;
-        }else if (UNICODE_VALUE (c) == 'X') {
+        }else if (c.u32 () == 'X') {
           bitIndex += 1 ;
         }
       }
       result |= v ;
     }
     if (stringIndex < stringLength) {
-      ok = UNICODE_VALUE (cc) == '|' ;
+      ok = cc.u32 () == '|' ;
       macroAssertThere (ok, "BDD predicate string syntax error at character index %lld", stringIndex, 0) ;
       stringIndex += 1 ;
     }

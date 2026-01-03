@@ -100,7 +100,7 @@ override method @literalCharExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GGS_char (TO_UNICODE (" + [[self.mCharacter uint] string] + "))"
+  outCppExpression = "GGS_char (utf32 (" + [[self.mCharacter uint] string] + "))"
 }
 
 

@@ -41,7 +41,7 @@ printInstructionsListForGrammar (const GGS_syntaxInstructionListForGrammarAnalys
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
     if (instruction == nullptr) {
-      printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+      printf ("nullptr in '%s', line %d\n", __FILE__, __LINE__) ;
       exit (1) ;
     }else{
       instruction->printInstructionForGrammar (inHTMLfile) ;
