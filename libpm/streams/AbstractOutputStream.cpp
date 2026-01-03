@@ -77,7 +77,7 @@ void AbstractOutputStream::performAppendCharacter (const utf32 inCharacter) {
   }else{
     if (mStartingLine) {
       for (int32_t j=0 ; j<mIndentation ; j++) {
-        handleAppendCharacter (TO_UNICODE (' ')) ;
+        handleAppendCharacter (utf32 (' ')) ;
       }
     }
     handleAppendCharacter (inCharacter) ;
@@ -117,10 +117,10 @@ void AbstractOutputStream::appendString (const char * inCString, const int32_t i
 
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inString,
                                                              const bool inAppendZeroTerminator) {
-  appendChar (TO_UNICODE ('{')) ;
+  appendChar (utf32 ('{')) ;
   for (int32_t i=0 ; i < inString.length () ; i++) {
     const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
-    appendCString ("\n  TO_UNICODE (") ;
+    appendCString ("\n  utf32 (") ;
     if (isprint (int (c.u32 ()))) {
       appendStringAsCLiteralCharConstant (c) ;
     }else{
@@ -129,7 +129,7 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inStri
     appendCString ("),") ;
   }
   if (inAppendZeroTerminator) {
-    appendCString ("\n  TO_UNICODE (0)") ;
+    appendCString ("\n  utf32 (0)") ;
   }
   appendCString ("\n}") ;
 }
@@ -137,7 +137,7 @@ void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inStri
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendASCIIChar (const char inValue) {
-  appendChar (TO_UNICODE (uint32_t (inValue))) ;
+  appendChar (utf32 (uint32_t (inValue))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -247,7 +247,7 @@ void AbstractOutputStream::appendPointer (const void * inValue) {
 
 void AbstractOutputStream::appendSpaces (const int32_t inSpaceCount) {
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    appendChar (TO_UNICODE (' ')) ;
+    appendChar (utf32 (' ')) ;
   }
 }
 
@@ -641,7 +641,7 @@ String stringWithSigned (const int64_t inValue) {
 
 String stringWithCharacter (const char inValue) {
   String result ;
-  result.appendChar (TO_UNICODE (uint32_t (inValue))) ;
+  result.appendChar (utf32 (uint32_t (inValue))) ;
   return result ;
 }
 

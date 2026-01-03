@@ -608,7 +608,7 @@ GGS_string GGS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) const {
     uint64_t v = mUInt64Value ;
     int32_t idx = 13 ;
     while (v > 0) {
-      const utf32 c = TO_UNICODE (uint32_t ((v % 26) + 'a')) ;
+      const utf32 c = utf32 (uint32_t ((v % 26) + 'a')) ;
       s.setCharAtIndex (c, idx COMMA_HERE) ;
       idx -= 1 ;
       v /= 26 ;

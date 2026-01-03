@@ -127,7 +127,7 @@
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
         const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
-        winPath.appendChar ((c.u32 () == '/') ? TO_UNICODE ('\\') : c) ;
+        winPath.appendChar ((c.u32 () == '/') ? utf32 ('\\') : c) ;
       }
     return winPath ;
   }
@@ -474,7 +474,7 @@ String FileManager::absolutePathFromPath (const String & inPath,
   }else{
     result = absolutePathFromCurrentDirectory (inFromPath) ;
     if (result.lastChar (HERE).u32 () != '/') {
-      result.appendChar (TO_UNICODE ('/')) ;
+      result.appendChar (utf32 ('/')) ;
     }
     result.appendString (inPath) ;
   }

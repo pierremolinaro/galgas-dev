@@ -25,92 +25,137 @@
 #include <stdint.h>
 
 //--------------------------------------------------------------------------------------------------
+
+class String ;
+
+//--------------------------------------------------------------------------------------------------
 //                      U T F 3 2    T Y P E
 //--------------------------------------------------------------------------------------------------
 
 class utf32 final {
-  private: uint32_t mCode ;
-  public: inline uint32_t u32 (void) const { return mCode ; }
+  private: uint32_t mCodePoint ;
+  public: inline uint32_t u32 (void) const { return mCodePoint ; }
   public: inline utf32 (void) :
-  mCode (0) {
+  mCodePoint (0) {
   }
   public: inline utf32 (const uint32_t & inCode) :
-  mCode (inCode) {
+  mCodePoint (inCode) {
   }
   public: inline utf32 (const utf32 & inOperand) :
-  mCode (inOperand.mCode) {
+  mCodePoint (inOperand.mCodePoint) {
   }
   public: inline utf32 & operator = (const utf32 & inOperand) {
-    mCode = inOperand.mCode ;
+    mCodePoint = inOperand.mCodePoint ;
     return *this ;
   }
   public: inline bool operator == (const utf32 inOperand) const {
-    return mCode == inOperand.mCode ;
+    return mCodePoint == inOperand.mCodePoint ;
   }
   public: inline bool operator != (const utf32 inOperand) const {
-    return mCode != inOperand.mCode ;
+    return mCodePoint != inOperand.mCodePoint ;
   }
-} ;
-
-  #define TO_UNICODE(C) utf32 (C)
-
-//--------------------------------------------------------------------------------------------------
 
 //--- Character assigned ?
-bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacterCode) ;
-
-//--- Returns character name, or empty string if not assigned
-class String unicodeName (const utf32 inUnicodeCharacter) ;
+  public: bool isAssigned (void) const ;
 
 //--- Returns to lower letter, or returns argument
-utf32 unicodeToLower (const utf32 inUnicodeCharacter) ;
+  public: utf32 toLower (void) const ;
 
 //--- Returns to upper letter, or returns argument
-utf32 unicodeToUpper (const utf32 inUnicodeCharacter) ;
+  public: utf32 toUpper (void) const ;
 
-//--- Returns true if unicode letter
-bool isUnicodeLetter (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode mark
-bool isUnicodeMark (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode number
-bool isUnicodeNumber (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode decimal digit
-bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter) ;
-
-//--- Returns decimal value, or zero
-uint32_t unicodeDecimalValue (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if ascii hex digit
-bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter) ;
-
-//--- Returns hex value, or zero
-uint32_t ASCIIHexValue (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode separator
-bool isUnicodeSeparator (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode command
-bool isUnicodeCommand (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode punctuation
-bool isUnicodePunctuation (const utf32 inUnicodeCharacter) ;
-
-//--- Returns true if unicode symbol
-bool isUnicodeSymbol (const utf32 inUnicodeCharacter) ;
+//--- Returns character name, or empty string if not assigned
+  public: String unicodeName (void) const ;
 
 //--- Returns the number of bytes needed for encoding this character in UTF8
-uint32_t utf8Length (const utf32 inUnicodeCharacter) ;
+  public: uint32_t utf8Length (void) const ;
+
+//--- Returns true if unicode letter
+  public: bool isLetter (void) const ;
+
+//--- Returns true if unicode mark
+  public: bool isMark (void) const ;
+
+//--- Returns true if unicode number
+  public: bool isNumber (void) const ;
+
+//--- Returns true if unicode decimal digit
+  public: bool isDecimalDigit (void) const ;
+
+//--- Returns true if ascii hex digit
+  public: bool isASCIIHexDigit (void) const ;
+
+//--- Returns true if unicode separator
+  public: bool isSeparator (void) const ;
+
+//--- Returns true if unicode command
+  public: bool isCommand (void) const ;
+
+//--- Returns true if unicode punctuation
+  public: bool isPunctuation (void) const ;
+
+//--- Returns true if unicode symbol
+  public: bool isSymbol (void) const ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const utf32 UNICODE_REPLACEMENT_CHARACTER ;
-extern const utf32 UNICODE_MAX_LEGAL_UTF32_CHARACTER ;
+inline bool isUnicodeLetter (const utf32 inUnicodeCharacter) {
+  return inUnicodeCharacter.isLetter () ;
+}
 
-//--- Returns true if unicode letter
-bool isRestrictedUnicodeLetter (const utf32 inUnicodeCharacter) ;
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeMark (const utf32 inUnicodeCharacter) {
+  return inUnicodeCharacter.isMark () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeNumber (const utf32 inUnicodeCharacter)  {
+  return inUnicodeCharacter.isNumber () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter)  {
+  return inUnicodeCharacter.isDecimalDigit () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter)  {
+  return inUnicodeCharacter.isASCIIHexDigit () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeSeparator (const utf32 inUnicodeCharacter) {
+  return inUnicodeCharacter.isSeparator () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeCommand (const utf32 inUnicodeCharacter)  {
+  return inUnicodeCharacter.isCommand () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodePunctuation (const utf32 inUnicodeCharacter) {
+  return inUnicodeCharacter.isPunctuation () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool isUnicodeSymbol (const utf32 inUnicodeCharacter)  {
+  return inUnicodeCharacter.isSymbol () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const utf32 UNICODE_REPLACEMENT_CHARACTER = utf32 (0x0000FFFD) ;
+static const utf32 UNICODE_MAX_LEGAL_UTF32_CHARACTER = utf32 (0x0010FFFF) ;
 
 //--------------------------------------------------------------------------------------------------
 

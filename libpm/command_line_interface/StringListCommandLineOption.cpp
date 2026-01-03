@@ -186,12 +186,12 @@ void StringListCommandLineOption::getStringOptionNameList (GenericUniqueArray <S
 
 utf32 StringListCommandLineOption::getStringOptionInvocationLetter (const String & inDomainName,
                                                                     const String & inIdentifier) {
-  utf32 result = TO_UNICODE (0) ;
+  utf32 result = utf32 (0) ;
   StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
     found = (inDomainName == String (p->mDomainName)) && (inIdentifier == String (p->mIdentifier)) ;
-    result = TO_UNICODE ((uint32_t) p->mCommandChar) ;
+    result = utf32 ((uint32_t) p->mCommandChar) ;
     p = p->mNext ;
 }
   return result ;

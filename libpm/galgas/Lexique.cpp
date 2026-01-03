@@ -79,8 +79,8 @@ mFirstToken (nullptr),
 mLastToken (nullptr),
 mCurrentTokenPtr (nullptr),
 mLastSeparatorIndex (0),
-mCurrentChar (TO_UNICODE ('\0')),
-mPreviousChar (TO_UNICODE ('\0')),
+mCurrentChar (utf32 ('\0')),
+mPreviousChar (utf32 ('\0')),
 mTokenStartLocation (),
 mTokenEndLocation (),
 mTriggerNonTerminalSymbolList (),
@@ -124,8 +124,8 @@ mFirstToken (nullptr),
 mLastToken (nullptr),
 mCurrentTokenPtr (nullptr),
 mLastSeparatorIndex (0),
-mCurrentChar (TO_UNICODE ('\0')),
-mPreviousChar (TO_UNICODE ('\0')),
+mCurrentChar (utf32 ('\0')),
+mPreviousChar (utf32 ('\0')),
 mTokenStartLocation (),
 mTokenEndLocation (),
 mTriggerNonTerminalSymbolList (),
@@ -252,7 +252,7 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
 void Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
-  mPreviousChar = TO_UNICODE ('\0') ;
+  mPreviousChar = utf32 ('\0') ;
   mCurrentTokenPtr = mFirstToken ;
   if (mCurrentTokenPtr != nullptr) {
     mStartLocationForHere = mCurrentTokenPtr->mStartLocation ;
@@ -483,7 +483,7 @@ void Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   String errorMessage ;
   errorMessage.appendCString ("Unknown character: ") ;
-  errorMessage.appendString (unicodeName (mCurrentChar)) ;
+  errorMessage.appendString (mCurrentChar.unicodeName ()) ;
   errorMessage.appendCString (" (Unicode ") ;
   errorMessage.appendUnsigned0xHex (mCurrentChar.u32 ()) ;
   errorMessage.appendCString (")") ;

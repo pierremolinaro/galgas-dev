@@ -40,7 +40,7 @@
 GGS_char::GGS_char (void) :
 AC_GALGAS_root (),
 mIsValid (false),
-mCharValue (TO_UNICODE (0)) {
+mCharValue (utf32 (0)) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ mCharValue (TO_UNICODE (0)) {
   //--- Restore configuration
     tcsetattr (STDIN_FILENO, TCSANOW, &termios_orig) ;
   //--- Return input character
-    return GGS_char (TO_UNICODE (unicodeChar)) ;
+    return GGS_char (utf32 (unicodeChar)) ;
   }
 #endif
 
@@ -167,7 +167,7 @@ void GGS_char::description (String & ioString,
       ioString.appendChar (mCharValue) ;
       ioString.appendCString ("'") ;
     }else{
-      ioString.appendString (unicodeName (mCharValue)) ;
+      ioString.appendString (mCharValue.unicodeName ()) ;
     }
   }else{
     ioString.appendCString ("not built") ;
@@ -193,7 +193,7 @@ GGS_string GGS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_LOCATI
   GGS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendCString ("TO_UNICODE (") ;
+    s.appendCString ("utf32 (") ;
     s.appendStringAsCLiteralCharConstant (mCharValue) ;
     s.appendCString (")") ;
     result = GGS_string (s) ;
@@ -366,7 +366,7 @@ GGS_bool GGS_char::getter_isUnicodeNumber (UNUSED_LOCATION_ARGS) const {
 GGS_string GGS_char::getter_unicodeName (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
-    result = GGS_string (unicodeName (mCharValue)) ;
+    result = GGS_string (mCharValue.unicodeName ()) ;
   }
   return result ;
 }
@@ -376,7 +376,7 @@ GGS_string GGS_char::getter_unicodeName (UNUSED_LOCATION_ARGS) const {
 GGS_char GGS_char::getter_unicodeToLower (UNUSED_LOCATION_ARGS) const {
   GGS_char result ;
   if (isValid ()) {
-    result = GGS_char (unicodeToLower (mCharValue)) ;
+    result = GGS_char (mCharValue.toLower ()) ;
   }
   return result ;
 }
@@ -386,7 +386,7 @@ GGS_char GGS_char::getter_unicodeToLower (UNUSED_LOCATION_ARGS) const {
 GGS_char GGS_char::getter_unicodeToUpper (UNUSED_LOCATION_ARGS) const {
   GGS_char result ;
   if (isValid ()) {
-    result = GGS_char (unicodeToUpper (mCharValue)) ;
+    result = GGS_char (mCharValue.toUpper ()) ;
   }
   return result ;
 }
@@ -396,7 +396,7 @@ GGS_char GGS_char::getter_unicodeToUpper (UNUSED_LOCATION_ARGS) const {
 GGS_uint GGS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (utf8Length (mCharValue)) ;
+    result = GGS_uint (mCharValue.utf8Length ()) ;
   }
   return result ;
 }
@@ -407,7 +407,7 @@ GGS_char GGS_char::class_func_unicodeCharacterWithUnsigned (const GGS_uint & inV
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_char result ;
   if (inValue.isValid ()) {
-    result = GGS_char (TO_UNICODE (inValue.uintValue ())) ;
+    result = GGS_char (utf32 (inValue.uintValue ())) ;
   }
   return result ;
 }

@@ -58,7 +58,7 @@ void scanner_routine_enterHexDigitIntoASCIIcharacter (Lexique & inLexique,
     if (tempo > 255) {
       inLexique.lexicalError (inErrorCodeGreaterThan255 LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      ioValue = TO_UNICODE (tempo) ;
+      ioValue = utf32 (tempo) ;
     }
   }else{
     inLexique.lexicalError (inErrorNotHexDigitCharacter LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -79,7 +79,7 @@ void scanner_routine_enterDigitIntoASCIIcharacter (Lexique & inLexique,
     if (tempo > 255) {
       inLexique.lexicalError (inErrorCodeGreaterThan255 LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
     }else{
-      ioValue = TO_UNICODE (tempo) ;
+      ioValue = utf32 (tempo) ;
     }
   }else{
     inLexique.lexicalError (inErrorNotDigitCharacter LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -127,13 +127,13 @@ void scanner_routine_enterCharacterIntoCharacter (Lexique & /* inLexique */,
 //--------------------------------------------------------------------------------------------------
 
 utf32 scanner_function_toLower (Lexique & /* inLexique */, const utf32 c) {
-  return unicodeToLower (c) ;
+  return c.toLower () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 utf32 scanner_function_toUpper (Lexique & /* inLexique */, const utf32 c) {
-  return unicodeToUpper (c) ;
+  return c.toUpper () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -687,8 +687,8 @@ void scanner_routine_convertUnsignedNumberToUnicodeChar (Lexique & inLexique,
                                                          uint32_t & ioValue,
                                                          utf32 & outUnicodeCharacter,
                                                          const char * inUnassignedUnicodeValueError) {
-  outUnicodeCharacter = TO_UNICODE (ioValue) ;
-  if (! isUnicodeCharacterAssigned (outUnicodeCharacter)) {
+  outUnicodeCharacter = utf32 (ioValue) ;
+  if (!outUnicodeCharacter.isAssigned ()) {
     inLexique.lexicalError (inUnassignedUnicodeValueError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
   ioValue = 0 ;
@@ -731,8 +731,8 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
         inLexique.lexicalError ("the escape sequence '&#...;' contains non hexadecimal character(s)" COMMA_HERE) ;
       }
     }
-    if (isUnicodeCharacterAssigned (TO_UNICODE (code))) {
-      ioTemplateString.appendChar (TO_UNICODE (code)) ;
+    if (utf32 (code).isAssigned ()) {
+      ioTemplateString.appendChar (utf32 (code)) ;
     }else{
       inLexique.lexicalError ("the escape sequence '&#...;' is not an assigned unicode character" COMMA_HERE) ;
     }
@@ -749,8 +749,8 @@ void scanner_routine_codePointToUnicode (Lexique & inLexique,
         inLexique.lexicalError ("the escape sequence '&#...;' contains non decimal character(s)" COMMA_HERE) ;
       }
     }
-    if (isUnicodeCharacterAssigned (TO_UNICODE (code))) {
-      ioTemplateString.appendChar (TO_UNICODE (code)) ;
+    if (utf32 (code).isAssigned ()) {
+      ioTemplateString.appendChar (utf32 (code)) ;
     }else{
       inLexique.lexicalError ("the escape sequence '&#...;' is not an assigned unicode character" COMMA_HERE) ;
     }

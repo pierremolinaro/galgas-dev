@@ -343,7 +343,7 @@ utf32 String::charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 utf32 String::readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-  utf32 result = TO_UNICODE ('\0') ;
+  utf32 result = utf32 ('\0') ;
   if (mEmbeddedString != nullptr) {
     macroValidSharedObjectThere (mEmbeddedString, PrivateEmbeddedString) ;
     if (inIndex < mEmbeddedString->length ()) {
@@ -527,7 +527,7 @@ void String::handleAppendUTF8Array (const char * inCharArray,
     bool ok = true ;
     while ((idx < inArrayCount) && ok) {
       if ((inCharArray [idx] & 0x80) == 0) { // ASCII
-        mEmbeddedString->appendChar (TO_UNICODE (uint32_t (inCharArray [idx])) COMMA_HERE) ;
+        mEmbeddedString->appendChar (utf32 (uint32_t (inCharArray [idx])) COMMA_HERE) ;
         idx += 1 ;
       }else{
         const utf32 unicodeChar = utf32CharacterForPointer ((const uint8_t *) inCharArray, idx, inArrayCount, ok) ;
@@ -701,16 +701,16 @@ bool String::parseUTF8 (const U8Data & inDataString,
       idx = inDataString.count () ; // For exiting loop
     }else if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.appendChar (TO_UNICODE ('\n')) ;
+        outString.appendChar (utf32 ('\n')) ;
       }
       foundCR = false ;
       idx += 1 ;
     }else if (c == 0x0D) { // CR
-      outString.appendChar (TO_UNICODE ('\n')) ;
+      outString.appendChar (utf32 ('\n')) ;
       foundCR = true ;
       idx += 1 ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.appendChar (TO_UNICODE (c)) ;
+      outString.appendChar (utf32 (c)) ;
       foundCR = false ;
       idx += 1 ;
     }else{
@@ -731,7 +731,7 @@ bool String::parseUTF8 (const U8Data & inDataString,
     }
   }
   if (foundCR) {
-    outString.appendChar (TO_UNICODE ('\n')) ;
+    outString.appendChar (utf32 ('\n')) ;
   }
   return ok ;
 }

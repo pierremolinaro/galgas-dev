@@ -28,19 +28,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-const utf32 UNICODE_REPLACEMENT_CHARACTER = TO_UNICODE (0x0000FFFD) ;
-const utf32 UNICODE_MAX_LEGAL_UTF32_CHARACTER = TO_UNICODE (0x0010FFFF) ;
-
-//--------------------------------------------------------------------------------------------------
-
-bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
-  bool result = inUnicodeCharacter.u32 () <= UNICODE_MAX_LEGAL_UTF32_CHARACTER.u32 () ;
+bool utf32::isAssigned (void)  const{
+  bool result = mCodePoint <= UNICODE_MAX_LEGAL_UTF32_CHARACTER.u32 () ;
   if (result) {
-    const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+    const uint32_t pageIndex = mCodePoint / gNamePageSize ;
     if (pageIndex <= gLastNamePage) {
       const uint32_t * page = gNamePages [pageIndex] ;
       if (page != nullptr) {
-        const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+        const uint32_t entry = page [mCodePoint % gNamePageSize] ;
         result = entry != 0 ;
       }
     }
@@ -69,17 +64,17 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
 //               EXIT.
 //--------------------------------------------------------------------------------------------------
 
-String unicodeName (const utf32 inUnicodeCharacter) {
+String utf32::unicodeName (void) const {
   String result ;
-  if (! isUnicodeCharacterAssigned (inUnicodeCharacter)) {
+  if (!isAssigned ()) {
     result.appendCString ("invalid unicode character \\U") ;
-    result.appendUnsignedHex8 (inUnicodeCharacter.u32 ()) ;
+    result.appendUnsignedHex8 (mCodePoint) ;
   }else{
-    const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+    const uint32_t pageIndex = mCodePoint / gNamePageSize ;
     if (pageIndex <= gLastNamePage) {
       const uint32_t * page = gNamePages [pageIndex] ;
       if (page != nullptr) {
-        uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] & kNameMask ;
+        uint32_t entry = page [mCodePoint % gNamePageSize] & kNameMask ;
         bool completed = entry == 0 ;
         uint32_t idx = 0 ;
         while (! completed) {
@@ -108,12 +103,12 @@ String unicodeName (const utf32 inUnicodeCharacter) {
       }
     }
     if (result.length () == 0) {
-      if (inUnicodeCharacter.u32 () < 0x10000) {
+      if (mCodePoint < 0x10000) {
         result.appendCString ("\\u") ;
-        result.appendUnsignedHex4 (inUnicodeCharacter.u32 ()) ;
+        result.appendUnsignedHex4 (mCodePoint) ;
       }else{
         result.appendCString ("\\U") ;
-        result.appendUnsignedHex8 (inUnicodeCharacter.u32 ()) ;
+        result.appendUnsignedHex8 (mCodePoint) ;
       }
     }
   }
@@ -122,15 +117,15 @@ String unicodeName (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 unicodeToLower (const utf32 inUnicodeCharacter) {
-  utf32 result = inUnicodeCharacter ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gToLowerPageSize ;
+utf32 utf32::toLower (void) const {
+  utf32 result = mCodePoint ;
+  const uint32_t pageIndex = mCodePoint / gToLowerPageSize ;
   if (pageIndex <= gLastToLowerPage) {
     const uint32_t * page = gToLowerPages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gToLowerPageSize] ;
+      const uint32_t entry = page [mCodePoint % gToLowerPageSize] ;
       if (entry != 0) {
-        result = TO_UNICODE (entry) ;
+        result = utf32 (entry) ;
       }
     }
   } 
@@ -139,15 +134,15 @@ utf32 unicodeToLower (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 unicodeToUpper (const utf32 inUnicodeCharacter) {
-  utf32 result = inUnicodeCharacter ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gToUpperPageSize ;
+utf32 utf32::toUpper (void) const {
+  utf32 result = mCodePoint ;
+  const uint32_t pageIndex = mCodePoint / gToUpperPageSize ;
   if (pageIndex <= gLastToUpperPage) {
     const uint32_t * page = gToUpperPages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gToUpperPageSize] ;
+      const uint32_t entry = page [mCodePoint % gToUpperPageSize] ;
       if (entry != 0) {
-        result = TO_UNICODE (entry) ;
+        result = utf32 (entry) ;
       }
     }
   }
@@ -156,47 +151,47 @@ utf32 unicodeToUpper (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeLetter (const utf32 inUnicodeCharacter) {
-  bool ok = (0x61 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x7A) ;
+bool utf32::isLetter (void) const {
+  bool ok = (0x61 <= mCodePoint) && (mCodePoint <= 0x7A) ;
   if (!ok) {
-    ok = (0x41 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x5A) ;
+    ok = (0x41 <= mCodePoint) && (mCodePoint <= 0x5A) ;
   }
   if (!ok) {
-    ok = 0xB5 == inUnicodeCharacter.u32 () ;
+    ok = 0xB5 == mCodePoint ;
   }
   if (!ok) {
-    ok = (0xC0 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0xD6) ;
+    ok = (0xC0 <= mCodePoint) && (mCodePoint <= 0xD6) ;
   }
   if (!ok) {
-    ok = (0xD8 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0xF6) ;
+    ok = (0xD8 <= mCodePoint) && (mCodePoint <= 0xF6) ;
   }
   if (!ok) {
-    ok = (0xF8 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x2B4) ;
+    ok = (0xF8 <= mCodePoint) && (mCodePoint <= 0x2B4) ;
   }
   if (!ok) {
-    ok = (0x38E <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x3A1) ;
+    ok = (0x38E <= mCodePoint) && (mCodePoint <= 0x3A1) ;
   }
   if (!ok) {
-    ok = (0x3A3 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x3F5) ;
+    ok = (0x3A3 <= mCodePoint) && (mCodePoint <= 0x3F5) ;
   }
   if (!ok) {
-    ok = (0x3F7 <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x481) ;
+    ok = (0x3F7 <= mCodePoint) && (mCodePoint <= 0x481) ;
   }
   if (!ok) {
-    ok = (0x48A <= inUnicodeCharacter.u32 ()) && (inUnicodeCharacter.u32 () <= 0x523) ;
+    ok = (0x48A <= mCodePoint) && (mCodePoint <= 0x523) ;
   }
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeMark (const utf32 inUnicodeCharacter) {
+bool utf32::isMark (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Mn) && (category <= kUnicodeCategory_Me) ;
@@ -208,13 +203,13 @@ bool isUnicodeMark (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeNumber (const utf32 inUnicodeCharacter) {
+bool utf32::isNumber (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Nd) && (category <= kUnicodeCategory_No) ;
@@ -226,13 +221,13 @@ bool isUnicodeNumber (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter) {
+bool utf32::isDecimalDigit (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = category == kUnicodeCategory_Nd ;
@@ -244,56 +239,23 @@ bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t unicodeDecimalValue (const utf32 inUnicodeCharacter) {
-  uint32_t result = 0 ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
-  if (pageIndex <= gLastNamePage) {
-    const uint32_t * page = gNamePages [pageIndex] ;
-    if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
-      if (entry != 0) {
-        if ((entry >> 27) == kUnicodeCategory_Nd) {
-          result = (entry >> 16) & 0xF ;
-        }
-      }
-    }
-  } 
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter) {
+bool utf32::isASCIIHexDigit (void) const {
   return
-    ((inUnicodeCharacter.u32 () >= '0') && (inUnicodeCharacter.u32 () <= '9')) ||
-    ((inUnicodeCharacter.u32 () >= 'A') && (inUnicodeCharacter.u32 () <= 'F')) ||
-    ((inUnicodeCharacter.u32 () >= 'a') && (inUnicodeCharacter.u32 () <= 'f'))
+    ((mCodePoint >= '0') && (mCodePoint <= '9')) ||
+    ((mCodePoint >= 'A') && (mCodePoint <= 'F')) ||
+    ((mCodePoint >= 'a') && (mCodePoint <= 'f'))
   ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t ASCIIHexValue (const utf32 inUnicodeCharacter) {
-  uint32_t result = 0 ;
-  if ((inUnicodeCharacter.u32 () >= '0') && (inUnicodeCharacter.u32 () <= '9')) {
-    result = inUnicodeCharacter.u32 () - '0' ;
-  }else if ((inUnicodeCharacter.u32 () >= 'A') && (inUnicodeCharacter.u32 () <= 'F')) {
-    result = inUnicodeCharacter.u32 () - 'A' + 10 ;
-  }else if ((inUnicodeCharacter.u32 () >= 'a') && (inUnicodeCharacter.u32 () <= 'f')) {
-    result = inUnicodeCharacter.u32 () - 'a' + 10 ;
-  }
-  return result  ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool isUnicodeSeparator (const utf32 inUnicodeCharacter) {
+bool utf32::isSeparator (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Zs) && (category <= kUnicodeCategory_Zp) ;
@@ -305,13 +267,13 @@ bool isUnicodeSeparator (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeCommand (const utf32 inUnicodeCharacter) {
+bool utf32::isCommand (void) const {
   bool result = true ; // Undefined character has 'Cn' category
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Cc) && (category <= kUnicodeCategory_Co) ;
@@ -323,13 +285,13 @@ bool isUnicodeCommand (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodePunctuation (const utf32 inUnicodeCharacter) {
+bool utf32::isPunctuation (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Pc) && (category <= kUnicodeCategory_Po) ;
@@ -341,13 +303,13 @@ bool isUnicodePunctuation (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool isUnicodeSymbol (const utf32 inUnicodeCharacter) {
+bool utf32::isSymbol (void) const {
   bool result = false ;
-  const uint32_t pageIndex = inUnicodeCharacter.u32 () / gNamePageSize ;
+  const uint32_t pageIndex = mCodePoint / gNamePageSize ;
   if (pageIndex <= gLastNamePage) {
     const uint32_t * page = gNamePages [pageIndex] ;
     if (page != nullptr) {
-      const uint32_t entry = page [inUnicodeCharacter.u32 () % gNamePageSize] ;
+      const uint32_t entry = page [mCodePoint % gNamePageSize] ;
       if (entry != 0) {
         const uint32_t category = entry >> 27 ;
         result = (category >= kUnicodeCategory_Sm) && (category <= kUnicodeCategory_So) ;
@@ -359,13 +321,13 @@ bool isUnicodeSymbol (const utf32 inUnicodeCharacter) {
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t utf8Length (const utf32 inUnicodeCharacter) {
+uint32_t utf32::utf8Length (void) const {
   uint32_t r = 1 ;
-  if (inUnicodeCharacter.u32 () >= 0x10000) {
+  if (mCodePoint >= 0x10000) {
     r = 4 ;
-  }else if (inUnicodeCharacter.u32 () >= 0x800) {
+  }else if (mCodePoint >= 0x800) {
     r = 3 ;
-  }else if (inUnicodeCharacter.u32 () >= 0x80) {
+  }else if (mCodePoint >= 0x80) {
     r = 2 ;
   }
   return r ;
@@ -374,7 +336,7 @@ uint32_t utf8Length (const utf32 inUnicodeCharacter) {
 //--------------------------------------------------------------------------------------------------
 
 utf32 unicodeCharacterFromHTMLSequence (const String & inString) {
-  utf32 result = TO_UNICODE (0) ; // Means not found
+  utf32 result = utf32 (0) ; // Means not found
   int32_t lowIndex = 0 ;
   int32_t highIndex = kHTMLtoUnicodeConversionTableSize - 1 ;
   while ((highIndex >= lowIndex) && (result.u32 () == 0)) {
@@ -385,7 +347,7 @@ utf32 unicodeCharacterFromHTMLSequence (const String & inString) {
     }else if (c < 0) {
       highIndex = newIndex - 1 ;
     }else{
-      result = TO_UNICODE (kHTMLtoUnicodeConversionArray [newIndex].mUnicodeCharacter) ;
+      result = utf32 (kHTMLtoUnicodeConversionArray [newIndex].mUnicodeCharacter) ;
     }
   }
   return result ;
@@ -400,6 +362,7 @@ utf32 unicodeCharacterFromHTMLSequence (const String & inString) {
 // 0000 0000  0000 0yyy  xxxx xxxx -> 110y yyxx  10xx xxxx
 // 0000 0000  zzzz yyyy  xxxx xxxx -> 1110 zzzz  10yy yyxx  10xx xxxx
 // 000u uuuu  zzzz yyyy  xxxx xxxx -> 1111 0uuu  10uu zzzz  10yy yyxx  10xx xxxx
+//--------------------------------------------------------------------------------------------------
 
 int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequence [5]) {
   uint32_t codePoint = inUnicodeChar.u32 () ;
@@ -408,25 +371,25 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
   }
   int32_t resultByteCount = 0 ;
   if (codePoint < 0x80) {
-    outSequence [0] = (char) (codePoint & 255) ;
+    outSequence [0] = char (codePoint & 255) ;
     outSequence [1] = 0 ;
     resultByteCount = 1 ;
   }else if (codePoint < 0x0800) {
-    outSequence [0] = (char) (((codePoint >> 6) | 0xC0) & 255) ;
-    outSequence [1] = (char) ((codePoint & 0x3F) | 0x80) ;
+    outSequence [0] = char (((codePoint >> 6) | 0xC0) & 255) ;
+    outSequence [1] = char ((codePoint & 0x3F) | 0x80) ;
     outSequence [2] = 0 ;
     resultByteCount = 2 ;
   }else if (codePoint < 0x10000) {
-    outSequence [0] = (char) (((codePoint >> 12) | 0xE0) & 255) ;
-    outSequence [1] = (char) (((codePoint >> 6) & 0x3F) | 0x80) ;
-    outSequence [2] = (char) ((codePoint & 0x3F) | 0x80) ;
+    outSequence [0] = char (((codePoint >> 12) | 0xE0) & 255) ;
+    outSequence [1] = char (((codePoint >> 6) & 0x3F) | 0x80) ;
+    outSequence [2] = char ((codePoint & 0x3F) | 0x80) ;
     outSequence [3] = 0 ;
     resultByteCount = 3 ;
   }else{
-    outSequence [0] = (char) (((codePoint >> 18) | 0xF0) & 255) ;
-    outSequence [1] = (char) (((codePoint >> 12) & 0x3F) | 0x80) ;
-    outSequence [2] = (char) (((codePoint >> 6) & 0x3F) | 0x80) ;
-    outSequence [3] = (char) ((codePoint & 0x3F) | 0x80) ;
+    outSequence [0] = char (((codePoint >> 18) | 0xF0) & 255) ;
+    outSequence [1] = char (((codePoint >> 12) & 0x3F) | 0x80) ;
+    outSequence [2] = char (((codePoint >> 6) & 0x3F) | 0x80) ;
+    outSequence [3] = char ((codePoint & 0x3F) | 0x80) ;
     outSequence [4] = 0 ;
     resultByteCount = 4 ;
   }
@@ -500,40 +463,7 @@ utf32 utf32CharacterForPointer (const uint8_t * inDataString,
   if (! ioOK) {
     result = UNICODE_REPLACEMENT_CHARACTER.u32 () ;
   }
-  return TO_UNICODE (result) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  https://msdn.microsoft.com/en-us/library/565w213d.aspx (??)
-
-bool isRestrictedUnicodeLetter (const utf32 inUnicodeCharacter) {
-  const uint32_t codePoint = inUnicodeCharacter.u32 () ;
-  bool ok = (0x41 <= codePoint) && (codePoint <= 0x5A) ;
-  if (!ok) {
-    ok = (0x61 <= codePoint) && (codePoint <= 0x7A) ;
-  }
-  if (!ok) {
-    ok = (0xC0 <= codePoint) && (codePoint <= 0xD6) ;
-  }
-  if (!ok) {
-    ok = (0xD8 <= codePoint) && (codePoint <= 0xF6) ;
-  }
-  if (!ok) {
-    ok = (0xF6 <= codePoint) && (codePoint <= 0x2B4) ;
-  }
-  if (!ok) {
-    ok = (0x38E <= codePoint) && (codePoint <= 0x3A1) ;
-  }
-  if (!ok) {
-    ok = (0x3A3 <= codePoint) && (codePoint <= 0x3F5) ;
-  }
-  if (!ok) {
-    ok = (0x3F7 <= codePoint) && (codePoint <= 0x481) ;
-  }
-  if (!ok) {
-    ok = (0x48A <= codePoint) && (codePoint <= 0x523) ;
-  }
-  return ok ;
+  return utf32 (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------

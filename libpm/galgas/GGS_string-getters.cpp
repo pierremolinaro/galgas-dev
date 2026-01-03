@@ -404,7 +404,7 @@ GGS_string GGS_string::getter_absolutePathFromPath (const GGS_string & inBasePat
       r = path ;
     }else{
       r = inBasePath.mString ;
-      r.appendChar (TO_UNICODE ('/')) ;
+      r.appendChar (utf32 ('/')) ;
       r.appendString (path) ;
     }
     result = GGS_string (r.standardizedPath ()) ;

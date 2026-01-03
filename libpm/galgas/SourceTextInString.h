@@ -92,7 +92,7 @@ class SourceTextInString final {
   }
 
   public: utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-    return (mObject == nullptr) ? TO_UNICODE (0) : mObject->mSourceString.readCharOrNul (inIndex COMMA_THERE) ;
+    return (mObject == nullptr) ? utf32 (0) : mObject->mSourceString.readCharOrNul (inIndex COMMA_THERE) ;
   }
 
   public: String getLineForLocation (const class LocationInSource & inLocation) const ;

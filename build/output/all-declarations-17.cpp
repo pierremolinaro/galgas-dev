@@ -1199,35 +1199,35 @@ mMatchedTemplateDelimiterIndex (-1) {
 
 //--- Unicode string for '$\n$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__A_ = {
-  TO_UNICODE (10),
+  utf32 (10),
 } ;
 
 //--- Unicode string for '$%$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__25_ = {
-  TO_UNICODE ('%'),
+  utf32 ('%'),
 } ;
 
 //--- Unicode string for '$\\$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_ = {
-  TO_UNICODE ('\\'),
+  utf32 ('\\'),
 } ;
 
 //--- Unicode string for '$\\%$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__25_ = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('%'),
+  utf32 ('\\'),
+  utf32 ('%'),
 } ;
 
 //--- Unicode string for '$\\\\$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__5C_ = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('\\'),
+  utf32 ('\\'),
+  utf32 ('\\'),
 } ;
 
 //--- Unicode string for '$\\n$'
 static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_n = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('n'),
+  utf32 ('\\'),
+  utf32 ('n'),
 } ;
 
 //--------------------------------------------------------------------------------------------------

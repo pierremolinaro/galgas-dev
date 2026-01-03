@@ -312,7 +312,7 @@ String String::capitalizingFirstCharacter (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
   if (receiver_length > 0) {
-    s.appendChar (unicodeToUpper (charAtIndex (0 COMMA_HERE))) ;
+    s.appendChar (charAtIndex (0 COMMA_HERE).toUpper ()) ;
     for (int32_t i=1 ; i<receiver_length ; i++) {
       s.appendChar (charAtIndex (i COMMA_HERE)) ;
     }
@@ -327,7 +327,7 @@ String String::lowercasedString (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendChar (unicodeToLower (charAtIndex (i COMMA_HERE))) ;
+    s.appendChar (charAtIndex (i COMMA_HERE).toLower ()) ;
   }
   return s ;
 }
@@ -351,7 +351,7 @@ String String::trimmingSeparators (void) const {
       isCurrentlyTrimming = true ;
     }else{
       if (isCurrentlyTrimming) {
-        s.appendChar (TO_UNICODE (' ')) ;
+        s.appendChar (utf32 (' ')) ;
         isCurrentlyTrimming = false ;
       }
       s.appendChar (c) ;
@@ -368,7 +368,7 @@ String String::uppercasedString (void) const {
   const int32_t receiver_length = length () ;
   s.setCapacity (receiver_length) ;
   for (int32_t i=0 ; i<receiver_length ; i++) {
-    s.appendChar (unicodeToUpper (charAtIndex (i COMMA_HERE))) ;
+    s.appendChar (charAtIndex (i COMMA_HERE).toUpper ()) ;
   }
   return s ;
 }
@@ -427,7 +427,7 @@ uint32_t String::currentColumn (void) const {
 
 void String::appendSpacesUntilColumn (const uint32_t inColumn) {
   for (uint32_t i=currentColumn () ; i<inColumn ; i++) {
-    appendChar (TO_UNICODE (' ')) ;
+    appendChar (utf32 (' ')) ;
   }
 }
 
@@ -646,9 +646,9 @@ String String::identifierRepresentation (void) const {
     if (isalpha ((int) c.u32 ())) {
       s.appendChar (c) ;
     }else{
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
       s.appendUnsignedHex (c.u32 ()) ;
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
     }
   }
   return s ;
@@ -665,9 +665,9 @@ String String::nameRepresentation (void) const {
     if (isalnum ((int) c.u32 ())) {
       s.appendChar (c) ;
     }else{
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
       s.appendUnsignedHex (c.u32 ()) ;
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
     }
   }
   return s ;
@@ -685,17 +685,17 @@ String String::fileNameRepresentation (void) const {
     if (isdigit (nc) || islower (nc)) {
       s.appendChar (c) ;
     }else if (isupper (nc)) {
-      s.appendChar (TO_UNICODE ('+')) ;
-      s.appendChar (TO_UNICODE (uint32_t (tolower (nc)))) ;
+      s.appendChar (utf32 ('+')) ;
+      s.appendChar (utf32 (uint32_t (tolower (nc)))) ;
     }else{
       const uint32_t unicodePoint = c.u32 () ;
       if (unicodePoint < 0x100) {
-        s.appendChar (TO_UNICODE ('-')) ;
+        s.appendChar (utf32 ('-')) ;
         s.appendUnsignedHex (unicodePoint) ;
       }else{
-        s.appendChar (TO_UNICODE ('(')) ;
+        s.appendChar (utf32 ('(')) ;
         s.appendUnsignedHex (unicodePoint) ;
-        s.appendChar (TO_UNICODE (')')) ;
+        s.appendChar (utf32 (')')) ;
       }
     }
   }
@@ -713,9 +713,9 @@ String String::assemblerRepresentation (void) const {
     if (isalnum ((int) c.u32 ()) || (c.u32 () == '.')  || (c.u32 () == '-') || (c.u32 () == '$')) {
       s.appendChar (c) ;
     }else{
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
       s.appendUnsignedHex (c.u32 ()) ;
-      s.appendChar (TO_UNICODE ('_')) ;
+      s.appendChar (utf32 ('_')) ;
     }
   }
   return s ;
@@ -758,10 +758,10 @@ String String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const 
 static String hex4 (const uint32_t inValue) {
   static const uint8_t digit [16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'} ;
   String result = "" ;
-  result.appendChar (TO_UNICODE (digit [(inValue >> 12) & 15])) ;
-  result.appendChar (TO_UNICODE (digit [(inValue >>  8) & 15])) ;
-  result.appendChar (TO_UNICODE (digit [(inValue >>  4) & 15])) ;
-  result.appendChar (TO_UNICODE (digit [(inValue >>  0) & 15])) ;
+  result.appendChar (utf32 (digit [(inValue >> 12) & 15])) ;
+  result.appendChar (utf32 (digit [(inValue >>  8) & 15])) ;
+  result.appendChar (utf32 (digit [(inValue >>  4) & 15])) ;
+  result.appendChar (utf32 (digit [(inValue >>  0) & 15])) ;
   return result ;
 }
 
@@ -1043,7 +1043,7 @@ String String::appendingPathComponent (const String & inPathComponent) const {
   if (result.length () == 0) {
     result = inPathComponent ;
   }else if (result.lastChar (HERE).u32 () != '/') {
-    result.appendChar (TO_UNICODE ('/')) ;
+    result.appendChar (utf32 ('/')) ;
     result.appendString (inPathComponent) ;
   }else{
     result.appendString (inPathComponent) ;
@@ -1184,7 +1184,7 @@ String String::XMLEscapedString (void) const {
 
 String String::standardizedPath (void) const {
   #ifdef COMPILE_FOR_WINDOWS
-    String path = replacingCharacterByString (TO_UNICODE ('\\'), "/") ;
+    String path = replacingCharacterByString (utf32 ('\\'), "/") ;
   #else
     String path = * this ;
   #endif

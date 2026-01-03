@@ -184,12 +184,12 @@ void UIntCommandLineOption::getUIntOptionNameList (GenericUniqueArray <String> &
 
 utf32 UIntCommandLineOption::getUIntOptionInvocationLetter (const String & inDomainName,
                                                             const String & inIdentifier) {
-  utf32 result = TO_UNICODE (0) ;
+  utf32 result = utf32 (0) ;
   UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
     found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
-    result = TO_UNICODE ((uint32_t) p->mCommandChar) ;
+    result = utf32 ((uint32_t) p->mCommandChar) ;
     p = p->mNext ;
 }
   return result ;

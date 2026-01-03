@@ -273,7 +273,7 @@ GGS_string GGS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
   uint32_t v = mUIntValue ;
   int32_t idx = 6 ;
   while (v > 0) {
-    const utf32 c = TO_UNICODE ((v % 26) + 'a') ;
+    const utf32 c = utf32 ((v % 26) + 'a') ;
     s.setCharAtIndex (c, idx COMMA_HERE) ;
     idx -= 1 ;
     v /= 26 ;
@@ -415,7 +415,7 @@ GGS_uint GGS_uint::getter_lsbIndex (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_uint::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (isUnicodeCharacterAssigned (TO_UNICODE (mUIntValue))) ;
+  return GGS_bool (utf32 (mUIntValue).isAssigned ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

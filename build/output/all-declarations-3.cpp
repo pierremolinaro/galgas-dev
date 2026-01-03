@@ -15084,1894 +15084,1894 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
 
 //--- Unicode string for '$!=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D_ = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
+  utf32 ('!'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$!==$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D__3D_ = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
+  utf32 ('!'),
+  utf32 ('='),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$!?$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3F_ = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\?'),
+  utf32 ('!'),
+  utf32 ('\?'),
 } ;
 
 //--- Unicode string for '$!^$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__5E_ = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('^'),
+  utf32 ('!'),
+  utf32 ('^'),
 } ;
 
 //--- Unicode string for '$&$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26_ = {
-  TO_UNICODE ('&'),
+  utf32 ('&'),
 } ;
 
 //--- Unicode string for '$&&$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__26_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('&'),
+  utf32 ('&'),
+  utf32 ('&'),
 } ;
 
 //--- Unicode string for '$&*$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2A_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('*'),
+  utf32 ('&'),
+  utf32 ('*'),
 } ;
 
 //--- Unicode string for '$&+$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2B_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
+  utf32 ('&'),
+  utf32 ('+'),
 } ;
 
 //--- Unicode string for '$&++$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2B__2B_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
+  utf32 ('&'),
+  utf32 ('+'),
+  utf32 ('+'),
 } ;
 
 //--- Unicode string for '$&-$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2D_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
+  utf32 ('&'),
+  utf32 ('-'),
 } ;
 
 //--- Unicode string for '$&--$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2D__2D_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
+  utf32 ('&'),
+  utf32 ('-'),
+  utf32 ('-'),
 } ;
 
 //--- Unicode string for '$&/$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2F_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('/'),
+  utf32 ('&'),
+  utf32 ('/'),
 } ;
 
 //--- Unicode string for '$&=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__3D_ = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('='),
+  utf32 ('&'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$($'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___28_ = {
-  TO_UNICODE ('('),
+  utf32 ('('),
 } ;
 
 //--- Unicode string for '$)$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___29_ = {
-  TO_UNICODE (')'),
+  utf32 (')'),
 } ;
 
 //--- Unicode string for '$*$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A_ = {
-  TO_UNICODE ('*'),
+  utf32 ('*'),
 } ;
 
 //--- Unicode string for '$*=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A__3D_ = {
-  TO_UNICODE ('*'),
-  TO_UNICODE ('='),
+  utf32 ('*'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$+$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B_ = {
-  TO_UNICODE ('+'),
+  utf32 ('+'),
 } ;
 
 //--- Unicode string for '$++$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__2B_ = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
+  utf32 ('+'),
+  utf32 ('+'),
 } ;
 
 //--- Unicode string for '$++=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__2B__3D_ = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
+  utf32 ('+'),
+  utf32 ('+'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$+=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__3D_ = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
+  utf32 ('+'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$,$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2C_ = {
-  TO_UNICODE (','),
+  utf32 (','),
 } ;
 
 //--- Unicode string for '$-$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D_ = {
-  TO_UNICODE ('-'),
+  utf32 ('-'),
 } ;
 
 //--- Unicode string for '$--$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__2D_ = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
+  utf32 ('-'),
+  utf32 ('-'),
 } ;
 
 //--- Unicode string for '$-=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3D_ = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('='),
+  utf32 ('-'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$->$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3E_ = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
+  utf32 ('-'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$.$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E_ = {
-  TO_UNICODE ('.'),
+  utf32 ('.'),
 } ;
 
 //--- Unicode string for '$...$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__2E_ = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
+  utf32 ('.'),
+  utf32 ('.'),
+  utf32 ('.'),
 } ;
 
 //--- Unicode string for '$..<$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__3C_ = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('<'),
+  utf32 ('.'),
+  utf32 ('.'),
+  utf32 ('<'),
 } ;
 
 //--- Unicode string for '$/$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F_ = {
-  TO_UNICODE ('/'),
+  utf32 ('/'),
 } ;
 
 //--- Unicode string for '$//$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__2F_ = {
-  TO_UNICODE ('/'),
-  TO_UNICODE ('/'),
+  utf32 ('/'),
+  utf32 ('/'),
 } ;
 
 //--- Unicode string for '$/=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__3D_ = {
-  TO_UNICODE ('/'),
-  TO_UNICODE ('='),
+  utf32 ('/'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$0x$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___30_x = {
-  TO_UNICODE ('0'),
-  TO_UNICODE ('x'),
+  utf32 ('0'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$:$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A_ = {
-  TO_UNICODE (':'),
+  utf32 (':'),
 } ;
 
 //--- Unicode string for '$:>$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A__3E_ = {
-  TO_UNICODE (':'),
-  TO_UNICODE ('>'),
+  utf32 (':'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$;$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3B_ = {
-  TO_UNICODE (';'),
+  utf32 (';'),
 } ;
 
 //--- Unicode string for '$=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D_ = {
-  TO_UNICODE ('='),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$==$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D_ = {
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
+  utf32 ('='),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$===$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D__3D_ = {
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
+  utf32 ('='),
+  utf32 ('='),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$>$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E_ = {
-  TO_UNICODE ('>'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$>=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3D_ = {
-  TO_UNICODE ('>'),
-  TO_UNICODE ('='),
+  utf32 ('>'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$>>$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3E_ = {
-  TO_UNICODE ('>'),
-  TO_UNICODE ('>'),
+  utf32 ('>'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$?!$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__21_ = {
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('!'),
+  utf32 ('\?'),
+  utf32 ('!'),
 } ;
 
 //--- Unicode string for '$?^$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__5E_ = {
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('^'),
+  utf32 ('\?'),
+  utf32 ('^'),
 } ;
 
 //--- Unicode string for '$@($'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___40__28_ = {
-  TO_UNICODE ('@'),
-  TO_UNICODE ('('),
+  utf32 ('@'),
+  utf32 ('('),
 } ;
 
 //--- Unicode string for '$MacOS$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__MacOS = {
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('O'),
-  TO_UNICODE ('S'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('O'),
+  utf32 ('S'),
 } ;
 
 //--- Unicode string for '$MacOSDeployment$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__MacOSDeployment = {
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('O'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('D'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('O'),
+  utf32 ('S'),
+  utf32 ('D'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('y'),
+  utf32 ('m'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$MacSwiftApp$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__MacSwiftApp = {
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('S'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('f'),
+  utf32 ('t'),
+  utf32 ('A'),
+  utf32 ('p'),
+  utf32 ('p'),
 } ;
 
 //--- Unicode string for '$[$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5B_ = {
-  TO_UNICODE ('['),
+  utf32 ('['),
 } ;
 
 //--- Unicode string for '$\\$$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__24_ = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('$'),
+  utf32 ('\\'),
+  utf32 ('$'),
 } ;
 
 //--- Unicode string for '$\\\\$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__5C_ = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('\\'),
+  utf32 ('\\'),
+  utf32 ('\\'),
 } ;
 
 //--- Unicode string for '$]$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5D_ = {
-  TO_UNICODE (']'),
+  utf32 (']'),
 } ;
 
 //--- Unicode string for '$^$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E_ = {
-  TO_UNICODE ('^'),
+  utf32 ('^'),
 } ;
 
 //--- Unicode string for '$^=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E__3D_ = {
-  TO_UNICODE ('^'),
-  TO_UNICODE ('='),
+  utf32 ('^'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$`$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___60_ = {
-  TO_UNICODE ('`'),
+  utf32 ('`'),
 } ;
 
 //--- Unicode string for '$abstract$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__abstract = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$after$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__after = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('a'),
+  utf32 ('f'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$app-link$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__app_2D_link = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('k'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('p'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('k'),
 } ;
 
 //--- Unicode string for '$app-source$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__app_2D_source = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('p'),
+  utf32 ('-'),
+  utf32 ('s'),
+  utf32 ('o'),
+  utf32 ('u'),
+  utf32 ('r'),
+  utf32 ('c'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$applicationBundleBase$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__applicationBundleBase = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('B'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('B'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('c'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('B'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('B'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$as$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__as = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
+  utf32 ('a'),
+  utf32 ('s'),
 } ;
 
 //--- Unicode string for '$before$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__before = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
+  utf32 ('b'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('o'),
+  utf32 ('r'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$between$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__between = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
+  utf32 ('b'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('w'),
+  utf32 ('e'),
+  utf32 ('e'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$block$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__block = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
 } ;
 
 //--- Unicode string for '$boolset$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__boolset = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
+  utf32 ('b'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$case$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__case = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('c'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$class$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__class = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
+  utf32 ('c'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('s'),
 } ;
 
 //--- Unicode string for '$clonable$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clonable = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('c'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__codeblocks_2D_linux_33__32_ = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('3'),
+  utf32 ('2'),
 } ;
 
 //--- Unicode string for '$codeblocks-linux64$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__codeblocks_2D_linux_36__34_ = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('4'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('6'),
+  utf32 ('4'),
 } ;
 
 //--- Unicode string for '$codeblocks-windows$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__codeblocks_2D_windows = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('s'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('o'),
+  utf32 ('w'),
+  utf32 ('s'),
 } ;
 
 //--- Unicode string for '$comparable$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__comparable = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('m'),
+  utf32 ('p'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$default$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__default = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('t'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('a'),
+  utf32 ('u'),
+  utf32 ('l'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$dict$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__dict = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
+  utf32 ('d'),
+  utf32 ('i'),
+  utf32 ('c'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$do$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__do = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
+  utf32 ('d'),
+  utf32 ('o'),
 } ;
 
 //--- Unicode string for '$drop$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__drop = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
+  utf32 ('d'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('p'),
 } ;
 
 //--- Unicode string for '$else$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__else = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('e'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$elsif$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__elsif = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
+  utf32 ('e'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('i'),
+  utf32 ('f'),
 } ;
 
 //--- Unicode string for '$end$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__end = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$enum$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__enum = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('m'),
 } ;
 
 //--- Unicode string for '$equatable$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__equatable = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('e'),
+  utf32 ('q'),
+  utf32 ('u'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$error$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__error = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$errorMessage$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__errorMessage = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('r'),
+  utf32 ('M'),
+  utf32 ('e'),
+  utf32 ('s'),
+  utf32 ('s'),
+  utf32 ('a'),
+  utf32 ('g'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$extension$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extension = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
+  utf32 ('e'),
+  utf32 ('x'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$extern$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extern = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
+  utf32 ('e'),
+  utf32 ('x'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$false$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__false = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('f'),
+  utf32 ('a'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$fileprivate$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fileprivate = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('v'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$filewrapper$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__filewrapper = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('w'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('p'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$final$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__final = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('a'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$fixit$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fixit = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('x'),
+  utf32 ('i'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$for$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__for = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
+  utf32 ('f'),
+  utf32 ('o'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$from$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__from = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
+  utf32 ('f'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('m'),
 } ;
 
 //--- Unicode string for '$func$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__func = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
+  utf32 ('f'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('c'),
 } ;
 
 //--- Unicode string for '$generatedInSeparateFile$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__generatedInSeparateFile = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('I'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('F'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('g'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('d'),
+  utf32 ('I'),
+  utf32 ('n'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('F'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$grammar$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__grammar = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
+  utf32 ('g'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('m'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$graph$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__graph = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('h'),
+  utf32 ('g'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('h'),
 } ;
 
 //--- Unicode string for '$guard$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__guard = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
+  utf32 ('g'),
+  utf32 ('u'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$gui$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__gui = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('i'),
+  utf32 ('g'),
+  utf32 ('u'),
+  utf32 ('i'),
 } ;
 
 //--- Unicode string for '$if$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__if = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
+  utf32 ('i'),
+  utf32 ('f'),
 } ;
 
 //--- Unicode string for '$in$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__in = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
+  utf32 ('i'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$indexing$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__indexing = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('x'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$init$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$initArgLabel$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__initArgLabel = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('L'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('t'),
+  utf32 ('A'),
+  utf32 ('r'),
+  utf32 ('g'),
+  utf32 ('L'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('e'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$insertAfter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertAfter = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('A'),
+  utf32 ('f'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$insertBefore$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertBefore = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('B'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('B'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('o'),
+  utf32 ('r'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$insertOrReplaceSetter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertOrReplaceSetter = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('O'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('R'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('O'),
+  utf32 ('r'),
+  utf32 ('R'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('e'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$insertSetter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertSetter = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$is$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__is = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
+  utf32 ('i'),
+  utf32 ('s'),
 } ;
 
 //--- Unicode string for '$json$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__json = {
-  TO_UNICODE ('j'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
+  utf32 ('j'),
+  utf32 ('s'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$label$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__label = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('b'),
+  utf32 ('e'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$let$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__let = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$lexique$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__lexique = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('x'),
+  utf32 ('i'),
+  utf32 ('q'),
+  utf32 ('u'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$libpmAtPath$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__libpmAtPath = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('P'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('b'),
+  utf32 ('p'),
+  utf32 ('m'),
+  utf32 ('A'),
+  utf32 ('t'),
+  utf32 ('P'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('h'),
 } ;
 
 //--- Unicode string for '$list$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__list = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('s'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$log$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__log = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('g'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$loop$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__loop = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('p'),
 } ;
 
 //--- Unicode string for '$macCodeSign$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__macCodeSign = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('C'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('C'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('g'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$makefile-arm64-linux-on-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('4'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('m'),
+  utf32 ('6'),
+  utf32 ('4'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$makefile-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_macosx = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$makefile-unix$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_unix = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$makefile-win32-on-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_win_33__32__2D_on_2D_macosx = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('3'),
+  utf32 ('2'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$makefile-x86linux32-on-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('8'),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('x'),
+  utf32 ('8'),
+  utf32 ('6'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('3'),
+  utf32 ('2'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$makefile-x86linux64-on-macosx$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('8'),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('4'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('x'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('x'),
+  utf32 ('8'),
+  utf32 ('6'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('6'),
+  utf32 ('4'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$map$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__map = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('p'),
 } ;
 
 //--- Unicode string for '$mod$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mod = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
+  utf32 ('m'),
+  utf32 ('o'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$mutating$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mutating = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
+  utf32 ('m'),
+  utf32 ('u'),
+  utf32 ('t'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$nil$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nil = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$nonAtomicSelection$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nonAtomicSelection = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('A'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
+  utf32 ('n'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('A'),
+  utf32 ('t'),
+  utf32 ('o'),
+  utf32 ('m'),
+  utf32 ('i'),
+  utf32 ('c'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('c'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$not$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__not = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
+  utf32 ('n'),
+  utf32 ('o'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$on$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__on = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$once$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__once = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('c'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$operator$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__operator = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('o'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$option$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__option = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$or$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__or = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
+  utf32 ('o'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$override$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__override = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
+  utf32 ('o'),
+  utf32 ('v'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('d'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$package$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__package = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
+  utf32 ('p'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('a'),
+  utf32 ('g'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$parse$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__parse = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('p'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$preserved$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__preserved = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('v'),
+  utf32 ('e'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$private$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__private = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('v'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$proc$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__proc = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('c'),
 } ;
 
 //--- Unicode string for '$project$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__project = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('j'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('j'),
+  utf32 ('e'),
+  utf32 ('c'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$protected$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__protected = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('c'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$public$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__public = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
+  utf32 ('p'),
+  utf32 ('u'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('c'),
 } ;
 
 //--- Unicode string for '$quietOutputByDefault$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__quietOutputByDefault = {
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('O'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('B'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('D'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('t'),
+  utf32 ('q'),
+  utf32 ('u'),
+  utf32 ('i'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('O'),
+  utf32 ('u'),
+  utf32 ('t'),
+  utf32 ('p'),
+  utf32 ('u'),
+  utf32 ('t'),
+  utf32 ('B'),
+  utf32 ('y'),
+  utf32 ('D'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('a'),
+  utf32 ('u'),
+  utf32 ('l'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$remove$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__remove = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('o'),
+  utf32 ('v'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$removeSetter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__removeSetter = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('o'),
+  utf32 ('v'),
+  utf32 ('e'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$repeat$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repeat = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$replaceBy$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceBy = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('B'),
-  TO_UNICODE ('y'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('e'),
+  utf32 ('B'),
+  utf32 ('y'),
 } ;
 
 //--- Unicode string for '$replaceSetter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceSetter = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('e'),
+  utf32 ('S'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$rewind$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rewind = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
+  utf32 ('r'),
+  utf32 ('e'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$rule$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rule = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('r'),
+  utf32 ('u'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$searchMethod$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchMethod = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('c'),
+  utf32 ('h'),
+  utf32 ('M'),
+  utf32 ('e'),
+  utf32 ('t'),
+  utf32 ('h'),
+  utf32 ('o'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$searchString$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchString = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('c'),
+  utf32 ('h'),
+  utf32 ('S'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$searchSubscript$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchSubscript = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('t'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('c'),
+  utf32 ('h'),
+  utf32 ('S'),
+  utf32 ('u'),
+  utf32 ('b'),
+  utf32 ('s'),
+  utf32 ('c'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('p'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$select$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__select = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('c'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$self$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__self = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('f'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('l'),
+  utf32 ('f'),
 } ;
 
 //--- Unicode string for '$send$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__send = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$sortedlist$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sortedlist = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
+  utf32 ('s'),
+  utf32 ('o'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('d'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('s'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$spoil$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__spoil = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
+  utf32 ('s'),
+  utf32 ('p'),
+  utf32 ('o'),
+  utf32 ('i'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$struct$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__struct = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('u'),
+  utf32 ('c'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$style$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__style = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('y'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$super$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__super = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
+  utf32 ('s'),
+  utf32 ('u'),
+  utf32 ('p'),
+  utf32 ('e'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$switch$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__switch = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
+  utf32 ('s'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('t'),
+  utf32 ('c'),
+  utf32 ('h'),
 } ;
 
 //--- Unicode string for '$syntax$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__syntax = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('x'),
+  utf32 ('s'),
+  utf32 ('y'),
+  utf32 ('n'),
+  utf32 ('t'),
+  utf32 ('a'),
+  utf32 ('x'),
 } ;
 
 //--- Unicode string for '$tag$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__tag = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
+  utf32 ('t'),
+  utf32 ('a'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$template$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__template = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$templateEndMark$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateEndMark = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('E'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('k'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('E'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('k'),
 } ;
 
 //--- Unicode string for '$templateReplacement$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateReplacement = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('R'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('R'),
+  utf32 ('e'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('e'),
+  utf32 ('m'),
+  utf32 ('e'),
+  utf32 ('n'),
+  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$then$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__then = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
+  utf32 ('t'),
+  utf32 ('h'),
+  utf32 ('e'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$tool-source$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__tool_2D_source = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
+  utf32 ('t'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('l'),
+  utf32 ('-'),
+  utf32 ('s'),
+  utf32 ('o'),
+  utf32 ('u'),
+  utf32 ('r'),
+  utf32 ('c'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$translate$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__translate = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$true$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__true = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('u'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$typealias$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__typealias = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
+  utf32 ('t'),
+  utf32 ('y'),
+  utf32 ('p'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('a'),
+  utf32 ('s'),
 } ;
 
 //--- Unicode string for '$unused$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__unused = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('d'),
 } ;
 
 //--- Unicode string for '$usefull$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__usefull = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('l'),
+  utf32 ('u'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('u'),
+  utf32 ('l'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$var$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__var = {
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
+  utf32 ('v'),
+  utf32 ('a'),
+  utf32 ('r'),
 } ;
 
 //--- Unicode string for '$warning$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__warning = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
+  utf32 ('w'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('g'),
 } ;
 
 //--- Unicode string for '$weak$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__weak = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('k'),
+  utf32 ('w'),
+  utf32 ('e'),
+  utf32 ('a'),
+  utf32 ('k'),
 } ;
 
 //--- Unicode string for '$while$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__while = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
+  utf32 ('w'),
+  utf32 ('h'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$with$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__with = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('t'),
+  utf32 ('h'),
 } ;
 
 //--- Unicode string for '${$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7B_ = {
-  TO_UNICODE ('{'),
+  utf32 ('{'),
 } ;
 
 //--- Unicode string for '$|$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C_ = {
-  TO_UNICODE ('|'),
+  utf32 ('|'),
 } ;
 
 //--- Unicode string for '$|=$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__3D_ = {
-  TO_UNICODE ('|'),
-  TO_UNICODE ('='),
+  utf32 ('|'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$||$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__7C_ = {
-  TO_UNICODE ('|'),
-  TO_UNICODE ('|'),
+  utf32 ('|'),
+  utf32 ('|'),
 } ;
 
 //--- Unicode string for '$}$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7D_ = {
-  TO_UNICODE ('}'),
+  utf32 ('}'),
 } ;
 
 //--- Unicode string for '$~$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_ = {
-  TO_UNICODE ('~'),
+  utf32 ('~'),
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -18282,7 +18282,7 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       do {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
         }else{
           loop = false ;
         }
@@ -18297,18 +18297,18 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___30_x, true)) {
       do {
-        if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+        if (testForInputUTF32Char (utf32 ('_'))) {
         }else{
           loop = false ;
         }
       }while (loop) ;
       loop = true ;
-      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
         do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+          }else if (testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -18320,23 +18320,23 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__hexDigitError COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
       ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
       do {
-        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+        }else if (testForInputUTF32Char (utf32 ('_'))) {
         }else{
           loop = false ;
         }
       }while (loop) ;
       loop = true ;
-      if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
+      if (testForInputUTF32Char (utf32 ('.'))) {
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('.')) ;
         do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+          }else if (testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -18350,11 +18350,11 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken_literalInt ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('%'))) {
+    }else if (testForInputUTF32Char (utf32 ('%'))) {
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('-')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (utf32 ('-')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
           }else{
             loop = false ;
           }
@@ -18370,32 +18370,32 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         lexicalError (gLexicalMessage_galgasScanner_34__undefinedAttribute COMMA_LINE_AND_SOURCE_FILE) ;
       }
       enterToken (token) ;
-    }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-      if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-        if (testForInputUTF32Char (TO_UNICODE ('f'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\f')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('n'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\n')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('r'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\r')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('t'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\t')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('v'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\v')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\\')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('0'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\0')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\'')) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+    }else if (testForInputUTF32Char (utf32 ('\''))) {
+      if (testForInputUTF32Char (utf32 ('\\'))) {
+        if (testForInputUTF32Char (utf32 ('f'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\f')) ;
+        }else if (testForInputUTF32Char (utf32 ('n'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\n')) ;
+        }else if (testForInputUTF32Char (utf32 ('r'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\r')) ;
+        }else if (testForInputUTF32Char (utf32 ('t'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\t')) ;
+        }else if (testForInputUTF32Char (utf32 ('v'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\v')) ;
+        }else if (testForInputUTF32Char (utf32 ('\\'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\\')) ;
+        }else if (testForInputUTF32Char (utf32 ('0'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\0')) ;
+        }else if (testForInputUTF32Char (utf32 ('\''))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\'')) ;
+        }else if (testForInputUTF32Char (utf32 ('u'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
             ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
               ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                 ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                   ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
                   ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_34__unassignedUnicodeValue) ;
                 }else{
@@ -18410,22 +18410,22 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
           }else{
             lexicalError (gLexicalMessage_galgasScanner_34__invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+        }else if (testForInputUTF32Char (utf32 ('U'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
             ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
               ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                 ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                   ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                     ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                    if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                       ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                         ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                           ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
                           ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_34__unassignedUnicodeValue) ;
                         }else{
@@ -18455,26 +18455,26 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         }else{
           lexicalError (gLexicalMessage_galgasScanner_34__incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputUTF32CharRange (TO_UNICODE (' '), TO_UNICODE (65533))) {
+      }else if (testForInputUTF32CharRange (utf32 (' '), utf32 (65533))) {
         ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
       }
-      if (testForInputUTF32Char (TO_UNICODE ('\''))) {
+      if (testForInputUTF32Char (utf32 ('\''))) {
         token.mTokenCode = kToken__27_char_27_ ;
         enterToken (token) ;
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
+    }else if (testForInputUTF32Char (utf32 ('$'))) {
       if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__5C_, true)) {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
         do {
           if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__5C_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
           }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__24_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('$')) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('$')) ;
+          }else if (testForInputUTF32CharRange (utf32 ('!'), utf32 ('#')) || testForInputUTF32CharRange (utf32 ('%'), utf32 (65533))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           }else{
             loop = false ;
@@ -18482,27 +18482,27 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         }while (loop) ;
         loop = true ;
       }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__24_, true)) {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('$')) ;
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('$')) ;
         do {
           if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__5C_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
           }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__24_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('$')) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('$')) ;
+          }else if (testForInputUTF32CharRange (utf32 ('!'), utf32 ('#')) || testForInputUTF32CharRange (utf32 ('%'), utf32 (65533))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-      }else if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
+      }else if (testForInputUTF32CharRange (utf32 ('!'), utf32 ('#')) || testForInputUTF32CharRange (utf32 ('%'), utf32 (65533))) {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
         do {
           if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__5C_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
           }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5C__24_, true)) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('$')) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('$')) ;
+          }else if (testForInputUTF32CharRange (utf32 ('!'), utf32 ('#')) || testForInputUTF32CharRange (utf32 ('%'), utf32 (65533))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           }else{
             loop = false ;
@@ -18512,16 +18512,16 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__incorrect_terminal_start COMMA_LINE_AND_SOURCE_FILE) ;
       }
-      if (testForInputUTF32Char (TO_UNICODE ('$'))) {
+      if (testForInputUTF32Char (utf32 ('$'))) {
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__incorrect_terminal_end COMMA_LINE_AND_SOURCE_FILE) ;
       }
       token.mTokenCode = kToken__24_terminal_24_ ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___2F__2F_, true)) {
-      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
+      if (testForInputUTF32Char (utf32 ('!'))) {
         do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
+          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
           }else{
             loop = false ;
           }
@@ -18530,7 +18530,7 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         enterDroppedTerminal (kToken_commentMark) ;
       }else{
         do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (1114111))) {
+          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (1114111))) {
           }else{
             loop = false ;
           }
@@ -18694,11 +18694,11 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+    }else if (testForInputUTF32Char (utf32 ('@'))) {
+      if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
           }else{
             loop = false ;
           }
@@ -18716,13 +18716,13 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+        if (testForInputUTF32Char (utf32 (':'))) {
           token.mTokenCode = kToken__3F__21_selector_3A_ ;
           enterToken (token) ;
         }else{
@@ -18737,20 +18737,20 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken__3F__21_ ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
+    }else if (testForInputUTF32Char (utf32 ('\?'))) {
       const LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInterrogationMark = mCurrentChar ;
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+        if (testForInputUTF32Char (utf32 (':'))) {
           token.mTokenCode = kToken__3F_selector_3A_ ;
           enterToken (token) ;
         }else{
@@ -18772,13 +18772,13 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+        if (testForInputUTF32Char (utf32 (':'))) {
           token.mTokenCode = kToken__21__3F_selector_3A_ ;
           enterToken (token) ;
         }else{
@@ -18793,20 +18793,20 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken__21__3F_ ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
+    }else if (testForInputUTF32Char (utf32 ('!'))) {
       const LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyExclamationMark = mCurrentChar ;
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE (':'))) {
+        if (testForInputUTF32Char (utf32 (':'))) {
           token.mTokenCode = kToken__21_selector_3A_ ;
           enterToken (token) ;
         }else{
@@ -18821,26 +18821,26 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken__21_ ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
+    }else if (testForInputUTF32Char (utf32 ('<'))) {
       const LocationInSource currentLocationForTag_onlyInfDelimiter = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInfDelimiter = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInfDelimiter = mCurrentChar ;
-      if (testForInputUTF32Char (TO_UNICODE ('='))) {
+      if (testForInputUTF32Char (utf32 ('='))) {
         token.mTokenCode = kToken__3C__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
+      }else if (testForInputUTF32Char (utf32 ('<'))) {
         token.mTokenCode = kToken__3C__3C_ ;
         enterToken (token) ;
       }else if (testForCharWithFunction (isUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE ('>'))) {
+        if (testForInputUTF32Char (utf32 ('>'))) {
           token.mTokenCode = kToken__3C_non_5F_terminal_3E_ ;
           enterToken (token) ;
         }else{
@@ -18854,35 +18854,35 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken__3C_ ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+    }else if (testForInputUTF32Char (utf32 ('\"'))) {
       do {
-        if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-          if (testForInputUTF32Char (TO_UNICODE ('f'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\f')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('n'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\n')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('r'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\r')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('t'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\t')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('v'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\v')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\"')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+        if (testForInputUTF32Char (utf32 ('\\'))) {
+          if (testForInputUTF32Char (utf32 ('f'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\f')) ;
+          }else if (testForInputUTF32Char (utf32 ('n'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\n')) ;
+          }else if (testForInputUTF32Char (utf32 ('r'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\r')) ;
+          }else if (testForInputUTF32Char (utf32 ('t'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\t')) ;
+          }else if (testForInputUTF32Char (utf32 ('v'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\v')) ;
+          }else if (testForInputUTF32Char (utf32 ('\\'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
+          }else if (testForInputUTF32Char (utf32 ('\"'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\"')) ;
+          }else if (testForInputUTF32Char (utf32 ('\''))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\'')) ;
+          }else if (testForInputUTF32Char (utf32 ('\?'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\?')) ;
+          }else if (testForInputUTF32Char (utf32 ('u'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
               ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                 ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                   ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                     ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
                     ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_34__unassignedUnicodeValue) ;
                     ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
@@ -18898,22 +18898,22 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
             }else{
               lexicalError (gLexicalMessage_galgasScanner_34__invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
-          }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+          }else if (testForInputUTF32Char (utf32 ('U'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
               ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                 ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                   ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                     ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                    if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                       ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                         ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                           ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
-                          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
                             ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_34__internalError, gLexicalMessage_galgasScanner_34__internalError) ;
                             ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_34__unassignedUnicodeValue) ;
                             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
@@ -18944,20 +18944,20 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
           }else{
             lexicalError (gLexicalMessage_galgasScanner_34__incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE (65533))) {
+        }else if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
         }else{
           loop = false ;
         }
       }while (loop) ;
       loop = true ;
-      if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+      if (testForInputUTF32Char (utf32 ('\"'))) {
         token.mTokenCode = kToken__22_string_22_ ;
         enterToken (token) ;
       }else{
         lexicalError (gLexicalMessage_galgasScanner_34__incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
+    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
     }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
       token.mTokenCode = kToken_ ; // Empty string code
     }else{ // Unknown input character

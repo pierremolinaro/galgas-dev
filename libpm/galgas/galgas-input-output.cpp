@@ -157,7 +157,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
       }
       result.appendCString ("\n") ;
     //--- Add fix it suggestions
-      const String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
+      const String ZeroWidthSpace = stringWithUnicodeCharacter (utf32 (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
@@ -441,8 +441,8 @@ void signalRunTimeWarning (Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
-static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
+static const utf32 COCOA_WARNING_ID = utf32 (3) ;
+static const utf32 COCOA_ERROR_ID   = utf32 (4) ;
 
 //--------------------------------------------------------------------------------------------------
 //    Method called for printing an error
@@ -630,7 +630,7 @@ void ggs_printFileOperationSuccess (const String & inMessage) {
     case IssueOutputKind::swiftApp :
       gCout.appendString ("green:") ;
       gCout.appendString (inMessage) ;
-      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+      if (inMessage.lastChar (HERE) != utf32 ('\n')) {
         gCout.appendNewLine () ;
       }
       gCout.flush () ;
@@ -661,7 +661,7 @@ void ggs_printFileDeletionSuccess (const String & inMessage) {
     case IssueOutputKind::swiftApp :
       gCout.appendString ("magenta:") ;
       gCout.appendString (inMessage) ;
-      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+      if (inMessage.lastChar (HERE) != utf32 ('\n')) {
         gCout.appendNewLine () ;
       }
       gCout.flush () ;
@@ -694,7 +694,7 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
     case IssueOutputKind::swiftApp :
       gCout.appendString ("blue:") ;
       gCout.appendString (inMessage) ;
-      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+      if (inMessage.lastChar (HERE) != utf32 ('\n')) {
         gCout.appendNewLine () ;
       }
       gCout.flush () ;
@@ -726,7 +726,7 @@ void ggs_printMessage (const String & inMessage
   if (inMessage.length () > 0) {
     if (!executionModeIsIndexing ()) {
       String message = inMessage ;
-      if (message.lastChar (HERE) != TO_UNICODE ('\n')) {
+      if (message.lastChar (HERE) != utf32 ('\n')) {
         message.appendString ("\n") ;
       }
       gCout.appendString (message) ;
@@ -779,8 +779,8 @@ ParsingContext::ParsingContext (void) :
 mParsingArrayIndex (0),
 mLocation (),
 mCurrentTokenPtr (nullptr),
-mCurrentChar (TO_UNICODE ('\0')),
-mPreviousChar (TO_UNICODE ('\0')),
+mCurrentChar (utf32 ('\0')),
+mPreviousChar (utf32 ('\0')),
 mTemplateString () {
 }
 

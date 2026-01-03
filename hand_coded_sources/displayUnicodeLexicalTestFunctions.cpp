@@ -26,12 +26,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-
 static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnicodeCharacter),
                                           const char * inFunctionName) {
   uint32_t characterCount = 0 ;
   for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
-    if (isUnicodeCharacterAssigned (TO_UNICODE (codePoint)) && inFunction (TO_UNICODE (codePoint))) {
+    if (utf32 (codePoint).isAssigned () && inFunction (utf32 (codePoint))) {
       characterCount += 1 ;
     }
   }
@@ -39,7 +38,7 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
   uint32_t intervalStart = 0 ;
   bool intervalIsOpened = false ;
   for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
-    if (isUnicodeCharacterAssigned (TO_UNICODE (codePoint)) && inFunction (TO_UNICODE (codePoint))) {
+    if (utf32 (codePoint).isAssigned () && inFunction (utf32 (codePoint))) {
       if (! intervalIsOpened) {
         intervalStart = codePoint ;
         intervalIsOpened = true ;
@@ -56,10 +55,12 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
         UTF8StringFromUTF32Character (intervalStart, startChar) ;
         char lastChar [5] ;
         UTF8StringFromUTF32Character (intervalEnd, lastChar) ;
-        printf ("  [\\U%08X, \\U%08X], [%s, %s]: %u characters\n",
-                intervalStart, intervalEnd,
-                startChar, lastChar,
-                codePoint - intervalStart) ;
+        printf (
+          "  [\\U%08X, \\U%08X], [%s, %s]: %u characters\n",
+          intervalStart, intervalEnd,
+          startChar, lastChar,
+          codePoint - intervalStart
+        ) ;
       }
     }
   }

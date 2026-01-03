@@ -360,12 +360,12 @@ static void analyze_one_option (const String & inCommand,
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
         fileName.appendCString ("/") ;
-        fileName.appendChar (TO_UNICODE (szFile [0])) ;
+        fileName.appendChar (utf32 (szFile [0])) ;
         fileName.appendCString ("/") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
-        fileName.appendChar (TO_UNICODE ((szFile [i] == '\\') ? '/' : szFile [i])) ;
+        fileName.appendChar (utf32 ((szFile [i] == '\\') ? '/' : szFile [i])) ;
       }
       outSourceFileArray.appendObject (fileName) ;
     }
