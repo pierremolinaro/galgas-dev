@@ -439,6 +439,62 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
       ioStream.appendCString ("\\\"") ;
       break ;
     default :
+      ioStream.appendChar (c) ;
+      break ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void
+internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (AbstractOutputStream & ioStream,
+                                                               const String & inString,
+                                                               const int32_t inStringLength,
+                                                               const int32_t inLineMaxLength) {
+  int32_t currentColumn = 0 ;
+  for (int32_t i=0 ; i<inStringLength ; i++) {
+    if (currentColumn > inLineMaxLength) {
+      ioStream.appendCString ("\"\n  \"") ;
+      currentColumn = 0 ;
+    }
+    currentColumn += 1 ;
+    const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
+    switch (UNICODE_VALUE (c)) {
+    case '\0' :
+      break ;
+    case '\a' :
+      ioStream.appendCString ("\\a") ;
+      break ;
+    case '\b' :
+      ioStream.appendCString ("\\b") ;
+      break ;
+    case '\f' :
+      ioStream.appendCString ("\\f") ;
+      break ;
+    case '\n' :
+      ioStream.appendCString ("\\n") ;
+      if (i < (inStringLength - 1)) {
+        ioStream.appendCString ("\"\n  \"") ;
+        currentColumn = 1 ;
+      }
+      break ;
+    case '\r' :
+      ioStream.appendCString ("\\r") ;
+      break ;
+    case '\t' :
+      ioStream.appendCString ("\\t") ;
+      break ;
+    case '\v' :
+      ioStream.appendCString ("\\v") ;
+      break ;
+    case '\\' :
+      ioStream.appendCString ("\\\\") ;
+      break ;
+    case '\"' :
+      ioStream.appendCString ("\\\"") ;
+      break ;
+    default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
         ioStream.appendChar (c) ;
       }else{
@@ -461,7 +517,7 @@ static void internalWriteCstringConstant (AbstractOutputStream & ioStream,
                                           const int32_t inStringLength,
                                           const int32_t inLineMaxLength) {
   ioStream.appendCString ("\"") ;
-  internalWriteCstringConstantWithoutDelimiters (ioStream, inString, inStringLength, inLineMaxLength) ;
+  internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (ioStream, inString, inStringLength, inLineMaxLength) ;
   ioStream.appendCString ("\"") ;
 }
 
@@ -469,6 +525,14 @@ static void internalWriteCstringConstant (AbstractOutputStream & ioStream,
 
 void AbstractOutputStream::appendStringAsCLiteralStringConstant (const String & inString) {
   internalWriteCstringConstant (*this, inString, inString.length (), INT32_MAX) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AbstractOutputStream::appendStringAsUTF8LiteralStringConstant (const String & inString) {
+  appendCString ("\"") ;
+  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), INT32_MAX) ;
+  appendCString ("\"") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -481,14 +545,14 @@ void AbstractOutputStream::appendStringAsCLiteralStringConstant (const String & 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inString) {
-  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), INT32_MAX) ;
+  internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (*this, inString, inString.length (), INT32_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inString,
                                                                                   const int32_t inLineMaxLength) {
-  internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), inLineMaxLength) ;
+  internalWriteCstringConstantWithoutDelimitersEscapingNonASCII (*this, inString, inString.length (), inLineMaxLength) ;
 }
 
 //--------------------------------------------------------------------------------------------------

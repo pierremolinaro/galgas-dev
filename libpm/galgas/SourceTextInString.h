@@ -26,10 +26,6 @@
 #include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 Classes for handling source text
-//
-//--------------------------------------------------------------------------------------------------
 
 class cSourceTextInString final : public SharedObject {
 //--- Constructor
@@ -43,9 +39,9 @@ class cSourceTextInString final : public SharedObject {
   mShowSourceOnDetailledErrorMessage (inShowSourceOnDetailledErrorMessage) {
   }
 
-  public: String mFilePath ;
-  public: String mSourceString ;
-  public: bool mShowSourceOnDetailledErrorMessage ;
+  public: const String mFilePath ;
+  public: const String mSourceString ;
+  public: const bool mShowSourceOnDetailledErrorMessage ;
 
 //--- No copy
   private: cSourceTextInString (const cSourceTextInString &) = delete ;

@@ -800,7 +800,6 @@
 		CF305F392D0D8A2E000A5F79 /* TemplateDelimiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemplateDelimiter.h; sourceTree = "<group>"; };
 		CF305F3B2D0D8A2E000A5F79 /* GenericArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericArray.h; sourceTree = "<group>"; };
 		CF305F3C2D0D8A2E000A5F79 /* GenericUniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUniqueArray.h; sourceTree = "<group>"; };
-		CF305F3F2D0D8A2E000A5F79 /* License */ = {isa = PBXFileReference; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		CF305F5A2D0D8A2E000A5F79 /* AbstractOutputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractOutputStream.h; sourceTree = "<group>"; };
 		CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractOutputStream.cpp; sourceTree = "<group>"; };
 		CF305F5C2D0D8A2E000A5F79 /* ColoredConsole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColoredConsole.h; sourceTree = "<group>"; };
@@ -1317,7 +1316,6 @@
 				CF305ED42D0D8A2E000A5F79 /* files */,
 				CF305F3A2D0D8A2E000A5F79 /* galgas */,
 				CF305F3E2D0D8A2E000A5F79 /* generic-arraies */,
-				CF305F3F2D0D8A2E000A5F79 /* License */,
 				CF305F602D0D8A2E000A5F79 /* streams */,
 				CF305F702D0D8A2E000A5F79 /* strings */,
 				CF305F752D0D8A2E000A5F79 /* time */,
@@ -1875,7 +1873,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					CFDF0C9B2D0A0EEF0014CD68 = {
 						CreatedOnToolsVersion = 16.2;

@@ -1560,9 +1560,7 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0,
-               styleIndex < (self.mTokenAttributeArray.count - 1),
-               let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+          if styleIndex > 0, let attributes = self.mTokenAttributeArray [styleIndex - 1] {
             inTextStorage.addAttributes (attributes, range: token.range)
           }
         }

@@ -84,7 +84,7 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
   result.appendString (mIsError ? "true" : "false") ;
 //--- file
   result.appendString (",\"file\":") ;
-  result.appendStringAsCLiteralStringConstant (mFile) ;
+  result.appendStringAsUTF8LiteralStringConstant (mFile) ;
 //--- Line
   result.appendString (",\"line\":") ;
   result.appendSigned (mLine) ;
@@ -107,7 +107,7 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
       }else{
         result.appendString (",") ;
       }
-      result.appendStringAsCLiteralStringConstant (str) ;
+      result.appendStringAsUTF8LiteralStringConstant (str) ;
     }
   }
   result.appendString ("]") ;
@@ -134,7 +134,7 @@ String IssueDescriptor::jsonDescriptionString (const String & inMessage,
       break ;
     }
     result.appendString ("\",\"action\":") ;
-    result.appendStringAsCLiteralStringConstant (fixit.actionString ()) ;
+    result.appendStringAsUTF8LiteralStringConstant (fixit.actionString ()) ;
     result.appendString ("}") ;
   }
   result.appendString ("]") ;
