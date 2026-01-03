@@ -26,11 +26,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnicodeCharacter),
+static void displayUnicodeCharacterRange (bool (utf32::*inFunction) (void) const,
                                           const char * inFunctionName) {
   uint32_t characterCount = 0 ;
   for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
-    if (utf32 (codePoint).isAssigned () && inFunction (utf32 (codePoint))) {
+    const utf32 v = utf32 (codePoint) ;
+    if (v.isAssigned () && (v.*inFunction) ()) {
       characterCount += 1 ;
     }
   }
@@ -38,7 +39,8 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
   uint32_t intervalStart = 0 ;
   bool intervalIsOpened = false ;
   for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
-    if (utf32 (codePoint).isAssigned () && inFunction (utf32 (codePoint))) {
+    const utf32 v = utf32 (codePoint) ;
+    if (v.isAssigned () && (v.*inFunction) ()) {
       if (! intervalIsOpened) {
         intervalStart = codePoint ;
         intervalIsOpened = true ;
@@ -69,19 +71,19 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
 //--------------------------------------------------------------------------------------------------
 
 void routine_displayUnicodeLexicalTestFunctions (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  displayUnicodeCharacterRange (isUnicodeLetter, "isUnicodeLetter") ;
-  displayUnicodeCharacterRange (isUnicodeMark, "isUnicodeMark") ;
-  displayUnicodeCharacterRange (isUnicodeNumber, "isUnicodeNumber") ;
-  displayUnicodeCharacterRange (isUnicodeDecimalDigit, "isUnicodeDecimalDigit") ;
-  displayUnicodeCharacterRange (isUnicodeASCIIHexDigit, "isUnicodeASCIIHexDigit") ;
-  displayUnicodeCharacterRange (isUnicodeASCIIHexDigit, "isUnicodeASCIIHexDigit") ;
-  displayUnicodeCharacterRange (isUnicodeSeparator, "isUnicodeSeparator") ;
-  displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
-  displayUnicodeCharacterRange (isUnicodePunctuation, "isUnicodePunctuation") ;
-  displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
-  displayUnicodeCharacterRange (isUnicodeSymbol, "isUnicodeSymbol") ;
-  displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
-  displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
+  displayUnicodeCharacterRange (&utf32::isLetter, "isUnicodeLetter") ;
+  displayUnicodeCharacterRange (&utf32::isMark, "isUnicodeMark") ;
+  displayUnicodeCharacterRange (&utf32::isNumber, "isUnicodeNumber") ;
+  displayUnicodeCharacterRange (&utf32::isDecimalDigit, "isUnicodeDecimalDigit") ;
+  displayUnicodeCharacterRange (&utf32::isASCIIHexDigit, "isUnicodeASCIIHexDigit") ;
+  displayUnicodeCharacterRange (&utf32::isASCIIHexDigit, "isUnicodeASCIIHexDigit") ;
+  displayUnicodeCharacterRange (&utf32::isSeparator, "isUnicodeSeparator") ;
+  displayUnicodeCharacterRange (&utf32::isCommand, "isUnicodeCommand") ;
+  displayUnicodeCharacterRange (&utf32::isPunctuation, "isUnicodePunctuation") ;
+  displayUnicodeCharacterRange (&utf32::isCommand, "isUnicodeCommand") ;
+  displayUnicodeCharacterRange (&utf32::isSymbol, "isUnicodeSymbol") ;
+  displayUnicodeCharacterRange (&utf32::isCommand, "isUnicodeCommand") ;
+  displayUnicodeCharacterRange (&utf32::isCommand, "isUnicodeCommand") ;
 }
 
 //--------------------------------------------------------------------------------------------------
