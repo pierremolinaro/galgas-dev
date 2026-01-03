@@ -72,12 +72,12 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
-}
+//override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string inScannerClassName
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

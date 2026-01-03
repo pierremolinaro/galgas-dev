@@ -10,36 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_appendArgumentOfMethod (const class GGS_lexicalTypeEnum & inObject,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum initialization' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_initialization (const class GGS_lexicalTypeEnum & inObject,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum cocoaTypeName' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_cocoaTypeName (const class GGS_lexicalTypeEnum & inObject,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension getter '@lexicalTypeEnum swiftTypeName' (as function)
 //
 //--------------------------------------------------------------------------------------------------
@@ -248,11 +218,6 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -445,11 +410,6 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -646,11 +606,6 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -836,11 +791,6 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -1040,11 +990,6 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -1250,11 +1195,6 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -1439,10 +1379,6 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
   public: void abstractLexicalRoutineActualArgumentAST_init_21_ (const class GGS_location & inOperand0,
                                                                  Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineArgument (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter generateRoutineArgument
   public: virtual class GGS_string getter_generateRoutineArgument (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
@@ -1631,10 +1567,6 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
                                                                     const class GGS_lstring & inOperand1,
                                                                     Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineArgument (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateRoutineArgument
   public: virtual class GGS_string getter_generateRoutineArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1827,10 +1759,6 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
                                                            const class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1,
                                                            Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineArgument (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateRoutineArgument
   public: virtual class GGS_string getter_generateRoutineArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -2334,11 +2262,6 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -2462,17 +2385,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInst
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                       const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -2583,11 +2495,6 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -2786,11 +2693,6 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -2984,11 +2886,6 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaInstructionCode
   public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -3179,11 +3076,6 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 

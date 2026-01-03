@@ -124,7 +124,6 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension method appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg_inProductDirectory,
            class GGS_stringset & arg_ioAllProductFileSet,
-           class GGS_stringlist & arg_ioObjcAppProductFileList,
            class GGS_stringlist & arg_ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -756,38 +755,6 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'lexiqueGenerationTemplates cocoaHeaderZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class Compiler * inCompiler,
-                                                                               const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                               const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates cocoaImplementationZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (class Compiler * inCompiler,
-                                                                                       const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                       const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                       const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                       const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                       const class GGS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                       const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                       const class GGS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                       const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                       const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                       const class GGS_indexingListAST & in_INDEXING_5F_LIST,
-                                                                                       const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                       const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'lexiqueGenerationTemplates swiftCocoaImplementationZone2'
 //
 //--------------------------------------------------------------------------------------------------
@@ -969,4 +936,13 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftuiImpleme
                                                                                              const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                                              const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'printPredefinedLexicalActions'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_printPredefinedLexicalActions (class Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 

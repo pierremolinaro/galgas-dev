@@ -10,15 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'syntaxDirectedTranslationResultVarName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'recursivelyEnumerateDirectories????!!&&'
 //
 //--------------------------------------------------------------------------------------------------
@@ -419,4 +410,34 @@ class GGS_semanticInstructionListForGeneration function_syntaxSignatureOfInstruc
                                                                                           const class GGS_semanticInstructionListForGeneration & constinArgument1,
                                                                                           class Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'recursivlyEnumerateRegularFile??&&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class GGS_wrapperFileMap constinArgument0,
+                                                                     const class GGS_wrapperDirectoryMap constinArgument1,
+                                                                     class GGS_stringlist & ioArgument2,
+                                                                     class GGS_stringlist & ioArgument3,
+                                                                     class GGS_stringlist & ioArgument4,
+                                                                     class GGS_stringlist & ioArgument5,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateWrapperContents?????&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
+                                                              const class GGS_string constinArgument1,
+                                                              const class GGS_uint constinArgument2,
+                                                              const class GGS_wrapperFileMap constinArgument3,
+                                                              const class GGS_wrapperDirectoryMap constinArgument4,
+                                                              class GGS_string & ioArgument5,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 

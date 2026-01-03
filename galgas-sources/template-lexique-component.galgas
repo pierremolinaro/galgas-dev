@@ -411,19 +411,19 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mTemplateReplacementList
     ]
   //--- Objc Cocoa header
-    let objcCocoaHeader = [filewrapper templateLexiqueGenerationTemplates.objcCocoaHeaderZone
-      !self.mLexiqueComponentName.string
-      !self.mLexiqueSuperComponentName.string
-      !"lexique-" + [self.mLexiqueSuperComponentName.string fileNameRepresentation] + "-cocoa"
-    ]
-  //--- Objc Cocoa implementation
-    let objcCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.objcCocoaImplementationZone
-      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
-      !self.mLexiqueComponentName.string
-      !terminalList
-      !templateDelimitorList
-      !self.mTemplateReplacementList
-    ]
+//    let objcCocoaHeader = [filewrapper templateLexiqueGenerationTemplates.objcCocoaHeaderZone
+//      !self.mLexiqueComponentName.string
+//      !self.mLexiqueSuperComponentName.string
+//      !"lexique-" + [self.mLexiqueSuperComponentName.string fileNameRepresentation] + "-cocoa"
+//    ]
+//  //--- Objc Cocoa implementation
+//    let objcCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.objcCocoaImplementationZone
+//      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
+//      !self.mLexiqueComponentName.string
+//      !terminalList
+//      !templateDelimitorList
+//      !self.mTemplateReplacementList
+//    ]
   //--- Swift Cocoa implementation
     let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
@@ -453,8 +453,8 @@ override method @templateLexiqueComponentAST semanticAnalysis
         !self.mLexiqueSuperComponentName.string
         !headerContents
         !cppContents
-        !objcCocoaHeader
-        !objcCocoaImplementation
+//        !objcCocoaHeader
+//        !objcCocoaImplementation
         !swiftCocoaImplementation
         !swiftuiImplementation
       }

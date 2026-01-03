@@ -78,13 +78,13 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
-  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
-}
+//override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string inScannerClassName
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
+//  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

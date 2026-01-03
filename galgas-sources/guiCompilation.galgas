@@ -552,7 +552,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
                                       ?let @bool inQuietOutputByDefault
-                                      ?!objc: @stringlist ioObjcAllProductFileList
+//                                      ?!objc: @stringlist ioObjcAllProductFileList
                                       ?!swift: @stringlist ioSwiftAllProductFileList {
   for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftFileName = "gui-" + lkey + ".swift"
@@ -589,23 +589,23 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
       !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
     ]
-    let objcFileName = "gui-" + lkey + ".m"
-    ioObjcAllProductFileList += !objcFileName
-    let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
-      !guiComponentContext
-      !inQuietOutputByDefault
-    ]
-    [@string generateFileWithPattern
-      !startPath:inOutputDirectory
-      !fileName: objcFileName
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2: objc_string
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
-      !makeExecutable:false
-    ]
+//    let objcFileName = "gui-" + lkey + ".m"
+//    ioObjcAllProductFileList += !objcFileName
+//    let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
+//      !guiComponentContext
+//      !inQuietOutputByDefault
+//    ]
+//    [@string generateFileWithPattern
+//      !startPath:inOutputDirectory
+//      !fileName: objcFileName
+//      !lineComment:"//"
+//      !header:"" // Header
+//      !defaultUserZone1:"\n\n" // Defaut user zone1
+//      !generatedZone2: objc_string
+//      !defaultUserZone2:"\n\n" // Defaut user zone2
+//      !generatedZone3:"\n\n" // Zone 3
+//      !makeExecutable:false
+//    ]
   end
 }
 
@@ -616,9 +616,9 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
 }{
-  template objc_gui_implementation "gui-implementation.m.galgasTemplate"
-    ?@guiAnalysisContext GUI_CONTEXT
-    ?@bool QUIET_OUTPUT_BY_DEFAULT
+//  template objc_gui_implementation "gui-implementation.m.galgasTemplate"
+//    ?@guiAnalysisContext GUI_CONTEXT
+//    ?@bool QUIET_OUTPUT_BY_DEFAULT
 
   template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT

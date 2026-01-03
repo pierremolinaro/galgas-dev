@@ -68,12 +68,12 @@ override method @lexicalLogInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalLogInstructionAST generateObjcCocoaInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "/* lexicalLog (LINE_AND_SOURCE_FILE) ; */\n"
-}
+//override getter @lexicalLogInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string unused inScannerClassName
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = "/* lexicalLog (LINE_AND_SOURCE_FILE) ; */\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

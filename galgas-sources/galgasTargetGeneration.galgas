@@ -311,7 +311,7 @@ proc updateGalgasTargets
   ?let @stringlist inToolCppFileList
   ?let @stringlist inToolHeaderFileList
   ?appProductFileList: let @stringlist inAppProductFileList
-  ?objcAppProductFileList: let @stringlist inObjcAppProductFileList
+//  ?objcAppProductFileList: let @stringlist inObjcAppProductFileList
   ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringlist inFrameworkToolFileList
@@ -321,7 +321,7 @@ proc updateGalgasTargets
   ?let @stringlist inHandCodedSourceAppFileList
   ?let @stringlist inHandCodedLinkAppFileList
   ?let @stringlist inHandCodedLinkToolFileList {
-  ioAllProductFileSet += .setWithStringList {!inObjcAppProductFileList + inSwiftAppProductFileList}
+  ioAllProductFileSet += .setWithStringList {!inSwiftAppProductFileList}
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
 //--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
@@ -966,6 +966,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs
       ?groupRef:groupRef
     ]
+    libpmReferenceGroupList += !groupRef
   //--- Add "collection" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generic Arraies"

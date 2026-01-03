@@ -38,9 +38,9 @@ final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override func draw (_ inRect : NSRect) { // Indispensable sous Monterey ?
-//    self.drawHashMarksAndLabels (in: inRect)
-//  }
+  override func draw (_ inRect : NSRect) { // Indispensable sous Monterey ?
+    self.drawHashMarksAndLabels (in: inRect)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

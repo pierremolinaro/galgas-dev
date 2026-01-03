@@ -119,21 +119,21 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = ""
-  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
-    outGeneratedCode += "if (mTokenCode == 0) {\n"
-    outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation]
-    outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
-    outGeneratedCode += "}\n"
-  end
-  outGeneratedCode += "if (mTokenCode == 0) {\n"
-  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateObjcCocoaDefaultSendCode !inScannerClassName]
-  outGeneratedCode += "}\n"
-}
+//override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string inScannerClassName
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = ""
+//  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
+//    outGeneratedCode += "if (mTokenCode == 0) {\n"
+//    outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation]
+//    outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
+//    outGeneratedCode += "}\n"
+//  end
+//  outGeneratedCode += "if (mTokenCode == 0) {\n"
+//  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateObjcCocoaDefaultSendCode !inScannerClassName]
+//  outGeneratedCode += "}\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

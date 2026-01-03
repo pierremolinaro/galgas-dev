@@ -183,11 +183,6 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaCode
-  public: virtual class GGS_string getter_generateObjcCocoaCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaCode
   public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -382,11 +377,6 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 
 //--- Extension getter generateLexicalRuleCode
   public: virtual class GGS_string getter_generateLexicalRuleCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaCode
-  public: virtual class GGS_string getter_generateObjcCocoaCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -792,10 +782,6 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -985,10 +971,6 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1174,10 +1156,6 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension getter generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateSwiftCocoaConditionCode
@@ -1372,10 +1350,6 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1563,10 +1537,6 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension getter generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateSwiftCocoaConditionCode
@@ -1759,10 +1729,6 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension getter generateConditionCode
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateSwiftCocoaConditionCode
@@ -2276,10 +2242,6 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
   public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension getter generateObjcCocoaDefaultSendCode
-  public: virtual class GGS_string getter_generateObjcCocoaDefaultSendCode (const class GGS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
 //--- Extension getter generateSwiftCocoaDefaultSendCode
   public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
@@ -2458,10 +2420,6 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
 
 //--- Extension getter generateDefaultSendCode
   public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaDefaultSendCode
-  public: virtual class GGS_string getter_generateObjcCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateSwiftCocoaDefaultSendCode
@@ -2649,10 +2607,6 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 
 //--- Extension getter generateDefaultSendCode
   public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaDefaultSendCode
-  public: virtual class GGS_string getter_generateObjcCocoaDefaultSendCode (const class GGS_string inScannerClassName,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateSwiftCocoaDefaultSendCode
@@ -3491,9 +3445,6 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
   public: void lexicalRoutineOrFunctionFormalInputArgumentAST_init (Compiler * inCompiler) ;
 
 
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
@@ -3976,9 +3927,6 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
                                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -4169,9 +4117,6 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public: void lexicalCharacterInputArgumentAST_init_21_ (const class GGS_lchar & inOperand0,
                                                           Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -4364,9 +4309,6 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -4557,9 +4499,6 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
   public: void lexicalCurrentCharacterInputArgumentAST_init_21_ (const class GGS_location & inOperand0,
                                                                  Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -4756,9 +4695,6 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                              const class GGS_lexicalFunctionCallActualArgumentListAST & inOperand1,
                                                              Compiler * inCompiler) ;
 
-
-//--- Extension getter generateObjcCocoaRoutineOrFunctionArgument
-  public: virtual class GGS_string getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateRoutineOrFunctionArgument
   public: virtual class GGS_string getter_generateRoutineOrFunctionArgument (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -11497,17 +11433,6 @@ class GGS_string callExtensionGetter_generateLexicalRuleCode (const class cPtr_a
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalExpressionAST generateObjcCocoaConditionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaConditionCode (const class cPtr_lexicalExpressionAST * inObject,
-                                                                     const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                     class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension getter '@lexicalExpressionAST generateSwiftCocoaConditionCode'
 //
 //--------------------------------------------------------------------------------------------------
@@ -11519,16 +11444,6 @@ class GGS_string callExtensionGetter_generateSwiftCocoaConditionCode (const clas
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                 class Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -11536,17 +11451,6 @@ class GGS_string callExtensionGetter_generateObjcCocoaRoutineOrFunctionArgument 
 class GGS_string callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                                   class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@lexicalSendDefaultActionAST generateObjcCocoaDefaultSendCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                       const class GGS_string constin_inScannerClassName,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11561,18 +11465,6 @@ class GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const cl
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalInstructionAST generateObjcCocoaInstructionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
-                                                                       const class GGS_string constin_inScannerClassName,
-                                                                       const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension getter '@lexicalInstructionAST generateSwiftCocoaInstructionCode'
 //
 //--------------------------------------------------------------------------------------------------
@@ -11582,18 +11474,6 @@ class GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const cl
                                                                         const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
                                                                         class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRuleAST generateObjcCocoaCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateObjcCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                            const class GGS_string constin_inScannerClassName,
-                                                            const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11626,4 +11506,34 @@ class GGS_string extensionGetter_cppTypeName (const class GGS_lexicalTypeEnum & 
 class GGS_string extensionGetter_appendMethodName (const class GGS_lexicalTypeEnum & inObject,
                                                    class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_appendArgumentOfMethod (const class GGS_lexicalTypeEnum & inObject,
+                                                         class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum initialization' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_initialization (const class GGS_lexicalTypeEnum & inObject,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum cocoaTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 

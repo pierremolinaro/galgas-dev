@@ -495,7 +495,7 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
 method @semanticDeclarationForGeneration appendSpecificFiles
   ?let @string unused inProductDirectory
   ?!@stringset unused ioAllProductFileSet
-  ?!objc: @stringlist unused ioObjcAppProductFileList
+//  ?!objc: @stringlist unused ioObjcAppProductFileList
   ?!swift: @stringlist unused ioSwiftAppProductFileList
 {
 }

@@ -114,39 +114,39 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
-                                      ?let @string inScannerClassName
-                                      ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-                                      -> @string outGeneratedCode {
-  let loopVarName = "loop" + [self.mLocation endLocationIndex]
-  outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
-  outGeneratedCode += "do {\n"
-  [!?outGeneratedCode incIndentation !2]
-//--- Repeated instruction
-  for (mInstruction) in self.mRepeatedInstructionList do
-    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-  end
-//---
-  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
-  do
-    outGeneratedCode += "if (scanningOk && ("
-    outGeneratedCode += [mWhileExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
-    outGeneratedCode += ")) {\n"
-    [!?outGeneratedCode incIndentation !2]
-    for (mInstruction) in mWhileInstructionList do
-      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-    end
-    [!?outGeneratedCode decIndentation !2]
-  between
-    outGeneratedCode += "}else "
-  end
-  outGeneratedCode += "}else{\n"
-                      "  " + loopVarName + " = NO ;\n"
-                      "}\n"
-  [!?outGeneratedCode decIndentation !2]
-  outGeneratedCode += "}while (" + loopVarName + " && scanningOk) ;\n"
-//                      "loop = YES ;\n"
-}
+//override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
+//                                      ?let @string inScannerClassName
+//                                      ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+//                                      -> @string outGeneratedCode {
+//  let loopVarName = "loop" + [self.mLocation endLocationIndex]
+//  outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
+//  outGeneratedCode += "do {\n"
+//  [!?outGeneratedCode incIndentation !2]
+////--- Repeated instruction
+//  for (mInstruction) in self.mRepeatedInstructionList do
+//    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+//  end
+////---
+//  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
+//  do
+//    outGeneratedCode += "if (scanningOk && ("
+//    outGeneratedCode += [mWhileExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
+//    outGeneratedCode += ")) {\n"
+//    [!?outGeneratedCode incIndentation !2]
+//    for (mInstruction) in mWhileInstructionList do
+//      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+//    end
+//    [!?outGeneratedCode decIndentation !2]
+//  between
+//    outGeneratedCode += "}else "
+//  end
+//  outGeneratedCode += "}else{\n"
+//                      "  " + loopVarName + " = NO ;\n"
+//                      "}\n"
+//  [!?outGeneratedCode decIndentation !2]
+//  outGeneratedCode += "}while (" + loopVarName + " && scanningOk) ;\n"
+////                      "loop = YES ;\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -12597,11 +12597,6 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension getter generateObjcCocoaCode
-  public: virtual class GGS_string getter_generateObjcCocoaCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
 //--- Extension getter generateSwiftCocoaCode
   public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -13419,10 +13414,6 @@ class cPtr_lexicalExpressionAST : public acStrongPtr_class {
   public: virtual class GGS_string getter_generateConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GGS_string getter_generateObjcCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
 //--- Extension getter generateSwiftCocoaConditionCode
   public: virtual class GGS_string getter_generateSwiftCocoaConditionCode (const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
@@ -13592,11 +13583,6 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
 
 //--- Extension getter generateLexicalInstructionCode
   public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
-//--- Extension getter generateObjcCocoaInstructionCode
-  public: virtual class GGS_string getter_generateObjcCocoaInstructionCode (const class GGS_string inScannerClassName,
            const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 

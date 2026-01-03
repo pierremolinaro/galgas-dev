@@ -425,14 +425,14 @@ private proc projectGeneration
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
-  var @stringlist objcAppProductFileList = @()
+//  var @stringlist objcAppProductFileList = @()
   var @stringlist swiftAppProductFileList = @()
   if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       !inOptionComponentMapForGeneration
       !productDirectory
       !quietOutputByDefault
-      !?objc: objcAppProductFileList
+//      !?objc: objcAppProductFileList
       !?swift: swiftAppProductFileList
     )
   end
@@ -451,7 +451,7 @@ private proc projectGeneration
     !inTypeMap
     !productDirectory
     !inSemanticDeclarationSortedListForGeneration
-    !?objc: objcAppProductFileList
+//    !?objc: objcAppProductFileList
     !?swift: swiftAppProductFileList
     !?toolCppFileList
     !?toolHeaderFileList
@@ -494,7 +494,7 @@ private proc projectGeneration
       !toolCppFileList
       !toolHeaderFileList
       !appProductFileList: appProductFileList
-      !objcAppProductFileList: objcAppProductFileList
+//      !objcAppProductFileList: objcAppProductFileList
       !swiftAppProductFileList: swiftAppProductFileList
       !inHandCodedSourceToolFileList
       !inFrameworkToolFileList

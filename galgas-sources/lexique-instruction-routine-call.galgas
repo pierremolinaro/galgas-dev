@@ -146,31 +146,31 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-abstract getter @abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string
+//abstract getter @abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument
+//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+//  -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-{
-  [inLexiqueAnalysisContext.mLexicalAttributeMap searchKey !self.mAttributeName ?let lexicalType]
-  outGeneratedCode = ""
-  if [lexicalType needsReferenceInInputOutputInCocoa] then
-    outGeneratedCode += "& "
-  end
-  outGeneratedCode += "mLexicalAttribute_" + self.mAttributeName
-}
+//override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutineArgument
+//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+//  -> @string outGeneratedCode
+//{
+//  [inLexiqueAnalysisContext.mLexicalAttributeMap searchKey !self.mAttributeName ?let lexicalType]
+//  outGeneratedCode = ""
+//  if [lexicalType needsReferenceInInputOutputInCocoa] then
+//    outGeneratedCode += "& "
+//  end
+//  outGeneratedCode += "mLexicalAttribute_" + self.mAttributeName
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateObjcCocoaRoutineOrFunctionArgument]
-}
+//override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateObjcCocoaRoutineOrFunctionArgument]
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -297,16 +297,16 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (& scanningOk"
-  for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateObjcCocoaRoutineArgument !inLexiqueAnalysisContext]
-  end
-  outGeneratedCode += ") ;\n"
-}
+//override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string unused inScannerClassName
+//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (& scanningOk"
+//  for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
+//    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateObjcCocoaRoutineArgument !inLexiqueAnalysisContext]
+//  end
+//  outGeneratedCode += ") ;\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

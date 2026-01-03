@@ -1077,8 +1077,8 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
   public let @string mSuperLexiqueName
   public let @string mHeaderContents
   public let @string mCppContents
-  public let @string mObjcCocoaHeader
-  public let @string mObjcCocoaImplementation
+//  public let @string mObjcCocoaHeader
+//  public let @string mObjcCocoaImplementation
   public let @string mSwiftCocoaImplementation
   public let @string mSwiftUIImplementation
 
@@ -1114,35 +1114,34 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
   override method appendSpecificFiles
     ?let @string inProductDirectory
     ?!@stringset ioAllProductFileSet
-    ?!objc: @stringlist ioObjcAppProductFileList
     ?!swift: @stringlist ioSwiftAppProductFileList {
   //--- Generate cocoa header file
-    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2: self.mObjcCocoaHeader
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n"
-      !makeExecutable:false
-    ]
+//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
+//    [@string generateFileWithPattern
+//      !startPath:inProductDirectory
+//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
+//      !lineComment:"//"
+//      !header:"" // Header
+//      !defaultUserZone1:"\n\n" // Defaut user zone1
+//      !generatedZone2: self.mObjcCocoaHeader
+//      !defaultUserZone2:"\n\n" // Defaut user zone2
+//      !generatedZone3:"\n"
+//      !makeExecutable:false
+//    ]
   //--- Generate Objc Cocoa implementation file
-    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-    ioObjcAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-      !lineComment:"//"
-      !header:"" // Header
-      !defaultUserZone1:"\n\n" // Defaut user zone1
-      !generatedZone2:self.mObjcCocoaImplementation
-      !defaultUserZone2:"\n\n" // Defaut user zone2
-      !generatedZone3:"\n\n" // Zone 3
-      !makeExecutable:false
-    ]
+//    ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
+//    ioObjcAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
+//    [@string generateFileWithPattern
+//      !startPath:inProductDirectory
+//      !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
+//      !lineComment:"//"
+//      !header:"" // Header
+//      !defaultUserZone1:"\n\n" // Defaut user zone1
+//      !generatedZone2:self.mObjcCocoaImplementation
+//      !defaultUserZone2:"\n\n" // Defaut user zone2
+//      !generatedZone3:"\n\n" // Zone 3
+//      !makeExecutable:false
+//    ]
   //--- Generate Swift Cocoa implementation file
     ioAllProductFileSet ++= "lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
     ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"

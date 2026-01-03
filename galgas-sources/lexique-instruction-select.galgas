@@ -127,36 +127,36 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalSelectInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = ""
-//---
-  for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList
-  do
-    outGeneratedCode += "if (scanningOk && ("
-    outGeneratedCode += [mSelectExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
-    outGeneratedCode += ")) {\n"
-    [!?outGeneratedCode incIndentation !2]
-    for (mInstruction) in mSelectInstructionList do
-      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-    end
-    [!?outGeneratedCode decIndentation !2]
-  between
-    outGeneratedCode += "}else "
-  end
-//--- Default branch
-  if [self.mDefaultInstructionList count] > 0 then
-    outGeneratedCode += "}else{\n"
-    [!?outGeneratedCode incIndentation !2]
-    for (mInstruction) in self.mDefaultInstructionList do
-      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-    end
-    [!?outGeneratedCode decIndentation !2]
-  end
-  outGeneratedCode += "}\n"
-}
+//override getter @lexicalSelectInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string inScannerClassName
+//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = ""
+////---
+//  for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList
+//  do
+//    outGeneratedCode += "if (scanningOk && ("
+//    outGeneratedCode += [mSelectExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
+//    outGeneratedCode += ")) {\n"
+//    [!?outGeneratedCode incIndentation !2]
+//    for (mInstruction) in mSelectInstructionList do
+//      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+//    end
+//    [!?outGeneratedCode decIndentation !2]
+//  between
+//    outGeneratedCode += "}else "
+//  end
+////--- Default branch
+//  if [self.mDefaultInstructionList count] > 0 then
+//    outGeneratedCode += "}else{\n"
+//    [!?outGeneratedCode incIndentation !2]
+//    for (mInstruction) in self.mDefaultInstructionList do
+//      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+//    end
+//    [!?outGeneratedCode decIndentation !2]
+//  end
+//  outGeneratedCode += "}\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

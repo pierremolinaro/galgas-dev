@@ -10,250 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'makeEmbeddedElementTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeEmbeddedElementTypeName (const class GGS_string & constinArgument0,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeEmbeddedElementTypeLName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring & constinArgument0,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeArrayTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeArrayTypeName (const class GGS_string & constinArgument0,
-                                             class Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeWeakTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeWeakTypeName (const class GGS_string & constinArgument0,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'handleEquatableComparableExtension&?&?acceptEquatable?acceptComparable'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (class GGS_equatableExtensionMap & ioArgument0,
-                                                                                                    const class GGS_lstring constinArgument1,
-                                                                                                    class GGS_typeFeatures & ioArgument2,
-                                                                                                    const class GGS_bool constinArgument3,
-                                                                                                    const class GGS_bool constinArgument4,
-                                                                                                    class Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'arrayTypeGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'arrayTypeGenerationTemplate arrayTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                const class GGS_string & in_TYPE_5F_NAME,
-                                                                                const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'arrayTypeGenerationTemplate arrayTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                            const class GGS_string & in_TYPE_5F_NAME,
-                                                                                            const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                            const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                            const class GGS_bool & in_GENERATE_5F_COMPARISON
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'typeGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-extern const char * gWrapperFileContent_0_typeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForType'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (class Compiler * inCompiler,
-                                                                               const class GGS_string & in_TYPE_5F_NAME,
-                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GGS_bool & in_IS_5F_CONCRETE,
-                                                                               const class GGS_initializerMap & in_INITIALIZER_5F_MAP,
-                                                                               const class GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
-                                                                               const class GGS_getterMap & in_GETTER_5F_MAP,
-                                                                               const class GGS_setterMap & in_MODIFIER_5F_MAP,
-                                                                               const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
-                                                                               const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
-                                                                               const class GGS_subscriptMap & in_READ_5F_SUBSCRIPT_5F_MAP,
-                                                                               const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                               const class GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
-                                                                               const class GGS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                               const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                               const class GGS_bool & in_SUPPORT_5F_COLLECTION_5F_VALUE
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForPackage'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (class Compiler * inCompiler,
-                                                                                  const class GGS_string & in_TYPE_5F_NAME,
-                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
-                                                                                  const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate genericTypeImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class Compiler * inCompiler,
-                                                                                 const class GGS_string & in_TYPE_5F_NAME,
-                                                                                 const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                 const class GGS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate externTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (class Compiler * inCompiler,
-                                                                            const class GGS_string & in_TYPE_5F_NAME,
-                                                                            const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                            const class GGS_string & in_PRE_5F_DECLARATION,
-                                                                            const class GGS_string & in_CODE
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate graphTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (class Compiler * inCompiler,
-                                                                           const class GGS_string & in_TYPE_5F_NAME,
-                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate graphTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                       const class GGS_unifiedTypeMapEntry & in_TYPE,
-                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                       const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
-                                                                                       const class GGS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'structGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
-                                                                               const class GGS_string & in_TYPE_5F_NAME,
-                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GGS_lstringlist & in_SLOT_5F_LIST
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                           const class GGS_string & in_TYPE_5F_NAME,
-                                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                           const class GGS_lstringlist & in_SLOT_5F_LIST,
-                                                                                           const class GGS_bigint & in_FULL_5F_SET,
-                                                                                           const class GGS_bool & in_EQUATABLE
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'classGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -764,4 +520,48 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementati
                                                                                     const class GGS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
                                                                                     const class GGS_bool & in_GENERATE_5F_COMPARISON
                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'optionalTypeGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_TYPE_5F_NAME,
+                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                                  const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                                  COMMA_LOCATION_ARGS) ;
 

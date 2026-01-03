@@ -73,12 +73,12 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override getter @lexicalErrorInstructionAST generateObjcCocoaInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "scanningOk = NO ;\n"
-}
+//override getter @lexicalErrorInstructionAST generateObjcCocoaInstructionCode
+//  ?let @string unused inScannerClassName
+//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+//  -> @string outGeneratedCode {
+//  outGeneratedCode = "scanningOk = NO ;\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 
