@@ -28,15 +28,15 @@
 proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 //--- Check for no recursive call
   outUnicodeTestFunctions = @[
-   "isUnicodeLetter",
-   "isUnicodeMark",
-   "isUnicodeNumber",
-   "isUnicodeDecimalDigit",
-   "isUnicodeASCIIHexDigit",
-   "isUnicodeSeparator",
-   "isUnicodeCommand",
-   "isUnicodePunctuation",
-   "isUnicodeSymbol"
+   "isUnicodeLetter"
+//   "isUnicodeMark",
+//   "isUnicodeNumber",
+//   "isUnicodeDecimalDigit",
+//   "isUnicodeASCIIHexDigit",
+//   "isUnicodeSeparator",
+//   "isUnicodeCommand",
+//   "isUnicodePunctuation",
+//   "isUnicodeSymbol"
   ]
 }
 

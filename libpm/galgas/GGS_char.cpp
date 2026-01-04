@@ -296,7 +296,7 @@ GGS_bool GGS_char::getter_isxdigit (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeLetter (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeLetter (mCharValue)) ;
+    result = GGS_bool (mCharValue.isLetter ()) ;
   }
   return result ;
 }
@@ -306,7 +306,7 @@ GGS_bool GGS_char::getter_isUnicodeLetter (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeMark (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeMark  (mCharValue)) ;
+    result = GGS_bool (mCharValue.isMark ()) ;
   }
   return result ;
 }
@@ -316,7 +316,7 @@ GGS_bool GGS_char::getter_isUnicodeMark (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeSymbol (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeCommand (mCharValue)) ;
+    result = GGS_bool (mCharValue.isSymbol ()) ;
   }
   return result ;
 }
@@ -326,7 +326,7 @@ GGS_bool GGS_char::getter_isUnicodeSymbol (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeCommand (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeCommand (mCharValue)) ;
+    result = GGS_bool (mCharValue.isCommand ()) ;
   }
   return result ;
 }
@@ -336,7 +336,7 @@ GGS_bool GGS_char::getter_isUnicodeCommand (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeSeparator (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeSeparator (mCharValue)) ;
+    result = GGS_bool (mCharValue.isSeparator ()) ;
   }
   return result ;
 }
@@ -346,7 +346,7 @@ GGS_bool GGS_char::getter_isUnicodeSeparator (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodePunctuation (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodePunctuation (mCharValue)) ;
+    result = GGS_bool (mCharValue.isPunctuation ()) ;
   }
   return result ;
 }
@@ -356,7 +356,7 @@ GGS_bool GGS_char::getter_isUnicodePunctuation (UNUSED_LOCATION_ARGS) const {
 GGS_bool GGS_char::getter_isUnicodeNumber (UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid ()) {
-    result = GGS_bool (isUnicodeNumber (mCharValue)) ;
+    result = GGS_bool (mCharValue.isNumber ()) ;
   }
   return result ;
 }

@@ -4022,11 +4022,11 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
   token.mLexicalAttribute_uint_36__34_value = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
-    if (testForCharWithFunction (isUnicodeLetter)) {
+    if (testForChar_isUnicodeLetter ()) {
       do {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+        if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
         }else{
           loop = false ;
         }
@@ -4095,10 +4095,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (utf32 ('%'))) {
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (utf32 ('-')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('-')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
           }else{
             loop = false ;
           }
@@ -4483,10 +4483,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInterrogationExclamationMark = mCurrentChar ;
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -4511,10 +4511,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       const LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInterrogationMark = mCurrentChar ;
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -4539,10 +4539,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       const LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyExclamationInterrogationMark = mCurrentChar ;
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (utf32 ('_'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -4567,10 +4567,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       const LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyExclamationMark = mCurrentChar ;
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }
@@ -4601,10 +4601,10 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       }else if (testForInputUTF32Char (utf32 ('<'))) {
         token.mTokenCode = kToken__3C__3C_ ;
         enterToken (token) ;
-      }else if (testForCharWithFunction (isUnicodeLetter)) {
+      }else if (testForChar_isUnicodeLetter ()) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
+          if (testForChar_isUnicodeLetter () || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32Char (utf32 ('_'))) {
           }else{
             loop = false ;
           }

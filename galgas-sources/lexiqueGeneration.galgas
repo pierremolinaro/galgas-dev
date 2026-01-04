@@ -89,9 +89,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
 override getter @lexicalCharacterSetMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
-  result = "testForCharWithFunction ("
-  result += self.mCharacterSetName.string
-  result += ")"
+  result = "testForChar_" + self.mCharacterSetName.string + " ()"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -100,57 +100,57 @@ class utf32 final {
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeLetter (const utf32 inUnicodeCharacter) {
-  return inUnicodeCharacter.isLetter () ;
-}
+//inline bool isUnicodeLetter (const utf32 inUnicodeCharacter) {
+//  return inUnicodeCharacter.isLetter () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeMark (const utf32 inUnicodeCharacter) {
-  return inUnicodeCharacter.isMark () ;
-}
+//inline bool isUnicodeMark (const utf32 inUnicodeCharacter) {
+//  return inUnicodeCharacter.isMark () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeNumber (const utf32 inUnicodeCharacter)  {
-  return inUnicodeCharacter.isNumber () ;
-}
+//inline bool isUnicodeNumber (const utf32 inUnicodeCharacter)  {
+//  return inUnicodeCharacter.isNumber () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter)  {
-  return inUnicodeCharacter.isDecimalDigit () ;
-}
+//inline bool isUnicodeDecimalDigit (const utf32 inUnicodeCharacter)  {
+//  return inUnicodeCharacter.isDecimalDigit () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter)  {
-  return inUnicodeCharacter.isASCIIHexDigit () ;
-}
+//inline bool isUnicodeASCIIHexDigit (const utf32 inUnicodeCharacter)  {
+//  return inUnicodeCharacter.isASCIIHexDigit () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeSeparator (const utf32 inUnicodeCharacter) {
-  return inUnicodeCharacter.isSeparator () ;
-}
+//inline bool isUnicodeSeparator (const utf32 inUnicodeCharacter) {
+//  return inUnicodeCharacter.isSeparator () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeCommand (const utf32 inUnicodeCharacter)  {
-  return inUnicodeCharacter.isCommand () ;
-}
+//inline bool isUnicodeCommand (const utf32 inUnicodeCharacter)  {
+//  return inUnicodeCharacter.isCommand () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodePunctuation (const utf32 inUnicodeCharacter) {
-  return inUnicodeCharacter.isPunctuation () ;
-}
+//inline bool isUnicodePunctuation (const utf32 inUnicodeCharacter) {
+//  return inUnicodeCharacter.isPunctuation () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-inline bool isUnicodeSymbol (const utf32 inUnicodeCharacter)  {
-  return inUnicodeCharacter.isSymbol () ;
-}
+//inline bool isUnicodeSymbol (const utf32 inUnicodeCharacter)  {
+//  return inUnicodeCharacter.isSymbol () ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 

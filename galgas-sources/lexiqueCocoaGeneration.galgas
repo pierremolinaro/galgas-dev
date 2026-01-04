@@ -154,9 +154,10 @@ override getter @lexicalCharacterMatchAST generateSwiftCocoaConditionCode
 
 override getter @lexicalCharacterSetMatchAST generateSwiftCocoaConditionCode
             ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext -> @string outGeneratedCode {
-  outGeneratedCode = "self.testForCharWithFunction ("
-  outGeneratedCode += self.mCharacterSetName.string
-  outGeneratedCode += ")"
+//  outGeneratedCode = "self.testForCharWithFunction ("
+//  outGeneratedCode += self.mCharacterSetName.string
+//  outGeneratedCode += ")"
+  outGeneratedCode = "self.testForChar_" +  self.mCharacterSetName.string + " ()"
 }
 
 ////--------------------------------------------------------------------------------------------------

@@ -179,9 +179,7 @@ class Lexique : public Compiler {
 //--- Lexical analysis methods
   public: void performLexicalAnalysis (void) ;
 
-  protected: bool testForCharWithMethod (bool (utf32::*inFunction) (void) const) ;
-
-  protected: bool testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) ;
+  protected: bool testForChar_isUnicodeLetter (void) ;
 
   protected: bool testForInputUTF32CharRange (const utf32 inLowerBound,
                                               const utf32 inHigherBound) ;

@@ -1589,11 +1589,11 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
     self.mLexicalAttribute_uint64value = 0
     var tokenCode : UInt16 = 0
     let startLocation = self.currentLocation
-    if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+    if scanningOk && (self.testForChar_isUnicodeLetter ()) {
       while (loop && scanningOk) {
         scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (self.previousChar))
         scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-        if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+        if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
         }else{
           loop = false
         }
@@ -1658,10 +1658,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
         tokenCode = galgasScanner3_1_literalInt
       }
     }else if scanningOk && (self.testForInputChar (37)) {
-      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (45) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputChar (45) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
           }else{
             loop = false
           }
@@ -1986,10 +1986,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       }
     }else if scanningOk && (self.testForInputString ("?!", advance: true)) {
       let locationForTag_onlyInterrogationExclamationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -2007,10 +2007,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       }
     }else if scanningOk && (self.testForInputChar (63)) {
       let locationForTag_onlyInterrogationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -2028,10 +2028,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       }
     }else if scanningOk && (self.testForInputString ("!?", advance: true)) {
       let locationForTag_onlyExclamationInterrogationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -2049,10 +2049,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       }
     }else if scanningOk && (self.testForInputChar (33)) {
       let locationForTag_onlyExclamationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -2074,10 +2074,10 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
         tokenCode = galgasScanner3_1__3C__3D_
       }else if scanningOk && (self.testForInputChar (60)) {
         tokenCode = galgasScanner3_1__3C__3C_
-      }else if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      }else if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForChar_isUnicodeLetter () || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }

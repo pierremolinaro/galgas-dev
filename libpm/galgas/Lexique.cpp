@@ -354,7 +354,7 @@ bool Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::testForInputUTF32Char (const utf32 inChar) {
-  const bool ok = inChar.u32 () == mCurrentChar.u32 () ;
+  const bool ok = inChar == mCurrentChar ;
   if (ok) {
     advance () ;
   }
@@ -363,18 +363,8 @@ bool Lexique::testForInputUTF32Char (const utf32 inChar) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool Lexique::testForCharWithMethod (bool (utf32::*inFunction) (void) const) {
-  const bool ok = (mCurrentChar.*inFunction) () ;
-  if (ok) {
-    advance () ;
-  }
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
-  const bool ok = inFunction (mCurrentChar) ;
+bool Lexique::testForChar_isUnicodeLetter (void)  {
+  const bool ok = mCurrentChar.isLetter () ;
   if (ok) {
     advance () ;
   }
