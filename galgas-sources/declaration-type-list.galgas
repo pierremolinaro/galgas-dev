@@ -395,6 +395,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !typeName: self.mListTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true // Concrete Type
+    !isFinal: true
     !superType: .null
     !typeKind: .listType
     !supportCollectionValue: true // Support collection value

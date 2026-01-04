@@ -152,10 +152,10 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_classType:
     {
-      GGS_bool extractedValue_3778_isReference_0 ;
-      temp_0.getAssociatedValuesFor_classType (extractedValue_3778_isReference_0) ;
+      GGS_bool extractedValue_3840_isReference_0 ;
+      temp_0.getAssociatedValuesFor_classType (extractedValue_3840_isReference_0) ;
       GGS_string temp_1 ;
-      const GalgasBool test_2 = extractedValue_3778_isReference_0.boolEnum () ;
+      const GalgasBool test_2 = extractedValue_3840_isReference_0.boolEnum () ;
       if (GalgasBool::boolTrue == test_2) {
         temp_1 = GGS_string ("reference class") ;
       }else if (GalgasBool::boolFalse == test_2) {
@@ -166,8 +166,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3884__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3884__0) ;
+      GGS_constantIndexMap extractedValue_3946__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3946__0) ;
       result_result = GGS_string ("enumeration") ;
     }
     break ;
@@ -233,8 +233,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4473__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4473__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4535__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4535__0) ;
       result_result = GGS_string ("weak reference") ;
     }
     break ;
@@ -255,7 +255,7 @@ GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & i
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result_result ; // Returned variable
   const GGS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 146)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 146)) ;
+  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) ;
 //---
   return result_result ;
 }

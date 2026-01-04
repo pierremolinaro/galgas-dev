@@ -9,6 +9,33 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@localVarManager insertInitializedLocalVariable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInitializedLocalVariable (GGS_localVarManager & ioObject,
+                                                     const GGS_lstring constinArgument_inVarName,
+                                                     const GGS_bool constinArgument_inWarnsIfNotMutated,
+                                                     const GGS_unifiedTypeMapEntry constinArgument_inType,
+                                                     const GGS_string constinArgument_inCppName,
+                                                     const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
+                                                     Compiler * inCompiler
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  GGS_localVariableAttributes temp_0 ;
+  const GalgasBool test_1 = constinArgument_inWarnsIfNotMutated.boolEnum () ;
+  if (GalgasBool::boolTrue == test_1) {
+    temp_0 = GGS_localVariableAttributes::init (inCompiler COMMA_HERE) ;
+  }else if (GalgasBool::boolFalse == test_1) {
+    temp_0 = GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)) COMMA_SOURCE_FILE ("variable-manager.galgas", 53)) ;
+  }
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, temp_0, GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 48)) ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension method '@localVarManager insertUsedLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------

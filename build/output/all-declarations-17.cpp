@@ -13924,19 +13924,20 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_classDeclarationAST GGS_classDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                  const GGS_bool & in_mIsAbstract,
-                                                  const GGS_bool & in_mIsReference,
-                                                  const GGS_lstring & in_mClassTypeName,
-                                                  const GGS_lstring & in_mSuperClassName,
-                                                  const GGS_bool & in_mGenerateInSeparateFile,
-                                                  const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                  const GGS_bool & in_clonable,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                      const GGS_bool & in_mIsAbstract,
+                                                      const GGS_bool & in_mIsReference,
+                                                      const GGS_bool & in_mIsFinal,
+                                                      const GGS_lstring & in_mClassTypeName,
+                                                      const GGS_lstring & in_mSuperClassName,
+                                                      const GGS_bool & in_mGenerateInSeparateFile,
+                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                      const GGS_bool & in_clonable,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cPtr_classDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_classDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable, inCompiler) ;
+  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mIsFinal, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable, inCompiler) ;
   const GGS_classDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13945,18 +13946,20 @@ init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefin
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::
-classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                      const GGS_bool & in_mIsAbstract,
-                                                                      const GGS_bool & in_mIsReference,
-                                                                      const GGS_lstring & in_mClassTypeName,
-                                                                      const GGS_lstring & in_mSuperClassName,
-                                                                      const GGS_bool & in_mGenerateInSeparateFile,
-                                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                                      const GGS_bool & in_clonable,
-                                                                      Compiler * /* inCompiler */) {
+classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                          const GGS_bool & in_mIsAbstract,
+                                                                          const GGS_bool & in_mIsReference,
+                                                                          const GGS_bool & in_mIsFinal,
+                                                                          const GGS_lstring & in_mClassTypeName,
+                                                                          const GGS_lstring & in_mSuperClassName,
+                                                                          const GGS_bool & in_mGenerateInSeparateFile,
+                                                                          const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                                                          const GGS_bool & in_clonable,
+                                                                          Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
+  mProperty_mIsFinal = in_mIsFinal ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mSuperClassName = in_mSuperClassName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
@@ -13975,6 +13978,7 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_classDeclarationAST GGS_classDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                  const GGS_bool & in_mIsAbstract,
                                                                  const GGS_bool & in_mIsReference,
+                                                                 const GGS_bool & in_mIsFinal,
                                                                  const GGS_lstring & in_mClassTypeName,
                                                                  const GGS_lstring & in_mSuperClassName,
                                                                  const GGS_bool & in_mGenerateInSeparateFile,
@@ -13983,7 +13987,7 @@ GGS_classDeclarationAST GGS_classDeclarationAST::class_func_new (const GGS_bool 
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   GGS_classDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable,  inCompiler COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mIsFinal, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14008,6 +14012,18 @@ GGS_bool GGS_classDeclarationAST::readProperty_mIsReference (void) const {
     cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classDeclarationAST) ;
     return p->mProperty_mIsReference ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_classDeclarationAST::readProperty_mIsFinal (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_classDeclarationAST) ;
+    return p->mProperty_mIsFinal ;
   }
 }
 
@@ -14079,6 +14095,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (Compiler * inCompiler COMMA_
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
 mProperty_mIsReference (),
+mProperty_mIsFinal (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
 mProperty_mGenerateInSeparateFile (),
@@ -14091,6 +14108,7 @@ mProperty_clonable () {
 cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredefined,
                                                     const GGS_bool & in_mIsAbstract,
                                                     const GGS_bool & in_mIsReference,
+                                                    const GGS_bool & in_mIsFinal,
                                                     const GGS_lstring & in_mClassTypeName,
                                                     const GGS_lstring & in_mSuperClassName,
                                                     const GGS_bool & in_mGenerateInSeparateFile,
@@ -14101,6 +14119,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredef
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
 mProperty_mIsReference (),
+mProperty_mIsFinal (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
 mProperty_mGenerateInSeparateFile (),
@@ -14109,6 +14128,7 @@ mProperty_clonable () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
+  mProperty_mIsFinal = in_mIsFinal ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mSuperClassName = in_mSuperClassName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
@@ -14131,6 +14151,8 @@ void cPtr_classDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mIsReference.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
+  mProperty_mIsFinal.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
   mProperty_mClassTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSuperClassName.description (ioString, inIndentation+1) ;
@@ -14147,7 +14169,7 @@ void cPtr_classDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mIsFinal, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14159,6 +14181,7 @@ acPtr_class * cPtr_classDeclarationAST::duplicate (Compiler * inCompiler COMMA_L
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
     mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
+    mProperty_mIsFinal.printNonNullClassInstanceProperties ("mIsFinal") ;
     mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
     mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
     mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;

@@ -8453,6 +8453,8 @@ class GGS_classDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_bool readProperty_mIsReference (void) const ;
 
+  public: class GGS_bool readProperty_mIsFinal (void) const ;
+
   public: class GGS_lstring readProperty_mClassTypeName (void) const ;
 
   public: class GGS_lstring readProperty_mSuperClassName (void) const ;
@@ -8466,16 +8468,17 @@ class GGS_classDeclarationAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_classDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                           const class GGS_bool & inOperand1,
-                                                                                           const class GGS_bool & inOperand2,
-                                                                                           const class GGS_lstring & inOperand3,
-                                                                                           const class GGS_lstring & inOperand4,
-                                                                                           const class GGS_bool & inOperand5,
-                                                                                           const class GGS_propertyInCollectionListAST & inOperand6,
-                                                                                           const class GGS_bool & inOperand7,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_classDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                               const class GGS_bool & inOperand1,
+                                                                                               const class GGS_bool & inOperand2,
+                                                                                               const class GGS_bool & inOperand3,
+                                                                                               const class GGS_lstring & inOperand4,
+                                                                                               const class GGS_lstring & inOperand5,
+                                                                                               const class GGS_bool & inOperand6,
+                                                                                               const class GGS_propertyInCollectionListAST & inOperand7,
+                                                                                               const class GGS_bool & inOperand8,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8489,11 +8492,12 @@ class GGS_classDeclarationAST : public GGS_semanticDeclarationAST {
   public: static class GGS_classDeclarationAST class_func_new (const class GGS_bool & inOperand0,
                                                                const class GGS_bool & inOperand1,
                                                                const class GGS_bool & inOperand2,
-                                                               const class GGS_lstring & inOperand3,
+                                                               const class GGS_bool & inOperand3,
                                                                const class GGS_lstring & inOperand4,
-                                                               const class GGS_bool & inOperand5,
-                                                               const class GGS_propertyInCollectionListAST & inOperand6,
-                                                               const class GGS_bool & inOperand7,
+                                                               const class GGS_lstring & inOperand5,
+                                                               const class GGS_bool & inOperand6,
+                                                               const class GGS_propertyInCollectionListAST & inOperand7,
+                                                               const class GGS_bool & inOperand8,
                                                                class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
@@ -8530,15 +8534,16 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                     const class GGS_bool & inOperand1,
-                                                                                     const class GGS_bool & inOperand2,
-                                                                                     const class GGS_lstring & inOperand3,
-                                                                                     const class GGS_lstring & inOperand4,
-                                                                                     const class GGS_bool & inOperand5,
-                                                                                     const class GGS_propertyInCollectionListAST & inOperand6,
-                                                                                     const class GGS_bool & inOperand7,
-                                                                                     Compiler * inCompiler) ;
+  public: void classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                         const class GGS_bool & inOperand1,
+                                                                                         const class GGS_bool & inOperand2,
+                                                                                         const class GGS_bool & inOperand3,
+                                                                                         const class GGS_lstring & inOperand4,
+                                                                                         const class GGS_lstring & inOperand5,
+                                                                                         const class GGS_bool & inOperand6,
+                                                                                         const class GGS_propertyInCollectionListAST & inOperand7,
+                                                                                         const class GGS_bool & inOperand8,
+                                                                                         Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -8577,6 +8582,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GGS_bool mProperty_mIsAbstract ;
   public: GGS_bool mProperty_mIsReference ;
+  public: GGS_bool mProperty_mIsFinal ;
   public: GGS_lstring mProperty_mClassTypeName ;
   public: GGS_lstring mProperty_mSuperClassName ;
   public: GGS_bool mProperty_mGenerateInSeparateFile ;
@@ -8591,6 +8597,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public: cPtr_classDeclarationAST (const GGS_bool & in_isPredefined,
                                     const GGS_bool & in_mIsAbstract,
                                     const GGS_bool & in_mIsReference,
+                                    const GGS_bool & in_mIsFinal,
                                     const GGS_lstring & in_mClassTypeName,
                                     const GGS_lstring & in_mSuperClassName,
                                     const GGS_bool & in_mGenerateInSeparateFile,

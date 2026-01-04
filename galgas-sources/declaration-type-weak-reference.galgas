@@ -139,6 +139,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !typeName: self.mWeakReferenceTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true // Concrete Type
+    !isFinal: true
     !superType: superClassIndex
     !typeKind: .weakReferenceType {!referenceType: classIndex}
     !supportCollectionValue: false

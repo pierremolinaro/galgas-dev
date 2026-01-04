@@ -13592,6 +13592,7 @@ GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (void) :
 mProperty_typeName (),
 mProperty_isPredefined (),
 mProperty_isConcrete (),
+mProperty_isFinal (),
 mProperty_superType (),
 mProperty_typeKind (),
 mProperty_supportCollectionValue (),
@@ -13621,6 +13622,7 @@ GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (const GGS_unifiedTypeDefin
 mProperty_typeName (inSource.mProperty_typeName),
 mProperty_isPredefined (inSource.mProperty_isPredefined),
 mProperty_isConcrete (inSource.mProperty_isConcrete),
+mProperty_isFinal (inSource.mProperty_isFinal),
 mProperty_superType (inSource.mProperty_superType),
 mProperty_typeKind (inSource.mProperty_typeKind),
 mProperty_supportCollectionValue (inSource.mProperty_supportCollectionValue),
@@ -13650,6 +13652,7 @@ GGS_unifiedTypeDefinition & GGS_unifiedTypeDefinition::operator = (const GGS_uni
   mProperty_typeName = inSource.mProperty_typeName ;
   mProperty_isPredefined = inSource.mProperty_isPredefined ;
   mProperty_isConcrete = inSource.mProperty_isConcrete ;
+  mProperty_isFinal = inSource.mProperty_isFinal ;
   mProperty_superType = inSource.mProperty_superType ;
   mProperty_typeKind = inSource.mProperty_typeKind ;
   mProperty_supportCollectionValue = inSource.mProperty_supportCollectionValue ;
@@ -13676,37 +13679,39 @@ GGS_unifiedTypeDefinition & GGS_unifiedTypeDefinition::operator = (const GGS_uni
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const GGS_lstring & in_typeName,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_bool & in_isPredefined,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_bool & in_isConcrete,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_unifiedTypeMapEntry & in_superType,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_typeKindEnum & in_typeKind,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_bool & in_supportCollectionValue,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_typedPropertyList & in_allTypedPropertyList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_propertyMap & in_propertyMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_typedPropertyList & in_currentTypedPropertyList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_initializerMap & in_initializerMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_classFunctionMap & in_classFunctionMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_getterMap & in_getterMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_setterMap & in_setterMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_instanceMethodMap & in_instanceMethodMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_classMethodMap & in_classMethodMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_subscriptMap & in_readSubscriptMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_enumerationDescriptorList & in_enumerationDescriptorList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_typeFeatures & in_features,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_functionSignature & in_addAssignOperatorArguments,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_bool & in_generateHeaderInSeparateFile,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_string & in_headerFileName,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const GGS_headerKind & in_headerKind,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const GGS_lstring & in_typeName,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isPredefined,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isConcrete,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isFinal,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_superType,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typeKindEnum & in_typeKind,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_supportCollectionValue,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typedPropertyList & in_allTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_propertyMap & in_propertyMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typedPropertyList & in_currentTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_initializerMap & in_initializerMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_classFunctionMap & in_classFunctionMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_getterMap & in_getterMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_setterMap & in_setterMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_instanceMethodMap & in_instanceMethodMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_classMethodMap & in_classMethodMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_subscriptMap & in_readSubscriptMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_enumerationDescriptorList & in_enumerationDescriptorList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typeFeatures & in_features,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_functionSignature & in_addAssignOperatorArguments,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_generateHeaderInSeparateFile,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_string & in_headerFileName,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_headerKind & in_headerKind,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_unifiedTypeDefinition result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_typeName = in_typeName ;
   result.mProperty_isPredefined = in_isPredefined ;
   result.mProperty_isConcrete = in_isConcrete ;
+  result.mProperty_isFinal = in_isFinal ;
   result.mProperty_superType = in_superType ;
   result.mProperty_typeKind = in_typeKind ;
   result.mProperty_supportCollectionValue = in_supportCollectionValue ;
@@ -13741,51 +13746,53 @@ void GGS_unifiedTypeDefinition::setInitializedProperties (Compiler * /* inCompil
 GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (const GGS_lstring & inOperand0,
                                                       const GGS_bool & inOperand1,
                                                       const GGS_bool & inOperand2,
-                                                      const GGS_unifiedTypeMapEntry & inOperand3,
-                                                      const GGS_typeKindEnum & inOperand4,
-                                                      const GGS_bool & inOperand5,
-                                                      const GGS_typedPropertyList & inOperand6,
-                                                      const GGS_propertyMap & inOperand7,
-                                                      const GGS_typedPropertyList & inOperand8,
-                                                      const GGS_initializerMap & inOperand9,
-                                                      const GGS_classFunctionMap & inOperand10,
-                                                      const GGS_getterMap & inOperand11,
-                                                      const GGS_setterMap & inOperand12,
-                                                      const GGS_instanceMethodMap & inOperand13,
-                                                      const GGS_classMethodMap & inOperand14,
-                                                      const GGS_unifiedTypeMapEntry & inOperand15,
-                                                      const GGS_subscriptMap & inOperand16,
-                                                      const GGS_enumerationDescriptorList & inOperand17,
-                                                      const GGS_typeFeatures & inOperand18,
-                                                      const GGS_functionSignature & inOperand19,
-                                                      const GGS_bool & inOperand20,
-                                                      const GGS_unifiedTypeMapEntry & inOperand21,
-                                                      const GGS_string & inOperand22,
-                                                      const GGS_headerKind & inOperand23) :
+                                                      const GGS_bool & inOperand3,
+                                                      const GGS_unifiedTypeMapEntry & inOperand4,
+                                                      const GGS_typeKindEnum & inOperand5,
+                                                      const GGS_bool & inOperand6,
+                                                      const GGS_typedPropertyList & inOperand7,
+                                                      const GGS_propertyMap & inOperand8,
+                                                      const GGS_typedPropertyList & inOperand9,
+                                                      const GGS_initializerMap & inOperand10,
+                                                      const GGS_classFunctionMap & inOperand11,
+                                                      const GGS_getterMap & inOperand12,
+                                                      const GGS_setterMap & inOperand13,
+                                                      const GGS_instanceMethodMap & inOperand14,
+                                                      const GGS_classMethodMap & inOperand15,
+                                                      const GGS_unifiedTypeMapEntry & inOperand16,
+                                                      const GGS_subscriptMap & inOperand17,
+                                                      const GGS_enumerationDescriptorList & inOperand18,
+                                                      const GGS_typeFeatures & inOperand19,
+                                                      const GGS_functionSignature & inOperand20,
+                                                      const GGS_bool & inOperand21,
+                                                      const GGS_unifiedTypeMapEntry & inOperand22,
+                                                      const GGS_string & inOperand23,
+                                                      const GGS_headerKind & inOperand24) :
 mProperty_typeName (inOperand0),
 mProperty_isPredefined (inOperand1),
 mProperty_isConcrete (inOperand2),
-mProperty_superType (inOperand3),
-mProperty_typeKind (inOperand4),
-mProperty_supportCollectionValue (inOperand5),
-mProperty_allTypedPropertyList (inOperand6),
-mProperty_propertyMap (inOperand7),
-mProperty_currentTypedPropertyList (inOperand8),
-mProperty_initializerMap (inOperand9),
-mProperty_classFunctionMap (inOperand10),
-mProperty_getterMap (inOperand11),
-mProperty_setterMap (inOperand12),
-mProperty_instanceMethodMap (inOperand13),
-mProperty_classMethodMap (inOperand14),
-mProperty_unwrappedType (inOperand15),
-mProperty_readSubscriptMap (inOperand16),
-mProperty_enumerationDescriptorList (inOperand17),
-mProperty_features (inOperand18),
-mProperty_addAssignOperatorArguments (inOperand19),
-mProperty_generateHeaderInSeparateFile (inOperand20),
-mProperty_typeForEnumeratedElement (inOperand21),
-mProperty_headerFileName (inOperand22),
-mProperty_headerKind (inOperand23) {
+mProperty_isFinal (inOperand3),
+mProperty_superType (inOperand4),
+mProperty_typeKind (inOperand5),
+mProperty_supportCollectionValue (inOperand6),
+mProperty_allTypedPropertyList (inOperand7),
+mProperty_propertyMap (inOperand8),
+mProperty_currentTypedPropertyList (inOperand9),
+mProperty_initializerMap (inOperand10),
+mProperty_classFunctionMap (inOperand11),
+mProperty_getterMap (inOperand12),
+mProperty_setterMap (inOperand13),
+mProperty_instanceMethodMap (inOperand14),
+mProperty_classMethodMap (inOperand15),
+mProperty_unwrappedType (inOperand16),
+mProperty_readSubscriptMap (inOperand17),
+mProperty_enumerationDescriptorList (inOperand18),
+mProperty_features (inOperand19),
+mProperty_addAssignOperatorArguments (inOperand20),
+mProperty_generateHeaderInSeparateFile (inOperand21),
+mProperty_typeForEnumeratedElement (inOperand22),
+mProperty_headerFileName (inOperand23),
+mProperty_headerKind (inOperand24) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13793,6 +13800,7 @@ mProperty_headerKind (inOperand23) {
 GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::class_func_new (const GGS_lstring & in_typeName,
                                                                      const GGS_bool & in_isPredefined,
                                                                      const GGS_bool & in_isConcrete,
+                                                                     const GGS_bool & in_isFinal,
                                                                      const GGS_unifiedTypeMapEntry & in_superType,
                                                                      const GGS_typeKindEnum & in_typeKind,
                                                                      const GGS_bool & in_supportCollectionValue,
@@ -13821,6 +13829,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::class_func_new (const GGS_l
   result.mProperty_typeName = in_typeName ;
   result.mProperty_isPredefined = in_isPredefined ;
   result.mProperty_isConcrete = in_isConcrete ;
+  result.mProperty_isFinal = in_isFinal ;
   result.mProperty_superType = in_superType ;
   result.mProperty_typeKind = in_typeKind ;
   result.mProperty_supportCollectionValue = in_supportCollectionValue ;
@@ -13848,7 +13857,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::class_func_new (const GGS_l
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_unifiedTypeDefinition::isValid (void) const {
-  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportCollectionValue.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_initializerMap.isValid () && mProperty_classFunctionMap.isValid () && mProperty_getterMap.isValid () && mProperty_setterMap.isValid () && mProperty_instanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_unwrappedType.isValid () && mProperty_readSubscriptMap.isValid () && mProperty_enumerationDescriptorList.isValid () && mProperty_features.isValid () && mProperty_addAssignOperatorArguments.isValid () && mProperty_generateHeaderInSeparateFile.isValid () && mProperty_typeForEnumeratedElement.isValid () && mProperty_headerFileName.isValid () && mProperty_headerKind.isValid () ;
+  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_isFinal.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportCollectionValue.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_initializerMap.isValid () && mProperty_classFunctionMap.isValid () && mProperty_getterMap.isValid () && mProperty_setterMap.isValid () && mProperty_instanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_unwrappedType.isValid () && mProperty_readSubscriptMap.isValid () && mProperty_enumerationDescriptorList.isValid () && mProperty_features.isValid () && mProperty_addAssignOperatorArguments.isValid () && mProperty_generateHeaderInSeparateFile.isValid () && mProperty_typeForEnumeratedElement.isValid () && mProperty_headerFileName.isValid () && mProperty_headerKind.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13857,6 +13866,7 @@ void GGS_unifiedTypeDefinition::drop (void) {
   mProperty_typeName.drop () ;
   mProperty_isPredefined.drop () ;
   mProperty_isConcrete.drop () ;
+  mProperty_isFinal.drop () ;
   mProperty_superType.drop () ;
   mProperty_typeKind.drop () ;
   mProperty_supportCollectionValue.drop () ;
@@ -13893,6 +13903,8 @@ void GGS_unifiedTypeDefinition::description (String & ioString,
     mProperty_isPredefined.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_isConcrete.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isFinal.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_superType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
@@ -14101,31 +14113,4 @@ GGS_localVarManager GGS_localVarManager::extractObject (const GGS_object & inObj
   }
   return result ;
 }
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInitializedLocalVariable'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializedLocalVariable (GGS_localVarManager & ioObject,
-                                                     const GGS_lstring constinArgument_inVarName,
-                                                     const GGS_bool constinArgument_inWarnsIfNotMutated,
-                                                     const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                     const GGS_string constinArgument_inCppName,
-                                                     const GGS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  GGS_localVariableAttributes temp_0 ;
-  const GalgasBool test_1 = constinArgument_inWarnsIfNotMutated.boolEnum () ;
-  if (GalgasBool::boolTrue == test_1) {
-    temp_0 = GGS_localVariableAttributes::init (inCompiler COMMA_HERE) ;
-  }else if (GalgasBool::boolFalse == test_1) {
-    temp_0 = GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)).operator_or (GGS_localVariableAttributes::class_func_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 53)) COMMA_SOURCE_FILE ("variable-manager.galgas", 53)) ;
-  }
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, temp_0, GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 48)) ;
-  }
-}
-
 

@@ -481,6 +481,7 @@ class @graphDeclarationAST : @semanticDeclarationAST {
       !typeName: self.mGraphTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true // Concrete Type
+      !isFinal: true
       !superType: .null
       !typeKind: .graphType
       !supportCollectionValue: false // Does not support collection value

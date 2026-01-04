@@ -122,6 +122,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !typeName: @lstring {!self.mPredefinedTypeName !.nowhere}
       !isPredefined: self.isPredefined
       !isConcrete: true // Concrete Type
+      !isFinal: true
       !superType: .null
       !typeKind: [self typeKind]
       !supportCollectionValue: [self supportsCollectionValue]

@@ -718,6 +718,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
       !typeName: self.mMapTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true
+      !isFinal: true
       !superType: .null
       !typeKind: .mapType
       !supportCollectionValue: false

@@ -109,6 +109,7 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !typeName: self.optionalTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true // Concrete Type
+      !isFinal: true
       !superType: .null
       !typeKind: .listType
       !supportCollectionValue: false 

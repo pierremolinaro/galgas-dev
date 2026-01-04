@@ -259,6 +259,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !typeName: self.arrayTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true // Concrete Type
+      !isFinal: true
       !superType: .null
       !typeKind: .listType
       !supportCollectionValue: true 

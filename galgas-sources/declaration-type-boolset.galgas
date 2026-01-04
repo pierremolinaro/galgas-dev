@@ -225,6 +225,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !typeName: self.mBoolsetTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true
+    !isFinal: true
     !superType: .null
     !typeKind: .boolsetType
     !supportCollectionValue: false // Does not support collection value

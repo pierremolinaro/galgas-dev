@@ -26,17 +26,26 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
     let @bool clonable
+    let @bool finalClass
     select
       isAbstract = false
       clonable = false
+      finalClass = false
     or
       $abstract$
       isAbstract = true
       clonable = false
+      finalClass = false
+    or
+      $final$
+      isAbstract = false
+      clonable = false
+      finalClass = true
     or
       $%clonable$
       isAbstract = false
       clonable = true
+      finalClass = false
     end
     let @bool isReference
     select
@@ -75,6 +84,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false // Is not predefined
       !isAbstract
       !isReference
+      !finalClass
       !className
       !superClassName // Empty if no super class
       !generateInSeparateFile
@@ -108,17 +118,26 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
     let @bool clonable
+    let @bool finalClass
     select
       isAbstract = false
       clonable = false
+      finalClass = false
     or
       $abstract$
       isAbstract = true
       clonable = false
+      finalClass = false
+    or
+      $final$
+      isAbstract = false
+      clonable = false
+      finalClass = true
     or
       $%clonable$
       isAbstract = false
       clonable = true
+      finalClass = false
     end
     $class$
     $@type$ ?let @lstring className indexing classDefinition
@@ -150,6 +169,7 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false // Is not predefined
       !isAbstract
       !true
+      !finalClass
       !className
       !superClassName // Empty if no super class
       !generateInSeparateFile
@@ -180,6 +200,7 @@ syntax extension galgas4DeclarationsSyntax {
 class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
   private let @bool mIsReference
+  private let @bool mIsFinal
   private let @lstring mClassTypeName
   private let @lstring mSuperClassName // Empty if no super class
   private let @bool mGenerateInSeparateFile
@@ -257,6 +278,9 @@ class @classDeclarationAST : @semanticDeclarationAST {
     //---
       if not [superTypeDefinition.typeKind isClassType] then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
+      end
+      if [superTypeDefinition isFinal] then
+        error self.mSuperClassName : "cannot inherit from the @" + self.mSuperClassName + " final class"
       end
     //--- Mark all setters as inherited
       setterMap = @()
@@ -426,6 +450,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       !typeName: self.mClassTypeName
       !isPredefined: self.isPredefined
       !isConcrete: not self.mIsAbstract // Concrete Type
+      !isFinal: self.mIsFinal
       !superType: superClassIndex
       !typeKind: .classType {!isReference: self.mIsReference}
       !supportCollectionValue: false // Does not support collection value

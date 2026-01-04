@@ -248,6 +248,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
       !typeName: self.structTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true
+      !isFinal: true
       !superType: .null
       !typeKind: .structType
       !supportCollectionValue: false

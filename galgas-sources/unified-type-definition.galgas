@@ -26,6 +26,7 @@ struct @unifiedTypeDefinition {
   public let @lstring typeName %initArgLabel
   public let @bool isPredefined %initArgLabel
   public let @bool isConcrete %initArgLabel // false if abstract class
+  public let @bool isFinal %initArgLabel // true if not class
   public let @unifiedTypeMapEntry superType %initArgLabel
   public let @typeKindEnum typeKind %initArgLabel
   public let @bool supportCollectionValue %initArgLabel

@@ -336,6 +336,7 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
       !typeName: self.mSortedListTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true // Concrete Type
+      !isFinal: true
       !superType: .null
       !typeKind: .sortedListType
       !supportCollectionValue: true // Support collection value

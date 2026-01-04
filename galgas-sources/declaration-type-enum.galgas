@@ -406,6 +406,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !typeName: self.enumTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true
+      !isFinal: true
       !superType: .null
       !typeKind: .enumType {!constantMap: constantMap}
       !supportCollectionValue: false // Does not support collection value

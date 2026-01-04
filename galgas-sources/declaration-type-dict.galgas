@@ -393,6 +393,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !typeName: self.mDictTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true // Concrete Type
+    !isFinal: true
     !superType: .null
     !typeKind: .mapType
     !supportCollectionValue: true
