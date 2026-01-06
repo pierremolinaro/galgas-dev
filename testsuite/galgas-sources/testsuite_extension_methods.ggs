@@ -1,6 +1,6 @@
 
 
-class @TestExtensionMethod { }
+final class @TestExtensionMethod { }
 
 proc @TestExtensionMethod.method1() {
 }

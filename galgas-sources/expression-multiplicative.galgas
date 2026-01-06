@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @multiplicationExpressionAST : @semanticExpressionAST {
+final class @multiplicationExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -27,7 +27,7 @@ class @multiplicationExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
+final class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -35,7 +35,7 @@ class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
 
 //································································································
 
-class @divisionExpressionAST : @semanticExpressionAST {
+final class @divisionExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -43,7 +43,7 @@ class @divisionExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
+final class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -51,7 +51,7 @@ class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
 
 //································································································
 
-class @moduloExpressionAST : @semanticExpressionAST {
+final class @moduloExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression

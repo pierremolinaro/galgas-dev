@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @unaryPlusExpressionAST : @semanticExpressionAST {
+final class @unaryPlusExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }

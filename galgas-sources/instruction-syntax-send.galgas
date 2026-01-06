@@ -61,7 +61,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @syntaxSendInstructionAST : @syntaxInstructionAST {
+final class @syntaxSendInstructionAST : @syntaxInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,7 +122,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
 //! @syntaxSendInstructionForGeneration
 //--------------------------------------------------------------------------------------------------
 
-class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
+final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

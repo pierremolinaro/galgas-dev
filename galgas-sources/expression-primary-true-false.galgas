@@ -19,13 +19,13 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @trueExpressionAST : @semanticExpressionAST {
+final class @trueExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @falseExpressionAST : @semanticExpressionAST {
+final class @falseExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
@@ -127,7 +127,7 @@ override method @falseExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @trueExpressionForGeneration : @semanticExpressionForGeneration {
+final class @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 //································································································
@@ -143,7 +143,7 @@ override method @trueExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @falseExpressionForGeneration : @semanticExpressionForGeneration {
+final class @falseExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 //································································································

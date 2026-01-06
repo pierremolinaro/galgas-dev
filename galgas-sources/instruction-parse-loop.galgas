@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @parseLoopInstruction : @syntaxInstructionAST {
+final class @parseLoopInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mVariantExpression
   private let @location mEndOfVariantExpression
   private let @semanticExpressionAST mWhileExpression
@@ -201,7 +201,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
+final class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mVariantExpression
   private let @semanticExpressionForGeneration mWhileExpression
   private let @semanticInstructionListForGeneration mInstructionList

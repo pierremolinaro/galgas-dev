@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @selectInstruction : @syntaxInstructionAST {
+final class @selectInstruction : @syntaxInstructionAST {
   public let @listOfSyntaxInstructionList mSelectBranchList
   public let @location mEndOf_select_instruction
 }
@@ -180,7 +180,7 @@ override method @selectInstruction analyzeSyntaxInstruction
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
+final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @string mSyntaxComponentName
   public let @uint mChoiceIndex
   public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration

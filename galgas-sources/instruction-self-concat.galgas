@@ -178,7 +178,7 @@ syntax extension galgas4InstructionsSyntax {
 //! @selfDivEqualExpressionInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
+final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -246,7 +246,7 @@ class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
 //! @selfPlusEqualExpressionInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -314,7 +314,7 @@ class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
 //! @selfMinusEqualExpressionInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
+final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -382,7 +382,7 @@ class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
 //! @selfMulEqualExpressionInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
+final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -450,7 +450,7 @@ class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
 //! @selfPlusEqualElementsInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @actualOutputArgumentList mExpressions
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

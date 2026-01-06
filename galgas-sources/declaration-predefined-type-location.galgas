@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-class @locationPredefinedTypeAST : @predefinedTypeAST {
+final class @locationPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

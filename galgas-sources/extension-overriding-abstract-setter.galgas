@@ -118,7 +118,7 @@ syntax extension galgas3DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
+final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionSetterName
   private let @formalParameterListAST mOverridingExtensionSetterFormalParameterList

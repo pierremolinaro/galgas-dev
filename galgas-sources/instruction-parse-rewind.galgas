@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @parseRewindInstruction : @syntaxInstructionAST {
+final class @parseRewindInstruction : @syntaxInstructionAST {
   public let @listOfSyntaxInstructionList mParseRewindBranchList
   public let @location mEndOfParseDoInstruction
 }
@@ -181,7 +181,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
+final class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 

@@ -7,11 +7,11 @@ list @declarationListAST {
   public let @declarationAST mDeclaration
 }
 
-class @classWithoutSuperClassAST : @declarationAST {
+final class @classWithoutSuperClassAST : @declarationAST {
   public let @lstring mClassName
 }
 
-class @classWithSuperClassAST : @declarationAST {
+final class @classWithSuperClassAST : @declarationAST {
   public let @lstring mClassName
   public let @lstring mSuperClassName
 }

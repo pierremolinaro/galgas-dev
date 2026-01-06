@@ -23,19 +23,19 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
   private let @string mTemplateString
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
+final class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
   private let @location mLocation
   private let @templateInstructionListForGeneration mBlockInstructionList
@@ -43,12 +43,12 @@ class @templateBlockInstructionForGeneration : @templateInstructionForGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ list @templateInstructionIfBranchListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   private let @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   private let @templateInstructionListForGeneration mElseInstructionList
 }

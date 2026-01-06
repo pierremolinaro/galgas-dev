@@ -28,7 +28,7 @@ list @templateInstructionSwitchBranchListAST {
 
 //································································································
 
-class @templateInstructionSwitchAST : @templateInstructionAST {
+final class @templateInstructionSwitchAST : @templateInstructionAST {
   private let @templateExpressionAST mSwitchExpression
   private let @location switchExpressionEndLocation
   private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
@@ -246,7 +246,7 @@ list @templateInstructionSwitchBranchListForGeneration {
 
 //································································································
 
-class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
+final class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
   private let @unifiedTypeMapEntry enumType
   private let @semanticExpressionForGeneration switchExpression
   private let @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList

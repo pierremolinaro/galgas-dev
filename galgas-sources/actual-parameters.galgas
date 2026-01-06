@@ -105,7 +105,7 @@ abstract class @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputActualParameterAST : @actualParameterAST {
+final class @outputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @semanticExpressionAST mOutputActualParameterExpression
   public let @location mEndOfExpressionLocation
@@ -190,7 +190,7 @@ class @outputActualParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputInputActualParameterAST : @actualParameterAST {
+final class @outputInputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mOutputInputActualParameterName
   public let @lstringlist mStructAttributeList
@@ -289,7 +289,7 @@ class @outputInputActualParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputInputJokerParameterAST : @actualParameterAST {
+final class @outputInputJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @semanticExpressionAST expression
 
@@ -377,7 +377,7 @@ class @outputInputJokerParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputInputSelfParameterAST : @actualParameterAST {
+final class @outputInputSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -453,7 +453,7 @@ class @outputInputSelfParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualExistingVariableParameterAST : @actualParameterAST {
+final class @inputActualExistingVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualParameterName
   public let @lstringlist mPoisonedVarNameList
@@ -544,7 +544,7 @@ class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualSelfPropertyParameterAST : @actualParameterAST {
+final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualSelfPropertyName
   public let @lstringlist mPoisonedVarNameList
@@ -636,7 +636,7 @@ class @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualSelfParameterAST : @actualParameterAST {
+final class @inputActualSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @location mSelfLocation
   public let @lstringlist mPoisonedVarNameList
@@ -726,7 +726,7 @@ class @inputActualSelfParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualNewVariableParameterAST : @actualParameterAST {
+final class @inputActualNewVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputOptionalActualTypeName
   public let @lstring mInputActualParameterName
@@ -831,7 +831,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualNewConstantParameterAST : @actualParameterAST {
+final class @inputActualNewConstantParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputOptionalActualTypeName
   public let @lstring mInputActualParameterName
@@ -945,7 +945,7 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputSingleJokerActualParameterAST : @actualParameterAST {
+final class @inputSingleJokerActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstringlist mPoisonedVarNameList
 
@@ -1019,7 +1019,7 @@ class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputJokerActualParameterAST : @actualParameterAST {
+final class @inputJokerActualParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
   public let @uint mJokerIndex
 

@@ -215,7 +215,7 @@ list @switchBranchesAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @switchInstructionAST : @semanticInstructionAST {
+final class @switchInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSwitchExpression
   private let @location mEndOfSwitchExpression
   private let @switchBranchesAST mBranches
@@ -389,7 +389,7 @@ list @switchBranchesForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @switchInstructionForGeneration : @semanticInstructionForGeneration {
+final class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mEnumType
   private let @semanticExpressionForGeneration mSwitchExpression
   private let @switchBranchesForGeneration mBranches

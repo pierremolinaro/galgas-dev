@@ -94,7 +94,7 @@ syntax extension galgas4ExpressionSyntax {
 //!   @functionCallExpressionAST
 //--------------------------------------------------------------------------------------------------
 
-class @functionCallExpressionAST : @semanticExpressionAST {
+final class @functionCallExpressionAST : @semanticExpressionAST {
   private let @lstring mFunctionName
   private let @actualOutputArgumentList mExpressionList
 
@@ -187,7 +187,7 @@ class @functionCallExpressionAST : @semanticExpressionAST {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
+final class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mFunctionName
   private let @semanticExpressionListForGeneration mExpressions
 

@@ -363,11 +363,8 @@ class cTokenFor_galgasScanner_33_ : public cToken {
   public: utf32 mLexicalAttribute_charValue ;
   public: double mLexicalAttribute_floatValue ;
   public: String mLexicalAttribute_identifierString ;
-  public: int32_t mLexicalAttribute_sint_33__32_value ;
-  public: int64_t mLexicalAttribute_sint_36__34_value ;
   public: String mLexicalAttribute_tokenString ;
   public: uint32_t mLexicalAttribute_uint_33__32_value ;
-  public: uint64_t mLexicalAttribute_uint_36__34_value ;
 
   public: cTokenFor_galgasScanner_33_ (void) ;
 } ;
@@ -618,11 +615,8 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: GGS_lchar synthetizedAttribute_charValue (void) const ;
   public: GGS_ldouble synthetizedAttribute_floatValue (void) const ;
   public: GGS_lstring synthetizedAttribute_identifierString (void) const ;
-  public: GGS_lsint synthetizedAttribute_sint_33__32_value (void) const ;
-  public: GGS_lsint_36__34_ synthetizedAttribute_sint_36__34_value (void) const ;
   public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
   public: GGS_luint synthetizedAttribute_uint_33__32_value (void) const ;
-  public: GGS_luint_36__34_ synthetizedAttribute_uint_36__34_value (void) const ;
 
 
 //--- Attribute access
@@ -630,11 +624,8 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: utf32 attributeValue_charValue (void) const ;
   public: double attributeValue_floatValue (void) const ;
   public: String attributeValue_identifierString (void) const ;
-  public: int32_t attributeValue_sint_33__32_value (void) const ;
-  public: int64_t attributeValue_sint_36__34_value (void) const ;
   public: String attributeValue_tokenString (void) const ;
   public: uint32_t attributeValue_uint_33__32_value (void) const ;
-  public: uint64_t attributeValue_uint_36__34_value (void) const ;
 
 
 //--- indexing keys
@@ -9427,4 +9418,115 @@ class GGS_templateInstructionIfBranchListAST_2E_element : public AC_GALGAS_root 
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionIfAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionIfAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionIfAST (const class cPtr_templateInstructionIfAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (void) const ;
+
+  public: class GGS_templateInstructionListAST readProperty_mElseInstructionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionIfAST init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                            const class GGS_templateInstructionListAST & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_templateInstructionIfAST extractObject (const GGS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateInstructionIfAST class_func_new (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                                    const class GGS_templateInstructionListAST & inOperand1,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionIfAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateInstructionIfAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionIfAST_init_21__21_ (const class GGS_templateInstructionIfBranchListAST & inOperand0,
+                                                      const class GGS_templateInstructionListAST & inOperand1,
+                                                      Compiler * inCompiler) ;
+
+
+//--- Extension method templateInstructionAnalysis
+  public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_templateInstructionListForGeneration & arg_ioInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_templateInstructionIfBranchListAST mProperty_mTemplateInstructionIfBranchList ;
+  public: GGS_templateInstructionListAST mProperty_mElseInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
+                                         const GGS_templateInstructionListAST & in_mElseInstructionList,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

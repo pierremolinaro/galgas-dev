@@ -19,7 +19,7 @@
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @weakReferenceDeclarationAST : @semanticDeclarationAST {
+final class @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
   private let @lstring mWeakReferenceTypeName
   private let @lstring mSuperWeakReferenceTypeName // Empty if no super class
@@ -215,7 +215,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
+final class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
   private let @unifiedTypeMapEntry mSuperClass // Null if no super class
   private let @bool generateHeaderInSeparateFile // Significant only for classes

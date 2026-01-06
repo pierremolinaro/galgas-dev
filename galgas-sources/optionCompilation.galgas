@@ -169,7 +169,7 @@ list @commandLineOptionListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @optionComponentDeclarationAST : @semanticDeclarationAST {
+final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   public let @lstring mOptionComponentName
   public let @commandLineOptionListAST mOptions
 
@@ -356,7 +356,7 @@ class @optionComponentDeclarationAST : @semanticDeclarationAST {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mIsPredefined
   public let @string mOptionComponentName
   public let @commandLineOptionSortedList mBoolOptionSortedList

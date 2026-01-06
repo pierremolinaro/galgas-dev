@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalLogInstructionAST : @lexicalInstructionAST {
+final class @lexicalLogInstructionAST : @lexicalInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------

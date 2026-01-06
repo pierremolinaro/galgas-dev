@@ -21,7 +21,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class @lexiqueComponentAST : @semanticDeclarationAST {
+final class @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
   private let @bool mIsTemplate
   private let @templateDelimitorListAST mTemplateDelimitorListAST

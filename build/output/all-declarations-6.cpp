@@ -5082,16 +5082,16 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
     break ;
   case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
     {
-      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7447_weakElement_0 ;
-      temp_0.getAssociatedValuesFor_element (extractedValue_7447_weakElement_0) ;
+      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7453_weakElement_0 ;
+      temp_0.getAssociatedValuesFor_element (extractedValue_7453_weakElement_0) ;
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
-        const GGS_unifiedTypeMapElementClass var_type_7475 = extractedValue_7447_weakElement_0.unwrappedValue () ;
-        if (!extractedValue_7447_weakElement_0.isValuated ()) {
+        const GGS_unifiedTypeMapElementClass var_type_7481 = extractedValue_7453_weakElement_0.unwrappedValue () ;
+        if (!extractedValue_7453_weakElement_0.isValuated ()) {
           test_2 = GalgasBool::boolFalse ;
         }
         if (GalgasBool::boolTrue == test_2) {
-          switch (var_type_7475.readProperty_mDefinition ().enumValue ()) {
+          switch (var_type_7481.readProperty_mDefinition ().enumValue ()) {
           case GGS_typeDefinition::Enumeration::invalid:
             break ;
           case GGS_typeDefinition::Enumeration::enum_unsolved:
@@ -5103,9 +5103,9 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
             break ;
           case GGS_typeDefinition::Enumeration::enum_solved:
             {
-              GGS_unifiedTypeDefinition extractedValue_7628_definition_0 ;
-              var_type_7475.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7628_definition_0) ;
-              result_result = extractedValue_7628_definition_0 ;
+              GGS_unifiedTypeDefinition extractedValue_7634_definition_0 ;
+              var_type_7481.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7634_definition_0) ;
+              result_result = extractedValue_7634_definition_0 ;
             }
             break ;
           }
@@ -5170,13 +5170,13 @@ GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry 
   GGS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  bool loop_8355 = true ;
-  while (loop_8355) {
+  bool loop_8361 = true ;
+  while (loop_8361) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
       test_1 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).boolEnum () ;
-      loop_8355 = test_1 == GalgasBool::boolTrue ;
-      if (loop_8355) {
+      loop_8361 = test_1 == GalgasBool::boolTrue ;
+      if (loop_8361) {
         result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 229)).readProperty_superType () ;
       }
     }
@@ -5199,12 +5199,12 @@ void extensionMethod_addHeaderFileName (const GGS_unifiedTypeMapEntry inObject,
                                         Compiler * inCompiler
                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_8648 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 236)) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8654 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 236)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = var_typeDefinition_8648.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 237)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8648.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 237)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 237)).boolEnum () ;
+    test_1 = var_typeDefinition_8654.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 237)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8654.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 237)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 237)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8648.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 238)) ;
+      ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8654.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 238)) ;
     }
   }
 }
@@ -5221,24 +5221,24 @@ void extensionMethod_addHeaderFileName_31_ (const GGS_unifiedTypeMapEntry inObje
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_9002 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 245)) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_9008 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 245)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = var_typeDefinition_9002.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 246)).boolEnum () ;
+    test_1 = var_typeDefinition_9008.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 246)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      switch (var_typeDefinition_9002.readProperty_headerKind ().enumValue ()) {
+      switch (var_typeDefinition_9008.readProperty_headerKind ().enumValue ()) {
       case GGS_headerKind::Enumeration::invalid:
         break ;
       case GGS_headerKind::Enumeration::enum_noHeader:
         break ;
       case GGS_headerKind::Enumeration::enum_oneHeader:
         {
-          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9002.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 250)) ;
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9008.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 250)) ;
         }
         break ;
       case GGS_headerKind::Enumeration::enum_twoHeaders:
         {
-          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9002.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 252))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 252)) ;
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_9008.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 252))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 252)) ;
         }
         break ;
       }

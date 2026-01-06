@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @testDynamicClassInExpressionAST : @semanticExpressionAST {
+final class @testDynamicClassInExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiverExpression
   private let @location mEndOfReceiverExpression
   private let @dynamicTypeComparisonKind mTypeComparisonKind
@@ -37,7 +37,7 @@ enum @dynamicTypeComparisonKind {
 
 //································································································
 
-class @castInExpressionAST : @semanticExpressionAST {
+final class @castInExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiverExpression
   private let @location mEndOfReceiverExpression
   private let @lstring mTypeName
@@ -267,7 +267,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @dynamicTypeComparisonKind mTypeComparisonKind
   private let @unifiedTypeMapEntry mCastType
@@ -358,7 +358,7 @@ override method @castInExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @string mTypeName
 }

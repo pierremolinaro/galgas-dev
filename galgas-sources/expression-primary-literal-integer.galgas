@@ -17,33 +17,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 //!   AST
-//--------------------------------------------------------------------------------------------------
-
-//class @literalUIntExpressionAST : @semanticExpressionAST {
-//  private let @luint mValue
-//}
-
 //································································································
 
-//class @literalUInt64ExpressionAST : @semanticExpressionAST {
-//  private let @luint64 mValue
-//}
-
-//································································································
-
-//class @literalSIntExpressionAST : @semanticExpressionAST {
-//  private let @lsint mValue
-//}
-
-//································································································
-
-//class @literalSInt64ExpressionAST : @semanticExpressionAST {
-//  private let @lsint64 mValue
-//}
-
-//································································································
-
-class @literalBigIntExpressionAST : @semanticExpressionAST {
+final class @literalBigIntExpressionAST : @semanticExpressionAST {
   private let @lbigint mValue
 }
 
@@ -180,7 +156,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
+final class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
   public let @uint mValue
 }
 
@@ -197,7 +173,7 @@ override method @literalUIntExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+final class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   private let @uint64 mValue
 }
 
@@ -214,7 +190,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
+final class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
   private let @sint mValue
 }
 
@@ -231,7 +207,7 @@ override method @literalSIntExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+final class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   private let @sint64 mValue
 }
 
@@ -248,7 +224,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
+final class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
   public let @bigint mValue
 }
 

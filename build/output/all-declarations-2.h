@@ -9,297 +9,6 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @abstractLexicalRuleAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_abstractLexicalRuleAST_2E_weak : public AC_GALGAS_weak_reference {
-//--------------------------------- Default constructor
-  public: GGS_abstractLexicalRuleAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_abstractLexicalRuleAST_2E_weak (const class GGS_abstractLexicalRuleAST & inSource) ;
-
-  public: GGS_abstractLexicalRuleAST_2E_weak & operator = (const class GGS_abstractLexicalRuleAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_abstractLexicalRuleAST_2E_weak init_nil (void) {
-    GGS_abstractLexicalRuleAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_abstractLexicalRuleAST bang_abstractLexicalRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_abstractLexicalRuleAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_abstractLexicalRuleAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_abstractLexicalRuleAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_abstractLexicalRuleAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalRuleListAST useLoopLocalVar' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool extensionGetter_useLoopLocalVar (const class GGS_lexicalRuleListAST & inObject,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalImplicitRuleAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalImplicitRuleAST : public GGS_abstractLexicalRuleAST {
-//--------------------------------- Default constructor
-  public: GGS_lexicalImplicitRuleAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_lexicalImplicitRuleAST (const class cPtr_lexicalImplicitRuleAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mListName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lexicalImplicitRuleAST init_21_ (const class GGS_lstring & inOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lexicalImplicitRuleAST extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalImplicitRuleAST class_func_new (const class GGS_lstring & inOperand0,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalImplicitRuleAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @lexicalImplicitRuleAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void lexicalImplicitRuleAST_init_21_ (const class GGS_lstring & inOperand0,
-                                                Compiler * inCompiler) ;
-
-
-//--- Extension getter generateLexicalRuleCode
-  public: virtual class GGS_string getter_generateLexicalRuleCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaCode
-  public: virtual class GGS_string getter_generateSwiftCocoaCode (const class GGS_string inScannerClassName,
-           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter lexicalRuleUsesLoopLocalVar
-  public: virtual class GGS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalRule
-  public: virtual void method_checkLexicalRule (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mListName ;
-
-
-//--- Default constructor
-  public: cPtr_lexicalImplicitRuleAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_lexicalImplicitRuleAST (const GGS_lstring & in_mListName,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalImplicitRuleAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalImplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_lexicalImplicitRuleAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_lexicalImplicitRuleAST_2E_weak (const class GGS_lexicalImplicitRuleAST & inSource) ;
-
-  public: GGS_lexicalImplicitRuleAST_2E_weak & operator = (const class GGS_lexicalImplicitRuleAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_lexicalImplicitRuleAST_2E_weak init_nil (void) {
-    GGS_lexicalImplicitRuleAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_lexicalImplicitRuleAST bang_lexicalImplicitRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_lexicalImplicitRuleAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lexicalImplicitRuleAST_2E_weak extractObject (const GGS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalImplicitRuleAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalImplicitRuleAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitRuleAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -11536,4 +11245,64 @@ class GGS_string extensionGetter_initialization (const class GGS_lexicalTypeEnum
 class GGS_string extensionGetter_cocoaTypeName (const class GGS_lexicalTypeEnum & inObject,
                                                 class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum swiftTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const class GGS_lexicalTypeEnum & inObject,
+                                                                   class Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum cocoaInitializationCode' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaInitializationCode (const class GGS_lexicalTypeEnum & inObject,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum swiftInitializationCode' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftInitializationCode (const class GGS_lexicalTypeEnum & inObject,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum cocoaResetPrefix' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaResetPrefix (const class GGS_lexicalTypeEnum & inObject,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum cocoaReset' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaReset (const class GGS_lexicalTypeEnum & inObject,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 

@@ -16,7 +16,7 @@ map @xmlAttributeMap {
 
 //-----------------------------------------------------------*
 
-class @xmlNode {
+final class @xmlNode {
   public let @xmlNodeType mType
   public let @string name
   public let @xmlAttributeMap attributeMap

@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @messageInstructionAST : @semanticInstructionAST {
+final class @messageInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
@@ -108,7 +108,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @messageInstructionForGeneration : @semanticInstructionForGeneration {
+final class @messageInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
   private let @location mInstructionLocation
 }

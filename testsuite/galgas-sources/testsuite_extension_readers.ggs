@@ -2,7 +2,7 @@
 
 abstract class @A_A { }
 
-class @B_B : @A_A { }
+final class @B_B : @A_A { }
 
 abstract func @A_A.aReader( ?var @uint inA, ?let @string inB) -> @string
 

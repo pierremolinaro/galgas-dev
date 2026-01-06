@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @typeMethodCallInstructionAST : @semanticInstructionAST {
+final class @typeMethodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mTypeName
   private let @lstring mMethodName
   private let @actualParameterListAST mActualParameterList
@@ -128,7 +128,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
+final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring mTypeName
   private let @lstring mMethodName
   private let @actualParameterListForGeneration mActualParameterList

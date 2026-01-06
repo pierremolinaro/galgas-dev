@@ -163,7 +163,7 @@ syntax extension galgas4InstructionsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-class @procDeclarationAST : @externProcedureDeclarationAST {
+final class @procDeclarationAST : @externProcedureDeclarationAST {
   public let @semanticInstructionListAST mRoutineInstructionList
   public let @location mEndOfRoutineInstructionList
 
@@ -267,7 +267,7 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
+final class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   public let @bool mGenerateStatic
   public let @semanticInstructionListForGeneration mRoutineInstructionList
 

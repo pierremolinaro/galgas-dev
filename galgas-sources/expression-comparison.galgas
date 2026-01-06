@@ -32,7 +32,7 @@ enum @comparison {
 
 //--------------------------------------------------------------------------------------------------
 
-class @comparisonExpressionAST : @semanticExpressionAST {
+final class @comparisonExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @comparison mComparison
@@ -267,7 +267,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
+final class @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
   public let @comparison mComparison
   public let @semanticExpressionForGeneration mRightExpression

@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
+final class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
   private let @lstring mSentTerminal
 }
 

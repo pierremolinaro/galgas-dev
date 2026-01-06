@@ -314,7 +314,7 @@ map @searchMethodMap {
 
 //--------------------------------------------------------------------------------------------------
 
-class @mapDeclarationAST : @semanticDeclarationAST {
+final class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @insertSetterListAST mInsertSetterList
@@ -860,7 +860,7 @@ class @mapDeclarationAST : @semanticDeclarationAST {
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @mapTypeForGeneration : @semanticTypeForGeneration {
+final class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
   private let @typedPropertyList mTypedAttributeList

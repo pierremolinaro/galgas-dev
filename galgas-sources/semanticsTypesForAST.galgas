@@ -170,25 +170,25 @@ abstract class @abstractInputParameter {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputParameterAnonymousVariable : @abstractInputParameter {
+final class @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputParameterVariable : @abstractInputParameter {
+final class @inputParameterVariable : @abstractInputParameter {
   public let @lstring mActualParameterName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputParameterDeclaredVariable : @abstractInputParameter {
+final class @inputParameterDeclaredVariable : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputParameterDeclaredConstant : @abstractInputParameter {
+final class @inputParameterDeclaredConstant : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
@@ -229,7 +229,7 @@ list @semanticDeclarationListAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @externFunctionDeclarationAST : @semanticDeclarationAST {
+class @externFunctionDeclarationAST : @semanticDeclarationAST { // §
   public let @lstring mFunctionName
   public let @formalInputParameterListAST mFormalArgumentList
   public let @lstring mResultTypeName
@@ -242,7 +242,7 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @functionDeclarationAST : @externFunctionDeclarationAST {
+final class @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @lstring mResultVariableName
   public let @semanticInstructionListAST mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
@@ -255,7 +255,7 @@ class @functionDeclarationAST : @externFunctionDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @onceFunctionDeclarationAST : @semanticDeclarationAST {
+final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @lstring mResultTypeName
   public let @lstring mResultVariableName
@@ -288,7 +288,7 @@ list @filewrapperTemplateListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperDeclarationAST : @semanticDeclarationAST {
+final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
   public let @string mSourceFileAbsolutePath
   public let @lstring mFilewrapperName
@@ -357,7 +357,7 @@ list @listOfSyntaxInstructionList {
 
 //--------------------------------------------------------------------------------------------------
 
-class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+final class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @lstring mSyntaxComponentName
   public let @lstring mLexiqueName
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
@@ -367,7 +367,7 @@ class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @galgas3GrammarComponentAST : @semanticDeclarationAST {
+final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @lbool mHasIndexing
   public let @lstring mGrammarComponentName
   public let @lstring mGrammarClass

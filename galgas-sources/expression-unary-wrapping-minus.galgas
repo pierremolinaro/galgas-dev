@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
+final class @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }
@@ -111,7 +111,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
+final class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 }
 

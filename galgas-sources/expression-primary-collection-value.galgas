@@ -100,7 +100,7 @@ list @collectionValueElementList {
 
 //--------------------------------------------------------------------------------------------------
 
-class @collectionValueAST : @semanticExpressionAST {
+final class @collectionValueAST : @semanticExpressionAST {
   public let @lstring mTypeName // Empty string if infered
   public let @collectionValueElementList mExpressionList
   public let @location mEndOfCollectionValue
@@ -195,7 +195,7 @@ list @collectionValueElementListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
+final class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   public let @collectionValueElementListForGeneration expressionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalErrorInstructionAST : @lexicalInstructionAST {
+final class @lexicalErrorInstructionAST : @lexicalInstructionAST {
   private let @lstring mErrorMessageName
 }
 

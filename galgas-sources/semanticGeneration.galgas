@@ -24,7 +24,7 @@
 //! Grammar
 //--------------------------------------------------------------------------------------------------
 
-class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mGrammarName
   public let @string mLexiqueName
   public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
@@ -103,7 +103,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
+final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   public let @string mSyntaxComponentName
   public let @string mLexiqueName
   public let @nonterminalMap mNonterminalDeclarationMap
@@ -1072,7 +1072,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 //    L E X I Q U E    D E C L A R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mLexiqueName
   public let @string mSuperLexiqueName
   public let @string mHeaderContents
@@ -1433,7 +1433,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 //    P R I M I T I V E    T Y P E
 //--------------------------------------------------------------------------------------------------
 
-class @primitiveTypeForGeneration : @semanticTypeForGeneration {
+final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
   public let @string mCppDeclarationString
   public let @bool isPackage %initArgLabel

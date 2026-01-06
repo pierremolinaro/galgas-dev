@@ -86,7 +86,7 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+final class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mNonterminalSymbolName
   public let @uint mNonterminalSymbolIndex
 }
@@ -107,7 +107,7 @@ list @branchListForGrammarAnalysis {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+final class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mSelectBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
@@ -118,7 +118,7 @@ class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGramma
 //
 //--------------------------------------------------------------------------------------------------
 
-class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+final class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mRepeatBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }

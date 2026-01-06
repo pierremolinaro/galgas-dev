@@ -85,7 +85,7 @@ syntax extension galgas4InstructionsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-class @superInitInstructionAST : @semanticInstructionAST {
+final class @superInitInstructionAST : @semanticInstructionAST {
   private let @actualOutputArgumentList mActualParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -178,7 +178,7 @@ class @superInitInstructionAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
+final class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @string mSuperInitializerSignature
   private let @semanticExpressionListForGeneration mActualParameterList

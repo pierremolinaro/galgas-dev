@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalDropInstructionAST : @lexicalInstructionAST {
+final class @lexicalDropInstructionAST : @lexicalInstructionAST {
   private let @lstring mTerminalName
 }
 

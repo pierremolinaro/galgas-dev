@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @rightShiftExpressionAST : @semanticExpressionAST {
+final class @rightShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -27,7 +27,7 @@ class @rightShiftExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @leftShiftExpressionAST : @semanticExpressionAST {
+final class @leftShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -35,7 +35,7 @@ class @leftShiftExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @addExpressionAST : @semanticExpressionAST {
+final class @addExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -43,7 +43,7 @@ class @addExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @addExpressionNoOverflowAST : @semanticExpressionAST {
+final class @addExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -51,7 +51,7 @@ class @addExpressionNoOverflowAST : @semanticExpressionAST {
 
 //································································································
 
-class @subExpressionAST : @semanticExpressionAST {
+final class @subExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -59,7 +59,7 @@ class @subExpressionAST : @semanticExpressionAST {
 
 //································································································
 
-class @subExpressionNoOverflowAST : @semanticExpressionAST {
+final class @subExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -608,7 +608,7 @@ enum @binaryOperator {
 
 //································································································
 
-class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
+final class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
   public let @binaryOperator mOperator
   public let @semanticExpressionForGeneration mRightExpression

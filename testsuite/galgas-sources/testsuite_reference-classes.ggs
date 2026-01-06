@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------------------------
 
-class @classeA {
+final class @classeA {
   public let @uint x
 }
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeB {
+final class @classeB {
   private let @uint x
   
   init (?@uint inX) { self.x = inX }
@@ -15,13 +15,13 @@ class @classeB {
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeC {
+final class @classeC {
   public var @uint x = 7
 }
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeD {
+final class @classeD {
   public let @uint x = 9
   
   init (?let @uint inX) { self.x = inX }
@@ -30,26 +30,26 @@ class @classeD {
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeE : @classeA {
+final class @classeE : @classeA {
   private let @uint y
 
 }
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeF : @classeC {
+final class @classeF : @classeC {
   private let @uint y
 }
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeG : @classeC {
+final class @classeG : @classeC {
   private let @uint y = 67
 }
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeH : @classeA {
+final class @classeH : @classeA {
   public let @uint y
   
   init (?let @uint inX, ?let @uint inY) {
@@ -60,7 +60,7 @@ class @classeH : @classeA {
 
 //-----------------------------------------------------------------------------------------------
 
-class @classeI : @classeC {
+final class @classeI : @classeC {
   public let @uint y
   public weak var @classeH z = nil
   

@@ -148,7 +148,7 @@ syntax extension galgas4InstructionsSyntax {
 //! @assignmentInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @assignmentInstructionAST : @semanticInstructionAST {
+final class @assignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetVariableName
   private let @lstring mOptionalProperty
   private let @semanticExpressionAST mSourceExpression
@@ -242,7 +242,7 @@ class @assignmentInstructionAST : @semanticInstructionAST {
 //! @selfPropertyAssignmentInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
+final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetSelfPropertyName
   private let @lstring mOptionalProperty
   private let @semanticExpressionAST mSourceExpression

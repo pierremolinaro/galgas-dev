@@ -8,366 +8,6 @@
 #include "all-declarations-3.h"
 
 //--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum swiftTypeName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
-                                          Compiler *
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_string ("String") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_string ("UInt64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_string ("Int32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_string ("Int64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_string ("Double") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_string ("String") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTypeEnum & inObject,
-                                                             Compiler *
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bool result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_bool (false) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_bool (false) ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaInitializationCode'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler *
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_string ("[[NSMutableString alloc] init]") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_string ("0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_string ("[[NSMutableString alloc] init]") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum swiftInitializationCode'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_swiftInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler *
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_string ("\"\"") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_string ("0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_string ("\"\"") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaResetPrefix'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaResetPrefix (const GGS_lexicalTypeEnum & inObject,
-                                             Compiler *
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_string ("[") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_string ("[") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaReset'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaReset (const GGS_lexicalTypeEnum & inObject,
-                                       Compiler *
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result_result = GGS_string (" setString:@\"\"]") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result_result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result_result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result_result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result_result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result_result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result_result = GGS_string (" = 0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result_result = GGS_string (" setString:@\"\"]") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'
 //
@@ -14612,11 +14252,8 @@ mLexicalAttribute_bigintValue (),
 mLexicalAttribute_charValue (),
 mLexicalAttribute_floatValue (),
 mLexicalAttribute_identifierString (),
-mLexicalAttribute_sint_33__32_value (),
-mLexicalAttribute_sint_36__34_value (),
 mLexicalAttribute_tokenString (),
-mLexicalAttribute_uint_33__32_value (),
-mLexicalAttribute_uint_36__34_value () {
+mLexicalAttribute_uint_33__32_value () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -18074,11 +17711,8 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
   token.mLexicalAttribute_charValue = utf32 (0) ;
   token.mLexicalAttribute_floatValue = 0.0 ;
   token.mLexicalAttribute_identifierString.removeAllKeepingCapacity () ;
-  token.mLexicalAttribute_sint_33__32_value = 0 ;
-  token.mLexicalAttribute_sint_36__34_value = 0 ;
   token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_uint_33__32_value = 0 ;
-  token.mLexicalAttribute_uint_36__34_value = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
     if (testForChar_isUnicodeLetter ()) {
@@ -18807,11 +18441,8 @@ void Lexique_galgasScanner_34_::enterToken (cTokenFor_galgasScanner_34_ & ioToke
   ptr->mLexicalAttribute_charValue = ioToken.mLexicalAttribute_charValue ;
   ptr->mLexicalAttribute_floatValue = ioToken.mLexicalAttribute_floatValue ;
   ptr->mLexicalAttribute_identifierString = ioToken.mLexicalAttribute_identifierString ;
-  ptr->mLexicalAttribute_sint_33__32_value = ioToken.mLexicalAttribute_sint_33__32_value ;
-  ptr->mLexicalAttribute_sint_36__34_value = ioToken.mLexicalAttribute_sint_36__34_value ;
   ptr->mLexicalAttribute_tokenString = ioToken.mLexicalAttribute_tokenString ;
   ptr->mLexicalAttribute_uint_33__32_value = ioToken.mLexicalAttribute_uint_33__32_value ;
-  ptr->mLexicalAttribute_uint_36__34_value = ioToken.mLexicalAttribute_uint_36__34_value ;
   enterTokenFromPointer (ptr) ;
 }
 
@@ -18847,20 +18478,6 @@ String Lexique_galgasScanner_34_::attributeValue_identifierString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t Lexique_galgasScanner_34_::attributeValue_sint_33__32_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_sint_33__32_value ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int64_t Lexique_galgasScanner_34_::attributeValue_sint_36__34_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_sint_36__34_value ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 String Lexique_galgasScanner_34_::attributeValue_tokenString (void) const {
   cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_tokenString ;
@@ -18871,13 +18488,6 @@ String Lexique_galgasScanner_34_::attributeValue_tokenString (void) const {
 uint32_t Lexique_galgasScanner_34_::attributeValue_uint_33__32_value (void) const {
   cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_uint_33__32_value ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-uint64_t Lexique_galgasScanner_34_::attributeValue_uint_36__34_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_uint_36__34_value ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -18928,28 +18538,6 @@ GGS_lstring Lexique_galgasScanner_34_::synthetizedAttribute_identifierString (vo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint Lexique_galgasScanner_34_::synthetizedAttribute_sint_33__32_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_galgasScanner_34_) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_sint value (ptr->mLexicalAttribute_sint_33__32_value) ;
-  GGS_lsint result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lsint_36__34_ Lexique_galgasScanner_34_::synthetizedAttribute_sint_36__34_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_galgasScanner_34_) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_sint_36__34_ value (ptr->mLexicalAttribute_sint_36__34_value) ;
-  GGS_lsint_36__34_ result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring Lexique_galgasScanner_34_::synthetizedAttribute_tokenString (void) const {
   cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
   macroValidSharedObject (ptr, cTokenFor_galgasScanner_34_) ;
@@ -18967,17 +18555,6 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
   GGS_luint result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint_36__34_ Lexique_galgasScanner_34_::synthetizedAttribute_uint_36__34_value (void) const {
-  cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_galgasScanner_34_) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_uint_36__34_ value (ptr->mLexicalAttribute_uint_36__34_value) ;
-  GGS_luint_36__34_ result (value, currentLocation) ;
   return result ;
 }
 

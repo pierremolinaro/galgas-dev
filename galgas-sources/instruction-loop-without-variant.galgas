@@ -95,7 +95,7 @@ syntax extension galgas4InstructionsSyntax {
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
+final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   private let @semanticInstructionListAST mFirstInstructions
   private let @location mEndOfFirstInstructions
   private let @CommaSeparatedExpressionList mLoopExpression
@@ -191,7 +191,7 @@ class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
+final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @semanticInstructionListForGeneration mFirstInstructions
   private let @ifTestListForGeneration mLoopExpression

@@ -189,7 +189,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @extensionGetterAST : @semanticDeclarationAST {
+final class @extensionGetterAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionGetterName
@@ -363,7 +363,7 @@ override method @extensionGetterAST buildExtensionListMaps
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mExtensionGetterName
   private let @bool mImplementedAsFunction

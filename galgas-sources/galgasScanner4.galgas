@@ -2,7 +2,7 @@
 //
 //  GALGAS scanner definition
 //
-//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -85,9 +85,6 @@ indexing indexingNameReference : "Indexing Name Reference"
 //--- Scanner attributes
 @string identifierString
 @uint uint32value
-@sint sint32value
-@uint64 uint64value
-@sint64 sint64value
 @char charValue
 @string tokenString
 

@@ -34,7 +34,7 @@ list @fixitListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @errorInstructionAST : @semanticInstructionAST {
+final class @errorInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mLocationExpression
   private let @semanticExpressionAST mMessageExpression
   private let @lstringlist mBuiltVariableList
@@ -453,7 +453,7 @@ method @fixitListForGeneration generateFixIt
 
 //--------------------------------------------------------------------------------------------------
 
-class @errorInstructionForGeneration : @semanticInstructionForGeneration {
+final class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @semanticExpressionForGeneration mErrorExpression

@@ -99,7 +99,7 @@ list @graphInsertModifierList {
 
 //--------------------------------------------------------------------------------------------------
 
-class @graphDeclarationAST : @semanticDeclarationAST {
+final class @graphDeclarationAST : @semanticDeclarationAST {
   private let @lstring mGraphTypeName
   private let @lstring mAssociatedListTypeName
   private let @graphInsertModifierList mInsertModifierList
@@ -575,7 +575,7 @@ class @graphDeclarationAST : @semanticDeclarationAST {
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @graphDeclarationForGeneration : @semanticTypeForGeneration {
+final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mAssociatedListTypeEntry
   private let @unifiedTypeMapEntry mAssociatedListElementTypeEntry
   private let @graphInsertModifierList mInsertModifierList

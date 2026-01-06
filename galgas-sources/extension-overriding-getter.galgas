@@ -19,7 +19,7 @@
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @overridingExtensionGetterAST : @semanticDeclarationAST {
+final class @overridingExtensionGetterAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionGetterName
@@ -409,7 +409,7 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mBaseTypeName
   private let @string mOverridingExtensionGetterName

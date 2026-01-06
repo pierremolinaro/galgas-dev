@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @dropInstructionAST : @semanticInstructionAST {
+final class @dropInstructionAST : @semanticInstructionAST {
   private let @lstringlist mDropList
 }
 

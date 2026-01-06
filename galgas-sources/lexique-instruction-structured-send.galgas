@@ -20,7 +20,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
+final class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
   private let @lexicalSendSearchListAST mLexicalSendSearchList
   private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 }

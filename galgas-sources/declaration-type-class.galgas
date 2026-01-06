@@ -197,7 +197,7 @@ syntax extension galgas4DeclarationsSyntax {
 //! @classDeclarationAST
 //--------------------------------------------------------------------------------------------------
 
-class @classDeclarationAST : @semanticDeclarationAST {
+final class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
   private let @bool mIsReference
   private let @bool mIsFinal
@@ -630,7 +630,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
 //! @classTypeForGeneration
 //--------------------------------------------------------------------------------------------------
 
-class @classTypeForGeneration : @semanticTypeForGeneration {
+final class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
   private let @bool mIsReference
   private let @unifiedTypeMapEntry mSuperClass // Null if no super class

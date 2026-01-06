@@ -51,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @varInExpressionAST : @semanticExpressionAST {
+final class @varInExpressionAST : @semanticExpressionAST {
   private let @lstring mVarName
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -91,7 +91,7 @@ class @varInExpressionAST : @semanticExpressionAST {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @varInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mCppVarName
   public let @string mNameForCheckingFormalParameterUsing
 

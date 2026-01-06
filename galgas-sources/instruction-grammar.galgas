@@ -24,35 +24,27 @@ abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInstructionSyntaxDirectedTranslationResultNone :
+final class @grammarInstructionSyntaxDirectedTranslationResultNone :
   @abstractGrammarInstructionSyntaxDirectedTranslationResult {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInstructionSyntaxDirectedTranslationDropResult :
+final class @grammarInstructionSyntaxDirectedTranslationDropResult :
   @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInstructionSyntaxDirectedTranslationResultInVar :
+final class @grammarInstructionSyntaxDirectedTranslationResultInVar :
   @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   private let @lstring mActualParameterName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  private let @lstring mActualParameterTypeName
-  private let @lstring mActualParameterName
-}
-
-//--------------------------------------------------------------------------------------------------
-
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+final class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
   @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   private let @lstring mActualParameterTypeName
   private let @lstring mActualParameterName
@@ -60,7 +52,15 @@ class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInFileInstructionAST : @semanticInstructionAST {
+final class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  private let @lstring mActualParameterTypeName
+  private let @lstring mActualParameterName
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @grammarInFileInstructionAST : @semanticInstructionAST {
   private let @lstring mGrammarComponentName
   private let @lstring mLabelName
   private let @semanticExpressionAST mSourceExpression
@@ -71,7 +71,7 @@ class @grammarInFileInstructionAST : @semanticInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @grammarInStringInstructionAST : @semanticInstructionAST {
+final class @grammarInStringInstructionAST : @semanticInstructionAST {
   private let @lstring mGrammarComponentName
   private let @lstring mLabelName
   private let @semanticExpressionAST mSourceExpression
@@ -557,7 +557,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 //! GENERATION (source file)
 //--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
+  final class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
     private let @string mGrammarName
     private let @string mLabelName
@@ -628,7 +628,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 //! GENERATION (source string)
 //--------------------------------------------------------------------------------------------------
 
-  class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+  final class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
     private let @string mGrammarName
     private let @string mLabelName

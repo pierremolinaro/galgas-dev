@@ -19,7 +19,7 @@
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
+final class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   public let @lstring mTypeName
   public let @lstring mOverridingExtensionMethodName
   public let @formalParameterListAST mOverridingExtensionMethodFormalParameterList

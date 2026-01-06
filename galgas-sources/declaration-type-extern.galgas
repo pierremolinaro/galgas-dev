@@ -346,7 +346,7 @@ list @externTypeMethodList {
 
 //--------------------------------------------------------------------------------------------------
 
-class @externTypeDeclarationAST : @semanticDeclarationAST {
+final class @externTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring mExternTypeName
   private let @string mCppPreDeclarationCode
   private let @string mCppClassCode
@@ -552,7 +552,7 @@ override method @externTypeDeclarationAST semanticAnalysis
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
   private let @string mExternTypeName
   private let @string mCppPreDeclarationCode
   private let @string mCppClassCode

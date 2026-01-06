@@ -19,20 +19,20 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
+final class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperInExpressionAST : @semanticExpressionAST {
+final class @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+final class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperTemplateName
   public let @actualOutputArgumentList mExpressions
@@ -330,7 +330,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperPath
 }
@@ -349,7 +349,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperTemplateName
   public let @semanticExpressionListForGeneration mActualOutputParameterList
@@ -387,7 +387,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @uint mFilewrapperFileIndex
   public let @bool mIsTextFile

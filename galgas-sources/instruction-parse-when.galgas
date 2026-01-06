@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @parseWhenInstruction : @syntaxInstructionAST {
+final class @parseWhenInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mWhenExpression
   private let @location mEndOfWhenExpression
   private let @syntaxInstructionList mWhenInstructionList
@@ -276,7 +276,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
+final class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mWhenExpression
   private let @semanticInstructionListForGeneration mInstructionList
   private let @semanticInstructionListForGeneration mElseInstructionList

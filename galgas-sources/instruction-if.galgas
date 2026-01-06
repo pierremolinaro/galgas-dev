@@ -125,7 +125,7 @@ syntax extension galgas4InstructionsSyntax {
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @ifInstructionAST : @semanticInstructionAST {
+final class @ifInstructionAST : @semanticInstructionAST {
   public let @CommaSeparatedExpressionList mExpressions
   public let @semanticInstructionListAST m_then_instructionList
   public let @location mEndOf_then_branch
@@ -250,7 +250,7 @@ class @ifInstructionAST : @semanticInstructionAST {
 //
 //································································································
 
-class @ifInstructionForGeneration : @semanticInstructionForGeneration {
+final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @ifTestListForGeneration mExpressions
   private let @semanticInstructionListForGeneration m_then_instructionList

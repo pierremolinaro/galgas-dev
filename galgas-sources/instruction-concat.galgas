@@ -404,7 +404,7 @@ enum @opAssignmentOperator {
 
 //--------------------------------------------------------------------------------------------------
 
-class @opAssignExpressionInstructionAST : @semanticInstructionAST {
+final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -506,7 +506,7 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @plusEqualElementsInstructionAST : @semanticInstructionAST {
+final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -615,7 +615,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
+final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -717,7 +717,7 @@ class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mReceiverCppName
   private let @unifiedTypeMapEntry mTargetType
   private let @string mNameForCheckingFormalParameterUsing
@@ -772,7 +772,7 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
+final class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName
@@ -815,7 +815,7 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGeneration {
+final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName

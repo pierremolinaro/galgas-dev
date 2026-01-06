@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @warningInstructionAST : @semanticInstructionAST {
+final class @warningInstructionAST : @semanticInstructionAST {
   public let @semanticExpressionAST mLocationExpression
   public let @semanticExpressionAST mMessageExpression
   public let @fixitListAST mFixitListAST
@@ -129,7 +129,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @warningInstructionForGeneration : @semanticInstructionForGeneration {
+final class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @semanticExpressionForGeneration mReceiverExpression
   public let @semanticExpressionForGeneration mWarningExpression

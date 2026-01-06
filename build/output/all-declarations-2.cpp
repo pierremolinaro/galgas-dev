@@ -8,278 +8,6 @@
 #include "all-declarations-2.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_abstractLexicalRuleAST_2E_weak::objectCompare (const GGS_abstractLexicalRuleAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST_2E_weak::GGS_abstractLexicalRuleAST_2E_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST_2E_weak & GGS_abstractLexicalRuleAST_2E_weak::operator = (const GGS_abstractLexicalRuleAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST_2E_weak::GGS_abstractLexicalRuleAST_2E_weak (const GGS_abstractLexicalRuleAST & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST_2E_weak GGS_abstractLexicalRuleAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_abstractLexicalRuleAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST GGS_abstractLexicalRuleAST_2E_weak::unwrappedValue (void) const {
-  GGS_abstractLexicalRuleAST result ;
-  if (isValid ()) {
-    const cPtr_abstractLexicalRuleAST * p = (cPtr_abstractLexicalRuleAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_abstractLexicalRuleAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST GGS_abstractLexicalRuleAST_2E_weak::bang_abstractLexicalRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_abstractLexicalRuleAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_abstractLexicalRuleAST) ;
-      result = GGS_abstractLexicalRuleAST ((cPtr_abstractLexicalRuleAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @abstractLexicalRuleAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ("abstractLexicalRuleAST.weak",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_abstractLexicalRuleAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_abstractLexicalRuleAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_abstractLexicalRuleAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractLexicalRuleAST_2E_weak GGS_abstractLexicalRuleAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_abstractLexicalRuleAST_2E_weak result ;
-  const GGS_abstractLexicalRuleAST_2E_weak * p = (const GGS_abstractLexicalRuleAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_abstractLexicalRuleAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("abstractLexicalRuleAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalRuleListAST useLoopLocalVar'
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool extensionGetter_useLoopLocalVar (const GGS_lexicalRuleListAST & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bool result_result ; // Returned variable
-  result_result = GGS_bool (false) ;
-  const GGS_lexicalRuleListAST temp_0 = inObject ;
-  UpEnumerator_lexicalRuleListAST enumerator_2838 (temp_0) ;
-  bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
-  if (enumerator_2838.hasCurrentObject () && bool_1) {
-    while (enumerator_2838.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2838.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 74)) ;
-      enumerator_2838.gotoNextObject () ;
-      if (enumerator_2838.hasCurrentObject ()) {
-        bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
-      }
-    }
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalImplicitRuleAST_2E_weak::objectCompare (const GGS_lexicalImplicitRuleAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST_2E_weak::GGS_lexicalImplicitRuleAST_2E_weak (void) :
-GGS_abstractLexicalRuleAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST_2E_weak & GGS_lexicalImplicitRuleAST_2E_weak::operator = (const GGS_lexicalImplicitRuleAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST_2E_weak::GGS_lexicalImplicitRuleAST_2E_weak (const GGS_lexicalImplicitRuleAST & inSource) :
-GGS_abstractLexicalRuleAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST_2E_weak GGS_lexicalImplicitRuleAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_lexicalImplicitRuleAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST GGS_lexicalImplicitRuleAST_2E_weak::unwrappedValue (void) const {
-  GGS_lexicalImplicitRuleAST result ;
-  if (isValid ()) {
-    const cPtr_lexicalImplicitRuleAST * p = (cPtr_lexicalImplicitRuleAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_lexicalImplicitRuleAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST GGS_lexicalImplicitRuleAST_2E_weak::bang_lexicalImplicitRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_lexicalImplicitRuleAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalImplicitRuleAST) ;
-      result = GGS_lexicalImplicitRuleAST ((cPtr_lexicalImplicitRuleAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalImplicitRuleAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ("lexicalImplicitRuleAST.weak",
-                                                                                   & kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalImplicitRuleAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalImplicitRuleAST_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalImplicitRuleAST_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalImplicitRuleAST_2E_weak GGS_lexicalImplicitRuleAST_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_lexicalImplicitRuleAST_2E_weak result ;
-  const GGS_lexicalImplicitRuleAST_2E_weak * p = (const GGS_lexicalImplicitRuleAST_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalImplicitRuleAST_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalImplicitRuleAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @lexicalExplicitRuleAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -17289,6 +17017,366 @@ GGS_string extensionGetter_cocoaTypeName (const GGS_lexicalTypeEnum & inObject,
   case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GGS_string ("NSMutableString *") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum swiftTypeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
+                                          Compiler *
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("String") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("UInt32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("UInt64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("Int32") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("Int64") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("Double") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("String") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTypeEnum & inObject,
+                                                             Compiler *
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bool result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_bool (false) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_bool (true) ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_bool (false) ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum cocoaInitializationCode'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_cocoaInitializationCode (const GGS_lexicalTypeEnum & inObject,
+                                                    Compiler *
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("[[NSMutableString alloc] init]") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("0.0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("[[NSMutableString alloc] init]") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum swiftInitializationCode'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_swiftInitializationCode (const GGS_lexicalTypeEnum & inObject,
+                                                    Compiler *
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("\"\"") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string ("0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string ("0.0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("\"\"") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum cocoaResetPrefix'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_cocoaResetPrefix (const GGS_lexicalTypeEnum & inObject,
+                                             Compiler *
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string ("[") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string::makeEmptyString () ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string ("[") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalTypeEnum cocoaReset'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_cocoaReset (const GGS_lexicalTypeEnum & inObject,
+                                       Compiler *
+                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_lexicalTypeEnum::Enumeration::invalid:
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
+    {
+      result_result = GGS_string (" setString:@\"\"]") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
+    {
+      result_result = GGS_string (" = 0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
+    {
+      result_result = GGS_string (" = 0.0") ;
+    }
+    break ;
+  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
+    {
+      result_result = GGS_string (" setString:@\"\"]") ;
     }
     break ;
   }

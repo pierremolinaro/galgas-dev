@@ -10,66 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@lexicalTypeEnum swiftTypeName' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_swiftTypeName (const class GGS_lexicalTypeEnum & inObject,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const class GGS_lexicalTypeEnum & inObject,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum cocoaInitializationCode' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_cocoaInitializationCode (const class GGS_lexicalTypeEnum & inObject,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum swiftInitializationCode' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_swiftInitializationCode (const class GGS_lexicalTypeEnum & inObject,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum cocoaResetPrefix' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_cocoaResetPrefix (const class GGS_lexicalTypeEnum & inObject,
-                                                   class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@lexicalTypeEnum cocoaReset' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_cocoaReset (const class GGS_lexicalTypeEnum & inObject,
-                                             class Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'
 //
 //--------------------------------------------------------------------------------------------------
@@ -9499,11 +9439,8 @@ class cTokenFor_galgasScanner_34_ : public cToken {
   public: utf32 mLexicalAttribute_charValue ;
   public: double mLexicalAttribute_floatValue ;
   public: String mLexicalAttribute_identifierString ;
-  public: int32_t mLexicalAttribute_sint_33__32_value ;
-  public: int64_t mLexicalAttribute_sint_36__34_value ;
   public: String mLexicalAttribute_tokenString ;
   public: uint32_t mLexicalAttribute_uint_33__32_value ;
-  public: uint64_t mLexicalAttribute_uint_36__34_value ;
 
   public: cTokenFor_galgasScanner_34_ (void) ;
 } ;
@@ -9754,11 +9691,8 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: GGS_lchar synthetizedAttribute_charValue (void) const ;
   public: GGS_ldouble synthetizedAttribute_floatValue (void) const ;
   public: GGS_lstring synthetizedAttribute_identifierString (void) const ;
-  public: GGS_lsint synthetizedAttribute_sint_33__32_value (void) const ;
-  public: GGS_lsint_36__34_ synthetizedAttribute_sint_36__34_value (void) const ;
   public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
   public: GGS_luint synthetizedAttribute_uint_33__32_value (void) const ;
-  public: GGS_luint_36__34_ synthetizedAttribute_uint_36__34_value (void) const ;
 
 
 //--- Attribute access
@@ -9766,11 +9700,8 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: utf32 attributeValue_charValue (void) const ;
   public: double attributeValue_floatValue (void) const ;
   public: String attributeValue_identifierString (void) const ;
-  public: int32_t attributeValue_sint_33__32_value (void) const ;
-  public: int64_t attributeValue_sint_36__34_value (void) const ;
   public: String attributeValue_tokenString (void) const ;
   public: uint32_t attributeValue_uint_33__32_value (void) const ;
-  public: uint64_t attributeValue_uint_36__34_value (void) const ;
 
 
 //--- indexing keys

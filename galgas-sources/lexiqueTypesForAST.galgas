@@ -77,13 +77,13 @@ getter @lexicalRuleListAST useLoopLocalVar -> @bool {
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
+final class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
   private let @lstring mListName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
+final class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
   private let @lexicalExpressionAST mLexicalRuleExpression
   private let @lexicalInstructionListAST mInstructionList
 }
@@ -148,39 +148,39 @@ list @lexicalListDeclarationListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalOrExpressionAST : @lexicalExpressionAST {
+final class @lexicalOrExpressionAST : @lexicalExpressionAST {
   private let @lexicalExpressionAST mLeftOperand
   private let @lexicalExpressionAST mRightOperand
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
+final class @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
   private let @lstring mCharacterSetName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalCharacterMatchAST : @lexicalExpressionAST {
+final class @lexicalCharacterMatchAST : @lexicalExpressionAST {
   private let @lchar mCharacter
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
+final class @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
   private let @lchar mLowerBound
   private let @lchar mUpperBound
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalStringMatchAST : @lexicalExpressionAST {
+final class @lexicalStringMatchAST : @lexicalExpressionAST {
   private let @lstring mString
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalStringNotMatchAST : @lexicalExpressionAST {
+final class @lexicalStringNotMatchAST : @lexicalExpressionAST {
   private let @lstring mString
   private let @lstring mErrorMessage
 }
@@ -199,13 +199,13 @@ abstract class @lexicalSendDefaultActionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
+final class @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
   private let @lstring mDefaultSentTerminal
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
+final class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
   private let @lstring mDefaultErrorMessageName
 }
 
@@ -236,31 +236,31 @@ list @lexicalFunctionCallActualArgumentListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+final class @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mAttributeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+final class @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lchar mCharacter
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+final class @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lbigint mUnsigned
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+final class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+final class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mFunctionName
   private let @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
 }

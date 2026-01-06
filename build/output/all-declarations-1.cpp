@@ -8,195 +8,6 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-// @templateInstructionIfAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionIfAST::objectCompare (const GGS_templateInstructionIfAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST::GGS_templateInstructionIfAST (void) :
-GGS_templateInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::
-init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-              const GGS_templateInstructionListAST & in_mElseInstructionList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_templateInstructionIfAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInstructionIfAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionIfAST_init_21__21_ (in_mTemplateInstructionIfBranchList, in_mElseInstructionList, inCompiler) ;
-  const GGS_templateInstructionIfAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInstructionIfAST::
-templateInstructionIfAST_init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                       const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                       Compiler * /* inCompiler */) {
-  mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
-  mProperty_mElseInstructionList = in_mElseInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST::GGS_templateInstructionIfAST (const cPtr_templateInstructionIfAST * inSourcePtr) :
-GGS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionIfAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::class_func_new (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                                           const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionIfAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (in_mTemplateInstructionIfBranchList, in_mElseInstructionList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfAST::readProperty_mTemplateInstructionIfBranchList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionIfBranchListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mTemplateInstructionIfBranchList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListAST GGS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mElseInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionIfAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateInstructionIfBranchList (),
-mProperty_mElseInstructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                              const GGS_templateInstructionListAST & in_mElseInstructionList,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateInstructionIfBranchList (),
-mProperty_mElseInstructionList () {
-  mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
-  mProperty_mElseInstructionList = in_mElseInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateInstructionIfAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-void cPtr_templateInstructionIfAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInstructionIfAST:") ;
-  mProperty_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionIfAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionIfAST (mProperty_mTemplateInstructionIfBranchList, mProperty_mElseInstructionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionIfAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTemplateInstructionIfBranchList.printNonNullClassInstanceProperties ("mTemplateInstructionIfBranchList") ;
-    mProperty_mElseInstructionList.printNonNullClassInstanceProperties ("mElseInstructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionIfAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
-                                                                             & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionIfAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_templateInstructionIfAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_templateInstructionIfAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionIfAST GGS_templateInstructionIfAST::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionIfAST result ;
-  const GGS_templateInstructionIfAST * p = (const GGS_templateInstructionIfAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_templateInstructionIfAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionIfAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_templateInstructionIfAST_2E_weak::objectCompare (const GGS_templateInstructionIfAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -16160,6 +15971,278 @@ GGS_abstractLexicalRuleAST GGS_abstractLexicalRuleAST::extractObject (const GGS_
       result = *p ;
     }else{
       inCompiler->castError ("abstractLexicalRuleAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_abstractLexicalRuleAST_2E_weak::objectCompare (const GGS_abstractLexicalRuleAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST_2E_weak::GGS_abstractLexicalRuleAST_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST_2E_weak & GGS_abstractLexicalRuleAST_2E_weak::operator = (const GGS_abstractLexicalRuleAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST_2E_weak::GGS_abstractLexicalRuleAST_2E_weak (const GGS_abstractLexicalRuleAST & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST_2E_weak GGS_abstractLexicalRuleAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_abstractLexicalRuleAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST GGS_abstractLexicalRuleAST_2E_weak::unwrappedValue (void) const {
+  GGS_abstractLexicalRuleAST result ;
+  if (isValid ()) {
+    const cPtr_abstractLexicalRuleAST * p = (cPtr_abstractLexicalRuleAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_abstractLexicalRuleAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST GGS_abstractLexicalRuleAST_2E_weak::bang_abstractLexicalRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_abstractLexicalRuleAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_abstractLexicalRuleAST) ;
+      result = GGS_abstractLexicalRuleAST ((cPtr_abstractLexicalRuleAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @abstractLexicalRuleAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ("abstractLexicalRuleAST.weak",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_abstractLexicalRuleAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_abstractLexicalRuleAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_abstractLexicalRuleAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractLexicalRuleAST_2E_weak GGS_abstractLexicalRuleAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_abstractLexicalRuleAST_2E_weak result ;
+  const GGS_abstractLexicalRuleAST_2E_weak * p = (const GGS_abstractLexicalRuleAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_abstractLexicalRuleAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("abstractLexicalRuleAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@lexicalRuleListAST useLoopLocalVar'
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool extensionGetter_useLoopLocalVar (const GGS_lexicalRuleListAST & inObject,
+                                          Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bool result_result ; // Returned variable
+  result_result = GGS_bool (false) ;
+  const GGS_lexicalRuleListAST temp_0 = inObject ;
+  UpEnumerator_lexicalRuleListAST enumerator_2838 (temp_0) ;
+  bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
+  if (enumerator_2838.hasCurrentObject () && bool_1) {
+    while (enumerator_2838.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2838.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 74)) ;
+      enumerator_2838.gotoNextObject () ;
+      if (enumerator_2838.hasCurrentObject ()) {
+        bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
+      }
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalImplicitRuleAST_2E_weak::objectCompare (const GGS_lexicalImplicitRuleAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST_2E_weak::GGS_lexicalImplicitRuleAST_2E_weak (void) :
+GGS_abstractLexicalRuleAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST_2E_weak & GGS_lexicalImplicitRuleAST_2E_weak::operator = (const GGS_lexicalImplicitRuleAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST_2E_weak::GGS_lexicalImplicitRuleAST_2E_weak (const GGS_lexicalImplicitRuleAST & inSource) :
+GGS_abstractLexicalRuleAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST_2E_weak GGS_lexicalImplicitRuleAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_lexicalImplicitRuleAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST GGS_lexicalImplicitRuleAST_2E_weak::unwrappedValue (void) const {
+  GGS_lexicalImplicitRuleAST result ;
+  if (isValid ()) {
+    const cPtr_lexicalImplicitRuleAST * p = (cPtr_lexicalImplicitRuleAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_lexicalImplicitRuleAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST GGS_lexicalImplicitRuleAST_2E_weak::bang_lexicalImplicitRuleAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_lexicalImplicitRuleAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalImplicitRuleAST) ;
+      result = GGS_lexicalImplicitRuleAST ((cPtr_lexicalImplicitRuleAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalImplicitRuleAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ("lexicalImplicitRuleAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_abstractLexicalRuleAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalImplicitRuleAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalImplicitRuleAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalImplicitRuleAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalImplicitRuleAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalImplicitRuleAST_2E_weak GGS_lexicalImplicitRuleAST_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_lexicalImplicitRuleAST_2E_weak result ;
+  const GGS_lexicalImplicitRuleAST_2E_weak * p = (const GGS_lexicalImplicitRuleAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalImplicitRuleAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalImplicitRuleAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

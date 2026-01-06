@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-class @setterCallInstructionAST : @semanticInstructionAST {
+final class @setterCallInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mReceiverStructProperties
@@ -30,7 +30,7 @@ class @setterCallInstructionAST : @semanticInstructionAST {
 
 //································································································*
 
-class @selfSetterCallInstructionAST : @semanticInstructionAST {
+final class @selfSetterCallInstructionAST : @semanticInstructionAST {
   private let @lstring mSetterName
   private let @actualParameterListAST mActualParameterList
 }
@@ -397,7 +397,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
+final class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @string mReceiverCppName
   private let @string mReceiverBaseName
@@ -413,7 +413,7 @@ class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
 
 //································································································*
 
-class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
+final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mSelfCppName
   private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName

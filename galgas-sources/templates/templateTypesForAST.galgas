@@ -54,7 +54,7 @@ list @templateExpressionListAST {
 //   Class Function
 //--------------------------------------------------------------------------------------------------
 
-class @templateClassFunctionAST : @templateExpressionAST {
+final class @templateClassFunctionAST : @templateExpressionAST {
   private let @lstring mTypeName
   private let @lstring mClassFunctionName
   private let @templateExpressionListAST mExpressionList
@@ -64,7 +64,7 @@ class @templateClassFunctionAST : @templateExpressionAST {
 //   F I L E W R A P P E R    T E M P L A T E     C A L L
 //--------------------------------------------------------------------------------------------------
 
-class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
+final class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
   private let @lstring mFileWrapperName
   private let @lstring mTemplateName
   private let @templateExpressionListAST mOutExpressionList
@@ -74,7 +74,7 @@ class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 //   E X T E N S I O N    T E M P L A T E     C A L L
 //--------------------------------------------------------------------------------------------------
 
-class @templateExtensionTemplateCallAST : @templateExpressionAST {
+final class @templateExtensionTemplateCallAST : @templateExpressionAST {
   private let @templateExpressionAST mExpressionValue
   private let @lstring mTemplateName
   private let @templateExpressionListAST mOutExpressionList
@@ -84,7 +84,7 @@ class @templateExtensionTemplateCallAST : @templateExpressionAST {
 //   B O O L E A N    O P E R A T I O N S
 //--------------------------------------------------------------------------------------------------
 
-class @templateAndOperationAST : @templateExpressionAST {
+final class @templateAndOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -92,7 +92,7 @@ class @templateAndOperationAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateOrOperationAST : @templateExpressionAST {
+final class @templateOrOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -100,7 +100,7 @@ class @templateOrOperationAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateXorOperationAST : @templateExpressionAST {
+final class @templateXorOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -108,44 +108,44 @@ class @templateXorOperationAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateTrueBoolAST : @templateExpressionAST {
+final class @templateTrueBoolAST : @templateExpressionAST {
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateFalseBoolAST : @templateExpressionAST {
+final class @templateFalseBoolAST : @templateExpressionAST {
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLiteralStringExpressionAST : @templateExpressionAST {
+final class @templateLiteralStringExpressionAST : @templateExpressionAST {
   private let @stringlist mLiteralStringList
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLiteralUIntExpressionAST : @templateExpressionAST {
+final class @templateLiteralUIntExpressionAST : @templateExpressionAST {
   private let @lbigint mLiteralInt
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLiteralCharExpressionAST : @templateExpressionAST {
+final class @templateLiteralCharExpressionAST : @templateExpressionAST {
   private let @lchar mLiteralChar
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLiteralDoubleExpressionAST : @templateExpressionAST {
+final class @templateLiteralDoubleExpressionAST : @templateExpressionAST {
   private let @ldouble mLiteralDouble
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
+final class @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
   private let @lstring mStructFieldName
@@ -153,21 +153,21 @@ class @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateNotOperatorAST : @templateExpressionAST {
+final class @templateNotOperatorAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLogicalNegateAST : @templateExpressionAST {
+final class @templateLogicalNegateAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateOptionAccessAST : @templateExpressionAST {
+final class @templateOptionAccessAST : @templateExpressionAST {
   private let @lstring mOptionComponentName
   private let @lstring mOptionName
   private let @lstring mGetterName
@@ -175,7 +175,7 @@ class @templateOptionAccessAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateTestDynamicClassAST : @templateExpressionAST {
+final class @templateTestDynamicClassAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
   private let @location mEndOfReceiverExpression
   private let @dynamicTypeComparisonKind mTypeComparisonKind
@@ -186,7 +186,7 @@ class @templateTestDynamicClassAST : @templateExpressionAST {
 //   F U N C T I O N    C A L L
 //--------------------------------------------------------------------------------------------------
 
-class @templateFunctionCallAST : @templateExpressionAST {
+final class @templateFunctionCallAST : @templateExpressionAST {
   private let @lstring mFunctionName
   private let @templateExpressionListAST mExpressionList
 }
@@ -195,7 +195,7 @@ class @templateFunctionCallAST : @templateExpressionAST {
 //   S I M P L E    V A R I A B L E
 //--------------------------------------------------------------------------------------------------
 
-class @templateVarInExpressionAST : @templateExpressionAST {
+final class @templateVarInExpressionAST : @templateExpressionAST {
   private let @lstring mVarName
 }
 
@@ -203,7 +203,7 @@ class @templateVarInExpressionAST : @templateExpressionAST {
 //   A D D I T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateAddOperationAST : @templateExpressionAST {
+final class @templateAddOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -213,7 +213,7 @@ class @templateAddOperationAST : @templateExpressionAST {
 //   S U B S T R A C T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateSubOperationAST : @templateExpressionAST {
+final class @templateSubOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -223,7 +223,7 @@ class @templateSubOperationAST : @templateExpressionAST {
 //   M U L T I P L I C A T I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateMultiplyOperationAST : @templateExpressionAST {
+final class @templateMultiplyOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -233,7 +233,7 @@ class @templateMultiplyOperationAST : @templateExpressionAST {
 //   D I V I S I O N    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateDivideOperationAST : @templateExpressionAST {
+final class @templateDivideOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -243,7 +243,7 @@ class @templateDivideOperationAST : @templateExpressionAST {
 //   M O D U L O    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateModuloOperationAST : @templateExpressionAST {
+final class @templateModuloOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -253,7 +253,7 @@ class @templateModuloOperationAST : @templateExpressionAST {
 //   U N A R Y   -    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateUnaryMinusOperationAST : @templateExpressionAST {
+final class @templateUnaryMinusOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
@@ -262,7 +262,7 @@ class @templateUnaryMinusOperationAST : @templateExpressionAST {
 //  ==    O P E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-class @templateEqualTestAST : @templateExpressionAST {
+final class @templateEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -270,7 +270,7 @@ class @templateEqualTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateNonEqualTestAST : @templateExpressionAST {
+final class @templateNonEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -278,7 +278,7 @@ class @templateNonEqualTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateStrictInfTestAST : @templateExpressionAST {
+final class @templateStrictInfTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -286,7 +286,7 @@ class @templateStrictInfTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInfOrEqualTestAST : @templateExpressionAST {
+final class @templateInfOrEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -294,7 +294,7 @@ class @templateInfOrEqualTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateStrictSupTestAST : @templateExpressionAST {
+final class @templateStrictSupTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -302,7 +302,7 @@ class @templateStrictSupTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateSupOrEqualTestAST : @templateExpressionAST {
+final class @templateSupOrEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -310,7 +310,7 @@ class @templateSupOrEqualTestAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateLeftShiftOperationAST : @templateExpressionAST {
+final class @templateLeftShiftOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -318,7 +318,7 @@ class @templateLeftShiftOperationAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateRightShiftOperationAST : @templateExpressionAST {
+final class @templateRightShiftOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
@@ -330,20 +330,20 @@ class @templateRightShiftOperationAST : @templateExpressionAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionStringAST : @templateInstructionAST {
+final class @templateInstructionStringAST : @templateInstructionAST {
   private let @string mTemplateString
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionExpressionAST : @templateInstructionAST {
+final class @templateInstructionExpressionAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateBlockInstructionAST : @templateInstructionAST {
+final class @templateBlockInstructionAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
   private let @location mLocation
   private let @templateInstructionListAST mBlockInstructionList
@@ -351,12 +351,12 @@ class @templateBlockInstructionAST : @templateInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionGetColumnLocationAST : @templateInstructionAST {
+final class @templateInstructionGetColumnLocationAST : @templateInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
+final class @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -368,7 +368,7 @@ list @templateInstructionIfBranchListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @templateInstructionIfAST : @templateInstructionAST {
+final class @templateInstructionIfAST : @templateInstructionAST {
   private let @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
   private let @templateInstructionListAST mElseInstructionList
 }

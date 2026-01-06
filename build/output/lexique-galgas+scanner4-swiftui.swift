@@ -334,11 +334,8 @@ class ScannerFor_galgasScanner4 : SWIFT_Scanner {
   private var mLexicalAttribute_charValue : UInt32 = 0
   private var mLexicalAttribute_floatValue : Double = 0.0
   private var mLexicalAttribute_identifierString : String = ""
-  private var mLexicalAttribute_sint32value : Int32 = 0
-  private var mLexicalAttribute_sint64value : Int64 = 0
   private var mLexicalAttribute_tokenString : String = ""
   private var mLexicalAttribute_uint32value : UInt32 = 0
-  private var mLexicalAttribute_uint64value : UInt64 = 0
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1582,11 +1579,8 @@ class ScannerFor_galgasScanner4 : SWIFT_Scanner {
     self.mLexicalAttribute_charValue = 0
     self.mLexicalAttribute_floatValue = 0.0
     self.mLexicalAttribute_identifierString = ""
-    self.mLexicalAttribute_sint32value = 0
-    self.mLexicalAttribute_sint64value = 0
     self.mLexicalAttribute_tokenString = ""
     self.mLexicalAttribute_uint32value = 0
-    self.mLexicalAttribute_uint64value = 0
     var tokenCode : UInt16 = 0
     let startLocation = self.currentLocation
     if scanningOk && (self.testForChar_isUnicodeLetter ()) {

@@ -3,16 +3,16 @@
 abstract class @cExpression {
 }
 
-class @cConst : @cExpression {
+final class @cConst : @cExpression {
   public let @luint mValue
 }
   
-class @cAdd : @cExpression {
+final class @cAdd : @cExpression {
   public let @cExpression mLeftExpression
   public let @cExpression mRightExpression
 }
   
-class @cMult : @cExpression {
+final class @cMult : @cExpression {
   public let @cExpression mLeftExpression
   public let @cExpression mRightExpression
 }

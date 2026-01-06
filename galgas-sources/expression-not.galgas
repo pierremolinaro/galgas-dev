@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @notExpressionAST : @semanticExpressionAST {
+final class @notExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }
@@ -116,7 +116,7 @@ override method @notExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @notExpressionForGeneration : @semanticExpressionForGeneration {
+final class @notExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 }
 

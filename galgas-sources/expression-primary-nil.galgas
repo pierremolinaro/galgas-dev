@@ -51,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-class @nilExpressionAST : @semanticExpressionAST {
+final class @nilExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -90,7 +90,7 @@ class @nilExpressionAST : @semanticExpressionAST {
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @nilExpressionForGeneration : @semanticExpressionForGeneration {
+final class @nilExpressionForGeneration : @semanticExpressionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

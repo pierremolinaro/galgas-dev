@@ -37,7 +37,7 @@ list @instructionList {
 
 //--------------------------------------------------------------------------------------------------
 
-class @penUp : @instruction {
+final class @penUp : @instruction {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ override method @penUp codeDisplay
 
 //--------------------------------------------------------------------------------------------------
 
-class @penDown : @instruction {
+final class @penDown : @instruction {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ override method @penDown codeDisplay
 
 //--------------------------------------------------------------------------------------------------
 
-class @rotate : @instruction {
+final class @rotate : @instruction {
   public let @luint mAngle
 }
 
@@ -89,7 +89,7 @@ override method @rotate codeDisplay
 
 //--------------------------------------------------------------------------------------------------
 
-class @forward : @instruction {
+final class @forward : @instruction {
   public let @luint mLength
 }
 

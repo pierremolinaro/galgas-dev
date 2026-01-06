@@ -145,7 +145,7 @@ list @sortedListSortDescriptorListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-class @sortedListDeclarationAST : @semanticDeclarationAST {
+final class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @sortedListSortDescriptorListAST mSortDescriptorList
@@ -450,7 +450,7 @@ list @sortDescriptorListForGeneration {
 
 //································································································
 
-class @sortedListTypeForGeneration : @semanticTypeForGeneration {
+final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
   private let @sortDescriptorListForGeneration mSortDescriptorList

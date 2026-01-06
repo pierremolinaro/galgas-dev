@@ -148,7 +148,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-class @overridingExtensionMethodAST : @semanticDeclarationAST {
+final class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionMethodName
@@ -356,7 +356,7 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mBaseTypeName
   private let @string mExtensionMethodName

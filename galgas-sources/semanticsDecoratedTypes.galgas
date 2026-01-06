@@ -80,7 +80,7 @@ list @semanticExpressionListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @castInExpressionForGeneration : @semanticExpressionForGeneration {
+final class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mReceiverExpression
   public let @string mTypeName
   public let @unifiedTypeMapEntry mCastType
@@ -143,13 +143,13 @@ abstract method @actualParameterForGeneration generatePoisonedVariables
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputActualParameterForGeneration : @actualParameterForGeneration {
+final class @outputActualParameterForGeneration : @actualParameterForGeneration {
   public let @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
+final class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mOutputInputVariableCppName
   public let @lstringlist mStructAttributeList
   public let @unifiedTypeMapEntryList mTypeList
@@ -157,14 +157,14 @@ class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputActualParameterForGeneration : @actualParameterForGeneration {
+final class @inputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-class @inputJokerParameterForGeneration : @actualParameterForGeneration {
+final class @inputJokerParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
@@ -197,7 +197,7 @@ list @semanticInstructionListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
+final class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
 }
 
@@ -367,7 +367,7 @@ list @nonTerminalToAddList {
 //
 //--------------------------------------------------------------------------------------------------
 
-class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration { // §§
   public let @string mFunctionName
   public let @formalInputParameterListForGeneration mFormalArgumentList
   public let @unifiedTypeMapEntry mReturnType
@@ -379,7 +379,7 @@ class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeade
 //
 //--------------------------------------------------------------------------------------------------
 
-class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
+final class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   public let @string mResultVariableCppName
   public let @semanticInstructionListForGeneration mFunctionInstructionList
 }
@@ -390,7 +390,7 @@ class @functionImplementationForGeneration : @functionPrototypeDeclarationForGen
 //
 //--------------------------------------------------------------------------------------------------
 
-class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
   public let @unifiedTypeMapEntry mReturnType
   public let @string mResultVariableCppName
@@ -429,7 +429,7 @@ list @filewrapperTemplateListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperAbsolutePath
   public let @wrapperFileMap mFilewrapperFileMap
@@ -443,7 +443,7 @@ class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGe
 //
 //--------------------------------------------------------------------------------------------------
 
-class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+final class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @stringset mInclusionSet
   public let @string mImplementationString
 }

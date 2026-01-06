@@ -17,7 +17,7 @@ abstract class @abstractTestExtensionSetter {
   public var @uint mInteger
 }
 
-class @TestExtensionSetter : @abstractTestExtensionSetter {
+final class @TestExtensionSetter : @abstractTestExtensionSetter {
   public var @string mString
 }
 
@@ -32,7 +32,7 @@ proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
 //--- Ces instructions doivent engendrer une erreur de compilation
 }
 
-class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
+final class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
   public let @uint mOtherInteger
 }
 
@@ -64,9 +64,9 @@ private proc typeCastInSetterCall () {
 
 }
 
-class @baseClassForTypeCastInSetterCall { }
+final class @baseClassForTypeCastInSetterCall { }
 
-class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall { }
+final class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall { }
 
 proc @inheritedClassForTypeCastInSetterCall.unSetter() {
   println ("Appel @inheritedClassForTypeCastInSetterCall unSetter")

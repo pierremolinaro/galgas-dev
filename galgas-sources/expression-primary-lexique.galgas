@@ -19,7 +19,7 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
+final class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
   private let @lstring mLexiqueComponentName
   private let @lstring mLexiqueGetterName
 }
@@ -111,7 +111,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
+final class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
   private let @string mLexiqueComponentName
   private let @string mLexiqueGetterName
 }
