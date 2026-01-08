@@ -10,12 +10,28 @@ struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Binding private var mDocument : ProjectDocument
-  private let mProjectFileURL : URL
-  @StateObject var mProjectTextModel : SWIFT_SharedTextModel
+  enum SidebarSelectedItem : CaseIterable {
+    case fileList
+    case compileLog
+
+    var systemImageName: String {
+      switch self {
+      case .fileList: return "folder"
+      case .compileLog: return "hammer"
+      }
+    }
+
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mProjectFileURL : URL
+
+  @State private var mSidebarSelectedItem = SidebarSelectedItem.fileList
+  @StateObject var mProjectTextModel : SWIFT_SharedTextModel
+  @StateObject var mProjectCompiler = ProjectCompiler ()
+
+  @Binding private var mDocument : ProjectDocument
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,18 +82,44 @@ struct ProjectDocumentView : View {
 
   @ViewBuilder private var sidebarView : some View {
     VStack {
-      Button ("Project") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
-      ScrollViewReader { (proxy : ScrollViewProxy) in
-        List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
-          ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
-            SWIFT_FileNodeView (node: child, selection: self.$mRootDirectoryNode.mSelectedFileNodeID)
+      Picker("", selection: self.$mSidebarSelectedItem) {
+        ForEach (SidebarSelectedItem.allCases, id: \.self) { Image (systemName: $0.systemImageName).tag($0) }
+      }.pickerStyle (.segmented)
+      switch self.mSidebarSelectedItem {
+      case .fileList :
+        VStack {
+          Button ("Project") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
+          ScrollViewReader { (proxy : ScrollViewProxy) in
+            List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
+              ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
+                SWIFT_FileNodeView (node: child, selection: self.$mRootDirectoryNode.mSelectedFileNodeID)
+              }
+            }
+            .onChange (of: self.mRootDirectoryNode.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
+            .listStyle (.sidebar)
+            .frame (minWidth: 400, minHeight: 500)
           }
         }
-        .onChange (of: self.mRootDirectoryNode.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
-        .listStyle (.sidebar)
-        .frame (minWidth: 400, minHeight: 500)
+      case .compileLog :
+        TextEditor (text: .constant (self.mProjectCompiler.compileLog))
       }
     }
+    .toolbar {
+      Button (action: self.compileProject) { Label ("Compile", systemImage: "hammer") }
+      .help (LocalizedStringKey ("Compile the project"))
+      .disabled (self.mProjectCompiler.isCompilingProject)
+      Button (action: self.mProjectCompiler.cancelCompilation) { Label ("Stop", systemImage: "stop.circle") }
+      .help (LocalizedStringKey ("Cancel compilation"))
+      .disabled (!self.mProjectCompiler.isCompilingProject)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func compileProject () {
+    self.mRootDirectoryNode.saveAllEditedFiles ()
+    self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
+    self.mProjectCompiler.compile (projectURL: self.mProjectFileURL)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

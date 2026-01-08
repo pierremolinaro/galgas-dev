@@ -1,6 +1,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
+import Foundation
+
+//--------------------------------------------------------------------------------------------------
+
 func enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% () -> [SWIFT_CommandLineOption] {
   var array = [SWIFT_CommandLineOption] ()
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do

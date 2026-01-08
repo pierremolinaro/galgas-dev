@@ -1,0 +1,224 @@
+
+//--------------------------------------------------------------------------------------------------
+
+import SwiftUI
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let SELECTED_COMPILER_TOOL_INDEX_PREFKEY = "selected.compiler.tool.index"
+%for (mOptionIdentifier * * * *) in BOOL_OPTION_SORTED_LIST do
+  %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+end
+for (mOptionIdentifier * * * *) in UINT_OPTION_SORTED_LIST do
+  %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+end
+for (mOptionIdentifier * * * *) in STRING_OPTION_SORTED_LIST do
+  %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+end
+for (mOptionIdentifier * * * *) in STRING_LIST_OPTION_SORTED_LIST do
+  %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+end%
+//--------------------------------------------------------------------------------------------------
+//   Options View
+//--------------------------------------------------------------------------------------------------
+
+struct OptionView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mCompilerTools : [CompilerTool] = compilerTools ()
+  @AppStorage(SELECTED_COMPILER_TOOL_INDEX_PREFKEY) private var mSelectedCompilerIndex = 0
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage("prefix.by.time.utility") private var mPrefixByTimeUtility = false
+  @State private var mCommandLine = compilerCommandExplained ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Bool options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
+  %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : Bool = %!mDefaultValue%\n%
+end%
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // UInt options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
+  %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : UInt = %!mDefaultValue%\n%
+end%
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // String options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
+  %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : String = %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+end%
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // String list options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
+  %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : [String] = %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+end%
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Body
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ViewBuilder var body : some View {
+    VStack {
+      HStack {
+        Picker("Compiler", selection: self.$mSelectedCompilerIndex) {
+          ForEach (self.mCompilerTools, id: \.id) { tool in
+            Text (tool.url.lastPathComponent).tag (tool.id)
+          }
+        }.pickerStyle (.automatic)
+        Toggle ("Prefix by 'time' utility", isOn: self.$mPrefixByTimeUtility)
+        Spacer ()
+      }
+      ScrollView {
+        VStack (alignment: .leading) {
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
+  %          Toggle (%![mComment utf8RepresentationEscapingQuestionMark]%, isOn: self.$%!mOptionIdentifier%)\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
+  %          HStack { Text (%![mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", value: self.$%!mOptionIdentifier%, format: .number.precision (.fractionLength (0)))\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
+  %          HStack { Text (%![mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!mOptionIdentifier%) }\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
+  %          HStack { Text (%![mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!mOptionIdentifier%)\n%
+end
+%        }.padding ()
+      }.background (.white)
+      HStack { Text ("Build Command") ; Spacer () }
+      TextEditor (text: .constant (self.mCommandLine))
+      .font (.system (size: 12).monospaced())
+      .frame (height: 64)
+    }.padding ()
+    .onReceive (NotificationCenter.default.publisher (for: UserDefaults.didChangeNotification)) { _ in
+      self.mCommandLine = compilerCommandExplained ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private func compilerCommandExplained () -> String {
+  let command : CommandLineToolInvocation = commandLineToolInvocation ()
+  var result = command.tool.lastPathComponent
+  for arg in command.arguments {
+    result += " " + arg
+  }
+  return result
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct CommandLineToolInvocation {
+  let tool : URL
+  let arguments : [String]
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func commandLineToolInvocation () -> CommandLineToolInvocation {
+  let ud = UserDefaults.standard
+  let compilerTools : [CompilerTool] = compilerTools ()
+  let selectedCompilerIndex : Int = ud.integer (forKey: SELECTED_COMPILER_TOOL_INDEX_PREFKEY)
+  let tool = compilerTools [selectedCompilerIndex].url
+  var arguments = [String] ()
+%for (mOptionIdentifier * mOptionString * mDefaultValue) in BOOL_OPTION_SORTED_LIST do
+    %  if ud.bool (forKey: %!mOptionIdentifier%_PREFKEY) {\n%
+    %    arguments.append (%!["--" + mOptionString utf8RepresentationEscapingQuestionMark]%)\n%
+    %  }\n%
+end
+for (mOptionIdentifier * mOptionString * mDefaultValue) in UINT_OPTION_SORTED_LIST do
+    %  do{\n%
+    %    let v : Int = ud.integer (forKey: %!mOptionIdentifier%_PREFKEY)\n%
+    %    if v != %!mDefaultValue% {\n%
+    %      arguments.append (%!["--" + mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + String (v))\n%
+    %    }\n%
+    %  }\n%
+end
+for (mOptionIdentifier * mOptionString * mDefaultValue) in STRING_OPTION_SORTED_LIST do
+    %  do{\n%
+    %    let v : String = ud.string (forKey: %!mOptionIdentifier%_PREFKEY) ?? ""\n%
+    %    if v != %![mDefaultValue utf8RepresentationEscapingQuestionMark]% {\n%
+    %      arguments.append (%!["--" + mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + v)\n%
+    %    }\n%
+    %  }\n%
+end
+for (mOptionIdentifier * mOptionString * mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
+    %  do{\n%
+    %    let v : String = ud.string (forKey: %!mOptionIdentifier%_PREFKEY) ?? ""\n%
+    %    if v != %![mDefaultValue utf8RepresentationEscapingQuestionMark]% {\n%
+    %      arguments.append (%!["--" + mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + v)\n%
+    %    }\n%
+    %  }\n%
+end
+%  return CommandLineToolInvocation (tool: tool, arguments: arguments)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
+  %  array.append (SWIFT_CommandLineOption (\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .bool,\n%
+  %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %  ))\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
+  %  array.append (SWIFT_CommandLineOption (\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .uint,\n%
+  %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %  ))\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
+  %  array.append (SWIFT_CommandLineOption (\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .string,\n%
+  %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %  ))\n%
+end
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
+  %  array.append (SWIFT_CommandLineOption (\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .stringList,\n%
+  %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %  ))\n%
+end
+%  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "quiet_output",
+    commandChar: "q",
+    commandString: "quiet",
+    comment: "Quiet output"
+  ))
+  return array
+}
+
+//--------------------------------------------------------------------------------------------------
+

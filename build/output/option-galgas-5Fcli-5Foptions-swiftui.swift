@@ -1,0 +1,479 @@
+//--- START OF USER ZONE 1
+
+
+//--- END OF USER ZONE 1
+
+//--------------------------------------------------------------------------------------------------
+
+import SwiftUI
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let SELECTED_COMPILER_TOOL_INDEX_PREFKEY = "selected.compiler.tool.index"
+fileprivate let propertyAccessRequiresSelf_PREFKEY = "galgas_cli_options:propertyAccessRequiresSelf"
+fileprivate let checkEntityUsefulness_PREFKEY = "galgas_cli_options:checkEntityUsefulness"
+fileprivate let displayUnicodeLexicalTestFunctions_PREFKEY = "galgas_cli_options:displayUnicodeLexicalTestFunctions"
+fileprivate let emitClassGraph_PREFKEY = "galgas_cli_options:emitClassGraph"
+fileprivate let emitSyntaxDiagrams_PREFKEY = "galgas_cli_options:emitSyntaxDiagrams"
+fileprivate let errorAnomynousForInstructionEnumeratedObject_PREFKEY = "galgas_cli_options:errorAnomynousForInstructionEnumeratedObject"
+fileprivate let errorObsoleteGetterCall_PREFKEY = "galgas_cli_options:errorObsoleteGetterCall"
+fileprivate let errorPropertyGetterCall_PREFKEY = "galgas_cli_options:errorPropertyGetterCall"
+fileprivate let errorEllipsisInEnumeratedObject_PREFKEY = "galgas_cli_options:errorEllipsisInEnumeratedObject"
+fileprivate let errorOnGetterCallWithNoArgument_PREFKEY = "galgas_cli_options:errorOnGetterCallWithNoArgument"
+fileprivate let errorOldStyleCollectionInitializer_PREFKEY = "galgas_cli_options:errorOldStyleCollectionInitializer"
+fileprivate let errorOldStyleLocalVarDeclaration_PREFKEY = "galgas_cli_options:errorOldStyleLocalVarDeclaration"
+fileprivate let errorOldStylePropertyDeclaration_PREFKEY = "galgas_cli_options:errorOldStylePropertyDeclaration"
+fileprivate let errorUsingNewInsteadOfInit_PREFKEY = "galgas_cli_options:errorUsingNewInsteadOfInit"
+fileprivate let generateManyFiles_PREFKEY = "galgas_cli_options:generateManyFiles"
+fileprivate let generateOneHeader_PREFKEY = "galgas_cli_options:generateOneHeader"
+fileprivate let outputHTMLgrammarFile_PREFKEY = "galgas_cli_options:outputHTMLgrammarFile"
+fileprivate let outputHTMLTypeListFile_PREFKEY = "galgas_cli_options:outputHTMLTypeListFile"
+fileprivate let printPredefinedLexicalActions_PREFKEY = "galgas_cli_options:printPredefinedLexicalActions"
+fileprivate let check_big_int_PREFKEY = "galgas_cli_options:check_big_int"
+fileprivate let warningNotGalgas4Feature_PREFKEY = "galgas_cli_options:warningNotGalgas4Feature"
+fileprivate let create_project_PREFKEY = "galgas_cli_options:create_project"
+fileprivate let extractLIBPMOption_PREFKEY = "galgas_cli_options:extractLIBPMOption"
+fileprivate let cppCompile_PREFKEY = "galgas_cli_options:cppCompile"
+
+//--------------------------------------------------------------------------------------------------
+//   Options View
+//--------------------------------------------------------------------------------------------------
+
+struct OptionView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mCompilerTools : [CompilerTool] = compilerTools ()
+  @AppStorage(SELECTED_COMPILER_TOOL_INDEX_PREFKEY) private var mSelectedCompilerIndex = 0
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage("prefix.by.time.utility") private var mPrefixByTimeUtility = false
+  @State private var mCommandLine = compilerCommandExplained ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Bool options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage(propertyAccessRequiresSelf_PREFKEY) private var propertyAccessRequiresSelf : Bool = false
+  @AppStorage(checkEntityUsefulness_PREFKEY) private var checkEntityUsefulness : Bool = false
+  @AppStorage(displayUnicodeLexicalTestFunctions_PREFKEY) private var displayUnicodeLexicalTestFunctions : Bool = false
+  @AppStorage(emitClassGraph_PREFKEY) private var emitClassGraph : Bool = false
+  @AppStorage(emitSyntaxDiagrams_PREFKEY) private var emitSyntaxDiagrams : Bool = false
+  @AppStorage(errorAnomynousForInstructionEnumeratedObject_PREFKEY) private var errorAnomynousForInstructionEnumeratedObject : Bool = false
+  @AppStorage(errorObsoleteGetterCall_PREFKEY) private var errorObsoleteGetterCall : Bool = false
+  @AppStorage(errorPropertyGetterCall_PREFKEY) private var errorPropertyGetterCall : Bool = false
+  @AppStorage(errorEllipsisInEnumeratedObject_PREFKEY) private var errorEllipsisInEnumeratedObject : Bool = false
+  @AppStorage(errorOnGetterCallWithNoArgument_PREFKEY) private var errorOnGetterCallWithNoArgument : Bool = false
+  @AppStorage(errorOldStyleCollectionInitializer_PREFKEY) private var errorOldStyleCollectionInitializer : Bool = false
+  @AppStorage(errorOldStyleLocalVarDeclaration_PREFKEY) private var errorOldStyleLocalVarDeclaration : Bool = false
+  @AppStorage(errorOldStylePropertyDeclaration_PREFKEY) private var errorOldStylePropertyDeclaration : Bool = false
+  @AppStorage(errorUsingNewInsteadOfInit_PREFKEY) private var errorUsingNewInsteadOfInit : Bool = false
+  @AppStorage(generateManyFiles_PREFKEY) private var generateManyFiles : Bool = false
+  @AppStorage(generateOneHeader_PREFKEY) private var generateOneHeader : Bool = false
+  @AppStorage(outputHTMLgrammarFile_PREFKEY) private var outputHTMLgrammarFile : Bool = false
+  @AppStorage(outputHTMLTypeListFile_PREFKEY) private var outputHTMLTypeListFile : Bool = false
+  @AppStorage(printPredefinedLexicalActions_PREFKEY) private var printPredefinedLexicalActions : Bool = false
+  @AppStorage(check_big_int_PREFKEY) private var check_big_int : Bool = false
+  @AppStorage(warningNotGalgas4Feature_PREFKEY) private var warningNotGalgas4Feature : Bool = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // UInt options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // String options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage(create_project_PREFKEY) private var create_project : String = ""
+  @AppStorage(extractLIBPMOption_PREFKEY) private var extractLIBPMOption : String = ""
+  @AppStorage(cppCompile_PREFKEY) private var cppCompile : String = ""
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // String list options
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Body
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ViewBuilder var body : some View {
+    VStack {
+      HStack {
+        Picker("Compiler", selection: self.$mSelectedCompilerIndex) {
+          ForEach (self.mCompilerTools, id: \.id) { tool in
+            Text (tool.url.lastPathComponent).tag (tool.id)
+          }
+        }.pickerStyle (.automatic)
+        Toggle ("Prefix by 'time' utility", isOn: self.$mPrefixByTimeUtility)
+        Spacer ()
+      }
+      ScrollView {
+        VStack (alignment: .leading) {
+          Toggle ("'self' is required for accessing properties in getter, setter and methods", isOn: self.$propertyAccessRequiresSelf)
+          Toggle ("Check Entity Usefulness", isOn: self.$checkEntityUsefulness)
+          Toggle ("Display Unicode Lexical Test Functions", isOn: self.$displayUnicodeLexicalTestFunctions)
+          Toggle ("Emit class graph in dot file", isOn: self.$emitClassGraph)
+          Toggle ("Emit grammar syntax diagrams in TEX files", isOn: self.$emitSyntaxDiagrams)
+          Toggle ("Error on anonymous 'for' instruction enumerated object ('for () in ...')", isOn: self.$errorAnomynousForInstructionEnumeratedObject)
+          Toggle ("Error on call of an obsolete getter", isOn: self.$errorObsoleteGetterCall)
+          Toggle ("Error on calling property getter (instead of dot notation)", isOn: self.$errorPropertyGetterCall)
+          Toggle ("Error on ellipsis in enumerated object ('for (x y ...) in xxx')", isOn: self.$errorEllipsisInEnumeratedObject)
+          Toggle ("Error on getter call; with no argument (GGS4, suppress parenthesis)", isOn: self.$errorOnGetterCallWithNoArgument)
+          Toggle ("Error on old style collection initializer", isOn: self.$errorOldStyleCollectionInitializer)
+          Toggle ("Error on old style local variable declaration", isOn: self.$errorOldStyleLocalVarDeclaration)
+          Toggle ("Error on old style property declaration", isOn: self.$errorOldStylePropertyDeclaration)
+          Toggle ("GGS3: error on using 'new' instead of 'init'", isOn: self.$errorUsingNewInsteadOfInit)
+          Toggle ("Generate many C++ implementation files", isOn: self.$generateManyFiles)
+          Toggle ("Generate one C++ header file for all declarations", isOn: self.$generateOneHeader)
+          Toggle ("Output a HTML file for every grammar component", isOn: self.$outputHTMLgrammarFile)
+          Toggle ("Output a HTML file that contains all defined types", isOn: self.$outputHTMLTypeListFile)
+          Toggle ("Print the list of predefined lexical routines and functions", isOn: self.$printPredefinedLexicalActions)
+          Toggle ("Run bit integers checks", isOn: self.$check_big_int)
+          Toggle ("Warns on feature not handled in galgas 4", isOn: self.$warningNotGalgas4Feature)
+          HStack { Text ("Create a new GALGAS Project") ; TextField ("", text: self.$create_project) }
+          HStack { Text ("Extract embedded LIBPM at given path") ; TextField ("", text: self.$extractLIBPMOption) }
+          HStack { Text ("Perform C++ compilation on 'string' target") ; TextField ("", text: self.$cppCompile) }
+        }.padding ()
+      }.background (.white)
+      HStack { Text ("Build Command") ; Spacer () }
+      TextEditor (text: .constant (self.mCommandLine))
+      .font (.system (size: 12).monospaced())
+      .frame (height: 64)
+    }.padding ()
+    .onReceive (NotificationCenter.default.publisher (for: UserDefaults.didChangeNotification)) { _ in
+      self.mCommandLine = compilerCommandExplained ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private func compilerCommandExplained () -> String {
+  let command : CommandLineToolInvocation = commandLineToolInvocation ()
+  var result = command.tool.lastPathComponent
+  for arg in command.arguments {
+    result += " " + arg
+  }
+  return result
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct CommandLineToolInvocation {
+  let tool : URL
+  let arguments : [String]
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func commandLineToolInvocation () -> CommandLineToolInvocation {
+  let ud = UserDefaults.standard
+  let compilerTools : [CompilerTool] = compilerTools ()
+  let selectedCompilerIndex : Int = ud.integer (forKey: SELECTED_COMPILER_TOOL_INDEX_PREFKEY)
+  let tool = compilerTools [selectedCompilerIndex].url
+  var arguments = [String] ()
+  if ud.bool (forKey: propertyAccessRequiresSelf_PREFKEY) {
+    arguments.append ("--error-property-access-without-self")
+  }
+  if ud.bool (forKey: checkEntityUsefulness_PREFKEY) {
+    arguments.append ("--check-usefulness")
+  }
+  if ud.bool (forKey: displayUnicodeLexicalTestFunctions_PREFKEY) {
+    arguments.append ("--display-lexical-test-functions")
+  }
+  if ud.bool (forKey: emitClassGraph_PREFKEY) {
+    arguments.append ("--emit-class-graph")
+  }
+  if ud.bool (forKey: emitSyntaxDiagrams_PREFKEY) {
+    arguments.append ("--emit-syntax-diagrams")
+  }
+  if ud.bool (forKey: errorAnomynousForInstructionEnumeratedObject_PREFKEY) {
+    arguments.append ("--error-anonymous-for-instruction")
+  }
+  if ud.bool (forKey: errorObsoleteGetterCall_PREFKEY) {
+    arguments.append ("--error-on-obsolete-getter-call")
+  }
+  if ud.bool (forKey: errorPropertyGetterCall_PREFKEY) {
+    arguments.append ("--error-property-getter-call")
+  }
+  if ud.bool (forKey: errorEllipsisInEnumeratedObject_PREFKEY) {
+    arguments.append ("--error-ellipsis-in-for-instruction")
+  }
+  if ud.bool (forKey: errorOnGetterCallWithNoArgument_PREFKEY) {
+    arguments.append ("--error-on-getter-call-with-no-argument")
+  }
+  if ud.bool (forKey: errorOldStyleCollectionInitializer_PREFKEY) {
+    arguments.append ("--error-old-syle-collection-initializer")
+  }
+  if ud.bool (forKey: errorOldStyleLocalVarDeclaration_PREFKEY) {
+    arguments.append ("--error-old-style-local-var-declaration")
+  }
+  if ud.bool (forKey: errorOldStylePropertyDeclaration_PREFKEY) {
+    arguments.append ("--error-old-style-property-declaration")
+  }
+  if ud.bool (forKey: errorUsingNewInsteadOfInit_PREFKEY) {
+    arguments.append ("--error-using-new-instead-of-init")
+  }
+  if ud.bool (forKey: generateManyFiles_PREFKEY) {
+    arguments.append ("--generate-many-cpp-files")
+  }
+  if ud.bool (forKey: generateOneHeader_PREFKEY) {
+    arguments.append ("--generate-one-cpp-header")
+  }
+  if ud.bool (forKey: outputHTMLgrammarFile_PREFKEY) {
+    arguments.append ("--output-html-grammar-file")
+  }
+  if ud.bool (forKey: outputHTMLTypeListFile_PREFKEY) {
+    arguments.append ("--output-html-type-dump-file")
+  }
+  if ud.bool (forKey: printPredefinedLexicalActions_PREFKEY) {
+    arguments.append ("--print-predefined-lexical-actions")
+  }
+  if ud.bool (forKey: check_big_int_PREFKEY) {
+    arguments.append ("--check-big-int")
+  }
+  if ud.bool (forKey: warningNotGalgas4Feature_PREFKEY) {
+    arguments.append ("--warns-on-feature-not-handled-in-galgas4")
+  }
+  do{
+    let v : String = ud.string (forKey: create_project_PREFKEY) ?? ""
+    if v != "" {
+      arguments.append ("--create-project=" + v)
+    }
+  }
+  do{
+    let v : String = ud.string (forKey: extractLIBPMOption_PREFKEY) ?? ""
+    if v != "" {
+      arguments.append ("--extract-libpm=" + v)
+    }
+  }
+  do{
+    let v : String = ud.string (forKey: cppCompile_PREFKEY) ?? ""
+    if v != "" {
+      arguments.append ("--compile=" + v)
+    }
+  }
+  return CommandLineToolInvocation (tool: tool, arguments: arguments)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func enterOptionsFor_galgas_5F_cli_5F_options () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "propertyAccessRequiresSelf",
+    commandChar: "",
+    commandString: "error-property-access-without-self",
+    comment: "'self' is required for accessing properties in getter, setter and methods"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "checkEntityUsefulness",
+    commandChar: "",
+    commandString: "check-usefulness",
+    comment: "Check Entity Usefulness"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "displayUnicodeLexicalTestFunctions",
+    commandChar: "",
+    commandString: "display-lexical-test-functions",
+    comment: "Display Unicode Lexical Test Functions"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "emitClassGraph",
+    commandChar: "",
+    commandString: "emit-class-graph",
+    comment: "Emit class graph in dot file"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "emitSyntaxDiagrams",
+    commandChar: "",
+    commandString: "emit-syntax-diagrams",
+    comment: "Emit grammar syntax diagrams in TEX files"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorAnomynousForInstructionEnumeratedObject",
+    commandChar: "",
+    commandString: "error-anonymous-for-instruction",
+    comment: "Error on anonymous 'for' instruction enumerated object ('for () in ...')"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorObsoleteGetterCall",
+    commandChar: "",
+    commandString: "error-on-obsolete-getter-call",
+    comment: "Error on call of an obsolete getter"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorPropertyGetterCall",
+    commandChar: "",
+    commandString: "error-property-getter-call",
+    comment: "Error on calling property getter (instead of dot notation)"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorEllipsisInEnumeratedObject",
+    commandChar: "",
+    commandString: "error-ellipsis-in-for-instruction",
+    comment: "Error on ellipsis in enumerated object ('for (x y ...) in xxx')"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorOnGetterCallWithNoArgument",
+    commandChar: "",
+    commandString: "error-on-getter-call-with-no-argument",
+    comment: "Error on getter call; with no argument (GGS4, suppress parenthesis)"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorOldStyleCollectionInitializer",
+    commandChar: "",
+    commandString: "error-old-syle-collection-initializer",
+    comment: "Error on old style collection initializer"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorOldStyleLocalVarDeclaration",
+    commandChar: "",
+    commandString: "error-old-style-local-var-declaration",
+    comment: "Error on old style local variable declaration"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorOldStylePropertyDeclaration",
+    commandChar: "",
+    commandString: "error-old-style-property-declaration",
+    comment: "Error on old style property declaration"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "errorUsingNewInsteadOfInit",
+    commandChar: "",
+    commandString: "error-using-new-instead-of-init",
+    comment: "GGS3: error on using 'new' instead of 'init'"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "generateManyFiles",
+    commandChar: "",
+    commandString: "generate-many-cpp-files",
+    comment: "Generate many C++ implementation files"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "generateOneHeader",
+    commandChar: "",
+    commandString: "generate-one-cpp-header",
+    comment: "Generate one C++ header file for all declarations"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "outputHTMLgrammarFile",
+    commandChar: "",
+    commandString: "output-html-grammar-file",
+    comment: "Output a HTML file for every grammar component"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "outputHTMLTypeListFile",
+    commandChar: "T",
+    commandString: "output-html-type-dump-file",
+    comment: "Output a HTML file that contains all defined types"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "printPredefinedLexicalActions",
+    commandChar: "",
+    commandString: "print-predefined-lexical-actions",
+    comment: "Print the list of predefined lexical routines and functions"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "check_big_int",
+    commandChar: "",
+    commandString: "check-big-int",
+    comment: "Run bit integers checks"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "warningNotGalgas4Feature",
+    commandChar: "",
+    commandString: "warns-on-feature-not-handled-in-galgas4",
+    comment: "Warns on feature not handled in galgas 4"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .string,
+    identifier: "create_project",
+    commandChar: "",
+    commandString: "create-project",
+    comment: "Create a new GALGAS Project"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .string,
+    identifier: "extractLIBPMOption",
+    commandChar: "",
+    commandString: "extract-libpm",
+    comment: "Extract embedded LIBPM at given path"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .string,
+    identifier: "cppCompile",
+    commandChar: "",
+    commandString: "compile",
+    comment: "Perform C++ compilation on 'string' target"
+  ))
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "quiet_output",
+    commandChar: "q",
+    commandString: "quiet",
+    comment: "Quiet output"
+  ))
+  return array
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--- START OF USER ZONE 2
+
+
+//--- END OF USER ZONE 2
+
+

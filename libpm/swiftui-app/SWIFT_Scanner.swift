@@ -195,9 +195,18 @@ class SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func testForCharWithFunction (_ inFunction : (UInt32) -> Bool) -> Bool {
-    let ok = inFunction (self.mCurrentChar)
-    if ok {
+  final func testForChar_isUnicodeLetter () -> Bool {
+    let ok = ((0x61 <= self.mCurrentChar) && (self.mCurrentChar <= 0x7A)) ||
+         ((0x41 <= self.mCurrentChar) && (self.mCurrentChar <= 0x5A)) ||
+         (0xB5 == self.mCurrentChar) ||
+         ((0xC0 <= self.mCurrentChar) && (self.mCurrentChar <= 0xD6)) ||
+         ((0xD8 <= self.mCurrentChar) && (self.mCurrentChar <= 0xF6)) ||
+         ((0xF8 <= self.mCurrentChar) && (self.mCurrentChar <= 0x2B4)) ||
+         ((0x38E <= self.mCurrentChar) && (self.mCurrentChar <= 0x3A1)) ||
+         ((0x3A3 <= self.mCurrentChar) && (self.mCurrentChar <= 0x3F5)) ||
+         ((0x3F7 <= self.mCurrentChar) && (self.mCurrentChar <= 0x481)) ||
+         ((0x48A <= self.mCurrentChar) && (self.mCurrentChar <= 0x523))
+    if (ok) {
       self.advance ()
     }
     return ok

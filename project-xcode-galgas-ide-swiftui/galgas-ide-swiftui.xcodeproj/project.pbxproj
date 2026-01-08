@@ -16,7 +16,6 @@
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
 		CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */; };
 		CF305F9A2D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */; };
-		CF305F9E2D0D8A2E000A5F79 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */; };
 		CF305F9F2D0D8A2E000A5F79 /* AC_GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE02D0D8A2E000A5F79 /* AC_GALGAS_root.cpp */; };
 		CF305FA22D0D8A2E000A5F79 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F242D0D8A2E000A5F79 /* GGS_string.cpp */; };
 		CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
@@ -172,12 +171,17 @@
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */; };
 		CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */; };
+		CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
+		CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
+		CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */; };
+		CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */; };
+		CF859AFF2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */; };
+		CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */; };
 		CF8F80DF2D0D90C90095170B /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF8ED3C2D0D81C1006B2A3C /* galgas */; };
 		CF8F80E42D0D91490095170B /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
 		CF8F80E62D0D91490095170B /* galgas-input-output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */; };
 		CF8F80E72D0D91490095170B /* AC_GALGAS_value_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE42D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp */; };
-		CF8F80E82D0D91490095170B /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */; };
 		CF8F80E92D0D91490095170B /* AC_GALGAS_root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE02D0D8A2E000A5F79 /* AC_GALGAS_root.cpp */; };
 		CF8F80EA2D0D91490095170B /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F242D0D8A2E000A5F79 /* GGS_string.cpp */; };
 		CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */; };
@@ -584,14 +588,12 @@
 		CF305F392D0D8A2E000A5F79 /* TemplateDelimiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemplateDelimiter.h; sourceTree = "<group>"; };
 		CF305F3B2D0D8A2E000A5F79 /* GenericArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericArray.h; sourceTree = "<group>"; };
 		CF305F3C2D0D8A2E000A5F79 /* GenericUniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUniqueArray.h; sourceTree = "<group>"; };
-		CF305F3F2D0D8A2E000A5F79 /* License */ = {isa = PBXFileReference; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		CF305F5A2D0D8A2E000A5F79 /* AbstractOutputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractOutputStream.h; sourceTree = "<group>"; };
 		CF305F5B2D0D8A2E000A5F79 /* AbstractOutputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractOutputStream.cpp; sourceTree = "<group>"; };
 		CF305F5C2D0D8A2E000A5F79 /* ColoredConsole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColoredConsole.h; sourceTree = "<group>"; };
 		CF305F5D2D0D8A2E000A5F79 /* ColoredConsole.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColoredConsole.cpp; sourceTree = "<group>"; };
 		CF305F5E2D0D8A2E000A5F79 /* ConsoleOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsoleOut.h; sourceTree = "<group>"; };
 		CF305F5F2D0D8A2E000A5F79 /* ConsoleOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleOut.cpp; sourceTree = "<group>"; };
-		CF305F612D0D8A2E000A5F79 /* cUnicodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cUnicodeData.h; sourceTree = "<group>"; };
 		CF305F622D0D8A2E000A5F79 /* HTMLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLString.h; sourceTree = "<group>"; };
 		CF305F632D0D8A2E000A5F79 /* HTMLString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLString.cpp; sourceTree = "<group>"; };
 		CF305F642D0D8A2E000A5F79 /* print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print.h; sourceTree = "<group>"; };
@@ -600,10 +602,6 @@
 		CF305F672D0D8A2E000A5F79 /* String-class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "String-class.h"; sourceTree = "<group>"; };
 		CF305F682D0D8A2E000A5F79 /* String-class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class.cpp"; sourceTree = "<group>"; };
 		CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "String-class-getters.cpp"; sourceTree = "<group>"; };
-		CF305F6A2D0D8A2E000A5F79 /* unicode_character_base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_base.h; sourceTree = "<group>"; };
-		CF305F6B2D0D8A2E000A5F79 /* unicode_character_cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_cpp.h; sourceTree = "<group>"; };
-		CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unicode_character_cpp.cpp; sourceTree = "<group>"; };
-		CF305F6D2D0D8A2E000A5F79 /* unicode_character_implementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode_character_implementation.h; sourceTree = "<group>"; };
 		CF305F712D0D8A2E000A5F79 /* DateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateTime.h; sourceTree = "<group>"; };
 		CF305F722D0D8A2E000A5F79 /* DateTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DateTime.cpp; sourceTree = "<group>"; };
 		CF305F732D0D8A2E000A5F79 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -712,6 +710,13 @@
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNode.swift; sourceTree = "<group>"; };
 		CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeView.swift; sourceTree = "<group>"; };
+		CF75074F2F0FB197005FAE3E /* unicode-data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
+		CF7507502F0FB197005FAE3E /* utf32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf32.h; sourceTree = "<group>"; };
+		CF7507512F0FB197005FAE3E /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
+		CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCompiler.swift; sourceTree = "<group>"; };
+		CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
+		CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
+		CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-swiftui.swift"; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CF8F80D92D0D8F250095170B /* grammarCompilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grammarCompilation.h; sourceTree = "<group>"; };
 		CF8F80DA2D0D8F250095170B /* separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
@@ -721,7 +726,6 @@
 		CF8F80DE2D0D8F250095170B /* separateHeaderFor_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CF8F81972D0D91490095170B /* galgas-debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "galgas-debug"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8F81BF2D0DADF40095170B /* gui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-cocoa.swift"; sourceTree = "<group>"; };
-		CF8F81C02D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-cocoa.swift"; sourceTree = "<group>"; };
 		CF93BAA32D0D8CFD006DF788 /* buildPureBNFgrammar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = buildPureBNFgrammar.h; sourceTree = "<group>"; };
 		CF93BAA42D0D8CFD006DF788 /* buildPureBNFgrammar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFgrammar.cpp; sourceTree = "<group>"; };
 		CF93BAA52D0D8CFD006DF788 /* DecisionTableElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionTableElement.h; sourceTree = "<group>"; };
@@ -821,7 +825,6 @@
 				CF305ED42D0D8A2E000A5F79 /* files */,
 				CF305F3A2D0D8A2E000A5F79 /* galgas */,
 				CF305F3E2D0D8A2E000A5F79 /* generic-arraies */,
-				CF305F3F2D0D8A2E000A5F79 /* License */,
 				CF305F602D0D8A2E000A5F79 /* streams */,
 				CF305F702D0D8A2E000A5F79 /* strings */,
 				CF305F752D0D8A2E000A5F79 /* time */,
@@ -1059,7 +1062,6 @@
 		CF305F702D0D8A2E000A5F79 /* strings */ = {
 			isa = PBXGroup;
 			children = (
-				CF305F612D0D8A2E000A5F79 /* cUnicodeData.h */,
 				CF305F622D0D8A2E000A5F79 /* HTMLString.h */,
 				CF305F632D0D8A2E000A5F79 /* HTMLString.cpp */,
 				CF305F642D0D8A2E000A5F79 /* print.h */,
@@ -1068,10 +1070,9 @@
 				CF305F672D0D8A2E000A5F79 /* String-class.h */,
 				CF305F682D0D8A2E000A5F79 /* String-class.cpp */,
 				CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */,
-				CF305F6A2D0D8A2E000A5F79 /* unicode_character_base.h */,
-				CF305F6B2D0D8A2E000A5F79 /* unicode_character_cpp.h */,
-				CF305F6C2D0D8A2E000A5F79 /* unicode_character_cpp.cpp */,
-				CF305F6D2D0D8A2E000A5F79 /* unicode_character_implementation.h */,
+				CF75074F2F0FB197005FAE3E /* unicode-data.h */,
+				CF7507502F0FB197005FAE3E /* utf32.h */,
+				CF7507512F0FB197005FAE3E /* utf32.cpp */,
 			);
 			path = strings;
 			sourceTree = "<group>";
@@ -1199,12 +1200,12 @@
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF8F81BF2D0DADF40095170B /* gui-cocoa.swift */,
+				CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */,
 				CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */,
 				CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */,
 				CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */,
 				CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */,
 				CFD719B52E7308E8007736B6 /* lexique-galgas+template+scanner-swiftui.swift */,
-				CF8F81C02D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift */,
 			);
 			name = "Generated by GALGAS";
 			path = ../build/output;
@@ -1269,8 +1270,10 @@
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
+				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
+				CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */,
 				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
 				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
@@ -1280,6 +1283,7 @@
 				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
 				CFD719C22E730970007736B6 /* SWIFT_Token.swift */,
+				CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */,
 				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
 				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
 			);
@@ -1437,7 +1441,6 @@
 				CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF8F80E62D0D91490095170B /* galgas-input-output.cpp in Sources */,
 				CF8F80E72D0D91490095170B /* AC_GALGAS_value_class.cpp in Sources */,
-				CF8F80E82D0D91490095170B /* unicode_character_cpp.cpp in Sources */,
 				CF8F80E92D0D91490095170B /* AC_GALGAS_root.cpp in Sources */,
 				CF8F80EA2D0D91490095170B /* GGS_string.cpp in Sources */,
 				CF8F80EB2D0D91490095170B /* ColoredConsole.cpp in Sources */,
@@ -1547,6 +1550,7 @@
 				CF8F81552D0D91490095170B /* GGS_binaryset.cpp in Sources */,
 				CF8F81562D0D91490095170B /* all-declarations-0.cpp in Sources */,
 				CF8F81572D0D91490095170B /* all-declarations-3.cpp in Sources */,
+				CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */,
 				CF8F81582D0D91490095170B /* all-declarations-17.cpp in Sources */,
 				CF8F81592D0D91490095170B /* all-declarations-16.cpp in Sources */,
 				CF8F815A2D0D91490095170B /* all-declarations-20.cpp in Sources */,
@@ -1618,11 +1622,14 @@
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,
 				CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */,
 				CFD719C82E7309F6007736B6 /* Application.swift in Sources */,
+				CF859AFF2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift in Sources */,
 				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
+				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */,
 				CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */,
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
+				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
 				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
@@ -1632,6 +1639,7 @@
 				CF00A2C42EBBE643002D9B0F /* lexique-galgas+template+scanner-swiftui.swift in Sources */,
 				CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */,
 				CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */,
+				CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1644,7 +1652,6 @@
 				CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */,
 				CF305F9A2D0D8A2E000A5F79 /* AC_GALGAS_value_class.cpp in Sources */,
-				CF305F9E2D0D8A2E000A5F79 /* unicode_character_cpp.cpp in Sources */,
 				CF305F9F2D0D8A2E000A5F79 /* AC_GALGAS_root.cpp in Sources */,
 				CF305FA22D0D8A2E000A5F79 /* GGS_string.cpp in Sources */,
 				CF305FA32D0D8A2E000A5F79 /* ColoredConsole.cpp in Sources */,
@@ -1754,6 +1761,7 @@
 				CF30600F2D0D8A2E000A5F79 /* GGS_binaryset.cpp in Sources */,
 				CF3060752D0D8B2B000A5F79 /* all-declarations-0.cpp in Sources */,
 				CF3060762D0D8B2B000A5F79 /* all-declarations-3.cpp in Sources */,
+				CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */,
 				CF3060772D0D8B2B000A5F79 /* all-declarations-17.cpp in Sources */,
 				CF3060782D0D8B2B000A5F79 /* all-declarations-16.cpp in Sources */,
 				CF3060792D0D8B2B000A5F79 /* all-declarations-20.cpp in Sources */,
@@ -1837,7 +1845,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-tool-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1853,7 +1860,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-tool-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2047,7 +2053,6 @@
 				INFOPLIST_FILE = "galgas-ide-swiftui/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2073,7 +2078,6 @@
 				INFOPLIST_FILE = "galgas-ide-swiftui/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2092,7 +2096,6 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;
@@ -2109,7 +2112,6 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;

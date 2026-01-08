@@ -482,6 +482,27 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
         !generatedZone3:"\n\n" // User Zone 3
         !makeExecutable:false
       ]
+    //--- Generate Swift Cocoa Implementation
+      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
+  //    ioSwiftAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+      [@string generateFileWithPattern
+        !startPath:inProductDirectory
+        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui.swift"
+        !lineComment:"//"
+        !header:"" // Header
+        !defaultUserZone1:"\n\n" // Defaut user zone1
+        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftUI
+          !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swiftui"
+          !self.mOptionComponentName
+          !self.mBoolOptionSortedList
+          !self.mUIntOptionSortedList
+          !self.mStringOptionSortedList
+          !self.mStringListSortedList
+        ]
+        !defaultUserZone2:"\n\n" // Defaut user zone2
+        !generatedZone3:"\n\n" // User Zone 3
+        !makeExecutable:false
+      ]
    end
   }
 
@@ -539,15 +560,15 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
   template optionHeaderCocoaZone3 "option-header-cocoa-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
 
-//  template optionImplementationCocoa "option-implementation-cocoa.galgasTemplate"
-//    ?@string OPTION_HEADER_FILE_NAME
-//    ?@string OPTION_COMPONENT_NAME
-//    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
-
   template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
+    ?@string OPTION_HEADER_FILE_NAME
+    ?@string OPTION_COMPONENT_NAME
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+
+  template optionImplementationSwiftUI "option-implementation-swiftui.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST

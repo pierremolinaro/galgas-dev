@@ -10,6 +10,36 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'recursivlyEnumerateRegularFile??&&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class GGS_wrapperFileMap constinArgument0,
+                                                                     const class GGS_wrapperDirectoryMap constinArgument1,
+                                                                     class GGS_stringlist & ioArgument2,
+                                                                     class GGS_stringlist & ioArgument3,
+                                                                     class GGS_stringlist & ioArgument4,
+                                                                     class GGS_stringlist & ioArgument5,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateWrapperContents?????&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
+                                                              const class GGS_string constinArgument1,
+                                                              const class GGS_uint constinArgument2,
+                                                              const class GGS_wrapperFileMap constinArgument3,
+                                                              const class GGS_wrapperDirectoryMap constinArgument4,
+                                                              class GGS_string & ioArgument5,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'generatePredefinedTypeFiles??&&&'
 //
 //--------------------------------------------------------------------------------------------------
@@ -158,26 +188,4 @@ void routine_checkAssignmentTypes_3F__3F__3F_ (const class GGS_unifiedTypeMapEnt
                                                const class GGS_location constinArgument2,
                                                class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeErrorOrWarningInstruction?&?&?????&!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F__26__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                                   class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                   const class GGS_analysisContext constinArgument2,
-                                                                                                   class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument4,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument5,
-                                                                                                   const class GGS_fixitListAST constinArgument6,
-                                                                                                   const class GGS_location constinArgument7,
-                                                                                                   const class GGS_string constinArgument8,
-                                                                                                   class GGS_localVarManager & ioArgument9,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument10,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument11,
-                                                                                                   class GGS_fixitListForGeneration & outArgument12,
-                                                                                                   class Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
 

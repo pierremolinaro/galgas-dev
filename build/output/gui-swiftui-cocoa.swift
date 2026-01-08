@@ -14,7 +14,7 @@ func indexingDescriptorDictionary () -> [String : String] {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Global functions
+//   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
@@ -36,25 +36,43 @@ func indexingDescriptorDictionary () -> [String : String] {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-/* @MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {
-  return [
-    SettingViewFor_galgasScanner3 (),
-    SettingViewFor_galgasScanner4 (),
-    SettingViewFor_galgasTemplateScanner ()
-  ]
-} */
-
+// Setting View
 //--------------------------------------------------------------------------------------------------
 
 struct SettingsView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum SidebarItem {
+    case commandLineOptions
+    case galgasScanner3
+    case galgasScanner4
+    case galgasTemplateScanner
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mSelection : SidebarItem = .commandLineOptions
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder var body : some View {
-    TabView {
-      SettingViewFor_galgasScanner3 ().tabItem { Text ("Source GALGAS 3") }
-      SettingViewFor_galgasScanner4 ().tabItem { Text ("Source GALGAS 4") }
-      SettingViewFor_galgasTemplateScanner ().tabItem { Text ("Template") }
+    NavigationSplitView {
+      List(selection: self.$mSelection) {
+        Text ("Options").tag (SidebarItem.commandLineOptions)
+
+        Text ("Source GALGAS 3").tag (SidebarItem.galgasScanner3)
+        Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4)
+        Text ("Template").tag (SidebarItem.galgasTemplateScanner)
+      }
+      .toolbar (removing: .sidebarToggle)
+    } detail: {
+      switch self.mSelection {
+        case .commandLineOptions : OptionView ()
+        case .galgasScanner3 : SettingViewFor_galgasScanner3 ()
+        case .galgasScanner4 : SettingViewFor_galgasScanner4 ()
+        case .galgasTemplateScanner : SettingViewFor_galgasTemplateScanner ()
+      }
     }
   }
 
@@ -62,12 +80,25 @@ struct SettingsView : View {
 
 }
 
-
+//--------------------------------------------------------------------------------------------------
+//   Command Line Options
 //--------------------------------------------------------------------------------------------------
 
-/* func buildRunOption () -> String {
-  return ""
-} */
+private func commandLineOptions () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
+  array += enterOptionsFor_galgas_5F_cli_5F_options ()
+  array.append (
+    SWIFT_CommandLineOption (
+      domainName: "galgas_cli_options",
+      type: .bool,
+      identifier: "quiet_output",
+      commandChar: "q",
+      commandString: "quiet",
+      comment: "Quiet output"
+    )
+  )
+  return array
+}
 
 //--------------------------------------------------------------------------------------------------
 
