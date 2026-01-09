@@ -16,7 +16,8 @@ import Combine
   private var mIsCompilingProject = false
   var isCompilingProject : Bool { self.mIsCompilingProject }
 
-  var mCompileLog : IdentifiableAttributedString = IdentifiableAttributedString (string: AttributedString ("... compile log..."))
+//  var mCompileLog : IdentifiableAttributedString = IdentifiableAttributedString (string: AttributedString ("... compile log..."))
+  var mCompileLog : NSAttributedString = NSAttributedString ("... compile log...")
 //  @ObservationTracked var compileLog : NSAttributedString { self.mCompileLog }
 //  @Published private var mCompileLog : String = ""
 //  @ObservationTracked var compileLog : String { self.mCompileLog }
@@ -34,7 +35,7 @@ import Combine
 
   func compile (projectURL inProjectURL : URL) {
     self.mIsCompilingProject = true
-    self.mCompileLog = IdentifiableAttributedString (string: AttributedString ("compile "))
+    self.mCompileLog = NSAttributedString ("compile ")
     self.appendToLog (string: "project")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
@@ -255,11 +256,12 @@ import Combine
 
   private func appendToLog (string inString : String) {
 //    self.mCompileLog = self.mCompileLog + AttributedString (inString)
-//    let mat = NSMutableAttributedString (self.mCompileLog)
-//    mat.append (NSAttributedString (string: inString))
-//    self.mCompileLog = AttributedString (mat)
-    let s = self.mCompileLog.string + AttributedString (inString)
-    self.mCompileLog = IdentifiableAttributedString (string: s)
+    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
+    mat.append (NSAttributedString (string: inString))
+    self.mCompileLog = NSAttributedString (attributedString: mat)
+//    let s = self.mCompileLog.string + AttributedString (inString)
+//    self.mCompileLog = IdentifiableAttributedString (string: s)
+//    self.mCompileLog = IdentifiableAttributedString (string: s)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

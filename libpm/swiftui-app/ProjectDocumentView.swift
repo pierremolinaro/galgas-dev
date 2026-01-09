@@ -101,9 +101,10 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
-//        SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog, sizeBinding: self.$mSize)
-        AttributedText (NSAttributedString (self.mProjectCompiler.mCompileLog.string))
-//        Text (self.mProjectCompiler.mCompileLog)
+        SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog)
+ //       SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog, sizeBinding: self.$mSize)
+//        AttributedText (NSAttributedString (self.mProjectCompiler.mCompileLog.string))
+//        Text (self.mProjectCompiler.mCompileLog.string)
       }
     }
     .toolbar {
@@ -115,8 +116,6 @@ struct ProjectDocumentView : View {
       .disabled (!self.mProjectCompiler.isCompilingProject)
     }
   }
-
-  @State var mSize : CGSize = .zero
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

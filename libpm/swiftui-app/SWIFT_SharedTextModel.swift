@@ -484,7 +484,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
     noteObjectAllocation (self)
     self.clientView = textView
     self.clipsToBounds = true
-    self.ruleThickness = 75.0 // ajuste selon besoin
+    self.ruleThickness = 75.0 // À ajuster selon besoin
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
