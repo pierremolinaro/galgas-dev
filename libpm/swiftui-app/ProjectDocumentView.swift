@@ -29,7 +29,7 @@ struct ProjectDocumentView : View {
 
   @State private var mSidebarSelectedItem = SidebarSelectedItem.fileList
   @StateObject var mProjectTextModel : SWIFT_SharedTextModel
-  @StateObject var mProjectCompiler = ProjectCompiler ()
+  private var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
@@ -101,7 +101,9 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
-        TextEditor (text: .constant (self.mProjectCompiler.compileLog))
+//        SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog, sizeBinding: self.$mSize)
+        AttributedText (NSAttributedString (self.mProjectCompiler.mCompileLog.string))
+//        Text (self.mProjectCompiler.mCompileLog)
       }
     }
     .toolbar {
@@ -113,6 +115,8 @@ struct ProjectDocumentView : View {
       .disabled (!self.mProjectCompiler.isCompilingProject)
     }
   }
+
+  @State var mSize : CGSize = .zero
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

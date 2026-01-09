@@ -11,15 +11,15 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-final class ProjectCompiler : ObservableObject {
+@Observable final class ProjectCompiler {
 
-  @Published private var mIsCompilingProject = false
-  @ObservationTracked var isCompilingProject : Bool { self.mIsCompilingProject }
+  private var mIsCompilingProject = false
+  var isCompilingProject : Bool { self.mIsCompilingProject }
 
-//  @Published private var mCompileLog : NSMutableAttributedString = NSMutableAttributedString ("... compile log...")
-//  @ObservationTracked var compileLog : String { self.mCompileLog.string }
-  @Published private var mCompileLog : String = ""
-  @ObservationTracked var compileLog : String { self.mCompileLog }
+  var mCompileLog : IdentifiableAttributedString = IdentifiableAttributedString (string: AttributedString ("... compile log..."))
+//  @ObservationTracked var compileLog : NSAttributedString { self.mCompileLog }
+//  @Published private var mCompileLog : String = ""
+//  @ObservationTracked var compileLog : String { self.mCompileLog }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -34,7 +34,8 @@ final class ProjectCompiler : ObservableObject {
 
   func compile (projectURL inProjectURL : URL) {
     self.mIsCompilingProject = true
-    self.mCompileLog = ""
+    self.mCompileLog = IdentifiableAttributedString (string: AttributedString ("compile "))
+    self.appendToLog (string: "project")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
 //    SWIFT_DocumentController.mySaveAllDocuments ()
@@ -104,9 +105,9 @@ final class ProjectCompiler : ObservableObject {
         self.mProcessOutputPipe?.fileHandleForReading.closeFile ()
         self.mProcessOutputPipe = nil
         if self.mBuildHasBeenAborted {
-          self.mCompileLog += "Aborted."
+          self.appendToLog (string: "Aborted.")
         }else{
-          self.mCompileLog += "Done."
+          self.appendToLog (string: "Done.")
         }
       }
     }
@@ -167,27 +168,27 @@ final class ProjectCompiler : ObservableObject {
     if let string = String (data: inData, encoding: .utf8) {
       if string.hasPrefix ("red:") {
         let str = String (string.dropFirst ("red:".count))
-        self.mCompileLog += str
+        self.appendToLog (string:  str)
 //        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.systemRed]))
 //        self.mCompileLog.appendMessageString (str, color: .systemRed, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("green:") {
         let str = String (string.dropFirst ("green:".count))
-        self.mCompileLog += str
+        self.appendToLog (string:  str)
 //        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0)]))
 //        self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0), bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("magenta:") {
         let str = String (string.dropFirst ("magenta:".count))
-        self.mCompileLog += str
+        self.appendToLog (string:  str)
 //        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.magenta]))
 //        self.mBuildLogTextView.appendMessageString (str, color: .magenta, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("orange:") {
         let str = String (string.dropFirst ("orange:".count))
-        self.mCompileLog += str
+        self.appendToLog (string:  str)
 //        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.orange]))
 //        self.mBuildLogTextView.appendMessageString (str, color: .systemOrange, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("blue:") {
         let str = String (string.dropFirst ("blue:".count))
-        self.mCompileLog += str
+        self.appendToLog (string:  str)
 //        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.blue]))
 //        self.mBuildLogTextView.appendMessageString (str, color: .systemBlue, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("json:") {
@@ -241,13 +242,24 @@ final class ProjectCompiler : ObservableObject {
             loop = false
           }
         }
-        self.mCompileLog += displayString
+        self.appendToLog (string: displayString)
 //        self.mCompileLog.appendMessageString (displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
       }
     }else{
 //      self.mCompileLog.appendMessageString ("<<invalid output>>\n", color: self.mCurrentBuildOutputColor, bold: true)
     }
 //    self.mCompileLog.scrollToEndOfText ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendToLog (string inString : String) {
+//    self.mCompileLog = self.mCompileLog + AttributedString (inString)
+//    let mat = NSMutableAttributedString (self.mCompileLog)
+//    mat.append (NSAttributedString (string: inString))
+//    self.mCompileLog = AttributedString (mat)
+    let s = self.mCompileLog.string + AttributedString (inString)
+    self.mCompileLog = IdentifiableAttributedString (string: s)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
