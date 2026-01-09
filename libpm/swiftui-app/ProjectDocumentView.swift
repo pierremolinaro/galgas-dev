@@ -14,7 +14,7 @@ struct ProjectDocumentView : View {
     case fileList
     case compileLog
 
-    var systemImageName: String {
+    var systemImageName : String {
       switch self {
       case .fileList: return "folder"
       case .compileLog: return "hammer"
@@ -148,13 +148,21 @@ struct ProjectDocumentView : View {
   @ViewBuilder private var detailView : some View {
     if let fileNodeID = self.mRootDirectoryNode.mSelectedFileNodeID {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
-        SWIFT_TextSyntaxColoringView (model: stm)
+        SWIFT_TextSyntaxColoringView (
+          model: stm,
+          issueArray: self.mProjectCompiler.issueArray,
+          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
+        )
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
       }else{
         EmptyView ()
       }
     }else{
-      SWIFT_TextSyntaxColoringView (model: self.mProjectTextModel)
+      SWIFT_TextSyntaxColoringView (
+        model: self.mProjectTextModel,
+        issueArray: self.mProjectCompiler.issueArray,
+        url: self.mProjectFileURL
+      )
     }
   }
 

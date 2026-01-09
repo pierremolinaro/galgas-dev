@@ -84,10 +84,6 @@ struct SWIFT_CompileLogView : NSViewRepresentable {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let RULER_WIDTH = 18.0
-
-//--------------------------------------------------------------------------------------------------
-
 fileprivate final class SWIFT_CompileLogRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -106,7 +102,7 @@ fileprivate final class SWIFT_CompileLogRulerView : NSRulerView {
     noteObjectAllocation (self)
     self.clientView = inTextView
     self.clipsToBounds = true
-    self.ruleThickness = RULER_WIDTH // À ajuster selon besoin
+    self.ruleThickness = ISSUE_MARK_WIDTH * 4.0 // À ajuster selon besoin
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,16 +148,18 @@ fileprivate final class SWIFT_CompileLogRulerView : NSRulerView {
     self.bounds.fill ()
   //---
     for issue in self.mIssueArray {
-      if let p = self.pointForCharacter (at: issue.locationInBuildLogTextView) {
+      if let p = self.pointForCharacter (atIndex: issue.locationInBuildLogTextView) {
+        switch issue.kind {
+        case .error : NSColor.systemRed.setFill ()
+        case .warning : NSColor.systemOrange.setFill ()
+        }
         let rect = NSRect (
-          x: RULER_WIDTH / 4.0,
-          y: p.y + RULER_WIDTH / 4.0,
-          width: RULER_WIDTH / 2.0,
-          height: RULER_WIDTH / 2.0
+          x: ISSUE_MARK_WIDTH,
+          y: p.y + ISSUE_MARK_WIDTH,
+          width: ISSUE_MARK_WIDTH * 2.0,
+          height: ISSUE_MARK_WIDTH * 2.0
         )
         let bp = NSBezierPath (ovalIn: rect)
-        let color : NSColor = issue.kind == .error ? .systemRed : .systemOrange
-        color.setFill ()
         bp.fill()
       }
     }
@@ -169,7 +167,7 @@ fileprivate final class SWIFT_CompileLogRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func pointForCharacter (at index: Int) -> NSPoint? {
+  private func pointForCharacter (atIndex index: Int) -> NSPoint? {
     if let textView = self.mTextView,
           let layoutManager = textView.layoutManager,
           let textContainer = textView.textContainer,

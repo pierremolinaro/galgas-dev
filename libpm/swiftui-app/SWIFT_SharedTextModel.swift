@@ -11,6 +11,10 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
+let ISSUE_MARK_WIDTH = 5.0
+
+//--------------------------------------------------------------------------------------------------
+
 final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -233,13 +237,16 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   @Binding private var mSelectionBinding : NSRange
   private let mTextView : InternalNSTextView
+  private let mIssueArray : [SWIFT_Issue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
-        selectionBinding inSelectionBinding : Binding <NSRange>) {
+        selectionBinding inSelectionBinding : Binding <NSRange>,
+        issueArray inIssueArray : [SWIFT_Issue]) {
     self.mTextView = inSharedTextModel.createAndConfigureTextView ()
     self._mSelectionBinding = inSelectionBinding
+    self.mIssueArray = inIssueArray
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -295,8 +302,11 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func updateNSView (_ inUnusedScrollView : NSScrollView,
+  func updateNSView (_ inScrollView : NSScrollView,
                      context inContext : Context) {
+    if let rulerView = inScrollView.verticalRulerView as? SWIFT_TextViewRulerView {
+      rulerView.setIssueArray (self.mIssueArray)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -475,6 +485,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
   private weak var mTextView : NSTextView? = nil
   private let mPadding : CGFloat = 5
   private var mLineRangeCacheArray : [NSRange] = []
+  private var mIssueArray : [SWIFT_Issue] = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -495,6 +506,13 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+    self.mIssueArray = inIssueArray
+    self.setNeedsDisplay (self.bounds)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -586,8 +604,49 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
       let drawPoint = NSPoint (x: x, y: y - (labelSize.height / 2.0))
       label.draw (at: drawPoint, withAttributes: attrs)
     }
+  //---
+    for issue in self.mIssueArray {
+      let range = self.mLineRangeCacheArray [issue.line]
+      if let p = self.pointForCharacter (at: range.location) {
+        let rect = NSRect (
+          x: ISSUE_MARK_WIDTH,
+          y: p.y + ISSUE_MARK_WIDTH,
+          width: ISSUE_MARK_WIDTH * 2.0,
+          height: ISSUE_MARK_WIDTH * 2.0
+        )
+        let bp = NSBezierPath (ovalIn: rect)
+        let color : NSColor = issue.kind == .error ? .systemRed : .systemOrange
+        color.setFill ()
+        bp.fill()
+      }
+    }
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func pointForCharacter (at index : Int) -> NSPoint? {
+    if let textView = self.mTextView,
+          let layoutManager = textView.layoutManager,
+          let textContainer = textView.textContainer,
+          let textStorage = textView.textStorage,
+          index >= 0,
+          index < textStorage.length {
+    //--- S'assurer que le layout est calculé
+      layoutManager.ensureLayout (for: textContainer)
+    //-- Conversion caractère → glyphe
+      let glyphIndex = layoutManager.glyphIndexForCharacter (at: index)
+    //--- Rect du glyphe dans le text container
+      let r = layoutManager.boundingRect (
+        forGlyphRange: NSRange (location: glyphIndex, length: 1),
+        in: textContainer
+      )
+    //--- Décalage dû à l'origine du texte dans la textView
+      let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+      return p
+    }else{
+      return nil
+    }
+  }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }

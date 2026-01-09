@@ -58,25 +58,6 @@ final class ProjectCompiler : ObservableObject  {
     self.mIssueArray.removeAll ()
     self.mErrorCount = 0
     self.mWarningCount = 0
-//    SWIFT_DocumentController.mySaveAllDocuments ()
-//    self.mResultData.removeAll (keepingCapacity: true)
-//    _ = self.mBuildButton.set (enabled: false)
-//    self.mProgressIndicator.startAnimation ()
-//    self.mAbortButton.setHidden (false)
-//    self.mIssueArray.removeAll (keepingCapacity: true)
-//    self.mBuildLogTextViewRuler.setIssueArray ([])
-//    for document in SWIFT_DocumentController.myDocuments () {
-//      document.removeAllIssues ()
-//    }
-//    self.mBuildLogTextView.clear ()
-//    _ = self.mBuildLogTextView.setFont (self.mBuildWindowFont.propval)
-//    self.mInspectorTabView.selectTab (atIndex: 1)
-//    self.mCurrentBuildOutputColor = .black
-//    self.mBuildHasBeenAborted = false
-//    self.mWarningCount = 0
-//    self.mErrorCount = 0
-//    self.mWarningCountTextField.setHidden (true)
-//    self.mErrorCountTextField.setHidden (true)
  //--- Create task
     let process = Process ()
     self.mProcess = process
@@ -265,10 +246,6 @@ final class ProjectCompiler : ObservableObject  {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendIssue (jsonString inString : String) {
-//    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
-//    mat.append (NSAttributedString (string: inString, attributes: [.font : self.mFont]))
-//    self.mCompileLog = NSAttributedString (attributedString: mat)
-
     if let issue = SWIFT_Issue (jsonString: inString, self.mCompileLog.length) {
       self.appendMessageString (
         string: "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
@@ -292,9 +269,6 @@ final class ProjectCompiler : ObservableObject  {
     }else{
       self.appendMessageString (string: "<<invalid json \(inString)>>\n", color: .systemRed, bold: true)
     }
-
-
-
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
