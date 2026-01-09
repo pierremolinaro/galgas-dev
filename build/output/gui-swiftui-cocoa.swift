@@ -81,26 +81,6 @@ struct SettingsView : View {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Command Line Options
-//--------------------------------------------------------------------------------------------------
-
-private func commandLineOptions () -> [SWIFT_CommandLineOption] {
-  var array = [SWIFT_CommandLineOption] ()
-  array += enterOptionsFor_galgas_5F_cli_5F_options ()
-  array.append (
-    SWIFT_CommandLineOption (
-      domainName: "galgas_cli_options",
-      type: .bool,
-      identifier: "quiet_output",
-      commandChar: "q",
-      commandString: "quiet",
-      comment: "Quiet output"
-    )
-  )
-  return array
-}
-
-//--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 2
 

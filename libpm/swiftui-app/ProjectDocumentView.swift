@@ -29,7 +29,7 @@ struct ProjectDocumentView : View {
 
   @State private var mSidebarSelectedItem = SidebarSelectedItem.fileList
   @StateObject var mProjectTextModel : SWIFT_SharedTextModel
-  private var mProjectCompiler = ProjectCompiler ()
+  @StateObject private var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
@@ -71,6 +71,16 @@ struct ProjectDocumentView : View {
       .navigationSplitViewColumnWidth (min: 150, ideal: 250, max: 500)
     }detail: {
       self.detailView
+      .toolbar {
+         ToolbarItemGroup (placement: .principal) {
+           if let fileNodeID = self.mRootDirectoryNode.mSelectedFileNodeID {
+             Text (self.mRootDirectoryNode.fileLastPathComponent (forNodeID: fileNodeID)).font (Font (NSFont.titleBarFont(ofSize: 0)))
+             if self.mRootDirectoryNode.isFileEdited (forNodeID: fileNodeID) {
+               Text ("— Edited").font (Font (NSFont.titleBarFont(ofSize: 0)))
+            }
+          }
+        }
+      }
     }
   //--- Save all edited files
     .onReceive (NotificationCenter.default.publisher (for: Notification.Name.mySaveAllCommand)) { _ in
@@ -101,19 +111,27 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
-        SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog)
- //       SWIFT_CompileLogView (attributedString: self.mProjectCompiler.mCompileLog, sizeBinding: self.$mSize)
-//        AttributedText (NSAttributedString (self.mProjectCompiler.mCompileLog.string))
-//        Text (self.mProjectCompiler.mCompileLog.string)
+        SWIFT_CompileLogView (
+          attributedString: self.mProjectCompiler.compileLog,
+          issueArray: self.mProjectCompiler.issueArray
+        )
       }
     }
+    .toolbar (removing: .sidebarToggle)
     .toolbar {
       Button (action: self.compileProject) { Label ("Compile", systemImage: "hammer") }
       .help (LocalizedStringKey ("Compile the project"))
       .disabled (self.mProjectCompiler.isCompilingProject)
+      .keyboardShortcut ("B", modifiers: .command)
       Button (action: self.mProjectCompiler.cancelCompilation) { Label ("Stop", systemImage: "stop.circle") }
       .help (LocalizedStringKey ("Cancel compilation"))
       .disabled (!self.mProjectCompiler.isCompilingProject)
+      if self.mProjectCompiler.errorCount > 0 {
+        Text ("⚠\(self.mProjectCompiler.errorCount)").foregroundColor(.red).bold()
+      }
+      if self.mProjectCompiler.warningCount > 0 {
+        Text ("⚠\(self.mProjectCompiler.warningCount)").foregroundColor(.orange).bold()
+      }
     }
   }
 
@@ -130,13 +148,6 @@ struct ProjectDocumentView : View {
   @ViewBuilder private var detailView : some View {
     if let fileNodeID = self.mRootDirectoryNode.mSelectedFileNodeID {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
-        HStack {
-          Text (self.mRootDirectoryNode.fileLastPathComponent (forNodeID: fileNodeID))
-          if self.mRootDirectoryNode.isFileEdited (forNodeID: fileNodeID) {
-            Text ("— Edited").textScale (.secondary)
-          }
-          Spacer ()
-        }
         SWIFT_TextSyntaxColoringView (model: stm)
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
       }else{

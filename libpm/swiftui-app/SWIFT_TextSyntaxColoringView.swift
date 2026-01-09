@@ -27,7 +27,6 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   var body: some View {
     VSplitView {
-//      TextEditor (text: self.$mSharedTextModel.mDocumentString)
       SWIFT_LexicalHilitingTextEditor (
         model: self.mSharedTextModel,
         selectionBinding: self.$mSharedTextModel.mTopViewSelection

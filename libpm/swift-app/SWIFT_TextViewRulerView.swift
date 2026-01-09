@@ -124,7 +124,6 @@ final class SWIFT_TextViewRulerView : NSRulerView {
           let strSize = str.size (withAttributes: textAttributes)
           let lineNumberOrigin = NSPoint (
             x: self.bounds.size.width - strSize.width - rightMargin,
-//            y: ruleRectForCurrentLine.midY - strSize.height / 2.0
             y: ruleRectForCurrentLine.maxY + self.mFont.descender - self.mFont.ascender + self.mBoundingRectForFont.minY
           )
           str.draw (at: lineNumberOrigin, withAttributes: textAttributes)

@@ -80,40 +80,4 @@ end
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Command Line Options
-//--------------------------------------------------------------------------------------------------
-
-private func commandLineOptions () -> [SWIFT_CommandLineOption] {
-  var array = [SWIFT_CommandLineOption] ()\n%
-for (mValue) in GUI_CONTEXT.mImportedOptionComponentList do
-  %  array += enterOptionsFor_%![mValue identifierRepresentation]% ()\n%
-end
-
-if QUIET_OUTPUT_BY_DEFAULT then
-%  array.append (\n%
-%    SWIFT_CommandLineOption (\n%
-%      domainName: "galgas_cli_options",\n%
-%      type: .bool,\n%
-%      identifier: "verbose_output",\n%
-%      commandChar: "v",\n%
-%      commandString: "verbose",\n%
-%      comment: "Verbose output"\n%
-%    )\n%
-%  )\n%
-else
-%  array.append (\n%
-%    SWIFT_CommandLineOption (\n%
-%      domainName: "galgas_cli_options",\n%
-%      type: .bool,\n%
-%      identifier: "quiet_output",\n%
-%      commandChar: "q",\n%
-%      commandString: "quiet",\n%
-%      comment: "Quiet output"\n%
-%    )\n%
-%  )\n%
-end
-%  return array
-}
-
-//--------------------------------------------------------------------------------------------------
 

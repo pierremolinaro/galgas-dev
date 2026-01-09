@@ -532,9 +532,9 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draw (_ inDirtyRect : NSRect) {
-    self.drawHashMarksAndLabels (in: inDirtyRect)
-  }
+//  override func draw (_ inDirtyRect : NSRect) {
+//    self.drawHashMarksAndLabels (in: inDirtyRect)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

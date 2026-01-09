@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import Combine
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15,12 +14,15 @@ struct SWIFT_CompileLogView : NSViewRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mAttributedString : NSAttributedString
+  private let mAttributedString : NSAttributedString
+  private let mIssueArray : [SWIFT_Issue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (attributedString inAttributedString : NSAttributedString) {
+  init (attributedString inAttributedString : NSAttributedString,
+        issueArray inIssueArray : [SWIFT_Issue]) {
     self.mAttributedString = inAttributedString
+    self.mIssueArray = inIssueArray
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -52,7 +54,12 @@ struct SWIFT_CompileLogView : NSViewRepresentable {
     scrollView.autohidesScrollers = true
     textView.usesFindBar = false
     textView.isIncrementalSearchingEnabled = false
-    textView.textStorage!.setAttributedString (self.mAttributedString)
+ //--- Create ruler
+    let rulerView = SWIFT_CompileLogRulerView (textView: textView)
+    rulerView.scrollView = scrollView
+    scrollView.verticalRulerView = rulerView
+    scrollView.hasVerticalRuler = true
+    scrollView.rulersVisible = true
   //---
     return scrollView
   }
@@ -64,6 +71,10 @@ struct SWIFT_CompileLogView : NSViewRepresentable {
     if let textView = inScrollView.documentView as? NSTextView,
           textView.textStorage?.string != self.mAttributedString.string {
       textView.textStorage?.setAttributedString (self.mAttributedString)
+      textView.scrollRangeToVisible (NSRange (location: self.mAttributedString.length, length: 0))
+    }
+    if let rulerView = inScrollView.verticalRulerView as? SWIFT_CompileLogRulerView {
+      rulerView.setIssueArray (self.mIssueArray)
     }
   }
 
@@ -71,174 +82,119 @@ struct SWIFT_CompileLogView : NSViewRepresentable {
 
 }
 
-////--------------------------------------------------------------------------------------------------
-//
-//struct IdentifiableAttributedString : Identifiable, Equatable {
-//  let id : UUID = UUID ()
-//  let string : AttributedString
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//struct SWIFT_CompileLogViewEx : NSViewRepresentable {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  private var mAttributedString : IdentifiableAttributedString
-//  private let mTextView : NSTextView
-//  @Binding var mSize : CGSize
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  init (attributedString inAttributedString : IdentifiableAttributedString,
-//        sizeBinding inSizeBinding : Binding <CGSize>) {
-//    self.mAttributedString = inAttributedString
-//    self.mTextView = NSTextView ()
-//    self._mSize = inSizeBinding
-//    print ("init \(self.mSize)")
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let RULER_WIDTH = 18.0
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate final class SWIFT_CompileLogRulerView : NSRulerView {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mIssueArray : [SWIFT_Issue] = []
+
+  private weak var mTextView : NSTextView? = nil
+  private let mPadding : CGFloat = 5
+  private var mLineRangeCacheArray : [NSRange] = []
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (textView inTextView : NSTextView) {
+    self.mTextView = inTextView
+    super.init (scrollView: inTextView.enclosingScrollView!, orientation: .verticalRuler)
+    noteObjectAllocation (self)
+    self.clientView = inTextView
+    self.clipsToBounds = true
+    self.ruleThickness = RULER_WIDTH // À ajuster selon besoin
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init (coder: NSCoder) { fatalError("init(coder:)") }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+    self.mIssueArray = inIssueArray
+    self.setNeedsDisplay (self.bounds)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override func draw (_ inDirtyRect : NSRect) {
+//    self.drawHashMarksAndLabels (in: inDirtyRect)
 //  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func makeNSView (context inContext : Context) -> NSScrollView {
-//    print ("makeNSView")
-//    self.mTextView.allowsUndo = false
-//    self.mTextView.isRichText = true
-//    self.mTextView.isAutomaticDataDetectionEnabled = false
-//    self.mTextView.isAutomaticLinkDetectionEnabled = false
-//    self.mTextView.isAutomaticTextCompletionEnabled = false
-//    self.mTextView.isAutomaticTextReplacementEnabled = false
-//    self.mTextView.isAutomaticDashSubstitutionEnabled = false
-//    self.mTextView.isAutomaticQuoteSubstitutionEnabled = false
-//    self.mTextView.isAutomaticSpellingCorrectionEnabled = false
-//    self.mTextView.isEditable = false
-//    self.mTextView.isSelectable = true
-//
-////    self.mTextView.textContainer!.widthTracksTextView = false
-////    self.mTextView.textContainer!.containerSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-//    self.mTextView.minSize = .zero
-//    self.mTextView.maxSize = NSSize (
-//      width: CGFloat.greatestFiniteMagnitude,
-//      height: CGFloat.greatestFiniteMagnitude
-//    )
-////    self.mTextView.frame.size = self.mSize
-//    self.mTextView.isHorizontallyResizable = true
-//    self.mTextView.isVerticallyResizable = true
-//    self.mTextView.autoresizingMask = [.width]
-////    self.mTextView.delegate = inContext.coordinator
-//  //--- ScrollView
-//    let scrollView = NSScrollView ()
-//    scrollView.documentView = self.mTextView
-//    scrollView.hasVerticalScroller = true
-//    scrollView.autohidesScrollers = true
-//  //--- Find bar
-//    self.mTextView.usesFindBar = false
-//    self.mTextView.isIncrementalSearchingEnabled = false
-// //--- Create ruler
-////    let rulerView = SWIFT_TextViewRulerView (textView: self.mTextView)
-////    rulerView.scrollView = scrollView
-////    scrollView.verticalRulerView = rulerView
-////    scrollView.rulersVisible = true
-//  //--- Restore selection
-////    self.mTextView.selectedRange = self.mSelectionBinding
-////    DispatchQueue.main.async {
-////      self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
-////    }
-//    self.mTextView.string = String (self.mAttributedString.string.characters)
-////    self.mTextView.textStorage?.setAttributedString (NSAttributedString (self.mAttributedString.string))
-//  //---
-//    return scrollView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override func invalidateHashMarks () {
+//    if let scrollView = self.scrollView,
+//       let textView = scrollView.documentView as? NSTextView,
+//       let layoutManager = textView.layoutManager,
+//       let textContainer = textView.textContainer {
+//      layoutManager.ensureLayout (for: textContainer)
+//    }
+//    super.invalidateHashMarks ()
 //  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func updateNSView (_ inUnusedScrollView : NSScrollView,
-//                     context inContext : Context) {
-//    print ("updateNSView")
-////    self.mTextView.textStorage?.beginEditing ()
-////    self.mTextView.string = String (self.mAttributedString.string.characters)
-////    self.mTextView.textStorage?.endEditing ()
-//    inUnusedScrollView.needsDisplay = true
-////    self.mTextView.textStorage?.setAttributedString (NSAttributedString (self.mAttributedString.string))
-////    DispatchQueue.main.async {
-////      self.mSize = self.mTextView.textStorage!.size()
-////    }
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//struct AttributedText : View  {
-//    @State var size: CGSize = .zero
-//    let attributedString: NSAttributedString
-//    
-//    init(_ attributedString: NSAttributedString) {
-//        self.attributedString = attributedString
-//    }
-//
-//    var body: some View {
-//      ScrollView (showsIndicators: true) {
-//        AttributedTextRepresentable(attributedString: attributedString, size: $size)
-//          .frame(width: size.width, height: size.height)
-//          .background (.white)
-//      }
-//    }
-//    
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//struct AttributedTextEx : NSViewRepresentable  {
-//    @State var size: CGSize = .zero
-//    let attributedString: NSAttributedString
-//    
-//    init(_ attributedString: NSAttributedString) {
-//        self.attributedString = attributedString
-//    }
-//
-//    func makeNSView(context: Context) -> NSScrollView {
-//      let scrollView = NSScrollView ()
-//      scrollView.documentView = NSHostingView (rootView: AttributedTextRepresentable(attributedString: attributedString, size: $size)
-//            .frame(width: size.width, height: size.height))
-//      return scrollView
-//    }
-//
-//        func updateNSView(_ nsView: NSScrollView, context: Context) {
-//        }
-////    var body: some View {
-////      ScrollView {
-////        AttributedTextRepresentable(attributedString: attributedString, size: $size)
-////            .frame(width: size.width, height: size.height)
-////      }
-////    }
-//    
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//private struct AttributedTextRepresentable : NSViewRepresentable {
-//
-//        let attributedString: NSAttributedString
-//        @Binding var size: CGSize
-//        
-//        func makeNSView(context: Context) -> NSTextView {
-//            let textView = NSTextView()
-//
-//            textView.textContainer!.widthTracksTextView = false
-//            textView.textContainer!.containerSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-//            textView.drawsBackground = false
-//
-//            return textView
-//        }
-//
-//        func updateNSView(_ nsView: NSTextView, context: Context) {
-//            nsView.textStorage?.setAttributedString(attributedString)
-//            
-//            DispatchQueue.main.async {
-//                size = nsView.textStorage!.size()
-//            }
-//        }
-//}
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func drawHashMarksAndLabels (in rect: NSRect) {
+  //--- Draw background
+    NSColor.windowBackgroundColor.setFill()
+    self.bounds.fill ()
+  //---
+    for issue in self.mIssueArray {
+      if let p = self.pointForCharacter (at: issue.locationInBuildLogTextView) {
+        let rect = NSRect (
+          x: RULER_WIDTH / 4.0,
+          y: p.y + RULER_WIDTH / 4.0,
+          width: RULER_WIDTH / 2.0,
+          height: RULER_WIDTH / 2.0
+        )
+        let bp = NSBezierPath (ovalIn: rect)
+        let color : NSColor = issue.kind == .error ? .systemRed : .systemOrange
+        color.setFill ()
+        bp.fill()
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func pointForCharacter (at index: Int) -> NSPoint? {
+    if let textView = self.mTextView,
+          let layoutManager = textView.layoutManager,
+          let textContainer = textView.textContainer,
+          let textStorage = textView.textStorage,
+          index >= 0,
+          index < textStorage.length {
+    //--- S'assurer que le layout est calculé
+      layoutManager.ensureLayout (for: textContainer)
+    //-- Conversion caractère → glyphe
+      let glyphIndex = layoutManager.glyphIndexForCharacter (at: index)
+    //--- Rect du glyphe dans le text container
+      let r = layoutManager.boundingRect (
+        forGlyphRange: NSRange (location: glyphIndex, length: 1),
+        in: textContainer
+      )
+    //--- Décalage dû à l'origine du texte dans la textView
+      let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+      return p
+    }else{
+      return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

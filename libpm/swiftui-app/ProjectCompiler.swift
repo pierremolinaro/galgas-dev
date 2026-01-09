@@ -11,19 +11,36 @@ import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-@Observable final class ProjectCompiler {
-
-  private var mIsCompilingProject = false
-  var isCompilingProject : Bool { self.mIsCompilingProject }
-
-//  var mCompileLog : IdentifiableAttributedString = IdentifiableAttributedString (string: AttributedString ("... compile log..."))
-  var mCompileLog : NSAttributedString = NSAttributedString ("... compile log...")
-//  @ObservationTracked var compileLog : NSAttributedString { self.mCompileLog }
-//  @Published private var mCompileLog : String = ""
-//  @ObservationTracked var compileLog : String { self.mCompileLog }
+final class ProjectCompiler : ObservableObject  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @Published private var mIsCompilingProject = false
+  @ObservationTracked var isCompilingProject : Bool { self.mIsCompilingProject }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Published private var mCompileLog : NSAttributedString = NSAttributedString ()
+  @ObservationTracked var compileLog : NSAttributedString { self.mCompileLog }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Published private var mIssueArray = [SWIFT_Issue] ()
+  @ObservationTracked var issueArray : [SWIFT_Issue] { self.mIssueArray }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Published private var mErrorCount = 0
+  @ObservationTracked var errorCount : Int { self.mErrorCount }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Published private var mWarningCount = 0
+  @ObservationTracked var warningCount : Int { self.mWarningCount }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mFont = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
   private var mProcess : Process? = nil
   private var mProcessOutputPipe : Pipe? = nil
   private var mResultData = Data ()
@@ -35,10 +52,12 @@ import Combine
 
   func compile (projectURL inProjectURL : URL) {
     self.mIsCompilingProject = true
-    self.mCompileLog = NSAttributedString ("compile ")
-    self.appendToLog (string: "project")
+    self.mCompileLog = NSAttributedString ("")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
+    self.mIssueArray.removeAll ()
+    self.mErrorCount = 0
+    self.mWarningCount = 0
 //    SWIFT_DocumentController.mySaveAllDocuments ()
 //    self.mResultData.removeAll (keepingCapacity: true)
 //    _ = self.mBuildButton.set (enabled: false)
@@ -105,11 +124,11 @@ import Combine
         )
         self.mProcessOutputPipe?.fileHandleForReading.closeFile ()
         self.mProcessOutputPipe = nil
-        if self.mBuildHasBeenAborted {
-          self.appendToLog (string: "Aborted.")
-        }else{
-          self.appendToLog (string: "Done.")
-        }
+        self.appendMessageString (
+          string: self.mBuildHasBeenAborted ? "Aborted." : "Done.",
+          color: .systemBlue,
+          bold: true
+        )
       }
     }
   }
@@ -126,10 +145,6 @@ import Combine
       self.mProcess = nil
     }
     self.mIsCompilingProject = false
-//    self.mBuildButton.setHidden (false)
-//    _ = self.mBuildButton.set (enabled: true)
-//    self.mAbortButton.setHidden (true)
-//    self.mProgressIndicator.stopAnimation ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -169,40 +184,29 @@ import Combine
     if let string = String (data: inData, encoding: .utf8) {
       if string.hasPrefix ("red:") {
         let str = String (string.dropFirst ("red:".count))
-        self.appendToLog (string:  str)
-//        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.systemRed]))
-//        self.mCompileLog.appendMessageString (str, color: .systemRed, bold: self.mBuildOutputIsBold)
+        self.appendMessageString (string: str, color: .systemRed, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("green:") {
         let str = String (string.dropFirst ("green:".count))
-        self.appendToLog (string:  str)
-//        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0)]))
-//        self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0), bold: self.mBuildOutputIsBold)
+        self.appendMessageString (string: str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0), bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("magenta:") {
         let str = String (string.dropFirst ("magenta:".count))
-        self.appendToLog (string:  str)
-//        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.magenta]))
-//        self.mBuildLogTextView.appendMessageString (str, color: .magenta, bold: self.mBuildOutputIsBold)
+        self.appendMessageString (string: str, color: .magenta, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("orange:") {
         let str = String (string.dropFirst ("orange:".count))
-        self.appendToLog (string:  str)
-//        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.orange]))
-//        self.mBuildLogTextView.appendMessageString (str, color: .systemOrange, bold: self.mBuildOutputIsBold)
+        self.appendMessageString (string: str, color: .systemOrange, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("blue:") {
         let str = String (string.dropFirst ("blue:".count))
-        self.appendToLog (string:  str)
-//        self.mCompileLog.append (NSAttributedString (string: str, attributes: [.foregroundColor : NSColor.blue]))
-//        self.mBuildLogTextView.appendMessageString (str, color: .systemBlue, bold: self.mBuildOutputIsBold)
+        self.appendMessageString (string: str, color: .systemBlue, bold: self.mBuildOutputIsBold)
       }else if string.hasPrefix ("json:") {
         let str = String (string.dropFirst ("json:".count))
-//        let locationInBuildTextView = (self.mCompileLog.string as NSString).length
-//        self.appendIssue (jsonString: str, locationInBuildTextView)
+        self.appendIssue (jsonString: str)
       }else{
         var str = string
         var displayString = ""
         var loop = true
         while loop {
           if str.hasPrefix ("\u{1B}[") {
-//            self.mCompileLog.appendMessageString (displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
+            self.appendMessageString (string: displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
             displayString = ""
             str = String (str.dropFirst ("\u{1B}[".count))
             if str.hasPrefix ("30m") {
@@ -243,25 +247,77 @@ import Combine
             loop = false
           }
         }
-        self.appendToLog (string: displayString)
-//        self.mCompileLog.appendMessageString (displayString, color: self.mBuildOutputCurrentColor, bold: self.mBuildOutputIsBold)
+        self.appendMessageString (
+          string: displayString,
+          color: self.mBuildOutputCurrentColor,
+          bold: self.mBuildOutputIsBold
+        )
       }
     }else{
-//      self.mCompileLog.appendMessageString ("<<invalid output>>\n", color: self.mCurrentBuildOutputColor, bold: true)
+      self.appendMessageString (
+        string: "<<invalid output>>\n",
+        color: self.mBuildOutputCurrentColor,
+        bold: true
+      )
     }
-//    self.mCompileLog.scrollToEndOfText ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendIssue (jsonString inString : String) {
+//    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
+//    mat.append (NSAttributedString (string: inString, attributes: [.font : self.mFont]))
+//    self.mCompileLog = NSAttributedString (attributedString: mat)
+
+    if let issue = SWIFT_Issue (jsonString: inString, self.mCompileLog.length) {
+      self.appendMessageString (
+        string: "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
+        color: issue.color,
+        bold: true
+     )
+      for str in issue.messageArray {
+        self.appendMessageString (string: str + "\n", color: issue.color, bold: true)
+      }
+      for fixit in issue.fixitArray {
+        self.appendMessageString (string: "  " + fixit.messageString + "\n", color: .systemBrown, bold: false)
+      }
+    //--- Note issue on user interface
+      self.mIssueArray.append (issue)
+      switch issue.kind {
+      case .warning :
+        self.mWarningCount += 1
+      case .error :
+        self.mErrorCount += 1
+      }
+    }else{
+      self.appendMessageString (string: "<<invalid json \(inString)>>\n", color: .systemRed, bold: true)
+    }
+
+
+
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendToLog (string inString : String) {
-//    self.mCompileLog = self.mCompileLog + AttributedString (inString)
     let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
-    mat.append (NSAttributedString (string: inString))
+    mat.append (NSAttributedString (string: inString, attributes: [.font : self.mFont]))
     self.mCompileLog = NSAttributedString (attributedString: mat)
-//    let s = self.mCompileLog.string + AttributedString (inString)
-//    self.mCompileLog = IdentifiableAttributedString (string: s)
-//    self.mCompileLog = IdentifiableAttributedString (string: s)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendMessageString (string inString : String,
+                                    color inColor : NSColor,
+                                    bold inBold : Bool) {
+    var font = self.mFont
+    if inBold {
+      let fontManager = NSFontManager.shared
+      font = fontManager.convert (font, toHaveTrait: .boldFontMask)
+    }
+    let mat = NSMutableAttributedString (attributedString: self.mCompileLog)
+    mat.append (NSAttributedString (string: inString, attributes: [.font : font, .foregroundColor : inColor]))
+    self.mCompileLog = NSAttributedString (attributedString: mat)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

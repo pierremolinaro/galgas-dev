@@ -9,9 +9,7 @@ import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-struct SWIFT_CommandLineOption : Identifiable {
-
-  let id = UUID ()
+struct SWIFT_CommandLineOption  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

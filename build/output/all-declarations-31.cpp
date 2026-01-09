@@ -8,128 +8,6 @@
 #include "all-declarations-31.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@plusPlusEqualElementInstructionAST enterInstructionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_plusPlusEqualElementInstructionAST::method_enterInstructionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_plusPlusEqualElementInstructionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 627)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@plusPlusEqualElementInstructionAST analyzeSemanticInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_plusPlusEqualElementInstructionAST::method_analyzeSemanticInstruction (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                 GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                 const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                                 GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                 GGS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                 GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_targetType_25374 ;
-  GGS_string var_targetVariableCppName_25401 ;
-  GGS_string var_nameForCheckingFormalParameterUsing_25439 ;
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_plusPlusEqualElementInstructionAST temp_1 = this ;
-    test_0 = temp_1.readProperty_mPrefixedBySelf ().boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        const GGS_selfAvailability_2E_available var_selfAvailable_25521 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-concat.galgas", 644)).unwrappedValue () ;
-        if (!constinArgument_inAnalysisContext.readProperty_selfAvailability ().getter_getAvailable (SOURCE_FILE ("instruction-concat.galgas", 644)).isValuated ()) {
-          test_2 = GalgasBool::boolFalse ;
-        }
-        if (GalgasBool::boolTrue == test_2) {
-          GGS_propertyMap var_propertyMap_25604 = extensionGetter_definition (var_selfAvailable_25521.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 645)).readProperty_propertyMap () ;
-          GGS_bool var_isConstant_25721 ;
-          const GGS_plusPlusEqualElementInstructionAST temp_3 = this ;
-          GGS_AccessControl joker_25713 ; // Joker input parameter
-          var_propertyMap_25604.method_searchKey (temp_3.readProperty_mReceiverName (), joker_25713, var_isConstant_25721, var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 646)) ;
-          var_nameForCheckingFormalParameterUsing_25439 = constinArgument_inAnalysisContext.readProperty_selfObjectCppName () ;
-          const GGS_plusPlusEqualElementInstructionAST temp_4 = this ;
-          var_targetVariableCppName_25401 = constinArgument_inAnalysisContext.readProperty_selfObjectCppPrefixForAccessingProperty ().add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 648)).add_operation (temp_4.readProperty_mReceiverName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("instruction-concat.galgas", 649)), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 649)) ;
-          GalgasBool test_5 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_5) {
-            test_5 = var_isConstant_25721.boolEnum () ;
-            if (GalgasBool::boolTrue == test_5) {
-              const GGS_plusPlusEqualElementInstructionAST temp_6 = this ;
-              GenericArray <FixItDescription> fixItArray7 ;
-              inCompiler->emitSemanticError (temp_6.readProperty_mReceiverName ().readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray7  COMMA_SOURCE_FILE ("instruction-concat.galgas", 651)) ;
-            }
-          }
-          GalgasBool test_8 = GalgasBool::boolTrue ;
-          if (GalgasBool::boolTrue == test_8) {
-            test_8 = extensionGetter_propertiesAreMutable (var_selfAvailable_25521.readProperty_selfMutability (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 653)).operator_not (SOURCE_FILE ("instruction-concat.galgas", 653)).boolEnum () ;
-            if (GalgasBool::boolTrue == test_8) {
-              const GGS_plusPlusEqualElementInstructionAST temp_9 = this ;
-              GenericArray <FixItDescription> fixItArray10 ;
-              inCompiler->emitSemanticError (temp_9.readProperty_mReceiverName ().readProperty_location (), GGS_string ("the property cannot be mutated in this context"), fixItArray10  COMMA_SOURCE_FILE ("instruction-concat.galgas", 654)) ;
-            }
-          }
-        }
-      }
-      if (GalgasBool::boolFalse == test_2) {
-        const GGS_plusPlusEqualElementInstructionAST temp_11 = this ;
-        GenericArray <FixItDescription> fixItArray12 ;
-        inCompiler->emitSemanticError (temp_11.readProperty_mInstructionLocation (), GGS_string ("'self' not available in this context"), fixItArray12  COMMA_SOURCE_FILE ("instruction-concat.galgas", 657)) ;
-        var_targetType_25374.drop () ; // Release error dropped variable
-        var_targetVariableCppName_25401.drop () ; // Release error dropped variable
-        var_nameForCheckingFormalParameterUsing_25439.drop () ; // Release error dropped variable
-      }
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    {
-    const GGS_plusPlusEqualElementInstructionAST temp_13 = this ;
-    extensionSetter_searchForReadWriteAccess (ioArgument_ioVariableMap, temp_13.readProperty_mReceiverName (), var_targetType_25374, var_targetVariableCppName_25401, var_nameForCheckingFormalParameterUsing_25439, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 661)) ;
-    }
-  }
-  const GGS_plusPlusEqualElementInstructionAST temp_14 = this ;
-  UpEnumerator_lstringlist enumerator_26702 (temp_14.readProperty_mStructAttributeList ()) ;
-  while (enumerator_26702.hasCurrentObject ()) {
-    GGS_propertyMap var_propertyMap_26751 = extensionGetter_definition (var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 670)).readProperty_propertyMap () ;
-    GGS_AccessControl var_accessControl_26842 ;
-    GGS_bool var_isConstant_26861 ;
-    var_propertyMap_26751.method_searchKey (enumerator_26702.current_mValue (HERE), var_accessControl_26842, var_isConstant_26861, var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 671)) ;
-    extensionMethod_checkSetAccess (var_accessControl_26842, constinArgument_inAnalysisContext.readProperty_selfAvailability (), enumerator_26702.current_mValue (HERE).readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 672)) ;
-    GalgasBool test_15 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_15) {
-      test_15 = var_isConstant_26861.boolEnum () ;
-      if (GalgasBool::boolTrue == test_15) {
-        GenericArray <FixItDescription> fixItArray16 ;
-        inCompiler->emitSemanticError (enumerator_26702.current_mValue (HERE).readProperty_location (), GGS_string ("a constant property cannot be modified"), fixItArray16  COMMA_SOURCE_FILE ("instruction-concat.galgas", 674)) ;
-      }
-    }
-    enumerator_26702.gotoNextObject () ;
-  }
-  GalgasBool test_17 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_17) {
-    test_17 = extensionGetter_definition (var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 678)).readProperty_supportCollectionValue ().operator_not (SOURCE_FILE ("instruction-concat.galgas", 678)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_17) {
-      const GGS_plusPlusEqualElementInstructionAST temp_18 = this ;
-      GenericArray <FixItDescription> fixItArray19 ;
-      inCompiler->emitSemanticError (temp_18.readProperty_mInstructionLocation (), GGS_string ("the target object has the '@").add_operation (extensionGetter_definition (var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 680)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 680)).add_operation (GGS_string ("' type, but this type does not support the '++=' operator"), inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 680)), fixItArray19  COMMA_SOURCE_FILE ("instruction-concat.galgas", 679)) ;
-    }
-  }
-  GGS_unifiedTypeMapEntry var_rightExpressionType_27394 = extensionGetter_definition (var_targetType_25374, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 683)).readProperty_typeForEnumeratedElement () ;
-  GGS_semanticExpressionForGeneration var_expression_27788 ;
-  const GGS_plusPlusEqualElementInstructionAST temp_20 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_20.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_rightExpressionType_27394, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_27788, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 685)) ;
-  {
-  const GGS_plusPlusEqualElementInstructionAST temp_21 = this ;
-  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_rightExpressionType_27394, var_expression_27788.readProperty_mResultType (), temp_21.readProperty_mInstructionLocation (), var_expression_27788, inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 695)) ;
-  }
-  const GGS_plusPlusEqualElementInstructionAST temp_22 = this ;
-  const GGS_plusPlusEqualElementInstructionAST temp_23 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssignOperation (GGS_plusPlusAssignInstructionForGeneration::init_21__21__21__21__21__21_ (temp_22.readProperty_mInstructionLocation (), var_targetType_25374, var_targetVariableCppName_25401, var_nameForCheckingFormalParameterUsing_25439, temp_23.readProperty_mStructAttributeList (), var_expression_27788, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("instruction-concat.galgas", 702)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@plusEqualnstructionForGeneration generateInstruction'
 //--------------------------------------------------------------------------------------------------
 
@@ -7826,4 +7704,75 @@ GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplemen
   result.appendString ("      }\n    //--- Error or warnings \?\n      if (totalErrorCount () > 0) {\n        returnCode = 1 ; // Error code\n      }else if (totalWarningCount () > 0) {\n        if (gOption_galgas_5F_builtin_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {\n          returnCode = 1 ; // Error code\n          if (verboseOptionOn) {\n            printf (\"** Note: warnings are treated as errors. **\\n\") ;\n          }\n        }\n      }\n    //--- Epilogue\n      routine_after (commonCompiler COMMA_HERE) ;\n    //--- Emit JSON issue file \?\n      if (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue != \"\") {\n        commonCompiler->writeIssueJSONFile (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue) ;\n      }\n    //--- Display error and warnings count\n      if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {\n        String message ;\n        if (totalWarningCount () == 0) {\n          message.appendCString (\"No warning\") ;\n        }else if (totalWarningCount () == 1) {\n          message.appendCString (\"1 warning\") ;\n        }else{\n          message.appendSigned (totalWarningCount ()) ;\n          message.appendCString (\" warnings\") ;\n        }\n        message.appendCString (\", \") ;\n        if (totalErrorCount () == 0) {\n          message.appendCString (\"no error\") ;\n        }else if (totalErrorCount () == 1) {\n          message.appendCString (\"1 error\") ;\n        }else{\n          message.appendSigned (totalErrorCount ()) ;\n          message.appendCString (\" errors\") ;\n        }\n        message.appendCString (\".\\n\") ;\n        ggs_printMessage (message COMMA_HERE) ;\n      }\n    }catch (const ::std::exception & e) {\n      F_default_display_exception (e) ;\n      returnCode = 1 ; // Error code\n    }catch (...) {\n      printf (\"**** Unknow exception ****\\n\") ;\n      throw ;\n    }\n    macroDetachSharedObject (commonCompiler) ;\n  }\n  return returnCode ;\n}\n\n") ;
   return GGS_string (result) ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileBeforeClauseGalgas3&&?&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
+                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                    const GGS_prologueEpilogueList constinArgument_inPrologueList,
+                                                                    GGS_programListForGeneration & ioArgument_ioDecoratedDeclarationListForGeneration,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstring var_usefulnessName_2720 = function_beforeNameForUsefulEntitiesGraph (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 60)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 60)) ;
+  {
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_2720, var_usefulnessName_2720, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 61)) ;
+  }
+  ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_usefulnessName_2720  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 62)) ;
+  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_2931 = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_prologueEpilogueList enumerator_3035 (constinArgument_inPrologueList) ;
+  while (enumerator_3035.hasCurrentObject ()) {
+    GGS_semanticInstructionListForGeneration var_blockSemanticInstructionListForGeneration_3535 ;
+    {
+    GGS_formalParameterListForGeneration joker_3583 ; // Joker input parameter
+    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F_mutablePropertyList_3F__3F__21__21_ (var_usefulnessName_2720, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_formalParameterListAST::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), enumerator_3035.current_mInstructionList (HERE), enumerator_3035.current_mEndOfInstructionList (HERE), var_blockSemanticInstructionListForGeneration_3535, joker_3583, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 66)) ;
+    }
+    var_semanticInstructionListForGeneration_2931.addAssignOperation (GGS_semanticBlockInstructionForGeneration::init_21_ (var_blockSemanticInstructionListForGeneration_3535, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 79)) ;
+    enumerator_3035.gotoNextObject () ;
+  }
+  ioArgument_ioDecoratedDeclarationListForGeneration.addAssignOperation (GGS_routineImplementationForGeneration::init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_bool (false), GGS_string ("proc-before"), GGS_string ("before"), GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_bool (true), var_semanticInstructionListForGeneration_2931, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 83)) ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileProgramRulesGalgas3&&?&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
+                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                    const GGS_programRuleList constinArgument_inProgramRules,
+                                                                    GGS_programListForGeneration & ioArgument_ioDecoratedDeclarationListForGeneration,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_uint var_ruleIndex_4705 = GGS_uint (uint32_t (0U)) ;
+  UpEnumerator_programRuleList enumerator_4824 (constinArgument_inProgramRules) ;
+  while (enumerator_4824.hasCurrentObject ()) {
+    GGS_lstring var_usefulnessName_4876 = function_rootRuleNameForUsefulEntitiesGraph (enumerator_4824.current_mSourceFileExtension (HERE), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 110)) ;
+    {
+    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_4876, var_usefulnessName_4876, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 111)) ;
+    }
+    ioArgument_ioUsefulnessRootEntities.addAssignOperation (var_usefulnessName_4876  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 112)) ;
+    GGS_formalParameterListAST temp_0 = GGS_formalParameterListAST::init (inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 114)) ;
+    temp_0.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("programComponentCompilation.galgas", 114)), GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("programComponentCompilation.galgas", 114)), GGS_lstring::init_21__21_ (GGS_string ("lstring"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 114)), inCompiler COMMA_HERE), enumerator_4824.current_mSourceFileVariableName (HERE), enumerator_4824.current_mSourceFileVariableNameIsUnused (HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 114)) ;
+    GGS_formalParameterListAST var_argumentList_5102 = temp_0 ;
+    GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_5635 ;
+    GGS_formalParameterListForGeneration var_routineSignature_5683 ;
+    {
+    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F_mutablePropertyList_3F__3F__21__21_ (var_usefulnessName_4876, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_argumentList_5102, GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), enumerator_4824.current_mInstructionList (HERE), enumerator_4824.current_mEndOfInstructionList (HERE), var_semanticInstructionListForGeneration_5635, var_routineSignature_5683, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 116)) ;
+    }
+    ioArgument_ioDecoratedDeclarationListForGeneration.addAssignOperation (GGS_routineImplementationForGeneration::init_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_bool (false), GGS_string ("proc-programrule"), GGS_string ("programRule_").add_operation (var_ruleIndex_4705.getter_string (SOURCE_FILE ("programComponentCompilation.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 133)), var_routineSignature_5683, GGS_bool (true), var_semanticInstructionListForGeneration_5635, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 129)) ;
+    var_ruleIndex_4705.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas", 138)) ;
+    enumerator_4824.gotoNextObject () ;
+  }
+}
+
 

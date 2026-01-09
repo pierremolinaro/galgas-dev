@@ -378,6 +378,7 @@
 		CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */; };
 		CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE62E731366007736B6 /* CustomFont.swift */; };
 		CFE3BB822F10FF760045FA2E /* SWIFT_CompileLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */; };
+		CFE3BB992F11565B0045FA2E /* SWIFT_Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -776,6 +777,7 @@
 		CFD71AE72E731366007736B6 /* CustomFontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontPicker.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CompileLogView.swift; sourceTree = "<group>"; };
+		CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1267,7 +1269,6 @@
 		CFD719922E730780007736B6 /* swiftui-app */ = {
 			isa = PBXGroup;
 			children = (
-				CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */,
 				CFD719B02E73085C007736B6 /* AllocationDebugView.swift */,
 				CFD719AD2E7307FB007736B6 /* Application.swift */,
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
@@ -1277,7 +1278,9 @@
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
 				CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */,
+				CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */,
 				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
+				CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */,
 				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
 				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
@@ -1638,6 +1641,7 @@
 				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
 				CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */,
+				CFE3BB992F11565B0045FA2E /* SWIFT_Issue.swift in Sources */,
 				CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */,
 				CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */,
 				CF00A2C42EBBE643002D9B0F /* lexique-galgas+template+scanner-swiftui.swift in Sources */,

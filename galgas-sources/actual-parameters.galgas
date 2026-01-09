@@ -25,7 +25,7 @@ list @actualParameterListAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method analyzeRoutineArguments?let @lstring inUsefulnessCallerEntityName
+  method analyzeRoutineArguments?let @lstring unused inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
