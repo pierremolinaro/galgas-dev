@@ -864,14 +864,14 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
   }
   if (GalgasBool::boolFalse == test_0) {
     outArgument_outActualParameterListForGeneration = GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-    GGS_stringset var_exclusiveVariableSet_2802 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+    GGS_stringset var_exclusiveVariableSet_2795 = GGS_stringset::init (inCompiler COMMA_HERE) ;
     const GGS_actualParameterListAST temp_9 = inObject ;
-    UpEnumerator_formalParameterSignature enumerator_2857 (constinArgument_inRoutineSignature) ;
-    UpEnumerator_actualParameterListAST enumerator_2878 (temp_9) ;
-    while (enumerator_2857.hasCurrentObject () && enumerator_2878.hasCurrentObject ()) {
-      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2878.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2857.current (HERE).readProperty_mFormalSelector (), enumerator_2857.current (HERE).readProperty_mFormalArgumentType (), enumerator_2857.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2802, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 49)) ;
-      enumerator_2857.gotoNextObject () ;
-      enumerator_2878.gotoNextObject () ;
+    UpEnumerator_formalParameterSignature enumerator_2850 (constinArgument_inRoutineSignature) ;
+    UpEnumerator_actualParameterListAST enumerator_2871 (temp_9) ;
+    while (enumerator_2850.hasCurrentObject () && enumerator_2871.hasCurrentObject ()) {
+      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2871.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2850.current (HERE).readProperty_mFormalSelector (), enumerator_2850.current (HERE).readProperty_mFormalArgumentType (), enumerator_2850.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2795, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 49)) ;
+      enumerator_2850.gotoNextObject () ;
+      enumerator_2871.gotoNextObject () ;
     }
   }
 }

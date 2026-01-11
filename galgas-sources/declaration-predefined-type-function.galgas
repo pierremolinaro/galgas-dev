@@ -64,7 +64,7 @@ final class @functionPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
     enterBaseFinalGetterWithoutArgument (

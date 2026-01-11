@@ -26,6 +26,7 @@
 IssueDescriptor::IssueDescriptor (void) :
 mIsError (false),
 mFile (""),
+mStartLocation (0),
 mLine (0),
 mStartColumn (0),
 mEndColumn (0),

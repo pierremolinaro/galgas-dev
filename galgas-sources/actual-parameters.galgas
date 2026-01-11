@@ -25,7 +25,7 @@ list @actualParameterListAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  method analyzeRoutineArguments?let @lstring unused inUsefulnessCallerEntityName
+  method analyzeRoutineArguments?let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
@@ -202,7 +202,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST unused inFormalPassingMode
+  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
     result = inFormalPassingMode == .argumentInOut
     if result then
