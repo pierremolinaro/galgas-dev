@@ -241,6 +241,9 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveAllEditedFiles () {
+  //--- Save project ?
+
+  //--- Save all edited files
     for (fileID, str) in self.mScheduledSaveDictionary {
       if let fileURL = self.fileURL (forID: fileID),
          let data = str.data (using: .utf8) {

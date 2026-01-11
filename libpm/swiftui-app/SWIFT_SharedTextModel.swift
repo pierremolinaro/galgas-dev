@@ -129,7 +129,8 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // TextView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func createAndConfigureTextView (issueArray inIssueArray : [SWIFT_Issue]) -> InternalNSTextView {
+  fileprivate func createAndConfigureTextView (issueArray inIssueArray : [SWIFT_Issue],
+                     installScrollToLineNotificationObserver inFlag : Bool) -> InternalNSTextView {
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
     layoutManager.allowsNonContiguousLayout = true
@@ -146,7 +147,8 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
       textContainer: textContainer,
       sharedTextModel: self,
       undoManager: self.mSharedUndoManager,
-      issueArray: inIssueArray
+      issueArray: inIssueArray,
+      installScrollToLineNotificationObserver: inFlag
     )
   //---
     return textView
@@ -239,16 +241,17 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   @Binding private var mSelectionBinding : NSRange
   private let mTextView : InternalNSTextView
   private let mIssueArray : [SWIFT_Issue]
-  private let mScrollToLine : Int?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>,
         issueArray inIssueArray : [SWIFT_Issue],
-        scrollToLine inScrollToLine : Int?) {
-    self.mScrollToLine = inScrollToLine
-    self.mTextView = inSharedTextModel.createAndConfigureTextView (issueArray: inIssueArray)
+        installScrollToLineNotificationObserver inFlag : Bool) {
+    self.mTextView = inSharedTextModel.createAndConfigureTextView (
+      issueArray: inIssueArray,
+      installScrollToLineNotificationObserver: inFlag
+    )
     self._mSelectionBinding = inSelectionBinding
     self.mIssueArray = inIssueArray
   }
@@ -298,11 +301,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   //--- Restore selection
     self.mTextView.selectedRange = self.mSelectionBinding
     DispatchQueue.main.async {
-      if let line = self.mScrollToLine {
-        self.mTextView.scrollToLine (line)
-      }else{
-        self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
-      }
+      self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
     }
   //---
     return scrollView
@@ -405,12 +404,21 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
   init (textContainer inContainer : NSTextContainer?,
         sharedTextModel inSharedTextModel : SWIFT_SharedTextModel,
         undoManager inUndoManager : UndoManager,
-        issueArray inIssueArray : [SWIFT_Issue]) {
+        issueArray inIssueArray : [SWIFT_Issue],
+        installScrollToLineNotificationObserver inFlag : Bool) {
     self.mSharedTextModel = inSharedTextModel
     self.mUndoManager = inUndoManager
     self.mIssueArray = inIssueArray
     super.init (frame: .zero, textContainer: inContainer)
     noteObjectAllocation (self)
+    if inFlag {
+      NotificationCenter.default.addObserver (
+        self,
+        selector: #selector (self.scrollToLineNotification(_:)),
+        name: Notification.Name.myScrollSourceToLine,
+        object: nil
+      )
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -552,10 +560,15 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func scrollToLine (_ inLineNumber : Int) {
-    self.rebuildLineIndexCache ()
-    let firstCharIndex = self.mLineRangeCacheArray [inLineNumber - 1].location
-    self.scrollRangeToVisible (NSRange (location: firstCharIndex, length: 0))
+  @objc private func scrollToLineNotification (_ inNotification : Notification) {
+    if let notificationObject = inNotification.object as? ScrollSourceToLineNotificationObject {
+      let line = notificationObject.line
+      self.rebuildLineIndexCache ()
+      let firstCharIndex = self.mLineRangeCacheArray [line - 1].location
+      DispatchQueue.main.async {
+        self.scrollRangeToVisible (NSRange (location: firstCharIndex, length: 0))
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -6,6 +6,18 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
+extension Notification.Name {
+  static let myScrollSourceToLine = Notification.Name ("my.scroll.source.to.line")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct ScrollSourceToLineNotificationObject {
+  let line : Int
+}
+
+//--------------------------------------------------------------------------------------------------
+
 struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -28,14 +40,14 @@ struct ProjectDocumentView : View {
   private let mProjectFileURL : URL
 
   @State private var mSidebarSelectedItem = SidebarSelectedItem.fileList
-  @StateObject var mProjectTextModel : SWIFT_SharedTextModel
+  @StateObject var mSharedTextModel : SWIFT_SharedTextModel
   @StateObject private var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
 
   @State private var mSelectedIssue : UUID? = nil
-  @State private var mScrollSourceViewToLine : Int? = nil
+//  @State private var mScrollSourceViewToLine : Int? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,7 +59,7 @@ struct ProjectDocumentView : View {
       scanner: scannerFor (extension: inFileURL.pathExtension),
       initialString: inDocumentBinding.mString.wrappedValue
     )
-    self._mProjectTextModel = StateObject (wrappedValue: projectSharedTextModel)
+    self._mSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
     let rootDirectoryNode = SWIFT_RootDirectoryNode (
       url: inFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources")
     )
@@ -88,6 +100,7 @@ struct ProjectDocumentView : View {
   //--- Save all edited files
     .onReceive (NotificationCenter.default.publisher (for: Notification.Name.mySaveAllCommand)) { _ in
       self.mRootDirectoryNode.saveAllEditedFiles ()
+      self.mProjectDocumentSaveScheduler.saveProjectDocument (completionHandler: nil)
     }
   }
 
@@ -127,18 +140,29 @@ struct ProjectDocumentView : View {
         List (self.mProjectCompiler.issueArray, id: \.id, selection: self.$mSelectedIssue) { issue in
           issue.view
         }
-        .onChange (of: self.mSelectedIssue) { (_, _) in
-           if let selectedIssueID = self.mSelectedIssue,
-              let idx = self.mProjectCompiler.issueArray.firstIndex (where: { $0.id == selectedIssueID }) {
-             let fileURL = self.mProjectCompiler.issueArray [idx].fileURL
-             self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
-             self.mScrollSourceViewToLine = self.mProjectCompiler.issueArray [idx].line
-          }
-        }
+        .onChange (of: self.mSelectedIssue) { (_, _) in self.showSelectedIssueInSource () }
       }
     }
     .toolbar (removing: .sidebarToggle)
     .toolbar { self.sidebarViewToolbar () }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func showSelectedIssueInSource () {
+    if let selectedIssueID = self.mSelectedIssue,
+      let idx = self.mProjectCompiler.issueArray.firstIndex (where: { $0.id == selectedIssueID }) {
+      let fileURL = self.mProjectCompiler.issueArray [idx].fileURL
+      if fileURL == self.mProjectFileURL {
+        self.mRootDirectoryNode.mSelectedFileNodeID = nil // Affiche le projet
+      }else{
+        self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
+      }
+      let object = ScrollSourceToLineNotificationObject (line: self.mProjectCompiler.issueArray [idx].line)
+      DispatchQueue.main.async {
+        NotificationCenter.default.post (name: .myScrollSourceToLine, object: object)
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -166,8 +190,12 @@ struct ProjectDocumentView : View {
 
   private func compileProject () {
     self.mRootDirectoryNode.saveAllEditedFiles ()
-    self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
-    self.mProjectCompiler.compile (projectURL: self.mProjectFileURL)
+    if self.mSidebarSelectedItem == .fileList {
+      self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
+    }
+    self.mProjectDocumentSaveScheduler.saveProjectDocument {
+      self.mProjectCompiler.compile (projectURL: self.mProjectFileURL)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -178,19 +206,17 @@ struct ProjectDocumentView : View {
         SWIFT_TextSyntaxColoringView (
           model: stm,
           issueArray: self.mProjectCompiler.issueArray,
-          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID),
-          scrollToLine: self.mScrollSourceViewToLine
+          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
         )
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
       }else{
         EmptyView ()
       }
-    }else{
+    }else{ // Edit project file
       SWIFT_TextSyntaxColoringView (
-        model: self.mProjectTextModel,
+        model: self.mSharedTextModel,
         issueArray: self.mProjectCompiler.issueArray,
-        url: self.mProjectFileURL,
-        scrollToLine: nil
+        url: self.mProjectFileURL
       )
     }
   }
@@ -211,7 +237,7 @@ struct ProjectDocumentView : View {
 
 fileprivate final class ProjectDocumentSaveScheduler : ObservableObject {
 
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSaveScheduled = false
 
@@ -220,15 +246,33 @@ fileprivate final class ProjectDocumentSaveScheduler : ObservableObject {
   func scheduleProjectDocumentSaveOperation () {
     if !self.mSaveScheduled {
       self.mSaveScheduled = true
-      DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) { self.saveProjectDocument () }
+      DispatchQueue.main.asyncAfter (deadline: .now () + AUTOMATIC_SAVE_DELAY) {
+        self.saveProjectDocument (completionHandler: nil)
+      }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func saveProjectDocument () {
-    self.mSaveScheduled = false
-    NSApp.sendAction (#selector(NSDocument.save(_:)), to: nil, from: nil)
+  func saveProjectDocument (completionHandler inCompletionHandler: (() -> Void)?) {
+    if self.mSaveScheduled {
+      self.mSaveScheduled = false
+      if let doc = NSDocumentController.shared.currentDocument {
+        doc.save (
+          to: doc.fileURL!,
+          ofType: doc.fileType!,
+          for: .saveOperation
+        ) { error in
+          if let error = error {
+            print ("Erreur:", error)
+          }else{
+            inCompletionHandler? ()
+          }
+        }
+      }
+    }else{
+      inCompletionHandler? ()
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

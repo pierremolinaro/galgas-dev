@@ -202,7 +202,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
+  override getter isCompatibleWith ?let @formalArgumentPassingModeAST unused inFormalPassingMode
                                    ?let @string inSelector -> @bool {
     result = inFormalPassingMode == .argumentInOut
     if result then
