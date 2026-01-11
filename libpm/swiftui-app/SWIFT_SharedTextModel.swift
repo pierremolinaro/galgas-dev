@@ -129,7 +129,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // TextView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func createAndConfigureTextView () -> InternalNSTextView {
+  fileprivate func createAndConfigureTextView (issueArray inIssueArray : [SWIFT_Issue]) -> InternalNSTextView {
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
     layoutManager.allowsNonContiguousLayout = true
@@ -145,7 +145,8 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
     let textView = InternalNSTextView (
       textContainer: textContainer,
       sharedTextModel: self,
-      undoManager: self.mSharedUndoManager
+      undoManager: self.mSharedUndoManager,
+      issueArray: inIssueArray
     )
   //---
     return textView
@@ -238,13 +239,16 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   @Binding private var mSelectionBinding : NSRange
   private let mTextView : InternalNSTextView
   private let mIssueArray : [SWIFT_Issue]
+  private let mScrollToLine : Int?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>,
-        issueArray inIssueArray : [SWIFT_Issue]) {
-    self.mTextView = inSharedTextModel.createAndConfigureTextView ()
+        issueArray inIssueArray : [SWIFT_Issue],
+        scrollToLine inScrollToLine : Int?) {
+    self.mScrollToLine = inScrollToLine
+    self.mTextView = inSharedTextModel.createAndConfigureTextView (issueArray: inIssueArray)
     self._mSelectionBinding = inSelectionBinding
     self.mIssueArray = inIssueArray
   }
@@ -294,7 +298,11 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   //--- Restore selection
     self.mTextView.selectedRange = self.mSelectionBinding
     DispatchQueue.main.async {
-      self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
+      if let line = self.mScrollToLine {
+        self.mTextView.scrollToLine (line)
+      }else{
+        self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
+      }
     }
   //---
     return scrollView
@@ -389,14 +397,18 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SWIFT_SharedTextModel?
   private weak var mUndoManager : UndoManager?
+  private let mIssueArray : [SWIFT_Issue]
+  private var mLineRangeCacheArray : [NSRange] = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (textContainer inContainer : NSTextContainer?,
         sharedTextModel inSharedTextModel : SWIFT_SharedTextModel,
-        undoManager inUndoManager : UndoManager) {
+        undoManager inUndoManager : UndoManager,
+        issueArray inIssueArray : [SWIFT_Issue]) {
     self.mSharedTextModel = inSharedTextModel
     self.mUndoManager = inUndoManager
+    self.mIssueArray = inIssueArray
     super.init (frame: .zero, textContainer: inContainer)
     noteObjectAllocation (self)
   }
@@ -435,14 +447,6 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
       self.setSelectedRange (r)
       let menu = NSMenu (title: "")
       menu.autoenablesItems = false
-    //--- Add issues
-//      for issue in self.mDocument?.mIssueArray ?? [] {
-//        if NSIntersectionRange (issue.range, r).length != NSNotFound {
-//          issue.storeItemsToMenu (menu, inCocoaTextWiew, r)
-//        }
-//      }
-    //--- Source indexing
-//      self.appendToIndexingMenu (menu, r)
     //--- Display menu
       menu.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       menu.allowsContextMenuPlugIns = false
@@ -470,6 +474,88 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
       )
     }
     return range
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    self.rebuildLineIndexCache ()
+    for issue in self.mIssueArray {
+      let startIndex = self.mLineRangeCacheArray [issue.line - 1].location + issue.startColumn - 1
+      let endIndex = startIndex + issue.length
+      if let startRect = self.rectForCharacter (atIndex: startIndex),
+         let endRect = self.rectForCharacter (atIndex: endIndex) {
+        let bp = NSBezierPath ()
+        bp.move (to: NSPoint (x: startRect.origin.x, y: startRect.maxY - 1.0))
+        bp.line (to: NSPoint (x: endRect.origin.x, y: endRect.maxY - 1.0))
+        switch issue.kind {
+        case .error : NSColor.systemRed.setStroke ()
+        case .warning : NSColor.systemOrange.setStroke ()
+        }
+        bp.lineWidth = 2.0
+        bp.stroke ()
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func rectForCharacter (atIndex inIndex : Int) -> NSRect? {
+    if let layoutManager = self.layoutManager, let textContainer = self.textContainer {
+    //--- S'assurer que le layout est calculé
+      layoutManager.ensureLayout (for: textContainer)
+    //-- Conversion caractère → glyphe
+      let glyphIndex = layoutManager.glyphIndexForCharacter (at: inIndex)
+    //--- Rect du glyphe dans le text container
+      let r = layoutManager.boundingRect (
+        forGlyphRange: NSRange (location: glyphIndex, length: 1),
+        in: textContainer
+      )
+      return r
+    }else{
+      return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func rebuildLineIndexCache () {
+    let str = self.string as NSString
+    self.mLineRangeCacheArray = []
+    str.enumerateSubstrings (in: NSRange (location: 0, length: str.length), options: .byLines) { _, range, _, _ in
+      var lineRange = range
+      lineRange.length += 1
+      self.mLineRangeCacheArray.append (lineRange)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Recherche binaire pour trouver le numéro de ligne à partir d'un index caractère
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func lineRangeAndNumber (forCharIndex inCharIndex : Int) -> (NSRange, Int) {
+    var low = 0
+    var high = self.mLineRangeCacheArray.count - 1
+    while low <= high {
+      let mid = (low + high) / 2
+      if self.mLineRangeCacheArray [mid].location == inCharIndex {
+        return (self.mLineRangeCacheArray [mid], mid + 1)
+      }else if self.mLineRangeCacheArray [mid].location < inCharIndex {
+        low = mid + 1
+      }else{
+        high = mid - 1
+      }
+    }
+    return (self.mLineRangeCacheArray [self.mLineRangeCacheArray.count - 1], self.mLineRangeCacheArray.count)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func scrollToLine (_ inLineNumber : Int) {
+    self.rebuildLineIndexCache ()
+    let firstCharIndex = self.mLineRangeCacheArray [inLineNumber - 1].location
+    self.scrollRangeToVisible (NSRange (location: firstCharIndex, length: 0))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -512,6 +598,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
 
   func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
     self.mIssueArray = inIssueArray
+    self.rebuildLineIndexCache ()
     self.setNeedsDisplay (self.bounds)
   }
 
@@ -606,8 +693,8 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
     }
   //---
     for issue in self.mIssueArray {
-      let range = self.mLineRangeCacheArray [issue.line]
-      if let p = self.pointForCharacter (at: range.location) {
+      let range = self.mLineRangeCacheArray [issue.line - 1]
+      if let p = self.pointForCharacter (atIndex: range.location) {
         let rect = NSRect (
           x: ISSUE_MARK_WIDTH,
           y: p.y + ISSUE_MARK_WIDTH,
@@ -615,8 +702,10 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
           height: ISSUE_MARK_WIDTH * 2.0
         )
         let bp = NSBezierPath (ovalIn: rect)
-        let color : NSColor = issue.kind == .error ? .systemRed : .systemOrange
-        color.setFill ()
+        switch issue.kind {
+        case .error : NSColor.systemRed.setFill ()
+        case .warning : NSColor.systemOrange.setFill ()
+        }
         bp.fill()
       }
     }
@@ -624,7 +713,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func pointForCharacter (at index : Int) -> NSPoint? {
+  private func pointForCharacter (atIndex index : Int) -> NSPoint? {
     if let textView = self.mTextView,
           let layoutManager = textView.layoutManager,
           let textContainer = textView.textContainer,
@@ -647,6 +736,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
       return nil
     }
   }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }

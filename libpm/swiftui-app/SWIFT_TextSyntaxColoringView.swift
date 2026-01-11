@@ -17,13 +17,16 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
   private let mIssueArray : [SWIFT_Issue]
+  private let mScrollToLine : Int?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
         issueArray inIssueArray : [SWIFT_Issue],
-        url inSourceFileURL : URL?) {
+        url inSourceFileURL : URL?,
+        scrollToLine inScrollToLine : Int?) {
     self.mSharedTextModel = inSharedTextModel
+    self.mScrollToLine = inScrollToLine
     var issueArray = [SWIFT_Issue] ()
     for issue in inIssueArray {
       if issue.fileURL == inSourceFileURL {
@@ -40,7 +43,8 @@ struct SWIFT_TextSyntaxColoringView : View {
       SWIFT_LexicalHilitingTextEditor (
         model: self.mSharedTextModel,
         selectionBinding: self.$mSharedTextModel.mTopViewSelection,
-        issueArray: self.mIssueArray
+        issueArray: self.mIssueArray,
+        scrollToLine: self.mScrollToLine
       )
       .focusedValue (
         \.activeView,
@@ -62,7 +66,8 @@ struct SWIFT_TextSyntaxColoringView : View {
           SWIFT_LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
             selectionBinding: self.$mSharedTextModel.mBottomViewSelection,
-            issueArray: self.mIssueArray
+            issueArray: self.mIssueArray,
+            scrollToLine: nil
           )
           .focusedValue (
             \.activeView,

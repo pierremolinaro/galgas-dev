@@ -26,7 +26,6 @@ struct SWIFT_FileNodeID : Hashable, CustomStringConvertible {
       self.mID = UInt64 (statInfo.st_ino)
     }else{
       self.mID = 0
-      print ("Zero pour \(inURL)")
     }
   }
 

@@ -2,11 +2,13 @@
 //  Created by Pierre Molinaro on 25/12/2024.
 //--------------------------------------------------------------------------------------------------
 
-import AppKit
+import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-final class SWIFT_Issue {
+struct SWIFT_Issue : Identifiable {
+
+  let id = UUID ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -67,7 +69,7 @@ final class SWIFT_Issue {
       self.kind = d.error ? .error : .warning
       self.fixitArray = d.fixit
       self.locationInBuildLogTextView = inLocationInBuildLogTextView
-      noteObjectAllocation (self)
+//      noteObjectAllocation (self)
     }else{
       return nil
     }
@@ -75,9 +77,9 @@ final class SWIFT_Issue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -115,76 +117,102 @@ final class SWIFT_Issue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor func storeItemsToMenu (_ inMenu : NSMenu,
-                                    _ inCocoaTextView : NSTextView,
-                                    _ inSelectionRange : NSRange) {
-  //--- Suggestion Attributes
-    let suggestionAttributes : [NSAttributedString.Key : Any] = [
-      .foregroundColor : NSColor.brown,
-      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-  //--- Title Attributes
-    let titleAttributes : [NSAttributedString.Key : Any] = [
-      .foregroundColor : self.color,
-      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-  //--- subtitle Attributes
-    let subtitleAttributes : [NSAttributedString.Key : Any] = [
-      .foregroundColor : self.color,
-      .font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-  //--- Extract
-    var first = true
-    for str in self.messageArray {
-      let attributedString : NSAttributedString
-      if first {
-        first = false
-        attributedString = NSAttributedString (
-          string: "\u{27A4} " + str, // ➤
-          attributes: titleAttributes
-        )
-      }else{
-         attributedString = NSAttributedString (
-          string: "  " + str,
-          attributes: subtitleAttributes
-        )
-      }
-      let menuItem = NSMenuItem (title: "", action: nil, keyEquivalent: "")
-      menuItem.attributedTitle = attributedString
-      inMenu.addItem (menuItem)
-    //--- Suggestions
-      for fixit in self.fixitArray {
-        let attributedString = NSAttributedString (
-          string: "  " + fixit.messageString,
-          attributes: suggestionAttributes
-        )
-        let menuItem = NSMenuItem (title: "", action: #selector (Self.fixItAction(_:)), keyEquivalent: "")
-        menuItem.representedObject = (fixit, inCocoaTextView, inSelectionRange)
-        menuItem.target = self
-        menuItem.attributedTitle = attributedString
-        inMenu.addItem (menuItem)
-      }
-    }
-  }
+//  @MainActor func storeItemsToMenu (_ inMenu : NSMenu,
+//                                    _ inCocoaTextView : NSTextView,
+//                                    _ inSelectionRange : NSRange) {
+//  //--- Suggestion Attributes
+//    let suggestionAttributes : [NSAttributedString.Key : Any] = [
+//      .foregroundColor : NSColor.brown,
+//      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//  //--- Title Attributes
+//    let titleAttributes : [NSAttributedString.Key : Any] = [
+//      .foregroundColor : self.color,
+//      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//  //--- subtitle Attributes
+//    let subtitleAttributes : [NSAttributedString.Key : Any] = [
+//      .foregroundColor : self.color,
+//      .font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//  //--- Extract
+//    var first = true
+//    for str in self.messageArray {
+//      let attributedString : NSAttributedString
+//      if first {
+//        first = false
+//        attributedString = NSAttributedString (
+//          string: "\u{27A4} " + str, // ➤
+//          attributes: titleAttributes
+//        )
+//      }else{
+//         attributedString = NSAttributedString (
+//          string: "  " + str,
+//          attributes: subtitleAttributes
+//        )
+//      }
+//      let menuItem = NSMenuItem (title: "", action: nil, keyEquivalent: "")
+//      menuItem.attributedTitle = attributedString
+//      inMenu.addItem (menuItem)
+//    //--- Suggestions
+//      for fixit in self.fixitArray {
+//        let attributedString = NSAttributedString (
+//          string: "  " + fixit.messageString,
+//          attributes: suggestionAttributes
+//        )
+//        let menuItem = NSMenuItem (title: "", action: #selector (Self.fixItAction(_:)), keyEquivalent: "")
+//        menuItem.representedObject = (fixit, inCocoaTextView, inSelectionRange)
+//        menuItem.target = self
+//        menuItem.attributedTitle = attributedString
+//        inMenu.addItem (menuItem)
+//      }
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor @objc func fixItAction (_ inSender : Any?) {
-    if let menuItem = inSender as? NSMenuItem,
-       let (fixit, cocoaTextView, selectedRange) = menuItem.representedObject as? (MyFixitDecoder, NSTextView, NSRange) {
-      switch fixit.kind {
-      case .replace :
-        cocoaTextView.insertText (fixit.action, replacementRange: selectedRange)
-      case .remove :
-        cocoaTextView.insertText ("", replacementRange: selectedRange)
-      case .insertAfter :
-        let r = NSRange (location: selectedRange.location + selectedRange.length, length: 0)
-        cocoaTextView.insertText (fixit.action, replacementRange: r)
-      case .insertBefore :
-        let r = NSRange (location: selectedRange.location, length: 0)
-        cocoaTextView.insertText (fixit.action, replacementRange: r)
+//  @MainActor @objc func fixItAction (_ inSender : Any?) {
+//    if let menuItem = inSender as? NSMenuItem,
+//       let (fixit, cocoaTextView, selectedRange) = menuItem.representedObject as? (MyFixitDecoder, NSTextView, NSRange) {
+//      switch fixit.kind {
+//      case .replace :
+//        cocoaTextView.insertText (fixit.action, replacementRange: selectedRange)
+//      case .remove :
+//        cocoaTextView.insertText ("", replacementRange: selectedRange)
+//      case .insertAfter :
+//        let r = NSRange (location: selectedRange.location + selectedRange.length, length: 0)
+//        cocoaTextView.insertText (fixit.action, replacementRange: r)
+//      case .insertBefore :
+//        let r = NSRange (location: selectedRange.location, length: 0)
+//        cocoaTextView.insertText (fixit.action, replacementRange: r)
+//      }
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ViewBuilder var view : some View {
+    HStack {
+      Spacer ().frame (width: ISSUE_MARK_WIDTH)
+      Circle ()
+      .fill (Color (self.color))
+      .frame (width: ISSUE_MARK_WIDTH * 2.0, height: ISSUE_MARK_WIDTH * 2.0)
+      VStack {
+        HStack { Text (self.fileURL.lastPathComponent).bold () ; Spacer () }
+        HStack {
+          Text ("Line: \(self.line), column: \(self.startColumn)")
+          Spacer ()
+        }
+        Divider ()
+        HStack {
+          Text (self.messageArray.joined(separator: "\n"))
+          .frame(maxWidth: .infinity, alignment: .leading)
+          .lineLimit (nil)
+          Spacer ()
+        }
       }
     }
+    .background (RoundedRectangle (cornerRadius: 10.0).stroke(Color (self.color), lineWidth: 1.0))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

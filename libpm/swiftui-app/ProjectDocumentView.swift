@@ -11,13 +11,13 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum SidebarSelectedItem : CaseIterable {
-    case fileList
-    case compileLog
+    case fileList, compileLog, issues
 
     var systemImageName : String {
       switch self {
       case .fileList: return "folder"
       case .compileLog: return "hammer"
+      case .issues: return "exclamationmark.triangle"
       }
     }
 
@@ -33,6 +33,9 @@ struct ProjectDocumentView : View {
 
   @Binding private var mDocument : ProjectDocument
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
+
+  @State private var mSelectedIssue : UUID? = nil
+  @State private var mScrollSourceViewToLine : Int? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -98,7 +101,12 @@ struct ProjectDocumentView : View {
       switch self.mSidebarSelectedItem {
       case .fileList :
         VStack {
-          Button ("Project") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
+          HStack {
+            Spacer ().frame (width: 8)
+            Button ("Project \(self.mProjectFileURL.lastPathComponent)") { self.mRootDirectoryNode.mSelectedFileNodeID = nil }
+            Spacer ()
+          }
+          Divider ()
           ScrollViewReader { (proxy : ScrollViewProxy) in
             List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
               ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
@@ -115,23 +123,42 @@ struct ProjectDocumentView : View {
           attributedString: self.mProjectCompiler.compileLog,
           issueArray: self.mProjectCompiler.issueArray
         )
+      case .issues:
+        List (self.mProjectCompiler.issueArray, id: \.id, selection: self.$mSelectedIssue) { issue in
+          issue.view
+        }
+        .onChange (of: self.mSelectedIssue) { (_, _) in
+           if let selectedIssueID = self.mSelectedIssue,
+              let idx = self.mProjectCompiler.issueArray.firstIndex (where: { $0.id == selectedIssueID }) {
+             let fileURL = self.mProjectCompiler.issueArray [idx].fileURL
+             self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
+             self.mScrollSourceViewToLine = self.mProjectCompiler.issueArray [idx].line
+          }
+        }
       }
     }
     .toolbar (removing: .sidebarToggle)
-    .toolbar {
+    .toolbar { self.sidebarViewToolbar () }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ViewBuilder private func sidebarViewToolbar () -> some View {
+    if self.mProjectCompiler.isCompilingProject {
+      ProgressView ().progressViewStyle (.circular).controlSize (.small)
+    }else{
       Button (action: self.compileProject) { Label ("Compile", systemImage: "hammer") }
       .help (LocalizedStringKey ("Compile the project"))
-      .disabled (self.mProjectCompiler.isCompilingProject)
       .keyboardShortcut ("B", modifiers: .command)
-      Button (action: self.mProjectCompiler.cancelCompilation) { Label ("Stop", systemImage: "stop.circle") }
-      .help (LocalizedStringKey ("Cancel compilation"))
-      .disabled (!self.mProjectCompiler.isCompilingProject)
-      if self.mProjectCompiler.errorCount > 0 {
-        Text ("⚠\(self.mProjectCompiler.errorCount)").foregroundColor(.red).bold()
-      }
-      if self.mProjectCompiler.warningCount > 0 {
-        Text ("⚠\(self.mProjectCompiler.warningCount)").foregroundColor(.orange).bold()
-      }
+    }
+    Button (action: self.mProjectCompiler.cancelCompilation) { Label ("Stop", systemImage: "stop.circle") }
+    .help (LocalizedStringKey ("Cancel compilation"))
+    .disabled (!self.mProjectCompiler.isCompilingProject)
+    if self.mProjectCompiler.errorCount > 0 {
+      Text ("⚠\(self.mProjectCompiler.errorCount)").foregroundColor(.red).bold()
+    }
+    if self.mProjectCompiler.warningCount > 0 {
+      Text ("⚠\(self.mProjectCompiler.warningCount)").foregroundColor(.orange).bold()
     }
   }
 
@@ -151,7 +178,8 @@ struct ProjectDocumentView : View {
         SWIFT_TextSyntaxColoringView (
           model: stm,
           issueArray: self.mProjectCompiler.issueArray,
-          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
+          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID),
+          scrollToLine: self.mScrollSourceViewToLine
         )
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
       }else{
@@ -161,7 +189,8 @@ struct ProjectDocumentView : View {
       SWIFT_TextSyntaxColoringView (
         model: self.mProjectTextModel,
         issueArray: self.mProjectCompiler.issueArray,
-        url: self.mProjectFileURL
+        url: self.mProjectFileURL,
+        scrollToLine: nil
       )
     }
   }
