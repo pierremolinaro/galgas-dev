@@ -49,7 +49,7 @@ extension Notification.Name {
 
   var body : some Scene {
     DocumentGroup (newDocument: ProjectDocument ()) { file in
-      ProjectDocumentView (document: file.$document, fileURL: file.fileURL!)
+      ProjectWindowManagerView (document: file.$document, projectFileURL: file.fileURL!)
     }
     Settings {
       SettingsView ()

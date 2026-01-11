@@ -7,13 +7,13 @@ import UniformTypeIdentifiers
 //--------------------------------------------------------------------------------------------------
 
 extension Notification.Name {
-  static let myScrollSourceToLine = Notification.Name ("my.scroll.source.to.line")
+  static let myScrollSourceToLocation = Notification.Name ("my.scroll.source.to.location")
 }
 
 //--------------------------------------------------------------------------------------------------
 
 struct ScrollSourceToLineNotificationObject {
-  let line : Int
+  let location : Int
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -47,21 +47,26 @@ struct ProjectDocumentView : View {
   @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
 
   @State private var mSelectedIssue : UUID? = nil
-//  @State private var mScrollSourceViewToLine : Int? = nil
+  @Binding private var mIssues : [SWIFT_Issue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (document inDocumentBinding : Binding <ProjectDocument>,
-        fileURL inFileURL : URL) {
+        projectFileURL inProjectFileURL : URL,
+        issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
     self._mDocument = inDocumentBinding
-    self.mProjectFileURL = inFileURL
+    self.mProjectFileURL = inProjectFileURL
+    self._mIssues = inIssuesBinding
     let projectSharedTextModel = SWIFT_SharedTextModel (
-      scanner: scannerFor (extension: inFileURL.pathExtension),
-      initialString: inDocumentBinding.mString.wrappedValue
+      scanner: scannerFor (extension: inProjectFileURL.pathExtension),
+      initialString: inDocumentBinding.mString.wrappedValue,
+      fileURL: inProjectFileURL,
+      issuesBinding: inIssuesBinding
     )
     self._mSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
     let rootDirectoryNode = SWIFT_RootDirectoryNode (
-      url: inFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources")
+      url: inProjectFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources"),
+      issuesBinding: inIssuesBinding
     )
     self._mRootDirectoryNode = StateObject (wrappedValue: rootDirectoryNode)
     projectSharedTextModel.setWriteFileCallback (self.projectDocumentStringDidChange)
@@ -134,10 +139,10 @@ struct ProjectDocumentView : View {
       case .compileLog :
         SWIFT_CompileLogView (
           attributedString: self.mProjectCompiler.compileLog,
-          issueArray: self.mProjectCompiler.issueArray
+          issueArray: self.mIssues
         )
       case .issues:
-        List (self.mProjectCompiler.issueArray, id: \.id, selection: self.$mSelectedIssue) { issue in
+        List (self.mIssues, id: \.id, selection: self.$mSelectedIssue) { issue in
           issue.view
         }
         .onChange (of: self.mSelectedIssue) { (_, _) in self.showSelectedIssueInSource () }
@@ -151,16 +156,16 @@ struct ProjectDocumentView : View {
 
   private func showSelectedIssueInSource () {
     if let selectedIssueID = self.mSelectedIssue,
-      let idx = self.mProjectCompiler.issueArray.firstIndex (where: { $0.id == selectedIssueID }) {
-      let fileURL = self.mProjectCompiler.issueArray [idx].fileURL
+      let idx = self.mIssues.firstIndex (where: { $0.id == selectedIssueID }) {
+      let fileURL = self.mIssues [idx].fileURL
       if fileURL == self.mProjectFileURL {
         self.mRootDirectoryNode.mSelectedFileNodeID = nil // Affiche le projet
       }else{
         self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
       }
-      let object = ScrollSourceToLineNotificationObject (line: self.mProjectCompiler.issueArray [idx].line)
+      let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].startLocation)
       DispatchQueue.main.async {
-        NotificationCenter.default.post (name: .myScrollSourceToLine, object: object)
+        NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
       }
     }
   }
@@ -193,8 +198,12 @@ struct ProjectDocumentView : View {
     if self.mSidebarSelectedItem == .fileList {
       self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
     }
+    self.mIssues.removeAll ()
     self.mProjectDocumentSaveScheduler.saveProjectDocument {
-      self.mProjectCompiler.compile (projectURL: self.mProjectFileURL)
+      self.mProjectCompiler.compile (
+        projectURL: self.mProjectFileURL,
+        appendIssueCallBack: { self.mIssues.append ($0) }
+      )
     }
   }
 
@@ -205,7 +214,7 @@ struct ProjectDocumentView : View {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
         SWIFT_TextSyntaxColoringView (
           model: stm,
-          issueArray: self.mProjectCompiler.issueArray,
+          issueArray: self.mIssues,
           url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
         )
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
@@ -215,7 +224,7 @@ struct ProjectDocumentView : View {
     }else{ // Edit project file
       SWIFT_TextSyntaxColoringView (
         model: self.mSharedTextModel,
-        issueArray: self.mProjectCompiler.issueArray,
+        issueArray: self.mIssues,
         url: self.mProjectFileURL
       )
     }

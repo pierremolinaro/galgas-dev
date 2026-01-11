@@ -1,0 +1,45 @@
+//
+//  ProjectWindowManagerView.swift
+//  galgas-ide-swiftui
+//
+//  Created by Pierre Molinaro on 11/01/2026.
+//
+//--------------------------------------------------------------------------------------------------
+
+import SwiftUI
+//import Combine
+//import UniformTypeIdentifiers
+
+//--------------------------------------------------------------------------------------------------
+
+struct ProjectWindowManagerView : View {
+
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mProjectFileURL : URL
+  @Binding private var mDocument : ProjectDocument
+  @State private var mIssues : [SWIFT_Issue] = []
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (document inDocumentBinding : Binding <ProjectDocument>,
+        projectFileURL inFileURL : URL) {
+    self._mDocument = inDocumentBinding
+    self.mProjectFileURL = inFileURL
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var body : some View {
+    ProjectDocumentView (
+      document: self.$mDocument,
+      projectFileURL: self.mProjectFileURL,
+      issuesBinding: self.$mIssues
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

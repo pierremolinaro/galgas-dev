@@ -20,6 +20,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mScanner : SWIFT_Scanner?
+  let mFileURL : URL
   private let mTextStorage = NSTextStorage ()
   var mDocumentString : String {
     didSet {
@@ -44,10 +45,18 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @Binding var mIssues : [SWIFT_Issue]
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (scanner inScanner : SWIFT_Scanner?,
-        initialString inString : String) {
+        initialString inString : String,
+        fileURL inFileURL : URL,
+        issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
     self.mScanner = inScanner
     self.mDocumentString = inString
+    self._mIssues = inIssuesBinding
+    self.mFileURL = inFileURL
     super.init ()
     noteObjectAllocation (self)
  //--- Add UndoManager observers
@@ -129,8 +138,8 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // TextView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func createAndConfigureTextView (issueArray inIssueArray : [SWIFT_Issue],
-                     installScrollToLineNotificationObserver inFlag : Bool) -> InternalNSTextView {
+  fileprivate func
+  createAndConfigureTextView (installScrollToLineNotificationObserver inFlag : Bool) -> InternalNSTextView {
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
     layoutManager.allowsNonContiguousLayout = true
@@ -147,7 +156,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
       textContainer: textContainer,
       sharedTextModel: self,
       undoManager: self.mSharedUndoManager,
-      issueArray: inIssueArray,
       installScrollToLineNotificationObserver: inFlag
     )
   //---
@@ -226,6 +234,13 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
     if self.mDocumentString != self.mTextStorage.string {
       self.mDocumentString = self.mTextStorage.string
     }
+  //--- Update issues
+    for idx in 0 ..< self.mIssues.count {
+      let issue = self.mIssues [idx]
+      if issue.mIsValid, issue.fileURL == self.mFileURL {
+        self.mIssues [idx].updateLocationForPreviousRange (inEditedRange, changeInLength: inDelta)
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -249,7 +264,6 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
         issueArray inIssueArray : [SWIFT_Issue],
         installScrollToLineNotificationObserver inFlag : Bool) {
     self.mTextView = inSharedTextModel.createAndConfigureTextView (
-      issueArray: inIssueArray,
       installScrollToLineNotificationObserver: inFlag
     )
     self._mSelectionBinding = inSelectionBinding
@@ -396,26 +410,22 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SWIFT_SharedTextModel?
   private weak var mUndoManager : UndoManager?
-  private let mIssueArray : [SWIFT_Issue]
-  private var mLineRangeCacheArray : [NSRange] = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (textContainer inContainer : NSTextContainer?,
         sharedTextModel inSharedTextModel : SWIFT_SharedTextModel,
         undoManager inUndoManager : UndoManager,
-        issueArray inIssueArray : [SWIFT_Issue],
         installScrollToLineNotificationObserver inFlag : Bool) {
     self.mSharedTextModel = inSharedTextModel
     self.mUndoManager = inUndoManager
-    self.mIssueArray = inIssueArray
     super.init (frame: .zero, textContainer: inContainer)
     noteObjectAllocation (self)
     if inFlag {
       NotificationCenter.default.addObserver (
         self,
-        selector: #selector (self.scrollToLineNotification(_:)),
-        name: Notification.Name.myScrollSourceToLine,
+        selector: #selector (self.scrollToLocationNotification(_:)),
+        name: Notification.Name.myScrollSourceToLocation,
         object: nil
       )
     }
@@ -488,21 +498,22 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
-    self.rebuildLineIndexCache ()
-    for issue in self.mIssueArray {
-      let startIndex = self.mLineRangeCacheArray [issue.line - 1].location + issue.startColumn - 1
-      let endIndex = startIndex + issue.length
-      if let startRect = self.rectForCharacter (atIndex: startIndex),
-         let endRect = self.rectForCharacter (atIndex: endIndex) {
-        let bp = NSBezierPath ()
-        bp.move (to: NSPoint (x: startRect.origin.x, y: startRect.maxY - 1.0))
-        bp.line (to: NSPoint (x: endRect.origin.x, y: endRect.maxY - 1.0))
-        switch issue.kind {
-        case .error : NSColor.systemRed.setStroke ()
-        case .warning : NSColor.systemOrange.setStroke ()
+    for issue in self.mSharedTextModel?.mIssues ?? [] {
+      if issue.mIsValid, issue.fileURL == self.mSharedTextModel?.mFileURL {
+        let startIndex = issue.startLocation
+        let endIndex = startIndex + issue.length
+        if let startRect = self.rectForCharacter (atIndex: startIndex),
+           let endRect = self.rectForCharacter (atIndex: endIndex) {
+          let bp = NSBezierPath ()
+          bp.move (to: NSPoint (x: startRect.origin.x, y: startRect.maxY - 1.0))
+          bp.line (to: NSPoint (x: endRect.origin.x, y: endRect.maxY - 1.0))
+          switch issue.kind {
+          case .error : NSColor.systemRed.setStroke ()
+          case .warning : NSColor.systemOrange.setStroke ()
+          }
+          bp.lineWidth = 2.0
+          bp.stroke ()
         }
-        bp.lineWidth = 2.0
-        bp.stroke ()
       }
     }
   }
@@ -528,48 +539,21 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func rebuildLineIndexCache () {
-    let str = self.string as NSString
-    self.mLineRangeCacheArray = []
-    str.enumerateSubstrings (in: NSRange (location: 0, length: str.length), options: .byLines) { _, range, _, _ in
-      var lineRange = range
-      lineRange.length += 1
-      self.mLineRangeCacheArray.append (lineRange)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Recherche binaire pour trouver le numéro de ligne à partir d'un index caractère
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func lineRangeAndNumber (forCharIndex inCharIndex : Int) -> (NSRange, Int) {
-    var low = 0
-    var high = self.mLineRangeCacheArray.count - 1
-    while low <= high {
-      let mid = (low + high) / 2
-      if self.mLineRangeCacheArray [mid].location == inCharIndex {
-        return (self.mLineRangeCacheArray [mid], mid + 1)
-      }else if self.mLineRangeCacheArray [mid].location < inCharIndex {
-        low = mid + 1
-      }else{
-        high = mid - 1
-      }
-    }
-    return (self.mLineRangeCacheArray [self.mLineRangeCacheArray.count - 1], self.mLineRangeCacheArray.count)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @objc private func scrollToLineNotification (_ inNotification : Notification) {
+  @objc private func scrollToLocationNotification (_ inNotification : Notification) {
     if let notificationObject = inNotification.object as? ScrollSourceToLineNotificationObject {
-      let line = notificationObject.line
-      self.rebuildLineIndexCache ()
-      let firstCharIndex = self.mLineRangeCacheArray [line - 1].location
+      let startLocation = notificationObject.location
       DispatchQueue.main.async {
-        self.scrollRangeToVisible (NSRange (location: firstCharIndex, length: 0))
+        self.scrollRangeToVisible (NSRange (location: startLocation, length: 0))
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func didProcessEditing (range inEditedRange : NSRange,
+//                          changeInLength inDelta : Int) {
+//     print ("didProcessEditing")
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -706,8 +690,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
     }
   //---
     for issue in self.mIssueArray {
-      let range = self.mLineRangeCacheArray [issue.line - 1]
-      if let p = self.pointForCharacter (atIndex: range.location) {
+      if issue.mIsValid, let p = self.pointForCharacter (atIndex: issue.startLocation) {
         let rect = NSRect (
           x: ISSUE_MARK_WIDTH,
           y: p.y + ISSUE_MARK_WIDTH,

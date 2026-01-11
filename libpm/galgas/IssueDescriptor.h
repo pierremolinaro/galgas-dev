@@ -35,6 +35,7 @@ class IssueDescriptor final {
 //--- Constructor
   public: IssueDescriptor (const bool inIsError,
                            const String & inFile,
+                           const int32_t inIndex,
                            const int32_t inLine,
                            const int32_t inStartColumn,
                            const int32_t inEndColumn,
@@ -50,6 +51,7 @@ class IssueDescriptor final {
 //--- Properties
   private: bool mIsError ; // false: warning
   private: String mFile ;
+  private: int32_t mStartLocation ;
   private: int32_t mLine ;
   private: int32_t mStartColumn ;
   private: int32_t mEndColumn ;

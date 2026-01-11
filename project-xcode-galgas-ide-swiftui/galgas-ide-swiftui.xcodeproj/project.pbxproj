@@ -12,6 +12,7 @@
 		CF00BE0C2E116075007B987F /* SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF00BE072E116075007B987F /* SharedObject.cpp */; };
 		CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
 		CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
+		CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */; };
 		CF305F972D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
 		CF305F992D0D8A2E000A5F79 /* galgas-input-output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F2C2D0D8A2E000A5F79 /* galgas-input-output.cpp */; };
@@ -427,6 +428,7 @@
 		CF00BE072E116075007B987F /* SharedObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SharedObject.cpp; sourceTree = "<group>"; };
 		CF1612462D74891000CCF20D /* all-declarations-32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
 		CF1612472D74891000CCF20D /* all-declarations-32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
+		CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowManagerView.swift; sourceTree = "<group>"; };
 		CF305E4C2D0D8A2E000A5F79 /* BinaryDecisionDiagram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagram.h; sourceTree = "<group>"; };
 		CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagram.cpp; sourceTree = "<group>"; };
 		CF305E4E2D0D8A2E000A5F79 /* BinaryDecisionDiagram-node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BinaryDecisionDiagram-node.h"; sourceTree = "<group>"; };
@@ -1277,12 +1279,13 @@
 				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
+				CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */,
 				CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */,
 				CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */,
 				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
-				CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */,
 				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
+				CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */,
 				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
 				CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
@@ -1624,6 +1627,7 @@
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
 				CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */,
 				CFE3BB822F10FF760045FA2E /* SWIFT_CompileLogView.swift in Sources */,
+				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
 				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
 				CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */,
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,

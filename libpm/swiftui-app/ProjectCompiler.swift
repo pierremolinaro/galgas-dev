@@ -25,8 +25,8 @@ final class ProjectCompiler : ObservableObject  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Published private var mIssueArray = [SWIFT_Issue] ()
-  @ObservationTracked var issueArray : [SWIFT_Issue] { self.mIssueArray }
+//  @Published private var mIssueArray = [SWIFT_Issue] ()
+//  @ObservationTracked var issueArray : [SWIFT_Issue] { self.mIssueArray }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,15 +47,18 @@ final class ProjectCompiler : ObservableObject  {
   private var mBuildHasBeenAborted = false
   private var mBuildOutputCurrentColor = NSColor.black
   private var mBuildOutputIsBold : Bool = false
+  private var mAppendIssueCallBack : ((SWIFT_Issue) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func compile (projectURL inProjectURL : URL) {
+  func compile (projectURL inProjectURL : URL,
+                appendIssueCallBack inAppendIssueCallBack : @escaping (SWIFT_Issue) -> Void ) {
     self.mIsCompilingProject = true
+    self.mAppendIssueCallBack = inAppendIssueCallBack
     self.mCompileLog = NSAttributedString ("")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
-    self.mIssueArray.removeAll ()
+//    self.mIssueArray.removeAll ()
     self.mErrorCount = 0
     self.mWarningCount = 0
  //--- Create task
@@ -246,7 +249,7 @@ final class ProjectCompiler : ObservableObject  {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendIssue (jsonString inString : String) {
-    if let issue = SWIFT_Issue (jsonString: inString, self.mCompileLog.length) {
+    if let issue = SWIFT_Issue (jsonString: inString) {
       self.appendMessageString (
         string: "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
         color: issue.color,
@@ -259,7 +262,7 @@ final class ProjectCompiler : ObservableObject  {
         self.appendMessageString (string: "  " + fixit.messageString + "\n", color: .systemBrown, bold: false)
       }
     //--- Note issue on user interface
-      self.mIssueArray.append (issue)
+      self.mAppendIssueCallBack? (issue)
       switch issue.kind {
       case .warning :
         self.mWarningCount += 1

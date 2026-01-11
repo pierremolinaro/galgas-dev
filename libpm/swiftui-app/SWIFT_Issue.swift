@@ -13,14 +13,15 @@ struct SWIFT_Issue : Identifiable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let fileURL : URL
+  var startLocation : Int
   let line : Int
   let startColumn : Int
   let length : Int
   let messageArray : [String]
   let kind : Kind
   let fixitArray : [MyFixitDecoder]
-  let locationInBuildLogTextView : Int
   private(set) var mIsValid = true
+  private(set) var mRange : NSRange? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -49,6 +50,7 @@ struct SWIFT_Issue : Identifiable {
   fileprivate struct MyDecoder : Decodable {
     let error : Bool
     let file : String
+    let startLocation : Int
     let line : Int
     let startCol : Int
     let length : Int
@@ -58,28 +60,20 @@ struct SWIFT_Issue : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init? (jsonString inString : String,
-         _ inLocationInBuildLogTextView : Int) {
+  init? (jsonString inString : String) {
     if let d = try? JSONDecoder ().decode (MyDecoder.self, from: inString.data (using: .utf8)!) {
       self.fileURL = URL (fileURLWithPath: d.file)
+      self.startLocation = d.startLocation
       self.line = d.line
       self.startColumn = d.startCol
       self.length = d.length
       self.messageArray = d.message
       self.kind = d.error ? .error : .warning
       self.fixitArray = d.fixit
-      self.locationInBuildLogTextView = inLocationInBuildLogTextView
-//      noteObjectAllocation (self)
     }else{
       return nil
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -96,24 +90,23 @@ struct SWIFT_Issue : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func updateLocationForPreviousRange (_ inEditedRange : NSRange,
-//                                       changeInLength inChangeInLength : Int,
-//                                       updateDisplay ioUpdate : inout Bool) {
-//    if self.mIsValid {
-//      let previousRange = NSRange (
-//        location: inEditedRange.location,
-//        length: inEditedRange.length - inChangeInLength
-//      )
-//      if let _ = self.range.intersection (previousRange) {
-//      //--- Edition occurs into issue range : make issue invalid
-//        self.mIsValid = false
-//        ioUpdate = true
-//      }else if self.range.location >= (previousRange.location + previousRange.length) {
-//      //--- Edition occurs before issue range : translate it
-//        self.range.location += inChangeInLength
-//      }
-//    }
-//  }
+  mutating func updateLocationForPreviousRange (_ inEditedRange : NSRange,
+                                                changeInLength inChangeInLength : Int) {
+    if self.mIsValid {
+      let previousRange = NSRange (
+        location: inEditedRange.location,
+        length: inEditedRange.length - inChangeInLength
+      )
+      let issueRange = NSRange (location: self.startLocation, length: self.length)
+      if let _ = issueRange.intersection (previousRange) {
+      //--- Edition occurs into issue range : make issue invalid
+        self.mIsValid = false
+      }else if issueRange.location >= (previousRange.location + previousRange.length) {
+      //--- Edition occurs before issue range : translate it
+        self.startLocation += inChangeInLength
+      }
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -195,7 +188,7 @@ struct SWIFT_Issue : Identifiable {
     HStack {
       Spacer ().frame (width: ISSUE_MARK_WIDTH)
       Circle ()
-      .fill (Color (self.color))
+      .fill (Color (self.mIsValid ? self.color : .gray))
       .frame (width: ISSUE_MARK_WIDTH * 2.0, height: ISSUE_MARK_WIDTH * 2.0)
       VStack {
         HStack { Text (self.fileURL.lastPathComponent).bold () ; Spacer () }
