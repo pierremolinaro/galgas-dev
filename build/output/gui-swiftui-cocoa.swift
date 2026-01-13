@@ -19,17 +19,17 @@ func indexingDescriptorDictionary () -> [String : String] {
 
 @MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
   var result : SWIFT_Scanner? = nil
-  if inExtension == "galgas" {
+  if inExtension.compare ("galgas", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasScanner3 ()
-  }else if inExtension == "galgasProject" {
+  }else if inExtension.compare ("galgasProject", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasScanner3 ()
-  }else if inExtension == "galgasTemplate" {
+  }else if inExtension.compare ("galgasTemplate", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasTemplateScanner ()
-  }else if inExtension == "ggs" {
+  }else if inExtension.compare ("ggs", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasScanner4 ()
-  }else if inExtension == "ggsTemplate" {
+  }else if inExtension.compare ("ggsTemplate", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasTemplateScanner ()
-  }else if inExtension == "ggsproject" {
+  }else if inExtension.compare ("ggsproject", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_galgasScanner4 ()
   }
   return result

@@ -21,6 +21,8 @@
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>Galgas 4 Project File</string>
 			<key>CFBundleTypeRole</key>
@@ -35,6 +37,8 @@
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS Template Document</string>
 			<key>CFBundleTypeRole</key>
@@ -49,6 +53,8 @@
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS 3 Project File</string>
 			<key>CFBundleTypeRole</key>
@@ -63,6 +69,8 @@
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS 4 File</string>
 			<key>CFBundleTypeRole</key>

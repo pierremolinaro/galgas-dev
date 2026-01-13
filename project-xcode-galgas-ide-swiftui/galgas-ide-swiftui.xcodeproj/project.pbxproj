@@ -170,6 +170,7 @@
 		CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */; };
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
+		CF5BCBAE2F14F069006F8E83 /* SWIFT_LineColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* SWIFT_LineColumn.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */; };
 		CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */; };
 		CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
@@ -712,6 +713,7 @@
 		CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeID.swift; sourceTree = "<group>"; };
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
+		CF5BCBAD2F14F069006F8E83 /* SWIFT_LineColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_LineColumn.swift; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNode.swift; sourceTree = "<group>"; };
 		CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeView.swift; sourceTree = "<group>"; };
 		CF75074F2F0FB197005FAE3E /* unicode-data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
@@ -1286,6 +1288,7 @@
 				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
 				CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */,
+				CF5BCBAD2F14F069006F8E83 /* SWIFT_LineColumn.swift */,
 				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
 				CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
@@ -1642,6 +1645,7 @@
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
+				CF5BCBAE2F14F069006F8E83 /* SWIFT_LineColumn.swift in Sources */,
 				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
 				CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */,

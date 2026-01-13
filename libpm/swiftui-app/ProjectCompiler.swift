@@ -251,7 +251,7 @@ final class ProjectCompiler : ObservableObject  {
   private func appendIssue (jsonString inString : String) {
     if let issue = SWIFT_Issue (jsonString: inString) {
       self.appendMessageString (
-        string: "\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n",
+        string: "\(issue.fileURL.path):\(issue.mLine):\(issue.mStartColumn)\n",
         color: issue.color,
         bold: true
      )

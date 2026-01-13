@@ -13,15 +13,15 @@ struct SWIFT_Issue : Identifiable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let fileURL : URL
-  var startLocation : Int
-  let line : Int
-  let startColumn : Int
   let length : Int
   let messageArray : [String]
   let kind : Kind
   let fixitArray : [MyFixitDecoder]
+
+  private(set) var mStartLocation : Int
+  private(set) var mLine : Int
+  private(set) var mStartColumn : Int
   private(set) var mIsValid = true
-  private(set) var mRange : NSRange? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -63,9 +63,9 @@ struct SWIFT_Issue : Identifiable {
   init? (jsonString inString : String) {
     if let d = try? JSONDecoder ().decode (MyDecoder.self, from: inString.data (using: .utf8)!) {
       self.fileURL = URL (fileURLWithPath: d.file)
-      self.startLocation = d.startLocation
-      self.line = d.line
-      self.startColumn = d.startCol
+      self.mStartLocation = d.startLocation
+      self.mLine = d.line
+      self.mStartColumn = d.startCol
       self.length = d.length
       self.messageArray = d.message
       self.kind = d.error ? .error : .warning
@@ -90,20 +90,24 @@ struct SWIFT_Issue : Identifiable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func updateLocationForPreviousRange (_ inEditedRange : NSRange,
-                                                changeInLength inChangeInLength : Int) {
+  mutating func updateLocationForPreviousRange (editedRange inEditedRange : NSRange,
+                                                changeInLength inChangeInLength : Int,
+                                                updatedString inString : String) {
     if self.mIsValid {
       let previousRange = NSRange (
         location: inEditedRange.location,
         length: inEditedRange.length - inChangeInLength
       )
-      let issueRange = NSRange (location: self.startLocation, length: self.length)
+      let issueRange = NSRange (location: self.mStartLocation, length: self.length)
       if let _ = issueRange.intersection (previousRange) {
       //--- Edition occurs into issue range : make issue invalid
         self.mIsValid = false
       }else if issueRange.location >= (previousRange.location + previousRange.length) {
       //--- Edition occurs before issue range : translate it
-        self.startLocation += inChangeInLength
+        self.mStartLocation += inChangeInLength
+        let lineColumn = SWIFT_LineColumn (for: inString, at: self.mStartLocation)
+        self.mLine = lineColumn.line
+        self.mStartColumn = lineColumn.column
       }
     }
   }
@@ -193,7 +197,7 @@ struct SWIFT_Issue : Identifiable {
       VStack {
         HStack { Text (self.fileURL.lastPathComponent).bold () ; Spacer () }
         HStack {
-          Text ("Line: \(self.line), column: \(self.startColumn)")
+          Text ("Line: \(self.mLine), column: \(self.mStartColumn)").italic (!self.mIsValid)
           Spacer ()
         }
         Divider ()

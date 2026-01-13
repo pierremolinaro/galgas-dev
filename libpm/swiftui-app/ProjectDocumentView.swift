@@ -163,7 +163,7 @@ struct ProjectDocumentView : View {
       }else{
         self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
       }
-      let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].startLocation)
+      let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
       DispatchQueue.main.async {
         NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
       }

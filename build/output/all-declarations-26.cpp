@@ -3783,9 +3783,9 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implemen
       result.appendString ("  if") ;
     }
     while (enumerator_1023.hasCurrentObject ()) {
-      result.appendString (" inExtension == ") ;
+      result.appendString (" inExtension.compare (") ;
       result.appendString (enumerator_1023.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation-swiftui.swift.galgasTemplate", 30)).stringValue ()) ;
-      result.appendString (" {\n    result = ScannerFor_") ;
+      result.appendString (", options: .caseInsensitive) == .orderedSame {\n    result = ScannerFor_") ;
       result.appendString (enumerator_1023.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
       enumerator_1023.gotoNextObject () ;
@@ -3799,43 +3799,43 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implemen
     }
   }
   result.appendString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n// Setting View\n//--------------------------------------------------------------------------------------------------\n\nstruct SettingsView : View {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  enum SidebarItem {\n    case commandLineOptions\n") ;
-  GGS_uint index_1682_ (0) ;
+  GGS_uint index_1732_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_1682 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_1682.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_1732 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_1732.hasCurrentObject ()) {
       result.appendString ("    case ") ;
-      result.appendString (enumerator_1682.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_1732.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_1682.gotoNextObject () ;
-      index_1682_.increment () ;
+      enumerator_1732.gotoNextObject () ;
+      index_1732_.increment () ;
     }
   }
   result.appendString ("  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  @State private var mSelection : SidebarItem = .commandLineOptions\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  @ViewBuilder var body : some View {\n    NavigationSplitView {\n      List(selection: self.$mSelection) {\n        Text (\"Options\").tag (SidebarItem.commandLineOptions)\n\n") ;
-  GGS_uint index_2241_ (0) ;
+  GGS_uint index_2291_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_2241 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_2241.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_2291 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_2291.hasCurrentObject ()) {
       result.appendString ("        Text (\"") ;
-      result.appendString (enumerator_2241.current_mTitle (HERE).stringValue ()) ;
+      result.appendString (enumerator_2291.current_mTitle (HERE).stringValue ()) ;
       result.appendString ("\").tag (SidebarItem.") ;
-      result.appendString (enumerator_2241.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_2291.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (")\n") ;
-      enumerator_2241.gotoNextObject () ;
-      index_2241_.increment () ;
+      enumerator_2291.gotoNextObject () ;
+      index_2291_.increment () ;
     }
   }
   result.appendString ("      }\n      .toolbar (removing: .sidebarToggle)\n    } detail: {\n      switch self.mSelection {\n        case .commandLineOptions : OptionView ()\n") ;
-  GGS_uint index_2533_ (0) ;
+  GGS_uint index_2583_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-    UpEnumerator_importedLexiqueList enumerator_2533 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
-    while (enumerator_2533.hasCurrentObject ()) {
+    UpEnumerator_importedLexiqueList enumerator_2583 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ()) ;
+    while (enumerator_2583.hasCurrentObject ()) {
       result.appendString ("        case .") ;
-      result.appendString (enumerator_2533.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_2583.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" : SettingViewFor_") ;
-      result.appendString (enumerator_2533.current_mLexiqueClassName (HERE).stringValue ()) ;
+      result.appendString (enumerator_2583.current_mLexiqueClassName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      enumerator_2533.gotoNextObject () ;
-      index_2533_.increment () ;
+      enumerator_2583.gotoNextObject () ;
+      index_2583_.increment () ;
     }
   }
   result.appendString ("      }\n    }\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;

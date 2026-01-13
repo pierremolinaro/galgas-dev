@@ -27,7 +27,7 @@ end
   var result : SWIFT_Scanner? = nil\n%
 for (lkey mLexiqueName *) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % inExtension == %![lkey utf8RepresentationEscapingQuestionMark]% {\n%
+  do % inExtension.compare (%![lkey utf8RepresentationEscapingQuestionMark]%, options: .caseInsensitive) == .orderedSame {\n%
      %    result = ScannerFor_%!mLexiqueName% ()\n%
   between %  }else if%
   after %  }\n%

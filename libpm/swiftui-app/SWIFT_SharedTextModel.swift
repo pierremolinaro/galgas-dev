@@ -238,7 +238,11 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
     for idx in 0 ..< self.mIssues.count {
       let issue = self.mIssues [idx]
       if issue.mIsValid, issue.fileURL == self.mFileURL {
-        self.mIssues [idx].updateLocationForPreviousRange (inEditedRange, changeInLength: inDelta)
+        self.mIssues [idx].updateLocationForPreviousRange (
+          editedRange: inEditedRange,
+          changeInLength: inDelta,
+          updatedString: self.mDocumentString
+        )
       }
     }
   }
@@ -500,7 +504,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
     super.draw (inDirtyRect)
     for issue in self.mSharedTextModel?.mIssues ?? [] {
       if issue.mIsValid, issue.fileURL == self.mSharedTextModel?.mFileURL {
-        let startIndex = issue.startLocation
+        let startIndex = issue.mStartLocation
         let endIndex = startIndex + issue.length
         if let startRect = self.rectForCharacter (atIndex: startIndex),
            let endRect = self.rectForCharacter (atIndex: endIndex) {
@@ -690,7 +694,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
     }
   //---
     for issue in self.mIssueArray {
-      if issue.mIsValid, let p = self.pointForCharacter (atIndex: issue.startLocation) {
+      if issue.mIsValid, let p = self.pointForCharacter (atIndex: issue.mStartLocation) {
         let rect = NSRect (
           x: ISSUE_MARK_WIDTH,
           y: p.y + ISSUE_MARK_WIDTH,

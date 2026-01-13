@@ -234,7 +234,6 @@ private proc generateMakefileMacTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
-//  [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
   [@string deleteFileIfExists !dir + "/makefile"]
 }
