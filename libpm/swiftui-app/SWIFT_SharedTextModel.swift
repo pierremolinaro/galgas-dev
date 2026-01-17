@@ -39,8 +39,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Published var mBottomViewIsVisible = false
-  @Published var mTopViewSelection = NSRange ()
-  @Published var mBottomViewSelection = NSRange ()
   private var mWriteFileCallback : ((String) -> Void)? = nil
   private var mPopUpMenuItems = [IdentifiableAttributedString] ()
 
@@ -274,7 +272,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   private let mTextView : InternalNSTextView
   private let mIssueArray : [SWIFT_Issue]
 
-  @Binding private var mSelectionBinding : NSRange
+  @Binding private var mSelection : NSRange
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -287,7 +285,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
       installScrollToLineNotificationObserver: inFlag,
       popupMenuItemsBinding: inPopUpMenuItemsBinding
     )
-    self._mSelectionBinding = inSelectionBinding
+    self._mSelection = inSelectionBinding
     self.mIssueArray = inIssueArray
     self.mTextView.mCallBack = { inPopUpMenuItemsBinding.wrappedValue = $0 }
   }
@@ -335,7 +333,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     scrollView.verticalRulerView = rulerView
     scrollView.rulersVisible = true
   //--- Restore selection
-    self.mTextView.selectedRange = self.mSelectionBinding
+    self.mTextView.selectedRange = self.mSelection
     DispatchQueue.main.async {
       self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
     }
@@ -350,6 +348,15 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     if let rulerView = inScrollView.verticalRulerView as? SWIFT_TextViewRulerView {
       rulerView.setIssueArray (self.mIssueArray)
     }
+    if self.mSelection != inContext.coordinator.mLastSelection {
+      inContext.coordinator.mLastSelection = self.mSelection
+      DispatchQueue.main.async {
+        self.mTextView.selectedRange = self.mSelection
+        DispatchQueue.main.async {
+          self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
+        }
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -357,8 +364,8 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   fileprivate func selectionRangeDidChange () {
     self.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
     self.mTextView.layer?.setNeedsDisplay () // For hiliting current line when selection length is empty
-    if self.mSelectionBinding != self.mTextView.selectedRange {
-      self.mSelectionBinding = self.mTextView.selectedRange
+    if self.mSelection != self.mTextView.selectedRange {
+      self.mSelection = self.mTextView.selectedRange
     }
   }
 
@@ -400,6 +407,7 @@ final class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mParent : SWIFT_LexicalHilitingTextEditor
+  var mLastSelection : NSRange? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -578,6 +586,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
       let startLocation = notificationObject.location
       DispatchQueue.main.async {
         self.scrollRangeToVisible (NSRange (location: startLocation, length: 0))
+        self.selectedRange = NSRange (location: startLocation, length: 0)
       }
     }
   }
@@ -706,7 +715,8 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
           width: self.bounds.size.width,
           height: usedRect.height
         )
-        NSColor.white.setFill ()
+//        NSColor.white.setFill ()
+        NSColor.blue.withAlphaComponent (0.05).setFill ()
         NSBezierPath.fill (ruleRectForCurrentLine)
       }
     //--- Préparer l'attribut de texte

@@ -18,10 +18,42 @@ struct SWIFT_TextSyntaxColoringView : View {
   private let mIssueArray : [SWIFT_Issue]
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State var mTopViewSelection = NSRange ()
   @State private var mTopViewPopUpMenuItems : [IdentifiableAttributedString] = []
-  @State private var mBottomViewPopUpMenuItems : [IdentifiableAttributedString] = []
+
   @State private var mTopViewSelectedPopUp : Int = 0
+  private var mUserTopViewSelectedPopUp : Binding<Int> {
+    Binding (
+      get: { self.mTopViewSelectedPopUp },
+      set: { newValue in
+        if self.mTopViewSelectedPopUp != newValue {
+          self.mTopViewSelectedPopUp = newValue
+          self.mTopViewSelection = NSRange (location: newValue, length: 0)
+        }
+      }
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mBottomViewPopUpMenuItems : [IdentifiableAttributedString] = []
+  @State var mBottomViewSelection = NSRange ()
+
   @State private var mBottomViewSelectedPopUp : Int = 0
+  private var mUserBottomViewSelectedPopUp : Binding<Int> {
+    Binding (
+      get: { self.mBottomViewSelectedPopUp },
+      set: { newValue in
+        if self.mBottomViewSelectedPopUp != newValue {
+          self.mBottomViewSelectedPopUp = newValue
+          self.mBottomViewSelection = NSRange (location: newValue, length: 0)
+        }
+      }
+    )
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -45,9 +77,9 @@ struct SWIFT_TextSyntaxColoringView : View {
       VStack {
         Spacer ().frame (height: 6)
         HStack {
-          Picker ("", selection: self.$mTopViewSelectedPopUp) {
-            ForEach (self.mTopViewPopUpMenuItems, id: \.id) {
-              Text ($0.attributedString).tag ($0.id)
+          Picker ("", selection: self.mUserTopViewSelectedPopUp) {
+            ForEach (self.mTopViewPopUpMenuItems, id: \.id) { entry in
+              Text (entry.attributedString).tag (entry.id)
             }
           }.pickerStyle (.menu)
           Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
@@ -56,18 +88,14 @@ struct SWIFT_TextSyntaxColoringView : View {
         }
         SWIFT_LexicalHilitingTextEditor (
           model: self.mSharedTextModel,
-          selectionBinding: self.$mSharedTextModel.mTopViewSelection,
+          selectionBinding: self.$mTopViewSelection,
           issueArray: self.mIssueArray,
           installScrollToLineNotificationObserver: true,
           popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems
         )
-        .onChange (of: self.mSharedTextModel.mTopViewSelection) {
-        //--- Hilite current line, if selection range is empty
-          if self.mSharedTextModel.mTopViewSelection.length == 0 {
-
-          }
+        .onChange (of: self.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
-          let currentLocation = self.mSharedTextModel.mTopViewSelection.location
+          let currentLocation = self.mTopViewSelection.location
           var newSelectedID = 0
           for item in self.mTopViewPopUpMenuItems {
             if currentLocation < item.id {
@@ -92,7 +120,7 @@ struct SWIFT_TextSyntaxColoringView : View {
         VStack {
           Spacer ().frame (height: 6)
           HStack {
-            Picker ("", selection: self.$mBottomViewSelectedPopUp) {
+            Picker ("", selection: self.mUserBottomViewSelectedPopUp) {
               ForEach (self.mBottomViewPopUpMenuItems, id: \.id) {
                 Text ($0.attributedString).tag ($0.id)
               }
@@ -102,13 +130,13 @@ struct SWIFT_TextSyntaxColoringView : View {
           }
           SWIFT_LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
-            selectionBinding: self.$mSharedTextModel.mBottomViewSelection,
+            selectionBinding: self.$mBottomViewSelection,
             issueArray: self.mIssueArray,
             installScrollToLineNotificationObserver: false,
             popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems
           )
-        .onChange (of: self.mSharedTextModel.mBottomViewSelection.location) {
-          let currentLocation = self.mSharedTextModel.mBottomViewSelection.location
+        .onChange (of: self.mBottomViewSelection.location) {
+          let currentLocation = self.mBottomViewSelection.location
           var newSelectedID = 0
           for item in self.mBottomViewPopUpMenuItems {
             if currentLocation < item.id {
