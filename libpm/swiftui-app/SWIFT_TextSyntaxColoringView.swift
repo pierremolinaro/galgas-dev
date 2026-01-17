@@ -18,10 +18,10 @@ struct SWIFT_TextSyntaxColoringView : View {
   private let mIssueArray : [SWIFT_Issue]
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
-  @State private var mPopUpDatas_High : [IdentifiableString] = []
-  @State private var mPopUpDatas_Low : [IdentifiableString] = []
-  @State private var mSelectedPopUp_High : Int = 0
-  @State private var mSelectedPopUp_Low : Int = 0
+  @State private var mTopViewPopUpMenuItems : [IdentifiableAttributedString] = []
+  @State private var mBottomViewPopUpMenuItems : [IdentifiableAttributedString] = []
+  @State private var mTopViewSelectedPopUp : Int = 0
+  @State private var mBottomViewSelectedPopUp : Int = 0
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -45,9 +45,9 @@ struct SWIFT_TextSyntaxColoringView : View {
       VStack {
         Spacer ().frame (height: 6)
         HStack {
-          Picker ("", selection: self.$mSelectedPopUp_High) {
-            ForEach (self.mPopUpDatas_High, id: \.id) {
-              Text ($0.attributedString.string).tag ($0.id)
+          Picker ("", selection: self.$mTopViewSelectedPopUp) {
+            ForEach (self.mTopViewPopUpMenuItems, id: \.id) {
+              Text ($0.attributedString).tag ($0.id)
             }
           }.pickerStyle (.menu)
           Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
@@ -59,8 +59,21 @@ struct SWIFT_TextSyntaxColoringView : View {
           selectionBinding: self.$mSharedTextModel.mTopViewSelection,
           issueArray: self.mIssueArray,
           installScrollToLineNotificationObserver: true,
-          popUpData: self.$mPopUpDatas_High
+          popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems
         )
+        .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
+          let currentLocation = self.mSharedTextModel.mTopViewSelection.location
+          var newSelectedID = 0
+          for item in self.mTopViewPopUpMenuItems {
+            if currentLocation < item.id {
+              self.mTopViewSelectedPopUp = newSelectedID
+              return
+            }else{
+              newSelectedID = item.id
+            }
+          }
+          self.mTopViewSelectedPopUp = newSelectedID
+        }
         .focusedValue (
           \.activeView,
           ActiveViewKeyStructValue (
@@ -74,9 +87,9 @@ struct SWIFT_TextSyntaxColoringView : View {
         VStack {
           Spacer ().frame (height: 6)
           HStack {
-            Picker("", selection: self.$mSelectedPopUp_Low) {
-              ForEach (self.mPopUpDatas_Low, id: \.id) {
-                Text ($0.attributedString.string).tag ($0.id)
+            Picker ("", selection: self.$mBottomViewSelectedPopUp) {
+              ForEach (self.mBottomViewPopUpMenuItems, id: \.id) {
+                Text ($0.attributedString).tag ($0.id)
               }
             }.pickerStyle (.automatic)
             Button ("-") { self.mSharedTextModel.mBottomViewIsVisible = false }
@@ -87,8 +100,21 @@ struct SWIFT_TextSyntaxColoringView : View {
             selectionBinding: self.$mSharedTextModel.mBottomViewSelection,
             issueArray: self.mIssueArray,
             installScrollToLineNotificationObserver: false,
-            popUpData: self.$mPopUpDatas_Low
+            popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems
           )
+        .onChange (of: self.mSharedTextModel.mBottomViewSelection.location) {
+          let currentLocation = self.mSharedTextModel.mBottomViewSelection.location
+          var newSelectedID = 0
+          for item in self.mBottomViewPopUpMenuItems {
+            if currentLocation < item.id {
+              self.mBottomViewSelectedPopUp = newSelectedID
+              return
+            }else{
+              newSelectedID = item.id
+            }
+          }
+          self.mBottomViewSelectedPopUp = newSelectedID
+        }
           .focusedValue (
             \.activeView,
             ActiveViewKeyStructValue (

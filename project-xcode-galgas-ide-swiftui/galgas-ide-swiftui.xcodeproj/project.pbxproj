@@ -171,6 +171,7 @@
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF5BCBAE2F14F069006F8E83 /* SWIFT_LineColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* SWIFT_LineColumn.swift */; };
+		CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */; };
 		CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */; };
 		CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
@@ -714,6 +715,7 @@
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF5BCBAD2F14F069006F8E83 /* SWIFT_LineColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_LineColumn.swift; sourceTree = "<group>"; };
+		CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAttributedString.swift; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNode.swift; sourceTree = "<group>"; };
 		CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeView.swift; sourceTree = "<group>"; };
 		CF75074F2F0FB197005FAE3E /* unicode-data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
@@ -1278,6 +1280,7 @@
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
+				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
 				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
@@ -1630,6 +1633,7 @@
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
 				CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */,
 				CFE3BB822F10FF760045FA2E /* SWIFT_CompileLogView.swift in Sources */,
+				CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */,
 				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
 				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
 				CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */,

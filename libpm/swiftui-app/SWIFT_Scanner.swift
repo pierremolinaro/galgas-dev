@@ -125,13 +125,6 @@ struct ScanningPointStructForCocoa {
 
 //--------------------------------------------------------------------------------------------------
 
-struct IdentifiableString : Identifiable {
-  let id : Int // Location
-  let attributedString : NSAttributedString
-}
-
-//--------------------------------------------------------------------------------------------------
-
 class SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -345,12 +338,12 @@ class SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func updateEntryPopUpButtons (_ inTokenArray : [SWIFT_Token]) -> [IdentifiableString] {
-    let popupListData = self.popupListData ().sorted { $0.count > $1.count }
-    let defaultAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.systemFont (ofSize: 11.0)]
-    let specialAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.boldSystemFont (ofSize: 11.0)]
-    var menuItemList = [IdentifiableString] ()
-    menuItemList.append (IdentifiableString (id: 0, attributedString: NSAttributedString (string: "--", attributes: defaultAttributes)))
+  final func updateEntryPopUpButtons (_ inTokenArray : [SWIFT_Token]) -> [IdentifiableAttributedString] {
+    let popupListData = self.popUpDefinitionList ().sorted { $0.count > $1.count }
+    let defaultAttributesContainer = AttributeContainer ([.font : NSFont.systemFont (ofSize: 11.0)])
+    let specialAttributesContainer = AttributeContainer ([.font : NSFont.boldSystemFont (ofSize: 11.0)])
+    var menuItemList = [IdentifiableAttributedString] ()
+    menuItemList.append (IdentifiableAttributedString (id: 0, attributedString: AttributedString ("--", attributes: defaultAttributesContainer)))
     var tokenWithRangeIndex = 0
     while tokenWithRangeIndex < inTokenArray.count {
       var popUpDataListIndex = 0
@@ -382,12 +375,12 @@ class SWIFT_Scanner {
             idx += 2
             tokenWithRangeIndex += 1
           }
-          let at = NSAttributedString (
-            string: title,
-            attributes: (displayFlags == 0) ? defaultAttributes : specialAttributes
+          let at = AttributedString (
+            title,
+            attributes: (displayFlags == 0) ? defaultAttributesContainer : specialAttributesContainer
           )
           let location = inTokenArray [testedTokenRangeIndex].range.location
-          let s = IdentifiableString (id: location, attributedString: at)
+          let s = IdentifiableAttributedString (id: location, attributedString: at)
           menuItemList.append (s)
         }
       }
@@ -400,13 +393,13 @@ class SWIFT_Scanner {
   //  Functions overriden in a subclass
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func popupListData () -> [[UInt16]] {
+  func popUpDefinitionList () -> [[UInt16]] {
     return []
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func popupDatas () -> [IdentifiableString] {
+  func popUpMenuItems () -> [IdentifiableAttributedString] {
     return []
   }
 
@@ -420,7 +413,7 @@ class SWIFT_Scanner {
   func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,
                                           editedRange inEditedRange : NSRange,
                                           changeInLength inDelta : Int,
-                                          popupData ioPopupDatas : inout [IdentifiableString]) {
+                                          popMenuItems ioPopupMenuItems : inout [IdentifiableAttributedString]) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

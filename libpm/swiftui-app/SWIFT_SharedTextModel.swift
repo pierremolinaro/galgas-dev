@@ -39,10 +39,10 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Published var mBottomViewIsVisible = false
-  var mTopViewSelection = NSRange () // Pas de @Published
-  var mBottomViewSelection = NSRange () // Pas de @Published
+  @Published var mTopViewSelection = NSRange ()
+  @Published var mBottomViewSelection = NSRange ()
   private var mWriteFileCallback : ((String) -> Void)? = nil
-  private var mPopupDatas = [IdentifiableString] ()
+  private var mPopUpMenuItems = [IdentifiableAttributedString] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -141,9 +141,9 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   fileprivate func
   createAndConfigureTextView (installScrollToLineNotificationObserver inFlag : Bool,
-                              popupDatas inPopUpDatas : Binding <[IdentifiableString]>) -> InternalNSTextView {
+                              popupMenuItemsBinding inPopUpMenuItemsBinding : Binding <[IdentifiableAttributedString]>) -> InternalNSTextView {
     DispatchQueue.main.async {
-      inPopUpDatas.wrappedValue = self.mPopupDatas
+      inPopUpMenuItemsBinding.wrappedValue = self.mPopUpMenuItems
     }
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
@@ -234,7 +234,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
         textStorage: self.mTextStorage,
         editedRange: inEditedRange,
         changeInLength: inDelta,
-        popupData: &self.mPopupDatas
+        popMenuItems: &self.mPopUpMenuItems
       )
       if self.mDocumentString != self.mTextStorage.string {
         self.mDocumentString = self.mTextStorage.string
@@ -243,7 +243,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
       for layoutManager in self.mTextStorage.layoutManagers {
         for textContainer in layoutManager.textContainers {
           if let textView = textContainer.textView as? InternalNSTextView {
-            textView.didProcessEditing (self.mPopupDatas)
+            textView.didProcessEditing (self.mPopUpMenuItems)
           }
         }
       }
@@ -259,12 +259,6 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
         }
       }
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func popupDatas () -> [IdentifiableString] {
-    return self.mScanner?.popupDatas () ?? []
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -288,14 +282,14 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
         selectionBinding inSelectionBinding : Binding <NSRange>,
         issueArray inIssueArray : [SWIFT_Issue],
         installScrollToLineNotificationObserver inFlag : Bool,
-        popUpData inPopUpDatas : Binding <[IdentifiableString]>) {
+        popUpMenuItemsBinding inPopUpMenuItemsBinding : Binding <[IdentifiableAttributedString]>) {
     self.mTextView = inSharedTextModel.createAndConfigureTextView (
       installScrollToLineNotificationObserver: inFlag,
-      popupDatas: inPopUpDatas
+      popupMenuItemsBinding: inPopUpMenuItemsBinding
     )
     self._mSelectionBinding = inSelectionBinding
     self.mIssueArray = inIssueArray
-    self.mTextView.mCallBack = { inPopUpDatas.wrappedValue = $0 }
+    self.mTextView.mCallBack = { inPopUpMenuItemsBinding.wrappedValue = $0 }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -444,7 +438,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SWIFT_SharedTextModel?
   private weak var mUndoManager : UndoManager?
-  var mCallBack : ((_ inPopupDatas : [IdentifiableString]) -> Void)? = nil
+  var mCallBack : ((_ inPopupDatas : [IdentifiableAttributedString]) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -584,7 +578,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func didProcessEditing (_ inPopupDatas : [IdentifiableString]) {
+  func didProcessEditing (_ inPopupDatas : [IdentifiableAttributedString]) {
     self.mCallBack? (inPopupDatas)
   }
 

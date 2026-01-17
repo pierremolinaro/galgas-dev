@@ -287,7 +287,7 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func popupListData () -> [[UInt16]] {
+  final override func popUpDefinitionList () -> [[UInt16]] {
     return gPopUpData_galgasScanner3
   }
 
@@ -1450,7 +1450,7 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
   override func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,
                                                    editedRange inEditedRange : NSRange,
                                                    changeInLength inDelta : Int,
-                                                   popupData ioPopupDatas : inout [IdentifiableString]) {
+                                                   popMenuItems ioPopupMenuItems : inout [IdentifiableAttributedString]) {
     if self.mDebug { Swift.print ("performLexicalAnalysisAndColoring \(inEditedRange), delta \(inDelta)") }
     let nsString = inTextStorage.string as NSString
   //---
@@ -1575,7 +1575,7 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
     if self.mDebug { Swift.print ("  Adding attributes: \(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms") }
-    ioPopupDatas = self.updateEntryPopUpButtons (self.mTokenArray)
+    ioPopupMenuItems = self.updateEntryPopUpButtons (self.mTokenArray)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
