@@ -287,6 +287,12 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final override func popupListData () -> [[UInt16]] {
+    return gPopUpData_galgasScanner3
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func selectionRange (forProposedRange inProposedSelectionRange : NSRange,
                                 granularity inGranularity : NSSelectionGranularity,
                                 nsTextViewComputedRange inTextViewComputedRange : NSRange) -> NSRange {
@@ -1443,7 +1449,8 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
 
   override func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,
                                                    editedRange inEditedRange : NSRange,
-                                                   changeInLength inDelta : Int) {
+                                                   changeInLength inDelta : Int,
+                                                   popupData ioPopupDatas : inout [IdentifiableString]) {
     if self.mDebug { Swift.print ("performLexicalAnalysisAndColoring \(inEditedRange), delta \(inDelta)") }
     let nsString = inTextStorage.string as NSString
   //---
@@ -1525,7 +1532,9 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
     }
     if self.mDebug { Swift.print ("  Lexical analysis time: \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms") }
   //---- Apply default attributes
-    let modificationStart = min (inEditedRange.location, (savedTokenCount == 0) ? 0 : self.mTokenArray [savedTokenCount - 1].range.upperBound)
+    let modificationStart = min (inEditedRange.location, (savedTokenCount == 0)
+      ? 0
+      : self.mTokenArray [savedTokenCount - 1].range.upperBound)
     let modificationEnd = max (inEditedRange.upperBound, (insertionIndex == self.mTokenArray.count)
        ? nsString.length
        : self.mTokenArray [insertionIndex].range.upperBound
@@ -1566,6 +1575,7 @@ class ScannerFor_galgasScanner3 : SWIFT_Scanner {
       inTextStorage.delegate = tsDelegate // NSTextStorageDelegate
     }
     if self.mDebug { Swift.print ("  Adding attributes: \(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms") }
+    ioPopupDatas = self.updateEntryPopUpButtons (self.mTokenArray)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

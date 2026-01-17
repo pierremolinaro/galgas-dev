@@ -24,7 +24,7 @@ NSArray * nibsAndClasses (void) {
 //--------------------------------------------------------------------------------------------------
 
 func indexingDescriptorDictionary () -> [String : String] {
-  return [  "galgasProject" : "build/indexes",  "ggsproject" : "*+BUILD/indexes",]
+  return [  "galgasProject" : "build/indexes",  "ggsproject" : "build/indexes",]
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -47,13 +47,11 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
   return array
 }
 
-
-
 //--------------------------------------------------------------------------------------------------
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
+fileprivate let gPopUpData_galgasScanner_33_ : [[UInt16]] = [
   [0, // Leading character count to strip
     galgasScanner3_1_before, 0,
     galgasScanner3_1__7B_, 0
@@ -262,7 +260,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
-    return gPopUpData_0_galgasScanner_33_
+    return gPopUpData_galgasScanner_33_
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -350,7 +348,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gPopUpData_1_galgasScanner_34_ : [[UInt16]] = [
+fileprivate let gPopUpData_galgasScanner_34_ : [[UInt16]] = [
   [0, // Leading character count to strip
     galgasScanner4_1_before, 0,
     galgasScanner4_1__7B_, 0
@@ -565,7 +563,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
-    return gPopUpData_1_galgasScanner_34_
+    return gPopUpData_galgasScanner_34_
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -641,7 +639,7 @@ class SWIFT_Tokenizer_1_galgasScanner4 : SWIFT_Lexique_galgasScanner4, SWIFT_Tok
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gPopUpData_2_galgasTemplateScanner : [[UInt16]] = [
+fileprivate let gPopUpData_galgasTemplateScanner : [[UInt16]] = [
 
 ]
 
@@ -654,7 +652,7 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func popupListData () -> [[UInt16]] {
-    return gPopUpData_2_galgasTemplateScanner
+    return gPopUpData_galgasTemplateScanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

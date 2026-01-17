@@ -10,12 +10,12 @@ func indexingDescriptorDictionary () -> [String : String] {
 % return [:]
 %
 else
-%  return [%
-for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList do
-  %  "%!projectFileExtension.string%" : "%!indexingPathSuffix.string%",%
+%  return [\n%
+for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList
+  do %    "%![projectFileExtension.string lowercaseString]%" : "%!indexingPathSuffix.string%"%
+  between %,\n%
 end
-%]
-%
+%\n  ]\n%
 end
 %}
 
@@ -24,10 +24,11 @@ end
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
-  var result : SWIFT_Scanner? = nil\n%
+  var result : SWIFT_Scanner? = nil
+  let fileExtension = inExtension.lowercased ()\n%
 for (lkey mLexiqueName *) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % inExtension.compare (%![lkey utf8RepresentationEscapingQuestionMark]%, options: .caseInsensitive) == .orderedSame {\n%
+  do % fileExtension == %![[lkey lowercaseString] utf8RepresentationEscapingQuestionMark]% {\n%
      %    result = ScannerFor_%!mLexiqueName% ()\n%
   between %  }else if%
   after %  }\n%
@@ -79,5 +80,25 @@ end
 
 }
 
+
+%for (lexiqueClassName lexiqueIndex blockComment title textMacroList labels lexicalStyleList) in GUI_CONTEXT.mWithLexiqueList do
+%//--------------------------------------------------------------------------------------------------
+//   Popup list data for '%!lexiqueClassName%' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gPopUpData_%!lexiqueClassName% : [[UInt16]] = [
+%  for (mLeadingCharacterStrippedCount mTerminalList mLocation) in labels do
+%  [%![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
+      for (mTerminal mDisplayFlags) in mTerminalList
+      do %    %!lexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]
+      between %,\n%
+      end    
+    %\n  ]%
+  between %,\n%
+  end
+%
+]
+
+%end%
 //--------------------------------------------------------------------------------------------------
 

@@ -272,12 +272,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
   )
 //--------------------------------- Compile semantic declarations
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
-  let @string buildDirectoryName
-  if inGalgas4 then
-    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"+"] + "+BUILD"
-  else
-    buildDirectoryName = "build"
-  end
+  let @string buildDirectoryName = "build"
+//  if inGalgas4 then
+//    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"+"] + "+BUILD"
+//  else
+//    buildDirectoryName = "build"
+//  end
   let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = @()

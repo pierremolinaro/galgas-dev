@@ -24,7 +24,8 @@ final class SWIFT_RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (url inURL : URL, issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
+  init (url inURL : URL,
+        issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
     self.mURL = inURL
     self.mChildren = []
     self._mIssuesBinding = inIssuesBinding

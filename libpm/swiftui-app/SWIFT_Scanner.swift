@@ -6,7 +6,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-import AppKit
+import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
@@ -121,6 +121,13 @@ struct ScanningPointStructForCocoa {
   let previousChar : UInt32
   let currentChar : UInt32
   let currentLocation : Int
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct IdentifiableString : Identifiable {
+  let id : Int // Location
+  let attributedString : NSAttributedString
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -337,7 +344,72 @@ class SWIFT_Scanner {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func updateEntryPopUpButtons (_ inTokenArray : [SWIFT_Token]) -> [IdentifiableString] {
+    let popupListData = self.popupListData ().sorted { $0.count > $1.count }
+    let defaultAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.systemFont (ofSize: 11.0)]
+    let specialAttributes  : [NSAttributedString.Key : Any] = [.font : NSFont.boldSystemFont (ofSize: 11.0)]
+    var menuItemList = [IdentifiableString] ()
+    menuItemList.append (IdentifiableString (id: 0, attributedString: NSAttributedString (string: "--", attributes: defaultAttributes)))
+    var tokenWithRangeIndex = 0
+    while tokenWithRangeIndex < inTokenArray.count {
+      var popUpDataListIndex = 0
+      var found = false
+      while !found, popUpDataListIndex < popupListData.count {
+        let popUpData = popupListData [popUpDataListIndex]
+        popUpDataListIndex += 1
+        var matched = true
+        var idx = 1
+        var testedTokenRangeIndex = tokenWithRangeIndex
+        while matched, idx < popUpData.count {
+          matched = testedTokenRangeIndex < inTokenArray.count
+          if matched {
+            matched = inTokenArray [testedTokenRangeIndex].tokenCode == popUpData [idx]
+          }
+          idx += 2
+          testedTokenRangeIndex += 1
+        }
+        if matched {
+          found = true
+          var title = ""
+          idx = 1
+          testedTokenRangeIndex = tokenWithRangeIndex
+          let displayFlags = popUpData [0]
+          while idx < popUpData.count {
+            let r = inTokenArray [tokenWithRangeIndex].range
+            let s = self.mSourceString.substring (with: r)
+            title += " " + s
+            idx += 2
+            tokenWithRangeIndex += 1
+          }
+          let at = NSAttributedString (
+            string: title,
+            attributes: (displayFlags == 0) ? defaultAttributes : specialAttributes
+          )
+          let location = inTokenArray [testedTokenRangeIndex].range.location
+          let s = IdentifiableString (id: location, attributedString: at)
+          menuItemList.append (s)
+        }
+      }
+      tokenWithRangeIndex += 1
+    }
+    return menuItemList
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Functions overriden in a subclass
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func popupListData () -> [[UInt16]] {
+    return []
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func popupDatas () -> [IdentifiableString] {
+    return []
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage: NSTextStorage) {
@@ -347,7 +419,8 @@ class SWIFT_Scanner {
 
   func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,
                                           editedRange inEditedRange : NSRange,
-                                          changeInLength inDelta : Int) {
+                                          changeInLength inDelta : Int,
+                                          popupData ioPopupDatas : inout [IdentifiableString]) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

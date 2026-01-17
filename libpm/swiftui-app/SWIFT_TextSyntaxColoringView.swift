@@ -15,8 +15,13 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
   private let mIssueArray : [SWIFT_Issue]
+
+  @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
+  @State private var mPopUpDatas_High : [IdentifiableString] = []
+  @State private var mPopUpDatas_Low : [IdentifiableString] = []
+  @State private var mSelectedPopUp_High : Int = 0
+  @State private var mSelectedPopUp_Low : Int = 0
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -37,34 +42,52 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   var body: some View {
     VSplitView {
-      SWIFT_LexicalHilitingTextEditor (
-        model: self.mSharedTextModel,
-        selectionBinding: self.$mSharedTextModel.mTopViewSelection,
-        issueArray: self.mIssueArray,
-        installScrollToLineNotificationObserver: true
-      )
-      .focusedValue (
-        \.activeView,
-        ActiveViewKeyStructValue (
-          sharedTextModel: self.mSharedTextModel,
-          canUndo: self.mSharedTextModel.canUndo,
-          canRedo: self.mSharedTextModel.canRedo
-        )
-      )
-      .conditionalOverlay (condition: !self.mSharedTextModel.mBottomViewIsVisible, alignment: .topTrailing) {
+      VStack {
+        Spacer ().frame (height: 6)
         HStack {
+          Picker ("", selection: self.$mSelectedPopUp_High) {
+            ForEach (self.mPopUpDatas_High, id: \.id) {
+              Text ($0.attributedString.string).tag ($0.id)
+            }
+          }.pickerStyle (.menu)
           Button ("+") { self.mSharedTextModel.mBottomViewIsVisible = true }
-          Spacer ().frame (width: 15)
+          .disabled (self.mSharedTextModel.mBottomViewIsVisible)
+          Spacer ().frame (width: 6)
         }
+        SWIFT_LexicalHilitingTextEditor (
+          model: self.mSharedTextModel,
+          selectionBinding: self.$mSharedTextModel.mTopViewSelection,
+          issueArray: self.mIssueArray,
+          installScrollToLineNotificationObserver: true,
+          popUpData: self.$mPopUpDatas_High
+        )
+        .focusedValue (
+          \.activeView,
+          ActiveViewKeyStructValue (
+            sharedTextModel: self.mSharedTextModel,
+            canUndo: self.mSharedTextModel.canUndo,
+            canRedo: self.mSharedTextModel.canRedo
+          )
+        )
       }
       if self.mSharedTextModel.mBottomViewIsVisible {
         VStack {
-          Spacer ().frame (height: 12)
+          Spacer ().frame (height: 6)
+          HStack {
+            Picker("", selection: self.$mSelectedPopUp_Low) {
+              ForEach (self.mPopUpDatas_Low, id: \.id) {
+                Text ($0.attributedString.string).tag ($0.id)
+              }
+            }.pickerStyle (.automatic)
+            Button ("-") { self.mSharedTextModel.mBottomViewIsVisible = false }
+            Spacer ().frame (width: 6)
+          }
           SWIFT_LexicalHilitingTextEditor (
             model: self.mSharedTextModel,
             selectionBinding: self.$mSharedTextModel.mBottomViewSelection,
             issueArray: self.mIssueArray,
-            installScrollToLineNotificationObserver: false
+            installScrollToLineNotificationObserver: false,
+            popUpData: self.$mPopUpDatas_Low
           )
           .focusedValue (
             \.activeView,
@@ -74,12 +97,6 @@ struct SWIFT_TextSyntaxColoringView : View {
               canRedo: self.mSharedTextModel.canRedo
             )
           )
-          .overlay (alignment: .topTrailing) {
-            HStack {
-              Button ("-") { self.mSharedTextModel.mBottomViewIsVisible = false }
-              Spacer ().frame (width: 15)
-            }
-          }
         }
       }
     }

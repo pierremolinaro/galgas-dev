@@ -302,37 +302,6 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-//list @lexicalExternRoutineFormalArgumentListAST {
-//  public let @lexicalArgumentModeAST mPassingMode
-//  public let @lstring mLexicalTypeName
-//  public let @lstring mFormalArgumentName
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//list @externRoutineListAST {
-//  public let @lstring mRoutineName
-//  public let @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
-//  public let @stringlist mErrorMessageList
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//list @lexicalExternFunctionFormalArgumentListAST {
-//  public let @lstring mLexicalTypeName
-//  public let @lstring mFormalArgumentName
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//list @externFunctionListAST {
-//  public let @lstring mFunctionName
-//  public let @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
-//  public let @lstring mReturnedTypeName
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 list @indexingListAST {
   public let @lstring mIndexName
   public let @lstring mIndexComment

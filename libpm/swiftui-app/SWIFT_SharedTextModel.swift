@@ -42,6 +42,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   var mTopViewSelection = NSRange () // Pas de @Published
   var mBottomViewSelection = NSRange () // Pas de @Published
   private var mWriteFileCallback : ((String) -> Void)? = nil
+  private var mPopupDatas = [IdentifiableString] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -139,7 +140,11 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func
-  createAndConfigureTextView (installScrollToLineNotificationObserver inFlag : Bool) -> InternalNSTextView {
+  createAndConfigureTextView (installScrollToLineNotificationObserver inFlag : Bool,
+                              popupDatas inPopUpDatas : Binding <[IdentifiableString]>) -> InternalNSTextView {
+    DispatchQueue.main.async {
+      inPopUpDatas.wrappedValue = self.mPopupDatas
+    }
   //--- Création du layout manager
     let layoutManager = SWIFT_LayoutManager ()
     layoutManager.allowsNonContiguousLayout = true
@@ -228,23 +233,38 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
       self.mScanner?.performLexicalAnalysisAndColoring (
         textStorage: self.mTextStorage,
         editedRange: inEditedRange,
-        changeInLength: inDelta
+        changeInLength: inDelta,
+        popupData: &self.mPopupDatas
       )
-    }
-    if self.mDocumentString != self.mTextStorage.string {
-      self.mDocumentString = self.mTextStorage.string
-    }
-  //--- Update issues
-    for idx in 0 ..< self.mIssues.count {
-      let issue = self.mIssues [idx]
-      if issue.mIsValid, issue.fileURL == self.mFileURL {
-        self.mIssues [idx].updateLocationForPreviousRange (
-          editedRange: inEditedRange,
-          changeInLength: inDelta,
-          updatedString: self.mDocumentString
-        )
+      if self.mDocumentString != self.mTextStorage.string {
+        self.mDocumentString = self.mTextStorage.string
+      }
+    //--- Update issues
+      for layoutManager in self.mTextStorage.layoutManagers {
+        for textContainer in layoutManager.textContainers {
+          if let textView = textContainer.textView as? InternalNSTextView {
+            textView.didProcessEditing (self.mPopupDatas)
+          }
+        }
+      }
+    //--- Update issues
+      for idx in 0 ..< self.mIssues.count {
+        let issue = self.mIssues [idx]
+        if issue.mIsValid, issue.fileURL == self.mFileURL {
+          self.mIssues [idx].updateLocationForPreviousRange (
+            editedRange: inEditedRange,
+            changeInLength: inDelta,
+            updatedString: self.mDocumentString
+          )
+        }
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func popupDatas () -> [IdentifiableString] {
+    return self.mScanner?.popupDatas () ?? []
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -257,21 +277,25 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Binding private var mSelectionBinding : NSRange
   private let mTextView : InternalNSTextView
   private let mIssueArray : [SWIFT_Issue]
+
+  @Binding private var mSelectionBinding : NSRange
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>,
         issueArray inIssueArray : [SWIFT_Issue],
-        installScrollToLineNotificationObserver inFlag : Bool) {
+        installScrollToLineNotificationObserver inFlag : Bool,
+        popUpData inPopUpDatas : Binding <[IdentifiableString]>) {
     self.mTextView = inSharedTextModel.createAndConfigureTextView (
-      installScrollToLineNotificationObserver: inFlag
+      installScrollToLineNotificationObserver: inFlag,
+      popupDatas: inPopUpDatas
     )
     self._mSelectionBinding = inSelectionBinding
     self.mIssueArray = inIssueArray
+    self.mTextView.mCallBack = { inPopUpDatas.wrappedValue = $0 }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -398,9 +422,15 @@ final class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func textViewDidChangeSelection (_ inUnusedNotification : Notification) {  // NSTextViewDelegate
+  func textViewDidChangeSelection (_ inUnusedNotification : Notification) { // NSTextViewDelegate
     self.mParent.selectionRangeDidChange ()
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func textDidChange (_ inNotification : Notification) { // NSTextViewDelegate
+//    self.mParent.mSharedTextModel?.popupDatas ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -414,6 +444,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SWIFT_SharedTextModel?
   private weak var mUndoManager : UndoManager?
+  var mCallBack : ((_ inPopupDatas : [IdentifiableString]) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -487,7 +518,6 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
       granularity: inGranularity
     )
     var range = nsTextViewComputedRange
-
     if let model = self.mSharedTextModel {
       range = model.selectionRange (
         forProposedRange: inProposedSelectionRange,
@@ -554,10 +584,9 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func didProcessEditing (range inEditedRange : NSRange,
-//                          changeInLength inDelta : Int) {
-//     print ("didProcessEditing")
-//  }
+  func didProcessEditing (_ inPopupDatas : [IdentifiableString]) {
+    self.mCallBack? (inPopupDatas)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -30,7 +30,7 @@ gui cocoa {
 
   project "galgasProject" indexing in "build/indexes"
 
-  project "ggsproject" indexing in "*+BUILD/indexes"
+  project "ggsproject" indexing in "build/indexes"
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
