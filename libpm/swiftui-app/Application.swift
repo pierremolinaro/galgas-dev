@@ -16,12 +16,6 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
 
 //--------------------------------------------------------------------------------------------------
 
-extension Notification.Name {
-  static let mySaveAllCommand = Notification.Name ("my.save.all.command")
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @main struct Application : App {
 
 //  @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate

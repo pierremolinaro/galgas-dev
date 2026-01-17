@@ -6,12 +6,6 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
-extension Notification.Name {
-  static let myScrollSourceToLocation = Notification.Name ("my.scroll.source.to.location")
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct ScrollSourceToLineNotificationObject {
   let location : Int
 }
@@ -107,15 +101,25 @@ struct ProjectDocumentView : View {
       self.mRootDirectoryNode.saveAllEditedFiles ()
       self.mProjectDocumentSaveScheduler.saveProjectDocument (completionHandler: nil)
     }
+  //--- Show issue in sidebar
+    .onReceive (NotificationCenter.default.publisher (for: Notification.Name.myShowIssueInSidebar)) {
+      if let issueID = $0.object as? UUID {
+        self.mSelectedIssue = issueID
+        self.mSidebarSelectedItem = .issues
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder private var sidebarView : some View {
     VStack {
-      Picker("", selection: self.$mSidebarSelectedItem) {
-        ForEach (SidebarSelectedItem.allCases, id: \.self) { Image (systemName: $0.systemImageName).tag($0) }
-      }.pickerStyle (.segmented)
+      HStack {
+        Picker("", selection: self.$mSidebarSelectedItem) {
+          ForEach (SidebarSelectedItem.allCases, id: \.self) { Image (systemName: $0.systemImageName).tag($0) }
+        }.pickerStyle (.segmented)
+        Spacer ().frame (width: 6)
+      }
       switch self.mSidebarSelectedItem {
       case .fileList :
         VStack {
@@ -142,10 +146,19 @@ struct ProjectDocumentView : View {
           issueArray: self.mIssues
         )
       case .issues:
-        List (self.mIssues, id: \.id, selection: self.$mSelectedIssue) { issue in
-          issue.view
+        if self.mIssues.isEmpty {
+          Text ("No Issue").frame (maxHeight: .infinity).foregroundStyle (.secondary)
+        }else{
+          List (self.mIssues, id: \.id, selection: self.$mSelectedIssue) { issue in
+            Button {
+              self.mSelectedIssue = issue.id
+              self.showSelectedIssueInSource ()
+            } label: {
+              issue.view.frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .buttonStyle (.plain)
+          }
         }
-        .onChange (of: self.mSelectedIssue) { (_, _) in self.showSelectedIssueInSource () }
       }
     }
     .toolbar (removing: .sidebarToggle)
@@ -155,17 +168,19 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func showSelectedIssueInSource () {
-    if let selectedIssueID = self.mSelectedIssue,
-      let idx = self.mIssues.firstIndex (where: { $0.id == selectedIssueID }) {
-      let fileURL = self.mIssues [idx].fileURL
-      if fileURL == self.mProjectFileURL {
-        self.mRootDirectoryNode.mSelectedFileNodeID = nil // Affiche le projet
-      }else{
-        self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
-      }
-      let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
-      DispatchQueue.main.async {
-        NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
+    DispatchQueue.main.async {
+      if let selectedIssueID = self.mSelectedIssue,
+        let idx = self.mIssues.firstIndex (where: { $0.id == selectedIssueID }) {
+        let fileURL = self.mIssues [idx].fileURL
+        if fileURL == self.mProjectFileURL {
+          self.mRootDirectoryNode.mSelectedFileNodeID = nil // Affiche le projet
+        }else{
+          self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
+        }
+        let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
+        DispatchQueue.main.async {
+          NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
+        }
       }
     }
   }

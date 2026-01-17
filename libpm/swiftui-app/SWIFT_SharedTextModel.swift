@@ -356,6 +356,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   fileprivate func selectionRangeDidChange () {
     self.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
+    self.mTextView.layer?.setNeedsDisplay () // For hiliting current line when selection length is empty
     if self.mSelectionBinding != self.mTextView.selectedRange {
       self.mSelectionBinding = self.mTextView.selectedRange
     }
@@ -422,12 +423,6 @@ final class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func textDidChange (_ inNotification : Notification) { // NSTextViewDelegate
-//    self.mParent.mSharedTextModel?.popupDatas ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -438,7 +433,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SWIFT_SharedTextModel?
   private weak var mUndoManager : UndoManager?
-  var mCallBack : ((_ inPopupDatas : [IdentifiableAttributedString]) -> Void)? = nil
+  var mCallBack : ((_ inPopUpMenuItems : [IdentifiableAttributedString]) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -526,6 +521,17 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
+  //---
+    if self.selectedRange.length == 0 {
+      let startEnd = SWIFT_LineStartAndEndLocations (for: self.string, at: self.selectedRange.location)
+      if let startRect = self.rectForCharacter (atIndex: startEnd.startLocation),
+         let endRect = self.rectForCharacter (atIndex: startEnd.endLocation) {
+        let r = startRect.union (endRect)
+        NSColor.blue.withAlphaComponent (0.05).setFill ()
+        NSBezierPath.fill (r)
+      }
+   }
+  //--- Underline issues
     for issue in self.mSharedTextModel?.mIssues ?? [] {
       if issue.mIsValid, issue.fileURL == self.mSharedTextModel?.mFileURL {
         let startIndex = issue.mStartLocation
@@ -578,8 +584,8 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func didProcessEditing (_ inPopupDatas : [IdentifiableAttributedString]) {
-    self.mCallBack? (inPopupDatas)
+  func didProcessEditing (_ inPopupMenuItems : [IdentifiableAttributedString]) {
+    self.mCallBack? (inPopupMenuItems)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -705,7 +711,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
       }
     //--- Préparer l'attribut de texte
       let attrs: [NSAttributedString.Key: Any] = [
-        .font: textView.font!, //NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize(for: .small), weight: .regular),
+        .font: textView.font!,
         .foregroundColor: NSColor.secondaryLabelColor
       ]
       let label = "\(lineNumber)" as NSString
@@ -757,6 +763,29 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
       return p
     }else{
       return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func mouseDown (with inEvent : NSEvent) {
+    for issue in self.mIssueArray {
+      if issue.mIsValid, let p = self.pointForCharacter (atIndex: issue.mStartLocation) {
+        let rect = NSRect (
+          x: ISSUE_MARK_WIDTH,
+          y: p.y + ISSUE_MARK_WIDTH,
+          width: ISSUE_MARK_WIDTH * 2.0,
+          height: ISSUE_MARK_WIDTH * 2.0
+        )
+        let bp = NSBezierPath (ovalIn: rect)
+        let p = self.convert (inEvent.locationInWindow, from: nil)
+        if bp.contains (p) {
+//          DispatchQueue.main.async {
+          NotificationCenter.default.post (name: .myShowIssueInSidebar, object: issue.id)
+          return
+//          }
+        }
+      }
     }
   }
 

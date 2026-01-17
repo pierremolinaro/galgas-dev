@@ -48,7 +48,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override method getInstanceMethodMap
-    ?!@unifiedTypeMap ioUnifiedTypeMap
+    ?!@unifiedTypeMap unused ioUnifiedTypeMap
     !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = @()
   //--- divide, floorDivide, ceilDivide

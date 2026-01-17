@@ -61,7 +61,12 @@ struct SWIFT_TextSyntaxColoringView : View {
           installScrollToLineNotificationObserver: true,
           popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems
         )
-        .onChange (of: self.mSharedTextModel.mTopViewSelection.location) {
+        .onChange (of: self.mSharedTextModel.mTopViewSelection) {
+        //--- Hilite current line, if selection range is empty
+          if self.mSharedTextModel.mTopViewSelection.length == 0 {
+
+          }
+        //--- Select popup menu according to current selection staret
           let currentLocation = self.mSharedTextModel.mTopViewSelection.location
           var newSelectedID = 0
           for item in self.mTopViewPopUpMenuItems {

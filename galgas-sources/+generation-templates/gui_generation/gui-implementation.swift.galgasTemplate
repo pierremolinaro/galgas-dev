@@ -2,30 +2,6 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                
-//--------------------------------------------------------------------------------------------------
-
-/*
-%
-if [GUI_CONTEXT.mNibAndClassList count] == 0 then
-%NSArray * nibsAndClasses (void) {
-  return [NSArray array] ;
-}
-%
-else
-%NSArray * nibsAndClasses (void) {
-  return [NSArray arrayWithObjects:
-%for (mValue) in GUI_CONTEXT.mNibAndClassList do
-  %    [NSArray arrayWithObjects:@"%!mValue%", [%!mValue% class], nil],\n%
-end%    nil
-  ] ;
-}
-%
-end
-%
-
-*/
-//--------------------------------------------------------------------------------------------------
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 

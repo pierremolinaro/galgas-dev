@@ -105,7 +105,7 @@ struct SWIFT_Issue : Identifiable {
       }else if issueRange.location >= (previousRange.location + previousRange.length) {
       //--- Edition occurs before issue range : translate it
         self.mStartLocation += inChangeInLength
-        let lineColumn = SWIFT_LineColumn (for: inString, at: self.mStartLocation)
+        let lineColumn = SWIFT_LineAndColumn (for: inString, at: self.mStartLocation)
         self.mLine = lineColumn.line
         self.mStartColumn = lineColumn.column
       }
@@ -195,7 +195,12 @@ struct SWIFT_Issue : Identifiable {
       .fill (Color (self.mIsValid ? self.color : .gray))
       .frame (width: ISSUE_MARK_WIDTH * 2.0, height: ISSUE_MARK_WIDTH * 2.0)
       VStack {
-        HStack { Text (self.fileURL.lastPathComponent).bold () ; Spacer () }
+        HStack {
+          Text (self.fileURL.lastPathComponent).bold ()
+          .frame(maxWidth: .infinity, alignment: .leading)
+          .lineLimit (nil)
+          Spacer ()
+        }
         HStack {
           Text ("Line: \(self.mLine), column: \(self.mStartColumn)").italic (!self.mIsValid)
           Spacer ()
@@ -210,6 +215,7 @@ struct SWIFT_Issue : Identifiable {
       }
     }
     .background (RoundedRectangle (cornerRadius: 10.0).stroke(Color (self.color), lineWidth: 1.0))
+    .contentShape(Rectangle()) // rend toute la ligne cliquable
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
