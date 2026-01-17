@@ -269,10 +269,25 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mTextView : InternalNSTextView
+//  private let mTextView : InternalNSTextView
   private let mIssueArray : [SWIFT_Issue]
+  private let mInstallScrollToLineNotificationObserver : Bool
+
+  @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
 
   @Binding private var mSelection : NSRange
+  @Binding private var mPopUpMenuItems : [IdentifiableAttributedString]
+//  private var mSelectionForNSTextView : Binding <NSRange> {
+//    Binding (
+//      get: { self.mSelection },
+//      set: { newValue in
+//        if self.mSelection != newValue {
+//          self.mSelection = newValue
+//          NSSound.beep ()
+//        }
+//      }
+//    )
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -280,14 +295,17 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
         selectionBinding inSelectionBinding : Binding <NSRange>,
         issueArray inIssueArray : [SWIFT_Issue],
         installScrollToLineNotificationObserver inFlag : Bool,
-        popUpMenuItemsBinding inPopUpMenuItemsBinding : Binding <[IdentifiableAttributedString]>) {
-    self.mTextView = inSharedTextModel.createAndConfigureTextView (
-      installScrollToLineNotificationObserver: inFlag,
-      popupMenuItemsBinding: inPopUpMenuItemsBinding
-    )
+        popUpMenuItemsBinding inPopUpMenuItems : Binding <[IdentifiableAttributedString]>) {
+//    self.mTextView = inSharedTextModel.createAndConfigureTextView (
+//      installScrollToLineNotificationObserver: inFlag,
+//      popupMenuItemsBinding: inPopUpMenuItemsBinding
+//    )
+    self.mSharedTextModel = inSharedTextModel
+    self._mPopUpMenuItems = inPopUpMenuItems
     self._mSelection = inSelectionBinding
     self.mIssueArray = inIssueArray
-    self.mTextView.mCallBack = { inPopUpMenuItemsBinding.wrappedValue = $0 }
+    self.mInstallScrollToLineNotificationObserver = inFlag
+//    self.mTextView.mCallBack = { inPopUpMenuItemsBinding.wrappedValue = $0 }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -299,43 +317,48 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func makeNSView (context inContext : Context) -> NSScrollView {
-    self.mTextView.allowsUndo = true
-    self.mTextView.isRichText = true
-    self.mTextView.isAutomaticDataDetectionEnabled = false
-    self.mTextView.isAutomaticLinkDetectionEnabled = false
-    self.mTextView.isAutomaticTextCompletionEnabled = false
-    self.mTextView.isAutomaticTextReplacementEnabled = false
-    self.mTextView.isAutomaticDashSubstitutionEnabled = false
-    self.mTextView.isAutomaticQuoteSubstitutionEnabled = false
-    self.mTextView.isAutomaticSpellingCorrectionEnabled = false
-    self.mTextView.isEditable = true
-    self.mTextView.isSelectable = true
-    self.mTextView.minSize = .zero
-    self.mTextView.maxSize = NSSize (
+    let textView = self.mSharedTextModel.createAndConfigureTextView (
+      installScrollToLineNotificationObserver: self.mInstallScrollToLineNotificationObserver,
+      popupMenuItemsBinding: self.$mPopUpMenuItems
+    )
+    textView.mCallBack = { self.mPopUpMenuItems = $0 }
+    textView.allowsUndo = true
+    textView.isRichText = true
+    textView.isAutomaticDataDetectionEnabled = false
+    textView.isAutomaticLinkDetectionEnabled = false
+    textView.isAutomaticTextCompletionEnabled = false
+    textView.isAutomaticTextReplacementEnabled = false
+    textView.isAutomaticDashSubstitutionEnabled = false
+    textView.isAutomaticQuoteSubstitutionEnabled = false
+    textView.isAutomaticSpellingCorrectionEnabled = false
+    textView.isEditable = true
+    textView.isSelectable = true
+    textView.minSize = .zero
+    textView.maxSize = NSSize (
       width: CGFloat.greatestFiniteMagnitude,
       height: CGFloat.greatestFiniteMagnitude
     )
-    self.mTextView.isHorizontallyResizable = true
-    self.mTextView.isVerticallyResizable = true
-    self.mTextView.autoresizingMask = [.width]
-    self.mTextView.delegate = inContext.coordinator
+    textView.isHorizontallyResizable = true
+    textView.isVerticallyResizable = true
+    textView.autoresizingMask = [.width]
+    textView.delegate = inContext.coordinator
   //--- ScrollView
     let scrollView = InternalNSScrollView ()
-    scrollView.documentView = self.mTextView
+    scrollView.documentView = textView
     scrollView.hasVerticalScroller = true
     scrollView.autohidesScrollers = true
   //--- Find bar
-    self.mTextView.usesFindBar = true
-    self.mTextView.isIncrementalSearchingEnabled = true
+    textView.usesFindBar = true
+    textView.isIncrementalSearchingEnabled = true
  //--- Create ruler
-    let rulerView = SWIFT_TextViewRulerView (textView: self.mTextView)
+    let rulerView = SWIFT_TextViewRulerView (textView: textView)
     rulerView.scrollView = scrollView
     scrollView.verticalRulerView = rulerView
     scrollView.rulersVisible = true
   //--- Restore selection
-    self.mTextView.selectedRange = self.mSelection
+    textView.setSelectedRange (self.mSelection)
     DispatchQueue.main.async {
-      self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
+      textView.scrollRangeToVisible (textView.selectedRange)
     }
   //---
     return scrollView
@@ -348,24 +371,23 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
     if let rulerView = inScrollView.verticalRulerView as? SWIFT_TextViewRulerView {
       rulerView.setIssueArray (self.mIssueArray)
     }
-    if self.mSelection != inContext.coordinator.mLastSelection {
+    if self.mSelection != inContext.coordinator.mLastSelection,
+       let textView = inScrollView.documentView as? InternalNSTextView {
       inContext.coordinator.mLastSelection = self.mSelection
       DispatchQueue.main.async {
-        self.mTextView.selectedRange = self.mSelection
-        DispatchQueue.main.async {
-          self.mTextView.scrollRangeToVisible (self.mTextView.selectedRange)
-        }
+        textView.setSelectedRange (self.mSelection)
+        textView.scrollRangeToVisible (textView.selectedRange)
       }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func selectionRangeDidChange () {
-    self.mTextView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
-    self.mTextView.layer?.setNeedsDisplay () // For hiliting current line when selection length is empty
-    if self.mSelection != self.mTextView.selectedRange {
-      self.mSelection = self.mTextView.selectedRange
+  fileprivate func selectionRangeDidChange (_ inSelectedRange : NSRange) {
+    DispatchQueue.main.async {
+      if self.mSelection != inSelectedRange {
+        self.mSelection = inSelectedRange
+      }
     }
   }
 
@@ -425,8 +447,12 @@ final class SyntaxHighlightingTextEditorCoordinator : NSObject, NSTextViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func textViewDidChangeSelection (_ inUnusedNotification : Notification) { // NSTextViewDelegate
-    self.mParent.selectionRangeDidChange ()
+  func textViewDidChangeSelection (_ inNotification : Notification) { // NSTextViewDelegate
+    if let textView = inNotification.object as? NSTextView {
+      textView.enclosingScrollView?.verticalRulerView?.layer?.setNeedsDisplay ()
+      textView.layer?.setNeedsDisplay () // For hiliting current line when selection length is empty
+      self.mParent.selectionRangeDidChange (textView.selectedRange)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
