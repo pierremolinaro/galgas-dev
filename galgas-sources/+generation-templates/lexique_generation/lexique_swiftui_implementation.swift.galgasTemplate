@@ -99,7 +99,7 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
 
 //--------------------------------------------------------------------------------------------------
 
-class ScannerFor_%!LEXIQUE_CLASS_NAME% : SWIFT_Scanner {
+class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

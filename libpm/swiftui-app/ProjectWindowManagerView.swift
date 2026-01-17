@@ -18,7 +18,7 @@ struct ProjectWindowManagerView : View {
 
   private let mProjectFileURL : URL
   @Binding private var mDocument : ProjectDocument
-  @State private var mIssues : [SWIFT_Issue] = []
+  @State private var mIssues : [CompilationIssue] = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

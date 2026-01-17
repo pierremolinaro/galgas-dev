@@ -277,7 +277,7 @@ struct SettingViewFor_galgasScanner4 : View {
 
 //--------------------------------------------------------------------------------------------------
 
-class ScannerFor_galgasScanner4 : SWIFT_Scanner {
+class ScannerFor_galgasScanner4 : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

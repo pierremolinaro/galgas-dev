@@ -15,7 +15,7 @@ struct SWIFT_TextSyntaxColoringView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mIssueArray : [SWIFT_Issue]
+  private let mIssueArray : [CompilationIssue]
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
 
@@ -58,10 +58,10 @@ struct SWIFT_TextSyntaxColoringView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
-        issueArray inIssueArray : [SWIFT_Issue],
+        issueArray inIssueArray : [CompilationIssue],
         url inSourceFileURL : URL?) {
     self.mSharedTextModel = inSharedTextModel
-    var issueArray = [SWIFT_Issue] ()
+    var issueArray = [CompilationIssue] ()
     for issue in inIssueArray {
       if issue.fileURL == inSourceFileURL {
         issueArray.append (issue)

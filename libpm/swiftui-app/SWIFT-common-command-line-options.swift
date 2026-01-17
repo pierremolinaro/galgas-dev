@@ -20,9 +20,9 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
-  var array = [SWIFT_CommandLineOption] ()
-  array.append (SWIFT_CommandLineOption (
+func commonCommandLineOptions () -> [CommandLineOption] {
+  var array = [CommandLineOption] ()
+  array.append (CommandLineOption (
     domainName: "generic_cli_options",
     type: .bool,
     identifier: "display_help",
@@ -31,7 +31,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Display help information"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "generic_cli_options",
     type: .bool,
     identifier: "display_version",
@@ -41,7 +41,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
   ))
 
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .bool,
     identifier: "log_file_read",
@@ -50,7 +50,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Log every file read"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .bool,
     identifier: "do_not_generate_any_file",
@@ -59,7 +59,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Do not generate any file"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .bool,
     identifier: "treat_warnings_as_error",
@@ -68,7 +68,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Treat warnings as errors"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .bool,
     identifier: "outputConcreteSyntaxTree",
@@ -77,7 +77,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Generate the concrete syntax tree, in .dot format (suitable for Graphviz)"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .uint,
     identifier: "max_errors",
@@ -86,7 +86,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Stop after the given number of errors has been reached (0 is interpreted as 100)"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .uint,
     identifier: "max_warnings",
@@ -95,7 +95,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Stop after the given number of warnings has been reached (0 is interpreted as 100)"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .bool,
     identifier: "emit_issue_json_file",
@@ -104,7 +104,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     comment: "Emit a JSON file that contains all compilation issues"
   ))
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .string,
     identifier: "mode",
@@ -114,7 +114,7 @@ func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
   ))
   
 
-  array.append (SWIFT_CommandLineOption (
+  array.append (CommandLineOption (
     domainName: "galgas_cli_options",
     type: .string,
     identifier: "outputKeywordList",

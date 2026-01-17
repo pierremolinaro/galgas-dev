@@ -19,7 +19,7 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mScanner : SWIFT_Scanner?
+  private var mScanner : AbstractScanner?
   let mFileURL : URL
   private let mTextStorage = NSTextStorage ()
   var mDocumentString : String {
@@ -44,14 +44,14 @@ final class SWIFT_SharedTextModel : NSObject, ObservableObject, Identifiable, NS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @Binding var mIssues : [SWIFT_Issue]
+  @Binding var mIssues : [CompilationIssue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (scanner inScanner : SWIFT_Scanner?,
+  init (scanner inScanner : AbstractScanner?,
         initialString inString : String,
         fileURL inFileURL : URL,
-        issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
+        issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
     self.mScanner = inScanner
     self.mDocumentString = inString
     self._mIssues = inIssuesBinding
@@ -270,7 +270,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  private let mTextView : InternalNSTextView
-  private let mIssueArray : [SWIFT_Issue]
+  private let mIssueArray : [CompilationIssue]
   private let mInstallScrollToLineNotificationObserver : Bool
 
   @ObservedObject private var mSharedTextModel : SWIFT_SharedTextModel
@@ -293,7 +293,7 @@ struct SWIFT_LexicalHilitingTextEditor : NSViewRepresentable {
 
   init (model inSharedTextModel : SWIFT_SharedTextModel,
         selectionBinding inSelectionBinding : Binding <NSRange>,
-        issueArray inIssueArray : [SWIFT_Issue],
+        issueArray inIssueArray : [CompilationIssue],
         installScrollToLineNotificationObserver inFlag : Bool,
         popUpMenuItemsBinding inPopUpMenuItems : Binding <[IdentifiableAttributedString]>) {
 //    self.mTextView = inSharedTextModel.createAndConfigureTextView (
@@ -557,7 +557,7 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
     super.draw (inDirtyRect)
   //---
     if self.selectedRange.length == 0 {
-      let startEnd = SWIFT_LineStartAndEndLocations (for: self.string, at: self.selectedRange.location)
+      let startEnd = LineStartAndEndLocations (for: self.string, at: self.selectedRange.location)
       if let startRect = self.rectForCharacter (atIndex: startEnd.startLocation),
          let endRect = self.rectForCharacter (atIndex: startEnd.endLocation) {
         let r = startRect.union (endRect)
@@ -636,7 +636,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
   private weak var mTextView : NSTextView? = nil
   private let mPadding : CGFloat = 5
   private var mLineRangeCacheArray : [NSRange] = []
-  private var mIssueArray : [SWIFT_Issue] = []
+  private var mIssueArray : [CompilationIssue] = []
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -661,7 +661,7 @@ fileprivate final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+  func setIssueArray (_ inIssueArray : [CompilationIssue]) {
     self.mIssueArray = inIssueArray
     self.rebuildLineIndexCache ()
     self.setNeedsDisplay (self.bounds)

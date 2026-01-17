@@ -20,8 +20,8 @@ func indexingDescriptorDictionary () -> [String : String] {
 //   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
-  var result : SWIFT_Scanner? = nil
+@MainActor func scannerFor (extension inExtension : String) -> AbstractScanner? {
+  var result : AbstractScanner? = nil
   let fileExtension = inExtension.lowercased ()
   if fileExtension == "galgas" {
     result = ScannerFor_galgasScanner3 ()

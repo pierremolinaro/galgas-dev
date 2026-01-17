@@ -55,26 +55,6 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (class Compiler * inCompiler,
-                                                                                    const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (class Compiler * inCompiler,
-                                                                                    const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'optionGenerationTemplates optionImplementationSwiftCocoa'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1074,4 +1054,47 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
                                                                                        const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
                                                                                        const class GGS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'structGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
+                                                                               const class GGS_string & in_TYPE_5F_NAME,
+                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                               const class GGS_lstringlist & in_SLOT_5F_LIST
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                           const class GGS_string & in_TYPE_5F_NAME,
+                                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                           const class GGS_lstringlist & in_SLOT_5F_LIST,
+                                                                                           const class GGS_bigint & in_FULL_5F_SET,
+                                                                                           const class GGS_bool & in_EQUATABLE
+                                                                                           COMMA_LOCATION_ARGS) ;
 

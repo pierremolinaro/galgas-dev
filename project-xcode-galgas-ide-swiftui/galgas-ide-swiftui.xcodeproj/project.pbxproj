@@ -165,21 +165,21 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
-		CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */; };
+		CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */; };
 		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
-		CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */; };
+		CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SourceFileNodeID.swift */; };
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
-		CF5BCBAE2F14F069006F8E83 /* SWIFT_LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* SWIFT_LineAndColumn.swift */; };
+		CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */; };
 		CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */; };
-		CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */; };
-		CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */; };
+		CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */; };
+		CF74330E2EA80ECC009ACE8E /* SourceFileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */; };
 		CF7507522F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */; };
-		CF764BED2F1BC69B0096899F /* SWIFT_LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* SWIFT_LineStartAndEndLocations.swift */; };
+		CF764BED2F1BC69B0096899F /* LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */; };
 		CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */; };
-		CF859AFF2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */; };
+		CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */; };
 		CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */; };
 		CF8F80DF2D0D90C90095170B /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF8ED3C2D0D81C1006B2A3C /* galgas */; };
 		CF8F80E42D0D91490095170B /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
@@ -375,15 +375,15 @@
 		CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */; };
 		CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */; };
 		CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */; };
-		CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */; };
+		CFD719CF2E730A10007736B6 /* AbstractScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BC2E730967007736B6 /* AbstractScanner.swift */; };
 		CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B02E73085C007736B6 /* AllocationDebugView.swift */; };
 		CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71A472E730CF8007736B6 /* ProjectDocument.swift */; };
 		CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */; };
 		CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE72E731366007736B6 /* CustomFontPicker.swift */; };
 		CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */; };
 		CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71AE62E731366007736B6 /* CustomFont.swift */; };
-		CFE3BB822F10FF760045FA2E /* SWIFT_CompileLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */; };
-		CFE3BB992F11565B0045FA2E /* SWIFT_Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */; };
+		CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */; };
+		CFE3BB992F11565B0045FA2E /* CompilationIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -711,22 +711,22 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
-		CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_RootDirectoryNode.swift; sourceTree = "<group>"; };
+		CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDirectoryNode.swift; sourceTree = "<group>"; };
 		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
-		CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeID.swift; sourceTree = "<group>"; };
+		CF515B072EAA5939002A816B /* SourceFileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeID.swift; sourceTree = "<group>"; };
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
-		CF5BCBAD2F14F069006F8E83 /* SWIFT_LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_LineAndColumn.swift; sourceTree = "<group>"; };
+		CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineAndColumn.swift; sourceTree = "<group>"; };
 		CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAttributedString.swift; sourceTree = "<group>"; };
-		CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNode.swift; sourceTree = "<group>"; };
-		CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_FileNodeView.swift; sourceTree = "<group>"; };
+		CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNode.swift; sourceTree = "<group>"; };
+		CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeView.swift; sourceTree = "<group>"; };
 		CF75074F2F0FB197005FAE3E /* unicode-data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
 		CF7507502F0FB197005FAE3E /* utf32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf32.h; sourceTree = "<group>"; };
 		CF7507512F0FB197005FAE3E /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
 		CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCompiler.swift; sourceTree = "<group>"; };
-		CF764BEC2F1BC6880096899F /* SWIFT_LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_LineStartAndEndLocations.swift; sourceTree = "<group>"; };
+		CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineStartAndEndLocations.swift; sourceTree = "<group>"; };
 		CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
-		CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
+		CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineOption.swift; sourceTree = "<group>"; };
 		CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-swiftui.swift"; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CF8F80D92D0D8F250095170B /* grammarCompilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grammarCompilation.h; sourceTree = "<group>"; };
@@ -774,7 +774,7 @@
 		CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-swiftui.swift"; sourceTree = "<group>"; };
 		CFD719B52E7308E8007736B6 /* lexique-galgas+template+scanner-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-swiftui.swift"; sourceTree = "<group>"; };
 		CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SharedTextModel.swift; sourceTree = "<group>"; };
-		CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Scanner.swift; sourceTree = "<group>"; };
+		CFD719BC2E730967007736B6 /* AbstractScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractScanner.swift; sourceTree = "<group>"; };
 		CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
 		CFD719C22E730970007736B6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
 		CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextSyntaxColoringView.swift; sourceTree = "<group>"; };
@@ -784,8 +784,8 @@
 		CFD71AE62E731366007736B6 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		CFD71AE72E731366007736B6 /* CustomFontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontPicker.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CompileLogView.swift; sourceTree = "<group>"; };
-		CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
+		CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompileLogView.swift; sourceTree = "<group>"; };
+		CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationIssue.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1278,6 +1278,7 @@
 				CFD719B02E73085C007736B6 /* AllocationDebugView.swift */,
 				CFD719AD2E7307FB007736B6 /* Application.swift */,
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
+				CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
 				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
@@ -1286,16 +1287,15 @@
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
 				CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */,
-				CF859AFE2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift */,
-				CFE3BB812F10FF6D0045FA2E /* SWIFT_CompileLogView.swift */,
-				CF74330B2EA80ECC009ACE8E /* SWIFT_FileNode.swift */,
-				CF515B072EAA5939002A816B /* SWIFT_FileNodeID.swift */,
-				CF74330C2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift */,
-				CFE3BB982F11565B0045FA2E /* SWIFT_Issue.swift */,
-				CF5BCBAD2F14F069006F8E83 /* SWIFT_LineAndColumn.swift */,
-				CF764BEC2F1BC6880096899F /* SWIFT_LineStartAndEndLocations.swift */,
-				CF515AE12EAA340C002A816B /* SWIFT_RootDirectoryNode.swift */,
-				CFD719BC2E730967007736B6 /* SWIFT_Scanner.swift */,
+				CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */,
+				CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */,
+				CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */,
+				CF515B072EAA5939002A816B /* SourceFileNodeID.swift */,
+				CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */,
+				CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */,
+				CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */,
+				CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */,
+				CFD719BC2E730967007736B6 /* AbstractScanner.swift */,
 				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
 				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
@@ -1633,9 +1633,9 @@
 			files = (
 				CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */,
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
-				CF515AE22EAA341D002A816B /* SWIFT_RootDirectoryNode.swift in Sources */,
-				CFE3BB822F10FF760045FA2E /* SWIFT_CompileLogView.swift in Sources */,
-				CF764BED2F1BC69B0096899F /* SWIFT_LineStartAndEndLocations.swift in Sources */,
+				CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */,
+				CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */,
+				CF764BED2F1BC69B0096899F /* LineStartAndEndLocations.swift in Sources */,
 				CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */,
 				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
 				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
@@ -1643,7 +1643,7 @@
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,
 				CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */,
 				CFD719C82E7309F6007736B6 /* Application.swift in Sources */,
-				CF859AFF2F0FDE0F003A3F74 /* SWIFT_CommandLineOption.swift in Sources */,
+				CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */,
 				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
@@ -1652,17 +1652,17 @@
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
-				CF5BCBAE2F14F069006F8E83 /* SWIFT_LineAndColumn.swift in Sources */,
+				CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */,
 				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
-				CF74330D2EA80ECC009ACE8E /* SWIFT_FileNodeView.swift in Sources */,
-				CFE3BB992F11565B0045FA2E /* SWIFT_Issue.swift in Sources */,
+				CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */,
+				CFE3BB992F11565B0045FA2E /* CompilationIssue.swift in Sources */,
 				CFBA582C2F1BBCE800899D11 /* Notification+names.swift in Sources */,
-				CF74330E2EA80ECC009ACE8E /* SWIFT_FileNode.swift in Sources */,
-				CFD719CF2E730A10007736B6 /* SWIFT_Scanner.swift in Sources */,
+				CF74330E2EA80ECC009ACE8E /* SourceFileNode.swift in Sources */,
+				CFD719CF2E730A10007736B6 /* AbstractScanner.swift in Sources */,
 				CF00A2C42EBBE643002D9B0F /* lexique-galgas+template+scanner-swiftui.swift in Sources */,
 				CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */,
-				CF515B082EAA593E002A816B /* SWIFT_FileNodeID.swift in Sources */,
+				CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */,
 				CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

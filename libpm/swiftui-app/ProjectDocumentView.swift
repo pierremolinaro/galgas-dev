@@ -38,16 +38,16 @@ struct ProjectDocumentView : View {
   @StateObject private var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
-  @StateObject private var mRootDirectoryNode : SWIFT_RootDirectoryNode
+  @StateObject private var mRootDirectoryNode : RootDirectoryNode
 
   @State private var mSelectedIssue : UUID? = nil
-  @Binding private var mIssues : [SWIFT_Issue]
+  @Binding private var mIssues : [CompilationIssue]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (document inDocumentBinding : Binding <ProjectDocument>,
         projectFileURL inProjectFileURL : URL,
-        issuesBinding inIssuesBinding : Binding <[SWIFT_Issue]>) {
+        issuesBinding inIssuesBinding : Binding <[CompilationIssue]>) {
     self._mDocument = inDocumentBinding
     self.mProjectFileURL = inProjectFileURL
     self._mIssues = inIssuesBinding
@@ -58,7 +58,7 @@ struct ProjectDocumentView : View {
       issuesBinding: inIssuesBinding
     )
     self._mSharedTextModel = StateObject (wrappedValue: projectSharedTextModel)
-    let rootDirectoryNode = SWIFT_RootDirectoryNode (
+    let rootDirectoryNode = RootDirectoryNode (
       url: inProjectFileURL.deletingLastPathComponent ().appendingPathComponent ("galgas-sources"),
       issuesBinding: inIssuesBinding
     )
@@ -132,7 +132,7 @@ struct ProjectDocumentView : View {
           ScrollViewReader { (proxy : ScrollViewProxy) in
             List (selection: self.$mRootDirectoryNode.mSelectedFileNodeID) {
               ForEach (self.mRootDirectoryNode.mChildren, id: \.self.id) { child in
-                SWIFT_FileNodeView (node: child, selection: self.$mRootDirectoryNode.mSelectedFileNodeID)
+                SourceFileNodeView (node: child, selection: self.$mRootDirectoryNode.mSelectedFileNodeID)
               }
             }
             .onChange (of: self.mRootDirectoryNode.mSelectedFileNodeID) { self.fileSelectionDidChange (proxy) }
@@ -141,7 +141,7 @@ struct ProjectDocumentView : View {
           }
         }
       case .compileLog :
-        SWIFT_CompileLogView (
+        CompileLogView (
           attributedString: self.mProjectCompiler.compileLog,
           issueArray: self.mIssues
         )
@@ -175,7 +175,7 @@ struct ProjectDocumentView : View {
         if fileURL == self.mProjectFileURL {
           self.mRootDirectoryNode.mSelectedFileNodeID = nil // Affiche le projet
         }else{
-          self.mRootDirectoryNode.mSelectedFileNodeID = SWIFT_FileNodeID (url: fileURL)
+          self.mRootDirectoryNode.mSelectedFileNodeID = SourceFileNodeID (url: fileURL)
         }
         let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
         DispatchQueue.main.async {
@@ -210,9 +210,7 @@ struct ProjectDocumentView : View {
 
   private func compileProject () {
     self.mRootDirectoryNode.saveAllEditedFiles ()
-    if self.mSidebarSelectedItem == .fileList {
-      self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
-    }
+    self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
     self.mIssues.removeAll ()
     self.mProjectDocumentSaveScheduler.saveProjectDocument {
       self.mProjectCompiler.compile (

@@ -424,22 +424,22 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   {
   //--- Generate Cocoa header
     if @uint.errorCount == 0 && not self.mIsPredefined then
-      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-      [@string generateFileWithPattern
-        !startPath:inProductDirectory
-        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
-        !lineComment:"//"
-        !header:"" // Header
-        !defaultUserZone1:"\n\n" // Defaut user zone1
-        !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-          !self.mOptionComponentName
-        ]
-        !defaultUserZone2:"\n\n" // Defaut user zone2
-        !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-          !self.mOptionComponentName
-        ]
-        !makeExecutable:false
-      ]
+ //     ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+//      [@string generateFileWithPattern
+//        !startPath:inProductDirectory
+//        !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+//        !lineComment:"//"
+//        !header:"" // Header
+//        !defaultUserZone1:"\n\n" // Defaut user zone1
+//        !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+//          !self.mOptionComponentName
+//        ]
+//        !defaultUserZone2:"\n\n" // Defaut user zone2
+//        !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+//          !self.mOptionComponentName
+//        ]
+//        !makeExecutable:false
+//      ]
     //--- Generate Cocoa Implementation
 //      ioAllProductFileSet ++= "option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
 //      ioObjcAppProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
@@ -553,12 +553,6 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
     ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
-
-  template optionHeaderCocoaZone2 "option-header-cocoa-zone2.galgasTemplate"
-    ?@string OPTION_COMPONENT_NAME
-
-  template optionHeaderCocoaZone3 "option-header-cocoa-zone3.galgasTemplate"
-    ?@string OPTION_COMPONENT_NAME
 
   template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
