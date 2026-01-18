@@ -83,6 +83,8 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
         .keyboardShortcut ("r", modifiers: .command)
       }
     }
+  //--- Action Menu
+    .commands { ActionMenuCommands () }
   //--- Debug Menu
     .commands {
       CommandMenu ("Debug") {
@@ -154,6 +156,30 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
 
 //--------------------------------------------------------------------------------------------------
 
+struct ActionMenuCommands : Commands {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @FocusedValue(\.activeDocument) var activeDocument
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var body: some Commands {
+    CommandMenu ("Action") {
+      Button ("Build") {
+        NotificationCenter.default.post (name: .myCompileProjectCommand, object: self.activeDocument?.projectURL)
+      }
+      .keyboardShortcut ("b", modifiers: .command)
+      .disabled (self.activeDocument == nil)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
 struct MyUndoRedoCommands : Commands {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -179,6 +205,18 @@ struct MyUndoRedoCommands : Commands {
 
 //--------------------------------------------------------------------------------------------------
 
+struct ActiveDocumentStructValue {
+  let projectURL : URL
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct ActiveDocumentKey : FocusedValueKey {
+  typealias Value = ActiveDocumentStructValue
+}
+
+//--------------------------------------------------------------------------------------------------
+
 struct ActiveViewKeyStructValue {
   let sharedTextModel: SharedTextModel
   let canUndo : Bool
@@ -200,6 +238,13 @@ extension FocusedValues {
   var activeView : ActiveViewKeyStructValue? {
     get { self [ActiveViewKey.self] }
     set { self [ActiveViewKey.self] = newValue }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var activeDocument : ActiveDocumentStructValue? {
+    get { self [ActiveDocumentKey.self] }
+    set { self [ActiveDocumentKey.self] = newValue }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

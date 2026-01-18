@@ -101,6 +101,12 @@ struct ProjectDocumentView : View {
         }
       }
     }
+  //--- Compile project
+    .onReceive (NotificationCenter.default.publisher (for: Notification.Name.myCompileProjectCommand)) {
+      if let projectURL : URL = $0.object as? URL, projectURL == self.mProjectFileURL {
+        self.compileProject ()
+      }
+    }
   //--- Save all edited files
     .onReceive (NotificationCenter.default.publisher (for: Notification.Name.mySaveAllCommand)) { _ in
       self.mRootDirectoryNode.saveAllEditedFiles ()
@@ -204,7 +210,6 @@ struct ProjectDocumentView : View {
     }else{
       Button (action: self.compileProject) { Label ("Compile", systemImage: "hammer") }
       .help (LocalizedStringKey ("Compile the project"))
-      .keyboardShortcut ("B", modifiers: .command)
     }
     Button (action: self.mProjectCompiler.cancelCompilation) { Label ("Stop", systemImage: "stop.circle") }
     .help (LocalizedStringKey ("Cancel compilation"))

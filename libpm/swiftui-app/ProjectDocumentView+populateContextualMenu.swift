@@ -72,8 +72,8 @@ extension ProjectDocumentView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Indexing dictionary
-  // Every plist list is a dictionary: the key is the indexed to token; the
-  // associated value is an NSArray of NSString that has the following format:
+  // Every plist list is a dictionary: the key is the index to token; the
+  // associated value is an Array of String that has the following format:
   //   "kind:line:locationIndex:length:sourceFileFullPath"
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -127,95 +127,8 @@ extension ProjectDocumentView {
         }
       }
     }
-
-//    var optProjectFilePath : String? = nil
-//    var optIndexingSuffix : String? = nil
-//    for document in SWIFT_DocumentController.myDocuments () {
-//      if let url = document.fileURL, let indexingSuffix = indexingDescriptors [url.path.pathExtension] {
-//        optProjectFilePath = url.path
-//        optIndexingSuffix = indexingSuffix
-//      }
-//    }
-//  //--- index directory
-//    if let projectFilePath = optProjectFilePath,
-//       let indexingSuffix = optIndexingSuffix,
-//       let appDelegate = NSApp.delegate as? SWIFT_AppDelegate {
-//      let projectFileDirectory = projectFilePath.deletingLastPathComponent
-//      let projectFileName = projectFilePath.lastPathComponent
-//      let projectFileNameModified = projectFileName.replacingOccurrences (of: ".", with: "+")
-//      let modifiedIndexingSuffix = indexingSuffix.replacingOccurrences (of: "*", with: projectFileNameModified)
-//      let indexingDirectory = projectFileDirectory + "/" + modifiedIndexingSuffix
-//      try? fm.createDirectory (
-//        atPath: indexingDirectory,
-//        withIntermediateDirectories: true,
-//        attributes: nil
-//      )
-//    //--- Handled extensions
-//      let handledExtensions = Set (SWIFT_DocumentController.supportedDocumentExtensions)
-//    //--- All files in source directory
-//      let compilerToolPath = appDelegate.compilerToolPath
-//      let relativePathes = try? fm.subpathsOfDirectory (atPath: projectFileDirectory)
-//      var availableDictionaryPathArray = [String] ()
-//      let opq = OperationQueue ()
-//      for relativeFilePath in relativePathes ?? [] {
-//        let fullFilePath = projectFileDirectory + "/" + relativeFilePath
-//        if handledExtensions.contains (fullFilePath.pathExtension) {
-//        //--- Index file path
-//          let indexFileFullPath = indexingDirectory + "/" + fullFilePath.lastPathComponent + ".plist"
-//        //--- Parse source file ?
-//          if !fm.fileExists (atPath: indexFileFullPath) { // Parse source file
-//            let op = IndexingOperation (
-//              path: fullFilePath,
-//              compilerToolPath: compilerToolPath,
-//              indexFileFullPath: indexFileFullPath
-//            )
-//            opq.addOperation (op)
-//            availableDictionaryPathArray.append (indexFileFullPath)
-//          }else if self.sourceFile (fullFilePath, newerThanFile: indexFileFullPath) {
-//            try? fm.removeItem (atPath: indexFileFullPath)
-//            let op = IndexingOperation (
-//              path: fullFilePath,
-//              compilerToolPath: compilerToolPath,
-//              indexFileFullPath: indexFileFullPath
-//            )
-//            opq.addOperation (op)
-//            availableDictionaryPathArray.append (indexFileFullPath)
-//          }else{
-//            availableDictionaryPathArray.append (indexFileFullPath)
-//          }
-//        }
-//      }
-//    //--- Wait operations are completed
-//      opq.waitUntilAllOperationsAreFinished ()
-//    //--- Parse available dictionaries
-//      for fullPath in availableDictionaryPathArray {
-//        if let dict = NSDictionary (contentsOfFile: fullPath) as? [String : [String]] {
-//          result.append (dict)
-//        }
-//      }
-//    }
     return result ;
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc fileprivate func indexingMenuAction (_ inMenuItem : NSMenuItem) {
-//    if let str = inMenuItem.representedObject as? String {
-//      let components = str.split (separator: ":")
-//      let locationIndexStr = components [2]
-//      let lengthStr = components [3]
-//      let file = String (components [4])
-//      if let locationIndex = Int (locationIndexStr),
-//       let length = Int (lengthStr),
-//       let window = self.mSourceTextView.window as? SWIFT_SingleWindow {
-//        window.findOrAddTab (
-//          forURL: URL (fileURLWithPath: file),
-//          range: NSRange (location: locationIndex, length: length),
-//          postAction: nil
-//        )
-//      }
-//    }
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -224,12 +137,12 @@ extension ProjectDocumentView {
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func modificationDate (of url: URL) -> Date? {
-    if let attributes = try? FileManager.default.attributesOfItem (atPath: url.path),
-       let date = attributes [.modificationDate] as? Date {
-      return date
-    }else{
-      return nil
-    }
+  if let attributes = try? FileManager.default.attributesOfItem (atPath: url.path),
+     let date = attributes [.modificationDate] as? Date {
+    return date
+  }else{
+    return nil
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

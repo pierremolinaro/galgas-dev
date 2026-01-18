@@ -263,6 +263,12 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func compileProject () {
+    NSSound.beep ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -805,10 +811,8 @@ fileprivate final class InternalTextViewRulerView : NSRulerView {
         let bp = NSBezierPath (ovalIn: rect)
         let p = self.convert (inEvent.locationInWindow, from: nil)
         if bp.contains (p) {
-//          DispatchQueue.main.async {
           NotificationCenter.default.post (name: .myShowIssueInSidebar, object: issue.id)
           return
-//          }
         }
       }
     }

@@ -13,6 +13,7 @@ struct ProjectWindowManagerView : View {
   private let mProjectFileURL : URL
   @Binding private var mDocument : ProjectDocument
   @State private var mIssues : [CompilationIssue] = []
+//  @State private var mDocumentIsActive = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -29,6 +30,14 @@ struct ProjectWindowManagerView : View {
       document: self.$mDocument,
       projectFileURL: self.mProjectFileURL,
       issuesBinding: self.$mIssues
+    )
+//    .onAppear { self.mDocumentIsActive = true }
+//    .onDisappear { self.mDocumentIsActive = false }
+    .focusedSceneValue (
+      \.activeDocument,
+      ActiveDocumentStructValue (
+        projectURL: self.mProjectFileURL,
+      )
     )
   }
 
