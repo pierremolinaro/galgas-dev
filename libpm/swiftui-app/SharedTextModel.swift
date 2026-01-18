@@ -130,6 +130,12 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func indexingTitles () -> [String] {
+    return self.mScanner?.indexingTitles() ?? []
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // TextView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -267,6 +273,7 @@ struct LexicalHilitingTextEditor : NSViewRepresentable {
 
   private let mIssueArray : [CompilationIssue]
   private let mInstallScrollToLineNotificationObserver : Bool
+  private let mPopulateContextualMenuCallBack : (NSMenu, String, [String]) -> Void
 
   @ObservedObject private var mSharedTextModel : SharedTextModel
 
@@ -279,12 +286,14 @@ struct LexicalHilitingTextEditor : NSViewRepresentable {
         selectionBinding inSelectionBinding : Binding <NSRange>,
         issueArray inIssueArray : [CompilationIssue],
         installScrollToLineNotificationObserver inFlag : Bool,
-        popUpMenuItemsBinding inPopUpMenuItems : Binding <[IdentifiableAttributedString]>) {
+        popUpMenuItemsBinding inPopUpMenuItems : Binding <[IdentifiableAttributedString]>,
+        populateContextualMenuCallBack inCallBack : @escaping (NSMenu, String, [String]) -> Void) {
     self.mSharedTextModel = inSharedTextModel
     self._mPopUpMenuItems = inPopUpMenuItems
     self._mSelection = inSelectionBinding
     self.mIssueArray = inIssueArray
     self.mInstallScrollToLineNotificationObserver = inFlag
+    self.mPopulateContextualMenuCallBack = inCallBack
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -300,7 +309,8 @@ struct LexicalHilitingTextEditor : NSViewRepresentable {
       installScrollToLineNotificationObserver: self.mInstallScrollToLineNotificationObserver,
       popupMenuItemsBinding: self.$mPopUpMenuItems
     )
-    textView.mCallBack = { self.mPopUpMenuItems = $0 }
+    textView.mPopulateContextualMenuCallBack = self.mPopulateContextualMenuCallBack
+    textView.mPopUpMenuItemsCallBack = { self.mPopUpMenuItems = $0 }
     textView.allowsUndo = true
     textView.isRichText = true
     textView.isAutomaticDataDetectionEnabled = false
@@ -446,7 +456,8 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
 
   private weak var mSharedTextModel : SharedTextModel?
   private weak var mUndoManager : UndoManager?
-  var mCallBack : ((_ inPopUpMenuItems : [IdentifiableAttributedString]) -> Void)? = nil
+  var mPopUpMenuItemsCallBack : ((_ inPopUpMenuItems : [IdentifiableAttributedString]) -> Void)? = nil
+  var mPopulateContextualMenuCallBack : ((NSMenu, String, [String]) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -500,11 +511,14 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
       let selectedRange = NSRange (location: characterIndex, length: 0)
       let r = self.selectionRange (forProposedRange: selectedRange, granularity: .selectByWord)
       self.setSelectedRange (r)
+    //--- Display contextual menu
+      let selectedString = (self.string as NSString).substring (with: r)
       let menu = NSMenu (title: "")
       menu.autoenablesItems = false
-    //--- Display menu
       menu.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       menu.allowsContextMenuPlugIns = false
+      let indexingTitles = self.mSharedTextModel?.indexingTitles () ?? []
+      self.mPopulateContextualMenuCallBack? (menu, selectedString, indexingTitles)
       NSMenu.popUpContextMenu (menu, with: inEvent, for: self)
     }else{
       super.mouseDown (with: inEvent)
@@ -587,19 +601,15 @@ fileprivate final class InternalNSTextView : NSTextView, NSTextFinderClient {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func scrollToLocationNotification (_ inNotification : Notification) {
-    if let notificationObject = inNotification.object as? ScrollSourceToLineNotificationObject {
-      let startLocation = notificationObject.location
-      DispatchQueue.main.async {
-        self.scrollRangeToVisible (NSRange (location: startLocation, length: 0))
-        self.selectedRange = NSRange (location: startLocation, length: 0)
-      }
+    if let notificationObject = inNotification.object as? ScrollSourceToLineNotification {
+      notificationObject.performScroll (on: self)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func didProcessEditing (_ inPopupMenuItems : [IdentifiableAttributedString]) {
-    self.mCallBack? (inPopupMenuItems)
+    self.mPopUpMenuItemsCallBack? (inPopupMenuItems)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -319,3 +319,4 @@ makefile-macosx/x86_64/galgas-lto
 makefile-arm64-linux-on-macosx/galgas
 makefile-arm64-linux-on-macosx/galgas
 makefile-arm64-linux-on-macosx/galgas-debug
+/build/indexes-new

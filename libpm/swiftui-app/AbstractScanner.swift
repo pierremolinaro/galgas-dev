@@ -401,6 +401,12 @@ class AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func indexingTitles () -> [String] {
+    return []
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage: NSTextStorage) {
   }
 

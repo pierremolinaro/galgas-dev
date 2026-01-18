@@ -787,7 +787,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func indexingTitles () -> [String] {
+  override func indexingTitles () -> [String] {
     return [
       "Class Definition" /* classDefinition */,
       "Enum Definition" /* enumDefinition */,

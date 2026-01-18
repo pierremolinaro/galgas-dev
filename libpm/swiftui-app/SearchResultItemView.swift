@@ -30,12 +30,7 @@ struct SearchResultItemView : View {
     Button {
       self.mSelectedResultItemID = self.mEntry.id
       self.mSelectedFileNodeID = self.mEntry.fileNodeID
-      let object = ScrollSourceToLineNotificationObject (location: self.mEntry.range.location)
-      DispatchQueue.main.async {
-        DispatchQueue.main.async {
-          NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
-        }
-      }
+      ScrollSourceToLineNotification.notify (location: self.mEntry.range.location)
     } label: {
       VStack {
         Text ("Line \(self.mEntry.startLineAndColumn.line), column \(self.mEntry.startLineAndColumn.column)")

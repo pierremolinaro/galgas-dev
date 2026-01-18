@@ -187,10 +187,11 @@ struct ProjectDocumentView : View {
         }else{
           self.mRootDirectoryNode.mSelectedFileNodeID = SourceFileNodeID (url: fileURL)
         }
-        let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
-        DispatchQueue.main.async {
-          NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
-        }
+        ScrollSourceToLineNotification.notify (location: self.mIssues [idx].mStartLocation)
+//        let object = ScrollSourceToLineNotificationObject (location: self.mIssues [idx].mStartLocation)
+//        DispatchQueue.main.async {
+//          NotificationCenter.default.post (name: .myScrollSourceToLocation, object: object)
+//        }
       }
     }
   }
@@ -224,7 +225,8 @@ struct ProjectDocumentView : View {
         TextSyntaxColoringView (
           model: stm,
           issueArray: self.mIssues,
-          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
+          url: self.mRootDirectoryNode.fileURL (forID: fileNodeID),
+          populateContextualMenuCallBack: { self.populate (contextualMenu: $0, forString: $1, withIndexingTitles: $2) }
         )
         .id (fileNodeID) // Force le rafraîchissement à chaque changement de fileNodeID
       }else{
@@ -234,7 +236,8 @@ struct ProjectDocumentView : View {
       TextSyntaxColoringView (
         model: self.mSharedTextModel,
         issueArray: self.mIssues,
-        url: self.mProjectFileURL
+        url: self.mProjectFileURL,
+        populateContextualMenuCallBack: { self.populate (contextualMenu: $0, forString: $1, withIndexingTitles: $2) }
       )
     }
   }

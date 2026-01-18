@@ -213,7 +213,7 @@ end
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func indexingTitles () -> [String] {
+  override func indexingTitles () -> [String] {
 %
 if [INDEXING_LIST count] > 0 then
 %    return [

@@ -49,7 +49,6 @@ final class ProjectCompiler : ObservableObject  {
     self.mCompileLog = NSAttributedString ("")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
-//    self.mIssueArray.removeAll ()
     self.mErrorCount = 0
     self.mWarningCount = 0
  //--- Create task
@@ -79,7 +78,7 @@ final class ProjectCompiler : ObservableObject  {
       object: process
     )
   //--- Start process
-    process.launch ()
+    try? process.run ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

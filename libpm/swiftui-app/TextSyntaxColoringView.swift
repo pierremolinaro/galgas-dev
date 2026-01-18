@@ -12,7 +12,7 @@ struct TextSyntaxColoringView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mIssueArray : [CompilationIssue]
-
+  private let mPopulateContextualMenuCallBack : (NSMenu, String, [String]) -> Void
   @ObservedObject private var mSharedTextModel : SharedTextModel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,8 +55,10 @@ struct TextSyntaxColoringView : View {
 
   init (model inSharedTextModel : SharedTextModel,
         issueArray inIssueArray : [CompilationIssue],
-        url inSourceFileURL : URL?) {
+        url inSourceFileURL : URL?,
+        populateContextualMenuCallBack inCallBack : @escaping (NSMenu, String, [String]) -> Void) {
     self.mSharedTextModel = inSharedTextModel
+    self.mPopulateContextualMenuCallBack = inCallBack
     var issueArray = [CompilationIssue] ()
     for issue in inIssueArray {
       if issue.fileURL == inSourceFileURL {
@@ -87,7 +89,8 @@ struct TextSyntaxColoringView : View {
           selectionBinding: self.$mTopViewSelection,
           issueArray: self.mIssueArray,
           installScrollToLineNotificationObserver: true,
-          popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems
+          popUpMenuItemsBinding: self.$mTopViewPopUpMenuItems,
+          populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
         )
         .onChange (of: self.mTopViewSelection.location) {
         //--- Select popup menu according to current selection staret
@@ -129,7 +132,8 @@ struct TextSyntaxColoringView : View {
             selectionBinding: self.$mBottomViewSelection,
             issueArray: self.mIssueArray,
             installScrollToLineNotificationObserver: false,
-            popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems
+            popUpMenuItemsBinding: self.$mBottomViewPopUpMenuItems,
+            populateContextualMenuCallBack: self.mPopulateContextualMenuCallBack
           )
         .onChange (of: self.mBottomViewSelection.location) {
           let currentLocation = self.mBottomViewSelection.location

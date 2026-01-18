@@ -260,6 +260,21 @@ final class RootDirectoryNode : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @objc func indexingContextualMenuAction (_ inSender : Any?) {
+    if let menuItem = inSender as? NSMenuItem,
+       let reference = menuItem.representedObject as? String {
+      let components = reference.split (separator: ":")
+//      let line = Int (components [1])!
+      let location = Int (components [2])!
+      let sourceURL = URL (fileURLWithPath: String (components [4]))
+      let sourceFileNodeID = SourceFileNodeID (url: sourceURL)
+      self.mSelectedFileNodeID = sourceFileNodeID
+      ScrollSourceToLineNotification.notify (location: location)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
