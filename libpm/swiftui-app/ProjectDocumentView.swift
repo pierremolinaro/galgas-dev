@@ -47,6 +47,7 @@ struct ProjectDocumentView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @AppStorage("search.string") var mSearchString = ""
+  @AppStorage("case.sensitive.search") var mCaseSensitiveSearch = true
   @State var mSearchMessage = "No Result"
   @State var mSearchResults : [SearchResultNode] = []
   @State var mSelectedSearchResultID : UUID? = nil

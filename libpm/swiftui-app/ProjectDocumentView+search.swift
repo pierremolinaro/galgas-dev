@@ -60,22 +60,34 @@ extension ProjectDocumentView {
 
   private func search (inFileURL inURL : URL, fileNodeID inFileNodeID : SourceFileNodeID?) {
     if let contents = try? String (contentsOf: inURL, encoding: .utf8) {
+      let compareOptions : String.CompareOptions
+      if self.mCaseSensitiveSearch {
+        compareOptions = []
+      }else{
+        compareOptions = .caseInsensitive
+      }
       var entries = [SearchResultItem] ()
       var searchStartIndex = contents.startIndex
       while searchStartIndex < contents.endIndex,
-          let foundRange : Range <String.Index> = contents.range (of: self.mSearchString, range: searchStartIndex ..< contents.endIndex),
+          let foundRange : Range <String.Index> = contents.range (of: self.mSearchString, options: compareOptions, range: searchStartIndex ..< contents.endIndex),
           !foundRange.isEmpty {
         let lineRange = contents.lineRange (for: foundRange)
-        var lineContents = String (contents [lineRange])
-        lineContents.removeLast ()
         let startLocation : Int = contents.distance (from: contents.startIndex, to: foundRange.lowerBound)
         let endLocation : Int = contents.distance (from: contents.startIndex, to: foundRange.upperBound)
-        let nsRange = NSRange (location: startLocation, length: endLocation - startLocation)
+        let rangeInSourceString = NSRange (location: startLocation, length: endLocation - startLocation)
         let lineAndColumn = LineAndColumn (for: contents, at: startLocation)
+        var lineContents = String (contents [lineRange])
+        lineContents.removeLast ()
+        let startLineLocation : Int = contents.distance (from: contents.startIndex, to: lineRange.lowerBound)
+        let rangeInLine = NSRange (location: startLocation - startLineLocation, length: endLocation - startLocation)
+        var lineContentsAT = AttributedString (lineContents)
+        let rangeAT = Range <AttributedString.Index> (rangeInLine, in: lineContentsAT)!
+//        lineContentsAT [rangeAT].font = .system (.body, design: .default).bold()
+        lineContentsAT [rangeAT].foregroundColor = .blue
         let r = SearchResultItem (
           fileNodeID: inFileNodeID,
-          lineContents: lineContents,
-          range: nsRange,
+          lineContents: lineContentsAT,
+          rangeInSourceString: rangeInSourceString,
           startLineAndColumn: lineAndColumn
         )
         entries.append (r)
@@ -91,6 +103,11 @@ extension ProjectDocumentView {
 
   func searchViewForSidebar () -> some View {
     VStack {
+      HStack {
+        Spacer ()
+        Toggle ("aA", isOn: self.$mCaseSensitiveSearch).toggleStyle (.button)
+        Spacer ().frame (width: 6)
+      }
       HStack {
         Spacer ().frame (width: 6)
         Text ("Search")

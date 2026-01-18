@@ -7,8 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
-//import Combine
-//import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,15 +16,15 @@ struct SearchResultItem : Identifiable {
 
   let id : UUID = UUID ()
   let fileNodeID : SourceFileNodeID?
-  let lineContents : String
+  let lineContents : AttributedString
   let range : NSRange
   let startLineAndColumn : LineAndColumn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (fileNodeID inFileNodeID : SourceFileNodeID?,
-        lineContents inLineContents : String,
-        range inRange : NSRange,
+        lineContents inLineContents : AttributedString,
+        rangeInSourceString inRange : NSRange,
         startLineAndColumn inStartLineAndColumn : LineAndColumn) {
     self.lineContents = inLineContents
     self.range = inRange

@@ -42,7 +42,7 @@ struct SearchResultItemView : View {
       }
     } label: {
       VStack {
-        Text ("Line \(self.mEntry.startLineAndColumn.line)")
+        Text ("Line \(self.mEntry.startLineAndColumn.line), column \(self.mEntry.startLineAndColumn.column)")
         Text (self.mEntry.lineContents)
         .frame (maxWidth: .infinity, alignment: .leading)
         .lineLimit (nil)
