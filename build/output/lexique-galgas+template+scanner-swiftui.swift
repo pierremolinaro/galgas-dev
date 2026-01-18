@@ -19,8 +19,8 @@ fileprivate let kTemplateReplacementArray_galgasTemplateScanner : [String] = [
 //                           Template Delimiters
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let kTemplateDefinitionArray_galgasTemplateScanner : [SWIFT_TemplateDelimiter] = [
-  SWIFT_TemplateDelimiter (startString: "%", endString: "%", discardStartString: true)
+fileprivate let kTemplateDefinitionArray_galgasTemplateScanner : [TemplateDelimiter] = [
+  TemplateDelimiter (startString: "%", endString: "%", discardStartString: true)
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -1008,7 +1008,7 @@ class ScannerFor_galgasTemplateScanner : ScannerFor_galgasScanner3 {
   //   Lexical analysis
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+  override func parseLexicalTokenForLexicalColoring () -> LexicalToken {
     let startLocation = self.currentLocation
     if let idx = self.mEndTemplateDelimiterIndex,
        self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
@@ -1029,7 +1029,7 @@ class ScannerFor_galgasTemplateScanner : ScannerFor_galgasScanner3 {
           self.advance ()
         }
       }
-      return SWIFT_Token (
+      return LexicalToken (
         range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
         tokenCode: galgasScanner3_2_TEMPLATE,
         templateDelimiterIndex: self.mEndTemplateDelimiterIndex

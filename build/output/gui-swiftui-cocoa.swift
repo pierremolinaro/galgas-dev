@@ -9,6 +9,12 @@ import SwiftUI
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
+let projectFileExtensions = Set (["galgas", "galgasproject", "galgastemplate", "ggs", "ggstemplate", "ggsproject"])
+
+//--------------------------------------------------------------------------------------------------
+//    Indexing dictionary
+//--------------------------------------------------------------------------------------------------
+
 func indexingDescriptorDictionary () -> [String : String] {
   return [
     "galgasproject" : "build/indexes",

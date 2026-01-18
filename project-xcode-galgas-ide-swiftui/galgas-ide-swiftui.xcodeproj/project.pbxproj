@@ -165,9 +165,12 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
+		CF43D1D62F1C1E4300ACE60F /* ScrollSourceToLineNotificationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D1D52F1C1E4000ACE60F /* ScrollSourceToLineNotificationObject.swift */; };
 		CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */; };
 		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
 		CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SourceFileNodeID.swift */; };
+		CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */; };
+		CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */; };
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
 		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */; };
@@ -178,7 +181,7 @@
 		CF7507532F0FB197005FAE3E /* utf32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7507512F0FB197005FAE3E /* utf32.cpp */; };
 		CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */; };
 		CF764BED2F1BC69B0096899F /* LineStartAndEndLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */; };
-		CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */; };
+		CF859AFD2F0FDDE0003A3F74 /* common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */; };
 		CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */; };
 		CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */; };
 		CF8F80DF2D0D90C90095170B /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF8ED3C2D0D81C1006B2A3C /* galgas */; };
@@ -365,16 +368,20 @@
 		CF93BACB2D0D8CFD006DF788 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAAD2D0D8CFD006DF788 /* FIRST_computations.cpp */; };
 		CF93BACC2D0D8CFD006DF788 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */; };
 		CF93BACD2D0D8CFD006DF788 /* GrammarVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB42D0D8CFD006DF788 /* GrammarVocabulary.cpp */; };
+		CFADC2F82F1CD47C00E13336 /* SearchResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2F72F1CD46F00E13336 /* SearchResultNode.swift */; };
+		CFADC2FA2F1CD89400E13336 /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2F92F1CD89400E13336 /* SearchResultItem.swift */; };
+		CFADC2FC2F1CD8E100E13336 /* SearchResultNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2FB2F1CD8DA00E13336 /* SearchResultNodeView.swift */; };
+		CFADC2FE2F1CDA8400E13336 /* SearchResultItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADC2FD2F1CDA7F00E13336 /* SearchResultItemView.swift */; };
 		CFBA582C2F1BBCE800899D11 /* Notification+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */; };
 		CFCCF1AA2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
 		CFCCF1AD2E1A7D7A00B0A689 /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */; };
 		CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */; };
 		CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */; };
 		CFD719C82E7309F6007736B6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719AD2E7307FB007736B6 /* Application.swift */; };
-		CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C22E730970007736B6 /* SWIFT_Token.swift */; };
-		CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */; };
-		CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */; };
-		CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */; };
+		CFD719CB2E730A10007736B6 /* LexicalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C22E730970007736B6 /* LexicalToken.swift */; };
+		CFD719CC2E730A10007736B6 /* TemplateDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BF2E73096C007736B6 /* TemplateDelimiter.swift */; };
+		CFD719CD2E730A10007736B6 /* TextSyntaxColoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719C52E73099F007736B6 /* TextSyntaxColoringView.swift */; };
+		CFD719CE2E730A10007736B6 /* SharedTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B92E730938007736B6 /* SharedTextModel.swift */; };
 		CFD719CF2E730A10007736B6 /* AbstractScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719BC2E730967007736B6 /* AbstractScanner.swift */; };
 		CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD719B02E73085C007736B6 /* AllocationDebugView.swift */; };
 		CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD71A472E730CF8007736B6 /* ProjectDocument.swift */; };
@@ -711,9 +718,12 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
+		CF43D1D52F1C1E4000ACE60F /* ScrollSourceToLineNotificationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSourceToLineNotificationObject.swift; sourceTree = "<group>"; };
 		CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDirectoryNode.swift; sourceTree = "<group>"; };
 		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
 		CF515B072EAA5939002A816B /* SourceFileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeID.swift; sourceTree = "<group>"; };
+		CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+search.swift"; sourceTree = "<group>"; };
+		CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+compile.swift"; sourceTree = "<group>"; };
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
 		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineAndColumn.swift; sourceTree = "<group>"; };
@@ -725,7 +735,7 @@
 		CF7507512F0FB197005FAE3E /* utf32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utf32.cpp; sourceTree = "<group>"; };
 		CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCompiler.swift; sourceTree = "<group>"; };
 		CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineStartAndEndLocations.swift; sourceTree = "<group>"; };
-		CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
+		CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "common-command-line-options.swift"; sourceTree = "<group>"; };
 		CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineOption.swift; sourceTree = "<group>"; };
 		CF874F232F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "option-galgas-5Fcli-5Foptions-swiftui.swift"; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
@@ -765,6 +775,10 @@
 		CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
 		CFA6E6932E1A8BB400C39E75 /* GALGAS_GenericMapRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GALGAS_GenericMapRoot.h; sourceTree = "<group>"; };
+		CFADC2F72F1CD46F00E13336 /* SearchResultNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultNode.swift; sourceTree = "<group>"; };
+		CFADC2F92F1CD89400E13336 /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
+		CFADC2FB2F1CD8DA00E13336 /* SearchResultNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultNodeView.swift; sourceTree = "<group>"; };
+		CFADC2FD2F1CDA7F00E13336 /* SearchResultItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemView.swift; sourceTree = "<group>"; };
 		CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+names.swift"; sourceTree = "<group>"; };
 		CFCCF1A42E1A7D7A00B0A689 /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
 		CFCCF1A52E1A7D7A00B0A689 /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
@@ -773,11 +787,11 @@
 		CFD719B32E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-swiftui.swift"; sourceTree = "<group>"; };
 		CFD719B42E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-swiftui.swift"; sourceTree = "<group>"; };
 		CFD719B52E7308E8007736B6 /* lexique-galgas+template+scanner-swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-swiftui.swift"; sourceTree = "<group>"; };
-		CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SharedTextModel.swift; sourceTree = "<group>"; };
+		CFD719B92E730938007736B6 /* SharedTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTextModel.swift; sourceTree = "<group>"; };
 		CFD719BC2E730967007736B6 /* AbstractScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractScanner.swift; sourceTree = "<group>"; };
-		CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
-		CFD719C22E730970007736B6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
-		CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextSyntaxColoringView.swift; sourceTree = "<group>"; };
+		CFD719BF2E73096C007736B6 /* TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDelimiter.swift; sourceTree = "<group>"; };
+		CFD719C22E730970007736B6 /* LexicalToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalToken.swift; sourceTree = "<group>"; };
+		CFD719C52E73099F007736B6 /* TextSyntaxColoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSyntaxColoringView.swift; sourceTree = "<group>"; };
 		CFD71A472E730CF8007736B6 /* ProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocumentView.swift; sourceTree = "<group>"; };
 		CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+RawRepresentable.swift"; sourceTree = "<group>"; };
@@ -1275,32 +1289,39 @@
 		CFD719922E730780007736B6 /* swiftui-app */ = {
 			isa = PBXGroup;
 			children = (
+				CFD719BC2E730967007736B6 /* AbstractScanner.swift */,
 				CFD719B02E73085C007736B6 /* AllocationDebugView.swift */,
 				CFD719AD2E7307FB007736B6 /* Application.swift */,
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
+				CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */,
+				CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */,
 				CFE3BB982F11565B0045FA2E /* CompilationIssue.swift */,
+				CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
 				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
+				CFD719C22E730970007736B6 /* LexicalToken.swift */,
+				CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */,
+				CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */,
 				CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */,
 				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
 				CFD71A472E730CF8007736B6 /* ProjectDocument.swift */,
 				CFD71A492E730D2A007736B6 /* ProjectDocumentView.swift */,
+				CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */,
+				CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */,
 				CF25EA182F1417220086A184 /* ProjectWindowManagerView.swift */,
-				CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */,
-				CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */,
+				CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */,
+				CF43D1D52F1C1E4000ACE60F /* ScrollSourceToLineNotificationObject.swift */,
+				CFADC2F92F1CD89400E13336 /* SearchResultItem.swift */,
+				CFADC2FD2F1CDA7F00E13336 /* SearchResultItemView.swift */,
+				CFADC2F72F1CD46F00E13336 /* SearchResultNode.swift */,
+				CFADC2FB2F1CD8DA00E13336 /* SearchResultNodeView.swift */,
+				CFD719B92E730938007736B6 /* SharedTextModel.swift */,
 				CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */,
 				CF515B072EAA5939002A816B /* SourceFileNodeID.swift */,
 				CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */,
-				CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */,
-				CF764BEC2F1BC6880096899F /* LineStartAndEndLocations.swift */,
-				CF515AE12EAA340C002A816B /* RootDirectoryNode.swift */,
-				CFD719BC2E730967007736B6 /* AbstractScanner.swift */,
-				CFD719B92E730938007736B6 /* SWIFT_SharedTextModel.swift */,
-				CFD719BF2E73096C007736B6 /* SWIFT_TemplateDelimiter.swift */,
-				CFD719C52E73099F007736B6 /* SWIFT_TextSyntaxColoringView.swift */,
-				CFD719C22E730970007736B6 /* SWIFT_Token.swift */,
-				CF859AFC2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift */,
+				CFD719BF2E73096C007736B6 /* TemplateDelimiter.swift */,
+				CFD719C52E73099F007736B6 /* TextSyntaxColoringView.swift */,
 				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
 				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
 			);
@@ -1632,6 +1653,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD719B62E7308E8007736B6 /* lexique-galgas+scanner3-swiftui.swift in Sources */,
+				CFADC2FC2F1CD8E100E13336 /* SearchResultNodeView.swift in Sources */,
+				CFADC2FE2F1CDA8400E13336 /* SearchResultItemView.swift in Sources */,
+				CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */,
 				CFD71AE82E731366007736B6 /* CustomFontPicker.swift in Sources */,
 				CF515AE22EAA341D002A816B /* RootDirectoryNode.swift in Sources */,
 				CFE3BB822F10FF760045FA2E /* CompileLogView.swift in Sources */,
@@ -1639,31 +1663,35 @@
 				CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */,
 				CF25EA192F14172F0086A184 /* ProjectWindowManagerView.swift in Sources */,
 				CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */,
+				CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */,
 				CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */,
+				CFADC2F82F1CD47C00E13336 /* SearchResultNode.swift in Sources */,
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,
 				CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */,
 				CFD719C82E7309F6007736B6 /* Application.swift in Sources */,
 				CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */,
-				CFD719CB2E730A10007736B6 /* SWIFT_Token.swift in Sources */,
+				CFD719CB2E730A10007736B6 /* LexicalToken.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
-				CFD719CC2E730A10007736B6 /* SWIFT_TemplateDelimiter.swift in Sources */,
-				CFD719CD2E730A10007736B6 /* SWIFT_TextSyntaxColoringView.swift in Sources */,
+				CFD719CC2E730A10007736B6 /* TemplateDelimiter.swift in Sources */,
+				CFD719CD2E730A10007736B6 /* TextSyntaxColoringView.swift in Sources */,
 				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
 				CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */,
-				CFD719CE2E730A10007736B6 /* SWIFT_SharedTextModel.swift in Sources */,
+				CFD719CE2E730A10007736B6 /* SharedTextModel.swift in Sources */,
 				CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */,
 				CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */,
 				CFE3BB992F11565B0045FA2E /* CompilationIssue.swift in Sources */,
 				CFBA582C2F1BBCE800899D11 /* Notification+names.swift in Sources */,
+				CFADC2FA2F1CD89400E13336 /* SearchResultItem.swift in Sources */,
 				CF74330E2EA80ECC009ACE8E /* SourceFileNode.swift in Sources */,
+				CF43D1D62F1C1E4300ACE60F /* ScrollSourceToLineNotificationObject.swift in Sources */,
 				CFD719CF2E730A10007736B6 /* AbstractScanner.swift in Sources */,
 				CF00A2C42EBBE643002D9B0F /* lexique-galgas+template+scanner-swiftui.swift in Sources */,
 				CFD719D02E730A10007736B6 /* AllocationDebugView.swift in Sources */,
 				CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */,
-				CF859AFD2F0FDDE0003A3F74 /* SWIFT-common-command-line-options.swift in Sources */,
+				CF859AFD2F0FDDE0003A3F74 /* common-command-line-options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,9 +1,5 @@
-//
-//  SWIFT_Lexique.swift
-//  essai-editeur-texte-swift
-//
+//--------------------------------------------------------------------------------------------------
 //  Created by Pierre Molinaro on 10/01/2023.
-//
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
@@ -320,11 +316,11 @@ class AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func findTemplateDelimiterIndex (_ inTemplateDelimiterArray : [SWIFT_TemplateDelimiter]) -> Int? {
+  final func findTemplateDelimiterIndex (_ inTemplateDelimiterArray : [TemplateDelimiter]) -> Int? {
     var templateIndex = 0
     var found = false
     while templateIndex < inTemplateDelimiterArray.count, !found {
-      let td : SWIFT_TemplateDelimiter = inTemplateDelimiterArray [templateIndex]
+      let td : TemplateDelimiter = inTemplateDelimiterArray [templateIndex]
       found = self.testForInputString (td.startString, advance: td.discardStartString)
       templateIndex += 1
     }
@@ -338,7 +334,7 @@ class AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func updateEntryPopUpButtons (_ inTokenArray : [SWIFT_Token]) -> [IdentifiableAttributedString] {
+  final func updateEntryPopUpButtons (_ inTokenArray : [LexicalToken]) -> [IdentifiableAttributedString] {
     let popupListData = self.popUpDefinitionList ().sorted { $0.count > $1.count }
     let defaultAttributesContainer = AttributeContainer ([.font : NSFont.systemFont (ofSize: 11.0)])
     let specialAttributesContainer = AttributeContainer ([.font : NSFont.boldSystemFont (ofSize: 11.0)])

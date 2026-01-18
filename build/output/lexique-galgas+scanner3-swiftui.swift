@@ -283,7 +283,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
 
   private let mDebug = false
   private let mVerboseDebug = false
-  private var mTokenArray = [SWIFT_Token] ()
+  private var mTokenArray = [LexicalToken] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1474,7 +1474,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
     var i = savedTokenCount + 1
     while i < self.mTokenArray.count {
       let token = self.mTokenArray [i]
-      let newToken = SWIFT_Token (
+      let newToken = LexicalToken (
         range: NSRange (location: token.range.location + inDelta, length: token.range.length),
         tokenCode: token.tokenCode,
         templateDelimiterIndex: token.templateDelimiterIndex
@@ -1503,7 +1503,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
     var stop = false
     var insertionIndex = savedTokenCount
     while self.currentLocation < nsString.length, !stop {
-      let token : SWIFT_Token = self.parseLexicalTokenForLexicalColoring ()
+      let token : LexicalToken = self.parseLexicalTokenForLexicalColoring ()
       if token.tokenCode > 0 { // For eliminating separators
         if self.mVerboseDebug { Swift.print ("  -> new token \(token.range) '\(nsString.substring (with: token.range))'") }
       //--- Eliminate previous tokens before new token location
@@ -1582,7 +1582,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
   //   Lexical analysis
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+  func parseLexicalTokenForLexicalColoring () -> LexicalToken {
     var loop = true
     var scanningOk = true
     self.mLexicalAttribute_bigintValue = ""
@@ -2205,7 +2205,7 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
       tokenCode = galgasScanner3_2_TEMPLATE
       self.advance ()
     }
-    return SWIFT_Token (
+    return LexicalToken (
       range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
       tokenCode: tokenCode,
       templateDelimiterIndex: self.mEndTemplateDelimiterIndex

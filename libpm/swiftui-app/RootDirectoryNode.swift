@@ -161,17 +161,17 @@ final class RootDirectoryNode : ObservableObject {
   //MARK: Source text dictionary
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mSourceTextDictionary : [SourceFileNodeID : SWIFT_SharedTextModel] = [:]
+  private var mSourceTextDictionary : [SourceFileNodeID : SharedTextModel] = [:]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func findOrAddSourceText (forNodeID inID : SourceFileNodeID) -> SWIFT_SharedTextModel? {
+  func findOrAddSourceText (forNodeID inID : SourceFileNodeID) -> SharedTextModel? {
     if let stm = self.mSourceTextDictionary [inID] {
       return stm
     }else if let fileURL = self.fileURL (forID: inID),
              let data = try? Data (contentsOf: fileURL),
              let str = String (data: data, encoding: .utf8) {
-      let stm = SWIFT_SharedTextModel (
+      let stm = SharedTextModel (
         scanner: scannerFor (extension: fileURL.pathExtension),
         initialString: str,
         fileURL: fileURL,

@@ -5,6 +5,17 @@ import SwiftUI
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
+let projectFileExtensions = Set ([%
+for (lkey 2*) in GUI_CONTEXT.mExtensionMap
+  do ![[lkey lowercaseString] utf8RepresentationEscapingQuestionMark]
+  between %, %
+end
+%])
+
+//--------------------------------------------------------------------------------------------------
+//    Indexing dictionary
+//--------------------------------------------------------------------------------------------------
+
 func indexingDescriptorDictionary () -> [String : String] {
 %if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
 % return [:]

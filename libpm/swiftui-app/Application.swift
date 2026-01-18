@@ -184,7 +184,7 @@ struct MyUndoRedoCommands : Commands {
 //--------------------------------------------------------------------------------------------------
 
 struct ActiveViewKeyStructValue {
-  let sharedTextModel: SWIFT_SharedTextModel
+  let sharedTextModel: SharedTextModel
   let canUndo : Bool
   let canRedo : Bool
 }

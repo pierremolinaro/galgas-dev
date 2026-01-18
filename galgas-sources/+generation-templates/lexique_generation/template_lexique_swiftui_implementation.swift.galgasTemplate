@@ -19,10 +19,10 @@ end%
 //--------------------------------------------------------------------------------------------------
 
 %if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-%fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
+%fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [TemplateDelimiter] = [
 %
 for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
-  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
+  do  %  TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
       if [mEndString count] == 0 then
         %nil%
       else
@@ -290,7 +290,7 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
   //   Lexical analysis
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+  override func parseLexicalTokenForLexicalColoring () -> LexicalToken {
     let startLocation = self.currentLocation
     if let idx = self.mEndTemplateDelimiterIndex,
        self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
@@ -311,7 +311,7 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
           self.advance ()
         }
       }
-      return SWIFT_Token (
+      return LexicalToken (
         range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
         tokenCode: %!SUPER_LEXIQUE_CLASS_NAME%_2_TEMPLATE,
         templateDelimiterIndex: self.mEndTemplateDelimiterIndex

@@ -6,24 +6,19 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
-struct ScrollSourceToLineNotificationObject {
-  let location : Int
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum SidebarSelectedItem : CaseIterable {
-    case fileList, compileLog, issues
+    case fileList, compileLog, issues, search
 
     var systemImageName : String {
       switch self {
       case .fileList: return "folder"
       case .compileLog: return "hammer"
       case .issues: return "exclamationmark.triangle"
+      case .search: return "magnifyingglass"
       }
     }
 
@@ -31,17 +26,30 @@ struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mProjectFileURL : URL
+  let mProjectFileURL : URL
 
-  @State private var mSidebarSelectedItem = SidebarSelectedItem.fileList
-  @StateObject var mSharedTextModel : SWIFT_SharedTextModel
-  @StateObject private var mProjectCompiler = ProjectCompiler ()
+  @State var mSidebarSelectedItem = SidebarSelectedItem.fileList
+  @StateObject var mSharedTextModel : SharedTextModel
+  @StateObject var mProjectCompiler = ProjectCompiler ()
 
   @Binding private var mDocument : ProjectDocument
-  @StateObject private var mRootDirectoryNode : RootDirectoryNode
+  @StateObject var mRootDirectoryNode : RootDirectoryNode
 
   @State private var mSelectedIssue : UUID? = nil
-  @Binding private var mIssues : [CompilationIssue]
+  @Binding var mIssues : [CompilationIssue]
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @ObservedObject var mProjectDocumentSaveScheduler = ProjectDocumentSaveScheduler ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Search
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @AppStorage("search.string") var mSearchString = ""
+  @State var mSearchMessage = "No Result"
+  @State var mSearchResults : [SearchResultNode] = []
+  @State var mSelectedSearchResultID : UUID? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -51,7 +59,7 @@ struct ProjectDocumentView : View {
     self._mDocument = inDocumentBinding
     self.mProjectFileURL = inProjectFileURL
     self._mIssues = inIssuesBinding
-    let projectSharedTextModel = SWIFT_SharedTextModel (
+    let projectSharedTextModel = SharedTextModel (
       scanner: scannerFor (extension: inProjectFileURL.pathExtension),
       initialString: inDocumentBinding.mString.wrappedValue,
       fileURL: inProjectFileURL,
@@ -65,10 +73,6 @@ struct ProjectDocumentView : View {
     self._mRootDirectoryNode = StateObject (wrappedValue: rootDirectoryNode)
     projectSharedTextModel.setWriteFileCallback (self.projectDocumentStringDidChange)
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @ObservedObject private var mProjectDocumentSaveScheduler = ProjectDocumentSaveScheduler ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -114,9 +118,12 @@ struct ProjectDocumentView : View {
 
   @ViewBuilder private var sidebarView : some View {
     VStack {
+      Divider ()
       HStack {
         Picker("", selection: self.$mSidebarSelectedItem) {
-          ForEach (SidebarSelectedItem.allCases, id: \.self) { Image (systemName: $0.systemImageName).tag($0) }
+          ForEach (SidebarSelectedItem.allCases, id: \.self) {
+            Image (systemName: $0.systemImageName).tag($0)
+          }
         }.pickerStyle (.segmented)
         Spacer ().frame (width: 6)
       }
@@ -159,6 +166,8 @@ struct ProjectDocumentView : View {
             .buttonStyle (.plain)
           }
         }
+      case .search:
+        self.searchViewForSidebar ()
       }
     }
     .toolbar (removing: .sidebarToggle)
@@ -208,24 +217,10 @@ struct ProjectDocumentView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func compileProject () {
-    self.mRootDirectoryNode.saveAllEditedFiles ()
-    self.mSidebarSelectedItem = SidebarSelectedItem.compileLog
-    self.mIssues.removeAll ()
-    self.mProjectDocumentSaveScheduler.saveProjectDocument {
-      self.mProjectCompiler.compile (
-        projectURL: self.mProjectFileURL,
-        appendIssueCallBack: { self.mIssues.append ($0) }
-      )
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   @ViewBuilder private var detailView : some View {
     if let fileNodeID = self.mRootDirectoryNode.mSelectedFileNodeID {
       if let stm = self.mRootDirectoryNode.findOrAddSourceText (forNodeID: fileNodeID) {
-        SWIFT_TextSyntaxColoringView (
+        TextSyntaxColoringView (
           model: stm,
           issueArray: self.mIssues,
           url: self.mRootDirectoryNode.fileURL (forID: fileNodeID)
@@ -235,7 +230,7 @@ struct ProjectDocumentView : View {
         EmptyView ()
       }
     }else{ // Edit project file
-      SWIFT_TextSyntaxColoringView (
+      TextSyntaxColoringView (
         model: self.mSharedTextModel,
         issueArray: self.mIssues,
         url: self.mProjectFileURL
@@ -257,7 +252,7 @@ struct ProjectDocumentView : View {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class ProjectDocumentSaveScheduler : ObservableObject {
+final class ProjectDocumentSaveScheduler : ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
