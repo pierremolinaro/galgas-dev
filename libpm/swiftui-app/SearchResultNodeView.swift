@@ -1,9 +1,5 @@
-//
-//  SearchResultNodeView.swift
-//  galgas-ide-swiftui
-//
+//--------------------------------------------------------------------------------------------------
 //  Created by Pierre Molinaro on 18/01/2026.
-//
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
@@ -40,7 +36,10 @@ struct SearchResultNodeView : View {
       }
     } label: {
       HStack {
-        VStack { Text ("\(self.mNode.mEntries.count)") ; Spacer () }
+        VStack {
+          Text ("\(self.mNode.mEntries.count)")
+          Spacer ()
+        }
         VStack {
           Text ("\(self.mNode.fileName)")
           .bold ()

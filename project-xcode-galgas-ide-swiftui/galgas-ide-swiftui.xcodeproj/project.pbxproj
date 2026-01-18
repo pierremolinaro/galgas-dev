@@ -172,7 +172,6 @@
 		CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */; };
 		CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */; };
 		CF5A52632EBBC47100CE55E3 /* gui-swiftui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */; };
-		CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */; };
 		CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */; };
 		CF6E4A852F1BA32D002A96A5 /* IdentifiableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */; };
 		CF74330D2EA80ECC009ACE8E /* SourceFileNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74330C2EA80ECC009ACE8E /* SourceFileNodeView.swift */; };
@@ -725,7 +724,6 @@
 		CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+search.swift"; sourceTree = "<group>"; };
 		CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+compile.swift"; sourceTree = "<group>"; };
 		CF5A52622EBBC47100CE55E3 /* gui-swiftui-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "gui-swiftui-cocoa.swift"; sourceTree = "<group>"; };
-		CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+conditionalOverlay.swift"; sourceTree = "<group>"; };
 		CF5BCBAD2F14F069006F8E83 /* LineAndColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineAndColumn.swift; sourceTree = "<group>"; };
 		CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableAttributedString.swift; sourceTree = "<group>"; };
 		CF74330B2EA80ECC009ACE8E /* SourceFileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNode.swift; sourceTree = "<group>"; };
@@ -1323,7 +1321,6 @@
 				CFD719BF2E73096C007736B6 /* TemplateDelimiter.swift */,
 				CFD719C52E73099F007736B6 /* TextSyntaxColoringView.swift */,
 				CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */,
-				CF5A92FA2EA62D9100F9FF86 /* View+conditionalOverlay.swift */,
 			);
 			path = "swiftui-app";
 			sourceTree = "<group>";
@@ -1675,7 +1672,6 @@
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* TemplateDelimiter.swift in Sources */,
 				CFD719CD2E730A10007736B6 /* TextSyntaxColoringView.swift in Sources */,
-				CF5A92FB2EA62D9700F9FF86 /* View+conditionalOverlay.swift in Sources */,
 				CF7508422F0FB686005FAE3E /* ProjectCompiler.swift in Sources */,
 				CFD71A482E730D07007736B6 /* ProjectDocument.swift in Sources */,
 				CF5BCBAE2F14F069006F8E83 /* LineAndColumn.swift in Sources */,
