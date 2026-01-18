@@ -7,10 +7,11 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import Combine
 
 //--------------------------------------------------------------------------------------------------
 
-struct SearchResultNode : Identifiable {
+class SearchResultNode : Identifiable, ObservableObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -20,7 +21,7 @@ struct SearchResultNode : Identifiable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var mEntries : [SearchResultItem]
-//  @Published var mIsExpanded : Bool = false
+  @Published var mIsExpanded : Bool = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

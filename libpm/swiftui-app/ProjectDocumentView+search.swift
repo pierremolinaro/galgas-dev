@@ -104,16 +104,20 @@ extension ProjectDocumentView {
   func searchViewForSidebar () -> some View {
     VStack {
       HStack {
+        Spacer ().frame (width: 6)
+        Text ("Find").controlSize (.small)
         Spacer ()
-        Toggle ("aA", isOn: self.$mCaseSensitiveSearch).toggleStyle (.button)
+        Toggle ("aA", isOn: self.$mCaseSensitiveSearch)
+        .toggleStyle (.button)
+        .controlSize (.small)
         Spacer ().frame (width: 6)
       }
       HStack {
         Spacer ().frame (width: 6)
-        Text ("Search")
         TextField ("", text: self.$mSearchString)
         .multilineTextAlignment (.center)
         .textFieldStyle (.roundedBorder)
+        .controlSize (.small)
         .overlay (alignment: .leading) {
           Image (systemName: "magnifyingglass")
           .foregroundStyle (.secondary)
@@ -123,7 +127,7 @@ extension ProjectDocumentView {
         Spacer ().frame (width: 6)
       }
       Divider ()
-      Text (self.mSearchMessage).foregroundStyle (.secondary)
+      Text (self.mSearchMessage).foregroundStyle (.secondary).controlSize (.small)
       Divider ()
       List (self.mSearchResults, id: \.id, selection: self.$mSelectedSearchResultID) { node in
         SearchResultNodeView (
@@ -131,7 +135,7 @@ extension ProjectDocumentView {
           selectedResultItemID: self.$mSelectedSearchResultID,
           selectedFileNodeID: self.$mRootDirectoryNode.mSelectedFileNodeID
         )
-      }
+      }.controlSize (.small)
       Spacer ()
     }
   }

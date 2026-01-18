@@ -14,8 +14,7 @@ struct SearchResultNodeView : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mNode : SearchResultNode
-  @State private var mIsExpanded : Bool = false
+  @ObservedObject var mNode : SearchResultNode
   @Binding private var mSelectedResultItemID : UUID?
   @Binding var mSelectedFileNodeID : SourceFileNodeID?
 
@@ -32,7 +31,7 @@ struct SearchResultNodeView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body : some View {
-    DisclosureGroup (isExpanded: self.$mIsExpanded) {
+    DisclosureGroup (isExpanded: self.$mNode.mIsExpanded) {
       ForEach (self.mNode.mEntries, id: \.self.id) { entry in
         SearchResultItemView (
           entry: entry,
@@ -41,11 +40,14 @@ struct SearchResultNodeView : View {
       }
     } label: {
       HStack {
-        Text ("\(self.mNode.mEntries.count)")
-        Text ("\(self.mNode.fileName)")
-        .bold ()
-        .frame (maxWidth: .infinity, alignment: .leading)
-        .lineLimit (nil)
+        VStack { Text ("\(self.mNode.mEntries.count)") ; Spacer () }
+        VStack {
+          Text ("\(self.mNode.fileName)")
+          .bold ()
+          .frame (maxWidth: .infinity, alignment: .leading)
+          .lineLimit (nil)
+          Spacer ()
+        }
       }
     }
   }
