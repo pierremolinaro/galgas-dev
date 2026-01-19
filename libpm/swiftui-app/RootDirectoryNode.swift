@@ -264,7 +264,6 @@ final class RootDirectoryNode : ObservableObject {
     if let menuItem = inSender as? NSMenuItem,
        let reference = menuItem.representedObject as? String {
       let components = reference.split (separator: ":")
-//      let line = Int (components [1])!
       let location = Int (components [2])!
       let sourceURL = URL (fileURLWithPath: String (components [4]))
       let sourceFileNodeID = SourceFileNodeID (url: sourceURL)

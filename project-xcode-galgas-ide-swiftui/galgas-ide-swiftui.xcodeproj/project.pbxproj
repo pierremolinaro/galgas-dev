@@ -170,6 +170,8 @@
 		CF515B062EAA4F8E002A816B /* UInt64+displayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */; };
 		CF515B082EAA593E002A816B /* SourceFileNodeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF515B072EAA5939002A816B /* SourceFileNodeID.swift */; };
 		CF559AD62F1E334B00752B9C /* String+LineRangeForLineNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */; };
+		CF559BCD2F1E5FEB00752B9C /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559BCC2F1E5FE700752B9C /* ASCII.swift */; };
+		CF559BCF2F1E60B000752B9C /* lexical-functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559BCE2F1E60A600752B9C /* lexical-functions.swift */; };
 		CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */; };
 		CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */; };
 		CF59598D2F1D208900BD83C0 /* ProjectDocumentView+populateContextualMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */; };
@@ -725,6 +727,8 @@
 		CF515B052EAA4F8E002A816B /* UInt64+displayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+displayString.swift"; sourceTree = "<group>"; };
 		CF515B072EAA5939002A816B /* SourceFileNodeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFileNodeID.swift; sourceTree = "<group>"; };
 		CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineRangeForLineNumber.swift"; sourceTree = "<group>"; };
+		CF559BCC2F1E5FE700752B9C /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
+		CF559BCE2F1E60A600752B9C /* lexical-functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexical-functions.swift"; sourceTree = "<group>"; };
 		CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+search.swift"; sourceTree = "<group>"; };
 		CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+compile.swift"; sourceTree = "<group>"; };
 		CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+populateContextualMenu.swift"; sourceTree = "<group>"; };
@@ -1296,6 +1300,7 @@
 				CFD719BC2E730967007736B6 /* AbstractScanner.swift */,
 				CFD719B02E73085C007736B6 /* AllocationDebugView.swift */,
 				CFD719AD2E7307FB007736B6 /* Application.swift */,
+				CF559BCC2F1E5FE700752B9C /* ASCII.swift */,
 				CFD71AE52E731366007736B6 /* Color+RawRepresentable.swift */,
 				CF859AFE2F0FDE0F003A3F74 /* CommandLineOption.swift */,
 				CF859AFC2F0FDDE0003A3F74 /* common-command-line-options.swift */,
@@ -1305,6 +1310,7 @@
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
 				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
 				CF5959952F1D2B8000BD83C0 /* IndexingOperation.swift */,
+				CF559BCE2F1E60A600752B9C /* lexical-functions.swift */,
 				CFD719C22E730970007736B6 /* LexicalToken.swift */,
 				CFBA582B2F1BBCDC00899D11 /* Notification+names.swift */,
 				CF7508412F0FB680005FAE3E /* ProjectCompiler.swift */,
@@ -1673,12 +1679,14 @@
 				CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */,
 				CFD71AE92E731366007736B6 /* Color+RawRepresentable.swift in Sources */,
 				CF59598D2F1D208900BD83C0 /* ProjectDocumentView+populateContextualMenu.swift in Sources */,
+				CF559BCD2F1E5FEB00752B9C /* ASCII.swift in Sources */,
 				CFADC2F82F1CD47C00E13336 /* SearchResultNode.swift in Sources */,
 				CFD71AEA2E731366007736B6 /* CustomFont.swift in Sources */,
 				CFD719B82E7308E8007736B6 /* lexique-galgas+scanner4-swiftui.swift in Sources */,
 				CFD719C82E7309F6007736B6 /* Application.swift in Sources */,
 				CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */,
 				CFD719CB2E730A10007736B6 /* LexicalToken.swift in Sources */,
+				CF559BCF2F1E60B000752B9C /* lexical-functions.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* TemplateDelimiter.swift in Sources */,
