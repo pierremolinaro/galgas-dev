@@ -271,12 +271,6 @@ struct SettingViewFor_galgasScanner3 : View {
 
 //--------------------------------------------------------------------------------------------------
 
-#Preview {
-  SettingViewFor_galgasScanner3 ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
 class ScannerFor_galgasScanner3 : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -289,6 +283,12 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
 
   final override func popUpDefinitionList () -> [[UInt16]] {
     return gPopUpData_galgasScanner3
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override func blockComment () -> String? {
+    return gBlockComment_galgasScanner3
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

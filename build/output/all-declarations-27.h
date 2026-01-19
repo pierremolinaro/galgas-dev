@@ -10,6 +10,49 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'structGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
+                                                                               const class GGS_string & in_TYPE_5F_NAME,
+                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                               const class GGS_lstringlist & in_SLOT_5F_LIST
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                           const class GGS_string & in_TYPE_5F_NAME,
+                                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                           const class GGS_lstringlist & in_SLOT_5F_LIST,
+                                                                                           const class GGS_bigint & in_FULL_5F_SET,
+                                                                                           const class GGS_bool & in_EQUATABLE
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'classGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------

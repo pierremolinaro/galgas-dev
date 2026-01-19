@@ -177,6 +177,16 @@ struct ActionMenuCommands : Commands {
       }
       .keyboardShortcut ("g", modifiers: [.option, .command])
       .disabled (self.activeView == nil)
+      Button ("Comment") {
+        self.activeView?.commentSelection ()
+      }
+      .keyboardShortcut ("k", modifiers: [.command])
+      .disabled (self.activeView == nil)
+      Button ("Uncomment") {
+        self.activeView?.uncommentSelection ()
+      }
+      .keyboardShortcut ("k", modifiers: [.option, .command])
+      .disabled (self.activeView == nil)
     }
   }
 
@@ -228,6 +238,8 @@ struct ActiveViewFocusedValue {
   let canUndo : Bool
   let canRedo : Bool
   let presentGotoLineSheet : () -> Void
+  let commentSelection : () -> Void
+  let uncommentSelection : () -> Void
 }
 
 //--------------------------------------------------------------------------------------------------

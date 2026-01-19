@@ -132,6 +132,12 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//  func blockComment () -> String? {
+//    return self.mScanner?.blockComment ()
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func indexingTitles () -> [String] {
     return self.mScanner?.indexingTitles() ?? []
   }
@@ -145,6 +151,145 @@ final class SharedTextModel : NSObject, ObservableObject, Identifiable, NSTextSt
       n += 1
     }
     return n
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Comment / uncomment
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func performBlockComment (forSelection inSelectedRange : NSRange) -> NSRange {
+    var newSelectedRange = inSelectedRange
+    if let blockComment = self.mScanner?.blockComment () {
+      let blockCommentAT = NSAttributedString (string: blockComment, attributes: nil)
+      let sourceString = self.mTextStorage.string as NSString
+      let lineRange = sourceString.lineRange (for: inSelectedRange)
+      var insertedCharsCount = 0
+      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+      self.mTextStorage.beginEditing ()
+      repeat {
+        self.mTextStorage.insert (blockCommentAT, at: currentLineRange.location)
+        insertedCharsCount += (blockComment as NSString).length
+        if currentLineRange.location > 0 {
+          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+        }
+      }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
+      self.mTextStorage.endEditing ()
+    //--- Update selected range
+      newSelectedRange = NSRange (location: inSelectedRange.location, length: inSelectedRange.length + insertedCharsCount)
+    //--- Register undo
+      self.mSharedUndoManager.registerUndo (
+        withTarget: self,
+        selector: #selector (Self.uncommentRangeForUndo(_:)),
+        object: NSValue (range: newSelectedRange)
+      )
+    }
+    return newSelectedRange
+//      self.mTextStorage.beginEditing ()
+//    //---
+//      let blockCommentString = NSAttributedString (string: tokenizer.blockComment (), attributes: nil)
+//      let sourceString = self.mTextStorage.string as NSString
+//      let lineRange = sourceString.lineRange (for: inSelectedRangeValue)
+//      var insertedCharsCount = 0
+//      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+//      repeat {
+//        self.mTextStorage.insert (blockCommentString, at: currentLineRange.location)
+//        insertedCharsCount += (blockCommentString.string as NSString).length
+//        if currentLineRange.location > 0 {
+//          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+//        }
+//      }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
+//  //---
+//      self.mTextStorage.endEditing ()
+//  //--- Update selected range
+//      newSelectedRange = NSRange (location: inSelectedRangeValue.location, length: inSelectedRangeValue.length + insertedCharsCount)
+    //--- Register undo
+//      self.mSharedUndoManager.registerUndo (
+//        withTarget: self,
+//        selector: #selector (Self.uncommentRangeForUndo(_:)),
+//        object: NSValue (range: newSelectedRange)
+//      )
+//    }
+//  //---
+//    return newSelectedRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func commentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
+    _ = self.performBlockComment (forSelection: inRangeValue.rangeValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  //                       U N C O M M E N T R A N G E
+  //
+  // Cette méthode a plusieurs rôles :
+  //   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand le
+  //     commentaire commence une ligne ;
+  //   - ajuster la sélection en conséquence ; en effet, dès que la méthode replaceCharactersInRange:withString: est
+  //     appelée, Cocoa ramène la sélection à un point d'insertion. La sélection est ajustée et maintenue dans la
+  //     variable finalSelectedRange.
+  //
+  // Le plus difficile est l'ajustement de la sélection. Pour cela, on calcule :
+  //   - le nombre beforeSelectionCharacterCount de caractères du commentaire supprimé qui sont avant la sélection ; si
+  //     ce nombre est > 0, on le début de la sélection du min entre ce nombre et le nombre de caractères du
+  //     commentaire ;
+  //   - le nombre withinSelectionCharacterCount de caractères du commentaire supprimé qui sont à l'intérieur de la
+  //     sélection ; si ce nombre est > 0, on le retranche de la longueur de la sélection.
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func performBlockUncomment (forSelection initialSelectedRange : NSRange) -> NSRange {
+    var finalSelectedRange = NSRange ()
+    if let blockCommentString = self.mScanner?.blockComment () {
+      self.mTextStorage.beginEditing ()
+    //--- Block comment string
+      let blockCommentLength = (blockCommentString as NSString).length
+    //--- Get source string
+      let sourceString = self.mTextStorage.string as NSString
+    //--- Final selection range
+      finalSelectedRange = initialSelectedRange
+    //--- Get line range that is affected by the operation
+      let lineRange = sourceString.lineRange (for: initialSelectedRange)
+      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+      repeat {
+        let lineString = (self.mTextStorage.string as NSString).substring (with: currentLineRange) as NSString
+        if lineString.compare (blockCommentString, options: .literal, range: NSRange (location: 0, length: blockCommentLength)) == .orderedSame {
+          self.mTextStorage.replaceCharacters (in: NSRange (location: currentLineRange.location, length: blockCommentLength), with: "")
+        //--- Examen du nombre de caractères à l'intérieur de la sélection
+          let withinSelectionCharacterCount =
+            min (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
+          -
+            max (currentLineRange.location, finalSelectedRange.location)
+          if withinSelectionCharacterCount > 0 {
+            finalSelectedRange.length -= withinSelectionCharacterCount
+          }
+        //--- Examen du nombre de caractères avant la sélection
+          let beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location
+          if beforeSelectionCharacterCount > 0 {
+            finalSelectedRange.location -= min (blockCommentLength, beforeSelectionCharacterCount)
+          }
+        }
+        if currentLineRange.location > 0 {
+          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+        }
+      }while (currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)
+    //---
+      self.mTextStorage.endEditing ()
+    //--- Register undo
+      self.mSharedUndoManager.registerUndo (
+        withTarget: self,
+        selector: #selector (Self.commentRangeForUndo(_:)),
+        object: NSValue (range: finalSelectedRange)
+      )
+    }
+    return finalSelectedRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func uncommentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
+    _ = self.self.performBlockUncomment (forSelection: inRangeValue.rangeValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

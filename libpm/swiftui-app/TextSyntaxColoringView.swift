@@ -80,7 +80,20 @@ struct TextSyntaxColoringView : View {
         Spacer ().frame (height: 6)
         HStack {
           Spacer ().frame (width: 6)
-          Button ("G") { self.mIsPresentingGotoLineSheetForTopView = true }
+          Menu {
+            Button ("Goto Line…") { self.mIsPresentingGotoLineSheetForTopView = true }
+            .keyboardShortcut ("g", modifiers: [.option, .command])
+            Button ("Comment Selection") {
+               self.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mTopViewSelection)
+             }
+            .keyboardShortcut ("k", modifiers: [.command])
+            Button ("Uncomment Selection") {
+               self.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mTopViewSelection)
+             }
+            .keyboardShortcut ("k", modifiers: [.option, .command])
+          } label: {
+             Label ("", systemImage: "gearshape.fill")
+          }.frame (width: 48)
           Picker ("", selection: self.mUserTopViewSelectedPopUp) {
             ForEach (self.mTopViewPopUpMenuItems, id: \.id) { entry in
               Text (entry.attributedString).tag (entry.id)
@@ -118,7 +131,13 @@ struct TextSyntaxColoringView : View {
             sharedTextModel: self.mSharedTextModel,
             canUndo: self.mSharedTextModel.canUndo,
             canRedo: self.mSharedTextModel.canRedo,
-            presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForTopView = true }
+            presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForTopView = true },
+            commentSelection: {
+              self.mTopViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mTopViewSelection)
+            },
+            uncommentSelection: {
+              self.mTopViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mTopViewSelection)
+            }
           )
         )
       }
@@ -127,7 +146,20 @@ struct TextSyntaxColoringView : View {
           Spacer ().frame (height: 6)
           HStack {
             Spacer ().frame (width: 6)
-            Button ("G") { self.mIsPresentingGotoLineSheetForBottomView = true }
+            Menu {
+              Button ("Goto Line…") { self.mIsPresentingGotoLineSheetForBottomView = true }
+              .keyboardShortcut ("g", modifiers: [.option, .command])
+              Button ("Comment Selection") {
+                self.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mBottomViewSelection)
+              }
+              .keyboardShortcut ("k", modifiers: [.command])
+              Button ("Uncomment Selection") {
+                self.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mBottomViewSelection)
+              }
+              .keyboardShortcut ("k", modifiers: [.option, .command])
+            } label: {
+               Label ("", systemImage: "gearshape.fill")
+            }.frame (width: 48)
             Picker ("", selection: self.mUserBottomViewSelectedPopUp) {
               ForEach (self.mBottomViewPopUpMenuItems, id: \.id) {
                 Text ($0.attributedString).tag ($0.id)
@@ -163,7 +195,13 @@ struct TextSyntaxColoringView : View {
               sharedTextModel: self.mSharedTextModel,
               canUndo: self.mSharedTextModel.canUndo,
               canRedo: self.mSharedTextModel.canRedo,
-              presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForBottomView = true }
+              presentGotoLineSheet: { self.mIsPresentingGotoLineSheetForBottomView = true },
+              commentSelection: {
+                self.mBottomViewSelection = self.mSharedTextModel.performBlockComment (forSelection: self.mBottomViewSelection)
+              },
+              uncommentSelection: {
+                self.mBottomViewSelection = self.mSharedTextModel.performBlockUncomment (forSelection: self.mBottomViewSelection)
+              }
             )
           )
         }

@@ -93,12 +93,6 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
 
 //--------------------------------------------------------------------------------------------------
 
-#Preview {
-  SettingViewFor_%!LEXIQUE_CLASS_NAME% ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
 class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -111,6 +105,12 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
 
   final override func popUpDefinitionList () -> [[UInt16]] {
     return gPopUpData_%!LEXIQUE_CLASS_NAME%
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override func blockComment () -> String? {
+    return gBlockComment_%!LEXIQUE_CLASS_NAME%
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
