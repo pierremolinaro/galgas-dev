@@ -172,6 +172,7 @@
 		CF559AD62F1E334B00752B9C /* String+LineRangeForLineNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */; };
 		CF559BCD2F1E5FEB00752B9C /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559BCC2F1E5FE700752B9C /* ASCII.swift */; };
 		CF559BCF2F1E60B000752B9C /* lexical-functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF559BCE2F1E60A600752B9C /* lexical-functions.swift */; };
+		CF57F9812F1E6957008EB31D /* FocusedValues+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57F9802F1E694F008EB31D /* FocusedValues+extension.swift */; };
 		CF5959892F1CE85900BD83C0 /* ProjectDocumentView+search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */; };
 		CF59598B2F1CECFA00BD83C0 /* ProjectDocumentView+compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */; };
 		CF59598D2F1D208900BD83C0 /* ProjectDocumentView+populateContextualMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */; };
@@ -729,6 +730,7 @@
 		CF559AD52F1E334B00752B9C /* String+LineRangeForLineNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LineRangeForLineNumber.swift"; sourceTree = "<group>"; };
 		CF559BCC2F1E5FE700752B9C /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
 		CF559BCE2F1E60A600752B9C /* lexical-functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexical-functions.swift"; sourceTree = "<group>"; };
+		CF57F9802F1E694F008EB31D /* FocusedValues+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FocusedValues+extension.swift"; sourceTree = "<group>"; };
 		CF5959882F1CE85200BD83C0 /* ProjectDocumentView+search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+search.swift"; sourceTree = "<group>"; };
 		CF59598A2F1CECF000BD83C0 /* ProjectDocumentView+compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+compile.swift"; sourceTree = "<group>"; };
 		CF59598C2F1D207100BD83C0 /* ProjectDocumentView+populateContextualMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocumentView+populateContextualMenu.swift"; sourceTree = "<group>"; };
@@ -1308,6 +1310,7 @@
 				CFE3BB812F10FF6D0045FA2E /* CompileLogView.swift */,
 				CFD71AE62E731366007736B6 /* CustomFont.swift */,
 				CFD71AE72E731366007736B6 /* CustomFontPicker.swift */,
+				CF57F9802F1E694F008EB31D /* FocusedValues+extension.swift */,
 				CF6E4A842F1BA329002A96A5 /* IdentifiableAttributedString.swift */,
 				CF5959952F1D2B8000BD83C0 /* IndexingOperation.swift */,
 				CF559BCE2F1E60A600752B9C /* lexical-functions.swift */,
@@ -1687,6 +1690,7 @@
 				CF859AFF2F0FDE0F003A3F74 /* CommandLineOption.swift in Sources */,
 				CFD719CB2E730A10007736B6 /* LexicalToken.swift in Sources */,
 				CF559BCF2F1E60B000752B9C /* lexical-functions.swift in Sources */,
+				CF57F9812F1E6957008EB31D /* FocusedValues+extension.swift in Sources */,
 				CFD71A4A2E730D36007736B6 /* ProjectDocumentView.swift in Sources */,
 				CF874F242F100930004A5162 /* option-galgas-5Fcli-5Foptions-swiftui.swift in Sources */,
 				CFD719CC2E730A10007736B6 /* TemplateDelimiter.swift in Sources */,

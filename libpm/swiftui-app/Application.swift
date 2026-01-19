@@ -14,27 +14,11 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
 
 @main struct Application : App {
 
-//  @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Environment(\.openWindow) private var openWindow
-//  @Environment(\.scenePhase) private var scenePhase
-
-//  private let mAllocationWindowVisibleAtLaunch : Bool
   @State private var mAllocationWindowIsPresented = false
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init () {
-//    self.mAllocationWindowVisibleAtLaunch = UserDefaults.standard.bool (forKey: ENABLE_ALLOCATION_VISIBLE_AT_LAUNCH)
-//    if self.mAllocationWindowVisibleAtLaunch {
-////      DispatchQueue.main.async {
-////        self.openWindow (id: "AllocationDebug")
-////      }
-//    }
-  }
-  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var body : some Scene {
@@ -134,28 +118,6 @@ let AUTOMATIC_SAVE_DELAY : TimeInterval = 5.0
 
 //--------------------------------------------------------------------------------------------------
 
-//final class AppDelegate : NSObject, NSApplicationDelegate {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func applicationDidFinishLaunching (_ inNotification : Notification) {
-//    print ("Finish Launching")
-////    NSApp.openWindow (id: "AllocationDebug")
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func applicationShouldTerminate (_ inSender : NSApplication) -> NSApplication.TerminateReply {
-//    print ("Terminate")
-//        // Récupérer la fenêtre active et son document
-//    return .terminateNow
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 struct ActionMenuCommands : Commands {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -213,57 +175,6 @@ struct UndoRedoCommands : Commands {
       .keyboardShortcut ("z", modifiers: [.shift, .command])
       .disabled (!(self.activeView?.canRedo ?? false))
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct ActiveDocumentFocusedValue {
-  let projectURL : URL
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct ActiveDocumentFocusedValueKey : FocusedValueKey {
-  typealias Value = ActiveDocumentFocusedValue
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct ActiveViewFocusedValue {
-  let sharedTextModel : SharedTextModel
-  let canUndo : Bool
-  let canRedo : Bool
-  let presentGotoLineSheet : () -> Void
-  let commentSelection : () -> Void
-  let uncommentSelection : () -> Void
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct ActiveViewFocusedValueKey : FocusedValueKey {
-  typealias Value = ActiveViewFocusedValue
-}
-
-//--------------------------------------------------------------------------------------------------
-
-extension FocusedValues {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var activeView : ActiveViewFocusedValue? {
-    get { self [ActiveViewFocusedValueKey.self] }
-    set { self [ActiveViewFocusedValueKey.self] = newValue }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var activeDocument : ActiveDocumentFocusedValue? {
-    get { self [ActiveDocumentFocusedValueKey.self] }
-    set { self [ActiveDocumentFocusedValueKey.self] = newValue }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
